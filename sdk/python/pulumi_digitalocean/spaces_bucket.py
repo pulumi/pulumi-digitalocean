@@ -141,6 +141,7 @@ class _SpacesBucketState:
                  bucket_domain_name: Optional[pulumi.Input[str]] = None,
                  bucket_urn: Optional[pulumi.Input[str]] = None,
                  cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -152,6 +153,7 @@ class _SpacesBucketState:
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[str] endpoint: The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
@@ -166,6 +168,8 @@ class _SpacesBucketState:
             pulumi.set(__self__, "bucket_urn", bucket_urn)
         if cors_rules is not None:
             pulumi.set(__self__, "cors_rules", cors_rules)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if lifecycle_rules is not None:
@@ -224,6 +228,18 @@ class _SpacesBucketState:
     @cors_rules.setter
     def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -495,6 +511,7 @@ class SpacesBucket(pulumi.CustomResource):
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["bucket_domain_name"] = None
             __props__.__dict__["bucket_urn"] = None
+            __props__.__dict__["endpoint"] = None
         super(SpacesBucket, __self__).__init__(
             'digitalocean:index/spacesBucket:SpacesBucket',
             resource_name,
@@ -509,6 +526,7 @@ class SpacesBucket(pulumi.CustomResource):
             bucket_domain_name: Optional[pulumi.Input[str]] = None,
             bucket_urn: Optional[pulumi.Input[str]] = None,
             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+            endpoint: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -525,6 +543,7 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[str] endpoint: The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
@@ -539,6 +558,7 @@ class SpacesBucket(pulumi.CustomResource):
         __props__.__dict__["bucket_domain_name"] = bucket_domain_name
         __props__.__dict__["bucket_urn"] = bucket_urn
         __props__.__dict__["cors_rules"] = cors_rules
+        __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["lifecycle_rules"] = lifecycle_rules
         __props__.__dict__["name"] = name
@@ -577,6 +597,14 @@ class SpacesBucket(pulumi.CustomResource):
         A rule of Cross-Origin Resource Sharing (documented below).
         """
         return pulumi.get(self, "cors_rules")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output[str]:
+        """
+        The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="forceDestroy")

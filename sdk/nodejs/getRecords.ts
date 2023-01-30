@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +12,8 @@ import * as utilities from "./utilities";
  * If no filters are specified, all records will be returned.
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getRecords:getRecords", {
         "domain": args.domain,
         "filters": args.filters,
@@ -46,6 +45,9 @@ export interface GetRecordsArgs {
  * A collection of values returned by getRecords.
  */
 export interface GetRecordsResult {
+    /**
+     * Domain of the DNS record.
+     */
     readonly domain: string;
     readonly filters?: outputs.GetRecordsFilter[];
     /**
@@ -55,9 +57,12 @@ export interface GetRecordsResult {
     readonly records: outputs.GetRecordsRecord[];
     readonly sorts?: outputs.GetRecordsSort[];
 }
-
+/**
+ * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
+ * If no filters are specified, all records will be returned.
+ */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
-    return pulumi.output(args).apply(a => getRecords(a, opts))
+    return pulumi.output(args).apply((a: any) => getRecords(a, opts))
 }
 
 /**

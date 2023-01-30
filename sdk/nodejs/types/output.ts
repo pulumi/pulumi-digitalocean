@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 
 export interface AppSpec {
     /**
@@ -384,10 +386,6 @@ export interface AppSpecJob {
     instanceSizeSlug?: string;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
-     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: string;
     /**
@@ -1753,10 +1751,6 @@ export interface GetAppSpecJob {
     instanceSizeSlug?: string;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
-     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: string;
     /**
@@ -2658,9 +2652,11 @@ export interface GetDatabaseClusterMaintenanceWindow {
 export interface GetDomainsDomain {
     /**
      * (Required) The name of the domain.
-     * - `ttl`-  The TTL of the domain.
      */
     name: string;
+    /**
+     * The TTL of the domain.
+     */
     ttl: number;
     /**
      * The uniform resource name of the domain
@@ -2954,38 +2950,64 @@ export interface GetImagesFilter {
 }
 
 export interface GetImagesImage {
+    /**
+     * When the image was created
+     */
     created: string;
     description: string;
     /**
      * The name of the distribution of the OS of the image.
-     * - `minDiskSize`: The minimum 'disk' required for the image.
-     * - `sizeGigabytes`: The size of the image in GB.
      */
     distribution: string;
+    /**
+     * Any applicable error message pertaining to the image
+     */
     errorMessage: string;
+    /**
+     * The ID of the image.
+     */
     id: number;
     /**
      * The id of the image (legacy parameter).
      */
     image: string;
+    /**
+     * The minimum 'disk' required for the image.
+     */
     minDiskSize: number;
+    /**
+     * The name of the image.
+     */
     name: string;
     /**
      * Is image a public image or not. Public images represent
      * Linux distributions or One-Click Applications, while non-public images represent
      * snapshots and backups and are only available within your account.
-     * - `regions`: A set of the regions that the image is available in.
-     * - `tags`: A set of tags applied to the image
-     * - `created`: When the image was created
-     * - `status`: Current status of the image
-     * - `errorMessage`: Any applicable error message pertaining to the image
      */
     private: boolean;
+    /**
+     * A set of the regions that the image is available in.
+     */
     regions: string[];
+    /**
+     * The size of the image in GB.
+     */
     sizeGigabytes: number;
+    /**
+     * Unique text identifier of the image.
+     */
     slug: string;
+    /**
+     * Current status of the image
+     */
     status: string;
+    /**
+     * A set of tags applied to the image
+     */
     tags: string[];
+    /**
+     * Type of the image.
+     */
     type: string;
 }
 
@@ -3274,15 +3296,45 @@ export interface GetRecordsRecord {
      * The domain name to search for DNS records
      */
     domain: string;
+    /**
+     * An unsigned integer between 0-255 used for CAA records.
+     */
     flags: number;
+    /**
+     * The ID of the record.
+     */
     id: number;
+    /**
+     * The name of the DNS record.
+     */
     name: string;
+    /**
+     * The port for SRV records.
+     */
     port: number;
+    /**
+     * The priority for SRV and MX records.
+     */
     priority: number;
+    /**
+     * The parameter tag for CAA records.
+     */
     tag: string;
+    /**
+     * This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+     */
     ttl: number;
+    /**
+     * The type of the DNS record.
+     */
     type: string;
+    /**
+     * Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+     */
     value: string;
+    /**
+     * The weight for SRV records.
+     */
     weight: number;
 }
 
@@ -3441,6 +3493,10 @@ export interface GetSpacesBucketsBucket {
      */
     bucketDomainName: string;
     /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     */
+    endpoint: string;
+    /**
      * The name of the Spaces bucket
      */
     name: string;
@@ -3514,15 +3570,21 @@ export interface GetSshKeysSort {
 }
 
 export interface GetSshKeysSshKey {
+    /**
+     * The fingerprint of the public key of the ssh key.
+     */
     fingerprint: string;
     /**
      * The ID of the ssh key.
-     * * `name`: The name of the ssh key.
-     * * `publicKey`: The public key of the ssh key.
-     * * `fingerprint`: The fingerprint of the public key of the ssh key.
      */
     id: number;
+    /**
+     * The name of the ssh key.
+     */
     name: string;
+    /**
+     * The public key of the ssh key.
+     */
     publicKey: string;
 }
 
@@ -3628,6 +3690,9 @@ export interface KubernetesClusterMaintenancePolicy {
      * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
      */
     day: string;
+    /**
+     * A string denoting the duration of the service window, e.g., "04:00".
+     */
     duration: string;
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
@@ -3786,7 +3851,7 @@ export interface LoadBalancerForwardingRule {
      */
     entryPort: number;
     /**
-     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      */
     entryProtocol: string;
     /**
@@ -3794,7 +3859,7 @@ export interface LoadBalancerForwardingRule {
      */
     targetPort: number;
     /**
-     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      */
     targetProtocol: string;
     /**

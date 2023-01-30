@@ -41,6 +41,9 @@ class GetReservedIpResult:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> int:
+        """
+        The Droplet id that the reserved IP has been assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @property
@@ -59,11 +62,17 @@ class GetReservedIpResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region that the reserved IP is reserved to.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def urn(self) -> str:
+        """
+        The uniform resource name of the reserved IP.
+        """
         return pulumi.get(self, "urn")
 
 

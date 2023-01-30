@@ -18,9 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const example = new digitalocean.ContainerRegistryDockerCredentials("example", {
- *     registryName: "example",
- * });
+ * const example = new digitalocean.ContainerRegistryDockerCredentials("example", {registryName: "example"});
  * ```
  * ### Docker Provider Example
  *
@@ -64,7 +62,13 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContainerRegistryDockerCredentials.__pulumiType;
     }
 
+    /**
+     * The date and time the registry access token will expire.
+     */
     public /*out*/ readonly credentialExpirationTime!: pulumi.Output<string>;
+    /**
+     * Credentials for the container registry.
+     */
     public /*out*/ readonly dockerCredentials!: pulumi.Output<string>;
     /**
      * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
@@ -109,6 +113,8 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
             resourceInputs["dockerCredentials"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["dockerCredentials"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ContainerRegistryDockerCredentials.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -117,7 +123,13 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerRegistryDockerCredentials resources.
  */
 export interface ContainerRegistryDockerCredentialsState {
+    /**
+     * The date and time the registry access token will expire.
+     */
     credentialExpirationTime?: pulumi.Input<string>;
+    /**
+     * Credentials for the container registry.
+     */
     dockerCredentials?: pulumi.Input<string>;
     /**
      * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.

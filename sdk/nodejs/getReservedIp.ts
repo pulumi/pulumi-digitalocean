@@ -22,11 +22,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getReservedIp(args: GetReservedIpArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getReservedIp:getReservedIp", {
         "ipAddress": args.ipAddress,
     }, opts);
@@ -46,18 +43,43 @@ export interface GetReservedIpArgs {
  * A collection of values returned by getReservedIp.
  */
 export interface GetReservedIpResult {
+    /**
+     * The Droplet id that the reserved IP has been assigned to.
+     */
     readonly dropletId: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ipAddress: string;
+    /**
+     * The region that the reserved IP is reserved to.
+     */
     readonly region: string;
+    /**
+     * The uniform resource name of the reserved IP.
+     */
     readonly urn: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * Get the reserved IP:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const config = new pulumi.Config();
+ * const publicIp = config.requireObject("publicIp");
+ * const example = digitalocean.getReservedIp({
+ *     ipAddress: publicIp,
+ * });
+ * export const fipOutput = example.then(example => example.dropletId);
+ * ```
+ */
 export function getReservedIpOutput(args: GetReservedIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpResult> {
-    return pulumi.output(args).apply(a => getReservedIp(a, opts))
+    return pulumi.output(args).apply((a: any) => getReservedIp(a, opts))
 }
 
 /**

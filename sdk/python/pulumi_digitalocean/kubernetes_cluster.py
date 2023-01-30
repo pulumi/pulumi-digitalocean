@@ -599,6 +599,8 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["service_subnet"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeConfigs"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(KubernetesCluster, __self__).__init__(
             'digitalocean:index/kubernetesCluster:KubernetesCluster',
             resource_name,

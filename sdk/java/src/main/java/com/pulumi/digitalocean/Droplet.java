@@ -127,7 +127,6 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     }
     /**
      * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      * 
      */
     @Export(name="dropletUrn", type=String.class, parameters={})
@@ -135,7 +134,6 @@ public class Droplet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      * 
      */
     public Output<String> dropletUrn() {

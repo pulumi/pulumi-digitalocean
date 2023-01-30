@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketObjectResult> InvokeAsync(GetSpacesBucketObjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Spaces object data source allows access to the metadata and
@@ -99,7 +99,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSpacesBucketObjectResult> Invoke(GetSpacesBucketObjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectInvokeArgs(), options.WithDefaults());
     }
 
 

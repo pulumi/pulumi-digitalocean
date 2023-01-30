@@ -45,13 +45,20 @@ func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountRe
 
 // A collection of values returned by getAccount.
 type GetAccountResult struct {
-	DropletLimit    int    `pulumi:"dropletLimit"`
-	Email           string `pulumi:"email"`
-	EmailVerified   bool   `pulumi:"emailVerified"`
-	FloatingIpLimit int    `pulumi:"floatingIpLimit"`
+	// The total number of droplets current user or team may have active at one time.
+	DropletLimit int `pulumi:"dropletLimit"`
+	// The email address used by the current user to register for DigitalOcean.
+	Email string `pulumi:"email"`
+	// If true, the user has verified their account via email. False otherwise.
+	EmailVerified bool `pulumi:"emailVerified"`
+	// The total number of floating IPs the current user or team may have.
+	FloatingIpLimit int `pulumi:"floatingIpLimit"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	Status        string `pulumi:"status"`
+	Id string `pulumi:"id"`
+	// This value is one of "active", "warning" or "locked".
+	Status string `pulumi:"status"`
+	// A human-readable message giving more details about the status of the account.
 	StatusMessage string `pulumi:"statusMessage"`
-	Uuid          string `pulumi:"uuid"`
+	// The unique universal identifier for the current user.
+	Uuid string `pulumi:"uuid"`
 }

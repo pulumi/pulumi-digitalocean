@@ -24,11 +24,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSpacesBucket(args: GetSpacesBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", {
         "name": args.name,
         "region": args.region,
@@ -58,6 +55,10 @@ export interface GetSpacesBucketResult {
      */
     readonly bucketDomainName: string;
     /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     */
+    readonly endpoint: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -74,9 +75,27 @@ export interface GetSpacesBucketResult {
      */
     readonly urn: string;
 }
-
+/**
+ * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+ * is not managed by the provider or you need to utilize any of the bucket's data.
+ *
+ * ## Example Usage
+ *
+ * Get the bucket by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getSpacesBucket({
+ *     name: "my-spaces-bucket",
+ *     region: "nyc3",
+ * });
+ * export const bucketDomainName = example.then(example => example.bucketDomainName);
+ * ```
+ */
 export function getSpacesBucketOutput(args: GetSpacesBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketResult> {
-    return pulumi.output(args).apply(a => getSpacesBucket(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpacesBucket(a, opts))
 }
 
 /**

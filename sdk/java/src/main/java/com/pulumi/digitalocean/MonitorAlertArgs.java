@@ -123,7 +123,9 @@ public final class MonitorAlertArgs extends com.pulumi.resources.ResourceArgs {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      * 
      */
     @Import(name="type", required=true)
@@ -137,7 +139,9 @@ public final class MonitorAlertArgs extends com.pulumi.resources.ResourceArgs {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      * 
      */
     public Output<String> type() {
@@ -368,7 +372,9 @@ public final class MonitorAlertArgs extends com.pulumi.resources.ResourceArgs {
          * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
          * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
          * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-         * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+         * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+         * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+         * `v1/dbaas/alerts/disk_utilization_alerts`.
          * 
          * @return builder
          * 
@@ -386,7 +392,9 @@ public final class MonitorAlertArgs extends com.pulumi.resources.ResourceArgs {
          * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
          * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
          * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-         * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+         * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+         * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+         * `v1/dbaas/alerts/disk_utilization_alerts`.
          * 
          * @return builder
          * 

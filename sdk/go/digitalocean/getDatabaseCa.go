@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ca, err := digitalocean.GetDatabaseCa(ctx, &GetDatabaseCaArgs{
+//			ca, err := digitalocean.GetDatabaseCa(ctx, &digitalocean.GetDatabaseCaArgs{
 //				ClusterId: "aaa-bbb-ccc-ddd",
 //			}, nil)
 //			if err != nil {

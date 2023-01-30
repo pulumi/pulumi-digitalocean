@@ -64,7 +64,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a load balancer for use in other resources. This data source
@@ -119,7 +119,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -175,10 +175,12 @@ namespace Pulumi.DigitalOcean
         public readonly bool EnableProxyProtocol;
         public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> ForwardingRules;
         public readonly ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> Healthchecks;
+        public readonly int HttpIdleTimeoutSeconds;
         public readonly string? Id;
         public readonly string Ip;
         public readonly string LoadBalancerUrn;
         public readonly string? Name;
+        public readonly string ProjectId;
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
         public readonly string Size;
@@ -205,6 +207,8 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> healthchecks,
 
+            int httpIdleTimeoutSeconds,
+
             string? id,
 
             string ip,
@@ -212,6 +216,8 @@ namespace Pulumi.DigitalOcean
             string loadBalancerUrn,
 
             string? name,
+
+            string projectId,
 
             bool redirectHttpToHttps,
 
@@ -235,10 +241,12 @@ namespace Pulumi.DigitalOcean
             EnableProxyProtocol = enableProxyProtocol;
             ForwardingRules = forwardingRules;
             Healthchecks = healthchecks;
+            HttpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             Id = id;
             Ip = ip;
             LoadBalancerUrn = loadBalancerUrn;
             Name = name;
+            ProjectId = projectId;
             RedirectHttpToHttps = redirectHttpToHttps;
             Region = region;
             Size = size;

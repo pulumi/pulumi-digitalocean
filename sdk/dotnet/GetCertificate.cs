@@ -43,7 +43,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("digitalocean:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("digitalocean:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a certificate. This data source provides the name, type, state,
@@ -77,7 +77,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("digitalocean:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("digitalocean:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -113,16 +113,34 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetCertificateResult
     {
+        /// <summary>
+        /// Domains for which the certificate was issued.
+        /// </summary>
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// The expiration date and time of the certificate.
+        /// </summary>
         public readonly string NotAfter;
+        /// <summary>
+        /// The SHA1 fingerprint of the certificate.
+        /// </summary>
         public readonly string Sha1Fingerprint;
+        /// <summary>
+        /// the current state of the certificate.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The type of the certificate.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The ID of the certificate.
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

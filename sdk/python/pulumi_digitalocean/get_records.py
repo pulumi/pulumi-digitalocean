@@ -43,6 +43,9 @@ class GetRecordsResult:
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        Domain of the DNS record.
+        """
         return pulumi.get(self, "domain")
 
     @property

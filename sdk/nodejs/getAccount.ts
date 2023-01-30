@@ -15,15 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const example = pulumi.output(digitalocean.getAccount());
+ * const example = digitalocean.getAccount({});
  * ```
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getAccount:getAccount", {
     }, opts);
 }
@@ -32,15 +29,36 @@ export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResul
  * A collection of values returned by getAccount.
  */
 export interface GetAccountResult {
+    /**
+     * The total number of droplets current user or team may have active at one time.
+     */
     readonly dropletLimit: number;
+    /**
+     * The email address used by the current user to register for DigitalOcean.
+     */
     readonly email: string;
+    /**
+     * If true, the user has verified their account via email. False otherwise.
+     */
     readonly emailVerified: boolean;
+    /**
+     * The total number of floating IPs the current user or team may have.
+     */
     readonly floatingIpLimit: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * This value is one of "active", "warning" or "locked".
+     */
     readonly status: string;
+    /**
+     * A human-readable message giving more details about the status of the account.
+     */
     readonly statusMessage: string;
+    /**
+     * The unique universal identifier for the current user.
+     */
     readonly uuid: string;
 }

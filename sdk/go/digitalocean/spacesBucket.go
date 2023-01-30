@@ -89,8 +89,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-//				CorsRules: SpacesBucketCorsRuleArray{
-//					&SpacesBucketCorsRuleArgs{
+//				CorsRules: digitalocean.SpacesBucketCorsRuleArray{
+//					&digitalocean.SpacesBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
@@ -102,7 +102,7 @@ import (
 //						},
 //						MaxAgeSeconds: pulumi.Int(3000),
 //					},
-//					&SpacesBucketCorsRuleArgs{
+//					&digitalocean.SpacesBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
@@ -148,6 +148,8 @@ type SpacesBucket struct {
 	BucketUrn pulumi.StringOutput `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayOutput `pulumi:"corsRules"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// A configuration of object lifecycle management (documented below).
@@ -197,6 +199,8 @@ type spacesBucketState struct {
 	BucketUrn *string `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint *string `pulumi:"endpoint"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A configuration of object lifecycle management (documented below).
@@ -218,6 +222,8 @@ type SpacesBucketState struct {
 	BucketUrn pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	CorsRules SpacesBucketCorsRuleArrayInput
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint pulumi.StringPtrInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrInput
 	// A configuration of object lifecycle management (documented below).
@@ -374,6 +380,11 @@ func (o SpacesBucketOutput) BucketUrn() pulumi.StringOutput {
 // A rule of Cross-Origin Resource Sharing (documented below).
 func (o SpacesBucketOutput) CorsRules() SpacesBucketCorsRuleArrayOutput {
 	return o.ApplyT(func(v *SpacesBucket) SpacesBucketCorsRuleArrayOutput { return v.CorsRules }).(SpacesBucketCorsRuleArrayOutput)
+}
+
+// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+func (o SpacesBucketOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)

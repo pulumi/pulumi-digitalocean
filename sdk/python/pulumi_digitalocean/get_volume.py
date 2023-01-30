@@ -122,6 +122,9 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def urn(self) -> str:
+        """
+        The uniform resource name for the storage volume.
+        """
         return pulumi.get(self, "urn")
 
 

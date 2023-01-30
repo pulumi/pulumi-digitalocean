@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -23,11 +25,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getFirewall:getFirewall", {
         "dropletIds": args.dropletIds,
         "firewallId": args.firewallId,
@@ -101,9 +100,25 @@ export interface GetFirewallResult {
      */
     readonly tags: string[];
 }
-
+/**
+ * Get information on a DigitalOcean Firewall.
+ *
+ * ## Example Usage
+ *
+ * Get the firewall:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getFirewall({
+ *     firewallId: "1df48973-6eef-4214-854f-fa7726e7e583",
+ * });
+ * export const exampleFirewallName = example.then(example => example.name);
+ * ```
+ */
 export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallResult> {
-    return pulumi.output(args).apply(a => getFirewall(a, opts))
+    return pulumi.output(args).apply((a: any) => getFirewall(a, opts))
 }
 
 /**

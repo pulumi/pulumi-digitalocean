@@ -26,7 +26,9 @@ class LoadBalancerArgs:
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
+                 http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  size_unit: Optional[pulumi.Input[int]] = None,
@@ -49,7 +51,9 @@ class LoadBalancerArgs:
                the backend service. Default value is `false`.
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
@@ -75,8 +79,12 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
         if healthcheck is not None:
             pulumi.set(__self__, "healthcheck", healthcheck)
+        if http_idle_timeout_seconds is not None:
+            pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https is not None:
             pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
         if size is not None:
@@ -203,6 +211,18 @@ class LoadBalancerArgs:
         pulumi.set(self, "healthcheck", value)
 
     @property
+    @pulumi.getter(name="httpIdleTimeoutSeconds")
+    def http_idle_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        """
+        return pulumi.get(self, "http_idle_timeout_seconds")
+
+    @http_idle_timeout_seconds.setter
+    def http_idle_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_idle_timeout_seconds", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -213,6 +233,18 @@ class LoadBalancerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="redirectHttpToHttps")
@@ -289,9 +321,11 @@ class _LoadBalancerState:
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
                  healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
+                 http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  load_balancer_urn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -315,8 +349,11 @@ class _LoadBalancerState:
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        :param pulumi.Input[str] ip: The ip of the Load Balancer
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
@@ -343,12 +380,16 @@ class _LoadBalancerState:
             pulumi.set(__self__, "forwarding_rules", forwarding_rules)
         if healthcheck is not None:
             pulumi.set(__self__, "healthcheck", healthcheck)
+        if http_idle_timeout_seconds is not None:
+            pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
         if load_balancer_urn is not None:
             pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https is not None:
             pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
         if region is not None:
@@ -467,8 +508,23 @@ class _LoadBalancerState:
         pulumi.set(self, "healthcheck", value)
 
     @property
+    @pulumi.getter(name="httpIdleTimeoutSeconds")
+    def http_idle_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        """
+        return pulumi.get(self, "http_idle_timeout_seconds")
+
+    @http_idle_timeout_seconds.setter
+    def http_idle_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_idle_timeout_seconds", value)
+
+    @property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ip of the Load Balancer
+        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -498,6 +554,18 @@ class _LoadBalancerState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="redirectHttpToHttps")
@@ -597,7 +665,9 @@ class LoadBalancer(pulumi.CustomResource):
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
+                 http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -691,7 +761,9 @@ class LoadBalancer(pulumi.CustomResource):
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
@@ -801,7 +873,9 @@ class LoadBalancer(pulumi.CustomResource):
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
+                 http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -827,7 +901,9 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'forwarding_rules'")
             __props__.__dict__["forwarding_rules"] = forwarding_rules
             __props__.__dict__["healthcheck"] = healthcheck
+            __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -857,9 +933,11 @@ class LoadBalancer(pulumi.CustomResource):
             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
             forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
             healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
+            http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             size: Optional[pulumi.Input[str]] = None,
@@ -888,8 +966,11 @@ class LoadBalancer(pulumi.CustomResource):
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        :param pulumi.Input[str] ip: The ip of the Load Balancer
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
@@ -912,9 +993,11 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
         __props__.__dict__["forwarding_rules"] = forwarding_rules
         __props__.__dict__["healthcheck"] = healthcheck
+        __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
         __props__.__dict__["ip"] = ip
         __props__.__dict__["load_balancer_urn"] = load_balancer_urn
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
@@ -995,8 +1078,19 @@ class LoadBalancer(pulumi.CustomResource):
         return pulumi.get(self, "healthcheck")
 
     @property
+    @pulumi.getter(name="httpIdleTimeoutSeconds")
+    def http_idle_timeout_seconds(self) -> pulumi.Output[int]:
+        """
+        Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        """
+        return pulumi.get(self, "http_idle_timeout_seconds")
+
+    @property
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
+        """
+        The ip of the Load Balancer
+        """
         return pulumi.get(self, "ip")
 
     @property
@@ -1014,6 +1108,14 @@ class LoadBalancer(pulumi.CustomResource):
         The Load Balancer name
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="redirectHttpToHttps")

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sfo2, err := digitalocean.GetRegion(ctx, &GetRegionArgs{
+//			sfo2, err := digitalocean.GetRegion(ctx, &digitalocean.GetRegionArgs{
 //				Slug: "sfo2",
 //			}, nil)
 //			if err != nil {

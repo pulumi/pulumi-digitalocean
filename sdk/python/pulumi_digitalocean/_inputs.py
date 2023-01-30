@@ -1441,10 +1441,6 @@ class AppSpecJobArgs:
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[str] kind: The type of job and when it will be run during the deployment process. It may be one of:
-               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
@@ -1630,10 +1626,6 @@ class AppSpecJobArgs:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
-        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -5456,6 +5448,7 @@ class KubernetesClusterMaintenancePolicyArgs:
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        :param pulumi.Input[str] duration: A string denoting the duration of the service window, e.g., "04:00".
         :param pulumi.Input[str] start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
         """
         if day is not None:
@@ -5480,6 +5473,9 @@ class KubernetesClusterMaintenancePolicyArgs:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string denoting the duration of the service window, e.g., "04:00".
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -6018,9 +6014,9 @@ class LoadBalancerForwardingRuleArgs:
                  tls_passthrough: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] entry_port: An integer representing the port on which the Load Balancer instance will listen.
-        :param pulumi.Input[str] entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        :param pulumi.Input[str] entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         :param pulumi.Input[int] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        :param pulumi.Input[str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        :param pulumi.Input[str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         :param pulumi.Input[str] certificate_id: **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         :param pulumi.Input[str] certificate_name: The unique name of the TLS certificate to be used for SSL termination.
         :param pulumi.Input[bool] tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
@@ -6055,7 +6051,7 @@ class LoadBalancerForwardingRuleArgs:
     @pulumi.getter(name="entryProtocol")
     def entry_protocol(self) -> pulumi.Input[str]:
         """
-        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         """
         return pulumi.get(self, "entry_protocol")
 
@@ -6079,7 +6075,7 @@ class LoadBalancerForwardingRuleArgs:
     @pulumi.getter(name="targetProtocol")
     def target_protocol(self) -> pulumi.Input[str]:
         """
-        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         """
         return pulumi.get(self, "target_protocol")
 

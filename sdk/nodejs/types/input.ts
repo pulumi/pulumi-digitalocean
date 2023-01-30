@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 
 export interface AppSpec {
     /**
@@ -384,10 +386,6 @@ export interface AppSpecJob {
     instanceSizeSlug?: pulumi.Input<string>;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
-     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -2053,18 +2051,6 @@ export interface GetSizesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSizesSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetSizesSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -2075,6 +2061,18 @@ export interface GetSizesSort {
      * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      */
     key: string;
+}
+
+export interface GetSizesSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the sizes by this key. This may be one of `slug`,
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetSpacesBucketsFilter {
@@ -2125,17 +2123,6 @@ export interface GetSpacesBucketsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSpacesBucketsSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetSpacesBucketsSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -2145,6 +2132,17 @@ export interface GetSpacesBucketsSort {
      * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: string;
+}
+
+export interface GetSpacesBucketsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetSshKeysFilter {
@@ -2195,30 +2193,6 @@ export interface GetSshKeysSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetTagsFilterArgs {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: pulumi.Input<boolean>;
-    /**
-     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * Only retrieves tags which keys has value that matches
-     * one of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetTagsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -2241,6 +2215,30 @@ export interface GetTagsFilter {
      * one of the values provided here.
      */
     values: string[];
+}
+
+export interface GetTagsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * Only retrieves tags which keys has value that matches
+     * one of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetTagsSort {
@@ -2301,6 +2299,9 @@ export interface KubernetesClusterMaintenancePolicy {
      * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
      */
     day?: pulumi.Input<string>;
+    /**
+     * A string denoting the duration of the service window, e.g., "04:00".
+     */
     duration?: pulumi.Input<string>;
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
@@ -2459,7 +2460,7 @@ export interface LoadBalancerForwardingRule {
      */
     entryPort: pulumi.Input<number>;
     /**
-     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      */
     entryProtocol: pulumi.Input<string>;
     /**
@@ -2467,7 +2468,7 @@ export interface LoadBalancerForwardingRule {
      */
     targetPort: pulumi.Input<number>;
     /**
-     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      */
     targetProtocol: pulumi.Input<string>;
     /**

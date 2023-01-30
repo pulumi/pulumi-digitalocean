@@ -38,7 +38,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["replicaOutput"] = read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult).Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
+        ///         ["replicaOutput"] = read_only.Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
         ///     };
         /// });
         /// ```
@@ -46,7 +46,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseReplicaResult> InvokeAsync(GetDatabaseReplicaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database replica.
@@ -75,7 +75,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["replicaOutput"] = read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult).Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
+        ///         ["replicaOutput"] = read_only.Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
         ///     };
         /// });
         /// ```
@@ -83,7 +83,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseReplicaResult> Invoke(GetDatabaseReplicaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithDefaults());
     }
 
 

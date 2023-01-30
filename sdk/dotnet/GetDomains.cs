@@ -57,7 +57,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on domains for use in other resources, with the ability to filter and sort the results.
@@ -105,7 +105,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -10,7 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFloatingIpResult {
+    /**
+     * @return The Droplet id that the floating IP has been assigned to.
+     * 
+     */
     private Integer dropletId;
+    /**
+     * @return The uniform resource name of the floating IP.
+     * 
+     */
     private String floatingIpUrn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -18,12 +26,24 @@ public final class GetFloatingIpResult {
      */
     private String id;
     private String ipAddress;
+    /**
+     * @return The region that the floating IP is reserved to.
+     * 
+     */
     private String region;
 
     private GetFloatingIpResult() {}
+    /**
+     * @return The Droplet id that the floating IP has been assigned to.
+     * 
+     */
     public Integer dropletId() {
         return this.dropletId;
     }
+    /**
+     * @return The uniform resource name of the floating IP.
+     * 
+     */
     public String floatingIpUrn() {
         return this.floatingIpUrn;
     }
@@ -37,6 +57,10 @@ public final class GetFloatingIpResult {
     public String ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * @return The region that the floating IP is reserved to.
+     * 
+     */
     public String region() {
         return this.region;
     }

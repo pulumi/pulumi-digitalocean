@@ -31,7 +31,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.LookupProject(ctx, &GetProjectArgs{
+//			_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
 //				Name: pulumi.StringRef("My Staging Project"),
 //			}, nil)
 //			if err != nil {

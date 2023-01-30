@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -146,6 +148,13 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
     public readonly healthcheck!: pulumi.Output<outputs.LoadBalancerHealthcheck>;
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     */
+    public readonly httpIdleTimeoutSeconds!: pulumi.Output<number>;
+    /**
+     * The ip of the Load Balancer
+     */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * The uniform resource name for the Load Balancer
@@ -155,6 +164,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The Load Balancer name
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+     */
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -205,9 +218,11 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
             resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
             resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
+            resourceInputs["httpIdleTimeoutSeconds"] = state ? state.httpIdleTimeoutSeconds : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
@@ -231,7 +246,9 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
             resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
+            resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
@@ -289,6 +306,13 @@ export interface LoadBalancerState {
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
     healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     */
+    httpIdleTimeoutSeconds?: pulumi.Input<number>;
+    /**
+     * The ip of the Load Balancer
+     */
     ip?: pulumi.Input<string>;
     /**
      * The uniform resource name for the Load Balancer
@@ -298,6 +322,10 @@ export interface LoadBalancerState {
      * The Load Balancer name
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -371,9 +399,17 @@ export interface LoadBalancerArgs {
      */
     healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     */
+    httpIdleTimeoutSeconds?: pulumi.Input<number>;
+    /**
      * The Load Balancer name
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.

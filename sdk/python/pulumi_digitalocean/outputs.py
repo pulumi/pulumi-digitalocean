@@ -1426,10 +1426,6 @@ class AppSpecJob(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
-               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['AppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -1567,10 +1563,6 @@ class AppSpecJob(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
-        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -5181,6 +5173,7 @@ class KubernetesClusterMaintenancePolicy(dict):
                  start_time: Optional[str] = None):
         """
         :param str day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        :param str duration: A string denoting the duration of the service window, e.g., "04:00".
         :param str start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
         """
         if day is not None:
@@ -5201,6 +5194,9 @@ class KubernetesClusterMaintenancePolicy(dict):
     @property
     @pulumi.getter
     def duration(self) -> Optional[str]:
+        """
+        A string denoting the duration of the service window, e.g., "04:00".
+        """
         return pulumi.get(self, "duration")
 
     @property
@@ -5707,9 +5703,9 @@ class LoadBalancerForwardingRule(dict):
                  tls_passthrough: Optional[bool] = None):
         """
         :param int entry_port: An integer representing the port on which the Load Balancer instance will listen.
-        :param str entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        :param str entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         :param int target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         :param str certificate_id: **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         :param str certificate_name: The unique name of the TLS certificate to be used for SSL termination.
         :param bool tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
@@ -5737,7 +5733,7 @@ class LoadBalancerForwardingRule(dict):
     @pulumi.getter(name="entryProtocol")
     def entry_protocol(self) -> str:
         """
-        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         """
         return pulumi.get(self, "entry_protocol")
 
@@ -5753,7 +5749,7 @@ class LoadBalancerForwardingRule(dict):
     @pulumi.getter(name="targetProtocol")
     def target_protocol(self) -> str:
         """
-        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         """
         return pulumi.get(self, "target_protocol")
 
@@ -7216,10 +7212,6 @@ class GetAppSpecJobResult(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
-               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['GetAppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -7357,10 +7349,6 @@ class GetAppSpecJobResult(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
-        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -9899,7 +9887,7 @@ class GetDomainsDomainResult(dict):
                  urn: str):
         """
         :param str name: (Required) The name of the domain.
-               - `ttl`-  The TTL of the domain.
+        :param int ttl: The TTL of the domain.
         :param str urn: The uniform resource name of the domain
         """
         pulumi.set(__self__, "name", name)
@@ -9911,13 +9899,15 @@ class GetDomainsDomainResult(dict):
     def name(self) -> str:
         """
         (Required) The name of the domain.
-        - `ttl`-  The TTL of the domain.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        The TTL of the domain.
+        """
         return pulumi.get(self, "ttl")
 
     @property
@@ -10736,18 +10726,22 @@ class GetImagesImageResult(dict):
                  tags: Sequence[str],
                  type: str):
         """
+        :param str created: When the image was created
         :param str distribution: The name of the distribution of the OS of the image.
-               - `min_disk_size`: The minimum 'disk' required for the image.
-               - `size_gigabytes`: The size of the image in GB.
+        :param str error_message: Any applicable error message pertaining to the image
+        :param int id: The ID of the image.
         :param str image: The id of the image (legacy parameter).
+        :param int min_disk_size: The minimum 'disk' required for the image.
+        :param str name: The name of the image.
         :param bool private: Is image a public image or not. Public images represent
                Linux distributions or One-Click Applications, while non-public images represent
                snapshots and backups and are only available within your account.
-               - `regions`: A set of the regions that the image is available in.
-               - `tags`: A set of tags applied to the image
-               - `created`: When the image was created
-               - `status`: Current status of the image
-               - `error_message`: Any applicable error message pertaining to the image
+        :param Sequence[str] regions: A set of the regions that the image is available in.
+        :param float size_gigabytes: The size of the image in GB.
+        :param str slug: Unique text identifier of the image.
+        :param str status: Current status of the image
+        :param Sequence[str] tags: A set of tags applied to the image
+        :param str type: Type of the image.
         """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "description", description)
@@ -10768,6 +10762,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When the image was created
+        """
         return pulumi.get(self, "created")
 
     @property
@@ -10780,19 +10777,23 @@ class GetImagesImageResult(dict):
     def distribution(self) -> str:
         """
         The name of the distribution of the OS of the image.
-        - `min_disk_size`: The minimum 'disk' required for the image.
-        - `size_gigabytes`: The size of the image in GB.
         """
         return pulumi.get(self, "distribution")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> str:
+        """
+        Any applicable error message pertaining to the image
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the image.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -10806,11 +10807,17 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter(name="minDiskSize")
     def min_disk_size(self) -> int:
+        """
+        The minimum 'disk' required for the image.
+        """
         return pulumi.get(self, "min_disk_size")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -10820,42 +10827,55 @@ class GetImagesImageResult(dict):
         Is image a public image or not. Public images represent
         Linux distributions or One-Click Applications, while non-public images represent
         snapshots and backups and are only available within your account.
-        - `regions`: A set of the regions that the image is available in.
-        - `tags`: A set of tags applied to the image
-        - `created`: When the image was created
-        - `status`: Current status of the image
-        - `error_message`: Any applicable error message pertaining to the image
         """
         return pulumi.get(self, "private")
 
     @property
     @pulumi.getter
     def regions(self) -> Sequence[str]:
+        """
+        A set of the regions that the image is available in.
+        """
         return pulumi.get(self, "regions")
 
     @property
     @pulumi.getter(name="sizeGigabytes")
     def size_gigabytes(self) -> float:
+        """
+        The size of the image in GB.
+        """
         return pulumi.get(self, "size_gigabytes")
 
     @property
     @pulumi.getter
     def slug(self) -> str:
+        """
+        Unique text identifier of the image.
+        """
         return pulumi.get(self, "slug")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Current status of the image
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        A set of tags applied to the image
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of the image.
+        """
         return pulumi.get(self, "type")
 
 
@@ -11699,6 +11719,16 @@ class GetRecordsRecordResult(dict):
                  weight: int):
         """
         :param str domain: The domain name to search for DNS records
+        :param int flags: An unsigned integer between 0-255 used for CAA records.
+        :param int id: The ID of the record.
+        :param str name: The name of the DNS record.
+        :param int port: The port for SRV records.
+        :param int priority: The priority for SRV and MX records.
+        :param str tag: The parameter tag for CAA records.
+        :param int ttl: This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+        :param str type: The type of the DNS record.
+        :param str value: Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+        :param int weight: The weight for SRV records.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "flags", flags)
@@ -11723,51 +11753,81 @@ class GetRecordsRecordResult(dict):
     @property
     @pulumi.getter
     def flags(self) -> int:
+        """
+        An unsigned integer between 0-255 used for CAA records.
+        """
         return pulumi.get(self, "flags")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the record.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the DNS record.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port for SRV records.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def priority(self) -> int:
+        """
+        The priority for SRV and MX records.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        The parameter tag for CAA records.
+        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the DNS record.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight for SRV records.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -12171,16 +12231,19 @@ class GetSizesSortResult(dict):
 class GetSpacesBucketsBucketResult(dict):
     def __init__(__self__, *,
                  bucket_domain_name: str,
+                 endpoint: str,
                  name: str,
                  region: str,
                  urn: str):
         """
         :param str bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+        :param str endpoint: The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
         :param str name: The name of the Spaces bucket
         :param str region: The slug of the region where the bucket is stored.
         :param str urn: The uniform resource name of the bucket
         """
         pulumi.set(__self__, "bucket_domain_name", bucket_domain_name)
+        pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "urn", urn)
@@ -12192,6 +12255,14 @@ class GetSpacesBucketsBucketResult(dict):
         The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         """
         return pulumi.get(self, "bucket_domain_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
@@ -12394,10 +12465,10 @@ class GetSshKeysSshKeyResult(dict):
                  name: str,
                  public_key: str):
         """
+        :param str fingerprint: The fingerprint of the public key of the ssh key.
         :param int id: The ID of the ssh key.
-               * `name`: The name of the ssh key.
-               * `public_key`: The public key of the ssh key.
-               * `fingerprint`: The fingerprint of the public key of the ssh key.
+        :param str name: The name of the ssh key.
+        :param str public_key: The public key of the ssh key.
         """
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "id", id)
@@ -12407,6 +12478,9 @@ class GetSshKeysSshKeyResult(dict):
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
+        """
+        The fingerprint of the public key of the ssh key.
+        """
         return pulumi.get(self, "fingerprint")
 
     @property
@@ -12414,20 +12488,23 @@ class GetSshKeysSshKeyResult(dict):
     def id(self) -> int:
         """
         The ID of the ssh key.
-        * `name`: The name of the ssh key.
-        * `public_key`: The public key of the ssh key.
-        * `fingerprint`: The fingerprint of the public key of the ssh key.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the ssh key.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
+        """
+        The public key of the ssh key.
+        """
         return pulumi.get(self, "public_key")
 
 

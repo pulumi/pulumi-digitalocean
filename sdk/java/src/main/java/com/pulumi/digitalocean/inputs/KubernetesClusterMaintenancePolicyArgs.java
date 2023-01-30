@@ -30,9 +30,17 @@ public final class KubernetesClusterMaintenancePolicyArgs extends com.pulumi.res
         return Optional.ofNullable(this.day);
     }
 
+    /**
+     * A string denoting the duration of the service window, e.g., &#34;04:00&#34;.
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
+    /**
+     * @return A string denoting the duration of the service window, e.g., &#34;04:00&#34;.
+     * 
+     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -99,11 +107,23 @@ public final class KubernetesClusterMaintenancePolicyArgs extends com.pulumi.res
             return day(Output.of(day));
         }
 
+        /**
+         * @param duration A string denoting the duration of the service window, e.g., &#34;04:00&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration A string denoting the duration of the service window, e.g., &#34;04:00&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }

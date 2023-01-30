@@ -265,6 +265,8 @@ class DatabaseUser(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None
             __props__.__dict__["role"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseUser, __self__).__init__(
             'digitalocean:index/databaseUser:DatabaseUser',
             resource_name,

@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservedIpResult {
+    /**
+     * @return The Droplet id that the reserved IP has been assigned to.
+     * 
+     */
     private Integer dropletId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -17,10 +21,22 @@ public final class GetReservedIpResult {
      */
     private String id;
     private String ipAddress;
+    /**
+     * @return The region that the reserved IP is reserved to.
+     * 
+     */
     private String region;
+    /**
+     * @return The uniform resource name of the reserved IP.
+     * 
+     */
     private String urn;
 
     private GetReservedIpResult() {}
+    /**
+     * @return The Droplet id that the reserved IP has been assigned to.
+     * 
+     */
     public Integer dropletId() {
         return this.dropletId;
     }
@@ -34,9 +50,17 @@ public final class GetReservedIpResult {
     public String ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * @return The region that the reserved IP is reserved to.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return The uniform resource name of the reserved IP.
+     * 
+     */
     public String urn() {
         return this.urn;
     }

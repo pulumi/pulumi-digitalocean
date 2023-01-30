@@ -68,7 +68,6 @@ type Droplet struct {
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrOutput `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
-	// * `name`- The name of the Droplet
 	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
@@ -180,7 +179,6 @@ type dropletState struct {
 	// set it to `true`.
 	DropletAgent *bool `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
-	// * `name`- The name of the Droplet
 	DropletUrn *string `pulumi:"dropletUrn"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
@@ -258,7 +256,6 @@ type DropletState struct {
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrInput
 	// The uniform resource name of the Droplet
-	// * `name`- The name of the Droplet
 	DropletUrn pulumi.StringPtrInput
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
@@ -549,7 +546,6 @@ func (o DropletOutput) DropletAgent() pulumi.BoolPtrOutput {
 }
 
 // The uniform resource name of the Droplet
-// * `name`- The name of the Droplet
 func (o DropletOutput) DropletUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.DropletUrn }).(pulumi.StringOutput)
 }

@@ -356,7 +356,6 @@ class _DropletState:
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
-               * `name`- The name of the Droplet
         :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
@@ -508,7 +507,6 @@ class _DropletState:
     def droplet_urn(self) -> Optional[pulumi.Input[str]]:
         """
         The uniform resource name of the Droplet
-        * `name`- The name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
 
@@ -1047,7 +1045,6 @@ class Droplet(pulumi.CustomResource):
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
-               * `name`- The name of the Droplet
         :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
@@ -1157,7 +1154,6 @@ class Droplet(pulumi.CustomResource):
     def droplet_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the Droplet
-        * `name`- The name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
 

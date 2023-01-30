@@ -18,8 +18,7 @@ namespace Pulumi.DigitalOcean
     /// Let's Encrypt.
     /// 
     /// ## Example Usage
-    /// 
-    /// #### Custom Certificate
+    /// ### Custom Certificate
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,8 +38,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// 
-    /// #### Let's Encrypt Certificate
+    /// ### Let's Encrypt Certificate
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,8 +58,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// 
-    /// #### Use with Other Resources
+    /// ### Use with Other Resources
     /// 
     /// Both custom and Let's Encrypt certificates can be used with other resources
     /// including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
@@ -201,6 +198,10 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -259,12 +260,22 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The contents of a PEM-formatted private-key
         /// corresponding to the SSL certificate. Only valid when type is `custom`.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of certificate to provision. Can be either
@@ -322,12 +333,22 @@ namespace Pulumi.DigitalOcean
         [Input("notAfter")]
         public Input<string>? NotAfter { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The contents of a PEM-formatted private-key
         /// corresponding to the SSL certificate. Only valid when type is `custom`.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The SHA-1 fingerprint of the certificate

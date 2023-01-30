@@ -18,6 +18,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("day")]
         public Input<string>? Day { get; set; }
 
+        /// <summary>
+        /// A string denoting the duration of the service window, e.g., "04:00".
+        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 

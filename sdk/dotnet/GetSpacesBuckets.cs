@@ -88,7 +88,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketsResult> InvokeAsync(GetSpacesBucketsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -167,7 +167,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSpacesBucketsResult> Invoke(GetSpacesBucketsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithDefaults());
     }
 
 

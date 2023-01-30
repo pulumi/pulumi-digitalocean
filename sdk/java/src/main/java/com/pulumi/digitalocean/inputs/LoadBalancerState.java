@@ -156,9 +156,32 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.healthcheck);
     }
 
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    @Import(name="httpIdleTimeoutSeconds")
+    private @Nullable Output<Integer> httpIdleTimeoutSeconds;
+
+    /**
+     * @return Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    public Optional<Output<Integer>> httpIdleTimeoutSeconds() {
+        return Optional.ofNullable(this.httpIdleTimeoutSeconds);
+    }
+
+    /**
+     * The ip of the Load Balancer
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return The ip of the Load Balancer
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -191,6 +214,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -307,9 +345,11 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.enableProxyProtocol = $.enableProxyProtocol;
         this.forwardingRules = $.forwardingRules;
         this.healthcheck = $.healthcheck;
+        this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
         this.ip = $.ip;
         this.loadBalancerUrn = $.loadBalancerUrn;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.redirectHttpToHttps = $.redirectHttpToHttps;
         this.region = $.region;
         this.size = $.size;
@@ -562,11 +602,44 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
             return healthcheck(Output.of(healthcheck));
         }
 
+        /**
+         * @param httpIdleTimeoutSeconds Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpIdleTimeoutSeconds(@Nullable Output<Integer> httpIdleTimeoutSeconds) {
+            $.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
+            return this;
+        }
+
+        /**
+         * @param httpIdleTimeoutSeconds Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpIdleTimeoutSeconds(Integer httpIdleTimeoutSeconds) {
+            return httpIdleTimeoutSeconds(Output.of(httpIdleTimeoutSeconds));
+        }
+
+        /**
+         * @param ip The ip of the Load Balancer
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip The ip of the Load Balancer
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
@@ -611,6 +684,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

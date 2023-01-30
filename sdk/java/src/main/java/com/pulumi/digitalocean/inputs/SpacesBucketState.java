@@ -83,6 +83,21 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    @Import(name="endpoint")
+    private @Nullable Output<String> endpoint;
+
+    /**
+     * @return The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    public Optional<Output<String>> endpoint() {
+        return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      * 
      */
@@ -164,6 +179,7 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
         this.bucketDomainName = $.bucketDomainName;
         this.bucketUrn = $.bucketUrn;
         this.corsRules = $.corsRules;
+        this.endpoint = $.endpoint;
         this.forceDestroy = $.forceDestroy;
         this.lifecycleRules = $.lifecycleRules;
         this.name = $.name;
@@ -281,6 +297,27 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder corsRules(SpacesBucketCorsRuleArgs... corsRules) {
             return corsRules(List.of(corsRules));
+        }
+
+        /**
+         * @param endpoint The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(@Nullable Output<String> endpoint) {
+            $.endpoint = endpoint;
+            return this;
+        }
+
+        /**
+         * @param endpoint The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(String endpoint) {
+            return endpoint(Output.of(endpoint));
         }
 
         /**

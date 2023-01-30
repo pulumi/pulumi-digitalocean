@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -27,11 +29,8 @@ import * as utilities from "./utilities";
  */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getTags:getTags", {
         "filters": args.filters,
         "sorts": args.sorts,
@@ -66,9 +65,28 @@ export interface GetTagsResult {
     readonly sorts?: outputs.GetTagsSort[];
     readonly tags: outputs.GetTagsTag[];
 }
-
+/**
+ * Returns a list of tags in your DigitalOcean account, with the ability to
+ * filter and sort the results. If no filters are specified, all tags will be
+ * returned.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const list = digitalocean.getTags({
+ *     sorts: [{
+ *         key: "total_resource_count",
+ *         direction: "asc",
+ *     }],
+ * });
+ * export const sortedTags = list.then(list => list.tags);
+ * ```
+ */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
-    return pulumi.output(args).apply(a => getTags(a, opts))
+    return pulumi.output(args).apply((a: any) => getTags(a, opts))
 }
 
 /**

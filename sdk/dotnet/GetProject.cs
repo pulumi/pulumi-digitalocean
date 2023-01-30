@@ -39,7 +39,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
@@ -69,7 +69,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

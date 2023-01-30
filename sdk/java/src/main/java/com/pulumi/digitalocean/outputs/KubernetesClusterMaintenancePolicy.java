@@ -16,6 +16,10 @@ public final class KubernetesClusterMaintenancePolicy {
      * 
      */
     private @Nullable String day;
+    /**
+     * @return A string denoting the duration of the service window, e.g., &#34;04:00&#34;.
+     * 
+     */
     private @Nullable String duration;
     /**
      * @return The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
@@ -31,6 +35,10 @@ public final class KubernetesClusterMaintenancePolicy {
     public Optional<String> day() {
         return Optional.ofNullable(this.day);
     }
+    /**
+     * @return A string denoting the duration of the service window, e.g., &#34;04:00&#34;.
+     * 
+     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }

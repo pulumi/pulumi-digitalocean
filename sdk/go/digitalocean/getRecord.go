@@ -35,18 +35,26 @@ type GetRecordArgs struct {
 
 // A collection of values returned by getRecord.
 type GetRecordResult struct {
+	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
 	Data   string `pulumi:"data"`
 	Domain string `pulumi:"domain"`
-	Flags  int    `pulumi:"flags"`
+	// An unsigned integer between 0-255 used for CAA records.
+	Flags int `pulumi:"flags"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Name     string `pulumi:"name"`
-	Port     int    `pulumi:"port"`
-	Priority int    `pulumi:"priority"`
-	Tag      string `pulumi:"tag"`
-	Ttl      int    `pulumi:"ttl"`
-	Type     string `pulumi:"type"`
-	Weight   int    `pulumi:"weight"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// The port for SRV records.
+	Port int `pulumi:"port"`
+	// The priority for SRV and MX records.
+	Priority int `pulumi:"priority"`
+	// The parameter tag for CAA records.
+	Tag string `pulumi:"tag"`
+	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+	Ttl int `pulumi:"ttl"`
+	// The type of the DNS record.
+	Type string `pulumi:"type"`
+	// The weight for SRV records.
+	Weight int `pulumi:"weight"`
 }
 
 func GetRecordOutput(ctx *pulumi.Context, args GetRecordOutputArgs, opts ...pulumi.InvokeOption) GetRecordResultOutput {
@@ -89,6 +97,7 @@ func (o GetRecordResultOutput) ToGetRecordResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
 func (o GetRecordResultOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordResult) string { return v.Data }).(pulumi.StringOutput)
 }
@@ -97,6 +106,7 @@ func (o GetRecordResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// An unsigned integer between 0-255 used for CAA records.
 func (o GetRecordResultOutput) Flags() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordResult) int { return v.Flags }).(pulumi.IntOutput)
 }
@@ -110,26 +120,32 @@ func (o GetRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port for SRV records.
 func (o GetRecordResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The priority for SRV and MX records.
 func (o GetRecordResultOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordResult) int { return v.Priority }).(pulumi.IntOutput)
 }
 
+// The parameter tag for CAA records.
 func (o GetRecordResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordResult) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
 func (o GetRecordResultOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordResult) int { return v.Ttl }).(pulumi.IntOutput)
 }
 
+// The type of the DNS record.
 func (o GetRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The weight for SRV records.
 func (o GetRecordResultOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordResult) int { return v.Weight }).(pulumi.IntOutput)
 }

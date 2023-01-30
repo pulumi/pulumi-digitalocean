@@ -40,7 +40,9 @@ class MonitorAlertArgs:
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
                `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+               `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+               `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+               `v1/dbaas/alerts/disk_utilization_alerts`.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -111,7 +113,9 @@ class MonitorAlertArgs:
         `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
         `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
         `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-        `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+        `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+        `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+        `v1/dbaas/alerts/disk_utilization_alerts`.
         """
         return pulumi.get(self, "type")
 
@@ -212,7 +216,9 @@ class _MonitorAlertState:
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
                `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+               `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+               `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+               `v1/dbaas/alerts/disk_utilization_alerts`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
@@ -325,7 +331,9 @@ class _MonitorAlertState:
         `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
         `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
         `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-        `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+        `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+        `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+        `v1/dbaas/alerts/disk_utilization_alerts`.
         """
         return pulumi.get(self, "type")
 
@@ -420,7 +428,9 @@ class MonitorAlert(pulumi.CustomResource):
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
                `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+               `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+               `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+               `v1/dbaas/alerts/disk_utilization_alerts`.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -545,7 +555,9 @@ class MonitorAlert(pulumi.CustomResource):
                `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
                `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
                `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-               `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+               `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+               `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+               `v1/dbaas/alerts/disk_utilization_alerts`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
         :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
@@ -629,7 +641,9 @@ class MonitorAlert(pulumi.CustomResource):
         `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
         `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
         `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-        `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+        `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+        `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+        `v1/dbaas/alerts/disk_utilization_alerts`.
         """
         return pulumi.get(self, "type")
 

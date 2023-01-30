@@ -78,6 +78,10 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeConfigs",
+	})
+	opts = append(opts, secrets)
 	var resource KubernetesCluster
 	err := ctx.RegisterResource("digitalocean:index/kubernetesCluster:KubernetesCluster", name, args, &resource, opts...)
 	if err != nil {

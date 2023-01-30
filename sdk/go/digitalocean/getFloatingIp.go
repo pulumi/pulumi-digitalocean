@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			publicIp := cfg.RequireObject("publicIp")
-//			example, err := digitalocean.LookupFloatingIp(ctx, &GetFloatingIpArgs{
+//			example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
 //				IpAddress: publicIp,
 //			}, nil)
 //			if err != nil {
@@ -67,12 +67,15 @@ type LookupFloatingIpArgs struct {
 
 // A collection of values returned by getFloatingIp.
 type LookupFloatingIpResult struct {
-	DropletId     int    `pulumi:"dropletId"`
+	// The Droplet id that the floating IP has been assigned to.
+	DropletId int `pulumi:"dropletId"`
+	// The uniform resource name of the floating IP.
 	FloatingIpUrn string `pulumi:"floatingIpUrn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string `pulumi:"id"`
 	IpAddress string `pulumi:"ipAddress"`
-	Region    string `pulumi:"region"`
+	// The region that the floating IP is reserved to.
+	Region string `pulumi:"region"`
 }
 
 func LookupFloatingIpOutput(ctx *pulumi.Context, args LookupFloatingIpOutputArgs, opts ...pulumi.InvokeOption) LookupFloatingIpResultOutput {
@@ -113,10 +116,12 @@ func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutputWithContext(
 	return o
 }
 
+// The Droplet id that the floating IP has been assigned to.
 func (o LookupFloatingIpResultOutput) DropletId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFloatingIpResult) int { return v.DropletId }).(pulumi.IntOutput)
 }
 
+// The uniform resource name of the floating IP.
 func (o LookupFloatingIpResultOutput) FloatingIpUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.FloatingIpUrn }).(pulumi.StringOutput)
 }
@@ -130,6 +135,7 @@ func (o LookupFloatingIpResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The region that the floating IP is reserved to.
 func (o LookupFloatingIpResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFloatingIpResult) string { return v.Region }).(pulumi.StringOutput)
 }

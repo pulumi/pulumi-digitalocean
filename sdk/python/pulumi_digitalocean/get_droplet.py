@@ -125,6 +125,9 @@ class GetDropletResult:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the Droplet.
+        """
         return pulumi.get(self, "id")
 
     @property

@@ -157,6 +157,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    @Import(name="httpIdleTimeoutSeconds")
+    private @Nullable Output<Integer> httpIdleTimeoutSeconds;
+
+    /**
+     * @return Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    public Optional<Output<Integer>> httpIdleTimeoutSeconds() {
+        return Optional.ofNullable(this.httpIdleTimeoutSeconds);
+    }
+
+    /**
      * The Load Balancer name
      * 
      */
@@ -169,6 +184,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -278,7 +308,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.enableProxyProtocol = $.enableProxyProtocol;
         this.forwardingRules = $.forwardingRules;
         this.healthcheck = $.healthcheck;
+        this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.redirectHttpToHttps = $.redirectHttpToHttps;
         this.region = $.region;
         this.size = $.size;
@@ -531,6 +563,27 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param httpIdleTimeoutSeconds Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpIdleTimeoutSeconds(@Nullable Output<Integer> httpIdleTimeoutSeconds) {
+            $.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
+            return this;
+        }
+
+        /**
+         * @param httpIdleTimeoutSeconds Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpIdleTimeoutSeconds(Integer httpIdleTimeoutSeconds) {
+            return httpIdleTimeoutSeconds(Output.of(httpIdleTimeoutSeconds));
+        }
+
+        /**
          * @param name The Load Balancer name
          * 
          * @return builder
@@ -549,6 +602,27 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

@@ -40,7 +40,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
@@ -71,7 +71,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseClusterResult> Invoke(GetDatabaseClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithDefaults());
     }
 
 

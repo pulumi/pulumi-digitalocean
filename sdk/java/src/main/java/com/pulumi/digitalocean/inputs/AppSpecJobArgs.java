@@ -191,10 +191,6 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
-     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      * 
      */
     @Import(name="kind")
@@ -202,10 +198,6 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of job and when it will be run during the deployment process. It may be one of:
-     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -564,10 +556,6 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kind The type of job and when it will be run during the deployment process. It may be one of:
-         * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-         * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-         * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-         * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
          * 
          * @return builder
          * 
@@ -579,10 +567,6 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kind The type of job and when it will be run during the deployment process. It may be one of:
-         * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-         * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-         * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-         * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
          * 
          * @return builder
          * 

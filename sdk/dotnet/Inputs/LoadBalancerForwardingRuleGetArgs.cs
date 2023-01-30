@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int> EntryPort { get; set; } = null!;
 
         /// <summary>
-        /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         /// </summary>
         [Input("entryProtocol", required: true)]
         public Input<string> EntryProtocol { get; set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int> TargetPort { get; set; } = null!;
 
         /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         /// </summary>
         [Input("targetProtocol", required: true)]
         public Input<string> TargetProtocol { get; set; } = null!;

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var barfoo = new ProjectResources(&#34;barfoo&#34;, ProjectResourcesArgs.builder()        
- *             .project(data.digitalocean_project().foo().id())
+ *             .project(playground.applyValue(getProjectResult -&gt; getProjectResult.id()))
  *             .resources(foobar.dropletUrn())
  *             .build());
  * 

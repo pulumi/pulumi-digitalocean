@@ -71,7 +71,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//			foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 //				Name: pulumi.StringRef("baz"),
 //			}, nil)
 //			if err != nil {
@@ -79,8 +79,8 @@ import (
 //			}
 //			_, err = digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
 //				Region:     pulumi.String("lon1"),
-//				Size:       pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
-//				SnapshotId: pulumi.String(foobarVolumeSnapshot.Id),
+//				Size:       *pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
+//				SnapshotId: *pulumi.String(foobarVolumeSnapshot.Id),
 //			})
 //			if err != nil {
 //				return err

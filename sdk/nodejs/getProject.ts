@@ -14,19 +14,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const defaultProject = pulumi.output(digitalocean.getProject());
- * const staging = pulumi.output(digitalocean.getProject({
+ * const default = digitalocean.getProject({});
+ * const staging = digitalocean.getProject({
  *     name: "My Staging Project",
- * }));
+ * });
  * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getProject:getProject", {
         "id": args.id,
         "name": args.name,
@@ -88,9 +85,24 @@ export interface GetProjectResult {
      */
     readonly updatedAt: string;
 }
-
+/**
+ * Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+ * then this data source returns the default project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const default = digitalocean.getProject({});
+ * const staging = digitalocean.getProject({
+ *     name: "My Staging Project",
+ * });
+ * ```
+ */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply(a => getProject(a, opts))
+    return pulumi.output(args).apply((a: any) => getProject(a, opts))
 }
 
 /**

@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -14,8 +16,7 @@ import * as utilities from "./utilities";
  * Let's Encrypt.
  *
  * ## Example Usage
- *
- * #### Custom Certificate
+ * ### Custom Certificate
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,8 +30,7 @@ import * as utilities from "./utilities";
  *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
  * });
  * ```
- *
- * #### Let's Encrypt Certificate
+ * ### Let's Encrypt Certificate
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,8 +41,7 @@ import * as utilities from "./utilities";
  *     type: "lets_encrypt",
  * });
  * ```
- *
- * #### Use with Other Resources
+ * ### Use with Other Resources
  *
  * Both custom and Let's Encrypt certificates can be used with other resources
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
@@ -179,7 +178,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["domains"] = args ? args.domains : undefined;
             resourceInputs["leafCertificate"] = args ? args.leafCertificate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["notAfter"] = undefined /*out*/;
             resourceInputs["sha1Fingerprint"] = undefined /*out*/;
@@ -187,6 +186,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }

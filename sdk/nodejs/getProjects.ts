@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -24,12 +26,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const staging = pulumi.output(digitalocean.getProjects({
+ * const staging = digitalocean.getProjects({
  *     filters: [{
  *         key: "environment",
  *         values: ["Staging"],
  *     }],
- * }));
+ * });
  * ```
  *
  * You can filter on multiple fields and sort the results as well:
@@ -38,7 +40,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const non_default_production = pulumi.output(digitalocean.getProjects({
+ * const non-default-production = digitalocean.getProjects({
  *     filters: [
  *         {
  *             key: "environment",
@@ -53,16 +55,13 @@ import * as utilities from "./utilities";
  *         direction: "asc",
  *         key: "name",
  *     }],
- * }));
+ * });
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getProjects:getProjects", {
         "filters": args.filters,
         "sorts": args.sorts,
@@ -101,9 +100,59 @@ export interface GetProjectsResult {
     readonly projects: outputs.GetProjectsProject[];
     readonly sorts?: outputs.GetProjectsSort[];
 }
-
+/**
+ * Retrieve information about all DigitalOcean projects associated with an account, with
+ * the ability to filter and sort the results. If no filters are specified, all projects
+ * will be returned.
+ *
+ * Note: You can use the `digitalocean.Project` data source to
+ * obtain metadata about a single project if you already know the `id` to retrieve or the unique
+ * `name` of the project.
+ *
+ * ## Example Usage
+ *
+ * Use the `filter` block with a `key` string and `values` list to filter projects.
+ *
+ * For example to find all staging environment projects:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const staging = digitalocean.getProjects({
+ *     filters: [{
+ *         key: "environment",
+ *         values: ["Staging"],
+ *     }],
+ * });
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const non-default-production = digitalocean.getProjects({
+ *     filters: [
+ *         {
+ *             key: "environment",
+ *             values: ["Production"],
+ *         },
+ *         {
+ *             key: "is_default",
+ *             values: ["false"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "asc",
+ *         key: "name",
+ *     }],
+ * });
+ * ```
+ */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(args).apply(a => getProjects(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjects(a, opts))
 }
 
 /**

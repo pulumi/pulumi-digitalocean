@@ -74,9 +74,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/customImage:CustomImage")
 public class CustomImage extends com.pulumi.resources.CustomResource {
+    /**
+     * A time value given in ISO8601 combined date and time format that represents when the image was created.
+     * 
+     */
     @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
+    /**
+     * @return A time value given in ISO8601 combined date and time format that represents when the image was created.
+     * 
+     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
@@ -108,15 +116,31 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> distribution() {
         return Codegen.optional(this.distribution);
     }
+    /**
+     * A unique number that can be used to identify and reference a specific image.
+     * 
+     */
     @Export(name="imageId", type=Integer.class, parameters={})
     private Output<Integer> imageId;
 
+    /**
+     * @return A unique number that can be used to identify and reference a specific image.
+     * 
+     */
     public Output<Integer> imageId() {
         return this.imageId;
     }
+    /**
+     * The minimum disk size in GB required for a Droplet to use this image.
+     * 
+     */
     @Export(name="minDiskSize", type=Integer.class, parameters={})
     private Output<Integer> minDiskSize;
 
+    /**
+     * @return The minimum disk size in GB required for a Droplet to use this image.
+     * 
+     */
     public Output<Integer> minDiskSize() {
         return this.minDiskSize;
     }
@@ -134,9 +158,17 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Indicates whether the image in question is public or not.
+     * 
+     */
     @Export(name="public", type=Boolean.class, parameters={})
     private Output<Boolean> public_;
 
+    /**
+     * @return Indicates whether the image in question is public or not.
+     * 
+     */
     public Output<Boolean> public_() {
         return this.public_;
     }
@@ -154,21 +186,45 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<List<String>> regions() {
         return this.regions;
     }
+    /**
+     * The size of the image in gigabytes.
+     * 
+     */
     @Export(name="sizeGigabytes", type=Double.class, parameters={})
     private Output<Double> sizeGigabytes;
 
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
     public Output<Double> sizeGigabytes() {
         return this.sizeGigabytes;
     }
+    /**
+     * A uniquely identifying string for each image.
+     * 
+     */
     @Export(name="slug", type=String.class, parameters={})
     private Output<String> slug;
 
+    /**
+     * @return A uniquely identifying string for each image.
+     * 
+     */
     public Output<String> slug() {
         return this.slug;
     }
+    /**
+     * A status string indicating the state of a custom image.
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return A status string indicating the state of a custom image.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
@@ -186,9 +242,17 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Describes the kind of image.
+     * 
+     */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
+    /**
+     * @return Describes the kind of image.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }

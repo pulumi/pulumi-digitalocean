@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -25,12 +27,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const small = pulumi.output(digitalocean.getDroplets({
+ * const small = digitalocean.getDroplets({
  *     filters: [{
  *         key: "size",
  *         values: ["s-1vcpu-1gb"],
  *     }],
- * }));
+ * });
  * ```
  *
  * You can filter on multiple fields and sort the results as well:
@@ -39,7 +41,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const small_with_backups = pulumi.output(digitalocean.getDroplets({
+ * const small-with-backups = digitalocean.getDroplets({
  *     filters: [
  *         {
  *             key: "size",
@@ -54,16 +56,13 @@ import * as utilities from "./utilities";
  *         direction: "desc",
  *         key: "created_at",
  *     }],
- * }));
+ * });
  * ```
  */
 export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDroplets:getDroplets", {
         "filters": args.filters,
         "sorts": args.sorts,
@@ -101,9 +100,60 @@ export interface GetDropletsResult {
     readonly id: string;
     readonly sorts?: outputs.GetDropletsSort[];
 }
-
+/**
+ * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+ * If no filters are specified, all Droplets will be returned.
+ *
+ * This data source is useful if the Droplets in question are not managed by the provider or you need to
+ * utilize any of the Droplets' data.
+ *
+ * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
+ * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * Use the `filter` block with a `key` string and `values` list to filter images.
+ *
+ * For example to find all Droplets with size `s-1vcpu-1gb`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const small = digitalocean.getDroplets({
+ *     filters: [{
+ *         key: "size",
+ *         values: ["s-1vcpu-1gb"],
+ *     }],
+ * });
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const small-with-backups = digitalocean.getDroplets({
+ *     filters: [
+ *         {
+ *             key: "size",
+ *             values: ["s-1vcpu-1gb"],
+ *         },
+ *         {
+ *             key: "backups",
+ *             values: ["true"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "desc",
+ *         key: "created_at",
+ *     }],
+ * });
+ * ```
+ */
 export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletsResult> {
-    return pulumi.output(args).apply(a => getDroplets(a, opts))
+    return pulumi.output(args).apply((a: any) => getDroplets(a, opts))
 }
 
 /**

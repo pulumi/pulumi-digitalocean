@@ -31,11 +31,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getTag:getTag", {
         "name": args.name,
     }, opts);
@@ -85,9 +82,34 @@ export interface GetTagResult {
      */
     readonly volumesCount: number;
 }
-
+/**
+ * Get information on a tag. This data source provides the name as configured on
+ * your DigitalOcean account. This is useful if the tag name in question is not
+ * managed by the provider or you need validate if the tag exists in the account.
+ *
+ * An error is triggered if the provided tag name does not exist.
+ *
+ * ## Example Usage
+ *
+ * Get the tag:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleTag = digitalocean.getTag({
+ *     name: "example",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc2",
+ *     size: "s-1vcpu-1gb",
+ *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
+ * });
+ * ```
+ */
 export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagResult> {
-    return pulumi.output(args).apply(a => getTag(a, opts))
+    return pulumi.output(args).apply((a: any) => getTag(a, opts))
 }
 
 /**

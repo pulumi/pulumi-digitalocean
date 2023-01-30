@@ -49,21 +49,33 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="dropletLimit")
     def droplet_limit(self) -> int:
+        """
+        The total number of droplets current user or team may have active at one time.
+        """
         return pulumi.get(self, "droplet_limit")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The email address used by the current user to register for DigitalOcean.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="emailVerified")
     def email_verified(self) -> bool:
+        """
+        If true, the user has verified their account via email. False otherwise.
+        """
         return pulumi.get(self, "email_verified")
 
     @property
     @pulumi.getter(name="floatingIpLimit")
     def floating_ip_limit(self) -> int:
+        """
+        The total number of floating IPs the current user or team may have.
+        """
         return pulumi.get(self, "floating_ip_limit")
 
     @property
@@ -77,16 +89,25 @@ class GetAccountResult:
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        This value is one of "active", "warning" or "locked".
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> str:
+        """
+        A human-readable message giving more details about the status of the account.
+        """
         return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        The unique universal identifier for the current user.
+        """
         return pulumi.get(self, "uuid")
 
 

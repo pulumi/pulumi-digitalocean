@@ -50,6 +50,9 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def domains(self) -> Sequence[str]:
+        """
+        Domains for which the certificate was issued.
+        """
         return pulumi.get(self, "domains")
 
     @property
@@ -68,26 +71,41 @@ class GetCertificateResult:
     @property
     @pulumi.getter(name="notAfter")
     def not_after(self) -> str:
+        """
+        The expiration date and time of the certificate.
+        """
         return pulumi.get(self, "not_after")
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> str:
+        """
+        The SHA1 fingerprint of the certificate.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        the current state of the certificate.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the certificate.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        The ID of the certificate.
+        """
         return pulumi.get(self, "uuid")
 
 

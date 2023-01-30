@@ -95,7 +95,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesVersionsResult> InvokeAsync(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to the available DigitalOcean Kubernetes Service versions.
@@ -181,7 +181,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesVersionsResult> Invoke(GetKubernetesVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

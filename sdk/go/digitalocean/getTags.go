@@ -28,9 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			list, err := digitalocean.GetTags(ctx, &GetTagsArgs{
-//				Sorts: []GetTagsSort{
-//					GetTagsSort{
+//			list, err := digitalocean.GetTags(ctx, &digitalocean.GetTagsArgs{
+//				Sorts: []digitalocean.GetTagsSort{
+//					{
 //						Key:       "total_resource_count",
 //						Direction: pulumi.StringRef("asc"),
 //					},

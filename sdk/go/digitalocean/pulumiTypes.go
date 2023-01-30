@@ -2866,10 +2866,6 @@ type AppSpecJob struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
-	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -2916,10 +2912,6 @@ type AppSpecJobArgs struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
-	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -3038,10 +3030,6 @@ func (o AppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
-// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o AppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -11426,7 +11414,8 @@ func (o KubernetesClusterKubeConfigArrayOutput) Index(i pulumi.IntInput) Kuberne
 
 type KubernetesClusterMaintenancePolicy struct {
 	// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
-	Day      *string `pulumi:"day"`
+	Day *string `pulumi:"day"`
+	// A string denoting the duration of the service window, e.g., "04:00".
 	Duration *string `pulumi:"duration"`
 	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
 	StartTime *string `pulumi:"startTime"`
@@ -11445,7 +11434,8 @@ type KubernetesClusterMaintenancePolicyInput interface {
 
 type KubernetesClusterMaintenancePolicyArgs struct {
 	// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
-	Day      pulumi.StringPtrInput `pulumi:"day"`
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// A string denoting the duration of the service window, e.g., "04:00".
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -11533,6 +11523,7 @@ func (o KubernetesClusterMaintenancePolicyOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
 
+// A string denoting the duration of the service window, e.g., "04:00".
 func (o KubernetesClusterMaintenancePolicyOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -11576,6 +11567,7 @@ func (o KubernetesClusterMaintenancePolicyPtrOutput) Day() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A string denoting the duration of the service window, e.g., "04:00".
 func (o KubernetesClusterMaintenancePolicyPtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) *string {
 		if v == nil {
@@ -12464,11 +12456,11 @@ type LoadBalancerForwardingRule struct {
 	CertificateName *string `pulumi:"certificateName"`
 	// An integer representing the port on which the Load Balancer instance will listen.
 	EntryPort int `pulumi:"entryPort"`
-	// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+	// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
 	EntryProtocol string `pulumi:"entryProtocol"`
 	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
 	TargetPort int `pulumi:"targetPort"`
-	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
 	TargetProtocol string `pulumi:"targetProtocol"`
 	// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
 	TlsPassthrough *bool `pulumi:"tlsPassthrough"`
@@ -12494,11 +12486,11 @@ type LoadBalancerForwardingRuleArgs struct {
 	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
 	// An integer representing the port on which the Load Balancer instance will listen.
 	EntryPort pulumi.IntInput `pulumi:"entryPort"`
-	// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+	// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
 	EntryProtocol pulumi.StringInput `pulumi:"entryProtocol"`
 	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
 	TargetPort pulumi.IntInput `pulumi:"targetPort"`
-	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
 	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
 	// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
 	TlsPassthrough pulumi.BoolPtrInput `pulumi:"tlsPassthrough"`
@@ -12572,7 +12564,7 @@ func (o LoadBalancerForwardingRuleOutput) EntryPort() pulumi.IntOutput {
 	return o.ApplyT(func(v LoadBalancerForwardingRule) int { return v.EntryPort }).(pulumi.IntOutput)
 }
 
-// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
 func (o LoadBalancerForwardingRuleOutput) EntryProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerForwardingRule) string { return v.EntryProtocol }).(pulumi.StringOutput)
 }
@@ -12582,7 +12574,7 @@ func (o LoadBalancerForwardingRuleOutput) TargetPort() pulumi.IntOutput {
 	return o.ApplyT(func(v LoadBalancerForwardingRule) int { return v.TargetPort }).(pulumi.IntOutput)
 }
 
-// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
 func (o LoadBalancerForwardingRuleOutput) TargetProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerForwardingRule) string { return v.TargetProtocol }).(pulumi.StringOutput)
 }
@@ -16669,10 +16661,6 @@ type GetAppSpecJob struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
-	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -16719,10 +16707,6 @@ type GetAppSpecJobArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
-	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -16841,10 +16825,6 @@ func (o GetAppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
-// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o GetAppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -24476,9 +24456,9 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 
 type GetDomainsDomain struct {
 	// (Required) The name of the domain.
-	// - `ttl`-  The TTL of the domain.
 	Name string `pulumi:"name"`
-	Ttl  int    `pulumi:"ttl"`
+	// The TTL of the domain.
+	Ttl int `pulumi:"ttl"`
 	// The uniform resource name of the domain
 	Urn string `pulumi:"urn"`
 }
@@ -24496,9 +24476,9 @@ type GetDomainsDomainInput interface {
 
 type GetDomainsDomainArgs struct {
 	// (Required) The name of the domain.
-	// - `ttl`-  The TTL of the domain.
 	Name pulumi.StringInput `pulumi:"name"`
-	Ttl  pulumi.IntInput    `pulumi:"ttl"`
+	// The TTL of the domain.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
 	// The uniform resource name of the domain
 	Urn pulumi.StringInput `pulumi:"urn"`
 }
@@ -24555,11 +24535,11 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 }
 
 // (Required) The name of the domain.
-// - `ttl`-  The TTL of the domain.
 func (o GetDomainsDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The TTL of the domain.
 func (o GetDomainsDomainOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDomainsDomain) int { return v.Ttl }).(pulumi.IntOutput)
 }
@@ -26018,33 +25998,37 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 }
 
 type GetImagesImage struct {
+	// When the image was created
 	Created     string `pulumi:"created"`
 	Description string `pulumi:"description"`
 	// The name of the distribution of the OS of the image.
-	// - `minDiskSize`: The minimum 'disk' required for the image.
-	// - `sizeGigabytes`: The size of the image in GB.
 	Distribution string `pulumi:"distribution"`
+	// Any applicable error message pertaining to the image
 	ErrorMessage string `pulumi:"errorMessage"`
-	Id           int    `pulumi:"id"`
+	// The ID of the image.
+	Id int `pulumi:"id"`
 	// The id of the image (legacy parameter).
-	Image       string `pulumi:"image"`
-	MinDiskSize int    `pulumi:"minDiskSize"`
-	Name        string `pulumi:"name"`
+	Image string `pulumi:"image"`
+	// The minimum 'disk' required for the image.
+	MinDiskSize int `pulumi:"minDiskSize"`
+	// The name of the image.
+	Name string `pulumi:"name"`
 	// Is image a public image or not. Public images represent
 	// Linux distributions or One-Click Applications, while non-public images represent
 	// snapshots and backups and are only available within your account.
-	// - `regions`: A set of the regions that the image is available in.
-	// - `tags`: A set of tags applied to the image
-	// - `created`: When the image was created
-	// - `status`: Current status of the image
-	// - `errorMessage`: Any applicable error message pertaining to the image
-	Private       bool     `pulumi:"private"`
-	Regions       []string `pulumi:"regions"`
-	SizeGigabytes float64  `pulumi:"sizeGigabytes"`
-	Slug          string   `pulumi:"slug"`
-	Status        string   `pulumi:"status"`
-	Tags          []string `pulumi:"tags"`
-	Type          string   `pulumi:"type"`
+	Private bool `pulumi:"private"`
+	// A set of the regions that the image is available in.
+	Regions []string `pulumi:"regions"`
+	// The size of the image in GB.
+	SizeGigabytes float64 `pulumi:"sizeGigabytes"`
+	// Unique text identifier of the image.
+	Slug string `pulumi:"slug"`
+	// Current status of the image
+	Status string `pulumi:"status"`
+	// A set of tags applied to the image
+	Tags []string `pulumi:"tags"`
+	// Type of the image.
+	Type string `pulumi:"type"`
 }
 
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
@@ -26059,33 +26043,37 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
+	// When the image was created
 	Created     pulumi.StringInput `pulumi:"created"`
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the distribution of the OS of the image.
-	// - `minDiskSize`: The minimum 'disk' required for the image.
-	// - `sizeGigabytes`: The size of the image in GB.
 	Distribution pulumi.StringInput `pulumi:"distribution"`
+	// Any applicable error message pertaining to the image
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
-	Id           pulumi.IntInput    `pulumi:"id"`
+	// The ID of the image.
+	Id pulumi.IntInput `pulumi:"id"`
 	// The id of the image (legacy parameter).
-	Image       pulumi.StringInput `pulumi:"image"`
-	MinDiskSize pulumi.IntInput    `pulumi:"minDiskSize"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	Image pulumi.StringInput `pulumi:"image"`
+	// The minimum 'disk' required for the image.
+	MinDiskSize pulumi.IntInput `pulumi:"minDiskSize"`
+	// The name of the image.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Is image a public image or not. Public images represent
 	// Linux distributions or One-Click Applications, while non-public images represent
 	// snapshots and backups and are only available within your account.
-	// - `regions`: A set of the regions that the image is available in.
-	// - `tags`: A set of tags applied to the image
-	// - `created`: When the image was created
-	// - `status`: Current status of the image
-	// - `errorMessage`: Any applicable error message pertaining to the image
-	Private       pulumi.BoolInput        `pulumi:"private"`
-	Regions       pulumi.StringArrayInput `pulumi:"regions"`
-	SizeGigabytes pulumi.Float64Input     `pulumi:"sizeGigabytes"`
-	Slug          pulumi.StringInput      `pulumi:"slug"`
-	Status        pulumi.StringInput      `pulumi:"status"`
-	Tags          pulumi.StringArrayInput `pulumi:"tags"`
-	Type          pulumi.StringInput      `pulumi:"type"`
+	Private pulumi.BoolInput `pulumi:"private"`
+	// A set of the regions that the image is available in.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// The size of the image in GB.
+	SizeGigabytes pulumi.Float64Input `pulumi:"sizeGigabytes"`
+	// Unique text identifier of the image.
+	Slug pulumi.StringInput `pulumi:"slug"`
+	// Current status of the image
+	Status pulumi.StringInput `pulumi:"status"`
+	// A set of tags applied to the image
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Type of the image.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetImagesImageArgs) ElementType() reflect.Type {
@@ -26139,6 +26127,7 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 	return o
 }
 
+// When the image was created
 func (o GetImagesImageOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -26148,16 +26137,16 @@ func (o GetImagesImageOutput) Description() pulumi.StringOutput {
 }
 
 // The name of the distribution of the OS of the image.
-// - `minDiskSize`: The minimum 'disk' required for the image.
-// - `sizeGigabytes`: The size of the image in GB.
 func (o GetImagesImageOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Distribution }).(pulumi.StringOutput)
 }
 
+// Any applicable error message pertaining to the image
 func (o GetImagesImageOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
+// The ID of the image.
 func (o GetImagesImageOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -26167,10 +26156,12 @@ func (o GetImagesImageOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// The minimum 'disk' required for the image.
 func (o GetImagesImageOutput) MinDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.MinDiskSize }).(pulumi.IntOutput)
 }
 
+// The name of the image.
 func (o GetImagesImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -26178,35 +26169,36 @@ func (o GetImagesImageOutput) Name() pulumi.StringOutput {
 // Is image a public image or not. Public images represent
 // Linux distributions or One-Click Applications, while non-public images represent
 // snapshots and backups and are only available within your account.
-// - `regions`: A set of the regions that the image is available in.
-// - `tags`: A set of tags applied to the image
-// - `created`: When the image was created
-// - `status`: Current status of the image
-// - `errorMessage`: Any applicable error message pertaining to the image
 func (o GetImagesImageOutput) Private() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.Private }).(pulumi.BoolOutput)
 }
 
+// A set of the regions that the image is available in.
 func (o GetImagesImageOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesImage) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
+// The size of the image in GB.
 func (o GetImagesImageOutput) SizeGigabytes() pulumi.Float64Output {
 	return o.ApplyT(func(v GetImagesImage) float64 { return v.SizeGigabytes }).(pulumi.Float64Output)
 }
 
+// Unique text identifier of the image.
 func (o GetImagesImageOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Slug }).(pulumi.StringOutput)
 }
 
+// Current status of the image
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// A set of tags applied to the image
 func (o GetImagesImageOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Type of the image.
 func (o GetImagesImageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -28001,17 +27993,27 @@ func (o GetRecordsFilterArrayOutput) Index(i pulumi.IntInput) GetRecordsFilterOu
 
 type GetRecordsRecord struct {
 	// The domain name to search for DNS records
-	Domain   string `pulumi:"domain"`
-	Flags    int    `pulumi:"flags"`
-	Id       int    `pulumi:"id"`
-	Name     string `pulumi:"name"`
-	Port     int    `pulumi:"port"`
-	Priority int    `pulumi:"priority"`
-	Tag      string `pulumi:"tag"`
-	Ttl      int    `pulumi:"ttl"`
-	Type     string `pulumi:"type"`
-	Value    string `pulumi:"value"`
-	Weight   int    `pulumi:"weight"`
+	Domain string `pulumi:"domain"`
+	// An unsigned integer between 0-255 used for CAA records.
+	Flags int `pulumi:"flags"`
+	// The ID of the record.
+	Id int `pulumi:"id"`
+	// The name of the DNS record.
+	Name string `pulumi:"name"`
+	// The port for SRV records.
+	Port int `pulumi:"port"`
+	// The priority for SRV and MX records.
+	Priority int `pulumi:"priority"`
+	// The parameter tag for CAA records.
+	Tag string `pulumi:"tag"`
+	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+	Ttl int `pulumi:"ttl"`
+	// The type of the DNS record.
+	Type string `pulumi:"type"`
+	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+	Value string `pulumi:"value"`
+	// The weight for SRV records.
+	Weight int `pulumi:"weight"`
 }
 
 // GetRecordsRecordInput is an input type that accepts GetRecordsRecordArgs and GetRecordsRecordOutput values.
@@ -28027,17 +28029,27 @@ type GetRecordsRecordInput interface {
 
 type GetRecordsRecordArgs struct {
 	// The domain name to search for DNS records
-	Domain   pulumi.StringInput `pulumi:"domain"`
-	Flags    pulumi.IntInput    `pulumi:"flags"`
-	Id       pulumi.IntInput    `pulumi:"id"`
-	Name     pulumi.StringInput `pulumi:"name"`
-	Port     pulumi.IntInput    `pulumi:"port"`
-	Priority pulumi.IntInput    `pulumi:"priority"`
-	Tag      pulumi.StringInput `pulumi:"tag"`
-	Ttl      pulumi.IntInput    `pulumi:"ttl"`
-	Type     pulumi.StringInput `pulumi:"type"`
-	Value    pulumi.StringInput `pulumi:"value"`
-	Weight   pulumi.IntInput    `pulumi:"weight"`
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// An unsigned integer between 0-255 used for CAA records.
+	Flags pulumi.IntInput `pulumi:"flags"`
+	// The ID of the record.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the DNS record.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port for SRV records.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The priority for SRV and MX records.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The parameter tag for CAA records.
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The type of the DNS record.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+	Value pulumi.StringInput `pulumi:"value"`
+	// The weight for SRV records.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (GetRecordsRecordArgs) ElementType() reflect.Type {
@@ -28096,42 +28108,52 @@ func (o GetRecordsRecordOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsRecord) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// An unsigned integer between 0-255 used for CAA records.
 func (o GetRecordsRecordOutput) Flags() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordsRecord) int { return v.Flags }).(pulumi.IntOutput)
 }
 
+// The ID of the record.
 func (o GetRecordsRecordOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The name of the DNS record.
 func (o GetRecordsRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsRecord) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port for SRV records.
 func (o GetRecordsRecordOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordsRecord) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The priority for SRV and MX records.
 func (o GetRecordsRecordOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
 }
 
+// The parameter tag for CAA records.
 func (o GetRecordsRecordOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsRecord) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
 func (o GetRecordsRecordOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
 }
 
+// The type of the DNS record.
 func (o GetRecordsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
 func (o GetRecordsRecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// The weight for SRV records.
 func (o GetRecordsRecordOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRecordsRecord) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -29075,6 +29097,8 @@ func (o GetSizesSortArrayOutput) Index(i pulumi.IntInput) GetSizesSortOutput {
 type GetSpacesBucketsBucket struct {
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName string `pulumi:"bucketDomainName"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint string `pulumi:"endpoint"`
 	// The name of the Spaces bucket
 	Name string `pulumi:"name"`
 	// The slug of the region where the bucket is stored.
@@ -29097,6 +29121,8 @@ type GetSpacesBucketsBucketInput interface {
 type GetSpacesBucketsBucketArgs struct {
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringInput `pulumi:"bucketDomainName"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The name of the Spaces bucket
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug of the region where the bucket is stored.
@@ -29159,6 +29185,11 @@ func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutputWithContext(
 // The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 func (o GetSpacesBucketsBucketOutput) BucketDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+func (o GetSpacesBucketsBucketOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The name of the Spaces bucket
@@ -29666,13 +29697,13 @@ func (o GetSshKeysSortArrayOutput) Index(i pulumi.IntInput) GetSshKeysSortOutput
 }
 
 type GetSshKeysSshKey struct {
+	// The fingerprint of the public key of the ssh key.
 	Fingerprint string `pulumi:"fingerprint"`
 	// The ID of the ssh key.
-	// * `name`: The name of the ssh key.
-	// * `publicKey`: The public key of the ssh key.
-	// * `fingerprint`: The fingerprint of the public key of the ssh key.
-	Id        int    `pulumi:"id"`
-	Name      string `pulumi:"name"`
+	Id int `pulumi:"id"`
+	// The name of the ssh key.
+	Name string `pulumi:"name"`
+	// The public key of the ssh key.
 	PublicKey string `pulumi:"publicKey"`
 }
 
@@ -29688,13 +29719,13 @@ type GetSshKeysSshKeyInput interface {
 }
 
 type GetSshKeysSshKeyArgs struct {
+	// The fingerprint of the public key of the ssh key.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// The ID of the ssh key.
-	// * `name`: The name of the ssh key.
-	// * `publicKey`: The public key of the ssh key.
-	// * `fingerprint`: The fingerprint of the public key of the ssh key.
-	Id        pulumi.IntInput    `pulumi:"id"`
-	Name      pulumi.StringInput `pulumi:"name"`
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the ssh key.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The public key of the ssh key.
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
@@ -29749,22 +29780,22 @@ func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutputWithContext(ctx context.
 	return o
 }
 
+// The fingerprint of the public key of the ssh key.
 func (o GetSshKeysSshKeyOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
 // The ID of the ssh key.
-// * `name`: The name of the ssh key.
-// * `publicKey`: The public key of the ssh key.
-// * `fingerprint`: The fingerprint of the public key of the ssh key.
 func (o GetSshKeysSshKeyOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSshKeysSshKey) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The name of the ssh key.
 func (o GetSshKeysSshKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The public key of the ssh key.
 func (o GetSshKeysSshKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.PublicKey }).(pulumi.StringOutput)
 }

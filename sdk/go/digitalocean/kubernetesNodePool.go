@@ -31,7 +31,7 @@ import (
 //			foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
 //				Region:  pulumi.String("nyc1"),
 //				Version: pulumi.String("1.22.8-do.1"),
-//				NodePool: &KubernetesClusterNodePoolArgs{
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
 //					Name:      pulumi.String("front-end-pool"),
 //					Size:      pulumi.String("s-2vcpu-2gb"),
 //					NodeCount: pulumi.Int(3),
@@ -51,8 +51,8 @@ import (
 //					"service":  pulumi.String("backend"),
 //					"priority": pulumi.String("high"),
 //				},
-//				Taints: KubernetesNodePoolTaintArray{
-//					&KubernetesNodePoolTaintArgs{
+//				Taints: digitalocean.KubernetesNodePoolTaintArray{
+//					&digitalocean.KubernetesNodePoolTaintArgs{
 //						Key:    pulumi.String("workloadKind"),
 //						Value:  pulumi.String("database"),
 //						Effect: pulumi.String("NoSchedule"),
