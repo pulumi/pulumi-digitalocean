@@ -15,9 +15,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new container registry
- * const foobar = new digitalocean.ContainerRegistry("foobar", {
- *     subscriptionTierSlug: "starter",
- * });
+ * const foobar = new digitalocean.ContainerRegistry("foobar", {subscriptionTierSlug: "starter"});
  * ```
  *
  * ## Import

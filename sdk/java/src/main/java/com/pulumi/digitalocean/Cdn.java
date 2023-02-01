@@ -19,8 +19,7 @@ import javax.annotation.Nullable;
  * Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
  * 
  * ## Example Usage
- * 
- * #### Basic Example
+ * ### Basic Example
  * ```java
  * package generated_program;
  * 
@@ -57,8 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * 
- * #### Custom Sub-Domain Example
+ * ### Custom Sub-Domain Example
  * ```java
  * package generated_program;
  * 

@@ -85,6 +85,10 @@ func NewDatabaseUser(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseUser
 	err := ctx.RegisterResource("digitalocean:index/databaseUser:DatabaseUser", name, args, &resource, opts...)
 	if err != nil {

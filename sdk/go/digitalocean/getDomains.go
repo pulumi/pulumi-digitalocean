@@ -38,9 +38,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetDomains(ctx, &GetDomainsArgs{
-//				Filters: []GetDomainsFilter{
-//					GetDomainsFilter{
+//			_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
+//				Filters: []digitalocean.GetDomainsFilter{
+//					{
 //						Key:     "name",
 //						MatchBy: pulumi.StringRef("re"),
 //						Values: []string{

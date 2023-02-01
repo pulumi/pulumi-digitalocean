@@ -50,6 +50,10 @@ public final class GetVolumeResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return The uniform resource name for the storage volume.
+     * 
+     */
     private String urn;
 
     private GetVolumeResult() {}
@@ -108,6 +112,10 @@ public final class GetVolumeResult {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return The uniform resource name for the storage volume.
+     * 
+     */
     public String urn() {
         return this.urn;
     }

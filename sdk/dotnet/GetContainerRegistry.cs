@@ -44,7 +44,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a container registry. This data source provides the name as
@@ -79,7 +79,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());
     }
 
 

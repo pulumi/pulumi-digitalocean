@@ -103,6 +103,12 @@ func NewDatabaseReplica(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"privateUri",
+		"uri",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseReplica
 	err := ctx.RegisterResource("digitalocean:index/databaseReplica:DatabaseReplica", name, args, &resource, opts...)
 	if err != nil {

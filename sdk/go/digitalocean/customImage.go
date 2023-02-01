@@ -65,24 +65,32 @@ import (
 type CustomImage struct {
 	pulumi.CustomResourceState
 
+	// A time value given in ISO8601 combined date and time format that represents when the image was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// An optional description for the image.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution pulumi.StringPtrOutput `pulumi:"distribution"`
-	ImageId      pulumi.IntOutput       `pulumi:"imageId"`
-	MinDiskSize  pulumi.IntOutput       `pulumi:"minDiskSize"`
+	// A unique number that can be used to identify and reference a specific image.
+	ImageId pulumi.IntOutput `pulumi:"imageId"`
+	// The minimum disk size in GB required for a Droplet to use this image.
+	MinDiskSize pulumi.IntOutput `pulumi:"minDiskSize"`
 	// A name for the Custom Image.
-	Name   pulumi.StringOutput `pulumi:"name"`
-	Public pulumi.BoolOutput   `pulumi:"public"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Indicates whether the image in question is public or not.
+	Public pulumi.BoolOutput `pulumi:"public"`
 	// A list of regions. (Currently only one is supported).
-	Regions       pulumi.StringArrayOutput `pulumi:"regions"`
-	SizeGigabytes pulumi.Float64Output     `pulumi:"sizeGigabytes"`
-	Slug          pulumi.StringOutput      `pulumi:"slug"`
-	Status        pulumi.StringOutput      `pulumi:"status"`
+	Regions pulumi.StringArrayOutput `pulumi:"regions"`
+	// The size of the image in gigabytes.
+	SizeGigabytes pulumi.Float64Output `pulumi:"sizeGigabytes"`
+	// A uniquely identifying string for each image.
+	Slug pulumi.StringOutput `pulumi:"slug"`
+	// A status string indicating the state of a custom image.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of optional tags for the image.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	Type pulumi.StringOutput      `pulumi:"type"`
+	// Describes the kind of image.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -122,46 +130,62 @@ func GetCustomImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomImage resources.
 type customImageState struct {
+	// A time value given in ISO8601 combined date and time format that represents when the image was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// An optional description for the image.
 	Description *string `pulumi:"description"`
 	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution *string `pulumi:"distribution"`
-	ImageId      *int    `pulumi:"imageId"`
-	MinDiskSize  *int    `pulumi:"minDiskSize"`
+	// A unique number that can be used to identify and reference a specific image.
+	ImageId *int `pulumi:"imageId"`
+	// The minimum disk size in GB required for a Droplet to use this image.
+	MinDiskSize *int `pulumi:"minDiskSize"`
 	// A name for the Custom Image.
-	Name   *string `pulumi:"name"`
-	Public *bool   `pulumi:"public"`
+	Name *string `pulumi:"name"`
+	// Indicates whether the image in question is public or not.
+	Public *bool `pulumi:"public"`
 	// A list of regions. (Currently only one is supported).
-	Regions       []string `pulumi:"regions"`
+	Regions []string `pulumi:"regions"`
+	// The size of the image in gigabytes.
 	SizeGigabytes *float64 `pulumi:"sizeGigabytes"`
-	Slug          *string  `pulumi:"slug"`
-	Status        *string  `pulumi:"status"`
+	// A uniquely identifying string for each image.
+	Slug *string `pulumi:"slug"`
+	// A status string indicating the state of a custom image.
+	Status *string `pulumi:"status"`
 	// A list of optional tags for the image.
 	Tags []string `pulumi:"tags"`
-	Type *string  `pulumi:"type"`
+	// Describes the kind of image.
+	Type *string `pulumi:"type"`
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url *string `pulumi:"url"`
 }
 
 type CustomImageState struct {
+	// A time value given in ISO8601 combined date and time format that represents when the image was created.
 	CreatedAt pulumi.StringPtrInput
 	// An optional description for the image.
 	Description pulumi.StringPtrInput
 	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
 	Distribution pulumi.StringPtrInput
-	ImageId      pulumi.IntPtrInput
-	MinDiskSize  pulumi.IntPtrInput
+	// A unique number that can be used to identify and reference a specific image.
+	ImageId pulumi.IntPtrInput
+	// The minimum disk size in GB required for a Droplet to use this image.
+	MinDiskSize pulumi.IntPtrInput
 	// A name for the Custom Image.
-	Name   pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Indicates whether the image in question is public or not.
 	Public pulumi.BoolPtrInput
 	// A list of regions. (Currently only one is supported).
-	Regions       pulumi.StringArrayInput
+	Regions pulumi.StringArrayInput
+	// The size of the image in gigabytes.
 	SizeGigabytes pulumi.Float64PtrInput
-	Slug          pulumi.StringPtrInput
-	Status        pulumi.StringPtrInput
+	// A uniquely identifying string for each image.
+	Slug pulumi.StringPtrInput
+	// A status string indicating the state of a custom image.
+	Status pulumi.StringPtrInput
 	// A list of optional tags for the image.
 	Tags pulumi.StringArrayInput
+	// Describes the kind of image.
 	Type pulumi.StringPtrInput
 	// A URL from which the custom Linux virtual machine image may be retrieved.
 	Url pulumi.StringPtrInput
@@ -289,6 +313,7 @@ func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// A time value given in ISO8601 combined date and time format that represents when the image was created.
 func (o CustomImageOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -303,10 +328,12 @@ func (o CustomImageOutput) Distribution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Distribution }).(pulumi.StringPtrOutput)
 }
 
+// A unique number that can be used to identify and reference a specific image.
 func (o CustomImageOutput) ImageId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.IntOutput { return v.ImageId }).(pulumi.IntOutput)
 }
 
+// The minimum disk size in GB required for a Droplet to use this image.
 func (o CustomImageOutput) MinDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.IntOutput { return v.MinDiskSize }).(pulumi.IntOutput)
 }
@@ -316,6 +343,7 @@ func (o CustomImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Indicates whether the image in question is public or not.
 func (o CustomImageOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.BoolOutput { return v.Public }).(pulumi.BoolOutput)
 }
@@ -325,14 +353,17 @@ func (o CustomImageOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
+// The size of the image in gigabytes.
 func (o CustomImageOutput) SizeGigabytes() pulumi.Float64Output {
 	return o.ApplyT(func(v *CustomImage) pulumi.Float64Output { return v.SizeGigabytes }).(pulumi.Float64Output)
 }
 
+// A uniquely identifying string for each image.
 func (o CustomImageOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
 
+// A status string indicating the state of a custom image.
 func (o CustomImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -342,6 +373,7 @@ func (o CustomImageOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Describes the kind of image.
 func (o CustomImageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

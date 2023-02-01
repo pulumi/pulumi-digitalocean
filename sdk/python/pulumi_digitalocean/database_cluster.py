@@ -744,6 +744,8 @@ class DatabaseCluster(pulumi.CustomResource):
             __props__.__dict__["private_uri"] = None
             __props__.__dict__["uri"] = None
             __props__.__dict__["user"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateUri", "uri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseCluster, __self__).__init__(
             'digitalocean:index/databaseCluster:DatabaseCluster',
             resource_name,

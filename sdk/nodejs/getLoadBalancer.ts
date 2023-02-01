@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -33,18 +35,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const example = pulumi.output(digitalocean.getLoadBalancer({
+ * const example = digitalocean.getLoadBalancer({
  *     id: "loadbalancer_id",
- * }));
+ * });
  * ```
  */
 export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
         "id": args.id,
         "name": args.name,
@@ -77,10 +76,12 @@ export interface GetLoadBalancerResult {
     readonly enableProxyProtocol: boolean;
     readonly forwardingRules: outputs.GetLoadBalancerForwardingRule[];
     readonly healthchecks: outputs.GetLoadBalancerHealthcheck[];
+    readonly httpIdleTimeoutSeconds: number;
     readonly id?: string;
     readonly ip: string;
     readonly loadBalancerUrn: string;
     readonly name?: string;
+    readonly projectId: string;
     readonly redirectHttpToHttps: boolean;
     readonly region: string;
     readonly size: string;
@@ -89,9 +90,41 @@ export interface GetLoadBalancerResult {
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
     readonly vpcUuid: string;
 }
-
+/**
+ * Get information on a load balancer for use in other resources. This data source
+ * provides all of the load balancers properties as configured on your DigitalOcean
+ * account. This is useful if the load balancer in question is not managed by
+ * the provider or you need to utilize any of the load balancers data.
+ *
+ * An error is triggered if the provided load balancer name does not exist.
+ *
+ * ## Example Usage
+ *
+ * Get the load balancer by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getLoadBalancer({
+ *     name: "app",
+ * });
+ * export const lbOutput = example.then(example => example.ip);
+ * ```
+ *
+ * Get the load balancer by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getLoadBalancer({
+ *     id: "loadbalancer_id",
+ * });
+ * ```
+ */
 export function getLoadBalancerOutput(args?: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
-    return pulumi.output(args).apply(a => getLoadBalancer(a, opts))
+    return pulumi.output(args).apply((a: any) => getLoadBalancer(a, opts))
 }
 
 /**

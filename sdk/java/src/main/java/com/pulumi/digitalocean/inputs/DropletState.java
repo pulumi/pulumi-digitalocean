@@ -88,7 +88,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      * 
      */
     @Import(name="dropletUrn")
@@ -96,7 +95,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      * 
      */
     public Optional<Output<String>> dropletUrn() {
@@ -609,7 +607,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletUrn The uniform resource name of the Droplet
-         * * `name`- The name of the Droplet
          * 
          * @return builder
          * 
@@ -621,7 +618,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletUrn The uniform resource name of the Droplet
-         * * `name`- The name of the Droplet
          * 
          * @return builder
          * 

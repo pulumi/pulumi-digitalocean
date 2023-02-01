@@ -239,8 +239,7 @@ class Cdn(pulumi.CustomResource):
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
         ## Example Usage
-
-        #### Basic Example
+        ### Basic Example
 
         ```python
         import pulumi
@@ -254,8 +253,7 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-
-        #### Custom Sub-Domain Example
+        ### Custom Sub-Domain Example
 
         ```python
         import pulumi
@@ -302,8 +300,7 @@ class Cdn(pulumi.CustomResource):
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
         ## Example Usage
-
-        #### Basic Example
+        ### Basic Example
 
         ```python
         import pulumi
@@ -317,8 +314,7 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-
-        #### Custom Sub-Domain Example
+        ### Custom Sub-Domain Example
 
         ```python
         import pulumi

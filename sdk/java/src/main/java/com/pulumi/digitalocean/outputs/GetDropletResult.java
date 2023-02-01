@@ -26,6 +26,10 @@ public final class GetDropletResult {
      * 
      */
     private Integer disk;
+    /**
+     * @return The ID of the Droplet.
+     * 
+     */
     private Integer id;
     /**
      * @return The Droplet image ID or slug.
@@ -148,6 +152,10 @@ public final class GetDropletResult {
     public Integer disk() {
         return this.disk;
     }
+    /**
+     * @return The ID of the Droplet.
+     * 
+     */
     public Integer id() {
         return this.id;
     }

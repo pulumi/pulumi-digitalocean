@@ -112,6 +112,8 @@ export class DatabaseUser extends pulumi.CustomResource {
             resourceInputs["role"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseUser.__pulumiType, name, resourceInputs, opts);
     }
 }

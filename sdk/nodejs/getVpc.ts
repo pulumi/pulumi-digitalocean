@@ -21,9 +21,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const example = pulumi.output(digitalocean.getVpc({
+ * const example = digitalocean.getVpc({
  *     name: "example-network",
- * }));
+ * });
  * ```
  *
  * Reuse the data about a VPC to assign a Droplet to it:
@@ -45,11 +45,8 @@ import * as utilities from "./utilities";
  */
 export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getVpc:getVpc", {
         "id": args.id,
         "name": args.name,
@@ -112,9 +109,47 @@ export interface GetVpcResult {
      */
     readonly urn: string;
 }
-
+/**
+ * Retrieve information about a VPC for use in other resources.
+ *
+ * This data source provides all of the VPC's properties as configured on your
+ * DigitalOcean account. This is useful if the VPC in question is not managed by
+ * the provider or you need to utilize any of the VPC's data.
+ *
+ * VPCs may be looked up by `id` or `name`. Specifying a `region` will
+ * return that that region's default VPC.
+ *
+ * ## Example Usage
+ * ### VPC By Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * ```
+ *
+ * Reuse the data about a VPC to assign a Droplet to it:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVpc = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
+ * });
+ * ```
+ */
 export function getVpcOutput(args?: GetVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcResult> {
-    return pulumi.output(args).apply(a => getVpc(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpc(a, opts))
 }
 
 /**

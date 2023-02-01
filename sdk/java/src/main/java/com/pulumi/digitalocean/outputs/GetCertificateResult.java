@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCertificateResult {
+    /**
+     * @return Domains for which the certificate was issued.
+     * 
+     */
     private List<String> domains;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -17,13 +21,37 @@ public final class GetCertificateResult {
      */
     private String id;
     private String name;
+    /**
+     * @return The expiration date and time of the certificate.
+     * 
+     */
     private String notAfter;
+    /**
+     * @return The SHA1 fingerprint of the certificate.
+     * 
+     */
     private String sha1Fingerprint;
+    /**
+     * @return the current state of the certificate.
+     * 
+     */
     private String state;
+    /**
+     * @return The type of the certificate.
+     * 
+     */
     private String type;
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
     private String uuid;
 
     private GetCertificateResult() {}
+    /**
+     * @return Domains for which the certificate was issued.
+     * 
+     */
     public List<String> domains() {
         return this.domains;
     }
@@ -37,18 +65,38 @@ public final class GetCertificateResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The expiration date and time of the certificate.
+     * 
+     */
     public String notAfter() {
         return this.notAfter;
     }
+    /**
+     * @return The SHA1 fingerprint of the certificate.
+     * 
+     */
     public String sha1Fingerprint() {
         return this.sha1Fingerprint;
     }
+    /**
+     * @return the current state of the certificate.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return The type of the certificate.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

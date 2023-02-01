@@ -36,9 +36,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetProjects(ctx, &GetProjectsArgs{
-//				Filters: []GetProjectsFilter{
-//					GetProjectsFilter{
+//			_, err := digitalocean.GetProjects(ctx, &digitalocean.GetProjectsArgs{
+//				Filters: []digitalocean.GetProjectsFilter{
+//					{
 //						Key: "environment",
 //						Values: []string{
 //							"Staging",
@@ -69,23 +69,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetProjects(ctx, &GetProjectsArgs{
-//				Filters: []GetProjectsFilter{
-//					GetProjectsFilter{
+//			_, err := digitalocean.GetProjects(ctx, &digitalocean.GetProjectsArgs{
+//				Filters: []digitalocean.GetProjectsFilter{
+//					{
 //						Key: "environment",
 //						Values: []string{
 //							"Production",
 //						},
 //					},
-//					GetProjectsFilter{
+//					{
 //						Key: "is_default",
 //						Values: []string{
 //							"false",
 //						},
 //					},
 //				},
-//				Sorts: []GetProjectsSort{
-//					GetProjectsSort{
+//				Sorts: []digitalocean.GetProjectsSort{
+//					{
 //						Direction: pulumi.StringRef("asc"),
 //						Key:       "name",
 //					},

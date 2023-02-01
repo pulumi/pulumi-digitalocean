@@ -329,8 +329,7 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
-
-        #### Custom Certificate
+        ### Custom Certificate
 
         ```python
         import pulumi
@@ -342,8 +341,7 @@ class Certificate(pulumi.CustomResource):
             leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
             certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
-
-        #### Let's Encrypt Certificate
+        ### Let's Encrypt Certificate
 
         ```python
         import pulumi
@@ -353,8 +351,7 @@ class Certificate(pulumi.CustomResource):
             domains=["example.com"],
             type="lets_encrypt")
         ```
-
-        #### Use with Other Resources
+        ### Use with Other Resources
 
         Both custom and Let's Encrypt certificates can be used with other resources
         including the `LoadBalancer` and `Cdn` resources.
@@ -418,8 +415,7 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
-
-        #### Custom Certificate
+        ### Custom Certificate
 
         ```python
         import pulumi
@@ -431,8 +427,7 @@ class Certificate(pulumi.CustomResource):
             leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
             certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
-
-        #### Let's Encrypt Certificate
+        ### Let's Encrypt Certificate
 
         ```python
         import pulumi
@@ -442,8 +437,7 @@ class Certificate(pulumi.CustomResource):
             domains=["example.com"],
             type="lets_encrypt")
         ```
-
-        #### Use with Other Resources
+        ### Use with Other Resources
 
         Both custom and Let's Encrypt certificates can be used with other resources
         including the `LoadBalancer` and `Cdn` resources.
@@ -510,12 +504,14 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["domains"] = domains
             __props__.__dict__["leaf_certificate"] = leaf_certificate
             __props__.__dict__["name"] = name
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["type"] = type
             __props__.__dict__["not_after"] = None
             __props__.__dict__["sha1_fingerprint"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uuid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certificate, __self__).__init__(
             'digitalocean:index/certificate:Certificate',
             resource_name,

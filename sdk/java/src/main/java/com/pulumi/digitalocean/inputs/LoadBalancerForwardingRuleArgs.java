@@ -71,14 +71,14 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      * 
      */
     @Import(name="entryProtocol", required=true)
     private Output<String> entryProtocol;
 
     /**
-     * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      * 
      */
     public Output<String> entryProtocol() {
@@ -101,14 +101,14 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      * 
      */
     @Import(name="targetProtocol", required=true)
     private Output<String> targetProtocol;
 
     /**
-     * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      * 
      */
     public Output<String> targetProtocol() {
@@ -232,7 +232,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param entryProtocol The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+         * @param entryProtocol The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param entryProtocol The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+         * @param entryProtocol The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetProtocol The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+         * @param targetProtocol The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetProtocol The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+         * @param targetProtocol The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
          * 
          * @return builder
          * 

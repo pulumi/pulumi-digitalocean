@@ -17,6 +17,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
         /// </summary>
         public readonly string? Day;
+        /// <summary>
+        /// A string denoting the duration of the service window, e.g., "04:00".
+        /// </summary>
         public readonly string? Duration;
         /// <summary>
         /// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).

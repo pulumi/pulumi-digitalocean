@@ -19,9 +19,17 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
 
     public static final CustomImageState Empty = new CustomImageState();
 
+    /**
+     * A time value given in ISO8601 combined date and time format that represents when the image was created.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
+    /**
+     * @return A time value given in ISO8601 combined date and time format that represents when the image was created.
+     * 
+     */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
@@ -56,16 +64,32 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.distribution);
     }
 
+    /**
+     * A unique number that can be used to identify and reference a specific image.
+     * 
+     */
     @Import(name="imageId")
     private @Nullable Output<Integer> imageId;
 
+    /**
+     * @return A unique number that can be used to identify and reference a specific image.
+     * 
+     */
     public Optional<Output<Integer>> imageId() {
         return Optional.ofNullable(this.imageId);
     }
 
+    /**
+     * The minimum disk size in GB required for a Droplet to use this image.
+     * 
+     */
     @Import(name="minDiskSize")
     private @Nullable Output<Integer> minDiskSize;
 
+    /**
+     * @return The minimum disk size in GB required for a Droplet to use this image.
+     * 
+     */
     public Optional<Output<Integer>> minDiskSize() {
         return Optional.ofNullable(this.minDiskSize);
     }
@@ -85,9 +109,17 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Indicates whether the image in question is public or not.
+     * 
+     */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
+    /**
+     * @return Indicates whether the image in question is public or not.
+     * 
+     */
     public Optional<Output<Boolean>> public_() {
         return Optional.ofNullable(this.public_);
     }
@@ -107,23 +139,47 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.regions);
     }
 
+    /**
+     * The size of the image in gigabytes.
+     * 
+     */
     @Import(name="sizeGigabytes")
     private @Nullable Output<Double> sizeGigabytes;
 
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
     public Optional<Output<Double>> sizeGigabytes() {
         return Optional.ofNullable(this.sizeGigabytes);
     }
 
+    /**
+     * A uniquely identifying string for each image.
+     * 
+     */
     @Import(name="slug")
     private @Nullable Output<String> slug;
 
+    /**
+     * @return A uniquely identifying string for each image.
+     * 
+     */
     public Optional<Output<String>> slug() {
         return Optional.ofNullable(this.slug);
     }
 
+    /**
+     * A status string indicating the state of a custom image.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return A status string indicating the state of a custom image.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -143,9 +199,17 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Describes the kind of image.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Describes the kind of image.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -202,11 +266,23 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
             $ = new CustomImageState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createdAt A time value given in ISO8601 combined date and time format that represents when the image was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<String> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt A time value given in ISO8601 combined date and time format that represents when the image was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
         }
@@ -253,20 +329,44 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
             return distribution(Output.of(distribution));
         }
 
+        /**
+         * @param imageId A unique number that can be used to identify and reference a specific image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(@Nullable Output<Integer> imageId) {
             $.imageId = imageId;
             return this;
         }
 
+        /**
+         * @param imageId A unique number that can be used to identify and reference a specific image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(Integer imageId) {
             return imageId(Output.of(imageId));
         }
 
+        /**
+         * @param minDiskSize The minimum disk size in GB required for a Droplet to use this image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minDiskSize(@Nullable Output<Integer> minDiskSize) {
             $.minDiskSize = minDiskSize;
             return this;
         }
 
+        /**
+         * @param minDiskSize The minimum disk size in GB required for a Droplet to use this image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minDiskSize(Integer minDiskSize) {
             return minDiskSize(Output.of(minDiskSize));
         }
@@ -292,11 +392,23 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param public_ Indicates whether the image in question is public or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder public_(@Nullable Output<Boolean> public_) {
             $.public_ = public_;
             return this;
         }
 
+        /**
+         * @param public_ Indicates whether the image in question is public or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder public_(Boolean public_) {
             return public_(Output.of(public_));
         }
@@ -332,29 +444,65 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
             return regions(List.of(regions));
         }
 
+        /**
+         * @param sizeGigabytes The size of the image in gigabytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sizeGigabytes(@Nullable Output<Double> sizeGigabytes) {
             $.sizeGigabytes = sizeGigabytes;
             return this;
         }
 
+        /**
+         * @param sizeGigabytes The size of the image in gigabytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sizeGigabytes(Double sizeGigabytes) {
             return sizeGigabytes(Output.of(sizeGigabytes));
         }
 
+        /**
+         * @param slug A uniquely identifying string for each image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slug(@Nullable Output<String> slug) {
             $.slug = slug;
             return this;
         }
 
+        /**
+         * @param slug A uniquely identifying string for each image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slug(String slug) {
             return slug(Output.of(slug));
         }
 
+        /**
+         * @param status A status string indicating the state of a custom image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status A status string indicating the state of a custom image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
@@ -390,11 +538,23 @@ public final class CustomImageState extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param type Describes the kind of image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Describes the kind of image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

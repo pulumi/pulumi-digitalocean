@@ -38,15 +38,15 @@ import (
 //			}
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
 //				Region: pulumi.String("nyc3"),
-//				ForwardingRules: LoadBalancerForwardingRuleArray{
-//					&LoadBalancerForwardingRuleArgs{
+//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+//					&digitalocean.LoadBalancerForwardingRuleArgs{
 //						EntryPort:      pulumi.Int(80),
 //						EntryProtocol:  pulumi.String("http"),
 //						TargetPort:     pulumi.Int(80),
 //						TargetProtocol: pulumi.String("http"),
 //					},
 //				},
-//				Healthcheck: &LoadBalancerHealthcheckArgs{
+//				Healthcheck: &digitalocean.LoadBalancerHealthcheckArgs{
 //					Port:     pulumi.Int(22),
 //					Protocol: pulumi.String("tcp"),
 //				},
@@ -98,8 +98,8 @@ import (
 //			}
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
 //				Region: pulumi.String("nyc3"),
-//				ForwardingRules: LoadBalancerForwardingRuleArray{
-//					&LoadBalancerForwardingRuleArgs{
+//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+//					&digitalocean.LoadBalancerForwardingRuleArgs{
 //						EntryPort:       pulumi.Int(443),
 //						EntryProtocol:   pulumi.String("https"),
 //						TargetPort:      pulumi.Int(80),
@@ -107,7 +107,7 @@ import (
 //						CertificateName: cert.Name,
 //					},
 //				},
-//				Healthcheck: &LoadBalancerHealthcheckArgs{
+//				Healthcheck: &digitalocean.LoadBalancerHealthcheckArgs{
 //					Port:     pulumi.Int(22),
 //					Protocol: pulumi.String("tcp"),
 //				},
@@ -158,11 +158,16 @@ type LoadBalancer struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckOutput `pulumi:"healthcheck"`
-	Ip          pulumi.StringOutput           `pulumi:"ip"`
+	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+	HttpIdleTimeoutSeconds pulumi.IntOutput `pulumi:"httpIdleTimeoutSeconds"`
+	// The ip of the Load Balancer
+	Ip pulumi.StringOutput `pulumi:"ip"`
 	// The uniform resource name for the Load Balancer
 	LoadBalancerUrn pulumi.StringOutput `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// A boolean value indicating whether
 	// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
 	// Default value is `false`.
@@ -238,11 +243,16 @@ type loadBalancerState struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
-	Ip          *string                  `pulumi:"ip"`
+	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+	HttpIdleTimeoutSeconds *int `pulumi:"httpIdleTimeoutSeconds"`
+	// The ip of the Load Balancer
+	Ip *string `pulumi:"ip"`
 	// The uniform resource name for the Load Balancer
 	LoadBalancerUrn *string `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
+	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+	ProjectId *string `pulumi:"projectId"`
 	// A boolean value indicating whether
 	// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
 	// Default value is `false`.
@@ -284,11 +294,16 @@ type LoadBalancerState struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckPtrInput
-	Ip          pulumi.StringPtrInput
+	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+	HttpIdleTimeoutSeconds pulumi.IntPtrInput
+	// The ip of the Load Balancer
+	Ip pulumi.StringPtrInput
 	// The uniform resource name for the Load Balancer
 	LoadBalancerUrn pulumi.StringPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
+	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+	ProjectId pulumi.StringPtrInput
 	// A boolean value indicating whether
 	// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
 	// Default value is `false`.
@@ -334,8 +349,12 @@ type loadBalancerArgs struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
+	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+	HttpIdleTimeoutSeconds *int `pulumi:"httpIdleTimeoutSeconds"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
+	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+	ProjectId *string `pulumi:"projectId"`
 	// A boolean value indicating whether
 	// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
 	// Default value is `false`.
@@ -377,8 +396,12 @@ type LoadBalancerArgs struct {
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckPtrInput
+	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+	HttpIdleTimeoutSeconds pulumi.IntPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
+	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+	ProjectId pulumi.StringPtrInput
 	// A boolean value indicating whether
 	// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
 	// Default value is `false`.
@@ -529,6 +552,12 @@ func (o LoadBalancerOutput) Healthcheck() LoadBalancerHealthcheckOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerHealthcheckOutput { return v.Healthcheck }).(LoadBalancerHealthcheckOutput)
 }
 
+// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+func (o LoadBalancerOutput) HttpIdleTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.HttpIdleTimeoutSeconds }).(pulumi.IntOutput)
+}
+
+// The ip of the Load Balancer
 func (o LoadBalancerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
@@ -541,6 +570,11 @@ func (o LoadBalancerOutput) LoadBalancerUrn() pulumi.StringOutput {
 // The Load Balancer name
 func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+func (o LoadBalancerOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // A boolean value indicating whether

@@ -34,9 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
-//				Filters: []GetSpacesBucketsFilter{
-//					GetSpacesBucketsFilter{
+//			_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
+//				Filters: []digitalocean.GetSpacesBucketsFilter{
+//					{
 //						Key: "region",
 //						Values: []string{
 //							"nyc3",
@@ -66,17 +66,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
-//				Filters: []GetSpacesBucketsFilter{
-//					GetSpacesBucketsFilter{
+//			_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
+//				Filters: []digitalocean.GetSpacesBucketsFilter{
+//					{
 //						Key: "region",
 //						Values: []string{
 //							"nyc3",
 //						},
 //					},
 //				},
-//				Sorts: []GetSpacesBucketsSort{
-//					GetSpacesBucketsSort{
+//				Sorts: []digitalocean.GetSpacesBucketsSort{
+//					{
 //						Direction: pulumi.StringRef("desc"),
 //						Key:       "name",
 //					},

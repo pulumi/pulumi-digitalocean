@@ -49,7 +49,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("digitalocean:index/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("digitalocean:index/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a list of tags in your DigitalOcean account, with the ability to
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagsResult> Invoke(GetTagsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagsResult>("digitalocean:index/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagsResult>("digitalocean:index/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());
     }
 
 

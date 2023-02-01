@@ -54,11 +54,7 @@ class GetImagesResult:
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
         """
-        A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
-        - `slug`: Unique text identifier of the image.
-        - `id`: The ID of the image.
-        - `name`: The name of the image.
-        - `type`: Type of the image.
+        A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
         """
         return pulumi.get(self, "images")
 

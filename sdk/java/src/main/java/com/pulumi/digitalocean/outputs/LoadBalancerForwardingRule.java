@@ -33,7 +33,7 @@ public final class LoadBalancerForwardingRule {
      */
     private Integer entryPort;
     /**
-     * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      * 
      */
     private String entryProtocol;
@@ -43,7 +43,7 @@ public final class LoadBalancerForwardingRule {
      */
     private Integer targetPort;
     /**
-     * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      * 
      */
     private String targetProtocol;
@@ -80,7 +80,7 @@ public final class LoadBalancerForwardingRule {
         return this.entryPort;
     }
     /**
-     * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * @return The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      * 
      */
     public String entryProtocol() {
@@ -94,7 +94,7 @@ public final class LoadBalancerForwardingRule {
         return this.targetPort;
     }
     /**
-     * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * @return The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      * 
      */
     public String targetProtocol() {

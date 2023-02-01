@@ -35,6 +35,7 @@ type GetRecordsArgs struct {
 
 // A collection of values returned by getRecords.
 type GetRecordsResult struct {
+	// Domain of the DNS record.
 	Domain  string             `pulumi:"domain"`
 	Filters []GetRecordsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -87,6 +88,7 @@ func (o GetRecordsResultOutput) ToGetRecordsResultOutputWithContext(ctx context.
 	return o
 }
 
+// Domain of the DNS record.
 func (o GetRecordsResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsResult) string { return v.Domain }).(pulumi.StringOutput)
 }

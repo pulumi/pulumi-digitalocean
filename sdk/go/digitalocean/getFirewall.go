@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupFirewall(ctx, &GetFirewallArgs{
+//			example, err := digitalocean.LookupFirewall(ctx, &digitalocean.LookupFirewallArgs{
 //				FirewallId: "1df48973-6eef-4214-854f-fa7726e7e583",
 //			}, nil)
 //			if err != nil {

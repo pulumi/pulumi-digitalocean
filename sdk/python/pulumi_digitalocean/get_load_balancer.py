@@ -22,7 +22,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, id=None, ip=None, load_balancer_urn=None, name=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -47,6 +47,9 @@ class GetLoadBalancerResult:
         if healthchecks and not isinstance(healthchecks, list):
             raise TypeError("Expected argument 'healthchecks' to be a list")
         pulumi.set(__self__, "healthchecks", healthchecks)
+        if http_idle_timeout_seconds and not isinstance(http_idle_timeout_seconds, int):
+            raise TypeError("Expected argument 'http_idle_timeout_seconds' to be a int")
+        pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -59,6 +62,9 @@ class GetLoadBalancerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https and not isinstance(redirect_http_to_https, bool):
             raise TypeError("Expected argument 'redirect_http_to_https' to be a bool")
         pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
@@ -122,6 +128,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "healthchecks")
 
     @property
+    @pulumi.getter(name="httpIdleTimeoutSeconds")
+    def http_idle_timeout_seconds(self) -> int:
+        return pulumi.get(self, "http_idle_timeout_seconds")
+
+    @property
     @pulumi.getter
     def id(self) -> Optional[str]:
         return pulumi.get(self, "id")
@@ -140,6 +151,11 @@ class GetLoadBalancerResult:
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="redirectHttpToHttps")
@@ -191,10 +207,12 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             enable_proxy_protocol=self.enable_proxy_protocol,
             forwarding_rules=self.forwarding_rules,
             healthchecks=self.healthchecks,
+            http_idle_timeout_seconds=self.http_idle_timeout_seconds,
             id=self.id,
             ip=self.ip,
             load_balancer_urn=self.load_balancer_urn,
             name=self.name,
+            project_id=self.project_id,
             redirect_http_to_https=self.redirect_http_to_https,
             region=self.region,
             size=self.size,
@@ -255,10 +273,12 @@ def get_load_balancer(id: Optional[str] = None,
         enable_proxy_protocol=__ret__.enable_proxy_protocol,
         forwarding_rules=__ret__.forwarding_rules,
         healthchecks=__ret__.healthchecks,
+        http_idle_timeout_seconds=__ret__.http_idle_timeout_seconds,
         id=__ret__.id,
         ip=__ret__.ip,
         load_balancer_urn=__ret__.load_balancer_urn,
         name=__ret__.name,
+        project_id=__ret__.project_id,
         redirect_http_to_https=__ret__.redirect_http_to_https,
         region=__ret__.region,
         size=__ret__.size,

@@ -41,11 +41,17 @@ class GetFloatingIpResult:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> int:
+        """
+        The Droplet id that the floating IP has been assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @property
     @pulumi.getter(name="floatingIpUrn")
     def floating_ip_urn(self) -> str:
+        """
+        The uniform resource name of the floating IP.
+        """
         return pulumi.get(self, "floating_ip_urn")
 
     @property
@@ -64,6 +70,9 @@ class GetFloatingIpResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region that the floating IP is reserved to.
+        """
         return pulumi.get(self, "region")
 
 

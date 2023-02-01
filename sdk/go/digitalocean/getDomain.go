@@ -35,12 +35,13 @@ type LookupDomainArgs struct {
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
 	// The uniform resource name of the domain
-	// * `zoneFile`: The zone file of the domain.
 	DomainUrn string `pulumi:"domainUrn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Name     string `pulumi:"name"`
-	Ttl      int    `pulumi:"ttl"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// The TTL of the domain.
+	Ttl int `pulumi:"ttl"`
+	// The zone file of the domain.
 	ZoneFile string `pulumi:"zoneFile"`
 }
 
@@ -83,7 +84,6 @@ func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx cont
 }
 
 // The uniform resource name of the domain
-// * `zoneFile`: The zone file of the domain.
 func (o LookupDomainResultOutput) DomainUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.DomainUrn }).(pulumi.StringOutput)
 }
@@ -97,10 +97,12 @@ func (o LookupDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The TTL of the domain.
 func (o LookupDomainResultOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainResult) int { return v.Ttl }).(pulumi.IntOutput)
 }
 
+// The zone file of the domain.
 func (o LookupDomainResultOutput) ZoneFile() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.ZoneFile }).(pulumi.StringOutput)
 }

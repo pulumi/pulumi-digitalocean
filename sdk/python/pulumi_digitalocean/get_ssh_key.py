@@ -38,11 +38,17 @@ class GetSshKeyResult:
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
+        """
+        The fingerprint of the public key of the ssh key.
+        """
         return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the ssh key.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -53,6 +59,9 @@ class GetSshKeyResult:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
+        """
+        The public key of the ssh key.
+        """
         return pulumi.get(self, "public_key")
 
 

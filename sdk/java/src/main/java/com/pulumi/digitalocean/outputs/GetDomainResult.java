@@ -12,7 +12,6 @@ import java.util.Objects;
 public final class GetDomainResult {
     /**
      * @return The uniform resource name of the domain
-     * * `zone_file`: The zone file of the domain.
      * 
      */
     private String domainUrn;
@@ -22,13 +21,20 @@ public final class GetDomainResult {
      */
     private String id;
     private String name;
+    /**
+     * @return The TTL of the domain.
+     * 
+     */
     private Integer ttl;
+    /**
+     * @return The zone file of the domain.
+     * 
+     */
     private String zoneFile;
 
     private GetDomainResult() {}
     /**
      * @return The uniform resource name of the domain
-     * * `zone_file`: The zone file of the domain.
      * 
      */
     public String domainUrn() {
@@ -44,9 +50,17 @@ public final class GetDomainResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The TTL of the domain.
+     * 
+     */
     public Integer ttl() {
         return this.ttl;
     }
+    /**
+     * @return The zone file of the domain.
+     * 
+     */
     public String zoneFile() {
         return this.zoneFile;
     }

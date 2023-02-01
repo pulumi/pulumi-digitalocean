@@ -30,13 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewApp(ctx, "golang-sample", &digitalocean.AppArgs{
-//				Spec: &AppSpecArgs{
+//				Spec: &digitalocean.AppSpecArgs{
 //					Name:   pulumi.String("golang-sample"),
 //					Region: pulumi.String("ams"),
-//					Services: AppSpecServiceArray{
-//						&AppSpecServiceArgs{
+//					Services: digitalocean.AppSpecServiceArray{
+//						&digitalocean.AppSpecServiceArgs{
 //							EnvironmentSlug: pulumi.String("go"),
-//							Git: &AppSpecServiceGitArgs{
+//							Git: &digitalocean.AppSpecServiceGitArgs{
 //								Branch:       pulumi.String("main"),
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
 //							},
@@ -70,13 +70,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewApp(ctx, "static-ste-example", &digitalocean.AppArgs{
-//				Spec: &AppSpecArgs{
+//				Spec: &digitalocean.AppSpecArgs{
 //					Name:   pulumi.String("static-ste-example"),
 //					Region: pulumi.String("ams"),
-//					StaticSites: AppSpecStaticSiteArray{
-//						&AppSpecStaticSiteArgs{
+//					StaticSites: digitalocean.AppSpecStaticSiteArray{
+//						&digitalocean.AppSpecStaticSiteArgs{
 //							BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
-//							Git: &AppSpecStaticSiteGitArgs{
+//							Git: &digitalocean.AppSpecStaticSiteGitArgs{
 //								Branch:       pulumi.String("main"),
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
 //							},

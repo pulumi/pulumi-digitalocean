@@ -73,7 +73,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The uniform resource name of the Droplet
-        /// * `name`- The name of the Droplet
         /// </summary>
         [Output("dropletUrn")]
         public Output<string> DropletUrn { get; private set; } = null!;
@@ -440,7 +439,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The uniform resource name of the Droplet
-        /// * `name`- The name of the Droplet
         /// </summary>
         [Input("dropletUrn")]
         public Input<string>? DropletUrn { get; set; }

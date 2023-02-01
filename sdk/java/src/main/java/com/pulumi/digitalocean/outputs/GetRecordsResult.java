@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRecordsResult {
+    /**
+     * @return Domain of the DNS record.
+     * 
+     */
     private String domain;
     private @Nullable List<GetRecordsFilter> filters;
     /**
@@ -25,6 +29,10 @@ public final class GetRecordsResult {
     private @Nullable List<GetRecordsSort> sorts;
 
     private GetRecordsResult() {}
+    /**
+     * @return Domain of the DNS record.
+     * 
+     */
     public String domain() {
         return this.domain;
     }

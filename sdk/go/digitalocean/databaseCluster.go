@@ -200,6 +200,12 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"privateUri",
+		"uri",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseCluster
 	err := ctx.RegisterResource("digitalocean:index/databaseCluster:DatabaseCluster", name, args, &resource, opts...)
 	if err != nil {

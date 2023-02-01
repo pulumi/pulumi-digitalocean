@@ -63,6 +63,9 @@ export class CustomImage extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomImage.__pulumiType;
     }
 
+    /**
+     * A time value given in ISO8601 combined date and time format that represents when the image was created.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * An optional description for the image.
@@ -72,24 +75,45 @@ export class CustomImage extends pulumi.CustomResource {
      * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
      */
     public readonly distribution!: pulumi.Output<string | undefined>;
+    /**
+     * A unique number that can be used to identify and reference a specific image.
+     */
     public /*out*/ readonly imageId!: pulumi.Output<number>;
+    /**
+     * The minimum disk size in GB required for a Droplet to use this image.
+     */
     public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
     /**
      * A name for the Custom Image.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Indicates whether the image in question is public or not.
+     */
     public /*out*/ readonly public!: pulumi.Output<boolean>;
     /**
      * A list of regions. (Currently only one is supported).
      */
     public readonly regions!: pulumi.Output<string[]>;
+    /**
+     * The size of the image in gigabytes.
+     */
     public /*out*/ readonly sizeGigabytes!: pulumi.Output<number>;
+    /**
+     * A uniquely identifying string for each image.
+     */
     public /*out*/ readonly slug!: pulumi.Output<string>;
+    /**
+     * A status string indicating the state of a custom image.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A list of optional tags for the image.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Describes the kind of image.
+     */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * A URL from which the custom Linux virtual machine image may be retrieved.
@@ -155,6 +179,9 @@ export class CustomImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomImage resources.
  */
 export interface CustomImageState {
+    /**
+     * A time value given in ISO8601 combined date and time format that represents when the image was created.
+     */
     createdAt?: pulumi.Input<string>;
     /**
      * An optional description for the image.
@@ -164,24 +191,45 @@ export interface CustomImageState {
      * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
      */
     distribution?: pulumi.Input<string>;
+    /**
+     * A unique number that can be used to identify and reference a specific image.
+     */
     imageId?: pulumi.Input<number>;
+    /**
+     * The minimum disk size in GB required for a Droplet to use this image.
+     */
     minDiskSize?: pulumi.Input<number>;
     /**
      * A name for the Custom Image.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Indicates whether the image in question is public or not.
+     */
     public?: pulumi.Input<boolean>;
     /**
      * A list of regions. (Currently only one is supported).
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The size of the image in gigabytes.
+     */
     sizeGigabytes?: pulumi.Input<number>;
+    /**
+     * A uniquely identifying string for each image.
+     */
     slug?: pulumi.Input<string>;
+    /**
+     * A status string indicating the state of a custom image.
+     */
     status?: pulumi.Input<string>;
     /**
      * A list of optional tags for the image.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the kind of image.
+     */
     type?: pulumi.Input<string>;
     /**
      * A URL from which the custom Linux virtual machine image may be retrieved.

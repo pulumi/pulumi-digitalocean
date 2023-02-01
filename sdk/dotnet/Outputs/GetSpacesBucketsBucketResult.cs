@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string BucketDomainName;
         /// <summary>
+        /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
         /// The name of the Spaces bucket
         /// </summary>
         public readonly string Name;
@@ -34,6 +38,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetSpacesBucketsBucketResult(
             string bucketDomainName,
 
+            string endpoint,
+
             string name,
 
             string region,
@@ -41,6 +47,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string urn)
         {
             BucketDomainName = bucketDomainName;
+            Endpoint = endpoint;
             Name = name;
             Region = region;
             Urn = urn;

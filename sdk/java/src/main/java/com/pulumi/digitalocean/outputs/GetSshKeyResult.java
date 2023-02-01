@@ -10,21 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSshKeyResult {
+    /**
+     * @return The fingerprint of the public key of the ssh key.
+     * 
+     */
     private String fingerprint;
+    /**
+     * @return The ID of the ssh key.
+     * 
+     */
     private Integer id;
     private String name;
+    /**
+     * @return The public key of the ssh key.
+     * 
+     */
     private String publicKey;
 
     private GetSshKeyResult() {}
+    /**
+     * @return The fingerprint of the public key of the ssh key.
+     * 
+     */
     public String fingerprint() {
         return this.fingerprint;
     }
+    /**
+     * @return The ID of the ssh key.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
     public String name() {
         return this.name;
     }
+    /**
+     * @return The public key of the ssh key.
+     * 
+     */
     public String publicKey() {
         return this.publicKey;
     }

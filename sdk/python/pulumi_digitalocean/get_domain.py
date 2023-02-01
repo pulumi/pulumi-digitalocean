@@ -43,7 +43,6 @@ class GetDomainResult:
     def domain_urn(self) -> str:
         """
         The uniform resource name of the domain
-        * `zone_file`: The zone file of the domain.
         """
         return pulumi.get(self, "domain_urn")
 
@@ -63,11 +62,17 @@ class GetDomainResult:
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        The TTL of the domain.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter(name="zoneFile")
     def zone_file(self) -> str:
+        """
+        The zone file of the domain.
+        """
         return pulumi.get(self, "zone_file")
 
 

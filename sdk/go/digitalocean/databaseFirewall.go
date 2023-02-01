@@ -42,12 +42,12 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 //				ClusterId: postgres_example.ID(),
-//				Rules: DatabaseFirewallRuleArray{
-//					&DatabaseFirewallRuleArgs{
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("ip_addr"),
 //						Value: pulumi.String("192.168.1.1"),
 //					},
-//					&DatabaseFirewallRuleArgs{
+//					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("ip_addr"),
 //						Value: pulumi.String("192.0.2.0"),
 //					},
@@ -95,8 +95,8 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 //				ClusterId: postgres_example.ID(),
-//				Rules: DatabaseFirewallRuleArray{
-//					&DatabaseFirewallRuleArgs{
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("droplet"),
 //						Value: web.ID(),
 //					},

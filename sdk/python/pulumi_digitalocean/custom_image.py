@@ -132,11 +132,19 @@ class _CustomImageState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomImage resources.
+        :param pulumi.Input[str] created_at: A time value given in ISO8601 combined date and time format that represents when the image was created.
         :param pulumi.Input[str] description: An optional description for the image.
         :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+        :param pulumi.Input[int] image_id: A unique number that can be used to identify and reference a specific image.
+        :param pulumi.Input[int] min_disk_size: The minimum disk size in GB required for a Droplet to use this image.
         :param pulumi.Input[str] name: A name for the Custom Image.
+        :param pulumi.Input[bool] public: Indicates whether the image in question is public or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
+        :param pulumi.Input[float] size_gigabytes: The size of the image in gigabytes.
+        :param pulumi.Input[str] slug: A uniquely identifying string for each image.
+        :param pulumi.Input[str] status: A status string indicating the state of a custom image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
+        :param pulumi.Input[str] type: Describes the kind of image.
         :param pulumi.Input[str] url: A URL from which the custom Linux virtual machine image may be retrieved.
         """
         if created_at is not None:
@@ -171,6 +179,9 @@ class _CustomImageState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        A time value given in ISO8601 combined date and time format that represents when the image was created.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -204,6 +215,9 @@ class _CustomImageState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        A unique number that can be used to identify and reference a specific image.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -213,6 +227,9 @@ class _CustomImageState:
     @property
     @pulumi.getter(name="minDiskSize")
     def min_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum disk size in GB required for a Droplet to use this image.
+        """
         return pulumi.get(self, "min_disk_size")
 
     @min_disk_size.setter
@@ -234,6 +251,9 @@ class _CustomImageState:
     @property
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the image in question is public or not.
+        """
         return pulumi.get(self, "public")
 
     @public.setter
@@ -255,6 +275,9 @@ class _CustomImageState:
     @property
     @pulumi.getter(name="sizeGigabytes")
     def size_gigabytes(self) -> Optional[pulumi.Input[float]]:
+        """
+        The size of the image in gigabytes.
+        """
         return pulumi.get(self, "size_gigabytes")
 
     @size_gigabytes.setter
@@ -264,6 +287,9 @@ class _CustomImageState:
     @property
     @pulumi.getter
     def slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        A uniquely identifying string for each image.
+        """
         return pulumi.get(self, "slug")
 
     @slug.setter
@@ -273,6 +299,9 @@ class _CustomImageState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        A status string indicating the state of a custom image.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -294,6 +323,9 @@ class _CustomImageState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the kind of image.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -477,11 +509,19 @@ class CustomImage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created_at: A time value given in ISO8601 combined date and time format that represents when the image was created.
         :param pulumi.Input[str] description: An optional description for the image.
         :param pulumi.Input[str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+        :param pulumi.Input[int] image_id: A unique number that can be used to identify and reference a specific image.
+        :param pulumi.Input[int] min_disk_size: The minimum disk size in GB required for a Droplet to use this image.
         :param pulumi.Input[str] name: A name for the Custom Image.
+        :param pulumi.Input[bool] public: Indicates whether the image in question is public or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of regions. (Currently only one is supported).
+        :param pulumi.Input[float] size_gigabytes: The size of the image in gigabytes.
+        :param pulumi.Input[str] slug: A uniquely identifying string for each image.
+        :param pulumi.Input[str] status: A status string indicating the state of a custom image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
+        :param pulumi.Input[str] type: Describes the kind of image.
         :param pulumi.Input[str] url: A URL from which the custom Linux virtual machine image may be retrieved.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -507,6 +547,9 @@ class CustomImage(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        A time value given in ISO8601 combined date and time format that represents when the image was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -528,11 +571,17 @@ class CustomImage(pulumi.CustomResource):
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[int]:
+        """
+        A unique number that can be used to identify and reference a specific image.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="minDiskSize")
     def min_disk_size(self) -> pulumi.Output[int]:
+        """
+        The minimum disk size in GB required for a Droplet to use this image.
+        """
         return pulumi.get(self, "min_disk_size")
 
     @property
@@ -546,6 +595,9 @@ class CustomImage(pulumi.CustomResource):
     @property
     @pulumi.getter
     def public(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the image in question is public or not.
+        """
         return pulumi.get(self, "public")
 
     @property
@@ -559,16 +611,25 @@ class CustomImage(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sizeGigabytes")
     def size_gigabytes(self) -> pulumi.Output[float]:
+        """
+        The size of the image in gigabytes.
+        """
         return pulumi.get(self, "size_gigabytes")
 
     @property
     @pulumi.getter
     def slug(self) -> pulumi.Output[str]:
+        """
+        A uniquely identifying string for each image.
+        """
         return pulumi.get(self, "slug")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        A status string indicating the state of a custom image.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -582,6 +643,9 @@ class CustomImage(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        Describes the kind of image.
+        """
         return pulumi.get(self, "type")
 
     @property

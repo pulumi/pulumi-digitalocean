@@ -158,6 +158,12 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "privateUri",
+                    "uri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -255,11 +261,21 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for the replica's default user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Network port that the database replica is listening on.
@@ -279,11 +295,21 @@ namespace Pulumi.DigitalOcean
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
 
+        [Input("privateUri")]
+        private Input<string>? _privateUri;
+
         /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
-        [Input("privateUri")]
-        public Input<string>? PrivateUri { get; set; }
+        public Input<string>? PrivateUri
+        {
+            get => _privateUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// DigitalOcean region where the replica will reside.
@@ -309,11 +335,21 @@ namespace Pulumi.DigitalOcean
             set => _tags = value;
         }
 
+        [Input("uri")]
+        private Input<string>? _uri;
+
         /// <summary>
         /// The full URI for connecting to the database replica.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        public Input<string>? Uri
+        {
+            get => _uri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for the replica's default user.

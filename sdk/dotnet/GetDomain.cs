@@ -21,7 +21,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account.
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a domain. This data source provides the name, TTL, and zone
@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account.
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -71,7 +71,6 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// The uniform resource name of the domain
-        /// * `zone_file`: The zone file of the domain.
         /// </summary>
         public readonly string DomainUrn;
         /// <summary>
@@ -79,7 +78,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// The TTL of the domain.
+        /// </summary>
         public readonly int Ttl;
+        /// <summary>
+        /// The zone file of the domain.
+        /// </summary>
         public readonly string ZoneFile;
 
         [OutputConstructor]

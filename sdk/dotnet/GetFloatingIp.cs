@@ -51,7 +51,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
@@ -93,7 +93,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -129,13 +129,22 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetFloatingIpResult
     {
+        /// <summary>
+        /// The Droplet id that the floating IP has been assigned to.
+        /// </summary>
         public readonly int DropletId;
+        /// <summary>
+        /// The uniform resource name of the floating IP.
+        /// </summary>
         public readonly string FloatingIpUrn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string IpAddress;
+        /// <summary>
+        /// The region that the floating IP is reserved to.
+        /// </summary>
         public readonly string Region;
 
         [OutputConstructor]

@@ -14,11 +14,8 @@ import * as utilities from "./utilities";
  * DigitalOcean account.
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDomain:getDomain", {
         "name": args.name,
     }, opts);
@@ -40,7 +37,6 @@ export interface GetDomainArgs {
 export interface GetDomainResult {
     /**
      * The uniform resource name of the domain
-     * * `zoneFile`: The zone file of the domain.
      */
     readonly domainUrn: string;
     /**
@@ -48,12 +44,26 @@ export interface GetDomainResult {
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * The TTL of the domain.
+     */
     readonly ttl: number;
+    /**
+     * The zone file of the domain.
+     */
     readonly zoneFile: string;
 }
-
+/**
+ * Get information on a domain. This data source provides the name, TTL, and zone
+ * file as configured on your DigitalOcean account. This is useful if the domain
+ * name in question is not managed by this provider or you need to utilize TTL or zone
+ * file data.
+ *
+ * An error is triggered if the provided domain name is not managed with your
+ * DigitalOcean account.
+ */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply(a => getDomain(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
 }
 
 /**

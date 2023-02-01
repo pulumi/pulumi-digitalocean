@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("digitalocean");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("digitalocean");
 
         private static readonly __Value<string?> _apiEndpoint = new __Value<string?>(() => __config.Get("apiEndpoint") ?? Utilities.GetEnv("DIGITALOCEAN_API_URL") ?? "https://api.digitalocean.com");
         /// <summary>

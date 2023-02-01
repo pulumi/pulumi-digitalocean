@@ -68,7 +68,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Volume snapshots are saved instances of a block storage volume. Use this data
@@ -127,7 +127,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 

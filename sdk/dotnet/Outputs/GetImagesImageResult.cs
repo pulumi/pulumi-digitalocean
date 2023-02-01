@@ -13,38 +13,64 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetImagesImageResult
     {
+        /// <summary>
+        /// When the image was created
+        /// </summary>
         public readonly string Created;
         public readonly string Description;
         /// <summary>
         /// The name of the distribution of the OS of the image.
-        /// - `min_disk_size`: The minimum 'disk' required for the image.
-        /// - `size_gigabytes`: The size of the image in GB.
         /// </summary>
         public readonly string Distribution;
+        /// <summary>
+        /// Any applicable error message pertaining to the image
+        /// </summary>
         public readonly string ErrorMessage;
+        /// <summary>
+        /// The ID of the image.
+        /// </summary>
         public readonly int Id;
         /// <summary>
         /// The id of the image (legacy parameter).
         /// </summary>
         public readonly string Image;
+        /// <summary>
+        /// The minimum 'disk' required for the image.
+        /// </summary>
         public readonly int MinDiskSize;
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Is image a public image or not. Public images represent
         /// Linux distributions or One-Click Applications, while non-public images represent
         /// snapshots and backups and are only available within your account.
-        /// - `regions`: A set of the regions that the image is available in.
-        /// - `tags`: A set of tags applied to the image
-        /// - `created`: When the image was created
-        /// - `status`: Current status of the image
-        /// - `error_message`: Any applicable error message pertaining to the image
         /// </summary>
         public readonly bool Private;
+        /// <summary>
+        /// A set of the regions that the image is available in.
+        /// </summary>
         public readonly ImmutableArray<string> Regions;
+        /// <summary>
+        /// The size of the image in GB.
+        /// </summary>
         public readonly double SizeGigabytes;
+        /// <summary>
+        /// Unique text identifier of the image.
+        /// </summary>
         public readonly string Slug;
+        /// <summary>
+        /// Current status of the image
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A set of tags applied to the image
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Type of the image.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

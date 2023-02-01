@@ -17,16 +17,32 @@ public final class ContainerRegistryDockerCredentialsState extends com.pulumi.re
 
     public static final ContainerRegistryDockerCredentialsState Empty = new ContainerRegistryDockerCredentialsState();
 
+    /**
+     * The date and time the registry access token will expire.
+     * 
+     */
     @Import(name="credentialExpirationTime")
     private @Nullable Output<String> credentialExpirationTime;
 
+    /**
+     * @return The date and time the registry access token will expire.
+     * 
+     */
     public Optional<Output<String>> credentialExpirationTime() {
         return Optional.ofNullable(this.credentialExpirationTime);
     }
 
+    /**
+     * Credentials for the container registry.
+     * 
+     */
     @Import(name="dockerCredentials")
     private @Nullable Output<String> dockerCredentials;
 
+    /**
+     * @return Credentials for the container registry.
+     * 
+     */
     public Optional<Output<String>> dockerCredentials() {
         return Optional.ofNullable(this.dockerCredentials);
     }
@@ -104,20 +120,44 @@ public final class ContainerRegistryDockerCredentialsState extends com.pulumi.re
             $ = new ContainerRegistryDockerCredentialsState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param credentialExpirationTime The date and time the registry access token will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialExpirationTime(@Nullable Output<String> credentialExpirationTime) {
             $.credentialExpirationTime = credentialExpirationTime;
             return this;
         }
 
+        /**
+         * @param credentialExpirationTime The date and time the registry access token will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialExpirationTime(String credentialExpirationTime) {
             return credentialExpirationTime(Output.of(credentialExpirationTime));
         }
 
+        /**
+         * @param dockerCredentials Credentials for the container registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dockerCredentials(@Nullable Output<String> dockerCredentials) {
             $.dockerCredentials = dockerCredentials;
             return this;
         }
 
+        /**
+         * @param dockerCredentials Credentials for the container registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dockerCredentials(String dockerCredentials) {
             return dockerCredentials(Output.of(dockerCredentials));
         }

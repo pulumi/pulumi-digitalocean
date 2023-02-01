@@ -57,6 +57,9 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/customImage:CustomImage")]
     public partial class CustomImage : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A time value given in ISO8601 combined date and time format that represents when the image was created.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -72,9 +75,15 @@ namespace Pulumi.DigitalOcean
         [Output("distribution")]
         public Output<string?> Distribution { get; private set; } = null!;
 
+        /// <summary>
+        /// A unique number that can be used to identify and reference a specific image.
+        /// </summary>
         [Output("imageId")]
         public Output<int> ImageId { get; private set; } = null!;
 
+        /// <summary>
+        /// The minimum disk size in GB required for a Droplet to use this image.
+        /// </summary>
         [Output("minDiskSize")]
         public Output<int> MinDiskSize { get; private set; } = null!;
 
@@ -84,6 +93,9 @@ namespace Pulumi.DigitalOcean
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the image in question is public or not.
+        /// </summary>
         [Output("public")]
         public Output<bool> Public { get; private set; } = null!;
 
@@ -93,12 +105,21 @@ namespace Pulumi.DigitalOcean
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
+        /// <summary>
+        /// The size of the image in gigabytes.
+        /// </summary>
         [Output("sizeGigabytes")]
         public Output<double> SizeGigabytes { get; private set; } = null!;
 
+        /// <summary>
+        /// A uniquely identifying string for each image.
+        /// </summary>
         [Output("slug")]
         public Output<string> Slug { get; private set; } = null!;
 
+        /// <summary>
+        /// A status string indicating the state of a custom image.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -108,6 +129,9 @@ namespace Pulumi.DigitalOcean
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the kind of image.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -219,6 +243,9 @@ namespace Pulumi.DigitalOcean
 
     public sealed class CustomImageState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A time value given in ISO8601 combined date and time format that represents when the image was created.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -234,9 +261,15 @@ namespace Pulumi.DigitalOcean
         [Input("distribution")]
         public Input<string>? Distribution { get; set; }
 
+        /// <summary>
+        /// A unique number that can be used to identify and reference a specific image.
+        /// </summary>
         [Input("imageId")]
         public Input<int>? ImageId { get; set; }
 
+        /// <summary>
+        /// The minimum disk size in GB required for a Droplet to use this image.
+        /// </summary>
         [Input("minDiskSize")]
         public Input<int>? MinDiskSize { get; set; }
 
@@ -246,6 +279,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Indicates whether the image in question is public or not.
+        /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
@@ -261,12 +297,21 @@ namespace Pulumi.DigitalOcean
             set => _regions = value;
         }
 
+        /// <summary>
+        /// The size of the image in gigabytes.
+        /// </summary>
         [Input("sizeGigabytes")]
         public Input<double>? SizeGigabytes { get; set; }
 
+        /// <summary>
+        /// A uniquely identifying string for each image.
+        /// </summary>
         [Input("slug")]
         public Input<string>? Slug { get; set; }
 
+        /// <summary>
+        /// A status string indicating the state of a custom image.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -282,6 +327,9 @@ namespace Pulumi.DigitalOcean
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Describes the kind of image.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

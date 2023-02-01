@@ -20,11 +20,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseCa(args: GetDatabaseCaArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseCaResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseCa:getDatabaseCa", {
         "clusterId": args.clusterId,
     }, opts);
@@ -54,9 +51,23 @@ export interface GetDatabaseCaResult {
      */
     readonly id: string;
 }
-
+/**
+ * Provides the CA certificate for a DigitalOcean database.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const ca = digitalocean.getDatabaseCa({
+ *     clusterId: "aaa-bbb-ccc-ddd",
+ * });
+ * export const caOutput = ca.then(ca => ca.certificate);
+ * ```
+ */
 export function getDatabaseCaOutput(args: GetDatabaseCaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseCaResult> {
-    return pulumi.output(args).apply(a => getDatabaseCa(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabaseCa(a, opts))
 }
 
 /**

@@ -146,6 +146,12 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<Outputs.SpacesBucketCorsRule>> CorsRules { get; private set; } = null!;
 
         /// <summary>
+        /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        /// </summary>
+        [Output("endpoint")]
+        public Output<string> Endpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         /// </summary>
         [Output("forceDestroy")]
@@ -312,6 +318,12 @@ namespace Pulumi.DigitalOcean
             get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleGetArgs>());
             set => _corsRules = value;
         }
+
+        /// <summary>
+        /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         /// <summary>
         /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)

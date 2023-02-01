@@ -34,9 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
-//				Sorts: []GetSshKeysSort{
-//					GetSshKeysSort{
+//			_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+//				Sorts: []digitalocean.GetSshKeysSort{
+//					{
 //						Direction: pulumi.StringRef("asc"),
 //						Key:       "name",
 //					},
@@ -65,9 +65,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
-//				Filters: []GetSshKeysFilter{
-//					GetSshKeysFilter{
+//			_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+//				Filters: []digitalocean.GetSshKeysFilter{
+//					{
 //						Key: "name",
 //						Values: []string{
 //							"laptop",

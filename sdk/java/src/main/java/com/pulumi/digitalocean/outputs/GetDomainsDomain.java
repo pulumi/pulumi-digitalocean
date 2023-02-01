@@ -12,10 +12,13 @@ import java.util.Objects;
 public final class GetDomainsDomain {
     /**
      * @return (Required) The name of the domain.
-     * - `ttl`-  The TTL of the domain.
      * 
      */
     private String name;
+    /**
+     * @return The TTL of the domain.
+     * 
+     */
     private Integer ttl;
     /**
      * @return The uniform resource name of the domain
@@ -26,12 +29,15 @@ public final class GetDomainsDomain {
     private GetDomainsDomain() {}
     /**
      * @return (Required) The name of the domain.
-     * - `ttl`-  The TTL of the domain.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The TTL of the domain.
+     * 
+     */
     public Integer ttl() {
         return this.ttl;
     }

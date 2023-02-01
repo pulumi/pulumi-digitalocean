@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -84,7 +86,9 @@ export class MonitorAlert extends pulumi.CustomResource {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -199,7 +203,9 @@ export interface MonitorAlertState {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -256,7 +262,9 @@ export interface MonitorAlertArgs {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      */
     type: pulumi.Input<string>;
     /**

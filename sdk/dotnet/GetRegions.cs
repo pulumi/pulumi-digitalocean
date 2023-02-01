@@ -97,7 +97,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -185,7 +185,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
     }
 
 

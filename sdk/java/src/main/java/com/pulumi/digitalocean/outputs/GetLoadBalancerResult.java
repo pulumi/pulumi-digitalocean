@@ -25,10 +25,12 @@ public final class GetLoadBalancerResult {
     private Boolean enableProxyProtocol;
     private List<GetLoadBalancerForwardingRule> forwardingRules;
     private List<GetLoadBalancerHealthcheck> healthchecks;
+    private Integer httpIdleTimeoutSeconds;
     private @Nullable String id;
     private String ip;
     private String loadBalancerUrn;
     private @Nullable String name;
+    private String projectId;
     private Boolean redirectHttpToHttps;
     private String region;
     private String size;
@@ -62,6 +64,9 @@ public final class GetLoadBalancerResult {
     public List<GetLoadBalancerHealthcheck> healthchecks() {
         return this.healthchecks;
     }
+    public Integer httpIdleTimeoutSeconds() {
+        return this.httpIdleTimeoutSeconds;
+    }
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
@@ -73,6 +78,9 @@ public final class GetLoadBalancerResult {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    public String projectId() {
+        return this.projectId;
     }
     public Boolean redirectHttpToHttps() {
         return this.redirectHttpToHttps;
@@ -113,10 +121,12 @@ public final class GetLoadBalancerResult {
         private Boolean enableProxyProtocol;
         private List<GetLoadBalancerForwardingRule> forwardingRules;
         private List<GetLoadBalancerHealthcheck> healthchecks;
+        private Integer httpIdleTimeoutSeconds;
         private @Nullable String id;
         private String ip;
         private String loadBalancerUrn;
         private @Nullable String name;
+        private String projectId;
         private Boolean redirectHttpToHttps;
         private String region;
         private String size;
@@ -135,10 +145,12 @@ public final class GetLoadBalancerResult {
     	      this.enableProxyProtocol = defaults.enableProxyProtocol;
     	      this.forwardingRules = defaults.forwardingRules;
     	      this.healthchecks = defaults.healthchecks;
+    	      this.httpIdleTimeoutSeconds = defaults.httpIdleTimeoutSeconds;
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.loadBalancerUrn = defaults.loadBalancerUrn;
     	      this.name = defaults.name;
+    	      this.projectId = defaults.projectId;
     	      this.redirectHttpToHttps = defaults.redirectHttpToHttps;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
@@ -198,6 +210,11 @@ public final class GetLoadBalancerResult {
             return healthchecks(List.of(healthchecks));
         }
         @CustomType.Setter
+        public Builder httpIdleTimeoutSeconds(Integer httpIdleTimeoutSeconds) {
+            this.httpIdleTimeoutSeconds = Objects.requireNonNull(httpIdleTimeoutSeconds);
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
@@ -215,6 +232,11 @@ public final class GetLoadBalancerResult {
         @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
         @CustomType.Setter
@@ -265,10 +287,12 @@ public final class GetLoadBalancerResult {
             o.enableProxyProtocol = enableProxyProtocol;
             o.forwardingRules = forwardingRules;
             o.healthchecks = healthchecks;
+            o.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             o.id = id;
             o.ip = ip;
             o.loadBalancerUrn = loadBalancerUrn;
             o.name = name;
+            o.projectId = projectId;
             o.redirectHttpToHttps = redirectHttpToHttps;
             o.region = region;
             o.size = size;

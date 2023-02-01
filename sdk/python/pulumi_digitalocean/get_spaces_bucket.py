@@ -21,10 +21,13 @@ class GetSpacesBucketResult:
     """
     A collection of values returned by getSpacesBucket.
     """
-    def __init__(__self__, bucket_domain_name=None, id=None, name=None, region=None, urn=None):
+    def __init__(__self__, bucket_domain_name=None, endpoint=None, id=None, name=None, region=None, urn=None):
         if bucket_domain_name and not isinstance(bucket_domain_name, str):
             raise TypeError("Expected argument 'bucket_domain_name' to be a str")
         pulumi.set(__self__, "bucket_domain_name", bucket_domain_name)
+        if endpoint and not isinstance(endpoint, str):
+            raise TypeError("Expected argument 'endpoint' to be a str")
+        pulumi.set(__self__, "endpoint", endpoint)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -45,6 +48,14 @@ class GetSpacesBucketResult:
         The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         """
         return pulumi.get(self, "bucket_domain_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
@@ -86,6 +97,7 @@ class AwaitableGetSpacesBucketResult(GetSpacesBucketResult):
             yield self
         return GetSpacesBucketResult(
             bucket_domain_name=self.bucket_domain_name,
+            endpoint=self.endpoint,
             id=self.id,
             name=self.name,
             region=self.region,
@@ -124,6 +136,7 @@ def get_spaces_bucket(name: Optional[str] = None,
 
     return AwaitableGetSpacesBucketResult(
         bucket_domain_name=__ret__.bucket_domain_name,
+        endpoint=__ret__.endpoint,
         id=__ret__.id,
         name=__ret__.name,
         region=__ret__.region,

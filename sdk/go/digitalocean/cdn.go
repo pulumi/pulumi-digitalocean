@@ -14,8 +14,7 @@ import (
 // Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 //
 // ## Example Usage
-//
-// #### Basic Example
+// ### Basic Example
 //
 // ```go
 // package main
@@ -48,8 +47,7 @@ import (
 //	}
 //
 // ```
-//
-// #### Custom Sub-Domain Example
+// ### Custom Sub-Domain Example
 //
 // ```go
 // package main

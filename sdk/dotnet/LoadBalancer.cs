@@ -175,6 +175,15 @@ namespace Pulumi.DigitalOcean
         [Output("healthcheck")]
         public Output<Outputs.LoadBalancerHealthcheck> Healthcheck { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        /// </summary>
+        [Output("httpIdleTimeoutSeconds")]
+        public Output<int> HttpIdleTimeoutSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// The ip of the Load Balancer
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
@@ -189,6 +198,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// A boolean value indicating whether
@@ -345,10 +360,22 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.LoadBalancerHealthcheckArgs>? Healthcheck { get; set; }
 
         /// <summary>
+        /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        /// </summary>
+        [Input("httpIdleTimeoutSeconds")]
+        public Input<int>? HttpIdleTimeoutSeconds { get; set; }
+
+        /// <summary>
         /// The Load Balancer name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether
@@ -463,6 +490,15 @@ namespace Pulumi.DigitalOcean
         [Input("healthcheck")]
         public Input<Inputs.LoadBalancerHealthcheckGetArgs>? Healthcheck { get; set; }
 
+        /// <summary>
+        /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        /// </summary>
+        [Input("httpIdleTimeoutSeconds")]
+        public Input<int>? HttpIdleTimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// The ip of the Load Balancer
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
@@ -477,6 +513,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether

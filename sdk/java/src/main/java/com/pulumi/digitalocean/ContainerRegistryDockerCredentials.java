@@ -13,6 +13,7 @@ import com.pulumi.digitalocean.inputs.ContainerRegistryDockerCredentialsState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -94,15 +95,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")
 public class ContainerRegistryDockerCredentials extends com.pulumi.resources.CustomResource {
+    /**
+     * The date and time the registry access token will expire.
+     * 
+     */
     @Export(name="credentialExpirationTime", type=String.class, parameters={})
     private Output<String> credentialExpirationTime;
 
+    /**
+     * @return The date and time the registry access token will expire.
+     * 
+     */
     public Output<String> credentialExpirationTime() {
         return this.credentialExpirationTime;
     }
+    /**
+     * Credentials for the container registry.
+     * 
+     */
     @Export(name="dockerCredentials", type=String.class, parameters={})
     private Output<String> dockerCredentials;
 
+    /**
+     * @return Credentials for the container registry.
+     * 
+     */
     public Output<String> dockerCredentials() {
         return this.dockerCredentials;
     }
@@ -181,6 +198,9 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "dockerCredentials"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

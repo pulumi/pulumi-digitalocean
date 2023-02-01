@@ -17,7 +17,7 @@ namespace Pulumi.DigitalOcean
         /// will be returned.
         /// </summary>
         public static Task<GetSizesResult> InvokeAsync(GetSizesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
         /// will be returned.
         /// </summary>
         public static Output<GetSizesResult> Invoke(GetSizesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithDefaults());
     }
 
 

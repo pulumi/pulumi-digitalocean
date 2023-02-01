@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -80,7 +82,6 @@ export class Droplet extends pulumi.CustomResource {
     public readonly dropletAgent!: pulumi.Output<boolean | undefined>;
     /**
      * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      */
     public /*out*/ readonly dropletUrn!: pulumi.Output<string>;
     /**
@@ -295,7 +296,6 @@ export interface DropletState {
     dropletAgent?: pulumi.Input<boolean>;
     /**
      * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      */
     dropletUrn?: pulumi.Input<string>;
     /**

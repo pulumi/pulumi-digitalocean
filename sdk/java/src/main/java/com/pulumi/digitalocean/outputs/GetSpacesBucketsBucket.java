@@ -15,6 +15,11 @@ public final class GetSpacesBucketsBucket {
      */
     private String bucketDomainName;
     /**
+     * @return The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    private String endpoint;
+    /**
      * @return The name of the Spaces bucket
      * 
      */
@@ -37,6 +42,13 @@ public final class GetSpacesBucketsBucket {
      */
     public String bucketDomainName() {
         return this.bucketDomainName;
+    }
+    /**
+     * @return The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    public String endpoint() {
+        return this.endpoint;
     }
     /**
      * @return The name of the Spaces bucket
@@ -70,6 +82,7 @@ public final class GetSpacesBucketsBucket {
     @CustomType.Builder
     public static final class Builder {
         private String bucketDomainName;
+        private String endpoint;
         private String name;
         private String region;
         private String urn;
@@ -77,6 +90,7 @@ public final class GetSpacesBucketsBucket {
         public Builder(GetSpacesBucketsBucket defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketDomainName = defaults.bucketDomainName;
+    	      this.endpoint = defaults.endpoint;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.urn = defaults.urn;
@@ -85,6 +99,11 @@ public final class GetSpacesBucketsBucket {
         @CustomType.Setter
         public Builder bucketDomainName(String bucketDomainName) {
             this.bucketDomainName = Objects.requireNonNull(bucketDomainName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpoint(String endpoint) {
+            this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
         @CustomType.Setter
@@ -105,6 +124,7 @@ public final class GetSpacesBucketsBucket {
         public GetSpacesBucketsBucket build() {
             final var o = new GetSpacesBucketsBucket();
             o.bucketDomainName = bucketDomainName;
+            o.endpoint = endpoint;
             o.name = name;
             o.region = region;
             o.urn = urn;

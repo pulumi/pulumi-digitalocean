@@ -206,6 +206,20 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.corsRules);
     }
     /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    @Export(name="endpoint", type=String.class, parameters={})
+    private Output<String> endpoint;
+
+    /**
+     * @return The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    public Output<String> endpoint() {
+        return this.endpoint;
+    }
+    /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      * 
      */

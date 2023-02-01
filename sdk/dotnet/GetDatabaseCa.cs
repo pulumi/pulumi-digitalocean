@@ -40,7 +40,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseCaResult> InvokeAsync(GetDatabaseCaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides the CA certificate for a DigitalOcean database.
@@ -71,7 +71,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseCaResult> Invoke(GetDatabaseCaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaInvokeArgs(), options.WithDefaults());
     }
 
 

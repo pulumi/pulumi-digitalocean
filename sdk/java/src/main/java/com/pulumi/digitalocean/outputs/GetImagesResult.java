@@ -22,10 +22,6 @@ public final class GetImagesResult {
     private String id;
     /**
      * @return A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
-     * - `slug`: Unique text identifier of the image.
-     * - `id`: The ID of the image.
-     * - `name`: The name of the image.
-     * - `type`: Type of the image.
      * 
      */
     private List<GetImagesImage> images;
@@ -44,10 +40,6 @@ public final class GetImagesResult {
     }
     /**
      * @return A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
-     * - `slug`: Unique text identifier of the image.
-     * - `id`: The ID of the image.
-     * - `name`: The name of the image.
-     * - `type`: Type of the image.
      * 
      */
     public List<GetImagesImage> images() {

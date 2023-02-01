@@ -101,7 +101,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on images for use in other resources (e.g. creating a Droplet
@@ -193,7 +193,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -275,11 +275,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
-        /// - `slug`: Unique text identifier of the image.
-        /// - `id`: The ID of the image.
-        /// - `name`: The name of the image.
-        /// - `type`: Type of the image.
+        /// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly ImmutableArray<Outputs.GetImagesSortResult> Sorts;

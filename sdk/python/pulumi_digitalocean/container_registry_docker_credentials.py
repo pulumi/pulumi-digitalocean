@@ -76,6 +76,8 @@ class _ContainerRegistryDockerCredentialsState:
                  write: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ContainerRegistryDockerCredentials resources.
+        :param pulumi.Input[str] credential_expiration_time: The date and time the registry access token will expire.
+        :param pulumi.Input[str] docker_credentials: Credentials for the container registry.
         :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
@@ -94,6 +96,9 @@ class _ContainerRegistryDockerCredentialsState:
     @property
     @pulumi.getter(name="credentialExpirationTime")
     def credential_expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the registry access token will expire.
+        """
         return pulumi.get(self, "credential_expiration_time")
 
     @credential_expiration_time.setter
@@ -103,6 +108,9 @@ class _ContainerRegistryDockerCredentialsState:
     @property
     @pulumi.getter(name="dockerCredentials")
     def docker_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Credentials for the container registry.
+        """
         return pulumi.get(self, "docker_credentials")
 
     @docker_credentials.setter
@@ -257,6 +265,8 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
             __props__.__dict__["write"] = write
             __props__.__dict__["credential_expiration_time"] = None
             __props__.__dict__["docker_credentials"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["dockerCredentials"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ContainerRegistryDockerCredentials, __self__).__init__(
             'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
             resource_name,
@@ -279,6 +289,8 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] credential_expiration_time: The date and time the registry access token will expire.
+        :param pulumi.Input[str] docker_credentials: Credentials for the container registry.
         :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
@@ -297,11 +309,17 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
     @property
     @pulumi.getter(name="credentialExpirationTime")
     def credential_expiration_time(self) -> pulumi.Output[str]:
+        """
+        The date and time the registry access token will expire.
+        """
         return pulumi.get(self, "credential_expiration_time")
 
     @property
     @pulumi.getter(name="dockerCredentials")
     def docker_credentials(self) -> pulumi.Output[str]:
+        """
+        Credentials for the container registry.
+        """
         return pulumi.get(self, "docker_credentials")
 
     @property

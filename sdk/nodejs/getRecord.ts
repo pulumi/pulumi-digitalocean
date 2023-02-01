@@ -13,11 +13,8 @@ import * as utilities from "./utilities";
  * your DigitalOcean account.
  */
 export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getRecord:getRecord", {
         "domain": args.domain,
         "name": args.name,
@@ -42,24 +39,55 @@ export interface GetRecordArgs {
  * A collection of values returned by getRecord.
  */
 export interface GetRecordResult {
+    /**
+     * Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+     */
     readonly data: string;
     readonly domain: string;
+    /**
+     * An unsigned integer between 0-255 used for CAA records.
+     */
     readonly flags: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * The port for SRV records.
+     */
     readonly port: number;
+    /**
+     * The priority for SRV and MX records.
+     */
     readonly priority: number;
+    /**
+     * The parameter tag for CAA records.
+     */
     readonly tag: string;
+    /**
+     * This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+     */
     readonly ttl: number;
+    /**
+     * The type of the DNS record.
+     */
     readonly type: string;
+    /**
+     * The weight for SRV records.
+     */
     readonly weight: number;
 }
-
+/**
+ * Get information on a DNS record. This data source provides the name, TTL, and zone
+ * file as configured on your DigitalOcean account. This is useful if the record
+ * in question is not managed by the provider.
+ *
+ * An error is triggered if the provided domain name or record are not managed with
+ * your DigitalOcean account.
+ */
 export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
-    return pulumi.output(args).apply(a => getRecord(a, opts))
+    return pulumi.output(args).apply((a: any) => getRecord(a, opts))
 }
 
 /**

@@ -273,9 +273,31 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<LoadBalancerHealthcheck> healthcheck() {
         return this.healthcheck;
     }
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    @Export(name="httpIdleTimeoutSeconds", type=Integer.class, parameters={})
+    private Output<Integer> httpIdleTimeoutSeconds;
+
+    /**
+     * @return Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    public Output<Integer> httpIdleTimeoutSeconds() {
+        return this.httpIdleTimeoutSeconds;
+    }
+    /**
+     * The ip of the Load Balancer
+     * 
+     */
     @Export(name="ip", type=String.class, parameters={})
     private Output<String> ip;
 
+    /**
+     * @return The ip of the Load Balancer
+     * 
+     */
     public Output<String> ip() {
         return this.ip;
     }
@@ -306,6 +328,20 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    @Export(name="projectId", type=String.class, parameters={})
+    private Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
     }
     /**
      * A boolean value indicating whether

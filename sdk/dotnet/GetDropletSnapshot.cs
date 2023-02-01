@@ -57,7 +57,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
-        ///         Image = web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult).Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Region = "nyc3",
         ///         Size = "s-2vcpu-4gb",
         ///     });
@@ -68,7 +68,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletSnapshotResult> InvokeAsync(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Droplet snapshots are saved instances of a Droplet. Use this data
@@ -116,7 +116,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
-        ///         Image = web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult).Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Region = "nyc3",
         ///         Size = "s-2vcpu-4gb",
         ///     });
@@ -127,7 +127,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDropletSnapshotResult> Invoke(GetDropletSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -26,13 +26,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDatabaseCluster(ctx, &GetDatabaseClusterArgs{
+//			example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 //				Name: "example-cluster",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			read_only, err := digitalocean.LookupDatabaseReplica(ctx, &GetDatabaseReplicaArgs{
+//			read_only, err := digitalocean.LookupDatabaseReplica(ctx, &digitalocean.LookupDatabaseReplicaArgs{
 //				ClusterId: example.Id,
 //				Name:      "terra-test-ro",
 //			}, nil)
