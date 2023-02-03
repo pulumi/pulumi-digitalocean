@@ -24,7 +24,7 @@ else ifeq ("$(wildcard patches/*.patch)","")
 	@echo "patches were expected because upstream exists"
 	@exit 1
 else
-	git submodule update --force
+	git submodule update --force --init
 	cd upstream; \
 	for patch in $(sort $(wildcard patches/*.patch)); do git apply ../$$patch || exit 1; done
 endif
