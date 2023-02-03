@@ -15,6 +15,20 @@ WORKING_DIR := $(shell pwd)
 
 development: install_plugins provider build_sdks install_sdks
 
+patch:
+ifeq ("$(wildcard upstream)","")
+    # upstream doesn't exist, so skip
+else ifeq ("$(wildcard patches/*.patch)","")
+    # upstream exists, but patches don't exist. This is probably an error.
+	@echo "No patches found within the patch operation"
+	@echo "patches were expected because upstream exists"
+	@exit 1
+else
+	git submodule update --force
+	cd upstream; \
+	for patch in $(sort $(wildcard patches/*.patch)); do git apply ../$$patch || exit 1; done
+endif
+
 build: install_plugins provider build_sdks install_sdks
 
 build_sdks: build_nodejs build_python build_go build_dotnet build_java
@@ -103,7 +117,7 @@ provider: tfgen install_plugins
 test: 
 	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h
 
-tfgen: install_plugins
+tfgen: install_plugins patch
 	(cd provider && go build -p 1 -o $(WORKING_DIR)/bin/$(TFGEN) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(TFGEN))
 	$(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
@@ -111,4 +125,4 @@ tfgen: install_plugins
 bin/pulumi-java-gen: 
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen patch

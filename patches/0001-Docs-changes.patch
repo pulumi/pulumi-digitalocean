@@ -1,0 +1,518 @@
+From e8059164b3aaef917dc8992e99e70420d7fc8b37 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Thu, 2 Feb 2023 18:34:03 -0800
+Subject: [PATCH] Docs changes
+
+---
+ docs/data-sources/certificate.md           |  2 +-
+ docs/data-sources/container_registry.md    |  2 +-
+ docs/data-sources/domain.md                |  3 +--
+ docs/data-sources/domains.md               |  2 +-
+ docs/data-sources/droplet.md               |  2 +-
+ docs/data-sources/droplet_snapshot.md      |  2 +-
+ docs/data-sources/droplets.md              |  2 +-
+ docs/data-sources/floating_ip.md           |  2 +-
+ docs/data-sources/image.md                 |  2 +-
+ docs/data-sources/images.md                |  2 +-
+ docs/data-sources/kubernetes_cluster.md    |  2 +-
+ docs/data-sources/kubernetes_versions.md   |  2 +-
+ docs/data-sources/loadbalancer.md          |  4 ++--
+ docs/data-sources/record.md                |  3 +--
+ docs/data-sources/spaces_bucket.md         |  2 +-
+ docs/data-sources/spaces_bucket_object.md  |  2 +-
+ docs/data-sources/spaces_bucket_objects.md |  4 ++--
+ docs/data-sources/ssh_key.md               |  2 +-
+ docs/data-sources/ssh_keys.md              |  2 +-
+ docs/data-sources/tag.md                   |  2 +-
+ docs/data-sources/volume.md                |  2 +-
+ docs/data-sources/volume_snapshot.md       |  2 +-
+ docs/data-sources/vpc.md                   |  2 +-
+ docs/resources/certificate.md              | 12 ++++++------
+ docs/resources/droplet.md                  |  7 +++----
+ docs/resources/project.md                  |  2 +-
+ docs/resources/project_resources.md        |  4 ++--
+ docs/resources/spaces_bucket_object.md     |  6 +++---
+ docs/resources/ssh_key.md                  |  4 ++--
+ 29 files changed, 42 insertions(+), 45 deletions(-)
+
+diff --git a/docs/data-sources/certificate.md b/docs/data-sources/certificate.md
+index 09a83ab8..7b8a362a 100644
+--- a/docs/data-sources/certificate.md
++++ b/docs/data-sources/certificate.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_certificate"
+ 
+ Get information on a certificate. This data source provides the name, type, state,
+ domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
+-This is useful if the certificate in question is not managed by Terraform or you need to utilize
++This is useful if the certificate in question is not managed by this provider or you need to utilize
+ any of the certificates data.
+ 
+ An error is triggered if the provided certificate name does not exist.
+diff --git a/docs/data-sources/container_registry.md b/docs/data-sources/container_registry.md
+index de824efc..06955243 100644
+--- a/docs/data-sources/container_registry.md
++++ b/docs/data-sources/container_registry.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_container_registry"
+ 
+ Get information on a container registry. This data source provides the name as
+ configured on your DigitalOcean account. This is useful if the container
+-registry name in question is not managed by Terraform or you need validate if
++registry name in question is not managed by this provider or you need validate if
+ the container registry exists in the account.
+ 
+ An error is triggered if the provided container registry name does not exist.
+diff --git a/docs/data-sources/domain.md b/docs/data-sources/domain.md
+index 4bd32c8e..994528e6 100644
+--- a/docs/data-sources/domain.md
++++ b/docs/data-sources/domain.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_domain"
+ 
+ Get information on a domain. This data source provides the name, TTL, and zone
+ file as configured on your DigitalOcean account. This is useful if the domain
+-name in question is not managed by Terraform or you need to utilize TTL or zone
++name in question is not managed by this provider or you need to utilize TTL or zone
+ file data.
+ 
+ An error is triggered if the provided domain name is not managed with your
+@@ -27,7 +27,6 @@ output "domain_output" {
+ ```
+ 
+ ```
+-  $ terraform apply
+ 
+ data.digitalocean_domain.example: Refreshing state...
+ 
+diff --git a/docs/data-sources/domains.md b/docs/data-sources/domains.md
+index 50d89499..8dc38166 100644
+--- a/docs/data-sources/domains.md
++++ b/docs/data-sources/domains.md
+@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_domains"
+ Get information on domains for use in other resources, with the ability to filter and sort the results.
+ If no filters are specified, all domains will be returned.
+ 
+-This data source is useful if the domains in question are not managed by Terraform or you need to
++This data source is useful if the domains in question are not managed by this provider or you need to
+ utilize any of the domains' data.
+ 
+ Note: You can use the [`digitalocean_domain`](domain) data source to obtain metadata
+diff --git a/docs/data-sources/droplet.md b/docs/data-sources/droplet.md
+index 27196145..3fefc275 100644
+--- a/docs/data-sources/droplet.md
++++ b/docs/data-sources/droplet.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_droplet"
+ 
+ Get information on a Droplet for use in other resources. This data source provides
+ all of the Droplet's properties as configured on your DigitalOcean account. This
+-is useful if the Droplet in question is not managed by Terraform or you need to
++is useful if the Droplet in question is not managed by this provider or you need to
+ utilize any of the Droplet's data.
+ 
+ **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+diff --git a/docs/data-sources/droplet_snapshot.md b/docs/data-sources/droplet_snapshot.md
+index 8e3a0f25..df24d72c 100644
+--- a/docs/data-sources/droplet_snapshot.md
++++ b/docs/data-sources/droplet_snapshot.md
+@@ -49,7 +49,7 @@ resource "digitalocean_droplet" "from-snapshot" {
+ * `most_recent` - (Optional) If more than one result is returned, use the most recent Droplet snapshot.
+ 
+ ~> **NOTE:** If more or less than a single match is returned by the search,
+-Terraform will fail. Ensure that your search is specific enough to return
++the update will fail. Ensure that your search is specific enough to return
+ a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+ 
+ ## Attributes Reference
+diff --git a/docs/data-sources/droplets.md b/docs/data-sources/droplets.md
+index 65a44175..dbd6244f 100644
+--- a/docs/data-sources/droplets.md
++++ b/docs/data-sources/droplets.md
+@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_droplets"
+ Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+ If no filters are specified, all Droplets will be returned.
+ 
+-This data source is useful if the Droplets in question are not managed by Terraform or you need to
++This data source is useful if the Droplets in question are not managed by the provider or you need to
+ utilize any of the Droplets' data.
+ 
+ Note: You can use the [`digitalocean_droplet`](droplet) data source to obtain metadata
+diff --git a/docs/data-sources/floating_ip.md b/docs/data-sources/floating_ip.md
+index 30ed6369..63b5e2de 100644
+--- a/docs/data-sources/floating_ip.md
++++ b/docs/data-sources/floating_ip.md
+@@ -8,7 +8,7 @@ page_title: "DigitalOcean: digitalocean_floating_ip"
+ 
+ Get information on a floating ip. This data source provides the region and Droplet id
+ as configured on your DigitalOcean account. This is useful if the floating IP
+-in question is not managed by Terraform or you need to find the Droplet the IP is
++in question is not managed by the provider or you need to find the Droplet the IP is
+ attached to.
+ 
+ An error is triggered if the provided floating IP does not exist.
+diff --git a/docs/data-sources/image.md b/docs/data-sources/image.md
+index 57a7f433..0c3fbd71 100644
+--- a/docs/data-sources/image.md
++++ b/docs/data-sources/image.md
+@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_image"
+ Get information on an image for use in other resources (e.g. creating a Droplet
+ based on snapshot). This data source provides all of the image properties as
+ configured on your DigitalOcean account. This is useful if the image in question
+-is not managed by Terraform or you need to utilize any of the image's data.
++is not managed by the provider or you need to utilize any of the image's data.
+ 
+ An error is triggered if zero or more than one result is returned by the query.
+ 
+diff --git a/docs/data-sources/images.md b/docs/data-sources/images.md
+index 63bd5abd..4d5481c1 100644
+--- a/docs/data-sources/images.md
++++ b/docs/data-sources/images.md
+@@ -8,7 +8,7 @@ Get information on images for use in other resources (e.g. creating a Droplet
+ based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+ all images will be returned.
+ 
+-This data source is useful if the image in question is not managed by Terraform or you need to utilize any
++This data source is useful if the image in question is not managed by the provider or you need to utilize any
+ of the image's data.
+ 
+ Note: You can use the [`digitalocean_image`](image) data source to obtain metadata
+diff --git a/docs/data-sources/kubernetes_cluster.md b/docs/data-sources/kubernetes_cluster.md
+index 0826c66f..922140dd 100644
+--- a/docs/data-sources/kubernetes_cluster.md
++++ b/docs/data-sources/kubernetes_cluster.md
+@@ -4,7 +4,7 @@ page_title: "DigitalOcean: digitalocean_kubernetes_cluster"
+ 
+ # digitalocean\_kubernetes\_cluster
+ 
+-Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
++Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+ 
+ ## Example Usage
+ 
+diff --git a/docs/data-sources/kubernetes_versions.md b/docs/data-sources/kubernetes_versions.md
+index 63e6b65a..d789b561 100644
+--- a/docs/data-sources/kubernetes_versions.md
++++ b/docs/data-sources/kubernetes_versions.md
+@@ -60,7 +60,7 @@ resource "digitalocean_kubernetes_cluster" "example-cluster" {
+ 
+ The following arguments are supported:
+ 
+-* `version_prefix` - (Optional) If provided, Terraform will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
++* `version_prefix` - (Optional) If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
+ 
+ ## Attributes Reference
+ 
+diff --git a/docs/data-sources/loadbalancer.md b/docs/data-sources/loadbalancer.md
+index 7f30f099..c11b083e 100644
+--- a/docs/data-sources/loadbalancer.md
++++ b/docs/data-sources/loadbalancer.md
+@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_loadbalancer"
+ Get information on a load balancer for use in other resources. This data source
+ provides all of the load balancers properties as configured on your DigitalOcean
+ account. This is useful if the load balancer in question is not managed by
+-Terraform or you need to utilize any of the load balancers data.
++the provider or you need to utilize any of the load balancers data.
+ 
+ An error is triggered if the provided load balancer name does not exist.
+ 
+@@ -43,5 +43,5 @@ The following arguments are supported:
+ 
+ ## Attributes Reference
+ 
+-See the [Load Balancer Resource](/providers/digitalocean/digitalocean/latest/docs/resources/loadbalancer) for details on the
++See the Load Balancer Resource for details on the
+ returned attributes - they are identical.
+diff --git a/docs/data-sources/record.md b/docs/data-sources/record.md
+index fd0a9b4f..219b4a8a 100644
+--- a/docs/data-sources/record.md
++++ b/docs/data-sources/record.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_record"
+ 
+ Get information on a DNS record. This data source provides the name, TTL, and zone
+ file as configured on your DigitalOcean account. This is useful if the record
+-in question is not managed by Terraform.
++in question is not managed by the provider.
+ 
+ An error is triggered if the provided domain name or record are not managed with
+ your DigitalOcean account.
+@@ -31,7 +31,6 @@ output "record_ttl" {
+ ```
+ 
+ ```
+-  $ terraform apply
+ 
+ data.digitalocean_record.example: Refreshing state...
+ 
+diff --git a/docs/data-sources/spaces_bucket.md b/docs/data-sources/spaces_bucket.md
+index ec36618c..19e877b2 100644
+--- a/docs/data-sources/spaces_bucket.md
++++ b/docs/data-sources/spaces_bucket.md
+@@ -5,7 +5,7 @@ page_title: "DigitalOcean: digitalocean_spaces_bucket"
+ # digitalocean_spaces_bucket
+ 
+ Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+-is not managed by Terraform or you need to utilize any of the bucket's data.
++is not managed by the provider or you need to utilize any of the bucket's data.
+ 
+ ## Example Usage
+ 
+diff --git a/docs/data-sources/spaces_bucket_object.md b/docs/data-sources/spaces_bucket_object.md
+index bfca3026..faec731e 100644
+--- a/docs/data-sources/spaces_bucket_object.md
++++ b/docs/data-sources/spaces_bucket_object.md
+@@ -60,6 +60,6 @@ In addition to all arguments above, the following attributes are exported:
+ * `version_id` - The latest version ID of the object returned.
+ * `website_redirect_location` - If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
+ 
+--> **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the
++-> **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the
+ object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same Spaces object
+ as do `first//second///third//` and `first/second/third/`.
+diff --git a/docs/data-sources/spaces_bucket_objects.md b/docs/data-sources/spaces_bucket_objects.md
+index 096890f8..0a858967 100644
+--- a/docs/data-sources/spaces_bucket_objects.md
++++ b/docs/data-sources/spaces_bucket_objects.md
+@@ -4,13 +4,13 @@ page_title: "DigitalOcean: digitalocean_spaces_bucket_objects"
+ 
+ # digitalocean_spaces_bucket_objects
+ 
+-~> **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
++~> **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+ 
+ The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+ 
+ ## Example Usage
+ 
+-The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding Terraform object
++The following example retrieves a list of all object keys in a Spaces bucket and creates corresponding object
+ data sources:
+ 
+ ```hcl
+diff --git a/docs/data-sources/ssh_key.md b/docs/data-sources/ssh_key.md
+index 8e5b80ee..54e8b3a7 100644
+--- a/docs/data-sources/ssh_key.md
++++ b/docs/data-sources/ssh_key.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_ssh_key"
+ 
+ Get information on a ssh key. This data source provides the name, public key,
+ and fingerprint as configured on your DigitalOcean account. This is useful if
+-the ssh key in question is not managed by Terraform or you need to utilize any
++the ssh key in question is not managed by the provider or you need to utilize any
+ of the keys data.
+ 
+ An error is triggered if the provided ssh key name does not exist.
+diff --git a/docs/data-sources/ssh_keys.md b/docs/data-sources/ssh_keys.md
+index 4e914ab1..35ded471 100644
+--- a/docs/data-sources/ssh_keys.md
++++ b/docs/data-sources/ssh_keys.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_ssh_keys"
+ 
+ Get information on SSH Keys for use in other resources.
+ 
+-This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
++This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+ utilize any of the SSH Keys' data.
+ 
+ Note: You can use the [`digitalocean_ssh_key`](droplet) data source to obtain metadata
+diff --git a/docs/data-sources/tag.md b/docs/data-sources/tag.md
+index c674e607..e38efca0 100644
+--- a/docs/data-sources/tag.md
++++ b/docs/data-sources/tag.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_tag"
+ 
+ Get information on a tag. This data source provides the name as configured on
+ your DigitalOcean account. This is useful if the tag name in question is not
+-managed by Terraform or you need validate if the tag exists in the account.
++managed by the provider or you need validate if the tag exists in the account.
+ 
+ An error is triggered if the provided tag name does not exist.
+ 
+diff --git a/docs/data-sources/volume.md b/docs/data-sources/volume.md
+index 1a8bb9a2..574371a7 100644
+--- a/docs/data-sources/volume.md
++++ b/docs/data-sources/volume.md
+@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_volume"
+ 
+ Get information on a volume for use in other resources. This data source provides
+ all of the volumes properties as configured on your DigitalOcean account. This is
+-useful if the volume in question is not managed by Terraform or you need to utilize
++useful if the volume in question is not managed by the provider or you need to utilize
+ any of the volumes data.
+ 
+ An error is triggered if the provided volume name does not exist.
+diff --git a/docs/data-sources/volume_snapshot.md b/docs/data-sources/volume_snapshot.md
+index 58e22260..1a6c31d0 100644
+--- a/docs/data-sources/volume_snapshot.md
++++ b/docs/data-sources/volume_snapshot.md
+@@ -48,7 +48,7 @@ resource "digitalocean_volume" "foobar" {
+ * `most_recent` - (Optional) If more than one result is returned, use the most recent volume snapshot.
+ 
+ ~> **NOTE:** If more or less than a single match is returned by the search,
+-Terraform will fail. Ensure that your search is specific enough to return
++the provider will fail. Ensure that your search is specific enough to return
+ a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+ 
+ ## Attributes Reference
+diff --git a/docs/data-sources/vpc.md b/docs/data-sources/vpc.md
+index d7f08e2e..99f0987b 100644
+--- a/docs/data-sources/vpc.md
++++ b/docs/data-sources/vpc.md
+@@ -8,7 +8,7 @@ Retrieve information about a VPC for use in other resources.
+ 
+ This data source provides all of the VPC's properties as configured on your
+ DigitalOcean account. This is useful if the VPC in question is not managed by
+-Terraform or you need to utilize any of the VPC's data.
++the provider or you need to utilize any of the VPC's data.
+ 
+ VPCs may be looked up by `id` or `name`. Specifying a `region` will
+ return that that region's default VPC.
+diff --git a/docs/resources/certificate.md b/docs/resources/certificate.md
+index 12433598..6fb6f37b 100644
+--- a/docs/resources/certificate.md
++++ b/docs/resources/certificate.md
+@@ -17,11 +17,11 @@ Let's Encrypt.
+ 
+ ```hcl
+ resource "digitalocean_certificate" "cert" {
+-  name              = "custom-terraform-example"
++  name              = "custom-example"
+   type              = "custom"
+-  private_key       = file("/Users/terraform/certs/privkey.pem")
+-  leaf_certificate  = file("/Users/terraform/certs/cert.pem")
+-  certificate_chain = file("/Users/terraform/certs/fullchain.pem")
++  private_key       = file("/Users/myuser/certs/privkey.pem")
++  leaf_certificate  = file("/Users/myuser/certs/cert.pem")
++  certificate_chain = file("/Users/myuser/certs/fullchain.pem")
+ }
+ ```
+ 
+@@ -29,7 +29,7 @@ resource "digitalocean_certificate" "cert" {
+ 
+ ```hcl
+ resource "digitalocean_certificate" "cert" {
+-  name    = "le-terraform-example"
++  name    = "le-example"
+   type    = "lets_encrypt"
+   domains = ["example.com"]
+ }
+@@ -42,7 +42,7 @@ including the `digitalocean_loadbalancer` and `digitalocean_cdn` resources.
+ 
+ ```hcl
+ resource "digitalocean_certificate" "cert" {
+-  name    = "le-terraform-example"
++  name    = "le-example"
+   type    = "lets_encrypt"
+   domains = ["example.com"]
+ }
+diff --git a/docs/resources/droplet.md b/docs/resources/droplet.md
+index 7da288ea..6227fa5b 100644
+--- a/docs/resources/droplet.md
++++ b/docs/resources/droplet.md
+@@ -5,8 +5,7 @@ page_title: "DigitalOcean: digitalocean_droplet"
+ # digitalocean\_droplet
+ 
+ Provides a DigitalOcean Droplet resource. This can be used to create,
+-modify, and delete Droplets. Droplets also support
+-[provisioning](https://www.terraform.io/docs/language/resources/provisioners/syntax.html).
++modify, and delete Droplets.
+ 
+ ## Example Usage
+ 
+@@ -50,7 +49,7 @@ The following arguments are supported:
+    size is a permanent change**. Increasing only RAM and CPU is reversible.
+ * `tags` - (Optional) A list of the tags to be applied to this Droplet.
+ * `user_data` (Optional) - A string of the desired User Data for the Droplet.
+-* `volume_ids` (Optional) - A list of the IDs of each [block storage volume](/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
++* `volume_ids` (Optional) - A list of the IDs of each block storage volume to be attached to the Droplet.
+ * `droplet_agent` (Optional) - A boolean indicating whether to install the
+    DigitalOcean agent used for providing access to the Droplet web console in
+    the control panel. By default, the agent is installed on new Droplets but
+@@ -60,7 +59,7 @@ The following arguments are supported:
+ * `graceful_shutdown` (Optional) - A boolean indicating whether the droplet
+    should be gracefully shut down before it is deleted.
+ 
+-~> **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean_volume_attachment` resources for a given instance.
++~> **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean_volume_attachment` resources for a given instance.
+ 
+ ## Attributes Reference
+ 
+diff --git a/docs/resources/project.md b/docs/resources/project.md
+index 1cf31efe..0a127863 100644
+--- a/docs/resources/project.md
++++ b/docs/resources/project.md
+@@ -21,7 +21,7 @@ The following resource types can be associated with a project:
+ * Spaces Bucket
+ * Volume
+ 
+-**Note:** A Terraform managed project cannot be set as a default project.
++**Note:** A provider managed project cannot be set as a default project.
+ 
+ ## Example Usage
+ 
+diff --git a/docs/resources/project_resources.md b/docs/resources/project_resources.md
+index f19f54fa..cfca5149 100644
+--- a/docs/resources/project_resources.md
++++ b/docs/resources/project_resources.md
+@@ -5,7 +5,7 @@ page_title: "DigitalOcean: digitalocean_project_resources"
+ # digitalocean\_project\_resources
+ 
+ Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
+-managed in Terraform to a DigitalOcean Project managed outside of Terraform.
++managed via this provider to a DigitalOcean Project managed outside of the provider.
+ 
+ The following resource types can be associated with a project:
+ 
+@@ -20,7 +20,7 @@ The following resource types can be associated with a project:
+ 
+ ## Example Usage
+ 
+-The following example assigns a droplet to a Project managed outside of Terraform:
++The following example assigns a droplet to a Project managed outside of the provider:
+ 
+ ```hcl
+ data "digitalocean_project" "playground" {
+diff --git a/docs/resources/spaces_bucket_object.md b/docs/resources/spaces_bucket_object.md
+index 761bf105..0f383828 100644
+--- a/docs/resources/spaces_bucket_object.md
++++ b/docs/resources/spaces_bucket_object.md
+@@ -5,7 +5,7 @@ page_title: "DigitalOcean: digitalocean_spaces_bucket_object"
+ # digitalocean\_spaces\_bucket_object
+ 
+ Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+-The `digitalocean_spaces_bucket_object` resource allows Terraform to upload content
++The `digitalocean_spaces_bucket_object` resource allows the provider to upload content
+ to Spaces.
+ 
+ The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+@@ -73,14 +73,14 @@ The following arguments are supported:
+ * `content_language` - (Optional) The language the content is in e.g. en-US or en-GB.
+ * `content_type` - (Optional) A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+ * `website_redirect` - (Optional) Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
+-* `etag` - (Optional) Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
++* `etag` - (Optional) Used to trigger updates.
+ * `metadata` - (Optional) A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
+ * `force_destroy` - (Optional) Allow the object to be deleted by removing any legal hold on any object version.
+ Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+ 
+ If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+ 
+--> **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
++-> **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+ 
+ ## Attributes Reference
+ 
+diff --git a/docs/resources/ssh_key.md b/docs/resources/ssh_key.md
+index 78fb4b2a..c923a0b9 100644
+--- a/docs/resources/ssh_key.md
++++ b/docs/resources/ssh_key.md
+@@ -14,8 +14,8 @@ fingerprint.
+ ```hcl
+ # Create a new SSH key
+ resource "digitalocean_ssh_key" "default" {
+-  name       = "Terraform Example"
+-  public_key = file("/Users/terraform/.ssh/id_rsa.pub")
++  name       = "Example"
++  public_key = file("/Users/myuser/.ssh/id_rsa.pub")
+ }
+ 
+ # Create a new Droplet using the SSH key
+-- 
+2.39.1
+
