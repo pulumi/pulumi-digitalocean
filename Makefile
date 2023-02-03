@@ -15,7 +15,7 @@ WORKING_DIR := $(shell pwd)
 
 development: install_plugins provider build_sdks install_sdks
 
-patch:
+upstream:
 ifeq ("$(wildcard upstream)","")
     # upstream doesn't exist, so skip
 else ifeq ("$(wildcard patches/*.patch)","")
@@ -44,7 +44,7 @@ install_sdks: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_j
 only_build: build
 
 build_dotnet: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
-build_dotnet: 
+build_dotnet: upstream
 	pulumictl get version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
@@ -52,19 +52,19 @@ build_dotnet:
 		echo "$(DOTNET_VERSION)" >version.txt && \
 		dotnet build /p:Version=$(DOTNET_VERSION)
 
-build_go: 
+build_go: upstream
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 	cd sdk && go list `grep -e "^module" go.mod | cut -d ' ' -f 2`/go/... | xargs go build
 
 build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java: bin/pulumi-java-gen
+build_java: bin/pulumi-java-gen upstream
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
 
 build_nodejs: VERSION := $(shell pulumictl get version --language javascript)
-build_nodejs: 
+build_nodejs: upstream
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
 		echo "module fake_nodejs_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
@@ -74,7 +74,7 @@ build_nodejs:
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python: PYPI_VERSION := $(shell pulumictl get version --language python)
-build_python: 
+build_python: upstream
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
 		echo "module fake_python_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
@@ -117,7 +117,7 @@ provider: tfgen install_plugins
 test: 
 	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h
 
-tfgen: install_plugins patch
+tfgen: install_plugins upstream
 	(cd provider && go build -p 1 -o $(WORKING_DIR)/bin/$(TFGEN) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(TFGEN))
 	$(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
@@ -125,4 +125,4 @@ tfgen: install_plugins patch
 bin/pulumi-java-gen: 
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen patch
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream
