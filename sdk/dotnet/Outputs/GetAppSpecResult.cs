@@ -18,6 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecAlertResult> Alerts;
         public readonly ImmutableArray<Outputs.GetAppSpecDatabaseResult> Databases;
+        public readonly ImmutableArray<Outputs.GetAppSpecDomainResult> Domain;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// Describes an environment variable made available to an app competent.
@@ -40,6 +41,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecDatabaseResult> databases,
 
+            ImmutableArray<Outputs.GetAppSpecDomainResult> domain,
+
             ImmutableArray<string> domains,
 
             ImmutableArray<Outputs.GetAppSpecEnvResult> envs,
@@ -60,6 +63,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Alerts = alerts;
             Databases = databases;
+            Domain = domain;
             Domains = domains;
             Envs = envs;
             Functions = functions;

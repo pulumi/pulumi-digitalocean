@@ -103,6 +103,7 @@ __all__ = [
     'GetAppSpecResult',
     'GetAppSpecAlertResult',
     'GetAppSpecDatabaseResult',
+    'GetAppSpecDomainResult',
     'GetAppSpecEnvResult',
     'GetAppSpecFunctionResult',
     'GetAppSpecFunctionAlertResult',
@@ -6274,6 +6275,7 @@ class SpacesBucketVersioning(dict):
 @pulumi.output_type
 class GetAppSpecResult(dict):
     def __init__(__self__, *,
+                 domain: Sequence['outputs.GetAppSpecDomainResult'],
                  domains: Sequence[str],
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
@@ -6290,6 +6292,7 @@ class GetAppSpecResult(dict):
         :param Sequence['GetAppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['GetAppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         """
+        pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domains", domains)
         pulumi.set(__self__, "name", name)
         if alerts is not None:
@@ -6310,6 +6313,11 @@ class GetAppSpecResult(dict):
             pulumi.set(__self__, "static_sites", static_sites)
         if workers is not None:
             pulumi.set(__self__, "workers", workers)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Sequence['outputs.GetAppSpecDomainResult']:
+        return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
@@ -6495,6 +6503,50 @@ class GetAppSpecDatabaseResult(dict):
         The version of the database engine.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetAppSpecDomainResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str,
+                 wildcard: bool,
+                 zone: Optional[str] = None):
+        """
+        :param str name: The name of the component.
+        :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "wildcard", wildcard)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def wildcard(self) -> bool:
+        return pulumi.get(self, "wildcard")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
