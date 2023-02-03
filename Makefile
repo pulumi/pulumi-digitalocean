@@ -26,7 +26,7 @@ else ifeq ("$(wildcard patches/*.patch)","")
 else
 	git submodule update --force --init
 	cd upstream; \
-	for patch in $(sort $(wildcard patches/*.patch)); do git apply ../$$patch || exit 1; done
+	for patch in $(sort $(wildcard patches/*.patch)); do git apply --3way ../$$patch || exit 1; done
 endif
 
 build: install_plugins provider build_sdks install_sdks
