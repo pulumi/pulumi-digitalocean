@@ -1,0 +1,25 @@
+From 2dea325165fcbee48724d571b97d84453332e2b7 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Fri, 3 Feb 2023 12:31:51 -0800
+Subject: [PATCH] Nil check on db 404
+
+---
+ digitalocean/resource_digitalocean_database_cluster.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/digitalocean/resource_digitalocean_database_cluster.go b/digitalocean/resource_digitalocean_database_cluster.go
+index 26f62799..2ed29f3c 100644
+--- a/digitalocean/resource_digitalocean_database_cluster.go
++++ b/digitalocean/resource_digitalocean_database_cluster.go
+@@ -485,7 +485,7 @@ func waitForDatabaseCluster(client *godo.Client, d *schema.ResourceData, status
+ 
+ 	for range ticker.C {
+ 		database, resp, err := client.Databases.Get(context.Background(), d.Id())
+-		if resp.StatusCode == 404 {
++		if resp != nil && resp.StatusCode == 404 {
+ 			continue
+ 		}
+ 
+-- 
+2.39.1
+
