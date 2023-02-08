@@ -4437,6 +4437,17 @@
                         }
                     }
                 },
+                "domain": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecDomain:getAppSpecDomain"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "domains": {
                     "type": "array",
                     "items": {
@@ -4536,7 +4547,7 @@
             },
             "type": "object",
             "required": [
-                "domains",
+                "domain",
                 "domains",
                 "name"
             ],

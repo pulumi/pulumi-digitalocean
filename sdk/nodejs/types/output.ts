@@ -1403,6 +1403,7 @@ export interface GetAppSpec {
      */
     alerts?: outputs.GetAppSpecAlert[];
     databases?: outputs.GetAppSpecDatabase[];
+    domain: outputs.GetAppSpecDomain[];
     /**
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
@@ -1463,6 +1464,19 @@ export interface GetAppSpecDatabase {
      * The version of the database engine.
      */
     version?: string;
+}
+
+export interface GetAppSpecDomain {
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type: string;
+    wildcard: boolean;
+    zone?: string;
 }
 
 export interface GetAppSpecEnv {
