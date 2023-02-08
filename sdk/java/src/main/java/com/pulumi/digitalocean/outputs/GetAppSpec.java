@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecAlert;
 import com.pulumi.digitalocean.outputs.GetAppSpecDatabase;
+import com.pulumi.digitalocean.outputs.GetAppSpecDomain;
 import com.pulumi.digitalocean.outputs.GetAppSpecEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunction;
 import com.pulumi.digitalocean.outputs.GetAppSpecJob;
@@ -26,6 +27,7 @@ public final class GetAppSpec {
      */
     private @Nullable List<GetAppSpecAlert> alerts;
     private @Nullable List<GetAppSpecDatabase> databases;
+    private List<GetAppSpecDomain> domain;
     /**
      * @deprecated
      * This attribute has been replaced by `domain` which supports additional functionality.
@@ -60,6 +62,9 @@ public final class GetAppSpec {
     }
     public List<GetAppSpecDatabase> databases() {
         return this.databases == null ? List.of() : this.databases;
+    }
+    public List<GetAppSpecDomain> domain() {
+        return this.domain;
     }
     /**
      * @deprecated
@@ -114,6 +119,7 @@ public final class GetAppSpec {
     public static final class Builder {
         private @Nullable List<GetAppSpecAlert> alerts;
         private @Nullable List<GetAppSpecDatabase> databases;
+        private List<GetAppSpecDomain> domain;
         private List<String> domains;
         private @Nullable List<GetAppSpecEnv> envs;
         private @Nullable List<GetAppSpecFunction> functions;
@@ -128,6 +134,7 @@ public final class GetAppSpec {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
     	      this.databases = defaults.databases;
+    	      this.domain = defaults.domain;
     	      this.domains = defaults.domains;
     	      this.envs = defaults.envs;
     	      this.functions = defaults.functions;
@@ -154,6 +161,14 @@ public final class GetAppSpec {
         }
         public Builder databases(GetAppSpecDatabase... databases) {
             return databases(List.of(databases));
+        }
+        @CustomType.Setter
+        public Builder domain(List<GetAppSpecDomain> domain) {
+            this.domain = Objects.requireNonNull(domain);
+            return this;
+        }
+        public Builder domain(GetAppSpecDomain... domain) {
+            return domain(List.of(domain));
         }
         @CustomType.Setter
         public Builder domains(List<String> domains) {
@@ -225,6 +240,7 @@ public final class GetAppSpec {
             final var o = new GetAppSpec();
             o.alerts = alerts;
             o.databases = databases;
+            o.domain = domain;
             o.domains = domains;
             o.envs = envs;
             o.functions = functions;

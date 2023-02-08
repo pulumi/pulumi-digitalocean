@@ -87,7 +87,7 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     This data source is useful if the image in question is not managed by the provider or you need to utilize any
     of the image's data.
 
-    Note: You can use the `get_image` data source to obtain metadata
+    Note: You can use the _get_image_ data source to obtain metadata
     about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
 
     ## Example Usage
@@ -159,7 +159,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     This data source is useful if the image in question is not managed by the provider or you need to utilize any
     of the image's data.
 
-    Note: You can use the `get_image` data source to obtain metadata
+    Note: You can use the _get_image_ data source to obtain metadata
     about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
 
     ## Example Usage

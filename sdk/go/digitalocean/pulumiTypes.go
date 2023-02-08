@@ -14014,6 +14014,7 @@ type GetAppSpec struct {
 	// Describes an alert policy for the component.
 	Alerts    []GetAppSpecAlert    `pulumi:"alerts"`
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
+	Domain    []GetAppSpecDomain   `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
@@ -14043,6 +14044,7 @@ type GetAppSpecArgs struct {
 	// Describes an alert policy for the component.
 	Alerts    GetAppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
+	Domain    GetAppSpecDomainArrayInput   `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
@@ -14115,6 +14117,10 @@ func (o GetAppSpecOutput) Alerts() GetAppSpecAlertArrayOutput {
 
 func (o GetAppSpecOutput) Databases() GetAppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecDatabase { return v.Databases }).(GetAppSpecDatabaseArrayOutput)
+}
+
+func (o GetAppSpecOutput) Domain() GetAppSpecDomainArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecDomain { return v.Domain }).(GetAppSpecDomainArrayOutput)
 }
 
 // Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
@@ -14474,6 +14480,31 @@ func (i GetAppSpecDomainArgs) ToGetAppSpecDomainOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecDomainOutput)
 }
 
+// GetAppSpecDomainArrayInput is an input type that accepts GetAppSpecDomainArray and GetAppSpecDomainArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecDomainArrayInput` via:
+//
+//	GetAppSpecDomainArray{ GetAppSpecDomainArgs{...} }
+type GetAppSpecDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecDomainArrayOutput() GetAppSpecDomainArrayOutput
+	ToGetAppSpecDomainArrayOutputWithContext(context.Context) GetAppSpecDomainArrayOutput
+}
+
+type GetAppSpecDomainArray []GetAppSpecDomainInput
+
+func (GetAppSpecDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecDomain)(nil)).Elem()
+}
+
+func (i GetAppSpecDomainArray) ToGetAppSpecDomainArrayOutput() GetAppSpecDomainArrayOutput {
+	return i.ToGetAppSpecDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecDomainArray) ToGetAppSpecDomainArrayOutputWithContext(ctx context.Context) GetAppSpecDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecDomainArrayOutput)
+}
+
 type GetAppSpecDomainOutput struct{ *pulumi.OutputState }
 
 func (GetAppSpecDomainOutput) ElementType() reflect.Type {
@@ -14504,6 +14535,26 @@ func (o GetAppSpecDomainOutput) Wildcard() pulumi.BoolOutput {
 
 func (o GetAppSpecDomainOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDomain) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecDomain)(nil)).Elem()
+}
+
+func (o GetAppSpecDomainArrayOutput) ToGetAppSpecDomainArrayOutput() GetAppSpecDomainArrayOutput {
+	return o
+}
+
+func (o GetAppSpecDomainArrayOutput) ToGetAppSpecDomainArrayOutputWithContext(ctx context.Context) GetAppSpecDomainArrayOutput {
+	return o
+}
+
+func (o GetAppSpecDomainArrayOutput) Index(i pulumi.IntInput) GetAppSpecDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecDomain {
+		return vs[0].([]GetAppSpecDomain)[vs[1].(int)]
+	}).(GetAppSpecDomainOutput)
 }
 
 type GetAppSpecEnv struct {
@@ -30400,6 +30451,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseInput)(nil)).Elem(), GetAppSpecDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseArrayInput)(nil)).Elem(), GetAppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainArrayInput)(nil)).Elem(), GetAppSpecDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvInput)(nil)).Elem(), GetAppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvArrayInput)(nil)).Elem(), GetAppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionInput)(nil)).Elem(), GetAppSpecFunctionArgs{})
@@ -30791,6 +30843,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainOutput{})
+	pulumi.RegisterOutputType(GetAppSpecDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionOutput{})
