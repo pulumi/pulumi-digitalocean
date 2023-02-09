@@ -66,14 +66,15 @@ func makeResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(digitalocean.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "digitalocean",
-		Description: "A Pulumi package for creating and managing DigitalOcean cloud resources.",
-		Keywords:    []string{"pulumi", "digitalocean"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-digitalocean",
-		GitHubOrg:   "digitalocean",
+		P:                p,
+		Name:             "digitalocean",
+		Description:      "A Pulumi package for creating and managing DigitalOcean cloud resources.",
+		Keywords:         []string{"pulumi", "digitalocean"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-digitalocean",
+		GitHubOrg:        "digitalocean",
+		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_endpoint": {
 				Default: &tfbridge.DefaultInfo{
