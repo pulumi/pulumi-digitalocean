@@ -26,6 +26,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the DigitalOcean token components used below.
@@ -570,6 +571,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	defaults := tfbridge.TokensSingleModule("digitalocean_", digitalOceanMod, tfbridge.MakeStandardToken(digitalOceanPkg))
+	err := prov.ComputeDefaults(defaults)
+	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
 

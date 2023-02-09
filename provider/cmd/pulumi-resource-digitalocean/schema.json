@@ -524,6 +524,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecFunctionRoute:AppSpecFunctionRoute"
                     },
+                    "description": "An HTTP paths that should be routed to this component.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1681,6 +1682,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecServiceRoute:AppSpecServiceRoute"
                     },
+                    "description": "An HTTP paths that should be routed to this component.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2406,6 +2408,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecStaticSiteRoute:AppSpecStaticSiteRoute"
                     },
+                    "description": "An HTTP paths that should be routed to this component.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3985,6 +3988,35 @@
                 "value"
             ]
         },
+        "digitalocean:index/LoadBalancerFirewall:LoadBalancerFirewall": {
+            "properties": {
+                "allows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`\n* Ex. `deny = [\"cidr:1.2.0.0/16\", \"ip:2.3.4.5\"]` or `allow = [\"ip:1.2.3.4\", \"cidr:2.3.4.0/24\"]`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "denies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/LoadBalancerForwardingRule:LoadBalancerForwardingRule": {
             "properties": {
                 "certificateId": {
@@ -4076,7 +4108,7 @@
             "properties": {
                 "checkIntervalSeconds": {
                     "type": "integer",
-                    "description": "The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.\n",
+                    "description": "The number of seconds between two consecutive health checks. If not specified, the default value is `10`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4411,6 +4443,58 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/UptimeAlertNotification:UptimeAlertNotification": {
+            "properties": {
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slacks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/UptimeAlertNotificationSlack:UptimeAlertNotificationSlack"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/UptimeAlertNotificationSlack:UptimeAlertNotificationSlack": {
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "channel",
+                "url"
+            ]
         },
         "digitalocean:index/getAppSpec:getAppSpec": {
             "properties": {
@@ -8951,6 +9035,42 @@
                 }
             }
         },
+        "digitalocean:index/getLoadBalancerFirewall:getLoadBalancerFirewall": {
+            "properties": {
+                "allows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "denies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allows",
+                "denies"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule": {
             "properties": {
                 "certificateId": {
@@ -11679,7 +11799,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Engine version used by the cluster (ex. `11` for PostgreSQL 11).\n"
+                    "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.\n"
                 }
             },
             "required": [
@@ -11769,8 +11889,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Engine version used by the cluster (ex. `11` for PostgreSQL 11).\n",
-                    "willReplaceOnChanges": true
+                    "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.\n"
                 }
             },
             "requiredInputs": [
@@ -11890,8 +12009,7 @@
                     },
                     "version": {
                         "type": "string",
-                        "description": "Engine version used by the cluster (ex. `11` for PostgreSQL 11).\n",
-                        "willReplaceOnChanges": true
+                        "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.\n"
                     }
                 },
                 "type": "object"
@@ -12172,7 +12290,7 @@
             }
         },
         "digitalocean:index/databaseReplica:DatabaseReplica": {
-            "description": "Provides a DigitalOcean database replica resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database replica\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst read_replica = new digitalocean.DatabaseReplica(\"read-replica\", {\n    clusterId: postgres_example.id,\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nread_replica = digitalocean.DatabaseReplica(\"read-replica\",\n    cluster_id=postgres_example.id,\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Engine = \"pg\",\n        Version = \"11\",\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n        NodeCount = 1,\n    });\n\n    var read_replica = new DigitalOcean.DatabaseReplica(\"read-replica\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseReplica(ctx, \"read-replica\", \u0026digitalocean.DatabaseReplicaArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseReplica;\nimport com.pulumi.digitalocean.DatabaseReplicaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()        \n            .engine(\"pg\")\n            .version(\"11\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var read_replica = new DatabaseReplica(\"read-replica\", DatabaseReplicaArgs.builder()        \n            .clusterId(postgres_example.id())\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  read-replica:\n    type: digitalocean:DatabaseReplica\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      size: db-s-1vcpu-1gb\n      region: nyc1\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: pg\n      version: '11'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica\n```\n\n ",
+            "description": "Provides a DigitalOcean database replica resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database replica\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst replica_example = new digitalocean.DatabaseReplica(\"replica-example\", {\n    clusterId: postgres_example.id,\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n});\nexport const uUID = replica_example.uuid;\n// Create firewall rule for database replica\nconst example_fw = new digitalocean.DatabaseFirewall(\"example-fw\", {\n    clusterId: replica_example.uuid,\n    rules: [{\n        type: \"ip_addr\",\n        value: \"192.168.1.1\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nreplica_example = digitalocean.DatabaseReplica(\"replica-example\",\n    cluster_id=postgres_example.id,\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\")\npulumi.export(\"uUID\", replica_example.uuid)\n# Create firewall rule for database replica\nexample_fw = digitalocean.DatabaseFirewall(\"example-fw\",\n    cluster_id=replica_example.uuid,\n    rules=[digitalocean.DatabaseFirewallRuleArgs(\n        type=\"ip_addr\",\n        value=\"192.168.1.1\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Engine = \"pg\",\n        Version = \"11\",\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n        NodeCount = 1,\n    });\n\n    var replica_example = new DigitalOcean.DatabaseReplica(\"replica-example\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n    });\n\n    // Create firewall rule for database replica\n    var example_fw = new DigitalOcean.DatabaseFirewall(\"example-fw\", new()\n    {\n        ClusterId = replica_example.Uuid,\n        Rules = new[]\n        {\n            new DigitalOcean.Inputs.DatabaseFirewallRuleArgs\n            {\n                Type = \"ip_addr\",\n                Value = \"192.168.1.1\",\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"uUID\"] = replica_example.Uuid,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseReplica(ctx, \"replica-example\", \u0026digitalocean.DatabaseReplicaArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"uUID\", replica_example.Uuid)\n\t\t_, err = digitalocean.NewDatabaseFirewall(ctx, \"example-fw\", \u0026digitalocean.DatabaseFirewallArgs{\n\t\t\tClusterId: replica_example.Uuid,\n\t\t\tRules: digitalocean.DatabaseFirewallRuleArray{\n\t\t\t\t\u0026digitalocean.DatabaseFirewallRuleArgs{\n\t\t\t\t\tType:  pulumi.String(\"ip_addr\"),\n\t\t\t\t\tValue: pulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseReplica;\nimport com.pulumi.digitalocean.DatabaseReplicaArgs;\nimport com.pulumi.digitalocean.DatabaseFirewall;\nimport com.pulumi.digitalocean.DatabaseFirewallArgs;\nimport com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()        \n            .engine(\"pg\")\n            .version(\"11\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var replica_example = new DatabaseReplica(\"replica-example\", DatabaseReplicaArgs.builder()        \n            .clusterId(postgres_example.id())\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .build());\n\n        ctx.export(\"uUID\", replica_example.uuid());\n        var example_fw = new DatabaseFirewall(\"example-fw\", DatabaseFirewallArgs.builder()        \n            .clusterId(replica_example.uuid())\n            .rules(DatabaseFirewallRuleArgs.builder()\n                .type(\"ip_addr\")\n                .value(\"192.168.1.1\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: pg\n      version: '11'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n  replica-example:\n    type: digitalocean:DatabaseReplica\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      size: db-s-1vcpu-1gb\n      region: nyc1\n  # Create firewall rule for database replica\n  example-fw:\n    type: digitalocean:DatabaseFirewall\n    properties:\n      clusterId: ${[\"replica-example\"].uuid}\n      rules:\n        - type: ip_addr\n          value: 192.168.1.1\noutputs:\n  uUID: ${[\"replica-example\"].uuid}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase replicas can be imported using the `id` of the source database cluster and the `name` of the replica joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica\n```\n\n ",
             "properties": {
                 "clusterId": {
                     "type": "string",
@@ -12235,6 +12353,10 @@
                 "user": {
                     "type": "string",
                     "description": "Username for the replica's default user.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  \"Create firewall rule for database replica\" above.\n"
                 }
             },
             "required": [
@@ -12248,7 +12370,8 @@
                 "privateNetworkUuid",
                 "privateUri",
                 "uri",
-                "user"
+                "user",
+                "uuid"
             ],
             "inputProperties": {
                 "clusterId": {
@@ -12394,6 +12517,11 @@
                     "user": {
                         "type": "string",
                         "description": "Username for the replica's default user.\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  \"Create firewall rule for database replica\" above.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -13984,6 +14112,10 @@
                     "type": "boolean",
                     "description": "A boolean value indicating whether PROXY\nProtocol should be used to pass information from connecting client requests to\nthe backend service. Default value is `false`.\n"
                 },
+                "firewall": {
+                    "$ref": "#/types/digitalocean:index/LoadBalancerFirewall:LoadBalancerFirewall",
+                    "description": "A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.\n"
+                },
                 "forwardingRules": {
                     "type": "array",
                     "items": {
@@ -14045,6 +14177,7 @@
             },
             "required": [
                 "dropletIds",
+                "firewall",
                 "forwardingRules",
                 "healthcheck",
                 "httpIdleTimeoutSeconds",
@@ -14094,6 +14227,10 @@
                 "enableProxyProtocol": {
                     "type": "boolean",
                     "description": "A boolean value indicating whether PROXY\nProtocol should be used to pass information from connecting client requests to\nthe backend service. Default value is `false`.\n"
+                },
+                "firewall": {
+                    "$ref": "#/types/digitalocean:index/LoadBalancerFirewall:LoadBalancerFirewall",
+                    "description": "A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.\n"
                 },
                 "forwardingRules": {
                     "type": "array",
@@ -14196,6 +14333,10 @@
                     "enableProxyProtocol": {
                         "type": "boolean",
                         "description": "A boolean value indicating whether PROXY\nProtocol should be used to pass information from connecting client requests to\nthe backend service. Default value is `false`.\n"
+                    },
+                    "firewall": {
+                        "$ref": "#/types/digitalocean:index/LoadBalancerFirewall:LoadBalancerFirewall",
+                        "description": "A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.\n"
                     },
                     "forwardingRules": {
                         "type": "array",
@@ -14305,7 +14446,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the alert.\nThis may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,\n`v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,\n`v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,\n`v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or\n`v1/dbaas/alerts/disk_utilization_alerts`.\n"
+                    "description": "The type of the alert.\nThis may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,\n`v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,\n`v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,\n`v1/insights/lbaas/increase_in_http_error_rate_percentage_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_percentage_4xx`,\n`v1/insights/lbaas/increase_in_http_error_rate_count_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_count_4xx`,\n`v1/insights/lbaas/high_http_request_response_time`, `v1/insights/lbaas/high_http_request_response_time_50p`,\n`v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,\n`v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or\n`v1/dbaas/alerts/disk_utilization_alerts`.\n"
                 },
                 "uuid": {
                     "type": "string",
@@ -14362,7 +14503,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the alert.\nThis may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,\n`v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,\n`v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,\n`v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or\n`v1/dbaas/alerts/disk_utilization_alerts`.\n"
+                    "description": "The type of the alert.\nThis may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,\n`v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,\n`v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,\n`v1/insights/lbaas/increase_in_http_error_rate_percentage_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_percentage_4xx`,\n`v1/insights/lbaas/increase_in_http_error_rate_count_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_count_4xx`,\n`v1/insights/lbaas/high_http_request_response_time`, `v1/insights/lbaas/high_http_request_response_time_50p`,\n`v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,\n`v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or\n`v1/dbaas/alerts/disk_utilization_alerts`.\n"
                 },
                 "value": {
                     "type": "number",
@@ -14416,7 +14557,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the alert.\nThis may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,\n`v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,\n`v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,\n`v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or\n`v1/dbaas/alerts/disk_utilization_alerts`.\n"
+                        "description": "The type of the alert.\nThis may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,\n`v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,\n`v1/insights/droplet/cpu`, `v1/insights/droplet/disk_read`, `v1/insights/droplet/disk_write`,\n`v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,\n`v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,\n`v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,\n`v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,\n`v1/insights/lbaas/increase_in_http_error_rate_percentage_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_percentage_4xx`,\n`v1/insights/lbaas/increase_in_http_error_rate_count_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_count_4xx`,\n`v1/insights/lbaas/high_http_request_response_time`, `v1/insights/lbaas/high_http_request_response_time_50p`,\n`v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,\n`v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or\n`v1/dbaas/alerts/disk_utilization_alerts`.\n"
                     },
                     "uuid": {
                         "type": "string",
@@ -15343,6 +15484,212 @@
                     "volumesCount": {
                         "type": "integer",
                         "description": "A count of the volumes that the tag is applied to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/uptimeAlert:UptimeAlert": {
+            "description": "Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)\nresource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.\n\n\n## Import\n\nUptime checks can be imported using the uptime alert's `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 5a4981aa-9653-4bd1-bef5-d6bff52042e4\n```\n\n ",
+            "properties": {
+                "checkId": {
+                    "type": "string",
+                    "description": "A unique identifier for a check\n"
+                },
+                "comparison": {
+                    "type": "string",
+                    "description": "A boolean value indicating whether the check is enabled/disabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-friendly display name.\n"
+                },
+                "notifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/UptimeAlertNotification:UptimeAlertNotification"
+                    },
+                    "description": "The notification settings for a trigger alert.\n"
+                },
+                "period": {
+                    "type": "string",
+                    "description": "Period of time the threshold must be exceeded to trigger the alert: \"2m\" \"3m\" \"5m\" \"10m\" \"15m\" \"30m\" \"1h\"\n"
+                },
+                "threshold": {
+                    "type": "integer",
+                    "description": "The comparison operator used against the alert's threshold: \"greater_than\", \"less_than\"\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
+                }
+            },
+            "required": [
+                "checkId",
+                "name",
+                "notifications",
+                "type"
+            ],
+            "inputProperties": {
+                "checkId": {
+                    "type": "string",
+                    "description": "A unique identifier for a check\n"
+                },
+                "comparison": {
+                    "type": "string",
+                    "description": "A boolean value indicating whether the check is enabled/disabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-friendly display name.\n"
+                },
+                "notifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/UptimeAlertNotification:UptimeAlertNotification"
+                    },
+                    "description": "The notification settings for a trigger alert.\n"
+                },
+                "period": {
+                    "type": "string",
+                    "description": "Period of time the threshold must be exceeded to trigger the alert: \"2m\" \"3m\" \"5m\" \"10m\" \"15m\" \"30m\" \"1h\"\n"
+                },
+                "threshold": {
+                    "type": "integer",
+                    "description": "The comparison operator used against the alert's threshold: \"greater_than\", \"less_than\"\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
+                }
+            },
+            "requiredInputs": [
+                "checkId",
+                "notifications",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UptimeAlert resources.\n",
+                "properties": {
+                    "checkId": {
+                        "type": "string",
+                        "description": "A unique identifier for a check\n"
+                    },
+                    "comparison": {
+                        "type": "string",
+                        "description": "A boolean value indicating whether the check is enabled/disabled.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A human-friendly display name.\n"
+                    },
+                    "notifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/UptimeAlertNotification:UptimeAlertNotification"
+                        },
+                        "description": "The notification settings for a trigger alert.\n"
+                    },
+                    "period": {
+                        "type": "string",
+                        "description": "Period of time the threshold must be exceeded to trigger the alert: \"2m\" \"3m\" \"5m\" \"10m\" \"15m\" \"30m\" \"1h\"\n"
+                    },
+                    "threshold": {
+                        "type": "integer",
+                        "description": "The comparison operator used against the alert's threshold: \"greater_than\", \"less_than\"\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/uptimeCheck:UptimeCheck": {
+            "description": "Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime)\nresource. Uptime Checks provide the ability to monitor your endpoints from around the world, and alert you when they're slow, unavailable, or SSL certificates are expiring.\n\n\n## Import\n\nUptime checks can be imported using the uptime check's `id`, e.g.\n\n```sh\n $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4\n```\n\n ",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating whether the check is enabled/disabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-friendly display name for the check.\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the selected regions to perform healthchecks from: \"us_east\", \"us_west\", \"eu_west\", \"se_asia\"\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The endpoint to perform healthchecks on.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
+                }
+            },
+            "required": [
+                "name",
+                "target"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating whether the check is enabled/disabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-friendly display name for the check.\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array containing the selected regions to perform healthchecks from: \"us_east\", \"us_west\", \"eu_west\", \"se_asia\"\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The endpoint to perform healthchecks on.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
+                }
+            },
+            "requiredInputs": [
+                "target"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UptimeCheck resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "A boolean value indicating whether the check is enabled/disabled.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A human-friendly display name for the check.\n"
+                    },
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array containing the selected regions to perform healthchecks from: \"us_east\", \"us_west\", \"eu_west\", \"se_asia\"\n"
+                    },
+                    "target": {
+                        "type": "string",
+                        "description": "The endpoint to perform healthchecks on.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
                     }
                 },
                 "type": "object"
@@ -17316,6 +17663,12 @@
                     "enableProxyProtocol": {
                         "type": "boolean"
                     },
+                    "firewalls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getLoadBalancerFirewall:getLoadBalancerFirewall"
+                        }
+                    },
                     "forwardingRules": {
                         "type": "array",
                         "items": {
@@ -17379,6 +17732,7 @@
                     "dropletTag",
                     "enableBackendKeepalive",
                     "enableProxyProtocol",
+                    "firewalls",
                     "forwardingRules",
                     "healthchecks",
                     "httpIdleTimeoutSeconds",
