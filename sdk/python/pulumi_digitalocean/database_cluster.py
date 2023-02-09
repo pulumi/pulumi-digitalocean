@@ -40,7 +40,8 @@ class DatabaseClusterArgs:
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
-        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+               When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "node_count", node_count)
@@ -185,7 +186,8 @@ class DatabaseClusterArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         return pulumi.get(self, "version")
 
@@ -238,7 +240,8 @@ class _DatabaseClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
-        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+               When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         if cluster_urn is not None:
             pulumi.set(__self__, "cluster_urn", cluster_urn)
@@ -513,7 +516,8 @@ class _DatabaseClusterState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         return pulumi.get(self, "version")
 
@@ -612,7 +616,8 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
-        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+               When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         ...
     @overload
@@ -802,7 +807,8 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
-        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+               When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -986,7 +992,8 @@ class DatabaseCluster(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[Optional[str]]:
         """
-        Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
         return pulumi.get(self, "version")
 

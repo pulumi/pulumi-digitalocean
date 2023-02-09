@@ -139,6 +139,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     */
+    public readonly firewall!: pulumi.Output<outputs.LoadBalancerFirewall>;
+    /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
@@ -216,6 +220,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["dropletTag"] = state ? state.dropletTag : undefined;
             resourceInputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
             resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
+            resourceInputs["firewall"] = state ? state.firewall : undefined;
             resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
             resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
             resourceInputs["httpIdleTimeoutSeconds"] = state ? state.httpIdleTimeoutSeconds : undefined;
@@ -244,6 +249,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["dropletTag"] = args ? args.dropletTag : undefined;
             resourceInputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
             resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
+            resourceInputs["firewall"] = args ? args.firewall : undefined;
             resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
             resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
             resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
@@ -296,6 +302,10 @@ export interface LoadBalancerState {
      * the backend service. Default value is `false`.
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     */
+    firewall?: pulumi.Input<inputs.LoadBalancerFirewall>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
@@ -388,6 +398,10 @@ export interface LoadBalancerArgs {
      * the backend service. Default value is `false`.
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     */
+    firewall?: pulumi.Input<inputs.LoadBalancerFirewall>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.

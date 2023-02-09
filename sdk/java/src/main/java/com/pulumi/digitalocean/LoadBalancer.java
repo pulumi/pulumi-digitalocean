@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.LoadBalancerArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.LoadBalancerState;
+import com.pulumi.digitalocean.outputs.LoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.LoadBalancerForwardingRule;
 import com.pulumi.digitalocean.outputs.LoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.LoadBalancerStickySessions;
@@ -240,6 +241,20 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableProxyProtocol() {
         return Codegen.optional(this.enableProxyProtocol);
+    }
+    /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     * 
+     */
+    @Export(name="firewall", type=LoadBalancerFirewall.class, parameters={})
+    private Output<LoadBalancerFirewall> firewall;
+
+    /**
+     * @return A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     * 
+     */
+    public Output<LoadBalancerFirewall> firewall() {
+        return this.firewall;
     }
     /**
      * A list of `forwarding_rule` to be assigned to the

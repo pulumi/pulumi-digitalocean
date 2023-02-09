@@ -65,6 +65,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
         /// </summary>
         public readonly string? OutputDir;
+        /// <summary>
+        /// An HTTP paths that should be routed to this component.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecStaticSiteRoute> Routes;
         /// <summary>
         /// An optional path to the working directory to use for the build.

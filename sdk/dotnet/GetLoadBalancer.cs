@@ -173,6 +173,7 @@ namespace Pulumi.DigitalOcean
         public readonly string DropletTag;
         public readonly bool EnableBackendKeepalive;
         public readonly bool EnableProxyProtocol;
+        public readonly ImmutableArray<Outputs.GetLoadBalancerFirewallResult> Firewalls;
         public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> ForwardingRules;
         public readonly ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> Healthchecks;
         public readonly int HttpIdleTimeoutSeconds;
@@ -202,6 +203,8 @@ namespace Pulumi.DigitalOcean
             bool enableBackendKeepalive,
 
             bool enableProxyProtocol,
+
+            ImmutableArray<Outputs.GetLoadBalancerFirewallResult> firewalls,
 
             ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> forwardingRules,
 
@@ -239,6 +242,7 @@ namespace Pulumi.DigitalOcean
             DropletTag = dropletTag;
             EnableBackendKeepalive = enableBackendKeepalive;
             EnableProxyProtocol = enableProxyProtocol;
+            Firewalls = firewalls;
             ForwardingRules = forwardingRules;
             Healthchecks = healthchecks;
             HttpIdleTimeoutSeconds = httpIdleTimeoutSeconds;

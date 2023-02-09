@@ -60,6 +60,10 @@ public final class AppSpecFunction {
      * 
      */
     private String name;
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     private @Nullable List<AppSpecFunctionRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -124,6 +128,10 @@ public final class AppSpecFunction {
     public String name() {
         return this.name;
     }
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     public List<AppSpecFunctionRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }

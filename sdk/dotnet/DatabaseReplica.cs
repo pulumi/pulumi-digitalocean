@@ -30,13 +30,31 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var read_replica = new DigitalOcean.DatabaseReplica("read-replica", new()
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Size = "db-s-1vcpu-1gb",
     ///         Region = "nyc1",
     ///     });
     /// 
+    ///     // Create firewall rule for database replica
+    ///     var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new()
+    ///     {
+    ///         ClusterId = replica_example.Uuid,
+    ///         Rules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///             {
+    ///                 Type = "ip_addr",
+    ///                 Value = "192.168.1.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["uUID"] = replica_example.Uuid,
+    ///     };
     /// });
     /// ```
     /// 
@@ -134,6 +152,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
+
+        /// <summary>
+        /// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
 
 
         /// <summary>
@@ -356,6 +380,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
+
+        /// <summary>
+        /// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public DatabaseReplicaState()
         {

@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Algorithm;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.LoadBalancerFirewallArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerStickySessionsArgs;
@@ -120,6 +121,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableProxyProtocol() {
         return Optional.ofNullable(this.enableProxyProtocol);
+    }
+
+    /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     * 
+     */
+    @Import(name="firewall")
+    private @Nullable Output<LoadBalancerFirewallArgs> firewall;
+
+    /**
+     * @return A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     * 
+     */
+    public Optional<Output<LoadBalancerFirewallArgs>> firewall() {
+        return Optional.ofNullable(this.firewall);
     }
 
     /**
@@ -306,6 +322,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.dropletTag = $.dropletTag;
         this.enableBackendKeepalive = $.enableBackendKeepalive;
         this.enableProxyProtocol = $.enableProxyProtocol;
+        this.firewall = $.firewall;
         this.forwardingRules = $.forwardingRules;
         this.healthcheck = $.healthcheck;
         this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
@@ -503,6 +520,27 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableProxyProtocol(Boolean enableProxyProtocol) {
             return enableProxyProtocol(Output.of(enableProxyProtocol));
+        }
+
+        /**
+         * @param firewall A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewall(@Nullable Output<LoadBalancerFirewallArgs> firewall) {
+            $.firewall = firewall;
+            return this;
+        }
+
+        /**
+         * @param firewall A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewall(LoadBalancerFirewallArgs firewall) {
+            return firewall(Output.of(firewall));
         }
 
         /**

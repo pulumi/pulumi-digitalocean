@@ -216,7 +216,8 @@ namespace Pulumi.DigitalOcean
         public Output<string> User { get; private set; } = null!;
 
         /// <summary>
-        /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -346,7 +347,8 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -516,7 +518,8 @@ namespace Pulumi.DigitalOcean
         public Input<string>? User { get; set; }
 
         /// <summary>
-        /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

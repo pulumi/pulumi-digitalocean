@@ -91,6 +91,8 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "uptimeAlert.ts",
+        "uptimeCheck.ts",
         "utilities.ts",
         "volume.ts",
         "volumeAttachment.ts",

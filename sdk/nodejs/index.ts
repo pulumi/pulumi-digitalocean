@@ -359,6 +359,16 @@ export type Tag = import("./tag").Tag;
 export const Tag: typeof import("./tag").Tag = null as any;
 utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
 
+export { UptimeAlertArgs, UptimeAlertState } from "./uptimeAlert";
+export type UptimeAlert = import("./uptimeAlert").UptimeAlert;
+export const UptimeAlert: typeof import("./uptimeAlert").UptimeAlert = null as any;
+utilities.lazyLoad(exports, ["UptimeAlert"], () => require("./uptimeAlert"));
+
+export { UptimeCheckArgs, UptimeCheckState } from "./uptimeCheck";
+export type UptimeCheck = import("./uptimeCheck").UptimeCheck;
+export const UptimeCheck: typeof import("./uptimeCheck").UptimeCheck = null as any;
+utilities.lazyLoad(exports, ["UptimeCheck"], () => require("./uptimeCheck"));
+
 export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
@@ -460,6 +470,10 @@ const _module = {
                 return new SshKey(name, <any>undefined, { urn })
             case "digitalocean:index/tag:Tag":
                 return new Tag(name, <any>undefined, { urn })
+            case "digitalocean:index/uptimeAlert:UptimeAlert":
+                return new UptimeAlert(name, <any>undefined, { urn })
+            case "digitalocean:index/uptimeCheck:UptimeCheck":
+                return new UptimeCheck(name, <any>undefined, { urn })
             case "digitalocean:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             case "digitalocean:index/volumeAttachment:VolumeAttachment":
@@ -505,6 +519,8 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketObject"
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketPolicy", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/tag", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/uptimeAlert", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/uptimeCheck", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volume", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeSnapshot", _module)

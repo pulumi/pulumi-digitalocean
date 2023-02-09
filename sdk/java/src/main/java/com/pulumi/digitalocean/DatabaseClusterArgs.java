@@ -172,14 +172,16 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * @return Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     public Optional<Output<String>> version() {
@@ -491,7 +493,8 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param version Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+         * @param version Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
          * 
          * @return builder
          * 
@@ -502,7 +505,8 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param version Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+         * @param version Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
          * 
          * @return builder
          * 

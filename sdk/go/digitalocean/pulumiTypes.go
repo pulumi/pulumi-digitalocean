@@ -853,7 +853,8 @@ type AppSpecFunction struct {
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecFunctionLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
-	Name   string                 `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// An HTTP paths that should be routed to this component.
 	Routes []AppSpecFunctionRoute `pulumi:"routes"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
@@ -886,7 +887,8 @@ type AppSpecFunctionArgs struct {
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecFunctionLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
-	Name   pulumi.StringInput             `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// An HTTP paths that should be routed to this component.
 	Routes AppSpecFunctionRouteArrayInput `pulumi:"routes"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
@@ -983,6 +985,7 @@ func (o AppSpecFunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunction) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An HTTP paths that should be routed to this component.
 func (o AppSpecFunctionOutput) Routes() AppSpecFunctionRouteArrayOutput {
 	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionRoute { return v.Routes }).(AppSpecFunctionRouteArrayOutput)
 }
@@ -4735,7 +4738,8 @@ type AppSpecService struct {
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
-	Name   string                `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// An HTTP paths that should be routed to this component.
 	Routes []AppSpecServiceRoute `pulumi:"routes"`
 	// An optional run command to override the component's default.
 	RunCommand *string `pulumi:"runCommand"`
@@ -4788,7 +4792,8 @@ type AppSpecServiceArgs struct {
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
-	Name   pulumi.StringInput            `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// An HTTP paths that should be routed to this component.
 	Routes AppSpecServiceRouteArrayInput `pulumi:"routes"`
 	// An optional run command to override the component's default.
 	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
@@ -4932,6 +4937,7 @@ func (o AppSpecServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecService) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// An HTTP paths that should be routed to this component.
 func (o AppSpecServiceOutput) Routes() AppSpecServiceRouteArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []AppSpecServiceRoute { return v.Routes }).(AppSpecServiceRouteArrayOutput)
 }
@@ -7364,8 +7370,9 @@ type AppSpecStaticSite struct {
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-	OutputDir *string                  `pulumi:"outputDir"`
-	Routes    []AppSpecStaticSiteRoute `pulumi:"routes"`
+	OutputDir *string `pulumi:"outputDir"`
+	// An HTTP paths that should be routed to this component.
+	Routes []AppSpecStaticSiteRoute `pulumi:"routes"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
 }
@@ -7407,8 +7414,9 @@ type AppSpecStaticSiteArgs struct {
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-	OutputDir pulumi.StringPtrInput            `pulumi:"outputDir"`
-	Routes    AppSpecStaticSiteRouteArrayInput `pulumi:"routes"`
+	OutputDir pulumi.StringPtrInput `pulumi:"outputDir"`
+	// An HTTP paths that should be routed to this component.
+	Routes AppSpecStaticSiteRouteArrayInput `pulumi:"routes"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
 }
@@ -7529,6 +7537,7 @@ func (o AppSpecStaticSiteOutput) OutputDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.OutputDir }).(pulumi.StringPtrOutput)
 }
 
+// An HTTP paths that should be routed to this component.
 func (o AppSpecStaticSiteOutput) Routes() AppSpecStaticSiteRouteArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) []AppSpecStaticSiteRoute { return v.Routes }).(AppSpecStaticSiteRouteArrayOutput)
 }
@@ -12447,6 +12456,166 @@ func (o KubernetesNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesN
 	}).(KubernetesNodePoolTaintOutput)
 }
 
+type LoadBalancerFirewall struct {
+	// A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+	// * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+	Allows []string `pulumi:"allows"`
+	// A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+	Denies []string `pulumi:"denies"`
+}
+
+// LoadBalancerFirewallInput is an input type that accepts LoadBalancerFirewallArgs and LoadBalancerFirewallOutput values.
+// You can construct a concrete instance of `LoadBalancerFirewallInput` via:
+//
+//	LoadBalancerFirewallArgs{...}
+type LoadBalancerFirewallInput interface {
+	pulumi.Input
+
+	ToLoadBalancerFirewallOutput() LoadBalancerFirewallOutput
+	ToLoadBalancerFirewallOutputWithContext(context.Context) LoadBalancerFirewallOutput
+}
+
+type LoadBalancerFirewallArgs struct {
+	// A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+	// * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+	Allows pulumi.StringArrayInput `pulumi:"allows"`
+	// A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+	Denies pulumi.StringArrayInput `pulumi:"denies"`
+}
+
+func (LoadBalancerFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerFirewall)(nil)).Elem()
+}
+
+func (i LoadBalancerFirewallArgs) ToLoadBalancerFirewallOutput() LoadBalancerFirewallOutput {
+	return i.ToLoadBalancerFirewallOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerFirewallArgs) ToLoadBalancerFirewallOutputWithContext(ctx context.Context) LoadBalancerFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFirewallOutput)
+}
+
+func (i LoadBalancerFirewallArgs) ToLoadBalancerFirewallPtrOutput() LoadBalancerFirewallPtrOutput {
+	return i.ToLoadBalancerFirewallPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerFirewallArgs) ToLoadBalancerFirewallPtrOutputWithContext(ctx context.Context) LoadBalancerFirewallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFirewallOutput).ToLoadBalancerFirewallPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerFirewallPtrInput is an input type that accepts LoadBalancerFirewallArgs, LoadBalancerFirewallPtr and LoadBalancerFirewallPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerFirewallPtrInput` via:
+//
+//	        LoadBalancerFirewallArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerFirewallPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerFirewallPtrOutput() LoadBalancerFirewallPtrOutput
+	ToLoadBalancerFirewallPtrOutputWithContext(context.Context) LoadBalancerFirewallPtrOutput
+}
+
+type loadBalancerFirewallPtrType LoadBalancerFirewallArgs
+
+func LoadBalancerFirewallPtr(v *LoadBalancerFirewallArgs) LoadBalancerFirewallPtrInput {
+	return (*loadBalancerFirewallPtrType)(v)
+}
+
+func (*loadBalancerFirewallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerFirewall)(nil)).Elem()
+}
+
+func (i *loadBalancerFirewallPtrType) ToLoadBalancerFirewallPtrOutput() LoadBalancerFirewallPtrOutput {
+	return i.ToLoadBalancerFirewallPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerFirewallPtrType) ToLoadBalancerFirewallPtrOutputWithContext(ctx context.Context) LoadBalancerFirewallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFirewallPtrOutput)
+}
+
+type LoadBalancerFirewallOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerFirewall)(nil)).Elem()
+}
+
+func (o LoadBalancerFirewallOutput) ToLoadBalancerFirewallOutput() LoadBalancerFirewallOutput {
+	return o
+}
+
+func (o LoadBalancerFirewallOutput) ToLoadBalancerFirewallOutputWithContext(ctx context.Context) LoadBalancerFirewallOutput {
+	return o
+}
+
+func (o LoadBalancerFirewallOutput) ToLoadBalancerFirewallPtrOutput() LoadBalancerFirewallPtrOutput {
+	return o.ToLoadBalancerFirewallPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerFirewallOutput) ToLoadBalancerFirewallPtrOutputWithContext(ctx context.Context) LoadBalancerFirewallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerFirewall) *LoadBalancerFirewall {
+		return &v
+	}).(LoadBalancerFirewallPtrOutput)
+}
+
+// A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+// * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+func (o LoadBalancerFirewallOutput) Allows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerFirewall) []string { return v.Allows }).(pulumi.StringArrayOutput)
+}
+
+// A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+func (o LoadBalancerFirewallOutput) Denies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerFirewall) []string { return v.Denies }).(pulumi.StringArrayOutput)
+}
+
+type LoadBalancerFirewallPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerFirewallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerFirewall)(nil)).Elem()
+}
+
+func (o LoadBalancerFirewallPtrOutput) ToLoadBalancerFirewallPtrOutput() LoadBalancerFirewallPtrOutput {
+	return o
+}
+
+func (o LoadBalancerFirewallPtrOutput) ToLoadBalancerFirewallPtrOutputWithContext(ctx context.Context) LoadBalancerFirewallPtrOutput {
+	return o
+}
+
+func (o LoadBalancerFirewallPtrOutput) Elem() LoadBalancerFirewallOutput {
+	return o.ApplyT(func(v *LoadBalancerFirewall) LoadBalancerFirewall {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerFirewall
+		return ret
+	}).(LoadBalancerFirewallOutput)
+}
+
+// A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+// * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+func (o LoadBalancerFirewallPtrOutput) Allows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerFirewall) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Allows
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+func (o LoadBalancerFirewallPtrOutput) Denies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerFirewall) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Denies
+	}).(pulumi.StringArrayOutput)
+}
+
 type LoadBalancerForwardingRule struct {
 	// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
 	//
@@ -12605,7 +12774,7 @@ func (o LoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) LoadBala
 }
 
 type LoadBalancerHealthcheck struct {
-	// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+	// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
 	CheckIntervalSeconds *int `pulumi:"checkIntervalSeconds"`
 	// The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
@@ -12633,7 +12802,7 @@ type LoadBalancerHealthcheckInput interface {
 }
 
 type LoadBalancerHealthcheckArgs struct {
-	// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+	// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
 	CheckIntervalSeconds pulumi.IntPtrInput `pulumi:"checkIntervalSeconds"`
 	// The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
@@ -12726,7 +12895,7 @@ func (o LoadBalancerHealthcheckOutput) ToLoadBalancerHealthcheckPtrOutputWithCon
 	}).(LoadBalancerHealthcheckPtrOutput)
 }
 
-// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
 func (o LoadBalancerHealthcheckOutput) CheckIntervalSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerHealthcheck) *int { return v.CheckIntervalSeconds }).(pulumi.IntPtrOutput)
 }
@@ -12785,7 +12954,7 @@ func (o LoadBalancerHealthcheckPtrOutput) Elem() LoadBalancerHealthcheckOutput {
 	}).(LoadBalancerHealthcheckOutput)
 }
 
-// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
 func (o LoadBalancerHealthcheckPtrOutput) CheckIntervalSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerHealthcheck) *int {
 		if v == nil {
@@ -14008,6 +14177,206 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type UptimeAlertNotification struct {
+	Emails []string                       `pulumi:"emails"`
+	Slacks []UptimeAlertNotificationSlack `pulumi:"slacks"`
+}
+
+// UptimeAlertNotificationInput is an input type that accepts UptimeAlertNotificationArgs and UptimeAlertNotificationOutput values.
+// You can construct a concrete instance of `UptimeAlertNotificationInput` via:
+//
+//	UptimeAlertNotificationArgs{...}
+type UptimeAlertNotificationInput interface {
+	pulumi.Input
+
+	ToUptimeAlertNotificationOutput() UptimeAlertNotificationOutput
+	ToUptimeAlertNotificationOutputWithContext(context.Context) UptimeAlertNotificationOutput
+}
+
+type UptimeAlertNotificationArgs struct {
+	Emails pulumi.StringArrayInput                `pulumi:"emails"`
+	Slacks UptimeAlertNotificationSlackArrayInput `pulumi:"slacks"`
+}
+
+func (UptimeAlertNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeAlertNotification)(nil)).Elem()
+}
+
+func (i UptimeAlertNotificationArgs) ToUptimeAlertNotificationOutput() UptimeAlertNotificationOutput {
+	return i.ToUptimeAlertNotificationOutputWithContext(context.Background())
+}
+
+func (i UptimeAlertNotificationArgs) ToUptimeAlertNotificationOutputWithContext(ctx context.Context) UptimeAlertNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertNotificationOutput)
+}
+
+// UptimeAlertNotificationArrayInput is an input type that accepts UptimeAlertNotificationArray and UptimeAlertNotificationArrayOutput values.
+// You can construct a concrete instance of `UptimeAlertNotificationArrayInput` via:
+//
+//	UptimeAlertNotificationArray{ UptimeAlertNotificationArgs{...} }
+type UptimeAlertNotificationArrayInput interface {
+	pulumi.Input
+
+	ToUptimeAlertNotificationArrayOutput() UptimeAlertNotificationArrayOutput
+	ToUptimeAlertNotificationArrayOutputWithContext(context.Context) UptimeAlertNotificationArrayOutput
+}
+
+type UptimeAlertNotificationArray []UptimeAlertNotificationInput
+
+func (UptimeAlertNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeAlertNotification)(nil)).Elem()
+}
+
+func (i UptimeAlertNotificationArray) ToUptimeAlertNotificationArrayOutput() UptimeAlertNotificationArrayOutput {
+	return i.ToUptimeAlertNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i UptimeAlertNotificationArray) ToUptimeAlertNotificationArrayOutputWithContext(ctx context.Context) UptimeAlertNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertNotificationArrayOutput)
+}
+
+type UptimeAlertNotificationOutput struct{ *pulumi.OutputState }
+
+func (UptimeAlertNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeAlertNotification)(nil)).Elem()
+}
+
+func (o UptimeAlertNotificationOutput) ToUptimeAlertNotificationOutput() UptimeAlertNotificationOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationOutput) ToUptimeAlertNotificationOutputWithContext(ctx context.Context) UptimeAlertNotificationOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UptimeAlertNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o UptimeAlertNotificationOutput) Slacks() UptimeAlertNotificationSlackArrayOutput {
+	return o.ApplyT(func(v UptimeAlertNotification) []UptimeAlertNotificationSlack { return v.Slacks }).(UptimeAlertNotificationSlackArrayOutput)
+}
+
+type UptimeAlertNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (UptimeAlertNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeAlertNotification)(nil)).Elem()
+}
+
+func (o UptimeAlertNotificationArrayOutput) ToUptimeAlertNotificationArrayOutput() UptimeAlertNotificationArrayOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationArrayOutput) ToUptimeAlertNotificationArrayOutputWithContext(ctx context.Context) UptimeAlertNotificationArrayOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationArrayOutput) Index(i pulumi.IntInput) UptimeAlertNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeAlertNotification {
+		return vs[0].([]UptimeAlertNotification)[vs[1].(int)]
+	}).(UptimeAlertNotificationOutput)
+}
+
+type UptimeAlertNotificationSlack struct {
+	Channel string `pulumi:"channel"`
+	Url     string `pulumi:"url"`
+}
+
+// UptimeAlertNotificationSlackInput is an input type that accepts UptimeAlertNotificationSlackArgs and UptimeAlertNotificationSlackOutput values.
+// You can construct a concrete instance of `UptimeAlertNotificationSlackInput` via:
+//
+//	UptimeAlertNotificationSlackArgs{...}
+type UptimeAlertNotificationSlackInput interface {
+	pulumi.Input
+
+	ToUptimeAlertNotificationSlackOutput() UptimeAlertNotificationSlackOutput
+	ToUptimeAlertNotificationSlackOutputWithContext(context.Context) UptimeAlertNotificationSlackOutput
+}
+
+type UptimeAlertNotificationSlackArgs struct {
+	Channel pulumi.StringInput `pulumi:"channel"`
+	Url     pulumi.StringInput `pulumi:"url"`
+}
+
+func (UptimeAlertNotificationSlackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeAlertNotificationSlack)(nil)).Elem()
+}
+
+func (i UptimeAlertNotificationSlackArgs) ToUptimeAlertNotificationSlackOutput() UptimeAlertNotificationSlackOutput {
+	return i.ToUptimeAlertNotificationSlackOutputWithContext(context.Background())
+}
+
+func (i UptimeAlertNotificationSlackArgs) ToUptimeAlertNotificationSlackOutputWithContext(ctx context.Context) UptimeAlertNotificationSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertNotificationSlackOutput)
+}
+
+// UptimeAlertNotificationSlackArrayInput is an input type that accepts UptimeAlertNotificationSlackArray and UptimeAlertNotificationSlackArrayOutput values.
+// You can construct a concrete instance of `UptimeAlertNotificationSlackArrayInput` via:
+//
+//	UptimeAlertNotificationSlackArray{ UptimeAlertNotificationSlackArgs{...} }
+type UptimeAlertNotificationSlackArrayInput interface {
+	pulumi.Input
+
+	ToUptimeAlertNotificationSlackArrayOutput() UptimeAlertNotificationSlackArrayOutput
+	ToUptimeAlertNotificationSlackArrayOutputWithContext(context.Context) UptimeAlertNotificationSlackArrayOutput
+}
+
+type UptimeAlertNotificationSlackArray []UptimeAlertNotificationSlackInput
+
+func (UptimeAlertNotificationSlackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeAlertNotificationSlack)(nil)).Elem()
+}
+
+func (i UptimeAlertNotificationSlackArray) ToUptimeAlertNotificationSlackArrayOutput() UptimeAlertNotificationSlackArrayOutput {
+	return i.ToUptimeAlertNotificationSlackArrayOutputWithContext(context.Background())
+}
+
+func (i UptimeAlertNotificationSlackArray) ToUptimeAlertNotificationSlackArrayOutputWithContext(ctx context.Context) UptimeAlertNotificationSlackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertNotificationSlackArrayOutput)
+}
+
+type UptimeAlertNotificationSlackOutput struct{ *pulumi.OutputState }
+
+func (UptimeAlertNotificationSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeAlertNotificationSlack)(nil)).Elem()
+}
+
+func (o UptimeAlertNotificationSlackOutput) ToUptimeAlertNotificationSlackOutput() UptimeAlertNotificationSlackOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationSlackOutput) ToUptimeAlertNotificationSlackOutputWithContext(ctx context.Context) UptimeAlertNotificationSlackOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationSlackOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v UptimeAlertNotificationSlack) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+func (o UptimeAlertNotificationSlackOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v UptimeAlertNotificationSlack) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type UptimeAlertNotificationSlackArrayOutput struct{ *pulumi.OutputState }
+
+func (UptimeAlertNotificationSlackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeAlertNotificationSlack)(nil)).Elem()
+}
+
+func (o UptimeAlertNotificationSlackArrayOutput) ToUptimeAlertNotificationSlackArrayOutput() UptimeAlertNotificationSlackArrayOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationSlackArrayOutput) ToUptimeAlertNotificationSlackArrayOutputWithContext(ctx context.Context) UptimeAlertNotificationSlackArrayOutput {
+	return o
+}
+
+func (o UptimeAlertNotificationSlackArrayOutput) Index(i pulumi.IntInput) UptimeAlertNotificationSlackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeAlertNotificationSlack {
+		return vs[0].([]UptimeAlertNotificationSlack)[vs[1].(int)]
+	}).(UptimeAlertNotificationSlackOutput)
 }
 
 type GetAppSpec struct {
@@ -27099,6 +27468,106 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetKubernetesClusterNodePoolTaintOutput)
 }
 
+type GetLoadBalancerFirewall struct {
+	Allows []string `pulumi:"allows"`
+	Denies []string `pulumi:"denies"`
+}
+
+// GetLoadBalancerFirewallInput is an input type that accepts GetLoadBalancerFirewallArgs and GetLoadBalancerFirewallOutput values.
+// You can construct a concrete instance of `GetLoadBalancerFirewallInput` via:
+//
+//	GetLoadBalancerFirewallArgs{...}
+type GetLoadBalancerFirewallInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerFirewallOutput() GetLoadBalancerFirewallOutput
+	ToGetLoadBalancerFirewallOutputWithContext(context.Context) GetLoadBalancerFirewallOutput
+}
+
+type GetLoadBalancerFirewallArgs struct {
+	Allows pulumi.StringArrayInput `pulumi:"allows"`
+	Denies pulumi.StringArrayInput `pulumi:"denies"`
+}
+
+func (GetLoadBalancerFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerFirewall)(nil)).Elem()
+}
+
+func (i GetLoadBalancerFirewallArgs) ToGetLoadBalancerFirewallOutput() GetLoadBalancerFirewallOutput {
+	return i.ToGetLoadBalancerFirewallOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerFirewallArgs) ToGetLoadBalancerFirewallOutputWithContext(ctx context.Context) GetLoadBalancerFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerFirewallOutput)
+}
+
+// GetLoadBalancerFirewallArrayInput is an input type that accepts GetLoadBalancerFirewallArray and GetLoadBalancerFirewallArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerFirewallArrayInput` via:
+//
+//	GetLoadBalancerFirewallArray{ GetLoadBalancerFirewallArgs{...} }
+type GetLoadBalancerFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerFirewallArrayOutput() GetLoadBalancerFirewallArrayOutput
+	ToGetLoadBalancerFirewallArrayOutputWithContext(context.Context) GetLoadBalancerFirewallArrayOutput
+}
+
+type GetLoadBalancerFirewallArray []GetLoadBalancerFirewallInput
+
+func (GetLoadBalancerFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerFirewall)(nil)).Elem()
+}
+
+func (i GetLoadBalancerFirewallArray) ToGetLoadBalancerFirewallArrayOutput() GetLoadBalancerFirewallArrayOutput {
+	return i.ToGetLoadBalancerFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerFirewallArray) ToGetLoadBalancerFirewallArrayOutputWithContext(ctx context.Context) GetLoadBalancerFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerFirewallArrayOutput)
+}
+
+type GetLoadBalancerFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerFirewall)(nil)).Elem()
+}
+
+func (o GetLoadBalancerFirewallOutput) ToGetLoadBalancerFirewallOutput() GetLoadBalancerFirewallOutput {
+	return o
+}
+
+func (o GetLoadBalancerFirewallOutput) ToGetLoadBalancerFirewallOutputWithContext(ctx context.Context) GetLoadBalancerFirewallOutput {
+	return o
+}
+
+func (o GetLoadBalancerFirewallOutput) Allows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerFirewall) []string { return v.Allows }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLoadBalancerFirewallOutput) Denies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerFirewall) []string { return v.Denies }).(pulumi.StringArrayOutput)
+}
+
+type GetLoadBalancerFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerFirewall)(nil)).Elem()
+}
+
+func (o GetLoadBalancerFirewallArrayOutput) ToGetLoadBalancerFirewallArrayOutput() GetLoadBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerFirewallArrayOutput) ToGetLoadBalancerFirewallArrayOutputWithContext(ctx context.Context) GetLoadBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerFirewallArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerFirewall {
+		return vs[0].([]GetLoadBalancerFirewall)[vs[1].(int)]
+	}).(GetLoadBalancerFirewallOutput)
+}
+
 type GetLoadBalancerForwardingRule struct {
 	CertificateId   string `pulumi:"certificateId"`
 	CertificateName string `pulumi:"certificateName"`
@@ -30424,6 +30893,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeArrayInput)(nil)).Elem(), KubernetesNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintInput)(nil)).Elem(), KubernetesNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintArrayInput)(nil)).Elem(), KubernetesNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFirewallInput)(nil)).Elem(), LoadBalancerFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFirewallPtrInput)(nil)).Elem(), LoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleInput)(nil)).Elem(), LoadBalancerForwardingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleArrayInput)(nil)).Elem(), LoadBalancerForwardingRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
@@ -30444,6 +30915,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningPtrInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationInput)(nil)).Elem(), UptimeAlertNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationArrayInput)(nil)).Elem(), UptimeAlertNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackInput)(nil)).Elem(), UptimeAlertNotificationSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackArrayInput)(nil)).Elem(), UptimeAlertNotificationSlackArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecInput)(nil)).Elem(), GetAppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecArrayInput)(nil)).Elem(), GetAppSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertInput)(nil)).Elem(), GetAppSpecAlertArgs{})
@@ -30612,6 +31087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallInput)(nil)).Elem(), GetLoadBalancerFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallArrayInput)(nil)).Elem(), GetLoadBalancerFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleArrayInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckInput)(nil)).Elem(), GetLoadBalancerHealthcheckArgs{})
@@ -30816,6 +31293,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerFirewallOutput{})
+	pulumi.RegisterOutputType(LoadBalancerFirewallPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckOutput{})
@@ -30836,6 +31315,10 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
+	pulumi.RegisterOutputType(UptimeAlertNotificationOutput{})
+	pulumi.RegisterOutputType(UptimeAlertNotificationArrayOutput{})
+	pulumi.RegisterOutputType(UptimeAlertNotificationSlackOutput{})
+	pulumi.RegisterOutputType(UptimeAlertNotificationSlackArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecOutput{})
 	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecAlertOutput{})
@@ -31004,6 +31487,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerFirewallOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckOutput{})

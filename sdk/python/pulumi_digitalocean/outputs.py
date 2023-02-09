@@ -90,6 +90,7 @@ __all__ = [
     'KubernetesClusterNodePoolTaint',
     'KubernetesNodePoolNode',
     'KubernetesNodePoolTaint',
+    'LoadBalancerFirewall',
     'LoadBalancerForwardingRule',
     'LoadBalancerHealthcheck',
     'LoadBalancerStickySessions',
@@ -100,6 +101,8 @@ __all__ = [
     'SpacesBucketLifecycleRuleExpiration',
     'SpacesBucketLifecycleRuleNoncurrentVersionExpiration',
     'SpacesBucketVersioning',
+    'UptimeAlertNotification',
+    'UptimeAlertNotificationSlack',
     'GetAppSpecResult',
     'GetAppSpecAlertResult',
     'GetAppSpecDatabaseResult',
@@ -184,6 +187,7 @@ __all__ = [
     'GetKubernetesClusterNodePoolResult',
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
+    'GetLoadBalancerFirewallResult',
     'GetLoadBalancerForwardingRuleResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
@@ -643,6 +647,7 @@ class AppSpecFunction(dict):
         :param 'AppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param Sequence['AppSpecFunctionLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
+        :param Sequence['AppSpecFunctionRouteArgs'] routes: An HTTP paths that should be routed to this component.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
@@ -732,6 +737,9 @@ class AppSpecFunction(dict):
     @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecFunctionRoute']]:
+        """
+        An HTTP paths that should be routed to this component.
+        """
         return pulumi.get(self, "routes")
 
     @property
@@ -2196,6 +2204,7 @@ class AppSpecService(dict):
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param Sequence['AppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
+        :param Sequence['AppSpecServiceRouteArgs'] routes: An HTTP paths that should be routed to this component.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -2378,6 +2387,9 @@ class AppSpecService(dict):
     @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecServiceRoute']]:
+        """
+        An HTTP paths that should be routed to this component.
+        """
         return pulumi.get(self, "routes")
 
     @property
@@ -3289,6 +3301,7 @@ class AppSpecStaticSite(dict):
         :param 'AppSpecStaticSiteGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param str index_document: The name of the index document to use when serving this static site.
         :param str output_dir: An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+        :param Sequence['AppSpecStaticSiteRouteArgs'] routes: An HTTP paths that should be routed to this component.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
@@ -3428,6 +3441,9 @@ class AppSpecStaticSite(dict):
     @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecStaticSiteRoute']]:
+        """
+        An HTTP paths that should be routed to this component.
+        """
         return pulumi.get(self, "routes")
 
     @property
@@ -5664,6 +5680,39 @@ class KubernetesNodePoolTaint(dict):
 
 
 @pulumi.output_type
+class LoadBalancerFirewall(dict):
+    def __init__(__self__, *,
+                 allows: Optional[Sequence[str]] = None,
+                 denies: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allows: A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+               * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+        :param Sequence[str] denies: A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+        """
+        if allows is not None:
+            pulumi.set(__self__, "allows", allows)
+        if denies is not None:
+            pulumi.set(__self__, "denies", denies)
+
+    @property
+    @pulumi.getter
+    def allows(self) -> Optional[Sequence[str]]:
+        """
+        A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+        * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+        """
+        return pulumi.get(self, "allows")
+
+    @property
+    @pulumi.getter
+    def denies(self) -> Optional[Sequence[str]]:
+        """
+        A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+        """
+        return pulumi.get(self, "denies")
+
+
+@pulumi.output_type
 class LoadBalancerForwardingRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5815,7 +5864,7 @@ class LoadBalancerHealthcheck(dict):
         """
         :param int port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
         :param str protocol: The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
-        :param int check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        :param int check_interval_seconds: The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
         :param int healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         :param str path: The path on the backend Droplets to which the Load Balancer instance will send a request.
         :param int response_timeout_seconds: The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
@@ -5854,7 +5903,7 @@ class LoadBalancerHealthcheck(dict):
     @pulumi.getter(name="checkIntervalSeconds")
     def check_interval_seconds(self) -> Optional[int]:
         """
-        The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
         """
         return pulumi.get(self, "check_interval_seconds")
 
@@ -6270,6 +6319,46 @@ class SpacesBucketVersioning(dict):
         state. You can, however, suspend versioning on that bucket.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class UptimeAlertNotification(dict):
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 slacks: Optional[Sequence['outputs.UptimeAlertNotificationSlack']] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slacks is not None:
+            pulumi.set(__self__, "slacks", slacks)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def slacks(self) -> Optional[Sequence['outputs.UptimeAlertNotificationSlack']]:
+        return pulumi.get(self, "slacks")
+
+
+@pulumi.output_type
+class UptimeAlertNotificationSlack(dict):
+    def __init__(__self__, *,
+                 channel: str,
+                 url: str):
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -11333,6 +11422,25 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
         An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetLoadBalancerFirewallResult(dict):
+    def __init__(__self__, *,
+                 allows: Sequence[str],
+                 denies: Sequence[str]):
+        pulumi.set(__self__, "allows", allows)
+        pulumi.set(__self__, "denies", denies)
+
+    @property
+    @pulumi.getter
+    def allows(self) -> Sequence[str]:
+        return pulumi.get(self, "allows")
+
+    @property
+    @pulumi.getter
+    def denies(self) -> Sequence[str]:
+        return pulumi.get(self, "denies")
 
 
 @pulumi.output_type

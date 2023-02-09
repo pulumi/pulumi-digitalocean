@@ -108,6 +108,10 @@ public final class AppSpecService {
      * 
      */
     private String name;
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     private @Nullable List<AppSpecServiceRoute> routes;
     /**
      * @return An optional run command to override the component&#39;s default.
@@ -240,6 +244,10 @@ public final class AppSpecService {
     public String name() {
         return this.name;
     }
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     public List<AppSpecServiceRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }

@@ -432,14 +432,16 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return this.user;
     }
     /**
-     * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
     private Output</* @Nullable */ String> version;
 
     /**
-     * @return Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * @return Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     public Output<Optional<String>> version() {

@@ -96,6 +96,7 @@ type LookupLoadBalancerResult struct {
 	DropletTag                   string                          `pulumi:"dropletTag"`
 	EnableBackendKeepalive       bool                            `pulumi:"enableBackendKeepalive"`
 	EnableProxyProtocol          bool                            `pulumi:"enableProxyProtocol"`
+	Firewalls                    []GetLoadBalancerFirewall       `pulumi:"firewalls"`
 	ForwardingRules              []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
 	Healthchecks                 []GetLoadBalancerHealthcheck    `pulumi:"healthchecks"`
 	HttpIdleTimeoutSeconds       int                             `pulumi:"httpIdleTimeoutSeconds"`
@@ -175,6 +176,10 @@ func (o LookupLoadBalancerResultOutput) EnableBackendKeepalive() pulumi.BoolOutp
 
 func (o LookupLoadBalancerResultOutput) EnableProxyProtocol() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Firewalls() GetLoadBalancerFirewallArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerFirewall { return v.Firewalls }).(GetLoadBalancerFirewallArrayOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) ForwardingRules() GetLoadBalancerForwardingRuleArrayOutput {

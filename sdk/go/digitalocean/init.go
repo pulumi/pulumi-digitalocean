@@ -84,6 +84,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SshKey{}
 	case "digitalocean:index/tag:Tag":
 		r = &Tag{}
+	case "digitalocean:index/uptimeAlert:UptimeAlert":
+		r = &UptimeAlert{}
+	case "digitalocean:index/uptimeCheck:UptimeCheck":
+		r = &UptimeCheck{}
 	case "digitalocean:index/volume:Volume":
 		r = &Volume{}
 	case "digitalocean:index/volumeAttachment:VolumeAttachment":
@@ -278,6 +282,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/tag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/uptimeAlert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/uptimeCheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -37,10 +37,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseReplica(ctx, "read-replica", &digitalocean.DatabaseReplicaArgs{
+//			_, err = digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
 //				ClusterId: postgres_example.ID(),
 //				Size:      pulumi.String("db-s-1vcpu-1gb"),
 //				Region:    pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("uUID", replica_example.Uuid)
+//			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
+//				ClusterId: replica_example.Uuid,
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
+//						Type:  pulumi.String("ip_addr"),
+//						Value: pulumi.String("192.168.1.1"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -91,6 +104,8 @@ type DatabaseReplica struct {
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Username for the replica's default user.
 	User pulumi.StringOutput `pulumi:"user"`
+	// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
 
 // NewDatabaseReplica registers a new resource with the given unique name, arguments, and options.
@@ -159,6 +174,8 @@ type databaseReplicaState struct {
 	Uri *string `pulumi:"uri"`
 	// Username for the replica's default user.
 	User *string `pulumi:"user"`
+	// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+	Uuid *string `pulumi:"uuid"`
 }
 
 type DatabaseReplicaState struct {
@@ -190,6 +207,8 @@ type DatabaseReplicaState struct {
 	Uri pulumi.StringPtrInput
 	// Username for the replica's default user.
 	User pulumi.StringPtrInput
+	// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+	Uuid pulumi.StringPtrInput
 }
 
 func (DatabaseReplicaState) ElementType() reflect.Type {
@@ -382,6 +401,11 @@ func (o DatabaseReplicaOutput) Uri() pulumi.StringOutput {
 // Username for the replica's default user.
 func (o DatabaseReplicaOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
+// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+func (o DatabaseReplicaOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type DatabaseReplicaArrayOutput struct{ *pulumi.OutputState }

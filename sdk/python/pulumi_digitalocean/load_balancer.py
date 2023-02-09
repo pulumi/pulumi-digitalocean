@@ -25,6 +25,7 @@ class LoadBalancerArgs:
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 firewall: Optional[pulumi.Input['LoadBalancerFirewallArgs']] = None,
                  healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
+        :param pulumi.Input['LoadBalancerFirewallArgs'] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
@@ -77,6 +79,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "enable_backend_keepalive", enable_backend_keepalive)
         if enable_proxy_protocol is not None:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if firewall is not None:
+            pulumi.set(__self__, "firewall", firewall)
         if healthcheck is not None:
             pulumi.set(__self__, "healthcheck", healthcheck)
         if http_idle_timeout_seconds is not None:
@@ -196,6 +200,18 @@ class LoadBalancerArgs:
     @enable_proxy_protocol.setter
     def enable_proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
+
+    @property
+    @pulumi.getter
+    def firewall(self) -> Optional[pulumi.Input['LoadBalancerFirewallArgs']]:
+        """
+        A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        """
+        return pulumi.get(self, "firewall")
+
+    @firewall.setter
+    def firewall(self, value: Optional[pulumi.Input['LoadBalancerFirewallArgs']]):
+        pulumi.set(self, "firewall", value)
 
     @property
     @pulumi.getter
@@ -319,6 +335,7 @@ class _LoadBalancerState:
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 firewall: Optional[pulumi.Input['LoadBalancerFirewallArgs']] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
                  healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -345,6 +362,7 @@ class _LoadBalancerState:
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
+        :param pulumi.Input['LoadBalancerFirewallArgs'] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
@@ -376,6 +394,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "enable_backend_keepalive", enable_backend_keepalive)
         if enable_proxy_protocol is not None:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if firewall is not None:
+            pulumi.set(__self__, "firewall", firewall)
         if forwarding_rules is not None:
             pulumi.set(__self__, "forwarding_rules", forwarding_rules)
         if healthcheck is not None:
@@ -480,6 +500,18 @@ class _LoadBalancerState:
     @enable_proxy_protocol.setter
     def enable_proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
+
+    @property
+    @pulumi.getter
+    def firewall(self) -> Optional[pulumi.Input['LoadBalancerFirewallArgs']]:
+        """
+        A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        """
+        return pulumi.get(self, "firewall")
+
+    @firewall.setter
+    def firewall(self, value: Optional[pulumi.Input['LoadBalancerFirewallArgs']]):
+        pulumi.set(self, "firewall", value)
 
     @property
     @pulumi.getter(name="forwardingRules")
@@ -663,6 +695,7 @@ class LoadBalancer(pulumi.CustomResource):
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 firewall: Optional[pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -757,6 +790,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
@@ -871,6 +905,7 @@ class LoadBalancer(pulumi.CustomResource):
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 firewall: Optional[pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -897,6 +932,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["droplet_tag"] = droplet_tag
             __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
             __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
+            __props__.__dict__["firewall"] = firewall
             if forwarding_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'forwarding_rules'")
             __props__.__dict__["forwarding_rules"] = forwarding_rules
@@ -931,6 +967,7 @@ class LoadBalancer(pulumi.CustomResource):
             droplet_tag: Optional[pulumi.Input[str]] = None,
             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+            firewall: Optional[pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']]] = None,
             forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
             healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
             http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -962,6 +999,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
@@ -991,6 +1029,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["droplet_tag"] = droplet_tag
         __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
         __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
+        __props__.__dict__["firewall"] = firewall
         __props__.__dict__["forwarding_rules"] = forwarding_rules
         __props__.__dict__["healthcheck"] = healthcheck
         __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
@@ -1058,6 +1097,14 @@ class LoadBalancer(pulumi.CustomResource):
         the backend service. Default value is `false`.
         """
         return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter
+    def firewall(self) -> pulumi.Output['outputs.LoadBalancerFirewall']:
+        """
+        A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        """
+        return pulumi.get(self, "firewall")
 
     @property
     @pulumi.getter(name="forwardingRules")

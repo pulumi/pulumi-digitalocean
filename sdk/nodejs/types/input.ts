@@ -152,6 +152,9 @@ export interface AppSpecFunction {
      * The name of the component.
      */
     name: pulumi.Input<string>;
+    /**
+     * An HTTP paths that should be routed to this component.
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionRoute>[]>;
     /**
      * An optional path to the working directory to use for the build.
@@ -632,6 +635,9 @@ export interface AppSpecService {
      * The name of the component.
      */
     name: pulumi.Input<string>;
+    /**
+     * An HTTP paths that should be routed to this component.
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceRoute>[]>;
     /**
      * An optional run command to override the component's default.
@@ -933,6 +939,9 @@ export interface AppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: pulumi.Input<string>;
+    /**
+     * An HTTP paths that should be routed to this component.
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteRoute>[]>;
     /**
      * An optional path to the working directory to use for the build.
@@ -2444,6 +2453,18 @@ export interface KubernetesNodePoolTaint {
     value: pulumi.Input<string>;
 }
 
+export interface LoadBalancerFirewall {
+    /**
+     * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+     * * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+     */
+    allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+     */
+    denies?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LoadBalancerForwardingRule {
     /**
      * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
@@ -2479,7 +2500,7 @@ export interface LoadBalancerForwardingRule {
 
 export interface LoadBalancerHealthcheck {
     /**
-     * The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      */
     checkIntervalSeconds?: pulumi.Input<number>;
     /**
@@ -2610,4 +2631,14 @@ export interface SpacesBucketVersioning {
      * state. You can, however, suspend versioning on that bucket.
      */
     enabled?: pulumi.Input<boolean>;
+}
+
+export interface UptimeAlertNotification {
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    slacks?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotificationSlack>[]>;
+}
+
+export interface UptimeAlertNotificationSlack {
+    channel: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
