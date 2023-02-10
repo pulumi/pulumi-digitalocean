@@ -17,14 +17,14 @@ public final class LoadBalancerHealthcheckArgs extends com.pulumi.resources.Reso
     public static final LoadBalancerHealthcheckArgs Empty = new LoadBalancerHealthcheckArgs();
 
     /**
-     * The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
     @Import(name="checkIntervalSeconds")
     private @Nullable Output<Integer> checkIntervalSeconds;
 
     /**
-     * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * @return The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
     public Optional<Output<Integer>> checkIntervalSeconds() {
@@ -152,7 +152,7 @@ public final class LoadBalancerHealthcheckArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param checkIntervalSeconds The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+         * @param checkIntervalSeconds The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class LoadBalancerHealthcheckArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param checkIntervalSeconds The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+         * @param checkIntervalSeconds The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
          * 
          * @return builder
          * 

@@ -74,6 +74,7 @@ export interface GetLoadBalancerResult {
     readonly dropletTag: string;
     readonly enableBackendKeepalive: boolean;
     readonly enableProxyProtocol: boolean;
+    readonly firewalls: outputs.GetLoadBalancerFirewall[];
     readonly forwardingRules: outputs.GetLoadBalancerForwardingRule[];
     readonly healthchecks: outputs.GetLoadBalancerHealthcheck[];
     readonly httpIdleTimeoutSeconds: number;

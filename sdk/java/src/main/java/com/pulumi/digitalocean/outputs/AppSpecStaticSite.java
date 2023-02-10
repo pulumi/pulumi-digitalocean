@@ -83,6 +83,10 @@ public final class AppSpecStaticSite {
      * 
      */
     private @Nullable String outputDir;
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     private @Nullable List<AppSpecStaticSiteRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -182,6 +186,10 @@ public final class AppSpecStaticSite {
     public Optional<String> outputDir() {
         return Optional.ofNullable(this.outputDir);
     }
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     public List<AppSpecStaticSiteRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }

@@ -162,6 +162,12 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> EnableProxyProtocol { get; private set; } = null!;
 
         /// <summary>
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// </summary>
+        [Output("firewall")]
+        public Output<Outputs.LoadBalancerFirewall> Firewall { get; private set; } = null!;
+
+        /// <summary>
         /// A list of `forwarding_rule` to be assigned to the
         /// Load Balancer. The `forwarding_rule` block is documented below.
         /// </summary>
@@ -339,6 +345,12 @@ namespace Pulumi.DigitalOcean
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
 
+        /// <summary>
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// </summary>
+        [Input("firewall")]
+        public Input<Inputs.LoadBalancerFirewallArgs>? Firewall { get; set; }
+
         [Input("forwardingRules", required: true)]
         private InputList<Inputs.LoadBalancerForwardingRuleArgs>? _forwardingRules;
 
@@ -469,6 +481,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
+
+        /// <summary>
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// </summary>
+        [Input("firewall")]
+        public Input<Inputs.LoadBalancerFirewallGetArgs>? Firewall { get; set; }
 
         [Input("forwardingRules")]
         private InputList<Inputs.LoadBalancerForwardingRuleGetArgs>? _forwardingRules;

@@ -77,6 +77,8 @@ from .spaces_bucket_object import *
 from .spaces_bucket_policy import *
 from .ssh_key import *
 from .tag import *
+from .uptime_alert import *
+from .uptime_check import *
 from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
@@ -348,6 +350,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/tag:Tag": "Tag"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/uptimeAlert",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/uptimeAlert:UptimeAlert": "UptimeAlert"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/uptimeCheck",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/uptimeCheck:UptimeCheck": "UptimeCheck"
   }
  },
  {

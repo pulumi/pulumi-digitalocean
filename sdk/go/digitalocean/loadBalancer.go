@@ -152,6 +152,8 @@ type LoadBalancer struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol pulumi.BoolPtrOutput `pulumi:"enableProxyProtocol"`
+	// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+	Firewall LoadBalancerFirewallOutput `pulumi:"firewall"`
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayOutput `pulumi:"forwardingRules"`
@@ -237,6 +239,8 @@ type loadBalancerState struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
+	// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+	Firewall *LoadBalancerFirewall `pulumi:"firewall"`
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules []LoadBalancerForwardingRule `pulumi:"forwardingRules"`
@@ -288,6 +292,8 @@ type LoadBalancerState struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol pulumi.BoolPtrInput
+	// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+	Firewall LoadBalancerFirewallPtrInput
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayInput
@@ -343,6 +349,8 @@ type loadBalancerArgs struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
+	// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+	Firewall *LoadBalancerFirewall `pulumi:"firewall"`
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules []LoadBalancerForwardingRule `pulumi:"forwardingRules"`
@@ -390,6 +398,8 @@ type LoadBalancerArgs struct {
 	// Protocol should be used to pass information from connecting client requests to
 	// the backend service. Default value is `false`.
 	EnableProxyProtocol pulumi.BoolPtrInput
+	// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+	Firewall LoadBalancerFirewallPtrInput
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayInput
@@ -538,6 +548,11 @@ func (o LoadBalancerOutput) EnableBackendKeepalive() pulumi.BoolPtrOutput {
 // the backend service. Default value is `false`.
 func (o LoadBalancerOutput) EnableProxyProtocol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.EnableProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+func (o LoadBalancerOutput) Firewall() LoadBalancerFirewallOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerFirewallOutput { return v.Firewall }).(LoadBalancerFirewallOutput)
 }
 
 // A list of `forwardingRule` to be assigned to the

@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetLoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerForwardingRule;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerStickySession;
@@ -23,6 +24,7 @@ public final class GetLoadBalancerResult {
     private String dropletTag;
     private Boolean enableBackendKeepalive;
     private Boolean enableProxyProtocol;
+    private List<GetLoadBalancerFirewall> firewalls;
     private List<GetLoadBalancerForwardingRule> forwardingRules;
     private List<GetLoadBalancerHealthcheck> healthchecks;
     private Integer httpIdleTimeoutSeconds;
@@ -57,6 +59,9 @@ public final class GetLoadBalancerResult {
     }
     public Boolean enableProxyProtocol() {
         return this.enableProxyProtocol;
+    }
+    public List<GetLoadBalancerFirewall> firewalls() {
+        return this.firewalls;
     }
     public List<GetLoadBalancerForwardingRule> forwardingRules() {
         return this.forwardingRules;
@@ -119,6 +124,7 @@ public final class GetLoadBalancerResult {
         private String dropletTag;
         private Boolean enableBackendKeepalive;
         private Boolean enableProxyProtocol;
+        private List<GetLoadBalancerFirewall> firewalls;
         private List<GetLoadBalancerForwardingRule> forwardingRules;
         private List<GetLoadBalancerHealthcheck> healthchecks;
         private Integer httpIdleTimeoutSeconds;
@@ -143,6 +149,7 @@ public final class GetLoadBalancerResult {
     	      this.dropletTag = defaults.dropletTag;
     	      this.enableBackendKeepalive = defaults.enableBackendKeepalive;
     	      this.enableProxyProtocol = defaults.enableProxyProtocol;
+    	      this.firewalls = defaults.firewalls;
     	      this.forwardingRules = defaults.forwardingRules;
     	      this.healthchecks = defaults.healthchecks;
     	      this.httpIdleTimeoutSeconds = defaults.httpIdleTimeoutSeconds;
@@ -192,6 +199,14 @@ public final class GetLoadBalancerResult {
         public Builder enableProxyProtocol(Boolean enableProxyProtocol) {
             this.enableProxyProtocol = Objects.requireNonNull(enableProxyProtocol);
             return this;
+        }
+        @CustomType.Setter
+        public Builder firewalls(List<GetLoadBalancerFirewall> firewalls) {
+            this.firewalls = Objects.requireNonNull(firewalls);
+            return this;
+        }
+        public Builder firewalls(GetLoadBalancerFirewall... firewalls) {
+            return firewalls(List.of(firewalls));
         }
         @CustomType.Setter
         public Builder forwardingRules(List<GetLoadBalancerForwardingRule> forwardingRules) {
@@ -285,6 +300,7 @@ public final class GetLoadBalancerResult {
             o.dropletTag = dropletTag;
             o.enableBackendKeepalive = enableBackendKeepalive;
             o.enableProxyProtocol = enableProxyProtocol;
+            o.firewalls = firewalls;
             o.forwardingRules = forwardingRules;
             o.healthchecks = healthchecks;
             o.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;

@@ -177,7 +177,8 @@ type DatabaseCluster struct {
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Username for the cluster's default user.
 	User pulumi.StringOutput `pulumi:"user"`
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -266,7 +267,8 @@ type databaseClusterState struct {
 	Uri *string `pulumi:"uri"`
 	// Username for the cluster's default user.
 	User *string `pulumi:"user"`
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version *string `pulumi:"version"`
 }
 
@@ -309,7 +311,8 @@ type DatabaseClusterState struct {
 	Uri pulumi.StringPtrInput
 	// Username for the cluster's default user.
 	User pulumi.StringPtrInput
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrInput
 }
 
@@ -338,7 +341,8 @@ type databaseClusterArgs struct {
 	SqlMode *string `pulumi:"sqlMode"`
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version *string `pulumi:"version"`
 }
 
@@ -364,7 +368,8 @@ type DatabaseClusterArgs struct {
 	SqlMode pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrInput
 }
 
@@ -550,7 +555,8 @@ func (o DatabaseClusterOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
 }
 
-// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 func (o DatabaseClusterOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

@@ -22,7 +22,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, forwarding_rules=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -41,6 +41,9 @@ class GetLoadBalancerResult:
         if enable_proxy_protocol and not isinstance(enable_proxy_protocol, bool):
             raise TypeError("Expected argument 'enable_proxy_protocol' to be a bool")
         pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if firewalls and not isinstance(firewalls, list):
+            raise TypeError("Expected argument 'firewalls' to be a list")
+        pulumi.set(__self__, "firewalls", firewalls)
         if forwarding_rules and not isinstance(forwarding_rules, list):
             raise TypeError("Expected argument 'forwarding_rules' to be a list")
         pulumi.set(__self__, "forwarding_rules", forwarding_rules)
@@ -116,6 +119,11 @@ class GetLoadBalancerResult:
     @pulumi.getter(name="enableProxyProtocol")
     def enable_proxy_protocol(self) -> bool:
         return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter
+    def firewalls(self) -> Sequence['outputs.GetLoadBalancerFirewallResult']:
+        return pulumi.get(self, "firewalls")
 
     @property
     @pulumi.getter(name="forwardingRules")
@@ -205,6 +213,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             droplet_tag=self.droplet_tag,
             enable_backend_keepalive=self.enable_backend_keepalive,
             enable_proxy_protocol=self.enable_proxy_protocol,
+            firewalls=self.firewalls,
             forwarding_rules=self.forwarding_rules,
             healthchecks=self.healthchecks,
             http_idle_timeout_seconds=self.http_idle_timeout_seconds,
@@ -271,6 +280,7 @@ def get_load_balancer(id: Optional[str] = None,
         droplet_tag=__ret__.droplet_tag,
         enable_backend_keepalive=__ret__.enable_backend_keepalive,
         enable_proxy_protocol=__ret__.enable_proxy_protocol,
+        firewalls=__ret__.firewalls,
         forwarding_rules=__ret__.forwarding_rules,
         healthchecks=__ret__.healthchecks,
         http_idle_timeout_seconds=__ret__.http_idle_timeout_seconds,

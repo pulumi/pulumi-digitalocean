@@ -152,6 +152,9 @@ export interface AppSpecFunction {
      * The name of the component.
      */
     name: string;
+    /**
+     * An HTTP paths that should be routed to this component.
+     */
     routes: outputs.AppSpecFunctionRoute[];
     /**
      * An optional path to the working directory to use for the build.
@@ -632,6 +635,9 @@ export interface AppSpecService {
      * The name of the component.
      */
     name: string;
+    /**
+     * An HTTP paths that should be routed to this component.
+     */
     routes: outputs.AppSpecServiceRoute[];
     /**
      * An optional run command to override the component's default.
@@ -933,6 +939,9 @@ export interface AppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: string;
+    /**
+     * An HTTP paths that should be routed to this component.
+     */
     routes: outputs.AppSpecStaticSiteRoute[];
     /**
      * An optional path to the working directory to use for the build.
@@ -3173,6 +3182,11 @@ export interface GetKubernetesClusterNodePoolTaint {
     value: string;
 }
 
+export interface GetLoadBalancerFirewall {
+    allows: string[];
+    denies: string[];
+}
+
 export interface GetLoadBalancerForwardingRule {
     certificateId: string;
     certificateName: string;
@@ -3849,6 +3863,18 @@ export interface KubernetesNodePoolTaint {
     value: string;
 }
 
+export interface LoadBalancerFirewall {
+    /**
+     * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+     * * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+     */
+    allows?: string[];
+    /**
+     * A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+     */
+    denies?: string[];
+}
+
 export interface LoadBalancerForwardingRule {
     /**
      * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
@@ -3884,7 +3910,7 @@ export interface LoadBalancerForwardingRule {
 
 export interface LoadBalancerHealthcheck {
     /**
-     * The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      */
     checkIntervalSeconds?: number;
     /**
@@ -4015,5 +4041,15 @@ export interface SpacesBucketVersioning {
      * state. You can, however, suspend versioning on that bucket.
      */
     enabled?: boolean;
+}
+
+export interface UptimeAlertNotification {
+    emails?: string[];
+    slacks?: outputs.UptimeAlertNotificationSlack[];
+}
+
+export interface UptimeAlertNotificationSlack {
+    channel: string;
+    url: string;
 }
 

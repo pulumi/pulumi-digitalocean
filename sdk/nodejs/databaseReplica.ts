@@ -23,10 +23,19 @@ import * as utilities from "./utilities";
  *     region: "nyc1",
  *     nodeCount: 1,
  * });
- * const read_replica = new digitalocean.DatabaseReplica("read-replica", {
+ * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
  *     size: "db-s-1vcpu-1gb",
  *     region: "nyc1",
+ * });
+ * export const uUID = replica_example.uuid;
+ * // Create firewall rule for database replica
+ * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: replica_example.uuid,
+ *     rules: [{
+ *         type: "ip_addr",
+ *         value: "192.168.1.1",
+ *     }],
  * });
  * ```
  *
@@ -122,6 +131,10 @@ export class DatabaseReplica extends pulumi.CustomResource {
      * Username for the replica's default user.
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
+    /**
+     * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+     */
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a DatabaseReplica resource with the given unique name, arguments, and options.
@@ -150,6 +163,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as DatabaseReplicaArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -169,6 +183,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             resourceInputs["privateUri"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uri"] };
@@ -237,6 +252,10 @@ export interface DatabaseReplicaState {
      * Username for the replica's default user.
      */
     user?: pulumi.Input<string>;
+    /**
+     * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+     */
+    uuid?: pulumi.Input<string>;
 }
 
 /**

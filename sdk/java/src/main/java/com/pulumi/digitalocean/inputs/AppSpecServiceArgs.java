@@ -282,9 +282,17 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
         return this.name;
     }
 
+    /**
+     * An HTTP paths that should be routed to this component.
+     * 
+     */
     @Import(name="routes")
     private @Nullable Output<List<AppSpecServiceRouteArgs>> routes;
 
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     public Optional<Output<List<AppSpecServiceRouteArgs>>> routes() {
         return Optional.ofNullable(this.routes);
     }
@@ -759,15 +767,33 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(@Nullable Output<List<AppSpecServiceRouteArgs>> routes) {
             $.routes = routes;
             return this;
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(List<AppSpecServiceRouteArgs> routes) {
             return routes(Output.of(routes));
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(AppSpecServiceRouteArgs... routes) {
             return routes(List.of(routes));
         }

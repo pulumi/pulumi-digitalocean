@@ -31,6 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DatabaseClusterArgs;
  * import com.pulumi.digitalocean.DatabaseReplica;
  * import com.pulumi.digitalocean.DatabaseReplicaArgs;
+ * import com.pulumi.digitalocean.DatabaseFirewall;
+ * import com.pulumi.digitalocean.DatabaseFirewallArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,10 +55,19 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var read_replica = new DatabaseReplica(&#34;read-replica&#34;, DatabaseReplicaArgs.builder()        
+ *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
  *             .region(&#34;nyc1&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;uUID&#34;, replica_example.uuid());
+ *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *             .clusterId(replica_example.uuid())
+ *             .rules(DatabaseFirewallRuleArgs.builder()
+ *                 .type(&#34;ip_addr&#34;)
+ *                 .value(&#34;192.168.1.1&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -268,6 +280,20 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      */
     public Output<String> user() {
         return this.user;
+    }
+    /**
+     * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+     * 
+     */
+    @Export(name="uuid", type=String.class, parameters={})
+    private Output<String> uuid;
+
+    /**
+     * @return The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+     * 
+     */
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     /**

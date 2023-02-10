@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerHealthcheck {
     /**
-     * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * @return The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
     private @Nullable Integer checkIntervalSeconds;
@@ -50,7 +50,7 @@ public final class LoadBalancerHealthcheck {
 
     private LoadBalancerHealthcheck() {}
     /**
-     * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * @return The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
     public Optional<Integer> checkIntervalSeconds() {

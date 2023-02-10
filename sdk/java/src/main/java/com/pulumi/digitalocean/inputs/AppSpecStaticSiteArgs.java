@@ -217,9 +217,17 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.outputDir);
     }
 
+    /**
+     * An HTTP paths that should be routed to this component.
+     * 
+     */
     @Import(name="routes")
     private @Nullable Output<List<AppSpecStaticSiteRouteArgs>> routes;
 
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     */
     public Optional<Output<List<AppSpecStaticSiteRouteArgs>>> routes() {
         return Optional.ofNullable(this.routes);
     }
@@ -560,15 +568,33 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
             return outputDir(Output.of(outputDir));
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(@Nullable Output<List<AppSpecStaticSiteRouteArgs>> routes) {
             $.routes = routes;
             return this;
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(List<AppSpecStaticSiteRouteArgs> routes) {
             return routes(Output.of(routes));
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(AppSpecStaticSiteRouteArgs... routes) {
             return routes(List.of(routes));
         }

@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class LoadBalancerHealthcheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        /// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
         /// </summary>
         [Input("checkIntervalSeconds")]
         public Input<int>? CheckIntervalSeconds { get; set; }
