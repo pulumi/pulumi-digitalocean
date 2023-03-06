@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -44,7 +42,7 @@ import (
 //						Key:     "name",
 //						MatchBy: pulumi.StringRef("re"),
 //						Values: []string{
-//							fmt.Sprintf("example\\.com$"),
+//							"example\\.com$",
 //						},
 //					},
 //				},

@@ -36,10 +36,10 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.ApiEndpoint) {
+	if args.ApiEndpoint == nil {
 		args.ApiEndpoint = pulumi.StringPtr(getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL").(string))
 	}
-	if isZero(args.SpacesEndpoint) {
+	if args.SpacesEndpoint == nil {
 		args.SpacesEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "SPACES_ENDPOINT_URL").(string))
 	}
 	var resource Provider
