@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     filters: [{
  *         key: "name",
  *         matchBy: "re",
- *         values: [`example\.com$`],
+ *         values: ["example\\.com$"],
  *     }],
  * });
  * ```
@@ -99,7 +99,7 @@ export interface GetDomainsResult {
  *     filters: [{
  *         key: "name",
  *         matchBy: "re",
- *         values: [`example\.com$`],
+ *         values: ["example\\.com$"],
  *     }],
  * });
  * ```
