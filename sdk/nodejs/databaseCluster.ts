@@ -153,6 +153,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateUri!: pulumi.Output<string>;
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * DigitalOcean region where the cluster will reside.
      */
     public readonly region!: pulumi.Output<string>;
@@ -208,6 +212,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["privateHost"] = state ? state.privateHost : undefined;
             resourceInputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
             resourceInputs["privateUri"] = state ? state.privateUri : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
@@ -235,6 +240,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sqlMode"] = args ? args.sqlMode : undefined;
@@ -314,6 +320,10 @@ export interface DatabaseClusterState {
      */
     privateUri?: pulumi.Input<string>;
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * DigitalOcean region where the cluster will reside.
      */
     region?: pulumi.Input<string | enums.Region>;
@@ -372,6 +382,10 @@ export interface DatabaseClusterArgs {
      * The ID of the VPC where the database cluster will be located.
      */
     privateNetworkUuid?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the cluster will reside.
      */

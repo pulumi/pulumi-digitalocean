@@ -59,11 +59,11 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var static_ste_example = new DigitalOcean.App("static-ste-example", new()
+    ///     var static_site_example = new DigitalOcean.App("static-site-example", new()
     ///     {
     ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
-    ///             Name = "static-ste-example",
+    ///             Name = "static-site-example",
     ///             Region = "ams",
     ///             StaticSites = new[]
     ///             {

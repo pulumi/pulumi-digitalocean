@@ -348,6 +348,20 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return this.privateUri;
     }
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     * 
+     */
+    @Export(name="projectId", type=String.class, parameters={})
+    private Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
+    }
+    /**
      * DigitalOcean region where the cluster will reside.
      * 
      */

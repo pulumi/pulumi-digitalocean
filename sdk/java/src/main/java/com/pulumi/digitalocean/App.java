@@ -87,9 +87,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_ste_example = new App(&#34;static-ste-example&#34;, AppArgs.builder()        
+ *         var static_site_example = new App(&#34;static-site-example&#34;, AppArgs.builder()        
  *             .spec(AppSpecArgs.builder()
- *                 .name(&#34;static-ste-example&#34;)
+ *                 .name(&#34;static-site-example&#34;)
  *                 .region(&#34;ams&#34;)
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
  *                     .buildCommand(&#34;bundle exec jekyll build -d ./public&#34;)

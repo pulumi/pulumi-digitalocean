@@ -92,6 +92,10 @@ export interface GetDatabaseClusterResult {
      */
     readonly privateUri: string;
     /**
+     * The ID of the project that the database cluster is assigned to.
+     */
+    readonly projectId: string;
+    /**
      * DigitalOcean region where the cluster will reside.
      */
     readonly region: string;

@@ -40,8 +40,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const static_ste_example = new digitalocean.App("static-ste-example", {spec: {
- *     name: "static-ste-example",
+ * const static_site_example = new digitalocean.App("static-site-example", {spec: {
+ *     name: "static-site-example",
  *     region: "ams",
  *     staticSites: [{
  *         buildCommand: "bundle exec jekyll build -d ./public",

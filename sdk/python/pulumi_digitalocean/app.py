@@ -197,8 +197,8 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        static_ste_example = digitalocean.App("static-ste-example", spec=digitalocean.AppSpecArgs(
-            name="static-ste-example",
+        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
+            name="static-site-example",
             region="ams",
             static_sites=[digitalocean.AppSpecStaticSiteArgs(
                 build_command="bundle exec jekyll build -d ./public",
@@ -263,8 +263,8 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        static_ste_example = digitalocean.App("static-ste-example", spec=digitalocean.AppSpecArgs(
-            name="static-ste-example",
+        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
+            name="static-site-example",
             region="ams",
             static_sites=[digitalocean.AppSpecStaticSiteArgs(
                 build_command="bundle exec jekyll build -d ./public",

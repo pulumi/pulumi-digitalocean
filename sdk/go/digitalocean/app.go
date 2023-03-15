@@ -69,9 +69,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewApp(ctx, "static-ste-example", &digitalocean.AppArgs{
+//			_, err := digitalocean.NewApp(ctx, "static-site-example", &digitalocean.AppArgs{
 //				Spec: &digitalocean.AppSpecArgs{
-//					Name:   pulumi.String("static-ste-example"),
+//					Name:   pulumi.String("static-site-example"),
 //					Region: pulumi.String("ams"),
 //					StaticSites: digitalocean.AppSpecStaticSiteArray{
 //						&digitalocean.AppSpecStaticSiteArgs{
