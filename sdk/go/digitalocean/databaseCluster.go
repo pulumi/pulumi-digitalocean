@@ -165,6 +165,8 @@ type DatabaseCluster struct {
 	PrivateNetworkUuid pulumi.StringOutput `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
@@ -255,6 +257,8 @@ type databaseClusterState struct {
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri *string `pulumi:"privateUri"`
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId *string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
@@ -299,6 +303,8 @@ type DatabaseClusterState struct {
 	PrivateNetworkUuid pulumi.StringPtrInput
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringPtrInput
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
@@ -333,6 +339,8 @@ type databaseClusterArgs struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// The ID of the VPC where the database cluster will be located.
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId *string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
@@ -360,6 +368,8 @@ type DatabaseClusterArgs struct {
 	NodeCount pulumi.IntInput
 	// The ID of the VPC where the database cluster will be located.
 	PrivateNetworkUuid pulumi.StringPtrInput
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringInput
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
@@ -523,6 +533,11 @@ func (o DatabaseClusterOutput) PrivateNetworkUuid() pulumi.StringOutput {
 // Same as `uri`, but only accessible from resources within the account and in the same region.
 func (o DatabaseClusterOutput) PrivateUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+func (o DatabaseClusterOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // DigitalOcean region where the cluster will reside.

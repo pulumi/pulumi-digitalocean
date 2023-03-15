@@ -22,7 +22,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
@@ -59,6 +59,9 @@ class GetDatabaseClusterResult:
         if private_uri and not isinstance(private_uri, str):
             raise TypeError("Expected argument 'private_uri' to be a str")
         pulumi.set(__self__, "private_uri", private_uri)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -175,6 +178,14 @@ class GetDatabaseClusterResult:
         return pulumi.get(self, "private_uri")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project that the database cluster is assigned to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -246,6 +257,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             private_host=self.private_host,
             private_network_uuid=self.private_network_uuid,
             private_uri=self.private_uri,
+            project_id=self.project_id,
             region=self.region,
             size=self.size,
             tags=self.tags,
@@ -293,6 +305,7 @@ def get_database_cluster(name: Optional[str] = None,
         private_host=__ret__.private_host,
         private_network_uuid=__ret__.private_network_uuid,
         private_uri=__ret__.private_uri,
+        project_id=__ret__.project_id,
         region=__ret__.region,
         size=__ret__.size,
         tags=__ret__.tags,

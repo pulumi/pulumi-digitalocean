@@ -70,6 +70,11 @@ public final class GetDatabaseClusterResult {
      */
     private String privateUri;
     /**
+     * @return The ID of the project that the database cluster is assigned to.
+     * 
+     */
+    private String projectId;
+    /**
      * @return DigitalOcean region where the cluster will reside.
      * 
      */
@@ -183,6 +188,13 @@ public final class GetDatabaseClusterResult {
         return this.privateUri;
     }
     /**
+     * @return The ID of the project that the database cluster is assigned to.
+     * 
+     */
+    public String projectId() {
+        return this.projectId;
+    }
+    /**
      * @return DigitalOcean region where the cluster will reside.
      * 
      */
@@ -249,6 +261,7 @@ public final class GetDatabaseClusterResult {
         private String privateHost;
         private String privateNetworkUuid;
         private String privateUri;
+        private String projectId;
         private String region;
         private String size;
         private @Nullable List<String> tags;
@@ -271,6 +284,7 @@ public final class GetDatabaseClusterResult {
     	      this.privateHost = defaults.privateHost;
     	      this.privateNetworkUuid = defaults.privateNetworkUuid;
     	      this.privateUri = defaults.privateUri;
+    	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
     	      this.tags = defaults.tags;
@@ -344,6 +358,11 @@ public final class GetDatabaseClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -395,6 +414,7 @@ public final class GetDatabaseClusterResult {
             o.privateHost = privateHost;
             o.privateNetworkUuid = privateNetworkUuid;
             o.privateUri = privateUri;
+            o.projectId = projectId;
             o.region = region;
             o.size = size;
             o.tags = tags;

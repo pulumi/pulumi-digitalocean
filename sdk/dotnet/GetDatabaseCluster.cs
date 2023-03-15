@@ -169,6 +169,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string PrivateUri;
         /// <summary>
+        /// The ID of the project that the database cluster is assigned to.
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         public readonly string Region;
@@ -220,6 +224,8 @@ namespace Pulumi.DigitalOcean
 
             string privateUri,
 
+            string projectId,
+
             string region,
 
             string size,
@@ -246,6 +252,7 @@ namespace Pulumi.DigitalOcean
             PrivateHost = privateHost;
             PrivateNetworkUuid = privateNetworkUuid;
             PrivateUri = privateUri;
+            ProjectId = projectId;
             Region = region;
             Size = size;
             Tags = tags;

@@ -79,6 +79,8 @@ type LookupDatabaseClusterResult struct {
 	PrivateNetworkUuid string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri string `pulumi:"privateUri"`
+	// The ID of the project that the database cluster is assigned to.
+	ProjectId string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
@@ -190,6 +192,11 @@ func (o LookupDatabaseClusterResultOutput) PrivateNetworkUuid() pulumi.StringOut
 // Same as `uri`, but only accessible from resources within the account and in the same region.
 func (o LookupDatabaseClusterResultOutput) PrivateUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.PrivateUri }).(pulumi.StringOutput)
+}
+
+// The ID of the project that the database cluster is assigned to.
+func (o LookupDatabaseClusterResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // DigitalOcean region where the cluster will reside.

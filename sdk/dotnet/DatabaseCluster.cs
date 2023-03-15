@@ -180,6 +180,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> PrivateUri { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         [Output("region")]
@@ -315,6 +321,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// DigitalOcean region where the cluster will reside.
@@ -464,6 +476,12 @@ namespace Pulumi.DigitalOcean
                 _privateUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// DigitalOcean region where the cluster will reside.

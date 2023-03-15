@@ -25,6 +25,7 @@ class DatabaseClusterArgs:
                  maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -38,6 +39,7 @@ class DatabaseClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
+        :param pulumi.Input[str] project_id: The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -55,6 +57,8 @@ class DatabaseClusterArgs:
             pulumi.set(__self__, "name", name)
         if private_network_uuid is not None:
             pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if sql_mode is not None:
             pulumi.set(__self__, "sql_mode", sql_mode)
         if tags is not None:
@@ -159,6 +163,18 @@ class DatabaseClusterArgs:
         pulumi.set(self, "private_network_uuid", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter(name="sqlMode")
     def sql_mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -212,6 +228,7 @@ class _DatabaseClusterState:
                  private_host: Optional[pulumi.Input[str]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  private_uri: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
@@ -234,6 +251,7 @@ class _DatabaseClusterState:
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] project_id: The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
@@ -269,6 +287,8 @@ class _DatabaseClusterState:
             pulumi.set(__self__, "private_network_uuid", private_network_uuid)
         if private_uri is not None:
             pulumi.set(__self__, "private_uri", private_uri)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if size is not None:
@@ -441,6 +461,18 @@ class _DatabaseClusterState:
         pulumi.set(self, "private_uri", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[Union[str, 'Region']]]:
         """
@@ -537,6 +569,7 @@ class DatabaseCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
@@ -612,6 +645,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
+        :param pulumi.Input[str] project_id: The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
@@ -707,6 +741,7 @@ class DatabaseCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
                  sql_mode: Optional[pulumi.Input[str]] = None,
@@ -731,6 +766,7 @@ class DatabaseCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_count'")
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["private_network_uuid"] = private_network_uuid
+            __props__.__dict__["project_id"] = project_id
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -774,6 +810,7 @@ class DatabaseCluster(pulumi.CustomResource):
             private_host: Optional[pulumi.Input[str]] = None,
             private_network_uuid: Optional[pulumi.Input[str]] = None,
             private_uri: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
             sql_mode: Optional[pulumi.Input[str]] = None,
@@ -801,6 +838,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] private_host: Same as `host`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
+        :param pulumi.Input[str] project_id: The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
@@ -827,6 +865,7 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__.__dict__["private_host"] = private_host
         __props__.__dict__["private_network_uuid"] = private_network_uuid
         __props__.__dict__["private_uri"] = private_uri
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
         __props__.__dict__["sql_mode"] = sql_mode
@@ -939,6 +978,14 @@ class DatabaseCluster(pulumi.CustomResource):
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
         return pulumi.get(self, "private_uri")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter

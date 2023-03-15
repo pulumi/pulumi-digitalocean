@@ -112,6 +112,21 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * DigitalOcean region where the cluster will reside.
      * 
      */
@@ -197,6 +212,7 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         this.name = $.name;
         this.nodeCount = $.nodeCount;
         this.privateNetworkUuid = $.privateNetworkUuid;
+        this.projectId = $.projectId;
         this.region = $.region;
         this.size = $.size;
         this.sqlMode = $.sqlMode;
@@ -356,6 +372,27 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder privateNetworkUuid(String privateNetworkUuid) {
             return privateNetworkUuid(Output.of(privateNetworkUuid));
+        }
+
+        /**
+         * @param projectId The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**
