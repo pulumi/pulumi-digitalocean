@@ -96,7 +96,7 @@ install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_plugins:
-	[ -x "$(shell command -v pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
+	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource kubernetes 3.10.0
 
 lint_provider: provider
