@@ -25,3 +25,4 @@ on:
     types:
     - opened
   workflow_dispatch: {}
+  push: {}
