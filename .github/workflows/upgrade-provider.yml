@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@194a5f24b4da9fa53e284ec2226ce67d87e6a2a9
+      uses: pulumi/pulumi-upgrade-provider-action@c682a65ee00fec1915363916ea479fde12bc4400
       with:
         branch: master
         gh-token: ${{ secrets.PULUMI_BOT_TOKEN }}
