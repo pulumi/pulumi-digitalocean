@@ -71,6 +71,8 @@ type Droplet struct {
 	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringOutput `pulumi:"image"`
@@ -182,6 +184,8 @@ type dropletState struct {
 	DropletUrn *string `pulumi:"dropletUrn"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image *string `pulumi:"image"`
@@ -259,6 +263,8 @@ type DropletState struct {
 	DropletUrn pulumi.StringPtrInput
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringPtrInput
@@ -335,11 +341,15 @@ type dropletArgs struct {
 	DropletAgent *bool `pulumi:"dropletAgent"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image string `pulumi:"image"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	Ipv6 *bool `pulumi:"ipv6"`
+	// The IPv6 address
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// Boolean controlling whether monitoring agent is installed.
 	// Defaults to false. If set to `true`, you can configure monitor alert policies
 	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
@@ -391,11 +401,15 @@ type DropletArgs struct {
 	DropletAgent pulumi.BoolPtrInput
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	Ipv6 pulumi.BoolPtrInput
+	// The IPv6 address
+	Ipv6Address pulumi.StringPtrInput
 	// Boolean controlling whether monitoring agent is installed.
 	// Defaults to false. If set to `true`, you can configure monitor alert policies
 	// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
@@ -552,6 +566,8 @@ func (o DropletOutput) DropletUrn() pulumi.StringOutput {
 
 // A boolean indicating whether the droplet
 // should be gracefully shut down before it is deleted.
+//
+// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 func (o DropletOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }

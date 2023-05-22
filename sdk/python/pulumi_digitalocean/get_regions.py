@@ -83,7 +83,7 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     Retrieve information about all supported DigitalOcean regions, with the ability to
     filter and sort the results. If no filters are specified, all regions will be returned.
 
-    Note: You can use the _get_region_ data source
+    Note: You can use the `get_region` data source
     to obtain metadata about a single region if you already know the `slug` to retrieve.
 
     ## Example Usage
@@ -151,7 +151,7 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     Retrieve information about all supported DigitalOcean regions, with the ability to
     filter and sort the results. If no filters are specified, all regions will be returned.
 
-    Note: You can use the _get_region_ data source
+    Note: You can use the `get_region` data source
     to obtain metadata about a single region if you already know the `slug` to retrieve.
 
     ## Example Usage

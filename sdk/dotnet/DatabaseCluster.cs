@@ -16,6 +16,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new PostgreSQL database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -35,6 +36,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new MySQL database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -54,6 +56,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new Redis database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -73,6 +76,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new MongoDB database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -89,6 +93,54 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// ## Create a new database cluster based on a backup of an existing cluster.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var doby = new DigitalOcean.DatabaseCluster("doby", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///         Tags = new[]
+    ///         {
+    ///             "production",
+    ///         },
+    ///     });
+    /// 
+    ///     var dobyBackup = new DigitalOcean.DatabaseCluster("dobyBackup", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///         Tags = new[]
+    ///         {
+    ///             "production",
+    ///         },
+    ///         BackupRestore = new DigitalOcean.Inputs.DatabaseClusterBackupRestoreArgs
+    ///         {
+    ///             DatabaseName = "dobydb",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             doby,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -101,6 +153,12 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/databaseCluster:DatabaseCluster")]
     public partial class DatabaseCluster : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Create a new database cluster based on a backup of an existing cluster.
+        /// </summary>
+        [Output("backupRestore")]
+        public Output<Outputs.DatabaseClusterBackupRestore?> BackupRestore { get; private set; } = null!;
+
         /// <summary>
         /// The uniform resource name of the database cluster.
         /// </summary>
@@ -281,6 +339,12 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Create a new database cluster based on a backup of an existing cluster.
+        /// </summary>
+        [Input("backupRestore")]
+        public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
+
+        /// <summary>
         /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
         /// </summary>
         [Input("engine", required: true)]
@@ -373,6 +437,12 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DatabaseClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Create a new database cluster based on a backup of an existing cluster.
+        /// </summary>
+        [Input("backupRestore")]
+        public Input<Inputs.DatabaseClusterBackupRestoreGetArgs>? BackupRestore { get; set; }
+
         /// <summary>
         /// The uniform resource name of the database cluster.
         /// </summary>

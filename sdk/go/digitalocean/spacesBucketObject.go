@@ -116,6 +116,10 @@ type SpacesBucketObject struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -191,6 +195,10 @@ type spacesBucketObjectState struct {
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the object once it is in the bucket.
 	Key *string `pulumi:"key"`
@@ -229,6 +237,10 @@ type SpacesBucketObjectState struct {
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringPtrInput
@@ -271,6 +283,10 @@ type spacesBucketObjectArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the object once it is in the bucket.
 	Key string `pulumi:"key"`
@@ -308,6 +324,10 @@ type SpacesBucketObjectArgs struct {
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted by removing any legal hold on any object version.
 	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringInput
@@ -460,6 +480,10 @@ func (o SpacesBucketObjectOutput) Etag() pulumi.StringOutput {
 
 // Allow the object to be deleted by removing any legal hold on any object version.
 // Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+//
+// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+//
+// > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 func (o SpacesBucketObjectOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SpacesBucketObject) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

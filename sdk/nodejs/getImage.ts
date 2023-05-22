@@ -78,6 +78,8 @@ export interface GetImageArgs {
     name?: string;
     /**
      * The slug of the official image.
+     *
+     * If `name` is specified, you may also specify:
      */
     slug?: string;
     /**
@@ -217,6 +219,8 @@ export interface GetImageOutputArgs {
     name?: pulumi.Input<string>;
     /**
      * The slug of the official image.
+     *
+     * If `name` is specified, you may also specify:
      */
     slug?: pulumi.Input<string>;
     /**

@@ -126,6 +126,56 @@ import (
 //	}
 //
 // ```
+// ## Create a new database cluster based on a backup of an existing cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			doby, err := digitalocean.NewDatabaseCluster(ctx, "doby", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("production"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseCluster(ctx, "dobyBackup", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("production"),
+//				},
+//				BackupRestore: &digitalocean.DatabaseClusterBackupRestoreArgs{
+//					DatabaseName: pulumi.String("dobydb"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				doby,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -139,6 +189,8 @@ import (
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
 
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore DatabaseClusterBackupRestorePtrOutput `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
@@ -231,6 +283,8 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseCluster resources.
 type databaseClusterState struct {
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
@@ -277,6 +331,8 @@ type databaseClusterState struct {
 }
 
 type DatabaseClusterState struct {
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringPtrInput
 	// Name of the cluster's default database.
@@ -327,6 +383,8 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 }
 
 type databaseClusterArgs struct {
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
@@ -356,6 +414,8 @@ type databaseClusterArgs struct {
 
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
 	Engine pulumi.StringInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
@@ -468,6 +528,11 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutput() DatabaseClusterOutput {
 
 func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
 	return o
+}
+
+// Create a new database cluster based on a backup of an existing cluster.
+func (o DatabaseClusterOutput) BackupRestore() DatabaseClusterBackupRestorePtrOutput {
+	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterBackupRestorePtrOutput { return v.BackupRestore }).(DatabaseClusterBackupRestorePtrOutput)
 }
 
 // The uniform resource name of the database cluster.

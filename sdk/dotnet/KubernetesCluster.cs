@@ -12,10 +12,16 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// ## Import
     /// 
-    /// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+    /// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+    /// ```
+    /// 
+    ///  Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/kubernetesCluster:KubernetesCluster")]
@@ -89,6 +95,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        /// </summary>
+        [Output("registryIntegration")]
+        public Output<bool?> RegistryIntegration { get; private set; } = null!;
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.
@@ -219,6 +231,12 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
 
         /// <summary>
+        /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        /// </summary>
+        [Input("registryIntegration")]
+        public Input<bool>? RegistryIntegration { get; set; }
+
+        /// <summary>
         /// Enable/disable surge upgrades for a cluster. Default: false
         /// </summary>
         [Input("surgeUpgrade")]
@@ -333,6 +351,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region")]
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
+
+        /// <summary>
+        /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        /// </summary>
+        [Input("registryIntegration")]
+        public Input<bool>? RegistryIntegration { get; set; }
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.

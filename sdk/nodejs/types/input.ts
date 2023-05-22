@@ -61,6 +61,8 @@ export interface AppSpecDatabase {
     dbName?: pulumi.Input<string>;
     /**
      * The name of the MySQL or PostgreSQL user to configure.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     dbUser?: pulumi.Input<string>;
     /**
@@ -320,6 +322,8 @@ export interface AppSpecFunctionLogDestinationDatadog {
 export interface AppSpecFunctionLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -555,6 +559,8 @@ export interface AppSpecJobLogDestinationDatadog {
 export interface AppSpecJobLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -864,6 +870,8 @@ export interface AppSpecServiceLogDestinationDatadog {
 export interface AppSpecServiceLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -1271,6 +1279,8 @@ export interface AppSpecWorkerLogDestinationDatadog {
 export interface AppSpecWorkerLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -1280,6 +1290,19 @@ export interface AppSpecWorkerLogDestinationPapertrail {
      * Datadog HTTP log intake endpoint.
      */
     endpoint: pulumi.Input<string>;
+}
+
+export interface DatabaseClusterBackupRestore {
+    /**
+     * The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    backupCreatedAt?: pulumi.Input<string>;
+    /**
+     * The name of an existing database cluster from which the backup will be restored.
+     */
+    databaseName: pulumi.Input<string>;
 }
 
 export interface DatabaseClusterMaintenanceWindow {
@@ -2314,6 +2337,8 @@ export interface KubernetesClusterMaintenancePolicy {
     duration?: pulumi.Input<string>;
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     startTime?: pulumi.Input<string>;
 }
@@ -2593,6 +2618,8 @@ export interface SpacesBucketLifecycleRule {
     id?: pulumi.Input<string>;
     /**
      * Specifies when non-current object versions expire (documented below).
+     *
+     * At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
      */
     noncurrentVersionExpiration?: pulumi.Input<inputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration>;
     /**
@@ -2634,11 +2661,20 @@ export interface SpacesBucketVersioning {
 }
 
 export interface UptimeAlertNotification {
+    /**
+     * List of email addresses to sent notifications to.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     slacks?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotificationSlack>[]>;
 }
 
 export interface UptimeAlertNotificationSlack {
+    /**
+     * The Slack channel to send alerts to.
+     */
     channel: pulumi.Input<string>;
+    /**
+     * The webhook URL for Slack.
+     */
     url: pulumi.Input<string>;
 }

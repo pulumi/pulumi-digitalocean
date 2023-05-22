@@ -83,6 +83,30 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ApiEndpoint { get; set; }
 
         /// <summary>
+        /// The maximum number of retries on a failed API request.
+        /// </summary>
+        [Input("httpRetryMax", json: true)]
+        public Input<int>? HttpRetryMax { get; set; }
+
+        /// <summary>
+        /// The maximum wait time (in seconds) between failed API requests.
+        /// </summary>
+        [Input("httpRetryWaitMax", json: true)]
+        public Input<double>? HttpRetryWaitMax { get; set; }
+
+        /// <summary>
+        /// The minimum wait time (in seconds) between failed API requests.
+        /// </summary>
+        [Input("httpRetryWaitMin", json: true)]
+        public Input<double>? HttpRetryWaitMin { get; set; }
+
+        /// <summary>
+        /// The rate of requests per second to limit the HTTP client.
+        /// </summary>
+        [Input("requestsPerSecond", json: true)]
+        public Input<double>? RequestsPerSecond { get; set; }
+
+        /// <summary>
         /// The access key ID for Spaces API operations.
         /// </summary>
         [Input("spacesAccessId")]

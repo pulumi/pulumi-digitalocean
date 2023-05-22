@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         [Input("emails")]
         private InputList<string>? _emails;
+
+        /// <summary>
+        /// List of email addresses to sent notifications to.
+        /// </summary>
         public InputList<string> Emails
         {
             get => _emails ?? (_emails = new InputList<string>());

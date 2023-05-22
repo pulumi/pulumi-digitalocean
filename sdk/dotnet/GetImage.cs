@@ -27,6 +27,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -44,6 +45,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -68,6 +70,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -102,6 +105,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -119,6 +123,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -143,6 +148,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -179,6 +185,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The slug of the official image.
+        /// 
+        /// If `name` is specified, you may also specify:
         /// </summary>
         [Input("slug")]
         public string? Slug { get; set; }
@@ -211,6 +219,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The slug of the official image.
+        /// 
+        /// If `name` is specified, you may also specify:
         /// </summary>
         [Input("slug")]
         public Input<string>? Slug { get; set; }

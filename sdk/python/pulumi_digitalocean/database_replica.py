@@ -27,7 +27,7 @@ class DatabaseReplicaArgs:
         :param pulumi.Input[str] name: The name for the database replica.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -94,7 +94,7 @@ class DatabaseReplicaArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]:
         """
-        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         """
         return pulumi.get(self, "size")
 
@@ -145,7 +145,7 @@ class _DatabaseReplicaState:
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
         :param pulumi.Input[str] user: Username for the replica's default user.
@@ -306,7 +306,7 @@ class _DatabaseReplicaState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[Union[str, 'DatabaseSlug']]]:
         """
-        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         """
         return pulumi.get(self, "size")
 
@@ -418,7 +418,7 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for the database replica.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
         ...
@@ -555,7 +555,7 @@ class DatabaseReplica(pulumi.CustomResource):
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database replica will be located.
         :param pulumi.Input[str] private_uri: Same as `uri`, but only accessible from resources within the account and in the same region.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the replica will reside.
-        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         :param pulumi.Input[str] uri: The full URI for connecting to the database replica.
         :param pulumi.Input[str] user: Username for the replica's default user.
@@ -666,7 +666,7 @@ class DatabaseReplica(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[Optional[str]]:
         """
-        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         """
         return pulumi.get(self, "size")
 

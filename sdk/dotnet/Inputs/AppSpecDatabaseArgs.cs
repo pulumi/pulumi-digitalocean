@@ -26,6 +26,8 @@ namespace Pulumi.DigitalOcean.Inputs
 
         /// <summary>
         /// The name of the MySQL or PostgreSQL user to configure.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Input("dbUser")]
         public Input<string>? DbUser { get; set; }

@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class UptimeAlertNotification
     {
+        /// <summary>
+        /// List of email addresses to sent notifications to.
+        /// </summary>
         public readonly ImmutableArray<string> Emails;
         public readonly ImmutableArray<Outputs.UptimeAlertNotificationSlack> Slacks;
 

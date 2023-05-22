@@ -21,7 +21,7 @@ class GetDatabaseReplicaResult:
     """
     A collection of values returned by getDatabaseReplica.
     """
-    def __init__(__self__, cluster_id=None, database=None, host=None, id=None, name=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, tags=None, uri=None, user=None):
+    def __init__(__self__, cluster_id=None, database=None, host=None, id=None, name=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, tags=None, uri=None, user=None, uuid=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -64,6 +64,9 @@ class GetDatabaseReplicaResult:
         if user and not isinstance(user, str):
             raise TypeError("Expected argument 'user' to be a str")
         pulumi.set(__self__, "user", user)
+        if uuid and not isinstance(uuid, str):
+            raise TypeError("Expected argument 'uuid' to be a str")
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -165,6 +168,14 @@ class GetDatabaseReplicaResult:
         """
         return pulumi.get(self, "user")
 
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        The UUID of the database replica.
+        """
+        return pulumi.get(self, "uuid")
+
 
 class AwaitableGetDatabaseReplicaResult(GetDatabaseReplicaResult):
     # pylint: disable=using-constant-test
@@ -185,7 +196,8 @@ class AwaitableGetDatabaseReplicaResult(GetDatabaseReplicaResult):
             region=self.region,
             tags=self.tags,
             uri=self.uri,
-            user=self.user)
+            user=self.user,
+            uuid=self.uuid)
 
 
 def get_database_replica(cluster_id: Optional[str] = None,
@@ -233,7 +245,8 @@ def get_database_replica(cluster_id: Optional[str] = None,
         region=__ret__.region,
         tags=__ret__.tags,
         uri=__ret__.uri,
-        user=__ret__.user)
+        user=__ret__.user,
+        uuid=__ret__.uuid)
 
 
 @_utilities.lift_output_func(get_database_replica)

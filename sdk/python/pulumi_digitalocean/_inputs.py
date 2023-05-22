@@ -77,6 +77,7 @@ __all__ = [
     'AppSpecWorkerLogDestinationDatadogArgs',
     'AppSpecWorkerLogDestinationLogtailArgs',
     'AppSpecWorkerLogDestinationPapertrailArgs',
+    'DatabaseClusterBackupRestoreArgs',
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'FirewallInboundRuleArgs',
@@ -351,6 +352,8 @@ class AppSpecDatabaseArgs:
         :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param pulumi.Input[str] db_name: The name of the MySQL or PostgreSQL database to configure.
         :param pulumi.Input[str] db_user: The name of the MySQL or PostgreSQL user to configure.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[bool] production: Whether this is a production or dev database.
@@ -400,6 +403,8 @@ class AppSpecDatabaseArgs:
     def db_user(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the MySQL or PostgreSQL user to configure.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "db_user")
 
@@ -1338,6 +1343,8 @@ class AppSpecFunctionLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -1346,6 +1353,8 @@ class AppSpecFunctionLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -2202,6 +2211,8 @@ class AppSpecJobLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -2210,6 +2221,8 @@ class AppSpecJobLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -3352,6 +3365,8 @@ class AppSpecServiceLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -3360,6 +3375,8 @@ class AppSpecServiceLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -4863,6 +4880,8 @@ class AppSpecWorkerLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -4871,6 +4890,8 @@ class AppSpecWorkerLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -4899,6 +4920,48 @@ class AppSpecWorkerLogDestinationPapertrailArgs:
     @endpoint.setter
     def endpoint(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint", value)
+
+
+@pulumi.input_type
+class DatabaseClusterBackupRestoreArgs:
+    def __init__(__self__, *,
+                 database_name: pulumi.Input[str],
+                 backup_created_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] database_name: The name of an existing database cluster from which the backup will be restored.
+        :param pulumi.Input[str] backup_created_at: The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        if backup_created_at is not None:
+            pulumi.set(__self__, "backup_created_at", backup_created_at)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> pulumi.Input[str]:
+        """
+        The name of an existing database cluster from which the backup will be restored.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_name", value)
+
+    @property
+    @pulumi.getter(name="backupCreatedAt")
+    def backup_created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "backup_created_at")
+
+    @backup_created_at.setter
+    def backup_created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_created_at", value)
 
 
 @pulumi.input_type
@@ -5465,6 +5528,8 @@ class KubernetesClusterMaintenancePolicyArgs:
         :param pulumi.Input[str] day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
         :param pulumi.Input[str] duration: A string denoting the duration of the service window, e.g., "04:00".
         :param pulumi.Input[str] start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -5502,6 +5567,8 @@ class KubernetesClusterMaintenancePolicyArgs:
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
         The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "start_time")
 
@@ -6489,6 +6556,8 @@ class SpacesBucketLifecycleRuleArgs:
         :param pulumi.Input['SpacesBucketLifecycleRuleExpirationArgs'] expiration: Specifies a time period after which applicable objects expire (documented below).
         :param pulumi.Input[str] id: Unique identifier for the rule.
         :param pulumi.Input['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expiration: Specifies when non-current object versions expire (documented below).
+               
+               At least one of `expiration` or `noncurrent_version_expiration` must be specified.
         :param pulumi.Input[str] prefix: Object key prefix identifying one or more objects to which the rule applies.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -6557,6 +6626,8 @@ class SpacesBucketLifecycleRuleArgs:
     def noncurrent_version_expiration(self) -> Optional[pulumi.Input['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs']]:
         """
         Specifies when non-current object versions expire (documented below).
+
+        At least one of `expiration` or `noncurrent_version_expiration` must be specified.
         """
         return pulumi.get(self, "noncurrent_version_expiration")
 
@@ -6689,6 +6760,9 @@ class UptimeAlertNotificationArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  slacks: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: List of email addresses to sent notifications to.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if slacks is not None:
@@ -6697,6 +6771,9 @@ class UptimeAlertNotificationArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of email addresses to sent notifications to.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -6718,12 +6795,19 @@ class UptimeAlertNotificationSlackArgs:
     def __init__(__self__, *,
                  channel: pulumi.Input[str],
                  url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] channel: The Slack channel to send alerts to.
+        :param pulumi.Input[str] url: The webhook URL for Slack.
+        """
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
     def channel(self) -> pulumi.Input[str]:
+        """
+        The Slack channel to send alerts to.
+        """
         return pulumi.get(self, "channel")
 
     @channel.setter
@@ -6733,6 +6817,9 @@ class UptimeAlertNotificationSlackArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        The webhook URL for Slack.
+        """
         return pulumi.get(self, "url")
 
     @url.setter

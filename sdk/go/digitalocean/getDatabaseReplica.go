@@ -90,6 +90,8 @@ type LookupDatabaseReplicaResult struct {
 	Uri string `pulumi:"uri"`
 	// Username for the replica's default user.
 	User string `pulumi:"user"`
+	// The UUID of the database replica.
+	Uuid string `pulumi:"uuid"`
 }
 
 func LookupDatabaseReplicaOutput(ctx *pulumi.Context, args LookupDatabaseReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseReplicaResultOutput {
@@ -198,6 +200,11 @@ func (o LookupDatabaseReplicaResultOutput) Uri() pulumi.StringOutput {
 // Username for the replica's default user.
 func (o LookupDatabaseReplicaResultOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.User }).(pulumi.StringOutput)
+}
+
+// The UUID of the database replica.
+func (o LookupDatabaseReplicaResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 func init() {

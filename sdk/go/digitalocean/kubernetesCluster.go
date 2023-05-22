@@ -13,11 +13,19 @@ import (
 
 // ## Import
 //
-// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
 //
 // ```sh
 //
 //	$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+//
+// ```
+//
+//	Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+//
+// ```sh
+//
+//	$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
 //
 // ```
 type KubernetesCluster struct {
@@ -46,6 +54,8 @@ type KubernetesCluster struct {
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration pulumi.BoolPtrOutput `pulumi:"registryIntegration"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -127,6 +137,8 @@ type kubernetesClusterState struct {
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region *string `pulumi:"region"`
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration *bool `pulumi:"registryIntegration"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -167,6 +179,8 @@ type KubernetesClusterState struct {
 	NodePool KubernetesClusterNodePoolPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringPtrInput
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration pulumi.BoolPtrInput
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet pulumi.StringPtrInput
 	// A string indicating the current status of the individual node.
@@ -200,6 +214,8 @@ type kubernetesClusterArgs struct {
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration *bool `pulumi:"registryIntegration"`
 	// Enable/disable surge upgrades for a cluster. Default: false
 	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -224,6 +240,8 @@ type KubernetesClusterArgs struct {
 	NodePool KubernetesClusterNodePoolInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration pulumi.BoolPtrInput
 	// Enable/disable surge upgrades for a cluster. Default: false
 	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -378,6 +396,11 @@ func (o KubernetesClusterOutput) NodePool() KubernetesClusterNodePoolOutput {
 // The slug identifier for the region where the Kubernetes cluster will be created.
 func (o KubernetesClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+func (o KubernetesClusterOutput) RegistryIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.RegistryIntegration }).(pulumi.BoolPtrOutput)
 }
 
 // The range of assignable IP addresses for services running in the Kubernetes cluster.
