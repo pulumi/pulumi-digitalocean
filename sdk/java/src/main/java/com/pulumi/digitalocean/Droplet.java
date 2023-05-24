@@ -143,6 +143,8 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
+     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
      */
     @Export(name="gracefulShutdown", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> gracefulShutdown;
@@ -150,6 +152,8 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     /**
      * @return A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
+     * 
+     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     public Output<Optional<Boolean>> gracefulShutdown() {

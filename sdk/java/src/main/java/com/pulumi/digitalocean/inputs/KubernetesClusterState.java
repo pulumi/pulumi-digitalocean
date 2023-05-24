@@ -195,6 +195,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    @Import(name="registryIntegration")
+    private @Nullable Output<Boolean> registryIntegration;
+
+    /**
+     * @return Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    public Optional<Output<Boolean>> registryIntegration() {
+        return Optional.ofNullable(this.registryIntegration);
+    }
+
+    /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      * 
      */
@@ -314,6 +329,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.nodePool = $.nodePool;
         this.region = $.region;
+        this.registryIntegration = $.registryIntegration;
         this.serviceSubnet = $.serviceSubnet;
         this.status = $.status;
         this.surgeUpgrade = $.surgeUpgrade;
@@ -603,6 +619,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder region(Region region) {
             return region(Either.ofRight(region));
+        }
+
+        /**
+         * @param registryIntegration Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryIntegration(@Nullable Output<Boolean> registryIntegration) {
+            $.registryIntegration = registryIntegration;
+            return this;
+        }
+
+        /**
+         * @param registryIntegration Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryIntegration(Boolean registryIntegration) {
+            return registryIntegration(Output.of(registryIntegration));
         }
 
         /**

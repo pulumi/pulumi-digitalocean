@@ -18,8 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)
- * resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
+ * Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
+ * resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
  * 
  * ## Import
  * 
@@ -47,14 +47,14 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
         return this.checkId;
     }
     /**
-     * A boolean value indicating whether the check is enabled/disabled.
+     * The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
      * 
      */
     @Export(name="comparison", type=String.class, parameters={})
     private Output</* @Nullable */ String> comparison;
 
     /**
-     * @return A boolean value indicating whether the check is enabled/disabled.
+     * @return The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
      * 
      */
     public Output<Optional<String>> comparison() {
@@ -89,42 +89,42 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
         return this.notifications;
     }
     /**
-     * Period of time the threshold must be exceeded to trigger the alert: &#34;2m&#34; &#34;3m&#34; &#34;5m&#34; &#34;10m&#34; &#34;15m&#34; &#34;30m&#34; &#34;1h&#34;
+     * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      * 
      */
     @Export(name="period", type=String.class, parameters={})
     private Output</* @Nullable */ String> period;
 
     /**
-     * @return Period of time the threshold must be exceeded to trigger the alert: &#34;2m&#34; &#34;3m&#34; &#34;5m&#34; &#34;10m&#34; &#34;15m&#34; &#34;30m&#34; &#34;1h&#34;
+     * @return Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      * 
      */
     public Output<Optional<String>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The comparison operator used against the alert&#39;s threshold: &#34;greater_than&#34;, &#34;less_than&#34;
+     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      * 
      */
     @Export(name="threshold", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> threshold;
 
     /**
-     * @return The comparison operator used against the alert&#39;s threshold: &#34;greater_than&#34;, &#34;less_than&#34;
+     * @return The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      * 
      */
     public Output<Optional<Integer>> threshold() {
         return Codegen.optional(this.threshold);
     }
     /**
-     * The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
+     * The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
+     * @return The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
      * 
      */
     public Output<String> type() {

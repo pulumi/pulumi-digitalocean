@@ -6,6 +6,8 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +31,66 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> apiEndpoint() {
         return Optional.ofNullable(this.apiEndpoint);
+    }
+
+    /**
+     * The maximum number of retries on a failed API request.
+     * 
+     */
+    @Import(name="httpRetryMax", json=true)
+    private @Nullable Output<Integer> httpRetryMax;
+
+    /**
+     * @return The maximum number of retries on a failed API request.
+     * 
+     */
+    public Optional<Output<Integer>> httpRetryMax() {
+        return Optional.ofNullable(this.httpRetryMax);
+    }
+
+    /**
+     * The maximum wait time (in seconds) between failed API requests.
+     * 
+     */
+    @Import(name="httpRetryWaitMax", json=true)
+    private @Nullable Output<Double> httpRetryWaitMax;
+
+    /**
+     * @return The maximum wait time (in seconds) between failed API requests.
+     * 
+     */
+    public Optional<Output<Double>> httpRetryWaitMax() {
+        return Optional.ofNullable(this.httpRetryWaitMax);
+    }
+
+    /**
+     * The minimum wait time (in seconds) between failed API requests.
+     * 
+     */
+    @Import(name="httpRetryWaitMin", json=true)
+    private @Nullable Output<Double> httpRetryWaitMin;
+
+    /**
+     * @return The minimum wait time (in seconds) between failed API requests.
+     * 
+     */
+    public Optional<Output<Double>> httpRetryWaitMin() {
+        return Optional.ofNullable(this.httpRetryWaitMin);
+    }
+
+    /**
+     * The rate of requests per second to limit the HTTP client.
+     * 
+     */
+    @Import(name="requestsPerSecond", json=true)
+    private @Nullable Output<Double> requestsPerSecond;
+
+    /**
+     * @return The rate of requests per second to limit the HTTP client.
+     * 
+     */
+    public Optional<Output<Double>> requestsPerSecond() {
+        return Optional.ofNullable(this.requestsPerSecond);
     }
 
     /**
@@ -95,6 +157,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.apiEndpoint = $.apiEndpoint;
+        this.httpRetryMax = $.httpRetryMax;
+        this.httpRetryWaitMax = $.httpRetryWaitMax;
+        this.httpRetryWaitMin = $.httpRetryWaitMin;
+        this.requestsPerSecond = $.requestsPerSecond;
         this.spacesAccessId = $.spacesAccessId;
         this.spacesEndpoint = $.spacesEndpoint;
         this.spacesSecretKey = $.spacesSecretKey;
@@ -138,6 +204,90 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder apiEndpoint(String apiEndpoint) {
             return apiEndpoint(Output.of(apiEndpoint));
+        }
+
+        /**
+         * @param httpRetryMax The maximum number of retries on a failed API request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpRetryMax(@Nullable Output<Integer> httpRetryMax) {
+            $.httpRetryMax = httpRetryMax;
+            return this;
+        }
+
+        /**
+         * @param httpRetryMax The maximum number of retries on a failed API request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpRetryMax(Integer httpRetryMax) {
+            return httpRetryMax(Output.of(httpRetryMax));
+        }
+
+        /**
+         * @param httpRetryWaitMax The maximum wait time (in seconds) between failed API requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpRetryWaitMax(@Nullable Output<Double> httpRetryWaitMax) {
+            $.httpRetryWaitMax = httpRetryWaitMax;
+            return this;
+        }
+
+        /**
+         * @param httpRetryWaitMax The maximum wait time (in seconds) between failed API requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpRetryWaitMax(Double httpRetryWaitMax) {
+            return httpRetryWaitMax(Output.of(httpRetryWaitMax));
+        }
+
+        /**
+         * @param httpRetryWaitMin The minimum wait time (in seconds) between failed API requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpRetryWaitMin(@Nullable Output<Double> httpRetryWaitMin) {
+            $.httpRetryWaitMin = httpRetryWaitMin;
+            return this;
+        }
+
+        /**
+         * @param httpRetryWaitMin The minimum wait time (in seconds) between failed API requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpRetryWaitMin(Double httpRetryWaitMin) {
+            return httpRetryWaitMin(Output.of(httpRetryWaitMin));
+        }
+
+        /**
+         * @param requestsPerSecond The rate of requests per second to limit the HTTP client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestsPerSecond(@Nullable Output<Double> requestsPerSecond) {
+            $.requestsPerSecond = requestsPerSecond;
+            return this;
+        }
+
+        /**
+         * @param requestsPerSecond The rate of requests per second to limit the HTTP client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestsPerSecond(Double requestsPerSecond) {
+            return requestsPerSecond(Output.of(requestsPerSecond));
         }
 
         /**

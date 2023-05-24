@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+ * If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
  * 
  * ```sh
  *  $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
@@ -286,12 +286,16 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
     /**
      * A list of taints applied to all nodes in the pool.
      * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
      */
     @Export(name="taints", type=List.class, parameters={KubernetesNodePoolTaint.class})
     private Output</* @Nullable */ List<KubernetesNodePoolTaint>> taints;
 
     /**
      * @return A list of taints applied to all nodes in the pool.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Output<Optional<List<KubernetesNodePoolTaint>>> taints() {

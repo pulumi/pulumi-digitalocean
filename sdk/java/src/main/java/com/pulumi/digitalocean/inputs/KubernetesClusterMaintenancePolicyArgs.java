@@ -48,12 +48,16 @@ public final class KubernetesClusterMaintenancePolicyArgs extends com.pulumi.res
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
      * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
      * @return The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -131,6 +135,8 @@ public final class KubernetesClusterMaintenancePolicyArgs extends com.pulumi.res
         /**
          * @param startTime The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
          * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
          * @return builder
          * 
          */
@@ -141,6 +147,8 @@ public final class KubernetesClusterMaintenancePolicyArgs extends com.pulumi.res
 
         /**
          * @param startTime The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 

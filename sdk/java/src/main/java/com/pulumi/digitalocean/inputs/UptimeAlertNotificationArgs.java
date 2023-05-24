@@ -17,9 +17,17 @@ public final class UptimeAlertNotificationArgs extends com.pulumi.resources.Reso
 
     public static final UptimeAlertNotificationArgs Empty = new UptimeAlertNotificationArgs();
 
+    /**
+     * List of email addresses to sent notifications to.
+     * 
+     */
     @Import(name="emails")
     private @Nullable Output<List<String>> emails;
 
+    /**
+     * @return List of email addresses to sent notifications to.
+     * 
+     */
     public Optional<Output<List<String>>> emails() {
         return Optional.ofNullable(this.emails);
     }
@@ -56,15 +64,33 @@ public final class UptimeAlertNotificationArgs extends com.pulumi.resources.Reso
             $ = new UptimeAlertNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param emails List of email addresses to sent notifications to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emails(@Nullable Output<List<String>> emails) {
             $.emails = emails;
             return this;
         }
 
+        /**
+         * @param emails List of email addresses to sent notifications to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emails(List<String> emails) {
             return emails(Output.of(emails));
         }
 
+        /**
+         * @param emails List of email addresses to sent notifications to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emails(String... emails) {
             return emails(List.of(emails));
         }

@@ -112,6 +112,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    @Import(name="registryIntegration")
+    private @Nullable Output<Boolean> registryIntegration;
+
+    /**
+     * @return Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    public Optional<Output<Boolean>> registryIntegration() {
+        return Optional.ofNullable(this.registryIntegration);
+    }
+
+    /**
      * Enable/disable surge upgrades for a cluster. Default: false
      * 
      */
@@ -180,6 +195,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.nodePool = $.nodePool;
         this.region = $.region;
+        this.registryIntegration = $.registryIntegration;
         this.surgeUpgrade = $.surgeUpgrade;
         this.tags = $.tags;
         this.version = $.version;
@@ -348,6 +364,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder region(Region region) {
             return region(Either.ofRight(region));
+        }
+
+        /**
+         * @param registryIntegration Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryIntegration(@Nullable Output<Boolean> registryIntegration) {
+            $.registryIntegration = registryIntegration;
+            return this;
+        }
+
+        /**
+         * @param registryIntegration Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryIntegration(Boolean registryIntegration) {
+            return registryIntegration(Output.of(registryIntegration));
         }
 
         /**

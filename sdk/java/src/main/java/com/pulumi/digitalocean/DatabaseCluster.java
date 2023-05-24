@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.DatabaseClusterArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.DatabaseClusterState;
+import com.pulumi.digitalocean.outputs.DatabaseClusterBackupRestore;
 import com.pulumi.digitalocean.outputs.DatabaseClusterMaintenanceWindow;
 import java.lang.Integer;
 import java.lang.String;
@@ -153,6 +154,56 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ## Create a new database cluster based on a backup of an existing cluster.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var doby = new DatabaseCluster(&#34;doby&#34;, DatabaseClusterArgs.builder()        
+ *             .engine(&#34;pg&#34;)
+ *             .version(&#34;11&#34;)
+ *             .size(&#34;db-s-1vcpu-2gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .nodeCount(1)
+ *             .tags(&#34;production&#34;)
+ *             .build());
+ * 
+ *         var dobyBackup = new DatabaseCluster(&#34;dobyBackup&#34;, DatabaseClusterArgs.builder()        
+ *             .engine(&#34;pg&#34;)
+ *             .version(&#34;11&#34;)
+ *             .size(&#34;db-s-1vcpu-2gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .nodeCount(1)
+ *             .tags(&#34;production&#34;)
+ *             .backupRestore(DatabaseClusterBackupRestoreArgs.builder()
+ *                 .databaseName(&#34;dobydb&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(doby)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -165,6 +216,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/databaseCluster:DatabaseCluster")
 public class DatabaseCluster extends com.pulumi.resources.CustomResource {
+    /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     * 
+     */
+    @Export(name="backupRestore", type=DatabaseClusterBackupRestore.class, parameters={})
+    private Output</* @Nullable */ DatabaseClusterBackupRestore> backupRestore;
+
+    /**
+     * @return Create a new database cluster based on a backup of an existing cluster.
+     * 
+     */
+    public Output<Optional<DatabaseClusterBackupRestore>> backupRestore() {
+        return Codegen.optional(this.backupRestore);
+    }
     /**
      * The uniform resource name of the database cluster.
      * 

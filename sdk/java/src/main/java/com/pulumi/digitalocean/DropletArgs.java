@@ -66,6 +66,8 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
+     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
      */
     @Import(name="gracefulShutdown")
     private @Nullable Output<Boolean> gracefulShutdown;
@@ -73,6 +75,8 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
+     * 
+     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     public Optional<Output<Boolean>> gracefulShutdown() {
@@ -107,6 +111,21 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> ipv6() {
         return Optional.ofNullable(this.ipv6);
+    }
+
+    /**
+     * The IPv6 address
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return The IPv6 address
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
 
     /**
@@ -312,6 +331,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         this.gracefulShutdown = $.gracefulShutdown;
         this.image = $.image;
         this.ipv6 = $.ipv6;
+        this.ipv6Address = $.ipv6Address;
         this.monitoring = $.monitoring;
         this.name = $.name;
         this.privateNetworking = $.privateNetworking;
@@ -401,6 +421,8 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
          * @param gracefulShutdown A boolean indicating whether the droplet
          * should be gracefully shut down before it is deleted.
          * 
+         * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+         * 
          * @return builder
          * 
          */
@@ -412,6 +434,8 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gracefulShutdown A boolean indicating whether the droplet
          * should be gracefully shut down before it is deleted.
+         * 
+         * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
          * 
          * @return builder
          * 
@@ -460,6 +484,27 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipv6(Boolean ipv6) {
             return ipv6(Output.of(ipv6));
+        }
+
+        /**
+         * @param ipv6Address The IPv6 address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address The IPv6 address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         /**
