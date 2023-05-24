@@ -19,6 +19,50 @@ Object.defineProperty(exports, "apiEndpoint", {
 });
 
 /**
+ * The maximum number of retries on a failed API request.
+ */
+export declare const httpRetryMax: number | undefined;
+Object.defineProperty(exports, "httpRetryMax", {
+    get() {
+        return __config.getObject<number>("httpRetryMax");
+    },
+    enumerable: true,
+});
+
+/**
+ * The maximum wait time (in seconds) between failed API requests.
+ */
+export declare const httpRetryWaitMax: number | undefined;
+Object.defineProperty(exports, "httpRetryWaitMax", {
+    get() {
+        return __config.getObject<number>("httpRetryWaitMax");
+    },
+    enumerable: true,
+});
+
+/**
+ * The minimum wait time (in seconds) between failed API requests.
+ */
+export declare const httpRetryWaitMin: number | undefined;
+Object.defineProperty(exports, "httpRetryWaitMin", {
+    get() {
+        return __config.getObject<number>("httpRetryWaitMin");
+    },
+    enumerable: true,
+});
+
+/**
+ * The rate of requests per second to limit the HTTP client.
+ */
+export declare const requestsPerSecond: number | undefined;
+Object.defineProperty(exports, "requestsPerSecond", {
+    get() {
+        return __config.getObject<number>("requestsPerSecond");
+    },
+    enumerable: true,
+});
+
+/**
  * The access key ID for Spaces API operations.
  */
 export declare const spacesAccessId: string | undefined;

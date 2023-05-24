@@ -34,14 +34,14 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A boolean value indicating whether the check is enabled/disabled.
+     * The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
      * 
      */
     @Import(name="comparison")
     private @Nullable Output<String> comparison;
 
     /**
-     * @return A boolean value indicating whether the check is enabled/disabled.
+     * @return The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
      * 
      */
     public Optional<Output<String>> comparison() {
@@ -79,14 +79,14 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Period of time the threshold must be exceeded to trigger the alert: &#34;2m&#34; &#34;3m&#34; &#34;5m&#34; &#34;10m&#34; &#34;15m&#34; &#34;30m&#34; &#34;1h&#34;
+     * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<String> period;
 
     /**
-     * @return Period of time the threshold must be exceeded to trigger the alert: &#34;2m&#34; &#34;3m&#34; &#34;5m&#34; &#34;10m&#34; &#34;15m&#34; &#34;30m&#34; &#34;1h&#34;
+     * @return Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      * 
      */
     public Optional<Output<String>> period() {
@@ -94,14 +94,14 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The comparison operator used against the alert&#39;s threshold: &#34;greater_than&#34;, &#34;less_than&#34;
+     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Integer> threshold;
 
     /**
-     * @return The comparison operator used against the alert&#39;s threshold: &#34;greater_than&#34;, &#34;less_than&#34;
+     * @return The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      * 
      */
     public Optional<Output<Integer>> threshold() {
@@ -109,14 +109,14 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
+     * The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
+     * @return The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -175,7 +175,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comparison A boolean value indicating whether the check is enabled/disabled.
+         * @param comparison The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comparison A boolean value indicating whether the check is enabled/disabled.
+         * @param comparison The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Period of time the threshold must be exceeded to trigger the alert: &#34;2m&#34; &#34;3m&#34; &#34;5m&#34; &#34;10m&#34; &#34;15m&#34; &#34;30m&#34; &#34;1h&#34;
+         * @param period Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Period of time the threshold must be exceeded to trigger the alert: &#34;2m&#34; &#34;3m&#34; &#34;5m&#34; &#34;10m&#34; &#34;15m&#34; &#34;30m&#34; &#34;1h&#34;
+         * @param period Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threshold The comparison operator used against the alert&#39;s threshold: &#34;greater_than&#34;, &#34;less_than&#34;
+         * @param threshold The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threshold The comparison operator used against the alert&#39;s threshold: &#34;greater_than&#34;, &#34;less_than&#34;
+         * @param threshold The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
+         * @param type The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
+         * @param type The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
          * 
          * @return builder
          * 

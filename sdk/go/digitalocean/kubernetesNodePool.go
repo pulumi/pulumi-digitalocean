@@ -102,7 +102,7 @@ import (
 //
 // ## Import
 //
-// If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+// If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
 //
 // ```sh
 //
@@ -137,6 +137,8 @@ type KubernetesNodePool struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints KubernetesNodePoolTaintArrayOutput `pulumi:"taints"`
 }
 
@@ -198,6 +200,8 @@ type kubernetesNodePoolState struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints []KubernetesNodePoolTaint `pulumi:"taints"`
 }
 
@@ -225,6 +229,8 @@ type KubernetesNodePoolState struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints KubernetesNodePoolTaintArrayInput
 }
 
@@ -252,6 +258,8 @@ type kubernetesNodePoolArgs struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints []KubernetesNodePoolTaint `pulumi:"taints"`
 }
 
@@ -276,6 +284,8 @@ type KubernetesNodePoolArgs struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints KubernetesNodePoolTaintArrayInput
 }
 
@@ -422,6 +432,8 @@ func (o KubernetesNodePoolOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // A list of taints applied to all nodes in the pool.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesNodePoolOutput) Taints() KubernetesNodePoolTaintArrayOutput {
 	return o.ApplyT(func(v *KubernetesNodePool) KubernetesNodePoolTaintArrayOutput { return v.Taints }).(KubernetesNodePoolTaintArrayOutput)
 }

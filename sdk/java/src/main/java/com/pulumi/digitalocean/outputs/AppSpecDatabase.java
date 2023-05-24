@@ -25,6 +25,8 @@ public final class AppSpecDatabase {
     /**
      * @return The name of the MySQL or PostgreSQL user to configure.
      * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
      */
     private @Nullable String dbUser;
     /**
@@ -65,6 +67,8 @@ public final class AppSpecDatabase {
     }
     /**
      * @return The name of the MySQL or PostgreSQL user to configure.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<String> dbUser() {

@@ -120,6 +120,8 @@ type GetImageArgs struct {
 	// The name of the image.
 	Name *string `pulumi:"name"`
 	// The slug of the official image.
+	//
+	// If `name` is specified, you may also specify:
 	Slug *string `pulumi:"slug"`
 	// Restrict the search to one of the following categories of images:
 	Source *string `pulumi:"source"`
@@ -181,6 +183,8 @@ type GetImageOutputArgs struct {
 	// The name of the image.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The slug of the official image.
+	//
+	// If `name` is specified, you may also specify:
 	Slug pulumi.StringPtrInput `pulumi:"slug"`
 	// Restrict the search to one of the following categories of images:
 	Source pulumi.StringPtrInput `pulumi:"source"`

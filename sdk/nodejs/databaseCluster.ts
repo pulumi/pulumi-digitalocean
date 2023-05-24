@@ -63,6 +63,34 @@ import * as utilities from "./utilities";
  *     version: "4",
  * });
  * ```
+ * ## Create a new database cluster based on a backup of an existing cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const doby = new digitalocean.DatabaseCluster("doby", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-2gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ *     tags: ["production"],
+ * });
+ * const dobyBackup = new digitalocean.DatabaseCluster("dobyBackup", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-2gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ *     tags: ["production"],
+ *     backupRestore: {
+ *         databaseName: "dobydb",
+ *     },
+ * }, {
+ *     dependsOn: [doby],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -100,6 +128,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseCluster.__pulumiType;
     }
 
+    /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     */
+    public readonly backupRestore!: pulumi.Output<outputs.DatabaseClusterBackupRestore | undefined>;
     /**
      * The uniform resource name of the database cluster.
      */
@@ -199,6 +231,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseClusterState | undefined;
+            resourceInputs["backupRestore"] = state ? state.backupRestore : undefined;
             resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
@@ -234,6 +267,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
+            resourceInputs["backupRestore"] = args ? args.backupRestore : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["evictionPolicy"] = args ? args.evictionPolicy : undefined;
             resourceInputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
@@ -267,6 +301,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseCluster resources.
  */
 export interface DatabaseClusterState {
+    /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     */
+    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
      * The uniform resource name of the database cluster.
      */
@@ -358,6 +396,10 @@ export interface DatabaseClusterState {
  * The set of arguments for constructing a DatabaseCluster resource.
  */
 export interface DatabaseClusterArgs {
+    /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     */
+    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
      */

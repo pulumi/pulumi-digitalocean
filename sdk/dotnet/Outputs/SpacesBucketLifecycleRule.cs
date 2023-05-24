@@ -32,6 +32,8 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? Id;
         /// <summary>
         /// Specifies when non-current object versions expire (documented below).
+        /// 
+        /// At least one of `expiration` or `noncurrent_version_expiration` must be specified.
         /// </summary>
         public readonly Outputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration? NoncurrentVersionExpiration;
         /// <summary>

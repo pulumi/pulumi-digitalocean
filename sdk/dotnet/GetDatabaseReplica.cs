@@ -20,6 +20,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -57,6 +58,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -199,6 +201,10 @@ namespace Pulumi.DigitalOcean
         /// Username for the replica's default user.
         /// </summary>
         public readonly string User;
+        /// <summary>
+        /// The UUID of the database replica.
+        /// </summary>
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetDatabaseReplicaResult(
@@ -228,7 +234,9 @@ namespace Pulumi.DigitalOcean
 
             string uri,
 
-            string user)
+            string user,
+
+            string uuid)
         {
             ClusterId = clusterId;
             Database = database;
@@ -244,6 +252,7 @@ namespace Pulumi.DigitalOcean
             Tags = tags;
             Uri = uri;
             User = user;
+            Uuid = uuid;
         }
     }
 }

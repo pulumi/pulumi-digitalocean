@@ -19,12 +19,20 @@ public final class GetDropletSnapshotArgs extends com.pulumi.resources.InvokeArg
     /**
      * If more than one result is returned, use the most recent Droplet snapshot.
      * 
+     * &gt; **NOTE:** If more or less than a single match is returned by the search,
+     * the update will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+     * 
      */
     @Import(name="mostRecent")
     private @Nullable Output<Boolean> mostRecent;
 
     /**
      * @return If more than one result is returned, use the most recent Droplet snapshot.
+     * 
+     * &gt; **NOTE:** If more or less than a single match is returned by the search,
+     * the update will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
      * 
      */
     public Optional<Output<Boolean>> mostRecent() {
@@ -106,6 +114,10 @@ public final class GetDropletSnapshotArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param mostRecent If more than one result is returned, use the most recent Droplet snapshot.
          * 
+         * &gt; **NOTE:** If more or less than a single match is returned by the search,
+         * the update will fail. Ensure that your search is specific enough to return
+         * a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+         * 
          * @return builder
          * 
          */
@@ -116,6 +128,10 @@ public final class GetDropletSnapshotArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param mostRecent If more than one result is returned, use the most recent Droplet snapshot.
+         * 
+         * &gt; **NOTE:** If more or less than a single match is returned by the search,
+         * the update will fail. Ensure that your search is specific enough to return
+         * a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
          * 
          * @return builder
          * 

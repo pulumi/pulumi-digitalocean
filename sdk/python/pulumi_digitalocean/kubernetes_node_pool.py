@@ -39,6 +39,8 @@ class KubernetesNodePoolArgs:
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]] taints: A list of taints applied to all nodes in the pool.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "size", size)
@@ -172,6 +174,8 @@ class KubernetesNodePoolArgs:
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]]:
         """
         A list of taints applied to all nodes in the pool.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "taints")
 
@@ -209,6 +213,8 @@ class _KubernetesNodePoolState:
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]] taints: A list of taints applied to all nodes in the pool.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         if actual_node_count is not None:
             pulumi.set(__self__, "actual_node_count", actual_node_count)
@@ -372,6 +378,8 @@ class _KubernetesNodePoolState:
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]]:
         """
         A list of taints applied to all nodes in the pool.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "taints")
 
@@ -448,7 +456,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         ## Import
 
-        If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+        If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
 
         ```sh
          $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
@@ -468,6 +476,8 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         ...
     @overload
@@ -527,7 +537,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         ## Import
 
-        If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+        If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
 
         ```sh
          $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
@@ -626,6 +636,8 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -738,6 +750,8 @@ class KubernetesNodePool(pulumi.CustomResource):
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesNodePoolTaint']]]:
         """
         A list of taints applied to all nodes in the pool.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "taints")
 

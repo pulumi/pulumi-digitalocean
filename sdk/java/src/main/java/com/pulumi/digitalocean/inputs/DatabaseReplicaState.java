@@ -171,14 +171,14 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Either<String,DatabaseSlug>> size;
 
     /**
-     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     public Optional<Output<Either<String,DatabaseSlug>>> size() {
@@ -514,7 +514,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -545,7 +545,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 

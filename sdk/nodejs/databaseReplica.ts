@@ -116,7 +116,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
     public readonly size!: pulumi.Output<string | undefined>;
     /**
@@ -237,7 +237,7 @@ export interface DatabaseReplicaState {
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
     size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
@@ -279,7 +279,7 @@ export interface DatabaseReplicaArgs {
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
     size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**

@@ -99,6 +99,10 @@ export interface GetDatabaseReplicaResult {
      * Username for the replica's default user.
      */
     readonly user: string;
+    /**
+     * The UUID of the database replica.
+     */
+    readonly uuid: string;
 }
 /**
  * Provides information on a DigitalOcean database replica.

@@ -60,6 +60,10 @@ export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.
 export interface GetDropletSnapshotArgs {
     /**
      * If more than one result is returned, use the most recent Droplet snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * the update will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
      */
     mostRecent?: boolean;
     /**
@@ -157,6 +161,10 @@ export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, op
 export interface GetDropletSnapshotOutputArgs {
     /**
      * If more than one result is returned, use the most recent Droplet snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * the update will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
      */
     mostRecent?: pulumi.Input<boolean>;
     /**

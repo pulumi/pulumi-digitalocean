@@ -10,8 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)
-    /// resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
+    /// Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
+    /// resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
     /// 
     /// ## Import
     /// 
@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> CheckId { get; private set; } = null!;
 
         /// <summary>
-        /// A boolean value indicating whether the check is enabled/disabled.
+        /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         /// </summary>
         [Output("comparison")]
         public Output<string?> Comparison { get; private set; } = null!;
@@ -49,19 +49,19 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<Outputs.UptimeAlertNotification>> Notifications { get; private set; } = null!;
 
         /// <summary>
-        /// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+        /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         /// </summary>
         [Output("threshold")]
         public Output<int?> Threshold { get; private set; } = null!;
 
         /// <summary>
-        /// The type of health check to perform: 'ping' 'http' 'https'.
+        /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> CheckId { get; set; } = null!;
 
         /// <summary>
-        /// A boolean value indicating whether the check is enabled/disabled.
+        /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         /// </summary>
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
@@ -143,19 +143,19 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+        /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         /// </summary>
         [Input("threshold")]
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// The type of health check to perform: 'ping' 'http' 'https'.
+        /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? CheckId { get; set; }
 
         /// <summary>
-        /// A boolean value indicating whether the check is enabled/disabled.
+        /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         /// </summary>
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
@@ -199,19 +199,19 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+        /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         /// </summary>
         [Input("threshold")]
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// The type of health check to perform: 'ping' 'http' 'https'.
+        /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

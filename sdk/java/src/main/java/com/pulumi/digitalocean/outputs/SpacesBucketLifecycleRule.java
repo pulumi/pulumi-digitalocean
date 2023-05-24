@@ -39,6 +39,8 @@ public final class SpacesBucketLifecycleRule {
     /**
      * @return Specifies when non-current object versions expire (documented below).
      * 
+     * At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+     * 
      */
     private @Nullable SpacesBucketLifecycleRuleNoncurrentVersionExpiration noncurrentVersionExpiration;
     /**
@@ -79,6 +81,8 @@ public final class SpacesBucketLifecycleRule {
     }
     /**
      * @return Specifies when non-current object versions expire (documented below).
+     * 
+     * At least one of `expiration` or `noncurrent_version_expiration` must be specified.
      * 
      */
     public Optional<SpacesBucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpiration() {

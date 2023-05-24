@@ -28,6 +28,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -46,6 +47,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -138,6 +140,10 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Allow the object to be deleted by removing any legal hold on any object version.
         /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        /// 
+        /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+        /// 
+        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -287,6 +293,10 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Allow the object to be deleted by removing any legal hold on any object version.
         /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        /// 
+        /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+        /// 
+        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -398,6 +408,10 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Allow the object to be deleted by removing any legal hold on any object version.
         /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        /// 
+        /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+        /// 
+        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }

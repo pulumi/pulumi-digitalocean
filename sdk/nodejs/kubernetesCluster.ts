@@ -10,10 +10,16 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+ * Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
  *
  * ```sh
  *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+ * ```
+ *
+ *  Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
  * ```
  */
 export class KubernetesCluster extends pulumi.CustomResource {
@@ -90,6 +96,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     */
+    public readonly registryIntegration!: pulumi.Output<boolean | undefined>;
+    /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
     public /*out*/ readonly serviceSubnet!: pulumi.Output<string>;
@@ -143,6 +153,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodePool"] = state ? state.nodePool : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["registryIntegration"] = state ? state.registryIntegration : undefined;
             resourceInputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
@@ -167,6 +178,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodePool"] = args ? args.nodePool : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["registryIntegration"] = args ? args.registryIntegration : undefined;
             resourceInputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -238,6 +250,10 @@ export interface KubernetesClusterState {
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     */
+    registryIntegration?: pulumi.Input<boolean>;
+    /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
     serviceSubnet?: pulumi.Input<string>;
@@ -295,6 +311,10 @@ export interface KubernetesClusterArgs {
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     region: pulumi.Input<string | enums.Region>;
+    /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     */
+    registryIntegration?: pulumi.Input<boolean>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: false
      */

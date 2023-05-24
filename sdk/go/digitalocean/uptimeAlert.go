@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)
-// resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
+// Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
+// resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
 //
 // ## Import
 //
@@ -28,17 +28,17 @@ type UptimeAlert struct {
 
 	// A unique identifier for a check
 	CheckId pulumi.StringOutput `pulumi:"checkId"`
-	// A boolean value indicating whether the check is enabled/disabled.
+	// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
 	Comparison pulumi.StringPtrOutput `pulumi:"comparison"`
 	// A human-friendly display name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notification settings for a trigger alert.
 	Notifications UptimeAlertNotificationArrayOutput `pulumi:"notifications"`
-	// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+	// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+	// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
 	Threshold pulumi.IntPtrOutput `pulumi:"threshold"`
-	// The type of health check to perform: 'ping' 'http' 'https'.
+	// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -82,34 +82,34 @@ func GetUptimeAlert(ctx *pulumi.Context,
 type uptimeAlertState struct {
 	// A unique identifier for a check
 	CheckId *string `pulumi:"checkId"`
-	// A boolean value indicating whether the check is enabled/disabled.
+	// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
 	Comparison *string `pulumi:"comparison"`
 	// A human-friendly display name.
 	Name *string `pulumi:"name"`
 	// The notification settings for a trigger alert.
 	Notifications []UptimeAlertNotification `pulumi:"notifications"`
-	// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+	// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
 	Period *string `pulumi:"period"`
-	// The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+	// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
 	Threshold *int `pulumi:"threshold"`
-	// The type of health check to perform: 'ping' 'http' 'https'.
+	// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
 	Type *string `pulumi:"type"`
 }
 
 type UptimeAlertState struct {
 	// A unique identifier for a check
 	CheckId pulumi.StringPtrInput
-	// A boolean value indicating whether the check is enabled/disabled.
+	// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
 	Comparison pulumi.StringPtrInput
 	// A human-friendly display name.
 	Name pulumi.StringPtrInput
 	// The notification settings for a trigger alert.
 	Notifications UptimeAlertNotificationArrayInput
-	// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+	// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
 	Period pulumi.StringPtrInput
-	// The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+	// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
 	Threshold pulumi.IntPtrInput
-	// The type of health check to perform: 'ping' 'http' 'https'.
+	// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
 	Type pulumi.StringPtrInput
 }
 
@@ -120,17 +120,17 @@ func (UptimeAlertState) ElementType() reflect.Type {
 type uptimeAlertArgs struct {
 	// A unique identifier for a check
 	CheckId string `pulumi:"checkId"`
-	// A boolean value indicating whether the check is enabled/disabled.
+	// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
 	Comparison *string `pulumi:"comparison"`
 	// A human-friendly display name.
 	Name *string `pulumi:"name"`
 	// The notification settings for a trigger alert.
 	Notifications []UptimeAlertNotification `pulumi:"notifications"`
-	// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+	// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
 	Period *string `pulumi:"period"`
-	// The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+	// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
 	Threshold *int `pulumi:"threshold"`
-	// The type of health check to perform: 'ping' 'http' 'https'.
+	// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
 	Type string `pulumi:"type"`
 }
 
@@ -138,17 +138,17 @@ type uptimeAlertArgs struct {
 type UptimeAlertArgs struct {
 	// A unique identifier for a check
 	CheckId pulumi.StringInput
-	// A boolean value indicating whether the check is enabled/disabled.
+	// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
 	Comparison pulumi.StringPtrInput
 	// A human-friendly display name.
 	Name pulumi.StringPtrInput
 	// The notification settings for a trigger alert.
 	Notifications UptimeAlertNotificationArrayInput
-	// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+	// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
 	Period pulumi.StringPtrInput
-	// The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+	// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
 	Threshold pulumi.IntPtrInput
-	// The type of health check to perform: 'ping' 'http' 'https'.
+	// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
 	Type pulumi.StringInput
 }
 
@@ -244,7 +244,7 @@ func (o UptimeAlertOutput) CheckId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeAlert) pulumi.StringOutput { return v.CheckId }).(pulumi.StringOutput)
 }
 
-// A boolean value indicating whether the check is enabled/disabled.
+// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
 func (o UptimeAlertOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeAlert) pulumi.StringPtrOutput { return v.Comparison }).(pulumi.StringPtrOutput)
 }
@@ -259,17 +259,17 @@ func (o UptimeAlertOutput) Notifications() UptimeAlertNotificationArrayOutput {
 	return o.ApplyT(func(v *UptimeAlert) UptimeAlertNotificationArrayOutput { return v.Notifications }).(UptimeAlertNotificationArrayOutput)
 }
 
-// Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
 func (o UptimeAlertOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeAlert) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
 func (o UptimeAlertOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UptimeAlert) pulumi.IntPtrOutput { return v.Threshold }).(pulumi.IntPtrOutput)
 }
 
-// The type of health check to perform: 'ping' 'http' 'https'.
+// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
 func (o UptimeAlertOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeAlert) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

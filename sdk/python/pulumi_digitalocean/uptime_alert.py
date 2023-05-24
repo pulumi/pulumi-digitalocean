@@ -27,11 +27,11 @@ class UptimeAlertArgs:
         The set of arguments for constructing a UptimeAlert resource.
         :param pulumi.Input[str] check_id: A unique identifier for a check
         :param pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]] notifications: The notification settings for a trigger alert.
-        :param pulumi.Input[str] type: The type of health check to perform: 'ping' 'http' 'https'.
-        :param pulumi.Input[str] comparison: A boolean value indicating whether the check is enabled/disabled.
+        :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+        :param pulumi.Input[str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[str] name: A human-friendly display name.
-        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
-        :param pulumi.Input[int] threshold: The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
+        :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
         pulumi.set(__self__, "check_id", check_id)
         pulumi.set(__self__, "notifications", notifications)
@@ -73,7 +73,7 @@ class UptimeAlertArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of health check to perform: 'ping' 'http' 'https'.
+        The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         return pulumi.get(self, "type")
 
@@ -85,7 +85,7 @@ class UptimeAlertArgs:
     @pulumi.getter
     def comparison(self) -> Optional[pulumi.Input[str]]:
         """
-        A boolean value indicating whether the check is enabled/disabled.
+        The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         """
         return pulumi.get(self, "comparison")
 
@@ -109,7 +109,7 @@ class UptimeAlertArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[str]]:
         """
-        Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+        Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         """
         return pulumi.get(self, "period")
 
@@ -121,7 +121,7 @@ class UptimeAlertArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
         return pulumi.get(self, "threshold")
 
@@ -143,12 +143,12 @@ class _UptimeAlertState:
         """
         Input properties used for looking up and filtering UptimeAlert resources.
         :param pulumi.Input[str] check_id: A unique identifier for a check
-        :param pulumi.Input[str] comparison: A boolean value indicating whether the check is enabled/disabled.
+        :param pulumi.Input[str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[str] name: A human-friendly display name.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]] notifications: The notification settings for a trigger alert.
-        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
-        :param pulumi.Input[int] threshold: The comparison operator used against the alert's threshold: "greater_than", "less_than"
-        :param pulumi.Input[str] type: The type of health check to perform: 'ping' 'http' 'https'.
+        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
+        :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
+        :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         if check_id is not None:
             pulumi.set(__self__, "check_id", check_id)
@@ -181,7 +181,7 @@ class _UptimeAlertState:
     @pulumi.getter
     def comparison(self) -> Optional[pulumi.Input[str]]:
         """
-        A boolean value indicating whether the check is enabled/disabled.
+        The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         """
         return pulumi.get(self, "comparison")
 
@@ -217,7 +217,7 @@ class _UptimeAlertState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[str]]:
         """
-        Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+        Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         """
         return pulumi.get(self, "period")
 
@@ -229,7 +229,7 @@ class _UptimeAlertState:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
         return pulumi.get(self, "threshold")
 
@@ -241,7 +241,7 @@ class _UptimeAlertState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of health check to perform: 'ping' 'http' 'https'.
+        The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         return pulumi.get(self, "type")
 
@@ -264,8 +264,8 @@ class UptimeAlert(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)
-        resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
+        Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
+        resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
 
         ## Import
 
@@ -278,12 +278,12 @@ class UptimeAlert(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] check_id: A unique identifier for a check
-        :param pulumi.Input[str] comparison: A boolean value indicating whether the check is enabled/disabled.
+        :param pulumi.Input[str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[str] name: A human-friendly display name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]] notifications: The notification settings for a trigger alert.
-        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
-        :param pulumi.Input[int] threshold: The comparison operator used against the alert's threshold: "greater_than", "less_than"
-        :param pulumi.Input[str] type: The type of health check to perform: 'ping' 'http' 'https'.
+        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
+        :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
+        :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         ...
     @overload
@@ -292,8 +292,8 @@ class UptimeAlert(pulumi.CustomResource):
                  args: UptimeAlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)
-        resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
+        Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
+        resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
 
         ## Import
 
@@ -372,12 +372,12 @@ class UptimeAlert(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] check_id: A unique identifier for a check
-        :param pulumi.Input[str] comparison: A boolean value indicating whether the check is enabled/disabled.
+        :param pulumi.Input[str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[str] name: A human-friendly display name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]] notifications: The notification settings for a trigger alert.
-        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
-        :param pulumi.Input[int] threshold: The comparison operator used against the alert's threshold: "greater_than", "less_than"
-        :param pulumi.Input[str] type: The type of health check to perform: 'ping' 'http' 'https'.
+        :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
+        :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
+        :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,7 +404,7 @@ class UptimeAlert(pulumi.CustomResource):
     @pulumi.getter
     def comparison(self) -> pulumi.Output[Optional[str]]:
         """
-        A boolean value indicating whether the check is enabled/disabled.
+        The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         """
         return pulumi.get(self, "comparison")
 
@@ -428,7 +428,7 @@ class UptimeAlert(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[str]]:
         """
-        Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+        Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         """
         return pulumi.get(self, "period")
 
@@ -436,7 +436,7 @@ class UptimeAlert(pulumi.CustomResource):
     @pulumi.getter
     def threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        The comparison operator used against the alert's threshold: "greater_than", "less_than"
+        The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
         return pulumi.get(self, "threshold")
 
@@ -444,7 +444,7 @@ class UptimeAlert(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of health check to perform: 'ping' 'http' 'https'.
+        The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         return pulumi.get(self, "type")
 

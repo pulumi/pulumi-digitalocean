@@ -87,6 +87,8 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
+     *
+     * > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
     public readonly gracefulShutdown!: pulumi.Output<boolean | undefined>;
     /**
@@ -108,7 +110,7 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * The IPv6 address
      */
-    public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
+    public readonly ipv6Address!: pulumi.Output<string>;
     /**
      * Is the Droplet locked
      */
@@ -242,6 +244,7 @@ export class Droplet extends pulumi.CustomResource {
             resourceInputs["gracefulShutdown"] = args ? args.gracefulShutdown : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
+            resourceInputs["ipv6Address"] = args ? args.ipv6Address : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["privateNetworking"] = args ? args.privateNetworking : undefined;
@@ -258,7 +261,6 @@ export class Droplet extends pulumi.CustomResource {
             resourceInputs["dropletUrn"] = undefined /*out*/;
             resourceInputs["ipv4Address"] = undefined /*out*/;
             resourceInputs["ipv4AddressPrivate"] = undefined /*out*/;
-            resourceInputs["ipv6Address"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["memory"] = undefined /*out*/;
             resourceInputs["priceHourly"] = undefined /*out*/;
@@ -301,6 +303,8 @@ export interface DropletState {
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
+     *
+     * > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
@@ -424,6 +428,8 @@ export interface DropletArgs {
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
+     *
+     * > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
@@ -434,6 +440,10 @@ export interface DropletArgs {
      * Boolean controlling if IPv6 is enabled. Defaults to false.
      */
     ipv6?: pulumi.Input<boolean>;
+    /**
+     * The IPv6 address
+     */
+    ipv6Address?: pulumi.Input<string>;
     /**
      * Boolean controlling whether monitoring agent is installed.
      * Defaults to false. If set to `true`, you can configure monitor alert policies

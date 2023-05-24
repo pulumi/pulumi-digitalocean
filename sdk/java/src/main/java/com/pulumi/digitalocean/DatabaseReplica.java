@@ -226,14 +226,14 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     @Export(name="size", type=String.class, parameters={})
     private Output</* @Nullable */ String> size;
 
     /**
-     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     public Output<Optional<String>> size() {

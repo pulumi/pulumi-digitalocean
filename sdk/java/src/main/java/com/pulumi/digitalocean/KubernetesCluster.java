@@ -22,10 +22,16 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Before importing a Kubernetes cluster, the cluster&#39;s default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster&#39;s `id`, e.g.
+ * Before importing a Kubernetes cluster, the cluster&#39;s default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster&#39;s `id`, e.g.
  * 
  * ```sh
  *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+ * ```
+ * 
+ *  Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
  * ```
  * 
  */
@@ -190,6 +196,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    @Export(name="registryIntegration", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> registryIntegration;
+
+    /**
+     * @return Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    public Output<Optional<Boolean>> registryIntegration() {
+        return Codegen.optional(this.registryIntegration);
     }
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.

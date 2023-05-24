@@ -8,8 +8,8 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/uptime_alert_create)
- * resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
+ * Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
+ * resource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.
  *
  * ## Import
  *
@@ -52,7 +52,7 @@ export class UptimeAlert extends pulumi.CustomResource {
      */
     public readonly checkId!: pulumi.Output<string>;
     /**
-     * A boolean value indicating whether the check is enabled/disabled.
+     * The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
      */
     public readonly comparison!: pulumi.Output<string | undefined>;
     /**
@@ -64,15 +64,15 @@ export class UptimeAlert extends pulumi.CustomResource {
      */
     public readonly notifications!: pulumi.Output<outputs.UptimeAlertNotification[]>;
     /**
-     * Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+     * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
-     * The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      */
     public readonly threshold!: pulumi.Output<number | undefined>;
     /**
-     * The type of health check to perform: 'ping' 'http' 'https'.
+     * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -129,7 +129,7 @@ export interface UptimeAlertState {
      */
     checkId?: pulumi.Input<string>;
     /**
-     * A boolean value indicating whether the check is enabled/disabled.
+     * The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
      */
     comparison?: pulumi.Input<string>;
     /**
@@ -141,15 +141,15 @@ export interface UptimeAlertState {
      */
     notifications?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotification>[]>;
     /**
-     * Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+     * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      */
     period?: pulumi.Input<string>;
     /**
-     * The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      */
     threshold?: pulumi.Input<number>;
     /**
-     * The type of health check to perform: 'ping' 'http' 'https'.
+     * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      */
     type?: pulumi.Input<string>;
 }
@@ -163,7 +163,7 @@ export interface UptimeAlertArgs {
      */
     checkId: pulumi.Input<string>;
     /**
-     * A boolean value indicating whether the check is enabled/disabled.
+     * The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
      */
     comparison?: pulumi.Input<string>;
     /**
@@ -175,15 +175,15 @@ export interface UptimeAlertArgs {
      */
     notifications: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotification>[]>;
     /**
-     * Period of time the threshold must be exceeded to trigger the alert: "2m" "3m" "5m" "10m" "15m" "30m" "1h"
+     * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      */
     period?: pulumi.Input<string>;
     /**
-     * The comparison operator used against the alert's threshold: "greaterThan", "lessThan"
+     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      */
     threshold?: pulumi.Input<number>;
     /**
-     * The type of health check to perform: 'ping' 'http' 'https'.
+     * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      */
     type: pulumi.Input<string>;
 }

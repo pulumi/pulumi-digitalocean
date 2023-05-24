@@ -13,16 +13,32 @@ public final class UptimeAlertNotificationSlackArgs extends com.pulumi.resources
 
     public static final UptimeAlertNotificationSlackArgs Empty = new UptimeAlertNotificationSlackArgs();
 
+    /**
+     * The Slack channel to send alerts to.
+     * 
+     */
     @Import(name="channel", required=true)
     private Output<String> channel;
 
+    /**
+     * @return The Slack channel to send alerts to.
+     * 
+     */
     public Output<String> channel() {
         return this.channel;
     }
 
+    /**
+     * The webhook URL for Slack.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return The webhook URL for Slack.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -52,20 +68,44 @@ public final class UptimeAlertNotificationSlackArgs extends com.pulumi.resources
             $ = new UptimeAlertNotificationSlackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param channel The Slack channel to send alerts to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channel(Output<String> channel) {
             $.channel = channel;
             return this;
         }
 
+        /**
+         * @param channel The Slack channel to send alerts to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channel(String channel) {
             return channel(Output.of(channel));
         }
 
+        /**
+         * @param url The webhook URL for Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The webhook URL for Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

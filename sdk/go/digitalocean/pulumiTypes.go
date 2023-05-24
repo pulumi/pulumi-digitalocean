@@ -444,6 +444,8 @@ type AppSpecDatabase struct {
 	// The name of the MySQL or PostgreSQL database to configure.
 	DbName *string `pulumi:"dbName"`
 	// The name of the MySQL or PostgreSQL user to configure.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DbUser *string `pulumi:"dbUser"`
 	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 	Engine *string `pulumi:"engine"`
@@ -472,6 +474,8 @@ type AppSpecDatabaseArgs struct {
 	// The name of the MySQL or PostgreSQL database to configure.
 	DbName pulumi.StringPtrInput `pulumi:"dbName"`
 	// The name of the MySQL or PostgreSQL user to configure.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DbUser pulumi.StringPtrInput `pulumi:"dbUser"`
 	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
@@ -545,6 +549,8 @@ func (o AppSpecDatabaseOutput) DbName() pulumi.StringPtrOutput {
 }
 
 // The name of the MySQL or PostgreSQL user to configure.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o AppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
 }
@@ -2467,6 +2473,8 @@ func (o AppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringP
 
 type AppSpecFunctionLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -2483,6 +2491,8 @@ type AppSpecFunctionLogDestinationLogtailInput interface {
 
 type AppSpecFunctionLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -2564,6 +2574,8 @@ func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinat
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -2593,6 +2605,8 @@ func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Elem() AppSpecFunctionLog
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionLogDestinationLogtail) *string {
 		if v == nil {
@@ -4432,6 +4446,8 @@ func (o AppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOut
 
 type AppSpecJobLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -4448,6 +4464,8 @@ type AppSpecJobLogDestinationLogtailInput interface {
 
 type AppSpecJobLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -4529,6 +4547,8 @@ func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtail
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -4558,6 +4578,8 @@ func (o AppSpecJobLogDestinationLogtailPtrOutput) Elem() AppSpecJobLogDestinatio
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobLogDestinationLogtail) *string {
 		if v == nil {
@@ -6966,6 +6988,8 @@ func (o AppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPt
 
 type AppSpecServiceLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -6982,6 +7006,8 @@ type AppSpecServiceLogDestinationLogtailInput interface {
 
 type AppSpecServiceLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -7063,6 +7089,8 @@ func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinatio
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -7092,6 +7120,8 @@ func (o AppSpecServiceLogDestinationLogtailPtrOutput) Elem() AppSpecServiceLogDe
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceLogDestinationLogtail) *string {
 		if v == nil {
@@ -10288,6 +10318,8 @@ func (o AppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtr
 
 type AppSpecWorkerLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -10304,6 +10336,8 @@ type AppSpecWorkerLogDestinationLogtailInput interface {
 
 type AppSpecWorkerLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -10385,6 +10419,8 @@ func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationL
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -10414,6 +10450,8 @@ func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Elem() AppSpecWorkerLogDest
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerLogDestinationLogtail) *string {
 		if v == nil {
@@ -10557,6 +10595,170 @@ func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.String
 			return nil
 		}
 		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseClusterBackupRestore struct {
+	// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	BackupCreatedAt *string `pulumi:"backupCreatedAt"`
+	// The name of an existing database cluster from which the backup will be restored.
+	DatabaseName string `pulumi:"databaseName"`
+}
+
+// DatabaseClusterBackupRestoreInput is an input type that accepts DatabaseClusterBackupRestoreArgs and DatabaseClusterBackupRestoreOutput values.
+// You can construct a concrete instance of `DatabaseClusterBackupRestoreInput` via:
+//
+//	DatabaseClusterBackupRestoreArgs{...}
+type DatabaseClusterBackupRestoreInput interface {
+	pulumi.Input
+
+	ToDatabaseClusterBackupRestoreOutput() DatabaseClusterBackupRestoreOutput
+	ToDatabaseClusterBackupRestoreOutputWithContext(context.Context) DatabaseClusterBackupRestoreOutput
+}
+
+type DatabaseClusterBackupRestoreArgs struct {
+	// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	BackupCreatedAt pulumi.StringPtrInput `pulumi:"backupCreatedAt"`
+	// The name of an existing database cluster from which the backup will be restored.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+}
+
+func (DatabaseClusterBackupRestoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseClusterBackupRestore)(nil)).Elem()
+}
+
+func (i DatabaseClusterBackupRestoreArgs) ToDatabaseClusterBackupRestoreOutput() DatabaseClusterBackupRestoreOutput {
+	return i.ToDatabaseClusterBackupRestoreOutputWithContext(context.Background())
+}
+
+func (i DatabaseClusterBackupRestoreArgs) ToDatabaseClusterBackupRestoreOutputWithContext(ctx context.Context) DatabaseClusterBackupRestoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterBackupRestoreOutput)
+}
+
+func (i DatabaseClusterBackupRestoreArgs) ToDatabaseClusterBackupRestorePtrOutput() DatabaseClusterBackupRestorePtrOutput {
+	return i.ToDatabaseClusterBackupRestorePtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseClusterBackupRestoreArgs) ToDatabaseClusterBackupRestorePtrOutputWithContext(ctx context.Context) DatabaseClusterBackupRestorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterBackupRestoreOutput).ToDatabaseClusterBackupRestorePtrOutputWithContext(ctx)
+}
+
+// DatabaseClusterBackupRestorePtrInput is an input type that accepts DatabaseClusterBackupRestoreArgs, DatabaseClusterBackupRestorePtr and DatabaseClusterBackupRestorePtrOutput values.
+// You can construct a concrete instance of `DatabaseClusterBackupRestorePtrInput` via:
+//
+//	        DatabaseClusterBackupRestoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseClusterBackupRestorePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseClusterBackupRestorePtrOutput() DatabaseClusterBackupRestorePtrOutput
+	ToDatabaseClusterBackupRestorePtrOutputWithContext(context.Context) DatabaseClusterBackupRestorePtrOutput
+}
+
+type databaseClusterBackupRestorePtrType DatabaseClusterBackupRestoreArgs
+
+func DatabaseClusterBackupRestorePtr(v *DatabaseClusterBackupRestoreArgs) DatabaseClusterBackupRestorePtrInput {
+	return (*databaseClusterBackupRestorePtrType)(v)
+}
+
+func (*databaseClusterBackupRestorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseClusterBackupRestore)(nil)).Elem()
+}
+
+func (i *databaseClusterBackupRestorePtrType) ToDatabaseClusterBackupRestorePtrOutput() DatabaseClusterBackupRestorePtrOutput {
+	return i.ToDatabaseClusterBackupRestorePtrOutputWithContext(context.Background())
+}
+
+func (i *databaseClusterBackupRestorePtrType) ToDatabaseClusterBackupRestorePtrOutputWithContext(ctx context.Context) DatabaseClusterBackupRestorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterBackupRestorePtrOutput)
+}
+
+type DatabaseClusterBackupRestoreOutput struct{ *pulumi.OutputState }
+
+func (DatabaseClusterBackupRestoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseClusterBackupRestore)(nil)).Elem()
+}
+
+func (o DatabaseClusterBackupRestoreOutput) ToDatabaseClusterBackupRestoreOutput() DatabaseClusterBackupRestoreOutput {
+	return o
+}
+
+func (o DatabaseClusterBackupRestoreOutput) ToDatabaseClusterBackupRestoreOutputWithContext(ctx context.Context) DatabaseClusterBackupRestoreOutput {
+	return o
+}
+
+func (o DatabaseClusterBackupRestoreOutput) ToDatabaseClusterBackupRestorePtrOutput() DatabaseClusterBackupRestorePtrOutput {
+	return o.ToDatabaseClusterBackupRestorePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseClusterBackupRestoreOutput) ToDatabaseClusterBackupRestorePtrOutputWithContext(ctx context.Context) DatabaseClusterBackupRestorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseClusterBackupRestore) *DatabaseClusterBackupRestore {
+		return &v
+	}).(DatabaseClusterBackupRestorePtrOutput)
+}
+
+// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o DatabaseClusterBackupRestoreOutput) BackupCreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseClusterBackupRestore) *string { return v.BackupCreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The name of an existing database cluster from which the backup will be restored.
+func (o DatabaseClusterBackupRestoreOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseClusterBackupRestore) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+type DatabaseClusterBackupRestorePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseClusterBackupRestorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseClusterBackupRestore)(nil)).Elem()
+}
+
+func (o DatabaseClusterBackupRestorePtrOutput) ToDatabaseClusterBackupRestorePtrOutput() DatabaseClusterBackupRestorePtrOutput {
+	return o
+}
+
+func (o DatabaseClusterBackupRestorePtrOutput) ToDatabaseClusterBackupRestorePtrOutputWithContext(ctx context.Context) DatabaseClusterBackupRestorePtrOutput {
+	return o
+}
+
+func (o DatabaseClusterBackupRestorePtrOutput) Elem() DatabaseClusterBackupRestoreOutput {
+	return o.ApplyT(func(v *DatabaseClusterBackupRestore) DatabaseClusterBackupRestore {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseClusterBackupRestore
+		return ret
+	}).(DatabaseClusterBackupRestoreOutput)
+}
+
+// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o DatabaseClusterBackupRestorePtrOutput) BackupCreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseClusterBackupRestore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupCreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of an existing database cluster from which the backup will be restored.
+func (o DatabaseClusterBackupRestorePtrOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseClusterBackupRestore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11427,6 +11629,8 @@ type KubernetesClusterMaintenancePolicy struct {
 	// A string denoting the duration of the service window, e.g., "04:00".
 	Duration *string `pulumi:"duration"`
 	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -11447,6 +11651,8 @@ type KubernetesClusterMaintenancePolicyArgs struct {
 	// A string denoting the duration of the service window, e.g., "04:00".
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -11538,6 +11744,8 @@ func (o KubernetesClusterMaintenancePolicyOutput) Duration() pulumi.StringPtrOut
 }
 
 // The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterMaintenancePolicyOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -11587,6 +11795,8 @@ func (o KubernetesClusterMaintenancePolicyPtrOutput) Duration() pulumi.StringPtr
 }
 
 // The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterMaintenancePolicyPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) *string {
 		if v == nil {
@@ -13582,6 +13792,8 @@ type SpacesBucketLifecycleRule struct {
 	// Unique identifier for the rule.
 	Id *string `pulumi:"id"`
 	// Specifies when non-current object versions expire (documented below).
+	//
+	// At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
 	NoncurrentVersionExpiration *SpacesBucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpiration"`
 	// Object key prefix identifying one or more objects to which the rule applies.
 	Prefix *string `pulumi:"prefix"`
@@ -13609,6 +13821,8 @@ type SpacesBucketLifecycleRuleArgs struct {
 	// Unique identifier for the rule.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Specifies when non-current object versions expire (documented below).
+	//
+	// At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
 	NoncurrentVersionExpiration SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput `pulumi:"noncurrentVersionExpiration"`
 	// Object key prefix identifying one or more objects to which the rule applies.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
@@ -13687,6 +13901,8 @@ func (o SpacesBucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 }
 
 // Specifies when non-current object versions expire (documented below).
+//
+// At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
 func (o SpacesBucketLifecycleRuleOutput) NoncurrentVersionExpiration() SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
 	return o.ApplyT(func(v SpacesBucketLifecycleRule) *SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
 		return v.NoncurrentVersionExpiration
@@ -14180,6 +14396,7 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type UptimeAlertNotification struct {
+	// List of email addresses to sent notifications to.
 	Emails []string                       `pulumi:"emails"`
 	Slacks []UptimeAlertNotificationSlack `pulumi:"slacks"`
 }
@@ -14196,6 +14413,7 @@ type UptimeAlertNotificationInput interface {
 }
 
 type UptimeAlertNotificationArgs struct {
+	// List of email addresses to sent notifications to.
 	Emails pulumi.StringArrayInput                `pulumi:"emails"`
 	Slacks UptimeAlertNotificationSlackArrayInput `pulumi:"slacks"`
 }
@@ -14251,6 +14469,7 @@ func (o UptimeAlertNotificationOutput) ToUptimeAlertNotificationOutputWithContex
 	return o
 }
 
+// List of email addresses to sent notifications to.
 func (o UptimeAlertNotificationOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UptimeAlertNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
@@ -14280,8 +14499,10 @@ func (o UptimeAlertNotificationArrayOutput) Index(i pulumi.IntInput) UptimeAlert
 }
 
 type UptimeAlertNotificationSlack struct {
+	// The Slack channel to send alerts to.
 	Channel string `pulumi:"channel"`
-	Url     string `pulumi:"url"`
+	// The webhook URL for Slack.
+	Url string `pulumi:"url"`
 }
 
 // UptimeAlertNotificationSlackInput is an input type that accepts UptimeAlertNotificationSlackArgs and UptimeAlertNotificationSlackOutput values.
@@ -14296,8 +14517,10 @@ type UptimeAlertNotificationSlackInput interface {
 }
 
 type UptimeAlertNotificationSlackArgs struct {
+	// The Slack channel to send alerts to.
 	Channel pulumi.StringInput `pulumi:"channel"`
-	Url     pulumi.StringInput `pulumi:"url"`
+	// The webhook URL for Slack.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (UptimeAlertNotificationSlackArgs) ElementType() reflect.Type {
@@ -14351,10 +14574,12 @@ func (o UptimeAlertNotificationSlackOutput) ToUptimeAlertNotificationSlackOutput
 	return o
 }
 
+// The Slack channel to send alerts to.
 func (o UptimeAlertNotificationSlackOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeAlertNotificationSlack) string { return v.Channel }).(pulumi.StringOutput)
 }
 
+// The webhook URL for Slack.
 func (o UptimeAlertNotificationSlackOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeAlertNotificationSlack) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -30869,6 +31094,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterBackupRestoreInput)(nil)).Elem(), DatabaseClusterBackupRestoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterBackupRestorePtrInput)(nil)).Elem(), DatabaseClusterBackupRestoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleInput)(nil)).Elem(), DatabaseFirewallRuleArgs{})
@@ -31269,6 +31496,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationLogtailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseClusterBackupRestoreOutput{})
+	pulumi.RegisterOutputType(DatabaseClusterBackupRestorePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseFirewallRuleOutput{})

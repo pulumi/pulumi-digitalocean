@@ -49,12 +49,16 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The slug of the official image.
      * 
+     * If `name` is specified, you may also specify:
+     * 
      */
     @Import(name="slug")
     private @Nullable Output<String> slug;
 
     /**
      * @return The slug of the official image.
+     * 
+     * If `name` is specified, you may also specify:
      * 
      */
     public Optional<Output<String>> slug() {
@@ -148,6 +152,8 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param slug The slug of the official image.
          * 
+         * If `name` is specified, you may also specify:
+         * 
          * @return builder
          * 
          */
@@ -158,6 +164,8 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param slug The slug of the official image.
+         * 
+         * If `name` is specified, you may also specify:
          * 
          * @return builder
          * 

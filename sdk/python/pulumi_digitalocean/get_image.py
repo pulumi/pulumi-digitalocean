@@ -270,6 +270,8 @@ def get_image(id: Optional[int] = None,
     :param int id: The id of the image
     :param str name: The name of the image.
     :param str slug: The slug of the official image.
+           
+           If `name` is specified, you may also specify:
     :param str source: Restrict the search to one of the following categories of images:
     """
     __args__ = dict()
@@ -350,6 +352,8 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     :param int id: The id of the image
     :param str name: The name of the image.
     :param str slug: The slug of the official image.
+           
+           If `name` is specified, you may also specify:
     :param str source: Restrict the search to one of the following categories of images:
     """
     ...

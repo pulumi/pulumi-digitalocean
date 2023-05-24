@@ -16,6 +16,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new PostgreSQL database replica
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -130,7 +131,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         /// </summary>
         [Output("size")]
         public Output<string?> Size { get; private set; } = null!;
@@ -236,7 +237,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
@@ -342,7 +343,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }

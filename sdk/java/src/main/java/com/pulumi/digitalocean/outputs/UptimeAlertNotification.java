@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UptimeAlertNotification {
+    /**
+     * @return List of email addresses to sent notifications to.
+     * 
+     */
     private @Nullable List<String> emails;
     private @Nullable List<UptimeAlertNotificationSlack> slacks;
 
     private UptimeAlertNotification() {}
+    /**
+     * @return List of email addresses to sent notifications to.
+     * 
+     */
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
     }

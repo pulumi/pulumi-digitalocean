@@ -23,6 +23,34 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('apiEndpoint') or (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
 
     @property
+    def http_retry_max(self) -> Optional[int]:
+        """
+        The maximum number of retries on a failed API request.
+        """
+        return __config__.get_int('httpRetryMax')
+
+    @property
+    def http_retry_wait_max(self) -> Optional[float]:
+        """
+        The maximum wait time (in seconds) between failed API requests.
+        """
+        return __config__.get_float('httpRetryWaitMax')
+
+    @property
+    def http_retry_wait_min(self) -> Optional[float]:
+        """
+        The minimum wait time (in seconds) between failed API requests.
+        """
+        return __config__.get_float('httpRetryWaitMin')
+
+    @property
+    def requests_per_second(self) -> Optional[float]:
+        """
+        The rate of requests per second to limit the HTTP client.
+        """
+        return __config__.get_float('requestsPerSecond')
+
+    @property
     def spaces_access_id(self) -> Optional[str]:
         """
         The access key ID for Spaces API operations.

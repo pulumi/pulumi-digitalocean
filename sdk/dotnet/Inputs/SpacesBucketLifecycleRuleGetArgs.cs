@@ -39,6 +39,8 @@ namespace Pulumi.DigitalOcean.Inputs
 
         /// <summary>
         /// Specifies when non-current object versions expire (documented below).
+        /// 
+        /// At least one of `expiration` or `noncurrent_version_expiration` must be specified.
         /// </summary>
         [Input("noncurrentVersionExpiration")]
         public Input<Inputs.SpacesBucketLifecycleRuleNoncurrentVersionExpirationGetArgs>? NoncurrentVersionExpiration { get; set; }
