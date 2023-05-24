@@ -575,7 +575,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	defaults := x.TokensSingleModule("digitalocean_", digitalOceanMod, x.MakeStandardToken(digitalOceanPkg))
 	err := x.ComputeDefaults(&prov, defaults)
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to compute default token modules")
 
 	prov.SetAutonaming(255, "-")
 
