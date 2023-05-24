@@ -318,7 +318,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@94ee0cc859ea4a6cfd95818df05376b999487024
+      uses: pulumi/pulumi-package-publisher@v0.0.6
     - env:
         SLACK_CHANNEL: provider-upgrade-publish-status
         SLACK_COLOR: "#FF0000"
