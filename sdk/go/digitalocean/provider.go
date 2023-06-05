@@ -37,10 +37,14 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.ApiEndpoint == nil {
-		args.ApiEndpoint = pulumi.StringPtr(getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL").(string))
+		if d := getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
+			args.ApiEndpoint = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.SpacesEndpoint == nil {
-		args.SpacesEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "SPACES_ENDPOINT_URL").(string))
+		if d := getEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
+			args.SpacesEndpoint = pulumi.StringPtr(d.(string))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:digitalocean", name, args, &resource, opts...)
