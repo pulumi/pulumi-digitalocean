@@ -14,7 +14,11 @@ func GetApiEndpoint(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL").(string)
+	var value string
+	if d := getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The maximum number of retries on a failed API request.
@@ -48,7 +52,11 @@ func GetSpacesEndpoint(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "SPACES_ENDPOINT_URL").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The secret access key for Spaces API operations.
