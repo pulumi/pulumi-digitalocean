@@ -134,6 +134,11 @@ export const getDatabaseReplica: typeof import("./getDatabaseReplica").getDataba
 export const getDatabaseReplicaOutput: typeof import("./getDatabaseReplica").getDatabaseReplicaOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseReplica","getDatabaseReplicaOutput"], () => require("./getDatabaseReplica"));
 
+export { GetDatabaseUserArgs, GetDatabaseUserResult, GetDatabaseUserOutputArgs } from "./getDatabaseUser";
+export const getDatabaseUser: typeof import("./getDatabaseUser").getDatabaseUser = null as any;
+export const getDatabaseUserOutput: typeof import("./getDatabaseUser").getDatabaseUserOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseUser","getDatabaseUserOutput"], () => require("./getDatabaseUser"));
+
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;

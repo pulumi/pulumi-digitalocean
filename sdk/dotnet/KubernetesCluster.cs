@@ -52,6 +52,14 @@ namespace Pulumi.DigitalOcean
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Output("destroyAllAssociatedResources")]
+        public Output<bool?> DestroyAllAssociatedResources { get; private set; } = null!;
+
+        /// <summary>
         /// The base URL of the API server on the Kubernetes master node.
         /// </summary>
         [Output("endpoint")]
@@ -201,6 +209,14 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
+        /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("destroyAllAssociatedResources")]
+        public Input<bool>? DestroyAllAssociatedResources { get; set; }
+
+        /// <summary>
         /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         /// </summary>
         [Input("ha")]
@@ -297,6 +313,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("destroyAllAssociatedResources")]
+        public Input<bool>? DestroyAllAssociatedResources { get; set; }
 
         /// <summary>
         /// The base URL of the API server on the Kubernetes master node.

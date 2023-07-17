@@ -164,15 +164,15 @@ def get_app(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult).value
 
     return AwaitableGetAppResult(
-        active_deployment_id=__ret__.active_deployment_id,
-        app_id=__ret__.app_id,
-        created_at=__ret__.created_at,
-        default_ingress=__ret__.default_ingress,
-        id=__ret__.id,
-        live_url=__ret__.live_url,
-        specs=__ret__.specs,
-        updated_at=__ret__.updated_at,
-        urn=__ret__.urn)
+        active_deployment_id=pulumi.get(__ret__, 'active_deployment_id'),
+        app_id=pulumi.get(__ret__, 'app_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        default_ingress=pulumi.get(__ret__, 'default_ingress'),
+        id=pulumi.get(__ret__, 'id'),
+        live_url=pulumi.get(__ret__, 'live_url'),
+        specs=pulumi.get(__ret__, 'specs'),
+        updated_at=pulumi.get(__ret__, 'updated_at'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_app)

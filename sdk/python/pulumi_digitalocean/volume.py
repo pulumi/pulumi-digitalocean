@@ -98,6 +98,9 @@ class VolumeArgs:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
+        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
@@ -265,6 +268,9 @@ class _VolumeState:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
+        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
@@ -631,6 +637,9 @@ class Volume(pulumi.CustomResource):
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
+        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+
         return pulumi.get(self, "filesystem_type")
 
     @property

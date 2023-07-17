@@ -20,6 +20,8 @@ import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseClusterPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseReplicaPlainArgs;
+import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
+import com.pulumi.digitalocean.inputs.GetDatabaseUserPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainsArgs;
@@ -89,6 +91,7 @@ import com.pulumi.digitalocean.outputs.GetContainerRegistryResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseCaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseClusterResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseReplicaResult;
+import com.pulumi.digitalocean.outputs.GetDatabaseUserResult;
 import com.pulumi.digitalocean.outputs.GetDomainResult;
 import com.pulumi.digitalocean.outputs.GetDomainsResult;
 import com.pulumi.digitalocean.outputs.GetDropletResult;
@@ -1335,6 +1338,182 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetDatabaseReplicaResult> getDatabaseReplicaPlain(GetDatabaseReplicaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseReplica:getDatabaseReplica", TypeShape.of(GetDatabaseReplicaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean database user resource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;main-cluster&#34;)
+     *             .build());
+     * 
+     *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;example-user&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseUserResult> getDatabaseUser(GetDatabaseUserArgs args) {
+        return getDatabaseUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean database user resource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;main-cluster&#34;)
+     *             .build());
+     * 
+     *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;example-user&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseUserResult> getDatabaseUserPlain(GetDatabaseUserPlainArgs args) {
+        return getDatabaseUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean database user resource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;main-cluster&#34;)
+     *             .build());
+     * 
+     *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;example-user&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseUserResult> getDatabaseUser(GetDatabaseUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseUser:getDatabaseUser", TypeShape.of(GetDatabaseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean database user resource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;main-cluster&#34;)
+     *             .build());
+     * 
+     *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;example-user&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseUserResult> getDatabaseUserPlain(GetDatabaseUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseUser:getDatabaseUser", TypeShape.of(GetDatabaseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a domain. This data source provides the name, TTL, and zone

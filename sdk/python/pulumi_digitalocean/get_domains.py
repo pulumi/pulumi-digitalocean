@@ -118,10 +118,10 @@ def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArg
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        domains=__ret__.domains,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        sorts=__ret__.sorts)
+        domains=pulumi.get(__ret__, 'domains'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_domains)

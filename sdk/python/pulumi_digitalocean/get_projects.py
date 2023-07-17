@@ -140,10 +140,10 @@ def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterA
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult).value
 
     return AwaitableGetProjectsResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        projects=__ret__.projects,
-        sorts=__ret__.sorts)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        projects=pulumi.get(__ret__, 'projects'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_projects)

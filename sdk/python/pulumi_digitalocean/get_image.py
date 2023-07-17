@@ -283,22 +283,22 @@ def get_image(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
-        created=__ret__.created,
-        description=__ret__.description,
-        distribution=__ret__.distribution,
-        error_message=__ret__.error_message,
-        id=__ret__.id,
-        image=__ret__.image,
-        min_disk_size=__ret__.min_disk_size,
-        name=__ret__.name,
-        private=__ret__.private,
-        regions=__ret__.regions,
-        size_gigabytes=__ret__.size_gigabytes,
-        slug=__ret__.slug,
-        source=__ret__.source,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        created=pulumi.get(__ret__, 'created'),
+        description=pulumi.get(__ret__, 'description'),
+        distribution=pulumi.get(__ret__, 'distribution'),
+        error_message=pulumi.get(__ret__, 'error_message'),
+        id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
+        min_disk_size=pulumi.get(__ret__, 'min_disk_size'),
+        name=pulumi.get(__ret__, 'name'),
+        private=pulumi.get(__ret__, 'private'),
+        regions=pulumi.get(__ret__, 'regions'),
+        size_gigabytes=pulumi.get(__ret__, 'size_gigabytes'),
+        slug=pulumi.get(__ret__, 'slug'),
+        source=pulumi.get(__ret__, 'source'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_image)

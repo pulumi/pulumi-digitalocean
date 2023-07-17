@@ -32,6 +32,7 @@ from .get_container_registry import *
 from .get_database_ca import *
 from .get_database_cluster import *
 from .get_database_replica import *
+from .get_database_user import *
 from .get_domain import *
 from .get_domains import *
 from .get_droplet import *

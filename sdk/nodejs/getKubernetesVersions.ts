@@ -16,9 +16,8 @@ import * as utilities from "./utilities";
  *
  * export = async () => {
  *     const example = await digitalocean.getKubernetesVersions({});
- *     const k8s_versions = example.validVersions;
  *     return {
- *         "k8s-versions": k8s_versions,
+ *         "k8s-versions": example.validVersions,
  *     };
  * }
  * ```
@@ -108,9 +107,8 @@ export interface GetKubernetesVersionsResult {
  *
  * export = async () => {
  *     const example = await digitalocean.getKubernetesVersions({});
- *     const k8s_versions = example.validVersions;
  *     return {
- *         "k8s-versions": k8s_versions,
+ *         "k8s-versions": example.validVersions,
  *     };
  * }
  * ```

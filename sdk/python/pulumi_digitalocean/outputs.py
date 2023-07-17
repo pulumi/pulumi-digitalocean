@@ -312,6 +312,9 @@ class AppSpec(dict):
     @property
     @pulumi.getter
     def domains(self) -> Optional[Sequence[str]]:
+        warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
+        pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
+
         return pulumi.get(self, "domains")
 
     @property
@@ -5266,8 +5269,6 @@ class KubernetesClusterMaintenancePolicy(dict):
         :param str day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
         :param str duration: A string denoting the duration of the service window, e.g., "04:00".
         :param str start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -5297,8 +5298,6 @@ class KubernetesClusterMaintenancePolicy(dict):
     def start_time(self) -> Optional[str]:
         """
         The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "start_time")
 
@@ -5887,6 +5886,9 @@ class LoadBalancerForwardingRule(dict):
         """
         **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         """
+        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
+
         return pulumi.get(self, "certificate_id")
 
     @property
@@ -6509,6 +6511,9 @@ class GetAppSpecResult(dict):
     @property
     @pulumi.getter
     def domains(self) -> Sequence[str]:
+        warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
+        pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
+
         return pulumi.get(self, "domains")
 
     @property

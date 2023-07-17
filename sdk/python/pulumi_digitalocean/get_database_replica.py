@@ -232,21 +232,21 @@ def get_database_replica(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseReplica:getDatabaseReplica', __args__, opts=opts, typ=GetDatabaseReplicaResult).value
 
     return AwaitableGetDatabaseReplicaResult(
-        cluster_id=__ret__.cluster_id,
-        database=__ret__.database,
-        host=__ret__.host,
-        id=__ret__.id,
-        name=__ret__.name,
-        password=__ret__.password,
-        port=__ret__.port,
-        private_host=__ret__.private_host,
-        private_network_uuid=__ret__.private_network_uuid,
-        private_uri=__ret__.private_uri,
-        region=__ret__.region,
-        tags=__ret__.tags,
-        uri=__ret__.uri,
-        user=__ret__.user,
-        uuid=__ret__.uuid)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        database=pulumi.get(__ret__, 'database'),
+        host=pulumi.get(__ret__, 'host'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
+        port=pulumi.get(__ret__, 'port'),
+        private_host=pulumi.get(__ret__, 'private_host'),
+        private_network_uuid=pulumi.get(__ret__, 'private_network_uuid'),
+        private_uri=pulumi.get(__ret__, 'private_uri'),
+        region=pulumi.get(__ret__, 'region'),
+        tags=pulumi.get(__ret__, 'tags'),
+        uri=pulumi.get(__ret__, 'uri'),
+        user=pulumi.get(__ret__, 'user'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_database_replica)

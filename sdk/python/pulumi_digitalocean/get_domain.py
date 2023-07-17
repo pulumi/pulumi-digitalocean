@@ -109,11 +109,11 @@ def get_domain(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        domain_urn=__ret__.domain_urn,
-        id=__ret__.id,
-        name=__ret__.name,
-        ttl=__ret__.ttl,
-        zone_file=__ret__.zone_file)
+        domain_urn=pulumi.get(__ret__, 'domain_urn'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        zone_file=pulumi.get(__ret__, 'zone_file'))
 
 
 @_utilities.lift_output_func(get_domain)

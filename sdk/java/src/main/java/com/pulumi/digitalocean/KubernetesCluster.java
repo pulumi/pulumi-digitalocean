@@ -94,6 +94,24 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Export(name="destroyAllAssociatedResources", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> destroyAllAssociatedResources;
+
+    /**
+     * @return **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Output<Optional<Boolean>> destroyAllAssociatedResources() {
+        return Codegen.optional(this.destroyAllAssociatedResources);
+    }
+    /**
      * The base URL of the API server on the Kubernetes master node.
      * 
      */

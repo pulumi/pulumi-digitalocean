@@ -24,8 +24,6 @@ public final class KubernetesClusterMaintenancePolicy {
     /**
      * @return The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     private @Nullable String startTime;
 
@@ -46,8 +44,6 @@ public final class KubernetesClusterMaintenancePolicy {
     }
     /**
      * @return The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<String> startTime() {

@@ -37,6 +37,25 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Import(name="destroyAllAssociatedResources")
+    private @Nullable Output<Boolean> destroyAllAssociatedResources;
+
+    /**
+     * @return **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Optional<Output<Boolean>> destroyAllAssociatedResources() {
+        return Optional.ofNullable(this.destroyAllAssociatedResources);
+    }
+
+    /**
      * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
      * 
      */
@@ -190,6 +209,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
 
     private KubernetesClusterArgs(KubernetesClusterArgs $) {
         this.autoUpgrade = $.autoUpgrade;
+        this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.ha = $.ha;
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
@@ -239,6 +259,31 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder autoUpgrade(Boolean autoUpgrade) {
             return autoUpgrade(Output.of(autoUpgrade));
+        }
+
+        /**
+         * @param destroyAllAssociatedResources **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destroyAllAssociatedResources(@Nullable Output<Boolean> destroyAllAssociatedResources) {
+            $.destroyAllAssociatedResources = destroyAllAssociatedResources;
+            return this;
+        }
+
+        /**
+         * @param destroyAllAssociatedResources **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destroyAllAssociatedResources(Boolean destroyAllAssociatedResources) {
+            return destroyAllAssociatedResources(Output.of(destroyAllAssociatedResources));
         }
 
         /**

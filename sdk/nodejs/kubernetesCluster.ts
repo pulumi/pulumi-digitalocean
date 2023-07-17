@@ -67,6 +67,12 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    public readonly destroyAllAssociatedResources!: pulumi.Output<boolean | undefined>;
+    /**
      * The base URL of the API server on the Kubernetes master node.
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
@@ -145,6 +151,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
             resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["destroyAllAssociatedResources"] = state ? state.destroyAllAssociatedResources : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["ha"] = state ? state.ha : undefined;
             resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
@@ -173,6 +180,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            resourceInputs["destroyAllAssociatedResources"] = args ? args.destroyAllAssociatedResources : undefined;
             resourceInputs["ha"] = args ? args.ha : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -220,6 +228,12 @@ export interface KubernetesClusterState {
      * The date and time when the node was created.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    destroyAllAssociatedResources?: pulumi.Input<boolean>;
     /**
      * The base URL of the API server on the Kubernetes master node.
      */
@@ -291,6 +305,12 @@ export interface KubernetesClusterArgs {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    destroyAllAssociatedResources?: pulumi.Input<boolean>;
     /**
      * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
      */

@@ -129,12 +129,12 @@ def get_region(slug: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
     return AwaitableGetRegionResult(
-        available=__ret__.available,
-        features=__ret__.features,
-        id=__ret__.id,
-        name=__ret__.name,
-        sizes=__ret__.sizes,
-        slug=__ret__.slug)
+        available=pulumi.get(__ret__, 'available'),
+        features=pulumi.get(__ret__, 'features'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        sizes=pulumi.get(__ret__, 'sizes'),
+        slug=pulumi.get(__ret__, 'slug'))
 
 
 @_utilities.lift_output_func(get_region)

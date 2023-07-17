@@ -41,6 +41,7 @@
         "getDatabaseCa.ts",
         "getDatabaseCluster.ts",
         "getDatabaseReplica.ts",
+        "getDatabaseUser.ts",
         "getDomain.ts",
         "getDomains.ts",
         "getDroplet.ts",

@@ -200,16 +200,16 @@ def get_volume(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult).value
 
     return AwaitableGetVolumeResult(
-        description=__ret__.description,
-        droplet_ids=__ret__.droplet_ids,
-        filesystem_label=__ret__.filesystem_label,
-        filesystem_type=__ret__.filesystem_type,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        size=__ret__.size,
-        tags=__ret__.tags,
-        urn=__ret__.urn)
+        description=pulumi.get(__ret__, 'description'),
+        droplet_ids=pulumi.get(__ret__, 'droplet_ids'),
+        filesystem_label=pulumi.get(__ret__, 'filesystem_label'),
+        filesystem_type=pulumi.get(__ret__, 'filesystem_type'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        size=pulumi.get(__ret__, 'size'),
+        tags=pulumi.get(__ret__, 'tags'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_volume)

@@ -184,17 +184,17 @@ def get_project(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        environment=__ret__.environment,
-        id=__ret__.id,
-        is_default=__ret__.is_default,
-        name=__ret__.name,
-        owner_id=__ret__.owner_id,
-        owner_uuid=__ret__.owner_uuid,
-        purpose=__ret__.purpose,
-        resources=__ret__.resources,
-        updated_at=__ret__.updated_at)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        environment=pulumi.get(__ret__, 'environment'),
+        id=pulumi.get(__ret__, 'id'),
+        is_default=pulumi.get(__ret__, 'is_default'),
+        name=pulumi.get(__ret__, 'name'),
+        owner_id=pulumi.get(__ret__, 'owner_id'),
+        owner_uuid=pulumi.get(__ret__, 'owner_uuid'),
+        purpose=pulumi.get(__ret__, 'purpose'),
+        resources=pulumi.get(__ret__, 'resources'),
+        updated_at=pulumi.get(__ret__, 'updated_at'))
 
 
 @_utilities.lift_output_func(get_project)

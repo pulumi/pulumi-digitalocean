@@ -124,11 +124,11 @@ def get_floating_ip(ip_address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult).value
 
     return AwaitableGetFloatingIpResult(
-        droplet_id=__ret__.droplet_id,
-        floating_ip_urn=__ret__.floating_ip_urn,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        region=__ret__.region)
+        droplet_id=pulumi.get(__ret__, 'droplet_id'),
+        floating_ip_urn=pulumi.get(__ret__, 'floating_ip_urn'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_floating_ip)

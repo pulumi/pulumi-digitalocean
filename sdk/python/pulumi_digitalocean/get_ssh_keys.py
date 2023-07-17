@@ -130,10 +130,10 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSshKeys:getSshKeys', __args__, opts=opts, typ=GetSshKeysResult).value
 
     return AwaitableGetSshKeysResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        sorts=__ret__.sorts,
-        ssh_keys=__ret__.ssh_keys)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        sorts=pulumi.get(__ret__, 'sorts'),
+        ssh_keys=pulumi.get(__ret__, 'ssh_keys'))
 
 
 @_utilities.lift_output_func(get_ssh_keys)

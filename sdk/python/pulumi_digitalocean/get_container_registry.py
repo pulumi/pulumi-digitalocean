@@ -159,14 +159,14 @@ def get_container_registry(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getContainerRegistry:getContainerRegistry', __args__, opts=opts, typ=GetContainerRegistryResult).value
 
     return AwaitableGetContainerRegistryResult(
-        created_at=__ret__.created_at,
-        endpoint=__ret__.endpoint,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        server_url=__ret__.server_url,
-        storage_usage_bytes=__ret__.storage_usage_bytes,
-        subscription_tier_slug=__ret__.subscription_tier_slug)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        server_url=pulumi.get(__ret__, 'server_url'),
+        storage_usage_bytes=pulumi.get(__ret__, 'storage_usage_bytes'),
+        subscription_tier_slug=pulumi.get(__ret__, 'subscription_tier_slug'))
 
 
 @_utilities.lift_output_func(get_container_registry)

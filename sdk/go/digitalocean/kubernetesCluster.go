@@ -39,6 +39,10 @@ type KubernetesCluster struct {
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources pulumi.BoolPtrOutput `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
@@ -122,6 +126,10 @@ type kubernetesClusterState struct {
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
@@ -164,6 +172,10 @@ type KubernetesClusterState struct {
 	ClusterUrn pulumi.StringPtrInput
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringPtrInput
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
@@ -204,6 +216,10 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha *bool `pulumi:"ha"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -230,6 +246,10 @@ type kubernetesClusterArgs struct {
 type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha pulumi.BoolPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -357,6 +377,13 @@ func (o KubernetesClusterOutput) ClusterUrn() pulumi.StringOutput {
 // The date and time when the node was created.
 func (o KubernetesClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o KubernetesClusterOutput) DestroyAllAssociatedResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.DestroyAllAssociatedResources }).(pulumi.BoolPtrOutput)
 }
 
 // The base URL of the API server on the Kubernetes master node.

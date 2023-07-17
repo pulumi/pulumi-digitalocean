@@ -115,11 +115,11 @@ def get_reserved_ip(ip_address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getReservedIp:getReservedIp', __args__, opts=opts, typ=GetReservedIpResult).value
 
     return AwaitableGetReservedIpResult(
-        droplet_id=__ret__.droplet_id,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        region=__ret__.region,
-        urn=__ret__.urn)
+        droplet_id=pulumi.get(__ret__, 'droplet_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        region=pulumi.get(__ret__, 'region'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_reserved_ip)

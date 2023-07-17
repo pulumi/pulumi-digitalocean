@@ -89,9 +89,9 @@ def get_database_ca(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCa:getDatabaseCa', __args__, opts=opts, typ=GetDatabaseCaResult).value
 
     return AwaitableGetDatabaseCaResult(
-        certificate=__ret__.certificate,
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id)
+        certificate=pulumi.get(__ret__, 'certificate'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_database_ca)

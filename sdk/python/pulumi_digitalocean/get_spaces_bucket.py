@@ -135,12 +135,12 @@ def get_spaces_bucket(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBucket:getSpacesBucket', __args__, opts=opts, typ=GetSpacesBucketResult).value
 
     return AwaitableGetSpacesBucketResult(
-        bucket_domain_name=__ret__.bucket_domain_name,
-        endpoint=__ret__.endpoint,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        urn=__ret__.urn)
+        bucket_domain_name=pulumi.get(__ret__, 'bucket_domain_name'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_spaces_bucket)

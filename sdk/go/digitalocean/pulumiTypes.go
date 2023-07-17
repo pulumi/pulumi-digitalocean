@@ -11629,8 +11629,6 @@ type KubernetesClusterMaintenancePolicy struct {
 	// A string denoting the duration of the service window, e.g., "04:00".
 	Duration *string `pulumi:"duration"`
 	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -11651,8 +11649,6 @@ type KubernetesClusterMaintenancePolicyArgs struct {
 	// A string denoting the duration of the service window, e.g., "04:00".
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -11744,8 +11740,6 @@ func (o KubernetesClusterMaintenancePolicyOutput) Duration() pulumi.StringPtrOut
 }
 
 // The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-//
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterMaintenancePolicyOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterMaintenancePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -11795,8 +11789,6 @@ func (o KubernetesClusterMaintenancePolicyPtrOutput) Duration() pulumi.StringPtr
 }
 
 // The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-//
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterMaintenancePolicyPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterMaintenancePolicy) *string {
 		if v == nil {

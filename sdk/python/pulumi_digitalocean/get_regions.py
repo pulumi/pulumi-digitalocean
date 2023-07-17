@@ -137,10 +137,10 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult).value
 
     return AwaitableGetRegionsResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        regions=__ret__.regions,
-        sorts=__ret__.sorts)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        regions=pulumi.get(__ret__, 'regions'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_regions)

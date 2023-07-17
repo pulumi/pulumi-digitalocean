@@ -197,16 +197,16 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts, typ=GetDropletSnapshotResult).value
 
     return AwaitableGetDropletSnapshotResult(
-        created_at=__ret__.created_at,
-        droplet_id=__ret__.droplet_id,
-        id=__ret__.id,
-        min_disk_size=__ret__.min_disk_size,
-        most_recent=__ret__.most_recent,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        region=__ret__.region,
-        regions=__ret__.regions,
-        size=__ret__.size)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        droplet_id=pulumi.get(__ret__, 'droplet_id'),
+        id=pulumi.get(__ret__, 'id'),
+        min_disk_size=pulumi.get(__ret__, 'min_disk_size'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        region=pulumi.get(__ret__, 'region'),
+        regions=pulumi.get(__ret__, 'regions'),
+        size=pulumi.get(__ret__, 'size'))
 
 
 @_utilities.lift_output_func(get_droplet_snapshot)
