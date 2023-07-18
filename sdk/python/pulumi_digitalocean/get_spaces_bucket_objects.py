@@ -165,16 +165,16 @@ def get_spaces_bucket_objects(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects', __args__, opts=opts, typ=GetSpacesBucketObjectsResult).value
 
     return AwaitableGetSpacesBucketObjectsResult(
-        bucket=__ret__.bucket,
-        common_prefixes=__ret__.common_prefixes,
-        delimiter=__ret__.delimiter,
-        encoding_type=__ret__.encoding_type,
-        id=__ret__.id,
-        keys=__ret__.keys,
-        max_keys=__ret__.max_keys,
-        owners=__ret__.owners,
-        prefix=__ret__.prefix,
-        region=__ret__.region)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        common_prefixes=pulumi.get(__ret__, 'common_prefixes'),
+        delimiter=pulumi.get(__ret__, 'delimiter'),
+        encoding_type=pulumi.get(__ret__, 'encoding_type'),
+        id=pulumi.get(__ret__, 'id'),
+        keys=pulumi.get(__ret__, 'keys'),
+        max_keys=pulumi.get(__ret__, 'max_keys'),
+        owners=pulumi.get(__ret__, 'owners'),
+        prefix=pulumi.get(__ret__, 'prefix'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_spaces_bucket_objects)

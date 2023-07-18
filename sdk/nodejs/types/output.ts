@@ -3747,8 +3747,6 @@ export interface KubernetesClusterMaintenancePolicy {
     duration: string;
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     startTime: string;
 }

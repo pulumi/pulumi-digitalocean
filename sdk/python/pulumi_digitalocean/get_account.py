@@ -147,11 +147,11 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        droplet_limit=__ret__.droplet_limit,
-        email=__ret__.email,
-        email_verified=__ret__.email_verified,
-        floating_ip_limit=__ret__.floating_ip_limit,
-        id=__ret__.id,
-        status=__ret__.status,
-        status_message=__ret__.status_message,
-        uuid=__ret__.uuid)
+        droplet_limit=pulumi.get(__ret__, 'droplet_limit'),
+        email=pulumi.get(__ret__, 'email'),
+        email_verified=pulumi.get(__ret__, 'email_verified'),
+        floating_ip_limit=pulumi.get(__ret__, 'floating_ip_limit'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        uuid=pulumi.get(__ret__, 'uuid'))

@@ -130,10 +130,10 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSpacesBuckets:getSpacesBuckets', __args__, opts=opts, typ=GetSpacesBucketsResult).value
 
     return AwaitableGetSpacesBucketsResult(
-        buckets=__ret__.buckets,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        sorts=__ret__.sorts)
+        buckets=pulumi.get(__ret__, 'buckets'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_spaces_buckets)

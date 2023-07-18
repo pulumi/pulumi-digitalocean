@@ -410,6 +410,10 @@ class DnsRecord(pulumi.CustomResource):
          $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
         ```
 
+         ~>
+
+        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list <domain.name>`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to.
@@ -461,6 +465,10 @@ class DnsRecord(pulumi.CustomResource):
         ```sh
          $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
         ```
+
+         ~>
+
+        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list <domain.name>`
 
         :param str resource_name: The name of the resource.
         :param DnsRecordArgs args: The arguments to use to populate this resource's properties.

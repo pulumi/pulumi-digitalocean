@@ -134,10 +134,10 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesVersions:getKubernetesVersions', __args__, opts=opts, typ=GetKubernetesVersionsResult).value
 
     return AwaitableGetKubernetesVersionsResult(
-        id=__ret__.id,
-        latest_version=__ret__.latest_version,
-        valid_versions=__ret__.valid_versions,
-        version_prefix=__ret__.version_prefix)
+        id=pulumi.get(__ret__, 'id'),
+        latest_version=pulumi.get(__ret__, 'latest_version'),
+        valid_versions=pulumi.get(__ret__, 'valid_versions'),
+        version_prefix=pulumi.get(__ret__, 'version_prefix'))
 
 
 @_utilities.lift_output_func(get_kubernetes_versions)

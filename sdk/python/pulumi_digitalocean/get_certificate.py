@@ -155,14 +155,14 @@ def get_certificate(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        domains=__ret__.domains,
-        id=__ret__.id,
-        name=__ret__.name,
-        not_after=__ret__.not_after,
-        sha1_fingerprint=__ret__.sha1_fingerprint,
-        state=__ret__.state,
-        type=__ret__.type,
-        uuid=__ret__.uuid)
+        domains=pulumi.get(__ret__, 'domains'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        not_after=pulumi.get(__ret__, 'not_after'),
+        sha1_fingerprint=pulumi.get(__ret__, 'sha1_fingerprint'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_certificate)

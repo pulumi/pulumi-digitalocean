@@ -209,17 +209,17 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts, typ=GetVolumeSnapshotResult).value
 
     return AwaitableGetVolumeSnapshotResult(
-        created_at=__ret__.created_at,
-        id=__ret__.id,
-        min_disk_size=__ret__.min_disk_size,
-        most_recent=__ret__.most_recent,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        region=__ret__.region,
-        regions=__ret__.regions,
-        size=__ret__.size,
-        tags=__ret__.tags,
-        volume_id=__ret__.volume_id)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        id=pulumi.get(__ret__, 'id'),
+        min_disk_size=pulumi.get(__ret__, 'min_disk_size'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        region=pulumi.get(__ret__, 'region'),
+        regions=pulumi.get(__ret__, 'regions'),
+        size=pulumi.get(__ret__, 'size'),
+        tags=pulumi.get(__ret__, 'tags'),
+        volume_id=pulumi.get(__ret__, 'volume_id'))
 
 
 @_utilities.lift_output_func(get_volume_snapshot)

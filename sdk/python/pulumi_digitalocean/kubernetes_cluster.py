@@ -21,6 +21,7 @@ class KubernetesClusterArgs:
                  region: pulumi.Input[Union[str, 'Region']],
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,9 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -47,6 +51,8 @@ class KubernetesClusterArgs:
         pulumi.set(__self__, "version", version)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if destroy_all_associated_resources is not None:
+            pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
         if maintenance_policy is not None:
@@ -109,6 +115,20 @@ class KubernetesClusterArgs:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter(name="destroyAllAssociatedResources")
+    def destroy_all_associated_resources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "destroy_all_associated_resources")
+
+    @destroy_all_associated_resources.setter
+    def destroy_all_associated_resources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destroy_all_associated_resources", value)
 
     @property
     @pulumi.getter
@@ -202,6 +222,7 @@ class _KubernetesClusterState:
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  cluster_urn: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
@@ -224,6 +245,9 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -248,6 +272,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "cluster_urn", cluster_urn)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if destroy_all_associated_resources is not None:
+            pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if ha is not None:
@@ -328,6 +354,20 @@ class _KubernetesClusterState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="destroyAllAssociatedResources")
+    def destroy_all_associated_resources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "destroy_all_associated_resources")
+
+    @destroy_all_associated_resources.setter
+    def destroy_all_associated_resources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destroy_all_associated_resources", value)
 
     @property
     @pulumi.getter
@@ -525,6 +565,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -554,6 +595,9 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -602,6 +646,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -622,6 +667,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__ = KubernetesClusterArgs.__new__(KubernetesClusterArgs)
 
             __props__.__dict__["auto_upgrade"] = auto_upgrade
+            __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
@@ -663,6 +709,7 @@ class KubernetesCluster(pulumi.CustomResource):
             cluster_subnet: Optional[pulumi.Input[str]] = None,
             cluster_urn: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             ha: Optional[pulumi.Input[bool]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
@@ -690,6 +737,9 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -714,6 +764,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["cluster_subnet"] = cluster_subnet
         __props__.__dict__["cluster_urn"] = cluster_urn
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["ha"] = ha
         __props__.__dict__["ipv4_address"] = ipv4_address
@@ -763,6 +814,16 @@ class KubernetesCluster(pulumi.CustomResource):
         The date and time when the node was created.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="destroyAllAssociatedResources")
+    def destroy_all_associated_resources(self) -> pulumi.Output[Optional[bool]]:
+        """
+        **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "destroy_all_associated_resources")
 
     @property
     @pulumi.getter

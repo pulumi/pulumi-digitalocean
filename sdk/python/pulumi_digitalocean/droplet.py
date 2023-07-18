@@ -234,6 +234,9 @@ class DropletArgs:
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
+        warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+        pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
+
         return pulumi.get(self, "private_networking")
 
     @private_networking.setter
@@ -689,6 +692,9 @@ class _DropletState:
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
+        warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+        pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
+
         return pulumi.get(self, "private_networking")
 
     @private_networking.setter
@@ -1293,6 +1299,9 @@ class Droplet(pulumi.CustomResource):
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
+        warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+        pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
+
         return pulumi.get(self, "private_networking")
 
     @property

@@ -159,14 +159,14 @@ def get_tag(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult).value
 
     return AwaitableGetTagResult(
-        databases_count=__ret__.databases_count,
-        droplets_count=__ret__.droplets_count,
-        id=__ret__.id,
-        images_count=__ret__.images_count,
-        name=__ret__.name,
-        total_resource_count=__ret__.total_resource_count,
-        volume_snapshots_count=__ret__.volume_snapshots_count,
-        volumes_count=__ret__.volumes_count)
+        databases_count=pulumi.get(__ret__, 'databases_count'),
+        droplets_count=pulumi.get(__ret__, 'droplets_count'),
+        id=pulumi.get(__ret__, 'id'),
+        images_count=pulumi.get(__ret__, 'images_count'),
+        name=pulumi.get(__ret__, 'name'),
+        total_resource_count=pulumi.get(__ret__, 'total_resource_count'),
+        volume_snapshots_count=pulumi.get(__ret__, 'volume_snapshots_count'),
+        volumes_count=pulumi.get(__ret__, 'volumes_count'))
 
 
 @_utilities.lift_output_func(get_tag)

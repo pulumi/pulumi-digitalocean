@@ -189,16 +189,16 @@ def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult).value
 
     return AwaitableGetFirewallResult(
-        created_at=__ret__.created_at,
-        droplet_ids=__ret__.droplet_ids,
-        firewall_id=__ret__.firewall_id,
-        id=__ret__.id,
-        inbound_rules=__ret__.inbound_rules,
-        name=__ret__.name,
-        outbound_rules=__ret__.outbound_rules,
-        pending_changes=__ret__.pending_changes,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        droplet_ids=pulumi.get(__ret__, 'droplet_ids'),
+        firewall_id=pulumi.get(__ret__, 'firewall_id'),
+        id=pulumi.get(__ret__, 'id'),
+        inbound_rules=pulumi.get(__ret__, 'inbound_rules'),
+        name=pulumi.get(__ret__, 'name'),
+        outbound_rules=pulumi.get(__ret__, 'outbound_rules'),
+        pending_changes=pulumi.get(__ret__, 'pending_changes'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_firewall)

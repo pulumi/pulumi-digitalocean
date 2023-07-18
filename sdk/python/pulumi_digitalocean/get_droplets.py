@@ -140,10 +140,10 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts, typ=GetDropletsResult).value
 
     return AwaitableGetDropletsResult(
-        droplets=__ret__.droplets,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        sorts=__ret__.sorts)
+        droplets=pulumi.get(__ret__, 'droplets'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_droplets)

@@ -180,17 +180,17 @@ def get_record(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult).value
 
     return AwaitableGetRecordResult(
-        data=__ret__.data,
-        domain=__ret__.domain,
-        flags=__ret__.flags,
-        id=__ret__.id,
-        name=__ret__.name,
-        port=__ret__.port,
-        priority=__ret__.priority,
-        tag=__ret__.tag,
-        ttl=__ret__.ttl,
-        type=__ret__.type,
-        weight=__ret__.weight)
+        data=pulumi.get(__ret__, 'data'),
+        domain=pulumi.get(__ret__, 'domain'),
+        flags=pulumi.get(__ret__, 'flags'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        port=pulumi.get(__ret__, 'port'),
+        priority=pulumi.get(__ret__, 'priority'),
+        tag=pulumi.get(__ret__, 'tag'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'),
+        weight=pulumi.get(__ret__, 'weight'))
 
 
 @_utilities.lift_output_func(get_record)

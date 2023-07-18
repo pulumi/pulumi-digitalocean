@@ -20,14 +20,16 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
 	"github.com/pulumi/pulumi-digitalocean/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the DigitalOcean token components used below.
@@ -571,13 +573,17 @@ func Provider() tfbridge.ProviderInfo {
 				"digitalocean": "DigitalOcean",
 			},
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		Version:      version.Version,
 	}
 
-	defaults := x.TokensSingleModule("digitalocean_", digitalOceanMod, x.MakeStandardToken(digitalOceanPkg))
-	err := x.ComputeDefaults(&prov, defaults)
-	contract.AssertNoErrorf(err, "failed to compute default token modules")
-
+	defaults := tfbridgetokens.SingleModule("digitalocean_", digitalOceanMod, tfbridgetokens.MakeStandard(digitalOceanPkg))
+	prov.MustComputeTokens(defaults)
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-digitalocean/bridge-metadata.json
+var metadata []byte
