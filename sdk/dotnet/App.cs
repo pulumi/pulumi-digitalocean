@@ -105,6 +105,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> ActiveDeploymentId { get; private set; } = null!;
 
         /// <summary>
+        /// The uniform resource identifier for the app.
+        /// </summary>
+        [Output("appUrn")]
+        public Output<string> AppUrn { get; private set; } = null!;
+
+        /// <summary>
         /// The date and time of when the app was created.
         /// </summary>
         [Output("createdAt")]
@@ -133,12 +139,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
-
-        /// <summary>
-        /// The uniform resource identifier for the app.
-        /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -207,6 +207,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ActiveDeploymentId { get; set; }
 
         /// <summary>
+        /// The uniform resource identifier for the app.
+        /// </summary>
+        [Input("appUrn")]
+        public Input<string>? AppUrn { get; set; }
+
+        /// <summary>
         /// The date and time of when the app was created.
         /// </summary>
         [Input("createdAt")]
@@ -235,12 +241,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// The uniform resource identifier for the app.
-        /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
 
         public AppState()
         {

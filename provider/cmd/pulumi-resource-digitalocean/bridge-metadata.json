@@ -1960,6 +1960,7 @@
             },
             "digitalocean:index/app:App": {
                 "activeDeploymentId": "active_deployment_id",
+                "appUrn": "urn",
                 "createdAt": "created_at",
                 "defaultIngress": "default_ingress",
                 "liveUrl": "live_url",

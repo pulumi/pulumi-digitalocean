@@ -6690,6 +6690,10 @@
                     "type": "string",
                     "description": "The ID the app's currently active deployment.\n"
                 },
+                "appUrn": {
+                    "type": "string",
+                    "description": "The uniform resource identifier for the app.\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The date and time of when the app was created.\n"
@@ -6709,10 +6713,6 @@
                 "updatedAt": {
                     "type": "string",
                     "description": "The date and time of when the app was last updated.\n"
-                },
-                "urn": {
-                    "type": "string",
-                    "description": "The uniform resource identifier for the app.\n"
                 }
             },
             "required": [
@@ -6721,7 +6721,7 @@
                 "defaultIngress",
                 "liveUrl",
                 "updatedAt",
-                "urn"
+                "appUrn"
             ],
             "inputProperties": {
                 "spec": {
@@ -6735,6 +6735,10 @@
                     "activeDeploymentId": {
                         "type": "string",
                         "description": "The ID the app's currently active deployment.\n"
+                    },
+                    "appUrn": {
+                        "type": "string",
+                        "description": "The uniform resource identifier for the app.\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -6755,10 +6759,6 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "The date and time of when the app was last updated.\n"
-                    },
-                    "urn": {
-                        "type": "string",
-                        "description": "The uniform resource identifier for the app.\n"
                     }
                 },
                 "type": "object"
