@@ -207,6 +207,20 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.activeDeploymentId;
     }
     /**
+     * The uniform resource identifier for the app.
+     * 
+     */
+    @Export(name="appUrn", type=String.class, parameters={})
+    private Output<String> appUrn;
+
+    /**
+     * @return The uniform resource identifier for the app.
+     * 
+     */
+    public Output<String> appUrn() {
+        return this.appUrn;
+    }
+    /**
      * The date and time of when the app was created.
      * 
      */
@@ -275,20 +289,6 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updatedAt() {
         return this.updatedAt;
-    }
-    /**
-     * The uniform resource identifier for the app.
-     * 
-     */
-    @Export(name="urn", type=String.class, parameters={})
-    private Output<String> urn;
-
-    /**
-     * @return The uniform resource identifier for the app.
-     * 
-     */
-    public Output<String> urn() {
-        return this.urn;
     }
 
     /**
