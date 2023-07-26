@@ -275,9 +275,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_app": {
 				Tok: makeResource(digitalOceanMod, "App"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "appUrn",
-					},
+					"urn": { Name: "appUrn" },
 					"spec": {
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
