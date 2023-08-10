@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-digitalocean/provider/v4
 
-go 1.19
+go 1.20
 
 require (
 	github.com/digitalocean/terraform-provider-digitalocean v0.0.0
