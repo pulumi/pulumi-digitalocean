@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-digitalocean/examples/volume-go
 
-go 1.20
+go 1.21
 
 require (
 	github.com/pulumi/pulumi-digitalocean/sdk/v4 v4.4.0
