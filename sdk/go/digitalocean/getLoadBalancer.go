@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a load balancer for use in other resources. This data source
@@ -72,6 +74,7 @@ import (
 //
 // ```
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", args, &rv, opts...)
 	if err != nil {
@@ -152,6 +155,12 @@ func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutput() Looku
 
 func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithContext(ctx context.Context) LookupLoadBalancerResultOutput {
 	return o
+}
+
+func (o LookupLoadBalancerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLoadBalancerResult] {
+	return pulumix.Output[LookupLoadBalancerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupLoadBalancerResultOutput) Algorithm() pulumi.StringOutput {

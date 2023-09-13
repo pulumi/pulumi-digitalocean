@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information on a DigitalOcean database user resource.
@@ -46,6 +48,7 @@ import (
 //
 // ```
 func LookupDatabaseUser(ctx *pulumi.Context, args *LookupDatabaseUserArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseUserResult
 	err := ctx.Invoke("digitalocean:index/getDatabaseUser:getDatabaseUser", args, &rv, opts...)
 	if err != nil {
@@ -114,6 +117,12 @@ func (o LookupDatabaseUserResultOutput) ToLookupDatabaseUserResultOutput() Looku
 
 func (o LookupDatabaseUserResultOutput) ToLookupDatabaseUserResultOutputWithContext(ctx context.Context) LookupDatabaseUserResultOutput {
 	return o
+}
+
+func (o LookupDatabaseUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseUserResult] {
+	return pulumix.Output[LookupDatabaseUserResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupDatabaseUserResultOutput) ClusterId() pulumi.StringOutput {

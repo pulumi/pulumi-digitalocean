@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a tag. This data source provides the name as configured on
@@ -55,6 +57,7 @@ import (
 //
 // ```
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagResult
 	err := ctx.Invoke("digitalocean:index/getTag:getTag", args, &rv, opts...)
 	if err != nil {
@@ -124,6 +127,12 @@ func (o LookupTagResultOutput) ToLookupTagResultOutput() LookupTagResultOutput {
 
 func (o LookupTagResultOutput) ToLookupTagResultOutputWithContext(ctx context.Context) LookupTagResultOutput {
 	return o
+}
+
+func (o LookupTagResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagResult] {
+	return pulumix.Output[LookupTagResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A count of the database clusters that the tag is applied to.

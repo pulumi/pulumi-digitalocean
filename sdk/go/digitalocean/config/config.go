@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The URL to use for the DigitalOcean API.
 func GetApiEndpoint(ctx *pulumi.Context) string {
@@ -15,7 +18,7 @@ func GetApiEndpoint(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
+	if d := internal.GetEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -53,7 +56,7 @@ func GetSpacesEndpoint(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
 		value = d.(string)
 	}
 	return value

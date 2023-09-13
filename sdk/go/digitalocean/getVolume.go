@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a volume for use in other resources. This data source provides
@@ -88,6 +90,7 @@ import (
 //
 // ```
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
 	err := ctx.Invoke("digitalocean:index/getVolume:getVolume", args, &rv, opts...)
 	if err != nil {
@@ -168,6 +171,12 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResul
 
 func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
 	return o
+}
+
+func (o LookupVolumeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeResult] {
+	return pulumix.Output[LookupVolumeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Text describing a block storage volume.

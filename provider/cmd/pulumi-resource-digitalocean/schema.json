@@ -14,21 +14,22 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
             "namespaces": {
                 "digitalocean": "DigitalOcean"
             },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing DigitalOcean cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/digitalocean/terraform-provider-digitalocean)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-digitalocean` repo](https://github.com/pulumi/pulumi-digitalocean/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-digitalocean` repo](https://github.com/digitalocean/terraform-provider-digitalocean/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0",
                 "builtin-modules": "3.0.0",
@@ -38,20 +39,16 @@
             "devDependencies": {
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing DigitalOcean cloud resources.",
-            "packageName": "",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/digitalocean/terraform-provider-digitalocean)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-digitalocean` repo](https://github.com/pulumi/pulumi-digitalocean/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-digitalocean` repo](https://github.com/digitalocean/terraform-provider-digitalocean/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/digitalocean/terraform-provider-digitalocean)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-digitalocean` repo](https://github.com/pulumi/pulumi-digitalocean/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-digitalocean` repo](https://github.com/digitalocean/terraform-provider-digitalocean/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/digitalocean/terraform-provider-digitalocean)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-digitalocean` repo](https://github.com/pulumi/pulumi-digitalocean/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-digitalocean` repo](https://github.com/digitalocean/terraform-provider-digitalocean/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {

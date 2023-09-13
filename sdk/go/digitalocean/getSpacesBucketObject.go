@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Spaces object data source allows access to the metadata and
@@ -57,6 +59,7 @@ import (
 //
 // ```
 func LookupSpacesBucketObject(ctx *pulumi.Context, args *LookupSpacesBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketObjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketObjectResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args, &rv, opts...)
 	if err != nil {
@@ -159,6 +162,12 @@ func (o LookupSpacesBucketObjectResultOutput) ToLookupSpacesBucketObjectResultOu
 
 func (o LookupSpacesBucketObjectResultOutput) ToLookupSpacesBucketObjectResultOutputWithContext(ctx context.Context) LookupSpacesBucketObjectResultOutput {
 	return o
+}
+
+func (o LookupSpacesBucketObjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpacesBucketObjectResult] {
+	return pulumix.Output[LookupSpacesBucketObjectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Object data (see **limitations above** to understand cases in which this field is actually available)

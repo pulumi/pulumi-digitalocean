@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on images for use in other resources (e.g. creating a Droplet
@@ -102,6 +104,7 @@ import (
 //
 // ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult
 	err := ctx.Invoke("digitalocean:index/getImages:getImages", args, &rv, opts...)
 	if err != nil {
@@ -170,6 +173,12 @@ func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
 
 func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
 	return o
+}
+
+func (o GetImagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImagesResult] {
+	return pulumix.Output[GetImagesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetImagesResultOutput) Filters() GetImagesFilterArrayOutput {

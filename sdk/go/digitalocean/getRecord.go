@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a DNS record. This data source provides the name, TTL, and zone
@@ -17,6 +19,7 @@ import (
 // An error is triggered if the provided domain name or record are not managed with
 // your DigitalOcean account.
 func GetRecord(ctx *pulumi.Context, args *GetRecordArgs, opts ...pulumi.InvokeOption) (*GetRecordResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecordResult
 	err := ctx.Invoke("digitalocean:index/getRecord:getRecord", args, &rv, opts...)
 	if err != nil {
@@ -95,6 +98,12 @@ func (o GetRecordResultOutput) ToGetRecordResultOutput() GetRecordResultOutput {
 
 func (o GetRecordResultOutput) ToGetRecordResultOutputWithContext(ctx context.Context) GetRecordResultOutput {
 	return o
+}
+
+func (o GetRecordResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRecordResult] {
+	return pulumix.Output[GetRecordResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.

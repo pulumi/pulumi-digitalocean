@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
@@ -85,6 +87,7 @@ func NewVolumeSnapshot(ctx *pulumi.Context,
 	if args.VolumeId == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VolumeSnapshot
 	err := ctx.RegisterResource("digitalocean:index/volumeSnapshot:VolumeSnapshot", name, args, &resource, opts...)
 	if err != nil {
@@ -186,6 +189,12 @@ func (i *VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotOutput)
 }
 
+func (i *VolumeSnapshot) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshot] {
+	return pulumix.Output[*VolumeSnapshot]{
+		OutputState: i.ToVolumeSnapshotOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeSnapshotArrayInput is an input type that accepts VolumeSnapshotArray and VolumeSnapshotArrayOutput values.
 // You can construct a concrete instance of `VolumeSnapshotArrayInput` via:
 //
@@ -209,6 +218,12 @@ func (i VolumeSnapshotArray) ToVolumeSnapshotArrayOutput() VolumeSnapshotArrayOu
 
 func (i VolumeSnapshotArray) ToVolumeSnapshotArrayOutputWithContext(ctx context.Context) VolumeSnapshotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotArrayOutput)
+}
+
+func (i VolumeSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeSnapshot] {
+	return pulumix.Output[[]*VolumeSnapshot]{
+		OutputState: i.ToVolumeSnapshotArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VolumeSnapshotMapInput is an input type that accepts VolumeSnapshotMap and VolumeSnapshotMapOutput values.
@@ -236,6 +251,12 @@ func (i VolumeSnapshotMap) ToVolumeSnapshotMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotMapOutput)
 }
 
+func (i VolumeSnapshotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeSnapshot] {
+	return pulumix.Output[map[string]*VolumeSnapshot]{
+		OutputState: i.ToVolumeSnapshotMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VolumeSnapshotOutput struct{ *pulumi.OutputState }
 
 func (VolumeSnapshotOutput) ElementType() reflect.Type {
@@ -248,6 +269,12 @@ func (o VolumeSnapshotOutput) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
 
 func (o VolumeSnapshotOutput) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
 	return o
+}
+
+func (o VolumeSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshot] {
+	return pulumix.Output[*VolumeSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date and time the volume snapshot was created.
@@ -299,6 +326,12 @@ func (o VolumeSnapshotArrayOutput) ToVolumeSnapshotArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o VolumeSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeSnapshot] {
+	return pulumix.Output[[]*VolumeSnapshot]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeSnapshotArrayOutput) Index(i pulumi.IntInput) VolumeSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VolumeSnapshot {
 		return vs[0].([]*VolumeSnapshot)[vs[1].(int)]
@@ -317,6 +350,12 @@ func (o VolumeSnapshotMapOutput) ToVolumeSnapshotMapOutput() VolumeSnapshotMapOu
 
 func (o VolumeSnapshotMapOutput) ToVolumeSnapshotMapOutputWithContext(ctx context.Context) VolumeSnapshotMapOutput {
 	return o
+}
+
+func (o VolumeSnapshotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeSnapshot] {
+	return pulumix.Output[map[string]*VolumeSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeSnapshotMapOutput) MapIndex(k pulumi.StringInput) VolumeSnapshotOutput {

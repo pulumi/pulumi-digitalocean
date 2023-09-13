@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a Droplet for use in other resources. This data source provides
@@ -99,6 +101,7 @@ import (
 //
 // ```
 func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.InvokeOption) (*LookupDropletResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDropletResult
 	err := ctx.Invoke("digitalocean:index/getDroplet:getDroplet", args, &rv, opts...)
 	if err != nil {
@@ -210,6 +213,12 @@ func (o LookupDropletResultOutput) ToLookupDropletResultOutput() LookupDropletRe
 
 func (o LookupDropletResultOutput) ToLookupDropletResultOutputWithContext(ctx context.Context) LookupDropletResultOutput {
 	return o
+}
+
+func (o LookupDropletResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDropletResult] {
+	return pulumix.Output[LookupDropletResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether backups are enabled.

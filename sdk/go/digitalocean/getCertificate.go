@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a certificate. This data source provides the name, type, state,
@@ -45,6 +47,7 @@ import (
 //
 // ```
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
 	err := ctx.Invoke("digitalocean:index/getCertificate:getCertificate", args, &rv, opts...)
 	if err != nil {
@@ -114,6 +117,12 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutput() LookupC
 
 func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContext(ctx context.Context) LookupCertificateResultOutput {
 	return o
+}
+
+func (o LookupCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateResult] {
+	return pulumix.Output[LookupCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Domains for which the certificate was issued.

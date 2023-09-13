@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime)
@@ -48,6 +50,7 @@ func NewUptimeCheck(ctx *pulumi.Context,
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UptimeCheck
 	err := ctx.RegisterResource("digitalocean:index/uptimeCheck:UptimeCheck", name, args, &resource, opts...)
 	if err != nil {
@@ -149,6 +152,12 @@ func (i *UptimeCheck) ToUptimeCheckOutputWithContext(ctx context.Context) Uptime
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckOutput)
 }
 
+func (i *UptimeCheck) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheck] {
+	return pulumix.Output[*UptimeCheck]{
+		OutputState: i.ToUptimeCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UptimeCheckArrayInput is an input type that accepts UptimeCheckArray and UptimeCheckArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckArrayInput` via:
 //
@@ -172,6 +181,12 @@ func (i UptimeCheckArray) ToUptimeCheckArrayOutput() UptimeCheckArrayOutput {
 
 func (i UptimeCheckArray) ToUptimeCheckArrayOutputWithContext(ctx context.Context) UptimeCheckArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckArrayOutput)
+}
+
+func (i UptimeCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeCheck] {
+	return pulumix.Output[[]*UptimeCheck]{
+		OutputState: i.ToUptimeCheckArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UptimeCheckMapInput is an input type that accepts UptimeCheckMap and UptimeCheckMapOutput values.
@@ -199,6 +214,12 @@ func (i UptimeCheckMap) ToUptimeCheckMapOutputWithContext(ctx context.Context) U
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckMapOutput)
 }
 
+func (i UptimeCheckMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeCheck] {
+	return pulumix.Output[map[string]*UptimeCheck]{
+		OutputState: i.ToUptimeCheckMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckOutput) ElementType() reflect.Type {
@@ -211,6 +232,12 @@ func (o UptimeCheckOutput) ToUptimeCheckOutput() UptimeCheckOutput {
 
 func (o UptimeCheckOutput) ToUptimeCheckOutputWithContext(ctx context.Context) UptimeCheckOutput {
 	return o
+}
+
+func (o UptimeCheckOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheck] {
+	return pulumix.Output[*UptimeCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A boolean value indicating whether the check is enabled/disabled.
@@ -252,6 +279,12 @@ func (o UptimeCheckArrayOutput) ToUptimeCheckArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o UptimeCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeCheck] {
+	return pulumix.Output[[]*UptimeCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UptimeCheckArrayOutput) Index(i pulumi.IntInput) UptimeCheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UptimeCheck {
 		return vs[0].([]*UptimeCheck)[vs[1].(int)]
@@ -270,6 +303,12 @@ func (o UptimeCheckMapOutput) ToUptimeCheckMapOutput() UptimeCheckMapOutput {
 
 func (o UptimeCheckMapOutput) ToUptimeCheckMapOutputWithContext(ctx context.Context) UptimeCheckMapOutput {
 	return o
+}
+
+func (o UptimeCheckMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeCheck] {
+	return pulumix.Output[map[string]*UptimeCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckMapOutput) MapIndex(k pulumi.StringInput) UptimeCheckOutput {

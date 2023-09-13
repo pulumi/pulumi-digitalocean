@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to the available DigitalOcean Kubernetes Service versions.
@@ -110,6 +112,7 @@ import (
 //
 // ```
 func GetKubernetesVersions(ctx *pulumi.Context, args *GetKubernetesVersionsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesVersionsResult
 	err := ctx.Invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, &rv, opts...)
 	if err != nil {
@@ -171,6 +174,12 @@ func (o GetKubernetesVersionsResultOutput) ToGetKubernetesVersionsResultOutput()
 
 func (o GetKubernetesVersionsResultOutput) ToGetKubernetesVersionsResultOutputWithContext(ctx context.Context) GetKubernetesVersionsResultOutput {
 	return o
+}
+
+func (o GetKubernetesVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubernetesVersionsResult] {
+	return pulumix.Output[GetKubernetesVersionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

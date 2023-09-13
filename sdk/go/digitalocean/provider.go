@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provider type for the digitalocean package. By default, resources use package-wide configuration
@@ -37,15 +39,16 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.ApiEndpoint == nil {
-		if d := getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
+		if d := internal.GetEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
 			args.ApiEndpoint = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.SpacesEndpoint == nil {
-		if d := getEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
 			args.SpacesEndpoint = pulumi.StringPtr(d.(string))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:digitalocean", name, args, &resource, opts...)
 	if err != nil {
@@ -120,6 +123,12 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
+	return pulumix.Output[*Provider]{
+		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -132,6 +141,12 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
+	return pulumix.Output[*Provider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL to use for the DigitalOcean API.

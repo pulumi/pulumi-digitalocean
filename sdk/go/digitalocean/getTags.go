@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of tags in your DigitalOcean account, with the ability to
@@ -46,6 +48,7 @@ import (
 //
 // ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult
 	err := ctx.Invoke("digitalocean:index/getTags:getTags", args, &rv, opts...)
 	if err != nil {
@@ -113,6 +116,12 @@ func (o GetTagsResultOutput) ToGetTagsResultOutput() GetTagsResultOutput {
 
 func (o GetTagsResultOutput) ToGetTagsResultOutputWithContext(ctx context.Context) GetTagsResultOutput {
 	return o
+}
+
+func (o GetTagsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTagsResult] {
+	return pulumix.Output[GetTagsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTagsResultOutput) Filters() GetTagsFilterArrayOutput {

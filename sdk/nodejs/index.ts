@@ -102,7 +102,8 @@ utilities.lazyLoad(exports, ["FloatingIpAssignment"], () => require("./floatingI
 
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
-utilities.lazyLoad(exports, ["getAccount"], () => require("./getAccount"));
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
 
 export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
 export const getApp: typeof import("./getApp").getApp = null as any;

@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -116,6 +118,7 @@ func NewSpacesBucketPolicy(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpacesBucketPolicy
 	err := ctx.RegisterResource("digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -201,6 +204,12 @@ func (i *SpacesBucketPolicy) ToSpacesBucketPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketPolicyOutput)
 }
 
+func (i *SpacesBucketPolicy) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucketPolicy] {
+	return pulumix.Output[*SpacesBucketPolicy]{
+		OutputState: i.ToSpacesBucketPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SpacesBucketPolicyArrayInput is an input type that accepts SpacesBucketPolicyArray and SpacesBucketPolicyArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketPolicyArrayInput` via:
 //
@@ -224,6 +233,12 @@ func (i SpacesBucketPolicyArray) ToSpacesBucketPolicyArrayOutput() SpacesBucketP
 
 func (i SpacesBucketPolicyArray) ToSpacesBucketPolicyArrayOutputWithContext(ctx context.Context) SpacesBucketPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketPolicyArrayOutput)
+}
+
+func (i SpacesBucketPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucketPolicy] {
+	return pulumix.Output[[]*SpacesBucketPolicy]{
+		OutputState: i.ToSpacesBucketPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SpacesBucketPolicyMapInput is an input type that accepts SpacesBucketPolicyMap and SpacesBucketPolicyMapOutput values.
@@ -251,6 +266,12 @@ func (i SpacesBucketPolicyMap) ToSpacesBucketPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketPolicyMapOutput)
 }
 
+func (i SpacesBucketPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucketPolicy] {
+	return pulumix.Output[map[string]*SpacesBucketPolicy]{
+		OutputState: i.ToSpacesBucketPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpacesBucketPolicyOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketPolicyOutput) ElementType() reflect.Type {
@@ -263,6 +284,12 @@ func (o SpacesBucketPolicyOutput) ToSpacesBucketPolicyOutput() SpacesBucketPolic
 
 func (o SpacesBucketPolicyOutput) ToSpacesBucketPolicyOutputWithContext(ctx context.Context) SpacesBucketPolicyOutput {
 	return o
+}
+
+func (o SpacesBucketPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucketPolicy] {
+	return pulumix.Output[*SpacesBucketPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bucket to which to apply the policy.
@@ -294,6 +321,12 @@ func (o SpacesBucketPolicyArrayOutput) ToSpacesBucketPolicyArrayOutputWithContex
 	return o
 }
 
+func (o SpacesBucketPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucketPolicy] {
+	return pulumix.Output[[]*SpacesBucketPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SpacesBucketPolicyArrayOutput) Index(i pulumi.IntInput) SpacesBucketPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpacesBucketPolicy {
 		return vs[0].([]*SpacesBucketPolicy)[vs[1].(int)]
@@ -312,6 +345,12 @@ func (o SpacesBucketPolicyMapOutput) ToSpacesBucketPolicyMapOutput() SpacesBucke
 
 func (o SpacesBucketPolicyMapOutput) ToSpacesBucketPolicyMapOutputWithContext(ctx context.Context) SpacesBucketPolicyMapOutput {
 	return o
+}
+
+func (o SpacesBucketPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucketPolicy] {
+	return pulumix.Output[map[string]*SpacesBucketPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpacesBucketPolicyMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketPolicyOutput {

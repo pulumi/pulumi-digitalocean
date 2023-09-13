@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a container registry. This data source provides the name as
@@ -46,6 +48,7 @@ import (
 //
 // ```
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryResult
 	err := ctx.Invoke("digitalocean:index/getContainerRegistry:getContainerRegistry", args, &rv, opts...)
 	if err != nil {
@@ -116,6 +119,12 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 
 func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutputWithContext(ctx context.Context) LookupContainerRegistryResultOutput {
 	return o
+}
+
+func (o LookupContainerRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRegistryResult] {
+	return pulumix.Output[LookupContainerRegistryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date and time when the registry was created

@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
@@ -43,6 +45,7 @@ import (
 //
 // ```
 func LookupSpacesBucket(ctx *pulumi.Context, args *LookupSpacesBucketArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", args, &rv, opts...)
 	if err != nil {
@@ -113,6 +116,12 @@ func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutput() Looku
 
 func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutputWithContext(ctx context.Context) LookupSpacesBucketResultOutput {
 	return o
+}
+
+func (o LookupSpacesBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpacesBucketResult] {
+	return pulumix.Output[LookupSpacesBucketResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)

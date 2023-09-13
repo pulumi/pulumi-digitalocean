@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -91,6 +93,7 @@ import (
 //
 // ```
 func GetSpacesBuckets(ctx *pulumi.Context, args *GetSpacesBucketsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpacesBucketsResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args, &rv, opts...)
 	if err != nil {
@@ -159,6 +162,12 @@ func (o GetSpacesBucketsResultOutput) ToGetSpacesBucketsResultOutput() GetSpaces
 
 func (o GetSpacesBucketsResultOutput) ToGetSpacesBucketsResultOutputWithContext(ctx context.Context) GetSpacesBucketsResultOutput {
 	return o
+}
+
+func (o GetSpacesBucketsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSpacesBucketsResult] {
+	return pulumix.Output[GetSpacesBucketsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:

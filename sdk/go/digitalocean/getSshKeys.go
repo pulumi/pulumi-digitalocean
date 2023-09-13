@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on SSH Keys for use in other resources.
@@ -85,6 +87,7 @@ import (
 //
 // ```
 func GetSshKeys(ctx *pulumi.Context, args *GetSshKeysArgs, opts ...pulumi.InvokeOption) (*GetSshKeysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSshKeysResult
 	err := ctx.Invoke("digitalocean:index/getSshKeys:getSshKeys", args, &rv, opts...)
 	if err != nil {
@@ -153,6 +156,12 @@ func (o GetSshKeysResultOutput) ToGetSshKeysResultOutput() GetSshKeysResultOutpu
 
 func (o GetSshKeysResultOutput) ToGetSshKeysResultOutputWithContext(ctx context.Context) GetSshKeysResultOutput {
 	return o
+}
+
+func (o GetSshKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSshKeysResult] {
+	return pulumix.Output[GetSshKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSshKeysResultOutput) Filters() GetSshKeysFilterArrayOutput {
