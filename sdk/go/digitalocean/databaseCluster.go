@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean database cluster resource.
@@ -261,6 +263,7 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 		"uri",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseCluster
 	err := ctx.RegisterResource("digitalocean:index/databaseCluster:DatabaseCluster", name, args, &resource, opts...)
 	if err != nil {
@@ -466,6 +469,12 @@ func (i *DatabaseCluster) ToDatabaseClusterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterOutput)
 }
 
+func (i *DatabaseCluster) ToOutput(ctx context.Context) pulumix.Output[*DatabaseCluster] {
+	return pulumix.Output[*DatabaseCluster]{
+		OutputState: i.ToDatabaseClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseClusterArrayInput is an input type that accepts DatabaseClusterArray and DatabaseClusterArrayOutput values.
 // You can construct a concrete instance of `DatabaseClusterArrayInput` via:
 //
@@ -489,6 +498,12 @@ func (i DatabaseClusterArray) ToDatabaseClusterArrayOutput() DatabaseClusterArra
 
 func (i DatabaseClusterArray) ToDatabaseClusterArrayOutputWithContext(ctx context.Context) DatabaseClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterArrayOutput)
+}
+
+func (i DatabaseClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseCluster] {
+	return pulumix.Output[[]*DatabaseCluster]{
+		OutputState: i.ToDatabaseClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseClusterMapInput is an input type that accepts DatabaseClusterMap and DatabaseClusterMapOutput values.
@@ -516,6 +531,12 @@ func (i DatabaseClusterMap) ToDatabaseClusterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseClusterMapOutput)
 }
 
+func (i DatabaseClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseCluster] {
+	return pulumix.Output[map[string]*DatabaseCluster]{
+		OutputState: i.ToDatabaseClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseClusterOutput struct{ *pulumi.OutputState }
 
 func (DatabaseClusterOutput) ElementType() reflect.Type {
@@ -528,6 +549,12 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutput() DatabaseClusterOutput {
 
 func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Context) DatabaseClusterOutput {
 	return o
+}
+
+func (o DatabaseClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseCluster] {
+	return pulumix.Output[*DatabaseCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Create a new database cluster based on a backup of an existing cluster.
@@ -655,6 +682,12 @@ func (o DatabaseClusterArrayOutput) ToDatabaseClusterArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DatabaseClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseCluster] {
+	return pulumix.Output[[]*DatabaseCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseClusterArrayOutput) Index(i pulumi.IntInput) DatabaseClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseCluster {
 		return vs[0].([]*DatabaseCluster)[vs[1].(int)]
@@ -673,6 +706,12 @@ func (o DatabaseClusterMapOutput) ToDatabaseClusterMapOutput() DatabaseClusterMa
 
 func (o DatabaseClusterMapOutput) ToDatabaseClusterMapOutputWithContext(ctx context.Context) DatabaseClusterMapOutput {
 	return o
+}
+
+func (o DatabaseClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseCluster] {
+	return pulumix.Output[map[string]*DatabaseCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseClusterMapOutput) MapIndex(k pulumi.StringInput) DatabaseClusterOutput {

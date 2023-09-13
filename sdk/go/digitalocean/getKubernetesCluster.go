@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
 func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesClusterResult
 	err := ctx.Invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", args, &rv, opts...)
 	if err != nil {
@@ -108,6 +111,12 @@ func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutp
 
 func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutputWithContext(ctx context.Context) LookupKubernetesClusterResultOutput {
 	return o
+}
+
+func (o LookupKubernetesClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubernetesClusterResult] {
+	return pulumix.Output[LookupKubernetesClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.

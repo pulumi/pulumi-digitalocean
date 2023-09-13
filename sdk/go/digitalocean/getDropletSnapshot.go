@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Droplet snapshots are saved instances of a Droplet. Use this data
@@ -80,6 +82,7 @@ import (
 //
 // ```
 func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupDropletSnapshotResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDropletSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, &rv, opts...)
 	if err != nil {
@@ -170,6 +173,12 @@ func (o LookupDropletSnapshotResultOutput) ToLookupDropletSnapshotResultOutput()
 
 func (o LookupDropletSnapshotResultOutput) ToLookupDropletSnapshotResultOutputWithContext(ctx context.Context) LookupDropletSnapshotResultOutput {
 	return o
+}
+
+func (o LookupDropletSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDropletSnapshotResult] {
+	return pulumix.Output[LookupDropletSnapshotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date and time the Droplet snapshot was created.

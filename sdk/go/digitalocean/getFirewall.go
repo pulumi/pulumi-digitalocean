@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a DigitalOcean Firewall.
@@ -41,6 +43,7 @@ import (
 //
 // ```
 func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulumi.InvokeOption) (*LookupFirewallResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallResult
 	err := ctx.Invoke("digitalocean:index/getFirewall:getFirewall", args, &rv, opts...)
 	if err != nil {
@@ -134,6 +137,12 @@ func (o LookupFirewallResultOutput) ToLookupFirewallResultOutput() LookupFirewal
 
 func (o LookupFirewallResultOutput) ToLookupFirewallResultOutputWithContext(ctx context.Context) LookupFirewallResultOutput {
 	return o
+}
+
+func (o LookupFirewallResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallResult] {
+	return pulumix.Output[LookupFirewallResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A time value given in ISO8601 combined date and time format

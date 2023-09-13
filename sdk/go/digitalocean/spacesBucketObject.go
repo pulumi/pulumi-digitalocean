@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
@@ -151,6 +153,7 @@ func NewSpacesBucketObject(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpacesBucketObject
 	err := ctx.RegisterResource("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, args, &resource, opts...)
 	if err != nil {
@@ -364,6 +367,12 @@ func (i *SpacesBucketObject) ToSpacesBucketObjectOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectOutput)
 }
 
+func (i *SpacesBucketObject) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucketObject] {
+	return pulumix.Output[*SpacesBucketObject]{
+		OutputState: i.ToSpacesBucketObjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SpacesBucketObjectArrayInput is an input type that accepts SpacesBucketObjectArray and SpacesBucketObjectArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketObjectArrayInput` via:
 //
@@ -387,6 +396,12 @@ func (i SpacesBucketObjectArray) ToSpacesBucketObjectArrayOutput() SpacesBucketO
 
 func (i SpacesBucketObjectArray) ToSpacesBucketObjectArrayOutputWithContext(ctx context.Context) SpacesBucketObjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectArrayOutput)
+}
+
+func (i SpacesBucketObjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucketObject] {
+	return pulumix.Output[[]*SpacesBucketObject]{
+		OutputState: i.ToSpacesBucketObjectArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SpacesBucketObjectMapInput is an input type that accepts SpacesBucketObjectMap and SpacesBucketObjectMapOutput values.
@@ -414,6 +429,12 @@ func (i SpacesBucketObjectMap) ToSpacesBucketObjectMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketObjectMapOutput)
 }
 
+func (i SpacesBucketObjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucketObject] {
+	return pulumix.Output[map[string]*SpacesBucketObject]{
+		OutputState: i.ToSpacesBucketObjectMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpacesBucketObjectOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketObjectOutput) ElementType() reflect.Type {
@@ -426,6 +447,12 @@ func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutput() SpacesBucketObjec
 
 func (o SpacesBucketObjectOutput) ToSpacesBucketObjectOutputWithContext(ctx context.Context) SpacesBucketObjectOutput {
 	return o
+}
+
+func (o SpacesBucketObjectOutput) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucketObject] {
+	return pulumix.Output[*SpacesBucketObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
@@ -532,6 +559,12 @@ func (o SpacesBucketObjectArrayOutput) ToSpacesBucketObjectArrayOutputWithContex
 	return o
 }
 
+func (o SpacesBucketObjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucketObject] {
+	return pulumix.Output[[]*SpacesBucketObject]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SpacesBucketObjectArrayOutput) Index(i pulumi.IntInput) SpacesBucketObjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpacesBucketObject {
 		return vs[0].([]*SpacesBucketObject)[vs[1].(int)]
@@ -550,6 +583,12 @@ func (o SpacesBucketObjectMapOutput) ToSpacesBucketObjectMapOutput() SpacesBucke
 
 func (o SpacesBucketObjectMapOutput) ToSpacesBucketObjectMapOutputWithContext(ctx context.Context) SpacesBucketObjectMapOutput {
 	return o
+}
+
+func (o SpacesBucketObjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucketObject] {
+	return pulumix.Output[map[string]*SpacesBucketObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpacesBucketObjectMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketObjectOutput {

@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `ReservedIpAssignment` instead.
@@ -91,6 +93,7 @@ func NewFloatingIpAssignment(ctx *pulumi.Context,
 	if args.IpAddress == nil {
 		return nil, errors.New("invalid value for required argument 'IpAddress'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FloatingIpAssignment
 	err := ctx.RegisterResource("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", name, args, &resource, opts...)
 	if err != nil {
@@ -168,6 +171,12 @@ func (i *FloatingIpAssignment) ToFloatingIpAssignmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssignmentOutput)
 }
 
+func (i *FloatingIpAssignment) ToOutput(ctx context.Context) pulumix.Output[*FloatingIpAssignment] {
+	return pulumix.Output[*FloatingIpAssignment]{
+		OutputState: i.ToFloatingIpAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FloatingIpAssignmentArrayInput is an input type that accepts FloatingIpAssignmentArray and FloatingIpAssignmentArrayOutput values.
 // You can construct a concrete instance of `FloatingIpAssignmentArrayInput` via:
 //
@@ -191,6 +200,12 @@ func (i FloatingIpAssignmentArray) ToFloatingIpAssignmentArrayOutput() FloatingI
 
 func (i FloatingIpAssignmentArray) ToFloatingIpAssignmentArrayOutputWithContext(ctx context.Context) FloatingIpAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssignmentArrayOutput)
+}
+
+func (i FloatingIpAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*FloatingIpAssignment] {
+	return pulumix.Output[[]*FloatingIpAssignment]{
+		OutputState: i.ToFloatingIpAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FloatingIpAssignmentMapInput is an input type that accepts FloatingIpAssignmentMap and FloatingIpAssignmentMapOutput values.
@@ -218,6 +233,12 @@ func (i FloatingIpAssignmentMap) ToFloatingIpAssignmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssignmentMapOutput)
 }
 
+func (i FloatingIpAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FloatingIpAssignment] {
+	return pulumix.Output[map[string]*FloatingIpAssignment]{
+		OutputState: i.ToFloatingIpAssignmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FloatingIpAssignmentOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssignmentOutput) ElementType() reflect.Type {
@@ -230,6 +251,12 @@ func (o FloatingIpAssignmentOutput) ToFloatingIpAssignmentOutput() FloatingIpAss
 
 func (o FloatingIpAssignmentOutput) ToFloatingIpAssignmentOutputWithContext(ctx context.Context) FloatingIpAssignmentOutput {
 	return o
+}
+
+func (o FloatingIpAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*FloatingIpAssignment] {
+	return pulumix.Output[*FloatingIpAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of Droplet that the Floating IP will be assigned to.
@@ -256,6 +283,12 @@ func (o FloatingIpAssignmentArrayOutput) ToFloatingIpAssignmentArrayOutputWithCo
 	return o
 }
 
+func (o FloatingIpAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FloatingIpAssignment] {
+	return pulumix.Output[[]*FloatingIpAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FloatingIpAssignmentArrayOutput) Index(i pulumi.IntInput) FloatingIpAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FloatingIpAssignment {
 		return vs[0].([]*FloatingIpAssignment)[vs[1].(int)]
@@ -274,6 +307,12 @@ func (o FloatingIpAssignmentMapOutput) ToFloatingIpAssignmentMapOutput() Floatin
 
 func (o FloatingIpAssignmentMapOutput) ToFloatingIpAssignmentMapOutputWithContext(ctx context.Context) FloatingIpAssignmentMapOutput {
 	return o
+}
+
+func (o FloatingIpAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FloatingIpAssignment] {
+	return pulumix.Output[map[string]*FloatingIpAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FloatingIpAssignmentMapOutput) MapIndex(k pulumi.StringInput) FloatingIpAssignmentOutput {

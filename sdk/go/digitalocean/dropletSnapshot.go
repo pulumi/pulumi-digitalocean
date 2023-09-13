@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
@@ -91,6 +93,7 @@ func NewDropletSnapshot(ctx *pulumi.Context,
 	if args.DropletId == nil {
 		return nil, errors.New("invalid value for required argument 'DropletId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DropletSnapshot
 	err := ctx.RegisterResource("digitalocean:index/dropletSnapshot:DropletSnapshot", name, args, &resource, opts...)
 	if err != nil {
@@ -184,6 +187,12 @@ func (i *DropletSnapshot) ToDropletSnapshotOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotOutput)
 }
 
+func (i *DropletSnapshot) ToOutput(ctx context.Context) pulumix.Output[*DropletSnapshot] {
+	return pulumix.Output[*DropletSnapshot]{
+		OutputState: i.ToDropletSnapshotOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DropletSnapshotArrayInput is an input type that accepts DropletSnapshotArray and DropletSnapshotArrayOutput values.
 // You can construct a concrete instance of `DropletSnapshotArrayInput` via:
 //
@@ -207,6 +216,12 @@ func (i DropletSnapshotArray) ToDropletSnapshotArrayOutput() DropletSnapshotArra
 
 func (i DropletSnapshotArray) ToDropletSnapshotArrayOutputWithContext(ctx context.Context) DropletSnapshotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotArrayOutput)
+}
+
+func (i DropletSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]*DropletSnapshot] {
+	return pulumix.Output[[]*DropletSnapshot]{
+		OutputState: i.ToDropletSnapshotArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DropletSnapshotMapInput is an input type that accepts DropletSnapshotMap and DropletSnapshotMapOutput values.
@@ -234,6 +249,12 @@ func (i DropletSnapshotMap) ToDropletSnapshotMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DropletSnapshotMapOutput)
 }
 
+func (i DropletSnapshotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DropletSnapshot] {
+	return pulumix.Output[map[string]*DropletSnapshot]{
+		OutputState: i.ToDropletSnapshotMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DropletSnapshotOutput struct{ *pulumi.OutputState }
 
 func (DropletSnapshotOutput) ElementType() reflect.Type {
@@ -246,6 +267,12 @@ func (o DropletSnapshotOutput) ToDropletSnapshotOutput() DropletSnapshotOutput {
 
 func (o DropletSnapshotOutput) ToDropletSnapshotOutputWithContext(ctx context.Context) DropletSnapshotOutput {
 	return o
+}
+
+func (o DropletSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*DropletSnapshot] {
+	return pulumix.Output[*DropletSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date and time the Droplet snapshot was created.
@@ -292,6 +319,12 @@ func (o DropletSnapshotArrayOutput) ToDropletSnapshotArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DropletSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DropletSnapshot] {
+	return pulumix.Output[[]*DropletSnapshot]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DropletSnapshotArrayOutput) Index(i pulumi.IntInput) DropletSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DropletSnapshot {
 		return vs[0].([]*DropletSnapshot)[vs[1].(int)]
@@ -310,6 +343,12 @@ func (o DropletSnapshotMapOutput) ToDropletSnapshotMapOutput() DropletSnapshotMa
 
 func (o DropletSnapshotMapOutput) ToDropletSnapshotMapOutputWithContext(ctx context.Context) DropletSnapshotMapOutput {
 	return o
+}
+
+func (o DropletSnapshotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DropletSnapshot] {
+	return pulumix.Output[map[string]*DropletSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DropletSnapshotMapOutput) MapIndex(k pulumi.StringInput) DropletSnapshotOutput {

@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)
@@ -58,6 +60,7 @@ func NewUptimeAlert(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UptimeAlert
 	err := ctx.RegisterResource("digitalocean:index/uptimeAlert:UptimeAlert", name, args, &resource, opts...)
 	if err != nil {
@@ -175,6 +178,12 @@ func (i *UptimeAlert) ToUptimeAlertOutputWithContext(ctx context.Context) Uptime
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertOutput)
 }
 
+func (i *UptimeAlert) ToOutput(ctx context.Context) pulumix.Output[*UptimeAlert] {
+	return pulumix.Output[*UptimeAlert]{
+		OutputState: i.ToUptimeAlertOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UptimeAlertArrayInput is an input type that accepts UptimeAlertArray and UptimeAlertArrayOutput values.
 // You can construct a concrete instance of `UptimeAlertArrayInput` via:
 //
@@ -198,6 +207,12 @@ func (i UptimeAlertArray) ToUptimeAlertArrayOutput() UptimeAlertArrayOutput {
 
 func (i UptimeAlertArray) ToUptimeAlertArrayOutputWithContext(ctx context.Context) UptimeAlertArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertArrayOutput)
+}
+
+func (i UptimeAlertArray) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeAlert] {
+	return pulumix.Output[[]*UptimeAlert]{
+		OutputState: i.ToUptimeAlertArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UptimeAlertMapInput is an input type that accepts UptimeAlertMap and UptimeAlertMapOutput values.
@@ -225,6 +240,12 @@ func (i UptimeAlertMap) ToUptimeAlertMapOutputWithContext(ctx context.Context) U
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeAlertMapOutput)
 }
 
+func (i UptimeAlertMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeAlert] {
+	return pulumix.Output[map[string]*UptimeAlert]{
+		OutputState: i.ToUptimeAlertMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeAlertOutput struct{ *pulumi.OutputState }
 
 func (UptimeAlertOutput) ElementType() reflect.Type {
@@ -237,6 +258,12 @@ func (o UptimeAlertOutput) ToUptimeAlertOutput() UptimeAlertOutput {
 
 func (o UptimeAlertOutput) ToUptimeAlertOutputWithContext(ctx context.Context) UptimeAlertOutput {
 	return o
+}
+
+func (o UptimeAlertOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeAlert] {
+	return pulumix.Output[*UptimeAlert]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A unique identifier for a check
@@ -288,6 +315,12 @@ func (o UptimeAlertArrayOutput) ToUptimeAlertArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o UptimeAlertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeAlert] {
+	return pulumix.Output[[]*UptimeAlert]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UptimeAlertArrayOutput) Index(i pulumi.IntInput) UptimeAlertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UptimeAlert {
 		return vs[0].([]*UptimeAlert)[vs[1].(int)]
@@ -306,6 +339,12 @@ func (o UptimeAlertMapOutput) ToUptimeAlertMapOutput() UptimeAlertMapOutput {
 
 func (o UptimeAlertMapOutput) ToUptimeAlertMapOutputWithContext(ctx context.Context) UptimeAlertMapOutput {
 	return o
+}
+
+func (o UptimeAlertMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeAlert] {
+	return pulumix.Output[map[string]*UptimeAlert]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeAlertMapOutput) MapIndex(k pulumi.StringInput) UptimeAlertOutput {

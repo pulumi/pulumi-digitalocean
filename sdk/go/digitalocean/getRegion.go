@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a single DigitalOcean region. This is useful to find out
@@ -40,6 +42,7 @@ import (
 //
 // ```
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionResult
 	err := ctx.Invoke("digitalocean:index/getRegion:getRegion", args, &rv, opts...)
 	if err != nil {
@@ -106,6 +109,12 @@ func (o GetRegionResultOutput) ToGetRegionResultOutput() GetRegionResultOutput {
 
 func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Context) GetRegionResultOutput {
 	return o
+}
+
+func (o GetRegionResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionResult] {
+	return pulumix.Output[GetRegionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A boolean value that represents whether new Droplets can be created in this region.

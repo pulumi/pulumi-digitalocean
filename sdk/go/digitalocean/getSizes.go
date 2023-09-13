@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the Droplet sizes that DigitalOcean supports, with
 // the ability to filter and sort the results. If no filters are specified, all sizes
 // will be returned.
 func GetSizes(ctx *pulumi.Context, args *GetSizesArgs, opts ...pulumi.InvokeOption) (*GetSizesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSizesResult
 	err := ctx.Invoke("digitalocean:index/getSizes:getSizes", args, &rv, opts...)
 	if err != nil {
@@ -81,6 +84,12 @@ func (o GetSizesResultOutput) ToGetSizesResultOutput() GetSizesResultOutput {
 
 func (o GetSizesResultOutput) ToGetSizesResultOutputWithContext(ctx context.Context) GetSizesResultOutput {
 	return o
+}
+
+func (o GetSizesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSizesResult] {
+	return pulumix.Output[GetSizesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSizesResultOutput) Filters() GetSizesFilterArrayOutput {

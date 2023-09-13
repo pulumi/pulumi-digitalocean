@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a bucket resource for Spaces, DigitalOcean's object storage product.
@@ -169,6 +171,7 @@ func NewSpacesBucket(ctx *pulumi.Context,
 		args = &SpacesBucketArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpacesBucket
 	err := ctx.RegisterResource("digitalocean:index/spacesBucket:SpacesBucket", name, args, &resource, opts...)
 	if err != nil {
@@ -298,6 +301,12 @@ func (i *SpacesBucket) ToSpacesBucketOutputWithContext(ctx context.Context) Spac
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketOutput)
 }
 
+func (i *SpacesBucket) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucket] {
+	return pulumix.Output[*SpacesBucket]{
+		OutputState: i.ToSpacesBucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SpacesBucketArrayInput is an input type that accepts SpacesBucketArray and SpacesBucketArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketArrayInput` via:
 //
@@ -321,6 +330,12 @@ func (i SpacesBucketArray) ToSpacesBucketArrayOutput() SpacesBucketArrayOutput {
 
 func (i SpacesBucketArray) ToSpacesBucketArrayOutputWithContext(ctx context.Context) SpacesBucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketArrayOutput)
+}
+
+func (i SpacesBucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucket] {
+	return pulumix.Output[[]*SpacesBucket]{
+		OutputState: i.ToSpacesBucketArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SpacesBucketMapInput is an input type that accepts SpacesBucketMap and SpacesBucketMapOutput values.
@@ -348,6 +363,12 @@ func (i SpacesBucketMap) ToSpacesBucketMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketMapOutput)
 }
 
+func (i SpacesBucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucket] {
+	return pulumix.Output[map[string]*SpacesBucket]{
+		OutputState: i.ToSpacesBucketMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpacesBucketOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketOutput) ElementType() reflect.Type {
@@ -360,6 +381,12 @@ func (o SpacesBucketOutput) ToSpacesBucketOutput() SpacesBucketOutput {
 
 func (o SpacesBucketOutput) ToSpacesBucketOutputWithContext(ctx context.Context) SpacesBucketOutput {
 	return o
+}
+
+func (o SpacesBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucket] {
+	return pulumix.Output[*SpacesBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Canned ACL applied on bucket creation (`private` or `public-read`)
@@ -426,6 +453,12 @@ func (o SpacesBucketArrayOutput) ToSpacesBucketArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o SpacesBucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucket] {
+	return pulumix.Output[[]*SpacesBucket]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SpacesBucketArrayOutput) Index(i pulumi.IntInput) SpacesBucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpacesBucket {
 		return vs[0].([]*SpacesBucket)[vs[1].(int)]
@@ -444,6 +477,12 @@ func (o SpacesBucketMapOutput) ToSpacesBucketMapOutput() SpacesBucketMapOutput {
 
 func (o SpacesBucketMapOutput) ToSpacesBucketMapOutputWithContext(ctx context.Context) SpacesBucketMapOutput {
 	return o
+}
+
+func (o SpacesBucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucket] {
+	return pulumix.Output[map[string]*SpacesBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpacesBucketMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketOutput {

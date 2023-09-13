@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the CA certificate for a DigitalOcean database.
@@ -39,6 +41,7 @@ import (
 //
 // ```
 func GetDatabaseCa(ctx *pulumi.Context, args *GetDatabaseCaArgs, opts ...pulumi.InvokeOption) (*GetDatabaseCaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseCaResult
 	err := ctx.Invoke("digitalocean:index/getDatabaseCa:getDatabaseCa", args, &rv, opts...)
 	if err != nil {
@@ -98,6 +101,12 @@ func (o GetDatabaseCaResultOutput) ToGetDatabaseCaResultOutput() GetDatabaseCaRe
 
 func (o GetDatabaseCaResultOutput) ToGetDatabaseCaResultOutputWithContext(ctx context.Context) GetDatabaseCaResultOutput {
 	return o
+}
+
+func (o GetDatabaseCaResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseCaResult] {
+	return pulumix.Output[GetDatabaseCaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CA certificate used to secure database connections decoded to a string.

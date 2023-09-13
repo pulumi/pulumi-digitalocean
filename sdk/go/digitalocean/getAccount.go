@@ -4,6 +4,7 @@
 package digitalocean
 
 import (
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountResult
 	err := ctx.Invoke("digitalocean:index/getAccount:getAccount", nil, &rv, opts...)
 	if err != nil {

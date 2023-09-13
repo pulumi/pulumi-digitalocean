@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on domains for use in other resources, with the ability to filter and sort the results.
@@ -56,6 +58,7 @@ import (
 //
 // ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult
 	err := ctx.Invoke("digitalocean:index/getDomains:getDomains", args, &rv, opts...)
 	if err != nil {
@@ -124,6 +127,12 @@ func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutpu
 
 func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
 	return o
+}
+
+func (o GetDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsResult] {
+	return pulumix.Output[GetDomainsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:

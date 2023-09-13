@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
@@ -95,6 +97,7 @@ func NewProjectResources(ctx *pulumi.Context,
 	if args.Resources == nil {
 		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectResources
 	err := ctx.RegisterResource("digitalocean:index/projectResources:ProjectResources", name, args, &resource, opts...)
 	if err != nil {
@@ -172,6 +175,12 @@ func (i *ProjectResources) ToProjectResourcesOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesOutput)
 }
 
+func (i *ProjectResources) ToOutput(ctx context.Context) pulumix.Output[*ProjectResources] {
+	return pulumix.Output[*ProjectResources]{
+		OutputState: i.ToProjectResourcesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectResourcesArrayInput is an input type that accepts ProjectResourcesArray and ProjectResourcesArrayOutput values.
 // You can construct a concrete instance of `ProjectResourcesArrayInput` via:
 //
@@ -195,6 +204,12 @@ func (i ProjectResourcesArray) ToProjectResourcesArrayOutput() ProjectResourcesA
 
 func (i ProjectResourcesArray) ToProjectResourcesArrayOutputWithContext(ctx context.Context) ProjectResourcesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesArrayOutput)
+}
+
+func (i ProjectResourcesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectResources] {
+	return pulumix.Output[[]*ProjectResources]{
+		OutputState: i.ToProjectResourcesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectResourcesMapInput is an input type that accepts ProjectResourcesMap and ProjectResourcesMapOutput values.
@@ -222,6 +237,12 @@ func (i ProjectResourcesMap) ToProjectResourcesMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectResourcesMapOutput)
 }
 
+func (i ProjectResourcesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectResources] {
+	return pulumix.Output[map[string]*ProjectResources]{
+		OutputState: i.ToProjectResourcesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectResourcesOutput struct{ *pulumi.OutputState }
 
 func (ProjectResourcesOutput) ElementType() reflect.Type {
@@ -234,6 +255,12 @@ func (o ProjectResourcesOutput) ToProjectResourcesOutput() ProjectResourcesOutpu
 
 func (o ProjectResourcesOutput) ToProjectResourcesOutputWithContext(ctx context.Context) ProjectResourcesOutput {
 	return o
+}
+
+func (o ProjectResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectResources] {
+	return pulumix.Output[*ProjectResources]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the ID of the project
@@ -260,6 +287,12 @@ func (o ProjectResourcesArrayOutput) ToProjectResourcesArrayOutputWithContext(ct
 	return o
 }
 
+func (o ProjectResourcesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectResources] {
+	return pulumix.Output[[]*ProjectResources]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectResourcesArrayOutput) Index(i pulumi.IntInput) ProjectResourcesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectResources {
 		return vs[0].([]*ProjectResources)[vs[1].(int)]
@@ -278,6 +311,12 @@ func (o ProjectResourcesMapOutput) ToProjectResourcesMapOutput() ProjectResource
 
 func (o ProjectResourcesMapOutput) ToProjectResourcesMapOutputWithContext(ctx context.Context) ProjectResourcesMapOutput {
 	return o
+}
+
+func (o ProjectResourcesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectResources] {
+	return pulumix.Output[map[string]*ProjectResources]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectResourcesMapOutput) MapIndex(k pulumi.StringInput) ProjectResourcesOutput {

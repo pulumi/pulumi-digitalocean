@@ -62,3 +62,20 @@ export interface GetAccountResult {
      */
     readonly uuid: string;
 }
+/**
+ * Get information on your DigitalOcean account.
+ *
+ * ## Example Usage
+ *
+ * Get the account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getAccount({});
+ * ```
+ */
+export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+    return pulumi.output(getAccount(opts))
+}

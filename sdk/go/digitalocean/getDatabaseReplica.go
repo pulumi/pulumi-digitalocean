@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information on a DigitalOcean database replica.
@@ -46,6 +48,7 @@ import (
 //
 // ```
 func LookupDatabaseReplica(ctx *pulumi.Context, args *LookupDatabaseReplicaArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseReplicaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseReplicaResult
 	err := ctx.Invoke("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args, &rv, opts...)
 	if err != nil {
@@ -134,6 +137,12 @@ func (o LookupDatabaseReplicaResultOutput) ToLookupDatabaseReplicaResultOutput()
 
 func (o LookupDatabaseReplicaResultOutput) ToLookupDatabaseReplicaResultOutputWithContext(ctx context.Context) LookupDatabaseReplicaResultOutput {
 	return o
+}
+
+func (o LookupDatabaseReplicaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseReplicaResult] {
+	return pulumix.Output[LookupDatabaseReplicaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupDatabaseReplicaResultOutput) ClusterId() pulumi.StringOutput {

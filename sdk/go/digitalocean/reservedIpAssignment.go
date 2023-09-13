@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for assigning an existing DigitalOcean reserved IP to a Droplet. This
@@ -89,6 +91,7 @@ func NewReservedIpAssignment(ctx *pulumi.Context,
 	if args.IpAddress == nil {
 		return nil, errors.New("invalid value for required argument 'IpAddress'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ReservedIpAssignment
 	err := ctx.RegisterResource("digitalocean:index/reservedIpAssignment:ReservedIpAssignment", name, args, &resource, opts...)
 	if err != nil {
@@ -166,6 +169,12 @@ func (i *ReservedIpAssignment) ToReservedIpAssignmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpAssignmentOutput)
 }
 
+func (i *ReservedIpAssignment) ToOutput(ctx context.Context) pulumix.Output[*ReservedIpAssignment] {
+	return pulumix.Output[*ReservedIpAssignment]{
+		OutputState: i.ToReservedIpAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReservedIpAssignmentArrayInput is an input type that accepts ReservedIpAssignmentArray and ReservedIpAssignmentArrayOutput values.
 // You can construct a concrete instance of `ReservedIpAssignmentArrayInput` via:
 //
@@ -189,6 +198,12 @@ func (i ReservedIpAssignmentArray) ToReservedIpAssignmentArrayOutput() ReservedI
 
 func (i ReservedIpAssignmentArray) ToReservedIpAssignmentArrayOutputWithContext(ctx context.Context) ReservedIpAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpAssignmentArrayOutput)
+}
+
+func (i ReservedIpAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReservedIpAssignment] {
+	return pulumix.Output[[]*ReservedIpAssignment]{
+		OutputState: i.ToReservedIpAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReservedIpAssignmentMapInput is an input type that accepts ReservedIpAssignmentMap and ReservedIpAssignmentMapOutput values.
@@ -216,6 +231,12 @@ func (i ReservedIpAssignmentMap) ToReservedIpAssignmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpAssignmentMapOutput)
 }
 
+func (i ReservedIpAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservedIpAssignment] {
+	return pulumix.Output[map[string]*ReservedIpAssignment]{
+		OutputState: i.ToReservedIpAssignmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReservedIpAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ReservedIpAssignmentOutput) ElementType() reflect.Type {
@@ -228,6 +249,12 @@ func (o ReservedIpAssignmentOutput) ToReservedIpAssignmentOutput() ReservedIpAss
 
 func (o ReservedIpAssignmentOutput) ToReservedIpAssignmentOutputWithContext(ctx context.Context) ReservedIpAssignmentOutput {
 	return o
+}
+
+func (o ReservedIpAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservedIpAssignment] {
+	return pulumix.Output[*ReservedIpAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of Droplet that the reserved IP will be assigned to.
@@ -254,6 +281,12 @@ func (o ReservedIpAssignmentArrayOutput) ToReservedIpAssignmentArrayOutputWithCo
 	return o
 }
 
+func (o ReservedIpAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReservedIpAssignment] {
+	return pulumix.Output[[]*ReservedIpAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReservedIpAssignmentArrayOutput) Index(i pulumi.IntInput) ReservedIpAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReservedIpAssignment {
 		return vs[0].([]*ReservedIpAssignment)[vs[1].(int)]
@@ -272,6 +305,12 @@ func (o ReservedIpAssignmentMapOutput) ToReservedIpAssignmentMapOutput() Reserve
 
 func (o ReservedIpAssignmentMapOutput) ToReservedIpAssignmentMapOutputWithContext(ctx context.Context) ReservedIpAssignmentMapOutput {
 	return o
+}
+
+func (o ReservedIpAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservedIpAssignment] {
+	return pulumix.Output[map[string]*ReservedIpAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservedIpAssignmentMapOutput) MapIndex(k pulumi.StringInput) ReservedIpAssignmentOutput {

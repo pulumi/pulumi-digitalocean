@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean database replica resource.
@@ -124,6 +126,7 @@ func NewDatabaseReplica(ctx *pulumi.Context,
 		"uri",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseReplica
 	err := ctx.RegisterResource("digitalocean:index/databaseReplica:DatabaseReplica", name, args, &resource, opts...)
 	if err != nil {
@@ -269,6 +272,12 @@ func (i *DatabaseReplica) ToDatabaseReplicaOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseReplicaOutput)
 }
 
+func (i *DatabaseReplica) ToOutput(ctx context.Context) pulumix.Output[*DatabaseReplica] {
+	return pulumix.Output[*DatabaseReplica]{
+		OutputState: i.ToDatabaseReplicaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseReplicaArrayInput is an input type that accepts DatabaseReplicaArray and DatabaseReplicaArrayOutput values.
 // You can construct a concrete instance of `DatabaseReplicaArrayInput` via:
 //
@@ -292,6 +301,12 @@ func (i DatabaseReplicaArray) ToDatabaseReplicaArrayOutput() DatabaseReplicaArra
 
 func (i DatabaseReplicaArray) ToDatabaseReplicaArrayOutputWithContext(ctx context.Context) DatabaseReplicaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseReplicaArrayOutput)
+}
+
+func (i DatabaseReplicaArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseReplica] {
+	return pulumix.Output[[]*DatabaseReplica]{
+		OutputState: i.ToDatabaseReplicaArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseReplicaMapInput is an input type that accepts DatabaseReplicaMap and DatabaseReplicaMapOutput values.
@@ -319,6 +334,12 @@ func (i DatabaseReplicaMap) ToDatabaseReplicaMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseReplicaMapOutput)
 }
 
+func (i DatabaseReplicaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseReplica] {
+	return pulumix.Output[map[string]*DatabaseReplica]{
+		OutputState: i.ToDatabaseReplicaMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseReplicaOutput struct{ *pulumi.OutputState }
 
 func (DatabaseReplicaOutput) ElementType() reflect.Type {
@@ -331,6 +352,12 @@ func (o DatabaseReplicaOutput) ToDatabaseReplicaOutput() DatabaseReplicaOutput {
 
 func (o DatabaseReplicaOutput) ToDatabaseReplicaOutputWithContext(ctx context.Context) DatabaseReplicaOutput {
 	return o
+}
+
+func (o DatabaseReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseReplica] {
+	return pulumix.Output[*DatabaseReplica]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the original source database cluster.
@@ -422,6 +449,12 @@ func (o DatabaseReplicaArrayOutput) ToDatabaseReplicaArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DatabaseReplicaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseReplica] {
+	return pulumix.Output[[]*DatabaseReplica]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseReplicaArrayOutput) Index(i pulumi.IntInput) DatabaseReplicaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseReplica {
 		return vs[0].([]*DatabaseReplica)[vs[1].(int)]
@@ -440,6 +473,12 @@ func (o DatabaseReplicaMapOutput) ToDatabaseReplicaMapOutput() DatabaseReplicaMa
 
 func (o DatabaseReplicaMapOutput) ToDatabaseReplicaMapOutputWithContext(ctx context.Context) DatabaseReplicaMapOutput {
 	return o
+}
+
+func (o DatabaseReplicaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseReplica] {
+	return pulumix.Output[map[string]*DatabaseReplica]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseReplicaMapOutput) MapIndex(k pulumi.StringInput) DatabaseReplicaOutput {
