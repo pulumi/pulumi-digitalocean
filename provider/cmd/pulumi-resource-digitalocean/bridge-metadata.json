@@ -645,6 +645,31 @@
                     }
                 }
             },
+            "digitalocean_spaces_bucket_cors_configuration": {
+                "current": "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration",
+                "majorVersion": 4,
+                "fields": {
+                    "cors_rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_headers": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_methods": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_origins": {
+                                    "maxItemsOne": false
+                                },
+                                "expose_headers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_spaces_bucket_object": {
                 "current": "digitalocean:index/spacesBucketObject:SpacesBucketObject",
                 "majorVersion": 4
@@ -1625,6 +1650,7 @@
             "digitalocean:index/reservedIp:ReservedIp": "digitalocean_reserved_ip",
             "digitalocean:index/reservedIpAssignment:ReservedIpAssignment": "digitalocean_reserved_ip_assignment",
             "digitalocean:index/spacesBucket:SpacesBucket": "digitalocean_spaces_bucket",
+            "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration": "digitalocean_spaces_bucket_cors_configuration",
             "digitalocean:index/spacesBucketObject:SpacesBucketObject": "digitalocean_spaces_bucket_object",
             "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy": "digitalocean_spaces_bucket_policy",
             "digitalocean:index/sshKey:SshKey": "digitalocean_ssh_key",
@@ -1940,6 +1966,13 @@
             "digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts": {
                 "emails": "email",
                 "slacks": "slack"
+            },
+            "digitalocean:index/SpacesBucketCorsConfigurationCorsRule:SpacesBucketCorsConfigurationCorsRule": {
+                "allowedHeaders": "allowed_headers",
+                "allowedMethods": "allowed_methods",
+                "allowedOrigins": "allowed_origins",
+                "exposeHeaders": "expose_headers",
+                "maxAgeSeconds": "max_age_seconds"
             },
             "digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule": {
                 "allowedHeaders": "allowed_headers",
@@ -2673,6 +2706,9 @@
                 "corsRules": "cors_rule",
                 "forceDestroy": "force_destroy",
                 "lifecycleRules": "lifecycle_rule"
+            },
+            "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration": {
+                "corsRules": "cors_rule"
             },
             "digitalocean:index/spacesBucketObject:SpacesBucketObject": {
                 "cacheControl": "cache_control",
