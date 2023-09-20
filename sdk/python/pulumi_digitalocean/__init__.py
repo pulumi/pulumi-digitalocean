@@ -74,6 +74,7 @@ from .provider import *
 from .reserved_ip import *
 from .reserved_ip_assignment import *
 from .spaces_bucket import *
+from .spaces_bucket_cors_configuration import *
 from .spaces_bucket_object import *
 from .spaces_bucket_policy import *
 from .ssh_key import *
@@ -319,6 +320,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/spacesBucket:SpacesBucket": "SpacesBucket"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/spacesBucketCorsConfiguration",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration": "SpacesBucketCorsConfiguration"
   }
  },
  {

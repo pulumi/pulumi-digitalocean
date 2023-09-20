@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .region(&#34;nyc1&#34;)
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;11&#34;)
+ *             .version(&#34;15&#34;)
  *             .build());
  * 
  *     }

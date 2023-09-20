@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///         Region = "nyc1",
     ///         Size = "db-s-1vcpu-1gb",
-    ///         Version = "11",
+    ///         Version = "15",
     ///     });
     /// 
     /// });

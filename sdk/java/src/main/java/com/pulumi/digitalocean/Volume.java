@@ -205,14 +205,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initialFilesystemType);
     }
     /**
-     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters.
+     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters.
+     * @return A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
      * 
      */
     public Output<String> name() {

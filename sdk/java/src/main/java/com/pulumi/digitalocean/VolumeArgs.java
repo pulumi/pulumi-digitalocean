@@ -89,14 +89,14 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters.
+     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters.
+     * @return A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
      * 
      */
     public Optional<Output<String>> name() {
@@ -308,7 +308,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters.
+         * @param name A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters.
+         * @param name A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
          * 
          * @return builder
          * 

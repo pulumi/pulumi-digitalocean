@@ -119,7 +119,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> InitialFilesystemType { get; private set; } = null!;
 
         /// <summary>
-        /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.FileSystemType>? InitialFilesystemType { get; set; }
 
         /// <summary>
-        /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.FileSystemType>? InitialFilesystemType { get; set; }
 
         /// <summary>
-        /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
