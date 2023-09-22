@@ -34,7 +34,7 @@ import (
 //				NodeCount: pulumi.Int(1),
 //				Region:    pulumi.String("nyc1"),
 //				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //			})
 //			if err != nil {
 //				return err

@@ -112,7 +112,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly initialFilesystemType!: pulumi.Output<string | undefined>;
     /**
-     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -218,7 +218,7 @@ export interface VolumeState {
      */
     initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
     /**
-     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
     name?: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface VolumeArgs {
      */
     initialFilesystemType?: pulumi.Input<string | enums.FileSystemType>;
     /**
-     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+     * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
     name?: pulumi.Input<string>;
     /**

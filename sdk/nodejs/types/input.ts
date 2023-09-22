@@ -2577,6 +2577,33 @@ export interface MonitorAlertAlertsSlack {
     url: pulumi.Input<string>;
 }
 
+export interface SpacesBucketCorsConfigurationCorsRule {
+    /**
+     * Set of Headers that are specified in the Access-Control-Request-Headers header.
+     */
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+     */
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of origins you want customers to be able to access the bucket from.
+     */
+    allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Unique identifier for the rule. The value cannot be longer than 255 characters.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Time in seconds that your browser is to cache the preflight response for the specified resource.
+     */
+    maxAgeSeconds?: pulumi.Input<number>;
+}
+
 export interface SpacesBucketCorsRule {
     /**
      * A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).

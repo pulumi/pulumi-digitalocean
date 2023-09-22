@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
- *     version: "11",
+ *     version: "15",
  * });
  * ```
  * ### Create a new MySQL database cluster

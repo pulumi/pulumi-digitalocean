@@ -97,6 +97,7 @@ __all__ = [
     'LoadBalancerStickySessions',
     'MonitorAlertAlerts',
     'MonitorAlertAlertsSlack',
+    'SpacesBucketCorsConfigurationCorsRule',
     'SpacesBucketCorsRule',
     'SpacesBucketLifecycleRule',
     'SpacesBucketLifecycleRuleExpiration',
@@ -6120,6 +6121,108 @@ class MonitorAlertAlertsSlack(dict):
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class SpacesBucketCorsConfigurationCorsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpacesBucketCorsConfigurationCorsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpacesBucketCorsConfigurationCorsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpacesBucketCorsConfigurationCorsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_methods: Sequence[str],
+                 allowed_origins: Sequence[str],
+                 allowed_headers: Optional[Sequence[str]] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 id: Optional[str] = None,
+                 max_age_seconds: Optional[int] = None):
+        """
+        :param Sequence[str] allowed_methods: Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+        :param Sequence[str] allowed_origins: Set of origins you want customers to be able to access the bucket from.
+        :param Sequence[str] allowed_headers: Set of Headers that are specified in the Access-Control-Request-Headers header.
+        :param Sequence[str] expose_headers: Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+        :param str id: Unique identifier for the rule. The value cannot be longer than 255 characters.
+        :param int max_age_seconds: Time in seconds that your browser is to cache the preflight response for the specified resource.
+        """
+        pulumi.set(__self__, "allowed_methods", allowed_methods)
+        pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if allowed_headers is not None:
+            pulumi.set(__self__, "allowed_headers", allowed_headers)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_age_seconds is not None:
+            pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Sequence[str]:
+        """
+        Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Sequence[str]:
+        """
+        Set of origins you want customers to be able to access the bucket from.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Optional[Sequence[str]]:
+        """
+        Set of Headers that are specified in the Access-Control-Request-Headers header.
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier for the rule. The value cannot be longer than 255 characters.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> Optional[int]:
+        """
+        Time in seconds that your browser is to cache the preflight response for the specified resource.
+        """
+        return pulumi.get(self, "max_age_seconds")
 
 
 @pulumi.output_type

@@ -15693,6 +15693,172 @@ func (o MonitorAlertAlertsSlackArrayOutput) Index(i pulumi.IntInput) MonitorAler
 	}).(MonitorAlertAlertsSlackOutput)
 }
 
+type SpacesBucketCorsConfigurationCorsRule struct {
+	// Set of Headers that are specified in the Access-Control-Request-Headers header.
+	AllowedHeaders []string `pulumi:"allowedHeaders"`
+	// Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	// Set of origins you want customers to be able to access the bucket from.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Unique identifier for the rule. The value cannot be longer than 255 characters.
+	Id *string `pulumi:"id"`
+	// Time in seconds that your browser is to cache the preflight response for the specified resource.
+	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
+}
+
+// SpacesBucketCorsConfigurationCorsRuleInput is an input type that accepts SpacesBucketCorsConfigurationCorsRuleArgs and SpacesBucketCorsConfigurationCorsRuleOutput values.
+// You can construct a concrete instance of `SpacesBucketCorsConfigurationCorsRuleInput` via:
+//
+//	SpacesBucketCorsConfigurationCorsRuleArgs{...}
+type SpacesBucketCorsConfigurationCorsRuleInput interface {
+	pulumi.Input
+
+	ToSpacesBucketCorsConfigurationCorsRuleOutput() SpacesBucketCorsConfigurationCorsRuleOutput
+	ToSpacesBucketCorsConfigurationCorsRuleOutputWithContext(context.Context) SpacesBucketCorsConfigurationCorsRuleOutput
+}
+
+type SpacesBucketCorsConfigurationCorsRuleArgs struct {
+	// Set of Headers that are specified in the Access-Control-Request-Headers header.
+	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
+	// Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	// Set of origins you want customers to be able to access the bucket from.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Unique identifier for the rule. The value cannot be longer than 255 characters.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Time in seconds that your browser is to cache the preflight response for the specified resource.
+	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
+}
+
+func (SpacesBucketCorsConfigurationCorsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketCorsConfigurationCorsRule)(nil)).Elem()
+}
+
+func (i SpacesBucketCorsConfigurationCorsRuleArgs) ToSpacesBucketCorsConfigurationCorsRuleOutput() SpacesBucketCorsConfigurationCorsRuleOutput {
+	return i.ToSpacesBucketCorsConfigurationCorsRuleOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketCorsConfigurationCorsRuleArgs) ToSpacesBucketCorsConfigurationCorsRuleOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationCorsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketCorsConfigurationCorsRuleOutput)
+}
+
+func (i SpacesBucketCorsConfigurationCorsRuleArgs) ToOutput(ctx context.Context) pulumix.Output[SpacesBucketCorsConfigurationCorsRule] {
+	return pulumix.Output[SpacesBucketCorsConfigurationCorsRule]{
+		OutputState: i.ToSpacesBucketCorsConfigurationCorsRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SpacesBucketCorsConfigurationCorsRuleArrayInput is an input type that accepts SpacesBucketCorsConfigurationCorsRuleArray and SpacesBucketCorsConfigurationCorsRuleArrayOutput values.
+// You can construct a concrete instance of `SpacesBucketCorsConfigurationCorsRuleArrayInput` via:
+//
+//	SpacesBucketCorsConfigurationCorsRuleArray{ SpacesBucketCorsConfigurationCorsRuleArgs{...} }
+type SpacesBucketCorsConfigurationCorsRuleArrayInput interface {
+	pulumi.Input
+
+	ToSpacesBucketCorsConfigurationCorsRuleArrayOutput() SpacesBucketCorsConfigurationCorsRuleArrayOutput
+	ToSpacesBucketCorsConfigurationCorsRuleArrayOutputWithContext(context.Context) SpacesBucketCorsConfigurationCorsRuleArrayOutput
+}
+
+type SpacesBucketCorsConfigurationCorsRuleArray []SpacesBucketCorsConfigurationCorsRuleInput
+
+func (SpacesBucketCorsConfigurationCorsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesBucketCorsConfigurationCorsRule)(nil)).Elem()
+}
+
+func (i SpacesBucketCorsConfigurationCorsRuleArray) ToSpacesBucketCorsConfigurationCorsRuleArrayOutput() SpacesBucketCorsConfigurationCorsRuleArrayOutput {
+	return i.ToSpacesBucketCorsConfigurationCorsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SpacesBucketCorsConfigurationCorsRuleArray) ToSpacesBucketCorsConfigurationCorsRuleArrayOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationCorsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketCorsConfigurationCorsRuleArrayOutput)
+}
+
+func (i SpacesBucketCorsConfigurationCorsRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]SpacesBucketCorsConfigurationCorsRule] {
+	return pulumix.Output[[]SpacesBucketCorsConfigurationCorsRule]{
+		OutputState: i.ToSpacesBucketCorsConfigurationCorsRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SpacesBucketCorsConfigurationCorsRuleOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketCorsConfigurationCorsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesBucketCorsConfigurationCorsRule)(nil)).Elem()
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) ToSpacesBucketCorsConfigurationCorsRuleOutput() SpacesBucketCorsConfigurationCorsRuleOutput {
+	return o
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) ToSpacesBucketCorsConfigurationCorsRuleOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationCorsRuleOutput {
+	return o
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) ToOutput(ctx context.Context) pulumix.Output[SpacesBucketCorsConfigurationCorsRule] {
+	return pulumix.Output[SpacesBucketCorsConfigurationCorsRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Set of Headers that are specified in the Access-Control-Request-Headers header.
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpacesBucketCorsConfigurationCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpacesBucketCorsConfigurationCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+// Set of origins you want customers to be able to access the bucket from.
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpacesBucketCorsConfigurationCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpacesBucketCorsConfigurationCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Unique identifier for the rule. The value cannot be longer than 255 characters.
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpacesBucketCorsConfigurationCorsRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Time in seconds that your browser is to cache the preflight response for the specified resource.
+func (o SpacesBucketCorsConfigurationCorsRuleOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpacesBucketCorsConfigurationCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
+}
+
+type SpacesBucketCorsConfigurationCorsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SpacesBucketCorsConfigurationCorsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesBucketCorsConfigurationCorsRule)(nil)).Elem()
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleArrayOutput) ToSpacesBucketCorsConfigurationCorsRuleArrayOutput() SpacesBucketCorsConfigurationCorsRuleArrayOutput {
+	return o
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleArrayOutput) ToSpacesBucketCorsConfigurationCorsRuleArrayOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationCorsRuleArrayOutput {
+	return o
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpacesBucketCorsConfigurationCorsRule] {
+	return pulumix.Output[[]SpacesBucketCorsConfigurationCorsRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SpacesBucketCorsConfigurationCorsRuleArrayOutput) Index(i pulumi.IntInput) SpacesBucketCorsConfigurationCorsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacesBucketCorsConfigurationCorsRule {
+		return vs[0].([]SpacesBucketCorsConfigurationCorsRule)[vs[1].(int)]
+	}).(SpacesBucketCorsConfigurationCorsRuleOutput)
+}
+
 type SpacesBucketCorsRule struct {
 	// A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
@@ -35952,6 +36118,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsPtrInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackInput)(nil)).Elem(), MonitorAlertAlertsSlackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackArrayInput)(nil)).Elem(), MonitorAlertAlertsSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsConfigurationCorsRuleInput)(nil)).Elem(), SpacesBucketCorsConfigurationCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsConfigurationCorsRuleArrayInput)(nil)).Elem(), SpacesBucketCorsConfigurationCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsRuleInput)(nil)).Elem(), SpacesBucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsRuleArrayInput)(nil)).Elem(), SpacesBucketCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleInput)(nil)).Elem(), SpacesBucketLifecycleRuleArgs{})
@@ -36354,6 +36522,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitorAlertAlertsPtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackArrayOutput{})
+	pulumi.RegisterOutputType(SpacesBucketCorsConfigurationCorsRuleOutput{})
+	pulumi.RegisterOutputType(SpacesBucketCorsConfigurationCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleOutput{})

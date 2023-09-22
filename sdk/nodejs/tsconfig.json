@@ -84,6 +84,7 @@
         "reservedIp.ts",
         "reservedIpAssignment.ts",
         "spacesBucket.ts",
+        "spacesBucketCorsConfiguration.ts",
         "spacesBucketObject.ts",
         "spacesBucketPolicy.ts",
         "sshKey.ts",

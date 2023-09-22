@@ -32,7 +32,7 @@ class VolumeArgs:
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
         """
@@ -135,7 +135,7 @@ class VolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 
@@ -191,7 +191,7 @@ class _VolumeState:
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[Union[str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
@@ -305,7 +305,7 @@ class _VolumeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 
@@ -439,7 +439,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[Union[str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
@@ -582,7 +582,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[Union[str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
@@ -662,7 +662,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 

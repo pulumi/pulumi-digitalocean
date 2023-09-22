@@ -3987,6 +3987,33 @@ export interface MonitorAlertAlertsSlack {
     url: string;
 }
 
+export interface SpacesBucketCorsConfigurationCorsRule {
+    /**
+     * Set of Headers that are specified in the Access-Control-Request-Headers header.
+     */
+    allowedHeaders?: string[];
+    /**
+     * Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+     */
+    allowedMethods: string[];
+    /**
+     * Set of origins you want customers to be able to access the bucket from.
+     */
+    allowedOrigins: string[];
+    /**
+     * Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+     */
+    exposeHeaders?: string[];
+    /**
+     * Unique identifier for the rule. The value cannot be longer than 255 characters.
+     */
+    id?: string;
+    /**
+     * Time in seconds that your browser is to cache the preflight response for the specified resource.
+     */
+    maxAgeSeconds?: number;
+}
+
 export interface SpacesBucketCorsRule {
     /**
      * A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
