@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CdnArgs', 'Cdn']
@@ -27,18 +27,35 @@ class CdnArgs:
         :param pulumi.Input[str] custom_domain: The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         :param pulumi.Input[int] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """
-        pulumi.set(__self__, "origin", origin)
+        CdnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            origin=origin,
+            certificate_id=certificate_id,
+            certificate_name=certificate_name,
+            custom_domain=custom_domain,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             origin: pulumi.Input[str],
+             certificate_id: Optional[pulumi.Input[str]] = None,
+             certificate_name: Optional[pulumi.Input[str]] = None,
+             custom_domain: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("origin", origin)
         if certificate_id is not None:
             warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
         if certificate_id is not None:
-            pulumi.set(__self__, "certificate_id", certificate_id)
+            _setter("certificate_id", certificate_id)
         if certificate_name is not None:
-            pulumi.set(__self__, "certificate_name", certificate_name)
+            _setter("certificate_name", certificate_name)
         if custom_domain is not None:
-            pulumi.set(__self__, "custom_domain", custom_domain)
+            _setter("custom_domain", custom_domain)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -124,23 +141,44 @@ class _CdnState:
         :param pulumi.Input[str] origin: The fully qualified domain name, (FQDN) for a Space.
         :param pulumi.Input[int] ttl: The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """
+        _CdnState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_id=certificate_id,
+            certificate_name=certificate_name,
+            created_at=created_at,
+            custom_domain=custom_domain,
+            endpoint=endpoint,
+            origin=origin,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_id: Optional[pulumi.Input[str]] = None,
+             certificate_name: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             custom_domain: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             origin: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_id is not None:
             warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
         if certificate_id is not None:
-            pulumi.set(__self__, "certificate_id", certificate_id)
+            _setter("certificate_id", certificate_id)
         if certificate_name is not None:
-            pulumi.set(__self__, "certificate_name", certificate_name)
+            _setter("certificate_name", certificate_name)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if custom_domain is not None:
-            pulumi.set(__self__, "custom_domain", custom_domain)
+            _setter("custom_domain", custom_domain)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if origin is not None:
-            pulumi.set(__self__, "origin", origin)
+            _setter("origin", origin)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -359,6 +397,10 @@ class Cdn(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CdnArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -378,9 +420,6 @@ class Cdn(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CdnArgs.__new__(CdnArgs)
 
-            if certificate_id is not None and not opts.urn:
-                warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
             __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["certificate_name"] = certificate_name
             __props__.__dict__["custom_domain"] = custom_domain

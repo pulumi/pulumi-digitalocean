@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._enums import *
 
@@ -38,23 +38,50 @@ class DnsRecordArgs:
         :param pulumi.Input[int] ttl: The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        DnsRecordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            type=type,
+            value=value,
+            flags=flags,
+            name=name,
+            port=port,
+            priority=priority,
+            tag=tag,
+            ttl=ttl,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: pulumi.Input[str],
+             type: pulumi.Input[Union[str, 'RecordType']],
+             value: pulumi.Input[str],
+             flags: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("type", type)
+        _setter("value", value)
         if flags is not None:
-            pulumi.set(__self__, "flags", flags)
+            _setter("flags", flags)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -205,28 +232,57 @@ class _DnsRecordState:
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[int] weight: The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
         """
+        _DnsRecordState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            flags=flags,
+            fqdn=fqdn,
+            name=name,
+            port=port,
+            priority=priority,
+            tag=tag,
+            ttl=ttl,
+            type=type,
+            value=value,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             flags: Optional[pulumi.Input[int]] = None,
+             fqdn: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if flags is not None:
-            pulumi.set(__self__, "flags", flags)
+            _setter("flags", flags)
         if fqdn is not None:
-            pulumi.set(__self__, "fqdn", fqdn)
+            _setter("fqdn", fqdn)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -480,6 +536,10 @@ class DnsRecord(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DnsRecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

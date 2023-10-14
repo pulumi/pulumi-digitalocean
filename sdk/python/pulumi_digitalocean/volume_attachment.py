@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VolumeAttachmentArgs', 'VolumeAttachment']
@@ -21,8 +21,19 @@ class VolumeAttachmentArgs:
         :param pulumi.Input[int] droplet_id: ID of the Droplet to attach the volume to.
         :param pulumi.Input[str] volume_id: ID of the Volume to be attached to the Droplet.
         """
-        pulumi.set(__self__, "droplet_id", droplet_id)
-        pulumi.set(__self__, "volume_id", volume_id)
+        VolumeAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_id=droplet_id,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_id: pulumi.Input[int],
+             volume_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("droplet_id", droplet_id)
+        _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -59,10 +70,21 @@ class _VolumeAttachmentState:
         :param pulumi.Input[int] droplet_id: ID of the Droplet to attach the volume to.
         :param pulumi.Input[str] volume_id: ID of the Volume to be attached to the Droplet.
         """
+        _VolumeAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_id=droplet_id,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             volume_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if droplet_id is not None:
-            pulumi.set(__self__, "droplet_id", droplet_id)
+            _setter("droplet_id", droplet_id)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -168,6 +190,10 @@ class VolumeAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

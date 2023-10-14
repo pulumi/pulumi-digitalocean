@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -35,28 +35,53 @@ class ProviderArgs:
         :param pulumi.Input[str] spaces_secret_key: The secret access key for Spaces API operations.
         :param pulumi.Input[str] token: The token key for API operations.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_endpoint=api_endpoint,
+            http_retry_max=http_retry_max,
+            http_retry_wait_max=http_retry_wait_max,
+            http_retry_wait_min=http_retry_wait_min,
+            requests_per_second=requests_per_second,
+            spaces_access_id=spaces_access_id,
+            spaces_endpoint=spaces_endpoint,
+            spaces_secret_key=spaces_secret_key,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_endpoint: Optional[pulumi.Input[str]] = None,
+             http_retry_max: Optional[pulumi.Input[int]] = None,
+             http_retry_wait_max: Optional[pulumi.Input[float]] = None,
+             http_retry_wait_min: Optional[pulumi.Input[float]] = None,
+             requests_per_second: Optional[pulumi.Input[float]] = None,
+             spaces_access_id: Optional[pulumi.Input[str]] = None,
+             spaces_endpoint: Optional[pulumi.Input[str]] = None,
+             spaces_secret_key: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_endpoint is None:
             api_endpoint = (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
         if api_endpoint is not None:
-            pulumi.set(__self__, "api_endpoint", api_endpoint)
+            _setter("api_endpoint", api_endpoint)
         if http_retry_max is not None:
-            pulumi.set(__self__, "http_retry_max", http_retry_max)
+            _setter("http_retry_max", http_retry_max)
         if http_retry_wait_max is not None:
-            pulumi.set(__self__, "http_retry_wait_max", http_retry_wait_max)
+            _setter("http_retry_wait_max", http_retry_wait_max)
         if http_retry_wait_min is not None:
-            pulumi.set(__self__, "http_retry_wait_min", http_retry_wait_min)
+            _setter("http_retry_wait_min", http_retry_wait_min)
         if requests_per_second is not None:
-            pulumi.set(__self__, "requests_per_second", requests_per_second)
+            _setter("requests_per_second", requests_per_second)
         if spaces_access_id is not None:
-            pulumi.set(__self__, "spaces_access_id", spaces_access_id)
+            _setter("spaces_access_id", spaces_access_id)
         if spaces_endpoint is None:
             spaces_endpoint = _utilities.get_env('SPACES_ENDPOINT_URL')
         if spaces_endpoint is not None:
-            pulumi.set(__self__, "spaces_endpoint", spaces_endpoint)
+            _setter("spaces_endpoint", spaces_endpoint)
         if spaces_secret_key is not None:
-            pulumi.set(__self__, "spaces_secret_key", spaces_secret_key)
+            _setter("spaces_secret_key", spaces_secret_key)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter(name="apiEndpoint")
@@ -222,6 +247,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

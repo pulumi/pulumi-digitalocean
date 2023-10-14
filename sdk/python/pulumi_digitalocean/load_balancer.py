@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._enums import *
@@ -65,40 +65,83 @@ class LoadBalancerArgs:
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
-        pulumi.set(__self__, "forwarding_rules", forwarding_rules)
-        pulumi.set(__self__, "region", region)
+        LoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forwarding_rules=forwarding_rules,
+            region=region,
+            algorithm=algorithm,
+            disable_lets_encrypt_dns_records=disable_lets_encrypt_dns_records,
+            droplet_ids=droplet_ids,
+            droplet_tag=droplet_tag,
+            enable_backend_keepalive=enable_backend_keepalive,
+            enable_proxy_protocol=enable_proxy_protocol,
+            firewall=firewall,
+            healthcheck=healthcheck,
+            http_idle_timeout_seconds=http_idle_timeout_seconds,
+            name=name,
+            project_id=project_id,
+            redirect_http_to_https=redirect_http_to_https,
+            size=size,
+            size_unit=size_unit,
+            sticky_sessions=sticky_sessions,
+            vpc_uuid=vpc_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forwarding_rules: pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]],
+             region: pulumi.Input[Union[str, 'Region']],
+             algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+             disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
+             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             droplet_tag: Optional[pulumi.Input[str]] = None,
+             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
+             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             firewall: Optional[pulumi.Input['LoadBalancerFirewallArgs']] = None,
+             healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
+             http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             size_unit: Optional[pulumi.Input[int]] = None,
+             sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
+             vpc_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("forwarding_rules", forwarding_rules)
+        _setter("region", region)
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if disable_lets_encrypt_dns_records is not None:
-            pulumi.set(__self__, "disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
+            _setter("disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
         if droplet_ids is not None:
-            pulumi.set(__self__, "droplet_ids", droplet_ids)
+            _setter("droplet_ids", droplet_ids)
         if droplet_tag is not None:
-            pulumi.set(__self__, "droplet_tag", droplet_tag)
+            _setter("droplet_tag", droplet_tag)
         if enable_backend_keepalive is not None:
-            pulumi.set(__self__, "enable_backend_keepalive", enable_backend_keepalive)
+            _setter("enable_backend_keepalive", enable_backend_keepalive)
         if enable_proxy_protocol is not None:
-            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+            _setter("enable_proxy_protocol", enable_proxy_protocol)
         if firewall is not None:
-            pulumi.set(__self__, "firewall", firewall)
+            _setter("firewall", firewall)
         if healthcheck is not None:
-            pulumi.set(__self__, "healthcheck", healthcheck)
+            _setter("healthcheck", healthcheck)
         if http_idle_timeout_seconds is not None:
-            pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
+            _setter("http_idle_timeout_seconds", http_idle_timeout_seconds)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if redirect_http_to_https is not None:
-            pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
+            _setter("redirect_http_to_https", redirect_http_to_https)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if size_unit is not None:
-            pulumi.set(__self__, "size_unit", size_unit)
+            _setter("size_unit", size_unit)
         if sticky_sessions is not None:
-            pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+            _setter("sticky_sessions", sticky_sessions)
         if vpc_uuid is not None:
-            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+            _setter("vpc_uuid", vpc_uuid)
 
     @property
     @pulumi.getter(name="forwardingRules")
@@ -382,48 +425,97 @@ class _LoadBalancerState:
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
+        _LoadBalancerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            disable_lets_encrypt_dns_records=disable_lets_encrypt_dns_records,
+            droplet_ids=droplet_ids,
+            droplet_tag=droplet_tag,
+            enable_backend_keepalive=enable_backend_keepalive,
+            enable_proxy_protocol=enable_proxy_protocol,
+            firewall=firewall,
+            forwarding_rules=forwarding_rules,
+            healthcheck=healthcheck,
+            http_idle_timeout_seconds=http_idle_timeout_seconds,
+            ip=ip,
+            load_balancer_urn=load_balancer_urn,
+            name=name,
+            project_id=project_id,
+            redirect_http_to_https=redirect_http_to_https,
+            region=region,
+            size=size,
+            size_unit=size_unit,
+            status=status,
+            sticky_sessions=sticky_sessions,
+            vpc_uuid=vpc_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
+             disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
+             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             droplet_tag: Optional[pulumi.Input[str]] = None,
+             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
+             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             firewall: Optional[pulumi.Input['LoadBalancerFirewallArgs']] = None,
+             forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
+             healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
+             http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
+             ip: Optional[pulumi.Input[str]] = None,
+             load_balancer_urn: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             size_unit: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
+             vpc_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if disable_lets_encrypt_dns_records is not None:
-            pulumi.set(__self__, "disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
+            _setter("disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
         if droplet_ids is not None:
-            pulumi.set(__self__, "droplet_ids", droplet_ids)
+            _setter("droplet_ids", droplet_ids)
         if droplet_tag is not None:
-            pulumi.set(__self__, "droplet_tag", droplet_tag)
+            _setter("droplet_tag", droplet_tag)
         if enable_backend_keepalive is not None:
-            pulumi.set(__self__, "enable_backend_keepalive", enable_backend_keepalive)
+            _setter("enable_backend_keepalive", enable_backend_keepalive)
         if enable_proxy_protocol is not None:
-            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+            _setter("enable_proxy_protocol", enable_proxy_protocol)
         if firewall is not None:
-            pulumi.set(__self__, "firewall", firewall)
+            _setter("firewall", firewall)
         if forwarding_rules is not None:
-            pulumi.set(__self__, "forwarding_rules", forwarding_rules)
+            _setter("forwarding_rules", forwarding_rules)
         if healthcheck is not None:
-            pulumi.set(__self__, "healthcheck", healthcheck)
+            _setter("healthcheck", healthcheck)
         if http_idle_timeout_seconds is not None:
-            pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
+            _setter("http_idle_timeout_seconds", http_idle_timeout_seconds)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
         if load_balancer_urn is not None:
-            pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
+            _setter("load_balancer_urn", load_balancer_urn)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if redirect_http_to_https is not None:
-            pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
+            _setter("redirect_http_to_https", redirect_http_to_https)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if size_unit is not None:
-            pulumi.set(__self__, "size_unit", size_unit)
+            _setter("size_unit", size_unit)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if sticky_sessions is not None:
-            pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+            _setter("sticky_sessions", sticky_sessions)
         if vpc_uuid is not None:
-            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+            _setter("vpc_uuid", vpc_uuid)
 
     @property
     @pulumi.getter
@@ -894,6 +986,10 @@ class LoadBalancer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -932,10 +1028,20 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["droplet_tag"] = droplet_tag
             __props__.__dict__["enable_backend_keepalive"] = enable_backend_keepalive
             __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
+            if firewall is not None and not isinstance(firewall, LoadBalancerFirewallArgs):
+                firewall = firewall or {}
+                def _setter(key, value):
+                    firewall[key] = value
+                LoadBalancerFirewallArgs._configure(_setter, **firewall)
             __props__.__dict__["firewall"] = firewall
             if forwarding_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'forwarding_rules'")
             __props__.__dict__["forwarding_rules"] = forwarding_rules
+            if healthcheck is not None and not isinstance(healthcheck, LoadBalancerHealthcheckArgs):
+                healthcheck = healthcheck or {}
+                def _setter(key, value):
+                    healthcheck[key] = value
+                LoadBalancerHealthcheckArgs._configure(_setter, **healthcheck)
             __props__.__dict__["healthcheck"] = healthcheck
             __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
             __props__.__dict__["name"] = name
@@ -946,6 +1052,11 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["size"] = size
             __props__.__dict__["size_unit"] = size_unit
+            if sticky_sessions is not None and not isinstance(sticky_sessions, LoadBalancerStickySessionsArgs):
+                sticky_sessions = sticky_sessions or {}
+                def _setter(key, value):
+                    sticky_sessions[key] = value
+                LoadBalancerStickySessionsArgs._configure(_setter, **sticky_sessions)
             __props__.__dict__["sticky_sessions"] = sticky_sessions
             __props__.__dict__["vpc_uuid"] = vpc_uuid
             __props__.__dict__["ip"] = None
