@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ReservedIpArgs', 'ReservedIp']
@@ -23,11 +23,24 @@ class ReservedIpArgs:
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         """
-        pulumi.set(__self__, "region", region)
+        ReservedIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region=region,
+            droplet_id=droplet_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region: pulumi.Input[str],
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region", region)
         if droplet_id is not None:
-            pulumi.set(__self__, "droplet_id", droplet_id)
+            _setter("droplet_id", droplet_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter
@@ -80,14 +93,29 @@ class _ReservedIpState:
         :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
         :param pulumi.Input[str] urn: The uniform resource name of the reserved ip
         """
+        _ReservedIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_id=droplet_id,
+            ip_address=ip_address,
+            region=region,
+            urn=urn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             urn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if droplet_id is not None:
-            pulumi.set(__self__, "droplet_id", droplet_id)
+            _setter("droplet_id", droplet_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+            _setter("urn", urn)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -229,6 +257,10 @@ class ReservedIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ReservedIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

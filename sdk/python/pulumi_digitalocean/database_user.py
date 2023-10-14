@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatabaseUserArgs', 'DatabaseUser']
@@ -23,11 +23,24 @@ class DatabaseUserArgs:
         :param pulumi.Input[str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         :param pulumi.Input[str] name: The name for the database user.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        DatabaseUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            mysql_auth_plugin=mysql_auth_plugin,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
         if mysql_auth_plugin is not None:
-            pulumi.set(__self__, "mysql_auth_plugin", mysql_auth_plugin)
+            _setter("mysql_auth_plugin", mysql_auth_plugin)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -82,16 +95,33 @@ class _DatabaseUserState:
         :param pulumi.Input[str] password: Password for the database user.
         :param pulumi.Input[str] role: Role for the database user. The value will be either "primary" or "normal".
         """
+        _DatabaseUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            mysql_auth_plugin=mysql_auth_plugin,
+            name=name,
+            password=password,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if mysql_auth_plugin is not None:
-            pulumi.set(__self__, "mysql_auth_plugin", mysql_auth_plugin)
+            _setter("mysql_auth_plugin", mysql_auth_plugin)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -241,6 +271,10 @@ class DatabaseUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

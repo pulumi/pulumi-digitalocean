@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ReservedIpAssignmentArgs', 'ReservedIpAssignment']
@@ -21,8 +21,19 @@ class ReservedIpAssignmentArgs:
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The reserved IP to assign to the Droplet.
         """
-        pulumi.set(__self__, "droplet_id", droplet_id)
-        pulumi.set(__self__, "ip_address", ip_address)
+        ReservedIpAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_id=droplet_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_id: pulumi.Input[int],
+             ip_address: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("droplet_id", droplet_id)
+        _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -59,10 +70,21 @@ class _ReservedIpAssignmentState:
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The reserved IP to assign to the Droplet.
         """
+        _ReservedIpAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_id=droplet_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if droplet_id is not None:
-            pulumi.set(__self__, "droplet_id", droplet_id)
+            _setter("droplet_id", droplet_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -180,6 +202,10 @@ class ReservedIpAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ReservedIpAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

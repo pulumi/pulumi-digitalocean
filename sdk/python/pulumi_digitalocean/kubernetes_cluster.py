@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._enums import *
@@ -46,27 +46,58 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
-        pulumi.set(__self__, "node_pool", node_pool)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "version", version)
+        KubernetesClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_pool=node_pool,
+            region=region,
+            version=version,
+            auto_upgrade=auto_upgrade,
+            destroy_all_associated_resources=destroy_all_associated_resources,
+            ha=ha,
+            maintenance_policy=maintenance_policy,
+            name=name,
+            registry_integration=registry_integration,
+            surge_upgrade=surge_upgrade,
+            tags=tags,
+            vpc_uuid=vpc_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_pool: pulumi.Input['KubernetesClusterNodePoolArgs'],
+             region: pulumi.Input[Union[str, 'Region']],
+             version: pulumi.Input[str],
+             auto_upgrade: Optional[pulumi.Input[bool]] = None,
+             destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
+             ha: Optional[pulumi.Input[bool]] = None,
+             maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             registry_integration: Optional[pulumi.Input[bool]] = None,
+             surge_upgrade: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_pool", node_pool)
+        _setter("region", region)
+        _setter("version", version)
         if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+            _setter("auto_upgrade", auto_upgrade)
         if destroy_all_associated_resources is not None:
-            pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
+            _setter("destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
-            pulumi.set(__self__, "ha", ha)
+            _setter("ha", ha)
         if maintenance_policy is not None:
-            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+            _setter("maintenance_policy", maintenance_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if registry_integration is not None:
-            pulumi.set(__self__, "registry_integration", registry_integration)
+            _setter("registry_integration", registry_integration)
         if surge_upgrade is not None:
-            pulumi.set(__self__, "surge_upgrade", surge_upgrade)
+            _setter("surge_upgrade", surge_upgrade)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_uuid is not None:
-            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+            _setter("vpc_uuid", vpc_uuid)
 
     @property
     @pulumi.getter(name="nodePool")
@@ -264,48 +295,97 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
+        _KubernetesClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_upgrade=auto_upgrade,
+            cluster_subnet=cluster_subnet,
+            cluster_urn=cluster_urn,
+            created_at=created_at,
+            destroy_all_associated_resources=destroy_all_associated_resources,
+            endpoint=endpoint,
+            ha=ha,
+            ipv4_address=ipv4_address,
+            kube_configs=kube_configs,
+            maintenance_policy=maintenance_policy,
+            name=name,
+            node_pool=node_pool,
+            region=region,
+            registry_integration=registry_integration,
+            service_subnet=service_subnet,
+            status=status,
+            surge_upgrade=surge_upgrade,
+            tags=tags,
+            updated_at=updated_at,
+            version=version,
+            vpc_uuid=vpc_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_upgrade: Optional[pulumi.Input[bool]] = None,
+             cluster_subnet: Optional[pulumi.Input[str]] = None,
+             cluster_urn: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             ha: Optional[pulumi.Input[bool]] = None,
+             ipv4_address: Optional[pulumi.Input[str]] = None,
+             kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
+             maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             registry_integration: Optional[pulumi.Input[bool]] = None,
+             service_subnet: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             surge_upgrade: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             vpc_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+            _setter("auto_upgrade", auto_upgrade)
         if cluster_subnet is not None:
-            pulumi.set(__self__, "cluster_subnet", cluster_subnet)
+            _setter("cluster_subnet", cluster_subnet)
         if cluster_urn is not None:
-            pulumi.set(__self__, "cluster_urn", cluster_urn)
+            _setter("cluster_urn", cluster_urn)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if destroy_all_associated_resources is not None:
-            pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
+            _setter("destroy_all_associated_resources", destroy_all_associated_resources)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if ha is not None:
-            pulumi.set(__self__, "ha", ha)
+            _setter("ha", ha)
         if ipv4_address is not None:
-            pulumi.set(__self__, "ipv4_address", ipv4_address)
+            _setter("ipv4_address", ipv4_address)
         if kube_configs is not None:
-            pulumi.set(__self__, "kube_configs", kube_configs)
+            _setter("kube_configs", kube_configs)
         if maintenance_policy is not None:
-            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+            _setter("maintenance_policy", maintenance_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_pool is not None:
-            pulumi.set(__self__, "node_pool", node_pool)
+            _setter("node_pool", node_pool)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if registry_integration is not None:
-            pulumi.set(__self__, "registry_integration", registry_integration)
+            _setter("registry_integration", registry_integration)
         if service_subnet is not None:
-            pulumi.set(__self__, "service_subnet", service_subnet)
+            _setter("service_subnet", service_subnet)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if surge_upgrade is not None:
-            pulumi.set(__self__, "surge_upgrade", surge_upgrade)
+            _setter("surge_upgrade", surge_upgrade)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if vpc_uuid is not None:
-            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+            _setter("vpc_uuid", vpc_uuid)
 
     @property
     @pulumi.getter(name="autoUpgrade")
@@ -640,6 +720,10 @@ class KubernetesCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KubernetesClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -669,8 +753,18 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
+            if maintenance_policy is not None and not isinstance(maintenance_policy, KubernetesClusterMaintenancePolicyArgs):
+                maintenance_policy = maintenance_policy or {}
+                def _setter(key, value):
+                    maintenance_policy[key] = value
+                KubernetesClusterMaintenancePolicyArgs._configure(_setter, **maintenance_policy)
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
+            if node_pool is not None and not isinstance(node_pool, KubernetesClusterNodePoolArgs):
+                node_pool = node_pool or {}
+                def _setter(key, value):
+                    node_pool[key] = value
+                KubernetesClusterNodePoolArgs._configure(_setter, **node_pool)
             if node_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool'")
             __props__.__dict__["node_pool"] = node_pool

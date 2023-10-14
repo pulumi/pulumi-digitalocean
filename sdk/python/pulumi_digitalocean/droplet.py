@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._enums import *
 
@@ -72,41 +72,82 @@ class DropletArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "size", size)
+        DropletArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image=image,
+            size=size,
+            backups=backups,
+            droplet_agent=droplet_agent,
+            graceful_shutdown=graceful_shutdown,
+            ipv6=ipv6,
+            ipv6_address=ipv6_address,
+            monitoring=monitoring,
+            name=name,
+            private_networking=private_networking,
+            region=region,
+            resize_disk=resize_disk,
+            ssh_keys=ssh_keys,
+            tags=tags,
+            user_data=user_data,
+            volume_ids=volume_ids,
+            vpc_uuid=vpc_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image: pulumi.Input[str],
+             size: pulumi.Input[Union[str, 'DropletSlug']],
+             backups: Optional[pulumi.Input[bool]] = None,
+             droplet_agent: Optional[pulumi.Input[bool]] = None,
+             graceful_shutdown: Optional[pulumi.Input[bool]] = None,
+             ipv6: Optional[pulumi.Input[bool]] = None,
+             ipv6_address: Optional[pulumi.Input[str]] = None,
+             monitoring: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_networking: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             resize_disk: Optional[pulumi.Input[bool]] = None,
+             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image", image)
+        _setter("size", size)
         if backups is not None:
-            pulumi.set(__self__, "backups", backups)
+            _setter("backups", backups)
         if droplet_agent is not None:
-            pulumi.set(__self__, "droplet_agent", droplet_agent)
+            _setter("droplet_agent", droplet_agent)
         if graceful_shutdown is not None:
-            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
+            _setter("graceful_shutdown", graceful_shutdown)
         if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+            _setter("ipv6", ipv6)
         if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
+            _setter("ipv6_address", ipv6_address)
         if monitoring is not None:
-            pulumi.set(__self__, "monitoring", monitoring)
+            _setter("monitoring", monitoring)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_networking is not None:
             warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
             pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
-            pulumi.set(__self__, "private_networking", private_networking)
+            _setter("private_networking", private_networking)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resize_disk is not None:
-            pulumi.set(__self__, "resize_disk", resize_disk)
+            _setter("resize_disk", resize_disk)
         if ssh_keys is not None:
-            pulumi.set(__self__, "ssh_keys", ssh_keys)
+            _setter("ssh_keys", ssh_keys)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if volume_ids is not None:
-            pulumi.set(__self__, "volume_ids", volume_ids)
+            _setter("volume_ids", volume_ids)
         if vpc_uuid is not None:
-            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+            _setter("vpc_uuid", vpc_uuid)
 
     @property
     @pulumi.getter
@@ -416,65 +457,128 @@ class _DropletState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
+        _DropletState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backups=backups,
+            created_at=created_at,
+            disk=disk,
+            droplet_agent=droplet_agent,
+            droplet_urn=droplet_urn,
+            graceful_shutdown=graceful_shutdown,
+            image=image,
+            ipv4_address=ipv4_address,
+            ipv4_address_private=ipv4_address_private,
+            ipv6=ipv6,
+            ipv6_address=ipv6_address,
+            locked=locked,
+            memory=memory,
+            monitoring=monitoring,
+            name=name,
+            price_hourly=price_hourly,
+            price_monthly=price_monthly,
+            private_networking=private_networking,
+            region=region,
+            resize_disk=resize_disk,
+            size=size,
+            ssh_keys=ssh_keys,
+            status=status,
+            tags=tags,
+            user_data=user_data,
+            vcpus=vcpus,
+            volume_ids=volume_ids,
+            vpc_uuid=vpc_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backups: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             disk: Optional[pulumi.Input[int]] = None,
+             droplet_agent: Optional[pulumi.Input[bool]] = None,
+             droplet_urn: Optional[pulumi.Input[str]] = None,
+             graceful_shutdown: Optional[pulumi.Input[bool]] = None,
+             image: Optional[pulumi.Input[str]] = None,
+             ipv4_address: Optional[pulumi.Input[str]] = None,
+             ipv4_address_private: Optional[pulumi.Input[str]] = None,
+             ipv6: Optional[pulumi.Input[bool]] = None,
+             ipv6_address: Optional[pulumi.Input[str]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             memory: Optional[pulumi.Input[int]] = None,
+             monitoring: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             price_hourly: Optional[pulumi.Input[float]] = None,
+             price_monthly: Optional[pulumi.Input[float]] = None,
+             private_networking: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             resize_disk: Optional[pulumi.Input[bool]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
+             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             vcpus: Optional[pulumi.Input[int]] = None,
+             volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backups is not None:
-            pulumi.set(__self__, "backups", backups)
+            _setter("backups", backups)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if disk is not None:
-            pulumi.set(__self__, "disk", disk)
+            _setter("disk", disk)
         if droplet_agent is not None:
-            pulumi.set(__self__, "droplet_agent", droplet_agent)
+            _setter("droplet_agent", droplet_agent)
         if droplet_urn is not None:
-            pulumi.set(__self__, "droplet_urn", droplet_urn)
+            _setter("droplet_urn", droplet_urn)
         if graceful_shutdown is not None:
-            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
+            _setter("graceful_shutdown", graceful_shutdown)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if ipv4_address is not None:
-            pulumi.set(__self__, "ipv4_address", ipv4_address)
+            _setter("ipv4_address", ipv4_address)
         if ipv4_address_private is not None:
-            pulumi.set(__self__, "ipv4_address_private", ipv4_address_private)
+            _setter("ipv4_address_private", ipv4_address_private)
         if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+            _setter("ipv6", ipv6)
         if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
+            _setter("ipv6_address", ipv6_address)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if monitoring is not None:
-            pulumi.set(__self__, "monitoring", monitoring)
+            _setter("monitoring", monitoring)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if price_hourly is not None:
-            pulumi.set(__self__, "price_hourly", price_hourly)
+            _setter("price_hourly", price_hourly)
         if price_monthly is not None:
-            pulumi.set(__self__, "price_monthly", price_monthly)
+            _setter("price_monthly", price_monthly)
         if private_networking is not None:
             warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
             pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
-            pulumi.set(__self__, "private_networking", private_networking)
+            _setter("private_networking", private_networking)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resize_disk is not None:
-            pulumi.set(__self__, "resize_disk", resize_disk)
+            _setter("resize_disk", resize_disk)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if ssh_keys is not None:
-            pulumi.set(__self__, "ssh_keys", ssh_keys)
+            _setter("ssh_keys", ssh_keys)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if vcpus is not None:
-            pulumi.set(__self__, "vcpus", vcpus)
+            _setter("vcpus", vcpus)
         if volume_ids is not None:
-            pulumi.set(__self__, "volume_ids", volume_ids)
+            _setter("volume_ids", volume_ids)
         if vpc_uuid is not None:
-            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+            _setter("vpc_uuid", vpc_uuid)
 
     @property
     @pulumi.getter
@@ -959,6 +1063,10 @@ class Droplet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DropletArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1000,9 +1108,6 @@ class Droplet(pulumi.CustomResource):
             __props__.__dict__["ipv6_address"] = ipv6_address
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
-            if private_networking is not None and not opts.urn:
-                warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
-                pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
             __props__.__dict__["private_networking"] = private_networking
             __props__.__dict__["region"] = region
             __props__.__dict__["resize_disk"] = resize_disk

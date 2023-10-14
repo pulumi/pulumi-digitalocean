@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._enums import *
@@ -47,28 +47,61 @@ class DatabaseClusterArgs:
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
                When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "node_count", node_count)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "size", size)
+        DatabaseClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            node_count=node_count,
+            region=region,
+            size=size,
+            backup_restore=backup_restore,
+            eviction_policy=eviction_policy,
+            maintenance_windows=maintenance_windows,
+            name=name,
+            private_network_uuid=private_network_uuid,
+            project_id=project_id,
+            sql_mode=sql_mode,
+            tags=tags,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: pulumi.Input[str],
+             node_count: pulumi.Input[int],
+             region: pulumi.Input[Union[str, 'Region']],
+             size: pulumi.Input[Union[str, 'DatabaseSlug']],
+             backup_restore: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']] = None,
+             eviction_policy: Optional[pulumi.Input[str]] = None,
+             maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_network_uuid: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             sql_mode: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("node_count", node_count)
+        _setter("region", region)
+        _setter("size", size)
         if backup_restore is not None:
-            pulumi.set(__self__, "backup_restore", backup_restore)
+            _setter("backup_restore", backup_restore)
         if eviction_policy is not None:
-            pulumi.set(__self__, "eviction_policy", eviction_policy)
+            _setter("eviction_policy", eviction_policy)
         if maintenance_windows is not None:
-            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+            _setter("maintenance_windows", maintenance_windows)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_network_uuid is not None:
-            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+            _setter("private_network_uuid", private_network_uuid)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if sql_mode is not None:
-            pulumi.set(__self__, "sql_mode", sql_mode)
+            _setter("sql_mode", sql_mode)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -279,50 +312,101 @@ class _DatabaseClusterState:
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
                When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         """
+        _DatabaseClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_restore=backup_restore,
+            cluster_urn=cluster_urn,
+            database=database,
+            engine=engine,
+            eviction_policy=eviction_policy,
+            host=host,
+            maintenance_windows=maintenance_windows,
+            name=name,
+            node_count=node_count,
+            password=password,
+            port=port,
+            private_host=private_host,
+            private_network_uuid=private_network_uuid,
+            private_uri=private_uri,
+            project_id=project_id,
+            region=region,
+            size=size,
+            sql_mode=sql_mode,
+            tags=tags,
+            uri=uri,
+            user=user,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_restore: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']] = None,
+             cluster_urn: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             eviction_policy: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             private_host: Optional[pulumi.Input[str]] = None,
+             private_network_uuid: Optional[pulumi.Input[str]] = None,
+             private_uri: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+             sql_mode: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_restore is not None:
-            pulumi.set(__self__, "backup_restore", backup_restore)
+            _setter("backup_restore", backup_restore)
         if cluster_urn is not None:
-            pulumi.set(__self__, "cluster_urn", cluster_urn)
+            _setter("cluster_urn", cluster_urn)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if eviction_policy is not None:
-            pulumi.set(__self__, "eviction_policy", eviction_policy)
+            _setter("eviction_policy", eviction_policy)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if maintenance_windows is not None:
-            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+            _setter("maintenance_windows", maintenance_windows)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if private_host is not None:
-            pulumi.set(__self__, "private_host", private_host)
+            _setter("private_host", private_host)
         if private_network_uuid is not None:
-            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+            _setter("private_network_uuid", private_network_uuid)
         if private_uri is not None:
-            pulumi.set(__self__, "private_uri", private_uri)
+            _setter("private_uri", private_uri)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if sql_mode is not None:
-            pulumi.set(__self__, "sql_mode", sql_mode)
+            _setter("sql_mode", sql_mode)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="backupRestore")
@@ -814,6 +898,10 @@ class DatabaseCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -841,6 +929,11 @@ class DatabaseCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseClusterArgs.__new__(DatabaseClusterArgs)
 
+            if backup_restore is not None and not isinstance(backup_restore, DatabaseClusterBackupRestoreArgs):
+                backup_restore = backup_restore or {}
+                def _setter(key, value):
+                    backup_restore[key] = value
+                DatabaseClusterBackupRestoreArgs._configure(_setter, **backup_restore)
             __props__.__dict__["backup_restore"] = backup_restore
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")

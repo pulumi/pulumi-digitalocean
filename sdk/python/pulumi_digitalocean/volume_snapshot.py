@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VolumeSnapshotArgs', 'VolumeSnapshot']
@@ -23,11 +23,24 @@ class VolumeSnapshotArgs:
         :param pulumi.Input[str] name: A name for the volume snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this volume snapshot.
         """
-        pulumi.set(__self__, "volume_id", volume_id)
+        VolumeSnapshotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            volume_id=volume_id,
+            name=name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             volume_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("volume_id", volume_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -86,20 +99,41 @@ class _VolumeSnapshotState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this volume snapshot.
         :param pulumi.Input[str] volume_id: The ID of the volume from which the volume snapshot originated.
         """
+        _VolumeSnapshotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            min_disk_size=min_disk_size,
+            name=name,
+            regions=regions,
+            size=size,
+            tags=tags,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             min_disk_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             size: Optional[pulumi.Input[float]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             volume_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if min_disk_size is not None:
-            pulumi.set(__self__, "min_disk_size", min_disk_size)
+            _setter("min_disk_size", min_disk_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if regions is not None:
-            pulumi.set(__self__, "regions", regions)
+            _setter("regions", regions)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -265,6 +299,10 @@ class VolumeSnapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeSnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
