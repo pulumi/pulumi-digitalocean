@@ -41,13 +41,27 @@ class DatabaseConnectionPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             db_name: pulumi.Input[str],
-             mode: pulumi.Input[str],
-             size: pulumi.Input[int],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             db_name: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if db_name is None:
+            raise TypeError("Missing 'db_name' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("cluster_id", cluster_id)
         _setter("db_name", db_name)
         _setter("mode", mode)
@@ -190,7 +204,17 @@ class _DatabaseConnectionPoolState:
              size: Optional[pulumi.Input[int]] = None,
              uri: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if private_host is None and 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if private_uri is None and 'privateUri' in kwargs:
+            private_uri = kwargs['privateUri']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if db_name is not None:

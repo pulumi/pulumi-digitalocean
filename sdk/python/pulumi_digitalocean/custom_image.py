@@ -41,13 +41,19 @@ class CustomImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             regions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             url: pulumi.Input[str],
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              distribution: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("regions", regions)
         _setter("url", url)
         if description is not None:
@@ -200,7 +206,17 @@ class _CustomImageState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if min_disk_size is None and 'minDiskSize' in kwargs:
+            min_disk_size = kwargs['minDiskSize']
+        if size_gigabytes is None and 'sizeGigabytes' in kwargs:
+            size_gigabytes = kwargs['sizeGigabytes']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if description is not None:

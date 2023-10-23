@@ -55,7 +55,15 @@ class CertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_chain is None and 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if leaf_certificate is None and 'leafCertificate' in kwargs:
+            leaf_certificate = kwargs['leafCertificate']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         if certificate_chain is not None:
             _setter("certificate_chain", certificate_chain)
         if domains is not None:
@@ -207,7 +215,19 @@ class _CertificateState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_chain is None and 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if leaf_certificate is None and 'leafCertificate' in kwargs:
+            leaf_certificate = kwargs['leafCertificate']
+        if not_after is None and 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if certificate_chain is not None:
             _setter("certificate_chain", certificate_chain)
         if domains is not None:

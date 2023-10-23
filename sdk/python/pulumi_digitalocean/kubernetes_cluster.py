@@ -64,9 +64,9 @@ class KubernetesClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_pool: pulumi.Input['KubernetesClusterNodePoolArgs'],
-             region: pulumi.Input[Union[str, 'Region']],
-             version: pulumi.Input[str],
+             node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              auto_upgrade: Optional[pulumi.Input[bool]] = None,
              destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
              ha: Optional[pulumi.Input[bool]] = None,
@@ -76,7 +76,29 @@ class KubernetesClusterArgs:
              surge_upgrade: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool is None and 'nodePool' in kwargs:
+            node_pool = kwargs['nodePool']
+        if node_pool is None:
+            raise TypeError("Missing 'node_pool' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+        if destroy_all_associated_resources is None and 'destroyAllAssociatedResources' in kwargs:
+            destroy_all_associated_resources = kwargs['destroyAllAssociatedResources']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if registry_integration is None and 'registryIntegration' in kwargs:
+            registry_integration = kwargs['registryIntegration']
+        if surge_upgrade is None and 'surgeUpgrade' in kwargs:
+            surge_upgrade = kwargs['surgeUpgrade']
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+
         _setter("node_pool", node_pool)
         _setter("region", region)
         _setter("version", version)
@@ -343,7 +365,37 @@ class _KubernetesClusterState:
              updated_at: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              vpc_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+        if cluster_subnet is None and 'clusterSubnet' in kwargs:
+            cluster_subnet = kwargs['clusterSubnet']
+        if cluster_urn is None and 'clusterUrn' in kwargs:
+            cluster_urn = kwargs['clusterUrn']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if destroy_all_associated_resources is None and 'destroyAllAssociatedResources' in kwargs:
+            destroy_all_associated_resources = kwargs['destroyAllAssociatedResources']
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if kube_configs is None and 'kubeConfigs' in kwargs:
+            kube_configs = kwargs['kubeConfigs']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if node_pool is None and 'nodePool' in kwargs:
+            node_pool = kwargs['nodePool']
+        if registry_integration is None and 'registryIntegration' in kwargs:
+            registry_integration = kwargs['registryIntegration']
+        if service_subnet is None and 'serviceSubnet' in kwargs:
+            service_subnet = kwargs['serviceSubnet']
+        if surge_upgrade is None and 'surgeUpgrade' in kwargs:
+            surge_upgrade = kwargs['surgeUpgrade']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+
         if auto_upgrade is not None:
             _setter("auto_upgrade", auto_upgrade)
         if cluster_subnet is not None:

@@ -34,10 +34,20 @@ class SpacesBucketCorsConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             cors_rules: pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]],
-             region: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[pulumi.Input[str]] = None,
+             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if cors_rules is None:
+            raise TypeError("Missing 'cors_rules' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+
         _setter("bucket", bucket)
         _setter("cors_rules", cors_rules)
         _setter("region", region)
@@ -103,7 +113,11 @@ class _SpacesBucketCorsConfigurationState:
              bucket: Optional[pulumi.Input[str]] = None,
              cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if cors_rules is not None:

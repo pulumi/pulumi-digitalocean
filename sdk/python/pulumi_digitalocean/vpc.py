@@ -35,11 +35,17 @@ class VpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ip_range: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+
         _setter("region", region)
         if description is not None:
             _setter("description", description)
@@ -137,7 +143,15 @@ class _VpcState:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              vpc_urn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if vpc_urn is None and 'vpcUrn' in kwargs:
+            vpc_urn = kwargs['vpcUrn']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if default is not None:

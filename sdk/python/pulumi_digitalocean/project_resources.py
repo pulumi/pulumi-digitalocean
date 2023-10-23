@@ -29,9 +29,15 @@ class ProjectResourcesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             resources: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+
         _setter("project", project)
         _setter("resources", resources)
 
@@ -80,7 +86,9 @@ class _ProjectResourcesState:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if project is not None:
             _setter("project", project)
         if resources is not None:

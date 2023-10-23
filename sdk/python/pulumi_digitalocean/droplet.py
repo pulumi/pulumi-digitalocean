@@ -95,8 +95,8 @@ class DropletArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
-             size: pulumi.Input[Union[str, 'DropletSlug']],
+             image: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
              backups: Optional[pulumi.Input[bool]] = None,
              droplet_agent: Optional[pulumi.Input[bool]] = None,
              graceful_shutdown: Optional[pulumi.Input[bool]] = None,
@@ -112,7 +112,31 @@ class DropletArgs:
              user_data: Optional[pulumi.Input[str]] = None,
              volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if droplet_agent is None and 'dropletAgent' in kwargs:
+            droplet_agent = kwargs['dropletAgent']
+        if graceful_shutdown is None and 'gracefulShutdown' in kwargs:
+            graceful_shutdown = kwargs['gracefulShutdown']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if private_networking is None and 'privateNetworking' in kwargs:
+            private_networking = kwargs['privateNetworking']
+        if resize_disk is None and 'resizeDisk' in kwargs:
+            resize_disk = kwargs['resizeDisk']
+        if ssh_keys is None and 'sshKeys' in kwargs:
+            ssh_keys = kwargs['sshKeys']
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if volume_ids is None and 'volumeIds' in kwargs:
+            volume_ids = kwargs['volumeIds']
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+
         _setter("image", image)
         _setter("size", size)
         if backups is not None:
@@ -519,7 +543,39 @@ class _DropletState:
              vcpus: Optional[pulumi.Input[int]] = None,
              volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if droplet_agent is None and 'dropletAgent' in kwargs:
+            droplet_agent = kwargs['dropletAgent']
+        if droplet_urn is None and 'dropletUrn' in kwargs:
+            droplet_urn = kwargs['dropletUrn']
+        if graceful_shutdown is None and 'gracefulShutdown' in kwargs:
+            graceful_shutdown = kwargs['gracefulShutdown']
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if ipv4_address_private is None and 'ipv4AddressPrivate' in kwargs:
+            ipv4_address_private = kwargs['ipv4AddressPrivate']
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if price_hourly is None and 'priceHourly' in kwargs:
+            price_hourly = kwargs['priceHourly']
+        if price_monthly is None and 'priceMonthly' in kwargs:
+            price_monthly = kwargs['priceMonthly']
+        if private_networking is None and 'privateNetworking' in kwargs:
+            private_networking = kwargs['privateNetworking']
+        if resize_disk is None and 'resizeDisk' in kwargs:
+            resize_disk = kwargs['resizeDisk']
+        if ssh_keys is None and 'sshKeys' in kwargs:
+            ssh_keys = kwargs['sshKeys']
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if volume_ids is None and 'volumeIds' in kwargs:
+            volume_ids = kwargs['volumeIds']
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+
         if backups is not None:
             _setter("backups", backups)
         if created_at is not None:

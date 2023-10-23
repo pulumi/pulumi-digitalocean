@@ -42,13 +42,21 @@ class DatabaseReplicaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_network_uuid: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
              size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+
         _setter("cluster_id", cluster_id)
         if name is not None:
             _setter("name", name)
@@ -206,7 +214,17 @@ class _DatabaseReplicaState:
              uri: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if private_host is None and 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+        if private_uri is None and 'privateUri' in kwargs:
+            private_uri = kwargs['privateUri']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if database is not None:

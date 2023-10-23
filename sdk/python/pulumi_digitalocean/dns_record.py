@@ -54,9 +54,9 @@ class DnsRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             type: pulumi.Input[Union[str, 'RecordType']],
-             value: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              flags: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
@@ -64,7 +64,15 @@ class DnsRecordArgs:
              tag: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("domain", domain)
         _setter("type", type)
         _setter("value", value)
@@ -260,7 +268,9 @@ class _DnsRecordState:
              type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
              value: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if flags is not None:

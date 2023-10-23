@@ -47,7 +47,11 @@ class ProjectArgs:
              name: Optional[pulumi.Input[str]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+
         if description is not None:
             _setter("description", description)
         if environment is not None:
@@ -186,7 +190,19 @@ class _ProjectState:
              purpose: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if owner_id is None and 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if owner_uuid is None and 'ownerUuid' in kwargs:
+            owner_uuid = kwargs['ownerUuid']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if description is not None:

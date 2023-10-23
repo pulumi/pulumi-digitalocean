@@ -32,10 +32,18 @@ class ReservedIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
              droplet_id: Optional[pulumi.Input[int]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("region", region)
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
@@ -107,7 +115,13 @@ class _ReservedIpState:
              ip_address: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              urn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if ip_address is not None:

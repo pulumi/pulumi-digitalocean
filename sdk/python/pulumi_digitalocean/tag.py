@@ -27,7 +27,9 @@ class TagArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -84,7 +86,21 @@ class _TagState:
              total_resource_count: Optional[pulumi.Input[int]] = None,
              volume_snapshots_count: Optional[pulumi.Input[int]] = None,
              volumes_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if databases_count is None and 'databasesCount' in kwargs:
+            databases_count = kwargs['databasesCount']
+        if droplets_count is None and 'dropletsCount' in kwargs:
+            droplets_count = kwargs['dropletsCount']
+        if images_count is None and 'imagesCount' in kwargs:
+            images_count = kwargs['imagesCount']
+        if total_resource_count is None and 'totalResourceCount' in kwargs:
+            total_resource_count = kwargs['totalResourceCount']
+        if volume_snapshots_count is None and 'volumeSnapshotsCount' in kwargs:
+            volume_snapshots_count = kwargs['volumeSnapshotsCount']
+        if volumes_count is None and 'volumesCount' in kwargs:
+            volumes_count = kwargs['volumesCount']
+
         if databases_count is not None:
             _setter("databases_count", databases_count)
         if droplets_count is not None:

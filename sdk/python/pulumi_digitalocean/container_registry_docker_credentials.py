@@ -32,10 +32,18 @@ class ContainerRegistryDockerCredentialsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             registry_name: pulumi.Input[str],
+             registry_name: Optional[pulumi.Input[str]] = None,
              expiry_seconds: Optional[pulumi.Input[int]] = None,
              write: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if registry_name is None and 'registryName' in kwargs:
+            registry_name = kwargs['registryName']
+        if registry_name is None:
+            raise TypeError("Missing 'registry_name' argument")
+        if expiry_seconds is None and 'expirySeconds' in kwargs:
+            expiry_seconds = kwargs['expirySeconds']
+
         _setter("registry_name", registry_name)
         if expiry_seconds is not None:
             _setter("expiry_seconds", expiry_seconds)
@@ -111,7 +119,17 @@ class _ContainerRegistryDockerCredentialsState:
              expiry_seconds: Optional[pulumi.Input[int]] = None,
              registry_name: Optional[pulumi.Input[str]] = None,
              write: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if credential_expiration_time is None and 'credentialExpirationTime' in kwargs:
+            credential_expiration_time = kwargs['credentialExpirationTime']
+        if docker_credentials is None and 'dockerCredentials' in kwargs:
+            docker_credentials = kwargs['dockerCredentials']
+        if expiry_seconds is None and 'expirySeconds' in kwargs:
+            expiry_seconds = kwargs['expirySeconds']
+        if registry_name is None and 'registryName' in kwargs:
+            registry_name = kwargs['registryName']
+
         if credential_expiration_time is not None:
             _setter("credential_expiration_time", credential_expiration_time)
         if docker_credentials is not None:

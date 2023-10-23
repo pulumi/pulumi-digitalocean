@@ -38,12 +38,16 @@ class UptimeCheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[str],
+             target: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+
         _setter("target", target)
         if enabled is not None:
             _setter("enabled", enabled)
@@ -147,7 +151,9 @@ class _UptimeCheckState:
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
         if name is not None:

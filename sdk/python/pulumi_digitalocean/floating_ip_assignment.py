@@ -29,9 +29,19 @@ class FloatingIpAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             droplet_id: pulumi.Input[int],
-             ip_address: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if droplet_id is None:
+            raise TypeError("Missing 'droplet_id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+
         _setter("droplet_id", droplet_id)
         _setter("ip_address", ip_address)
 
@@ -80,7 +90,13 @@ class _FloatingIpAssignmentState:
              _setter: Callable[[Any, Any], None],
              droplet_id: Optional[pulumi.Input[int]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if ip_address is not None:

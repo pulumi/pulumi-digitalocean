@@ -66,10 +66,10 @@ class DatabaseClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: pulumi.Input[str],
-             node_count: pulumi.Input[int],
-             region: pulumi.Input[Union[str, 'Region']],
-             size: pulumi.Input[Union[str, 'DatabaseSlug']],
+             engine: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
              backup_restore: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']] = None,
              eviction_policy: Optional[pulumi.Input[str]] = None,
              maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
@@ -79,7 +79,31 @@ class DatabaseClusterArgs:
              sql_mode: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if backup_restore is None and 'backupRestore' in kwargs:
+            backup_restore = kwargs['backupRestore']
+        if eviction_policy is None and 'evictionPolicy' in kwargs:
+            eviction_policy = kwargs['evictionPolicy']
+        if maintenance_windows is None and 'maintenanceWindows' in kwargs:
+            maintenance_windows = kwargs['maintenanceWindows']
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+
         _setter("engine", engine)
         _setter("node_count", node_count)
         _setter("region", region)
@@ -362,7 +386,29 @@ class _DatabaseClusterState:
              uri: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_restore is None and 'backupRestore' in kwargs:
+            backup_restore = kwargs['backupRestore']
+        if cluster_urn is None and 'clusterUrn' in kwargs:
+            cluster_urn = kwargs['clusterUrn']
+        if eviction_policy is None and 'evictionPolicy' in kwargs:
+            eviction_policy = kwargs['evictionPolicy']
+        if maintenance_windows is None and 'maintenanceWindows' in kwargs:
+            maintenance_windows = kwargs['maintenanceWindows']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if private_host is None and 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+        if private_uri is None and 'privateUri' in kwargs:
+            private_uri = kwargs['privateUri']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+
         if backup_restore is not None:
             _setter("backup_restore", backup_restore)
         if cluster_urn is not None:

@@ -54,7 +54,15 @@ class SpacesBucketArgs:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
              versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+
         if acl is not None:
             _setter("acl", acl)
         if cors_rules is not None:
@@ -213,7 +221,19 @@ class _SpacesBucketState:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
              versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_domain_name is None and 'bucketDomainName' in kwargs:
+            bucket_domain_name = kwargs['bucketDomainName']
+        if bucket_urn is None and 'bucketUrn' in kwargs:
+            bucket_urn = kwargs['bucketUrn']
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+
         if acl is not None:
             _setter("acl", acl)
         if bucket_domain_name is not None:

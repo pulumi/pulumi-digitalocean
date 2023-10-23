@@ -46,14 +46,24 @@ class UptimeAlertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             check_id: pulumi.Input[str],
-             notifications: pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]],
-             type: pulumi.Input[str],
+             check_id: Optional[pulumi.Input[str]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              comparison: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_id is None and 'checkId' in kwargs:
+            check_id = kwargs['checkId']
+        if check_id is None:
+            raise TypeError("Missing 'check_id' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("check_id", check_id)
         _setter("notifications", notifications)
         _setter("type", type)
@@ -191,7 +201,11 @@ class _UptimeAlertState:
              period: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if check_id is None and 'checkId' in kwargs:
+            check_id = kwargs['checkId']
+
         if check_id is not None:
             _setter("check_id", check_id)
         if comparison is not None:

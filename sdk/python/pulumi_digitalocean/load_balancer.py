@@ -89,8 +89,8 @@ class LoadBalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forwarding_rules: pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]],
-             region: pulumi.Input[Union[str, 'Region']],
+             forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
              algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
              disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
              droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -107,7 +107,37 @@ class LoadBalancerArgs:
              size_unit: Optional[pulumi.Input[int]] = None,
              sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
              vpc_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if forwarding_rules is None and 'forwardingRules' in kwargs:
+            forwarding_rules = kwargs['forwardingRules']
+        if forwarding_rules is None:
+            raise TypeError("Missing 'forwarding_rules' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if disable_lets_encrypt_dns_records is None and 'disableLetsEncryptDnsRecords' in kwargs:
+            disable_lets_encrypt_dns_records = kwargs['disableLetsEncryptDnsRecords']
+        if droplet_ids is None and 'dropletIds' in kwargs:
+            droplet_ids = kwargs['dropletIds']
+        if droplet_tag is None and 'dropletTag' in kwargs:
+            droplet_tag = kwargs['dropletTag']
+        if enable_backend_keepalive is None and 'enableBackendKeepalive' in kwargs:
+            enable_backend_keepalive = kwargs['enableBackendKeepalive']
+        if enable_proxy_protocol is None and 'enableProxyProtocol' in kwargs:
+            enable_proxy_protocol = kwargs['enableProxyProtocol']
+        if http_idle_timeout_seconds is None and 'httpIdleTimeoutSeconds' in kwargs:
+            http_idle_timeout_seconds = kwargs['httpIdleTimeoutSeconds']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if redirect_http_to_https is None and 'redirectHttpToHttps' in kwargs:
+            redirect_http_to_https = kwargs['redirectHttpToHttps']
+        if size_unit is None and 'sizeUnit' in kwargs:
+            size_unit = kwargs['sizeUnit']
+        if sticky_sessions is None and 'stickySessions' in kwargs:
+            sticky_sessions = kwargs['stickySessions']
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+
         _setter("forwarding_rules", forwarding_rules)
         _setter("region", region)
         if algorithm is not None:
@@ -473,7 +503,35 @@ class _LoadBalancerState:
              status: Optional[pulumi.Input[str]] = None,
              sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
              vpc_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disable_lets_encrypt_dns_records is None and 'disableLetsEncryptDnsRecords' in kwargs:
+            disable_lets_encrypt_dns_records = kwargs['disableLetsEncryptDnsRecords']
+        if droplet_ids is None and 'dropletIds' in kwargs:
+            droplet_ids = kwargs['dropletIds']
+        if droplet_tag is None and 'dropletTag' in kwargs:
+            droplet_tag = kwargs['dropletTag']
+        if enable_backend_keepalive is None and 'enableBackendKeepalive' in kwargs:
+            enable_backend_keepalive = kwargs['enableBackendKeepalive']
+        if enable_proxy_protocol is None and 'enableProxyProtocol' in kwargs:
+            enable_proxy_protocol = kwargs['enableProxyProtocol']
+        if forwarding_rules is None and 'forwardingRules' in kwargs:
+            forwarding_rules = kwargs['forwardingRules']
+        if http_idle_timeout_seconds is None and 'httpIdleTimeoutSeconds' in kwargs:
+            http_idle_timeout_seconds = kwargs['httpIdleTimeoutSeconds']
+        if load_balancer_urn is None and 'loadBalancerUrn' in kwargs:
+            load_balancer_urn = kwargs['loadBalancerUrn']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if redirect_http_to_https is None and 'redirectHttpToHttps' in kwargs:
+            redirect_http_to_https = kwargs['redirectHttpToHttps']
+        if size_unit is None and 'sizeUnit' in kwargs:
+            size_unit = kwargs['sizeUnit']
+        if sticky_sessions is None and 'stickySessions' in kwargs:
+            sticky_sessions = kwargs['stickySessions']
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if disable_lets_encrypt_dns_records is not None:

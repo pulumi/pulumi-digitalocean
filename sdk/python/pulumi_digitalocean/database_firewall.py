@@ -31,9 +31,17 @@ class DatabaseFirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             rules: pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("cluster_id", cluster_id)
         _setter("rules", rules)
 
@@ -82,7 +90,11 @@ class _DatabaseFirewallState:
              _setter: Callable[[Any, Any], None],
              cluster_id: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if rules is not None:

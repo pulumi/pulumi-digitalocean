@@ -29,9 +29,19 @@ class VolumeAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             droplet_id: pulumi.Input[int],
-             volume_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             volume_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if droplet_id is None:
+            raise TypeError("Missing 'droplet_id' argument")
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if volume_id is None:
+            raise TypeError("Missing 'volume_id' argument")
+
         _setter("droplet_id", droplet_id)
         _setter("volume_id", volume_id)
 
@@ -80,7 +90,13 @@ class _VolumeAttachmentState:
              _setter: Callable[[Any, Any], None],
              droplet_id: Optional[pulumi.Input[int]] = None,
              volume_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if volume_id is not None:

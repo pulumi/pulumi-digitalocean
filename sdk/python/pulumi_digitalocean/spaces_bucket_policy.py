@@ -32,10 +32,18 @@ class SpacesBucketPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             policy: pulumi.Input[str],
-             region: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+
         _setter("bucket", bucket)
         _setter("policy", policy)
         _setter("region", region)
@@ -101,7 +109,9 @@ class _SpacesBucketPolicyState:
              bucket: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if policy is not None:

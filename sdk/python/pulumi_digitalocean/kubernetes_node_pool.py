@@ -58,8 +58,8 @@ class KubernetesNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             size: pulumi.Input[Union[str, 'DropletSlug']],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
              auto_scale: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              max_nodes: Optional[pulumi.Input[int]] = None,
@@ -68,7 +68,23 @@ class KubernetesNodePoolArgs:
              node_count: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if auto_scale is None and 'autoScale' in kwargs:
+            auto_scale = kwargs['autoScale']
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         _setter("cluster_id", cluster_id)
         _setter("size", size)
         if auto_scale is not None:
@@ -273,7 +289,21 @@ class _KubernetesNodePoolState:
              size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if actual_node_count is None and 'actualNodeCount' in kwargs:
+            actual_node_count = kwargs['actualNodeCount']
+        if auto_scale is None and 'autoScale' in kwargs:
+            auto_scale = kwargs['autoScale']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         if actual_node_count is not None:
             _setter("actual_node_count", actual_node_count)
         if auto_scale is not None:
