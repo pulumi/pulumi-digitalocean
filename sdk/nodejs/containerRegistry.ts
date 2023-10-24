@@ -8,16 +8,6 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean Container Registry resource. A Container Registry is
  * a secure, private location to store your containers for rapid deployment.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * // Create a new container registry
- * const foobar = new digitalocean.ContainerRegistry("foobar", {subscriptionTierSlug: "starter"});
- * ```
- *
  * ## Import
  *
  * Container Registries can be imported using the `name`, e.g.

@@ -11,71 +11,9 @@ namespace Pulumi.DigitalOcean
 {
     public static class GetReservedIp
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the reserved IP:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
-        ///     {
-        ///         IpAddress = publicIp,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["fipOutput"] = example.Apply(getReservedIpResult =&gt; getReservedIpResult.DropletId),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetReservedIpResult> InvokeAsync(GetReservedIpArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the reserved IP:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
-        ///     {
-        ///         IpAddress = publicIp,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["fipOutput"] = example.Apply(getReservedIpResult =&gt; getReservedIpResult.DropletId),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetReservedIpResult> Invoke(GetReservedIpInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithDefaults());
     }

@@ -55,7 +55,15 @@ class CertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_chain is None and 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if leaf_certificate is None and 'leafCertificate' in kwargs:
+            leaf_certificate = kwargs['leafCertificate']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         if certificate_chain is not None:
             _setter("certificate_chain", certificate_chain)
         if domains is not None:
@@ -207,7 +215,19 @@ class _CertificateState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_chain is None and 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if leaf_certificate is None and 'leafCertificate' in kwargs:
+            leaf_certificate = kwargs['leafCertificate']
+        if not_after is None and 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if certificate_chain is not None:
             _setter("certificate_chain", certificate_chain)
         if domains is not None:
@@ -375,52 +395,6 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
-        ### Custom Certificate
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            type="custom",
-            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
-            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
-            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
-        ```
-        ### Let's Encrypt Certificate
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            domains=["example.com"],
-            type="lets_encrypt")
-        ```
-        ### Use with Other Resources
-
-        Both custom and Let's Encrypt certificates can be used with other resources
-        including the `LoadBalancer` and `Cdn` resources.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            type="lets_encrypt",
-            domains=["example.com"])
-        # Create a new Load Balancer with TLS termination
-        public = digitalocean.LoadBalancer("public",
-            region="nyc3",
-            droplet_tag="backend",
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=443,
-                entry_protocol="https",
-                target_port=80,
-                target_protocol="http",
-                certificate_name=cert.name,
-            )])
-        ```
 
         ## Import
 
@@ -461,52 +435,6 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
-        ### Custom Certificate
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            type="custom",
-            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
-            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
-            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
-        ```
-        ### Let's Encrypt Certificate
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            domains=["example.com"],
-            type="lets_encrypt")
-        ```
-        ### Use with Other Resources
-
-        Both custom and Let's Encrypt certificates can be used with other resources
-        including the `LoadBalancer` and `Cdn` resources.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            type="lets_encrypt",
-            domains=["example.com"])
-        # Create a new Load Balancer with TLS termination
-        public = digitalocean.LoadBalancer("public",
-            region="nyc3",
-            droplet_tag="backend",
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=443,
-                entry_protocol="https",
-                target_port=80,
-                target_protocol="http",
-                certificate_name=cert.name,
-            )])
-        ```
 
         ## Import
 

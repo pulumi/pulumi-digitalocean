@@ -54,9 +54,9 @@ class DnsRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             type: pulumi.Input[Union[str, 'RecordType']],
-             value: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              flags: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
@@ -64,7 +64,15 @@ class DnsRecordArgs:
              tag: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("domain", domain)
         _setter("type", type)
         _setter("value", value)
@@ -260,7 +268,9 @@ class _DnsRecordState:
              type: Optional[pulumi.Input[Union[str, 'RecordType']]] = None,
              value: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if flags is not None:
@@ -436,28 +446,6 @@ class DnsRecord(pulumi.CustomResource):
         """
         Provides a DigitalOcean DNS record resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        default = digitalocean.Domain("default", name="example.com")
-        # Add an A record to the domain for www.example.com.
-        www = digitalocean.DnsRecord("www",
-            domain=default.id,
-            type="A",
-            value="192.168.0.11")
-        # Add a MX record for the example.com domain itself.
-        mx = digitalocean.DnsRecord("mx",
-            domain=default.id,
-            type="MX",
-            priority=10,
-            value="mail.example.com.")
-        pulumi.export("wwwFqdn", www.fqdn)
-        pulumi.export("mxFqdn", mx.fqdn)
-        ```
-
         ## Import
 
         Records can be imported using the domain name and record `id` when joined with a comma. See the following example
@@ -491,28 +479,6 @@ class DnsRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DigitalOcean DNS record resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        default = digitalocean.Domain("default", name="example.com")
-        # Add an A record to the domain for www.example.com.
-        www = digitalocean.DnsRecord("www",
-            domain=default.id,
-            type="A",
-            value="192.168.0.11")
-        # Add a MX record for the example.com domain itself.
-        mx = digitalocean.DnsRecord("mx",
-            domain=default.id,
-            type="MX",
-            priority=10,
-            value="mail.example.com.")
-        pulumi.export("wwwFqdn", www.fqdn)
-        pulumi.export("mxFqdn", mx.fqdn)
-        ```
 
         ## Import
 

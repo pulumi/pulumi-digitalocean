@@ -29,9 +29,15 @@ class DatabaseDbArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+
         _setter("cluster_id", cluster_id)
         if name is not None:
             _setter("name", name)
@@ -81,7 +87,11 @@ class _DatabaseDbState:
              _setter: Callable[[Any, Any], None],
              cluster_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if name is not None:
@@ -124,19 +134,6 @@ class DatabaseDb(pulumi.CustomResource):
         Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
 
         ## Example Usage
-        ### Create a new PostgreSQL database
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
-        ```
 
         ## Import
 
@@ -161,19 +158,6 @@ class DatabaseDb(pulumi.CustomResource):
         Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
 
         ## Example Usage
-        ### Create a new PostgreSQL database
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
-        ```
 
         ## Import
 

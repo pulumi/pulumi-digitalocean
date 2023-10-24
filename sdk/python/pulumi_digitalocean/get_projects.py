@@ -89,44 +89,6 @@ def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterA
     obtain metadata about a single project if you already know the `id` to retrieve or the unique
     `name` of the project.
 
-    ## Example Usage
-
-    Use the `filter` block with a `key` string and `values` list to filter projects.
-
-    For example to find all staging environment projects:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    staging = digitalocean.get_projects(filters=[digitalocean.GetProjectsFilterArgs(
-        key="environment",
-        values=["Staging"],
-    )])
-    ```
-
-    You can filter on multiple fields and sort the results as well:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    non_default_production = digitalocean.get_projects(filters=[
-            digitalocean.GetProjectsFilterArgs(
-                key="environment",
-                values=["Production"],
-            ),
-            digitalocean.GetProjectsFilterArgs(
-                key="is_default",
-                values=["false"],
-            ),
-        ],
-        sorts=[digitalocean.GetProjectsSortArgs(
-            direction="asc",
-            key="name",
-        )])
-    ```
-
 
     :param Sequence[pulumi.InputType['GetProjectsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
@@ -158,44 +120,6 @@ def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     Note: You can use the `Project` data source to
     obtain metadata about a single project if you already know the `id` to retrieve or the unique
     `name` of the project.
-
-    ## Example Usage
-
-    Use the `filter` block with a `key` string and `values` list to filter projects.
-
-    For example to find all staging environment projects:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    staging = digitalocean.get_projects(filters=[digitalocean.GetProjectsFilterArgs(
-        key="environment",
-        values=["Staging"],
-    )])
-    ```
-
-    You can filter on multiple fields and sort the results as well:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    non_default_production = digitalocean.get_projects(filters=[
-            digitalocean.GetProjectsFilterArgs(
-                key="environment",
-                values=["Production"],
-            ),
-            digitalocean.GetProjectsFilterArgs(
-                key="is_default",
-                values=["false"],
-            ),
-        ],
-        sorts=[digitalocean.GetProjectsSortArgs(
-            direction="asc",
-            key="name",
-        )])
-    ```
 
 
     :param Sequence[pulumi.InputType['GetProjectsFilterArgs']] filters: Filter the results.

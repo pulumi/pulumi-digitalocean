@@ -32,10 +32,16 @@ class ContainerRegistryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             subscription_tier_slug: pulumi.Input[str],
+             subscription_tier_slug: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if subscription_tier_slug is None and 'subscriptionTierSlug' in kwargs:
+            subscription_tier_slug = kwargs['subscriptionTierSlug']
+        if subscription_tier_slug is None:
+            raise TypeError("Missing 'subscription_tier_slug' argument")
+
         _setter("subscription_tier_slug", subscription_tier_slug)
         if name is not None:
             _setter("name", name)
@@ -119,7 +125,17 @@ class _ContainerRegistryState:
              server_url: Optional[pulumi.Input[str]] = None,
              storage_usage_bytes: Optional[pulumi.Input[int]] = None,
              subscription_tier_slug: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if server_url is None and 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if storage_usage_bytes is None and 'storageUsageBytes' in kwargs:
+            storage_usage_bytes = kwargs['storageUsageBytes']
+        if subscription_tier_slug is None and 'subscriptionTierSlug' in kwargs:
+            subscription_tier_slug = kwargs['subscriptionTierSlug']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if endpoint is not None:
@@ -233,16 +249,6 @@ class ContainerRegistry(pulumi.CustomResource):
         Provides a DigitalOcean Container Registry resource. A Container Registry is
         a secure, private location to store your containers for rapid deployment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new container registry
-        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
-        ```
-
         ## Import
 
         Container Registries can be imported using the `name`, e.g.
@@ -266,16 +272,6 @@ class ContainerRegistry(pulumi.CustomResource):
         """
         Provides a DigitalOcean Container Registry resource. A Container Registry is
         a secure, private location to store your containers for rapid deployment.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new container registry
-        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
-        ```
 
         ## Import
 

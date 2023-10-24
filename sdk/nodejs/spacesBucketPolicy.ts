@@ -6,38 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * ### Limiting access to specific IP addresses
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobarSpacesBucket = new digitalocean.SpacesBucket("foobarSpacesBucket", {region: "nyc3"});
- * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy", {
- *     region: foobarSpacesBucket.region,
- *     bucket: foobarSpacesBucket.name,
- *     policy: pulumi.all([foobarSpacesBucket.name, foobarSpacesBucket.name]).apply(([foobarSpacesBucketName, foobarSpacesBucketName1]) => JSON.stringify({
- *         Version: "2012-10-17",
- *         Statement: [{
- *             Sid: "IPAllow",
- *             Effect: "Deny",
- *             Principal: "*",
- *             Action: "s3:*",
- *             Resource: [
- *                 `arn:aws:s3:::${foobarSpacesBucketName}`,
- *                 `arn:aws:s3:::${foobarSpacesBucketName1}/*`,
- *             ],
- *             Condition: {
- *                 NotIpAddress: {
- *                     "aws:SourceIp": "54.240.143.0/24",
- *                 },
- *             },
- *         }],
- *     })),
- * });
- * ```
- *
- * !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
  *
  * ## Import
  *

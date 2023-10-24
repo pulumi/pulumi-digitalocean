@@ -70,16 +70,6 @@ def get_database_ca(cluster_id: Optional[str] = None,
     """
     Provides the CA certificate for a DigitalOcean database.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    ca = digitalocean.get_database_ca(cluster_id="aaa-bbb-ccc-ddd")
-    pulumi.export("caOutput", ca.certificate)
-    ```
-
 
     :param str cluster_id: The ID of the source database cluster.
     """
@@ -99,16 +89,6 @@ def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseCaResult]:
     """
     Provides the CA certificate for a DigitalOcean database.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    ca = digitalocean.get_database_ca(cluster_id="aaa-bbb-ccc-ddd")
-    pulumi.export("caOutput", ca.certificate)
-    ```
 
 
     :param str cluster_id: The ID of the source database cluster.

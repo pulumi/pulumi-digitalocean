@@ -104,18 +104,6 @@ def get_database_user(cluster_id: Optional[str] = None,
     """
     Provides information on a DigitalOcean database user resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    main = digitalocean.get_database_cluster(name="main-cluster")
-    example = digitalocean.get_database_user(cluster_id=main.id,
-        name="example-user")
-    pulumi.export("databaseUserPassword", example.password)
-    ```
-
 
     :param str cluster_id: The ID of the database cluster.
     :param str name: The name of the database user.
@@ -141,18 +129,6 @@ def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUserResult]:
     """
     Provides information on a DigitalOcean database user resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    main = digitalocean.get_database_cluster(name="main-cluster")
-    example = digitalocean.get_database_user(cluster_id=main.id,
-        name="example-user")
-    pulumi.export("databaseUserPassword", example.password)
-    ```
 
 
     :param str cluster_id: The ID of the database cluster.

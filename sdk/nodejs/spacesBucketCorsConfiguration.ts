@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * ### Create a Key in a Spaces Bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
- * const test = new digitalocean.SpacesBucketCorsConfiguration("test", {
- *     bucket: foobar.id,
- *     region: "nyc3",
- *     corsRules: [{
- *         allowedHeaders: ["*"],
- *         allowedMethods: [
- *             "PUT",
- *             "POST",
- *         ],
- *         allowedOrigins: ["https://s3-website-test.hashicorp.com"],
- *         exposeHeaders: ["ETag"],
- *         maxAgeSeconds: 3000,
- *     }],
- * });
- * ```
  *
  * ## Import
  *

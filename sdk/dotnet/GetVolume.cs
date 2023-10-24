@@ -18,63 +18,6 @@ namespace Pulumi.DigitalOcean
         /// any of the volumes data.
         /// 
         /// An error is triggered if the provided volume name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the volume:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = DigitalOcean.GetVolume.Invoke(new()
-        ///     {
-        ///         Name = "app-data",
-        ///         Region = "nyc3",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// Reuse the data about a volume to attach it to a Droplet:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleVolume = DigitalOcean.GetVolume.Invoke(new()
-        ///     {
-        ///         Name = "app-data",
-        ///         Region = "nyc3",
-        ///     });
-        /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-        ///     {
-        ///         Size = "s-1vcpu-1gb",
-        ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc3",
-        ///     });
-        /// 
-        ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
-        ///     {
-        ///         DropletId = exampleDroplet.Id,
-        ///         VolumeId = exampleVolume.Apply(getVolumeResult =&gt; getVolumeResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithDefaults());
@@ -86,63 +29,6 @@ namespace Pulumi.DigitalOcean
         /// any of the volumes data.
         /// 
         /// An error is triggered if the provided volume name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the volume:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = DigitalOcean.GetVolume.Invoke(new()
-        ///     {
-        ///         Name = "app-data",
-        ///         Region = "nyc3",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// Reuse the data about a volume to attach it to a Droplet:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleVolume = DigitalOcean.GetVolume.Invoke(new()
-        ///     {
-        ///         Name = "app-data",
-        ///         Region = "nyc3",
-        ///     });
-        /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-        ///     {
-        ///         Size = "s-1vcpu-1gb",
-        ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc3",
-        ///     });
-        /// 
-        ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
-        ///     {
-        ///         DropletId = exampleDroplet.Id,
-        ///         VolumeId = exampleVolume.Apply(getVolumeResult =&gt; getVolumeResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());

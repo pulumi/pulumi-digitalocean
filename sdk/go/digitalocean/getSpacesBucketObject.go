@@ -18,46 +18,6 @@ import (
 // > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
 // `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
 // downloading large amount of data which would be thrown away in favor of metadata.
-//
-// ## Example Usage
-//
-// The following example retrieves a text object (which must have a `Content-Type`
-// value starting with `text/`) and uses it as the `userData` for a Droplet:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bootstrapScript, err := digitalocean.LookupSpacesBucketObject(ctx, &digitalocean.LookupSpacesBucketObjectArgs{
-//				Bucket: "ourcorp-deploy-config",
-//				Region: "nyc3",
-//				Key:    "droplet-bootstrap-script.sh",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Image:    pulumi.String("ubuntu-18-04-x64"),
-//				Region:   pulumi.String("nyc2"),
-//				Size:     pulumi.String("s-1vcpu-1gb"),
-//				UserData: *pulumi.String(bootstrapScript.Body),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupSpacesBucketObject(ctx *pulumi.Context, args *LookupSpacesBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketObjectResult

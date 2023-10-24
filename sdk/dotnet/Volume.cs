@@ -12,65 +12,6 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
-    ///     {
-    ///         Region = "nyc1",
-    ///         Size = 100,
-    ///         InitialFilesystemType = "ext4",
-    ///         Description = "an example volume",
-    ///     });
-    /// 
-    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
-    ///     {
-    ///         Size = "s-1vcpu-1gb",
-    ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc1",
-    ///     });
-    /// 
-    ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new()
-    ///     {
-    ///         DropletId = foobarDroplet.Id,
-    ///         VolumeId = foobarVolume.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// You can also create a volume from an existing snapshot.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobarVolumeSnapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
-    ///     {
-    ///         Name = "baz",
-    ///     });
-    /// 
-    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
-    ///     {
-    ///         Region = "lon1",
-    ///         Size = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.MinDiskSize),
-    ///         SnapshotId = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Volumes can be imported using the `volume id`, e.g.

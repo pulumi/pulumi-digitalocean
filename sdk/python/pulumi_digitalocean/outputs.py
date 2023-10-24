@@ -275,7 +275,7 @@ class AppSpec(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.AppSpecAlert']] = None,
              databases: Optional[Sequence['outputs.AppSpecDatabase']] = None,
              domain_names: Optional[Sequence['outputs.AppSpecDomainName']] = None,
@@ -287,7 +287,15 @@ class AppSpec(dict):
              services: Optional[Sequence['outputs.AppSpecService']] = None,
              static_sites: Optional[Sequence['outputs.AppSpecStaticSite']] = None,
              workers: Optional[Sequence['outputs.AppSpecWorker']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if domain_names is None and 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if static_sites is None and 'staticSites' in kwargs:
+            static_sites = kwargs['staticSites']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -408,9 +416,13 @@ class AppSpecAlert(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+
         _setter("rule", rule)
         if disabled is not None:
             _setter("disabled", disabled)
@@ -494,7 +506,15 @@ class AppSpecDatabase(dict):
              name: Optional[str] = None,
              production: Optional[bool] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if db_user is None and 'dbUser' in kwargs:
+            db_user = kwargs['dbUser']
+
         if cluster_name is not None:
             _setter("cluster_name", cluster_name)
         if db_name is not None:
@@ -592,11 +612,15 @@ class AppSpecDomainName(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              type: Optional[str] = None,
              wildcard: Optional[bool] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if type is not None:
             _setter("type", type)
@@ -665,7 +689,9 @@ class AppSpecEnv(dict):
              scope: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if scope is not None:
@@ -768,7 +794,7 @@ class AppSpecFunction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.AppSpecFunctionAlert']] = None,
              cors: Optional['outputs.AppSpecFunctionCors'] = None,
              envs: Optional[Sequence['outputs.AppSpecFunctionEnv']] = None,
@@ -778,7 +804,15 @@ class AppSpecFunction(dict):
              log_destinations: Optional[Sequence['outputs.AppSpecFunctionLogDestination']] = None,
              routes: Optional[Sequence['outputs.AppSpecFunctionRoute']] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -906,12 +940,22 @@ class AppSpecFunctionAlert(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -1022,7 +1066,21 @@ class AppSpecFunctionCors(dict):
              allow_origins: Optional['outputs.AppSpecFunctionCorsAllowOrigins'] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -1108,7 +1166,9 @@ class AppSpecFunctionCorsAllowOrigins(dict):
              exact: Optional[str] = None,
              prefix: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if exact is not None:
             _setter("exact", exact)
         if prefix is not None:
@@ -1168,7 +1228,9 @@ class AppSpecFunctionEnv(dict):
              scope: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if scope is not None:
@@ -1247,7 +1309,11 @@ class AppSpecFunctionGit(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -1310,7 +1376,11 @@ class AppSpecFunctionGithub(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -1383,7 +1453,11 @@ class AppSpecFunctionGitlab(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -1439,11 +1513,15 @@ class AppSpecFunctionLogDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.AppSpecFunctionLogDestinationDatadog'] = None,
              logtail: Optional['outputs.AppSpecFunctionLogDestinationLogtail'] = None,
              papertrail: Optional['outputs.AppSpecFunctionLogDestinationPapertrail'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -1519,9 +1597,15 @@ class AppSpecFunctionLogDestinationDatadog(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -1559,8 +1643,12 @@ class AppSpecFunctionLogDestinationLogtail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -1588,8 +1676,12 @@ class AppSpecFunctionLogDestinationPapertrail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -1637,7 +1729,11 @@ class AppSpecFunctionRoute(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preserve_path_prefix: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preserve_path_prefix is None and 'preservePathPrefix' in kwargs:
+            preserve_path_prefix = kwargs['preservePathPrefix']
+
         if path is not None:
             _setter("path", path)
         if preserve_path_prefix is not None:
@@ -1750,7 +1846,7 @@ class AppSpecJob(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.AppSpecJobAlert']] = None,
              build_command: Optional[str] = None,
              dockerfile_path: Optional[str] = None,
@@ -1766,7 +1862,27 @@ class AppSpecJob(dict):
              log_destinations: Optional[Sequence['outputs.AppSpecJobLogDestination']] = None,
              run_command: Optional[str] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_size_slug is None and 'instanceSizeSlug' in kwargs:
+            instance_size_slug = kwargs['instanceSizeSlug']
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if run_command is None and 'runCommand' in kwargs:
+            run_command = kwargs['runCommand']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -1954,12 +2070,22 @@ class AppSpecJobAlert(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -2035,7 +2161,9 @@ class AppSpecJobEnv(dict):
              scope: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if scope is not None:
@@ -2114,7 +2242,11 @@ class AppSpecJobGit(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -2177,7 +2309,11 @@ class AppSpecJobGithub(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -2250,7 +2386,11 @@ class AppSpecJobGitlab(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -2328,12 +2468,22 @@ class AppSpecJobImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             registry_type: str,
-             repository: str,
+             registry_type: Optional[str] = None,
+             repository: Optional[str] = None,
              deploy_on_pushes: Optional[Sequence['outputs.AppSpecJobImageDeployOnPush']] = None,
              registry: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if registry_type is None and 'registryType' in kwargs:
+            registry_type = kwargs['registryType']
+        if registry_type is None:
+            raise TypeError("Missing 'registry_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+        if deploy_on_pushes is None and 'deployOnPushes' in kwargs:
+            deploy_on_pushes = kwargs['deployOnPushes']
+
         _setter("registry_type", registry_type)
         _setter("repository", repository)
         if deploy_on_pushes is not None:
@@ -2399,7 +2549,9 @@ class AppSpecJobImageDeployOnPush(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -2435,11 +2587,15 @@ class AppSpecJobLogDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.AppSpecJobLogDestinationDatadog'] = None,
              logtail: Optional['outputs.AppSpecJobLogDestinationLogtail'] = None,
              papertrail: Optional['outputs.AppSpecJobLogDestinationPapertrail'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -2515,9 +2671,15 @@ class AppSpecJobLogDestinationDatadog(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -2555,8 +2717,12 @@ class AppSpecJobLogDestinationLogtail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -2584,8 +2750,12 @@ class AppSpecJobLogDestinationPapertrail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -2705,7 +2875,7 @@ class AppSpecService(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.AppSpecServiceAlert']] = None,
              build_command: Optional[str] = None,
              cors: Optional['outputs.AppSpecServiceCors'] = None,
@@ -2725,7 +2895,33 @@ class AppSpecService(dict):
              routes: Optional[Sequence['outputs.AppSpecServiceRoute']] = None,
              run_command: Optional[str] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if http_port is None and 'httpPort' in kwargs:
+            http_port = kwargs['httpPort']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_size_slug is None and 'instanceSizeSlug' in kwargs:
+            instance_size_slug = kwargs['instanceSizeSlug']
+        if internal_ports is None and 'internalPorts' in kwargs:
+            internal_ports = kwargs['internalPorts']
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if run_command is None and 'runCommand' in kwargs:
+            run_command = kwargs['runCommand']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -2953,12 +3149,22 @@ class AppSpecServiceAlert(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -3069,7 +3275,21 @@ class AppSpecServiceCors(dict):
              allow_origins: Optional['outputs.AppSpecServiceCorsAllowOrigins'] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -3155,7 +3375,9 @@ class AppSpecServiceCorsAllowOrigins(dict):
              exact: Optional[str] = None,
              prefix: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if exact is not None:
             _setter("exact", exact)
         if prefix is not None:
@@ -3215,7 +3437,9 @@ class AppSpecServiceEnv(dict):
              scope: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if scope is not None:
@@ -3294,7 +3518,11 @@ class AppSpecServiceGit(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -3357,7 +3585,11 @@ class AppSpecServiceGithub(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -3430,7 +3662,11 @@ class AppSpecServiceGitlab(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -3525,7 +3761,21 @@ class AppSpecServiceHealthCheck(dict):
              period_seconds: Optional[int] = None,
              success_threshold: Optional[int] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_path is None and 'httpPath' in kwargs:
+            http_path = kwargs['httpPath']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if success_threshold is None and 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if http_path is not None:
@@ -3633,12 +3883,22 @@ class AppSpecServiceImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             registry_type: str,
-             repository: str,
+             registry_type: Optional[str] = None,
+             repository: Optional[str] = None,
              deploy_on_pushes: Optional[Sequence['outputs.AppSpecServiceImageDeployOnPush']] = None,
              registry: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if registry_type is None and 'registryType' in kwargs:
+            registry_type = kwargs['registryType']
+        if registry_type is None:
+            raise TypeError("Missing 'registry_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+        if deploy_on_pushes is None and 'deployOnPushes' in kwargs:
+            deploy_on_pushes = kwargs['deployOnPushes']
+
         _setter("registry_type", registry_type)
         _setter("repository", repository)
         if deploy_on_pushes is not None:
@@ -3704,7 +3964,9 @@ class AppSpecServiceImageDeployOnPush(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -3740,11 +4002,15 @@ class AppSpecServiceLogDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.AppSpecServiceLogDestinationDatadog'] = None,
              logtail: Optional['outputs.AppSpecServiceLogDestinationLogtail'] = None,
              papertrail: Optional['outputs.AppSpecServiceLogDestinationPapertrail'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -3820,9 +4086,15 @@ class AppSpecServiceLogDestinationDatadog(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -3860,8 +4132,12 @@ class AppSpecServiceLogDestinationLogtail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -3889,8 +4165,12 @@ class AppSpecServiceLogDestinationPapertrail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -3938,7 +4218,11 @@ class AppSpecServiceRoute(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preserve_path_prefix: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preserve_path_prefix is None and 'preservePathPrefix' in kwargs:
+            preserve_path_prefix = kwargs['preservePathPrefix']
+
         if path is not None:
             _setter("path", path)
         if preserve_path_prefix is not None:
@@ -4048,7 +4332,7 @@ class AppSpecStaticSite(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              build_command: Optional[str] = None,
              catchall_document: Optional[str] = None,
              cors: Optional['outputs.AppSpecStaticSiteCors'] = None,
@@ -4063,7 +4347,27 @@ class AppSpecStaticSite(dict):
              output_dir: Optional[str] = None,
              routes: Optional[Sequence['outputs.AppSpecStaticSiteRoute']] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if catchall_document is None and 'catchallDocument' in kwargs:
+            catchall_document = kwargs['catchallDocument']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if error_document is None and 'errorDocument' in kwargs:
+            error_document = kwargs['errorDocument']
+        if index_document is None and 'indexDocument' in kwargs:
+            index_document = kwargs['indexDocument']
+        if output_dir is None and 'outputDir' in kwargs:
+            output_dir = kwargs['outputDir']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if build_command is not None:
             _setter("build_command", build_command)
@@ -4277,7 +4581,21 @@ class AppSpecStaticSiteCors(dict):
              allow_origins: Optional['outputs.AppSpecStaticSiteCorsAllowOrigins'] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -4363,7 +4681,9 @@ class AppSpecStaticSiteCorsAllowOrigins(dict):
              exact: Optional[str] = None,
              prefix: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if exact is not None:
             _setter("exact", exact)
         if prefix is not None:
@@ -4423,7 +4743,9 @@ class AppSpecStaticSiteEnv(dict):
              scope: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if scope is not None:
@@ -4502,7 +4824,11 @@ class AppSpecStaticSiteGit(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -4565,7 +4891,11 @@ class AppSpecStaticSiteGithub(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -4638,7 +4968,11 @@ class AppSpecStaticSiteGitlab(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -4707,7 +5041,11 @@ class AppSpecStaticSiteRoute(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preserve_path_prefix: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preserve_path_prefix is None and 'preservePathPrefix' in kwargs:
+            preserve_path_prefix = kwargs['preservePathPrefix']
+
         if path is not None:
             _setter("path", path)
         if preserve_path_prefix is not None:
@@ -4817,7 +5155,7 @@ class AppSpecWorker(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.AppSpecWorkerAlert']] = None,
              build_command: Optional[str] = None,
              dockerfile_path: Optional[str] = None,
@@ -4832,7 +5170,27 @@ class AppSpecWorker(dict):
              log_destinations: Optional[Sequence['outputs.AppSpecWorkerLogDestination']] = None,
              run_command: Optional[str] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_size_slug is None and 'instanceSizeSlug' in kwargs:
+            instance_size_slug = kwargs['instanceSizeSlug']
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if run_command is None and 'runCommand' in kwargs:
+            run_command = kwargs['runCommand']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -5010,12 +5368,22 @@ class AppSpecWorkerAlert(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -5091,7 +5459,9 @@ class AppSpecWorkerEnv(dict):
              scope: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if scope is not None:
@@ -5170,7 +5540,11 @@ class AppSpecWorkerGit(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -5233,7 +5607,11 @@ class AppSpecWorkerGithub(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -5306,7 +5684,11 @@ class AppSpecWorkerGitlab(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -5384,12 +5766,22 @@ class AppSpecWorkerImage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             registry_type: str,
-             repository: str,
+             registry_type: Optional[str] = None,
+             repository: Optional[str] = None,
              deploy_on_pushes: Optional[Sequence['outputs.AppSpecWorkerImageDeployOnPush']] = None,
              registry: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if registry_type is None and 'registryType' in kwargs:
+            registry_type = kwargs['registryType']
+        if registry_type is None:
+            raise TypeError("Missing 'registry_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+        if deploy_on_pushes is None and 'deployOnPushes' in kwargs:
+            deploy_on_pushes = kwargs['deployOnPushes']
+
         _setter("registry_type", registry_type)
         _setter("repository", repository)
         if deploy_on_pushes is not None:
@@ -5455,7 +5847,9 @@ class AppSpecWorkerImageDeployOnPush(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -5491,11 +5885,15 @@ class AppSpecWorkerLogDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.AppSpecWorkerLogDestinationDatadog'] = None,
              logtail: Optional['outputs.AppSpecWorkerLogDestinationLogtail'] = None,
              papertrail: Optional['outputs.AppSpecWorkerLogDestinationPapertrail'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -5571,9 +5969,15 @@ class AppSpecWorkerLogDestinationDatadog(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -5611,8 +6015,12 @@ class AppSpecWorkerLogDestinationLogtail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -5640,8 +6048,12 @@ class AppSpecWorkerLogDestinationPapertrail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -5691,9 +6103,17 @@ class DatabaseClusterBackupRestore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_name: str,
+             database_name: Optional[str] = None,
              backup_created_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if database_name is None:
+            raise TypeError("Missing 'database_name' argument")
+        if backup_created_at is None and 'backupCreatedAt' in kwargs:
+            backup_created_at = kwargs['backupCreatedAt']
+
         _setter("database_name", database_name)
         if backup_created_at is not None:
             _setter("backup_created_at", backup_created_at)
@@ -5734,9 +6154,15 @@ class DatabaseClusterMaintenanceWindow(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: str,
-             hour: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[str] = None,
+             hour: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if hour is None:
+            raise TypeError("Missing 'hour' argument")
+
         _setter("day", day)
         _setter("hour", hour)
 
@@ -5797,11 +6223,19 @@ class DatabaseFirewallRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             value: str,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
              created_at: Optional[str] = None,
              uuid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+
         _setter("type", type)
         _setter("value", value)
         if created_at is not None:
@@ -5912,14 +6346,30 @@ class FirewallInboundRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol: str,
+             protocol: Optional[str] = None,
              port_range: Optional[str] = None,
              source_addresses: Optional[Sequence[str]] = None,
              source_droplet_ids: Optional[Sequence[int]] = None,
              source_kubernetes_ids: Optional[Sequence[str]] = None,
              source_load_balancer_uids: Optional[Sequence[str]] = None,
              source_tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if source_addresses is None and 'sourceAddresses' in kwargs:
+            source_addresses = kwargs['sourceAddresses']
+        if source_droplet_ids is None and 'sourceDropletIds' in kwargs:
+            source_droplet_ids = kwargs['sourceDropletIds']
+        if source_kubernetes_ids is None and 'sourceKubernetesIds' in kwargs:
+            source_kubernetes_ids = kwargs['sourceKubernetesIds']
+        if source_load_balancer_uids is None and 'sourceLoadBalancerUids' in kwargs:
+            source_load_balancer_uids = kwargs['sourceLoadBalancerUids']
+        if source_tags is None and 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+
         _setter("protocol", protocol)
         if port_range is not None:
             _setter("port_range", port_range)
@@ -6072,14 +6522,30 @@ class FirewallOutboundRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol: str,
+             protocol: Optional[str] = None,
              destination_addresses: Optional[Sequence[str]] = None,
              destination_droplet_ids: Optional[Sequence[int]] = None,
              destination_kubernetes_ids: Optional[Sequence[str]] = None,
              destination_load_balancer_uids: Optional[Sequence[str]] = None,
              destination_tags: Optional[Sequence[str]] = None,
              port_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_addresses is None and 'destinationAddresses' in kwargs:
+            destination_addresses = kwargs['destinationAddresses']
+        if destination_droplet_ids is None and 'destinationDropletIds' in kwargs:
+            destination_droplet_ids = kwargs['destinationDropletIds']
+        if destination_kubernetes_ids is None and 'destinationKubernetesIds' in kwargs:
+            destination_kubernetes_ids = kwargs['destinationKubernetesIds']
+        if destination_load_balancer_uids is None and 'destinationLoadBalancerUids' in kwargs:
+            destination_load_balancer_uids = kwargs['destinationLoadBalancerUids']
+        if destination_tags is None and 'destinationTags' in kwargs:
+            destination_tags = kwargs['destinationTags']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         _setter("protocol", protocol)
         if destination_addresses is not None:
             _setter("destination_addresses", destination_addresses)
@@ -6201,7 +6667,11 @@ class FirewallPendingChange(dict):
              droplet_id: Optional[int] = None,
              removing: Optional[bool] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if removing is not None:
@@ -6293,7 +6763,19 @@ class KubernetesClusterKubeConfig(dict):
              host: Optional[str] = None,
              raw_config: Optional[str] = None,
              token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if cluster_ca_certificate is None and 'clusterCaCertificate' in kwargs:
+            cluster_ca_certificate = kwargs['clusterCaCertificate']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if raw_config is None and 'rawConfig' in kwargs:
+            raw_config = kwargs['rawConfig']
+
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
         if client_key is not None:
@@ -6406,7 +6888,11 @@ class KubernetesClusterMaintenancePolicy(dict):
              day: Optional[str] = None,
              duration: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if day is not None:
             _setter("day", day)
         if duration is not None:
@@ -6511,8 +6997,8 @@ class KubernetesClusterNodePool(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             size: str,
+             name: Optional[str] = None,
+             size: Optional[str] = None,
              actual_node_count: Optional[int] = None,
              auto_scale: Optional[bool] = None,
              id: Optional[str] = None,
@@ -6523,7 +7009,23 @@ class KubernetesClusterNodePool(dict):
              nodes: Optional[Sequence['outputs.KubernetesClusterNodePoolNode']] = None,
              tags: Optional[Sequence[str]] = None,
              taints: Optional[Sequence['outputs.KubernetesClusterNodePoolTaint']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if actual_node_count is None and 'actualNodeCount' in kwargs:
+            actual_node_count = kwargs['actualNodeCount']
+        if auto_scale is None and 'autoScale' in kwargs:
+            auto_scale = kwargs['autoScale']
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         _setter("name", name)
         _setter("size", size)
         if actual_node_count is not None:
@@ -6700,7 +7202,15 @@ class KubernetesClusterNodePoolNode(dict):
              name: Optional[str] = None,
              status: Optional[str] = None,
              updated_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if droplet_id is not None:
@@ -6783,10 +7293,18 @@ class KubernetesClusterNodePoolTaint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: str,
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -6872,7 +7390,15 @@ class KubernetesNodePoolNode(dict):
              name: Optional[str] = None,
              status: Optional[str] = None,
              updated_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if droplet_id is not None:
@@ -6955,10 +7481,18 @@ class KubernetesNodePoolTaint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: str,
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -7008,7 +7542,9 @@ class LoadBalancerFirewall(dict):
              _setter: Callable[[Any, Any], None],
              allows: Optional[Sequence[str]] = None,
              denies: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if allows is not None:
             _setter("allows", allows)
         if denies is not None:
@@ -7093,14 +7629,38 @@ class LoadBalancerForwardingRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry_port: int,
-             entry_protocol: str,
-             target_port: int,
-             target_protocol: str,
+             entry_port: Optional[int] = None,
+             entry_protocol: Optional[str] = None,
+             target_port: Optional[int] = None,
+             target_protocol: Optional[str] = None,
              certificate_id: Optional[str] = None,
              certificate_name: Optional[str] = None,
              tls_passthrough: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entry_port is None and 'entryPort' in kwargs:
+            entry_port = kwargs['entryPort']
+        if entry_port is None:
+            raise TypeError("Missing 'entry_port' argument")
+        if entry_protocol is None and 'entryProtocol' in kwargs:
+            entry_protocol = kwargs['entryProtocol']
+        if entry_protocol is None:
+            raise TypeError("Missing 'entry_protocol' argument")
+        if target_port is None and 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+        if target_port is None:
+            raise TypeError("Missing 'target_port' argument")
+        if target_protocol is None and 'targetProtocol' in kwargs:
+            target_protocol = kwargs['targetProtocol']
+        if target_protocol is None:
+            raise TypeError("Missing 'target_protocol' argument")
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if certificate_name is None and 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if tls_passthrough is None and 'tlsPassthrough' in kwargs:
+            tls_passthrough = kwargs['tlsPassthrough']
+
         _setter("entry_port", entry_port)
         _setter("entry_protocol", entry_protocol)
         _setter("target_port", target_port)
@@ -7227,14 +7787,28 @@ class LoadBalancerHealthcheck(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: int,
-             protocol: str,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
              check_interval_seconds: Optional[int] = None,
              healthy_threshold: Optional[int] = None,
              path: Optional[str] = None,
              response_timeout_seconds: Optional[int] = None,
              unhealthy_threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if check_interval_seconds is None and 'checkIntervalSeconds' in kwargs:
+            check_interval_seconds = kwargs['checkIntervalSeconds']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if response_timeout_seconds is None and 'responseTimeoutSeconds' in kwargs:
+            response_timeout_seconds = kwargs['responseTimeoutSeconds']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("port", port)
         _setter("protocol", protocol)
         if check_interval_seconds is not None:
@@ -7347,7 +7921,13 @@ class LoadBalancerStickySessions(dict):
              cookie_name: Optional[str] = None,
              cookie_ttl_seconds: Optional[int] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cookie_name is None and 'cookieName' in kwargs:
+            cookie_name = kwargs['cookieName']
+        if cookie_ttl_seconds is None and 'cookieTtlSeconds' in kwargs:
+            cookie_ttl_seconds = kwargs['cookieTtlSeconds']
+
         if cookie_name is not None:
             _setter("cookie_name", cookie_name)
         if cookie_ttl_seconds is not None:
@@ -7395,7 +7975,9 @@ class MonitorAlertAlerts(dict):
              _setter: Callable[[Any, Any], None],
              emails: Optional[Sequence[str]] = None,
              slacks: Optional[Sequence['outputs.MonitorAlertAlertsSlack']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if emails is not None:
             _setter("emails", emails)
         if slacks is not None:
@@ -7425,9 +8007,15 @@ class MonitorAlertAlertsSlack(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             channel: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             channel: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if channel is None:
+            raise TypeError("Missing 'channel' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("channel", channel)
         _setter("url", url)
 
@@ -7496,13 +8084,29 @@ class SpacesBucketCorsConfigurationCorsRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_methods: Sequence[str],
-             allowed_origins: Sequence[str],
+             allowed_methods: Optional[Sequence[str]] = None,
+             allowed_origins: Optional[Sequence[str]] = None,
              allowed_headers: Optional[Sequence[str]] = None,
              expose_headers: Optional[Sequence[str]] = None,
              id: Optional[str] = None,
              max_age_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_methods is None and 'allowedMethods' in kwargs:
+            allowed_methods = kwargs['allowedMethods']
+        if allowed_methods is None:
+            raise TypeError("Missing 'allowed_methods' argument")
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
+            allowed_origins = kwargs['allowedOrigins']
+        if allowed_origins is None:
+            raise TypeError("Missing 'allowed_origins' argument")
+        if allowed_headers is None and 'allowedHeaders' in kwargs:
+            allowed_headers = kwargs['allowedHeaders']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age_seconds is None and 'maxAgeSeconds' in kwargs:
+            max_age_seconds = kwargs['maxAgeSeconds']
+
         _setter("allowed_methods", allowed_methods)
         _setter("allowed_origins", allowed_origins)
         if allowed_headers is not None:
@@ -7609,11 +8213,25 @@ class SpacesBucketCorsRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_methods: Sequence[str],
-             allowed_origins: Sequence[str],
+             allowed_methods: Optional[Sequence[str]] = None,
+             allowed_origins: Optional[Sequence[str]] = None,
              allowed_headers: Optional[Sequence[str]] = None,
              max_age_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_methods is None and 'allowedMethods' in kwargs:
+            allowed_methods = kwargs['allowedMethods']
+        if allowed_methods is None:
+            raise TypeError("Missing 'allowed_methods' argument")
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
+            allowed_origins = kwargs['allowedOrigins']
+        if allowed_origins is None:
+            raise TypeError("Missing 'allowed_origins' argument")
+        if allowed_headers is None and 'allowedHeaders' in kwargs:
+            allowed_headers = kwargs['allowedHeaders']
+        if max_age_seconds is None and 'maxAgeSeconds' in kwargs:
+            max_age_seconds = kwargs['maxAgeSeconds']
+
         _setter("allowed_methods", allowed_methods)
         _setter("allowed_origins", allowed_origins)
         if allowed_headers is not None:
@@ -7705,13 +8323,21 @@ class SpacesBucketLifecycleRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              abort_incomplete_multipart_upload_days: Optional[int] = None,
              expiration: Optional['outputs.SpacesBucketLifecycleRuleExpiration'] = None,
              id: Optional[str] = None,
              noncurrent_version_expiration: Optional['outputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration'] = None,
              prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if abort_incomplete_multipart_upload_days is None and 'abortIncompleteMultipartUploadDays' in kwargs:
+            abort_incomplete_multipart_upload_days = kwargs['abortIncompleteMultipartUploadDays']
+        if noncurrent_version_expiration is None and 'noncurrentVersionExpiration' in kwargs:
+            noncurrent_version_expiration = kwargs['noncurrentVersionExpiration']
+
         _setter("enabled", enabled)
         if abort_incomplete_multipart_upload_days is not None:
             _setter("abort_incomplete_multipart_upload_days", abort_incomplete_multipart_upload_days)
@@ -7818,7 +8444,11 @@ class SpacesBucketLifecycleRuleExpiration(dict):
              date: Optional[str] = None,
              days: Optional[int] = None,
              expired_object_delete_marker: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expired_object_delete_marker is None and 'expiredObjectDeleteMarker' in kwargs:
+            expired_object_delete_marker = kwargs['expiredObjectDeleteMarker']
+
         if date is not None:
             _setter("date", date)
         if days is not None:
@@ -7868,7 +8498,9 @@ class SpacesBucketLifecycleRuleNoncurrentVersionExpiration(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              days: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if days is not None:
             _setter("days", days)
 
@@ -7897,7 +8529,9 @@ class SpacesBucketVersioning(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -7929,7 +8563,9 @@ class UptimeAlertNotification(dict):
              _setter: Callable[[Any, Any], None],
              emails: Optional[Sequence[str]] = None,
              slacks: Optional[Sequence['outputs.UptimeAlertNotificationSlack']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if emails is not None:
             _setter("emails", emails)
         if slacks is not None:
@@ -7966,9 +8602,15 @@ class UptimeAlertNotificationSlack(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             channel: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             channel: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if channel is None:
+            raise TypeError("Missing 'channel' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("channel", channel)
         _setter("url", url)
 
@@ -8027,9 +8669,9 @@ class GetAppSpecResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: Sequence['outputs.GetAppSpecDomainResult'],
-             domains: Sequence[str],
-             name: str,
+             domain: Optional[Sequence['outputs.GetAppSpecDomainResult']] = None,
+             domains: Optional[Sequence[str]] = None,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
              databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
              envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
@@ -8039,7 +8681,17 @@ class GetAppSpecResult(dict):
              services: Optional[Sequence['outputs.GetAppSpecServiceResult']] = None,
              static_sites: Optional[Sequence['outputs.GetAppSpecStaticSiteResult']] = None,
              workers: Optional[Sequence['outputs.GetAppSpecWorkerResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if domains is None:
+            raise TypeError("Missing 'domains' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if static_sites is None and 'staticSites' in kwargs:
+            static_sites = kwargs['staticSites']
+
         _setter("domain", domain)
         _setter("domains", domains)
         _setter("name", name)
@@ -8152,9 +8804,13 @@ class GetAppSpecAlertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+
         _setter("rule", rule)
         if disabled is not None:
             _setter("disabled", disabled)
@@ -8215,7 +8871,15 @@ class GetAppSpecDatabaseResult(dict):
              name: Optional[str] = None,
              production: Optional[bool] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if db_user is None and 'dbUser' in kwargs:
+            db_user = kwargs['dbUser']
+
         if cluster_name is not None:
             _setter("cluster_name", cluster_name)
         if db_name is not None:
@@ -8309,11 +8973,19 @@ class GetAppSpecDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             type: str,
-             wildcard: bool,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             wildcard: Optional[bool] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if wildcard is None:
+            raise TypeError("Missing 'wildcard' argument")
+
         _setter("name", name)
         _setter("type", type)
         _setter("wildcard", wildcard)
@@ -8370,11 +9042,15 @@ class GetAppSpecEnvResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              key: Optional[str] = None,
              scope: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if key is not None:
             _setter("key", key)
@@ -8456,8 +9132,8 @@ class GetAppSpecFunctionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             routes: Sequence['outputs.GetAppSpecFunctionRouteResult'],
+             name: Optional[str] = None,
+             routes: Optional[Sequence['outputs.GetAppSpecFunctionRouteResult']] = None,
              alerts: Optional[Sequence['outputs.GetAppSpecFunctionAlertResult']] = None,
              cors: Optional['outputs.GetAppSpecFunctionCorsResult'] = None,
              envs: Optional[Sequence['outputs.GetAppSpecFunctionEnvResult']] = None,
@@ -8466,7 +9142,17 @@ class GetAppSpecFunctionResult(dict):
              gitlab: Optional['outputs.GetAppSpecFunctionGitlabResult'] = None,
              log_destinations: Optional[Sequence['outputs.GetAppSpecFunctionLogDestinationResult']] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if routes is None:
+            raise TypeError("Missing 'routes' argument")
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         _setter("routes", routes)
         if alerts is not None:
@@ -8590,12 +9276,22 @@ class GetAppSpecFunctionAlertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -8679,7 +9375,21 @@ class GetAppSpecFunctionCorsResult(dict):
              allow_origins: Optional['outputs.GetAppSpecFunctionCorsAllowOriginsResult'] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -8765,7 +9475,9 @@ class GetAppSpecFunctionCorsAllowOriginsResult(dict):
              exact: Optional[str] = None,
              prefix: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if exact is not None:
             _setter("exact", exact)
         if prefix is not None:
@@ -8821,11 +9533,15 @@ class GetAppSpecFunctionEnvResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              key: Optional[str] = None,
              scope: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if key is not None:
             _setter("key", key)
@@ -8886,7 +9602,11 @@ class GetAppSpecFunctionGitResult(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -8932,7 +9652,11 @@ class GetAppSpecFunctionGithubResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -8988,7 +9712,11 @@ class GetAppSpecFunctionGitlabResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -9044,11 +9772,15 @@ class GetAppSpecFunctionLogDestinationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.GetAppSpecFunctionLogDestinationDatadogResult'] = None,
              logtail: Optional['outputs.GetAppSpecFunctionLogDestinationLogtailResult'] = None,
              papertrail: Optional['outputs.GetAppSpecFunctionLogDestinationPapertrailResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -9107,9 +9839,15 @@ class GetAppSpecFunctionLogDestinationDatadogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -9145,8 +9883,12 @@ class GetAppSpecFunctionLogDestinationLogtailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -9172,8 +9914,12 @@ class GetAppSpecFunctionLogDestinationPapertrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -9204,7 +9950,11 @@ class GetAppSpecFunctionRouteResult(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preserve_path_prefix: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preserve_path_prefix is None and 'preservePathPrefix' in kwargs:
+            preserve_path_prefix = kwargs['preservePathPrefix']
+
         if path is not None:
             _setter("path", path)
         if preserve_path_prefix is not None:
@@ -9286,7 +10036,7 @@ class GetAppSpecJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.GetAppSpecJobAlertResult']] = None,
              build_command: Optional[str] = None,
              dockerfile_path: Optional[str] = None,
@@ -9302,7 +10052,27 @@ class GetAppSpecJobResult(dict):
              log_destinations: Optional[Sequence['outputs.GetAppSpecJobLogDestinationResult']] = None,
              run_command: Optional[str] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_size_slug is None and 'instanceSizeSlug' in kwargs:
+            instance_size_slug = kwargs['instanceSizeSlug']
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if run_command is None and 'runCommand' in kwargs:
+            run_command = kwargs['runCommand']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -9490,12 +10260,22 @@ class GetAppSpecJobAlertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -9567,11 +10347,15 @@ class GetAppSpecJobEnvResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              key: Optional[str] = None,
              scope: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if key is not None:
             _setter("key", key)
@@ -9632,7 +10416,11 @@ class GetAppSpecJobGitResult(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -9678,7 +10466,11 @@ class GetAppSpecJobGithubResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -9734,7 +10526,11 @@ class GetAppSpecJobGitlabResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -9793,12 +10589,24 @@ class GetAppSpecJobImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deploy_on_pushes: Sequence['outputs.GetAppSpecJobImageDeployOnPushResult'],
-             registry_type: str,
-             repository: str,
+             deploy_on_pushes: Optional[Sequence['outputs.GetAppSpecJobImageDeployOnPushResult']] = None,
+             registry_type: Optional[str] = None,
+             repository: Optional[str] = None,
              registry: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_pushes is None and 'deployOnPushes' in kwargs:
+            deploy_on_pushes = kwargs['deployOnPushes']
+        if deploy_on_pushes is None:
+            raise TypeError("Missing 'deploy_on_pushes' argument")
+        if registry_type is None and 'registryType' in kwargs:
+            registry_type = kwargs['registryType']
+        if registry_type is None:
+            raise TypeError("Missing 'registry_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("deploy_on_pushes", deploy_on_pushes)
         _setter("registry_type", registry_type)
         _setter("repository", repository)
@@ -9863,7 +10671,9 @@ class GetAppSpecJobImageDeployOnPushResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -9899,11 +10709,15 @@ class GetAppSpecJobLogDestinationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.GetAppSpecJobLogDestinationDatadogResult'] = None,
              logtail: Optional['outputs.GetAppSpecJobLogDestinationLogtailResult'] = None,
              papertrail: Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -9962,9 +10776,15 @@ class GetAppSpecJobLogDestinationDatadogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -10000,8 +10820,12 @@ class GetAppSpecJobLogDestinationLogtailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -10027,8 +10851,12 @@ class GetAppSpecJobLogDestinationPapertrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -10110,10 +10938,10 @@ class GetAppSpecServiceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             http_port: int,
-             name: str,
-             routes: Sequence['outputs.GetAppSpecServiceRouteResult'],
-             run_command: str,
+             http_port: Optional[int] = None,
+             name: Optional[str] = None,
+             routes: Optional[Sequence['outputs.GetAppSpecServiceRouteResult']] = None,
+             run_command: Optional[str] = None,
              alerts: Optional[Sequence['outputs.GetAppSpecServiceAlertResult']] = None,
              build_command: Optional[str] = None,
              cors: Optional['outputs.GetAppSpecServiceCorsResult'] = None,
@@ -10130,7 +10958,39 @@ class GetAppSpecServiceResult(dict):
              internal_ports: Optional[Sequence[int]] = None,
              log_destinations: Optional[Sequence['outputs.GetAppSpecServiceLogDestinationResult']] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if http_port is None and 'httpPort' in kwargs:
+            http_port = kwargs['httpPort']
+        if http_port is None:
+            raise TypeError("Missing 'http_port' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if routes is None:
+            raise TypeError("Missing 'routes' argument")
+        if run_command is None and 'runCommand' in kwargs:
+            run_command = kwargs['runCommand']
+        if run_command is None:
+            raise TypeError("Missing 'run_command' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_size_slug is None and 'instanceSizeSlug' in kwargs:
+            instance_size_slug = kwargs['instanceSizeSlug']
+        if internal_ports is None and 'internalPorts' in kwargs:
+            internal_ports = kwargs['internalPorts']
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("http_port", http_port)
         _setter("name", name)
         _setter("routes", routes)
@@ -10352,12 +11212,22 @@ class GetAppSpecServiceAlertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -10441,7 +11311,21 @@ class GetAppSpecServiceCorsResult(dict):
              allow_origins: Optional['outputs.GetAppSpecServiceCorsAllowOriginsResult'] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -10527,7 +11411,9 @@ class GetAppSpecServiceCorsAllowOriginsResult(dict):
              exact: Optional[str] = None,
              prefix: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if exact is not None:
             _setter("exact", exact)
         if prefix is not None:
@@ -10583,11 +11469,15 @@ class GetAppSpecServiceEnvResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              key: Optional[str] = None,
              scope: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if key is not None:
             _setter("key", key)
@@ -10648,7 +11538,11 @@ class GetAppSpecServiceGitResult(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -10694,7 +11588,11 @@ class GetAppSpecServiceGithubResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -10750,7 +11648,11 @@ class GetAppSpecServiceGitlabResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -10818,7 +11720,21 @@ class GetAppSpecServiceHealthCheckResult(dict):
              period_seconds: Optional[int] = None,
              success_threshold: Optional[int] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_path is None and 'httpPath' in kwargs:
+            http_path = kwargs['httpPath']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if success_threshold is None and 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if http_path is not None:
@@ -10907,12 +11823,24 @@ class GetAppSpecServiceImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deploy_on_pushes: Sequence['outputs.GetAppSpecServiceImageDeployOnPushResult'],
-             registry_type: str,
-             repository: str,
+             deploy_on_pushes: Optional[Sequence['outputs.GetAppSpecServiceImageDeployOnPushResult']] = None,
+             registry_type: Optional[str] = None,
+             repository: Optional[str] = None,
              registry: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_pushes is None and 'deployOnPushes' in kwargs:
+            deploy_on_pushes = kwargs['deployOnPushes']
+        if deploy_on_pushes is None:
+            raise TypeError("Missing 'deploy_on_pushes' argument")
+        if registry_type is None and 'registryType' in kwargs:
+            registry_type = kwargs['registryType']
+        if registry_type is None:
+            raise TypeError("Missing 'registry_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("deploy_on_pushes", deploy_on_pushes)
         _setter("registry_type", registry_type)
         _setter("repository", repository)
@@ -10977,7 +11905,9 @@ class GetAppSpecServiceImageDeployOnPushResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -11013,11 +11943,15 @@ class GetAppSpecServiceLogDestinationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.GetAppSpecServiceLogDestinationDatadogResult'] = None,
              logtail: Optional['outputs.GetAppSpecServiceLogDestinationLogtailResult'] = None,
              papertrail: Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -11076,9 +12010,15 @@ class GetAppSpecServiceLogDestinationDatadogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -11114,8 +12054,12 @@ class GetAppSpecServiceLogDestinationLogtailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -11141,8 +12085,12 @@ class GetAppSpecServiceLogDestinationPapertrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -11173,7 +12121,11 @@ class GetAppSpecServiceRouteResult(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preserve_path_prefix: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preserve_path_prefix is None and 'preservePathPrefix' in kwargs:
+            preserve_path_prefix = kwargs['preservePathPrefix']
+
         if path is not None:
             _setter("path", path)
         if preserve_path_prefix is not None:
@@ -11251,8 +12203,8 @@ class GetAppSpecStaticSiteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             routes: Sequence['outputs.GetAppSpecStaticSiteRouteResult'],
+             name: Optional[str] = None,
+             routes: Optional[Sequence['outputs.GetAppSpecStaticSiteRouteResult']] = None,
              build_command: Optional[str] = None,
              catchall_document: Optional[str] = None,
              cors: Optional['outputs.GetAppSpecStaticSiteCorsResult'] = None,
@@ -11266,7 +12218,29 @@ class GetAppSpecStaticSiteResult(dict):
              index_document: Optional[str] = None,
              output_dir: Optional[str] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if routes is None:
+            raise TypeError("Missing 'routes' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if catchall_document is None and 'catchallDocument' in kwargs:
+            catchall_document = kwargs['catchallDocument']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if error_document is None and 'errorDocument' in kwargs:
+            error_document = kwargs['errorDocument']
+        if index_document is None and 'indexDocument' in kwargs:
+            index_document = kwargs['indexDocument']
+        if output_dir is None and 'outputDir' in kwargs:
+            output_dir = kwargs['outputDir']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         _setter("routes", routes)
         if build_command is not None:
@@ -11449,7 +12423,21 @@ class GetAppSpecStaticSiteCorsResult(dict):
              allow_origins: Optional['outputs.GetAppSpecStaticSiteCorsAllowOriginsResult'] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_credentials is None and 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if allow_headers is None and 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if allow_methods is None and 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if allow_origins is None and 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if expose_headers is None and 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -11535,7 +12523,9 @@ class GetAppSpecStaticSiteCorsAllowOriginsResult(dict):
              exact: Optional[str] = None,
              prefix: Optional[str] = None,
              regex: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if exact is not None:
             _setter("exact", exact)
         if prefix is not None:
@@ -11591,11 +12581,15 @@ class GetAppSpecStaticSiteEnvResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              key: Optional[str] = None,
              scope: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if key is not None:
             _setter("key", key)
@@ -11656,7 +12650,11 @@ class GetAppSpecStaticSiteGitResult(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -11702,7 +12700,11 @@ class GetAppSpecStaticSiteGithubResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -11758,7 +12760,11 @@ class GetAppSpecStaticSiteGitlabResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -11810,7 +12816,11 @@ class GetAppSpecStaticSiteRouteResult(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preserve_path_prefix: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preserve_path_prefix is None and 'preservePathPrefix' in kwargs:
+            preserve_path_prefix = kwargs['preservePathPrefix']
+
         if path is not None:
             _setter("path", path)
         if preserve_path_prefix is not None:
@@ -11889,7 +12899,7 @@ class GetAppSpecWorkerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alerts: Optional[Sequence['outputs.GetAppSpecWorkerAlertResult']] = None,
              build_command: Optional[str] = None,
              dockerfile_path: Optional[str] = None,
@@ -11904,7 +12914,27 @@ class GetAppSpecWorkerResult(dict):
              log_destinations: Optional[Sequence['outputs.GetAppSpecWorkerLogDestinationResult']] = None,
              run_command: Optional[str] = None,
              source_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if build_command is None and 'buildCommand' in kwargs:
+            build_command = kwargs['buildCommand']
+        if dockerfile_path is None and 'dockerfilePath' in kwargs:
+            dockerfile_path = kwargs['dockerfilePath']
+        if environment_slug is None and 'environmentSlug' in kwargs:
+            environment_slug = kwargs['environmentSlug']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_size_slug is None and 'instanceSizeSlug' in kwargs:
+            instance_size_slug = kwargs['instanceSizeSlug']
+        if log_destinations is None and 'logDestinations' in kwargs:
+            log_destinations = kwargs['logDestinations']
+        if run_command is None and 'runCommand' in kwargs:
+            run_command = kwargs['runCommand']
+        if source_dir is None and 'sourceDir' in kwargs:
+            source_dir = kwargs['sourceDir']
+
         _setter("name", name)
         if alerts is not None:
             _setter("alerts", alerts)
@@ -12082,12 +13112,22 @@ class GetAppSpecWorkerAlertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             rule: str,
-             value: float,
-             window: str,
+             operator: Optional[str] = None,
+             rule: Optional[str] = None,
+             value: Optional[float] = None,
+             window: Optional[str] = None,
              disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("operator", operator)
         _setter("rule", rule)
         _setter("value", value)
@@ -12159,11 +13199,15 @@ class GetAppSpecWorkerEnvResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              key: Optional[str] = None,
              scope: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if key is not None:
             _setter("key", key)
@@ -12224,7 +13268,11 @@ class GetAppSpecWorkerGitResult(dict):
              _setter: Callable[[Any, Any], None],
              branch: Optional[str] = None,
              repo_clone_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_clone_url is None and 'repoCloneUrl' in kwargs:
+            repo_clone_url = kwargs['repoCloneUrl']
+
         if branch is not None:
             _setter("branch", branch)
         if repo_clone_url is not None:
@@ -12270,7 +13318,11 @@ class GetAppSpecWorkerGithubResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -12326,7 +13378,11 @@ class GetAppSpecWorkerGitlabResult(dict):
              branch: Optional[str] = None,
              deploy_on_push: Optional[bool] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_push is None and 'deployOnPush' in kwargs:
+            deploy_on_push = kwargs['deployOnPush']
+
         if branch is not None:
             _setter("branch", branch)
         if deploy_on_push is not None:
@@ -12385,12 +13441,24 @@ class GetAppSpecWorkerImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deploy_on_pushes: Sequence['outputs.GetAppSpecWorkerImageDeployOnPushResult'],
-             registry_type: str,
-             repository: str,
+             deploy_on_pushes: Optional[Sequence['outputs.GetAppSpecWorkerImageDeployOnPushResult']] = None,
+             registry_type: Optional[str] = None,
+             repository: Optional[str] = None,
              registry: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deploy_on_pushes is None and 'deployOnPushes' in kwargs:
+            deploy_on_pushes = kwargs['deployOnPushes']
+        if deploy_on_pushes is None:
+            raise TypeError("Missing 'deploy_on_pushes' argument")
+        if registry_type is None and 'registryType' in kwargs:
+            registry_type = kwargs['registryType']
+        if registry_type is None:
+            raise TypeError("Missing 'registry_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("deploy_on_pushes", deploy_on_pushes)
         _setter("registry_type", registry_type)
         _setter("repository", repository)
@@ -12455,7 +13523,9 @@ class GetAppSpecWorkerImageDeployOnPushResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -12491,11 +13561,15 @@ class GetAppSpecWorkerLogDestinationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              datadog: Optional['outputs.GetAppSpecWorkerLogDestinationDatadogResult'] = None,
              logtail: Optional['outputs.GetAppSpecWorkerLogDestinationLogtailResult'] = None,
              papertrail: Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if datadog is not None:
             _setter("datadog", datadog)
@@ -12554,9 +13628,15 @@ class GetAppSpecWorkerLogDestinationDatadogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: str,
+             api_key: Optional[str] = None,
              endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+
         _setter("api_key", api_key)
         if endpoint is not None:
             _setter("endpoint", endpoint)
@@ -12592,8 +13672,12 @@ class GetAppSpecWorkerLogDestinationLogtailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("token", token)
 
     @property
@@ -12619,8 +13703,12 @@ class GetAppSpecWorkerLogDestinationPapertrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+
         _setter("endpoint", endpoint)
 
     @property
@@ -12649,9 +13737,15 @@ class GetDatabaseClusterMaintenanceWindowResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: str,
-             hour: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[str] = None,
+             hour: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if hour is None:
+            raise TypeError("Missing 'hour' argument")
+
         _setter("day", day)
         _setter("hour", hour)
 
@@ -12692,10 +13786,18 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             ttl: int,
-             urn: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             ttl: Optional[int] = None,
+             urn: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if urn is None:
+            raise TypeError("Missing 'urn' argument")
+
         _setter("name", name)
         _setter("ttl", ttl)
         _setter("urn", urn)
@@ -12753,11 +13855,19 @@ class GetDomainsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -12820,9 +13930,13 @@ class GetDomainsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -12928,32 +14042,104 @@ class GetDropletsDropletResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backups: bool,
-             created_at: str,
-             disk: int,
-             id: int,
-             image: str,
-             ipv4_address: str,
-             ipv4_address_private: str,
-             ipv6: bool,
-             ipv6_address: str,
-             ipv6_address_private: str,
-             locked: bool,
-             memory: int,
-             monitoring: bool,
-             name: str,
-             price_hourly: float,
-             price_monthly: float,
-             private_networking: bool,
-             region: str,
-             size: str,
-             status: str,
-             tags: Sequence[str],
-             urn: str,
-             vcpus: int,
-             volume_ids: Sequence[str],
-             vpc_uuid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backups: Optional[bool] = None,
+             created_at: Optional[str] = None,
+             disk: Optional[int] = None,
+             id: Optional[int] = None,
+             image: Optional[str] = None,
+             ipv4_address: Optional[str] = None,
+             ipv4_address_private: Optional[str] = None,
+             ipv6: Optional[bool] = None,
+             ipv6_address: Optional[str] = None,
+             ipv6_address_private: Optional[str] = None,
+             locked: Optional[bool] = None,
+             memory: Optional[int] = None,
+             monitoring: Optional[bool] = None,
+             name: Optional[str] = None,
+             price_hourly: Optional[float] = None,
+             price_monthly: Optional[float] = None,
+             private_networking: Optional[bool] = None,
+             region: Optional[str] = None,
+             size: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             urn: Optional[str] = None,
+             vcpus: Optional[int] = None,
+             volume_ids: Optional[Sequence[str]] = None,
+             vpc_uuid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backups is None:
+            raise TypeError("Missing 'backups' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if ipv4_address is None:
+            raise TypeError("Missing 'ipv4_address' argument")
+        if ipv4_address_private is None and 'ipv4AddressPrivate' in kwargs:
+            ipv4_address_private = kwargs['ipv4AddressPrivate']
+        if ipv4_address_private is None:
+            raise TypeError("Missing 'ipv4_address_private' argument")
+        if ipv6 is None:
+            raise TypeError("Missing 'ipv6' argument")
+        if ipv6_address is None and 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if ipv6_address is None:
+            raise TypeError("Missing 'ipv6_address' argument")
+        if ipv6_address_private is None and 'ipv6AddressPrivate' in kwargs:
+            ipv6_address_private = kwargs['ipv6AddressPrivate']
+        if ipv6_address_private is None:
+            raise TypeError("Missing 'ipv6_address_private' argument")
+        if locked is None:
+            raise TypeError("Missing 'locked' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if monitoring is None:
+            raise TypeError("Missing 'monitoring' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if price_hourly is None and 'priceHourly' in kwargs:
+            price_hourly = kwargs['priceHourly']
+        if price_hourly is None:
+            raise TypeError("Missing 'price_hourly' argument")
+        if price_monthly is None and 'priceMonthly' in kwargs:
+            price_monthly = kwargs['priceMonthly']
+        if price_monthly is None:
+            raise TypeError("Missing 'price_monthly' argument")
+        if private_networking is None and 'privateNetworking' in kwargs:
+            private_networking = kwargs['privateNetworking']
+        if private_networking is None:
+            raise TypeError("Missing 'private_networking' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if urn is None:
+            raise TypeError("Missing 'urn' argument")
+        if vcpus is None:
+            raise TypeError("Missing 'vcpus' argument")
+        if volume_ids is None and 'volumeIds' in kwargs:
+            volume_ids = kwargs['volumeIds']
+        if volume_ids is None:
+            raise TypeError("Missing 'volume_ids' argument")
+        if vpc_uuid is None and 'vpcUuid' in kwargs:
+            vpc_uuid = kwargs['vpcUuid']
+        if vpc_uuid is None:
+            raise TypeError("Missing 'vpc_uuid' argument")
+
         _setter("backups", backups)
         _setter("created_at", created_at)
         _setter("disk", disk)
@@ -13206,11 +14392,19 @@ class GetDropletsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -13279,9 +14473,13 @@ class GetDropletsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -13346,14 +14544,30 @@ class GetFirewallInboundRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol: str,
+             protocol: Optional[str] = None,
              port_range: Optional[str] = None,
              source_addresses: Optional[Sequence[str]] = None,
              source_droplet_ids: Optional[Sequence[int]] = None,
              source_kubernetes_ids: Optional[Sequence[str]] = None,
              source_load_balancer_uids: Optional[Sequence[str]] = None,
              source_tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if source_addresses is None and 'sourceAddresses' in kwargs:
+            source_addresses = kwargs['sourceAddresses']
+        if source_droplet_ids is None and 'sourceDropletIds' in kwargs:
+            source_droplet_ids = kwargs['sourceDropletIds']
+        if source_kubernetes_ids is None and 'sourceKubernetesIds' in kwargs:
+            source_kubernetes_ids = kwargs['sourceKubernetesIds']
+        if source_load_balancer_uids is None and 'sourceLoadBalancerUids' in kwargs:
+            source_load_balancer_uids = kwargs['sourceLoadBalancerUids']
+        if source_tags is None and 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+
         _setter("protocol", protocol)
         if port_range is not None:
             _setter("port_range", port_range)
@@ -13473,14 +14687,30 @@ class GetFirewallOutboundRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol: str,
+             protocol: Optional[str] = None,
              destination_addresses: Optional[Sequence[str]] = None,
              destination_droplet_ids: Optional[Sequence[int]] = None,
              destination_kubernetes_ids: Optional[Sequence[str]] = None,
              destination_load_balancer_uids: Optional[Sequence[str]] = None,
              destination_tags: Optional[Sequence[str]] = None,
              port_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_addresses is None and 'destinationAddresses' in kwargs:
+            destination_addresses = kwargs['destinationAddresses']
+        if destination_droplet_ids is None and 'destinationDropletIds' in kwargs:
+            destination_droplet_ids = kwargs['destinationDropletIds']
+        if destination_kubernetes_ids is None and 'destinationKubernetesIds' in kwargs:
+            destination_kubernetes_ids = kwargs['destinationKubernetesIds']
+        if destination_load_balancer_uids is None and 'destinationLoadBalancerUids' in kwargs:
+            destination_load_balancer_uids = kwargs['destinationLoadBalancerUids']
+        if destination_tags is None and 'destinationTags' in kwargs:
+            destination_tags = kwargs['destinationTags']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         _setter("protocol", protocol)
         if destination_addresses is not None:
             _setter("destination_addresses", destination_addresses)
@@ -13582,7 +14812,11 @@ class GetFirewallPendingChangeResult(dict):
              droplet_id: Optional[int] = None,
              removing: Optional[bool] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if removing is not None:
@@ -13640,11 +14874,19 @@ class GetImagesFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -13749,22 +14991,60 @@ class GetImagesImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created: str,
-             description: str,
-             distribution: str,
-             error_message: str,
-             id: int,
-             image: str,
-             min_disk_size: int,
-             name: str,
-             private: bool,
-             regions: Sequence[str],
-             size_gigabytes: float,
-             slug: str,
-             status: str,
-             tags: Sequence[str],
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created: Optional[str] = None,
+             description: Optional[str] = None,
+             distribution: Optional[str] = None,
+             error_message: Optional[str] = None,
+             id: Optional[int] = None,
+             image: Optional[str] = None,
+             min_disk_size: Optional[int] = None,
+             name: Optional[str] = None,
+             private: Optional[bool] = None,
+             regions: Optional[Sequence[str]] = None,
+             size_gigabytes: Optional[float] = None,
+             slug: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created is None:
+            raise TypeError("Missing 'created' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if distribution is None:
+            raise TypeError("Missing 'distribution' argument")
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if min_disk_size is None and 'minDiskSize' in kwargs:
+            min_disk_size = kwargs['minDiskSize']
+        if min_disk_size is None:
+            raise TypeError("Missing 'min_disk_size' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if private is None:
+            raise TypeError("Missing 'private' argument")
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if size_gigabytes is None and 'sizeGigabytes' in kwargs:
+            size_gigabytes = kwargs['sizeGigabytes']
+        if size_gigabytes is None:
+            raise TypeError("Missing 'size_gigabytes' argument")
+        if slug is None:
+            raise TypeError("Missing 'slug' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("created", created)
         _setter("description", description)
         _setter("distribution", distribution)
@@ -13919,9 +15199,13 @@ class GetImagesSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -13976,14 +15260,40 @@ class GetKubernetesClusterKubeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_certificate: str,
-             client_key: str,
-             cluster_ca_certificate: str,
-             expires_at: str,
-             host: str,
-             raw_config: str,
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_certificate: Optional[str] = None,
+             client_key: Optional[str] = None,
+             cluster_ca_certificate: Optional[str] = None,
+             expires_at: Optional[str] = None,
+             host: Optional[str] = None,
+             raw_config: Optional[str] = None,
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_certificate is None:
+            raise TypeError("Missing 'client_certificate' argument")
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if client_key is None:
+            raise TypeError("Missing 'client_key' argument")
+        if cluster_ca_certificate is None and 'clusterCaCertificate' in kwargs:
+            cluster_ca_certificate = kwargs['clusterCaCertificate']
+        if cluster_ca_certificate is None:
+            raise TypeError("Missing 'cluster_ca_certificate' argument")
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if raw_config is None and 'rawConfig' in kwargs:
+            raw_config = kwargs['rawConfig']
+        if raw_config is None:
+            raise TypeError("Missing 'raw_config' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+
         _setter("client_certificate", client_certificate)
         _setter("client_key", client_key)
         _setter("cluster_ca_certificate", cluster_ca_certificate)
@@ -14069,10 +15379,20 @@ class GetKubernetesClusterMaintenancePolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: str,
-             duration: str,
-             start_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[str] = None,
+             duration: Optional[str] = None,
+             start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("day", day)
         _setter("duration", duration)
         _setter("start_time", start_time)
@@ -14149,19 +15469,55 @@ class GetKubernetesClusterNodePoolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actual_node_count: int,
-             auto_scale: bool,
-             id: str,
-             labels: Mapping[str, str],
-             max_nodes: int,
-             min_nodes: int,
-             name: str,
-             node_count: int,
-             nodes: Sequence['outputs.GetKubernetesClusterNodePoolNodeResult'],
-             size: str,
-             tags: Sequence[str],
-             taints: Sequence['outputs.GetKubernetesClusterNodePoolTaintResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             actual_node_count: Optional[int] = None,
+             auto_scale: Optional[bool] = None,
+             id: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             max_nodes: Optional[int] = None,
+             min_nodes: Optional[int] = None,
+             name: Optional[str] = None,
+             node_count: Optional[int] = None,
+             nodes: Optional[Sequence['outputs.GetKubernetesClusterNodePoolNodeResult']] = None,
+             size: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             taints: Optional[Sequence['outputs.GetKubernetesClusterNodePoolTaintResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if actual_node_count is None and 'actualNodeCount' in kwargs:
+            actual_node_count = kwargs['actualNodeCount']
+        if actual_node_count is None:
+            raise TypeError("Missing 'actual_node_count' argument")
+        if auto_scale is None and 'autoScale' in kwargs:
+            auto_scale = kwargs['autoScale']
+        if auto_scale is None:
+            raise TypeError("Missing 'auto_scale' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if max_nodes is None:
+            raise TypeError("Missing 'max_nodes' argument")
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if min_nodes is None:
+            raise TypeError("Missing 'min_nodes' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if nodes is None:
+            raise TypeError("Missing 'nodes' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if taints is None:
+            raise TypeError("Missing 'taints' argument")
+
         _setter("actual_node_count", actual_node_count)
         _setter("auto_scale", auto_scale)
         _setter("id", id)
@@ -14300,13 +15656,33 @@ class GetKubernetesClusterNodePoolNodeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             droplet_id: str,
-             id: str,
-             name: str,
-             status: str,
-             updated_at: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created_at: Optional[str] = None,
+             droplet_id: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             status: Optional[str] = None,
+             updated_at: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if droplet_id is None:
+            raise TypeError("Missing 'droplet_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+
         _setter("created_at", created_at)
         _setter("droplet_id", droplet_id)
         _setter("id", id)
@@ -14380,10 +15756,18 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: str,
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -14426,9 +15810,15 @@ class GetLoadBalancerFirewallResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allows: Sequence[str],
-             denies: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allows: Optional[Sequence[str]] = None,
+             denies: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allows is None:
+            raise TypeError("Missing 'allows' argument")
+        if denies is None:
+            raise TypeError("Missing 'denies' argument")
+
         _setter("allows", allows)
         _setter("denies", denies)
 
@@ -14466,14 +15856,44 @@ class GetLoadBalancerForwardingRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_id: str,
-             certificate_name: str,
-             entry_port: int,
-             entry_protocol: str,
-             target_port: int,
-             target_protocol: str,
-             tls_passthrough: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             certificate_id: Optional[str] = None,
+             certificate_name: Optional[str] = None,
+             entry_port: Optional[int] = None,
+             entry_protocol: Optional[str] = None,
+             target_port: Optional[int] = None,
+             target_protocol: Optional[str] = None,
+             tls_passthrough: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if certificate_id is None:
+            raise TypeError("Missing 'certificate_id' argument")
+        if certificate_name is None and 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if certificate_name is None:
+            raise TypeError("Missing 'certificate_name' argument")
+        if entry_port is None and 'entryPort' in kwargs:
+            entry_port = kwargs['entryPort']
+        if entry_port is None:
+            raise TypeError("Missing 'entry_port' argument")
+        if entry_protocol is None and 'entryProtocol' in kwargs:
+            entry_protocol = kwargs['entryProtocol']
+        if entry_protocol is None:
+            raise TypeError("Missing 'entry_protocol' argument")
+        if target_port is None and 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+        if target_port is None:
+            raise TypeError("Missing 'target_port' argument")
+        if target_protocol is None and 'targetProtocol' in kwargs:
+            target_protocol = kwargs['targetProtocol']
+        if target_protocol is None:
+            raise TypeError("Missing 'target_protocol' argument")
+        if tls_passthrough is None and 'tlsPassthrough' in kwargs:
+            tls_passthrough = kwargs['tlsPassthrough']
+        if tls_passthrough is None:
+            raise TypeError("Missing 'tls_passthrough' argument")
+
         _setter("certificate_id", certificate_id)
         _setter("certificate_name", certificate_name)
         _setter("entry_port", entry_port)
@@ -14541,14 +15961,38 @@ class GetLoadBalancerHealthcheckResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             check_interval_seconds: int,
-             healthy_threshold: int,
-             path: str,
-             port: int,
-             protocol: str,
-             response_timeout_seconds: int,
-             unhealthy_threshold: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             check_interval_seconds: Optional[int] = None,
+             healthy_threshold: Optional[int] = None,
+             path: Optional[str] = None,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
+             response_timeout_seconds: Optional[int] = None,
+             unhealthy_threshold: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if check_interval_seconds is None and 'checkIntervalSeconds' in kwargs:
+            check_interval_seconds = kwargs['checkIntervalSeconds']
+        if check_interval_seconds is None:
+            raise TypeError("Missing 'check_interval_seconds' argument")
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if healthy_threshold is None:
+            raise TypeError("Missing 'healthy_threshold' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if response_timeout_seconds is None and 'responseTimeoutSeconds' in kwargs:
+            response_timeout_seconds = kwargs['responseTimeoutSeconds']
+        if response_timeout_seconds is None:
+            raise TypeError("Missing 'response_timeout_seconds' argument")
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+        if unhealthy_threshold is None:
+            raise TypeError("Missing 'unhealthy_threshold' argument")
+
         _setter("check_interval_seconds", check_interval_seconds)
         _setter("healthy_threshold", healthy_threshold)
         _setter("path", path)
@@ -14608,10 +16052,22 @@ class GetLoadBalancerStickySessionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cookie_name: str,
-             cookie_ttl_seconds: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cookie_name: Optional[str] = None,
+             cookie_ttl_seconds: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cookie_name is None and 'cookieName' in kwargs:
+            cookie_name = kwargs['cookieName']
+        if cookie_name is None:
+            raise TypeError("Missing 'cookie_name' argument")
+        if cookie_ttl_seconds is None and 'cookieTtlSeconds' in kwargs:
+            cookie_ttl_seconds = kwargs['cookieTtlSeconds']
+        if cookie_ttl_seconds is None:
+            raise TypeError("Missing 'cookie_ttl_seconds' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("cookie_name", cookie_name)
         _setter("cookie_ttl_seconds", cookie_ttl_seconds)
         _setter("type", type)
@@ -14661,11 +16117,19 @@ class GetProjectsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -14755,18 +16219,52 @@ class GetProjectsProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             description: str,
-             environment: str,
-             id: str,
-             is_default: bool,
-             name: str,
-             owner_id: int,
-             owner_uuid: str,
-             purpose: str,
-             resources: Sequence[str],
-             updated_at: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             created_at: Optional[str] = None,
+             description: Optional[str] = None,
+             environment: Optional[str] = None,
+             id: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             name: Optional[str] = None,
+             owner_id: Optional[int] = None,
+             owner_uuid: Optional[str] = None,
+             purpose: Optional[str] = None,
+             resources: Optional[Sequence[str]] = None,
+             updated_at: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if owner_id is None and 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if owner_id is None:
+            raise TypeError("Missing 'owner_id' argument")
+        if owner_uuid is None and 'ownerUuid' in kwargs:
+            owner_uuid = kwargs['ownerUuid']
+        if owner_uuid is None:
+            raise TypeError("Missing 'owner_uuid' argument")
+        if purpose is None:
+            raise TypeError("Missing 'purpose' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+
         _setter("created_at", created_at)
         _setter("description", description)
         _setter("environment", environment)
@@ -14883,9 +16381,13 @@ class GetProjectsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -14937,11 +16439,19 @@ class GetRecordsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -15032,18 +16542,42 @@ class GetRecordsRecordResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             flags: int,
-             id: int,
-             name: str,
-             port: int,
-             priority: int,
-             tag: str,
-             ttl: int,
-             type: str,
-             value: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domain: Optional[str] = None,
+             flags: Optional[int] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             port: Optional[int] = None,
+             priority: Optional[int] = None,
+             tag: Optional[str] = None,
+             ttl: Optional[int] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if flags is None:
+            raise TypeError("Missing 'flags' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+
         _setter("domain", domain)
         _setter("flags", flags)
         _setter("id", id)
@@ -15163,9 +16697,13 @@ class GetRecordsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -15217,11 +16755,19 @@ class GetRegionsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -15294,12 +16840,24 @@ class GetRegionsRegionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available: bool,
-             features: Sequence[str],
-             name: str,
-             sizes: Sequence[str],
-             slug: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             available: Optional[bool] = None,
+             features: Optional[Sequence[str]] = None,
+             name: Optional[str] = None,
+             sizes: Optional[Sequence[str]] = None,
+             slug: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if available is None:
+            raise TypeError("Missing 'available' argument")
+        if features is None:
+            raise TypeError("Missing 'features' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if sizes is None:
+            raise TypeError("Missing 'sizes' argument")
+        if slug is None:
+            raise TypeError("Missing 'slug' argument")
+
         _setter("available", available)
         _setter("features", features)
         _setter("name", name)
@@ -15365,9 +16923,13 @@ class GetRegionsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -15420,11 +16982,19 @@ class GetSizesFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -15510,16 +17080,40 @@ class GetSizesSizeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available: bool,
-             disk: int,
-             memory: int,
-             price_hourly: float,
-             price_monthly: float,
-             regions: Sequence[str],
-             slug: str,
-             transfer: float,
-             vcpus: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             available: Optional[bool] = None,
+             disk: Optional[int] = None,
+             memory: Optional[int] = None,
+             price_hourly: Optional[float] = None,
+             price_monthly: Optional[float] = None,
+             regions: Optional[Sequence[str]] = None,
+             slug: Optional[str] = None,
+             transfer: Optional[float] = None,
+             vcpus: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if available is None:
+            raise TypeError("Missing 'available' argument")
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if price_hourly is None and 'priceHourly' in kwargs:
+            price_hourly = kwargs['priceHourly']
+        if price_hourly is None:
+            raise TypeError("Missing 'price_hourly' argument")
+        if price_monthly is None and 'priceMonthly' in kwargs:
+            price_monthly = kwargs['priceMonthly']
+        if price_monthly is None:
+            raise TypeError("Missing 'price_monthly' argument")
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if slug is None:
+            raise TypeError("Missing 'slug' argument")
+        if transfer is None:
+            raise TypeError("Missing 'transfer' argument")
+        if vcpus is None:
+            raise TypeError("Missing 'vcpus' argument")
+
         _setter("available", available)
         _setter("disk", disk)
         _setter("memory", memory)
@@ -15621,9 +17215,13 @@ class GetSizesSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -15672,12 +17270,26 @@ class GetSpacesBucketsBucketResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_domain_name: str,
-             endpoint: str,
-             name: str,
-             region: str,
-             urn: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket_domain_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
+             name: Optional[str] = None,
+             region: Optional[str] = None,
+             urn: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_domain_name is None and 'bucketDomainName' in kwargs:
+            bucket_domain_name = kwargs['bucketDomainName']
+        if bucket_domain_name is None:
+            raise TypeError("Missing 'bucket_domain_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if urn is None:
+            raise TypeError("Missing 'urn' argument")
+
         _setter("bucket_domain_name", bucket_domain_name)
         _setter("endpoint", endpoint)
         _setter("name", name)
@@ -15753,11 +17365,19 @@ class GetSpacesBucketsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -15820,9 +17440,13 @@ class GetSpacesBucketsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -15865,11 +17489,19 @@ class GetSshKeysFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -15921,9 +17553,13 @@ class GetSshKeysSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -15968,11 +17604,23 @@ class GetSshKeysSshKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fingerprint: str,
-             id: int,
-             name: str,
-             public_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             fingerprint: Optional[str] = None,
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             public_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
+
         _setter("fingerprint", fingerprint)
         _setter("id", id)
         _setter("name", name)
@@ -16039,11 +17687,19 @@ class GetTagsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
         _setter("key", key)
         _setter("values", values)
         if all is not None:
@@ -16106,9 +17762,13 @@ class GetTagsSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("key", key)
         if direction is not None:
             _setter("direction", direction)
@@ -16162,14 +17822,42 @@ class GetTagsTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             databases_count: int,
-             droplets_count: int,
-             images_count: int,
-             name: str,
-             total_resource_count: int,
-             volume_snapshots_count: int,
-             volumes_count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             databases_count: Optional[int] = None,
+             droplets_count: Optional[int] = None,
+             images_count: Optional[int] = None,
+             name: Optional[str] = None,
+             total_resource_count: Optional[int] = None,
+             volume_snapshots_count: Optional[int] = None,
+             volumes_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if databases_count is None and 'databasesCount' in kwargs:
+            databases_count = kwargs['databasesCount']
+        if databases_count is None:
+            raise TypeError("Missing 'databases_count' argument")
+        if droplets_count is None and 'dropletsCount' in kwargs:
+            droplets_count = kwargs['dropletsCount']
+        if droplets_count is None:
+            raise TypeError("Missing 'droplets_count' argument")
+        if images_count is None and 'imagesCount' in kwargs:
+            images_count = kwargs['imagesCount']
+        if images_count is None:
+            raise TypeError("Missing 'images_count' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if total_resource_count is None and 'totalResourceCount' in kwargs:
+            total_resource_count = kwargs['totalResourceCount']
+        if total_resource_count is None:
+            raise TypeError("Missing 'total_resource_count' argument")
+        if volume_snapshots_count is None and 'volumeSnapshotsCount' in kwargs:
+            volume_snapshots_count = kwargs['volumeSnapshotsCount']
+        if volume_snapshots_count is None:
+            raise TypeError("Missing 'volume_snapshots_count' argument")
+        if volumes_count is None and 'volumesCount' in kwargs:
+            volumes_count = kwargs['volumesCount']
+        if volumes_count is None:
+            raise TypeError("Missing 'volumes_count' argument")
+
         _setter("databases_count", databases_count)
         _setter("droplets_count", droplets_count)
         _setter("images_count", images_count)

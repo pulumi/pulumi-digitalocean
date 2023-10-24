@@ -150,34 +150,6 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
     resources.
 
-    ## Example Usage
-
-    Get the Droplet snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    web_snapshot = digitalocean.get_droplet_snapshot(most_recent=True,
-        name_regex="^web",
-        region="nyc3")
-    ```
-
-    Create image from snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    web_snapshot = digitalocean.get_droplet_snapshot(name_regex="^web",
-        region="nyc3",
-        most_recent=True)
-    from_snapshot = digitalocean.Droplet("from-snapshot",
-        image=web_snapshot.id,
-        region="nyc3",
-        size="s-2vcpu-4gb")
-    ```
-
 
     :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
            
@@ -219,34 +191,6 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
     Droplet snapshots are saved instances of a Droplet. Use this data
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
     resources.
-
-    ## Example Usage
-
-    Get the Droplet snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    web_snapshot = digitalocean.get_droplet_snapshot(most_recent=True,
-        name_regex="^web",
-        region="nyc3")
-    ```
-
-    Create image from snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    web_snapshot = digitalocean.get_droplet_snapshot(name_regex="^web",
-        region="nyc3",
-        most_recent=True)
-    from_snapshot = digitalocean.Droplet("from-snapshot",
-        image=web_snapshot.id,
-        region="nyc3",
-        size="s-2vcpu-4gb")
-    ```
 
 
     :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.

@@ -15,54 +15,6 @@ namespace Pulumi.DigitalOcean
     /// VPCs are virtual networks containing resources that can communicate with each
     /// other in full isolation, using private IP addresses.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new DigitalOcean.Vpc("example", new()
-    ///     {
-    ///         IpRange = "10.10.10.0/24",
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Resource Assignment
-    /// 
-    /// `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
-    /// `digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources
-    /// may be assigned to a VPC by referencing its `id`. For example:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleVpc = new DigitalOcean.Vpc("exampleVpc", new()
-    ///     {
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-    ///     {
-    ///         Size = "s-1vcpu-1gb",
-    ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc3",
-    ///         VpcUuid = exampleVpc.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// A VPC can be imported using its `id`, e.g.

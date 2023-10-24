@@ -27,51 +27,6 @@ import (
 // * Spaces Bucket
 // * Volume
 //
-// ## Example Usage
-//
-// The following example assigns a droplet to a Project managed outside of the provider:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			playground, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
-//				Name: pulumi.StringRef("playground"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
-//				Image:  pulumi.String("ubuntu-22-04-x64"),
-//				Region: pulumi.String("nyc3"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewProjectResources(ctx, "barfoo", &digitalocean.ProjectResourcesArgs{
-//				Project: *pulumi.String(playground.Id),
-//				Resources: pulumi.StringArray{
-//					foobar.DropletUrn,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Importing this resource is not supported.

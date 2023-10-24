@@ -162,16 +162,6 @@ def get_project(id: Optional[str] = None,
     Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
     then this data source returns the default project.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    default = digitalocean.get_project()
-    staging = digitalocean.get_project(name="My Staging Project")
-    ```
-
 
     :param str id: the ID of the project to retrieve
     :param str name: the name of the project to retrieve. The data source will raise an error if more than
@@ -204,16 +194,6 @@ def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
     then this data source returns the default project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    default = digitalocean.get_project()
-    staging = digitalocean.get_project(name="My Staging Project")
-    ```
 
 
     :param str id: the ID of the project to retrieve

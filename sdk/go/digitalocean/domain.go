@@ -15,33 +15,6 @@ import (
 
 // Provides a DigitalOcean domain resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
-//				Name:      pulumi.String("example.com"),
-//				IpAddress: pulumi.Any(digitalocean_droplet.Foo.Ipv4_address),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Domains can be imported using the `domain name`, e.g.

@@ -10,25 +10,6 @@ import * as utilities from "./utilities";
  * managed by the provider or you need validate if the tag exists in the account.
  *
  * An error is triggered if the provided tag name does not exist.
- *
- * ## Example Usage
- *
- * Get the tag:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleTag = digitalocean.getTag({
- *     name: "example",
- * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
- *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
- * });
- * ```
  */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
 
@@ -88,25 +69,6 @@ export interface GetTagResult {
  * managed by the provider or you need validate if the tag exists in the account.
  *
  * An error is triggered if the provided tag name does not exist.
- *
- * ## Example Usage
- *
- * Get the tag:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleTag = digitalocean.getTag({
- *     name: "example",
- * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
- *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
- * });
- * ```
  */
 export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagResult> {
     return pulumi.output(args).apply((a: any) => getTag(a, opts))

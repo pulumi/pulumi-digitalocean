@@ -76,9 +76,9 @@ class SpacesBucketObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             key: pulumi.Input[str],
-             region: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input[str]] = None,
              cache_control: Optional[pulumi.Input[str]] = None,
              content: Optional[pulumi.Input[str]] = None,
@@ -92,7 +92,31 @@ class SpacesBucketObjectArgs:
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              source: Optional[pulumi.Input[str]] = None,
              website_redirect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if cache_control is None and 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_language is None and 'contentLanguage' in kwargs:
+            content_language = kwargs['contentLanguage']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if website_redirect is None and 'websiteRedirect' in kwargs:
+            website_redirect = kwargs['websiteRedirect']
+
         _setter("bucket", bucket)
         _setter("key", key)
         _setter("region", region)
@@ -406,7 +430,27 @@ class _SpacesBucketObjectState:
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              website_redirect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cache_control is None and 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_language is None and 'contentLanguage' in kwargs:
+            content_language = kwargs['contentLanguage']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if website_redirect is None and 'websiteRedirect' in kwargs:
+            website_redirect = kwargs['websiteRedirect']
+
         if acl is not None:
             _setter("acl", acl)
         if bucket is not None:
@@ -691,31 +735,9 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
-        ```
-
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
-        ### Create a Key in a Spaces Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        index = digitalocean.SpacesBucketObject("index",
-            region=foobar.region,
-            bucket=foobar.name,
-            key="index.html",
-            content="<html><body><p>This page is empty.</p></body></html>",
-            content_type="text/html")
-        ```
 
         ## Import
 
@@ -768,31 +790,9 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
-        ```
-
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
-        ### Create a Key in a Spaces Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        index = digitalocean.SpacesBucketObject("index",
-            region=foobar.region,
-            bucket=foobar.name,
-            key="index.html",
-            content="<html><body><p>This page is empty.</p></body></html>",
-            content_type="text/html")
-        ```
 
         ## Import
 

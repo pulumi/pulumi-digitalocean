@@ -29,9 +29,19 @@ class ReservedIpAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             droplet_id: pulumi.Input[int],
-             ip_address: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if droplet_id is None:
+            raise TypeError("Missing 'droplet_id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+
         _setter("droplet_id", droplet_id)
         _setter("ip_address", ip_address)
 
@@ -80,7 +90,13 @@ class _ReservedIpAssignmentState:
              _setter: Callable[[Any, Any], None],
              droplet_id: Optional[pulumi.Input[int]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if ip_address is not None:
@@ -124,24 +140,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
         makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
         Droplet.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3",
-            ipv6=True,
-            private_networking=True)
-        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
-            ip_address=example_reserved_ip.ip_address,
-            droplet_id=example_droplet.id)
-        ```
-
         ## Import
 
         Reserved IP assignments can be imported using the reserved IP itself and the `id` of the Droplet joined with a comma. For example
@@ -165,24 +163,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
         Provides a resource for assigning an existing DigitalOcean reserved IP to a Droplet. This
         makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
         Droplet.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3",
-            ipv6=True,
-            private_networking=True)
-        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
-            ip_address=example_reserved_ip.ip_address,
-            droplet_id=example_droplet.id)
-        ```
 
         ## Import
 

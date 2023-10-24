@@ -29,9 +29,15 @@ class DropletSnapshotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             droplet_id: pulumi.Input[str],
+             droplet_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if droplet_id is None:
+            raise TypeError("Missing 'droplet_id' argument")
+
         _setter("droplet_id", droplet_id)
         if name is not None:
             _setter("name", name)
@@ -97,7 +103,15 @@ class _DropletSnapshotState:
              name: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              size: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if min_disk_size is None and 'minDiskSize' in kwargs:
+            min_disk_size = kwargs['minDiskSize']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if droplet_id is not None:
@@ -195,23 +209,6 @@ class DropletSnapshot(pulumi.CustomResource):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
-        from_snapshot = digitalocean.Droplet("from-snapshot",
-            image=web_snapshot.id,
-            region="nyc3",
-            size="s-2vcpu-4gb")
-        ```
-
         ## Import
 
         Droplet Snapshots can be imported using the `snapshot id`, e.g.
@@ -233,23 +230,6 @@ class DropletSnapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
-        from_snapshot = digitalocean.Droplet("from-snapshot",
-            image=web_snapshot.id,
-            region="nyc3",
-            size="s-2vcpu-4gb")
-        ```
 
         ## Import
 

@@ -11,33 +11,6 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean database replica resource.
  *
  * ## Example Usage
- * ### Create a new PostgreSQL database replica
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
- *     engine: "pg",
- *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
- *     nodeCount: 1,
- * });
- * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
- *     clusterId: postgres_example.id,
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
- * });
- * export const uUID = replica_example.uuid;
- * // Create firewall rule for database replica
- * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
- *     clusterId: replica_example.uuid,
- *     rules: [{
- *         type: "ip_addr",
- *         value: "192.168.1.1",
- *     }],
- * });
- * ```
  *
  * ## Import
  *

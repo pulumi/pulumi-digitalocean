@@ -13,40 +13,6 @@ import (
 )
 
 // Provides information on a DigitalOcean database replica.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
-//				Name: "example-cluster",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			read_only, err := digitalocean.LookupDatabaseReplica(ctx, &digitalocean.LookupDatabaseReplicaArgs{
-//				ClusterId: example.Id,
-//				Name:      "terra-test-ro",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("replicaOutput", read_only.Uri)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupDatabaseReplica(ctx *pulumi.Context, args *LookupDatabaseReplicaArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseReplicaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseReplicaResult

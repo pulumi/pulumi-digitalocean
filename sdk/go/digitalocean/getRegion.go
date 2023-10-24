@@ -14,33 +14,6 @@ import (
 
 // Get information on a single DigitalOcean region. This is useful to find out
 // what Droplet sizes and features are supported within a region.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sfo2, err := digitalocean.GetRegion(ctx, &digitalocean.GetRegionArgs{
-//				Slug: "sfo2",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("regionName", sfo2.Name)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionResult
