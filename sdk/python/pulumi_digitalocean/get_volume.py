@@ -158,35 +158,6 @@ def get_volume(description: Optional[str] = None,
 
     An error is triggered if the provided volume name does not exist.
 
-    ## Example Usage
-
-    Get the volume:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_volume(name="app-data",
-        region="nyc3")
-    ```
-
-    Reuse the data about a volume to attach it to a Droplet:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example_volume = digitalocean.get_volume(name="app-data",
-        region="nyc3")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
-        image="ubuntu-18-04-x64",
-        region="nyc3")
-    foobar = digitalocean.VolumeAttachment("foobar",
-        droplet_id=example_droplet.id,
-        volume_id=example_volume.id)
-    ```
-
 
     :param str description: Text describing a block storage volume.
     :param str name: The name of block storage volume.
@@ -224,35 +195,6 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     any of the volumes data.
 
     An error is triggered if the provided volume name does not exist.
-
-    ## Example Usage
-
-    Get the volume:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_volume(name="app-data",
-        region="nyc3")
-    ```
-
-    Reuse the data about a volume to attach it to a Droplet:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example_volume = digitalocean.get_volume(name="app-data",
-        region="nyc3")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
-        image="ubuntu-18-04-x64",
-        region="nyc3")
-    foobar = digitalocean.VolumeAttachment("foobar",
-        droplet_id=example_droplet.id,
-        volume_id=example_volume.id)
-    ```
 
 
     :param str description: Text describing a block storage volume.

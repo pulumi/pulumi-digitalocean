@@ -54,7 +54,15 @@ class SpacesBucketArgs:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
              versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+
         if acl is not None:
             _setter("acl", acl)
         if cors_rules is not None:
@@ -213,7 +221,19 @@ class _SpacesBucketState:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
              versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_domain_name is None and 'bucketDomainName' in kwargs:
+            bucket_domain_name = kwargs['bucketDomainName']
+        if bucket_urn is None and 'bucketUrn' in kwargs:
+            bucket_urn = kwargs['bucketUrn']
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+
         if acl is not None:
             _setter("acl", acl)
         if bucket_domain_name is not None:
@@ -390,52 +410,9 @@ class SpacesBucket(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
-        ```
-
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
-        ### Create a New Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        ```
-        ### Create a New Bucket With CORS Rules
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar",
-            cors_rules=[
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=["GET"],
-                    allowed_origins=["*"],
-                    max_age_seconds=3000,
-                ),
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=[
-                        "PUT",
-                        "POST",
-                        "DELETE",
-                    ],
-                    allowed_origins=["https://www.example.com"],
-                    max_age_seconds=3000,
-                ),
-            ],
-            region="nyc3")
-        ```
 
         ## Import
 
@@ -476,52 +453,9 @@ class SpacesBucket(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
-        ```
-
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
-        ### Create a New Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        ```
-        ### Create a New Bucket With CORS Rules
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar",
-            cors_rules=[
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=["GET"],
-                    allowed_origins=["*"],
-                    max_age_seconds=3000,
-                ),
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=[
-                        "PUT",
-                        "POST",
-                        "DELETE",
-                    ],
-                    allowed_origins=["https://www.example.com"],
-                    max_age_seconds=3000,
-                ),
-            ],
-            region="nyc3")
-        ```
 
         ## Import
 
@@ -572,11 +506,7 @@ class SpacesBucket(pulumi.CustomResource):
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
-            if versioning is not None and not isinstance(versioning, SpacesBucketVersioningArgs):
-                versioning = versioning or {}
-                def _setter(key, value):
-                    versioning[key] = value
-                SpacesBucketVersioningArgs._configure(_setter, **versioning)
+            versioning = _utilities.configure(versioning, SpacesBucketVersioningArgs, True)
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["bucket_domain_name"] = None
             __props__.__dict__["bucket_urn"] = None

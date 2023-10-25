@@ -11,63 +11,6 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Limiting access to specific IP addresses
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobarSpacesBucket = new DigitalOcean.SpacesBucket("foobarSpacesBucket", new()
-    ///     {
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    ///     var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy("foobarSpacesBucketPolicy", new()
-    ///     {
-    ///         Region = foobarSpacesBucket.Region,
-    ///         Bucket = foobarSpacesBucket.Name,
-    ///         Policy = Output.Tuple(foobarSpacesBucket.Name, foobarSpacesBucket.Name).Apply(values =&gt;
-    ///         {
-    ///             var foobarSpacesBucketName = values.Item1;
-    ///             var foobarSpacesBucketName1 = values.Item2;
-    ///             return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["Version"] = "2012-10-17",
-    ///                 ["Statement"] = new[]
-    ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["Sid"] = "IPAllow",
-    ///                         ["Effect"] = "Deny",
-    ///                         ["Principal"] = "*",
-    ///                         ["Action"] = "s3:*",
-    ///                         ["Resource"] = new[]
-    ///                         {
-    ///                             $"arn:aws:s3:::{foobarSpacesBucketName}",
-    ///                             $"arn:aws:s3:::{foobarSpacesBucketName1}/*",
-    ///                         },
-    ///                         ["Condition"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["NotIpAddress"] = new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["aws:SourceIp"] = "54.240.143.0/24",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             });
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// !&gt; **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
     /// 
     /// ## Import
     /// 

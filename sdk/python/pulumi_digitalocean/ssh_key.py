@@ -30,9 +30,15 @@ class SshKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key: pulumi.Input[str],
+             public_key: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
+
         _setter("public_key", public_key)
         if name is not None:
             _setter("name", name)
@@ -88,7 +94,11 @@ class _SshKeyState:
              fingerprint: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              public_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+
         if fingerprint is not None:
             _setter("fingerprint", fingerprint)
         if name is not None:
@@ -148,22 +158,6 @@ class SshKey(pulumi.CustomResource):
         can be referenced in your Droplet configuration via their ID or
         fingerprint.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new SSH key
-        default = digitalocean.SshKey("default", public_key=(lambda path: open(path).read())("/Users/myuser/.ssh/id_rsa.pub"))
-        # Create a new Droplet using the SSH key
-        web = digitalocean.Droplet("web",
-            image="ubuntu-18-04-x64",
-            region="nyc3",
-            size="s-1vcpu-1gb",
-            ssh_keys=[default.fingerprint])
-        ```
-
         ## Import
 
         SSH Keys can be imported using the `ssh key id`, e.g.
@@ -189,22 +183,6 @@ class SshKey(pulumi.CustomResource):
         keys for Droplet access. Keys created with this resource
         can be referenced in your Droplet configuration via their ID or
         fingerprint.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new SSH key
-        default = digitalocean.SshKey("default", public_key=(lambda path: open(path).read())("/Users/myuser/.ssh/id_rsa.pub"))
-        # Create a new Droplet using the SSH key
-        web = digitalocean.Droplet("web",
-            image="ubuntu-18-04-x64",
-            region="nyc3",
-            size="s-1vcpu-1gb",
-            ssh_keys=[default.fingerprint])
-        ```
 
         ## Import
 

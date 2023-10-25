@@ -13,47 +13,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
- * ### Basic Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const golang_sample = new digitalocean.App("golang-sample", {spec: {
- *     name: "golang-sample",
- *     region: "ams",
- *     services: [{
- *         environmentSlug: "go",
- *         git: {
- *             branch: "main",
- *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
- *         },
- *         instanceCount: 1,
- *         instanceSizeSlug: "professional-xs",
- *         name: "go-service",
- *     }],
- * }});
- * ```
- * ### Static Site Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const static_site_example = new digitalocean.App("static-site-example", {spec: {
- *     name: "static-site-example",
- *     region: "ams",
- *     staticSites: [{
- *         buildCommand: "bundle exec jekyll build -d ./public",
- *         git: {
- *             branch: "main",
- *             repoCloneUrl: "https://github.com/digitalocean/sample-jekyll.git",
- *         },
- *         name: "sample-jekyll",
- *         outputDir: "/public",
- *     }],
- * }});
- * ```
  *
  * ## Import
  *

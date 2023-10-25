@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
  *
  * ## Example Usage
- * ### Create a new PostgreSQL database
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
- *     engine: "pg",
- *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
- *     nodeCount: 1,
- * });
- * const database_example = new digitalocean.DatabaseDb("database-example", {clusterId: postgres_example.id});
- * ```
  *
  * ## Import
  *

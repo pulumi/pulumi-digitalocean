@@ -13,27 +13,6 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Droplet resource. This can be used to create,
     /// modify, and delete Droplets.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new Web Droplet in the nyc2 region
-    ///     var web = new DigitalOcean.Droplet("web", new()
-    ///     {
-    ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc2",
-    ///         Size = "s-1vcpu-1gb",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Droplets can be imported using the Droplet `id`, e.g.

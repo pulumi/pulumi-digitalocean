@@ -30,9 +30,15 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("name", name)
         if ip_address is not None:
             _setter("ip_address", ip_address)
@@ -92,7 +98,13 @@ class _DomainState:
              ip_address: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_urn is None and 'domainUrn' in kwargs:
+            domain_urn = kwargs['domainUrn']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if domain_urn is not None:
             _setter("domain_urn", domain_urn)
         if ip_address is not None:
@@ -163,18 +175,6 @@ class Domain(pulumi.CustomResource):
         """
         Provides a DigitalOcean domain resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new domain
-        default = digitalocean.Domain("default",
-            name="example.com",
-            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
-        ```
-
         ## Import
 
         Domains can be imported using the `domain name`, e.g.
@@ -197,18 +197,6 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DigitalOcean domain resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new domain
-        default = digitalocean.Domain("default",
-            name="example.com",
-            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
-        ```
 
         ## Import
 

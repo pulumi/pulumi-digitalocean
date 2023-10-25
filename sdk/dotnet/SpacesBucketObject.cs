@@ -26,49 +26,9 @@ namespace Pulumi.DigitalOcean
     /// access ID and secret you generate via the DigitalOcean control panel. For
     /// example:
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
-    /// 
-    ///     // ...
-    /// });
-    /// ```
-    /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
     /// 
     /// ## Example Usage
-    /// ### Create a Key in a Spaces Bucket
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
-    ///     {
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    ///     var index = new DigitalOcean.SpacesBucketObject("index", new()
-    ///     {
-    ///         Region = foobar.Region,
-    ///         Bucket = foobar.Name,
-    ///         Key = "index.html",
-    ///         Content = "&lt;html&gt;&lt;body&gt;&lt;p&gt;This page is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
-    ///         ContentType = "text/html",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

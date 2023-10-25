@@ -21,39 +21,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
     /// Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var flatcar = new DigitalOcean.CustomImage("flatcar", new()
-    ///     {
-    ///         Url = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
-    ///         Regions = new[]
-    ///         {
-    ///             "nyc3",
-    ///         },
-    ///     });
-    /// 
-    ///     var example = new DigitalOcean.Droplet("example", new()
-    ///     {
-    ///         Image = flatcar.Id,
-    ///         Region = "nyc3",
-    ///         Size = "s-1vcpu-1gb",
-    ///         SshKeys = new[]
-    ///         {
-    ///             "12345",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/customImage:CustomImage")]
     public partial class CustomImage : global::Pulumi.CustomResource

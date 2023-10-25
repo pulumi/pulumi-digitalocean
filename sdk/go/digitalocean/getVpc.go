@@ -22,66 +22,6 @@ import (
 // return that that region's default VPC.
 //
 // ## Example Usage
-// ### VPC By Name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
-//				Name: pulumi.StringRef("example-network"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Reuse the data about a VPC to assign a Droplet to it:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
-//				Name: pulumi.StringRef("example-network"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-//				Size:    pulumi.String("s-1vcpu-1gb"),
-//				Image:   pulumi.String("ubuntu-18-04-x64"),
-//				Region:  pulumi.String("nyc3"),
-//				VpcUuid: *pulumi.String(exampleVpc.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOption) (*LookupVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcResult

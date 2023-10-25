@@ -135,17 +135,6 @@ def get_certificate(name: Optional[str] = None,
 
     An error is triggered if the provided certificate name does not exist.
 
-    ## Example Usage
-
-    Get the certificate:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_certificate(name="example")
-    ```
-
 
     :param str name: The name of certificate.
     """
@@ -175,17 +164,6 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     any of the certificates data.
 
     An error is triggered if the provided certificate name does not exist.
-
-    ## Example Usage
-
-    Get the certificate:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_certificate(name="example")
-    ```
 
 
     :param str name: The name of certificate.

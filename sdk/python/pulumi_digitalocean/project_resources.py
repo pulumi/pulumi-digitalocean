@@ -29,9 +29,15 @@ class ProjectResourcesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             resources: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+
         _setter("project", project)
         _setter("resources", resources)
 
@@ -80,7 +86,9 @@ class _ProjectResourcesState:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if project is not None:
             _setter("project", project)
         if resources is not None:
@@ -134,24 +142,6 @@ class ProjectResources(pulumi.CustomResource):
         * Spaces Bucket
         * Volume
 
-        ## Example Usage
-
-        The following example assigns a droplet to a Project managed outside of the provider:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        playground = digitalocean.get_project(name="playground")
-        foobar = digitalocean.Droplet("foobar",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        barfoo = digitalocean.ProjectResources("barfoo",
-            project=playground.id,
-            resources=[foobar.droplet_urn])
-        ```
-
         ## Import
 
         Importing this resource is not supported.
@@ -181,24 +171,6 @@ class ProjectResources(pulumi.CustomResource):
         * Load Balancers
         * Spaces Bucket
         * Volume
-
-        ## Example Usage
-
-        The following example assigns a droplet to a Project managed outside of the provider:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        playground = digitalocean.get_project(name="playground")
-        foobar = digitalocean.Droplet("foobar",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        barfoo = digitalocean.ProjectResources("barfoo",
-            project=playground.id,
-            resources=[foobar.droplet_urn])
-        ```
 
         ## Import
 

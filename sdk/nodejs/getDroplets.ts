@@ -16,48 +16,6 @@ import * as utilities from "./utilities";
  *
  * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
  * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
- *
- * ## Example Usage
- *
- * Use the `filter` block with a `key` string and `values` list to filter images.
- *
- * For example to find all Droplets with size `s-1vcpu-1gb`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const small = digitalocean.getDroplets({
- *     filters: [{
- *         key: "size",
- *         values: ["s-1vcpu-1gb"],
- *     }],
- * });
- * ```
- *
- * You can filter on multiple fields and sort the results as well:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const small-with-backups = digitalocean.getDroplets({
- *     filters: [
- *         {
- *             key: "size",
- *             values: ["s-1vcpu-1gb"],
- *         },
- *         {
- *             key: "backups",
- *             values: ["true"],
- *         },
- *     ],
- *     sorts: [{
- *         direction: "desc",
- *         key: "created_at",
- *     }],
- * });
- * ```
  */
 export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletsResult> {
     args = args || {};
@@ -109,48 +67,6 @@ export interface GetDropletsResult {
  *
  * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
  * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
- *
- * ## Example Usage
- *
- * Use the `filter` block with a `key` string and `values` list to filter images.
- *
- * For example to find all Droplets with size `s-1vcpu-1gb`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const small = digitalocean.getDroplets({
- *     filters: [{
- *         key: "size",
- *         values: ["s-1vcpu-1gb"],
- *     }],
- * });
- * ```
- *
- * You can filter on multiple fields and sort the results as well:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const small-with-backups = digitalocean.getDroplets({
- *     filters: [
- *         {
- *             key: "size",
- *             values: ["s-1vcpu-1gb"],
- *         },
- *         {
- *             key: "backups",
- *             values: ["true"],
- *         },
- *     ],
- *     sorts: [{
- *         direction: "desc",
- *         key: "created_at",
- *     }],
- * });
- * ```
  */
 export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletsResult> {
     return pulumi.output(args).apply((a: any) => getDroplets(a, opts))

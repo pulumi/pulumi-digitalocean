@@ -69,16 +69,30 @@ class MonitorAlertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alerts: pulumi.Input['MonitorAlertAlertsArgs'],
-             compare: pulumi.Input[str],
-             description: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value: pulumi.Input[float],
-             window: pulumi.Input[str],
+             alerts: Optional[pulumi.Input['MonitorAlertAlertsArgs']] = None,
+             compare: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[float]] = None,
+             window: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alerts is None:
+            raise TypeError("Missing 'alerts' argument")
+        if compare is None:
+            raise TypeError("Missing 'compare' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
         _setter("alerts", alerts)
         _setter("compare", compare)
         _setter("description", description)
@@ -287,7 +301,9 @@ class _MonitorAlertState:
              uuid: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[float]] = None,
              window: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if alerts is not None:
             _setter("alerts", alerts)
         if compare is not None:
@@ -566,11 +582,7 @@ class MonitorAlert(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MonitorAlertArgs.__new__(MonitorAlertArgs)
 
-            if alerts is not None and not isinstance(alerts, MonitorAlertAlertsArgs):
-                alerts = alerts or {}
-                def _setter(key, value):
-                    alerts[key] = value
-                MonitorAlertAlertsArgs._configure(_setter, **alerts)
+            alerts = _utilities.configure(alerts, MonitorAlertAlertsArgs, True)
             if alerts is None and not opts.urn:
                 raise TypeError("Missing required property 'alerts'")
             __props__.__dict__["alerts"] = alerts

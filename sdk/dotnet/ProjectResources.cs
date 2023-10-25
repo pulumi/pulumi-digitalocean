@@ -24,42 +24,6 @@ namespace Pulumi.DigitalOcean
     /// * Spaces Bucket
     /// * Volume
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example assigns a droplet to a Project managed outside of the provider:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var playground = DigitalOcean.GetProject.Invoke(new()
-    ///     {
-    ///         Name = "playground",
-    ///     });
-    /// 
-    ///     var foobar = new DigitalOcean.Droplet("foobar", new()
-    ///     {
-    ///         Size = "s-1vcpu-1gb",
-    ///         Image = "ubuntu-22-04-x64",
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    ///     var barfoo = new DigitalOcean.ProjectResources("barfoo", new()
-    ///     {
-    ///         Project = playground.Apply(getProjectResult =&gt; getProjectResult.Id),
-    ///         Resources = new[]
-    ///         {
-    ///             foobar.DropletUrn,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Importing this resource is not supported.

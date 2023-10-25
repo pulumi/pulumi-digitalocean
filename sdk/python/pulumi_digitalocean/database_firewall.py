@@ -31,9 +31,17 @@ class DatabaseFirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             rules: pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("cluster_id", cluster_id)
         _setter("rules", rules)
 
@@ -82,7 +90,11 @@ class _DatabaseFirewallState:
              _setter: Callable[[Any, Any], None],
              cluster_id: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if rules is not None:
@@ -127,54 +139,6 @@ class DatabaseFirewall(pulumi.CustomResource):
         specific Droplets, Kubernetes clusters, or IP addresses.
 
         ## Example Usage
-        ### Create a new database firewall allowing multiple IP addresses
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        example_fw = digitalocean.DatabaseFirewall("example-fw",
-            cluster_id=postgres_example.id,
-            rules=[
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.168.1.1",
-                ),
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.0.2.0",
-                ),
-            ])
-        ```
-        ### Create a new database firewall allowing a Droplet
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        example_fw = digitalocean.DatabaseFirewall("example-fw",
-            cluster_id=postgres_example.id,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="droplet",
-                value=web.id,
-            )])
-        ```
 
         ## Import
 
@@ -201,54 +165,6 @@ class DatabaseFirewall(pulumi.CustomResource):
         specific Droplets, Kubernetes clusters, or IP addresses.
 
         ## Example Usage
-        ### Create a new database firewall allowing multiple IP addresses
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        example_fw = digitalocean.DatabaseFirewall("example-fw",
-            cluster_id=postgres_example.id,
-            rules=[
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.168.1.1",
-                ),
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.0.2.0",
-                ),
-            ])
-        ```
-        ### Create a new database firewall allowing a Droplet
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        example_fw = digitalocean.DatabaseFirewall("example-fw",
-            cluster_id=postgres_example.id,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="droplet",
-                value=web.id,
-            )])
-        ```
 
         ## Import
 

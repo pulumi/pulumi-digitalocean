@@ -22,53 +22,9 @@ import * as utilities from "./utilities";
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
- * // ...
- * ```
- *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
  * ## Example Usage
- * ### Create a New Bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
- * ```
- * ### Create a New Bucket With CORS Rules
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobar = new digitalocean.SpacesBucket("foobar", {
- *     corsRules: [
- *         {
- *             allowedHeaders: ["*"],
- *             allowedMethods: ["GET"],
- *             allowedOrigins: ["*"],
- *             maxAgeSeconds: 3000,
- *         },
- *         {
- *             allowedHeaders: ["*"],
- *             allowedMethods: [
- *                 "PUT",
- *                 "POST",
- *                 "DELETE",
- *             ],
- *             allowedOrigins: ["https://www.example.com"],
- *             maxAgeSeconds: 3000,
- *         },
- *     ],
- *     region: "nyc3",
- * });
- * ```
  *
  * ## Import
  *

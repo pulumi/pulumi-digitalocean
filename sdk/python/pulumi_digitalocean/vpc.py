@@ -35,11 +35,17 @@ class VpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ip_range: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+
         _setter("region", region)
         if description is not None:
             _setter("description", description)
@@ -137,7 +143,15 @@ class _VpcState:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              vpc_urn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if ip_range is None and 'ipRange' in kwargs:
+            ip_range = kwargs['ipRange']
+        if vpc_urn is None and 'vpcUrn' in kwargs:
+            vpc_urn = kwargs['vpcUrn']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if default is not None:
@@ -254,34 +268,6 @@ class Vpc(pulumi.CustomResource):
         VPCs are virtual networks containing resources that can communicate with each
         other in full isolation, using private IP addresses.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example = digitalocean.Vpc("example",
-            ip_range="10.10.10.0/24",
-            region="nyc3")
-        ```
-        ### Resource Assignment
-
-        `Droplet`, `KubernetesCluster`,
-        `digitalocean_load_balancer`, and `DatabaseCluster` resources
-        may be assigned to a VPC by referencing its `id`. For example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="nyc3",
-            vpc_uuid=example_vpc.id)
-        ```
-
         ## Import
 
         A VPC can be imported using its `id`, e.g.
@@ -308,34 +294,6 @@ class Vpc(pulumi.CustomResource):
 
         VPCs are virtual networks containing resources that can communicate with each
         other in full isolation, using private IP addresses.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example = digitalocean.Vpc("example",
-            ip_range="10.10.10.0/24",
-            region="nyc3")
-        ```
-        ### Resource Assignment
-
-        `Droplet`, `KubernetesCluster`,
-        `digitalocean_load_balancer`, and `DatabaseCluster` resources
-        may be assigned to a VPC by referencing its `id`. For example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="nyc3",
-            vpc_uuid=example_vpc.id)
-        ```
 
         ## Import
 

@@ -207,18 +207,6 @@ def get_database_replica(cluster_id: Optional[str] = None,
     """
     Provides information on a DigitalOcean database replica.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_database_cluster(name="example-cluster")
-    read_only = digitalocean.get_database_replica(cluster_id=example.id,
-        name="terra-test-ro")
-    pulumi.export("replicaOutput", read_only.uri)
-    ```
-
 
     :param str cluster_id: The ID of the original source database cluster.
     :param str name: The name for the database replica.
@@ -256,18 +244,6 @@ def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseReplicaResult]:
     """
     Provides information on a DigitalOcean database replica.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_database_cluster(name="example-cluster")
-    read_only = digitalocean.get_database_replica(cluster_id=example.id,
-        name="terra-test-ro")
-    pulumi.export("replicaOutput", read_only.uri)
-    ```
 
 
     :param str cluster_id: The ID of the original source database cluster.

@@ -10,30 +10,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean DNS record resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const _default = new digitalocean.Domain("default", {name: "example.com"});
- * // Add an A record to the domain for www.example.com.
- * const www = new digitalocean.DnsRecord("www", {
- *     domain: _default.id,
- *     type: "A",
- *     value: "192.168.0.11",
- * });
- * // Add a MX record for the example.com domain itself.
- * const mx = new digitalocean.DnsRecord("mx", {
- *     domain: _default.id,
- *     type: "MX",
- *     priority: 10,
- *     value: "mail.example.com.",
- * });
- * export const wwwFqdn = www.fqdn;
- * export const mxFqdn = mx.fqdn;
- * ```
- *
  * ## Import
  *
  * Records can be imported using the domain name and record `id` when joined with a comma. See the following example

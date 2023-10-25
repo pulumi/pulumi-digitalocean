@@ -14,56 +14,6 @@ import (
 )
 
 // ## Example Usage
-// ### Create a Key in a Spaces Bucket
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobar, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-//				Region: pulumi.String("nyc3"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewSpacesBucketCorsConfiguration(ctx, "test", &digitalocean.SpacesBucketCorsConfigurationArgs{
-//				Bucket: foobar.ID(),
-//				Region: pulumi.String("nyc3"),
-//				CorsRules: digitalocean.SpacesBucketCorsConfigurationCorsRuleArray{
-//					&digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs{
-//						AllowedHeaders: pulumi.StringArray{
-//							pulumi.String("*"),
-//						},
-//						AllowedMethods: pulumi.StringArray{
-//							pulumi.String("PUT"),
-//							pulumi.String("POST"),
-//						},
-//						AllowedOrigins: pulumi.StringArray{
-//							pulumi.String("https://s3-website-test.hashicorp.com"),
-//						},
-//						ExposeHeaders: pulumi.StringArray{
-//							pulumi.String("ETag"),
-//						},
-//						MaxAgeSeconds: pulumi.Int(3000),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

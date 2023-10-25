@@ -20,36 +20,6 @@ namespace Pulumi.DigitalOcean
         /// attached to.
         /// 
         /// An error is triggered if the provided floating IP does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the floating IP:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetFloatingIp.Invoke(new()
-        ///     {
-        ///         IpAddress = publicIp,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["fipOutput"] = example.Apply(getFloatingIpResult =&gt; getFloatingIpResult.DropletId),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
@@ -63,36 +33,6 @@ namespace Pulumi.DigitalOcean
         /// attached to.
         /// 
         /// An error is triggered if the provided floating IP does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the floating IP:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetFloatingIp.Invoke(new()
-        ///     {
-        ///         IpAddress = publicIp,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["fipOutput"] = example.Apply(getFloatingIpResult =&gt; getFloatingIpResult.DropletId),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());

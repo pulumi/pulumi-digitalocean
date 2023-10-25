@@ -12,38 +12,6 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web = new DigitalOcean.Droplet("web", new()
-    ///     {
-    ///         Size = "s-1vcpu-1gb",
-    ///         Image = "ubuntu-22-04-x64",
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    ///     var web_snapshot = new DigitalOcean.DropletSnapshot("web-snapshot", new()
-    ///     {
-    ///         DropletId = web.Id,
-    ///     });
-    /// 
-    ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
-    ///     {
-    ///         Image = web_snapshot.Id,
-    ///         Region = "nyc3",
-    ///         Size = "s-2vcpu-4gb",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Droplet Snapshots can be imported using the `snapshot id`, e.g.

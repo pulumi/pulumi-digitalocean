@@ -15,48 +15,6 @@ import * as utilities from "./utilities";
  * Note: You can use the `digitalocean.Project` data source to
  * obtain metadata about a single project if you already know the `id` to retrieve or the unique
  * `name` of the project.
- *
- * ## Example Usage
- *
- * Use the `filter` block with a `key` string and `values` list to filter projects.
- *
- * For example to find all staging environment projects:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const staging = digitalocean.getProjects({
- *     filters: [{
- *         key: "environment",
- *         values: ["Staging"],
- *     }],
- * });
- * ```
- *
- * You can filter on multiple fields and sort the results as well:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const non-default-production = digitalocean.getProjects({
- *     filters: [
- *         {
- *             key: "environment",
- *             values: ["Production"],
- *         },
- *         {
- *             key: "is_default",
- *             values: ["false"],
- *         },
- *     ],
- *     sorts: [{
- *         direction: "asc",
- *         key: "name",
- *     }],
- * });
- * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -108,48 +66,6 @@ export interface GetProjectsResult {
  * Note: You can use the `digitalocean.Project` data source to
  * obtain metadata about a single project if you already know the `id` to retrieve or the unique
  * `name` of the project.
- *
- * ## Example Usage
- *
- * Use the `filter` block with a `key` string and `values` list to filter projects.
- *
- * For example to find all staging environment projects:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const staging = digitalocean.getProjects({
- *     filters: [{
- *         key: "environment",
- *         values: ["Staging"],
- *     }],
- * });
- * ```
- *
- * You can filter on multiple fields and sort the results as well:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const non-default-production = digitalocean.getProjects({
- *     filters: [
- *         {
- *             key: "environment",
- *             values: ["Production"],
- *         },
- *         {
- *             key: "is_default",
- *             values: ["false"],
- *         },
- *     ],
- *     sorts: [{
- *         direction: "asc",
- *         key: "name",
- *     }],
- * });
- * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))

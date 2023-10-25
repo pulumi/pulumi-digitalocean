@@ -13,68 +13,12 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Get information on a DigitalOcean App.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the account:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = DigitalOcean.GetApp.Invoke(new()
-        ///     {
-        ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["defaultIngress"] = example.Apply(getAppResult =&gt; getAppResult.DefaultIngress),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a DigitalOcean App.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the account:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = DigitalOcean.GetApp.Invoke(new()
-        ///     {
-        ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["defaultIngress"] = example.Apply(getAppResult =&gt; getAppResult.DefaultIngress),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());

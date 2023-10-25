@@ -51,8 +51,8 @@ class VolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[Union[str, 'Region']],
-             size: pulumi.Input[int],
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              filesystem_type: Optional[pulumi.Input[str]] = None,
              initial_filesystem_label: Optional[pulumi.Input[str]] = None,
@@ -60,7 +60,21 @@ class VolumeArgs:
              name: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if filesystem_type is None and 'filesystemType' in kwargs:
+            filesystem_type = kwargs['filesystemType']
+        if initial_filesystem_label is None and 'initialFilesystemLabel' in kwargs:
+            initial_filesystem_label = kwargs['initialFilesystemLabel']
+        if initial_filesystem_type is None and 'initialFilesystemType' in kwargs:
+            initial_filesystem_type = kwargs['initialFilesystemType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("region", region)
         _setter("size", size)
         if description is not None:
@@ -253,7 +267,23 @@ class _VolumeState:
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              volume_urn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_ids is None and 'dropletIds' in kwargs:
+            droplet_ids = kwargs['dropletIds']
+        if filesystem_label is None and 'filesystemLabel' in kwargs:
+            filesystem_label = kwargs['filesystemLabel']
+        if filesystem_type is None and 'filesystemType' in kwargs:
+            filesystem_type = kwargs['filesystemType']
+        if initial_filesystem_label is None and 'initialFilesystemLabel' in kwargs:
+            initial_filesystem_label = kwargs['initialFilesystemLabel']
+        if initial_filesystem_type is None and 'initialFilesystemType' in kwargs:
+            initial_filesystem_type = kwargs['initialFilesystemType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if volume_urn is None and 'volumeUrn' in kwargs:
+            volume_urn = kwargs['volumeUrn']
+
         if description is not None:
             _setter("description", description)
         if droplet_ids is not None:
@@ -448,39 +478,6 @@ class Volume(pulumi.CustomResource):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar_volume = digitalocean.Volume("foobarVolume",
-            region="nyc1",
-            size=100,
-            initial_filesystem_type="ext4",
-            description="an example volume")
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="nyc1")
-        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
-            droplet_id=foobar_droplet.id,
-            volume_id=foobar_volume.id)
-        ```
-
-        You can also create a volume from an existing snapshot.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar_volume_snapshot = digitalocean.get_volume_snapshot(name="baz")
-        foobar_volume = digitalocean.Volume("foobarVolume",
-            region="lon1",
-            size=foobar_volume_snapshot.min_disk_size,
-            snapshot_id=foobar_volume_snapshot.id)
-        ```
-
         ## Import
 
         Volumes can be imported using the `volume id`, e.g.
@@ -509,39 +506,6 @@ class Volume(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar_volume = digitalocean.Volume("foobarVolume",
-            region="nyc1",
-            size=100,
-            initial_filesystem_type="ext4",
-            description="an example volume")
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="nyc1")
-        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
-            droplet_id=foobar_droplet.id,
-            volume_id=foobar_volume.id)
-        ```
-
-        You can also create a volume from an existing snapshot.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar_volume_snapshot = digitalocean.get_volume_snapshot(name="baz")
-        foobar_volume = digitalocean.Volume("foobarVolume",
-            region="lon1",
-            size=foobar_volume_snapshot.min_disk_size,
-            snapshot_id=foobar_volume_snapshot.id)
-        ```
 
         ## Import
 

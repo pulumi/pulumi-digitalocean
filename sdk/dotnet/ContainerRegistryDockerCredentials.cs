@@ -15,49 +15,6 @@ namespace Pulumi.DigitalOcean
     /// An error is triggered if the provided container registry name does not exist.
     /// 
     /// ## Example Usage
-    /// ### Basic Example
-    /// 
-    /// Get the container registry:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
-    ///     {
-    ///         RegistryName = "example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Docker Provider Example
-    /// 
-    /// Use the `endpoint` and `docker_credentials` with the Docker provider:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleContainerRegistry = DigitalOcean.GetContainerRegistry.Invoke(new()
-    ///     {
-    ///         Name = "example",
-    ///     });
-    /// 
-    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", new()
-    ///     {
-    ///         RegistryName = "example",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")]
     public partial class ContainerRegistryDockerCredentials : global::Pulumi.CustomResource

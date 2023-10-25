@@ -32,10 +32,18 @@ class DatabaseUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if mysql_auth_plugin is None and 'mysqlAuthPlugin' in kwargs:
+            mysql_auth_plugin = kwargs['mysqlAuthPlugin']
+
         _setter("cluster_id", cluster_id)
         if mysql_auth_plugin is not None:
             _setter("mysql_auth_plugin", mysql_auth_plugin)
@@ -111,7 +119,13 @@ class _DatabaseUserState:
              name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if mysql_auth_plugin is None and 'mysqlAuthPlugin' in kwargs:
+            mysql_auth_plugin = kwargs['mysqlAuthPlugin']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if mysql_auth_plugin is not None:
@@ -199,19 +213,6 @@ class DatabaseUser(pulumi.CustomResource):
         > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 
         ## Example Usage
-        ### Create a new PostgreSQL database user
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
-        ```
 
         ## Import
 
@@ -239,19 +240,6 @@ class DatabaseUser(pulumi.CustomResource):
         > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 
         ## Example Usage
-        ### Create a new PostgreSQL database user
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
-            node_count=1)
-        user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
-        ```
 
         ## Import
 

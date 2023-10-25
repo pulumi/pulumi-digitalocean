@@ -20,43 +20,6 @@ import (
 //
 // Note: You can use the `Domain` data source to obtain metadata
 // about a single domain if you already know the `name`.
-//
-// ## Example Usage
-//
-// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-// also uses the regular expression `matchBy` mode in order to match domains by suffix.)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
-//				Filters: []digitalocean.GetDomainsFilter{
-//					{
-//						Key:     "name",
-//						MatchBy: pulumi.StringRef("re"),
-//						Values: []string{
-//							"example\\.com$",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

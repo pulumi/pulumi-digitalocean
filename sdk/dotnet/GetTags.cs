@@ -15,39 +15,6 @@ namespace Pulumi.DigitalOcean
         /// Returns a list of tags in your DigitalOcean account, with the ability to
         /// filter and sort the results. If no filters are specified, all tags will be
         /// returned.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var list = DigitalOcean.GetTags.Invoke(new()
-        ///     {
-        ///         Sorts = new[]
-        ///         {
-        ///             new DigitalOcean.Inputs.GetTagsSortInputArgs
-        ///             {
-        ///                 Key = "total_resource_count",
-        ///                 Direction = "asc",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sortedTags"] = list.Apply(getTagsResult =&gt; getTagsResult.Tags),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("digitalocean:index/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.DigitalOcean
         /// Returns a list of tags in your DigitalOcean account, with the ability to
         /// filter and sort the results. If no filters are specified, all tags will be
         /// returned.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var list = DigitalOcean.GetTags.Invoke(new()
-        ///     {
-        ///         Sorts = new[]
-        ///         {
-        ///             new DigitalOcean.Inputs.GetTagsSortInputArgs
-        ///             {
-        ///                 Key = "total_resource_count",
-        ///                 Direction = "asc",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sortedTags"] = list.Apply(getTagsResult =&gt; getTagsResult.Tags),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagsResult> Invoke(GetTagsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagsResult>("digitalocean:index/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());

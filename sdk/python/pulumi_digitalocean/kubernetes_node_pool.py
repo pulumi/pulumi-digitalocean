@@ -58,8 +58,8 @@ class KubernetesNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             size: pulumi.Input[Union[str, 'DropletSlug']],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
              auto_scale: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              max_nodes: Optional[pulumi.Input[int]] = None,
@@ -68,7 +68,23 @@ class KubernetesNodePoolArgs:
              node_count: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if auto_scale is None and 'autoScale' in kwargs:
+            auto_scale = kwargs['autoScale']
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         _setter("cluster_id", cluster_id)
         _setter("size", size)
         if auto_scale is not None:
@@ -273,7 +289,21 @@ class _KubernetesNodePoolState:
              size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if actual_node_count is None and 'actualNodeCount' in kwargs:
+            actual_node_count = kwargs['actualNodeCount']
+        if auto_scale is None and 'autoScale' in kwargs:
+            auto_scale = kwargs['autoScale']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if max_nodes is None and 'maxNodes' in kwargs:
+            max_nodes = kwargs['maxNodes']
+        if min_nodes is None and 'minNodes' in kwargs:
+            min_nodes = kwargs['minNodes']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         if actual_node_count is not None:
             _setter("actual_node_count", actual_node_count)
         if auto_scale is not None:
@@ -466,51 +496,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 
         ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foo = digitalocean.KubernetesCluster("foo",
-            region="nyc1",
-            version="1.22.8-do.1",
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                name="front-end-pool",
-                size="s-2vcpu-2gb",
-                node_count=3,
-            ))
-        bar = digitalocean.KubernetesNodePool("bar",
-            cluster_id=foo.id,
-            size="c-2",
-            node_count=2,
-            tags=["backend"],
-            labels={
-                "service": "backend",
-                "priority": "high",
-            },
-            taints=[digitalocean.KubernetesNodePoolTaintArgs(
-                key="workloadKind",
-                value="database",
-                effect="NoSchedule",
-            )])
-        ```
-        ### Autoscaling Example
-
-        Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
-        For example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
-            cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
-            size="s-1vcpu-2gb",
-            auto_scale=True,
-            min_nodes=1,
-            max_nodes=5)
-        ```
 
         ## Import
 
@@ -547,51 +532,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 
         ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foo = digitalocean.KubernetesCluster("foo",
-            region="nyc1",
-            version="1.22.8-do.1",
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                name="front-end-pool",
-                size="s-2vcpu-2gb",
-                node_count=3,
-            ))
-        bar = digitalocean.KubernetesNodePool("bar",
-            cluster_id=foo.id,
-            size="c-2",
-            node_count=2,
-            tags=["backend"],
-            labels={
-                "service": "backend",
-                "priority": "high",
-            },
-            taints=[digitalocean.KubernetesNodePoolTaintArgs(
-                key="workloadKind",
-                value="database",
-                effect="NoSchedule",
-            )])
-        ```
-        ### Autoscaling Example
-
-        Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
-        For example:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
-            cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
-            size="s-1vcpu-2gb",
-            auto_scale=True,
-            min_nodes=1,
-            max_nodes=5)
-        ```
 
         ## Import
 
