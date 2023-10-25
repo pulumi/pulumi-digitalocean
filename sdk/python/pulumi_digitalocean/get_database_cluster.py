@@ -273,16 +273,6 @@ def get_database_cluster(name: Optional[str] = None,
     """
     Provides information on a DigitalOcean database cluster resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_database_cluster(name="example-cluster")
-    pulumi.export("databaseOutput", example.uri)
-    ```
-
 
     :param str name: The name of the database cluster.
     """
@@ -321,16 +311,6 @@ def get_database_cluster_output(name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseClusterResult]:
     """
     Provides information on a DigitalOcean database cluster resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    example = digitalocean.get_database_cluster(name="example-cluster")
-    pulumi.export("databaseOutput", example.uri)
-    ```
 
 
     :param str name: The name of the database cluster.

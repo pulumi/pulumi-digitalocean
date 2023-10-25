@@ -66,10 +66,10 @@ class DatabaseClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: pulumi.Input[str],
-             node_count: pulumi.Input[int],
-             region: pulumi.Input[Union[str, 'Region']],
-             size: pulumi.Input[Union[str, 'DatabaseSlug']],
+             engine: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
              backup_restore: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']] = None,
              eviction_policy: Optional[pulumi.Input[str]] = None,
              maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
@@ -79,7 +79,31 @@ class DatabaseClusterArgs:
              sql_mode: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if backup_restore is None and 'backupRestore' in kwargs:
+            backup_restore = kwargs['backupRestore']
+        if eviction_policy is None and 'evictionPolicy' in kwargs:
+            eviction_policy = kwargs['evictionPolicy']
+        if maintenance_windows is None and 'maintenanceWindows' in kwargs:
+            maintenance_windows = kwargs['maintenanceWindows']
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+
         _setter("engine", engine)
         _setter("node_count", node_count)
         _setter("region", region)
@@ -362,7 +386,29 @@ class _DatabaseClusterState:
              uri: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_restore is None and 'backupRestore' in kwargs:
+            backup_restore = kwargs['backupRestore']
+        if cluster_urn is None and 'clusterUrn' in kwargs:
+            cluster_urn = kwargs['clusterUrn']
+        if eviction_policy is None and 'evictionPolicy' in kwargs:
+            eviction_policy = kwargs['evictionPolicy']
+        if maintenance_windows is None and 'maintenanceWindows' in kwargs:
+            maintenance_windows = kwargs['maintenanceWindows']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if private_host is None and 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+        if private_uri is None and 'privateUri' in kwargs:
+            private_uri = kwargs['privateUri']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+
         if backup_restore is not None:
             _setter("backup_restore", backup_restore)
         if cluster_urn is not None:
@@ -697,79 +743,6 @@ class DatabaseCluster(pulumi.CustomResource):
         Provides a DigitalOcean database cluster resource.
 
         ## Example Usage
-        ### Create a new PostgreSQL database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
-            version="15")
-        ```
-        ### Create a new MySQL database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        mysql_example = digitalocean.DatabaseCluster("mysql-example",
-            engine="mysql",
-            node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
-            version="8")
-        ```
-        ### Create a new Redis database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        redis_example = digitalocean.DatabaseCluster("redis-example",
-            engine="redis",
-            node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
-            version="6")
-        ```
-        ### Create a new MongoDB database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
-            engine="mongodb",
-            node_count=1,
-            region="nyc3",
-            size="db-s-1vcpu-1gb",
-            version="4")
-        ```
-        ## Create a new database cluster based on a backup of an existing cluster.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        doby = digitalocean.DatabaseCluster("doby",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
-            node_count=1,
-            tags=["production"])
-        doby_backup = digitalocean.DatabaseCluster("dobyBackup",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
-            node_count=1,
-            tags=["production"],
-            backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
-                database_name="dobydb",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[doby]))
-        ```
 
         ## Import
 
@@ -806,79 +779,6 @@ class DatabaseCluster(pulumi.CustomResource):
         Provides a DigitalOcean database cluster resource.
 
         ## Example Usage
-        ### Create a new PostgreSQL database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        postgres_example = digitalocean.DatabaseCluster("postgres-example",
-            engine="pg",
-            node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
-            version="15")
-        ```
-        ### Create a new MySQL database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        mysql_example = digitalocean.DatabaseCluster("mysql-example",
-            engine="mysql",
-            node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
-            version="8")
-        ```
-        ### Create a new Redis database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        redis_example = digitalocean.DatabaseCluster("redis-example",
-            engine="redis",
-            node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
-            version="6")
-        ```
-        ### Create a new MongoDB database cluster
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
-            engine="mongodb",
-            node_count=1,
-            region="nyc3",
-            size="db-s-1vcpu-1gb",
-            version="4")
-        ```
-        ## Create a new database cluster based on a backup of an existing cluster.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        doby = digitalocean.DatabaseCluster("doby",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
-            node_count=1,
-            tags=["production"])
-        doby_backup = digitalocean.DatabaseCluster("dobyBackup",
-            engine="pg",
-            version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
-            node_count=1,
-            tags=["production"],
-            backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
-                database_name="dobydb",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[doby]))
-        ```
 
         ## Import
 
@@ -929,11 +829,7 @@ class DatabaseCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseClusterArgs.__new__(DatabaseClusterArgs)
 
-            if backup_restore is not None and not isinstance(backup_restore, DatabaseClusterBackupRestoreArgs):
-                backup_restore = backup_restore or {}
-                def _setter(key, value):
-                    backup_restore[key] = value
-                DatabaseClusterBackupRestoreArgs._configure(_setter, **backup_restore)
+            backup_restore = _utilities.configure(backup_restore, DatabaseClusterBackupRestoreArgs, True)
             __props__.__dict__["backup_restore"] = backup_restore
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")

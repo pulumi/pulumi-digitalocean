@@ -14,36 +14,6 @@ import (
 
 // Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
 // then this data source returns the default project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
-//				Name: pulumi.StringRef("My Staging Project"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult

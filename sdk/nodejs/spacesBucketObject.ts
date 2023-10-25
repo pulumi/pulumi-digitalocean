@@ -21,32 +21,9 @@ import * as utilities from "./utilities";
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
- * // ...
- * ```
- *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
  * ## Example Usage
- * ### Create a Key in a Spaces Bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
- * const index = new digitalocean.SpacesBucketObject("index", {
- *     region: foobar.region,
- *     bucket: foobar.name,
- *     key: "index.html",
- *     content: "<html><body><p>This page is empty.</p></body></html>",
- *     contentType: "text/html",
- * });
- * ```
  *
  * ## Import
  *

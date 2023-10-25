@@ -101,20 +101,6 @@ def get_floating_ip(ip_address: Optional[str] = None,
 
     An error is triggered if the provided floating IP does not exist.
 
-    ## Example Usage
-
-    Get the floating IP:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    config = pulumi.Config()
-    public_ip = config.require_object("publicIp")
-    example = digitalocean.get_floating_ip(ip_address=public_ip)
-    pulumi.export("fipOutput", example.droplet_id)
-    ```
-
 
     :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
     """
@@ -143,20 +129,6 @@ def get_floating_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
     attached to.
 
     An error is triggered if the provided floating IP does not exist.
-
-    ## Example Usage
-
-    Get the floating IP:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    config = pulumi.Config()
-    public_ip = config.require_object("publicIp")
-    example = digitalocean.get_floating_ip(ip_address=public_ip)
-    pulumi.export("fipOutput", example.droplet_id)
-    ```
 
 
     :param str ip_address: The allocated IP address of the specific floating IP to retrieve.

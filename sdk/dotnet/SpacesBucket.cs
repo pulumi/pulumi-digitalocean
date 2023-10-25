@@ -24,94 +24,9 @@ namespace Pulumi.DigitalOcean
     /// access ID and secret you generate via the DigitalOcean control panel. For
     /// example:
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
-    /// 
-    ///     // ...
-    /// });
-    /// ```
-    /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
     /// 
     /// ## Example Usage
-    /// ### Create a New Bucket
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
-    ///     {
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Create a New Bucket With CORS Rules
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
-    ///     {
-    ///         CorsRules = new[]
-    ///         {
-    ///             new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
-    ///             {
-    ///                 AllowedHeaders = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///                 AllowedMethods = new[]
-    ///                 {
-    ///                     "GET",
-    ///                 },
-    ///                 AllowedOrigins = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///                 MaxAgeSeconds = 3000,
-    ///             },
-    ///             new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
-    ///             {
-    ///                 AllowedHeaders = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///                 AllowedMethods = new[]
-    ///                 {
-    ///                     "PUT",
-    ///                     "POST",
-    ///                     "DELETE",
-    ///                 },
-    ///                 AllowedOrigins = new[]
-    ///                 {
-    ///                     "https://www.example.com",
-    ///                 },
-    ///                 MaxAgeSeconds = 3000,
-    ///             },
-    ///         },
-    ///         Region = "nyc3",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

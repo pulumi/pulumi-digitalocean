@@ -29,7 +29,9 @@ class AppArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              spec: Optional[pulumi.Input['AppSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if spec is not None:
             _setter("spec", spec)
 
@@ -86,7 +88,21 @@ class _AppState:
              live_url: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['AppSpecArgs']] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_deployment_id is None and 'activeDeploymentId' in kwargs:
+            active_deployment_id = kwargs['activeDeploymentId']
+        if app_urn is None and 'appUrn' in kwargs:
+            app_urn = kwargs['appUrn']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if default_ingress is None and 'defaultIngress' in kwargs:
+            default_ingress = kwargs['defaultIngress']
+        if live_url is None and 'liveUrl' in kwargs:
+            live_url = kwargs['liveUrl']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if active_deployment_id is not None:
             _setter("active_deployment_id", active_deployment_id)
         if app_urn is not None:
@@ -200,47 +216,6 @@ class App(pulumi.CustomResource):
         ## Example Usage
 
         To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
-            name="golang-sample",
-            region="ams",
-            services=[digitalocean.AppSpecServiceArgs(
-                environment_slug="go",
-                git=digitalocean.AppSpecServiceGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
-                ),
-                instance_count=1,
-                instance_size_slug="professional-xs",
-                name="go-service",
-            )],
-        ))
-        ```
-        ### Static Site Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
-            name="static-site-example",
-            region="ams",
-            static_sites=[digitalocean.AppSpecStaticSiteArgs(
-                build_command="bundle exec jekyll build -d ./public",
-                git=digitalocean.AppSpecStaticSiteGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
-                ),
-                name="sample-jekyll",
-                output_dir="/public",
-            )],
-        ))
-        ```
 
         ## Import
 
@@ -266,47 +241,6 @@ class App(pulumi.CustomResource):
         ## Example Usage
 
         To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
-            name="golang-sample",
-            region="ams",
-            services=[digitalocean.AppSpecServiceArgs(
-                environment_slug="go",
-                git=digitalocean.AppSpecServiceGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
-                ),
-                instance_count=1,
-                instance_size_slug="professional-xs",
-                name="go-service",
-            )],
-        ))
-        ```
-        ### Static Site Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
-            name="static-site-example",
-            region="ams",
-            static_sites=[digitalocean.AppSpecStaticSiteArgs(
-                build_command="bundle exec jekyll build -d ./public",
-                git=digitalocean.AppSpecStaticSiteGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
-                ),
-                name="sample-jekyll",
-                output_dir="/public",
-            )],
-        ))
-        ```
 
         ## Import
 
@@ -345,11 +279,7 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppArgs.__new__(AppArgs)
 
-            if spec is not None and not isinstance(spec, AppSpecArgs):
-                spec = spec or {}
-                def _setter(key, value):
-                    spec[key] = value
-                AppSpecArgs._configure(_setter, **spec)
+            spec = _utilities.configure(spec, AppSpecArgs, True)
             __props__.__dict__["spec"] = spec
             __props__.__dict__["active_deployment_id"] = None
             __props__.__dict__["app_urn"] = None

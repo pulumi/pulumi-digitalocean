@@ -162,34 +162,6 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
     resources.
 
-    ## Example Usage
-
-    Get the volume snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    snapshot = digitalocean.get_volume_snapshot(most_recent=True,
-        name_regex="^web",
-        region="nyc3")
-    ```
-
-    Reuse the data about a volume snapshot to create a new volume based on it:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    snapshot = digitalocean.get_volume_snapshot(name_regex="^web",
-        region="nyc3",
-        most_recent=True)
-    foobar = digitalocean.Volume("foobar",
-        region="nyc3",
-        size=100,
-        snapshot_id=snapshot.id)
-    ```
-
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
            
@@ -232,34 +204,6 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
     Volume snapshots are saved instances of a block storage volume. Use this data
     source to retrieve the ID of a DigitalOcean volume snapshot for use in other
     resources.
-
-    ## Example Usage
-
-    Get the volume snapshot:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    snapshot = digitalocean.get_volume_snapshot(most_recent=True,
-        name_regex="^web",
-        region="nyc3")
-    ```
-
-    Reuse the data about a volume snapshot to create a new volume based on it:
-
-    ```python
-    import pulumi
-    import pulumi_digitalocean as digitalocean
-
-    snapshot = digitalocean.get_volume_snapshot(name_regex="^web",
-        region="nyc3",
-        most_recent=True)
-    foobar = digitalocean.Volume("foobar",
-        region="nyc3",
-        size=100,
-        snapshot_id=snapshot.id)
-    ```
 
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.

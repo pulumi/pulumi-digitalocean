@@ -34,10 +34,20 @@ class SpacesBucketCorsConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             cors_rules: pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]],
-             region: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[pulumi.Input[str]] = None,
+             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if cors_rules is None:
+            raise TypeError("Missing 'cors_rules' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+
         _setter("bucket", bucket)
         _setter("cors_rules", cors_rules)
         _setter("region", region)
@@ -103,7 +113,11 @@ class _SpacesBucketCorsConfigurationState:
              bucket: Optional[pulumi.Input[str]] = None,
              cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cors_rules is None and 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if cors_rules is not None:
@@ -159,27 +173,6 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Create a Key in a Spaces Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        test = digitalocean.SpacesBucketCorsConfiguration("test",
-            bucket=foobar.id,
-            region="nyc3",
-            cors_rules=[digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs(
-                allowed_headers=["*"],
-                allowed_methods=[
-                    "PUT",
-                    "POST",
-                ],
-                allowed_origins=["https://s3-website-test.hashicorp.com"],
-                expose_headers=["ETag"],
-                max_age_seconds=3000,
-            )])
-        ```
 
         ## Import
 
@@ -203,27 +196,6 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Create a Key in a Spaces Bucket
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
-        test = digitalocean.SpacesBucketCorsConfiguration("test",
-            bucket=foobar.id,
-            region="nyc3",
-            cors_rules=[digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs(
-                allowed_headers=["*"],
-                allowed_methods=[
-                    "PUT",
-                    "POST",
-                ],
-                allowed_origins=["https://s3-website-test.hashicorp.com"],
-                expose_headers=["ETag"],
-                max_age_seconds=3000,
-            )])
-        ```
 
         ## Import
 

@@ -18,40 +18,6 @@ import (
 // > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 //
 // ## Example Usage
-// ### Create a new PostgreSQL database user
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
-//				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Region:    pulumi.String("nyc1"),
-//				NodeCount: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
-//				ClusterId: postgres_example.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

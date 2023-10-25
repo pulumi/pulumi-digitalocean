@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * Get the reserved IP:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const config = new pulumi.Config();
- * const publicIp = config.requireObject("publicIp");
- * const example = digitalocean.getReservedIp({
- *     ipAddress: publicIp,
- * });
- * export const fipOutput = example.then(example => example.dropletId);
- * ```
- */
 export function getReservedIp(args: GetReservedIpArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,23 +44,6 @@ export interface GetReservedIpResult {
      */
     readonly urn: string;
 }
-/**
- * ## Example Usage
- *
- * Get the reserved IP:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const config = new pulumi.Config();
- * const publicIp = config.requireObject("publicIp");
- * const example = digitalocean.getReservedIp({
- *     ipAddress: publicIp,
- * });
- * export const fipOutput = example.then(example => example.dropletId);
- * ```
- */
 export function getReservedIpOutput(args: GetReservedIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpResult> {
     return pulumi.output(args).apply((a: any) => getReservedIp(a, opts))
 }

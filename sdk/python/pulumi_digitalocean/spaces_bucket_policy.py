@@ -32,10 +32,18 @@ class SpacesBucketPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             policy: pulumi.Input[str],
-             region: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+
         _setter("bucket", bucket)
         _setter("policy", policy)
         _setter("region", region)
@@ -101,7 +109,9 @@ class _SpacesBucketPolicyState:
              bucket: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if policy is not None:
@@ -157,38 +167,6 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Limiting access to specific IP addresses
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_digitalocean as digitalocean
-
-        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region="nyc3")
-        foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
-            region=foobar_spaces_bucket.region,
-            bucket=foobar_spaces_bucket.name,
-            policy=pulumi.Output.all(foobar_spaces_bucket.name, foobar_spaces_bucket.name).apply(lambda foobarSpacesBucketName, foobarSpacesBucketName1: json.dumps({
-                "Version": "2012-10-17",
-                "Statement": [{
-                    "Sid": "IPAllow",
-                    "Effect": "Deny",
-                    "Principal": "*",
-                    "Action": "s3:*",
-                    "Resource": [
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name}",
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name1}/*",
-                    ],
-                    "Condition": {
-                        "NotIpAddress": {
-                            "aws:SourceIp": "54.240.143.0/24",
-                        },
-                    },
-                }],
-            })))
-        ```
-
-        !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 
         ## Import
 
@@ -212,38 +190,6 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Limiting access to specific IP addresses
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_digitalocean as digitalocean
-
-        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region="nyc3")
-        foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
-            region=foobar_spaces_bucket.region,
-            bucket=foobar_spaces_bucket.name,
-            policy=pulumi.Output.all(foobar_spaces_bucket.name, foobar_spaces_bucket.name).apply(lambda foobarSpacesBucketName, foobarSpacesBucketName1: json.dumps({
-                "Version": "2012-10-17",
-                "Statement": [{
-                    "Sid": "IPAllow",
-                    "Effect": "Deny",
-                    "Principal": "*",
-                    "Action": "s3:*",
-                    "Resource": [
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name}",
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name1}/*",
-                    ],
-                    "Condition": {
-                        "NotIpAddress": {
-                            "aws:SourceIp": "54.240.143.0/24",
-                        },
-                    },
-                }],
-            })))
-        ```
-
-        !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 
         ## Import
 

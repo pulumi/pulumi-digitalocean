@@ -32,10 +32,18 @@ class FloatingIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
              droplet_id: Optional[pulumi.Input[int]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("region", region)
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
@@ -107,7 +115,15 @@ class _FloatingIpState:
              floating_ip_urn: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if floating_ip_urn is None and 'floatingIpUrn' in kwargs:
+            floating_ip_urn = kwargs['floatingIpUrn']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if droplet_id is not None:
             _setter("droplet_id", droplet_id)
         if floating_ip_urn is not None:
@@ -182,23 +198,6 @@ class FloatingIp(pulumi.CustomResource):
 
         > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `FloatingIp` resource by setting a `droplet_id` or using the `FloatingIpAssignment` resource, but the two cannot be used together.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="sgp1",
-            ipv6=True,
-            private_networking=True)
-        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp",
-            droplet_id=foobar_droplet.id,
-            region=foobar_droplet.region)
-        ```
-
         ## Import
 
         Floating IPs can be imported using the `ip`, e.g.
@@ -225,23 +224,6 @@ class FloatingIp(pulumi.CustomResource):
         Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
 
         > **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `FloatingIp` resource by setting a `droplet_id` or using the `FloatingIpAssignment` resource, but the two cannot be used together.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
-            image="ubuntu-18-04-x64",
-            region="sgp1",
-            ipv6=True,
-            private_networking=True)
-        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp",
-            droplet_id=foobar_droplet.id,
-            region=foobar_droplet.region)
-        ```
 
         ## Import
 

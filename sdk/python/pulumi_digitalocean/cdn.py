@@ -38,12 +38,22 @@ class CdnArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             origin: pulumi.Input[str],
+             origin: Optional[pulumi.Input[str]] = None,
              certificate_id: Optional[pulumi.Input[str]] = None,
              certificate_name: Optional[pulumi.Input[str]] = None,
              custom_domain: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if origin is None:
+            raise TypeError("Missing 'origin' argument")
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if certificate_name is None and 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+
         _setter("origin", origin)
         if certificate_id is not None:
             warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
@@ -161,7 +171,17 @@ class _CdnState:
              endpoint: Optional[pulumi.Input[str]] = None,
              origin: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if certificate_name is None and 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if custom_domain is None and 'customDomain' in kwargs:
+            custom_domain = kwargs['customDomain']
+
         if certificate_id is not None:
             warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
@@ -283,40 +303,6 @@ class Cdn(pulumi.CustomResource):
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
         ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new Spaces Bucket
-        mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
-            acl="public-read")
-        # Add a CDN endpoint to the Spaces Bucket
-        mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
-        pulumi.export("fqdn", mycdn.endpoint)
-        ```
-        ### Custom Sub-Domain Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new Spaces Bucket
-        mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
-            acl="public-read")
-        # Create a DigitalOcean managed Let's Encrypt Certificate
-        cert = digitalocean.Certificate("cert",
-            type="lets_encrypt",
-            domains=["static.example.com"])
-        # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
-        mycdn = digitalocean.Cdn("mycdn",
-            origin=mybucket.bucket_domain_name,
-            custom_domain="static.example.com",
-            certificate_name=cert.name)
-        ```
 
         ## Import
 
@@ -344,40 +330,6 @@ class Cdn(pulumi.CustomResource):
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
         ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new Spaces Bucket
-        mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
-            acl="public-read")
-        # Add a CDN endpoint to the Spaces Bucket
-        mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
-        pulumi.export("fqdn", mycdn.endpoint)
-        ```
-        ### Custom Sub-Domain Example
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        # Create a new Spaces Bucket
-        mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
-            acl="public-read")
-        # Create a DigitalOcean managed Let's Encrypt Certificate
-        cert = digitalocean.Certificate("cert",
-            type="lets_encrypt",
-            domains=["static.example.com"])
-        # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
-        mycdn = digitalocean.Cdn("mycdn",
-            origin=mybucket.bucket_domain_name,
-            custom_domain="static.example.com",
-            certificate_name=cert.name)
-        ```
 
         ## Import
 

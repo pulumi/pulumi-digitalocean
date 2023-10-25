@@ -47,7 +47,11 @@ class ProjectArgs:
              name: Optional[pulumi.Input[str]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+
         if description is not None:
             _setter("description", description)
         if environment is not None:
@@ -186,7 +190,19 @@ class _ProjectState:
              purpose: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if owner_id is None and 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if owner_uuid is None and 'ownerUuid' in kwargs:
+            owner_uuid = kwargs['ownerUuid']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if description is not None:
@@ -361,37 +377,6 @@ class Project(pulumi.CustomResource):
 
         **Note:** A provider managed project cannot be set as a default project.
 
-        ## Example Usage
-
-        The following example demonstrates the creation of an empty project:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        playground = digitalocean.Project("playground",
-            description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
-        ```
-
-        The following example demonstrates the creation of a project with a Droplet resource:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.Droplet("foobar",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        playground = digitalocean.Project("playground",
-            description="A project to represent development resources.",
-            purpose="Web Application",
-            environment="Development",
-            resources=[foobar.droplet_urn])
-        ```
-
         ## Import
 
         Projects can be imported using the `id` returned from DigitalOcean, e.g.
@@ -434,37 +419,6 @@ class Project(pulumi.CustomResource):
         * Volume
 
         **Note:** A provider managed project cannot be set as a default project.
-
-        ## Example Usage
-
-        The following example demonstrates the creation of an empty project:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        playground = digitalocean.Project("playground",
-            description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
-        ```
-
-        The following example demonstrates the creation of a project with a Droplet resource:
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        foobar = digitalocean.Droplet("foobar",
-            size="s-1vcpu-1gb",
-            image="ubuntu-22-04-x64",
-            region="nyc3")
-        playground = digitalocean.Project("playground",
-            description="A project to represent development resources.",
-            purpose="Web Application",
-            environment="Development",
-            resources=[foobar.droplet_urn])
-        ```
 
         ## Import
 

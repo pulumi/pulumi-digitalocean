@@ -16,57 +16,6 @@ import * as utilities from "./utilities";
  * Let's Encrypt.
  *
  * ## Example Usage
- * ### Custom Certificate
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- * import * as fs from "fs";
- *
- * const cert = new digitalocean.Certificate("cert", {
- *     type: "custom",
- *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem"),
- *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem"),
- *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
- * });
- * ```
- * ### Let's Encrypt Certificate
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const cert = new digitalocean.Certificate("cert", {
- *     domains: ["example.com"],
- *     type: "lets_encrypt",
- * });
- * ```
- * ### Use with Other Resources
- *
- * Both custom and Let's Encrypt certificates can be used with other resources
- * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const cert = new digitalocean.Certificate("cert", {
- *     type: "lets_encrypt",
- *     domains: ["example.com"],
- * });
- * // Create a new Load Balancer with TLS termination
- * const _public = new digitalocean.LoadBalancer("public", {
- *     region: "nyc3",
- *     dropletTag: "backend",
- *     forwardingRules: [{
- *         entryPort: 443,
- *         entryProtocol: "https",
- *         targetPort: 80,
- *         targetProtocol: "http",
- *         certificateName: cert.name,
- *     }],
- * });
- * ```
  *
  * ## Import
  *

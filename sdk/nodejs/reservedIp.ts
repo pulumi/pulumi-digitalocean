@@ -9,25 +9,6 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `dropletId` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
- *     image: "ubuntu-22-04-x64",
- *     region: "nyc3",
- *     ipv6: true,
- *     privateNetworking: true,
- * });
- * const exampleReservedIp = new digitalocean.ReservedIp("exampleReservedIp", {
- *     dropletId: exampleDroplet.id,
- *     region: exampleDroplet.region,
- * });
- * ```
- *
  * ## Import
  *
  * Reserved IPs can be imported using the `ip`, e.g.

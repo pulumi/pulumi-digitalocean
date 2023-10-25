@@ -20,38 +20,6 @@ import (
 // attached to.
 //
 // An error is triggered if the provided floating IP does not exist.
-//
-// ## Example Usage
-//
-// Get the floating IP:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			publicIp := cfg.RequireObject("publicIp")
-//			example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
-//				IpAddress: publicIp,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("fipOutput", example.DropletId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFloatingIpResult

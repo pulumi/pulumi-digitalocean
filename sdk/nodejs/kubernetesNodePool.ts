@@ -11,54 +11,6 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
  *
  * ## Example Usage
- * ### Basic Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foo = new digitalocean.KubernetesCluster("foo", {
- *     region: "nyc1",
- *     version: "1.22.8-do.1",
- *     nodePool: {
- *         name: "front-end-pool",
- *         size: "s-2vcpu-2gb",
- *         nodeCount: 3,
- *     },
- * });
- * const bar = new digitalocean.KubernetesNodePool("bar", {
- *     clusterId: foo.id,
- *     size: "c-2",
- *     nodeCount: 2,
- *     tags: ["backend"],
- *     labels: {
- *         service: "backend",
- *         priority: "high",
- *     },
- *     taints: [{
- *         key: "workloadKind",
- *         value: "database",
- *         effect: "NoSchedule",
- *     }],
- * });
- * ```
- * ### Autoscaling Example
- *
- * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
- * For example:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const autoscale_pool_01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
- *     clusterId: digitalocean_kubernetes_cluster.foo.id,
- *     size: "s-1vcpu-2gb",
- *     autoScale: true,
- *     minNodes: 1,
- *     maxNodes: 5,
- * });
- * ```
  *
  * ## Import
  *

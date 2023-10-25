@@ -10,45 +10,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobarVolume = new digitalocean.Volume("foobarVolume", {
- *     region: "nyc1",
- *     size: 100,
- *     initialFilesystemType: "ext4",
- *     description: "an example volume",
- * });
- * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
- *     size: "s-1vcpu-1gb",
- *     image: "ubuntu-18-04-x64",
- *     region: "nyc1",
- * });
- * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobarVolumeAttachment", {
- *     dropletId: foobarDroplet.id,
- *     volumeId: foobarVolume.id,
- * });
- * ```
- *
- * You can also create a volume from an existing snapshot.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobarVolumeSnapshot = digitalocean.getVolumeSnapshot({
- *     name: "baz",
- * });
- * const foobarVolume = new digitalocean.Volume("foobarVolume", {
- *     region: "lon1",
- *     size: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.minDiskSize),
- *     snapshotId: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.id),
- * });
- * ```
- *
  * ## Import
  *
  * Volumes can be imported using the `volume id`, e.g.

@@ -18,41 +18,6 @@ namespace Pulumi.DigitalOcean
         /// of the keys data.
         /// 
         /// An error is triggered if the provided ssh key name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the ssh key:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleSshKey = DigitalOcean.GetSshKey.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-        ///     {
-        ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
-        ///         SshKeys = new[]
-        ///         {
-        ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
@@ -64,41 +29,6 @@ namespace Pulumi.DigitalOcean
         /// of the keys data.
         /// 
         /// An error is triggered if the provided ssh key name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the ssh key:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleSshKey = DigitalOcean.GetSshKey.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-        ///     {
-        ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
-        ///         SshKeys = new[]
-        ///         {
-        ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());

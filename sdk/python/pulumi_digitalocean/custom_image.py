@@ -41,13 +41,19 @@ class CustomImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             regions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             url: pulumi.Input[str],
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              distribution: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("regions", regions)
         _setter("url", url)
         if description is not None:
@@ -200,7 +206,17 @@ class _CustomImageState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if min_disk_size is None and 'minDiskSize' in kwargs:
+            min_disk_size = kwargs['minDiskSize']
+        if size_gigabytes is None and 'sizeGigabytes' in kwargs:
+            size_gigabytes = kwargs['sizeGigabytes']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if description is not None:
@@ -424,22 +440,6 @@ class CustomImage(pulumi.CustomResource):
         The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
         Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        flatcar = digitalocean.CustomImage("flatcar",
-            url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
-            regions=["nyc3"])
-        example = digitalocean.Droplet("example",
-            image=flatcar.id,
-            region="nyc3",
-            size="s-1vcpu-1gb",
-            ssh_keys=["12345"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description for the image.
@@ -467,22 +467,6 @@ class CustomImage(pulumi.CustomResource):
 
         The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
         Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        flatcar = digitalocean.CustomImage("flatcar",
-            url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
-            regions=["nyc3"])
-        example = digitalocean.Droplet("example",
-            image=flatcar.id,
-            region="nyc3",
-            size="s-1vcpu-1gb",
-            ssh_keys=["12345"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param CustomImageArgs args: The arguments to use to populate this resource's properties.

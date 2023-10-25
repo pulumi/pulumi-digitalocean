@@ -13,33 +13,6 @@ import (
 )
 
 // Provides the CA certificate for a DigitalOcean database.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ca, err := digitalocean.GetDatabaseCa(ctx, &digitalocean.GetDatabaseCaArgs{
-//				ClusterId: "aaa-bbb-ccc-ddd",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("caOutput", ca.Certificate)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDatabaseCa(ctx *pulumi.Context, args *GetDatabaseCaArgs, opts ...pulumi.InvokeOption) (*GetDatabaseCaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseCaResult

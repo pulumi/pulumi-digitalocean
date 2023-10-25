@@ -15,34 +15,6 @@ namespace Pulumi.DigitalOcean
     /// actions on it. Tags created with this resource can be referenced in your Droplet
     /// configuration via their ID or name.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new tag
-    ///     var foobar = new DigitalOcean.Tag("foobar");
-    /// 
-    ///     // Create a new Droplet in nyc3 with the foobar tag
-    ///     var web = new DigitalOcean.Droplet("web", new()
-    ///     {
-    ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc3",
-    ///         Size = "s-1vcpu-1gb",
-    ///         Tags = new[]
-    ///         {
-    ///             foobar.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Tags can be imported using the `name`, e.g.

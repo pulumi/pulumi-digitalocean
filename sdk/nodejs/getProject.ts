@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
  * then this data source returns the default project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const default = digitalocean.getProject({});
- * const staging = digitalocean.getProject({
- *     name: "My Staging Project",
- * });
- * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
@@ -88,18 +76,6 @@ export interface GetProjectResult {
 /**
  * Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
  * then this data source returns the default project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const default = digitalocean.getProject({});
- * const staging = digitalocean.getProject({
- *     name: "My Staging Project",
- * });
- * ```
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

@@ -11,21 +11,6 @@ import * as utilities from "./utilities";
  * Returns a list of tags in your DigitalOcean account, with the ability to
  * filter and sort the results. If no filters are specified, all tags will be
  * returned.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const list = digitalocean.getTags({
- *     sorts: [{
- *         key: "total_resource_count",
- *         direction: "asc",
- *     }],
- * });
- * export const sortedTags = list.then(list => list.tags);
- * ```
  */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
@@ -69,21 +54,6 @@ export interface GetTagsResult {
  * Returns a list of tags in your DigitalOcean account, with the ability to
  * filter and sort the results. If no filters are specified, all tags will be
  * returned.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const list = digitalocean.getTags({
- *     sorts: [{
- *         key: "total_resource_count",
- *         direction: "asc",
- *     }],
- * });
- * export const sortedTags = list.then(list => list.tags);
- * ```
  */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
     return pulumi.output(args).apply((a: any) => getTags(a, opts))

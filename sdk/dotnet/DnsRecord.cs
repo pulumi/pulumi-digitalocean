@@ -12,46 +12,6 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean DNS record resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new DigitalOcean.Domain("default", new()
-    ///     {
-    ///         Name = "example.com",
-    ///     });
-    /// 
-    ///     // Add an A record to the domain for www.example.com.
-    ///     var www = new DigitalOcean.DnsRecord("www", new()
-    ///     {
-    ///         Domain = @default.Id,
-    ///         Type = "A",
-    ///         Value = "192.168.0.11",
-    ///     });
-    /// 
-    ///     // Add a MX record for the example.com domain itself.
-    ///     var mx = new DigitalOcean.DnsRecord("mx", new()
-    ///     {
-    ///         Domain = @default.Id,
-    ///         Type = "MX",
-    ///         Priority = 10,
-    ///         Value = "mail.example.com.",
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["wwwFqdn"] = www.Fqdn,
-    ///         ["mxFqdn"] = mx.Fqdn,
-    ///     };
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Records can be imported using the domain name and record `id` when joined with a comma. See the following example

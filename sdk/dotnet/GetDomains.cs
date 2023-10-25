@@ -20,42 +20,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
         /// about a single domain if you already know the `name`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-        /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var examples = DigitalOcean.GetDomains.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new DigitalOcean.Inputs.GetDomainsFilterInputArgs
-        ///             {
-        ///                 Key = "name",
-        ///                 MatchBy = "re",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "example\\.com$",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -69,42 +33,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
         /// about a single domain if you already know the `name`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-        /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var examples = DigitalOcean.GetDomains.Invoke(new()
-        ///     {
-        ///         Filters = new[]
-        ///         {
-        ///             new DigitalOcean.Inputs.GetDomainsFilterInputArgs
-        ///             {
-        ///                 Key = "name",
-        ///                 MatchBy = "re",
-        ///                 Values = new[]
-        ///                 {
-        ///                     "example\\.com$",
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

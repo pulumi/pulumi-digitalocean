@@ -15,38 +15,6 @@ import (
 // Returns a list of tags in your DigitalOcean account, with the ability to
 // filter and sort the results. If no filters are specified, all tags will be
 // returned.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			list, err := digitalocean.GetTags(ctx, &digitalocean.GetTagsArgs{
-//				Sorts: []digitalocean.GetTagsSort{
-//					{
-//						Key:       "total_resource_count",
-//						Direction: pulumi.StringRef("asc"),
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("sortedTags", list.Tags)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult

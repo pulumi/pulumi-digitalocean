@@ -11,19 +11,6 @@ import * as utilities from "./utilities";
  * any of the certificates data.
  *
  * An error is triggered if the provided certificate name does not exist.
- *
- * ## Example Usage
- *
- * Get the certificate:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = digitalocean.getCertificate({
- *     name: "example",
- * });
- * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
 
@@ -84,19 +71,6 @@ export interface GetCertificateResult {
  * any of the certificates data.
  *
  * An error is triggered if the provided certificate name does not exist.
- *
- * ## Example Usage
- *
- * Get the certificate:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const example = digitalocean.getCertificate({
- *     name: "example",
- * });
- * ```
  */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
     return pulumi.output(args).apply((a: any) => getCertificate(a, opts))

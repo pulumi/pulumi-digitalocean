@@ -17,41 +17,6 @@ namespace Pulumi.DigitalOcean
         /// managed by the provider or you need validate if the tag exists in the account.
         /// 
         /// An error is triggered if the provided tag name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the tag:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleTag = DigitalOcean.GetTag.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-        ///     {
-        ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
-        ///         Tags = new[]
-        ///         {
-        ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
@@ -62,41 +27,6 @@ namespace Pulumi.DigitalOcean
         /// managed by the provider or you need validate if the tag exists in the account.
         /// 
         /// An error is triggered if the provided tag name does not exist.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Get the tag:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DigitalOcean = Pulumi.DigitalOcean;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleTag = DigitalOcean.GetTag.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
-        ///     {
-        ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
-        ///         Tags = new[]
-        ///         {
-        ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
