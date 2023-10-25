@@ -13,6 +13,18 @@ import * as utilities from "./utilities";
  * An error is triggered if the provided container registry name does not exist.
  *
  * ## Example Usage
+ * ### Basic Example
+ *
+ * Get the container registry:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getContainerRegistry({
+ *     name: "example",
+ * });
+ * ```
  */
 export function getContainerRegistry(args: GetContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryResult> {
 
@@ -78,6 +90,18 @@ export interface GetContainerRegistryResult {
  * An error is triggered if the provided container registry name does not exist.
  *
  * ## Example Usage
+ * ### Basic Example
+ *
+ * Get the container registry:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getContainerRegistry({
+ *     name: "example",
+ * });
+ * ```
  */
 export function getContainerRegistryOutput(args: GetContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryResult> {
     return pulumi.output(args).apply((a: any) => getContainerRegistry(a, opts))

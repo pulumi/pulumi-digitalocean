@@ -29,6 +29,59 @@ namespace Pulumi.DigitalOcean
     /// 
     /// **Note:** A provider managed project cannot be set as a default project.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example demonstrates the creation of an empty project:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var playground = new DigitalOcean.Project("playground", new()
+    ///     {
+    ///         Description = "A project to represent development resources.",
+    ///         Environment = "Development",
+    ///         Purpose = "Web Application",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The following example demonstrates the creation of a project with a Droplet resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new DigitalOcean.Droplet("foobar", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///     });
+    /// 
+    ///     var playground = new DigitalOcean.Project("playground", new()
+    ///     {
+    ///         Description = "A project to represent development resources.",
+    ///         Purpose = "Web Application",
+    ///         Environment = "Development",
+    ///         Resources = new[]
+    ///         {
+    ///             foobar.DropletUrn,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Projects can be imported using the `id` returned from DigitalOcean, e.g.

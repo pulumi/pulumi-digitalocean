@@ -395,6 +395,52 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
+        ### Custom Certificate
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            type="custom",
+            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
+            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
+            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
+        ```
+        ### Let's Encrypt Certificate
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            domains=["example.com"],
+            type="lets_encrypt")
+        ```
+        ### Use with Other Resources
+
+        Both custom and Let's Encrypt certificates can be used with other resources
+        including the `LoadBalancer` and `Cdn` resources.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            type="lets_encrypt",
+            domains=["example.com"])
+        # Create a new Load Balancer with TLS termination
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            droplet_tag="backend",
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=443,
+                entry_protocol="https",
+                target_port=80,
+                target_protocol="http",
+                certificate_name=cert.name,
+            )])
+        ```
 
         ## Import
 
@@ -435,6 +481,52 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
+        ### Custom Certificate
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            type="custom",
+            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
+            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
+            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
+        ```
+        ### Let's Encrypt Certificate
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            domains=["example.com"],
+            type="lets_encrypt")
+        ```
+        ### Use with Other Resources
+
+        Both custom and Let's Encrypt certificates can be used with other resources
+        including the `LoadBalancer` and `Cdn` resources.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            type="lets_encrypt",
+            domains=["example.com"])
+        # Create a new Load Balancer with TLS termination
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            droplet_tag="backend",
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=443,
+                entry_protocol="https",
+                target_port=80,
+                target_protocol="http",
+                certificate_name=cert.name,
+            )])
+        ```
 
         ## Import
 

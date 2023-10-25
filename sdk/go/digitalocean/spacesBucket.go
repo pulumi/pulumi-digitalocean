@@ -26,9 +26,109 @@ import (
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 //
 // ## Example Usage
+// ### Create a New Bucket
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Create a New Bucket With CORS Rules
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				CorsRules: digitalocean.SpacesBucketCorsRuleArray{
+//					&digitalocean.SpacesBucketCorsRuleArgs{
+//						AllowedHeaders: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						AllowedMethods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//						},
+//						AllowedOrigins: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						MaxAgeSeconds: pulumi.Int(3000),
+//					},
+//					&digitalocean.SpacesBucketCorsRuleArgs{
+//						AllowedHeaders: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						AllowedMethods: pulumi.StringArray{
+//							pulumi.String("PUT"),
+//							pulumi.String("POST"),
+//							pulumi.String("DELETE"),
+//						},
+//						AllowedOrigins: pulumi.StringArray{
+//							pulumi.String("https://www.example.com"),
+//						},
+//						MaxAgeSeconds: pulumi.Int(3000),
+//					},
+//				},
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -17,6 +17,43 @@ import (
 //
 // > **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `ReservedIp` resource by setting a `dropletId` or using the `ReservedIpAssignment` resource, but the two cannot be used together.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-22-04-x64"),
+//				Region:            pulumi.String("nyc3"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
+//				DropletId: exampleDroplet.ID(),
+//				Region:    exampleDroplet.Region,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Reserved IPs can be imported using the `ip`, e.g.

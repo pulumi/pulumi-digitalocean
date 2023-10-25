@@ -140,6 +140,24 @@ class ReservedIpAssignment(pulumi.CustomResource):
         makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
         Droplet.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
+        example_droplet = digitalocean.Droplet("exampleDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-22-04-x64",
+            region="nyc3",
+            ipv6=True,
+            private_networking=True)
+        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
+            ip_address=example_reserved_ip.ip_address,
+            droplet_id=example_droplet.id)
+        ```
+
         ## Import
 
         Reserved IP assignments can be imported using the reserved IP itself and the `id` of the Droplet joined with a comma. For example
@@ -163,6 +181,24 @@ class ReservedIpAssignment(pulumi.CustomResource):
         Provides a resource for assigning an existing DigitalOcean reserved IP to a Droplet. This
         makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
         Droplet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
+        example_droplet = digitalocean.Droplet("exampleDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-22-04-x64",
+            region="nyc3",
+            ipv6=True,
+            private_networking=True)
+        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
+            ip_address=example_reserved_ip.ip_address,
+            droplet_id=example_droplet.id)
+        ```
 
         ## Import
 

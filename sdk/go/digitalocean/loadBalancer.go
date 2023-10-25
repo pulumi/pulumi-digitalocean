@@ -16,6 +16,116 @@ import (
 // Provides a DigitalOcean Load Balancer resource. This can be used to create,
 // modify, and delete Load Balancers.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Region: pulumi.String("nyc3"),
+//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+//					&digitalocean.LoadBalancerForwardingRuleArgs{
+//						EntryPort:      pulumi.Int(80),
+//						EntryProtocol:  pulumi.String("http"),
+//						TargetPort:     pulumi.Int(80),
+//						TargetProtocol: pulumi.String("http"),
+//					},
+//				},
+//				Healthcheck: &digitalocean.LoadBalancerHealthcheckArgs{
+//					Port:     pulumi.Int(22),
+//					Protocol: pulumi.String("tcp"),
+//				},
+//				DropletIds: pulumi.IntArray{
+//					web.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
+// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
+// operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
+// `Delete old certificate`. When doing so, you must also change the name of the certificate,
+// as there cannot be multiple certificates with the same name in an account.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				PrivateKey:      pulumi.String("file('key.pem')"),
+//				LeafCertificate: pulumi.String("file('cert.pem')"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Region: pulumi.String("nyc3"),
+//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+//					&digitalocean.LoadBalancerForwardingRuleArgs{
+//						EntryPort:       pulumi.Int(443),
+//						EntryProtocol:   pulumi.String("https"),
+//						TargetPort:      pulumi.Int(80),
+//						TargetProtocol:  pulumi.String("http"),
+//						CertificateName: cert.Name,
+//					},
+//				},
+//				Healthcheck: &digitalocean.LoadBalancerHealthcheckArgs{
+//					Port:     pulumi.Int(22),
+//					Protocol: pulumi.String("tcp"),
+//				},
+//				DropletIds: pulumi.IntArray{
+//					web.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Load Balancers can be imported using the `id`, e.g.

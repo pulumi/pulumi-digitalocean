@@ -14,6 +14,30 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = DigitalOcean.GetProject.Invoke();
+        /// 
+        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     {
+        ///         Name = "My Staging Project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -21,6 +45,30 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = DigitalOcean.GetProject.Invoke();
+        /// 
+        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     {
+        ///         Name = "My Staging Project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

@@ -86,6 +86,37 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
     Note: You can use the `SpacesBucket` data source to
     obtain metadata about a single bucket if you already know its `name` and `region`.
 
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter buckets.
+
+    Get all buckets in a region:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+        key="region",
+        values=["nyc3"],
+    )])
+    ```
+    You can sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+            key="region",
+            values=["nyc3"],
+        )],
+        sorts=[digitalocean.GetSpacesBucketsSortArgs(
+            direction="desc",
+            key="name",
+        )])
+    ```
+
 
     :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
@@ -115,6 +146,37 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
 
     Note: You can use the `SpacesBucket` data source to
     obtain metadata about a single bucket if you already know its `name` and `region`.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter buckets.
+
+    Get all buckets in a region:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+        key="region",
+        values=["nyc3"],
+    )])
+    ```
+    You can sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
+            key="region",
+            values=["nyc3"],
+        )],
+        sorts=[digitalocean.GetSpacesBucketsSortArgs(
+            direction="desc",
+            key="name",
+        )])
+    ```
 
 
     :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.

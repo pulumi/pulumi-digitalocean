@@ -13,6 +13,31 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
     /// 
     /// ## Example Usage
+    /// ### Create a new PostgreSQL database
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    ///     var database_example = new DigitalOcean.DatabaseDb("database-example", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

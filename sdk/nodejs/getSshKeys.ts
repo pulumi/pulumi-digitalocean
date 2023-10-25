@@ -15,6 +15,39 @@ import * as utilities from "./utilities";
  *
  * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
  * about a single SSH Key if you already know the unique `name` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * For example, to find all SSH keys:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = digitalocean.getSshKeys({
+ *     sorts: [{
+ *         direction: "asc",
+ *         key: "name",
+ *     }],
+ * });
+ * ```
+ *
+ * Or to find ones matching specific values:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = digitalocean.getSshKeys({
+ *     filters: [{
+ *         key: "name",
+ *         values: [
+ *             "laptop",
+ *             "desktop",
+ *         ],
+ *     }],
+ * });
+ * ```
  */
 export function getSshKeys(args?: GetSshKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeysResult> {
     args = args || {};
@@ -65,6 +98,39 @@ export interface GetSshKeysResult {
  *
  * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
  * about a single SSH Key if you already know the unique `name` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * For example, to find all SSH keys:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = digitalocean.getSshKeys({
+ *     sorts: [{
+ *         direction: "asc",
+ *         key: "name",
+ *     }],
+ * });
+ * ```
+ *
+ * Or to find ones matching specific values:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = digitalocean.getSshKeys({
+ *     filters: [{
+ *         key: "name",
+ *         values: [
+ *             "laptop",
+ *             "desktop",
+ *         ],
+ *     }],
+ * });
+ * ```
  */
 export function getSshKeysOutput(args?: GetSshKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeysResult> {
     return pulumi.output(args).apply((a: any) => getSshKeys(a, opts))

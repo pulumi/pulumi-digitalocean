@@ -17,6 +17,49 @@ import (
 // makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
 // Droplet.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleReservedIp, err := digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-22-04-x64"),
+//				Region:            pulumi.String("nyc3"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewReservedIpAssignment(ctx, "exampleReservedIpAssignment", &digitalocean.ReservedIpAssignmentArgs{
+//				IpAddress: exampleReservedIp.IpAddress,
+//				DropletId: exampleDroplet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Reserved IP assignments can be imported using the reserved IP itself and the `id` of the Droplet joined with a comma. For example

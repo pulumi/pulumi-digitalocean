@@ -19,6 +19,73 @@ import (
 //
 // Note: You can use the `SshKey` data source to obtain metadata
 // about a single SSH Key if you already know the unique `name` to retrieve.
+//
+// ## Example Usage
+//
+// For example, to find all SSH keys:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+//				Sorts: []digitalocean.GetSshKeysSort{
+//					{
+//						Direction: pulumi.StringRef("asc"),
+//						Key:       "name",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Or to find ones matching specific values:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+//				Filters: []digitalocean.GetSshKeysFilter{
+//					{
+//						Key: "name",
+//						Values: []string{
+//							"laptop",
+//							"desktop",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSshKeys(ctx *pulumi.Context, args *GetSshKeysArgs, opts ...pulumi.InvokeOption) (*GetSshKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSshKeysResult

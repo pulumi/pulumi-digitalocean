@@ -13,6 +13,48 @@ import * as utilities from "./utilities";
  *
  * Note: You can use the `digitalocean.getRegion` data source
  * to obtain metadata about a single region if you already know the `slug` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * Use the `filter` block with a `key` string and `values` list to filter regions.
+ *
+ * For example to find all available regions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const available = digitalocean.getRegions({
+ *     filters: [{
+ *         key: "available",
+ *         values: ["true"],
+ *     }],
+ * });
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const available = digitalocean.getRegions({
+ *     filters: [
+ *         {
+ *             key: "available",
+ *             values: ["true"],
+ *         },
+ *         {
+ *             key: "features",
+ *             values: ["private_networking"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "desc",
+ *         key: "name",
+ *     }],
+ * });
+ * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -61,6 +103,48 @@ export interface GetRegionsResult {
  *
  * Note: You can use the `digitalocean.getRegion` data source
  * to obtain metadata about a single region if you already know the `slug` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * Use the `filter` block with a `key` string and `values` list to filter regions.
+ *
+ * For example to find all available regions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const available = digitalocean.getRegions({
+ *     filters: [{
+ *         key: "available",
+ *         values: ["true"],
+ *     }],
+ * });
+ * ```
+ *
+ * You can filter on multiple fields and sort the results as well:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const available = digitalocean.getRegions({
+ *     filters: [
+ *         {
+ *             key: "available",
+ *             values: ["true"],
+ *         },
+ *         {
+ *             key: "features",
+ *             values: ["private_networking"],
+ *         },
+ *     ],
+ *     sorts: [{
+ *         direction: "desc",
+ *         key: "name",
+ *     }],
+ * });
+ * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

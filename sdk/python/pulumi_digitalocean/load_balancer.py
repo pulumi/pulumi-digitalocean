@@ -862,6 +862,64 @@ class LoadBalancer(pulumi.CustomResource):
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=80,
+                entry_protocol="http",
+                target_port=80,
+                target_protocol="http",
+            )],
+            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
+                port=22,
+                protocol="tcp",
+            ),
+            droplet_ids=[web.id])
+        ```
+
+        When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+        lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
+        operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
+        `Delete old certificate`. When doing so, you must also change the name of the certificate,
+        as there cannot be multiple certificates with the same name in an account.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            private_key="file('key.pem')",
+            leaf_certificate="file('cert.pem')")
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=443,
+                entry_protocol="https",
+                target_port=80,
+                target_protocol="http",
+                certificate_name=cert.name,
+            )],
+            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
+                port=22,
+                protocol="tcp",
+            ),
+            droplet_ids=[web.id])
+        ```
+
         ## Import
 
         Load Balancers can be imported using the `id`, e.g.
@@ -909,6 +967,64 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
         modify, and delete Load Balancers.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=80,
+                entry_protocol="http",
+                target_port=80,
+                target_protocol="http",
+            )],
+            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
+                port=22,
+                protocol="tcp",
+            ),
+            droplet_ids=[web.id])
+        ```
+
+        When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+        lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
+        operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
+        `Delete old certificate`. When doing so, you must also change the name of the certificate,
+        as there cannot be multiple certificates with the same name in an account.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        cert = digitalocean.Certificate("cert",
+            private_key="file('key.pem')",
+            leaf_certificate="file('cert.pem')")
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        public = digitalocean.LoadBalancer("public",
+            region="nyc3",
+            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
+                entry_port=443,
+                entry_protocol="https",
+                target_port=80,
+                target_protocol="http",
+                certificate_name=cert.name,
+            )],
+            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
+                port=22,
+                protocol="tcp",
+            ),
+            droplet_ids=[web.id])
+        ```
 
         ## Import
 

@@ -19,6 +19,49 @@ import (
 // makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
 // Droplet.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarFloatingIp, err := digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
+//				Region: pulumi.String("sgp1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Image:             pulumi.String("ubuntu-18-04-x64"),
+//				Region:            pulumi.String("sgp1"),
+//				Ipv6:              pulumi.Bool(true),
+//				PrivateNetworking: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobarFloatingIpAssignment", &digitalocean.FloatingIpAssignmentArgs{
+//				IpAddress: foobarFloatingIp.IpAddress,
+//				DropletId: foobarDroplet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example

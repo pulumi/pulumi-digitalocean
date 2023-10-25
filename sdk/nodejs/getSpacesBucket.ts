@@ -7,6 +7,21 @@ import * as utilities from "./utilities";
 /**
  * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
  * is not managed by the provider or you need to utilize any of the bucket's data.
+ *
+ * ## Example Usage
+ *
+ * Get the bucket by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getSpacesBucket({
+ *     name: "my-spaces-bucket",
+ *     region: "nyc3",
+ * });
+ * export const bucketDomainName = example.then(example => example.bucketDomainName);
+ * ```
  */
 export function getSpacesBucket(args: GetSpacesBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketResult> {
 
@@ -63,6 +78,21 @@ export interface GetSpacesBucketResult {
 /**
  * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
  * is not managed by the provider or you need to utilize any of the bucket's data.
+ *
+ * ## Example Usage
+ *
+ * Get the bucket by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getSpacesBucket({
+ *     name: "my-spaces-bucket",
+ *     region: "nyc3",
+ * });
+ * export const bucketDomainName = example.then(example => example.bucketDomainName);
+ * ```
  */
 export function getSpacesBucketOutput(args: GetSpacesBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketResult> {
     return pulumi.output(args).apply((a: any) => getSpacesBucket(a, opts))

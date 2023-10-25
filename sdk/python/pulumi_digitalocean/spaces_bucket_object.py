@@ -735,9 +735,31 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        # ...
+        ```
+
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
+        ### Create a Key in a Spaces Bucket
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        index = digitalocean.SpacesBucketObject("index",
+            region=foobar.region,
+            bucket=foobar.name,
+            key="index.html",
+            content="<html><body><p>This page is empty.</p></body></html>",
+            content_type="text/html")
+        ```
 
         ## Import
 
@@ -790,9 +812,31 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        # ...
+        ```
+
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
+        ### Create a Key in a Spaces Bucket
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        index = digitalocean.SpacesBucketObject("index",
+            region=foobar.region,
+            bucket=foobar.name,
+            key="index.html",
+            content="<html><body><p>This page is empty.</p></body></html>",
+            content_type="text/html")
+        ```
 
         ## Import
 

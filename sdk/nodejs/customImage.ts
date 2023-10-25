@@ -16,6 +16,24 @@ import * as utilities from "./utilities";
  *
  * The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
  * Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const flatcar = new digitalocean.CustomImage("flatcar", {
+ *     url: "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
+ *     regions: ["nyc3"],
+ * });
+ * const example = new digitalocean.Droplet("example", {
+ *     image: flatcar.id,
+ *     region: "nyc3",
+ *     size: "s-1vcpu-1gb",
+ *     sshKeys: ["12345"],
+ * });
+ * ```
  */
 export class CustomImage extends pulumi.CustomResource {
     /**

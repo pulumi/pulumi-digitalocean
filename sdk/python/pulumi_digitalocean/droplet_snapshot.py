@@ -209,6 +209,23 @@ class DropletSnapshot(pulumi.CustomResource):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="ubuntu-22-04-x64",
+            region="nyc3")
+        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
+        from_snapshot = digitalocean.Droplet("from-snapshot",
+            image=web_snapshot.id,
+            region="nyc3",
+            size="s-2vcpu-4gb")
+        ```
+
         ## Import
 
         Droplet Snapshots can be imported using the `snapshot id`, e.g.
@@ -230,6 +247,23 @@ class DropletSnapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web = digitalocean.Droplet("web",
+            size="s-1vcpu-1gb",
+            image="ubuntu-22-04-x64",
+            region="nyc3")
+        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
+        from_snapshot = digitalocean.Droplet("from-snapshot",
+            image=web_snapshot.id,
+            region="nyc3",
+            size="s-2vcpu-4gb")
+        ```
 
         ## Import
 

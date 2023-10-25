@@ -242,6 +242,27 @@ def get_load_balancer(id: Optional[str] = None,
 
     An error is triggered if the provided load balancer name does not exist.
 
+    ## Example Usage
+
+    Get the load balancer by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(name="app")
+    pulumi.export("lbOutput", example.ip)
+    ```
+
+    Get the load balancer by ID:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(id="loadbalancer_id")
+    ```
+
 
     :param str id: The ID of load balancer.
     :param str name: The name of load balancer.
@@ -288,6 +309,27 @@ def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     the provider or you need to utilize any of the load balancers data.
 
     An error is triggered if the provided load balancer name does not exist.
+
+    ## Example Usage
+
+    Get the load balancer by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(name="app")
+    pulumi.export("lbOutput", example.ip)
+    ```
+
+    Get the load balancer by ID:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_load_balancer(id="loadbalancer_id")
+    ```
 
 
     :param str id: The ID of load balancer.

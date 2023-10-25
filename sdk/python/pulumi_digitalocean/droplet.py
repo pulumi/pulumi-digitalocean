@@ -1017,6 +1017,19 @@ class Droplet(pulumi.CustomResource):
         Provides a DigitalOcean Droplet resource. This can be used to create,
         modify, and delete Droplets.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new Web Droplet in the nyc2 region
+        web = digitalocean.Droplet("web",
+            image="ubuntu-18-04-x64",
+            region="nyc2",
+            size="s-1vcpu-1gb")
+        ```
+
         ## Import
 
         Droplets can be imported using the Droplet `id`, e.g.
@@ -1074,6 +1087,19 @@ class Droplet(pulumi.CustomResource):
         """
         Provides a DigitalOcean Droplet resource. This can be used to create,
         modify, and delete Droplets.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new Web Droplet in the nyc2 region
+        web = digitalocean.Droplet("web",
+            image="ubuntu-18-04-x64",
+            region="nyc2",
+            size="s-1vcpu-1gb")
+        ```
 
         ## Import
 

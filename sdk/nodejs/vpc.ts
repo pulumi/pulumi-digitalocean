@@ -10,6 +10,36 @@ import * as utilities from "./utilities";
  * VPCs are virtual networks containing resources that can communicate with each
  * other in full isolation, using private IP addresses.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = new digitalocean.Vpc("example", {
+ *     ipRange: "10.10.10.0/24",
+ *     region: "nyc3",
+ * });
+ * ```
+ * ### Resource Assignment
+ *
+ * `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
+ * `digitaloceanLoadBalancer`, and `digitalocean.DatabaseCluster` resources
+ * may be assigned to a VPC by referencing its `id`. For example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVpc = new digitalocean.Vpc("exampleVpc", {region: "nyc3"});
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ *     vpcUuid: exampleVpc.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * A VPC can be imported using its `id`, e.g.

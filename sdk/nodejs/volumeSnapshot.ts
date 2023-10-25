@@ -7,6 +7,20 @@ import * as utilities from "./utilities";
 /**
  * Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foobarVolume = new digitalocean.Volume("foobarVolume", {
+ *     region: "nyc1",
+ *     size: 100,
+ *     description: "an example volume",
+ * });
+ * const foobarVolumeSnapshot = new digitalocean.VolumeSnapshot("foobarVolumeSnapshot", {volumeId: foobarVolume.id});
+ * ```
+ *
  * ## Import
  *
  * Volume Snapshots can be imported using the `snapshot id`, e.g.

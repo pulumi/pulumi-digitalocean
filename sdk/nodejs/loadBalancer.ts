@@ -11,6 +11,69 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean Load Balancer resource. This can be used to create,
  * modify, and delete Load Balancers.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web = new digitalocean.Droplet("web", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ * });
+ * const _public = new digitalocean.LoadBalancer("public", {
+ *     region: "nyc3",
+ *     forwardingRules: [{
+ *         entryPort: 80,
+ *         entryProtocol: "http",
+ *         targetPort: 80,
+ *         targetProtocol: "http",
+ *     }],
+ *     healthcheck: {
+ *         port: 22,
+ *         protocol: "tcp",
+ *     },
+ *     dropletIds: [web.id],
+ * });
+ * ```
+ *
+ * When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
+ * lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
+ * operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
+ * `Delete old certificate`. When doing so, you must also change the name of the certificate,
+ * as there cannot be multiple certificates with the same name in an account.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const cert = new digitalocean.Certificate("cert", {
+ *     privateKey: "file('key.pem')",
+ *     leafCertificate: "file('cert.pem')",
+ * });
+ * const web = new digitalocean.Droplet("web", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ * });
+ * const _public = new digitalocean.LoadBalancer("public", {
+ *     region: "nyc3",
+ *     forwardingRules: [{
+ *         entryPort: 443,
+ *         entryProtocol: "https",
+ *         targetPort: 80,
+ *         targetProtocol: "http",
+ *         certificateName: cert.name,
+ *     }],
+ *     healthcheck: {
+ *         port: 22,
+ *         protocol: "tcp",
+ *     },
+ *     dropletIds: [web.id],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Load Balancers can be imported using the `id`, e.g.

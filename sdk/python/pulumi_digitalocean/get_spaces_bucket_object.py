@@ -262,6 +262,25 @@ def get_spaces_bucket_object(bucket: Optional[str] = None,
     `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
     downloading large amount of data which would be thrown away in favor of metadata.
 
+    ## Example Usage
+
+    The following example retrieves a text object (which must have a `Content-Type`
+    value starting with `text/`) and uses it as the `user_data` for a Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    bootstrap_script = digitalocean.get_spaces_bucket_object(bucket="ourcorp-deploy-config",
+        region="nyc3",
+        key="droplet-bootstrap-script.sh")
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        region="nyc2",
+        size="s-1vcpu-1gb",
+        user_data=bootstrap_script.body)
+    ```
+
 
     :param str bucket: The name of the bucket to read the object from.
     :param str key: The full path to the object inside the bucket
@@ -313,6 +332,25 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
     > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
     `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
     downloading large amount of data which would be thrown away in favor of metadata.
+
+    ## Example Usage
+
+    The following example retrieves a text object (which must have a `Content-Type`
+    value starting with `text/`) and uses it as the `user_data` for a Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    bootstrap_script = digitalocean.get_spaces_bucket_object(bucket="ourcorp-deploy-config",
+        region="nyc3",
+        key="droplet-bootstrap-script.sh")
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        region="nyc2",
+        size="s-1vcpu-1gb",
+        user_data=bootstrap_script.body)
+    ```
 
 
     :param str bucket: The name of the bucket to read the object from.

@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
  * makes it easy to provision reserved IP addresses that are not tied to the lifecycle of your
  * Droplet.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleReservedIp = new digitalocean.ReservedIp("exampleReservedIp", {region: "nyc3"});
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-22-04-x64",
+ *     region: "nyc3",
+ *     ipv6: true,
+ *     privateNetworking: true,
+ * });
+ * const exampleReservedIpAssignment = new digitalocean.ReservedIpAssignment("exampleReservedIpAssignment", {
+ *     ipAddress: exampleReservedIp.ipAddress,
+ *     dropletId: exampleDroplet.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Reserved IP assignments can be imported using the reserved IP itself and the `id` of the Droplet joined with a comma. For example

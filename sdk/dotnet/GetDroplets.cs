@@ -20,6 +20,86 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
         /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// 
+        /// For example to find all Droplets with size `s-1vcpu-1gb`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "size",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "size",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "backups",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "created_at",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletsResult> InvokeAsync(GetDropletsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsArgs(), options.WithDefaults());
@@ -33,6 +113,86 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
         /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// 
+        /// For example to find all Droplets with size `s-1vcpu-1gb`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "size",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "size",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "backups",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
+        ///             {
+        ///                 Direction = "desc",
+        ///                 Key = "created_at",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDropletsResult> Invoke(GetDropletsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsInvokeArgs(), options.WithDefaults());

@@ -142,6 +142,24 @@ class FloatingIpAssignment(pulumi.CustomResource):
         makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
         Droplet.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="sgp1",
+            ipv6=True,
+            private_networking=True)
+        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
+            ip_address=foobar_floating_ip.ip_address,
+            droplet_id=foobar_droplet.id)
+        ```
+
         ## Import
 
         Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example
@@ -167,6 +185,24 @@ class FloatingIpAssignment(pulumi.CustomResource):
         Provides a resource for assigning an existing DigitalOcean Floating IP to a Droplet. This
         makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
         Droplet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="sgp1",
+            ipv6=True,
+            private_networking=True)
+        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
+            ip_address=foobar_floating_ip.ip_address,
+            droplet_id=foobar_droplet.id)
+        ```
 
         ## Import
 

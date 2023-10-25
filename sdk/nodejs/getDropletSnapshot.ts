@@ -8,6 +8,39 @@ import * as utilities from "./utilities";
  * Droplet snapshots are saved instances of a Droplet. Use this data
  * source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
  * resources.
+ *
+ * ## Example Usage
+ *
+ * Get the Droplet snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web-snapshot = digitalocean.getDropletSnapshot({
+ *     mostRecent: true,
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ * });
+ * ```
+ *
+ * Create image from snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web-snapshot = digitalocean.getDropletSnapshot({
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ *     mostRecent: true,
+ * });
+ * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
+ *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     region: "nyc3",
+ *     size: "s-2vcpu-4gb",
+ * });
+ * ```
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
@@ -84,6 +117,39 @@ export interface GetDropletSnapshotResult {
  * Droplet snapshots are saved instances of a Droplet. Use this data
  * source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
  * resources.
+ *
+ * ## Example Usage
+ *
+ * Get the Droplet snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web-snapshot = digitalocean.getDropletSnapshot({
+ *     mostRecent: true,
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ * });
+ * ```
+ *
+ * Create image from snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web-snapshot = digitalocean.getDropletSnapshot({
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ *     mostRecent: true,
+ * });
+ * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
+ *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     region: "nyc3",
+ *     size: "s-2vcpu-4gb",
+ * });
+ * ```
  */
 export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getDropletSnapshot(a, opts))

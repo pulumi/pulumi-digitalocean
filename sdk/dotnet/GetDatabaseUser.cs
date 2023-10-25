@@ -13,12 +13,76 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Provides information on a DigitalOcean database user resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     {
+        ///         Name = "main-cluster",
+        ///     });
+        /// 
+        ///     var example = DigitalOcean.GetDatabaseUser.Invoke(new()
+        ///     {
+        ///         ClusterId = main.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
+        ///         Name = "example-user",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseUserPassword"] = example.Apply(getDatabaseUserResult =&gt; getDatabaseUserResult.Password),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseUserResult> InvokeAsync(GetDatabaseUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseUserResult>("digitalocean:index/getDatabaseUser:getDatabaseUser", args ?? new GetDatabaseUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database user resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     {
+        ///         Name = "main-cluster",
+        ///     });
+        /// 
+        ///     var example = DigitalOcean.GetDatabaseUser.Invoke(new()
+        ///     {
+        ///         ClusterId = main.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
+        ///         Name = "example-user",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseUserPassword"] = example.Apply(getDatabaseUserResult =&gt; getDatabaseUserResult.Password),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseUserResult> Invoke(GetDatabaseUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseUserResult>("digitalocean:index/getDatabaseUser:getDatabaseUser", args ?? new GetDatabaseUserInvokeArgs(), options.WithDefaults());

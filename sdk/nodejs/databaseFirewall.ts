@@ -13,6 +13,59 @@ import * as utilities from "./utilities";
  * specific Droplets, Kubernetes clusters, or IP addresses.
  *
  * ## Example Usage
+ * ### Create a new database firewall allowing multiple IP addresses
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: postgres_example.id,
+ *     rules: [
+ *         {
+ *             type: "ip_addr",
+ *             value: "192.168.1.1",
+ *         },
+ *         {
+ *             type: "ip_addr",
+ *             value: "192.0.2.0",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Create a new database firewall allowing a Droplet
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web = new digitalocean.Droplet("web", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-22-04-x64",
+ *     region: "nyc3",
+ * });
+ * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: postgres_example.id,
+ *     rules: [{
+ *         type: "droplet",
+ *         value: web.id,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

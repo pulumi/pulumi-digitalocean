@@ -6,6 +6,22 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information on a DigitalOcean database replica.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDatabaseCluster({
+ *     name: "example-cluster",
+ * });
+ * const read-only = example.then(example => digitalocean.getDatabaseReplica({
+ *     clusterId: example.id,
+ *     name: "terra-test-ro",
+ * }));
+ * export const replicaOutput = read_only.then(read_only => read_only.uri);
+ * ```
  */
 export function getDatabaseReplica(args: GetDatabaseReplicaArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseReplicaResult> {
 
@@ -90,6 +106,22 @@ export interface GetDatabaseReplicaResult {
 }
 /**
  * Provides information on a DigitalOcean database replica.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDatabaseCluster({
+ *     name: "example-cluster",
+ * });
+ * const read-only = example.then(example => digitalocean.getDatabaseReplica({
+ *     clusterId: example.id,
+ *     name: "terra-test-ro",
+ * }));
+ * export const replicaOutput = read_only.then(read_only => read_only.uri);
+ * ```
  */
 export function getDatabaseReplicaOutput(args: GetDatabaseReplicaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseReplicaResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseReplica(a, opts))

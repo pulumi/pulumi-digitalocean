@@ -15,6 +15,38 @@ namespace Pulumi.DigitalOcean
     /// can be referenced in your Droplet configuration via their ID or
     /// fingerprint.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new SSH key
+    ///     var @default = new DigitalOcean.SshKey("default", new()
+    ///     {
+    ///         PublicKey = File.ReadAllText("/Users/myuser/.ssh/id_rsa.pub"),
+    ///     });
+    /// 
+    ///     // Create a new Droplet using the SSH key
+    ///     var web = new DigitalOcean.Droplet("web", new()
+    ///     {
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///         Size = "s-1vcpu-1gb",
+    ///         SshKeys = new[]
+    ///         {
+    ///             @default.Fingerprint,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SSH Keys can be imported using the `ssh key id`, e.g.

@@ -348,6 +348,36 @@ def get_droplet(id: Optional[int] = None,
     **Note:** This data source returns a single Droplet. When specifying a `tag`, an
     error is triggered if more than one Droplet is found.
 
+    ## Example Usage
+
+    Get the Droplet by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(name="web")
+    pulumi.export("dropletOutput", example.ipv4_address)
+    ```
+
+    Get the Droplet by tag:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(tag="web")
+    ```
+
+    Get the Droplet by ID:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(id=digitalocean_kubernetes_cluster["example"]["node_pool"][0]["nodes"][0]["droplet_id"])
+    ```
+
 
     :param int id: The ID of the Droplet
     :param str name: The name of the Droplet.
@@ -402,6 +432,36 @@ def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
 
     **Note:** This data source returns a single Droplet. When specifying a `tag`, an
     error is triggered if more than one Droplet is found.
+
+    ## Example Usage
+
+    Get the Droplet by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(name="web")
+    pulumi.export("dropletOutput", example.ipv4_address)
+    ```
+
+    Get the Droplet by tag:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(tag="web")
+    ```
+
+    Get the Droplet by ID:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_droplet(id=digitalocean_kubernetes_cluster["example"]["node_pool"][0]["nodes"][0]["droplet_id"])
+    ```
 
 
     :param int id: The ID of the Droplet

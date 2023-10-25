@@ -410,9 +410,52 @@ class SpacesBucket(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        # ...
+        ```
+
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
+        ### Create a New Bucket
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        ```
+        ### Create a New Bucket With CORS Rules
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar",
+            cors_rules=[
+                digitalocean.SpacesBucketCorsRuleArgs(
+                    allowed_headers=["*"],
+                    allowed_methods=["GET"],
+                    allowed_origins=["*"],
+                    max_age_seconds=3000,
+                ),
+                digitalocean.SpacesBucketCorsRuleArgs(
+                    allowed_headers=["*"],
+                    allowed_methods=[
+                        "PUT",
+                        "POST",
+                        "DELETE",
+                    ],
+                    allowed_origins=["https://www.example.com"],
+                    max_age_seconds=3000,
+                ),
+            ],
+            region="nyc3")
+        ```
 
         ## Import
 
@@ -453,9 +496,52 @@ class SpacesBucket(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        # ...
+        ```
+
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
+        ### Create a New Bucket
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        ```
+        ### Create a New Bucket With CORS Rules
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar",
+            cors_rules=[
+                digitalocean.SpacesBucketCorsRuleArgs(
+                    allowed_headers=["*"],
+                    allowed_methods=["GET"],
+                    allowed_origins=["*"],
+                    max_age_seconds=3000,
+                ),
+                digitalocean.SpacesBucketCorsRuleArgs(
+                    allowed_headers=["*"],
+                    allowed_methods=[
+                        "PUT",
+                        "POST",
+                        "DELETE",
+                    ],
+                    allowed_origins=["https://www.example.com"],
+                    max_age_seconds=3000,
+                ),
+            ],
+            region="nyc3")
+        ```
 
         ## Import
 

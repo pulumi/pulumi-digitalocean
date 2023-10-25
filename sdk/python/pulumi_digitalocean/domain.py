@@ -175,6 +175,18 @@ class Domain(pulumi.CustomResource):
         """
         Provides a DigitalOcean domain resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new domain
+        default = digitalocean.Domain("default",
+            name="example.com",
+            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
+        ```
+
         ## Import
 
         Domains can be imported using the `domain name`, e.g.
@@ -197,6 +209,18 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DigitalOcean domain resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new domain
+        default = digitalocean.Domain("default",
+            name="example.com",
+            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
+        ```
 
         ## Import
 

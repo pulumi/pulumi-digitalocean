@@ -19,6 +19,28 @@ import * as utilities from "./utilities";
  * * Spaces Bucket
  * * Volume
  *
+ * ## Example Usage
+ *
+ * The following example assigns a droplet to a Project managed outside of the provider:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const playground = digitalocean.getProject({
+ *     name: "playground",
+ * });
+ * const foobar = new digitalocean.Droplet("foobar", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-22-04-x64",
+ *     region: "nyc3",
+ * });
+ * const barfoo = new digitalocean.ProjectResources("barfoo", {
+ *     project: playground.then(playground => playground.id),
+ *     resources: [foobar.dropletUrn],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Importing this resource is not supported.

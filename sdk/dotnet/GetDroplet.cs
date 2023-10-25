@@ -19,6 +19,70 @@ namespace Pulumi.DigitalOcean
         /// 
         /// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
         /// error is triggered if more than one Droplet is found.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the Droplet by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     {
+        ///         Name = "web",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dropletOutput"] = example.Apply(getDropletResult =&gt; getDropletResult.Ipv4Address),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get the Droplet by tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     {
+        ///         Tag = "web",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get the Droplet by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     {
+        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletResult> InvokeAsync(GetDropletArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletArgs(), options.WithDefaults());
@@ -31,6 +95,70 @@ namespace Pulumi.DigitalOcean
         /// 
         /// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
         /// error is triggered if more than one Droplet is found.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Get the Droplet by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     {
+        ///         Name = "web",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dropletOutput"] = example.Apply(getDropletResult =&gt; getDropletResult.Ipv4Address),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get the Droplet by tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     {
+        ///         Tag = "web",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get the Droplet by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     {
+        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDropletResult> Invoke(GetDropletInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletInvokeArgs(), options.WithDefaults());

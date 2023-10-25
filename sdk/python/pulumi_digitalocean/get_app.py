@@ -143,6 +143,18 @@ def get_app(app_id: Optional[str] = None,
     """
     Get information on a DigitalOcean App.
 
+    ## Example Usage
+
+    Get the account:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_app(app_id="e665d18d-7b56-44a9-92ce-31979174d544")
+    pulumi.export("defaultIngress", example.default_ingress)
+    ```
+
 
     :param str app_id: The ID of the app to retrieve information about.
     """
@@ -168,6 +180,18 @@ def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
     """
     Get information on a DigitalOcean App.
+
+    ## Example Usage
+
+    Get the account:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_app(app_id="e665d18d-7b56-44a9-92ce-31979174d544")
+    pulumi.export("defaultIngress", example.default_ingress)
+    ```
 
 
     :param str app_id: The ID of the app to retrieve information about.

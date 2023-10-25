@@ -18,6 +18,71 @@ import (
 // VPCs are virtual networks containing resources that can communicate with each
 // other in full isolation, using private IP addresses.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewVpc(ctx, "example", &digitalocean.VpcArgs{
+//				IpRange: pulumi.String("10.10.10.0/24"),
+//				Region:  pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Resource Assignment
+//
+// `Droplet`, `KubernetesCluster`,
+// `digitaloceanLoadBalancer`, and `DatabaseCluster` resources
+// may be assigned to a VPC by referencing its `id`. For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleVpc, err := digitalocean.NewVpc(ctx, "exampleVpc", &digitalocean.VpcArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//				Size:    pulumi.String("s-1vcpu-1gb"),
+//				Image:   pulumi.String("ubuntu-18-04-x64"),
+//				Region:  pulumi.String("nyc3"),
+//				VpcUuid: exampleVpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A VPC can be imported using its `id`, e.g.

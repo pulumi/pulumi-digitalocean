@@ -13,6 +13,25 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Container Registry resource. A Container Registry is
     /// a secure, private location to store your containers for rapid deployment.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new container registry
+    ///     var foobar = new DigitalOcean.ContainerRegistry("foobar", new()
+    ///     {
+    ///         SubscriptionTierSlug = "starter",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Container Registries can be imported using the `name`, e.g.

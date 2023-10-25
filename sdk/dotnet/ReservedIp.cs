@@ -14,6 +14,34 @@ namespace Pulumi.DigitalOcean
     /// 
     /// &gt; **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `droplet_id` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-22-04-x64",
+    ///         Region = "nyc3",
+    ///         Ipv6 = true,
+    ///         PrivateNetworking = true,
+    ///     });
+    /// 
+    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new()
+    ///     {
+    ///         DropletId = exampleDroplet.Id,
+    ///         Region = exampleDroplet.Region,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Reserved IPs can be imported using the `ip`, e.g.
