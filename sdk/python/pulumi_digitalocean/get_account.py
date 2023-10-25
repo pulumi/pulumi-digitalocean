@@ -131,6 +131,17 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Get information on your DigitalOcean account.
+
+    ## Example Usage
+
+    Get the account:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_account()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -151,5 +162,16 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
 def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
     Get information on your DigitalOcean account.
+
+    ## Example Usage
+
+    Get the account:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_account()
+    ```
     """
     ...

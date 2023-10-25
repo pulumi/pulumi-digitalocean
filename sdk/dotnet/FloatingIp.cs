@@ -16,6 +16,34 @@ namespace Pulumi.DigitalOcean
     /// 
     /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `droplet_id` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "sgp1",
+    ///         Ipv6 = true,
+    ///         PrivateNetworking = true,
+    ///     });
+    /// 
+    ///     var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new()
+    ///     {
+    ///         DropletId = foobarDroplet.Id,
+    ///         Region = foobarDroplet.Region,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Floating IPs can be imported using the `ip`, e.g.

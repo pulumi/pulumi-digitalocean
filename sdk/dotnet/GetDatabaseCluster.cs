@@ -13,12 +13,64 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     {
+        ///         Name = "example-cluster",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseOutput"] = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Uri),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     {
+        ///         Name = "example-cluster",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseOutput"] = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Uri),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseClusterResult> Invoke(GetDatabaseClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithDefaults());

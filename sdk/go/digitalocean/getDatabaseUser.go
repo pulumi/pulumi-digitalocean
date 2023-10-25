@@ -13,6 +13,40 @@ import (
 )
 
 // Provides information on a DigitalOcean database user resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			main, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+//				Name: "main-cluster",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := digitalocean.LookupDatabaseUser(ctx, &digitalocean.LookupDatabaseUserArgs{
+//				ClusterId: main.Id,
+//				Name:      "example-user",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databaseUserPassword", example.Password)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDatabaseUser(ctx *pulumi.Context, args *LookupDatabaseUserArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseUserResult

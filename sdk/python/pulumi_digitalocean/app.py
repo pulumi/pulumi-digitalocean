@@ -216,6 +216,47 @@ class App(pulumi.CustomResource):
         ## Example Usage
 
         To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
+            name="golang-sample",
+            region="ams",
+            services=[digitalocean.AppSpecServiceArgs(
+                environment_slug="go",
+                git=digitalocean.AppSpecServiceGitArgs(
+                    branch="main",
+                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
+                ),
+                instance_count=1,
+                instance_size_slug="professional-xs",
+                name="go-service",
+            )],
+        ))
+        ```
+        ### Static Site Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
+            name="static-site-example",
+            region="ams",
+            static_sites=[digitalocean.AppSpecStaticSiteArgs(
+                build_command="bundle exec jekyll build -d ./public",
+                git=digitalocean.AppSpecStaticSiteGitArgs(
+                    branch="main",
+                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
+                ),
+                name="sample-jekyll",
+                output_dir="/public",
+            )],
+        ))
+        ```
 
         ## Import
 
@@ -241,6 +282,47 @@ class App(pulumi.CustomResource):
         ## Example Usage
 
         To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
+            name="golang-sample",
+            region="ams",
+            services=[digitalocean.AppSpecServiceArgs(
+                environment_slug="go",
+                git=digitalocean.AppSpecServiceGitArgs(
+                    branch="main",
+                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
+                ),
+                instance_count=1,
+                instance_size_slug="professional-xs",
+                name="go-service",
+            )],
+        ))
+        ```
+        ### Static Site Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
+            name="static-site-example",
+            region="ams",
+            static_sites=[digitalocean.AppSpecStaticSiteArgs(
+                build_command="bundle exec jekyll build -d ./public",
+                git=digitalocean.AppSpecStaticSiteGitArgs(
+                    branch="main",
+                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
+                ),
+                name="sample-jekyll",
+                output_dir="/public",
+            )],
+        ))
+        ```
 
         ## Import
 

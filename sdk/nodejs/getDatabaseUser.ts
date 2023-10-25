@@ -6,6 +6,22 @@ import * as utilities from "./utilities";
 
 /**
  * Provides information on a DigitalOcean database user resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const main = digitalocean.getDatabaseCluster({
+ *     name: "main-cluster",
+ * });
+ * const example = main.then(main => digitalocean.getDatabaseUser({
+ *     clusterId: main.id,
+ *     name: "example-user",
+ * }));
+ * export const databaseUserPassword = example.then(example => example.password);
+ * ```
  */
 export function getDatabaseUser(args: GetDatabaseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseUserResult> {
 
@@ -55,6 +71,22 @@ export interface GetDatabaseUserResult {
 }
 /**
  * Provides information on a DigitalOcean database user resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const main = digitalocean.getDatabaseCluster({
+ *     name: "main-cluster",
+ * });
+ * const example = main.then(main => digitalocean.getDatabaseUser({
+ *     clusterId: main.id,
+ *     name: "example-user",
+ * }));
+ * export const databaseUserPassword = example.then(example => example.password);
+ * ```
  */
 export function getDatabaseUserOutput(args: GetDatabaseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUserResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseUser(a, opts))

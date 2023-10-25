@@ -478,6 +478,39 @@ class Volume(pulumi.CustomResource):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            initial_filesystem_type="ext4",
+            description="an example volume")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc1")
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+            droplet_id=foobar_droplet.id,
+            volume_id=foobar_volume.id)
+        ```
+
+        You can also create a volume from an existing snapshot.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume_snapshot = digitalocean.get_volume_snapshot(name="baz")
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="lon1",
+            size=foobar_volume_snapshot.min_disk_size,
+            snapshot_id=foobar_volume_snapshot.id)
+        ```
+
         ## Import
 
         Volumes can be imported using the `volume id`, e.g.
@@ -506,6 +539,39 @@ class Volume(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            initial_filesystem_type="ext4",
+            description="an example volume")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc1")
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+            droplet_id=foobar_droplet.id,
+            volume_id=foobar_volume.id)
+        ```
+
+        You can also create a volume from an existing snapshot.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume_snapshot = digitalocean.get_volume_snapshot(name="baz")
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="lon1",
+            size=foobar_volume_snapshot.min_disk_size,
+            snapshot_id=foobar_volume_snapshot.id)
+        ```
 
         ## Import
 

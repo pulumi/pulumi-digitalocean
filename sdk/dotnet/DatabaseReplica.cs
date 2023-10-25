@@ -13,6 +13,51 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database replica resource.
     /// 
     /// ## Example Usage
+    /// ### Create a new PostgreSQL database replica
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///     });
+    /// 
+    ///     // Create firewall rule for database replica
+    ///     var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new()
+    ///     {
+    ///         ClusterId = replica_example.Uuid,
+    ///         Rules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///             {
+    ///                 Type = "ip_addr",
+    ///                 Value = "192.168.1.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["uUID"] = replica_example.Uuid,
+    ///     };
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

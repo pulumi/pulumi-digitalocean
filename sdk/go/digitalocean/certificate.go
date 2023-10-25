@@ -20,6 +20,119 @@ import (
 // Let's Encrypt.
 //
 // ## Example Usage
+// ### Custom Certificate
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Type:             pulumi.String("custom"),
+//				PrivateKey:       readFileOrPanic("/Users/myuser/certs/privkey.pem"),
+//				LeafCertificate:  readFileOrPanic("/Users/myuser/certs/cert.pem"),
+//				CertificateChain: readFileOrPanic("/Users/myuser/certs/fullchain.pem"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Let's Encrypt Certificate
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Domains: pulumi.StringArray{
+//					pulumi.String("example.com"),
+//				},
+//				Type: pulumi.String("lets_encrypt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Use with Other Resources
+//
+// Both custom and Let's Encrypt certificates can be used with other resources
+// including the `LoadBalancer` and `Cdn` resources.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Type: pulumi.String("lets_encrypt"),
+//				Domains: pulumi.StringArray{
+//					pulumi.String("example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Region:     pulumi.String("nyc3"),
+//				DropletTag: pulumi.String("backend"),
+//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+//					&digitalocean.LoadBalancerForwardingRuleArgs{
+//						EntryPort:       pulumi.Int(443),
+//						EntryProtocol:   pulumi.String("https"),
+//						TargetPort:      pulumi.Int(80),
+//						TargetProtocol:  pulumi.String("http"),
+//						CertificateName: cert.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

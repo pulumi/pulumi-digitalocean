@@ -89,6 +89,44 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
     Note: You can use the `Droplet` data source to obtain metadata
     about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
 
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter images.
+
+    For example to find all Droplets with size `s-1vcpu-1gb`:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    small = digitalocean.get_droplets(filters=[digitalocean.GetDropletsFilterArgs(
+        key="size",
+        values=["s-1vcpu-1gb"],
+    )])
+    ```
+
+    You can filter on multiple fields and sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    small_with_backups = digitalocean.get_droplets(filters=[
+            digitalocean.GetDropletsFilterArgs(
+                key="size",
+                values=["s-1vcpu-1gb"],
+            ),
+            digitalocean.GetDropletsFilterArgs(
+                key="backups",
+                values=["true"],
+            ),
+        ],
+        sorts=[digitalocean.GetDropletsSortArgs(
+            direction="desc",
+            key="created_at",
+        )])
+    ```
+
 
     :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
@@ -121,6 +159,44 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
 
     Note: You can use the `Droplet` data source to obtain metadata
     about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter images.
+
+    For example to find all Droplets with size `s-1vcpu-1gb`:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    small = digitalocean.get_droplets(filters=[digitalocean.GetDropletsFilterArgs(
+        key="size",
+        values=["s-1vcpu-1gb"],
+    )])
+    ```
+
+    You can filter on multiple fields and sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    small_with_backups = digitalocean.get_droplets(filters=[
+            digitalocean.GetDropletsFilterArgs(
+                key="size",
+                values=["s-1vcpu-1gb"],
+            ),
+            digitalocean.GetDropletsFilterArgs(
+                key="backups",
+                values=["true"],
+            ),
+        ],
+        sorts=[digitalocean.GetDropletsSortArgs(
+            direction="desc",
+            key="created_at",
+        )])
+    ```
 
 
     :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.

@@ -377,6 +377,37 @@ class Project(pulumi.CustomResource):
 
         **Note:** A provider managed project cannot be set as a default project.
 
+        ## Example Usage
+
+        The following example demonstrates the creation of an empty project:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        playground = digitalocean.Project("playground",
+            description="A project to represent development resources.",
+            environment="Development",
+            purpose="Web Application")
+        ```
+
+        The following example demonstrates the creation of a project with a Droplet resource:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.Droplet("foobar",
+            size="s-1vcpu-1gb",
+            image="ubuntu-22-04-x64",
+            region="nyc3")
+        playground = digitalocean.Project("playground",
+            description="A project to represent development resources.",
+            purpose="Web Application",
+            environment="Development",
+            resources=[foobar.droplet_urn])
+        ```
+
         ## Import
 
         Projects can be imported using the `id` returned from DigitalOcean, e.g.
@@ -419,6 +450,37 @@ class Project(pulumi.CustomResource):
         * Volume
 
         **Note:** A provider managed project cannot be set as a default project.
+
+        ## Example Usage
+
+        The following example demonstrates the creation of an empty project:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        playground = digitalocean.Project("playground",
+            description="A project to represent development resources.",
+            environment="Development",
+            purpose="Web Application")
+        ```
+
+        The following example demonstrates the creation of a project with a Droplet resource:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.Droplet("foobar",
+            size="s-1vcpu-1gb",
+            image="ubuntu-22-04-x64",
+            region="nyc3")
+        playground = digitalocean.Project("playground",
+            description="A project to represent development resources.",
+            purpose="Web Application",
+            environment="Development",
+            resources=[foobar.droplet_urn])
+        ```
 
         ## Import
 

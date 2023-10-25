@@ -21,6 +21,27 @@ namespace Pulumi.DigitalOcean
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Basic Example
+        /// 
+        /// Get the container registry:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs args, InvokeOptions? options = null)
@@ -36,6 +57,27 @@ namespace Pulumi.DigitalOcean
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Basic Example
+        /// 
+        /// Get the container registry:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOptions? options = null)

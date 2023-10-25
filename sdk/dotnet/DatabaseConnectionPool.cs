@@ -13,6 +13,35 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean database connection pool resource.
     /// 
     /// ## Example Usage
+    /// ### Create a new PostgreSQL database connection pool
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    ///     var pool_01 = new DigitalOcean.DatabaseConnectionPool("pool-01", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Mode = "transaction",
+    ///         Size = 20,
+    ///         DbName = "defaultdb",
+    ///         User = "doadmin",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

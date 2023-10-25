@@ -143,6 +143,28 @@ def get_vpc(id: Optional[str] = None,
     return that that region's default VPC.
 
     ## Example Usage
+    ### VPC By Name
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_vpc(name="example-network")
+    ```
+
+    Reuse the data about a VPC to assign a Droplet to it:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_vpc = digitalocean.get_vpc(name="example-network")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        size="s-1vcpu-1gb",
+        image="ubuntu-18-04-x64",
+        region="nyc3",
+        vpc_uuid=example_vpc.id)
+    ```
 
 
     :param str id: The unique identifier of an existing VPC.
@@ -183,6 +205,28 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     return that that region's default VPC.
 
     ## Example Usage
+    ### VPC By Name
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_vpc(name="example-network")
+    ```
+
+    Reuse the data about a VPC to assign a Droplet to it:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example_vpc = digitalocean.get_vpc(name="example-network")
+    example_droplet = digitalocean.Droplet("exampleDroplet",
+        size="s-1vcpu-1gb",
+        image="ubuntu-18-04-x64",
+        region="nyc3",
+        vpc_uuid=example_vpc.id)
+    ```
 
 
     :param str id: The unique identifier of an existing VPC.

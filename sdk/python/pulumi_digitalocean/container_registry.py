@@ -249,6 +249,16 @@ class ContainerRegistry(pulumi.CustomResource):
         Provides a DigitalOcean Container Registry resource. A Container Registry is
         a secure, private location to store your containers for rapid deployment.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new container registry
+        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
+        ```
+
         ## Import
 
         Container Registries can be imported using the `name`, e.g.
@@ -272,6 +282,16 @@ class ContainerRegistry(pulumi.CustomResource):
         """
         Provides a DigitalOcean Container Registry resource. A Container Registry is
         a secure, private location to store your containers for rapid deployment.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        # Create a new container registry
+        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
+        ```
 
         ## Import
 

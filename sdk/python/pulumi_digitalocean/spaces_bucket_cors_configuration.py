@@ -173,6 +173,27 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Create a Key in a Spaces Bucket
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        test = digitalocean.SpacesBucketCorsConfiguration("test",
+            bucket=foobar.id,
+            region="nyc3",
+            cors_rules=[digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs(
+                allowed_headers=["*"],
+                allowed_methods=[
+                    "PUT",
+                    "POST",
+                ],
+                allowed_origins=["https://s3-website-test.hashicorp.com"],
+                expose_headers=["ETag"],
+                max_age_seconds=3000,
+            )])
+        ```
 
         ## Import
 
@@ -196,6 +217,27 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Create a Key in a Spaces Bucket
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        test = digitalocean.SpacesBucketCorsConfiguration("test",
+            bucket=foobar.id,
+            region="nyc3",
+            cors_rules=[digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs(
+                allowed_headers=["*"],
+                allowed_methods=[
+                    "PUT",
+                    "POST",
+                ],
+                allowed_origins=["https://s3-website-test.hashicorp.com"],
+                expose_headers=["ETag"],
+                max_age_seconds=3000,
+            )])
+        ```
 
         ## Import
 

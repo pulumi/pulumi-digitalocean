@@ -453,6 +453,30 @@ class DatabaseReplica(pulumi.CustomResource):
         Provides a DigitalOcean database replica resource.
 
         ## Example Usage
+        ### Create a new PostgreSQL database replica
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        replica_example = digitalocean.DatabaseReplica("replica-example",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        pulumi.export("uUID", replica_example.uuid)
+        # Create firewall rule for database replica
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=replica_example.uuid,
+            rules=[digitalocean.DatabaseFirewallRuleArgs(
+                type="ip_addr",
+                value="192.168.1.1",
+            )])
+        ```
 
         ## Import
 
@@ -481,6 +505,30 @@ class DatabaseReplica(pulumi.CustomResource):
         Provides a DigitalOcean database replica resource.
 
         ## Example Usage
+        ### Create a new PostgreSQL database replica
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        replica_example = digitalocean.DatabaseReplica("replica-example",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        pulumi.export("uUID", replica_example.uuid)
+        # Create firewall rule for database replica
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=replica_example.uuid,
+            rules=[digitalocean.DatabaseFirewallRuleArgs(
+                type="ip_addr",
+                value="192.168.1.1",
+            )])
+        ```
 
         ## Import
 

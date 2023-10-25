@@ -246,6 +246,19 @@ class VolumeSnapshot(pulumi.CustomResource):
         """
         Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            description="an example volume")
+        foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)
+        ```
+
         ## Import
 
         Volume Snapshots can be imported using the `snapshot id`, e.g.
@@ -268,6 +281,19 @@ class VolumeSnapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            description="an example volume")
+        foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)
+        ```
 
         ## Import
 

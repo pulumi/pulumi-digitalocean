@@ -12,6 +12,31 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean Volume Snapshot which can be used to create a snapshot from an existing volume.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
+    ///     {
+    ///         Region = "nyc1",
+    ///         Size = 100,
+    ///         Description = "an example volume",
+    ///     });
+    /// 
+    ///     var foobarVolumeSnapshot = new DigitalOcean.VolumeSnapshot("foobarVolumeSnapshot", new()
+    ///     {
+    ///         VolumeId = foobarVolume.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Volume Snapshots can be imported using the `snapshot id`, e.g.

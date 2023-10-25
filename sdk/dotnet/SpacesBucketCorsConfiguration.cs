@@ -11,6 +11,53 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Create a Key in a Spaces Bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
+    ///     {
+    ///         Region = "nyc3",
+    ///     });
+    /// 
+    ///     var test = new DigitalOcean.SpacesBucketCorsConfiguration("test", new()
+    ///     {
+    ///         Bucket = foobar.Id,
+    ///         Region = "nyc3",
+    ///         CorsRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.SpacesBucketCorsConfigurationCorsRuleArgs
+    ///             {
+    ///                 AllowedHeaders = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 AllowedMethods = new[]
+    ///                 {
+    ///                     "PUT",
+    ///                     "POST",
+    ///                 },
+    ///                 AllowedOrigins = new[]
+    ///                 {
+    ///                     "https://s3-website-test.hashicorp.com",
+    ///                 },
+    ///                 ExposeHeaders = new[]
+    ///                 {
+    ///                     "ETag",
+    ///                 },
+    ///                 MaxAgeSeconds = 3000,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

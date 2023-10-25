@@ -18,6 +18,53 @@ import (
 // can be referenced in your Droplet configuration via their ID or
 // fingerprint.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
+//				PublicKey: readFileOrPanic("/Users/myuser/.ssh/id_rsa.pub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Region: pulumi.String("nyc3"),
+//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				SshKeys: pulumi.StringArray{
+//					_default.Fingerprint,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // SSH Keys can be imported using the `ssh key id`, e.g.

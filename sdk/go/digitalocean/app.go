@@ -17,6 +17,85 @@ import (
 // ## Example Usage
 //
 // To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
+// ### Basic Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewApp(ctx, "golang-sample", &digitalocean.AppArgs{
+//				Spec: &digitalocean.AppSpecArgs{
+//					Name:   pulumi.String("golang-sample"),
+//					Region: pulumi.String("ams"),
+//					Services: digitalocean.AppSpecServiceArray{
+//						&digitalocean.AppSpecServiceArgs{
+//							EnvironmentSlug: pulumi.String("go"),
+//							Git: &digitalocean.AppSpecServiceGitArgs{
+//								Branch:       pulumi.String("main"),
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
+//							},
+//							InstanceCount:    pulumi.Int(1),
+//							InstanceSizeSlug: pulumi.String("professional-xs"),
+//							Name:             pulumi.String("go-service"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Static Site Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewApp(ctx, "static-site-example", &digitalocean.AppArgs{
+//				Spec: &digitalocean.AppSpecArgs{
+//					Name:   pulumi.String("static-site-example"),
+//					Region: pulumi.String("ams"),
+//					StaticSites: digitalocean.AppSpecStaticSiteArray{
+//						&digitalocean.AppSpecStaticSiteArgs{
+//							BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
+//							Git: &digitalocean.AppSpecStaticSiteGitArgs{
+//								Branch:       pulumi.String("main"),
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
+//							},
+//							Name:      pulumi.String("sample-jekyll"),
+//							OutputDir: pulumi.String("/public"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

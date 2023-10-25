@@ -16,6 +16,32 @@ import (
 // Provides a DigitalOcean Container Registry resource. A Container Registry is
 // a secure, private location to store your containers for rapid deployment.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewContainerRegistry(ctx, "foobar", &digitalocean.ContainerRegistryArgs{
+//				SubscriptionTierSlug: pulumi.String("starter"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Container Registries can be imported using the `name`, e.g.

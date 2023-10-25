@@ -440,6 +440,22 @@ class CustomImage(pulumi.CustomResource):
         The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
         Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        flatcar = digitalocean.CustomImage("flatcar",
+            url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
+            regions=["nyc3"])
+        example = digitalocean.Droplet("example",
+            image=flatcar.id,
+            region="nyc3",
+            size="s-1vcpu-1gb",
+            ssh_keys=["12345"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description for the image.
@@ -467,6 +483,22 @@ class CustomImage(pulumi.CustomResource):
 
         The image may be compressed using gzip or bzip2. See the DigitalOcean Custom
         Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        flatcar = digitalocean.CustomImage("flatcar",
+            url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
+            regions=["nyc3"])
+        example = digitalocean.Droplet("example",
+            image=flatcar.id,
+            region="nyc3",
+            size="s-1vcpu-1gb",
+            ssh_keys=["12345"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param CustomImageArgs args: The arguments to use to populate this resource's properties.

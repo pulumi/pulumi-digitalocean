@@ -90,6 +90,44 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     Note: You can use the `get_image` data source to obtain metadata
     about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
 
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter images.
+
+    For example to find all Ubuntu images:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    ubuntu = digitalocean.get_images(filters=[digitalocean.GetImagesFilterArgs(
+        key="distribution",
+        values=["Ubuntu"],
+    )])
+    ```
+
+    You can filter on multiple fields and sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_images(filters=[
+            digitalocean.GetImagesFilterArgs(
+                key="distribution",
+                values=["Ubuntu"],
+            ),
+            digitalocean.GetImagesFilterArgs(
+                key="regions",
+                values=["nyc3"],
+            ),
+        ],
+        sorts=[digitalocean.GetImagesSortArgs(
+            direction="desc",
+            key="created",
+        )])
+    ```
+
 
     :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
@@ -123,6 +161,44 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
 
     Note: You can use the `get_image` data source to obtain metadata
     about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter images.
+
+    For example to find all Ubuntu images:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    ubuntu = digitalocean.get_images(filters=[digitalocean.GetImagesFilterArgs(
+        key="distribution",
+        values=["Ubuntu"],
+    )])
+    ```
+
+    You can filter on multiple fields and sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_images(filters=[
+            digitalocean.GetImagesFilterArgs(
+                key="distribution",
+                values=["Ubuntu"],
+            ),
+            digitalocean.GetImagesFilterArgs(
+                key="regions",
+                values=["nyc3"],
+            ),
+        ],
+        sorts=[digitalocean.GetImagesSortArgs(
+            direction="desc",
+            key="created",
+        )])
+    ```
 
 
     :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.

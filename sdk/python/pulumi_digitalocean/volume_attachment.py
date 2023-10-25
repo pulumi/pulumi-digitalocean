@@ -140,6 +140,26 @@ class VolumeAttachment(pulumi.CustomResource):
 
         > **NOTE:** Volumes can be attached either directly on the `Droplet` resource, or using the `VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            initial_filesystem_type="ext4",
+            description="an example volume")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc1")
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+            droplet_id=foobar_droplet.id,
+            volume_id=foobar_volume.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] droplet_id: ID of the Droplet to attach the volume to.
@@ -155,6 +175,26 @@ class VolumeAttachment(pulumi.CustomResource):
         Manages attaching a Volume to a Droplet.
 
         > **NOTE:** Volumes can be attached either directly on the `Droplet` resource, or using the `VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar_volume = digitalocean.Volume("foobarVolume",
+            region="nyc1",
+            size=100,
+            initial_filesystem_type="ext4",
+            description="an example volume")
+        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc1")
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+            droplet_id=foobar_droplet.id,
+            volume_id=foobar_volume.id)
+        ```
 
         :param str resource_name: The name of the resource.
         :param VolumeAttachmentArgs args: The arguments to use to populate this resource's properties.

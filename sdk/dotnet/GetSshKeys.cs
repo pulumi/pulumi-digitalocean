@@ -19,6 +19,66 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
         /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// For example, to find all SSH keys:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSshKeysSortInputArgs
+        ///             {
+        ///                 Direction = "asc",
+        ///                 Key = "name",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Or to find ones matching specific values:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSshKeysFilterInputArgs
+        ///             {
+        ///                 Key = "name",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "laptop",
+        ///                     "desktop",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeysResult> InvokeAsync(GetSshKeysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysArgs(), options.WithDefaults());
@@ -31,6 +91,66 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
         /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// For example, to find all SSH keys:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSshKeysSortInputArgs
+        ///             {
+        ///                 Direction = "asc",
+        ///                 Key = "name",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Or to find ones matching specific values:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSshKeysFilterInputArgs
+        ///             {
+        ///                 Key = "name",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "laptop",
+        ///                     "desktop",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSshKeysResult> Invoke(GetSshKeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysInvokeArgs(), options.WithDefaults());

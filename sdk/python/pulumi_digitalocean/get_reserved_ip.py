@@ -92,7 +92,20 @@ class AwaitableGetReservedIpResult(GetReservedIpResult):
 def get_reserved_ip(ip_address: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReservedIpResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    Get the reserved IP:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    config = pulumi.Config()
+    public_ip = config.require_object("publicIp")
+    example = digitalocean.get_reserved_ip(ip_address=public_ip)
+    pulumi.export("fipOutput", example.droplet_id)
+    ```
+
 
     :param str ip_address: The allocated IP address of the specific reserved IP to retrieve.
     """
@@ -113,7 +126,20 @@ def get_reserved_ip(ip_address: Optional[str] = None,
 def get_reserved_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReservedIpResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    Get the reserved IP:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    config = pulumi.Config()
+    public_ip = config.require_object("publicIp")
+    example = digitalocean.get_reserved_ip(ip_address=public_ip)
+    pulumi.export("fipOutput", example.droplet_id)
+    ```
+
 
     :param str ip_address: The allocated IP address of the specific reserved IP to retrieve.
     """

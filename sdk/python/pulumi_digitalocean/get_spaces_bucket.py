@@ -111,6 +111,19 @@ def get_spaces_bucket(name: Optional[str] = None,
     Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
     is not managed by the provider or you need to utilize any of the bucket's data.
 
+    ## Example Usage
+
+    Get the bucket by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_spaces_bucket(name="my-spaces-bucket",
+        region="nyc3")
+    pulumi.export("bucketDomainName", example.bucket_domain_name)
+    ```
+
 
     :param str name: The name of the Spaces bucket.
     :param str region: The slug of the region where the bucket is stored.
@@ -137,6 +150,19 @@ def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
     """
     Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
     is not managed by the provider or you need to utilize any of the bucket's data.
+
+    ## Example Usage
+
+    Get the bucket by name:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_spaces_bucket(name="my-spaces-bucket",
+        region="nyc3")
+    pulumi.export("bucketDomainName", example.bucket_domain_name)
+    ```
 
 
     :param str name: The name of the Spaces bucket.

@@ -334,6 +334,78 @@ class Firewall(pulumi.CustomResource):
         Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
         modify, and delete Firewalls.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web_droplet = digitalocean.Droplet("webDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        web_firewall = digitalocean.Firewall("webFirewall",
+            droplet_ids=[web_droplet.id],
+            inbound_rules=[
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="22",
+                    source_addresses=[
+                        "192.168.1.0/24",
+                        "2002:1:2::/48",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="80",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="443",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="icmp",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+            ],
+            outbound_rules=[
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="tcp",
+                    port_range="53",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="udp",
+                    port_range="53",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="icmp",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+            ])
+        ```
+
         ## Import
 
         Firewalls can be imported using the firewall `id`, e.g.
@@ -362,6 +434,78 @@ class Firewall(pulumi.CustomResource):
         """
         Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
         modify, and delete Firewalls.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        web_droplet = digitalocean.Droplet("webDroplet",
+            size="s-1vcpu-1gb",
+            image="ubuntu-18-04-x64",
+            region="nyc3")
+        web_firewall = digitalocean.Firewall("webFirewall",
+            droplet_ids=[web_droplet.id],
+            inbound_rules=[
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="22",
+                    source_addresses=[
+                        "192.168.1.0/24",
+                        "2002:1:2::/48",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="80",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="tcp",
+                    port_range="443",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallInboundRuleArgs(
+                    protocol="icmp",
+                    source_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+            ],
+            outbound_rules=[
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="tcp",
+                    port_range="53",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="udp",
+                    port_range="53",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+                digitalocean.FirewallOutboundRuleArgs(
+                    protocol="icmp",
+                    destination_addresses=[
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                ),
+            ])
+        ```
 
         ## Import
 

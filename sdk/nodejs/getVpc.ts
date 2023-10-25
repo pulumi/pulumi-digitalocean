@@ -15,6 +15,33 @@ import * as utilities from "./utilities";
  * return that that region's default VPC.
  *
  * ## Example Usage
+ * ### VPC By Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * ```
+ *
+ * Reuse the data about a VPC to assign a Droplet to it:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVpc = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
+ * });
+ * ```
  */
 export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     args = args || {};
@@ -93,6 +120,33 @@ export interface GetVpcResult {
  * return that that region's default VPC.
  *
  * ## Example Usage
+ * ### VPC By Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * ```
+ *
+ * Reuse the data about a VPC to assign a Droplet to it:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVpc = digitalocean.getVpc({
+ *     name: "example-network",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
+ * });
+ * ```
  */
 export function getVpcOutput(args?: GetVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcResult> {
     return pulumi.output(args).apply((a: any) => getVpc(a, opts))

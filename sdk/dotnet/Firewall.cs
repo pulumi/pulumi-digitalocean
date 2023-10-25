@@ -13,6 +13,108 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
     /// modify, and delete Firewalls.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var webDroplet = new DigitalOcean.Droplet("webDroplet", new()
+    ///     {
+    ///         Size = "s-1vcpu-1gb",
+    ///         Image = "ubuntu-18-04-x64",
+    ///         Region = "nyc3",
+    ///     });
+    /// 
+    ///     var webFirewall = new DigitalOcean.Firewall("webFirewall", new()
+    ///     {
+    ///         DropletIds = new[]
+    ///         {
+    ///             webDroplet.Id,
+    ///         },
+    ///         InboundRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "22",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "192.168.1.0/24",
+    ///                     "2002:1:2::/48",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "80",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "443",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallInboundRuleArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///                 SourceAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///         OutboundRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "53",
+    ///                 DestinationAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///             {
+    ///                 Protocol = "udp",
+    ///                 PortRange = "53",
+    ///                 DestinationAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///             new DigitalOcean.Inputs.FirewallOutboundRuleArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///                 DestinationAddresses = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Firewalls can be imported using the firewall `id`, e.g.

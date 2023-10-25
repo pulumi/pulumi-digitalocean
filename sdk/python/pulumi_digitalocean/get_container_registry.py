@@ -139,6 +139,16 @@ def get_container_registry(name: Optional[str] = None,
     An error is triggered if the provided container registry name does not exist.
 
     ## Example Usage
+    ### Basic Example
+
+    Get the container registry:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_container_registry(name="example")
+    ```
 
 
     :param str name: The name of the container registry.
@@ -171,6 +181,16 @@ def get_container_registry_output(name: Optional[pulumi.Input[str]] = None,
     An error is triggered if the provided container registry name does not exist.
 
     ## Example Usage
+    ### Basic Example
+
+    Get the container registry:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_container_registry(name="example")
+    ```
 
 
     :param str name: The name of the container registry.

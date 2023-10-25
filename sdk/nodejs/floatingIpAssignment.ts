@@ -11,6 +11,26 @@ import * as utilities from "./utilities";
  * makes it easy to provision floating IP addresses that are not tied to the lifecycle of your
  * Droplet.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foobarFloatingIp = new digitalocean.FloatingIp("foobarFloatingIp", {region: "sgp1"});
+ * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "sgp1",
+ *     ipv6: true,
+ *     privateNetworking: true,
+ * });
+ * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment", {
+ *     ipAddress: foobarFloatingIp.ipAddress,
+ *     dropletId: foobarDroplet.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Floating IP assignments can be imported using the Floating IP itself and the `id` of the Droplet joined with a comma. For example

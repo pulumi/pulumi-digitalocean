@@ -18,6 +18,90 @@ namespace Pulumi.DigitalOcean
     /// Let's Encrypt.
     /// 
     /// ## Example Usage
+    /// ### Custom Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
+    ///     {
+    ///         Type = "custom",
+    ///         PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
+    ///         LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
+    ///         CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Let's Encrypt Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
+    ///     {
+    ///         Domains = new[]
+    ///         {
+    ///             "example.com",
+    ///         },
+    ///         Type = "lets_encrypt",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Use with Other Resources
+    /// 
+    /// Both custom and Let's Encrypt certificates can be used with other resources
+    /// including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
+    ///     {
+    ///         Type = "lets_encrypt",
+    ///         Domains = new[]
+    ///         {
+    ///             "example.com",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new Load Balancer with TLS termination
+    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
+    ///     {
+    ///         Region = "nyc3",
+    ///         DropletTag = "backend",
+    ///         ForwardingRules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
+    ///             {
+    ///                 EntryPort = 443,
+    ///                 EntryProtocol = "https",
+    ///                 TargetPort = 80,
+    ///                 TargetProtocol = "http",
+    ///                 CertificateName = cert.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

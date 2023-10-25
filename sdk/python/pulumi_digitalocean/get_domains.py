@@ -89,6 +89,22 @@ def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArg
     Note: You can use the `Domain` data source to obtain metadata
     about a single domain if you already know the `name`.
 
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+    also uses the regular expression `match_by` mode in order to match domains by suffix.)
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    examples = digitalocean.get_domains(filters=[digitalocean.GetDomainsFilterArgs(
+        key="name",
+        match_by="re",
+        values=["example\\\\.com$"],
+    )])
+    ```
+
 
     :param Sequence[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
@@ -121,6 +137,22 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     Note: You can use the `Domain` data source to obtain metadata
     about a single domain if you already know the `name`.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+    also uses the regular expression `match_by` mode in order to match domains by suffix.)
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    examples = digitalocean.get_domains(filters=[digitalocean.GetDomainsFilterArgs(
+        key="name",
+        match_by="re",
+        values=["example\\\\.com$"],
+    )])
+    ```
 
 
     :param Sequence[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.

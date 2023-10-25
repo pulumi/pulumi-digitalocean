@@ -86,6 +86,44 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
     Note: You can use the `get_region` data source
     to obtain metadata about a single region if you already know the `slug` to retrieve.
 
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter regions.
+
+    For example to find all available regions:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_regions(filters=[digitalocean.GetRegionsFilterArgs(
+        key="available",
+        values=["true"],
+    )])
+    ```
+
+    You can filter on multiple fields and sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_regions(filters=[
+            digitalocean.GetRegionsFilterArgs(
+                key="available",
+                values=["true"],
+            ),
+            digitalocean.GetRegionsFilterArgs(
+                key="features",
+                values=["private_networking"],
+            ),
+        ],
+        sorts=[digitalocean.GetRegionsSortArgs(
+            direction="desc",
+            key="name",
+        )])
+    ```
+
 
     :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: Filter the results.
            The `filter` block is documented below.
@@ -115,6 +153,44 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     Note: You can use the `get_region` data source
     to obtain metadata about a single region if you already know the `slug` to retrieve.
+
+    ## Example Usage
+
+    Use the `filter` block with a `key` string and `values` list to filter regions.
+
+    For example to find all available regions:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_regions(filters=[digitalocean.GetRegionsFilterArgs(
+        key="available",
+        values=["true"],
+    )])
+    ```
+
+    You can filter on multiple fields and sort the results as well:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    available = digitalocean.get_regions(filters=[
+            digitalocean.GetRegionsFilterArgs(
+                key="available",
+                values=["true"],
+            ),
+            digitalocean.GetRegionsFilterArgs(
+                key="features",
+                values=["private_networking"],
+            ),
+        ],
+        sorts=[digitalocean.GetRegionsSortArgs(
+            direction="desc",
+            key="name",
+        )])
+    ```
 
 
     :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: Filter the results.

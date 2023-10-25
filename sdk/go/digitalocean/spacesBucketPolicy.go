@@ -14,6 +14,73 @@ import (
 )
 
 // ## Example Usage
+// ### Limiting access to specific IP addresses
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarSpacesBucket, err := digitalocean.NewSpacesBucket(ctx, "foobarSpacesBucket", &digitalocean.SpacesBucketArgs{
+//				Region: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewSpacesBucketPolicy(ctx, "foobarSpacesBucketPolicy", &digitalocean.SpacesBucketPolicyArgs{
+//				Region: foobarSpacesBucket.Region,
+//				Bucket: foobarSpacesBucket.Name,
+//				Policy: pulumi.All(foobarSpacesBucket.Name, foobarSpacesBucket.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					foobarSpacesBucketName := _args[0].(string)
+//					foobarSpacesBucketName1 := _args[1].(string)
+//					var _zero string
+//					tmpJSON0, err := json.Marshal(map[string]interface{}{
+//						"Version": "2012-10-17",
+//						"Statement": []map[string]interface{}{
+//							map[string]interface{}{
+//								"Sid":       "IPAllow",
+//								"Effect":    "Deny",
+//								"Principal": "*",
+//								"Action":    "s3:*",
+//								"Resource": []string{
+//									fmt.Sprintf("arn:aws:s3:::%v", foobarSpacesBucketName),
+//									fmt.Sprintf("arn:aws:s3:::%v/*", foobarSpacesBucketName1),
+//								},
+//								"Condition": map[string]interface{}{
+//									"NotIpAddress": map[string]interface{}{
+//										"aws:SourceIp": "54.240.143.0/24",
+//									},
+//								},
+//							},
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json0 := string(tmpJSON0)
+//					return json0, nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 //
 // ## Import
 //

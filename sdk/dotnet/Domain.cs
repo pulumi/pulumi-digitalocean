@@ -12,6 +12,26 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean domain resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new domain
+    ///     var @default = new DigitalOcean.Domain("default", new()
+    ///     {
+    ///         Name = "example.com",
+    ///         IpAddress = digitalocean_droplet.Foo.Ipv4_address,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Domains can be imported using the `domain name`, e.g.
