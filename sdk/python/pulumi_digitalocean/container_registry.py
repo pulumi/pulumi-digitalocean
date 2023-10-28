@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ContainerRegistryArgs', 'ContainerRegistry']
@@ -23,30 +23,11 @@ class ContainerRegistryArgs:
         :param pulumi.Input[str] name: The name of the container_registry
         :param pulumi.Input[str] region: The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
         """
-        ContainerRegistryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subscription_tier_slug=subscription_tier_slug,
-            name=name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subscription_tier_slug: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subscription_tier_slug is None and 'subscriptionTierSlug' in kwargs:
-            subscription_tier_slug = kwargs['subscriptionTierSlug']
-        if subscription_tier_slug is None:
-            raise TypeError("Missing 'subscription_tier_slug' argument")
-
-        _setter("subscription_tier_slug", subscription_tier_slug)
+        pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="subscriptionTierSlug")
@@ -105,51 +86,20 @@ class _ContainerRegistryState:
         :param pulumi.Input[int] storage_usage_bytes: The amount of storage used in the registry in bytes.
         :param pulumi.Input[str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
-        _ContainerRegistryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            endpoint=endpoint,
-            name=name,
-            region=region,
-            server_url=server_url,
-            storage_usage_bytes=storage_usage_bytes,
-            subscription_tier_slug=subscription_tier_slug,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             endpoint: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             server_url: Optional[pulumi.Input[str]] = None,
-             storage_usage_bytes: Optional[pulumi.Input[int]] = None,
-             subscription_tier_slug: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if server_url is None and 'serverUrl' in kwargs:
-            server_url = kwargs['serverUrl']
-        if storage_usage_bytes is None and 'storageUsageBytes' in kwargs:
-            storage_usage_bytes = kwargs['storageUsageBytes']
-        if subscription_tier_slug is None and 'subscriptionTierSlug' in kwargs:
-            subscription_tier_slug = kwargs['subscriptionTierSlug']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if server_url is not None:
-            _setter("server_url", server_url)
+            pulumi.set(__self__, "server_url", server_url)
         if storage_usage_bytes is not None:
-            _setter("storage_usage_bytes", storage_usage_bytes)
+            pulumi.set(__self__, "storage_usage_bytes", storage_usage_bytes)
         if subscription_tier_slug is not None:
-            _setter("subscription_tier_slug", subscription_tier_slug)
+            pulumi.set(__self__, "subscription_tier_slug", subscription_tier_slug)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -311,10 +261,6 @@ class ContainerRegistry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ContainerRegistryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

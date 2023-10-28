@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._enums import *
@@ -34,52 +34,23 @@ class SpacesBucketArgs:
         :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input['SpacesBucketVersioningArgs'] versioning: A state of versioning (documented below)
         """
-        SpacesBucketArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            cors_rules=cors_rules,
-            force_destroy=force_destroy,
-            lifecycle_rules=lifecycle_rules,
-            name=name,
-            region=region,
-            versioning=versioning,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input[str]] = None,
-             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
-             versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cors_rules is None and 'corsRules' in kwargs:
-            cors_rules = kwargs['corsRules']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
-            lifecycle_rules = kwargs['lifecycleRules']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if cors_rules is not None:
             warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
             pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
         if cors_rules is not None:
-            _setter("cors_rules", cors_rules)
+            pulumi.set(__self__, "cors_rules", cors_rules)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if lifecycle_rules is not None:
-            _setter("lifecycle_rules", lifecycle_rules)
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if versioning is not None:
-            _setter("versioning", versioning)
+            pulumi.set(__self__, "versioning", versioning)
 
     @property
     @pulumi.getter
@@ -195,68 +166,29 @@ class _SpacesBucketState:
         :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
         :param pulumi.Input['SpacesBucketVersioningArgs'] versioning: A state of versioning (documented below)
         """
-        _SpacesBucketState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            bucket_domain_name=bucket_domain_name,
-            bucket_urn=bucket_urn,
-            cors_rules=cors_rules,
-            endpoint=endpoint,
-            force_destroy=force_destroy,
-            lifecycle_rules=lifecycle_rules,
-            name=name,
-            region=region,
-            versioning=versioning,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input[str]] = None,
-             bucket_domain_name: Optional[pulumi.Input[str]] = None,
-             bucket_urn: Optional[pulumi.Input[str]] = None,
-             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
-             endpoint: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
-             versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_domain_name is None and 'bucketDomainName' in kwargs:
-            bucket_domain_name = kwargs['bucketDomainName']
-        if bucket_urn is None and 'bucketUrn' in kwargs:
-            bucket_urn = kwargs['bucketUrn']
-        if cors_rules is None and 'corsRules' in kwargs:
-            cors_rules = kwargs['corsRules']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
-            lifecycle_rules = kwargs['lifecycleRules']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if bucket_domain_name is not None:
-            _setter("bucket_domain_name", bucket_domain_name)
+            pulumi.set(__self__, "bucket_domain_name", bucket_domain_name)
         if bucket_urn is not None:
-            _setter("bucket_urn", bucket_urn)
+            pulumi.set(__self__, "bucket_urn", bucket_urn)
         if cors_rules is not None:
             warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
             pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
         if cors_rules is not None:
-            _setter("cors_rules", cors_rules)
+            pulumi.set(__self__, "cors_rules", cors_rules)
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if lifecycle_rules is not None:
-            _setter("lifecycle_rules", lifecycle_rules)
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if versioning is not None:
-            _setter("versioning", versioning)
+            pulumi.set(__self__, "versioning", versioning)
 
     @property
     @pulumi.getter
@@ -561,10 +493,6 @@ class SpacesBucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SpacesBucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -592,7 +520,6 @@ class SpacesBucket(pulumi.CustomResource):
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
-            versioning = _utilities.configure(versioning, SpacesBucketVersioningArgs, True)
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["bucket_domain_name"] = None
             __props__.__dict__["bucket_urn"] = None

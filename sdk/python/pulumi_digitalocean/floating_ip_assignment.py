@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FloatingIpAssignmentArgs', 'FloatingIpAssignment']
@@ -21,29 +21,8 @@ class FloatingIpAssignmentArgs:
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
         """
-        FloatingIpAssignmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            droplet_id=droplet_id,
-            ip_address=ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             droplet_id: Optional[pulumi.Input[int]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if droplet_id is None and 'dropletId' in kwargs:
-            droplet_id = kwargs['dropletId']
-        if droplet_id is None:
-            raise TypeError("Missing 'droplet_id' argument")
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if ip_address is None:
-            raise TypeError("Missing 'ip_address' argument")
-
-        _setter("droplet_id", droplet_id)
-        _setter("ip_address", ip_address)
+        pulumi.set(__self__, "droplet_id", droplet_id)
+        pulumi.set(__self__, "ip_address", ip_address)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -80,27 +59,10 @@ class _FloatingIpAssignmentState:
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The Floating IP to assign to the Droplet.
         """
-        _FloatingIpAssignmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            droplet_id=droplet_id,
-            ip_address=ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             droplet_id: Optional[pulumi.Input[int]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if droplet_id is None and 'dropletId' in kwargs:
-            droplet_id = kwargs['dropletId']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-
         if droplet_id is not None:
-            _setter("droplet_id", droplet_id)
+            pulumi.set(__self__, "droplet_id", droplet_id)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -222,10 +184,6 @@ class FloatingIpAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FloatingIpAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

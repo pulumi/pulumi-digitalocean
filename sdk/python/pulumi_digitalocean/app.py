@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -21,19 +21,8 @@ class AppArgs:
         The set of arguments for constructing a App resource.
         :param pulumi.Input['AppSpecArgs'] spec: A DigitalOcean App spec describing the app.
         """
-        AppArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            spec=spec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             spec: Optional[pulumi.Input['AppSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if spec is not None:
-            _setter("spec", spec)
+            pulumi.set(__self__, "spec", spec)
 
     @property
     @pulumi.getter
@@ -68,55 +57,20 @@ class _AppState:
         :param pulumi.Input['AppSpecArgs'] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[str] updated_at: The date and time of when the app was last updated.
         """
-        _AppState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_deployment_id=active_deployment_id,
-            app_urn=app_urn,
-            created_at=created_at,
-            default_ingress=default_ingress,
-            live_url=live_url,
-            spec=spec,
-            updated_at=updated_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_deployment_id: Optional[pulumi.Input[str]] = None,
-             app_urn: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             default_ingress: Optional[pulumi.Input[str]] = None,
-             live_url: Optional[pulumi.Input[str]] = None,
-             spec: Optional[pulumi.Input['AppSpecArgs']] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_deployment_id is None and 'activeDeploymentId' in kwargs:
-            active_deployment_id = kwargs['activeDeploymentId']
-        if app_urn is None and 'appUrn' in kwargs:
-            app_urn = kwargs['appUrn']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if default_ingress is None and 'defaultIngress' in kwargs:
-            default_ingress = kwargs['defaultIngress']
-        if live_url is None and 'liveUrl' in kwargs:
-            live_url = kwargs['liveUrl']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if active_deployment_id is not None:
-            _setter("active_deployment_id", active_deployment_id)
+            pulumi.set(__self__, "active_deployment_id", active_deployment_id)
         if app_urn is not None:
-            _setter("app_urn", app_urn)
+            pulumi.set(__self__, "app_urn", app_urn)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if default_ingress is not None:
-            _setter("default_ingress", default_ingress)
+            pulumi.set(__self__, "default_ingress", default_ingress)
         if live_url is not None:
-            _setter("live_url", live_url)
+            pulumi.set(__self__, "live_url", live_url)
         if spec is not None:
-            _setter("spec", spec)
+            pulumi.set(__self__, "spec", spec)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="activeDeploymentId")
@@ -342,10 +296,6 @@ class App(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -361,7 +311,6 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppArgs.__new__(AppArgs)
 
-            spec = _utilities.configure(spec, AppSpecArgs, True)
             __props__.__dict__["spec"] = spec
             __props__.__dict__["active_deployment_id"] = None
             __props__.__dict__["app_urn"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,48 +33,17 @@ class UptimeAlertArgs:
         :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
-        UptimeAlertArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_id=check_id,
-            notifications=notifications,
-            type=type,
-            comparison=comparison,
-            name=name,
-            period=period,
-            threshold=threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_id: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             comparison: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_id is None and 'checkId' in kwargs:
-            check_id = kwargs['checkId']
-        if check_id is None:
-            raise TypeError("Missing 'check_id' argument")
-        if notifications is None:
-            raise TypeError("Missing 'notifications' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("check_id", check_id)
-        _setter("notifications", notifications)
-        _setter("type", type)
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "type", type)
         if comparison is not None:
-            _setter("comparison", comparison)
+            pulumi.set(__self__, "comparison", comparison)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
 
     @property
     @pulumi.getter(name="checkId")
@@ -181,45 +150,20 @@ class _UptimeAlertState:
         :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
-        _UptimeAlertState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_id=check_id,
-            comparison=comparison,
-            name=name,
-            notifications=notifications,
-            period=period,
-            threshold=threshold,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_id: Optional[pulumi.Input[str]] = None,
-             comparison: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_id is None and 'checkId' in kwargs:
-            check_id = kwargs['checkId']
-
         if check_id is not None:
-            _setter("check_id", check_id)
+            pulumi.set(__self__, "check_id", check_id)
         if comparison is not None:
-            _setter("comparison", comparison)
+            pulumi.set(__self__, "comparison", comparison)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="checkId")
@@ -369,10 +313,6 @@ class UptimeAlert(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UptimeAlertArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

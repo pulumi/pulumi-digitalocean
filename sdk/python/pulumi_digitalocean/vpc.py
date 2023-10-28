@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VpcArgs', 'Vpc']
@@ -25,34 +25,13 @@ class VpcArgs:
         :param pulumi.Input[str] ip_range: The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
         :param pulumi.Input[str] name: A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
         """
-        VpcArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region=region,
-            description=description,
-            ip_range=ip_range,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_range: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if ip_range is None and 'ipRange' in kwargs:
-            ip_range = kwargs['ipRange']
-
-        _setter("region", region)
+        pulumi.set(__self__, "region", region)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_range is not None:
-            _setter("ip_range", ip_range)
+            pulumi.set(__self__, "ip_range", ip_range)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -123,49 +102,20 @@ class _VpcState:
         :param pulumi.Input[str] region: The DigitalOcean region slug for the VPC's location.
         :param pulumi.Input[str] vpc_urn: The uniform resource name (URN) for the VPC.
         """
-        _VpcState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            default=default,
-            description=description,
-            ip_range=ip_range,
-            name=name,
-            region=region,
-            vpc_urn=vpc_urn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             default: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_range: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             vpc_urn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if ip_range is None and 'ipRange' in kwargs:
-            ip_range = kwargs['ipRange']
-        if vpc_urn is None and 'vpcUrn' in kwargs:
-            vpc_urn = kwargs['vpcUrn']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_range is not None:
-            _setter("ip_range", ip_range)
+            pulumi.set(__self__, "ip_range", ip_range)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if vpc_urn is not None:
-            _setter("vpc_urn", vpc_urn)
+            pulumi.set(__self__, "vpc_urn", vpc_urn)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -369,10 +319,6 @@ class Vpc(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VpcArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

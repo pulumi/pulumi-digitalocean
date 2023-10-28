@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UptimeCheckArgs', 'UptimeCheck']
@@ -27,36 +27,15 @@ class UptimeCheckArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
         :param pulumi.Input[str] type: The type of health check to perform: 'ping' 'http' 'https'.
         """
-        UptimeCheckArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            target=target,
-            enabled=enabled,
-            name=name,
-            regions=regions,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             target: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-
-        _setter("target", target)
+        pulumi.set(__self__, "target", target)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if regions is not None:
-            _setter("regions", regions)
+            pulumi.set(__self__, "regions", regions)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -135,35 +114,16 @@ class _UptimeCheckState:
         :param pulumi.Input[str] target: The endpoint to perform healthchecks on.
         :param pulumi.Input[str] type: The type of health check to perform: 'ping' 'http' 'https'.
         """
-        _UptimeCheckState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            name=name,
-            regions=regions,
-            target=target,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if regions is not None:
-            _setter("regions", regions)
+            pulumi.set(__self__, "regions", regions)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -285,10 +245,6 @@ class UptimeCheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UptimeCheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
