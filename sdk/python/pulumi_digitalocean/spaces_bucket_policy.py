@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SpacesBucketPolicyArgs', 'SpacesBucketPolicy']
@@ -23,30 +23,9 @@ class SpacesBucketPolicyArgs:
         :param pulumi.Input[str] policy: The text of the policy.
         :param pulumi.Input[str] region: The region where the bucket resides.
         """
-        SpacesBucketPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            policy=policy,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if policy is None:
-            raise TypeError("Missing 'policy' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-
-        _setter("bucket", bucket)
-        _setter("policy", policy)
-        _setter("region", region)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -97,27 +76,12 @@ class _SpacesBucketPolicyState:
         :param pulumi.Input[str] policy: The text of the policy.
         :param pulumi.Input[str] region: The region where the bucket resides.
         """
-        _SpacesBucketPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            policy=policy,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -273,10 +237,6 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SpacesBucketPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
