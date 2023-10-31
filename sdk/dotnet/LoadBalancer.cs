@@ -225,7 +225,7 @@ namespace Pulumi.DigitalOcean
         /// The region to start in
         /// </summary>
         [Output("region")]
-        public Output<string> Region { get; private set; } = null!;
+        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
         /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
@@ -248,6 +248,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("stickySessions")]
         public Output<Outputs.LoadBalancerStickySessions> StickySessions { get; private set; } = null!;
+
+        /// <summary>
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.
@@ -402,8 +408,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The region to start in
         /// </summary>
-        [Input("region", required: true)]
-        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
+        [Input("region")]
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
@@ -423,6 +429,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsArgs>? StickySessions { get; set; }
+
+        /// <summary>
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.
@@ -575,6 +587,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsGetArgs>? StickySessions { get; set; }
+
+        /// <summary>
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.

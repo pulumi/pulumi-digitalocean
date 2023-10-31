@@ -90,7 +90,35 @@ import (
 //				NodeCount: pulumi.Int(1),
 //				Region:    pulumi.String("nyc1"),
 //				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Version:   pulumi.String("6"),
+//				Version:   pulumi.String("7"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Create a new Kafka database cluster
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("kafka"),
+//				NodeCount: pulumi.Int(3),
+//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Version:   pulumi.String("3.5"),
 //			})
 //			if err != nil {
 //				return err
@@ -197,7 +225,7 @@ type DatabaseCluster struct {
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrOutput `pulumi:"evictionPolicy"`
@@ -207,7 +235,7 @@ type DatabaseCluster struct {
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayOutput `pulumi:"maintenanceWindows"`
 	// The name of the database cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// Password for the cluster's default user.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -227,6 +255,8 @@ type DatabaseCluster struct {
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrOutput `pulumi:"sqlMode"`
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib pulumi.StringOutput `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
@@ -292,7 +322,7 @@ type databaseClusterState struct {
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database *string `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine *string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -302,7 +332,7 @@ type databaseClusterState struct {
 	MaintenanceWindows []DatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// The name of the database cluster.
 	Name *string `pulumi:"name"`
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Password for the cluster's default user.
 	Password *string `pulumi:"password"`
@@ -322,6 +352,8 @@ type databaseClusterState struct {
 	Size *string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
@@ -340,7 +372,7 @@ type DatabaseClusterState struct {
 	ClusterUrn pulumi.StringPtrInput
 	// Name of the cluster's default database.
 	Database pulumi.StringPtrInput
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringPtrInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
@@ -350,7 +382,7 @@ type DatabaseClusterState struct {
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayInput
 	// The name of the database cluster.
 	Name pulumi.StringPtrInput
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount pulumi.IntPtrInput
 	// Password for the cluster's default user.
 	Password pulumi.StringPtrInput
@@ -370,6 +402,8 @@ type DatabaseClusterState struct {
 	Size pulumi.StringPtrInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
 	// The full URI for connecting to the database cluster.
@@ -388,7 +422,7 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 type databaseClusterArgs struct {
 	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -396,7 +430,7 @@ type databaseClusterArgs struct {
 	MaintenanceWindows []DatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// The name of the database cluster.
 	Name *string `pulumi:"name"`
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount int `pulumi:"nodeCount"`
 	// The ID of the VPC where the database cluster will be located.
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
@@ -408,6 +442,8 @@ type databaseClusterArgs struct {
 	Size string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -419,7 +455,7 @@ type databaseClusterArgs struct {
 type DatabaseClusterArgs struct {
 	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrInput
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
@@ -427,7 +463,7 @@ type DatabaseClusterArgs struct {
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayInput
 	// The name of the database cluster.
 	Name pulumi.StringPtrInput
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount pulumi.IntInput
 	// The ID of the VPC where the database cluster will be located.
 	PrivateNetworkUuid pulumi.StringPtrInput
@@ -439,6 +475,8 @@ type DatabaseClusterArgs struct {
 	Size pulumi.StringInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -572,7 +610,7 @@ func (o DatabaseClusterOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
-// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 func (o DatabaseClusterOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -597,7 +635,7 @@ func (o DatabaseClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of nodes that will be included in the cluster.
+// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 func (o DatabaseClusterOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -645,6 +683,11 @@ func (o DatabaseClusterOutput) Size() pulumi.StringOutput {
 // A comma separated string specifying the  SQL modes for a MySQL cluster.
 func (o DatabaseClusterOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.SqlMode }).(pulumi.StringPtrOutput)
+}
+
+// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+func (o DatabaseClusterOutput) StorageSizeMib() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.StorageSizeMib }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the database cluster.

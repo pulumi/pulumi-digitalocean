@@ -87,8 +87,9 @@ type LookupDatabaseClusterResult struct {
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
-	Size string   `pulumi:"size"`
-	Tags []string `pulumi:"tags"`
+	Size           string   `pulumi:"size"`
+	StorageSizeMib string   `pulumi:"storageSizeMib"`
+	Tags           []string `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri string `pulumi:"uri"`
 	// The uniform resource name of the database cluster.
@@ -216,6 +217,10 @@ func (o LookupDatabaseClusterResultOutput) Region() pulumi.StringOutput {
 // Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 func (o LookupDatabaseClusterResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseClusterResultOutput) StorageSizeMib() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.StorageSizeMib }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseClusterResultOutput) Tags() pulumi.StringArrayOutput {

@@ -115,7 +115,40 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .region(&#34;nyc1&#34;)
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;6&#34;)
+ *             .version(&#34;7&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Create a new Kafka database cluster
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var kafka_example = new DatabaseCluster(&#34;kafka-example&#34;, DatabaseClusterArgs.builder()        
+ *             .engine(&#34;kafka&#34;)
+ *             .nodeCount(3)
+ *             .region(&#34;nyc1&#34;)
+ *             .size(&#34;db-s-1vcpu-2gb&#34;)
+ *             .version(&#34;3.5&#34;)
  *             .build());
  * 
  *     }
@@ -259,14 +292,14 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return this.database;
     }
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     public Output<String> engine() {
@@ -329,14 +362,14 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
     @Export(name="nodeCount", type=Integer.class, parameters={})
     private Output<Integer> nodeCount;
 
     /**
-     * @return Number of nodes that will be included in the cluster.
+     * @return Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
     public Output<Integer> nodeCount() {
@@ -467,6 +500,20 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sqlMode() {
         return Codegen.optional(this.sqlMode);
+    }
+    /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * 
+     */
+    @Export(name="storageSizeMib", type=String.class, parameters={})
+    private Output<String> storageSizeMib;
+
+    /**
+     * @return Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * 
+     */
+    public Output<String> storageSizeMib() {
+        return this.storageSizeMib;
     }
     /**
      * A list of tag names to be applied to the database cluster.

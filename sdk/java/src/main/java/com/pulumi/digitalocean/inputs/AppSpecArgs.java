@@ -10,6 +10,7 @@ import com.pulumi.digitalocean.inputs.AppSpecDatabaseArgs;
 import com.pulumi.digitalocean.inputs.AppSpecDomainNameArgs;
 import com.pulumi.digitalocean.inputs.AppSpecEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecFunctionArgs;
+import com.pulumi.digitalocean.inputs.AppSpecIngressArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
 import com.pulumi.digitalocean.inputs.AppSpecStaticSiteArgs;
@@ -103,6 +104,21 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.functions);
     }
 
+    /**
+     * Specification for component routing, rewrites, and redirects.
+     * 
+     */
+    @Import(name="ingress")
+    private @Nullable Output<AppSpecIngressArgs> ingress;
+
+    /**
+     * @return Specification for component routing, rewrites, and redirects.
+     * 
+     */
+    public Optional<Output<AppSpecIngressArgs>> ingress() {
+        return Optional.ofNullable(this.ingress);
+    }
+
     @Import(name="jobs")
     private @Nullable Output<List<AppSpecJobArgs>> jobs;
 
@@ -170,6 +186,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         this.domains = $.domains;
         this.envs = $.envs;
         this.functions = $.functions;
+        this.ingress = $.ingress;
         this.jobs = $.jobs;
         this.name = $.name;
         this.region = $.region;
@@ -350,6 +367,27 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder functions(AppSpecFunctionArgs... functions) {
             return functions(List.of(functions));
+        }
+
+        /**
+         * @param ingress Specification for component routing, rewrites, and redirects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingress(@Nullable Output<AppSpecIngressArgs> ingress) {
+            $.ingress = ingress;
+            return this;
+        }
+
+        /**
+         * @param ingress Specification for component routing, rewrites, and redirects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingress(AppSpecIngressArgs ingress) {
+            return ingress(Output.of(ingress));
         }
 
         public Builder jobs(@Nullable Output<List<AppSpecJobArgs>> jobs) {

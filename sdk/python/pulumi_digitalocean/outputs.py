@@ -30,6 +30,14 @@ __all__ = [
     'AppSpecFunctionLogDestinationLogtail',
     'AppSpecFunctionLogDestinationPapertrail',
     'AppSpecFunctionRoute',
+    'AppSpecIngress',
+    'AppSpecIngressRule',
+    'AppSpecIngressRuleComponent',
+    'AppSpecIngressRuleCors',
+    'AppSpecIngressRuleCorsAllowOrigins',
+    'AppSpecIngressRuleMatch',
+    'AppSpecIngressRuleMatchPath',
+    'AppSpecIngressRuleRedirect',
     'AppSpecJob',
     'AppSpecJobAlert',
     'AppSpecJobEnv',
@@ -81,6 +89,7 @@ __all__ = [
     'DatabaseClusterBackupRestore',
     'DatabaseClusterMaintenanceWindow',
     'DatabaseFirewallRule',
+    'DatabaseKafkaTopicConfig',
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
@@ -123,6 +132,14 @@ __all__ = [
     'GetAppSpecFunctionLogDestinationLogtailResult',
     'GetAppSpecFunctionLogDestinationPapertrailResult',
     'GetAppSpecFunctionRouteResult',
+    'GetAppSpecIngressResult',
+    'GetAppSpecIngressRuleResult',
+    'GetAppSpecIngressRuleComponentResult',
+    'GetAppSpecIngressRuleCorsResult',
+    'GetAppSpecIngressRuleCorsAllowOriginsResult',
+    'GetAppSpecIngressRuleMatchResult',
+    'GetAppSpecIngressRuleMatchPathResult',
+    'GetAppSpecIngressRuleRedirectResult',
     'GetAppSpecJobResult',
     'GetAppSpecJobAlertResult',
     'GetAppSpecJobEnvResult',
@@ -245,6 +262,7 @@ class AppSpec(dict):
                  domains: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.AppSpecEnv']] = None,
                  functions: Optional[Sequence['outputs.AppSpecFunction']] = None,
+                 ingress: Optional['outputs.AppSpecIngress'] = None,
                  jobs: Optional[Sequence['outputs.AppSpecJob']] = None,
                  region: Optional[str] = None,
                  services: Optional[Sequence['outputs.AppSpecService']] = None,
@@ -255,6 +273,7 @@ class AppSpec(dict):
         :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
         :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
@@ -270,6 +289,8 @@ class AppSpec(dict):
             pulumi.set(__self__, "envs", envs)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
+        if ingress is not None:
+            pulumi.set(__self__, "ingress", ingress)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if region is not None:
@@ -330,6 +351,14 @@ class AppSpec(dict):
     @pulumi.getter
     def functions(self) -> Optional[Sequence['outputs.AppSpecFunction']]:
         return pulumi.get(self, "functions")
+
+    @property
+    @pulumi.getter
+    def ingress(self) -> Optional['outputs.AppSpecIngress']:
+        """
+        Specification for component routing, rewrites, and redirects.
+        """
+        return pulumi.get(self, "ingress")
 
     @property
     @pulumi.getter
@@ -701,6 +730,9 @@ class AppSpecFunction(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -749,6 +781,9 @@ class AppSpecFunction(dict):
         """
         An HTTP paths that should be routed to this component.
         """
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -861,6 +896,10 @@ class AppSpecFunctionCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecFunctionCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -885,6 +924,10 @@ class AppSpecFunctionCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1382,6 +1425,419 @@ class AppSpecFunctionRoute(dict):
         An optional flag to preserve the path that is forwarded to the backend service.
         """
         return pulumi.get(self, "preserve_path_prefix")
+
+
+@pulumi.output_type
+class AppSpecIngress(dict):
+    def __init__(__self__, *,
+                 rules: Optional[Sequence['outputs.AppSpecIngressRule']] = None):
+        """
+        :param Sequence['AppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.AppSpecIngressRule']]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class AppSpecIngressRule(dict):
+    def __init__(__self__, *,
+                 component: Optional['outputs.AppSpecIngressRuleComponent'] = None,
+                 cors: Optional['outputs.AppSpecIngressRuleCors'] = None,
+                 match: Optional['outputs.AppSpecIngressRuleMatch'] = None,
+                 redirect: Optional['outputs.AppSpecIngressRuleRedirect'] = None):
+        """
+        :param 'AppSpecIngressRuleComponentArgs' component: The component to route to. Only one of `component` or `redirect` may be set.
+        :param 'AppSpecIngressRuleCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param 'AppSpecIngressRuleMatchArgs' match: The match configuration for the rule
+        :param 'AppSpecIngressRuleRedirectArgs' redirect: The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional['outputs.AppSpecIngressRuleComponent']:
+        """
+        The component to route to. Only one of `component` or `redirect` may be set.
+        """
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.AppSpecIngressRuleCors']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.AppSpecIngressRuleMatch']:
+        """
+        The match configuration for the rule
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional['outputs.AppSpecIngressRuleRedirect']:
+        """
+        The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        """
+        return pulumi.get(self, "redirect")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preservePathPrefix":
+            suggest = "preserve_path_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngressRuleComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngressRuleComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngressRuleComponent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 preserve_path_prefix: Optional[bool] = None,
+                 rewrite: Optional[str] = None):
+        """
+        :param str name: The name of the component.
+        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        :param str rewrite: An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+        if rewrite is not None:
+            pulumi.set(__self__, "rewrite", rewrite)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[bool]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @property
+    @pulumi.getter
+    def rewrite(self) -> Optional[str]:
+        """
+        An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        """
+        return pulumi.get(self, "rewrite")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleCors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngressRuleCors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngressRuleCors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngressRuleCors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.AppSpecIngressRuleCorsAllowOrigins'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.AppSpecIngressRuleCorsAllowOrigins']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleCorsAllowOrigins(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleMatch(dict):
+    def __init__(__self__, *,
+                 path: Optional['outputs.AppSpecIngressRuleMatchPath'] = None):
+        """
+        :param 'AppSpecIngressRuleMatchPathArgs' path: Paths must start with `/` and must be unique within the app.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional['outputs.AppSpecIngressRuleMatchPath']:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleMatchPath(dict):
+    def __init__(__self__, *,
+                 prefix: Optional[str] = None):
+        """
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectCode":
+            suggest = "redirect_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngressRuleRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngressRuleRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngressRuleRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authority: Optional[str] = None,
+                 port: Optional[int] = None,
+                 redirect_code: Optional[int] = None,
+                 scheme: Optional[str] = None,
+                 uri: Optional[str] = None):
+        """
+        :param str authority: The authority/host to redirect to. This can be a hostname or IP address.
+        :param int port: The port to redirect to.
+        :param int redirect_code: The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        :param str scheme: The scheme to redirect to. Supported values are `http` or `https`
+        :param str uri: An optional URI path to redirect to.
+        """
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if redirect_code is not None:
+            pulumi.set(__self__, "redirect_code", redirect_code)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> Optional[str]:
+        """
+        The authority/host to redirect to. This can be a hostname or IP address.
+        """
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to redirect to.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="redirectCode")
+    def redirect_code(self) -> Optional[int]:
+        """
+        The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        """
+        return pulumi.get(self, "redirect_code")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        The scheme to redirect to. Supported values are `http` or `https`
+        """
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        An optional URI path to redirect to.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -2295,6 +2751,9 @@ class AppSpecService(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -2407,6 +2866,9 @@ class AppSpecService(dict):
         """
         An HTTP paths that should be routed to this component.
         """
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -2527,6 +2989,10 @@ class AppSpecServiceCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecServiceCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -2551,6 +3017,10 @@ class AppSpecServiceCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -3385,6 +3855,9 @@ class AppSpecStaticSite(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -3465,6 +3938,9 @@ class AppSpecStaticSite(dict):
         """
         An HTTP paths that should be routed to this component.
         """
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -3514,6 +3990,10 @@ class AppSpecStaticSiteCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -3538,6 +4018,10 @@ class AppSpecStaticSiteCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -4793,6 +5277,362 @@ class DatabaseFirewallRule(dict):
         A unique identifier for the firewall rule.
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class DatabaseKafkaTopicConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanupPolicy":
+            suggest = "cleanup_policy"
+        elif key == "compressionType":
+            suggest = "compression_type"
+        elif key == "deleteRetentionMs":
+            suggest = "delete_retention_ms"
+        elif key == "fileDeleteDelayMs":
+            suggest = "file_delete_delay_ms"
+        elif key == "flushMessages":
+            suggest = "flush_messages"
+        elif key == "flushMs":
+            suggest = "flush_ms"
+        elif key == "indexIntervalBytes":
+            suggest = "index_interval_bytes"
+        elif key == "maxCompactionLagMs":
+            suggest = "max_compaction_lag_ms"
+        elif key == "maxMessageBytes":
+            suggest = "max_message_bytes"
+        elif key == "messageDownConversionEnable":
+            suggest = "message_down_conversion_enable"
+        elif key == "messageFormatVersion":
+            suggest = "message_format_version"
+        elif key == "messageTimestampDifferenceMaxMs":
+            suggest = "message_timestamp_difference_max_ms"
+        elif key == "messageTimestampType":
+            suggest = "message_timestamp_type"
+        elif key == "minCleanableDirtyRatio":
+            suggest = "min_cleanable_dirty_ratio"
+        elif key == "minCompactionLagMs":
+            suggest = "min_compaction_lag_ms"
+        elif key == "minInsyncReplicas":
+            suggest = "min_insync_replicas"
+        elif key == "retentionBytes":
+            suggest = "retention_bytes"
+        elif key == "retentionMs":
+            suggest = "retention_ms"
+        elif key == "segmentBytes":
+            suggest = "segment_bytes"
+        elif key == "segmentIndexBytes":
+            suggest = "segment_index_bytes"
+        elif key == "segmentJitterMs":
+            suggest = "segment_jitter_ms"
+        elif key == "segmentMs":
+            suggest = "segment_ms"
+        elif key == "uncleanLeaderElectionEnable":
+            suggest = "unclean_leader_election_enable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseKafkaTopicConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseKafkaTopicConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseKafkaTopicConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cleanup_policy: Optional[str] = None,
+                 compression_type: Optional[str] = None,
+                 delete_retention_ms: Optional[str] = None,
+                 file_delete_delay_ms: Optional[str] = None,
+                 flush_messages: Optional[str] = None,
+                 flush_ms: Optional[str] = None,
+                 index_interval_bytes: Optional[str] = None,
+                 max_compaction_lag_ms: Optional[str] = None,
+                 max_message_bytes: Optional[str] = None,
+                 message_down_conversion_enable: Optional[bool] = None,
+                 message_format_version: Optional[str] = None,
+                 message_timestamp_difference_max_ms: Optional[str] = None,
+                 message_timestamp_type: Optional[str] = None,
+                 min_cleanable_dirty_ratio: Optional[float] = None,
+                 min_compaction_lag_ms: Optional[str] = None,
+                 min_insync_replicas: Optional[int] = None,
+                 preallocate: Optional[bool] = None,
+                 retention_bytes: Optional[str] = None,
+                 retention_ms: Optional[str] = None,
+                 segment_bytes: Optional[str] = None,
+                 segment_index_bytes: Optional[str] = None,
+                 segment_jitter_ms: Optional[str] = None,
+                 segment_ms: Optional[str] = None,
+                 unclean_leader_election_enable: Optional[bool] = None):
+        """
+        :param str cleanup_policy: The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+               This may be one of "delete", "compact", or "compact_delete".
+        :param str compression_type: The topic compression codecs used for a given topic.
+               This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+        :param str delete_retention_ms: The amount of time, in ms, that deleted records are retained.
+        :param str file_delete_delay_ms: The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+        :param str flush_messages: The number of messages accumulated on a topic partition before they are flushed to disk.
+        :param str flush_ms: The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+        :param str index_interval_bytes: The interval, in bytes, in which entries are added to the offset index.
+        :param str max_compaction_lag_ms: The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+        :param str max_message_bytes: The maximum size, in bytes, of a message.
+        :param bool message_down_conversion_enable: Determines whether down-conversion of message formats for consumers is enabled.
+        :param str message_format_version: The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+        :param str message_timestamp_difference_max_ms: The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+        :param str message_timestamp_type: Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+        :param float min_cleanable_dirty_ratio: A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+        :param int min_insync_replicas: The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        :param bool preallocate: Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+        :param str retention_bytes: The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+        :param str retention_ms: The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+        :param str segment_bytes: The maximum size, in bytes, of a single topic log file.
+        :param str segment_index_bytes: The maximum size, in bytes, of the offset index.
+        :param str segment_jitter_ms: The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+        :param str segment_ms: The maximum time, in ms, before the topic log will flush to disk.
+        :param bool unclean_leader_election_enable: Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
+        """
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if compression_type is not None:
+            pulumi.set(__self__, "compression_type", compression_type)
+        if delete_retention_ms is not None:
+            pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if file_delete_delay_ms is not None:
+            pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
+        if flush_messages is not None:
+            pulumi.set(__self__, "flush_messages", flush_messages)
+        if flush_ms is not None:
+            pulumi.set(__self__, "flush_ms", flush_ms)
+        if index_interval_bytes is not None:
+            pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if max_compaction_lag_ms is not None:
+            pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
+        if max_message_bytes is not None:
+            pulumi.set(__self__, "max_message_bytes", max_message_bytes)
+        if message_down_conversion_enable is not None:
+            pulumi.set(__self__, "message_down_conversion_enable", message_down_conversion_enable)
+        if message_format_version is not None:
+            pulumi.set(__self__, "message_format_version", message_format_version)
+        if message_timestamp_difference_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
+        if message_timestamp_type is not None:
+            pulumi.set(__self__, "message_timestamp_type", message_timestamp_type)
+        if min_cleanable_dirty_ratio is not None:
+            pulumi.set(__self__, "min_cleanable_dirty_ratio", min_cleanable_dirty_ratio)
+        if min_compaction_lag_ms is not None:
+            pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        if preallocate is not None:
+            pulumi.set(__self__, "preallocate", preallocate)
+        if retention_bytes is not None:
+            pulumi.set(__self__, "retention_bytes", retention_bytes)
+        if retention_ms is not None:
+            pulumi.set(__self__, "retention_ms", retention_ms)
+        if segment_bytes is not None:
+            pulumi.set(__self__, "segment_bytes", segment_bytes)
+        if segment_index_bytes is not None:
+            pulumi.set(__self__, "segment_index_bytes", segment_index_bytes)
+        if segment_jitter_ms is not None:
+            pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
+        if segment_ms is not None:
+            pulumi.set(__self__, "segment_ms", segment_ms)
+        if unclean_leader_election_enable is not None:
+            pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
+
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[str]:
+        """
+        The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        This may be one of "delete", "compact", or "compact_delete".
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @property
+    @pulumi.getter(name="compressionType")
+    def compression_type(self) -> Optional[str]:
+        """
+        The topic compression codecs used for a given topic.
+        This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+        """
+        return pulumi.get(self, "compression_type")
+
+    @property
+    @pulumi.getter(name="deleteRetentionMs")
+    def delete_retention_ms(self) -> Optional[str]:
+        """
+        The amount of time, in ms, that deleted records are retained.
+        """
+        return pulumi.get(self, "delete_retention_ms")
+
+    @property
+    @pulumi.getter(name="fileDeleteDelayMs")
+    def file_delete_delay_ms(self) -> Optional[str]:
+        """
+        The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+        """
+        return pulumi.get(self, "file_delete_delay_ms")
+
+    @property
+    @pulumi.getter(name="flushMessages")
+    def flush_messages(self) -> Optional[str]:
+        """
+        The number of messages accumulated on a topic partition before they are flushed to disk.
+        """
+        return pulumi.get(self, "flush_messages")
+
+    @property
+    @pulumi.getter(name="flushMs")
+    def flush_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+        """
+        return pulumi.get(self, "flush_ms")
+
+    @property
+    @pulumi.getter(name="indexIntervalBytes")
+    def index_interval_bytes(self) -> Optional[str]:
+        """
+        The interval, in bytes, in which entries are added to the offset index.
+        """
+        return pulumi.get(self, "index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="maxCompactionLagMs")
+    def max_compaction_lag_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+        """
+        return pulumi.get(self, "max_compaction_lag_ms")
+
+    @property
+    @pulumi.getter(name="maxMessageBytes")
+    def max_message_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of a message.
+        """
+        return pulumi.get(self, "max_message_bytes")
+
+    @property
+    @pulumi.getter(name="messageDownConversionEnable")
+    def message_down_conversion_enable(self) -> Optional[bool]:
+        """
+        Determines whether down-conversion of message formats for consumers is enabled.
+        """
+        return pulumi.get(self, "message_down_conversion_enable")
+
+    @property
+    @pulumi.getter(name="messageFormatVersion")
+    def message_format_version(self) -> Optional[str]:
+        """
+        The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+        """
+        return pulumi.get(self, "message_format_version")
+
+    @property
+    @pulumi.getter(name="messageTimestampDifferenceMaxMs")
+    def message_timestamp_difference_max_ms(self) -> Optional[str]:
+        """
+        The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+        """
+        return pulumi.get(self, "message_timestamp_difference_max_ms")
+
+    @property
+    @pulumi.getter(name="messageTimestampType")
+    def message_timestamp_type(self) -> Optional[str]:
+        """
+        Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+        """
+        return pulumi.get(self, "message_timestamp_type")
+
+    @property
+    @pulumi.getter(name="minCleanableDirtyRatio")
+    def min_cleanable_dirty_ratio(self) -> Optional[float]:
+        """
+        A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+        """
+        return pulumi.get(self, "min_cleanable_dirty_ratio")
+
+    @property
+    @pulumi.getter(name="minCompactionLagMs")
+    def min_compaction_lag_ms(self) -> Optional[str]:
+        return pulumi.get(self, "min_compaction_lag_ms")
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[int]:
+        """
+        The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        """
+        return pulumi.get(self, "min_insync_replicas")
+
+    @property
+    @pulumi.getter
+    def preallocate(self) -> Optional[bool]:
+        """
+        Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+        """
+        return pulumi.get(self, "preallocate")
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @property
+    @pulumi.getter(name="retentionMs")
+    def retention_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+        """
+        return pulumi.get(self, "retention_ms")
+
+    @property
+    @pulumi.getter(name="segmentBytes")
+    def segment_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of a single topic log file.
+        """
+        return pulumi.get(self, "segment_bytes")
+
+    @property
+    @pulumi.getter(name="segmentIndexBytes")
+    def segment_index_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of the offset index.
+        """
+        return pulumi.get(self, "segment_index_bytes")
+
+    @property
+    @pulumi.getter(name="segmentJitterMs")
+    def segment_jitter_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+        """
+        return pulumi.get(self, "segment_jitter_ms")
+
+    @property
+    @pulumi.getter(name="segmentMs")
+    def segment_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, before the topic log will flush to disk.
+        """
+        return pulumi.get(self, "segment_ms")
+
+    @property
+    @pulumi.getter(name="uncleanLeaderElectionEnable")
+    def unclean_leader_election_enable(self) -> Optional[bool]:
+        """
+        Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
+        """
+        return pulumi.get(self, "unclean_leader_election_enable")
 
 
 @pulumi.output_type
@@ -6569,6 +7409,7 @@ class GetAppSpecResult(dict):
     def __init__(__self__, *,
                  domain: Sequence['outputs.GetAppSpecDomainResult'],
                  domains: Sequence[str],
+                 ingress: 'outputs.GetAppSpecIngressResult',
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
@@ -6586,6 +7427,7 @@ class GetAppSpecResult(dict):
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "ingress", ingress)
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
@@ -6618,6 +7460,11 @@ class GetAppSpecResult(dict):
         pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
 
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def ingress(self) -> 'outputs.GetAppSpecIngressResult':
+        return pulumi.get(self, "ingress")
 
     @property
     @pulumi.getter
@@ -6952,6 +7799,9 @@ class GetAppSpecFunctionResult(dict):
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAppSpecFunctionRouteResult']:
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -6968,6 +7818,9 @@ class GetAppSpecFunctionResult(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -7524,6 +8377,303 @@ class GetAppSpecFunctionRouteResult(dict):
         An optional flag to preserve the path that is forwarded to the backend service.
         """
         return pulumi.get(self, "preserve_path_prefix")
+
+
+@pulumi.output_type
+class GetAppSpecIngressResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetAppSpecIngressRuleResult']):
+        """
+        :param Sequence['GetAppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetAppSpecIngressRuleResult']:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleResult(dict):
+    def __init__(__self__, *,
+                 component: 'outputs.GetAppSpecIngressRuleComponentResult',
+                 cors: 'outputs.GetAppSpecIngressRuleCorsResult',
+                 match: 'outputs.GetAppSpecIngressRuleMatchResult',
+                 redirect: Optional['outputs.GetAppSpecIngressRuleRedirectResult'] = None):
+        """
+        :param 'GetAppSpecIngressRuleCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "cors", cors)
+        pulumi.set(__self__, "match", match)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @property
+    @pulumi.getter
+    def component(self) -> 'outputs.GetAppSpecIngressRuleComponentResult':
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> 'outputs.GetAppSpecIngressRuleCorsResult':
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter
+    def match(self) -> 'outputs.GetAppSpecIngressRuleMatchResult':
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional['outputs.GetAppSpecIngressRuleRedirectResult']:
+        return pulumi.get(self, "redirect")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleComponentResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 preserve_path_prefix: bool,
+                 rewrite: str):
+        """
+        :param str name: The name of the component.
+        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+        pulumi.set(__self__, "rewrite", rewrite)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> bool:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @property
+    @pulumi.getter
+    def rewrite(self) -> str:
+        return pulumi.get(self, "rewrite")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleCorsResult(dict):
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.GetAppSpecIngressRuleCorsAllowOriginsResult'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'GetAppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.GetAppSpecIngressRuleCorsAllowOriginsResult']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleCorsAllowOriginsResult(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleMatchResult(dict):
+    def __init__(__self__, *,
+                 path: 'outputs.GetAppSpecIngressRuleMatchPathResult'):
+        """
+        :param 'GetAppSpecIngressRuleMatchPathArgs' path: Paths must start with `/` and must be unique within the app.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> 'outputs.GetAppSpecIngressRuleMatchPathResult':
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleMatchPathResult(dict):
+    def __init__(__self__, *,
+                 prefix: str):
+        """
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleRedirectResult(dict):
+    def __init__(__self__, *,
+                 authority: Optional[str] = None,
+                 port: Optional[int] = None,
+                 redirect_code: Optional[int] = None,
+                 scheme: Optional[str] = None,
+                 uri: Optional[str] = None):
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if redirect_code is not None:
+            pulumi.set(__self__, "redirect_code", redirect_code)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> Optional[str]:
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="redirectCode")
+    def redirect_code(self) -> Optional[int]:
+        return pulumi.get(self, "redirect_code")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -8261,6 +9411,9 @@ class GetAppSpecServiceResult(dict):
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAppSpecServiceRouteResult']:
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -8293,6 +9446,9 @@ class GetAppSpecServiceResult(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -9143,6 +10299,9 @@ class GetAppSpecStaticSiteResult(dict):
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAppSpecStaticSiteRouteResult']:
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -9167,6 +10326,9 @@ class GetAppSpecStaticSiteResult(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property

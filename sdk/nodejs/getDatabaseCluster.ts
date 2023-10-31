@@ -103,6 +103,7 @@ export interface GetDatabaseClusterResult {
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size: string;
+    readonly storageSizeMib: string;
     readonly tags?: string[];
     /**
      * The full URI for connecting to the database cluster.

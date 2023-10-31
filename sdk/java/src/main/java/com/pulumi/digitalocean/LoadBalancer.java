@@ -381,14 +381,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", type=String.class, parameters={})
-    private Output<String> region;
+    private Output</* @Nullable */ String> region;
 
     /**
      * @return The region to start in
      * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
@@ -439,6 +439,20 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<LoadBalancerStickySessions> stickySessions() {
         return this.stickySessions;
+    }
+    /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    @Export(name="type", type=String.class, parameters={})
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * The ID of the VPC where the load balancer will be located.

@@ -36,7 +36,11 @@ public final class AppSpecService {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     private @Nullable AppSpecServiceCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -111,7 +115,11 @@ public final class AppSpecService {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     private @Nullable List<AppSpecServiceRoute> routes;
     /**
      * @return An optional run command to override the component&#39;s default.
@@ -142,7 +150,11 @@ public final class AppSpecService {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<AppSpecServiceCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -247,7 +259,11 @@ public final class AppSpecService {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public List<AppSpecServiceRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }

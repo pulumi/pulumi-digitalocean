@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .image(&#34;ubuntu-18-04-x64&#34;)
+ *             .image(&#34;ubuntu-20-04-x64&#34;)
  *             .region(&#34;nyc2&#34;)
  *             .size(&#34;s-1vcpu-1gb&#34;)
  *             .build());

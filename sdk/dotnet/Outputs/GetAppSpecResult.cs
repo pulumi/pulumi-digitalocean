@@ -25,6 +25,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecEnvResult> Envs;
         public readonly ImmutableArray<Outputs.GetAppSpecFunctionResult> Functions;
+        public readonly Outputs.GetAppSpecIngressResult Ingress;
         public readonly ImmutableArray<Outputs.GetAppSpecJobResult> Jobs;
         /// <summary>
         /// The name of the component.
@@ -49,6 +50,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecFunctionResult> functions,
 
+            Outputs.GetAppSpecIngressResult ingress,
+
             ImmutableArray<Outputs.GetAppSpecJobResult> jobs,
 
             string name,
@@ -67,6 +70,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Domains = domains;
             Envs = envs;
             Functions = functions;
+            Ingress = ingress;
             Jobs = jobs;
             Name = name;
             Region = region;

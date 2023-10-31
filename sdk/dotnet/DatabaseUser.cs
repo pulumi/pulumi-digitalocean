@@ -40,6 +40,38 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// ### Create a new user for a PostgreSQL database replica
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///     });
+    /// 
+    ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
+    ///     {
+    ///         ClusterId = replica_example.Uuid,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

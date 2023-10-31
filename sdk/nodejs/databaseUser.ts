@@ -24,6 +24,25 @@ import * as utilities from "./utilities";
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
  * ```
+ * ### Create a new user for a PostgreSQL database replica
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
+ *     clusterId: postgres_example.id,
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ * });
+ * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: replica_example.uuid});
+ * ```
  *
  * ## Import
  *

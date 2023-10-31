@@ -84,6 +84,7 @@ public final class GetDatabaseClusterResult {
      * 
      */
     private String size;
+    private String storageSizeMib;
     private @Nullable List<String> tags;
     /**
      * @return The full URI for connecting to the database cluster.
@@ -208,6 +209,9 @@ public final class GetDatabaseClusterResult {
     public String size() {
         return this.size;
     }
+    public String storageSizeMib() {
+        return this.storageSizeMib;
+    }
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
@@ -264,6 +268,7 @@ public final class GetDatabaseClusterResult {
         private String projectId;
         private String region;
         private String size;
+        private String storageSizeMib;
         private @Nullable List<String> tags;
         private String uri;
         private String urn;
@@ -287,6 +292,7 @@ public final class GetDatabaseClusterResult {
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
+    	      this.storageSizeMib = defaults.storageSizeMib;
     	      this.tags = defaults.tags;
     	      this.uri = defaults.uri;
     	      this.urn = defaults.urn;
@@ -373,6 +379,11 @@ public final class GetDatabaseClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder storageSizeMib(String storageSizeMib) {
+            this.storageSizeMib = Objects.requireNonNull(storageSizeMib);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -417,6 +428,7 @@ public final class GetDatabaseClusterResult {
             o.projectId = projectId;
             o.region = region;
             o.size = size;
+            o.storageSizeMib = storageSizeMib;
             o.tags = tags;
             o.uri = uri;
             o.urn = urn;

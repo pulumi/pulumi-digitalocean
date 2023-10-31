@@ -122,6 +122,58 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Create a new database firewall for a database replica
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import com.pulumi.digitalocean.DatabaseReplica;
+ * import com.pulumi.digitalocean.DatabaseReplicaArgs;
+ * import com.pulumi.digitalocean.DatabaseFirewall;
+ * import com.pulumi.digitalocean.DatabaseFirewallArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
+ *             .engine(&#34;pg&#34;)
+ *             .version(&#34;11&#34;)
+ *             .size(&#34;db-s-1vcpu-1gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .nodeCount(1)
+ *             .build());
+ * 
+ *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
+ *             .clusterId(postgres_example.id())
+ *             .size(&#34;db-s-1vcpu-1gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .build());
+ * 
+ *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *             .clusterId(replica_example.uuid())
+ *             .rules(DatabaseFirewallRuleArgs.builder()
+ *                 .type(&#34;ip_addr&#34;)
+ *                 .value(&#34;192.168.1.1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -39,6 +39,7 @@ public final class GetLoadBalancerResult {
     private Integer sizeUnit;
     private String status;
     private List<GetLoadBalancerStickySession> stickySessions;
+    private String type;
     private String vpcUuid;
 
     private GetLoadBalancerResult() {}
@@ -105,6 +106,9 @@ public final class GetLoadBalancerResult {
     public List<GetLoadBalancerStickySession> stickySessions() {
         return this.stickySessions;
     }
+    public String type() {
+        return this.type;
+    }
     public String vpcUuid() {
         return this.vpcUuid;
     }
@@ -139,6 +143,7 @@ public final class GetLoadBalancerResult {
         private Integer sizeUnit;
         private String status;
         private List<GetLoadBalancerStickySession> stickySessions;
+        private String type;
         private String vpcUuid;
         public Builder() {}
         public Builder(GetLoadBalancerResult defaults) {
@@ -164,6 +169,7 @@ public final class GetLoadBalancerResult {
     	      this.sizeUnit = defaults.sizeUnit;
     	      this.status = defaults.status;
     	      this.stickySessions = defaults.stickySessions;
+    	      this.type = defaults.type;
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
@@ -288,6 +294,11 @@ public final class GetLoadBalancerResult {
             return stickySessions(List.of(stickySessions));
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             this.vpcUuid = Objects.requireNonNull(vpcUuid);
             return this;
@@ -315,6 +326,7 @@ public final class GetLoadBalancerResult {
             o.sizeUnit = sizeUnit;
             o.status = status;
             o.stickySessions = stickySessions;
+            o.type = type;
             o.vpcUuid = vpcUuid;
             return o;
         }

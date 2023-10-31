@@ -9,6 +9,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecDatabase;
 import com.pulumi.digitalocean.outputs.GetAppSpecDomain;
 import com.pulumi.digitalocean.outputs.GetAppSpecEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunction;
+import com.pulumi.digitalocean.outputs.GetAppSpecIngress;
 import com.pulumi.digitalocean.outputs.GetAppSpecJob;
 import com.pulumi.digitalocean.outputs.GetAppSpecService;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSite;
@@ -41,6 +42,7 @@ public final class GetAppSpec {
      */
     private @Nullable List<GetAppSpecEnv> envs;
     private @Nullable List<GetAppSpecFunction> functions;
+    private GetAppSpecIngress ingress;
     private @Nullable List<GetAppSpecJob> jobs;
     /**
      * @return The name of the component.
@@ -85,6 +87,9 @@ public final class GetAppSpec {
     public List<GetAppSpecFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
     }
+    public GetAppSpecIngress ingress() {
+        return this.ingress;
+    }
     public List<GetAppSpecJob> jobs() {
         return this.jobs == null ? List.of() : this.jobs;
     }
@@ -123,6 +128,7 @@ public final class GetAppSpec {
         private List<String> domains;
         private @Nullable List<GetAppSpecEnv> envs;
         private @Nullable List<GetAppSpecFunction> functions;
+        private GetAppSpecIngress ingress;
         private @Nullable List<GetAppSpecJob> jobs;
         private String name;
         private @Nullable String region;
@@ -138,6 +144,7 @@ public final class GetAppSpec {
     	      this.domains = defaults.domains;
     	      this.envs = defaults.envs;
     	      this.functions = defaults.functions;
+    	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
@@ -195,6 +202,11 @@ public final class GetAppSpec {
             return functions(List.of(functions));
         }
         @CustomType.Setter
+        public Builder ingress(GetAppSpecIngress ingress) {
+            this.ingress = Objects.requireNonNull(ingress);
+            return this;
+        }
+        @CustomType.Setter
         public Builder jobs(@Nullable List<GetAppSpecJob> jobs) {
             this.jobs = jobs;
             return this;
@@ -244,6 +256,7 @@ public final class GetAppSpec {
             o.domains = domains;
             o.envs = envs;
             o.functions = functions;
+            o.ingress = ingress;
             o.jobs = jobs;
             o.name = name;
             o.region = region;

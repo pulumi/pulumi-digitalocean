@@ -17,6 +17,10 @@ public final class AppSpecFunctionCors {
     /**
      * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
      */
     private @Nullable Boolean allowCredentials;
     /**
@@ -48,6 +52,10 @@ public final class AppSpecFunctionCors {
     private AppSpecFunctionCors() {}
     /**
      * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
      * 
      */
     public Optional<Boolean> allowCredentials() {

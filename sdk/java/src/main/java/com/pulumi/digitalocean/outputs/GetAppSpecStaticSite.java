@@ -31,7 +31,11 @@ public final class GetAppSpecStaticSite {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     private @Nullable GetAppSpecStaticSiteCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -83,6 +87,12 @@ public final class GetAppSpecStaticSite {
      * 
      */
     private @Nullable String outputDir;
+    /**
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
+     */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     private List<GetAppSpecStaticSiteRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -108,7 +118,11 @@ public final class GetAppSpecStaticSite {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<GetAppSpecStaticSiteCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -182,6 +196,12 @@ public final class GetAppSpecStaticSite {
     public Optional<String> outputDir() {
         return Optional.ofNullable(this.outputDir);
     }
+    /**
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
+     */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public List<GetAppSpecStaticSiteRoute> routes() {
         return this.routes;
     }

@@ -117,6 +117,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.App;
  * import com.pulumi.digitalocean.AppArgs;
  * import com.pulumi.digitalocean.inputs.AppSpecArgs;
+ * import com.pulumi.digitalocean.inputs.AppSpecIngressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -141,6 +142,11 @@ import javax.annotation.Nullable;
  *                     .production(false)
  *                     .build())
  *                 .domains(Map.of(&#34;name&#34;, &#34;foo.example.com&#34;))
+ *                 .ingress(AppSpecIngressArgs.builder()
+ *                     .rule(                    
+ *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .build())
  *                 .name(&#34;mono-repo-example&#34;)
  *                 .region(&#34;ams&#34;)
  *                 .services(AppSpecServiceArgs.builder()
@@ -156,9 +162,6 @@ import javax.annotation.Nullable;
  *                     .instanceSizeSlug(&#34;professional-xs&#34;)
  *                     .logDestination(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                     .name(&#34;api&#34;)
- *                     .routes(AppSpecServiceRouteArgs.builder()
- *                         .path(&#34;/api&#34;)
- *                         .build())
  *                     .runCommand(&#34;bin/api&#34;)
  *                     .sourceDir(&#34;api/&#34;)
  *                     .build())
@@ -170,9 +173,6 @@ import javax.annotation.Nullable;
  *                         .repo(&#34;username/repo&#34;)
  *                         .build())
  *                     .name(&#34;web&#34;)
- *                     .routes(AppSpecStaticSiteRouteArgs.builder()
- *                         .path(&#34;/&#34;)
- *                         .build())
  *                     .build())
  *                 .build())
  *             .build());

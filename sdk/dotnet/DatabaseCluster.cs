@@ -68,7 +68,27 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///         Region = "nyc1",
     ///         Size = "db-s-1vcpu-1gb",
-    ///         Version = "6",
+    ///         Version = "7",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a new Kafka database cluster
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
+    ///     {
+    ///         Engine = "kafka",
+    ///         NodeCount = 3,
+    ///         Region = "nyc1",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Version = "3.5",
     ///     });
     /// 
     /// });
@@ -172,7 +192,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -202,7 +222,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster.
+        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -260,6 +280,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("sqlMode")]
         public Output<string?> SqlMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// </summary>
+        [Output("storageSizeMib")]
+        public Output<string> StorageSizeMib { get; private set; } = null!;
 
         /// <summary>
         /// A list of tag names to be applied to the database cluster.
@@ -345,7 +371,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -375,7 +401,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster.
+        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         /// </summary>
         [Input("nodeCount", required: true)]
         public Input<int> NodeCount { get; set; } = null!;
@@ -409,6 +435,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
+
+        /// <summary>
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// </summary>
+        [Input("storageSizeMib")]
+        public Input<string>? StorageSizeMib { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -456,7 +488,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -492,7 +524,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster.
+        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -570,6 +602,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
+
+        /// <summary>
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// </summary>
+        [Input("storageSizeMib")]
+        public Input<string>? StorageSizeMib { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

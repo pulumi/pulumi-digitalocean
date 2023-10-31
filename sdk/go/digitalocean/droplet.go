@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Image:  pulumi.String("ubuntu-20-04-x64"),
 //				Region: pulumi.String("nyc2"),
 //				Size:   pulumi.String("s-1vcpu-1gb"),
 //			})

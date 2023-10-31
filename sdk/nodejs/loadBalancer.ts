@@ -181,7 +181,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The region to start in
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
@@ -196,6 +196,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
+    /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
@@ -234,14 +238,12 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["sizeUnit"] = state ? state.sizeUnit : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessions"] = state ? state.stickySessions : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if ((!args || args.forwardingRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'forwardingRules'");
-            }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
             }
             resourceInputs["algorithm"] = args ? args.algorithm : undefined;
             resourceInputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
@@ -260,6 +262,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sizeUnit"] = args ? args.sizeUnit : undefined;
             resourceInputs["stickySessions"] = args ? args.stickySessions : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["loadBalancerUrn"] = undefined /*out*/;
@@ -361,6 +364,10 @@ export interface LoadBalancerState {
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * The ID of the VPC where the load balancer will be located.
      */
     vpcUuid?: pulumi.Input<string>;
@@ -433,7 +440,7 @@ export interface LoadBalancerArgs {
     /**
      * The region to start in
      */
-    region: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
@@ -447,6 +454,10 @@ export interface LoadBalancerArgs {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */

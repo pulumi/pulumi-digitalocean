@@ -182,6 +182,23 @@ class DatabaseUser(pulumi.CustomResource):
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
+        ### Create a new user for a PostgreSQL database replica
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        replica_example = digitalocean.DatabaseReplica("replica-example",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
+        ```
 
         ## Import
 
@@ -221,6 +238,23 @@ class DatabaseUser(pulumi.CustomResource):
             region="nyc1",
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
+        ```
+        ### Create a new user for a PostgreSQL database replica
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        replica_example = digitalocean.DatabaseReplica("replica-example",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
 
         ## Import

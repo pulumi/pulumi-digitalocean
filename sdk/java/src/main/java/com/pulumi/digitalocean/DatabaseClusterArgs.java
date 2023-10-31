@@ -38,14 +38,14 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     public Output<String> engine() {
@@ -98,14 +98,14 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
     @Import(name="nodeCount", required=true)
     private Output<Integer> nodeCount;
 
     /**
-     * @return Number of nodes that will be included in the cluster.
+     * @return Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
     public Output<Integer> nodeCount() {
@@ -188,6 +188,21 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * 
+     */
+    @Import(name="storageSizeMib")
+    private @Nullable Output<String> storageSizeMib;
+
+    /**
+     * @return Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * 
+     */
+    public Optional<Output<String>> storageSizeMib() {
+        return Optional.ofNullable(this.storageSizeMib);
+    }
+
+    /**
      * A list of tag names to be applied to the database cluster.
      * 
      */
@@ -233,6 +248,7 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         this.region = $.region;
         this.size = $.size;
         this.sqlMode = $.sqlMode;
+        this.storageSizeMib = $.storageSizeMib;
         this.tags = $.tags;
         this.version = $.version;
     }
@@ -277,7 +293,7 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -288,7 +304,7 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -371,7 +387,7 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodeCount Number of nodes that will be included in the cluster.
+         * @param nodeCount Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
          * 
          * @return builder
          * 
@@ -382,7 +398,7 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodeCount Number of nodes that will be included in the cluster.
+         * @param nodeCount Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
          * 
          * @return builder
          * 
@@ -534,6 +550,27 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder sqlMode(String sqlMode) {
             return sqlMode(Output.of(sqlMode));
+        }
+
+        /**
+         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSizeMib(@Nullable Output<String> storageSizeMib) {
+            $.storageSizeMib = storageSizeMib;
+            return this;
+        }
+
+        /**
+         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSizeMib(String storageSizeMib) {
+            return storageSizeMib(Output.of(storageSizeMib));
         }
 
         /**

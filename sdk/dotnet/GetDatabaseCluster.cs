@@ -182,6 +182,7 @@ namespace Pulumi.DigitalOcean
         /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         public readonly string Size;
+        public readonly string StorageSizeMib;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// The full URI for connecting to the database cluster.
@@ -232,6 +233,8 @@ namespace Pulumi.DigitalOcean
 
             string size,
 
+            string storageSizeMib,
+
             ImmutableArray<string> tags,
 
             string uri,
@@ -257,6 +260,7 @@ namespace Pulumi.DigitalOcean
             ProjectId = projectId;
             Region = region;
             Size = size;
+            StorageSizeMib = storageSizeMib;
             Tags = tags;
             Uri = uri;
             Urn = urn;

@@ -240,15 +240,15 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      * The region to start in
      * 
      */
-    @Import(name="region", required=true)
-    private Output<Either<String,Region>> region;
+    @Import(name="region")
+    private @Nullable Output<Either<String,Region>> region;
 
     /**
      * @return The region to start in
      * 
      */
-    public Output<Either<String,Region>> region() {
-        return this.region;
+    public Optional<Output<Either<String,Region>>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     /**
@@ -299,6 +299,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * The ID of the VPC where the load balancer will be located.
      * 
      */
@@ -333,6 +348,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.size = $.size;
         this.sizeUnit = $.sizeUnit;
         this.stickySessions = $.stickySessions;
+        this.type = $.type;
         this.vpcUuid = $.vpcUuid;
     }
 
@@ -694,7 +710,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder region(Output<Either<String,Region>> region) {
+        public Builder region(@Nullable Output<Either<String,Region>> region) {
             $.region = region;
             return this;
         }
@@ -795,6 +811,27 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
          * @param vpcUuid The ID of the VPC where the load balancer will be located.
          * 
          * @return builder
@@ -817,7 +854,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
         public LoadBalancerArgs build() {
             $.forwardingRules = Objects.requireNonNull($.forwardingRules, "expected parameter 'forwardingRules' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
             return $;
         }
     }
