@@ -127,7 +127,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the date and time when the project was created, (ISO8601)
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -141,7 +141,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the description of the project
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -155,7 +155,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the environment of the project&#39;s resources. The possible values are: `Development`, `Staging`, `Production`)
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environment;
 
     /**
@@ -169,7 +169,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * a boolean indicating whether or not the project is the default project. (Default: &#34;false&#34;)
      * 
      */
-    @Export(name="isDefault", type=Boolean.class, parameters={})
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
@@ -183,7 +183,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of the Project
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -197,7 +197,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the id of the project owner.
      * 
      */
-    @Export(name="ownerId", type=Integer.class, parameters={})
+    @Export(name="ownerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> ownerId;
 
     /**
@@ -211,7 +211,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the unique universal identifier of the project owner.
      * 
      */
-    @Export(name="ownerUuid", type=String.class, parameters={})
+    @Export(name="ownerUuid", refs={String.class}, tree="[0]")
     private Output<String> ownerUuid;
 
     /**
@@ -225,7 +225,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the purpose of the project, (Default: &#34;Web Application&#34;)
      * 
      */
-    @Export(name="purpose", type=String.class, parameters={})
+    @Export(name="purpose", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> purpose;
 
     /**
@@ -239,7 +239,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * a list of uniform resource names (URNs) for the resources associated with the project
      * 
      */
-    @Export(name="resources", type=List.class, parameters={String.class})
+    @Export(name="resources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resources;
 
     /**
@@ -253,7 +253,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the date and time when the project was last updated, (ISO8601)
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

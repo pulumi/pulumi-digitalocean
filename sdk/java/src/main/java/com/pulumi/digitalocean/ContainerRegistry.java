@@ -63,7 +63,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The date and time when the registry was created
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -77,7 +77,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -91,7 +91,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The name of the container_registry
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -105,7 +105,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -119,7 +119,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The domain of the container registry. Ex: `registry.digitalocean.com`
      * 
      */
-    @Export(name="serverUrl", type=String.class, parameters={})
+    @Export(name="serverUrl", refs={String.class}, tree="[0]")
     private Output<String> serverUrl;
 
     /**
@@ -133,7 +133,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The amount of storage used in the registry in bytes.
      * 
      */
-    @Export(name="storageUsageBytes", type=Integer.class, parameters={})
+    @Export(name="storageUsageBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> storageUsageBytes;
 
     /**
@@ -147,7 +147,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      * 
      */
-    @Export(name="subscriptionTierSlug", type=String.class, parameters={})
+    @Export(name="subscriptionTierSlug", refs={String.class}, tree="[0]")
     private Output<String> subscriptionTierSlug;
 
     /**

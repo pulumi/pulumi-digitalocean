@@ -120,7 +120,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -134,7 +134,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * A list of associated droplet ids.
      * 
      */
-    @Export(name="dropletIds", type=List.class, parameters={Integer.class})
+    @Export(name="dropletIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> dropletIds;
 
     /**
@@ -148,7 +148,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Filesystem label for the block storage volume.
      * 
      */
-    @Export(name="filesystemLabel", type=String.class, parameters={})
+    @Export(name="filesystemLabel", refs={String.class}, tree="[0]")
     private Output<String> filesystemLabel;
 
     /**
@@ -166,7 +166,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
-    @Export(name="filesystemType", type=String.class, parameters={})
+    @Export(name="filesystemType", refs={String.class}, tree="[0]")
     private Output<String> filesystemType;
 
     /**
@@ -180,7 +180,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Initial filesystem label for the block storage volume.
      * 
      */
-    @Export(name="initialFilesystemLabel", type=String.class, parameters={})
+    @Export(name="initialFilesystemLabel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialFilesystemLabel;
 
     /**
@@ -194,7 +194,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      * 
      */
-    @Export(name="initialFilesystemType", type=String.class, parameters={})
+    @Export(name="initialFilesystemType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialFilesystemType;
 
     /**
@@ -208,7 +208,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and &#34;-&#34;, up to a limit of 64 characters. The name must begin with a letter.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -222,7 +222,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The region that the block storage volume will be created in.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -236,7 +236,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -250,7 +250,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
      * 
      */
-    @Export(name="snapshotId", type=String.class, parameters={})
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
 
     /**
@@ -264,7 +264,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * A list of the tags to be applied to this Volume.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -278,7 +278,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The uniform resource name for the volume.
      * 
      */
-    @Export(name="volumeUrn", type=String.class, parameters={})
+    @Export(name="volumeUrn", refs={String.class}, tree="[0]")
     private Output<String> volumeUrn;
 
     /**

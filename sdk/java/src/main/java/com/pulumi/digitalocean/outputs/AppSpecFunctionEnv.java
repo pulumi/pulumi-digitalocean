@@ -105,12 +105,12 @@ public final class AppSpecFunctionEnv {
             return this;
         }
         public AppSpecFunctionEnv build() {
-            final var o = new AppSpecFunctionEnv();
-            o.key = key;
-            o.scope = scope;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new AppSpecFunctionEnv();
+            _resultValue.key = key;
+            _resultValue.scope = scope;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class GetSshKeysSort {
             return this;
         }
         public GetSshKeysSort build() {
-            final var o = new GetSshKeysSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetSshKeysSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

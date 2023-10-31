@@ -234,19 +234,19 @@ public final class GetProjectsProject {
             return this;
         }
         public GetProjectsProject build() {
-            final var o = new GetProjectsProject();
-            o.createdAt = createdAt;
-            o.description = description;
-            o.environment = environment;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.name = name;
-            o.ownerId = ownerId;
-            o.ownerUuid = ownerUuid;
-            o.purpose = purpose;
-            o.resources = resources;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetProjectsProject();
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.environment = environment;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.name = name;
+            _resultValue.ownerId = ownerId;
+            _resultValue.ownerUuid = ownerUuid;
+            _resultValue.purpose = purpose;
+            _resultValue.resources = resources;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

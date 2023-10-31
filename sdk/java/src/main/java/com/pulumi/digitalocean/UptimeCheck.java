@@ -35,7 +35,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * A boolean value indicating whether the check is enabled/disabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -49,7 +49,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * A human-friendly display name for the check.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -63,7 +63,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
      * 
      */
-    @Export(name="regions", type=List.class, parameters={String.class})
+    @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> regions;
 
     /**
@@ -77,7 +77,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * The endpoint to perform healthchecks on.
      * 
      */
-    @Export(name="target", type=String.class, parameters={})
+    @Export(name="target", refs={String.class}, tree="[0]")
     private Output<String> target;
 
     /**
@@ -91,7 +91,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * The type of health check to perform: &#39;ping&#39; &#39;http&#39; &#39;https&#39;.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

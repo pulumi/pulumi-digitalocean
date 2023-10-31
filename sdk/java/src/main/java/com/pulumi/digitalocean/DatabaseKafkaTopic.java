@@ -37,7 +37,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * The ID of the source database cluster. Note: This must be a Kafka cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -52,7 +52,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * The `config` block is documented below.
      * 
      */
-    @Export(name="configs", type=List.class, parameters={DatabaseKafkaTopicConfig.class})
+    @Export(name="configs", refs={List.class,DatabaseKafkaTopicConfig.class}, tree="[0,1]")
     private Output<List<DatabaseKafkaTopicConfig>> configs;
 
     /**
@@ -67,7 +67,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * The name for the topic.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -81,7 +81,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
      * 
      */
-    @Export(name="partitionCount", type=Integer.class, parameters={})
+    @Export(name="partitionCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> partitionCount;
 
     /**
@@ -95,7 +95,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
      * 
      */
-    @Export(name="replicationFactor", type=Integer.class, parameters={})
+    @Export(name="replicationFactor", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> replicationFactor;
 
     /**
@@ -109,7 +109,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * The current status of the topic. Possible values are &#39;active&#39;, &#39;configuring&#39;, and &#39;deleting&#39;.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

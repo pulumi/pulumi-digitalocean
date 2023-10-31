@@ -81,7 +81,7 @@ public class ReservedIpAssignment extends com.pulumi.resources.CustomResource {
      * The ID of Droplet that the reserved IP will be assigned to.
      * 
      */
-    @Export(name="dropletId", type=Integer.class, parameters={})
+    @Export(name="dropletId", refs={Integer.class}, tree="[0]")
     private Output<Integer> dropletId;
 
     /**
@@ -95,7 +95,7 @@ public class ReservedIpAssignment extends com.pulumi.resources.CustomResource {
      * The reserved IP to assign to the Droplet.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**

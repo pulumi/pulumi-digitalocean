@@ -87,11 +87,11 @@ public final class GetAppSpecJobGithub {
             return this;
         }
         public GetAppSpecJobGithub build() {
-            final var o = new GetAppSpecJobGithub();
-            o.branch = branch;
-            o.deployOnPush = deployOnPush;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new GetAppSpecJobGithub();
+            _resultValue.branch = branch;
+            _resultValue.deployOnPush = deployOnPush;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

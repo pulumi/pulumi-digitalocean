@@ -79,7 +79,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
      * 
      */
-    @Export(name="backupHour", type=Integer.class, parameters={})
+    @Export(name="backupHour", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupHour;
 
     /**
@@ -93,7 +93,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
      * 
      */
-    @Export(name="backupMinute", type=Integer.class, parameters={})
+    @Export(name="backupMinute", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupMinute;
 
     /**
@@ -107,7 +107,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
      * 
      */
-    @Export(name="binlogRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="binlogRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> binlogRetentionPeriod;
 
     /**
@@ -121,7 +121,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The ID of the target MySQL cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -135,7 +135,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The number of seconds that the mysqld server waits for a connect packet before responding with bad handshake.
      * 
      */
-    @Export(name="connectTimeout", type=Integer.class, parameters={})
+    @Export(name="connectTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectTimeout;
 
     /**
@@ -149,7 +149,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * Default server time zone, in the form of an offset from UTC (from -12:00 to +12:00), a time zone name (EST), or `SYSTEM` to use the MySQL server default.
      * 
      */
-    @Export(name="defaultTimeZone", type=String.class, parameters={})
+    @Export(name="defaultTimeZone", refs={String.class}, tree="[0]")
     private Output<String> defaultTimeZone;
 
     /**
@@ -163,7 +163,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The maximum permitted result length, in bytes, for the `GROUP_CONCAT()` function.
      * 
      */
-    @Export(name="groupConcatMaxLen", type=Integer.class, parameters={})
+    @Export(name="groupConcatMaxLen", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupConcatMaxLen;
 
     /**
@@ -177,7 +177,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The time, in seconds, before cached statistics expire.
      * 
      */
-    @Export(name="informationSchemaStatsExpiry", type=Integer.class, parameters={})
+    @Export(name="informationSchemaStatsExpiry", refs={Integer.class}, tree="[0]")
     private Output<Integer> informationSchemaStatsExpiry;
 
     /**
@@ -191,7 +191,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The minimum length of words that an InnoDB FULLTEXT index stores.
      * 
      */
-    @Export(name="innodbFtMinTokenSize", type=Integer.class, parameters={})
+    @Export(name="innodbFtMinTokenSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> innodbFtMinTokenSize;
 
     /**
@@ -205,7 +205,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The InnoDB FULLTEXT index stopword list for all InnoDB tables.
      * 
      */
-    @Export(name="innodbFtServerStopwordTable", type=String.class, parameters={})
+    @Export(name="innodbFtServerStopwordTable", refs={String.class}, tree="[0]")
     private Output<String> innodbFtServerStopwordTable;
 
     /**
@@ -219,7 +219,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The time, in seconds, that an InnoDB transaction waits for a row lock. before giving up.
      * 
      */
-    @Export(name="innodbLockWaitTimeout", type=Integer.class, parameters={})
+    @Export(name="innodbLockWaitTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> innodbLockWaitTimeout;
 
     /**
@@ -233,7 +233,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The size of the buffer, in bytes, that InnoDB uses to write to the log files. on disk.
      * 
      */
-    @Export(name="innodbLogBufferSize", type=Integer.class, parameters={})
+    @Export(name="innodbLogBufferSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> innodbLogBufferSize;
 
     /**
@@ -247,7 +247,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The upper limit, in bytes, of the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
-    @Export(name="innodbOnlineAlterLogMaxSize", type=Integer.class, parameters={})
+    @Export(name="innodbOnlineAlterLogMaxSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> innodbOnlineAlterLogMaxSize;
 
     /**
@@ -261,7 +261,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * When enabled, records information about all deadlocks in InnoDB user transactions in the error log. Disabled by default.
      * 
      */
-    @Export(name="innodbPrintAllDeadlocks", type=Boolean.class, parameters={})
+    @Export(name="innodbPrintAllDeadlocks", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> innodbPrintAllDeadlocks;
 
     /**
@@ -275,7 +275,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
      * 
      */
-    @Export(name="innodbRollbackOnTimeout", type=Boolean.class, parameters={})
+    @Export(name="innodbRollbackOnTimeout", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> innodbRollbackOnTimeout;
 
     /**
@@ -289,7 +289,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The time, in seconds, the server waits for activity on an interactive. connection before closing it.
      * 
      */
-    @Export(name="interactiveTimeout", type=Integer.class, parameters={})
+    @Export(name="interactiveTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> interactiveTimeout;
 
     /**
@@ -303,7 +303,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
      * 
      */
-    @Export(name="internalTmpMemStorageEngine", type=String.class, parameters={})
+    @Export(name="internalTmpMemStorageEngine", refs={String.class}, tree="[0]")
     private Output<String> internalTmpMemStorageEngine;
 
     /**
@@ -317,7 +317,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
      * 
      */
-    @Export(name="longQueryTime", type=Double.class, parameters={})
+    @Export(name="longQueryTime", refs={Double.class}, tree="[0]")
     private Output<Double> longQueryTime;
 
     /**
@@ -331,7 +331,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
      * 
      */
-    @Export(name="maxAllowedPacket", type=Integer.class, parameters={})
+    @Export(name="maxAllowedPacket", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxAllowedPacket;
 
     /**
@@ -345,7 +345,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
      * 
      */
-    @Export(name="maxHeapTableSize", type=Integer.class, parameters={})
+    @Export(name="maxHeapTableSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxHeapTableSize;
 
     /**
@@ -359,7 +359,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The time, in seconds, to wait for more data from an existing connection. aborting the read.
      * 
      */
-    @Export(name="netReadTimeout", type=Integer.class, parameters={})
+    @Export(name="netReadTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> netReadTimeout;
 
     /**
@@ -373,7 +373,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The number of seconds to wait for a block to be written to a connection before aborting the write.
      * 
      */
-    @Export(name="netWriteTimeout", type=Integer.class, parameters={})
+    @Export(name="netWriteTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> netWriteTimeout;
 
     /**
@@ -387,7 +387,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
      * 
      */
-    @Export(name="slowQueryLog", type=Boolean.class, parameters={})
+    @Export(name="slowQueryLog", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> slowQueryLog;
 
     /**
@@ -401,7 +401,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
      * 
      */
-    @Export(name="sortBufferSize", type=Integer.class, parameters={})
+    @Export(name="sortBufferSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> sortBufferSize;
 
     /**
@@ -415,7 +415,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
      * 
      */
-    @Export(name="sqlMode", type=String.class, parameters={})
+    @Export(name="sqlMode", refs={String.class}, tree="[0]")
     private Output<String> sqlMode;
 
     /**
@@ -429,7 +429,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
      * 
      */
-    @Export(name="sqlRequirePrimaryKey", type=Boolean.class, parameters={})
+    @Export(name="sqlRequirePrimaryKey", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sqlRequirePrimaryKey;
 
     /**
@@ -443,7 +443,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
      * 
      */
-    @Export(name="tmpTableSize", type=Integer.class, parameters={})
+    @Export(name="tmpTableSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> tmpTableSize;
 
     /**
@@ -457,7 +457,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * The number of seconds the server waits for activity on a noninteractive connection before closing it.
      * 
      */
-    @Export(name="waitTimeout", type=Integer.class, parameters={})
+    @Export(name="waitTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> waitTimeout;
 
     /**

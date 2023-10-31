@@ -86,11 +86,11 @@ public final class GetAppSpecIngressRuleCorsAllowOrigins {
             return this;
         }
         public GetAppSpecIngressRuleCorsAllowOrigins build() {
-            final var o = new GetAppSpecIngressRuleCorsAllowOrigins();
-            o.exact = exact;
-            o.prefix = prefix;
-            o.regex = regex;
-            return o;
+            final var _resultValue = new GetAppSpecIngressRuleCorsAllowOrigins();
+            _resultValue.exact = exact;
+            _resultValue.prefix = prefix;
+            _resultValue.regex = regex;
+            return _resultValue;
         }
     }
 }

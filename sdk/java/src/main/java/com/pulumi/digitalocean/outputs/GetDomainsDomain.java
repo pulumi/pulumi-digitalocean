@@ -85,11 +85,11 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.name = name;
-            o.ttl = ttl;
-            o.urn = urn;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.name = name;
+            _resultValue.ttl = ttl;
+            _resultValue.urn = urn;
+            return _resultValue;
         }
     }
 }

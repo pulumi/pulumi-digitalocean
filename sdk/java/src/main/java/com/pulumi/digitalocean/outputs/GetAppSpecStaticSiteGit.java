@@ -67,10 +67,10 @@ public final class GetAppSpecStaticSiteGit {
             return this;
         }
         public GetAppSpecStaticSiteGit build() {
-            final var o = new GetAppSpecStaticSiteGit();
-            o.branch = branch;
-            o.repoCloneUrl = repoCloneUrl;
-            return o;
+            final var _resultValue = new GetAppSpecStaticSiteGit();
+            _resultValue.branch = branch;
+            _resultValue.repoCloneUrl = repoCloneUrl;
+            return _resultValue;
         }
     }
 }

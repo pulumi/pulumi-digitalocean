@@ -120,12 +120,12 @@ public final class GetSpacesBucketsFilter {
             return values(List.of(values));
         }
         public GetSpacesBucketsFilter build() {
-            final var o = new GetSpacesBucketsFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetSpacesBucketsFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

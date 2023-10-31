@@ -67,10 +67,10 @@ public final class GetTagsSort {
             return this;
         }
         public GetTagsSort build() {
-            final var o = new GetTagsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetTagsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

@@ -181,16 +181,16 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.dropletLimit = dropletLimit;
-            o.email = email;
-            o.emailVerified = emailVerified;
-            o.floatingIpLimit = floatingIpLimit;
-            o.id = id;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.dropletLimit = dropletLimit;
+            _resultValue.email = email;
+            _resultValue.emailVerified = emailVerified;
+            _resultValue.floatingIpLimit = floatingIpLimit;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.statusMessage = statusMessage;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

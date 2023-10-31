@@ -122,12 +122,12 @@ public final class GetRecordsFilter {
             return values(List.of(values));
         }
         public GetRecordsFilter build() {
-            final var o = new GetRecordsFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRecordsFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

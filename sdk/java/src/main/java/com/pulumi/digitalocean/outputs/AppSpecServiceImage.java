@@ -129,13 +129,13 @@ public final class AppSpecServiceImage {
             return this;
         }
         public AppSpecServiceImage build() {
-            final var o = new AppSpecServiceImage();
-            o.deployOnPushes = deployOnPushes;
-            o.registry = registry;
-            o.registryType = registryType;
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new AppSpecServiceImage();
+            _resultValue.deployOnPushes = deployOnPushes;
+            _resultValue.registry = registry;
+            _resultValue.registryType = registryType;
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

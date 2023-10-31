@@ -68,10 +68,10 @@ public final class AppSpecServiceRoute {
             return this;
         }
         public AppSpecServiceRoute build() {
-            final var o = new AppSpecServiceRoute();
-            o.path = path;
-            o.preservePathPrefix = preservePathPrefix;
-            return o;
+            final var _resultValue = new AppSpecServiceRoute();
+            _resultValue.path = path;
+            _resultValue.preservePathPrefix = preservePathPrefix;
+            return _resultValue;
         }
     }
 }

@@ -318,23 +318,23 @@ public final class GetImagesImage {
             return this;
         }
         public GetImagesImage build() {
-            final var o = new GetImagesImage();
-            o.created = created;
-            o.description = description;
-            o.distribution = distribution;
-            o.errorMessage = errorMessage;
-            o.id = id;
-            o.image = image;
-            o.minDiskSize = minDiskSize;
-            o.name = name;
-            o.private_ = private_;
-            o.regions = regions;
-            o.sizeGigabytes = sizeGigabytes;
-            o.slug = slug;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetImagesImage();
+            _resultValue.created = created;
+            _resultValue.description = description;
+            _resultValue.distribution = distribution;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.id = id;
+            _resultValue.image = image;
+            _resultValue.minDiskSize = minDiskSize;
+            _resultValue.name = name;
+            _resultValue.private_ = private_;
+            _resultValue.regions = regions;
+            _resultValue.sizeGigabytes = sizeGigabytes;
+            _resultValue.slug = slug;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

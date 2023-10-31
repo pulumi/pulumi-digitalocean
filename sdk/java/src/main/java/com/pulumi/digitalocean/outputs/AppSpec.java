@@ -273,21 +273,21 @@ public final class AppSpec {
             return workers(List.of(workers));
         }
         public AppSpec build() {
-            final var o = new AppSpec();
-            o.alerts = alerts;
-            o.databases = databases;
-            o.domainNames = domainNames;
-            o.domains = domains;
-            o.envs = envs;
-            o.functions = functions;
-            o.ingress = ingress;
-            o.jobs = jobs;
-            o.name = name;
-            o.region = region;
-            o.services = services;
-            o.staticSites = staticSites;
-            o.workers = workers;
-            return o;
+            final var _resultValue = new AppSpec();
+            _resultValue.alerts = alerts;
+            _resultValue.databases = databases;
+            _resultValue.domainNames = domainNames;
+            _resultValue.domains = domains;
+            _resultValue.envs = envs;
+            _resultValue.functions = functions;
+            _resultValue.ingress = ingress;
+            _resultValue.jobs = jobs;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.services = services;
+            _resultValue.staticSites = staticSites;
+            _resultValue.workers = workers;
+            return _resultValue;
         }
     }
 }

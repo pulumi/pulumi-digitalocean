@@ -190,7 +190,7 @@ public class DatabaseFirewall extends com.pulumi.resources.CustomResource {
      * The ID of the target database cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -204,7 +204,7 @@ public class DatabaseFirewall extends com.pulumi.resources.CustomResource {
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
      * 
      */
-    @Export(name="rules", type=List.class, parameters={DatabaseFirewallRule.class})
+    @Export(name="rules", refs={List.class,DatabaseFirewallRule.class}, tree="[0,1]")
     private Output<List<DatabaseFirewallRule>> rules;
 
     /**

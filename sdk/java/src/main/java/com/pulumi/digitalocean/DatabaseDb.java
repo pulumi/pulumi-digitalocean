@@ -72,7 +72,7 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
      * The ID of the original source database cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -86,7 +86,7 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
      * The name for the database.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

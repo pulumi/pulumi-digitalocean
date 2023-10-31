@@ -272,20 +272,20 @@ public final class KubernetesClusterNodePool {
             return taints(List.of(taints));
         }
         public KubernetesClusterNodePool build() {
-            final var o = new KubernetesClusterNodePool();
-            o.actualNodeCount = actualNodeCount;
-            o.autoScale = autoScale;
-            o.id = id;
-            o.labels = labels;
-            o.maxNodes = maxNodes;
-            o.minNodes = minNodes;
-            o.name = name;
-            o.nodeCount = nodeCount;
-            o.nodes = nodes;
-            o.size = size;
-            o.tags = tags;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new KubernetesClusterNodePool();
+            _resultValue.actualNodeCount = actualNodeCount;
+            _resultValue.autoScale = autoScale;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.maxNodes = maxNodes;
+            _resultValue.minNodes = minNodes;
+            _resultValue.name = name;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodes = nodes;
+            _resultValue.size = size;
+            _resultValue.tags = tags;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

@@ -253,7 +253,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Create a new database cluster based on a backup of an existing cluster.
      * 
      */
-    @Export(name="backupRestore", type=DatabaseClusterBackupRestore.class, parameters={})
+    @Export(name="backupRestore", refs={DatabaseClusterBackupRestore.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseClusterBackupRestore> backupRestore;
 
     /**
@@ -267,7 +267,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * The uniform resource name of the database cluster.
      * 
      */
-    @Export(name="clusterUrn", type=String.class, parameters={})
+    @Export(name="clusterUrn", refs={String.class}, tree="[0]")
     private Output<String> clusterUrn;
 
     /**
@@ -281,7 +281,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Name of the cluster&#39;s default database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -295,7 +295,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -309,7 +309,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
      * 
      */
-    @Export(name="evictionPolicy", type=String.class, parameters={})
+    @Export(name="evictionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> evictionPolicy;
 
     /**
@@ -323,7 +323,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Database cluster&#39;s hostname.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -337,7 +337,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Defines when the automatic maintenance should be performed for the database cluster.
      * 
      */
-    @Export(name="maintenanceWindows", type=List.class, parameters={DatabaseClusterMaintenanceWindow.class})
+    @Export(name="maintenanceWindows", refs={List.class,DatabaseClusterMaintenanceWindow.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DatabaseClusterMaintenanceWindow>> maintenanceWindows;
 
     /**
@@ -351,7 +351,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * The name of the database cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -365,7 +365,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
@@ -379,7 +379,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Password for the cluster&#39;s default user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -393,7 +393,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Network port that the database cluster is listening on.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -407,7 +407,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Same as `host`, but only accessible from resources within the account and in the same region.
      * 
      */
-    @Export(name="privateHost", type=String.class, parameters={})
+    @Export(name="privateHost", refs={String.class}, tree="[0]")
     private Output<String> privateHost;
 
     /**
@@ -421,7 +421,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * The ID of the VPC where the database cluster will be located.
      * 
      */
-    @Export(name="privateNetworkUuid", type=String.class, parameters={})
+    @Export(name="privateNetworkUuid", refs={String.class}, tree="[0]")
     private Output<String> privateNetworkUuid;
 
     /**
@@ -435,7 +435,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      * 
      */
-    @Export(name="privateUri", type=String.class, parameters={})
+    @Export(name="privateUri", refs={String.class}, tree="[0]")
     private Output<String> privateUri;
 
     /**
@@ -449,7 +449,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -463,7 +463,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * DigitalOcean region where the cluster will reside.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -477,7 +477,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
      * 
      */
-    @Export(name="size", type=String.class, parameters={})
+    @Export(name="size", refs={String.class}, tree="[0]")
     private Output<String> size;
 
     /**
@@ -491,7 +491,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      * 
      */
-    @Export(name="sqlMode", type=String.class, parameters={})
+    @Export(name="sqlMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlMode;
 
     /**
@@ -505,7 +505,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
      * 
      */
-    @Export(name="storageSizeMib", type=String.class, parameters={})
+    @Export(name="storageSizeMib", refs={String.class}, tree="[0]")
     private Output<String> storageSizeMib;
 
     /**
@@ -519,7 +519,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * A list of tag names to be applied to the database cluster.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -533,7 +533,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * The full URI for connecting to the database cluster.
      * 
      */
-    @Export(name="uri", type=String.class, parameters={})
+    @Export(name="uri", refs={String.class}, tree="[0]")
     private Output<String> uri;
 
     /**
@@ -547,7 +547,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * Username for the cluster&#39;s default user.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
@@ -562,7 +562,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 
     /**

@@ -332,23 +332,23 @@ public final class AppSpecWorker {
             return this;
         }
         public AppSpecWorker build() {
-            final var o = new AppSpecWorker();
-            o.alerts = alerts;
-            o.buildCommand = buildCommand;
-            o.dockerfilePath = dockerfilePath;
-            o.environmentSlug = environmentSlug;
-            o.envs = envs;
-            o.git = git;
-            o.github = github;
-            o.gitlab = gitlab;
-            o.image = image;
-            o.instanceCount = instanceCount;
-            o.instanceSizeSlug = instanceSizeSlug;
-            o.logDestinations = logDestinations;
-            o.name = name;
-            o.runCommand = runCommand;
-            o.sourceDir = sourceDir;
-            return o;
+            final var _resultValue = new AppSpecWorker();
+            _resultValue.alerts = alerts;
+            _resultValue.buildCommand = buildCommand;
+            _resultValue.dockerfilePath = dockerfilePath;
+            _resultValue.environmentSlug = environmentSlug;
+            _resultValue.envs = envs;
+            _resultValue.git = git;
+            _resultValue.github = github;
+            _resultValue.gitlab = gitlab;
+            _resultValue.image = image;
+            _resultValue.instanceCount = instanceCount;
+            _resultValue.instanceSizeSlug = instanceSizeSlug;
+            _resultValue.logDestinations = logDestinations;
+            _resultValue.name = name;
+            _resultValue.runCommand = runCommand;
+            _resultValue.sourceDir = sourceDir;
+            return _resultValue;
         }
     }
 }

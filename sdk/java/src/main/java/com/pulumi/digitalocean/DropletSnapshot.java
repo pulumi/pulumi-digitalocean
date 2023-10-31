@@ -78,7 +78,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * The date and time the Droplet snapshot was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -92,7 +92,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * The ID of the Droplet from which the snapshot will be taken.
      * 
      */
-    @Export(name="dropletId", type=String.class, parameters={})
+    @Export(name="dropletId", refs={String.class}, tree="[0]")
     private Output<String> dropletId;
 
     /**
@@ -106,7 +106,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
      * 
      */
-    @Export(name="minDiskSize", type=Integer.class, parameters={})
+    @Export(name="minDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minDiskSize;
 
     /**
@@ -120,7 +120,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * A name for the Droplet snapshot.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -134,7 +134,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * A list of DigitalOcean region &#34;slugs&#34; indicating where the droplet snapshot is available.
      * 
      */
-    @Export(name="regions", type=List.class, parameters={String.class})
+    @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
     /**
@@ -148,7 +148,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * The billable size of the Droplet snapshot in gigabytes.
      * 
      */
-    @Export(name="size", type=Double.class, parameters={})
+    @Export(name="size", refs={Double.class}, tree="[0]")
     private Output<Double> size;
 
     /**

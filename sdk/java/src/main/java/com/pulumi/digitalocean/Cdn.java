@@ -121,7 +121,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
-    @Export(name="certificateId", type=String.class, parameters={})
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
@@ -135,7 +135,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      * 
      */
-    @Export(name="certificateName", type=String.class, parameters={})
+    @Export(name="certificateName", refs={String.class}, tree="[0]")
     private Output<String> certificateName;
 
     /**
@@ -149,7 +149,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * The date and time when the CDN Endpoint was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -163,7 +163,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
      * 
      */
-    @Export(name="customDomain", type=String.class, parameters={})
+    @Export(name="customDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDomain;
 
     /**
@@ -177,7 +177,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * The fully qualified domain name (FQDN) from which the CDN-backed content is served.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -191,7 +191,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * The fully qualified domain name, (FQDN) for a Space.
      * 
      */
-    @Export(name="origin", type=String.class, parameters={})
+    @Export(name="origin", refs={String.class}, tree="[0]")
     private Output<String> origin;
 
     /**
@@ -205,7 +205,7 @@ public class Cdn extends com.pulumi.resources.CustomResource {
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**

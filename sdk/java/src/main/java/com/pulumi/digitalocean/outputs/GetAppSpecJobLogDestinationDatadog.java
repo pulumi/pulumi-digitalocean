@@ -67,10 +67,10 @@ public final class GetAppSpecJobLogDestinationDatadog {
             return this;
         }
         public GetAppSpecJobLogDestinationDatadog build() {
-            final var o = new GetAppSpecJobLogDestinationDatadog();
-            o.apiKey = apiKey;
-            o.endpoint = endpoint;
-            return o;
+            final var _resultValue = new GetAppSpecJobLogDestinationDatadog();
+            _resultValue.apiKey = apiKey;
+            _resultValue.endpoint = endpoint;
+            return _resultValue;
         }
     }
 }

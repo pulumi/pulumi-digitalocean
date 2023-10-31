@@ -46,9 +46,9 @@ public final class AppSpecServiceLogDestinationPapertrail {
             return this;
         }
         public AppSpecServiceLogDestinationPapertrail build() {
-            final var o = new AppSpecServiceLogDestinationPapertrail();
-            o.endpoint = endpoint;
-            return o;
+            final var _resultValue = new AppSpecServiceLogDestinationPapertrail();
+            _resultValue.endpoint = endpoint;
+            return _resultValue;
         }
     }
 }

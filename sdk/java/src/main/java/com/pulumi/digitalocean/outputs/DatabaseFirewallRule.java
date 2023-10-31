@@ -105,12 +105,12 @@ public final class DatabaseFirewallRule {
             return this;
         }
         public DatabaseFirewallRule build() {
-            final var o = new DatabaseFirewallRule();
-            o.createdAt = createdAt;
-            o.type = type;
-            o.uuid = uuid;
-            o.value = value;
-            return o;
+            final var _resultValue = new DatabaseFirewallRule();
+            _resultValue.createdAt = createdAt;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

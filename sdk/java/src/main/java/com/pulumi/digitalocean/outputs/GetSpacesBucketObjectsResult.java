@@ -182,18 +182,18 @@ public final class GetSpacesBucketObjectsResult {
             return this;
         }
         public GetSpacesBucketObjectsResult build() {
-            final var o = new GetSpacesBucketObjectsResult();
-            o.bucket = bucket;
-            o.commonPrefixes = commonPrefixes;
-            o.delimiter = delimiter;
-            o.encodingType = encodingType;
-            o.id = id;
-            o.keys = keys;
-            o.maxKeys = maxKeys;
-            o.owners = owners;
-            o.prefix = prefix;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetSpacesBucketObjectsResult();
+            _resultValue.bucket = bucket;
+            _resultValue.commonPrefixes = commonPrefixes;
+            _resultValue.delimiter = delimiter;
+            _resultValue.encodingType = encodingType;
+            _resultValue.id = id;
+            _resultValue.keys = keys;
+            _resultValue.maxKeys = maxKeys;
+            _resultValue.owners = owners;
+            _resultValue.prefix = prefix;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

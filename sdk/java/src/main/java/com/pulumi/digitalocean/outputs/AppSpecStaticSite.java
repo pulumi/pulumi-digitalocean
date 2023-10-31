@@ -343,23 +343,23 @@ public final class AppSpecStaticSite {
             return this;
         }
         public AppSpecStaticSite build() {
-            final var o = new AppSpecStaticSite();
-            o.buildCommand = buildCommand;
-            o.catchallDocument = catchallDocument;
-            o.cors = cors;
-            o.dockerfilePath = dockerfilePath;
-            o.environmentSlug = environmentSlug;
-            o.envs = envs;
-            o.errorDocument = errorDocument;
-            o.git = git;
-            o.github = github;
-            o.gitlab = gitlab;
-            o.indexDocument = indexDocument;
-            o.name = name;
-            o.outputDir = outputDir;
-            o.routes = routes;
-            o.sourceDir = sourceDir;
-            return o;
+            final var _resultValue = new AppSpecStaticSite();
+            _resultValue.buildCommand = buildCommand;
+            _resultValue.catchallDocument = catchallDocument;
+            _resultValue.cors = cors;
+            _resultValue.dockerfilePath = dockerfilePath;
+            _resultValue.environmentSlug = environmentSlug;
+            _resultValue.envs = envs;
+            _resultValue.errorDocument = errorDocument;
+            _resultValue.git = git;
+            _resultValue.github = github;
+            _resultValue.gitlab = gitlab;
+            _resultValue.indexDocument = indexDocument;
+            _resultValue.name = name;
+            _resultValue.outputDir = outputDir;
+            _resultValue.routes = routes;
+            _resultValue.sourceDir = sourceDir;
+            return _resultValue;
         }
     }
 }

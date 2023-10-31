@@ -48,9 +48,9 @@ public final class GetAppSpecServiceImageDeployOnPush {
             return this;
         }
         public GetAppSpecServiceImageDeployOnPush build() {
-            final var o = new GetAppSpecServiceImageDeployOnPush();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetAppSpecServiceImageDeployOnPush();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

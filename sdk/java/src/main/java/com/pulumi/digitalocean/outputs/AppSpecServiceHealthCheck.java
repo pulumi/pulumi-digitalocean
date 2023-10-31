@@ -144,14 +144,14 @@ public final class AppSpecServiceHealthCheck {
             return this;
         }
         public AppSpecServiceHealthCheck build() {
-            final var o = new AppSpecServiceHealthCheck();
-            o.failureThreshold = failureThreshold;
-            o.httpPath = httpPath;
-            o.initialDelaySeconds = initialDelaySeconds;
-            o.periodSeconds = periodSeconds;
-            o.successThreshold = successThreshold;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new AppSpecServiceHealthCheck();
+            _resultValue.failureThreshold = failureThreshold;
+            _resultValue.httpPath = httpPath;
+            _resultValue.initialDelaySeconds = initialDelaySeconds;
+            _resultValue.periodSeconds = periodSeconds;
+            _resultValue.successThreshold = successThreshold;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

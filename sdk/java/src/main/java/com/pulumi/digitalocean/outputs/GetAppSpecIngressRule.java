@@ -84,12 +84,12 @@ public final class GetAppSpecIngressRule {
             return this;
         }
         public GetAppSpecIngressRule build() {
-            final var o = new GetAppSpecIngressRule();
-            o.component = component;
-            o.cors = cors;
-            o.match = match;
-            o.redirect = redirect;
-            return o;
+            final var _resultValue = new GetAppSpecIngressRule();
+            _resultValue.component = component;
+            _resultValue.cors = cors;
+            _resultValue.match = match;
+            _resultValue.redirect = redirect;
+            return _resultValue;
         }
     }
 }

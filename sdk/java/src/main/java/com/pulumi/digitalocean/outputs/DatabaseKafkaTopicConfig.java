@@ -484,32 +484,32 @@ public final class DatabaseKafkaTopicConfig {
             return this;
         }
         public DatabaseKafkaTopicConfig build() {
-            final var o = new DatabaseKafkaTopicConfig();
-            o.cleanupPolicy = cleanupPolicy;
-            o.compressionType = compressionType;
-            o.deleteRetentionMs = deleteRetentionMs;
-            o.fileDeleteDelayMs = fileDeleteDelayMs;
-            o.flushMessages = flushMessages;
-            o.flushMs = flushMs;
-            o.indexIntervalBytes = indexIntervalBytes;
-            o.maxCompactionLagMs = maxCompactionLagMs;
-            o.maxMessageBytes = maxMessageBytes;
-            o.messageDownConversionEnable = messageDownConversionEnable;
-            o.messageFormatVersion = messageFormatVersion;
-            o.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
-            o.messageTimestampType = messageTimestampType;
-            o.minCleanableDirtyRatio = minCleanableDirtyRatio;
-            o.minCompactionLagMs = minCompactionLagMs;
-            o.minInsyncReplicas = minInsyncReplicas;
-            o.preallocate = preallocate;
-            o.retentionBytes = retentionBytes;
-            o.retentionMs = retentionMs;
-            o.segmentBytes = segmentBytes;
-            o.segmentIndexBytes = segmentIndexBytes;
-            o.segmentJitterMs = segmentJitterMs;
-            o.segmentMs = segmentMs;
-            o.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
-            return o;
+            final var _resultValue = new DatabaseKafkaTopicConfig();
+            _resultValue.cleanupPolicy = cleanupPolicy;
+            _resultValue.compressionType = compressionType;
+            _resultValue.deleteRetentionMs = deleteRetentionMs;
+            _resultValue.fileDeleteDelayMs = fileDeleteDelayMs;
+            _resultValue.flushMessages = flushMessages;
+            _resultValue.flushMs = flushMs;
+            _resultValue.indexIntervalBytes = indexIntervalBytes;
+            _resultValue.maxCompactionLagMs = maxCompactionLagMs;
+            _resultValue.maxMessageBytes = maxMessageBytes;
+            _resultValue.messageDownConversionEnable = messageDownConversionEnable;
+            _resultValue.messageFormatVersion = messageFormatVersion;
+            _resultValue.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
+            _resultValue.messageTimestampType = messageTimestampType;
+            _resultValue.minCleanableDirtyRatio = minCleanableDirtyRatio;
+            _resultValue.minCompactionLagMs = minCompactionLagMs;
+            _resultValue.minInsyncReplicas = minInsyncReplicas;
+            _resultValue.preallocate = preallocate;
+            _resultValue.retentionBytes = retentionBytes;
+            _resultValue.retentionMs = retentionMs;
+            _resultValue.segmentBytes = segmentBytes;
+            _resultValue.segmentIndexBytes = segmentIndexBytes;
+            _resultValue.segmentJitterMs = segmentJitterMs;
+            _resultValue.segmentMs = segmentMs;
+            _resultValue.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class AppSpecFunctionGithub {
             return this;
         }
         public AppSpecFunctionGithub build() {
-            final var o = new AppSpecFunctionGithub();
-            o.branch = branch;
-            o.deployOnPush = deployOnPush;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new AppSpecFunctionGithub();
+            _resultValue.branch = branch;
+            _resultValue.deployOnPush = deployOnPush;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

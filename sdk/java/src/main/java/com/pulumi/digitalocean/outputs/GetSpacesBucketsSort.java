@@ -67,10 +67,10 @@ public final class GetSpacesBucketsSort {
             return this;
         }
         public GetSpacesBucketsSort build() {
-            final var o = new GetSpacesBucketsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetSpacesBucketsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

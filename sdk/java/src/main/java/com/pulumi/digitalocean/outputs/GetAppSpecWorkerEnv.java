@@ -105,12 +105,12 @@ public final class GetAppSpecWorkerEnv {
             return this;
         }
         public GetAppSpecWorkerEnv build() {
-            final var o = new GetAppSpecWorkerEnv();
-            o.key = key;
-            o.scope = scope;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetAppSpecWorkerEnv();
+            _resultValue.key = key;
+            _resultValue.scope = scope;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

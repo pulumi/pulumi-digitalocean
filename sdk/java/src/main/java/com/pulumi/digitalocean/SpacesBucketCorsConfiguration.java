@@ -79,7 +79,7 @@ public class SpacesBucketCorsConfiguration extends com.pulumi.resources.CustomRe
      * The name of the bucket to which to apply the CORS configuration.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -93,7 +93,7 @@ public class SpacesBucketCorsConfiguration extends com.pulumi.resources.CustomRe
      * Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
      * 
      */
-    @Export(name="corsRules", type=List.class, parameters={SpacesBucketCorsConfigurationCorsRule.class})
+    @Export(name="corsRules", refs={List.class,SpacesBucketCorsConfigurationCorsRule.class}, tree="[0,1]")
     private Output<List<SpacesBucketCorsConfigurationCorsRule>> corsRules;
 
     /**
@@ -107,7 +107,7 @@ public class SpacesBucketCorsConfiguration extends com.pulumi.resources.CustomRe
      * The region where the bucket resides.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

@@ -71,10 +71,10 @@ public final class DatabaseClusterBackupRestore {
             return this;
         }
         public DatabaseClusterBackupRestore build() {
-            final var o = new DatabaseClusterBackupRestore();
-            o.backupCreatedAt = backupCreatedAt;
-            o.databaseName = databaseName;
-            return o;
+            final var _resultValue = new DatabaseClusterBackupRestore();
+            _resultValue.backupCreatedAt = backupCreatedAt;
+            _resultValue.databaseName = databaseName;
+            return _resultValue;
         }
     }
 }

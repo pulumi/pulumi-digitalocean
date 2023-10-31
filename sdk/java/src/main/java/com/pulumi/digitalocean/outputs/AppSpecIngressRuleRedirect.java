@@ -125,13 +125,13 @@ public final class AppSpecIngressRuleRedirect {
             return this;
         }
         public AppSpecIngressRuleRedirect build() {
-            final var o = new AppSpecIngressRuleRedirect();
-            o.authority = authority;
-            o.port = port;
-            o.redirectCode = redirectCode;
-            o.scheme = scheme;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new AppSpecIngressRuleRedirect();
+            _resultValue.authority = authority;
+            _resultValue.port = port;
+            _resultValue.redirectCode = redirectCode;
+            _resultValue.scheme = scheme;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

@@ -180,16 +180,16 @@ public final class GetVpcResult {
             return this;
         }
         public GetVpcResult build() {
-            final var o = new GetVpcResult();
-            o.createdAt = createdAt;
-            o.default_ = default_;
-            o.description = description;
-            o.id = id;
-            o.ipRange = ipRange;
-            o.name = name;
-            o.region = region;
-            o.urn = urn;
-            return o;
+            final var _resultValue = new GetVpcResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.default_ = default_;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipRange = ipRange;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.urn = urn;
+            return _resultValue;
         }
     }
 }

@@ -79,7 +79,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * Determines default pub/sub channels&#39; ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn&#39;t affect Redis&#39; `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      * 
      */
-    @Export(name="aclChannelsDefault", type=String.class, parameters={})
+    @Export(name="aclChannelsDefault", refs={String.class}, tree="[0]")
     private Output<String> aclChannelsDefault;
 
     /**
@@ -93,7 +93,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The ID of the target Redis cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -107,7 +107,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The Redis IO thread count.
      * 
      */
-    @Export(name="ioThreads", type=Integer.class, parameters={})
+    @Export(name="ioThreads", refs={Integer.class}, tree="[0]")
     private Output<Integer> ioThreads;
 
     /**
@@ -121,7 +121,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The LFU maxmemory policy counter decay time in minutes.
      * 
      */
-    @Export(name="lfuDecayTime", type=Integer.class, parameters={})
+    @Export(name="lfuDecayTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> lfuDecayTime;
 
     /**
@@ -135,7 +135,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      * 
      */
-    @Export(name="lfuLogFactor", type=Integer.class, parameters={})
+    @Export(name="lfuLogFactor", refs={Integer.class}, tree="[0]")
     private Output<Integer> lfuLogFactor;
 
     /**
@@ -149,7 +149,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
      * 
      */
-    @Export(name="maxmemoryPolicy", type=String.class, parameters={})
+    @Export(name="maxmemoryPolicy", refs={String.class}, tree="[0]")
     private Output<String> maxmemoryPolicy;
 
     /**
@@ -163,7 +163,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      * 
      */
-    @Export(name="notifyKeyspaceEvents", type=String.class, parameters={})
+    @Export(name="notifyKeyspaceEvents", refs={String.class}, tree="[0]")
     private Output<String> notifyKeyspaceEvents;
 
     /**
@@ -177,7 +177,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The number of Redis databases. Changing this will cause a restart of Redis service.
      * 
      */
-    @Export(name="numberOfDatabases", type=Integer.class, parameters={})
+    @Export(name="numberOfDatabases", refs={Integer.class}, tree="[0]")
     private Output<Integer> numberOfDatabases;
 
     /**
@@ -191,7 +191,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
-    @Export(name="persistence", type=String.class, parameters={})
+    @Export(name="persistence", refs={String.class}, tree="[0]")
     private Output<String> persistence;
 
     /**
@@ -205,7 +205,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      * 
      */
-    @Export(name="pubsubClientOutputBufferLimit", type=Integer.class, parameters={})
+    @Export(name="pubsubClientOutputBufferLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> pubsubClientOutputBufferLimit;
 
     /**
@@ -219,7 +219,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * A boolean indicating whether to require SSL to access Redis.
      * 
      */
-    @Export(name="ssl", type=Boolean.class, parameters={})
+    @Export(name="ssl", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ssl;
 
     /**
@@ -233,7 +233,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * The Redis idle connection timeout in seconds.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeout;
 
     /**

@@ -196,7 +196,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The ID the app&#39;s currently active deployment.
      * 
      */
-    @Export(name="activeDeploymentId", type=String.class, parameters={})
+    @Export(name="activeDeploymentId", refs={String.class}, tree="[0]")
     private Output<String> activeDeploymentId;
 
     /**
@@ -210,7 +210,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The uniform resource identifier for the app.
      * 
      */
-    @Export(name="appUrn", type=String.class, parameters={})
+    @Export(name="appUrn", refs={String.class}, tree="[0]")
     private Output<String> appUrn;
 
     /**
@@ -224,7 +224,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The date and time of when the app was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -238,7 +238,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The default URL to access the app.
      * 
      */
-    @Export(name="defaultIngress", type=String.class, parameters={})
+    @Export(name="defaultIngress", refs={String.class}, tree="[0]")
     private Output<String> defaultIngress;
 
     /**
@@ -252,7 +252,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The live URL of the app.
      * 
      */
-    @Export(name="liveUrl", type=String.class, parameters={})
+    @Export(name="liveUrl", refs={String.class}, tree="[0]")
     private Output<String> liveUrl;
 
     /**
@@ -266,7 +266,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * A DigitalOcean App spec describing the app.
      * 
      */
-    @Export(name="spec", type=AppSpec.class, parameters={})
+    @Export(name="spec", refs={AppSpec.class}, tree="[0]")
     private Output</* @Nullable */ AppSpec> spec;
 
     /**
@@ -280,7 +280,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The date and time of when the app was last updated.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

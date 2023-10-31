@@ -129,13 +129,13 @@ public final class AppSpecWorkerImage {
             return this;
         }
         public AppSpecWorkerImage build() {
-            final var o = new AppSpecWorkerImage();
-            o.deployOnPushes = deployOnPushes;
-            o.registry = registry;
-            o.registryType = registryType;
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new AppSpecWorkerImage();
+            _resultValue.deployOnPushes = deployOnPushes;
+            _resultValue.registry = registry;
+            _resultValue.registryType = registryType;
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

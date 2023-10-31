@@ -133,7 +133,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      * 
      */
-    @Export(name="actualNodeCount", type=Integer.class, parameters={})
+    @Export(name="actualNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> actualNodeCount;
 
     /**
@@ -147,7 +147,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
      * 
      */
-    @Export(name="autoScale", type=Boolean.class, parameters={})
+    @Export(name="autoScale", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoScale;
 
     /**
@@ -161,7 +161,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * The ID of the Kubernetes cluster to which the node pool is associated.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -175,7 +175,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -189,7 +189,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      * 
      */
-    @Export(name="maxNodes", type=Integer.class, parameters={})
+    @Export(name="maxNodes", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxNodes;
 
     /**
@@ -203,7 +203,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      * 
      */
-    @Export(name="minNodes", type=Integer.class, parameters={})
+    @Export(name="minNodes", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minNodes;
 
     /**
@@ -217,7 +217,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * A name for the node pool.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -231,7 +231,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeCount;
 
     /**
@@ -245,7 +245,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * A list of nodes in the pool. Each node exports the following attributes:
      * 
      */
-    @Export(name="nodes", type=List.class, parameters={KubernetesNodePoolNode.class})
+    @Export(name="nodes", refs={List.class,KubernetesNodePoolNode.class}, tree="[0,1]")
     private Output<List<KubernetesNodePoolNode>> nodes;
 
     /**
@@ -259,7 +259,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      * 
      */
-    @Export(name="size", type=String.class, parameters={})
+    @Export(name="size", refs={String.class}, tree="[0]")
     private Output<String> size;
 
     /**
@@ -273,7 +273,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * A list of tag names to be applied to the Kubernetes cluster.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -289,7 +289,7 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
-    @Export(name="taints", type=List.class, parameters={KubernetesNodePoolTaint.class})
+    @Export(name="taints", refs={List.class,KubernetesNodePoolTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesNodePoolTaint>> taints;
 
     /**

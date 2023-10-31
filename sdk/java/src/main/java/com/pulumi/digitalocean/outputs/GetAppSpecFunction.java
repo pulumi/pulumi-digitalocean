@@ -252,18 +252,18 @@ public final class GetAppSpecFunction {
             return this;
         }
         public GetAppSpecFunction build() {
-            final var o = new GetAppSpecFunction();
-            o.alerts = alerts;
-            o.cors = cors;
-            o.envs = envs;
-            o.git = git;
-            o.github = github;
-            o.gitlab = gitlab;
-            o.logDestinations = logDestinations;
-            o.name = name;
-            o.routes = routes;
-            o.sourceDir = sourceDir;
-            return o;
+            final var _resultValue = new GetAppSpecFunction();
+            _resultValue.alerts = alerts;
+            _resultValue.cors = cors;
+            _resultValue.envs = envs;
+            _resultValue.git = git;
+            _resultValue.github = github;
+            _resultValue.gitlab = gitlab;
+            _resultValue.logDestinations = logDestinations;
+            _resultValue.name = name;
+            _resultValue.routes = routes;
+            _resultValue.sourceDir = sourceDir;
+            return _resultValue;
         }
     }
 }

@@ -101,12 +101,12 @@ public final class GetDomainsResult {
             return sorts(List.of(sorts));
         }
         public GetDomainsResult build() {
-            final var o = new GetDomainsResult();
-            o.domains = domains;
-            o.filters = filters;
-            o.id = id;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetDomainsResult();
+            _resultValue.domains = domains;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

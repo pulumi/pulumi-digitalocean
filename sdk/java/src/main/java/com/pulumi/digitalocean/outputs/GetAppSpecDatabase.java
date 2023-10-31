@@ -163,15 +163,15 @@ public final class GetAppSpecDatabase {
             return this;
         }
         public GetAppSpecDatabase build() {
-            final var o = new GetAppSpecDatabase();
-            o.clusterName = clusterName;
-            o.dbName = dbName;
-            o.dbUser = dbUser;
-            o.engine = engine;
-            o.name = name;
-            o.production = production;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetAppSpecDatabase();
+            _resultValue.clusterName = clusterName;
+            _resultValue.dbName = dbName;
+            _resultValue.dbUser = dbUser;
+            _resultValue.engine = engine;
+            _resultValue.name = name;
+            _resultValue.production = production;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class AppSpecIngressRuleMatch {
             return this;
         }
         public AppSpecIngressRuleMatch build() {
-            final var o = new AppSpecIngressRuleMatch();
-            o.path = path;
-            return o;
+            final var _resultValue = new AppSpecIngressRuleMatch();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

@@ -77,11 +77,11 @@ public final class GetAppSpecIngressRuleComponent {
             return this;
         }
         public GetAppSpecIngressRuleComponent build() {
-            final var o = new GetAppSpecIngressRuleComponent();
-            o.name = name;
-            o.preservePathPrefix = preservePathPrefix;
-            o.rewrite = rewrite;
-            return o;
+            final var _resultValue = new GetAppSpecIngressRuleComponent();
+            _resultValue.name = name;
+            _resultValue.preservePathPrefix = preservePathPrefix;
+            _resultValue.rewrite = rewrite;
+            return _resultValue;
         }
     }
 }

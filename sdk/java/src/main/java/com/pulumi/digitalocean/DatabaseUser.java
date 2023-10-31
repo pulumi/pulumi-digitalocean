@@ -123,7 +123,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * The ID of the original source database cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -137,7 +137,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
      * 
      */
-    @Export(name="mysqlAuthPlugin", type=String.class, parameters={})
+    @Export(name="mysqlAuthPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mysqlAuthPlugin;
 
     /**
@@ -151,7 +151,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * The name for the database user.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -165,7 +165,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * Password for the database user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -179,7 +179,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * Role for the database user. The value will be either &#34;primary&#34; or &#34;normal&#34;.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

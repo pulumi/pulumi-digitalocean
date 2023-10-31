@@ -87,11 +87,11 @@ public final class AppSpecFunctionGitlab {
             return this;
         }
         public AppSpecFunctionGitlab build() {
-            final var o = new AppSpecFunctionGitlab();
-            o.branch = branch;
-            o.deployOnPush = deployOnPush;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new AppSpecFunctionGitlab();
+            _resultValue.branch = branch;
+            _resultValue.deployOnPush = deployOnPush;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

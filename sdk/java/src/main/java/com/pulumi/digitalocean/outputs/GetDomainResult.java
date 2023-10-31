@@ -115,13 +115,13 @@ public final class GetDomainResult {
             return this;
         }
         public GetDomainResult build() {
-            final var o = new GetDomainResult();
-            o.domainUrn = domainUrn;
-            o.id = id;
-            o.name = name;
-            o.ttl = ttl;
-            o.zoneFile = zoneFile;
-            return o;
+            final var _resultValue = new GetDomainResult();
+            _resultValue.domainUrn = domainUrn;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.ttl = ttl;
+            _resultValue.zoneFile = zoneFile;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class GetAppSpecIngress {
             return rules(List.of(rules));
         }
         public GetAppSpecIngress build() {
-            final var o = new GetAppSpecIngress();
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetAppSpecIngress();
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

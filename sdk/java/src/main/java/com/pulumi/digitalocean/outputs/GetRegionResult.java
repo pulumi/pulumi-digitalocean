@@ -149,14 +149,14 @@ public final class GetRegionResult {
             return this;
         }
         public GetRegionResult build() {
-            final var o = new GetRegionResult();
-            o.available = available;
-            o.features = features;
-            o.id = id;
-            o.name = name;
-            o.sizes = sizes;
-            o.slug = slug;
-            return o;
+            final var _resultValue = new GetRegionResult();
+            _resultValue.available = available;
+            _resultValue.features = features;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.sizes = sizes;
+            _resultValue.slug = slug;
+            return _resultValue;
         }
     }
 }

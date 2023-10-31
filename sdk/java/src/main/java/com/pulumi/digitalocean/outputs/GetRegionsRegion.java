@@ -130,13 +130,13 @@ public final class GetRegionsRegion {
             return this;
         }
         public GetRegionsRegion build() {
-            final var o = new GetRegionsRegion();
-            o.available = available;
-            o.features = features;
-            o.name = name;
-            o.sizes = sizes;
-            o.slug = slug;
-            return o;
+            final var _resultValue = new GetRegionsRegion();
+            _resultValue.available = available;
+            _resultValue.features = features;
+            _resultValue.name = name;
+            _resultValue.sizes = sizes;
+            _resultValue.slug = slug;
+            return _resultValue;
         }
     }
 }

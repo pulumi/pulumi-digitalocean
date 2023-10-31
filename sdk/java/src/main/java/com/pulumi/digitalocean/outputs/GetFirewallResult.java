@@ -225,18 +225,18 @@ public final class GetFirewallResult {
             return tags(List.of(tags));
         }
         public GetFirewallResult build() {
-            final var o = new GetFirewallResult();
-            o.createdAt = createdAt;
-            o.dropletIds = dropletIds;
-            o.firewallId = firewallId;
-            o.id = id;
-            o.inboundRules = inboundRules;
-            o.name = name;
-            o.outboundRules = outboundRules;
-            o.pendingChanges = pendingChanges;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetFirewallResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.dropletIds = dropletIds;
+            _resultValue.firewallId = firewallId;
+            _resultValue.id = id;
+            _resultValue.inboundRules = inboundRules;
+            _resultValue.name = name;
+            _resultValue.outboundRules = outboundRules;
+            _resultValue.pendingChanges = pendingChanges;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

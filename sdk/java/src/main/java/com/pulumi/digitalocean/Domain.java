@@ -64,7 +64,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The uniform resource name of the domain
      * 
      */
-    @Export(name="domainUrn", type=String.class, parameters={})
+    @Export(name="domainUrn", refs={String.class}, tree="[0]")
     private Output<String> domainUrn;
 
     /**
@@ -79,7 +79,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * is used to created an initial A record for the domain.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipAddress;
 
     /**
@@ -94,7 +94,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The name of the domain
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -108,7 +108,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The TTL value of the domain
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**

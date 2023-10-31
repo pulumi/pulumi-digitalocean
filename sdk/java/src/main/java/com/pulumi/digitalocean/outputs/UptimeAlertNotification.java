@@ -66,10 +66,10 @@ public final class UptimeAlertNotification {
             return slacks(List.of(slacks));
         }
         public UptimeAlertNotification build() {
-            final var o = new UptimeAlertNotification();
-            o.emails = emails;
-            o.slacks = slacks;
-            return o;
+            final var _resultValue = new UptimeAlertNotification();
+            _resultValue.emails = emails;
+            _resultValue.slacks = slacks;
+            return _resultValue;
         }
     }
 }

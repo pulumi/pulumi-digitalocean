@@ -496,33 +496,33 @@ public final class GetDropletsDroplet {
             return this;
         }
         public GetDropletsDroplet build() {
-            final var o = new GetDropletsDroplet();
-            o.backups = backups;
-            o.createdAt = createdAt;
-            o.disk = disk;
-            o.id = id;
-            o.image = image;
-            o.ipv4Address = ipv4Address;
-            o.ipv4AddressPrivate = ipv4AddressPrivate;
-            o.ipv6 = ipv6;
-            o.ipv6Address = ipv6Address;
-            o.ipv6AddressPrivate = ipv6AddressPrivate;
-            o.locked = locked;
-            o.memory = memory;
-            o.monitoring = monitoring;
-            o.name = name;
-            o.priceHourly = priceHourly;
-            o.priceMonthly = priceMonthly;
-            o.privateNetworking = privateNetworking;
-            o.region = region;
-            o.size = size;
-            o.status = status;
-            o.tags = tags;
-            o.urn = urn;
-            o.vcpus = vcpus;
-            o.volumeIds = volumeIds;
-            o.vpcUuid = vpcUuid;
-            return o;
+            final var _resultValue = new GetDropletsDroplet();
+            _resultValue.backups = backups;
+            _resultValue.createdAt = createdAt;
+            _resultValue.disk = disk;
+            _resultValue.id = id;
+            _resultValue.image = image;
+            _resultValue.ipv4Address = ipv4Address;
+            _resultValue.ipv4AddressPrivate = ipv4AddressPrivate;
+            _resultValue.ipv6 = ipv6;
+            _resultValue.ipv6Address = ipv6Address;
+            _resultValue.ipv6AddressPrivate = ipv6AddressPrivate;
+            _resultValue.locked = locked;
+            _resultValue.memory = memory;
+            _resultValue.monitoring = monitoring;
+            _resultValue.name = name;
+            _resultValue.priceHourly = priceHourly;
+            _resultValue.priceMonthly = priceMonthly;
+            _resultValue.privateNetworking = privateNetworking;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.urn = urn;
+            _resultValue.vcpus = vcpus;
+            _resultValue.volumeIds = volumeIds;
+            _resultValue.vpcUuid = vpcUuid;
+            return _resultValue;
         }
     }
 }

@@ -75,10 +75,10 @@ public final class LoadBalancerFirewall {
             return denies(List.of(denies));
         }
         public LoadBalancerFirewall build() {
-            final var o = new LoadBalancerFirewall();
-            o.allows = allows;
-            o.denies = denies;
-            return o;
+            final var _resultValue = new LoadBalancerFirewall();
+            _resultValue.allows = allows;
+            _resultValue.denies = denies;
+            return _resultValue;
         }
     }
 }
