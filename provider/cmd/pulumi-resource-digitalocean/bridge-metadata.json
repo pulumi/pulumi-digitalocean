@@ -84,6 +84,55 @@
                                         }
                                     }
                                 },
+                                "ingress": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "rule": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "component": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "cors": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "allow_headers": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "allow_methods": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "allow_origins": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "expose_headers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "match": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "path": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "redirect": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "job": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -366,6 +415,23 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_database_kafka_topic": {
+                "current": "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic",
+                "majorVersion": 4,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_database_mysql_config": {
+                "current": "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig",
+                "majorVersion": 4
+            },
+            "digitalocean_database_redis_config": {
+                "current": "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig",
+                "majorVersion": 4
             },
             "digitalocean_database_replica": {
                 "current": "digitalocean:index/databaseReplica:DatabaseReplica",
@@ -831,6 +897,55 @@
                                             },
                                             "routes": {
                                                 "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ingress": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "rule": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "component": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "cors": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "allow_headers": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "allow_methods": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "allow_origins": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "expose_headers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "match": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "path": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "redirect": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -1632,6 +1747,9 @@
             "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool": "digitalocean_database_connection_pool",
             "digitalocean:index/databaseDb:DatabaseDb": "digitalocean_database_db",
             "digitalocean:index/databaseFirewall:DatabaseFirewall": "digitalocean_database_firewall",
+            "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic": "digitalocean_database_kafka_topic",
+            "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig": "digitalocean_database_mysql_config",
+            "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig": "digitalocean_database_redis_config",
             "digitalocean:index/databaseReplica:DatabaseReplica": "digitalocean_database_replica",
             "digitalocean:index/databaseUser:DatabaseUser": "digitalocean_database_user",
             "digitalocean:index/dnsRecord:DnsRecord": "digitalocean_record",
@@ -1748,6 +1866,23 @@
             },
             "digitalocean:index/AppSpecFunctionRoute:AppSpecFunctionRoute": {
                 "preservePathPrefix": "preserve_path_prefix"
+            },
+            "digitalocean:index/AppSpecIngress:AppSpecIngress": {
+                "rules": "rule"
+            },
+            "digitalocean:index/AppSpecIngressRuleComponent:AppSpecIngressRuleComponent": {
+                "preservePathPrefix": "preserve_path_prefix"
+            },
+            "digitalocean:index/AppSpecIngressRuleCors:AppSpecIngressRuleCors": {
+                "allowCredentials": "allow_credentials",
+                "allowHeaders": "allow_headers",
+                "allowMethods": "allow_methods",
+                "allowOrigins": "allow_origins",
+                "exposeHeaders": "expose_headers",
+                "maxAge": "max_age"
+            },
+            "digitalocean:index/AppSpecIngressRuleRedirect:AppSpecIngressRuleRedirect": {
+                "redirectCode": "redirect_code"
             },
             "digitalocean:index/AppSpecJob:AppSpecJob": {
                 "alerts": "alert",
@@ -1892,6 +2027,31 @@
             },
             "digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule": {
                 "createdAt": "created_at"
+            },
+            "digitalocean:index/DatabaseKafkaTopicConfig:DatabaseKafkaTopicConfig": {
+                "cleanupPolicy": "cleanup_policy",
+                "compressionType": "compression_type",
+                "deleteRetentionMs": "delete_retention_ms",
+                "fileDeleteDelayMs": "file_delete_delay_ms",
+                "flushMessages": "flush_messages",
+                "flushMs": "flush_ms",
+                "indexIntervalBytes": "index_interval_bytes",
+                "maxCompactionLagMs": "max_compaction_lag_ms",
+                "maxMessageBytes": "max_message_bytes",
+                "messageDownConversionEnable": "message_down_conversion_enable",
+                "messageFormatVersion": "message_format_version",
+                "messageTimestampDifferenceMaxMs": "message_timestamp_difference_max_ms",
+                "messageTimestampType": "message_timestamp_type",
+                "minCleanableDirtyRatio": "min_cleanable_dirty_ratio",
+                "minCompactionLagMs": "min_compaction_lag_ms",
+                "minInsyncReplicas": "min_insync_replicas",
+                "retentionBytes": "retention_bytes",
+                "retentionMs": "retention_ms",
+                "segmentBytes": "segment_bytes",
+                "segmentIndexBytes": "segment_index_bytes",
+                "segmentJitterMs": "segment_jitter_ms",
+                "segmentMs": "segment_ms",
+                "uncleanLeaderElectionEnable": "unclean_leader_election_enable"
             },
             "digitalocean:index/FirewallInboundRule:FirewallInboundRule": {
                 "portRange": "port_range",
@@ -2040,7 +2200,8 @@
                 "privateNetworkUuid": "private_network_uuid",
                 "privateUri": "private_uri",
                 "projectId": "project_id",
-                "sqlMode": "sql_mode"
+                "sqlMode": "sql_mode",
+                "storageSizeMib": "storage_size_mib"
             },
             "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool": {
                 "clusterId": "cluster_id",
@@ -2054,6 +2215,53 @@
             "digitalocean:index/databaseFirewall:DatabaseFirewall": {
                 "clusterId": "cluster_id",
                 "rules": "rule"
+            },
+            "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic": {
+                "clusterId": "cluster_id",
+                "configs": "config",
+                "partitionCount": "partition_count",
+                "replicationFactor": "replication_factor"
+            },
+            "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig": {
+                "backupHour": "backup_hour",
+                "backupMinute": "backup_minute",
+                "binlogRetentionPeriod": "binlog_retention_period",
+                "clusterId": "cluster_id",
+                "connectTimeout": "connect_timeout",
+                "defaultTimeZone": "default_time_zone",
+                "groupConcatMaxLen": "group_concat_max_len",
+                "informationSchemaStatsExpiry": "information_schema_stats_expiry",
+                "innodbFtMinTokenSize": "innodb_ft_min_token_size",
+                "innodbFtServerStopwordTable": "innodb_ft_server_stopword_table",
+                "innodbLockWaitTimeout": "innodb_lock_wait_timeout",
+                "innodbLogBufferSize": "innodb_log_buffer_size",
+                "innodbOnlineAlterLogMaxSize": "innodb_online_alter_log_max_size",
+                "innodbPrintAllDeadlocks": "innodb_print_all_deadlocks",
+                "innodbRollbackOnTimeout": "innodb_rollback_on_timeout",
+                "interactiveTimeout": "interactive_timeout",
+                "internalTmpMemStorageEngine": "internal_tmp_mem_storage_engine",
+                "longQueryTime": "long_query_time",
+                "maxAllowedPacket": "max_allowed_packet",
+                "maxHeapTableSize": "max_heap_table_size",
+                "netReadTimeout": "net_read_timeout",
+                "netWriteTimeout": "net_write_timeout",
+                "slowQueryLog": "slow_query_log",
+                "sortBufferSize": "sort_buffer_size",
+                "sqlMode": "sql_mode",
+                "sqlRequirePrimaryKey": "sql_require_primary_key",
+                "tmpTableSize": "tmp_table_size",
+                "waitTimeout": "wait_timeout"
+            },
+            "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig": {
+                "aclChannelsDefault": "acl_channels_default",
+                "clusterId": "cluster_id",
+                "ioThreads": "io_threads",
+                "lfuDecayTime": "lfu_decay_time",
+                "lfuLogFactor": "lfu_log_factor",
+                "maxmemoryPolicy": "maxmemory_policy",
+                "notifyKeyspaceEvents": "notify_keyspace_events",
+                "numberOfDatabases": "number_of_databases",
+                "pubsubClientOutputBufferLimit": "pubsub_client_output_buffer_limit"
             },
             "digitalocean:index/databaseReplica:DatabaseReplica": {
                 "clusterId": "cluster_id",
@@ -2165,6 +2373,23 @@
             },
             "digitalocean:index/getAppSpecFunctionRoute:getAppSpecFunctionRoute": {
                 "preservePathPrefix": "preserve_path_prefix"
+            },
+            "digitalocean:index/getAppSpecIngress:getAppSpecIngress": {
+                "rules": "rule"
+            },
+            "digitalocean:index/getAppSpecIngressRuleComponent:getAppSpecIngressRuleComponent": {
+                "preservePathPrefix": "preserve_path_prefix"
+            },
+            "digitalocean:index/getAppSpecIngressRuleCors:getAppSpecIngressRuleCors": {
+                "allowCredentials": "allow_credentials",
+                "allowHeaders": "allow_headers",
+                "allowMethods": "allow_methods",
+                "allowOrigins": "allow_origins",
+                "exposeHeaders": "expose_headers",
+                "maxAge": "max_age"
+            },
+            "digitalocean:index/getAppSpecIngressRuleRedirect:getAppSpecIngressRuleRedirect": {
+                "redirectCode": "redirect_code"
             },
             "digitalocean:index/getAppSpecJob:getAppSpecJob": {
                 "alerts": "alert",
@@ -2322,7 +2547,8 @@
                 "privateHost": "private_host",
                 "privateNetworkUuid": "private_network_uuid",
                 "privateUri": "private_uri",
-                "projectId": "project_id"
+                "projectId": "project_id",
+                "storageSizeMib": "storage_size_mib"
             },
             "digitalocean:index/getDatabaseReplica:getDatabaseReplica": {
                 "clusterId": "cluster_id",
