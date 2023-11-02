@@ -65,10 +65,10 @@ public final class UptimeAlertNotificationSlack {
             return this;
         }
         public UptimeAlertNotificationSlack build() {
-            final var o = new UptimeAlertNotificationSlack();
-            o.channel = channel;
-            o.url = url;
-            return o;
+            final var _resultValue = new UptimeAlertNotificationSlack();
+            _resultValue.channel = channel;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

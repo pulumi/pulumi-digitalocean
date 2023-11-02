@@ -9,6 +9,7 @@ import com.pulumi.digitalocean.outputs.AppSpecDatabase;
 import com.pulumi.digitalocean.outputs.AppSpecDomainName;
 import com.pulumi.digitalocean.outputs.AppSpecEnv;
 import com.pulumi.digitalocean.outputs.AppSpecFunction;
+import com.pulumi.digitalocean.outputs.AppSpecIngress;
 import com.pulumi.digitalocean.outputs.AppSpecJob;
 import com.pulumi.digitalocean.outputs.AppSpecService;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSite;
@@ -45,6 +46,11 @@ public final class AppSpec {
      */
     private @Nullable List<AppSpecEnv> envs;
     private @Nullable List<AppSpecFunction> functions;
+    /**
+     * @return Specification for component routing, rewrites, and redirects.
+     * 
+     */
+    private @Nullable AppSpecIngress ingress;
     private @Nullable List<AppSpecJob> jobs;
     /**
      * @return The name of the component.
@@ -97,6 +103,13 @@ public final class AppSpec {
     public List<AppSpecFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
     }
+    /**
+     * @return Specification for component routing, rewrites, and redirects.
+     * 
+     */
+    public Optional<AppSpecIngress> ingress() {
+        return Optional.ofNullable(this.ingress);
+    }
     public List<AppSpecJob> jobs() {
         return this.jobs == null ? List.of() : this.jobs;
     }
@@ -139,6 +152,7 @@ public final class AppSpec {
         private @Nullable List<String> domains;
         private @Nullable List<AppSpecEnv> envs;
         private @Nullable List<AppSpecFunction> functions;
+        private @Nullable AppSpecIngress ingress;
         private @Nullable List<AppSpecJob> jobs;
         private String name;
         private @Nullable String region;
@@ -154,6 +168,7 @@ public final class AppSpec {
     	      this.domains = defaults.domains;
     	      this.envs = defaults.envs;
     	      this.functions = defaults.functions;
+    	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
@@ -211,6 +226,11 @@ public final class AppSpec {
             return functions(List.of(functions));
         }
         @CustomType.Setter
+        public Builder ingress(@Nullable AppSpecIngress ingress) {
+            this.ingress = ingress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder jobs(@Nullable List<AppSpecJob> jobs) {
             this.jobs = jobs;
             return this;
@@ -253,20 +273,21 @@ public final class AppSpec {
             return workers(List.of(workers));
         }
         public AppSpec build() {
-            final var o = new AppSpec();
-            o.alerts = alerts;
-            o.databases = databases;
-            o.domainNames = domainNames;
-            o.domains = domains;
-            o.envs = envs;
-            o.functions = functions;
-            o.jobs = jobs;
-            o.name = name;
-            o.region = region;
-            o.services = services;
-            o.staticSites = staticSites;
-            o.workers = workers;
-            return o;
+            final var _resultValue = new AppSpec();
+            _resultValue.alerts = alerts;
+            _resultValue.databases = databases;
+            _resultValue.domainNames = domainNames;
+            _resultValue.domains = domains;
+            _resultValue.envs = envs;
+            _resultValue.functions = functions;
+            _resultValue.ingress = ingress;
+            _resultValue.jobs = jobs;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.services = services;
+            _resultValue.staticSites = staticSites;
+            _resultValue.workers = workers;
+            return _resultValue;
         }
     }
 }

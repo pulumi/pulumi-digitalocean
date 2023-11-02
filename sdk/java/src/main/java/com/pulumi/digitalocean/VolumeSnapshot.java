@@ -73,7 +73,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * The date and time the volume snapshot was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -87,7 +87,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
      * 
      */
-    @Export(name="minDiskSize", type=Integer.class, parameters={})
+    @Export(name="minDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minDiskSize;
 
     /**
@@ -101,7 +101,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * A name for the volume snapshot.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * A list of DigitalOcean region &#34;slugs&#34; indicating where the volume snapshot is available.
      * 
      */
-    @Export(name="regions", type=List.class, parameters={String.class})
+    @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
     /**
@@ -129,7 +129,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * The billable size of the volume snapshot in gigabytes.
      * 
      */
-    @Export(name="size", type=Double.class, parameters={})
+    @Export(name="size", refs={Double.class}, tree="[0]")
     private Output<Double> size;
 
     /**
@@ -143,7 +143,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * A list of the tags to be applied to this volume snapshot.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -157,7 +157,7 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
      * The ID of the volume from which the volume snapshot originated.
      * 
      */
-    @Export(name="volumeId", type=String.class, parameters={})
+    @Export(name="volumeId", refs={String.class}, tree="[0]")
     private Output<String> volumeId;
 
     /**

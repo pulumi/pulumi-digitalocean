@@ -93,12 +93,12 @@ public final class GetTagsResult {
             return tags(List.of(tags));
         }
         public GetTagsResult build() {
-            final var o = new GetTagsResult();
-            o.filters = filters;
-            o.id = id;
-            o.sorts = sorts;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetTagsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.sorts = sorts;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

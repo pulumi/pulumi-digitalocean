@@ -84,6 +84,7 @@ public final class GetDatabaseClusterResult {
      * 
      */
     private String size;
+    private String storageSizeMib;
     private @Nullable List<String> tags;
     /**
      * @return The full URI for connecting to the database cluster.
@@ -208,6 +209,9 @@ public final class GetDatabaseClusterResult {
     public String size() {
         return this.size;
     }
+    public String storageSizeMib() {
+        return this.storageSizeMib;
+    }
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
@@ -264,6 +268,7 @@ public final class GetDatabaseClusterResult {
         private String projectId;
         private String region;
         private String size;
+        private String storageSizeMib;
         private @Nullable List<String> tags;
         private String uri;
         private String urn;
@@ -287,6 +292,7 @@ public final class GetDatabaseClusterResult {
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
+    	      this.storageSizeMib = defaults.storageSizeMib;
     	      this.tags = defaults.tags;
     	      this.uri = defaults.uri;
     	      this.urn = defaults.urn;
@@ -373,6 +379,11 @@ public final class GetDatabaseClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder storageSizeMib(String storageSizeMib) {
+            this.storageSizeMib = Objects.requireNonNull(storageSizeMib);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -401,28 +412,29 @@ public final class GetDatabaseClusterResult {
             return this;
         }
         public GetDatabaseClusterResult build() {
-            final var o = new GetDatabaseClusterResult();
-            o.database = database;
-            o.engine = engine;
-            o.host = host;
-            o.id = id;
-            o.maintenanceWindows = maintenanceWindows;
-            o.name = name;
-            o.nodeCount = nodeCount;
-            o.password = password;
-            o.port = port;
-            o.privateHost = privateHost;
-            o.privateNetworkUuid = privateNetworkUuid;
-            o.privateUri = privateUri;
-            o.projectId = projectId;
-            o.region = region;
-            o.size = size;
-            o.tags = tags;
-            o.uri = uri;
-            o.urn = urn;
-            o.user = user;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDatabaseClusterResult();
+            _resultValue.database = database;
+            _resultValue.engine = engine;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.maintenanceWindows = maintenanceWindows;
+            _resultValue.name = name;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.privateHost = privateHost;
+            _resultValue.privateNetworkUuid = privateNetworkUuid;
+            _resultValue.privateUri = privateUri;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.storageSizeMib = storageSizeMib;
+            _resultValue.tags = tags;
+            _resultValue.uri = uri;
+            _resultValue.urn = urn;
+            _resultValue.user = user;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

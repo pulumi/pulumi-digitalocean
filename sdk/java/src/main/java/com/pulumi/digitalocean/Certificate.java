@@ -152,7 +152,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * certificate. Only valid when type is `custom`.
      * 
      */
-    @Export(name="certificateChain", type=String.class, parameters={})
+    @Export(name="certificateChain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateChain;
 
     /**
@@ -170,7 +170,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
      * 
      */
-    @Export(name="domains", type=List.class, parameters={String.class})
+    @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> domains;
 
     /**
@@ -187,7 +187,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * TLS certificate. Only valid when type is `custom`.
      * 
      */
-    @Export(name="leafCertificate", type=String.class, parameters={})
+    @Export(name="leafCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> leafCertificate;
 
     /**
@@ -202,7 +202,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The name of the certificate for identification.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -216,7 +216,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The expiration date of the certificate
      * 
      */
-    @Export(name="notAfter", type=String.class, parameters={})
+    @Export(name="notAfter", refs={String.class}, tree="[0]")
     private Output<String> notAfter;
 
     /**
@@ -231,7 +231,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * corresponding to the SSL certificate. Only valid when type is `custom`.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
@@ -246,7 +246,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The SHA-1 fingerprint of the certificate
      * 
      */
-    @Export(name="sha1Fingerprint", type=String.class, parameters={})
+    @Export(name="sha1Fingerprint", refs={String.class}, tree="[0]")
     private Output<String> sha1Fingerprint;
 
     /**
@@ -256,7 +256,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<String> sha1Fingerprint() {
         return this.sha1Fingerprint;
     }
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     public Output<String> state() {
@@ -267,7 +267,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * `custom` or `lets_encrypt`. Defaults to `custom`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -282,7 +282,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The UUID of the certificate
      * 
      */
-    @Export(name="uuid", type=String.class, parameters={})
+    @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**

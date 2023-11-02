@@ -93,7 +93,7 @@ public class SpacesBucketPolicy extends com.pulumi.resources.CustomResource {
      * The name of the bucket to which to apply the policy.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -107,7 +107,7 @@ public class SpacesBucketPolicy extends com.pulumi.resources.CustomResource {
      * The text of the policy.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**
@@ -121,7 +121,7 @@ public class SpacesBucketPolicy extends com.pulumi.resources.CustomResource {
      * The region where the bucket resides.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

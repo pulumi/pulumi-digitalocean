@@ -67,10 +67,10 @@ public final class AppSpecWorkerGit {
             return this;
         }
         public AppSpecWorkerGit build() {
-            final var o = new AppSpecWorkerGit();
-            o.branch = branch;
-            o.repoCloneUrl = repoCloneUrl;
-            return o;
+            final var _resultValue = new AppSpecWorkerGit();
+            _resultValue.branch = branch;
+            _resultValue.repoCloneUrl = repoCloneUrl;
+            return _resultValue;
         }
     }
 }

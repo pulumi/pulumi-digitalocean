@@ -124,12 +124,12 @@ public final class GetImagesFilter {
             return values(List.of(values));
         }
         public GetImagesFilter build() {
-            final var o = new GetImagesFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetImagesFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

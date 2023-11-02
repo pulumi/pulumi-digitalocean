@@ -101,12 +101,12 @@ public final class GetKubernetesVersionsResult {
             return this;
         }
         public GetKubernetesVersionsResult build() {
-            final var o = new GetKubernetesVersionsResult();
-            o.id = id;
-            o.latestVersion = latestVersion;
-            o.validVersions = validVersions;
-            o.versionPrefix = versionPrefix;
-            return o;
+            final var _resultValue = new GetKubernetesVersionsResult();
+            _resultValue.id = id;
+            _resultValue.latestVersion = latestVersion;
+            _resultValue.validVersions = validVersions;
+            _resultValue.versionPrefix = versionPrefix;
+            return _resultValue;
         }
     }
 }

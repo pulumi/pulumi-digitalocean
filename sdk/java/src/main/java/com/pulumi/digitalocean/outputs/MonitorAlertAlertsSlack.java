@@ -49,10 +49,10 @@ public final class MonitorAlertAlertsSlack {
             return this;
         }
         public MonitorAlertAlertsSlack build() {
-            final var o = new MonitorAlertAlertsSlack();
-            o.channel = channel;
-            o.url = url;
-            return o;
+            final var _resultValue = new MonitorAlertAlertsSlack();
+            _resultValue.channel = channel;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

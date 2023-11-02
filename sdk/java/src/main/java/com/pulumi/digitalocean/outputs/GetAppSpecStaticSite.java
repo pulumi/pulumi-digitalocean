@@ -31,7 +31,11 @@ public final class GetAppSpecStaticSite {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     private @Nullable GetAppSpecStaticSiteCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -83,6 +87,12 @@ public final class GetAppSpecStaticSite {
      * 
      */
     private @Nullable String outputDir;
+    /**
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
+     */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     private List<GetAppSpecStaticSiteRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -108,7 +118,11 @@ public final class GetAppSpecStaticSite {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<GetAppSpecStaticSiteCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -182,6 +196,12 @@ public final class GetAppSpecStaticSite {
     public Optional<String> outputDir() {
         return Optional.ofNullable(this.outputDir);
     }
+    /**
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
+     */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public List<GetAppSpecStaticSiteRoute> routes() {
         return this.routes;
     }
@@ -319,23 +339,23 @@ public final class GetAppSpecStaticSite {
             return this;
         }
         public GetAppSpecStaticSite build() {
-            final var o = new GetAppSpecStaticSite();
-            o.buildCommand = buildCommand;
-            o.catchallDocument = catchallDocument;
-            o.cors = cors;
-            o.dockerfilePath = dockerfilePath;
-            o.environmentSlug = environmentSlug;
-            o.envs = envs;
-            o.errorDocument = errorDocument;
-            o.git = git;
-            o.github = github;
-            o.gitlab = gitlab;
-            o.indexDocument = indexDocument;
-            o.name = name;
-            o.outputDir = outputDir;
-            o.routes = routes;
-            o.sourceDir = sourceDir;
-            return o;
+            final var _resultValue = new GetAppSpecStaticSite();
+            _resultValue.buildCommand = buildCommand;
+            _resultValue.catchallDocument = catchallDocument;
+            _resultValue.cors = cors;
+            _resultValue.dockerfilePath = dockerfilePath;
+            _resultValue.environmentSlug = environmentSlug;
+            _resultValue.envs = envs;
+            _resultValue.errorDocument = errorDocument;
+            _resultValue.git = git;
+            _resultValue.github = github;
+            _resultValue.gitlab = gitlab;
+            _resultValue.indexDocument = indexDocument;
+            _resultValue.name = name;
+            _resultValue.outputDir = outputDir;
+            _resultValue.routes = routes;
+            _resultValue.sourceDir = sourceDir;
+            return _resultValue;
         }
     }
 }

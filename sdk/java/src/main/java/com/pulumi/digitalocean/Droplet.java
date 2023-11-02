@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .image(&#34;ubuntu-18-04-x64&#34;)
+ *             .image(&#34;ubuntu-20-04-x64&#34;)
  *             .region(&#34;nyc2&#34;)
  *             .size(&#34;s-1vcpu-1gb&#34;)
  *             .build());
@@ -70,7 +70,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * false.
      * 
      */
-    @Export(name="backups", type=Boolean.class, parameters={})
+    @Export(name="backups", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> backups;
 
     /**
@@ -81,7 +81,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> backups() {
         return Codegen.optional(this.backups);
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -91,7 +91,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The size of the instance&#39;s disk in GB
      * 
      */
-    @Export(name="disk", type=Integer.class, parameters={})
+    @Export(name="disk", refs={Integer.class}, tree="[0]")
     private Output<Integer> disk;
 
     /**
@@ -110,7 +110,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * set it to `true`.
      * 
      */
-    @Export(name="dropletAgent", type=Boolean.class, parameters={})
+    @Export(name="dropletAgent", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dropletAgent;
 
     /**
@@ -129,7 +129,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The uniform resource name of the Droplet
      * 
      */
-    @Export(name="dropletUrn", type=String.class, parameters={})
+    @Export(name="dropletUrn", refs={String.class}, tree="[0]")
     private Output<String> dropletUrn;
 
     /**
@@ -146,7 +146,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
-    @Export(name="gracefulShutdown", type=Boolean.class, parameters={})
+    @Export(name="gracefulShutdown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> gracefulShutdown;
 
     /**
@@ -163,7 +163,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
      * 
      */
-    @Export(name="image", type=String.class, parameters={})
+    @Export(name="image", refs={String.class}, tree="[0]")
     private Output<String> image;
 
     /**
@@ -177,7 +177,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The IPv4 address
      * 
      */
-    @Export(name="ipv4Address", type=String.class, parameters={})
+    @Export(name="ipv4Address", refs={String.class}, tree="[0]")
     private Output<String> ipv4Address;
 
     /**
@@ -191,7 +191,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The private networking IPv4 address
      * 
      */
-    @Export(name="ipv4AddressPrivate", type=String.class, parameters={})
+    @Export(name="ipv4AddressPrivate", refs={String.class}, tree="[0]")
     private Output<String> ipv4AddressPrivate;
 
     /**
@@ -205,7 +205,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * Boolean controlling if IPv6 is enabled. Defaults to false.
      * 
      */
-    @Export(name="ipv6", type=Boolean.class, parameters={})
+    @Export(name="ipv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ipv6;
 
     /**
@@ -219,7 +219,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The IPv6 address
      * 
      */
-    @Export(name="ipv6Address", type=String.class, parameters={})
+    @Export(name="ipv6Address", refs={String.class}, tree="[0]")
     private Output<String> ipv6Address;
 
     /**
@@ -233,7 +233,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * Is the Droplet locked
      * 
      */
-    @Export(name="locked", type=Boolean.class, parameters={})
+    @Export(name="locked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> locked;
 
     /**
@@ -243,7 +243,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     public Output<Boolean> locked() {
         return this.locked;
     }
-    @Export(name="memory", type=Integer.class, parameters={})
+    @Export(name="memory", refs={Integer.class}, tree="[0]")
     private Output<Integer> memory;
 
     public Output<Integer> memory() {
@@ -255,7 +255,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
      * 
      */
-    @Export(name="monitoring", type=Boolean.class, parameters={})
+    @Export(name="monitoring", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitoring;
 
     /**
@@ -271,7 +271,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The Droplet name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -285,7 +285,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * Droplet hourly price
      * 
      */
-    @Export(name="priceHourly", type=Double.class, parameters={})
+    @Export(name="priceHourly", refs={Double.class}, tree="[0]")
     private Output<Double> priceHourly;
 
     /**
@@ -299,7 +299,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * Droplet monthly price
      * 
      */
-    @Export(name="priceMonthly", type=Double.class, parameters={})
+    @Export(name="priceMonthly", refs={Double.class}, tree="[0]")
     private Output<Double> priceMonthly;
 
     /**
@@ -318,7 +318,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
-    @Export(name="privateNetworking", type=Boolean.class, parameters={})
+    @Export(name="privateNetworking", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privateNetworking;
 
     /**
@@ -333,7 +333,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The region where the Droplet will be created.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -350,7 +350,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * size is a permanent change**. Increasing only RAM and CPU is reversible.
      * 
      */
-    @Export(name="resizeDisk", type=Boolean.class, parameters={})
+    @Export(name="resizeDisk", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> resizeDisk;
 
     /**
@@ -367,7 +367,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      * 
      */
-    @Export(name="size", type=String.class, parameters={})
+    @Export(name="size", refs={String.class}, tree="[0]")
     private Output<String> size;
 
     /**
@@ -386,7 +386,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * to destroy and recreate the Droplet.
      * 
      */
-    @Export(name="sshKeys", type=List.class, parameters={String.class})
+    @Export(name="sshKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sshKeys;
 
     /**
@@ -405,7 +405,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The status of the Droplet
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -419,7 +419,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * A list of the tags to be applied to this Droplet.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -433,7 +433,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * A string of the desired User Data for the Droplet.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**
@@ -447,7 +447,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The number of the instance&#39;s virtual CPUs
      * 
      */
-    @Export(name="vcpus", type=Integer.class, parameters={})
+    @Export(name="vcpus", refs={Integer.class}, tree="[0]")
     private Output<Integer> vcpus;
 
     /**
@@ -461,7 +461,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * A list of the IDs of each block storage volume to be attached to the Droplet.
      * 
      */
-    @Export(name="volumeIds", type=List.class, parameters={String.class})
+    @Export(name="volumeIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> volumeIds;
 
     /**
@@ -475,7 +475,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * The ID of the VPC where the Droplet will be located.
      * 
      */
-    @Export(name="vpcUuid", type=String.class, parameters={})
+    @Export(name="vpcUuid", refs={String.class}, tree="[0]")
     private Output<String> vpcUuid;
 
     /**

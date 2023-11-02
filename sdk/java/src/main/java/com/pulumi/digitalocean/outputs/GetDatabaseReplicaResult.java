@@ -286,23 +286,23 @@ public final class GetDatabaseReplicaResult {
             return this;
         }
         public GetDatabaseReplicaResult build() {
-            final var o = new GetDatabaseReplicaResult();
-            o.clusterId = clusterId;
-            o.database = database;
-            o.host = host;
-            o.id = id;
-            o.name = name;
-            o.password = password;
-            o.port = port;
-            o.privateHost = privateHost;
-            o.privateNetworkUuid = privateNetworkUuid;
-            o.privateUri = privateUri;
-            o.region = region;
-            o.tags = tags;
-            o.uri = uri;
-            o.user = user;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetDatabaseReplicaResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.database = database;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.privateHost = privateHost;
+            _resultValue.privateNetworkUuid = privateNetworkUuid;
+            _resultValue.privateUri = privateUri;
+            _resultValue.region = region;
+            _resultValue.tags = tags;
+            _resultValue.uri = uri;
+            _resultValue.user = user;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

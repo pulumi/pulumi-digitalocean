@@ -48,9 +48,9 @@ public final class SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
             return this;
         }
         public SpacesBucketLifecycleRuleNoncurrentVersionExpiration build() {
-            final var o = new SpacesBucketLifecycleRuleNoncurrentVersionExpiration();
-            o.days = days;
-            return o;
+            final var _resultValue = new SpacesBucketLifecycleRuleNoncurrentVersionExpiration();
+            _resultValue.days = days;
+            return _resultValue;
         }
     }
 }

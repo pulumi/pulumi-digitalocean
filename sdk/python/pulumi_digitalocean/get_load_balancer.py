@@ -22,7 +22,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, type=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -86,6 +86,9 @@ class GetLoadBalancerResult:
         if sticky_sessions and not isinstance(sticky_sessions, list):
             raise TypeError("Expected argument 'sticky_sessions' to be a list")
         pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if vpc_uuid and not isinstance(vpc_uuid, str):
             raise TypeError("Expected argument 'vpc_uuid' to be a str")
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
@@ -196,6 +199,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "sticky_sessions")
 
     @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
     @pulumi.getter(name="vpcUuid")
     def vpc_uuid(self) -> str:
         return pulumi.get(self, "vpc_uuid")
@@ -228,11 +236,13 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             size_unit=self.size_unit,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
+            type=self.type,
             vpc_uuid=self.vpc_uuid)
 
 
 def get_load_balancer(id: Optional[str] = None,
                       name: Optional[str] = None,
+                      type: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
     Get information on a load balancer for use in other resources. This data source
@@ -270,6 +280,7 @@ def get_load_balancer(id: Optional[str] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult).value
 
@@ -295,12 +306,14 @@ def get_load_balancer(id: Optional[str] = None,
         size_unit=pulumi.get(__ret__, 'size_unit'),
         status=pulumi.get(__ret__, 'status'),
         sticky_sessions=pulumi.get(__ret__, 'sticky_sessions'),
+        type=pulumi.get(__ret__, 'type'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
 
 
 @_utilities.lift_output_func(get_load_balancer)
 def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
+                             type: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
     Get information on a load balancer for use in other resources. This data source

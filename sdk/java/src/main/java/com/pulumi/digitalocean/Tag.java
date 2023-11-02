@@ -71,7 +71,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A count of the database clusters that the tag is applied to.
      * 
      */
-    @Export(name="databasesCount", type=Integer.class, parameters={})
+    @Export(name="databasesCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> databasesCount;
 
     /**
@@ -85,7 +85,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A count of the Droplets the tag is applied to.
      * 
      */
-    @Export(name="dropletsCount", type=Integer.class, parameters={})
+    @Export(name="dropletsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dropletsCount;
 
     /**
@@ -99,7 +99,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A count of the images that the tag is applied to.
      * 
      */
-    @Export(name="imagesCount", type=Integer.class, parameters={})
+    @Export(name="imagesCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> imagesCount;
 
     /**
@@ -113,7 +113,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * The name of the tag
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -127,7 +127,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A count of the total number of resources that the tag is applied to.
      * 
      */
-    @Export(name="totalResourceCount", type=Integer.class, parameters={})
+    @Export(name="totalResourceCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> totalResourceCount;
 
     /**
@@ -141,7 +141,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A count of the volume snapshots that the tag is applied to.
      * 
      */
-    @Export(name="volumeSnapshotsCount", type=Integer.class, parameters={})
+    @Export(name="volumeSnapshotsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> volumeSnapshotsCount;
 
     /**
@@ -155,7 +155,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A count of the volumes that the tag is applied to.
      * 
      */
-    @Export(name="volumesCount", type=Integer.class, parameters={})
+    @Export(name="volumesCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> volumesCount;
 
     /**

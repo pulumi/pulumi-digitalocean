@@ -141,14 +141,14 @@ public final class GetSpacesBucketResult {
             return this;
         }
         public GetSpacesBucketResult build() {
-            final var o = new GetSpacesBucketResult();
-            o.bucketDomainName = bucketDomainName;
-            o.endpoint = endpoint;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.urn = urn;
-            return o;
+            final var _resultValue = new GetSpacesBucketResult();
+            _resultValue.bucketDomainName = bucketDomainName;
+            _resultValue.endpoint = endpoint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.urn = urn;
+            return _resultValue;
         }
     }
 }

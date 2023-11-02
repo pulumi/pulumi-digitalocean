@@ -120,12 +120,12 @@ public final class GetTagsFilter {
             return values(List.of(values));
         }
         public GetTagsFilter build() {
-            final var o = new GetTagsFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetTagsFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -36,7 +36,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * A unique identifier for a check
      * 
      */
-    @Export(name="checkId", type=String.class, parameters={})
+    @Export(name="checkId", refs={String.class}, tree="[0]")
     private Output<String> checkId;
 
     /**
@@ -50,7 +50,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
      * 
      */
-    @Export(name="comparison", type=String.class, parameters={})
+    @Export(name="comparison", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comparison;
 
     /**
@@ -64,7 +64,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * A human-friendly display name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -78,7 +78,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * The notification settings for a trigger alert.
      * 
      */
-    @Export(name="notifications", type=List.class, parameters={UptimeAlertNotification.class})
+    @Export(name="notifications", refs={List.class,UptimeAlertNotification.class}, tree="[0,1]")
     private Output<List<UptimeAlertNotification>> notifications;
 
     /**
@@ -92,7 +92,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -106,7 +106,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      * 
      */
-    @Export(name="threshold", type=Integer.class, parameters={})
+    @Export(name="threshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> threshold;
 
     /**
@@ -120,7 +120,7 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
      * The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

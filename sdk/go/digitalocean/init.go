@@ -41,6 +41,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseDb{}
 	case "digitalocean:index/databaseFirewall:DatabaseFirewall":
 		r = &DatabaseFirewall{}
+	case "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic":
+		r = &DatabaseKafkaTopic{}
+	case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
+		r = &DatabaseMysqlConfig{}
+	case "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig":
+		r = &DatabaseRedisConfig{}
 	case "digitalocean:index/databaseReplica:DatabaseReplica":
 		r = &DatabaseReplica{}
 	case "digitalocean:index/databaseUser:DatabaseUser":
@@ -178,6 +184,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseFirewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseKafkaTopic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseMysqlConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseRedisConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

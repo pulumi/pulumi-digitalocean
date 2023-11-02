@@ -17,6 +17,10 @@ public final class AppSpecServiceCors {
     /**
      * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
      */
     private @Nullable Boolean allowCredentials;
     /**
@@ -48,6 +52,10 @@ public final class AppSpecServiceCors {
     private AppSpecServiceCors() {}
     /**
      * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
      * 
      */
     public Optional<Boolean> allowCredentials() {
@@ -155,14 +163,14 @@ public final class AppSpecServiceCors {
             return this;
         }
         public AppSpecServiceCors build() {
-            final var o = new AppSpecServiceCors();
-            o.allowCredentials = allowCredentials;
-            o.allowHeaders = allowHeaders;
-            o.allowMethods = allowMethods;
-            o.allowOrigins = allowOrigins;
-            o.exposeHeaders = exposeHeaders;
-            o.maxAge = maxAge;
-            return o;
+            final var _resultValue = new AppSpecServiceCors();
+            _resultValue.allowCredentials = allowCredentials;
+            _resultValue.allowHeaders = allowHeaders;
+            _resultValue.allowMethods = allowMethods;
+            _resultValue.allowOrigins = allowOrigins;
+            _resultValue.exposeHeaders = exposeHeaders;
+            _resultValue.maxAge = maxAge;
+            return _resultValue;
         }
     }
 }

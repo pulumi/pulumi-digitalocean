@@ -106,15 +106,15 @@ public final class GetLoadBalancerForwardingRule {
             return this;
         }
         public GetLoadBalancerForwardingRule build() {
-            final var o = new GetLoadBalancerForwardingRule();
-            o.certificateId = certificateId;
-            o.certificateName = certificateName;
-            o.entryPort = entryPort;
-            o.entryProtocol = entryProtocol;
-            o.targetPort = targetPort;
-            o.targetProtocol = targetProtocol;
-            o.tlsPassthrough = tlsPassthrough;
-            return o;
+            final var _resultValue = new GetLoadBalancerForwardingRule();
+            _resultValue.certificateId = certificateId;
+            _resultValue.certificateName = certificateName;
+            _resultValue.entryPort = entryPort;
+            _resultValue.entryProtocol = entryProtocol;
+            _resultValue.targetPort = targetPort;
+            _resultValue.targetProtocol = targetProtocol;
+            _resultValue.tlsPassthrough = tlsPassthrough;
+            return _resultValue;
         }
     }
 }

@@ -101,12 +101,12 @@ public final class GetImagesResult {
             return sorts(List.of(sorts));
         }
         public GetImagesResult build() {
-            final var o = new GetImagesResult();
-            o.filters = filters;
-            o.id = id;
-            o.images = images;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetImagesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.images = images;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

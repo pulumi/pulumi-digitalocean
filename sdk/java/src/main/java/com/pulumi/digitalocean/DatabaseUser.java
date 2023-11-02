@@ -60,6 +60,53 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Create a new user for a PostgreSQL database replica
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import com.pulumi.digitalocean.DatabaseReplica;
+ * import com.pulumi.digitalocean.DatabaseReplicaArgs;
+ * import com.pulumi.digitalocean.DatabaseUser;
+ * import com.pulumi.digitalocean.DatabaseUserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
+ *             .engine(&#34;pg&#34;)
+ *             .version(&#34;11&#34;)
+ *             .size(&#34;db-s-1vcpu-1gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .nodeCount(1)
+ *             .build());
+ * 
+ *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
+ *             .clusterId(postgres_example.id())
+ *             .size(&#34;db-s-1vcpu-1gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .build());
+ * 
+ *         var user_example = new DatabaseUser(&#34;user-example&#34;, DatabaseUserArgs.builder()        
+ *             .clusterId(replica_example.uuid())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -76,7 +123,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * The ID of the original source database cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -90,7 +137,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
      * 
      */
-    @Export(name="mysqlAuthPlugin", type=String.class, parameters={})
+    @Export(name="mysqlAuthPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mysqlAuthPlugin;
 
     /**
@@ -104,7 +151,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * The name for the database user.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -118,7 +165,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * Password for the database user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -132,7 +179,7 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * Role for the database user. The value will be either &#34;primary&#34; or &#34;normal&#34;.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

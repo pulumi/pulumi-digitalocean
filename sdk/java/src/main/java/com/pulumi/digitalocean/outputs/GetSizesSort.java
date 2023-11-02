@@ -69,10 +69,10 @@ public final class GetSizesSort {
             return this;
         }
         public GetSizesSort build() {
-            final var o = new GetSizesSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetSizesSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

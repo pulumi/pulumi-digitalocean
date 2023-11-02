@@ -104,12 +104,12 @@ public final class GetSshKeysSshKey {
             return this;
         }
         public GetSshKeysSshKey build() {
-            final var o = new GetSshKeysSshKey();
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.name = name;
-            o.publicKey = publicKey;
-            return o;
+            final var _resultValue = new GetSshKeysSshKey();
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.publicKey = publicKey;
+            return _resultValue;
         }
     }
 }

@@ -7,3 +7,4 @@ plugins:
   - name: kubernetes 
     version: "3.10.0"
 team: ecosystem
+javaGenVersion: "v0.9.8"

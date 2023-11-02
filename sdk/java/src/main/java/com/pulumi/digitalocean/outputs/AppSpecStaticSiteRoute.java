@@ -68,10 +68,10 @@ public final class AppSpecStaticSiteRoute {
             return this;
         }
         public AppSpecStaticSiteRoute build() {
-            final var o = new AppSpecStaticSiteRoute();
-            o.path = path;
-            o.preservePathPrefix = preservePathPrefix;
-            return o;
+            final var _resultValue = new AppSpecStaticSiteRoute();
+            _resultValue.path = path;
+            _resultValue.preservePathPrefix = preservePathPrefix;
+            return _resultValue;
         }
     }
 }

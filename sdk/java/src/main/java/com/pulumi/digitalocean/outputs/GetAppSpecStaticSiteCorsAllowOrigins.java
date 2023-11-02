@@ -86,11 +86,11 @@ public final class GetAppSpecStaticSiteCorsAllowOrigins {
             return this;
         }
         public GetAppSpecStaticSiteCorsAllowOrigins build() {
-            final var o = new GetAppSpecStaticSiteCorsAllowOrigins();
-            o.exact = exact;
-            o.prefix = prefix;
-            o.regex = regex;
-            return o;
+            final var _resultValue = new GetAppSpecStaticSiteCorsAllowOrigins();
+            _resultValue.exact = exact;
+            _resultValue.prefix = prefix;
+            _resultValue.regex = regex;
+            return _resultValue;
         }
     }
 }

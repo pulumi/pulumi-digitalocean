@@ -175,16 +175,16 @@ public final class GetCertificateResult {
             return this;
         }
         public GetCertificateResult build() {
-            final var o = new GetCertificateResult();
-            o.domains = domains;
-            o.id = id;
-            o.name = name;
-            o.notAfter = notAfter;
-            o.sha1Fingerprint = sha1Fingerprint;
-            o.state = state;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetCertificateResult();
+            _resultValue.domains = domains;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.notAfter = notAfter;
+            _resultValue.sha1Fingerprint = sha1Fingerprint;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

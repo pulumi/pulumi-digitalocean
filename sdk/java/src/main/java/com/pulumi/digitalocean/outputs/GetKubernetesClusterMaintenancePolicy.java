@@ -84,11 +84,11 @@ public final class GetKubernetesClusterMaintenancePolicy {
             return this;
         }
         public GetKubernetesClusterMaintenancePolicy build() {
-            final var o = new GetKubernetesClusterMaintenancePolicy();
-            o.day = day;
-            o.duration = duration;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetKubernetesClusterMaintenancePolicy();
+            _resultValue.day = day;
+            _resultValue.duration = duration;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

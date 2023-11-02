@@ -103,12 +103,12 @@ public final class GetProjectsResult {
             return sorts(List.of(sorts));
         }
         public GetProjectsResult build() {
-            final var o = new GetProjectsResult();
-            o.filters = filters;
-            o.id = id;
-            o.projects = projects;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetProjectsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.projects = projects;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

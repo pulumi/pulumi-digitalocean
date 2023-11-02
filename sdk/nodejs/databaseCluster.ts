@@ -47,7 +47,20 @@ import * as utilities from "./utilities";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
- *     version: "6",
+ *     version: "7",
+ * });
+ * ```
+ * ### Create a new Kafka database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     engine: "kafka",
+ *     nodeCount: 3,
+ *     region: "nyc1",
+ *     size: "db-s-1vcpu-2gb",
+ *     version: "3.5",
  * });
  * ```
  * ### Create a new MongoDB database cluster
@@ -141,7 +154,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly database!: pulumi.Output<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -161,7 +174,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -200,6 +213,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
     public readonly sqlMode!: pulumi.Output<string | undefined>;
+    /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     */
+    public readonly storageSizeMib!: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
@@ -249,6 +266,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
+            resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
@@ -278,6 +296,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sqlMode"] = args ? args.sqlMode : undefined;
+            resourceInputs["storageSizeMib"] = args ? args.storageSizeMib : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["clusterUrn"] = undefined /*out*/;
@@ -314,7 +333,7 @@ export interface DatabaseClusterState {
      */
     database?: pulumi.Input<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -334,7 +353,7 @@ export interface DatabaseClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -374,6 +393,10 @@ export interface DatabaseClusterState {
      */
     sqlMode?: pulumi.Input<string>;
     /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     */
+    storageSizeMib?: pulumi.Input<string>;
+    /**
      * A list of tag names to be applied to the database cluster.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -401,7 +424,7 @@ export interface DatabaseClusterArgs {
      */
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine: pulumi.Input<string>;
     /**
@@ -417,7 +440,7 @@ export interface DatabaseClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
     nodeCount: pulumi.Input<number>;
     /**
@@ -440,6 +463,10 @@ export interface DatabaseClusterArgs {
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
     sqlMode?: pulumi.Input<string>;
+    /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     */
+    storageSizeMib?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */

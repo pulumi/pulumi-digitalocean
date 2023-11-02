@@ -69,10 +69,10 @@ public final class GetRegionsSort {
             return this;
         }
         public GetRegionsSort build() {
-            final var o = new GetRegionsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetRegionsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

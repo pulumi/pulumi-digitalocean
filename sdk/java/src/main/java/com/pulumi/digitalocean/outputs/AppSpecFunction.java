@@ -28,7 +28,11 @@ public final class AppSpecFunction {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     private @Nullable AppSpecFunctionCors cors;
     /**
      * @return Describes an environment variable made available to an app competent.
@@ -63,7 +67,11 @@ public final class AppSpecFunction {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     private @Nullable List<AppSpecFunctionRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -82,7 +90,11 @@ public final class AppSpecFunction {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<AppSpecFunctionCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -131,7 +143,11 @@ public final class AppSpecFunction {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public List<AppSpecFunctionRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }
@@ -240,18 +256,18 @@ public final class AppSpecFunction {
             return this;
         }
         public AppSpecFunction build() {
-            final var o = new AppSpecFunction();
-            o.alerts = alerts;
-            o.cors = cors;
-            o.envs = envs;
-            o.git = git;
-            o.github = github;
-            o.gitlab = gitlab;
-            o.logDestinations = logDestinations;
-            o.name = name;
-            o.routes = routes;
-            o.sourceDir = sourceDir;
-            return o;
+            final var _resultValue = new AppSpecFunction();
+            _resultValue.alerts = alerts;
+            _resultValue.cors = cors;
+            _resultValue.envs = envs;
+            _resultValue.git = git;
+            _resultValue.github = github;
+            _resultValue.gitlab = gitlab;
+            _resultValue.logDestinations = logDestinations;
+            _resultValue.name = name;
+            _resultValue.routes = routes;
+            _resultValue.sourceDir = sourceDir;
+            return _resultValue;
         }
     }
 }

@@ -116,12 +116,12 @@ public final class SpacesBucketCorsRule {
             return this;
         }
         public SpacesBucketCorsRule build() {
-            final var o = new SpacesBucketCorsRule();
-            o.allowedHeaders = allowedHeaders;
-            o.allowedMethods = allowedMethods;
-            o.allowedOrigins = allowedOrigins;
-            o.maxAgeSeconds = maxAgeSeconds;
-            return o;
+            final var _resultValue = new SpacesBucketCorsRule();
+            _resultValue.allowedHeaders = allowedHeaders;
+            _resultValue.allowedMethods = allowedMethods;
+            _resultValue.allowedOrigins = allowedOrigins;
+            _resultValue.maxAgeSeconds = maxAgeSeconds;
+            return _resultValue;
         }
     }
 }

@@ -156,7 +156,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * or `least_connections`. The default value is `round_robin`.
      * 
      */
-    @Export(name="algorithm", type=String.class, parameters={})
+    @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> algorithm;
 
     /**
@@ -172,7 +172,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A boolean value indicating whether to disable automatic DNS record creation for Let&#39;s Encrypt certificates that are added to the load balancer. Default value is `false`.
      * 
      */
-    @Export(name="disableLetsEncryptDnsRecords", type=Boolean.class, parameters={})
+    @Export(name="disableLetsEncryptDnsRecords", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableLetsEncryptDnsRecords;
 
     /**
@@ -186,7 +186,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      * 
      */
-    @Export(name="dropletIds", type=List.class, parameters={Integer.class})
+    @Export(name="dropletIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> dropletIds;
 
     /**
@@ -200,7 +200,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      * 
      */
-    @Export(name="dropletTag", type=String.class, parameters={})
+    @Export(name="dropletTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dropletTag;
 
     /**
@@ -214,7 +214,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
      * 
      */
-    @Export(name="enableBackendKeepalive", type=Boolean.class, parameters={})
+    @Export(name="enableBackendKeepalive", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableBackendKeepalive;
 
     /**
@@ -230,7 +230,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * the backend service. Default value is `false`.
      * 
      */
-    @Export(name="enableProxyProtocol", type=Boolean.class, parameters={})
+    @Export(name="enableProxyProtocol", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableProxyProtocol;
 
     /**
@@ -246,7 +246,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
      * 
      */
-    @Export(name="firewall", type=LoadBalancerFirewall.class, parameters={})
+    @Export(name="firewall", refs={LoadBalancerFirewall.class}, tree="[0]")
     private Output<LoadBalancerFirewall> firewall;
 
     /**
@@ -261,7 +261,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Load Balancer. The `forwarding_rule` block is documented below.
      * 
      */
-    @Export(name="forwardingRules", type=List.class, parameters={LoadBalancerForwardingRule.class})
+    @Export(name="forwardingRules", refs={List.class,LoadBalancerForwardingRule.class}, tree="[0,1]")
     private Output<List<LoadBalancerForwardingRule>> forwardingRules;
 
     /**
@@ -277,7 +277,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      * 
      */
-    @Export(name="healthcheck", type=LoadBalancerHealthcheck.class, parameters={})
+    @Export(name="healthcheck", refs={LoadBalancerHealthcheck.class}, tree="[0]")
     private Output<LoadBalancerHealthcheck> healthcheck;
 
     /**
@@ -292,7 +292,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
      * 
      */
-    @Export(name="httpIdleTimeoutSeconds", type=Integer.class, parameters={})
+    @Export(name="httpIdleTimeoutSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpIdleTimeoutSeconds;
 
     /**
@@ -306,7 +306,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ip of the Load Balancer
      * 
      */
-    @Export(name="ip", type=String.class, parameters={})
+    @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
     /**
@@ -320,7 +320,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The uniform resource name for the Load Balancer
      * 
      */
-    @Export(name="loadBalancerUrn", type=String.class, parameters={})
+    @Export(name="loadBalancerUrn", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerUrn;
 
     /**
@@ -334,7 +334,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The Load Balancer name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -348,7 +348,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -364,7 +364,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Default value is `false`.
      * 
      */
-    @Export(name="redirectHttpToHttps", type=Boolean.class, parameters={})
+    @Export(name="redirectHttpToHttps", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> redirectHttpToHttps;
 
     /**
@@ -380,21 +380,21 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The region to start in
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
-    private Output<String> region;
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
 
     /**
      * @return The region to start in
      * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
      * 
      */
-    @Export(name="size", type=String.class, parameters={})
+    @Export(name="size", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> size;
 
     /**
@@ -408,7 +408,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
      * 
      */
-    @Export(name="sizeUnit", type=Integer.class, parameters={})
+    @Export(name="sizeUnit", refs={Integer.class}, tree="[0]")
     private Output<Integer> sizeUnit;
 
     /**
@@ -418,7 +418,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<Integer> sizeUnit() {
         return this.sizeUnit;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
@@ -429,7 +429,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
      * 
      */
-    @Export(name="stickySessions", type=LoadBalancerStickySessions.class, parameters={})
+    @Export(name="stickySessions", refs={LoadBalancerStickySessions.class}, tree="[0]")
     private Output<LoadBalancerStickySessions> stickySessions;
 
     /**
@@ -441,10 +441,24 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.stickySessions;
     }
     /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
+    }
+    /**
      * The ID of the VPC where the load balancer will be located.
      * 
      */
-    @Export(name="vpcUuid", type=String.class, parameters={})
+    @Export(name="vpcUuid", refs={String.class}, tree="[0]")
     private Output<String> vpcUuid;
 
     /**

@@ -87,11 +87,11 @@ public final class GetAppSpecStaticSiteGithub {
             return this;
         }
         public GetAppSpecStaticSiteGithub build() {
-            final var o = new GetAppSpecStaticSiteGithub();
-            o.branch = branch;
-            o.deployOnPush = deployOnPush;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new GetAppSpecStaticSiteGithub();
+            _resultValue.branch = branch;
+            _resultValue.deployOnPush = deployOnPush;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

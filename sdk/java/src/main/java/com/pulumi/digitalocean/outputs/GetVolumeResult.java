@@ -211,18 +211,18 @@ public final class GetVolumeResult {
             return this;
         }
         public GetVolumeResult build() {
-            final var o = new GetVolumeResult();
-            o.description = description;
-            o.dropletIds = dropletIds;
-            o.filesystemLabel = filesystemLabel;
-            o.filesystemType = filesystemType;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.size = size;
-            o.tags = tags;
-            o.urn = urn;
-            return o;
+            final var _resultValue = new GetVolumeResult();
+            _resultValue.description = description;
+            _resultValue.dropletIds = dropletIds;
+            _resultValue.filesystemLabel = filesystemLabel;
+            _resultValue.filesystemType = filesystemType;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.tags = tags;
+            _resultValue.urn = urn;
+            return _resultValue;
         }
     }
 }

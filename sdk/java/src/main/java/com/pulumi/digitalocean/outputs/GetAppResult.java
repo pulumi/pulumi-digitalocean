@@ -195,17 +195,17 @@ public final class GetAppResult {
             return this;
         }
         public GetAppResult build() {
-            final var o = new GetAppResult();
-            o.activeDeploymentId = activeDeploymentId;
-            o.appId = appId;
-            o.createdAt = createdAt;
-            o.defaultIngress = defaultIngress;
-            o.id = id;
-            o.liveUrl = liveUrl;
-            o.specs = specs;
-            o.updatedAt = updatedAt;
-            o.urn = urn;
-            return o;
+            final var _resultValue = new GetAppResult();
+            _resultValue.activeDeploymentId = activeDeploymentId;
+            _resultValue.appId = appId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.defaultIngress = defaultIngress;
+            _resultValue.id = id;
+            _resultValue.liveUrl = liveUrl;
+            _resultValue.specs = specs;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.urn = urn;
+            return _resultValue;
         }
     }
 }

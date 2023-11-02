@@ -56,10 +56,10 @@ public final class GetLoadBalancerFirewall {
             return denies(List.of(denies));
         }
         public GetLoadBalancerFirewall build() {
-            final var o = new GetLoadBalancerFirewall();
-            o.allows = allows;
-            o.denies = denies;
-            return o;
+            final var _resultValue = new GetLoadBalancerFirewall();
+            _resultValue.allows = allows;
+            _resultValue.denies = denies;
+            return _resultValue;
         }
     }
 }

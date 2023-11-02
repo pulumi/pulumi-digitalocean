@@ -73,6 +73,12 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _functions = value;
         }
 
+        /// <summary>
+        /// Specification for component routing, rewrites, and redirects.
+        /// </summary>
+        [Input("ingress")]
+        public Input<Inputs.AppSpecIngressArgs>? Ingress { get; set; }
+
         [Input("jobs")]
         private InputList<Inputs.AppSpecJobArgs>? _jobs;
         public InputList<Inputs.AppSpecJobArgs> Jobs

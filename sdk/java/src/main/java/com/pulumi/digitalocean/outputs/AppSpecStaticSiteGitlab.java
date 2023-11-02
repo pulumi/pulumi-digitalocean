@@ -87,11 +87,11 @@ public final class AppSpecStaticSiteGitlab {
             return this;
         }
         public AppSpecStaticSiteGitlab build() {
-            final var o = new AppSpecStaticSiteGitlab();
-            o.branch = branch;
-            o.deployOnPush = deployOnPush;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new AppSpecStaticSiteGitlab();
+            _resultValue.branch = branch;
+            _resultValue.deployOnPush = deployOnPush;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

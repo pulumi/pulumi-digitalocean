@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Web Droplet in the nyc2 region
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         Image = "ubuntu-18-04-x64",
+    ///         Image = "ubuntu-20-04-x64",
     ///         Region = "nyc2",
     ///         Size = "s-1vcpu-1gb",
     ///     });

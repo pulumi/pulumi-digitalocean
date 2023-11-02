@@ -115,13 +115,13 @@ public final class GetFloatingIpResult {
             return this;
         }
         public GetFloatingIpResult build() {
-            final var o = new GetFloatingIpResult();
-            o.dropletId = dropletId;
-            o.floatingIpUrn = floatingIpUrn;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetFloatingIpResult();
+            _resultValue.dropletId = dropletId;
+            _resultValue.floatingIpUrn = floatingIpUrn;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

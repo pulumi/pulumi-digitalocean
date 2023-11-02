@@ -68,10 +68,10 @@ public final class AppSpecAlert {
             return this;
         }
         public AppSpecAlert build() {
-            final var o = new AppSpecAlert();
-            o.disabled = disabled;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new AppSpecAlert();
+            _resultValue.disabled = disabled;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

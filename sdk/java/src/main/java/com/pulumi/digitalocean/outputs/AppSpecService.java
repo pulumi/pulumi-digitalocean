@@ -36,7 +36,11 @@ public final class AppSpecService {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     private @Nullable AppSpecServiceCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -111,7 +115,11 @@ public final class AppSpecService {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     private @Nullable List<AppSpecServiceRoute> routes;
     /**
      * @return An optional run command to override the component&#39;s default.
@@ -142,7 +150,11 @@ public final class AppSpecService {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<AppSpecServiceCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -247,7 +259,11 @@ public final class AppSpecService {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public List<AppSpecServiceRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }
@@ -436,28 +452,28 @@ public final class AppSpecService {
             return this;
         }
         public AppSpecService build() {
-            final var o = new AppSpecService();
-            o.alerts = alerts;
-            o.buildCommand = buildCommand;
-            o.cors = cors;
-            o.dockerfilePath = dockerfilePath;
-            o.environmentSlug = environmentSlug;
-            o.envs = envs;
-            o.git = git;
-            o.github = github;
-            o.gitlab = gitlab;
-            o.healthCheck = healthCheck;
-            o.httpPort = httpPort;
-            o.image = image;
-            o.instanceCount = instanceCount;
-            o.instanceSizeSlug = instanceSizeSlug;
-            o.internalPorts = internalPorts;
-            o.logDestinations = logDestinations;
-            o.name = name;
-            o.routes = routes;
-            o.runCommand = runCommand;
-            o.sourceDir = sourceDir;
-            return o;
+            final var _resultValue = new AppSpecService();
+            _resultValue.alerts = alerts;
+            _resultValue.buildCommand = buildCommand;
+            _resultValue.cors = cors;
+            _resultValue.dockerfilePath = dockerfilePath;
+            _resultValue.environmentSlug = environmentSlug;
+            _resultValue.envs = envs;
+            _resultValue.git = git;
+            _resultValue.github = github;
+            _resultValue.gitlab = gitlab;
+            _resultValue.healthCheck = healthCheck;
+            _resultValue.httpPort = httpPort;
+            _resultValue.image = image;
+            _resultValue.instanceCount = instanceCount;
+            _resultValue.instanceSizeSlug = instanceSizeSlug;
+            _resultValue.internalPorts = internalPorts;
+            _resultValue.logDestinations = logDestinations;
+            _resultValue.name = name;
+            _resultValue.routes = routes;
+            _resultValue.runCommand = runCommand;
+            _resultValue.sourceDir = sourceDir;
+            return _resultValue;
         }
     }
 }

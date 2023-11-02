@@ -141,6 +141,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("type")]
+        public string? Type { get; set; }
+
         public GetLoadBalancerArgs()
         {
         }
@@ -160,6 +163,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public GetLoadBalancerInvokeArgs()
         {
@@ -192,6 +198,7 @@ namespace Pulumi.DigitalOcean
         public readonly int SizeUnit;
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> StickySessions;
+        public readonly string Type;
         public readonly string VpcUuid;
 
         [OutputConstructor]
@@ -238,6 +245,8 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> stickySessions,
 
+            string type,
+
             string vpcUuid)
         {
             Algorithm = algorithm;
@@ -261,6 +270,7 @@ namespace Pulumi.DigitalOcean
             SizeUnit = sizeUnit;
             Status = status;
             StickySessions = stickySessions;
+            Type = type;
             VpcUuid = vpcUuid;
         }
     }

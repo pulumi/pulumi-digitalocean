@@ -201,15 +201,15 @@ public final class FirewallOutboundRule {
             return this;
         }
         public FirewallOutboundRule build() {
-            final var o = new FirewallOutboundRule();
-            o.destinationAddresses = destinationAddresses;
-            o.destinationDropletIds = destinationDropletIds;
-            o.destinationKubernetesIds = destinationKubernetesIds;
-            o.destinationLoadBalancerUids = destinationLoadBalancerUids;
-            o.destinationTags = destinationTags;
-            o.portRange = portRange;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new FirewallOutboundRule();
+            _resultValue.destinationAddresses = destinationAddresses;
+            _resultValue.destinationDropletIds = destinationDropletIds;
+            _resultValue.destinationKubernetesIds = destinationKubernetesIds;
+            _resultValue.destinationLoadBalancerUids = destinationLoadBalancerUids;
+            _resultValue.destinationTags = destinationTags;
+            _resultValue.portRange = portRange;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

@@ -25,6 +25,10 @@ export interface AppSpec {
      */
     envs?: outputs.AppSpecEnv[];
     functions?: outputs.AppSpecFunction[];
+    /**
+     * Specification for component routing, rewrites, and redirects.
+     */
+    ingress: outputs.AppSpecIngress;
     jobs?: outputs.AppSpecJob[];
     /**
      * The name of the component.
@@ -128,6 +132,8 @@ export interface AppSpecFunction {
     alerts?: outputs.AppSpecFunctionAlert[];
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: outputs.AppSpecFunctionCors;
     /**
@@ -156,6 +162,8 @@ export interface AppSpecFunction {
     name: string;
     /**
      * An HTTP paths that should be routed to this component.
+     *
+     * @deprecated Service level routes are deprecated in favor of ingresses
      */
     routes: outputs.AppSpecFunctionRoute[];
     /**
@@ -190,6 +198,10 @@ export interface AppSpecFunctionAlert {
 export interface AppSpecFunctionCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
      */
     allowCredentials?: boolean;
     /**
@@ -344,6 +356,130 @@ export interface AppSpecFunctionRoute {
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
     preservePathPrefix?: boolean;
+}
+
+export interface AppSpecIngress {
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rules: outputs.AppSpecIngressRule[];
+}
+
+export interface AppSpecIngressRule {
+    /**
+     * The component to route to. Only one of `component` or `redirect` may be set.
+     */
+    component: outputs.AppSpecIngressRuleComponent;
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors: outputs.AppSpecIngressRuleCors;
+    /**
+     * The match configuration for the rule
+     */
+    match: outputs.AppSpecIngressRuleMatch;
+    /**
+     * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     */
+    redirect?: outputs.AppSpecIngressRuleRedirect;
+}
+
+export interface AppSpecIngressRuleComponent {
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix: boolean;
+    /**
+     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
+     */
+    rewrite: string;
+}
+
+export interface AppSpecIngressRuleCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
+     */
+    allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: outputs.AppSpecIngressRuleCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: string;
+}
+
+export interface AppSpecIngressRuleCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
+}
+
+export interface AppSpecIngressRuleMatch {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path: outputs.AppSpecIngressRuleMatchPath;
+}
+
+export interface AppSpecIngressRuleMatchPath {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix: string;
+}
+
+export interface AppSpecIngressRuleRedirect {
+    /**
+     * The authority/host to redirect to. This can be a hostname or IP address.
+     */
+    authority?: string;
+    /**
+     * The port to redirect to.
+     */
+    port?: number;
+    /**
+     * The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+     */
+    redirectCode?: number;
+    /**
+     * The scheme to redirect to. Supported values are `http` or `https`
+     */
+    scheme?: string;
+    /**
+     * An optional URI path to redirect to.
+     */
+    uri?: string;
 }
 
 export interface AppSpecJob {
@@ -583,6 +719,8 @@ export interface AppSpecService {
     buildCommand?: string;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: outputs.AppSpecServiceCors;
     /**
@@ -643,6 +781,8 @@ export interface AppSpecService {
     name: string;
     /**
      * An HTTP paths that should be routed to this component.
+     *
+     * @deprecated Service level routes are deprecated in favor of ingresses
      */
     routes: outputs.AppSpecServiceRoute[];
     /**
@@ -681,6 +821,10 @@ export interface AppSpecServiceAlert {
 export interface AppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
      */
     allowCredentials?: boolean;
     /**
@@ -905,6 +1049,8 @@ export interface AppSpecStaticSite {
     catchallDocument?: string;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: outputs.AppSpecStaticSiteCors;
     /**
@@ -949,6 +1095,8 @@ export interface AppSpecStaticSite {
     outputDir?: string;
     /**
      * An HTTP paths that should be routed to this component.
+     *
+     * @deprecated Service level routes are deprecated in favor of ingresses
      */
     routes: outputs.AppSpecStaticSiteRoute[];
     /**
@@ -960,6 +1108,10 @@ export interface AppSpecStaticSite {
 export interface AppSpecStaticSiteCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
      */
     allowCredentials?: boolean;
     /**
@@ -1335,6 +1487,104 @@ export interface DatabaseFirewallRule {
     value: string;
 }
 
+export interface DatabaseKafkaTopicConfig {
+    /**
+     * The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * This may be one of "delete", "compact", or "compactDelete".
+     */
+    cleanupPolicy: string;
+    /**
+     * The topic compression codecs used for a given topic.
+     * This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+     */
+    compressionType: string;
+    /**
+     * The amount of time, in ms, that deleted records are retained.
+     */
+    deleteRetentionMs: string;
+    /**
+     * The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+     */
+    fileDeleteDelayMs: string;
+    /**
+     * The number of messages accumulated on a topic partition before they are flushed to disk.
+     */
+    flushMessages: string;
+    /**
+     * The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+     */
+    flushMs: string;
+    /**
+     * The interval, in bytes, in which entries are added to the offset index.
+     */
+    indexIntervalBytes: string;
+    /**
+     * The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+     */
+    maxCompactionLagMs: string;
+    /**
+     * The maximum size, in bytes, of a message.
+     */
+    maxMessageBytes: string;
+    /**
+     * Determines whether down-conversion of message formats for consumers is enabled.
+     */
+    messageDownConversionEnable: boolean;
+    /**
+     * The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+     */
+    messageFormatVersion: string;
+    /**
+     * The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+     */
+    messageTimestampDifferenceMaxMs: string;
+    /**
+     * Specifies which timestamp to use for the message. This may be one of "createTime" or "logAppendTime".
+     */
+    messageTimestampType: string;
+    /**
+     * A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
+     */
+    minCleanableDirtyRatio: number;
+    minCompactionLagMs: string;
+    /**
+     * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     */
+    minInsyncReplicas: number;
+    /**
+     * Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+     */
+    preallocate: boolean;
+    /**
+     * The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+     */
+    retentionBytes: string;
+    /**
+     * The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+     */
+    retentionMs: string;
+    /**
+     * The maximum size, in bytes, of a single topic log file.
+     */
+    segmentBytes: string;
+    /**
+     * The maximum size, in bytes, of the offset index.
+     */
+    segmentIndexBytes: string;
+    /**
+     * The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+     */
+    segmentJitterMs: string;
+    /**
+     * The maximum time, in ms, before the topic log will flush to disk.
+     */
+    segmentMs: string;
+    /**
+     * Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
+     */
+    uncleanLeaderElectionEnable: boolean;
+}
+
 export interface FirewallInboundRule {
     /**
      * The ports on which traffic will be allowed
@@ -1445,6 +1695,7 @@ export interface GetAppSpec {
      */
     envs?: outputs.GetAppSpecEnv[];
     functions?: outputs.GetAppSpecFunction[];
+    ingress: outputs.GetAppSpecIngress;
     jobs?: outputs.GetAppSpecJob[];
     /**
      * The name of the component.
@@ -1537,6 +1788,8 @@ export interface GetAppSpecFunction {
     alerts?: outputs.GetAppSpecFunctionAlert[];
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: outputs.GetAppSpecFunctionCors;
     /**
@@ -1563,6 +1816,9 @@ export interface GetAppSpecFunction {
      * The name of the component.
      */
     name: string;
+    /**
+     * @deprecated Service level routes are deprecated in favor of ingresses
+     */
     routes: outputs.GetAppSpecFunctionRoute[];
     /**
      * An optional path to the working directory to use for the build.
@@ -1748,6 +2004,99 @@ export interface GetAppSpecFunctionRoute {
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
     preservePathPrefix?: boolean;
+}
+
+export interface GetAppSpecIngress {
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rules: outputs.GetAppSpecIngressRule[];
+}
+
+export interface GetAppSpecIngressRule {
+    component: outputs.GetAppSpecIngressRuleComponent;
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors: outputs.GetAppSpecIngressRuleCors;
+    match: outputs.GetAppSpecIngressRuleMatch;
+    redirect?: outputs.GetAppSpecIngressRuleRedirect;
+}
+
+export interface GetAppSpecIngressRuleComponent {
+    /**
+     * The name of the component.
+     */
+    name: string;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix: boolean;
+    rewrite: string;
+}
+
+export interface GetAppSpecIngressRuleCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     */
+    allowCredentials?: boolean;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: string[];
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: string[];
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: outputs.GetAppSpecIngressRuleCorsAllowOrigins;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: string[];
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: string;
+}
+
+export interface GetAppSpecIngressRuleCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: string;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: string;
+}
+
+export interface GetAppSpecIngressRuleMatch {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path: outputs.GetAppSpecIngressRuleMatchPath;
+}
+
+export interface GetAppSpecIngressRuleMatchPath {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix: string;
+}
+
+export interface GetAppSpecIngressRuleRedirect {
+    authority?: string;
+    port?: number;
+    redirectCode?: number;
+    scheme?: string;
+    uri?: string;
 }
 
 export interface GetAppSpecJob {
@@ -1985,6 +2334,8 @@ export interface GetAppSpecService {
     buildCommand?: string;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: outputs.GetAppSpecServiceCors;
     /**
@@ -2043,6 +2394,9 @@ export interface GetAppSpecService {
      * The name of the component.
      */
     name: string;
+    /**
+     * @deprecated Service level routes are deprecated in favor of ingresses
+     */
     routes: outputs.GetAppSpecServiceRoute[];
     /**
      * An optional run command to override the component's default.
@@ -2302,6 +2656,8 @@ export interface GetAppSpecStaticSite {
     catchallDocument?: string;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: outputs.GetAppSpecStaticSiteCors;
     /**
@@ -2344,6 +2700,9 @@ export interface GetAppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: string;
+    /**
+     * @deprecated Service level routes are deprecated in favor of ingresses
+     */
     routes: outputs.GetAppSpecStaticSiteRoute[];
     /**
      * An optional path to the working directory to use for the build.

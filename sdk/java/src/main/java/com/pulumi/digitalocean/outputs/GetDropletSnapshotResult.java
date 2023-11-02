@@ -194,18 +194,18 @@ public final class GetDropletSnapshotResult {
             return this;
         }
         public GetDropletSnapshotResult build() {
-            final var o = new GetDropletSnapshotResult();
-            o.createdAt = createdAt;
-            o.dropletId = dropletId;
-            o.id = id;
-            o.minDiskSize = minDiskSize;
-            o.mostRecent = mostRecent;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.region = region;
-            o.regions = regions;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetDropletSnapshotResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.dropletId = dropletId;
+            _resultValue.id = id;
+            _resultValue.minDiskSize = minDiskSize;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.region = region;
+            _resultValue.regions = regions;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -99,7 +99,7 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
      * The date and time the registry access token will expire.
      * 
      */
-    @Export(name="credentialExpirationTime", type=String.class, parameters={})
+    @Export(name="credentialExpirationTime", refs={String.class}, tree="[0]")
     private Output<String> credentialExpirationTime;
 
     /**
@@ -113,7 +113,7 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
      * Credentials for the container registry.
      * 
      */
-    @Export(name="dockerCredentials", type=String.class, parameters={})
+    @Export(name="dockerCredentials", refs={String.class}, tree="[0]")
     private Output<String> dockerCredentials;
 
     /**
@@ -127,7 +127,7 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
      * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      * 
      */
-    @Export(name="expirySeconds", type=Integer.class, parameters={})
+    @Export(name="expirySeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> expirySeconds;
 
     /**
@@ -141,7 +141,7 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
      * The name of the container registry.
      * 
      */
-    @Export(name="registryName", type=String.class, parameters={})
+    @Export(name="registryName", refs={String.class}, tree="[0]")
     private Output<String> registryName;
 
     /**
@@ -155,7 +155,7 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
      * Allow for write access to the container registry. Defaults to false.
      * 
      */
-    @Export(name="write", type=Boolean.class, parameters={})
+    @Export(name="write", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> write;
 
     /**

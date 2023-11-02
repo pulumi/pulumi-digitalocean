@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The URL to use for the DigitalOcean API.
      * 
      */
-    @Export(name="apiEndpoint", type=String.class, parameters={})
+    @Export(name="apiEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiEndpoint;
 
     /**
@@ -40,7 +40,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The access key ID for Spaces API operations.
      * 
      */
-    @Export(name="spacesAccessId", type=String.class, parameters={})
+    @Export(name="spacesAccessId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spacesAccessId;
 
     /**
@@ -54,7 +54,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The URL to use for the DigitalOcean Spaces API.
      * 
      */
-    @Export(name="spacesEndpoint", type=String.class, parameters={})
+    @Export(name="spacesEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spacesEndpoint;
 
     /**
@@ -68,7 +68,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The secret access key for Spaces API operations.
      * 
      */
-    @Export(name="spacesSecretKey", type=String.class, parameters={})
+    @Export(name="spacesSecretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spacesSecretKey;
 
     /**
@@ -82,7 +82,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The token key for API operations.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**

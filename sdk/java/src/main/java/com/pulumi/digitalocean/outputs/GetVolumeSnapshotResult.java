@@ -216,19 +216,19 @@ public final class GetVolumeSnapshotResult {
             return this;
         }
         public GetVolumeSnapshotResult build() {
-            final var o = new GetVolumeSnapshotResult();
-            o.createdAt = createdAt;
-            o.id = id;
-            o.minDiskSize = minDiskSize;
-            o.mostRecent = mostRecent;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.region = region;
-            o.regions = regions;
-            o.size = size;
-            o.tags = tags;
-            o.volumeId = volumeId;
-            return o;
+            final var _resultValue = new GetVolumeSnapshotResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.id = id;
+            _resultValue.minDiskSize = minDiskSize;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.region = region;
+            _resultValue.regions = regions;
+            _resultValue.size = size;
+            _resultValue.tags = tags;
+            _resultValue.volumeId = volumeId;
+            return _resultValue;
         }
     }
 }

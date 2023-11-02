@@ -361,27 +361,27 @@ public final class GetSpacesBucketObjectResult {
             return this;
         }
         public GetSpacesBucketObjectResult build() {
-            final var o = new GetSpacesBucketObjectResult();
-            o.body = body;
-            o.bucket = bucket;
-            o.cacheControl = cacheControl;
-            o.contentDisposition = contentDisposition;
-            o.contentEncoding = contentEncoding;
-            o.contentLanguage = contentLanguage;
-            o.contentLength = contentLength;
-            o.contentType = contentType;
-            o.etag = etag;
-            o.expiration = expiration;
-            o.expires = expires;
-            o.id = id;
-            o.key = key;
-            o.lastModified = lastModified;
-            o.metadata = metadata;
-            o.range = range;
-            o.region = region;
-            o.versionId = versionId;
-            o.websiteRedirectLocation = websiteRedirectLocation;
-            return o;
+            final var _resultValue = new GetSpacesBucketObjectResult();
+            _resultValue.body = body;
+            _resultValue.bucket = bucket;
+            _resultValue.cacheControl = cacheControl;
+            _resultValue.contentDisposition = contentDisposition;
+            _resultValue.contentEncoding = contentEncoding;
+            _resultValue.contentLanguage = contentLanguage;
+            _resultValue.contentLength = contentLength;
+            _resultValue.contentType = contentType;
+            _resultValue.etag = etag;
+            _resultValue.expiration = expiration;
+            _resultValue.expires = expires;
+            _resultValue.id = id;
+            _resultValue.key = key;
+            _resultValue.lastModified = lastModified;
+            _resultValue.metadata = metadata;
+            _resultValue.range = range;
+            _resultValue.region = region;
+            _resultValue.versionId = versionId;
+            _resultValue.websiteRedirectLocation = websiteRedirectLocation;
+            return _resultValue;
         }
     }
 }

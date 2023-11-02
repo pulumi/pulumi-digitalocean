@@ -125,14 +125,14 @@ public final class GetDatabaseUserResult {
             return this;
         }
         public GetDatabaseUserResult build() {
-            final var o = new GetDatabaseUserResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.mysqlAuthPlugin = mysqlAuthPlugin;
-            o.name = name;
-            o.password = password;
-            o.role = role;
-            return o;
+            final var _resultValue = new GetDatabaseUserResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.mysqlAuthPlugin = mysqlAuthPlugin;
+            _resultValue.name = name;
+            _resultValue.password = password;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

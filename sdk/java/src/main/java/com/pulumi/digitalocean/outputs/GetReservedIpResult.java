@@ -115,13 +115,13 @@ public final class GetReservedIpResult {
             return this;
         }
         public GetReservedIpResult build() {
-            final var o = new GetReservedIpResult();
-            o.dropletId = dropletId;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.region = region;
-            o.urn = urn;
-            return o;
+            final var _resultValue = new GetReservedIpResult();
+            _resultValue.dropletId = dropletId;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.region = region;
+            _resultValue.urn = urn;
+            return _resultValue;
         }
     }
 }

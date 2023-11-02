@@ -46,9 +46,9 @@ public final class GetAppSpecServiceLogDestinationLogtail {
             return this;
         }
         public GetAppSpecServiceLogDestinationLogtail build() {
-            final var o = new GetAppSpecServiceLogDestinationLogtail();
-            o.token = token;
-            return o;
+            final var _resultValue = new GetAppSpecServiceLogDestinationLogtail();
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

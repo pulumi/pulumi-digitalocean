@@ -336,6 +336,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * The ID of the VPC where the load balancer will be located.
      * 
      */
@@ -373,6 +388,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.sizeUnit = $.sizeUnit;
         this.status = $.status;
         this.stickySessions = $.stickySessions;
+        this.type = $.type;
         this.vpcUuid = $.vpcUuid;
     }
 
@@ -883,6 +899,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stickySessions(LoadBalancerStickySessionsArgs stickySessions) {
             return stickySessions(Output.of(stickySessions));
+        }
+
+        /**
+         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

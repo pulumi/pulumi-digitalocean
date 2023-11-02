@@ -122,12 +122,12 @@ public final class GetRegionsFilter {
             return values(List.of(values));
         }
         public GetRegionsFilter build() {
-            final var o = new GetRegionsFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRegionsFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

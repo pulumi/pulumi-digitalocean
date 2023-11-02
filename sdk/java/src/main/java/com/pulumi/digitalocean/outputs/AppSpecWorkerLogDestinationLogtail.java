@@ -50,9 +50,9 @@ public final class AppSpecWorkerLogDestinationLogtail {
             return this;
         }
         public AppSpecWorkerLogDestinationLogtail build() {
-            final var o = new AppSpecWorkerLogDestinationLogtail();
-            o.token = token;
-            return o;
+            final var _resultValue = new AppSpecWorkerLogDestinationLogtail();
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

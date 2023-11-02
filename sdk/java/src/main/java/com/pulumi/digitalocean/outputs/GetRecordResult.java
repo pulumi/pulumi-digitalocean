@@ -221,19 +221,19 @@ public final class GetRecordResult {
             return this;
         }
         public GetRecordResult build() {
-            final var o = new GetRecordResult();
-            o.data = data;
-            o.domain = domain;
-            o.flags = flags;
-            o.id = id;
-            o.name = name;
-            o.port = port;
-            o.priority = priority;
-            o.tag = tag;
-            o.ttl = ttl;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetRecordResult();
+            _resultValue.data = data;
+            _resultValue.domain = domain;
+            _resultValue.flags = flags;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.priority = priority;
+            _resultValue.tag = tag;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

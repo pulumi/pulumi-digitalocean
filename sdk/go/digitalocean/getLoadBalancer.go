@@ -89,6 +89,7 @@ type LookupLoadBalancerArgs struct {
 	Id *string `pulumi:"id"`
 	// The name of load balancer.
 	Name *string `pulumi:"name"`
+	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getLoadBalancer.
@@ -114,6 +115,7 @@ type LookupLoadBalancerResult struct {
 	SizeUnit                     int                             `pulumi:"sizeUnit"`
 	Status                       string                          `pulumi:"status"`
 	StickySessions               []GetLoadBalancerStickySession  `pulumi:"stickySessions"`
+	Type                         string                          `pulumi:"type"`
 	VpcUuid                      string                          `pulumi:"vpcUuid"`
 }
 
@@ -136,6 +138,7 @@ type LookupLoadBalancerOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of load balancer.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
@@ -245,6 +248,10 @@ func (o LookupLoadBalancerResultOutput) Status() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) StickySessions() GetLoadBalancerStickySessionArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerStickySession { return v.StickySessions }).(GetLoadBalancerStickySessionArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) VpcUuid() pulumi.StringOutput {

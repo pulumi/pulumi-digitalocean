@@ -201,15 +201,15 @@ public final class FirewallInboundRule {
             return sourceTags(List.of(sourceTags));
         }
         public FirewallInboundRule build() {
-            final var o = new FirewallInboundRule();
-            o.portRange = portRange;
-            o.protocol = protocol;
-            o.sourceAddresses = sourceAddresses;
-            o.sourceDropletIds = sourceDropletIds;
-            o.sourceKubernetesIds = sourceKubernetesIds;
-            o.sourceLoadBalancerUids = sourceLoadBalancerUids;
-            o.sourceTags = sourceTags;
-            return o;
+            final var _resultValue = new FirewallInboundRule();
+            _resultValue.portRange = portRange;
+            _resultValue.protocol = protocol;
+            _resultValue.sourceAddresses = sourceAddresses;
+            _resultValue.sourceDropletIds = sourceDropletIds;
+            _resultValue.sourceKubernetesIds = sourceKubernetesIds;
+            _resultValue.sourceLoadBalancerUids = sourceLoadBalancerUids;
+            _resultValue.sourceTags = sourceTags;
+            return _resultValue;
         }
     }
 }

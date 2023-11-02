@@ -67,10 +67,10 @@ public final class GetAppSpecServiceGit {
             return this;
         }
         public GetAppSpecServiceGit build() {
-            final var o = new GetAppSpecServiceGit();
-            o.branch = branch;
-            o.repoCloneUrl = repoCloneUrl;
-            return o;
+            final var _resultValue = new GetAppSpecServiceGit();
+            _resultValue.branch = branch;
+            _resultValue.repoCloneUrl = repoCloneUrl;
+            return _resultValue;
         }
     }
 }

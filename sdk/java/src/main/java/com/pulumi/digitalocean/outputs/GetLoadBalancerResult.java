@@ -39,6 +39,7 @@ public final class GetLoadBalancerResult {
     private Integer sizeUnit;
     private String status;
     private List<GetLoadBalancerStickySession> stickySessions;
+    private String type;
     private String vpcUuid;
 
     private GetLoadBalancerResult() {}
@@ -105,6 +106,9 @@ public final class GetLoadBalancerResult {
     public List<GetLoadBalancerStickySession> stickySessions() {
         return this.stickySessions;
     }
+    public String type() {
+        return this.type;
+    }
     public String vpcUuid() {
         return this.vpcUuid;
     }
@@ -139,6 +143,7 @@ public final class GetLoadBalancerResult {
         private Integer sizeUnit;
         private String status;
         private List<GetLoadBalancerStickySession> stickySessions;
+        private String type;
         private String vpcUuid;
         public Builder() {}
         public Builder(GetLoadBalancerResult defaults) {
@@ -164,6 +169,7 @@ public final class GetLoadBalancerResult {
     	      this.sizeUnit = defaults.sizeUnit;
     	      this.status = defaults.status;
     	      this.stickySessions = defaults.stickySessions;
+    	      this.type = defaults.type;
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
@@ -288,35 +294,41 @@ public final class GetLoadBalancerResult {
             return stickySessions(List.of(stickySessions));
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             this.vpcUuid = Objects.requireNonNull(vpcUuid);
             return this;
         }
         public GetLoadBalancerResult build() {
-            final var o = new GetLoadBalancerResult();
-            o.algorithm = algorithm;
-            o.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
-            o.dropletIds = dropletIds;
-            o.dropletTag = dropletTag;
-            o.enableBackendKeepalive = enableBackendKeepalive;
-            o.enableProxyProtocol = enableProxyProtocol;
-            o.firewalls = firewalls;
-            o.forwardingRules = forwardingRules;
-            o.healthchecks = healthchecks;
-            o.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
-            o.id = id;
-            o.ip = ip;
-            o.loadBalancerUrn = loadBalancerUrn;
-            o.name = name;
-            o.projectId = projectId;
-            o.redirectHttpToHttps = redirectHttpToHttps;
-            o.region = region;
-            o.size = size;
-            o.sizeUnit = sizeUnit;
-            o.status = status;
-            o.stickySessions = stickySessions;
-            o.vpcUuid = vpcUuid;
-            return o;
+            final var _resultValue = new GetLoadBalancerResult();
+            _resultValue.algorithm = algorithm;
+            _resultValue.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
+            _resultValue.dropletIds = dropletIds;
+            _resultValue.dropletTag = dropletTag;
+            _resultValue.enableBackendKeepalive = enableBackendKeepalive;
+            _resultValue.enableProxyProtocol = enableProxyProtocol;
+            _resultValue.firewalls = firewalls;
+            _resultValue.forwardingRules = forwardingRules;
+            _resultValue.healthchecks = healthchecks;
+            _resultValue.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.loadBalancerUrn = loadBalancerUrn;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.redirectHttpToHttps = redirectHttpToHttps;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.sizeUnit = sizeUnit;
+            _resultValue.status = status;
+            _resultValue.stickySessions = stickySessions;
+            _resultValue.type = type;
+            _resultValue.vpcUuid = vpcUuid;
+            return _resultValue;
         }
     }
 }

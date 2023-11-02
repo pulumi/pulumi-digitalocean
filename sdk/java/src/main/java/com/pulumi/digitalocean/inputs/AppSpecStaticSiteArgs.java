@@ -55,14 +55,22 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     @Import(name="cors")
     private @Nullable Output<AppSpecStaticSiteCorsArgs> cors;
 
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<Output<AppSpecStaticSiteCorsArgs>> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -220,14 +228,22 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
     /**
      * An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     @Import(name="routes")
     private @Nullable Output<List<AppSpecStaticSiteRouteArgs>> routes;
 
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public Optional<Output<List<AppSpecStaticSiteRouteArgs>>> routes() {
         return Optional.ofNullable(this.routes);
     }
@@ -332,7 +348,11 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level CORS rules are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
         public Builder cors(@Nullable Output<AppSpecStaticSiteCorsArgs> cors) {
             $.cors = cors;
             return this;
@@ -343,7 +363,11 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level CORS rules are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
         public Builder cors(AppSpecStaticSiteCorsArgs cors) {
             return cors(Output.of(cors));
         }
@@ -573,7 +597,11 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level routes are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level routes are deprecated in favor of ingresses */
         public Builder routes(@Nullable Output<List<AppSpecStaticSiteRouteArgs>> routes) {
             $.routes = routes;
             return this;
@@ -584,7 +612,11 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level routes are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level routes are deprecated in favor of ingresses */
         public Builder routes(List<AppSpecStaticSiteRouteArgs> routes) {
             return routes(Output.of(routes));
         }
@@ -594,7 +626,11 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level routes are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level routes are deprecated in favor of ingresses */
         public Builder routes(AppSpecStaticSiteRouteArgs... routes) {
             return routes(List.of(routes));
         }

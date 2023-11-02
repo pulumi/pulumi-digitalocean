@@ -84,11 +84,11 @@ public final class GetKubernetesClusterNodePoolTaint {
             return this;
         }
         public GetKubernetesClusterNodePoolTaint build() {
-            final var o = new GetKubernetesClusterNodePoolTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetKubernetesClusterNodePoolTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

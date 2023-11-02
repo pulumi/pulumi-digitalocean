@@ -47,6 +47,7 @@ export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
         "id": args.id,
         "name": args.name,
+        "type": args.type,
     }, opts);
 }
 
@@ -62,6 +63,7 @@ export interface GetLoadBalancerArgs {
      * The name of load balancer.
      */
     name?: string;
+    type?: string;
 }
 
 /**
@@ -89,6 +91,7 @@ export interface GetLoadBalancerResult {
     readonly sizeUnit: number;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
+    readonly type: string;
     readonly vpcUuid: string;
 }
 /**
@@ -140,4 +143,5 @@ export interface GetLoadBalancerOutputArgs {
      * The name of load balancer.
      */
     name?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

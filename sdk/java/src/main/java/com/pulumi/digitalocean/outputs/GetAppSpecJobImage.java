@@ -129,13 +129,13 @@ public final class GetAppSpecJobImage {
             return this;
         }
         public GetAppSpecJobImage build() {
-            final var o = new GetAppSpecJobImage();
-            o.deployOnPushes = deployOnPushes;
-            o.registry = registry;
-            o.registryType = registryType;
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetAppSpecJobImage();
+            _resultValue.deployOnPushes = deployOnPushes;
+            _resultValue.registry = registry;
+            _resultValue.registryType = registryType;
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

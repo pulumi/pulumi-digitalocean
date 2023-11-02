@@ -101,12 +101,12 @@ public final class GetSshKeysResult {
             return sshKeys(List.of(sshKeys));
         }
         public GetSshKeysResult build() {
-            final var o = new GetSshKeysResult();
-            o.filters = filters;
-            o.id = id;
-            o.sorts = sorts;
-            o.sshKeys = sshKeys;
-            return o;
+            final var _resultValue = new GetSshKeysResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.sorts = sorts;
+            _resultValue.sshKeys = sshKeys;
+            return _resultValue;
         }
     }
 }

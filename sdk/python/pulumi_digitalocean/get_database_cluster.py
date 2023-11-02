@@ -22,7 +22,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
@@ -68,6 +68,9 @@ class GetDatabaseClusterResult:
         if size and not isinstance(size, str):
             raise TypeError("Expected argument 'size' to be a str")
         pulumi.set(__self__, "size", size)
+        if storage_size_mib and not isinstance(storage_size_mib, str):
+            raise TypeError("Expected argument 'storage_size_mib' to be a str")
+        pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -202,6 +205,11 @@ class GetDatabaseClusterResult:
         return pulumi.get(self, "size")
 
     @property
+    @pulumi.getter(name="storageSizeMib")
+    def storage_size_mib(self) -> str:
+        return pulumi.get(self, "storage_size_mib")
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
@@ -260,6 +268,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             project_id=self.project_id,
             region=self.region,
             size=self.size,
+            storage_size_mib=self.storage_size_mib,
             tags=self.tags,
             uri=self.uri,
             urn=self.urn,
@@ -308,6 +317,7 @@ def get_database_cluster(name: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'),
+        storage_size_mib=pulumi.get(__ret__, 'storage_size_mib'),
         tags=pulumi.get(__ret__, 'tags'),
         uri=pulumi.get(__ret__, 'uri'),
         urn=pulumi.get(__ret__, 'urn'),
