@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatabaseRedisConfigArgs', 'DatabaseRedisConfig']
@@ -41,29 +41,82 @@ class DatabaseRedisConfigArgs:
         :param pulumi.Input[bool] ssl: A boolean indicating whether to require SSL to access Redis.
         :param pulumi.Input[int] timeout: The Redis idle connection timeout in seconds.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        DatabaseRedisConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            acl_channels_default=acl_channels_default,
+            io_threads=io_threads,
+            lfu_decay_time=lfu_decay_time,
+            lfu_log_factor=lfu_log_factor,
+            maxmemory_policy=maxmemory_policy,
+            notify_keyspace_events=notify_keyspace_events,
+            number_of_databases=number_of_databases,
+            persistence=persistence,
+            pubsub_client_output_buffer_limit=pubsub_client_output_buffer_limit,
+            ssl=ssl,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             acl_channels_default: Optional[pulumi.Input[str]] = None,
+             io_threads: Optional[pulumi.Input[int]] = None,
+             lfu_decay_time: Optional[pulumi.Input[int]] = None,
+             lfu_log_factor: Optional[pulumi.Input[int]] = None,
+             maxmemory_policy: Optional[pulumi.Input[str]] = None,
+             notify_keyspace_events: Optional[pulumi.Input[str]] = None,
+             number_of_databases: Optional[pulumi.Input[int]] = None,
+             persistence: Optional[pulumi.Input[str]] = None,
+             pubsub_client_output_buffer_limit: Optional[pulumi.Input[int]] = None,
+             ssl: Optional[pulumi.Input[bool]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if acl_channels_default is None and 'aclChannelsDefault' in kwargs:
+            acl_channels_default = kwargs['aclChannelsDefault']
+        if io_threads is None and 'ioThreads' in kwargs:
+            io_threads = kwargs['ioThreads']
+        if lfu_decay_time is None and 'lfuDecayTime' in kwargs:
+            lfu_decay_time = kwargs['lfuDecayTime']
+        if lfu_log_factor is None and 'lfuLogFactor' in kwargs:
+            lfu_log_factor = kwargs['lfuLogFactor']
+        if maxmemory_policy is None and 'maxmemoryPolicy' in kwargs:
+            maxmemory_policy = kwargs['maxmemoryPolicy']
+        if notify_keyspace_events is None and 'notifyKeyspaceEvents' in kwargs:
+            notify_keyspace_events = kwargs['notifyKeyspaceEvents']
+        if number_of_databases is None and 'numberOfDatabases' in kwargs:
+            number_of_databases = kwargs['numberOfDatabases']
+        if pubsub_client_output_buffer_limit is None and 'pubsubClientOutputBufferLimit' in kwargs:
+            pubsub_client_output_buffer_limit = kwargs['pubsubClientOutputBufferLimit']
+
+        _setter("cluster_id", cluster_id)
         if acl_channels_default is not None:
-            pulumi.set(__self__, "acl_channels_default", acl_channels_default)
+            _setter("acl_channels_default", acl_channels_default)
         if io_threads is not None:
-            pulumi.set(__self__, "io_threads", io_threads)
+            _setter("io_threads", io_threads)
         if lfu_decay_time is not None:
-            pulumi.set(__self__, "lfu_decay_time", lfu_decay_time)
+            _setter("lfu_decay_time", lfu_decay_time)
         if lfu_log_factor is not None:
-            pulumi.set(__self__, "lfu_log_factor", lfu_log_factor)
+            _setter("lfu_log_factor", lfu_log_factor)
         if maxmemory_policy is not None:
-            pulumi.set(__self__, "maxmemory_policy", maxmemory_policy)
+            _setter("maxmemory_policy", maxmemory_policy)
         if notify_keyspace_events is not None:
-            pulumi.set(__self__, "notify_keyspace_events", notify_keyspace_events)
+            _setter("notify_keyspace_events", notify_keyspace_events)
         if number_of_databases is not None:
-            pulumi.set(__self__, "number_of_databases", number_of_databases)
+            _setter("number_of_databases", number_of_databases)
         if persistence is not None:
-            pulumi.set(__self__, "persistence", persistence)
+            _setter("persistence", persistence)
         if pubsub_client_output_buffer_limit is not None:
-            pulumi.set(__self__, "pubsub_client_output_buffer_limit", pubsub_client_output_buffer_limit)
+            _setter("pubsub_client_output_buffer_limit", pubsub_client_output_buffer_limit)
         if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
+            _setter("ssl", ssl)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -240,30 +293,81 @@ class _DatabaseRedisConfigState:
         :param pulumi.Input[bool] ssl: A boolean indicating whether to require SSL to access Redis.
         :param pulumi.Input[int] timeout: The Redis idle connection timeout in seconds.
         """
+        _DatabaseRedisConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_channels_default=acl_channels_default,
+            cluster_id=cluster_id,
+            io_threads=io_threads,
+            lfu_decay_time=lfu_decay_time,
+            lfu_log_factor=lfu_log_factor,
+            maxmemory_policy=maxmemory_policy,
+            notify_keyspace_events=notify_keyspace_events,
+            number_of_databases=number_of_databases,
+            persistence=persistence,
+            pubsub_client_output_buffer_limit=pubsub_client_output_buffer_limit,
+            ssl=ssl,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_channels_default: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             io_threads: Optional[pulumi.Input[int]] = None,
+             lfu_decay_time: Optional[pulumi.Input[int]] = None,
+             lfu_log_factor: Optional[pulumi.Input[int]] = None,
+             maxmemory_policy: Optional[pulumi.Input[str]] = None,
+             notify_keyspace_events: Optional[pulumi.Input[str]] = None,
+             number_of_databases: Optional[pulumi.Input[int]] = None,
+             persistence: Optional[pulumi.Input[str]] = None,
+             pubsub_client_output_buffer_limit: Optional[pulumi.Input[int]] = None,
+             ssl: Optional[pulumi.Input[bool]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_channels_default is None and 'aclChannelsDefault' in kwargs:
+            acl_channels_default = kwargs['aclChannelsDefault']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if io_threads is None and 'ioThreads' in kwargs:
+            io_threads = kwargs['ioThreads']
+        if lfu_decay_time is None and 'lfuDecayTime' in kwargs:
+            lfu_decay_time = kwargs['lfuDecayTime']
+        if lfu_log_factor is None and 'lfuLogFactor' in kwargs:
+            lfu_log_factor = kwargs['lfuLogFactor']
+        if maxmemory_policy is None and 'maxmemoryPolicy' in kwargs:
+            maxmemory_policy = kwargs['maxmemoryPolicy']
+        if notify_keyspace_events is None and 'notifyKeyspaceEvents' in kwargs:
+            notify_keyspace_events = kwargs['notifyKeyspaceEvents']
+        if number_of_databases is None and 'numberOfDatabases' in kwargs:
+            number_of_databases = kwargs['numberOfDatabases']
+        if pubsub_client_output_buffer_limit is None and 'pubsubClientOutputBufferLimit' in kwargs:
+            pubsub_client_output_buffer_limit = kwargs['pubsubClientOutputBufferLimit']
+
         if acl_channels_default is not None:
-            pulumi.set(__self__, "acl_channels_default", acl_channels_default)
+            _setter("acl_channels_default", acl_channels_default)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if io_threads is not None:
-            pulumi.set(__self__, "io_threads", io_threads)
+            _setter("io_threads", io_threads)
         if lfu_decay_time is not None:
-            pulumi.set(__self__, "lfu_decay_time", lfu_decay_time)
+            _setter("lfu_decay_time", lfu_decay_time)
         if lfu_log_factor is not None:
-            pulumi.set(__self__, "lfu_log_factor", lfu_log_factor)
+            _setter("lfu_log_factor", lfu_log_factor)
         if maxmemory_policy is not None:
-            pulumi.set(__self__, "maxmemory_policy", maxmemory_policy)
+            _setter("maxmemory_policy", maxmemory_policy)
         if notify_keyspace_events is not None:
-            pulumi.set(__self__, "notify_keyspace_events", notify_keyspace_events)
+            _setter("notify_keyspace_events", notify_keyspace_events)
         if number_of_databases is not None:
-            pulumi.set(__self__, "number_of_databases", number_of_databases)
+            _setter("number_of_databases", number_of_databases)
         if persistence is not None:
-            pulumi.set(__self__, "persistence", persistence)
+            _setter("persistence", persistence)
         if pubsub_client_output_buffer_limit is not None:
-            pulumi.set(__self__, "pubsub_client_output_buffer_limit", pubsub_client_output_buffer_limit)
+            _setter("pubsub_client_output_buffer_limit", pubsub_client_output_buffer_limit)
         if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
+            _setter("ssl", ssl)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="aclChannelsDefault")
@@ -525,6 +629,10 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseRedisConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._enums import *
 
@@ -37,18 +37,45 @@ class CertificateArgs:
         :param pulumi.Input[Union[str, 'CertificateType']] type: The type of certificate to provision. Can be either
                `custom` or `lets_encrypt`. Defaults to `custom`.
         """
+        CertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_chain=certificate_chain,
+            domains=domains,
+            leaf_certificate=leaf_certificate,
+            name=name,
+            private_key=private_key,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_chain: Optional[pulumi.Input[str]] = None,
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             leaf_certificate: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_chain is None and 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if leaf_certificate is None and 'leafCertificate' in kwargs:
+            leaf_certificate = kwargs['leafCertificate']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         if certificate_chain is not None:
-            pulumi.set(__self__, "certificate_chain", certificate_chain)
+            _setter("certificate_chain", certificate_chain)
         if domains is not None:
-            pulumi.set(__self__, "domains", domains)
+            _setter("domains", domains)
         if leaf_certificate is not None:
-            pulumi.set(__self__, "leaf_certificate", leaf_certificate)
+            _setter("leaf_certificate", leaf_certificate)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="certificateChain")
@@ -162,26 +189,65 @@ class _CertificateState:
                `custom` or `lets_encrypt`. Defaults to `custom`.
         :param pulumi.Input[str] uuid: The UUID of the certificate
         """
+        _CertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_chain=certificate_chain,
+            domains=domains,
+            leaf_certificate=leaf_certificate,
+            name=name,
+            not_after=not_after,
+            private_key=private_key,
+            sha1_fingerprint=sha1_fingerprint,
+            state=state,
+            type=type,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_chain: Optional[pulumi.Input[str]] = None,
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             leaf_certificate: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             not_after: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             sha1_fingerprint: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[Union[str, 'CertificateType']]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_chain is None and 'certificateChain' in kwargs:
+            certificate_chain = kwargs['certificateChain']
+        if leaf_certificate is None and 'leafCertificate' in kwargs:
+            leaf_certificate = kwargs['leafCertificate']
+        if not_after is None and 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if certificate_chain is not None:
-            pulumi.set(__self__, "certificate_chain", certificate_chain)
+            _setter("certificate_chain", certificate_chain)
         if domains is not None:
-            pulumi.set(__self__, "domains", domains)
+            _setter("domains", domains)
         if leaf_certificate is not None:
-            pulumi.set(__self__, "leaf_certificate", leaf_certificate)
+            _setter("leaf_certificate", leaf_certificate)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if not_after is not None:
-            pulumi.set(__self__, "not_after", not_after)
+            _setter("not_after", not_after)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if sha1_fingerprint is not None:
-            pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+            _setter("sha1_fingerprint", sha1_fingerprint)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="certificateChain")
@@ -480,6 +546,10 @@ class Certificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CustomImageArgs', 'CustomImage']
@@ -29,16 +29,41 @@ class CustomImageArgs:
         :param pulumi.Input[str] name: A name for the Custom Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of optional tags for the image.
         """
-        pulumi.set(__self__, "regions", regions)
-        pulumi.set(__self__, "url", url)
+        CustomImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            regions=regions,
+            url=url,
+            description=description,
+            distribution=distribution,
+            name=name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             distribution: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
+        _setter("regions", regions)
+        _setter("url", url)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if distribution is not None:
-            pulumi.set(__self__, "distribution", distribution)
+            _setter("distribution", distribution)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -147,34 +172,79 @@ class _CustomImageState:
         :param pulumi.Input[str] type: Describes the kind of image.
         :param pulumi.Input[str] url: A URL from which the custom Linux virtual machine image may be retrieved.
         """
+        _CustomImageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            description=description,
+            distribution=distribution,
+            image_id=image_id,
+            min_disk_size=min_disk_size,
+            name=name,
+            public=public,
+            regions=regions,
+            size_gigabytes=size_gigabytes,
+            slug=slug,
+            status=status,
+            tags=tags,
+            type=type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             distribution: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[int]] = None,
+             min_disk_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             size_gigabytes: Optional[pulumi.Input[float]] = None,
+             slug: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if min_disk_size is None and 'minDiskSize' in kwargs:
+            min_disk_size = kwargs['minDiskSize']
+        if size_gigabytes is None and 'sizeGigabytes' in kwargs:
+            size_gigabytes = kwargs['sizeGigabytes']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if distribution is not None:
-            pulumi.set(__self__, "distribution", distribution)
+            _setter("distribution", distribution)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if min_disk_size is not None:
-            pulumi.set(__self__, "min_disk_size", min_disk_size)
+            _setter("min_disk_size", min_disk_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if regions is not None:
-            pulumi.set(__self__, "regions", regions)
+            _setter("regions", regions)
         if size_gigabytes is not None:
-            pulumi.set(__self__, "size_gigabytes", size_gigabytes)
+            _setter("size_gigabytes", size_gigabytes)
         if slug is not None:
-            pulumi.set(__self__, "slug", slug)
+            _setter("slug", slug)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -440,6 +510,10 @@ class CustomImage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

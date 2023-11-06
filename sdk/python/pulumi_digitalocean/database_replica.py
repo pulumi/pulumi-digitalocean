@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._enums import *
 
@@ -30,17 +30,44 @@ class DatabaseReplicaArgs:
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database replica.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        DatabaseReplicaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            name=name,
+            private_network_uuid=private_network_uuid,
+            region=region,
+            size=size,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_network_uuid: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+
+        _setter("cluster_id", cluster_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_network_uuid is not None:
-            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+            _setter("private_network_uuid", private_network_uuid)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -151,36 +178,83 @@ class _DatabaseReplicaState:
         :param pulumi.Input[str] user: Username for the replica's default user.
         :param pulumi.Input[str] uuid: The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
         """
+        _DatabaseReplicaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            database=database,
+            host=host,
+            name=name,
+            password=password,
+            port=port,
+            private_host=private_host,
+            private_network_uuid=private_network_uuid,
+            private_uri=private_uri,
+            region=region,
+            size=size,
+            tags=tags,
+            uri=uri,
+            user=user,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             private_host: Optional[pulumi.Input[str]] = None,
+             private_network_uuid: Optional[pulumi.Input[str]] = None,
+             private_uri: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if private_host is None and 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if private_network_uuid is None and 'privateNetworkUuid' in kwargs:
+            private_network_uuid = kwargs['privateNetworkUuid']
+        if private_uri is None and 'privateUri' in kwargs:
+            private_uri = kwargs['privateUri']
+
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if private_host is not None:
-            pulumi.set(__self__, "private_host", private_host)
+            _setter("private_host", private_host)
         if private_network_uuid is not None:
-            pulumi.set(__self__, "private_network_uuid", private_network_uuid)
+            _setter("private_network_uuid", private_network_uuid)
         if private_uri is not None:
-            pulumi.set(__self__, "private_uri", private_uri)
+            _setter("private_uri", private_uri)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -474,6 +548,10 @@ class DatabaseReplica(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseReplicaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

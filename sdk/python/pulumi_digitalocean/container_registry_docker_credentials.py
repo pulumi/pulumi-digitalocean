@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ContainerRegistryDockerCredentialsArgs', 'ContainerRegistryDockerCredentials']
@@ -23,11 +23,32 @@ class ContainerRegistryDockerCredentialsArgs:
         :param pulumi.Input[int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
-        pulumi.set(__self__, "registry_name", registry_name)
+        ContainerRegistryDockerCredentialsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            registry_name=registry_name,
+            expiry_seconds=expiry_seconds,
+            write=write,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             registry_name: Optional[pulumi.Input[str]] = None,
+             expiry_seconds: Optional[pulumi.Input[int]] = None,
+             write: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if registry_name is None and 'registryName' in kwargs:
+            registry_name = kwargs['registryName']
+        if registry_name is None:
+            raise TypeError("Missing 'registry_name' argument")
+        if expiry_seconds is None and 'expirySeconds' in kwargs:
+            expiry_seconds = kwargs['expirySeconds']
+
+        _setter("registry_name", registry_name)
         if expiry_seconds is not None:
-            pulumi.set(__self__, "expiry_seconds", expiry_seconds)
+            _setter("expiry_seconds", expiry_seconds)
         if write is not None:
-            pulumi.set(__self__, "write", write)
+            _setter("write", write)
 
     @property
     @pulumi.getter(name="registryName")
@@ -82,16 +103,43 @@ class _ContainerRegistryDockerCredentialsState:
         :param pulumi.Input[str] registry_name: The name of the container registry.
         :param pulumi.Input[bool] write: Allow for write access to the container registry. Defaults to false.
         """
+        _ContainerRegistryDockerCredentialsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            credential_expiration_time=credential_expiration_time,
+            docker_credentials=docker_credentials,
+            expiry_seconds=expiry_seconds,
+            registry_name=registry_name,
+            write=write,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             credential_expiration_time: Optional[pulumi.Input[str]] = None,
+             docker_credentials: Optional[pulumi.Input[str]] = None,
+             expiry_seconds: Optional[pulumi.Input[int]] = None,
+             registry_name: Optional[pulumi.Input[str]] = None,
+             write: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if credential_expiration_time is None and 'credentialExpirationTime' in kwargs:
+            credential_expiration_time = kwargs['credentialExpirationTime']
+        if docker_credentials is None and 'dockerCredentials' in kwargs:
+            docker_credentials = kwargs['dockerCredentials']
+        if expiry_seconds is None and 'expirySeconds' in kwargs:
+            expiry_seconds = kwargs['expirySeconds']
+        if registry_name is None and 'registryName' in kwargs:
+            registry_name = kwargs['registryName']
+
         if credential_expiration_time is not None:
-            pulumi.set(__self__, "credential_expiration_time", credential_expiration_time)
+            _setter("credential_expiration_time", credential_expiration_time)
         if docker_credentials is not None:
-            pulumi.set(__self__, "docker_credentials", docker_credentials)
+            _setter("docker_credentials", docker_credentials)
         if expiry_seconds is not None:
-            pulumi.set(__self__, "expiry_seconds", expiry_seconds)
+            _setter("expiry_seconds", expiry_seconds)
         if registry_name is not None:
-            pulumi.set(__self__, "registry_name", registry_name)
+            _setter("registry_name", registry_name)
         if write is not None:
-            pulumi.set(__self__, "write", write)
+            _setter("write", write)
 
     @property
     @pulumi.getter(name="credentialExpirationTime")
@@ -241,6 +289,10 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContainerRegistryDockerCredentialsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

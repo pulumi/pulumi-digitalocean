@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectResourcesArgs', 'ProjectResources']
@@ -21,8 +21,25 @@ class ProjectResourcesArgs:
         :param pulumi.Input[str] project: the ID of the project
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "resources", resources)
+        ProjectResourcesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+
+        _setter("project", project)
+        _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -59,10 +76,23 @@ class _ProjectResourcesState:
         :param pulumi.Input[str] project: the ID of the project
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         """
+        _ProjectResourcesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -192,6 +222,10 @@ class ProjectResources(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectResourcesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

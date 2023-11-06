@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TagArgs', 'Tag']
@@ -19,8 +19,19 @@ class TagArgs:
         The set of arguments for constructing a Tag resource.
         :param pulumi.Input[str] name: The name of the tag
         """
+        TagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -55,20 +66,55 @@ class _TagState:
         :param pulumi.Input[int] volume_snapshots_count: A count of the volume snapshots that the tag is applied to.
         :param pulumi.Input[int] volumes_count: A count of the volumes that the tag is applied to.
         """
+        _TagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            databases_count=databases_count,
+            droplets_count=droplets_count,
+            images_count=images_count,
+            name=name,
+            total_resource_count=total_resource_count,
+            volume_snapshots_count=volume_snapshots_count,
+            volumes_count=volumes_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             databases_count: Optional[pulumi.Input[int]] = None,
+             droplets_count: Optional[pulumi.Input[int]] = None,
+             images_count: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             total_resource_count: Optional[pulumi.Input[int]] = None,
+             volume_snapshots_count: Optional[pulumi.Input[int]] = None,
+             volumes_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if databases_count is None and 'databasesCount' in kwargs:
+            databases_count = kwargs['databasesCount']
+        if droplets_count is None and 'dropletsCount' in kwargs:
+            droplets_count = kwargs['dropletsCount']
+        if images_count is None and 'imagesCount' in kwargs:
+            images_count = kwargs['imagesCount']
+        if total_resource_count is None and 'totalResourceCount' in kwargs:
+            total_resource_count = kwargs['totalResourceCount']
+        if volume_snapshots_count is None and 'volumeSnapshotsCount' in kwargs:
+            volume_snapshots_count = kwargs['volumeSnapshotsCount']
+        if volumes_count is None and 'volumesCount' in kwargs:
+            volumes_count = kwargs['volumesCount']
+
         if databases_count is not None:
-            pulumi.set(__self__, "databases_count", databases_count)
+            _setter("databases_count", databases_count)
         if droplets_count is not None:
-            pulumi.set(__self__, "droplets_count", droplets_count)
+            _setter("droplets_count", droplets_count)
         if images_count is not None:
-            pulumi.set(__self__, "images_count", images_count)
+            _setter("images_count", images_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if total_resource_count is not None:
-            pulumi.set(__self__, "total_resource_count", total_resource_count)
+            _setter("total_resource_count", total_resource_count)
         if volume_snapshots_count is not None:
-            pulumi.set(__self__, "volume_snapshots_count", volume_snapshots_count)
+            _setter("volume_snapshots_count", volume_snapshots_count)
         if volumes_count is not None:
-            pulumi.set(__self__, "volumes_count", volumes_count)
+            _setter("volumes_count", volumes_count)
 
     @property
     @pulumi.getter(name="databasesCount")
@@ -242,6 +288,10 @@ class Tag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

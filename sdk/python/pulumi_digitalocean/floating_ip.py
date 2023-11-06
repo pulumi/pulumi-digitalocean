@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FloatingIpArgs', 'FloatingIp']
@@ -23,11 +23,32 @@ class FloatingIpArgs:
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         """
-        pulumi.set(__self__, "region", region)
+        FloatingIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region=region,
+            droplet_id=droplet_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region: Optional[pulumi.Input[str]] = None,
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
+        _setter("region", region)
         if droplet_id is not None:
-            pulumi.set(__self__, "droplet_id", droplet_id)
+            _setter("droplet_id", droplet_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter
@@ -80,14 +101,37 @@ class _FloatingIpState:
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the Floating IP is reserved to.
         """
+        _FloatingIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_id=droplet_id,
+            floating_ip_urn=floating_ip_urn,
+            ip_address=ip_address,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_id: Optional[pulumi.Input[int]] = None,
+             floating_ip_urn: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_id is None and 'dropletId' in kwargs:
+            droplet_id = kwargs['dropletId']
+        if floating_ip_urn is None and 'floatingIpUrn' in kwargs:
+            floating_ip_urn = kwargs['floatingIpUrn']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if droplet_id is not None:
-            pulumi.set(__self__, "droplet_id", droplet_id)
+            _setter("droplet_id", droplet_id)
         if floating_ip_urn is not None:
-            pulumi.set(__self__, "floating_ip_urn", floating_ip_urn)
+            _setter("floating_ip_urn", floating_ip_urn)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -233,6 +277,10 @@ class FloatingIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FloatingIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

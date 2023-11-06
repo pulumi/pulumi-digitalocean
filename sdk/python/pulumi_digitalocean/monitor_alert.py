@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,18 +54,57 @@ class MonitorAlertArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: A list of IDs for the resources to which the alert policy applies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
         """
-        pulumi.set(__self__, "alerts", alerts)
-        pulumi.set(__self__, "compare", compare)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "window", window)
+        MonitorAlertArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alerts=alerts,
+            compare=compare,
+            description=description,
+            type=type,
+            value=value,
+            window=window,
+            enabled=enabled,
+            entities=entities,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alerts: Optional[pulumi.Input['MonitorAlertAlertsArgs']] = None,
+             compare: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[float]] = None,
+             window: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alerts is None:
+            raise TypeError("Missing 'alerts' argument")
+        if compare is None:
+            raise TypeError("Missing 'compare' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if window is None:
+            raise TypeError("Missing 'window' argument")
+
+        _setter("alerts", alerts)
+        _setter("compare", compare)
+        _setter("description", description)
+        _setter("type", type)
+        _setter("value", value)
+        _setter("window", window)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if entities is not None:
-            pulumi.set(__self__, "entities", entities)
+            _setter("entities", entities)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -236,26 +275,55 @@ class _MonitorAlertState:
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
+        _MonitorAlertState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alerts=alerts,
+            compare=compare,
+            description=description,
+            enabled=enabled,
+            entities=entities,
+            tags=tags,
+            type=type,
+            uuid=uuid,
+            value=value,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alerts: Optional[pulumi.Input['MonitorAlertAlertsArgs']] = None,
+             compare: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[float]] = None,
+             window: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if alerts is not None:
-            pulumi.set(__self__, "alerts", alerts)
+            _setter("alerts", alerts)
         if compare is not None:
-            pulumi.set(__self__, "compare", compare)
+            _setter("compare", compare)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if entities is not None:
-            pulumi.set(__self__, "entities", entities)
+            _setter("entities", entities)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if window is not None:
-            pulumi.set(__self__, "window", window)
+            _setter("window", window)
 
     @property
     @pulumi.getter
@@ -487,6 +555,10 @@ class MonitorAlert(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitorAlertArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -510,6 +582,11 @@ class MonitorAlert(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MonitorAlertArgs.__new__(MonitorAlertArgs)
 
+            if alerts is not None and not isinstance(alerts, MonitorAlertAlertsArgs):
+                alerts = alerts or {}
+                def _setter(key, value):
+                    alerts[key] = value
+                MonitorAlertAlertsArgs._configure(_setter, **alerts)
             if alerts is None and not opts.urn:
                 raise TypeError("Missing required property 'alerts'")
             __props__.__dict__["alerts"] = alerts

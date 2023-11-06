@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatabaseMysqlConfigArgs', 'DatabaseMysqlConfig']
@@ -73,61 +73,184 @@ class DatabaseMysqlConfigArgs:
         :param pulumi.Input[int] tmp_table_size: The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
         :param pulumi.Input[int] wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        DatabaseMysqlConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            backup_hour=backup_hour,
+            backup_minute=backup_minute,
+            binlog_retention_period=binlog_retention_period,
+            connect_timeout=connect_timeout,
+            default_time_zone=default_time_zone,
+            group_concat_max_len=group_concat_max_len,
+            information_schema_stats_expiry=information_schema_stats_expiry,
+            innodb_ft_min_token_size=innodb_ft_min_token_size,
+            innodb_ft_server_stopword_table=innodb_ft_server_stopword_table,
+            innodb_lock_wait_timeout=innodb_lock_wait_timeout,
+            innodb_log_buffer_size=innodb_log_buffer_size,
+            innodb_online_alter_log_max_size=innodb_online_alter_log_max_size,
+            innodb_print_all_deadlocks=innodb_print_all_deadlocks,
+            innodb_rollback_on_timeout=innodb_rollback_on_timeout,
+            interactive_timeout=interactive_timeout,
+            internal_tmp_mem_storage_engine=internal_tmp_mem_storage_engine,
+            long_query_time=long_query_time,
+            max_allowed_packet=max_allowed_packet,
+            max_heap_table_size=max_heap_table_size,
+            net_read_timeout=net_read_timeout,
+            net_write_timeout=net_write_timeout,
+            slow_query_log=slow_query_log,
+            sort_buffer_size=sort_buffer_size,
+            sql_mode=sql_mode,
+            sql_require_primary_key=sql_require_primary_key,
+            tmp_table_size=tmp_table_size,
+            wait_timeout=wait_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             backup_hour: Optional[pulumi.Input[int]] = None,
+             backup_minute: Optional[pulumi.Input[int]] = None,
+             binlog_retention_period: Optional[pulumi.Input[int]] = None,
+             connect_timeout: Optional[pulumi.Input[int]] = None,
+             default_time_zone: Optional[pulumi.Input[str]] = None,
+             group_concat_max_len: Optional[pulumi.Input[int]] = None,
+             information_schema_stats_expiry: Optional[pulumi.Input[int]] = None,
+             innodb_ft_min_token_size: Optional[pulumi.Input[int]] = None,
+             innodb_ft_server_stopword_table: Optional[pulumi.Input[str]] = None,
+             innodb_lock_wait_timeout: Optional[pulumi.Input[int]] = None,
+             innodb_log_buffer_size: Optional[pulumi.Input[int]] = None,
+             innodb_online_alter_log_max_size: Optional[pulumi.Input[int]] = None,
+             innodb_print_all_deadlocks: Optional[pulumi.Input[bool]] = None,
+             innodb_rollback_on_timeout: Optional[pulumi.Input[bool]] = None,
+             interactive_timeout: Optional[pulumi.Input[int]] = None,
+             internal_tmp_mem_storage_engine: Optional[pulumi.Input[str]] = None,
+             long_query_time: Optional[pulumi.Input[float]] = None,
+             max_allowed_packet: Optional[pulumi.Input[int]] = None,
+             max_heap_table_size: Optional[pulumi.Input[int]] = None,
+             net_read_timeout: Optional[pulumi.Input[int]] = None,
+             net_write_timeout: Optional[pulumi.Input[int]] = None,
+             slow_query_log: Optional[pulumi.Input[bool]] = None,
+             sort_buffer_size: Optional[pulumi.Input[int]] = None,
+             sql_mode: Optional[pulumi.Input[str]] = None,
+             sql_require_primary_key: Optional[pulumi.Input[bool]] = None,
+             tmp_table_size: Optional[pulumi.Input[int]] = None,
+             wait_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if backup_hour is None and 'backupHour' in kwargs:
+            backup_hour = kwargs['backupHour']
+        if backup_minute is None and 'backupMinute' in kwargs:
+            backup_minute = kwargs['backupMinute']
+        if binlog_retention_period is None and 'binlogRetentionPeriod' in kwargs:
+            binlog_retention_period = kwargs['binlogRetentionPeriod']
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
+            default_time_zone = kwargs['defaultTimeZone']
+        if group_concat_max_len is None and 'groupConcatMaxLen' in kwargs:
+            group_concat_max_len = kwargs['groupConcatMaxLen']
+        if information_schema_stats_expiry is None and 'informationSchemaStatsExpiry' in kwargs:
+            information_schema_stats_expiry = kwargs['informationSchemaStatsExpiry']
+        if innodb_ft_min_token_size is None and 'innodbFtMinTokenSize' in kwargs:
+            innodb_ft_min_token_size = kwargs['innodbFtMinTokenSize']
+        if innodb_ft_server_stopword_table is None and 'innodbFtServerStopwordTable' in kwargs:
+            innodb_ft_server_stopword_table = kwargs['innodbFtServerStopwordTable']
+        if innodb_lock_wait_timeout is None and 'innodbLockWaitTimeout' in kwargs:
+            innodb_lock_wait_timeout = kwargs['innodbLockWaitTimeout']
+        if innodb_log_buffer_size is None and 'innodbLogBufferSize' in kwargs:
+            innodb_log_buffer_size = kwargs['innodbLogBufferSize']
+        if innodb_online_alter_log_max_size is None and 'innodbOnlineAlterLogMaxSize' in kwargs:
+            innodb_online_alter_log_max_size = kwargs['innodbOnlineAlterLogMaxSize']
+        if innodb_print_all_deadlocks is None and 'innodbPrintAllDeadlocks' in kwargs:
+            innodb_print_all_deadlocks = kwargs['innodbPrintAllDeadlocks']
+        if innodb_rollback_on_timeout is None and 'innodbRollbackOnTimeout' in kwargs:
+            innodb_rollback_on_timeout = kwargs['innodbRollbackOnTimeout']
+        if interactive_timeout is None and 'interactiveTimeout' in kwargs:
+            interactive_timeout = kwargs['interactiveTimeout']
+        if internal_tmp_mem_storage_engine is None and 'internalTmpMemStorageEngine' in kwargs:
+            internal_tmp_mem_storage_engine = kwargs['internalTmpMemStorageEngine']
+        if long_query_time is None and 'longQueryTime' in kwargs:
+            long_query_time = kwargs['longQueryTime']
+        if max_allowed_packet is None and 'maxAllowedPacket' in kwargs:
+            max_allowed_packet = kwargs['maxAllowedPacket']
+        if max_heap_table_size is None and 'maxHeapTableSize' in kwargs:
+            max_heap_table_size = kwargs['maxHeapTableSize']
+        if net_read_timeout is None and 'netReadTimeout' in kwargs:
+            net_read_timeout = kwargs['netReadTimeout']
+        if net_write_timeout is None and 'netWriteTimeout' in kwargs:
+            net_write_timeout = kwargs['netWriteTimeout']
+        if slow_query_log is None and 'slowQueryLog' in kwargs:
+            slow_query_log = kwargs['slowQueryLog']
+        if sort_buffer_size is None and 'sortBufferSize' in kwargs:
+            sort_buffer_size = kwargs['sortBufferSize']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+        if sql_require_primary_key is None and 'sqlRequirePrimaryKey' in kwargs:
+            sql_require_primary_key = kwargs['sqlRequirePrimaryKey']
+        if tmp_table_size is None and 'tmpTableSize' in kwargs:
+            tmp_table_size = kwargs['tmpTableSize']
+        if wait_timeout is None and 'waitTimeout' in kwargs:
+            wait_timeout = kwargs['waitTimeout']
+
+        _setter("cluster_id", cluster_id)
         if backup_hour is not None:
-            pulumi.set(__self__, "backup_hour", backup_hour)
+            _setter("backup_hour", backup_hour)
         if backup_minute is not None:
-            pulumi.set(__self__, "backup_minute", backup_minute)
+            _setter("backup_minute", backup_minute)
         if binlog_retention_period is not None:
-            pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
+            _setter("binlog_retention_period", binlog_retention_period)
         if connect_timeout is not None:
-            pulumi.set(__self__, "connect_timeout", connect_timeout)
+            _setter("connect_timeout", connect_timeout)
         if default_time_zone is not None:
-            pulumi.set(__self__, "default_time_zone", default_time_zone)
+            _setter("default_time_zone", default_time_zone)
         if group_concat_max_len is not None:
-            pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
+            _setter("group_concat_max_len", group_concat_max_len)
         if information_schema_stats_expiry is not None:
-            pulumi.set(__self__, "information_schema_stats_expiry", information_schema_stats_expiry)
+            _setter("information_schema_stats_expiry", information_schema_stats_expiry)
         if innodb_ft_min_token_size is not None:
-            pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
+            _setter("innodb_ft_min_token_size", innodb_ft_min_token_size)
         if innodb_ft_server_stopword_table is not None:
-            pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+            _setter("innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
         if innodb_lock_wait_timeout is not None:
-            pulumi.set(__self__, "innodb_lock_wait_timeout", innodb_lock_wait_timeout)
+            _setter("innodb_lock_wait_timeout", innodb_lock_wait_timeout)
         if innodb_log_buffer_size is not None:
-            pulumi.set(__self__, "innodb_log_buffer_size", innodb_log_buffer_size)
+            _setter("innodb_log_buffer_size", innodb_log_buffer_size)
         if innodb_online_alter_log_max_size is not None:
-            pulumi.set(__self__, "innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
+            _setter("innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
         if innodb_print_all_deadlocks is not None:
-            pulumi.set(__self__, "innodb_print_all_deadlocks", innodb_print_all_deadlocks)
+            _setter("innodb_print_all_deadlocks", innodb_print_all_deadlocks)
         if innodb_rollback_on_timeout is not None:
-            pulumi.set(__self__, "innodb_rollback_on_timeout", innodb_rollback_on_timeout)
+            _setter("innodb_rollback_on_timeout", innodb_rollback_on_timeout)
         if interactive_timeout is not None:
-            pulumi.set(__self__, "interactive_timeout", interactive_timeout)
+            _setter("interactive_timeout", interactive_timeout)
         if internal_tmp_mem_storage_engine is not None:
-            pulumi.set(__self__, "internal_tmp_mem_storage_engine", internal_tmp_mem_storage_engine)
+            _setter("internal_tmp_mem_storage_engine", internal_tmp_mem_storage_engine)
         if long_query_time is not None:
-            pulumi.set(__self__, "long_query_time", long_query_time)
+            _setter("long_query_time", long_query_time)
         if max_allowed_packet is not None:
-            pulumi.set(__self__, "max_allowed_packet", max_allowed_packet)
+            _setter("max_allowed_packet", max_allowed_packet)
         if max_heap_table_size is not None:
-            pulumi.set(__self__, "max_heap_table_size", max_heap_table_size)
+            _setter("max_heap_table_size", max_heap_table_size)
         if net_read_timeout is not None:
-            pulumi.set(__self__, "net_read_timeout", net_read_timeout)
+            _setter("net_read_timeout", net_read_timeout)
         if net_write_timeout is not None:
-            pulumi.set(__self__, "net_write_timeout", net_write_timeout)
+            _setter("net_write_timeout", net_write_timeout)
         if slow_query_log is not None:
-            pulumi.set(__self__, "slow_query_log", slow_query_log)
+            _setter("slow_query_log", slow_query_log)
         if sort_buffer_size is not None:
-            pulumi.set(__self__, "sort_buffer_size", sort_buffer_size)
+            _setter("sort_buffer_size", sort_buffer_size)
         if sql_mode is not None:
-            pulumi.set(__self__, "sql_mode", sql_mode)
+            _setter("sql_mode", sql_mode)
         if sql_require_primary_key is not None:
-            pulumi.set(__self__, "sql_require_primary_key", sql_require_primary_key)
+            _setter("sql_require_primary_key", sql_require_primary_key)
         if tmp_table_size is not None:
-            pulumi.set(__self__, "tmp_table_size", tmp_table_size)
+            _setter("tmp_table_size", tmp_table_size)
         if wait_timeout is not None:
-            pulumi.set(__self__, "wait_timeout", wait_timeout)
+            _setter("wait_timeout", wait_timeout)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -528,62 +651,183 @@ class _DatabaseMysqlConfigState:
         :param pulumi.Input[int] tmp_table_size: The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
         :param pulumi.Input[int] wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         """
+        _DatabaseMysqlConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_hour=backup_hour,
+            backup_minute=backup_minute,
+            binlog_retention_period=binlog_retention_period,
+            cluster_id=cluster_id,
+            connect_timeout=connect_timeout,
+            default_time_zone=default_time_zone,
+            group_concat_max_len=group_concat_max_len,
+            information_schema_stats_expiry=information_schema_stats_expiry,
+            innodb_ft_min_token_size=innodb_ft_min_token_size,
+            innodb_ft_server_stopword_table=innodb_ft_server_stopword_table,
+            innodb_lock_wait_timeout=innodb_lock_wait_timeout,
+            innodb_log_buffer_size=innodb_log_buffer_size,
+            innodb_online_alter_log_max_size=innodb_online_alter_log_max_size,
+            innodb_print_all_deadlocks=innodb_print_all_deadlocks,
+            innodb_rollback_on_timeout=innodb_rollback_on_timeout,
+            interactive_timeout=interactive_timeout,
+            internal_tmp_mem_storage_engine=internal_tmp_mem_storage_engine,
+            long_query_time=long_query_time,
+            max_allowed_packet=max_allowed_packet,
+            max_heap_table_size=max_heap_table_size,
+            net_read_timeout=net_read_timeout,
+            net_write_timeout=net_write_timeout,
+            slow_query_log=slow_query_log,
+            sort_buffer_size=sort_buffer_size,
+            sql_mode=sql_mode,
+            sql_require_primary_key=sql_require_primary_key,
+            tmp_table_size=tmp_table_size,
+            wait_timeout=wait_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_hour: Optional[pulumi.Input[int]] = None,
+             backup_minute: Optional[pulumi.Input[int]] = None,
+             binlog_retention_period: Optional[pulumi.Input[int]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             connect_timeout: Optional[pulumi.Input[int]] = None,
+             default_time_zone: Optional[pulumi.Input[str]] = None,
+             group_concat_max_len: Optional[pulumi.Input[int]] = None,
+             information_schema_stats_expiry: Optional[pulumi.Input[int]] = None,
+             innodb_ft_min_token_size: Optional[pulumi.Input[int]] = None,
+             innodb_ft_server_stopword_table: Optional[pulumi.Input[str]] = None,
+             innodb_lock_wait_timeout: Optional[pulumi.Input[int]] = None,
+             innodb_log_buffer_size: Optional[pulumi.Input[int]] = None,
+             innodb_online_alter_log_max_size: Optional[pulumi.Input[int]] = None,
+             innodb_print_all_deadlocks: Optional[pulumi.Input[bool]] = None,
+             innodb_rollback_on_timeout: Optional[pulumi.Input[bool]] = None,
+             interactive_timeout: Optional[pulumi.Input[int]] = None,
+             internal_tmp_mem_storage_engine: Optional[pulumi.Input[str]] = None,
+             long_query_time: Optional[pulumi.Input[float]] = None,
+             max_allowed_packet: Optional[pulumi.Input[int]] = None,
+             max_heap_table_size: Optional[pulumi.Input[int]] = None,
+             net_read_timeout: Optional[pulumi.Input[int]] = None,
+             net_write_timeout: Optional[pulumi.Input[int]] = None,
+             slow_query_log: Optional[pulumi.Input[bool]] = None,
+             sort_buffer_size: Optional[pulumi.Input[int]] = None,
+             sql_mode: Optional[pulumi.Input[str]] = None,
+             sql_require_primary_key: Optional[pulumi.Input[bool]] = None,
+             tmp_table_size: Optional[pulumi.Input[int]] = None,
+             wait_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_hour is None and 'backupHour' in kwargs:
+            backup_hour = kwargs['backupHour']
+        if backup_minute is None and 'backupMinute' in kwargs:
+            backup_minute = kwargs['backupMinute']
+        if binlog_retention_period is None and 'binlogRetentionPeriod' in kwargs:
+            binlog_retention_period = kwargs['binlogRetentionPeriod']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
+            default_time_zone = kwargs['defaultTimeZone']
+        if group_concat_max_len is None and 'groupConcatMaxLen' in kwargs:
+            group_concat_max_len = kwargs['groupConcatMaxLen']
+        if information_schema_stats_expiry is None and 'informationSchemaStatsExpiry' in kwargs:
+            information_schema_stats_expiry = kwargs['informationSchemaStatsExpiry']
+        if innodb_ft_min_token_size is None and 'innodbFtMinTokenSize' in kwargs:
+            innodb_ft_min_token_size = kwargs['innodbFtMinTokenSize']
+        if innodb_ft_server_stopword_table is None and 'innodbFtServerStopwordTable' in kwargs:
+            innodb_ft_server_stopword_table = kwargs['innodbFtServerStopwordTable']
+        if innodb_lock_wait_timeout is None and 'innodbLockWaitTimeout' in kwargs:
+            innodb_lock_wait_timeout = kwargs['innodbLockWaitTimeout']
+        if innodb_log_buffer_size is None and 'innodbLogBufferSize' in kwargs:
+            innodb_log_buffer_size = kwargs['innodbLogBufferSize']
+        if innodb_online_alter_log_max_size is None and 'innodbOnlineAlterLogMaxSize' in kwargs:
+            innodb_online_alter_log_max_size = kwargs['innodbOnlineAlterLogMaxSize']
+        if innodb_print_all_deadlocks is None and 'innodbPrintAllDeadlocks' in kwargs:
+            innodb_print_all_deadlocks = kwargs['innodbPrintAllDeadlocks']
+        if innodb_rollback_on_timeout is None and 'innodbRollbackOnTimeout' in kwargs:
+            innodb_rollback_on_timeout = kwargs['innodbRollbackOnTimeout']
+        if interactive_timeout is None and 'interactiveTimeout' in kwargs:
+            interactive_timeout = kwargs['interactiveTimeout']
+        if internal_tmp_mem_storage_engine is None and 'internalTmpMemStorageEngine' in kwargs:
+            internal_tmp_mem_storage_engine = kwargs['internalTmpMemStorageEngine']
+        if long_query_time is None and 'longQueryTime' in kwargs:
+            long_query_time = kwargs['longQueryTime']
+        if max_allowed_packet is None and 'maxAllowedPacket' in kwargs:
+            max_allowed_packet = kwargs['maxAllowedPacket']
+        if max_heap_table_size is None and 'maxHeapTableSize' in kwargs:
+            max_heap_table_size = kwargs['maxHeapTableSize']
+        if net_read_timeout is None and 'netReadTimeout' in kwargs:
+            net_read_timeout = kwargs['netReadTimeout']
+        if net_write_timeout is None and 'netWriteTimeout' in kwargs:
+            net_write_timeout = kwargs['netWriteTimeout']
+        if slow_query_log is None and 'slowQueryLog' in kwargs:
+            slow_query_log = kwargs['slowQueryLog']
+        if sort_buffer_size is None and 'sortBufferSize' in kwargs:
+            sort_buffer_size = kwargs['sortBufferSize']
+        if sql_mode is None and 'sqlMode' in kwargs:
+            sql_mode = kwargs['sqlMode']
+        if sql_require_primary_key is None and 'sqlRequirePrimaryKey' in kwargs:
+            sql_require_primary_key = kwargs['sqlRequirePrimaryKey']
+        if tmp_table_size is None and 'tmpTableSize' in kwargs:
+            tmp_table_size = kwargs['tmpTableSize']
+        if wait_timeout is None and 'waitTimeout' in kwargs:
+            wait_timeout = kwargs['waitTimeout']
+
         if backup_hour is not None:
-            pulumi.set(__self__, "backup_hour", backup_hour)
+            _setter("backup_hour", backup_hour)
         if backup_minute is not None:
-            pulumi.set(__self__, "backup_minute", backup_minute)
+            _setter("backup_minute", backup_minute)
         if binlog_retention_period is not None:
-            pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
+            _setter("binlog_retention_period", binlog_retention_period)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if connect_timeout is not None:
-            pulumi.set(__self__, "connect_timeout", connect_timeout)
+            _setter("connect_timeout", connect_timeout)
         if default_time_zone is not None:
-            pulumi.set(__self__, "default_time_zone", default_time_zone)
+            _setter("default_time_zone", default_time_zone)
         if group_concat_max_len is not None:
-            pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
+            _setter("group_concat_max_len", group_concat_max_len)
         if information_schema_stats_expiry is not None:
-            pulumi.set(__self__, "information_schema_stats_expiry", information_schema_stats_expiry)
+            _setter("information_schema_stats_expiry", information_schema_stats_expiry)
         if innodb_ft_min_token_size is not None:
-            pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
+            _setter("innodb_ft_min_token_size", innodb_ft_min_token_size)
         if innodb_ft_server_stopword_table is not None:
-            pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+            _setter("innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
         if innodb_lock_wait_timeout is not None:
-            pulumi.set(__self__, "innodb_lock_wait_timeout", innodb_lock_wait_timeout)
+            _setter("innodb_lock_wait_timeout", innodb_lock_wait_timeout)
         if innodb_log_buffer_size is not None:
-            pulumi.set(__self__, "innodb_log_buffer_size", innodb_log_buffer_size)
+            _setter("innodb_log_buffer_size", innodb_log_buffer_size)
         if innodb_online_alter_log_max_size is not None:
-            pulumi.set(__self__, "innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
+            _setter("innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
         if innodb_print_all_deadlocks is not None:
-            pulumi.set(__self__, "innodb_print_all_deadlocks", innodb_print_all_deadlocks)
+            _setter("innodb_print_all_deadlocks", innodb_print_all_deadlocks)
         if innodb_rollback_on_timeout is not None:
-            pulumi.set(__self__, "innodb_rollback_on_timeout", innodb_rollback_on_timeout)
+            _setter("innodb_rollback_on_timeout", innodb_rollback_on_timeout)
         if interactive_timeout is not None:
-            pulumi.set(__self__, "interactive_timeout", interactive_timeout)
+            _setter("interactive_timeout", interactive_timeout)
         if internal_tmp_mem_storage_engine is not None:
-            pulumi.set(__self__, "internal_tmp_mem_storage_engine", internal_tmp_mem_storage_engine)
+            _setter("internal_tmp_mem_storage_engine", internal_tmp_mem_storage_engine)
         if long_query_time is not None:
-            pulumi.set(__self__, "long_query_time", long_query_time)
+            _setter("long_query_time", long_query_time)
         if max_allowed_packet is not None:
-            pulumi.set(__self__, "max_allowed_packet", max_allowed_packet)
+            _setter("max_allowed_packet", max_allowed_packet)
         if max_heap_table_size is not None:
-            pulumi.set(__self__, "max_heap_table_size", max_heap_table_size)
+            _setter("max_heap_table_size", max_heap_table_size)
         if net_read_timeout is not None:
-            pulumi.set(__self__, "net_read_timeout", net_read_timeout)
+            _setter("net_read_timeout", net_read_timeout)
         if net_write_timeout is not None:
-            pulumi.set(__self__, "net_write_timeout", net_write_timeout)
+            _setter("net_write_timeout", net_write_timeout)
         if slow_query_log is not None:
-            pulumi.set(__self__, "slow_query_log", slow_query_log)
+            _setter("slow_query_log", slow_query_log)
         if sort_buffer_size is not None:
-            pulumi.set(__self__, "sort_buffer_size", sort_buffer_size)
+            _setter("sort_buffer_size", sort_buffer_size)
         if sql_mode is not None:
-            pulumi.set(__self__, "sql_mode", sql_mode)
+            _setter("sql_mode", sql_mode)
         if sql_require_primary_key is not None:
-            pulumi.set(__self__, "sql_require_primary_key", sql_require_primary_key)
+            _setter("sql_require_primary_key", sql_require_primary_key)
         if tmp_table_size is not None:
-            pulumi.set(__self__, "tmp_table_size", tmp_table_size)
+            _setter("tmp_table_size", tmp_table_size)
         if wait_timeout is not None:
-            pulumi.set(__self__, "wait_timeout", wait_timeout)
+            _setter("wait_timeout", wait_timeout)
 
     @property
     @pulumi.getter(name="backupHour")
@@ -1067,6 +1311,10 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseMysqlConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

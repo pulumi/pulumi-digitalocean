@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,16 +32,41 @@ class FirewallArgs:
                The `outbound_rule` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
         """
+        FirewallArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            droplet_ids=droplet_ids,
+            inbound_rules=inbound_rules,
+            name=name,
+            outbound_rules=outbound_rules,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_ids is None and 'dropletIds' in kwargs:
+            droplet_ids = kwargs['dropletIds']
+        if inbound_rules is None and 'inboundRules' in kwargs:
+            inbound_rules = kwargs['inboundRules']
+        if outbound_rules is None and 'outboundRules' in kwargs:
+            outbound_rules = kwargs['outboundRules']
+
         if droplet_ids is not None:
-            pulumi.set(__self__, "droplet_ids", droplet_ids)
+            _setter("droplet_ids", droplet_ids)
         if inbound_rules is not None:
-            pulumi.set(__self__, "inbound_rules", inbound_rules)
+            _setter("inbound_rules", inbound_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if outbound_rules is not None:
-            pulumi.set(__self__, "outbound_rules", outbound_rules)
+            _setter("outbound_rules", outbound_rules)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="dropletIds")
@@ -137,22 +162,57 @@ class _FirewallState:
                This can be "waiting", "succeeded", or "failed".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
         """
+        _FirewallState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            droplet_ids=droplet_ids,
+            inbound_rules=inbound_rules,
+            name=name,
+            outbound_rules=outbound_rules,
+            pending_changes=pending_changes,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
+             pending_changes: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if droplet_ids is None and 'dropletIds' in kwargs:
+            droplet_ids = kwargs['dropletIds']
+        if inbound_rules is None and 'inboundRules' in kwargs:
+            inbound_rules = kwargs['inboundRules']
+        if outbound_rules is None and 'outboundRules' in kwargs:
+            outbound_rules = kwargs['outboundRules']
+        if pending_changes is None and 'pendingChanges' in kwargs:
+            pending_changes = kwargs['pendingChanges']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if droplet_ids is not None:
-            pulumi.set(__self__, "droplet_ids", droplet_ids)
+            _setter("droplet_ids", droplet_ids)
         if inbound_rules is not None:
-            pulumi.set(__self__, "inbound_rules", inbound_rules)
+            _setter("inbound_rules", inbound_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if outbound_rules is not None:
-            pulumi.set(__self__, "outbound_rules", outbound_rules)
+            _setter("outbound_rules", outbound_rules)
         if pending_changes is not None:
-            pulumi.set(__self__, "pending_changes", pending_changes)
+            _setter("pending_changes", pending_changes)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -465,6 +525,10 @@ class Firewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

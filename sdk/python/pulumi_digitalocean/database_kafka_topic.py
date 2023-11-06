@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,15 +30,42 @@ class DatabaseKafkaTopicArgs:
         :param pulumi.Input[int] partition_count: The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
         :param pulumi.Input[int] replication_factor: The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        DatabaseKafkaTopicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            configs=configs,
+            name=name,
+            partition_count=partition_count,
+            replication_factor=replication_factor,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partition_count: Optional[pulumi.Input[int]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if partition_count is None and 'partitionCount' in kwargs:
+            partition_count = kwargs['partitionCount']
+        if replication_factor is None and 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+
+        _setter("cluster_id", cluster_id)
         if configs is not None:
-            pulumi.set(__self__, "configs", configs)
+            _setter("configs", configs)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partition_count is not None:
-            pulumi.set(__self__, "partition_count", partition_count)
+            _setter("partition_count", partition_count)
         if replication_factor is not None:
-            pulumi.set(__self__, "replication_factor", replication_factor)
+            _setter("replication_factor", replication_factor)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -121,18 +148,45 @@ class _DatabaseKafkaTopicState:
         :param pulumi.Input[int] replication_factor: The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
         :param pulumi.Input[str] state: The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
         """
+        _DatabaseKafkaTopicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            configs=configs,
+            name=name,
+            partition_count=partition_count,
+            replication_factor=replication_factor,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partition_count: Optional[pulumi.Input[int]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if partition_count is None and 'partitionCount' in kwargs:
+            partition_count = kwargs['partitionCount']
+        if replication_factor is None and 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if configs is not None:
-            pulumi.set(__self__, "configs", configs)
+            _setter("configs", configs)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partition_count is not None:
-            pulumi.set(__self__, "partition_count", partition_count)
+            _setter("partition_count", partition_count)
         if replication_factor is not None:
-            pulumi.set(__self__, "replication_factor", replication_factor)
+            _setter("replication_factor", replication_factor)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -356,6 +410,10 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseKafkaTopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

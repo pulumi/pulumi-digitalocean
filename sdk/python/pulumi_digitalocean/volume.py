@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._enums import *
 
@@ -36,25 +36,64 @@ class VolumeArgs:
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
         """
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "size", size)
+        VolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region=region,
+            size=size,
+            description=description,
+            filesystem_type=filesystem_type,
+            initial_filesystem_label=initial_filesystem_label,
+            initial_filesystem_type=initial_filesystem_type,
+            name=name,
+            snapshot_id=snapshot_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             filesystem_type: Optional[pulumi.Input[str]] = None,
+             initial_filesystem_label: Optional[pulumi.Input[str]] = None,
+             initial_filesystem_type: Optional[pulumi.Input[Union[str, 'FileSystemType']]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if filesystem_type is None and 'filesystemType' in kwargs:
+            filesystem_type = kwargs['filesystemType']
+        if initial_filesystem_label is None and 'initialFilesystemLabel' in kwargs:
+            initial_filesystem_label = kwargs['initialFilesystemLabel']
+        if initial_filesystem_type is None and 'initialFilesystemType' in kwargs:
+            initial_filesystem_type = kwargs['initialFilesystemType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
+        _setter("region", region)
+        _setter("size", size)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if filesystem_type is not None:
             warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
             pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
         if filesystem_type is not None:
-            pulumi.set(__self__, "filesystem_type", filesystem_type)
+            _setter("filesystem_type", filesystem_type)
         if initial_filesystem_label is not None:
-            pulumi.set(__self__, "initial_filesystem_label", initial_filesystem_label)
+            _setter("initial_filesystem_label", initial_filesystem_label)
         if initial_filesystem_type is not None:
-            pulumi.set(__self__, "initial_filesystem_type", initial_filesystem_type)
+            _setter("initial_filesystem_type", initial_filesystem_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -198,33 +237,80 @@ class _VolumeState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
         :param pulumi.Input[str] volume_urn: The uniform resource name for the volume.
         """
+        _VolumeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            droplet_ids=droplet_ids,
+            filesystem_label=filesystem_label,
+            filesystem_type=filesystem_type,
+            initial_filesystem_label=initial_filesystem_label,
+            initial_filesystem_type=initial_filesystem_type,
+            name=name,
+            region=region,
+            size=size,
+            snapshot_id=snapshot_id,
+            tags=tags,
+            volume_urn=volume_urn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             filesystem_label: Optional[pulumi.Input[str]] = None,
+             filesystem_type: Optional[pulumi.Input[str]] = None,
+             initial_filesystem_label: Optional[pulumi.Input[str]] = None,
+             initial_filesystem_type: Optional[pulumi.Input[Union[str, 'FileSystemType']]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             volume_urn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if droplet_ids is None and 'dropletIds' in kwargs:
+            droplet_ids = kwargs['dropletIds']
+        if filesystem_label is None and 'filesystemLabel' in kwargs:
+            filesystem_label = kwargs['filesystemLabel']
+        if filesystem_type is None and 'filesystemType' in kwargs:
+            filesystem_type = kwargs['filesystemType']
+        if initial_filesystem_label is None and 'initialFilesystemLabel' in kwargs:
+            initial_filesystem_label = kwargs['initialFilesystemLabel']
+        if initial_filesystem_type is None and 'initialFilesystemType' in kwargs:
+            initial_filesystem_type = kwargs['initialFilesystemType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if volume_urn is None and 'volumeUrn' in kwargs:
+            volume_urn = kwargs['volumeUrn']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if droplet_ids is not None:
-            pulumi.set(__self__, "droplet_ids", droplet_ids)
+            _setter("droplet_ids", droplet_ids)
         if filesystem_label is not None:
-            pulumi.set(__self__, "filesystem_label", filesystem_label)
+            _setter("filesystem_label", filesystem_label)
         if filesystem_type is not None:
             warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
             pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
         if filesystem_type is not None:
-            pulumi.set(__self__, "filesystem_type", filesystem_type)
+            _setter("filesystem_type", filesystem_type)
         if initial_filesystem_label is not None:
-            pulumi.set(__self__, "initial_filesystem_label", initial_filesystem_label)
+            _setter("initial_filesystem_label", initial_filesystem_label)
         if initial_filesystem_type is not None:
-            pulumi.set(__self__, "initial_filesystem_type", initial_filesystem_type)
+            _setter("initial_filesystem_type", initial_filesystem_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if volume_urn is not None:
-            pulumi.set(__self__, "volume_urn", volume_urn)
+            _setter("volume_urn", volume_urn)
 
     @property
     @pulumi.getter
@@ -505,6 +591,10 @@ class Volume(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
