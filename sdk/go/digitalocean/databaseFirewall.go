@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean database firewall resource allowing you to restrict
@@ -271,12 +270,6 @@ func (i *DatabaseFirewall) ToDatabaseFirewallOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallOutput)
 }
 
-func (i *DatabaseFirewall) ToOutput(ctx context.Context) pulumix.Output[*DatabaseFirewall] {
-	return pulumix.Output[*DatabaseFirewall]{
-		OutputState: i.ToDatabaseFirewallOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseFirewallArrayInput is an input type that accepts DatabaseFirewallArray and DatabaseFirewallArrayOutput values.
 // You can construct a concrete instance of `DatabaseFirewallArrayInput` via:
 //
@@ -300,12 +293,6 @@ func (i DatabaseFirewallArray) ToDatabaseFirewallArrayOutput() DatabaseFirewallA
 
 func (i DatabaseFirewallArray) ToDatabaseFirewallArrayOutputWithContext(ctx context.Context) DatabaseFirewallArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallArrayOutput)
-}
-
-func (i DatabaseFirewallArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseFirewall] {
-	return pulumix.Output[[]*DatabaseFirewall]{
-		OutputState: i.ToDatabaseFirewallArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseFirewallMapInput is an input type that accepts DatabaseFirewallMap and DatabaseFirewallMapOutput values.
@@ -333,12 +320,6 @@ func (i DatabaseFirewallMap) ToDatabaseFirewallMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFirewallMapOutput)
 }
 
-func (i DatabaseFirewallMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseFirewall] {
-	return pulumix.Output[map[string]*DatabaseFirewall]{
-		OutputState: i.ToDatabaseFirewallMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseFirewallOutput struct{ *pulumi.OutputState }
 
 func (DatabaseFirewallOutput) ElementType() reflect.Type {
@@ -351,12 +332,6 @@ func (o DatabaseFirewallOutput) ToDatabaseFirewallOutput() DatabaseFirewallOutpu
 
 func (o DatabaseFirewallOutput) ToDatabaseFirewallOutputWithContext(ctx context.Context) DatabaseFirewallOutput {
 	return o
-}
-
-func (o DatabaseFirewallOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseFirewall] {
-	return pulumix.Output[*DatabaseFirewall]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the target database cluster.
@@ -383,12 +358,6 @@ func (o DatabaseFirewallArrayOutput) ToDatabaseFirewallArrayOutputWithContext(ct
 	return o
 }
 
-func (o DatabaseFirewallArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseFirewall] {
-	return pulumix.Output[[]*DatabaseFirewall]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseFirewallArrayOutput) Index(i pulumi.IntInput) DatabaseFirewallOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseFirewall {
 		return vs[0].([]*DatabaseFirewall)[vs[1].(int)]
@@ -407,12 +376,6 @@ func (o DatabaseFirewallMapOutput) ToDatabaseFirewallMapOutput() DatabaseFirewal
 
 func (o DatabaseFirewallMapOutput) ToDatabaseFirewallMapOutputWithContext(ctx context.Context) DatabaseFirewallMapOutput {
 	return o
-}
-
-func (o DatabaseFirewallMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseFirewall] {
-	return pulumix.Output[map[string]*DatabaseFirewall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseFirewallMapOutput) MapIndex(k pulumi.StringInput) DatabaseFirewallOutput {

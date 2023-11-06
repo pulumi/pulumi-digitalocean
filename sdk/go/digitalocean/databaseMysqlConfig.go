@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a virtual resource that can be used to change advanced configuration
@@ -422,12 +421,6 @@ func (i *DatabaseMysqlConfig) ToDatabaseMysqlConfigOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlConfigOutput)
 }
 
-func (i *DatabaseMysqlConfig) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMysqlConfig] {
-	return pulumix.Output[*DatabaseMysqlConfig]{
-		OutputState: i.ToDatabaseMysqlConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseMysqlConfigArrayInput is an input type that accepts DatabaseMysqlConfigArray and DatabaseMysqlConfigArrayOutput values.
 // You can construct a concrete instance of `DatabaseMysqlConfigArrayInput` via:
 //
@@ -451,12 +444,6 @@ func (i DatabaseMysqlConfigArray) ToDatabaseMysqlConfigArrayOutput() DatabaseMys
 
 func (i DatabaseMysqlConfigArray) ToDatabaseMysqlConfigArrayOutputWithContext(ctx context.Context) DatabaseMysqlConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlConfigArrayOutput)
-}
-
-func (i DatabaseMysqlConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseMysqlConfig] {
-	return pulumix.Output[[]*DatabaseMysqlConfig]{
-		OutputState: i.ToDatabaseMysqlConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseMysqlConfigMapInput is an input type that accepts DatabaseMysqlConfigMap and DatabaseMysqlConfigMapOutput values.
@@ -484,12 +471,6 @@ func (i DatabaseMysqlConfigMap) ToDatabaseMysqlConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlConfigMapOutput)
 }
 
-func (i DatabaseMysqlConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseMysqlConfig] {
-	return pulumix.Output[map[string]*DatabaseMysqlConfig]{
-		OutputState: i.ToDatabaseMysqlConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseMysqlConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseMysqlConfigOutput) ElementType() reflect.Type {
@@ -502,12 +483,6 @@ func (o DatabaseMysqlConfigOutput) ToDatabaseMysqlConfigOutput() DatabaseMysqlCo
 
 func (o DatabaseMysqlConfigOutput) ToDatabaseMysqlConfigOutputWithContext(ctx context.Context) DatabaseMysqlConfigOutput {
 	return o
-}
-
-func (o DatabaseMysqlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMysqlConfig] {
-	return pulumix.Output[*DatabaseMysqlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
@@ -664,12 +639,6 @@ func (o DatabaseMysqlConfigArrayOutput) ToDatabaseMysqlConfigArrayOutputWithCont
 	return o
 }
 
-func (o DatabaseMysqlConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseMysqlConfig] {
-	return pulumix.Output[[]*DatabaseMysqlConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseMysqlConfigArrayOutput) Index(i pulumi.IntInput) DatabaseMysqlConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseMysqlConfig {
 		return vs[0].([]*DatabaseMysqlConfig)[vs[1].(int)]
@@ -688,12 +657,6 @@ func (o DatabaseMysqlConfigMapOutput) ToDatabaseMysqlConfigMapOutput() DatabaseM
 
 func (o DatabaseMysqlConfigMapOutput) ToDatabaseMysqlConfigMapOutputWithContext(ctx context.Context) DatabaseMysqlConfigMapOutput {
 	return o
-}
-
-func (o DatabaseMysqlConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseMysqlConfig] {
-	return pulumix.Output[map[string]*DatabaseMysqlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseMysqlConfigMapOutput) MapIndex(k pulumi.StringInput) DatabaseMysqlConfigOutput {

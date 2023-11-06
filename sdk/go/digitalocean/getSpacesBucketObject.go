@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Spaces object data source allows access to the metadata and
@@ -162,12 +161,6 @@ func (o LookupSpacesBucketObjectResultOutput) ToLookupSpacesBucketObjectResultOu
 
 func (o LookupSpacesBucketObjectResultOutput) ToLookupSpacesBucketObjectResultOutputWithContext(ctx context.Context) LookupSpacesBucketObjectResultOutput {
 	return o
-}
-
-func (o LookupSpacesBucketObjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpacesBucketObjectResult] {
-	return pulumix.Output[LookupSpacesBucketObjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Object data (see **limitations above** to understand cases in which this field is actually available)

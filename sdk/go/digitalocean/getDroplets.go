@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -172,12 +171,6 @@ func (o GetDropletsResultOutput) ToGetDropletsResultOutput() GetDropletsResultOu
 
 func (o GetDropletsResultOutput) ToGetDropletsResultOutputWithContext(ctx context.Context) GetDropletsResultOutput {
 	return o
-}
-
-func (o GetDropletsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDropletsResult] {
-	return pulumix.Output[GetDropletsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:

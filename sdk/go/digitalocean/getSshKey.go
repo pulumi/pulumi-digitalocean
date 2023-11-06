@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a ssh key. This data source provides the name, public key,
@@ -120,12 +119,6 @@ func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutput() LookupSshKeyResul
 
 func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutputWithContext(ctx context.Context) LookupSshKeyResultOutput {
 	return o
-}
-
-func (o LookupSshKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSshKeyResult] {
-	return pulumix.Output[LookupSshKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fingerprint of the public key of the ssh key.
