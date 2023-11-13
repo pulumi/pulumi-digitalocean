@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to the available DigitalOcean Kubernetes Service versions.
@@ -174,12 +173,6 @@ func (o GetKubernetesVersionsResultOutput) ToGetKubernetesVersionsResultOutput()
 
 func (o GetKubernetesVersionsResultOutput) ToGetKubernetesVersionsResultOutputWithContext(ctx context.Context) GetKubernetesVersionsResultOutput {
 	return o
-}
-
-func (o GetKubernetesVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubernetesVersionsResult] {
-	return pulumix.Output[GetKubernetesVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

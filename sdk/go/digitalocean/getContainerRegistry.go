@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a container registry. This data source provides the name as
@@ -119,12 +118,6 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 
 func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutputWithContext(ctx context.Context) LookupContainerRegistryResultOutput {
 	return o
-}
-
-func (o LookupContainerRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRegistryResult] {
-	return pulumix.Output[LookupContainerRegistryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time when the registry was created

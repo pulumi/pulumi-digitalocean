@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a virtual resource that can be used to change advanced configuration
@@ -263,12 +262,6 @@ func (i *DatabaseRedisConfig) ToDatabaseRedisConfigOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRedisConfigOutput)
 }
 
-func (i *DatabaseRedisConfig) ToOutput(ctx context.Context) pulumix.Output[*DatabaseRedisConfig] {
-	return pulumix.Output[*DatabaseRedisConfig]{
-		OutputState: i.ToDatabaseRedisConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseRedisConfigArrayInput is an input type that accepts DatabaseRedisConfigArray and DatabaseRedisConfigArrayOutput values.
 // You can construct a concrete instance of `DatabaseRedisConfigArrayInput` via:
 //
@@ -292,12 +285,6 @@ func (i DatabaseRedisConfigArray) ToDatabaseRedisConfigArrayOutput() DatabaseRed
 
 func (i DatabaseRedisConfigArray) ToDatabaseRedisConfigArrayOutputWithContext(ctx context.Context) DatabaseRedisConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRedisConfigArrayOutput)
-}
-
-func (i DatabaseRedisConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseRedisConfig] {
-	return pulumix.Output[[]*DatabaseRedisConfig]{
-		OutputState: i.ToDatabaseRedisConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseRedisConfigMapInput is an input type that accepts DatabaseRedisConfigMap and DatabaseRedisConfigMapOutput values.
@@ -325,12 +312,6 @@ func (i DatabaseRedisConfigMap) ToDatabaseRedisConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRedisConfigMapOutput)
 }
 
-func (i DatabaseRedisConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseRedisConfig] {
-	return pulumix.Output[map[string]*DatabaseRedisConfig]{
-		OutputState: i.ToDatabaseRedisConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseRedisConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseRedisConfigOutput) ElementType() reflect.Type {
@@ -343,12 +324,6 @@ func (o DatabaseRedisConfigOutput) ToDatabaseRedisConfigOutput() DatabaseRedisCo
 
 func (o DatabaseRedisConfigOutput) ToDatabaseRedisConfigOutputWithContext(ctx context.Context) DatabaseRedisConfigOutput {
 	return o
-}
-
-func (o DatabaseRedisConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseRedisConfig] {
-	return pulumix.Output[*DatabaseRedisConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
@@ -425,12 +400,6 @@ func (o DatabaseRedisConfigArrayOutput) ToDatabaseRedisConfigArrayOutputWithCont
 	return o
 }
 
-func (o DatabaseRedisConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseRedisConfig] {
-	return pulumix.Output[[]*DatabaseRedisConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseRedisConfigArrayOutput) Index(i pulumi.IntInput) DatabaseRedisConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseRedisConfig {
 		return vs[0].([]*DatabaseRedisConfig)[vs[1].(int)]
@@ -449,12 +418,6 @@ func (o DatabaseRedisConfigMapOutput) ToDatabaseRedisConfigMapOutput() DatabaseR
 
 func (o DatabaseRedisConfigMapOutput) ToDatabaseRedisConfigMapOutputWithContext(ctx context.Context) DatabaseRedisConfigMapOutput {
 	return o
-}
-
-func (o DatabaseRedisConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseRedisConfig] {
-	return pulumix.Output[map[string]*DatabaseRedisConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseRedisConfigMapOutput) MapIndex(k pulumi.StringInput) DatabaseRedisConfigOutput {

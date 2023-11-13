@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on an image for use in other resources (e.g. creating a Droplet
@@ -210,12 +209,6 @@ func (o GetImageResultOutput) ToGetImageResultOutput() GetImageResultOutput {
 
 func (o GetImageResultOutput) ToGetImageResultOutputWithContext(ctx context.Context) GetImageResultOutput {
 	return o
-}
-
-func (o GetImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageResult] {
-	return pulumix.Output[GetImageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the image was created

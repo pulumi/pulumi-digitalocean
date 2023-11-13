@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Docker credentials for your DigitalOcean container registry.
@@ -201,12 +200,6 @@ func (i *ContainerRegistryDockerCredentials) ToContainerRegistryDockerCredential
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsOutput)
 }
 
-func (i *ContainerRegistryDockerCredentials) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryDockerCredentials] {
-	return pulumix.Output[*ContainerRegistryDockerCredentials]{
-		OutputState: i.ToContainerRegistryDockerCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerRegistryDockerCredentialsArrayInput is an input type that accepts ContainerRegistryDockerCredentialsArray and ContainerRegistryDockerCredentialsArrayOutput values.
 // You can construct a concrete instance of `ContainerRegistryDockerCredentialsArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i ContainerRegistryDockerCredentialsArray) ToContainerRegistryDockerCreden
 
 func (i ContainerRegistryDockerCredentialsArray) ToContainerRegistryDockerCredentialsArrayOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsArrayOutput)
-}
-
-func (i ContainerRegistryDockerCredentialsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistryDockerCredentials] {
-	return pulumix.Output[[]*ContainerRegistryDockerCredentials]{
-		OutputState: i.ToContainerRegistryDockerCredentialsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContainerRegistryDockerCredentialsMapInput is an input type that accepts ContainerRegistryDockerCredentialsMap and ContainerRegistryDockerCredentialsMapOutput values.
@@ -263,12 +250,6 @@ func (i ContainerRegistryDockerCredentialsMap) ToContainerRegistryDockerCredenti
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryDockerCredentialsMapOutput)
 }
 
-func (i ContainerRegistryDockerCredentialsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistryDockerCredentials] {
-	return pulumix.Output[map[string]*ContainerRegistryDockerCredentials]{
-		OutputState: i.ToContainerRegistryDockerCredentialsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerRegistryDockerCredentialsOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryDockerCredentialsOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCrede
 
 func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCredentialsOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsOutput {
 	return o
-}
-
-func (o ContainerRegistryDockerCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryDockerCredentials] {
-	return pulumix.Output[*ContainerRegistryDockerCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time the registry access token will expire.
@@ -328,12 +303,6 @@ func (o ContainerRegistryDockerCredentialsArrayOutput) ToContainerRegistryDocker
 	return o
 }
 
-func (o ContainerRegistryDockerCredentialsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRegistryDockerCredentials] {
-	return pulumix.Output[[]*ContainerRegistryDockerCredentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContainerRegistryDockerCredentialsArrayOutput) Index(i pulumi.IntInput) ContainerRegistryDockerCredentialsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerRegistryDockerCredentials {
 		return vs[0].([]*ContainerRegistryDockerCredentials)[vs[1].(int)]
@@ -352,12 +321,6 @@ func (o ContainerRegistryDockerCredentialsMapOutput) ToContainerRegistryDockerCr
 
 func (o ContainerRegistryDockerCredentialsMapOutput) ToContainerRegistryDockerCredentialsMapOutputWithContext(ctx context.Context) ContainerRegistryDockerCredentialsMapOutput {
 	return o
-}
-
-func (o ContainerRegistryDockerCredentialsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRegistryDockerCredentials] {
-	return pulumix.Output[map[string]*ContainerRegistryDockerCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerRegistryDockerCredentialsMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryDockerCredentialsOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve information about a VPC for use in other resources.
@@ -162,12 +161,6 @@ func (o LookupVpcResultOutput) ToLookupVpcResultOutput() LookupVpcResultOutput {
 
 func (o LookupVpcResultOutput) ToLookupVpcResultOutputWithContext(ctx context.Context) LookupVpcResultOutput {
 	return o
-}
-
-func (o LookupVpcResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVpcResult] {
-	return pulumix.Output[LookupVpcResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time of when the VPC was created.

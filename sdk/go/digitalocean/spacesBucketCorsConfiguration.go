@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -187,12 +186,6 @@ func (i *SpacesBucketCorsConfiguration) ToSpacesBucketCorsConfigurationOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketCorsConfigurationOutput)
 }
 
-func (i *SpacesBucketCorsConfiguration) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucketCorsConfiguration] {
-	return pulumix.Output[*SpacesBucketCorsConfiguration]{
-		OutputState: i.ToSpacesBucketCorsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpacesBucketCorsConfigurationArrayInput is an input type that accepts SpacesBucketCorsConfigurationArray and SpacesBucketCorsConfigurationArrayOutput values.
 // You can construct a concrete instance of `SpacesBucketCorsConfigurationArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i SpacesBucketCorsConfigurationArray) ToSpacesBucketCorsConfigurationArray
 
 func (i SpacesBucketCorsConfigurationArray) ToSpacesBucketCorsConfigurationArrayOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketCorsConfigurationArrayOutput)
-}
-
-func (i SpacesBucketCorsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucketCorsConfiguration] {
-	return pulumix.Output[[]*SpacesBucketCorsConfiguration]{
-		OutputState: i.ToSpacesBucketCorsConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SpacesBucketCorsConfigurationMapInput is an input type that accepts SpacesBucketCorsConfigurationMap and SpacesBucketCorsConfigurationMapOutput values.
@@ -249,12 +236,6 @@ func (i SpacesBucketCorsConfigurationMap) ToSpacesBucketCorsConfigurationMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SpacesBucketCorsConfigurationMapOutput)
 }
 
-func (i SpacesBucketCorsConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucketCorsConfiguration] {
-	return pulumix.Output[map[string]*SpacesBucketCorsConfiguration]{
-		OutputState: i.ToSpacesBucketCorsConfigurationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpacesBucketCorsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SpacesBucketCorsConfigurationOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o SpacesBucketCorsConfigurationOutput) ToSpacesBucketCorsConfigurationOutp
 
 func (o SpacesBucketCorsConfigurationOutput) ToSpacesBucketCorsConfigurationOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationOutput {
 	return o
-}
-
-func (o SpacesBucketCorsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*SpacesBucketCorsConfiguration] {
-	return pulumix.Output[*SpacesBucketCorsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the bucket to which to apply the CORS configuration.
@@ -306,12 +281,6 @@ func (o SpacesBucketCorsConfigurationArrayOutput) ToSpacesBucketCorsConfiguratio
 	return o
 }
 
-func (o SpacesBucketCorsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpacesBucketCorsConfiguration] {
-	return pulumix.Output[[]*SpacesBucketCorsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpacesBucketCorsConfigurationArrayOutput) Index(i pulumi.IntInput) SpacesBucketCorsConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpacesBucketCorsConfiguration {
 		return vs[0].([]*SpacesBucketCorsConfiguration)[vs[1].(int)]
@@ -330,12 +299,6 @@ func (o SpacesBucketCorsConfigurationMapOutput) ToSpacesBucketCorsConfigurationM
 
 func (o SpacesBucketCorsConfigurationMapOutput) ToSpacesBucketCorsConfigurationMapOutputWithContext(ctx context.Context) SpacesBucketCorsConfigurationMapOutput {
 	return o
-}
-
-func (o SpacesBucketCorsConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpacesBucketCorsConfiguration] {
-	return pulumix.Output[map[string]*SpacesBucketCorsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpacesBucketCorsConfigurationMapOutput) MapIndex(k pulumi.StringInput) SpacesBucketCorsConfigurationOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a DigitalOcean App.
@@ -115,12 +114,6 @@ func (o LookupAppResultOutput) ToLookupAppResultOutput() LookupAppResultOutput {
 
 func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Context) LookupAppResultOutput {
 	return o
-}
-
-func (o LookupAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppResult] {
-	return pulumix.Output[LookupAppResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID the app's currently active deployment.

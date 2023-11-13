@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides information on a DigitalOcean database cluster resource.
@@ -137,12 +136,6 @@ func (o LookupDatabaseClusterResultOutput) ToLookupDatabaseClusterResultOutput()
 
 func (o LookupDatabaseClusterResultOutput) ToLookupDatabaseClusterResultOutputWithContext(ctx context.Context) LookupDatabaseClusterResultOutput {
 	return o
-}
-
-func (o LookupDatabaseClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseClusterResult] {
-	return pulumix.Output[LookupDatabaseClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the cluster's default database.
