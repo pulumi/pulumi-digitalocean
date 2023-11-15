@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean Droplet resource. This can be used to create,
@@ -473,12 +472,6 @@ func (i *Droplet) ToDropletOutputWithContext(ctx context.Context) DropletOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DropletOutput)
 }
 
-func (i *Droplet) ToOutput(ctx context.Context) pulumix.Output[*Droplet] {
-	return pulumix.Output[*Droplet]{
-		OutputState: i.ToDropletOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DropletArrayInput is an input type that accepts DropletArray and DropletArrayOutput values.
 // You can construct a concrete instance of `DropletArrayInput` via:
 //
@@ -502,12 +495,6 @@ func (i DropletArray) ToDropletArrayOutput() DropletArrayOutput {
 
 func (i DropletArray) ToDropletArrayOutputWithContext(ctx context.Context) DropletArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DropletArrayOutput)
-}
-
-func (i DropletArray) ToOutput(ctx context.Context) pulumix.Output[[]*Droplet] {
-	return pulumix.Output[[]*Droplet]{
-		OutputState: i.ToDropletArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DropletMapInput is an input type that accepts DropletMap and DropletMapOutput values.
@@ -535,12 +522,6 @@ func (i DropletMap) ToDropletMapOutputWithContext(ctx context.Context) DropletMa
 	return pulumi.ToOutputWithContext(ctx, i).(DropletMapOutput)
 }
 
-func (i DropletMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Droplet] {
-	return pulumix.Output[map[string]*Droplet]{
-		OutputState: i.ToDropletMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DropletOutput struct{ *pulumi.OutputState }
 
 func (DropletOutput) ElementType() reflect.Type {
@@ -553,12 +534,6 @@ func (o DropletOutput) ToDropletOutput() DropletOutput {
 
 func (o DropletOutput) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
 	return o
-}
-
-func (o DropletOutput) ToOutput(ctx context.Context) pulumix.Output[*Droplet] {
-	return pulumix.Output[*Droplet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boolean controlling if backups are made. Defaults to
@@ -735,12 +710,6 @@ func (o DropletArrayOutput) ToDropletArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DropletArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Droplet] {
-	return pulumix.Output[[]*Droplet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DropletArrayOutput) Index(i pulumi.IntInput) DropletOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Droplet {
 		return vs[0].([]*Droplet)[vs[1].(int)]
@@ -759,12 +728,6 @@ func (o DropletMapOutput) ToDropletMapOutput() DropletMapOutput {
 
 func (o DropletMapOutput) ToDropletMapOutputWithContext(ctx context.Context) DropletMapOutput {
 	return o
-}
-
-func (o DropletMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Droplet] {
-	return pulumix.Output[map[string]*Droplet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DropletMapOutput) MapIndex(k pulumi.StringInput) DropletOutput {

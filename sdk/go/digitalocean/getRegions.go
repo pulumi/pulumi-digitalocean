@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -169,12 +168,6 @@ func (o GetRegionsResultOutput) ToGetRegionsResultOutput() GetRegionsResultOutpu
 
 func (o GetRegionsResultOutput) ToGetRegionsResultOutputWithContext(ctx context.Context) GetRegionsResultOutput {
 	return o
-}
-
-func (o GetRegionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsResult] {
-	return pulumix.Output[GetRegionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegionsResultOutput) Filters() GetRegionsFilterArrayOutput {

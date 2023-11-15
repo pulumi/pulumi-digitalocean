@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Volume snapshots are saved instances of a block storage volume. Use this data
@@ -175,12 +174,6 @@ func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutput() L
 
 func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutputWithContext(ctx context.Context) LookupVolumeSnapshotResultOutput {
 	return o
-}
-
-func (o LookupVolumeSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeSnapshotResult] {
-	return pulumix.Output[LookupVolumeSnapshotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time the volume snapshot was created.

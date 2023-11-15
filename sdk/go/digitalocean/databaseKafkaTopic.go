@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean Kafka topic for Kafka clusters.
@@ -231,12 +230,6 @@ func (i *DatabaseKafkaTopic) ToDatabaseKafkaTopicOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseKafkaTopicOutput)
 }
 
-func (i *DatabaseKafkaTopic) ToOutput(ctx context.Context) pulumix.Output[*DatabaseKafkaTopic] {
-	return pulumix.Output[*DatabaseKafkaTopic]{
-		OutputState: i.ToDatabaseKafkaTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseKafkaTopicArrayInput is an input type that accepts DatabaseKafkaTopicArray and DatabaseKafkaTopicArrayOutput values.
 // You can construct a concrete instance of `DatabaseKafkaTopicArrayInput` via:
 //
@@ -260,12 +253,6 @@ func (i DatabaseKafkaTopicArray) ToDatabaseKafkaTopicArrayOutput() DatabaseKafka
 
 func (i DatabaseKafkaTopicArray) ToDatabaseKafkaTopicArrayOutputWithContext(ctx context.Context) DatabaseKafkaTopicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseKafkaTopicArrayOutput)
-}
-
-func (i DatabaseKafkaTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseKafkaTopic] {
-	return pulumix.Output[[]*DatabaseKafkaTopic]{
-		OutputState: i.ToDatabaseKafkaTopicArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseKafkaTopicMapInput is an input type that accepts DatabaseKafkaTopicMap and DatabaseKafkaTopicMapOutput values.
@@ -293,12 +280,6 @@ func (i DatabaseKafkaTopicMap) ToDatabaseKafkaTopicMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseKafkaTopicMapOutput)
 }
 
-func (i DatabaseKafkaTopicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseKafkaTopic] {
-	return pulumix.Output[map[string]*DatabaseKafkaTopic]{
-		OutputState: i.ToDatabaseKafkaTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseKafkaTopicOutput struct{ *pulumi.OutputState }
 
 func (DatabaseKafkaTopicOutput) ElementType() reflect.Type {
@@ -311,12 +292,6 @@ func (o DatabaseKafkaTopicOutput) ToDatabaseKafkaTopicOutput() DatabaseKafkaTopi
 
 func (o DatabaseKafkaTopicOutput) ToDatabaseKafkaTopicOutputWithContext(ctx context.Context) DatabaseKafkaTopicOutput {
 	return o
-}
-
-func (o DatabaseKafkaTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseKafkaTopic] {
-	return pulumix.Output[*DatabaseKafkaTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the source database cluster. Note: This must be a Kafka cluster.
@@ -364,12 +339,6 @@ func (o DatabaseKafkaTopicArrayOutput) ToDatabaseKafkaTopicArrayOutputWithContex
 	return o
 }
 
-func (o DatabaseKafkaTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseKafkaTopic] {
-	return pulumix.Output[[]*DatabaseKafkaTopic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseKafkaTopicArrayOutput) Index(i pulumi.IntInput) DatabaseKafkaTopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseKafkaTopic {
 		return vs[0].([]*DatabaseKafkaTopic)[vs[1].(int)]
@@ -388,12 +357,6 @@ func (o DatabaseKafkaTopicMapOutput) ToDatabaseKafkaTopicMapOutput() DatabaseKaf
 
 func (o DatabaseKafkaTopicMapOutput) ToDatabaseKafkaTopicMapOutputWithContext(ctx context.Context) DatabaseKafkaTopicMapOutput {
 	return o
-}
-
-func (o DatabaseKafkaTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseKafkaTopic] {
-	return pulumix.Output[map[string]*DatabaseKafkaTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseKafkaTopicMapOutput) MapIndex(k pulumi.StringInput) DatabaseKafkaTopicOutput {

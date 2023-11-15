@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
@@ -302,12 +301,6 @@ func (i *MonitorAlert) ToMonitorAlertOutputWithContext(ctx context.Context) Moni
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertOutput)
 }
 
-func (i *MonitorAlert) ToOutput(ctx context.Context) pulumix.Output[*MonitorAlert] {
-	return pulumix.Output[*MonitorAlert]{
-		OutputState: i.ToMonitorAlertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitorAlertArrayInput is an input type that accepts MonitorAlertArray and MonitorAlertArrayOutput values.
 // You can construct a concrete instance of `MonitorAlertArrayInput` via:
 //
@@ -331,12 +324,6 @@ func (i MonitorAlertArray) ToMonitorAlertArrayOutput() MonitorAlertArrayOutput {
 
 func (i MonitorAlertArray) ToMonitorAlertArrayOutputWithContext(ctx context.Context) MonitorAlertArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertArrayOutput)
-}
-
-func (i MonitorAlertArray) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorAlert] {
-	return pulumix.Output[[]*MonitorAlert]{
-		OutputState: i.ToMonitorAlertArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonitorAlertMapInput is an input type that accepts MonitorAlertMap and MonitorAlertMapOutput values.
@@ -364,12 +351,6 @@ func (i MonitorAlertMap) ToMonitorAlertMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertMapOutput)
 }
 
-func (i MonitorAlertMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorAlert] {
-	return pulumix.Output[map[string]*MonitorAlert]{
-		OutputState: i.ToMonitorAlertMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MonitorAlertOutput struct{ *pulumi.OutputState }
 
 func (MonitorAlertOutput) ElementType() reflect.Type {
@@ -382,12 +363,6 @@ func (o MonitorAlertOutput) ToMonitorAlertOutput() MonitorAlertOutput {
 
 func (o MonitorAlertOutput) ToMonitorAlertOutputWithContext(ctx context.Context) MonitorAlertOutput {
 	return o
-}
-
-func (o MonitorAlertOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorAlert] {
-	return pulumix.Output[*MonitorAlert]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How to send notifications about the alerts. This is a list with one element, .
@@ -471,12 +446,6 @@ func (o MonitorAlertArrayOutput) ToMonitorAlertArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o MonitorAlertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorAlert] {
-	return pulumix.Output[[]*MonitorAlert]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitorAlertArrayOutput) Index(i pulumi.IntInput) MonitorAlertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorAlert {
 		return vs[0].([]*MonitorAlert)[vs[1].(int)]
@@ -495,12 +464,6 @@ func (o MonitorAlertMapOutput) ToMonitorAlertMapOutput() MonitorAlertMapOutput {
 
 func (o MonitorAlertMapOutput) ToMonitorAlertMapOutputWithContext(ctx context.Context) MonitorAlertMapOutput {
 	return o
-}
-
-func (o MonitorAlertMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorAlert] {
-	return pulumix.Output[map[string]*MonitorAlert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorAlertMapOutput) MapIndex(k pulumi.StringInput) MonitorAlertOutput {

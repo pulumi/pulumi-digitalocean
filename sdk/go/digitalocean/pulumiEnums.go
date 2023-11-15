@@ -78,12 +78,6 @@ func (o AlgorithmOutput) ToAlgorithmPtrOutputWithContext(ctx context.Context) Al
 	}).(AlgorithmPtrOutput)
 }
 
-func (o AlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[Algorithm] {
-	return pulumix.Output[Algorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,12 +111,6 @@ func (o AlgorithmPtrOutput) ToAlgorithmPtrOutput() AlgorithmPtrOutput {
 
 func (o AlgorithmPtrOutput) ToAlgorithmPtrOutputWithContext(ctx context.Context) AlgorithmPtrOutput {
 	return o
-}
-
-func (o AlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Algorithm] {
-	return pulumix.Output[*Algorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlgorithmPtrOutput) Elem() AlgorithmOutput {
@@ -260,12 +248,6 @@ func (o CertificateTypeOutput) ToCertificateTypePtrOutputWithContext(ctx context
 	}).(CertificateTypePtrOutput)
 }
 
-func (o CertificateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateType] {
-	return pulumix.Output[CertificateType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -299,12 +281,6 @@ func (o CertificateTypePtrOutput) ToCertificateTypePtrOutput() CertificateTypePt
 
 func (o CertificateTypePtrOutput) ToCertificateTypePtrOutputWithContext(ctx context.Context) CertificateTypePtrOutput {
 	return o
-}
-
-func (o CertificateTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateType] {
-	return pulumix.Output[*CertificateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateTypePtrOutput) Elem() CertificateTypeOutput {
@@ -447,12 +423,6 @@ func (o DatabaseSlugOutput) ToDatabaseSlugPtrOutputWithContext(ctx context.Conte
 	}).(DatabaseSlugPtrOutput)
 }
 
-func (o DatabaseSlugOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseSlug] {
-	return pulumix.Output[DatabaseSlug]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseSlugOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -486,12 +456,6 @@ func (o DatabaseSlugPtrOutput) ToDatabaseSlugPtrOutput() DatabaseSlugPtrOutput {
 
 func (o DatabaseSlugPtrOutput) ToDatabaseSlugPtrOutputWithContext(ctx context.Context) DatabaseSlugPtrOutput {
 	return o
-}
-
-func (o DatabaseSlugPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseSlug] {
-	return pulumix.Output[*DatabaseSlug]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseSlugPtrOutput) Elem() DatabaseSlugOutput {
@@ -715,12 +679,6 @@ func (o DropletSlugOutput) ToDropletSlugPtrOutputWithContext(ctx context.Context
 	}).(DropletSlugPtrOutput)
 }
 
-func (o DropletSlugOutput) ToOutput(ctx context.Context) pulumix.Output[DropletSlug] {
-	return pulumix.Output[DropletSlug]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DropletSlugOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -754,12 +712,6 @@ func (o DropletSlugPtrOutput) ToDropletSlugPtrOutput() DropletSlugPtrOutput {
 
 func (o DropletSlugPtrOutput) ToDropletSlugPtrOutputWithContext(ctx context.Context) DropletSlugPtrOutput {
 	return o
-}
-
-func (o DropletSlugPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DropletSlug] {
-	return pulumix.Output[*DropletSlug]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DropletSlugPtrOutput) Elem() DropletSlugOutput {
@@ -897,12 +849,6 @@ func (o FileSystemTypeOutput) ToFileSystemTypePtrOutputWithContext(ctx context.C
 	}).(FileSystemTypePtrOutput)
 }
 
-func (o FileSystemTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FileSystemType] {
-	return pulumix.Output[FileSystemType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FileSystemTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -936,12 +882,6 @@ func (o FileSystemTypePtrOutput) ToFileSystemTypePtrOutput() FileSystemTypePtrOu
 
 func (o FileSystemTypePtrOutput) ToFileSystemTypePtrOutputWithContext(ctx context.Context) FileSystemTypePtrOutput {
 	return o
-}
-
-func (o FileSystemTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileSystemType] {
-	return pulumix.Output[*FileSystemType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileSystemTypePtrOutput) Elem() FileSystemTypeOutput {
@@ -1082,12 +1022,6 @@ func (o ProtocolOutput) ToProtocolPtrOutputWithContext(ctx context.Context) Prot
 	}).(ProtocolPtrOutput)
 }
 
-func (o ProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[Protocol] {
-	return pulumix.Output[Protocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1121,12 +1055,6 @@ func (o ProtocolPtrOutput) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (o ProtocolPtrOutput) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return o
-}
-
-func (o ProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProtocolPtrOutput) Elem() ProtocolOutput {
@@ -1270,12 +1198,6 @@ func (o RecordTypeOutput) ToRecordTypePtrOutputWithContext(ctx context.Context) 
 	}).(RecordTypePtrOutput)
 }
 
-func (o RecordTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RecordType] {
-	return pulumix.Output[RecordType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecordTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1309,12 +1231,6 @@ func (o RecordTypePtrOutput) ToRecordTypePtrOutput() RecordTypePtrOutput {
 
 func (o RecordTypePtrOutput) ToRecordTypePtrOutputWithContext(ctx context.Context) RecordTypePtrOutput {
 	return o
-}
-
-func (o RecordTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordType] {
-	return pulumix.Output[*RecordType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecordTypePtrOutput) Elem() RecordTypeOutput {
@@ -1463,12 +1379,6 @@ func (o RegionOutput) ToRegionPtrOutputWithContext(ctx context.Context) RegionPt
 	}).(RegionPtrOutput)
 }
 
-func (o RegionOutput) ToOutput(ctx context.Context) pulumix.Output[Region] {
-	return pulumix.Output[Region]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1502,12 +1412,6 @@ func (o RegionPtrOutput) ToRegionPtrOutput() RegionPtrOutput {
 
 func (o RegionPtrOutput) ToRegionPtrOutputWithContext(ctx context.Context) RegionPtrOutput {
 	return o
-}
-
-func (o RegionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Region] {
-	return pulumix.Output[*Region]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionPtrOutput) Elem() RegionOutput {

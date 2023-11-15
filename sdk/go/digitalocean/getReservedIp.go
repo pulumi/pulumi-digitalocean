@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -108,12 +107,6 @@ func (o LookupReservedIpResultOutput) ToLookupReservedIpResultOutput() LookupRes
 
 func (o LookupReservedIpResultOutput) ToLookupReservedIpResultOutputWithContext(ctx context.Context) LookupReservedIpResultOutput {
 	return o
-}
-
-func (o LookupReservedIpResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReservedIpResult] {
-	return pulumix.Output[LookupReservedIpResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Droplet id that the reserved IP has been assigned to.
