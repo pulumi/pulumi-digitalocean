@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -84,12 +83,6 @@ func (o GetSizesResultOutput) ToGetSizesResultOutput() GetSizesResultOutput {
 
 func (o GetSizesResultOutput) ToGetSizesResultOutputWithContext(ctx context.Context) GetSizesResultOutput {
 	return o
-}
-
-func (o GetSizesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSizesResult] {
-	return pulumix.Output[GetSizesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSizesResultOutput) Filters() GetSizesFilterArrayOutput {

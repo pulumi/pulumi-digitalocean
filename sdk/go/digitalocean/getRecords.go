@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
@@ -89,12 +88,6 @@ func (o GetRecordsResultOutput) ToGetRecordsResultOutput() GetRecordsResultOutpu
 
 func (o GetRecordsResultOutput) ToGetRecordsResultOutputWithContext(ctx context.Context) GetRecordsResultOutput {
 	return o
-}
-
-func (o GetRecordsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRecordsResult] {
-	return pulumix.Output[GetRecordsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Domain of the DNS record.

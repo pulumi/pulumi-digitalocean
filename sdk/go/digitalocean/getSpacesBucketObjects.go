@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
@@ -105,12 +104,6 @@ func (o GetSpacesBucketObjectsResultOutput) ToGetSpacesBucketObjectsResultOutput
 
 func (o GetSpacesBucketObjectsResultOutput) ToGetSpacesBucketObjectsResultOutputWithContext(ctx context.Context) GetSpacesBucketObjectsResultOutput {
 	return o
-}
-
-func (o GetSpacesBucketObjectsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSpacesBucketObjectsResult] {
-	return pulumix.Output[GetSpacesBucketObjectsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSpacesBucketObjectsResultOutput) Bucket() pulumi.StringOutput {

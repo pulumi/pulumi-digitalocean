@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which can be used to create a [custom image](https://www.digitalocean.com/docs/images/custom-images/)
@@ -252,12 +251,6 @@ func (i *CustomImage) ToCustomImageOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomImageOutput)
 }
 
-func (i *CustomImage) ToOutput(ctx context.Context) pulumix.Output[*CustomImage] {
-	return pulumix.Output[*CustomImage]{
-		OutputState: i.ToCustomImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomImageArrayInput is an input type that accepts CustomImageArray and CustomImageArrayOutput values.
 // You can construct a concrete instance of `CustomImageArrayInput` via:
 //
@@ -281,12 +274,6 @@ func (i CustomImageArray) ToCustomImageArrayOutput() CustomImageArrayOutput {
 
 func (i CustomImageArray) ToCustomImageArrayOutputWithContext(ctx context.Context) CustomImageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomImageArrayOutput)
-}
-
-func (i CustomImageArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomImage] {
-	return pulumix.Output[[]*CustomImage]{
-		OutputState: i.ToCustomImageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomImageMapInput is an input type that accepts CustomImageMap and CustomImageMapOutput values.
@@ -314,12 +301,6 @@ func (i CustomImageMap) ToCustomImageMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CustomImageMapOutput)
 }
 
-func (i CustomImageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomImage] {
-	return pulumix.Output[map[string]*CustomImage]{
-		OutputState: i.ToCustomImageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomImageOutput struct{ *pulumi.OutputState }
 
 func (CustomImageOutput) ElementType() reflect.Type {
@@ -332,12 +313,6 @@ func (o CustomImageOutput) ToCustomImageOutput() CustomImageOutput {
 
 func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) CustomImageOutput {
 	return o
-}
-
-func (o CustomImageOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomImage] {
-	return pulumix.Output[*CustomImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A time value given in ISO8601 combined date and time format that represents when the image was created.
@@ -424,12 +399,6 @@ func (o CustomImageArrayOutput) ToCustomImageArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o CustomImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomImage] {
-	return pulumix.Output[[]*CustomImage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomImageArrayOutput) Index(i pulumi.IntInput) CustomImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomImage {
 		return vs[0].([]*CustomImage)[vs[1].(int)]
@@ -448,12 +417,6 @@ func (o CustomImageMapOutput) ToCustomImageMapOutput() CustomImageMapOutput {
 
 func (o CustomImageMapOutput) ToCustomImageMapOutputWithContext(ctx context.Context) CustomImageMapOutput {
 	return o
-}
-
-func (o CustomImageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomImage] {
-	return pulumix.Output[map[string]*CustomImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomImageMapOutput) MapIndex(k pulumi.StringInput) CustomImageOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
@@ -315,12 +314,6 @@ func (i *KubernetesNodePool) ToKubernetesNodePoolOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolOutput)
 }
 
-func (i *KubernetesNodePool) ToOutput(ctx context.Context) pulumix.Output[*KubernetesNodePool] {
-	return pulumix.Output[*KubernetesNodePool]{
-		OutputState: i.ToKubernetesNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubernetesNodePoolArrayInput is an input type that accepts KubernetesNodePoolArray and KubernetesNodePoolArrayOutput values.
 // You can construct a concrete instance of `KubernetesNodePoolArrayInput` via:
 //
@@ -344,12 +337,6 @@ func (i KubernetesNodePoolArray) ToKubernetesNodePoolArrayOutput() KubernetesNod
 
 func (i KubernetesNodePoolArray) ToKubernetesNodePoolArrayOutputWithContext(ctx context.Context) KubernetesNodePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolArrayOutput)
-}
-
-func (i KubernetesNodePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesNodePool] {
-	return pulumix.Output[[]*KubernetesNodePool]{
-		OutputState: i.ToKubernetesNodePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KubernetesNodePoolMapInput is an input type that accepts KubernetesNodePoolMap and KubernetesNodePoolMapOutput values.
@@ -377,12 +364,6 @@ func (i KubernetesNodePoolMap) ToKubernetesNodePoolMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodePoolMapOutput)
 }
 
-func (i KubernetesNodePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesNodePool] {
-	return pulumix.Output[map[string]*KubernetesNodePool]{
-		OutputState: i.ToKubernetesNodePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubernetesNodePoolOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodePoolOutput) ElementType() reflect.Type {
@@ -395,12 +376,6 @@ func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutput() KubernetesNodePoo
 
 func (o KubernetesNodePoolOutput) ToKubernetesNodePoolOutputWithContext(ctx context.Context) KubernetesNodePoolOutput {
 	return o
-}
-
-func (o KubernetesNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesNodePool] {
-	return pulumix.Output[*KubernetesNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -479,12 +454,6 @@ func (o KubernetesNodePoolArrayOutput) ToKubernetesNodePoolArrayOutputWithContex
 	return o
 }
 
-func (o KubernetesNodePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesNodePool] {
-	return pulumix.Output[[]*KubernetesNodePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KubernetesNodePoolArrayOutput) Index(i pulumi.IntInput) KubernetesNodePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesNodePool {
 		return vs[0].([]*KubernetesNodePool)[vs[1].(int)]
@@ -503,12 +472,6 @@ func (o KubernetesNodePoolMapOutput) ToKubernetesNodePoolMapOutput() KubernetesN
 
 func (o KubernetesNodePoolMapOutput) ToKubernetesNodePoolMapOutputWithContext(ctx context.Context) KubernetesNodePoolMapOutput {
 	return o
-}
-
-func (o KubernetesNodePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesNodePool] {
-	return pulumix.Output[map[string]*KubernetesNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubernetesNodePoolMapOutput) MapIndex(k pulumi.StringInput) KubernetesNodePoolOutput {

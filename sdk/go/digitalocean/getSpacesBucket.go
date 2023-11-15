@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
@@ -116,12 +115,6 @@ func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutput() Looku
 
 func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutputWithContext(ctx context.Context) LookupSpacesBucketResultOutput {
 	return o
-}
-
-func (o LookupSpacesBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpacesBucketResult] {
-	return pulumix.Output[LookupSpacesBucketResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve information about all DigitalOcean projects associated with an account, with
@@ -172,12 +171,6 @@ func (o GetProjectsResultOutput) ToGetProjectsResultOutput() GetProjectsResultOu
 
 func (o GetProjectsResultOutput) ToGetProjectsResultOutputWithContext(ctx context.Context) GetProjectsResultOutput {
 	return o
-}
-
-func (o GetProjectsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsResult] {
-	return pulumix.Output[GetProjectsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectsResultOutput) Filters() GetProjectsFilterArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `ReservedIp` instead.
@@ -117,12 +116,6 @@ func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutput() LookupFlo
 
 func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutputWithContext(ctx context.Context) LookupFloatingIpResultOutput {
 	return o
-}
-
-func (o LookupFloatingIpResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFloatingIpResult] {
-	return pulumix.Output[LookupFloatingIpResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Droplet id that the floating IP has been assigned to.

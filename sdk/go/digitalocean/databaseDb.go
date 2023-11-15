@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
@@ -157,12 +156,6 @@ func (i *DatabaseDb) ToDatabaseDbOutputWithContext(ctx context.Context) Database
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbOutput)
 }
 
-func (i *DatabaseDb) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDb] {
-	return pulumix.Output[*DatabaseDb]{
-		OutputState: i.ToDatabaseDbOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseDbArrayInput is an input type that accepts DatabaseDbArray and DatabaseDbArrayOutput values.
 // You can construct a concrete instance of `DatabaseDbArrayInput` via:
 //
@@ -186,12 +179,6 @@ func (i DatabaseDbArray) ToDatabaseDbArrayOutput() DatabaseDbArrayOutput {
 
 func (i DatabaseDbArray) ToDatabaseDbArrayOutputWithContext(ctx context.Context) DatabaseDbArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbArrayOutput)
-}
-
-func (i DatabaseDbArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseDb] {
-	return pulumix.Output[[]*DatabaseDb]{
-		OutputState: i.ToDatabaseDbArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseDbMapInput is an input type that accepts DatabaseDbMap and DatabaseDbMapOutput values.
@@ -219,12 +206,6 @@ func (i DatabaseDbMap) ToDatabaseDbMapOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDbMapOutput)
 }
 
-func (i DatabaseDbMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseDb] {
-	return pulumix.Output[map[string]*DatabaseDb]{
-		OutputState: i.ToDatabaseDbMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseDbOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDbOutput) ElementType() reflect.Type {
@@ -237,12 +218,6 @@ func (o DatabaseDbOutput) ToDatabaseDbOutput() DatabaseDbOutput {
 
 func (o DatabaseDbOutput) ToDatabaseDbOutputWithContext(ctx context.Context) DatabaseDbOutput {
 	return o
-}
-
-func (o DatabaseDbOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDb] {
-	return pulumix.Output[*DatabaseDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the original source database cluster.
@@ -269,12 +244,6 @@ func (o DatabaseDbArrayOutput) ToDatabaseDbArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DatabaseDbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseDb] {
-	return pulumix.Output[[]*DatabaseDb]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseDbArrayOutput) Index(i pulumi.IntInput) DatabaseDbOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseDb {
 		return vs[0].([]*DatabaseDb)[vs[1].(int)]
@@ -293,12 +262,6 @@ func (o DatabaseDbMapOutput) ToDatabaseDbMapOutput() DatabaseDbMapOutput {
 
 func (o DatabaseDbMapOutput) ToDatabaseDbMapOutputWithContext(ctx context.Context) DatabaseDbMapOutput {
 	return o
-}
-
-func (o DatabaseDbMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseDb] {
-	return pulumix.Output[map[string]*DatabaseDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseDbMapOutput) MapIndex(k pulumi.StringInput) DatabaseDbOutput {

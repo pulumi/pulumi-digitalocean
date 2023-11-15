@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
@@ -251,12 +250,6 @@ func (i *Cdn) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnOutput)
 }
 
-func (i *Cdn) ToOutput(ctx context.Context) pulumix.Output[*Cdn] {
-	return pulumix.Output[*Cdn]{
-		OutputState: i.ToCdnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CdnArrayInput is an input type that accepts CdnArray and CdnArrayOutput values.
 // You can construct a concrete instance of `CdnArrayInput` via:
 //
@@ -280,12 +273,6 @@ func (i CdnArray) ToCdnArrayOutput() CdnArrayOutput {
 
 func (i CdnArray) ToCdnArrayOutputWithContext(ctx context.Context) CdnArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnArrayOutput)
-}
-
-func (i CdnArray) ToOutput(ctx context.Context) pulumix.Output[[]*Cdn] {
-	return pulumix.Output[[]*Cdn]{
-		OutputState: i.ToCdnArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CdnMapInput is an input type that accepts CdnMap and CdnMapOutput values.
@@ -313,12 +300,6 @@ func (i CdnMap) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnMapOutput)
 }
 
-func (i CdnMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cdn] {
-	return pulumix.Output[map[string]*Cdn]{
-		OutputState: i.ToCdnMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CdnOutput struct{ *pulumi.OutputState }
 
 func (CdnOutput) ElementType() reflect.Type {
@@ -331,12 +312,6 @@ func (o CdnOutput) ToCdnOutput() CdnOutput {
 
 func (o CdnOutput) ToCdnOutputWithContext(ctx context.Context) CdnOutput {
 	return o
-}
-
-func (o CdnOutput) ToOutput(ctx context.Context) pulumix.Output[*Cdn] {
-	return pulumix.Output[*Cdn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -390,12 +365,6 @@ func (o CdnArrayOutput) ToCdnArrayOutputWithContext(ctx context.Context) CdnArra
 	return o
 }
 
-func (o CdnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Cdn] {
-	return pulumix.Output[[]*Cdn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CdnArrayOutput) Index(i pulumi.IntInput) CdnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cdn {
 		return vs[0].([]*Cdn)[vs[1].(int)]
@@ -414,12 +383,6 @@ func (o CdnMapOutput) ToCdnMapOutput() CdnMapOutput {
 
 func (o CdnMapOutput) ToCdnMapOutputWithContext(ctx context.Context) CdnMapOutput {
 	return o
-}
-
-func (o CdnMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cdn] {
-	return pulumix.Output[map[string]*Cdn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CdnMapOutput) MapIndex(k pulumi.StringInput) CdnOutput {
