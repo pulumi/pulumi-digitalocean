@@ -16,14 +16,14 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
     public static final AppSpecIngressRuleMatchArgs Empty = new AppSpecIngressRuleMatchArgs();
 
     /**
-     * Paths must start with `/` and must be unique within the app.
+     * The path to match on.
      * 
      */
     @Import(name="path")
     private @Nullable Output<AppSpecIngressRuleMatchPathArgs> path;
 
     /**
-     * @return Paths must start with `/` and must be unique within the app.
+     * @return The path to match on.
      * 
      */
     public Optional<Output<AppSpecIngressRuleMatchPathArgs>> path() {
@@ -55,7 +55,7 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param path Paths must start with `/` and must be unique within the app.
+         * @param path The path to match on.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param path Paths must start with `/` and must be unique within the app.
+         * @param path The path to match on.
          * 
          * @return builder
          * 

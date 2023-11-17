@@ -18,14 +18,14 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
     public static final AppSpecJobImageArgs Empty = new AppSpecJobImageArgs();
 
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      * 
      */
     @Import(name="deployOnPushes")
     private @Nullable Output<List<AppSpecJobImageDeployOnPushArgs>> deployOnPushes;
 
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     public Optional<Output<List<AppSpecJobImageDeployOnPushArgs>>> deployOnPushes() {
@@ -121,7 +121,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * @param deployOnPushes Configures automatically deploying images pushed to DOCR.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * @param deployOnPushes Configures automatically deploying images pushed to DOCR.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * @param deployOnPushes Configures automatically deploying images pushed to DOCR.
          * 
          * @return builder
          * 

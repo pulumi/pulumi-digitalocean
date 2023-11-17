@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<Inputs.AppSpecIngressRuleComponentGetArgs>? Component { get; set; }
 
         /// <summary>
-        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         [Input("cors")]
         public Input<Inputs.AppSpecIngressRuleCorsGetArgs>? Cors { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecDomainName
     {
         /// <summary>
-        /// The name of the component.
+        /// The hostname for the domain.
         /// </summary>
         public readonly string Name;
         /// <summary>

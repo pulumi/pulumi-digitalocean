@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecJobImage
     {
         /// <summary>
-        /// Whether to automatically deploy new commits made to the repo.
+        /// Configures automatically deploying images pushed to DOCR.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecJobImageDeployOnPush> DeployOnPushes;
         /// <summary>

@@ -40,7 +40,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
      * Service level CORS rules are deprecated in favor of ingresses
@@ -51,7 +51,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<AppSpecFunctionCorsArgs> cors;
 
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
      * Service level CORS rules are deprecated in favor of ingresses
@@ -153,7 +153,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * An HTTP paths that should be routed to this component.
+     * (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      * 
      * @deprecated
      * Service level routes are deprecated in favor of ingresses
@@ -164,7 +164,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<AppSpecFunctionRouteArgs>> routes;
 
     /**
-     * @return An HTTP paths that should be routed to this component.
+     * @return (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      * 
      * @deprecated
      * Service level routes are deprecated in favor of ingresses
@@ -255,7 +255,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cors The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+         * @param cors (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cors The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+         * @param cors (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routes An HTTP paths that should be routed to this component.
+         * @param routes (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routes An HTTP paths that should be routed to this component.
+         * @param routes (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routes An HTTP paths that should be routed to this component.
+         * @param routes (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
          * 
          * @return builder
          * 

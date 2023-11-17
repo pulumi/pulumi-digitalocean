@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecDomainName {
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     private String name;
@@ -35,7 +35,7 @@ public final class AppSpecDomainName {
 
     private AppSpecDomainName() {}
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     public String name() {

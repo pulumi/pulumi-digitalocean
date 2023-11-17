@@ -34,7 +34,7 @@ public final class AppSpecService {
      */
     private @Nullable String buildCommand;
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
      * Service level CORS rules are deprecated in favor of ingresses
@@ -113,7 +113,7 @@ public final class AppSpecService {
      */
     private String name;
     /**
-     * @return An HTTP paths that should be routed to this component.
+     * @return (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      * 
      * @deprecated
      * Service level routes are deprecated in favor of ingresses
@@ -148,7 +148,7 @@ public final class AppSpecService {
         return Optional.ofNullable(this.buildCommand);
     }
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
      * Service level CORS rules are deprecated in favor of ingresses
@@ -257,7 +257,7 @@ public final class AppSpecService {
         return this.name;
     }
     /**
-     * @return An HTTP paths that should be routed to this component.
+     * @return (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      * 
      * @deprecated
      * Service level routes are deprecated in favor of ingresses

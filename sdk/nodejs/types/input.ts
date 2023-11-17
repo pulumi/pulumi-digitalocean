@@ -93,7 +93,7 @@ export interface AppSpecDatabase {
 
 export interface AppSpecDomainName {
     /**
-     * The name of the component.
+     * The hostname for the domain.
      */
     name: pulumi.Input<string>;
     /**
@@ -124,7 +124,7 @@ export interface AppSpecEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -135,7 +135,7 @@ export interface AppSpecFunction {
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlert>[]>;
     /**
-     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
@@ -165,7 +165,7 @@ export interface AppSpecFunction {
      */
     name: pulumi.Input<string>;
     /**
-     * An HTTP paths that should be routed to this component.
+     * (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      *
      * @deprecated Service level routes are deprecated in favor of ingresses
      */
@@ -259,7 +259,7 @@ export interface AppSpecFunctionEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -315,7 +315,7 @@ export interface AppSpecFunctionLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -364,7 +364,7 @@ export interface AppSpecFunctionRoute {
 
 export interface AppSpecIngress {
     /**
-     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.AppSpecIngressRule>[]>;
 }
@@ -375,7 +375,7 @@ export interface AppSpecIngressRule {
      */
     component?: pulumi.Input<inputs.AppSpecIngressRuleComponent>;
     /**
-     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      */
     cors?: pulumi.Input<inputs.AppSpecIngressRuleCors>;
     /**
@@ -394,7 +394,7 @@ export interface AppSpecIngressRuleComponent {
      */
     name?: pulumi.Input<string>;
     /**
-     * An optional flag to preserve the path that is forwarded to the backend service.
+     * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      */
     preservePathPrefix?: pulumi.Input<boolean>;
     /**
@@ -451,7 +451,7 @@ export interface AppSpecIngressRuleCorsAllowOrigins {
 
 export interface AppSpecIngressRuleMatch {
     /**
-     * Paths must start with `/` and must be unique within the app.
+     * The path to match on.
      */
     path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath>;
 }
@@ -590,7 +590,7 @@ export interface AppSpecJobEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -638,7 +638,7 @@ export interface AppSpecJobGitlab {
 
 export interface AppSpecJobImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecJobImageDeployOnPush>[]>;
     /**
@@ -676,7 +676,7 @@ export interface AppSpecJobLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecJobLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -722,7 +722,7 @@ export interface AppSpecService {
      */
     buildCommand?: pulumi.Input<string>;
     /**
-     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
@@ -784,7 +784,7 @@ export interface AppSpecService {
      */
     name: pulumi.Input<string>;
     /**
-     * An HTTP paths that should be routed to this component.
+     * (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      *
      * @deprecated Service level routes are deprecated in favor of ingresses
      */
@@ -882,7 +882,7 @@ export interface AppSpecServiceEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -957,7 +957,7 @@ export interface AppSpecServiceHealthCheck {
 
 export interface AppSpecServiceImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceImageDeployOnPush>[]>;
     /**
@@ -995,7 +995,7 @@ export interface AppSpecServiceLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecServiceLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -1052,7 +1052,7 @@ export interface AppSpecStaticSite {
      */
     catchallDocument?: pulumi.Input<string>;
     /**
-     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
@@ -1098,7 +1098,7 @@ export interface AppSpecStaticSite {
      */
     outputDir?: pulumi.Input<string>;
     /**
-     * An HTTP paths that should be routed to this component.
+     * (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      *
      * @deprecated Service level routes are deprecated in favor of ingresses
      */
@@ -1169,7 +1169,7 @@ export interface AppSpecStaticSiteEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -1326,7 +1326,7 @@ export interface AppSpecWorkerEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -1374,7 +1374,7 @@ export interface AppSpecWorkerGitlab {
 
 export interface AppSpecWorkerImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerImageDeployOnPush>[]>;
     /**
@@ -1412,7 +1412,7 @@ export interface AppSpecWorkerLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -2661,7 +2661,7 @@ export interface KubernetesClusterNodePool {
      */
     size: pulumi.Input<string>;
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2684,7 +2684,7 @@ export interface KubernetesClusterNodePoolNode {
      */
     id?: pulumi.Input<string>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string>;
     /**

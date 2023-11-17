@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.KubernetesClusterMaintenancePolicy> MaintenancePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A name for the node pool.
+        /// A name for the Kubernetes cluster.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.KubernetesClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
-        /// A name for the node pool.
+        /// A name for the Kubernetes cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -359,7 +359,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.KubernetesClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
-        /// A name for the node pool.
+        /// A name for the Kubernetes cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

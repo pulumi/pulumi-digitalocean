@@ -20,7 +20,7 @@ public final class AppSpecIngressRule {
      */
     private @Nullable AppSpecIngressRuleComponent component;
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
     private @Nullable AppSpecIngressRuleCors cors;
@@ -44,7 +44,7 @@ public final class AppSpecIngressRule {
         return Optional.ofNullable(this.component);
     }
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
     public Optional<AppSpecIngressRuleCors> cors() {

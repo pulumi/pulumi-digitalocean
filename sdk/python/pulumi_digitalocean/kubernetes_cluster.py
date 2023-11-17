@@ -40,7 +40,7 @@ class KubernetesClusterArgs:
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
-        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
@@ -158,7 +158,7 @@ class KubernetesClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the node pool.
+        A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 
@@ -252,7 +252,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
-        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -430,7 +430,7 @@ class _KubernetesClusterState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the node pool.
+        A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 
@@ -600,7 +600,7 @@ class KubernetesCluster(pulumi.CustomResource):
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
-        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -744,7 +744,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
-        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -866,7 +866,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A name for the node pool.
+        A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 

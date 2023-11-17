@@ -88,7 +88,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tag names to be applied to the Kubernetes cluster.
+        /// A list of tag names applied to the node pool.
         /// </summary>
         public InputList<string> Tags
         {

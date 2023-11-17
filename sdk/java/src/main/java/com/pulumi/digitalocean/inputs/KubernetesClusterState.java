@@ -169,14 +169,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A name for the node pool.
+     * @return A name for the Kubernetes cluster.
      * 
      */
     public Optional<Output<String>> name() {
@@ -584,7 +584,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A name for the node pool.
+         * @param name A name for the Kubernetes cluster.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A name for the node pool.
+         * @param name A name for the Kubernetes cluster.
          * 
          * @return builder
          * 

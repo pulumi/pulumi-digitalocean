@@ -17,14 +17,14 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
     public static final AppSpecDomainNameArgs Empty = new AppSpecDomainNameArgs();
 
     /**
-     * The name of the component.
+     * The hostname for the domain.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     public Output<String> name() {
@@ -104,7 +104,7 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The hostname for the domain.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The hostname for the domain.
          * 
          * @return builder
          * 

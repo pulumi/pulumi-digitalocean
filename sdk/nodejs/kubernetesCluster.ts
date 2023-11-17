@@ -90,7 +90,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly maintenancePolicy!: pulumi.Output<outputs.KubernetesClusterMaintenancePolicy>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -252,7 +252,7 @@ export interface KubernetesClusterState {
      */
     maintenancePolicy?: pulumi.Input<inputs.KubernetesClusterMaintenancePolicy>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string>;
     /**
@@ -320,7 +320,7 @@ export interface KubernetesClusterArgs {
      */
     maintenancePolicy?: pulumi.Input<inputs.KubernetesClusterMaintenancePolicy>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string>;
     /**

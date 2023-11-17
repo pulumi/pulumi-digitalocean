@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? BuildCommand;
         /// <summary>
-        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         public readonly Outputs.AppSpecServiceCors? Cors;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// An HTTP paths that should be routed to this component.
+        /// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecServiceRoute> Routes;
         /// <summary>

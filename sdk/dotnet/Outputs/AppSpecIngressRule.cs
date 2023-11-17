@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleComponent? Component;
         /// <summary>
-        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleCors? Cors;
         /// <summary>

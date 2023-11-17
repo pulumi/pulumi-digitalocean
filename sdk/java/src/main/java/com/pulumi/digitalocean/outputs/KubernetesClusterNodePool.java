@@ -68,7 +68,7 @@ public final class KubernetesClusterNodePool {
      */
     private String size;
     /**
-     * @return A list of tag names to be applied to the Kubernetes cluster.
+     * @return A list of tag names applied to the node pool.
      * 
      */
     private @Nullable List<String> tags;
@@ -150,7 +150,7 @@ public final class KubernetesClusterNodePool {
         return this.size;
     }
     /**
-     * @return A list of tag names to be applied to the Kubernetes cluster.
+     * @return A list of tag names applied to the node pool.
      * 
      */
     public List<String> tags() {

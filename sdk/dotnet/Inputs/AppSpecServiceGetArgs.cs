@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? BuildCommand { get; set; }
 
         /// <summary>
-        /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        /// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         [Input("cors")]
         public Input<Inputs.AppSpecServiceCorsGetArgs>? Cors { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecServiceRouteGetArgs>? _routes;
 
         /// <summary>
-        /// An HTTP paths that should be routed to this component.
+        /// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         /// </summary>
         [Obsolete(@"Service level routes are deprecated in favor of ingresses")]
         public InputList<Inputs.AppSpecServiceRouteGetArgs> Routes

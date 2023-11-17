@@ -34,14 +34,14 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
     @Import(name="cors")
     private @Nullable Output<AppSpecIngressRuleCorsArgs> cors;
 
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
     public Optional<Output<AppSpecIngressRuleCorsArgs>> cors() {
@@ -127,7 +127,7 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cors The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+         * @param cors (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cors The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+         * @param cors (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
          * 
          * @return builder
          * 

@@ -172,14 +172,14 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A list of tag names to be applied to the Kubernetes cluster.
+     * @return A list of tag names applied to the node pool.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -457,7 +457,7 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags A list of tag names to be applied to the Kubernetes cluster.
+         * @param tags A list of tag names applied to the node pool.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags A list of tag names to be applied to the Kubernetes cluster.
+         * @param tags A list of tag names applied to the node pool.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags A list of tag names to be applied to the Kubernetes cluster.
+         * @param tags A list of tag names applied to the node pool.
          * 
          * @return builder
          * 

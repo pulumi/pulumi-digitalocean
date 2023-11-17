@@ -49,14 +49,14 @@ public final class AppSpecJobLogDestinationArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the component.
+     * @return Name of the log destination. Minimum length: 2. Maximum length: 42.
      * 
      */
     public Output<String> name() {
@@ -148,7 +148,7 @@ public final class AppSpecJobLogDestinationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the component.
+         * @param name Name of the log destination. Minimum length: 2. Maximum length: 42.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class AppSpecJobLogDestinationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the component.
+         * @param name Name of the log destination. Minimum length: 2. Maximum length: 42.
          * 
          * @return builder
          * 

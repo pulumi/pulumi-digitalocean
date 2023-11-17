@@ -26,7 +26,7 @@ public final class AppSpecFunction {
      */
     private @Nullable List<AppSpecFunctionAlert> alerts;
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
      * Service level CORS rules are deprecated in favor of ingresses
@@ -65,7 +65,7 @@ public final class AppSpecFunction {
      */
     private String name;
     /**
-     * @return An HTTP paths that should be routed to this component.
+     * @return (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      * 
      * @deprecated
      * Service level routes are deprecated in favor of ingresses
@@ -88,7 +88,7 @@ public final class AppSpecFunction {
         return this.alerts == null ? List.of() : this.alerts;
     }
     /**
-     * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     * @return (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
      * Service level CORS rules are deprecated in favor of ingresses
@@ -141,7 +141,7 @@ public final class AppSpecFunction {
         return this.name;
     }
     /**
-     * @return An HTTP paths that should be routed to this component.
+     * @return (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
      * 
      * @deprecated
      * Service level routes are deprecated in favor of ingresses

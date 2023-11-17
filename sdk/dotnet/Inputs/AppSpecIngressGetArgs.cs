@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecIngressRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        /// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         /// </summary>
         public InputList<Inputs.AppSpecIngressRuleGetArgs> Rules
         {

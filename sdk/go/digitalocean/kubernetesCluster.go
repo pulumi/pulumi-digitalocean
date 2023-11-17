@@ -53,7 +53,7 @@ type KubernetesCluster struct {
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
@@ -141,7 +141,7 @@ type kubernetesClusterState struct {
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
@@ -187,7 +187,7 @@ type KubernetesClusterState struct {
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolPtrInput
@@ -226,7 +226,7 @@ type kubernetesClusterArgs struct {
 	Ha *bool `pulumi:"ha"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
@@ -256,7 +256,7 @@ type KubernetesClusterArgs struct {
 	Ha pulumi.BoolPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolInput
@@ -412,7 +412,7 @@ func (o KubernetesClusterOutput) MaintenancePolicy() KubernetesClusterMaintenanc
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterMaintenancePolicyOutput { return v.MaintenancePolicy }).(KubernetesClusterMaintenancePolicyOutput)
 }
 
-// A name for the node pool.
+// A name for the Kubernetes cluster.
 func (o KubernetesClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

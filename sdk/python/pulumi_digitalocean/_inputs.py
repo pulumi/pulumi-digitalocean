@@ -516,7 +516,7 @@ class AppSpecDomainNameArgs:
                  wildcard: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: The hostname for the domain.
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
         :param pulumi.Input[bool] wildcard: A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
         :param pulumi.Input[str] zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
@@ -533,7 +533,7 @@ class AppSpecDomainNameArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        The hostname for the domain.
         """
         return pulumi.get(self, "name")
 
@@ -589,7 +589,7 @@ class AppSpecEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -640,7 +640,7 @@ class AppSpecEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -665,13 +665,13 @@ class AppSpecFunctionArgs:
         """
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]] alerts: Describes an alert policy for the component.
-        :param pulumi.Input['AppSpecFunctionCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param pulumi.Input['AppSpecFunctionCorsArgs'] cors: (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input['AppSpecFunctionGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
         :param pulumi.Input['AppSpecFunctionGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecFunctionGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]] routes: An HTTP paths that should be routed to this component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]] routes: (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
@@ -728,7 +728,7 @@ class AppSpecFunctionArgs:
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input['AppSpecFunctionCorsArgs']]:
         """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
         warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
         pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
@@ -803,7 +803,7 @@ class AppSpecFunctionArgs:
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]]]:
         """
-        An HTTP paths that should be routed to this component.
+        (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         """
         warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
         pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
@@ -1087,7 +1087,7 @@ class AppSpecFunctionEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1138,7 +1138,7 @@ class AppSpecFunctionEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -1304,7 +1304,7 @@ class AppSpecFunctionLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -1321,7 +1321,7 @@ class AppSpecFunctionLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -1496,7 +1496,7 @@ class AppSpecIngressArgs:
     def __init__(__self__, *,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]] rules: Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
@@ -1505,7 +1505,7 @@ class AppSpecIngressArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]]:
         """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         return pulumi.get(self, "rules")
 
@@ -1523,7 +1523,7 @@ class AppSpecIngressRuleArgs:
                  redirect: Optional[pulumi.Input['AppSpecIngressRuleRedirectArgs']] = None):
         """
         :param pulumi.Input['AppSpecIngressRuleComponentArgs'] component: The component to route to. Only one of `component` or `redirect` may be set.
-        :param pulumi.Input['AppSpecIngressRuleCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param pulumi.Input['AppSpecIngressRuleCorsArgs'] cors: (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input['AppSpecIngressRuleMatchArgs'] match: The match configuration for the rule
         :param pulumi.Input['AppSpecIngressRuleRedirectArgs'] redirect: The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
         """
@@ -1552,7 +1552,7 @@ class AppSpecIngressRuleArgs:
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input['AppSpecIngressRuleCorsArgs']]:
         """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
         return pulumi.get(self, "cors")
 
@@ -1593,7 +1593,7 @@ class AppSpecIngressRuleComponentArgs:
                  rewrite: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
-        :param pulumi.Input[bool] preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        :param pulumi.Input[bool] preserve_path_prefix: An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
         :param pulumi.Input[str] rewrite: An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
         """
         if name is not None:
@@ -1619,7 +1619,7 @@ class AppSpecIngressRuleComponentArgs:
     @pulumi.getter(name="preservePathPrefix")
     def preserve_path_prefix(self) -> Optional[pulumi.Input[bool]]:
         """
-        An optional flag to preserve the path that is forwarded to the backend service.
+        An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
         """
         return pulumi.get(self, "preserve_path_prefix")
 
@@ -1811,7 +1811,7 @@ class AppSpecIngressRuleMatchArgs:
     def __init__(__self__, *,
                  path: Optional[pulumi.Input['AppSpecIngressRuleMatchPathArgs']] = None):
         """
-        :param pulumi.Input['AppSpecIngressRuleMatchPathArgs'] path: Paths must start with `/` and must be unique within the app.
+        :param pulumi.Input['AppSpecIngressRuleMatchPathArgs'] path: The path to match on.
         """
         if path is not None:
             pulumi.set(__self__, "path", path)
@@ -1820,7 +1820,7 @@ class AppSpecIngressRuleMatchArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['AppSpecIngressRuleMatchPathArgs']]:
         """
-        Paths must start with `/` and must be unique within the app.
+        The path to match on.
         """
         return pulumi.get(self, "path")
 
@@ -2295,7 +2295,7 @@ class AppSpecJobEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2346,7 +2346,7 @@ class AppSpecJobEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -2515,7 +2515,7 @@ class AppSpecJobImageArgs:
         """
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
@@ -2556,7 +2556,7 @@ class AppSpecJobImageArgs:
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -2620,7 +2620,7 @@ class AppSpecJobLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecJobLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecJobLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecJobLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecJobLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -2637,7 +2637,7 @@ class AppSpecJobLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -2795,7 +2795,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
-        :param pulumi.Input['AppSpecServiceCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param pulumi.Input['AppSpecServiceCorsArgs'] cors: (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
@@ -2809,7 +2809,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]] routes: An HTTP paths that should be routed to this component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]] routes: (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
@@ -2899,7 +2899,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input['AppSpecServiceCorsArgs']]:
         """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
         warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
         pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
@@ -3070,7 +3070,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]]:
         """
-        An HTTP paths that should be routed to this component.
+        (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         """
         warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
         pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
@@ -3366,7 +3366,7 @@ class AppSpecServiceEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -3417,7 +3417,7 @@ class AppSpecServiceEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -3689,7 +3689,7 @@ class AppSpecServiceImageArgs:
         """
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
@@ -3730,7 +3730,7 @@ class AppSpecServiceImageArgs:
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -3794,7 +3794,7 @@ class AppSpecServiceLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecServiceLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecServiceLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -3811,7 +3811,7 @@ class AppSpecServiceLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -4003,7 +4003,7 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-        :param pulumi.Input['AppSpecStaticSiteCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param pulumi.Input['AppSpecStaticSiteCorsArgs'] cors: (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
@@ -4013,7 +4013,7 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input['AppSpecStaticSiteGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[str] index_document: The name of the index document to use when serving this static site.
         :param pulumi.Input[str] output_dir: An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]] routes: An HTTP paths that should be routed to this component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]] routes: (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
@@ -4092,7 +4092,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input['AppSpecStaticSiteCorsArgs']]:
         """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
         warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
         pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
@@ -4215,7 +4215,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]]]:
         """
-        An HTTP paths that should be routed to this component.
+        (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
         """
         warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
         pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
@@ -4416,7 +4416,7 @@ class AppSpecStaticSiteEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -4467,7 +4467,7 @@ class AppSpecStaticSiteEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -5004,7 +5004,7 @@ class AppSpecWorkerEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -5055,7 +5055,7 @@ class AppSpecWorkerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -5224,7 +5224,7 @@ class AppSpecWorkerImageArgs:
         """
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
@@ -5265,7 +5265,7 @@ class AppSpecWorkerImageArgs:
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -5329,7 +5329,7 @@ class AppSpecWorkerLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -5346,7 +5346,7 @@ class AppSpecWorkerLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -6625,7 +6625,7 @@ class KubernetesClusterNodePoolArgs:
         :param pulumi.Input[int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names applied to the node pool.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]] taints: A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
         """
         pulumi.set(__self__, "name", name)
@@ -6775,7 +6775,7 @@ class KubernetesClusterNodePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tag names to be applied to the Kubernetes cluster.
+        A list of tag names applied to the node pool.
         """
         return pulumi.get(self, "tags")
 
@@ -6809,7 +6809,7 @@ class KubernetesClusterNodePoolNodeArgs:
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] droplet_id: The id of the node's droplet
         :param pulumi.Input[str] id: A unique ID that can be used to identify and reference the node.
-        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         """
@@ -6866,7 +6866,7 @@ class KubernetesClusterNodePoolNodeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the node pool.
+        A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 

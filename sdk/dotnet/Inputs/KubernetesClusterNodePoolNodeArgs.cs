@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// A name for the node pool.
+        /// A name for the Kubernetes cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

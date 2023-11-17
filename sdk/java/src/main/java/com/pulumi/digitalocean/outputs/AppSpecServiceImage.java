@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecServiceImage {
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     private @Nullable List<AppSpecServiceImageDeployOnPush> deployOnPushes;
@@ -41,7 +41,7 @@ public final class AppSpecServiceImage {
 
     private AppSpecServiceImage() {}
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     public List<AppSpecServiceImageDeployOnPush> deployOnPushes() {

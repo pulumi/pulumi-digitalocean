@@ -637,7 +637,7 @@ func (o AppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) AppSpecDatabaseOutp
 }
 
 type AppSpecDomainName struct {
-	// The name of the component.
+	// The hostname for the domain.
 	Name string `pulumi:"name"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
@@ -659,7 +659,7 @@ type AppSpecDomainNameInput interface {
 }
 
 type AppSpecDomainNameArgs struct {
-	// The name of the component.
+	// The hostname for the domain.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -720,7 +720,7 @@ func (o AppSpecDomainNameOutput) ToAppSpecDomainNameOutputWithContext(ctx contex
 	return o
 }
 
-// The name of the component.
+// The hostname for the domain.
 func (o AppSpecDomainNameOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecDomainName) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -767,7 +767,7 @@ type AppSpecEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -789,7 +789,7 @@ type AppSpecEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -859,7 +859,7 @@ func (o AppSpecEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -887,7 +887,7 @@ func (o AppSpecEnvArrayOutput) Index(i pulumi.IntInput) AppSpecEnvOutput {
 type AppSpecFunction struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecFunctionAlert `pulumi:"alerts"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
 	Cors *AppSpecFunctionCors `pulumi:"cors"`
@@ -903,7 +903,7 @@ type AppSpecFunction struct {
 	LogDestinations []AppSpecFunctionLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
-	// An HTTP paths that should be routed to this component.
+	// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 	//
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes []AppSpecFunctionRoute `pulumi:"routes"`
@@ -925,7 +925,7 @@ type AppSpecFunctionInput interface {
 type AppSpecFunctionArgs struct {
 	// Describes an alert policy for the component.
 	Alerts AppSpecFunctionAlertArrayInput `pulumi:"alerts"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
 	Cors AppSpecFunctionCorsPtrInput `pulumi:"cors"`
@@ -941,7 +941,7 @@ type AppSpecFunctionArgs struct {
 	LogDestinations AppSpecFunctionLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
-	// An HTTP paths that should be routed to this component.
+	// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 	//
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes AppSpecFunctionRouteArrayInput `pulumi:"routes"`
@@ -1005,7 +1005,7 @@ func (o AppSpecFunctionOutput) Alerts() AppSpecFunctionAlertArrayOutput {
 	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionAlert { return v.Alerts }).(AppSpecFunctionAlertArrayOutput)
 }
 
-// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 //
 // Deprecated: Service level CORS rules are deprecated in favor of ingresses
 func (o AppSpecFunctionOutput) Cors() AppSpecFunctionCorsPtrOutput {
@@ -1042,7 +1042,7 @@ func (o AppSpecFunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunction) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An HTTP paths that should be routed to this component.
+// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 //
 // Deprecated: Service level routes are deprecated in favor of ingresses
 func (o AppSpecFunctionOutput) Routes() AppSpecFunctionRouteArrayOutput {
@@ -1637,7 +1637,7 @@ type AppSpecFunctionEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -1659,7 +1659,7 @@ type AppSpecFunctionEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1729,7 +1729,7 @@ func (o AppSpecFunctionEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecFunctionEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2265,7 +2265,7 @@ type AppSpecFunctionLogDestination struct {
 	Datadog *AppSpecFunctionLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
@@ -2287,7 +2287,7 @@ type AppSpecFunctionLogDestinationArgs struct {
 	Datadog AppSpecFunctionLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -2354,7 +2354,7 @@ func (o AppSpecFunctionLogDestinationOutput) Logtail() AppSpecFunctionLogDestina
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationLogtail { return v.Logtail }).(AppSpecFunctionLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2929,7 +2929,7 @@ func (o AppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 }
 
 type AppSpecIngress struct {
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 	Rules []AppSpecIngressRule `pulumi:"rules"`
 }
 
@@ -2945,7 +2945,7 @@ type AppSpecIngressInput interface {
 }
 
 type AppSpecIngressArgs struct {
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 	Rules AppSpecIngressRuleArrayInput `pulumi:"rules"`
 }
 
@@ -3026,7 +3026,7 @@ func (o AppSpecIngressOutput) ToAppSpecIngressPtrOutputWithContext(ctx context.C
 	}).(AppSpecIngressPtrOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 func (o AppSpecIngressOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v AppSpecIngress) []AppSpecIngressRule { return v.Rules }).(AppSpecIngressRuleArrayOutput)
 }
@@ -3055,7 +3055,7 @@ func (o AppSpecIngressPtrOutput) Elem() AppSpecIngressOutput {
 	}).(AppSpecIngressOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngress) []AppSpecIngressRule {
 		if v == nil {
@@ -3068,7 +3068,7 @@ func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 type AppSpecIngressRule struct {
 	// The component to route to. Only one of `component` or `redirect` may be set.
 	Component *AppSpecIngressRuleComponent `pulumi:"component"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	Cors *AppSpecIngressRuleCors `pulumi:"cors"`
 	// The match configuration for the rule
 	Match *AppSpecIngressRuleMatch `pulumi:"match"`
@@ -3090,7 +3090,7 @@ type AppSpecIngressRuleInput interface {
 type AppSpecIngressRuleArgs struct {
 	// The component to route to. Only one of `component` or `redirect` may be set.
 	Component AppSpecIngressRuleComponentPtrInput `pulumi:"component"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	Cors AppSpecIngressRuleCorsPtrInput `pulumi:"cors"`
 	// The match configuration for the rule
 	Match AppSpecIngressRuleMatchPtrInput `pulumi:"match"`
@@ -3154,7 +3154,7 @@ func (o AppSpecIngressRuleOutput) Component() AppSpecIngressRuleComponentPtrOutp
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleComponent { return v.Component }).(AppSpecIngressRuleComponentPtrOutput)
 }
 
-// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 func (o AppSpecIngressRuleOutput) Cors() AppSpecIngressRuleCorsPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleCors { return v.Cors }).(AppSpecIngressRuleCorsPtrOutput)
 }
@@ -3192,7 +3192,7 @@ func (o AppSpecIngressRuleArrayOutput) Index(i pulumi.IntInput) AppSpecIngressRu
 type AppSpecIngressRuleComponent struct {
 	// The name of the component.
 	Name *string `pulumi:"name"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
+	// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
 	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 	Rewrite *string `pulumi:"rewrite"`
@@ -3212,7 +3212,7 @@ type AppSpecIngressRuleComponentInput interface {
 type AppSpecIngressRuleComponentArgs struct {
 	// The name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
+	// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
 	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 	Rewrite pulumi.StringPtrInput `pulumi:"rewrite"`
@@ -3300,7 +3300,7 @@ func (o AppSpecIngressRuleComponentOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// An optional flag to preserve the path that is forwarded to the backend service.
+// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 func (o AppSpecIngressRuleComponentOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
@@ -3344,7 +3344,7 @@ func (o AppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An optional flag to preserve the path that is forwarded to the backend service.
+// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 func (o AppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *bool {
 		if v == nil {
@@ -3788,7 +3788,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOut
 }
 
 type AppSpecIngressRuleMatch struct {
-	// Paths must start with `/` and must be unique within the app.
+	// The path to match on.
 	Path *AppSpecIngressRuleMatchPath `pulumi:"path"`
 }
 
@@ -3804,7 +3804,7 @@ type AppSpecIngressRuleMatchInput interface {
 }
 
 type AppSpecIngressRuleMatchArgs struct {
-	// Paths must start with `/` and must be unique within the app.
+	// The path to match on.
 	Path AppSpecIngressRuleMatchPathPtrInput `pulumi:"path"`
 }
 
@@ -3885,7 +3885,7 @@ func (o AppSpecIngressRuleMatchOutput) ToAppSpecIngressRuleMatchPtrOutputWithCon
 	}).(AppSpecIngressRuleMatchPtrOutput)
 }
 
-// Paths must start with `/` and must be unique within the app.
+// The path to match on.
 func (o AppSpecIngressRuleMatchOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath { return v.Path }).(AppSpecIngressRuleMatchPathPtrOutput)
 }
@@ -3914,7 +3914,7 @@ func (o AppSpecIngressRuleMatchPtrOutput) Elem() AppSpecIngressRuleMatchOutput {
 	}).(AppSpecIngressRuleMatchOutput)
 }
 
-// Paths must start with `/` and must be unique within the app.
+// The path to match on.
 func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath {
 		if v == nil {
@@ -4646,7 +4646,7 @@ type AppSpecJobEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -4668,7 +4668,7 @@ type AppSpecJobEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4738,7 +4738,7 @@ func (o AppSpecJobEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecJobEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5270,7 +5270,7 @@ func (o AppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecJobImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
@@ -5294,7 +5294,7 @@ type AppSpecJobImageInput interface {
 }
 
 type AppSpecJobImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
@@ -5383,7 +5383,7 @@ func (o AppSpecJobImageOutput) ToAppSpecJobImagePtrOutputWithContext(ctx context
 	}).(AppSpecJobImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecJobImageOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecJobImage) []AppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(AppSpecJobImageDeployOnPushArrayOutput)
 }
@@ -5432,7 +5432,7 @@ func (o AppSpecJobImagePtrOutput) Elem() AppSpecJobImageOutput {
 	}).(AppSpecJobImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecJobImagePtrOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecJobImage) []AppSpecJobImageDeployOnPush {
 		if v == nil {
@@ -5584,7 +5584,7 @@ type AppSpecJobLogDestination struct {
 	Datadog *AppSpecJobLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecJobLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
@@ -5606,7 +5606,7 @@ type AppSpecJobLogDestinationArgs struct {
 	Datadog AppSpecJobLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -5673,7 +5673,7 @@ func (o AppSpecJobLogDestinationOutput) Logtail() AppSpecJobLogDestinationLogtai
 	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationLogtail { return v.Logtail }).(AppSpecJobLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6146,7 +6146,7 @@ type AppSpecService struct {
 	Alerts []AppSpecServiceAlert `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
 	Cors *AppSpecServiceCors `pulumi:"cors"`
@@ -6178,7 +6178,7 @@ type AppSpecService struct {
 	LogDestinations []AppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
 	Name string `pulumi:"name"`
-	// An HTTP paths that should be routed to this component.
+	// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 	//
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes []AppSpecServiceRoute `pulumi:"routes"`
@@ -6204,7 +6204,7 @@ type AppSpecServiceArgs struct {
 	Alerts AppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
 	Cors AppSpecServiceCorsPtrInput `pulumi:"cors"`
@@ -6236,7 +6236,7 @@ type AppSpecServiceArgs struct {
 	LogDestinations AppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
-	// An HTTP paths that should be routed to this component.
+	// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 	//
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes AppSpecServiceRouteArrayInput `pulumi:"routes"`
@@ -6307,7 +6307,7 @@ func (o AppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
 }
 
-// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 //
 // Deprecated: Service level CORS rules are deprecated in favor of ingresses
 func (o AppSpecServiceOutput) Cors() AppSpecServiceCorsPtrOutput {
@@ -6384,7 +6384,7 @@ func (o AppSpecServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecService) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An HTTP paths that should be routed to this component.
+// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 //
 // Deprecated: Service level routes are deprecated in favor of ingresses
 func (o AppSpecServiceOutput) Routes() AppSpecServiceRouteArrayOutput {
@@ -6984,7 +6984,7 @@ type AppSpecServiceEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -7006,7 +7006,7 @@ type AppSpecServiceEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -7076,7 +7076,7 @@ func (o AppSpecServiceEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -7840,7 +7840,7 @@ func (o AppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput
 }
 
 type AppSpecServiceImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
@@ -7864,7 +7864,7 @@ type AppSpecServiceImageInput interface {
 }
 
 type AppSpecServiceImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
@@ -7953,7 +7953,7 @@ func (o AppSpecServiceImageOutput) ToAppSpecServiceImagePtrOutputWithContext(ctx
 	}).(AppSpecServiceImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecServiceImageOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) []AppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(AppSpecServiceImageDeployOnPushArrayOutput)
 }
@@ -8002,7 +8002,7 @@ func (o AppSpecServiceImagePtrOutput) Elem() AppSpecServiceImageOutput {
 	}).(AppSpecServiceImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecServiceImagePtrOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceImage) []AppSpecServiceImageDeployOnPush {
 		if v == nil {
@@ -8154,7 +8154,7 @@ type AppSpecServiceLogDestination struct {
 	Datadog *AppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
@@ -8176,7 +8176,7 @@ type AppSpecServiceLogDestinationArgs struct {
 	Datadog AppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -8243,7 +8243,7 @@ func (o AppSpecServiceLogDestinationOutput) Logtail() AppSpecServiceLogDestinati
 	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationLogtail { return v.Logtail }).(AppSpecServiceLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8822,7 +8822,7 @@ type AppSpecStaticSite struct {
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
 	CatchallDocument *string `pulumi:"catchallDocument"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
 	Cors *AppSpecStaticSiteCors `pulumi:"cors"`
@@ -8846,7 +8846,7 @@ type AppSpecStaticSite struct {
 	Name string `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
 	OutputDir *string `pulumi:"outputDir"`
-	// An HTTP paths that should be routed to this component.
+	// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 	//
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes []AppSpecStaticSiteRoute `pulumi:"routes"`
@@ -8870,7 +8870,7 @@ type AppSpecStaticSiteArgs struct {
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
 	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
 	Cors AppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
@@ -8894,7 +8894,7 @@ type AppSpecStaticSiteArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
 	OutputDir pulumi.StringPtrInput `pulumi:"outputDir"`
-	// An HTTP paths that should be routed to this component.
+	// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 	//
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes AppSpecStaticSiteRouteArrayInput `pulumi:"routes"`
@@ -8963,7 +8963,7 @@ func (o AppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
 }
 
-// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+// (Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 //
 // Deprecated: Service level CORS rules are deprecated in favor of ingresses
 func (o AppSpecStaticSiteOutput) Cors() AppSpecStaticSiteCorsPtrOutput {
@@ -9020,7 +9020,7 @@ func (o AppSpecStaticSiteOutput) OutputDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.OutputDir }).(pulumi.StringPtrOutput)
 }
 
-// An HTTP paths that should be routed to this component.
+// (Deprecated - use `ingress`) An HTTP paths that should be routed to this component.
 //
 // Deprecated: Service level routes are deprecated in favor of ingresses
 func (o AppSpecStaticSiteOutput) Routes() AppSpecStaticSiteRouteArrayOutput {
@@ -9482,7 +9482,7 @@ type AppSpecStaticSiteEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -9504,7 +9504,7 @@ type AppSpecStaticSiteEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -9574,7 +9574,7 @@ func (o AppSpecStaticSiteEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -10574,7 +10574,7 @@ type AppSpecWorkerEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -10596,7 +10596,7 @@ type AppSpecWorkerEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -10666,7 +10666,7 @@ func (o AppSpecWorkerEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -11198,7 +11198,7 @@ func (o AppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecWorkerImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
@@ -11222,7 +11222,7 @@ type AppSpecWorkerImageInput interface {
 }
 
 type AppSpecWorkerImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
@@ -11311,7 +11311,7 @@ func (o AppSpecWorkerImageOutput) ToAppSpecWorkerImagePtrOutputWithContext(ctx c
 	}).(AppSpecWorkerImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecWorkerImageOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(AppSpecWorkerImageDeployOnPushArrayOutput)
 }
@@ -11360,7 +11360,7 @@ func (o AppSpecWorkerImagePtrOutput) Elem() AppSpecWorkerImageOutput {
 	}).(AppSpecWorkerImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecWorkerImagePtrOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush {
 		if v == nil {
@@ -11512,7 +11512,7 @@ type AppSpecWorkerLogDestination struct {
 	Datadog *AppSpecWorkerLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
@@ -11534,7 +11534,7 @@ type AppSpecWorkerLogDestinationArgs struct {
 	Datadog AppSpecWorkerLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -11601,7 +11601,7 @@ func (o AppSpecWorkerLogDestinationOutput) Logtail() AppSpecWorkerLogDestination
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationLogtail { return v.Logtail }).(AppSpecWorkerLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -13815,7 +13815,7 @@ type KubernetesClusterNodePool struct {
 	Nodes []KubernetesClusterNodePoolNode `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size string `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
 	Taints []KubernetesClusterNodePoolTaint `pulumi:"taints"`
@@ -13853,7 +13853,7 @@ type KubernetesClusterNodePoolArgs struct {
 	Nodes KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size pulumi.StringInput `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
 	Taints KubernetesClusterNodePoolTaintArrayInput `pulumi:"taints"`
@@ -13986,7 +13986,7 @@ func (o KubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o KubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -14120,7 +14120,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) []string {
 		if v == nil {
@@ -14147,7 +14147,7 @@ type KubernetesClusterNodePoolNode struct {
 	DropletId *string `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node.
 	Id *string `pulumi:"id"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
@@ -14173,7 +14173,7 @@ type KubernetesClusterNodePoolNodeArgs struct {
 	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -14247,7 +14247,7 @@ func (o KubernetesClusterNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// A name for the node pool.
+// A name for the Kubernetes cluster.
 func (o KubernetesClusterNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
