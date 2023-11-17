@@ -22,7 +22,9 @@ type AppSpec struct {
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs      []AppSpecEnv      `pulumi:"envs"`
+	Envs []AppSpecEnv `pulumi:"envs"`
+	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+	Features  []string          `pulumi:"features"`
 	Functions []AppSpecFunction `pulumi:"functions"`
 	// Specification for component routing, rewrites, and redirects.
 	Ingress *AppSpecIngress `pulumi:"ingress"`
@@ -56,7 +58,9 @@ type AppSpecArgs struct {
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs      AppSpecEnvArrayInput      `pulumi:"envs"`
+	Envs AppSpecEnvArrayInput `pulumi:"envs"`
+	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+	Features  pulumi.StringArrayInput   `pulumi:"features"`
 	Functions AppSpecFunctionArrayInput `pulumi:"functions"`
 	// Specification for component routing, rewrites, and redirects.
 	Ingress AppSpecIngressPtrInput `pulumi:"ingress"`
@@ -171,6 +175,11 @@ func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
 }
 
+// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+func (o AppSpecOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpec) []string { return v.Features }).(pulumi.StringArrayOutput)
+}
+
 func (o AppSpecOutput) Functions() AppSpecFunctionArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecFunction { return v.Functions }).(AppSpecFunctionArrayOutput)
 }
@@ -277,6 +286,16 @@ func (o AppSpecPtrOutput) Envs() AppSpecEnvArrayOutput {
 		}
 		return v.Envs
 	}).(AppSpecEnvArrayOutput)
+}
+
+// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+func (o AppSpecPtrOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Features
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o AppSpecPtrOutput) Functions() AppSpecFunctionArrayOutput {
@@ -12751,6 +12770,224 @@ func (o DatabaseKafkaTopicConfigArrayOutput) Index(i pulumi.IntInput) DatabaseKa
 	}).(DatabaseKafkaTopicConfigOutput)
 }
 
+type DatabaseUserSetting struct {
+	// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+	//
+	// An individual ACL includes the following:
+	Acls []DatabaseUserSettingAcl `pulumi:"acls"`
+}
+
+// DatabaseUserSettingInput is an input type that accepts DatabaseUserSettingArgs and DatabaseUserSettingOutput values.
+// You can construct a concrete instance of `DatabaseUserSettingInput` via:
+//
+//	DatabaseUserSettingArgs{...}
+type DatabaseUserSettingInput interface {
+	pulumi.Input
+
+	ToDatabaseUserSettingOutput() DatabaseUserSettingOutput
+	ToDatabaseUserSettingOutputWithContext(context.Context) DatabaseUserSettingOutput
+}
+
+type DatabaseUserSettingArgs struct {
+	// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+	//
+	// An individual ACL includes the following:
+	Acls DatabaseUserSettingAclArrayInput `pulumi:"acls"`
+}
+
+func (DatabaseUserSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserSetting)(nil)).Elem()
+}
+
+func (i DatabaseUserSettingArgs) ToDatabaseUserSettingOutput() DatabaseUserSettingOutput {
+	return i.ToDatabaseUserSettingOutputWithContext(context.Background())
+}
+
+func (i DatabaseUserSettingArgs) ToDatabaseUserSettingOutputWithContext(ctx context.Context) DatabaseUserSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserSettingOutput)
+}
+
+// DatabaseUserSettingArrayInput is an input type that accepts DatabaseUserSettingArray and DatabaseUserSettingArrayOutput values.
+// You can construct a concrete instance of `DatabaseUserSettingArrayInput` via:
+//
+//	DatabaseUserSettingArray{ DatabaseUserSettingArgs{...} }
+type DatabaseUserSettingArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseUserSettingArrayOutput() DatabaseUserSettingArrayOutput
+	ToDatabaseUserSettingArrayOutputWithContext(context.Context) DatabaseUserSettingArrayOutput
+}
+
+type DatabaseUserSettingArray []DatabaseUserSettingInput
+
+func (DatabaseUserSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseUserSetting)(nil)).Elem()
+}
+
+func (i DatabaseUserSettingArray) ToDatabaseUserSettingArrayOutput() DatabaseUserSettingArrayOutput {
+	return i.ToDatabaseUserSettingArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseUserSettingArray) ToDatabaseUserSettingArrayOutputWithContext(ctx context.Context) DatabaseUserSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserSettingArrayOutput)
+}
+
+type DatabaseUserSettingOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserSetting)(nil)).Elem()
+}
+
+func (o DatabaseUserSettingOutput) ToDatabaseUserSettingOutput() DatabaseUserSettingOutput {
+	return o
+}
+
+func (o DatabaseUserSettingOutput) ToDatabaseUserSettingOutputWithContext(ctx context.Context) DatabaseUserSettingOutput {
+	return o
+}
+
+// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+//
+// An individual ACL includes the following:
+func (o DatabaseUserSettingOutput) Acls() DatabaseUserSettingAclArrayOutput {
+	return o.ApplyT(func(v DatabaseUserSetting) []DatabaseUserSettingAcl { return v.Acls }).(DatabaseUserSettingAclArrayOutput)
+}
+
+type DatabaseUserSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseUserSetting)(nil)).Elem()
+}
+
+func (o DatabaseUserSettingArrayOutput) ToDatabaseUserSettingArrayOutput() DatabaseUserSettingArrayOutput {
+	return o
+}
+
+func (o DatabaseUserSettingArrayOutput) ToDatabaseUserSettingArrayOutputWithContext(ctx context.Context) DatabaseUserSettingArrayOutput {
+	return o
+}
+
+func (o DatabaseUserSettingArrayOutput) Index(i pulumi.IntInput) DatabaseUserSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseUserSetting {
+		return vs[0].([]DatabaseUserSetting)[vs[1].(int)]
+	}).(DatabaseUserSettingOutput)
+}
+
+type DatabaseUserSettingAcl struct {
+	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+	Id *string `pulumi:"id"`
+	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+	Permission string `pulumi:"permission"`
+	// A regex for matching the topic(s) that this ACL should apply to.
+	Topic string `pulumi:"topic"`
+}
+
+// DatabaseUserSettingAclInput is an input type that accepts DatabaseUserSettingAclArgs and DatabaseUserSettingAclOutput values.
+// You can construct a concrete instance of `DatabaseUserSettingAclInput` via:
+//
+//	DatabaseUserSettingAclArgs{...}
+type DatabaseUserSettingAclInput interface {
+	pulumi.Input
+
+	ToDatabaseUserSettingAclOutput() DatabaseUserSettingAclOutput
+	ToDatabaseUserSettingAclOutputWithContext(context.Context) DatabaseUserSettingAclOutput
+}
+
+type DatabaseUserSettingAclArgs struct {
+	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// A regex for matching the topic(s) that this ACL should apply to.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (DatabaseUserSettingAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (i DatabaseUserSettingAclArgs) ToDatabaseUserSettingAclOutput() DatabaseUserSettingAclOutput {
+	return i.ToDatabaseUserSettingAclOutputWithContext(context.Background())
+}
+
+func (i DatabaseUserSettingAclArgs) ToDatabaseUserSettingAclOutputWithContext(ctx context.Context) DatabaseUserSettingAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserSettingAclOutput)
+}
+
+// DatabaseUserSettingAclArrayInput is an input type that accepts DatabaseUserSettingAclArray and DatabaseUserSettingAclArrayOutput values.
+// You can construct a concrete instance of `DatabaseUserSettingAclArrayInput` via:
+//
+//	DatabaseUserSettingAclArray{ DatabaseUserSettingAclArgs{...} }
+type DatabaseUserSettingAclArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseUserSettingAclArrayOutput() DatabaseUserSettingAclArrayOutput
+	ToDatabaseUserSettingAclArrayOutputWithContext(context.Context) DatabaseUserSettingAclArrayOutput
+}
+
+type DatabaseUserSettingAclArray []DatabaseUserSettingAclInput
+
+func (DatabaseUserSettingAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (i DatabaseUserSettingAclArray) ToDatabaseUserSettingAclArrayOutput() DatabaseUserSettingAclArrayOutput {
+	return i.ToDatabaseUserSettingAclArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseUserSettingAclArray) ToDatabaseUserSettingAclArrayOutputWithContext(ctx context.Context) DatabaseUserSettingAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserSettingAclArrayOutput)
+}
+
+type DatabaseUserSettingAclOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserSettingAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (o DatabaseUserSettingAclOutput) ToDatabaseUserSettingAclOutput() DatabaseUserSettingAclOutput {
+	return o
+}
+
+func (o DatabaseUserSettingAclOutput) ToDatabaseUserSettingAclOutputWithContext(ctx context.Context) DatabaseUserSettingAclOutput {
+	return o
+}
+
+// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+func (o DatabaseUserSettingAclOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseUserSettingAcl) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+func (o DatabaseUserSettingAclOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+// A regex for matching the topic(s) that this ACL should apply to.
+func (o DatabaseUserSettingAclOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type DatabaseUserSettingAclArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserSettingAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (o DatabaseUserSettingAclArrayOutput) ToDatabaseUserSettingAclArrayOutput() DatabaseUserSettingAclArrayOutput {
+	return o
+}
+
+func (o DatabaseUserSettingAclArrayOutput) ToDatabaseUserSettingAclArrayOutputWithContext(ctx context.Context) DatabaseUserSettingAclArrayOutput {
+	return o
+}
+
+func (o DatabaseUserSettingAclArrayOutput) Index(i pulumi.IntInput) DatabaseUserSettingAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseUserSettingAcl {
+		return vs[0].([]DatabaseUserSettingAcl)[vs[1].(int)]
+	}).(DatabaseUserSettingAclOutput)
+}
+
 type FirewallInboundRule struct {
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
@@ -16506,6 +16743,7 @@ type GetAppSpec struct {
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
 	Envs      []GetAppSpecEnv      `pulumi:"envs"`
+	Features  []string             `pulumi:"features"`
 	Functions []GetAppSpecFunction `pulumi:"functions"`
 	Ingress   GetAppSpecIngress    `pulumi:"ingress"`
 	Jobs      []GetAppSpecJob      `pulumi:"jobs"`
@@ -16537,6 +16775,7 @@ type GetAppSpecArgs struct {
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
 	Envs      GetAppSpecEnvArrayInput      `pulumi:"envs"`
+	Features  pulumi.StringArrayInput      `pulumi:"features"`
 	Functions GetAppSpecFunctionArrayInput `pulumi:"functions"`
 	Ingress   GetAppSpecIngressInput       `pulumi:"ingress"`
 	Jobs      GetAppSpecJobArrayInput      `pulumi:"jobs"`
@@ -16620,6 +16859,10 @@ func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 // Describes an environment variable made available to an app competent.
 func (o GetAppSpecOutput) Envs() GetAppSpecEnvArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEnv { return v.Envs }).(GetAppSpecEnvArrayOutput)
+}
+
+func (o GetAppSpecOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []string { return v.Features }).(pulumi.StringArrayOutput)
 }
 
 func (o GetAppSpecOutput) Functions() GetAppSpecFunctionArrayOutput {
@@ -27828,6 +28071,206 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 	}).(GetDatabaseClusterMaintenanceWindowOutput)
 }
 
+type GetDatabaseUserSetting struct {
+	Acls []GetDatabaseUserSettingAcl `pulumi:"acls"`
+}
+
+// GetDatabaseUserSettingInput is an input type that accepts GetDatabaseUserSettingArgs and GetDatabaseUserSettingOutput values.
+// You can construct a concrete instance of `GetDatabaseUserSettingInput` via:
+//
+//	GetDatabaseUserSettingArgs{...}
+type GetDatabaseUserSettingInput interface {
+	pulumi.Input
+
+	ToGetDatabaseUserSettingOutput() GetDatabaseUserSettingOutput
+	ToGetDatabaseUserSettingOutputWithContext(context.Context) GetDatabaseUserSettingOutput
+}
+
+type GetDatabaseUserSettingArgs struct {
+	Acls GetDatabaseUserSettingAclArrayInput `pulumi:"acls"`
+}
+
+func (GetDatabaseUserSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUserSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseUserSettingArgs) ToGetDatabaseUserSettingOutput() GetDatabaseUserSettingOutput {
+	return i.ToGetDatabaseUserSettingOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseUserSettingArgs) ToGetDatabaseUserSettingOutputWithContext(ctx context.Context) GetDatabaseUserSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUserSettingOutput)
+}
+
+// GetDatabaseUserSettingArrayInput is an input type that accepts GetDatabaseUserSettingArray and GetDatabaseUserSettingArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseUserSettingArrayInput` via:
+//
+//	GetDatabaseUserSettingArray{ GetDatabaseUserSettingArgs{...} }
+type GetDatabaseUserSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseUserSettingArrayOutput() GetDatabaseUserSettingArrayOutput
+	ToGetDatabaseUserSettingArrayOutputWithContext(context.Context) GetDatabaseUserSettingArrayOutput
+}
+
+type GetDatabaseUserSettingArray []GetDatabaseUserSettingInput
+
+func (GetDatabaseUserSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseUserSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseUserSettingArray) ToGetDatabaseUserSettingArrayOutput() GetDatabaseUserSettingArrayOutput {
+	return i.ToGetDatabaseUserSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseUserSettingArray) ToGetDatabaseUserSettingArrayOutputWithContext(ctx context.Context) GetDatabaseUserSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUserSettingArrayOutput)
+}
+
+type GetDatabaseUserSettingOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseUserSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUserSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseUserSettingOutput) ToGetDatabaseUserSettingOutput() GetDatabaseUserSettingOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingOutput) ToGetDatabaseUserSettingOutputWithContext(ctx context.Context) GetDatabaseUserSettingOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingOutput) Acls() GetDatabaseUserSettingAclArrayOutput {
+	return o.ApplyT(func(v GetDatabaseUserSetting) []GetDatabaseUserSettingAcl { return v.Acls }).(GetDatabaseUserSettingAclArrayOutput)
+}
+
+type GetDatabaseUserSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseUserSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseUserSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseUserSettingArrayOutput) ToGetDatabaseUserSettingArrayOutput() GetDatabaseUserSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingArrayOutput) ToGetDatabaseUserSettingArrayOutputWithContext(ctx context.Context) GetDatabaseUserSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseUserSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseUserSetting {
+		return vs[0].([]GetDatabaseUserSetting)[vs[1].(int)]
+	}).(GetDatabaseUserSettingOutput)
+}
+
+type GetDatabaseUserSettingAcl struct {
+	Id         string `pulumi:"id"`
+	Permission string `pulumi:"permission"`
+	Topic      string `pulumi:"topic"`
+}
+
+// GetDatabaseUserSettingAclInput is an input type that accepts GetDatabaseUserSettingAclArgs and GetDatabaseUserSettingAclOutput values.
+// You can construct a concrete instance of `GetDatabaseUserSettingAclInput` via:
+//
+//	GetDatabaseUserSettingAclArgs{...}
+type GetDatabaseUserSettingAclInput interface {
+	pulumi.Input
+
+	ToGetDatabaseUserSettingAclOutput() GetDatabaseUserSettingAclOutput
+	ToGetDatabaseUserSettingAclOutputWithContext(context.Context) GetDatabaseUserSettingAclOutput
+}
+
+type GetDatabaseUserSettingAclArgs struct {
+	Id         pulumi.StringInput `pulumi:"id"`
+	Permission pulumi.StringInput `pulumi:"permission"`
+	Topic      pulumi.StringInput `pulumi:"topic"`
+}
+
+func (GetDatabaseUserSettingAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (i GetDatabaseUserSettingAclArgs) ToGetDatabaseUserSettingAclOutput() GetDatabaseUserSettingAclOutput {
+	return i.ToGetDatabaseUserSettingAclOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseUserSettingAclArgs) ToGetDatabaseUserSettingAclOutputWithContext(ctx context.Context) GetDatabaseUserSettingAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUserSettingAclOutput)
+}
+
+// GetDatabaseUserSettingAclArrayInput is an input type that accepts GetDatabaseUserSettingAclArray and GetDatabaseUserSettingAclArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseUserSettingAclArrayInput` via:
+//
+//	GetDatabaseUserSettingAclArray{ GetDatabaseUserSettingAclArgs{...} }
+type GetDatabaseUserSettingAclArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseUserSettingAclArrayOutput() GetDatabaseUserSettingAclArrayOutput
+	ToGetDatabaseUserSettingAclArrayOutputWithContext(context.Context) GetDatabaseUserSettingAclArrayOutput
+}
+
+type GetDatabaseUserSettingAclArray []GetDatabaseUserSettingAclInput
+
+func (GetDatabaseUserSettingAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (i GetDatabaseUserSettingAclArray) ToGetDatabaseUserSettingAclArrayOutput() GetDatabaseUserSettingAclArrayOutput {
+	return i.ToGetDatabaseUserSettingAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseUserSettingAclArray) ToGetDatabaseUserSettingAclArrayOutputWithContext(ctx context.Context) GetDatabaseUserSettingAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUserSettingAclArrayOutput)
+}
+
+type GetDatabaseUserSettingAclOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseUserSettingAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (o GetDatabaseUserSettingAclOutput) ToGetDatabaseUserSettingAclOutput() GetDatabaseUserSettingAclOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingAclOutput) ToGetDatabaseUserSettingAclOutputWithContext(ctx context.Context) GetDatabaseUserSettingAclOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingAclOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseUserSettingAcl) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseUserSettingAclOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseUserSettingAcl) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseUserSettingAclOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseUserSettingAcl) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type GetDatabaseUserSettingAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseUserSettingAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseUserSettingAcl)(nil)).Elem()
+}
+
+func (o GetDatabaseUserSettingAclArrayOutput) ToGetDatabaseUserSettingAclArrayOutput() GetDatabaseUserSettingAclArrayOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingAclArrayOutput) ToGetDatabaseUserSettingAclArrayOutputWithContext(ctx context.Context) GetDatabaseUserSettingAclArrayOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingAclArrayOutput) Index(i pulumi.IntInput) GetDatabaseUserSettingAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseUserSettingAcl {
+		return vs[0].([]GetDatabaseUserSettingAcl)[vs[1].(int)]
+	}).(GetDatabaseUserSettingAclOutput)
+}
+
 type GetDomainsDomain struct {
 	// (Required) The name of the domain.
 	Name string `pulumi:"name"`
@@ -33847,6 +34290,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleArrayInput)(nil)).Elem(), DatabaseFirewallRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaTopicConfigInput)(nil)).Elem(), DatabaseKafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaTopicConfigArrayInput)(nil)).Elem(), DatabaseKafkaTopicConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingInput)(nil)).Elem(), DatabaseUserSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingArrayInput)(nil)).Elem(), DatabaseUserSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclInput)(nil)).Elem(), DatabaseUserSettingAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclArrayInput)(nil)).Elem(), DatabaseUserSettingAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleInput)(nil)).Elem(), FirewallInboundRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleArrayInput)(nil)).Elem(), FirewallInboundRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleInput)(nil)).Elem(), FirewallOutboundRuleArgs{})
@@ -34040,6 +34487,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingInput)(nil)).Elem(), GetDatabaseUserSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingArrayInput)(nil)).Elem(), GetDatabaseUserSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingAclInput)(nil)).Elem(), GetDatabaseUserSettingAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingAclArrayInput)(nil)).Elem(), GetDatabaseUserSettingAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterInput)(nil)).Elem(), GetDomainsFilterArgs{})
@@ -34280,6 +34731,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseFirewallRuleArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaTopicConfigArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseUserSettingOutput{})
+	pulumi.RegisterOutputType(DatabaseUserSettingArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseUserSettingAclOutput{})
+	pulumi.RegisterOutputType(DatabaseUserSettingAclArrayOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleArrayOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundRuleOutput{})
@@ -34473,6 +34928,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUserSettingOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUserSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUserSettingAclOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUserSettingAclArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsFilterOutput{})

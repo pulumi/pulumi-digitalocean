@@ -90,6 +90,8 @@ __all__ = [
     'DatabaseClusterMaintenanceWindow',
     'DatabaseFirewallRule',
     'DatabaseKafkaTopicConfig',
+    'DatabaseUserSetting',
+    'DatabaseUserSettingAcl',
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
@@ -189,6 +191,8 @@ __all__ = [
     'GetAppSpecWorkerLogDestinationLogtailResult',
     'GetAppSpecWorkerLogDestinationPapertrailResult',
     'GetDatabaseClusterMaintenanceWindowResult',
+    'GetDatabaseUserSettingResult',
+    'GetDatabaseUserSettingAclResult',
     'GetDomainsDomainResult',
     'GetDomainsFilterResult',
     'GetDomainsSortResult',
@@ -261,6 +265,7 @@ class AppSpec(dict):
                  domain_names: Optional[Sequence['outputs.AppSpecDomainName']] = None,
                  domains: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.AppSpecEnv']] = None,
+                 features: Optional[Sequence[str]] = None,
                  functions: Optional[Sequence['outputs.AppSpecFunction']] = None,
                  ingress: Optional['outputs.AppSpecIngress'] = None,
                  jobs: Optional[Sequence['outputs.AppSpecJob']] = None,
@@ -273,6 +278,7 @@ class AppSpec(dict):
         :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
         :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence[str] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
         """
@@ -287,6 +293,8 @@ class AppSpec(dict):
             pulumi.set(__self__, "domains", domains)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if ingress is not None:
@@ -346,6 +354,14 @@ class AppSpec(dict):
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[Sequence[str]]:
+        """
+        A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+        """
+        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter
@@ -5636,6 +5652,70 @@ class DatabaseKafkaTopicConfig(dict):
 
 
 @pulumi.output_type
+class DatabaseUserSetting(dict):
+    def __init__(__self__, *,
+                 acls: Optional[Sequence['outputs.DatabaseUserSettingAcl']] = None):
+        """
+        :param Sequence['DatabaseUserSettingAclArgs'] acls: A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+               
+               An individual ACL includes the following:
+        """
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[Sequence['outputs.DatabaseUserSettingAcl']]:
+        """
+        A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+
+        An individual ACL includes the following:
+        """
+        return pulumi.get(self, "acls")
+
+
+@pulumi.output_type
+class DatabaseUserSettingAcl(dict):
+    def __init__(__self__, *,
+                 permission: str,
+                 topic: str,
+                 id: Optional[str] = None):
+        """
+        :param str permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        :param str topic: A regex for matching the topic(s) that this ACL should apply to.
+        :param str id: An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+        """
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "topic", topic)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        A regex for matching the topic(s) that this ACL should apply to.
+        """
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class FirewallInboundRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7414,6 +7494,7 @@ class GetAppSpecResult(dict):
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
+                 features: Optional[Sequence[str]] = None,
                  functions: Optional[Sequence['outputs.GetAppSpecFunctionResult']] = None,
                  jobs: Optional[Sequence['outputs.GetAppSpecJobResult']] = None,
                  region: Optional[str] = None,
@@ -7435,6 +7516,8 @@ class GetAppSpecResult(dict):
             pulumi.set(__self__, "databases", databases)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if jobs is not None:
@@ -7494,6 +7577,11 @@ class GetAppSpecResult(dict):
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter
@@ -11386,6 +11474,45 @@ class GetDatabaseClusterMaintenanceWindowResult(dict):
         The hour in UTC at which maintenance updates will be applied in 24 hour format.
         """
         return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class GetDatabaseUserSettingResult(dict):
+    def __init__(__self__, *,
+                 acls: Optional[Sequence['outputs.GetDatabaseUserSettingAclResult']] = None):
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[Sequence['outputs.GetDatabaseUserSettingAclResult']]:
+        return pulumi.get(self, "acls")
+
+
+@pulumi.output_type
+class GetDatabaseUserSettingAclResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str,
+                 topic: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type

@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetDatabaseUserResult',
@@ -21,7 +22,7 @@ class GetDatabaseUserResult:
     """
     A collection of values returned by getDatabaseUser.
     """
-    def __init__(__self__, cluster_id=None, id=None, mysql_auth_plugin=None, name=None, password=None, role=None):
+    def __init__(__self__, cluster_id=None, id=None, mysql_auth_plugin=None, name=None, password=None, role=None, settings=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -40,6 +41,9 @@ class GetDatabaseUserResult:
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
+        if settings and not isinstance(settings, list):
+            raise TypeError("Expected argument 'settings' to be a list")
+        pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -83,6 +87,11 @@ class GetDatabaseUserResult:
         """
         return pulumi.get(self, "role")
 
+    @property
+    @pulumi.getter
+    def settings(self) -> Sequence['outputs.GetDatabaseUserSettingResult']:
+        return pulumi.get(self, "settings")
+
 
 class AwaitableGetDatabaseUserResult(GetDatabaseUserResult):
     # pylint: disable=using-constant-test
@@ -95,7 +104,8 @@ class AwaitableGetDatabaseUserResult(GetDatabaseUserResult):
             mysql_auth_plugin=self.mysql_auth_plugin,
             name=self.name,
             password=self.password,
-            role=self.role)
+            role=self.role,
+            settings=self.settings)
 
 
 def get_database_user(cluster_id: Optional[str] = None,
@@ -132,7 +142,8 @@ def get_database_user(cluster_id: Optional[str] = None,
         mysql_auth_plugin=pulumi.get(__ret__, 'mysql_auth_plugin'),
         name=pulumi.get(__ret__, 'name'),
         password=pulumi.get(__ret__, 'password'),
-        role=pulumi.get(__ret__, 'role'))
+        role=pulumi.get(__ret__, 'role'),
+        settings=pulumi.get(__ret__, 'settings'))
 
 
 @_utilities.lift_output_func(get_database_user)

@@ -151,6 +151,7 @@ namespace Pulumi.DigitalOcean
         /// The role of the database user. The value will be either `primary` or `normal`.
         /// </summary>
         public readonly string Role;
+        public readonly ImmutableArray<Outputs.GetDatabaseUserSettingResult> Settings;
 
         [OutputConstructor]
         private GetDatabaseUserResult(
@@ -164,7 +165,9 @@ namespace Pulumi.DigitalOcean
 
             string password,
 
-            string role)
+            string role,
+
+            ImmutableArray<Outputs.GetDatabaseUserSettingResult> settings)
         {
             ClusterId = clusterId;
             Id = id;
@@ -172,6 +175,7 @@ namespace Pulumi.DigitalOcean
             Name = name;
             Password = password;
             Role = role;
+            Settings = settings;
         }
     }
 }

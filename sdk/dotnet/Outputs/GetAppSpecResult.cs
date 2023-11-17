@@ -24,6 +24,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Describes an environment variable made available to an app competent.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecEnvResult> Envs;
+        public readonly ImmutableArray<string> Features;
         public readonly ImmutableArray<Outputs.GetAppSpecFunctionResult> Functions;
         public readonly Outputs.GetAppSpecIngressResult Ingress;
         public readonly ImmutableArray<Outputs.GetAppSpecJobResult> Jobs;
@@ -48,6 +49,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecEnvResult> envs,
 
+            ImmutableArray<string> features,
+
             ImmutableArray<Outputs.GetAppSpecFunctionResult> functions,
 
             Outputs.GetAppSpecIngressResult ingress,
@@ -69,6 +72,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Domain = domain;
             Domains = domains;
             Envs = envs;
+            Features = features;
             Functions = functions;
             Ingress = ingress;
             Jobs = jobs;

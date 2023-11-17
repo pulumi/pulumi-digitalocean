@@ -38,7 +38,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
-        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -134,7 +134,7 @@ class KubernetesClusterArgs:
     @pulumi.getter
     def ha(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         """
         return pulumi.get(self, "ha")
 
@@ -249,7 +249,7 @@ class _KubernetesClusterState:
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
-        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -385,7 +385,7 @@ class _KubernetesClusterState:
     @pulumi.getter
     def ha(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         """
         return pulumi.get(self, "ha")
 
@@ -598,7 +598,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
-        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -741,7 +741,7 @@ class KubernetesCluster(pulumi.CustomResource):
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
-        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
@@ -837,7 +837,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter
     def ha(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         """
         return pulumi.get(self, "ha")
 

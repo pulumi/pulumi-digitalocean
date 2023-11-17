@@ -41,6 +41,7 @@ public final class GetAppSpec {
      * 
      */
     private @Nullable List<GetAppSpecEnv> envs;
+    private @Nullable List<String> features;
     private @Nullable List<GetAppSpecFunction> functions;
     private GetAppSpecIngress ingress;
     private @Nullable List<GetAppSpecJob> jobs;
@@ -83,6 +84,9 @@ public final class GetAppSpec {
      */
     public List<GetAppSpecEnv> envs() {
         return this.envs == null ? List.of() : this.envs;
+    }
+    public List<String> features() {
+        return this.features == null ? List.of() : this.features;
     }
     public List<GetAppSpecFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
@@ -127,6 +131,7 @@ public final class GetAppSpec {
         private List<GetAppSpecDomain> domain;
         private List<String> domains;
         private @Nullable List<GetAppSpecEnv> envs;
+        private @Nullable List<String> features;
         private @Nullable List<GetAppSpecFunction> functions;
         private GetAppSpecIngress ingress;
         private @Nullable List<GetAppSpecJob> jobs;
@@ -143,6 +148,7 @@ public final class GetAppSpec {
     	      this.domain = defaults.domain;
     	      this.domains = defaults.domains;
     	      this.envs = defaults.envs;
+    	      this.features = defaults.features;
     	      this.functions = defaults.functions;
     	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
@@ -192,6 +198,14 @@ public final class GetAppSpec {
         }
         public Builder envs(GetAppSpecEnv... envs) {
             return envs(List.of(envs));
+        }
+        @CustomType.Setter
+        public Builder features(@Nullable List<String> features) {
+            this.features = features;
+            return this;
+        }
+        public Builder features(String... features) {
+            return features(List.of(features));
         }
         @CustomType.Setter
         public Builder functions(@Nullable List<GetAppSpecFunction> functions) {
@@ -255,6 +269,7 @@ public final class GetAppSpec {
             _resultValue.domain = domain;
             _resultValue.domains = domains;
             _resultValue.envs = envs;
+            _resultValue.features = features;
             _resultValue.functions = functions;
             _resultValue.ingress = ingress;
             _resultValue.jobs = jobs;

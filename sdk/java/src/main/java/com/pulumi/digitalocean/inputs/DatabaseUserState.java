@@ -5,7 +5,9 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.DatabaseUserSettingArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -90,6 +92,23 @@ public final class DatabaseUserState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * Contains optional settings for the user.
+     * The `settings` block is documented below.
+     * 
+     */
+    @Import(name="settings")
+    private @Nullable Output<List<DatabaseUserSettingArgs>> settings;
+
+    /**
+     * @return Contains optional settings for the user.
+     * The `settings` block is documented below.
+     * 
+     */
+    public Optional<Output<List<DatabaseUserSettingArgs>>> settings() {
+        return Optional.ofNullable(this.settings);
+    }
+
     private DatabaseUserState() {}
 
     private DatabaseUserState(DatabaseUserState $) {
@@ -98,6 +117,7 @@ public final class DatabaseUserState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.password = $.password;
         this.role = $.role;
+        this.settings = $.settings;
     }
 
     public static Builder builder() {
@@ -221,6 +241,40 @@ public final class DatabaseUserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder role(String role) {
             return role(Output.of(role));
+        }
+
+        /**
+         * @param settings Contains optional settings for the user.
+         * The `settings` block is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(@Nullable Output<List<DatabaseUserSettingArgs>> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        /**
+         * @param settings Contains optional settings for the user.
+         * The `settings` block is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(List<DatabaseUserSettingArgs> settings) {
+            return settings(Output.of(settings));
+        }
+
+        /**
+         * @param settings Contains optional settings for the user.
+         * The `settings` block is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(DatabaseUserSettingArgs... settings) {
+            return settings(List.of(settings));
         }
 
         public DatabaseUserState build() {

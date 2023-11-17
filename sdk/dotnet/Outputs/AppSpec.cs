@@ -27,6 +27,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Describes an environment variable made available to an app competent.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecEnv> Envs;
+        /// <summary>
+        /// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+        /// </summary>
+        public readonly ImmutableArray<string> Features;
         public readonly ImmutableArray<Outputs.AppSpecFunction> Functions;
         /// <summary>
         /// Specification for component routing, rewrites, and redirects.
@@ -57,6 +61,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.AppSpecEnv> envs,
 
+            ImmutableArray<string> features,
+
             ImmutableArray<Outputs.AppSpecFunction> functions,
 
             Outputs.AppSpecIngress? ingress,
@@ -78,6 +84,7 @@ namespace Pulumi.DigitalOcean.Outputs
             DomainNames = domainNames;
             Domains = domains;
             Envs = envs;
+            Features = features;
             Functions = functions;
             Ingress = ingress;
             Jobs = jobs;

@@ -77,7 +77,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
-     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      */
     public readonly ha!: pulumi.Output<boolean | undefined>;
     /**
@@ -239,7 +239,7 @@ export interface KubernetesClusterState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      */
     ha?: pulumi.Input<boolean>;
     /**
@@ -312,7 +312,7 @@ export interface KubernetesClusterArgs {
      */
     destroyAllAssociatedResources?: pulumi.Input<boolean>;
     /**
-     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      */
     ha?: pulumi.Input<boolean>;
     /**

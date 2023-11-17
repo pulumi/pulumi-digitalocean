@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         /// </summary>
         [Output("ha")]
         public Output<bool?> Ha { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? DestroyAllAssociatedResources { get; set; }
 
         /// <summary>
-        /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         /// </summary>
         [Input("ha")]
         public Input<bool>? Ha { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         /// </summary>
         [Input("ha")]
         public Input<bool>? Ha { get; set; }

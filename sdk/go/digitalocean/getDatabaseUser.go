@@ -75,7 +75,8 @@ type LookupDatabaseUserResult struct {
 	// The password of the database user. This will not be set for MongoDB users.
 	Password string `pulumi:"password"`
 	// The role of the database user. The value will be either `primary` or `normal`.
-	Role string `pulumi:"role"`
+	Role     string                   `pulumi:"role"`
+	Settings []GetDatabaseUserSetting `pulumi:"settings"`
 }
 
 func LookupDatabaseUserOutput(ctx *pulumi.Context, args LookupDatabaseUserOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseUserResultOutput {
@@ -144,6 +145,10 @@ func (o LookupDatabaseUserResultOutput) Password() pulumi.StringOutput {
 // The role of the database user. The value will be either `primary` or `normal`.
 func (o LookupDatabaseUserResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseUserResult) string { return v.Role }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseUserResultOutput) Settings() GetDatabaseUserSettingArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseUserResult) []GetDatabaseUserSetting { return v.Settings }).(GetDatabaseUserSettingArrayOutput)
 }
 
 func init() {
