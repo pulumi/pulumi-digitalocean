@@ -262,7 +262,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the component.\n"
+                    "description": "The hostname for the domain.\n"
                 },
                 "type": {
                     "type": "string",
@@ -307,7 +307,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The threshold for the type of the warning.\n",
+                    "description": "The value of the environment variable.\n",
                     "secret": true
                 }
             },
@@ -331,7 +331,7 @@
                 },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/AppSpecFunctionCors:AppSpecFunctionCors",
-                    "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
+                    "description": "(Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
                     "deprecationMessage": "Service level CORS rules are deprecated in favor of ingresses"
                 },
                 "envs": {
@@ -369,7 +369,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecFunctionRoute:AppSpecFunctionRoute"
                     },
-                    "description": "An HTTP paths that should be routed to this component.\n",
+                    "description": "(Deprecated - use `ingress`) An HTTP paths that should be routed to this component.\n",
                     "deprecationMessage": "Service level routes are deprecated in favor of ingresses"
                 },
                 "sourceDir": {
@@ -492,7 +492,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The threshold for the type of the warning.\n",
+                    "description": "The value of the environment variable.\n",
                     "secret": true
                 }
             },
@@ -564,7 +564,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the component.\n"
+                    "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecFunctionLogDestinationPapertrail:AppSpecFunctionLogDestinationPapertrail",
@@ -636,7 +636,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecIngressRule:AppSpecIngressRule"
                     },
-                    "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n"
+                    "description": "Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.\n"
                 }
             },
             "type": "object",
@@ -656,7 +656,7 @@
                 },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/AppSpecIngressRuleCors:AppSpecIngressRuleCors",
-                    "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n"
+                    "description": "(Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n"
                 },
                 "match": {
                     "$ref": "#/types/digitalocean:index/AppSpecIngressRuleMatch:AppSpecIngressRuleMatch",
@@ -686,7 +686,7 @@
                 },
                 "preservePathPrefix": {
                     "type": "boolean",
-                    "description": "An optional flag to preserve the path that is forwarded to the backend service.\n"
+                    "description": "An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.\n"
                 },
                 "rewrite": {
                     "type": "string",
@@ -763,7 +763,7 @@
             "properties": {
                 "path": {
                     "$ref": "#/types/digitalocean:index/AppSpecIngressRuleMatchPath:AppSpecIngressRuleMatchPath",
-                    "description": "Paths must start with `/` and must be unique within the app.\n"
+                    "description": "The path to match on.\n"
                 }
             },
             "type": "object",
@@ -944,7 +944,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The threshold for the type of the warning.\n",
+                    "description": "The value of the environment variable.\n",
                     "secret": true
                 }
             },
@@ -1011,7 +1011,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecJobImageDeployOnPush:AppSpecJobImageDeployOnPush"
                     },
-                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                    "description": "Configures automatically deploying images pushed to DOCR.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -1066,7 +1066,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the component.\n"
+                    "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationPapertrail:AppSpecJobLogDestinationPapertrail",
@@ -1133,7 +1133,7 @@
                 },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceCors:AppSpecServiceCors",
-                    "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
+                    "description": "(Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
                     "deprecationMessage": "Service level CORS rules are deprecated in favor of ingresses"
                 },
                 "dockerfilePath": {
@@ -1206,7 +1206,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecServiceRoute:AppSpecServiceRoute"
                     },
-                    "description": "An HTTP paths that should be routed to this component.\n",
+                    "description": "(Deprecated - use `ingress`) An HTTP paths that should be routed to this component.\n",
                     "deprecationMessage": "Service level routes are deprecated in favor of ingresses"
                 },
                 "runCommand": {
@@ -1335,7 +1335,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The threshold for the type of the warning.\n",
+                    "description": "The value of the environment variable.\n",
                     "secret": true
                 }
             },
@@ -1431,7 +1431,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecServiceImageDeployOnPush:AppSpecServiceImageDeployOnPush"
                     },
-                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                    "description": "Configures automatically deploying images pushed to DOCR.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -1486,7 +1486,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the component.\n"
+                    "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationPapertrail:AppSpecServiceLogDestinationPapertrail",
@@ -1563,7 +1563,7 @@
                 },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/AppSpecStaticSiteCors:AppSpecStaticSiteCors",
-                    "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
+                    "description": "(Deprecated - use `ingress`) The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
                     "deprecationMessage": "Service level CORS rules are deprecated in favor of ingresses"
                 },
                 "dockerfilePath": {
@@ -1614,7 +1614,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecStaticSiteRoute:AppSpecStaticSiteRoute"
                     },
-                    "description": "An HTTP paths that should be routed to this component.\n",
+                    "description": "(Deprecated - use `ingress`) An HTTP paths that should be routed to this component.\n",
                     "deprecationMessage": "Service level routes are deprecated in favor of ingresses"
                 },
                 "sourceDir": {
@@ -1706,7 +1706,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The threshold for the type of the warning.\n",
+                    "description": "The value of the environment variable.\n",
                     "secret": true
                 }
             },
@@ -1903,7 +1903,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The threshold for the type of the warning.\n",
+                    "description": "The value of the environment variable.\n",
                     "secret": true
                 }
             },
@@ -1970,7 +1970,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecWorkerImageDeployOnPush:AppSpecWorkerImageDeployOnPush"
                     },
-                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                    "description": "Configures automatically deploying images pushed to DOCR.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -2025,7 +2025,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the component.\n"
+                    "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationPapertrail:AppSpecWorkerLogDestinationPapertrail",
@@ -2562,7 +2562,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tag names to be applied to the Kubernetes cluster.\n"
+                    "description": "A list of tag names applied to the node pool.\n"
                 },
                 "taints": {
                     "type": "array",
@@ -2605,7 +2605,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name for the node pool.\n"
+                    "description": "A name for the Kubernetes cluster.\n"
                 },
                 "status": {
                     "type": "string",
@@ -10716,7 +10716,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name for the node pool.\n"
+                    "description": "A name for the Kubernetes cluster.\n"
                 },
                 "nodePool": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
@@ -10798,7 +10798,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name for the node pool.\n"
+                    "description": "A name for the Kubernetes cluster.\n"
                 },
                 "nodePool": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
@@ -10896,7 +10896,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "A name for the node pool.\n"
+                        "description": "A name for the Kubernetes cluster.\n"
                     },
                     "nodePool": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
