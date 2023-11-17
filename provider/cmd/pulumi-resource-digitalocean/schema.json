@@ -144,6 +144,13 @@
                     },
                     "description": "Describes an environment variable made available to an app competent.\n"
                 },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)\n"
+                },
                 "functions": {
                     "type": "array",
                     "items": {
@@ -2268,6 +2275,50 @@
                 }
             }
         },
+        "digitalocean:index/DatabaseUserSetting:DatabaseUserSetting": {
+            "properties": {
+                "acls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DatabaseUserSettingAcl:DatabaseUserSettingAcl"
+                    },
+                    "description": "A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:\n\nAn individual ACL includes the following:\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/DatabaseUserSettingAcl:DatabaseUserSettingAcl": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "An identifier for the ACL, this will be automatically assigned when you create an ACL entry\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "The permission level applied to the ACL. This includes \"admin\", \"consume\", \"produce\", and \"produceconsume\". \"admin\" allows for producing and consuming as well as add/delete/update permission for topics. \"consume\" allows only for reading topic messages. \"produce\" allows only for writing topic messages. \"produceconsume\" allows for both reading and writing topic messages.\n",
+                    "willReplaceOnChanges": true
+                },
+                "topic": {
+                    "type": "string",
+                    "description": "A regex for matching the topic(s) that this ACL should apply to.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "permission",
+                "topic"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "permission",
+                        "topic"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/FirewallInboundRule:FirewallInboundRule": {
             "properties": {
                 "portRange": {
@@ -3044,6 +3095,12 @@
                         "$ref": "#/types/digitalocean:index/getAppSpecEnv:getAppSpecEnv"
                     },
                     "description": "Describes an environment variable made available to an app competent.\n"
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "functions": {
                     "type": "array",
@@ -5077,6 +5134,41 @@
             "required": [
                 "day",
                 "hour"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDatabaseUserSetting:getDatabaseUserSetting": {
+            "properties": {
+                "acls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getDatabaseUserSettingAcl:getDatabaseUserSettingAcl"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getDatabaseUserSettingAcl:getDatabaseUserSettingAcl": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "permission": {
+                    "type": "string"
+                },
+                "topic": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "permission",
+                "topic"
             ],
             "language": {
                 "nodejs": {
@@ -9478,7 +9570,7 @@
             }
         },
         "digitalocean:index/databaseUser:DatabaseUser": {
-            "description": "Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.\n\n\u003e **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database user\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst user_example = new digitalocean.DatabaseUser(\"user-example\", {clusterId: postgres_example.id});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nuser_example = digitalocean.DatabaseUser(\"user-example\", cluster_id=postgres_example.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Engine = \"pg\",\n        Version = \"11\",\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n        NodeCount = 1,\n    });\n\n    var user_example = new DigitalOcean.DatabaseUser(\"user-example\", new()\n    {\n        ClusterId = postgres_example.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"user-example\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseUser;\nimport com.pulumi.digitalocean.DatabaseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()        \n            .engine(\"pg\")\n            .version(\"11\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var user_example = new DatabaseUser(\"user-example\", DatabaseUserArgs.builder()        \n            .clusterId(postgres_example.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user-example:\n    type: digitalocean:DatabaseUser\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: pg\n      version: '11'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n{{% /example %}}\n{{% example %}}\n### Create a new user for a PostgreSQL database replica \n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst replica_example = new digitalocean.DatabaseReplica(\"replica-example\", {\n    clusterId: postgres_example.id,\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n});\nconst user_example = new digitalocean.DatabaseUser(\"user-example\", {clusterId: replica_example.uuid});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nreplica_example = digitalocean.DatabaseReplica(\"replica-example\",\n    cluster_id=postgres_example.id,\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\")\nuser_example = digitalocean.DatabaseUser(\"user-example\", cluster_id=replica_example.uuid)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Engine = \"pg\",\n        Version = \"11\",\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n        NodeCount = 1,\n    });\n\n    var replica_example = new DigitalOcean.DatabaseReplica(\"replica-example\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n    });\n\n    var user_example = new DigitalOcean.DatabaseUser(\"user-example\", new()\n    {\n        ClusterId = replica_example.Uuid,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseReplica(ctx, \"replica-example\", \u0026digitalocean.DatabaseReplicaArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"user-example\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: replica_example.Uuid,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseReplica;\nimport com.pulumi.digitalocean.DatabaseReplicaArgs;\nimport com.pulumi.digitalocean.DatabaseUser;\nimport com.pulumi.digitalocean.DatabaseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()        \n            .engine(\"pg\")\n            .version(\"11\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var replica_example = new DatabaseReplica(\"replica-example\", DatabaseReplicaArgs.builder()        \n            .clusterId(postgres_example.id())\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .build());\n\n        var user_example = new DatabaseUser(\"user-example\", DatabaseUserArgs.builder()        \n            .clusterId(replica_example.uuid())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: pg\n      version: '11'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n  replica-example:\n    type: digitalocean:DatabaseReplica\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      size: db-s-1vcpu-1gb\n      region: nyc1\n  user-example:\n    type: digitalocean:DatabaseUser\n    properties:\n      clusterId: ${[\"replica-example\"].uuid}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar\n```\n\n ",
+            "description": "Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.\n\n\u003e **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a new PostgreSQL database user\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst user_example = new digitalocean.DatabaseUser(\"user-example\", {clusterId: postgres_example.id});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nuser_example = digitalocean.DatabaseUser(\"user-example\", cluster_id=postgres_example.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Engine = \"pg\",\n        Version = \"11\",\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n        NodeCount = 1,\n    });\n\n    var user_example = new DigitalOcean.DatabaseUser(\"user-example\", new()\n    {\n        ClusterId = postgres_example.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"user-example\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseUser;\nimport com.pulumi.digitalocean.DatabaseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()        \n            .engine(\"pg\")\n            .version(\"11\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var user_example = new DatabaseUser(\"user-example\", DatabaseUserArgs.builder()        \n            .clusterId(postgres_example.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user-example:\n    type: digitalocean:DatabaseUser\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: pg\n      version: '11'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n{{% /example %}}\n{{% example %}}\n### Create a new user for a PostgreSQL database replica \n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    engine: \"pg\",\n    version: \"11\",\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n    nodeCount: 1,\n});\nconst replica_example = new digitalocean.DatabaseReplica(\"replica-example\", {\n    clusterId: postgres_example.id,\n    size: \"db-s-1vcpu-1gb\",\n    region: \"nyc1\",\n});\nconst user_example = new digitalocean.DatabaseUser(\"user-example\", {clusterId: replica_example.uuid});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    engine=\"pg\",\n    version=\"11\",\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\",\n    node_count=1)\nreplica_example = digitalocean.DatabaseReplica(\"replica-example\",\n    cluster_id=postgres_example.id,\n    size=\"db-s-1vcpu-1gb\",\n    region=\"nyc1\")\nuser_example = digitalocean.DatabaseUser(\"user-example\", cluster_id=replica_example.uuid)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Engine = \"pg\",\n        Version = \"11\",\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n        NodeCount = 1,\n    });\n\n    var replica_example = new DigitalOcean.DatabaseReplica(\"replica-example\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Size = \"db-s-1vcpu-1gb\",\n        Region = \"nyc1\",\n    });\n\n    var user_example = new DigitalOcean.DatabaseUser(\"user-example\", new()\n    {\n        ClusterId = replica_example.Uuid,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"11\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseReplica(ctx, \"replica-example\", \u0026digitalocean.DatabaseReplicaArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"user-example\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: replica_example.Uuid,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseReplica;\nimport com.pulumi.digitalocean.DatabaseReplicaArgs;\nimport com.pulumi.digitalocean.DatabaseUser;\nimport com.pulumi.digitalocean.DatabaseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()        \n            .engine(\"pg\")\n            .version(\"11\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var replica_example = new DatabaseReplica(\"replica-example\", DatabaseReplicaArgs.builder()        \n            .clusterId(postgres_example.id())\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .build());\n\n        var user_example = new DatabaseUser(\"user-example\", DatabaseUserArgs.builder()        \n            .clusterId(replica_example.uuid())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: pg\n      version: '11'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n  replica-example:\n    type: digitalocean:DatabaseReplica\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      size: db-s-1vcpu-1gb\n      region: nyc1\n  user-example:\n    type: digitalocean:DatabaseUser\n    properties:\n      clusterId: ${[\"replica-example\"].uuid}\n```\n{{% /example %}}\n{{% example %}}\n### Create a new user for a Kafka database cluster \n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst kafka_example = new digitalocean.DatabaseCluster(\"kafka-example\", {\n    engine: \"kafka\",\n    version: \"3.5\",\n    size: \"db-s-1vcpu-2gb\",\n    region: \"nyc1\",\n    nodeCount: 3,\n});\nconst foobarTopic = new digitalocean.DatabaseKafkaTopic(\"foobarTopic\", {clusterId: digitalocean_database_cluster.foobar.id});\nconst foobarUser = new digitalocean.DatabaseUser(\"foobarUser\", {\n    clusterId: digitalocean_database_cluster.foobar.id,\n    settings: [{\n        acls: [\n            {\n                topic: \"topic-1\",\n                permission: \"produce\",\n            },\n            {\n                topic: \"topic-2\",\n                permission: \"produceconsume\",\n            },\n            {\n                topic: \"topic-*\",\n                permission: \"consume\",\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nkafka_example = digitalocean.DatabaseCluster(\"kafka-example\",\n    engine=\"kafka\",\n    version=\"3.5\",\n    size=\"db-s-1vcpu-2gb\",\n    region=\"nyc1\",\n    node_count=3)\nfoobar_topic = digitalocean.DatabaseKafkaTopic(\"foobarTopic\", cluster_id=digitalocean_database_cluster[\"foobar\"][\"id\"])\nfoobar_user = digitalocean.DatabaseUser(\"foobarUser\",\n    cluster_id=digitalocean_database_cluster[\"foobar\"][\"id\"],\n    settings=[digitalocean.DatabaseUserSettingArgs(\n        acls=[\n            digitalocean.DatabaseUserSettingAclArgs(\n                topic=\"topic-1\",\n                permission=\"produce\",\n            ),\n            digitalocean.DatabaseUserSettingAclArgs(\n                topic=\"topic-2\",\n                permission=\"produceconsume\",\n            ),\n            digitalocean.DatabaseUserSettingAclArgs(\n                topic=\"topic-*\",\n                permission=\"consume\",\n            ),\n        ],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kafka_example = new DigitalOcean.DatabaseCluster(\"kafka-example\", new()\n    {\n        Engine = \"kafka\",\n        Version = \"3.5\",\n        Size = \"db-s-1vcpu-2gb\",\n        Region = \"nyc1\",\n        NodeCount = 3,\n    });\n\n    var foobarTopic = new DigitalOcean.DatabaseKafkaTopic(\"foobarTopic\", new()\n    {\n        ClusterId = digitalocean_database_cluster.Foobar.Id,\n    });\n\n    var foobarUser = new DigitalOcean.DatabaseUser(\"foobarUser\", new()\n    {\n        ClusterId = digitalocean_database_cluster.Foobar.Id,\n        Settings = new[]\n        {\n            new DigitalOcean.Inputs.DatabaseUserSettingArgs\n            {\n                Acls = new[]\n                {\n                    new DigitalOcean.Inputs.DatabaseUserSettingAclArgs\n                    {\n                        Topic = \"topic-1\",\n                        Permission = \"produce\",\n                    },\n                    new DigitalOcean.Inputs.DatabaseUserSettingAclArgs\n                    {\n                        Topic = \"topic-2\",\n                        Permission = \"produceconsume\",\n                    },\n                    new DigitalOcean.Inputs.DatabaseUserSettingAclArgs\n                    {\n                        Topic = \"topic-*\",\n                        Permission = \"consume\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"kafka-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tEngine:    pulumi.String(\"kafka\"),\n\t\t\tVersion:   pulumi.String(\"3.5\"),\n\t\t\tSize:      pulumi.String(\"db-s-1vcpu-2gb\"),\n\t\t\tRegion:    pulumi.String(\"nyc1\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseKafkaTopic(ctx, \"foobarTopic\", \u0026digitalocean.DatabaseKafkaTopicArgs{\n\t\t\tClusterId: pulumi.Any(digitalocean_database_cluster.Foobar.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseUser(ctx, \"foobarUser\", \u0026digitalocean.DatabaseUserArgs{\n\t\t\tClusterId: pulumi.Any(digitalocean_database_cluster.Foobar.Id),\n\t\t\tSettings: digitalocean.DatabaseUserSettingArray{\n\t\t\t\t\u0026digitalocean.DatabaseUserSettingArgs{\n\t\t\t\t\tAcls: digitalocean.DatabaseUserSettingAclArray{\n\t\t\t\t\t\t\u0026digitalocean.DatabaseUserSettingAclArgs{\n\t\t\t\t\t\t\tTopic:      pulumi.String(\"topic-1\"),\n\t\t\t\t\t\t\tPermission: pulumi.String(\"produce\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026digitalocean.DatabaseUserSettingAclArgs{\n\t\t\t\t\t\t\tTopic:      pulumi.String(\"topic-2\"),\n\t\t\t\t\t\t\tPermission: pulumi.String(\"produceconsume\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026digitalocean.DatabaseUserSettingAclArgs{\n\t\t\t\t\t\t\tTopic:      pulumi.String(\"topic-*\"),\n\t\t\t\t\t\t\tPermission: pulumi.String(\"consume\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseKafkaTopic;\nimport com.pulumi.digitalocean.DatabaseKafkaTopicArgs;\nimport com.pulumi.digitalocean.DatabaseUser;\nimport com.pulumi.digitalocean.DatabaseUserArgs;\nimport com.pulumi.digitalocean.inputs.DatabaseUserSettingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var kafka_example = new DatabaseCluster(\"kafka-example\", DatabaseClusterArgs.builder()        \n            .engine(\"kafka\")\n            .version(\"3.5\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(3)\n            .build());\n\n        var foobarTopic = new DatabaseKafkaTopic(\"foobarTopic\", DatabaseKafkaTopicArgs.builder()        \n            .clusterId(digitalocean_database_cluster.foobar().id())\n            .build());\n\n        var foobarUser = new DatabaseUser(\"foobarUser\", DatabaseUserArgs.builder()        \n            .clusterId(digitalocean_database_cluster.foobar().id())\n            .settings(DatabaseUserSettingArgs.builder()\n                .acls(                \n                    DatabaseUserSettingAclArgs.builder()\n                        .topic(\"topic-1\")\n                        .permission(\"produce\")\n                        .build(),\n                    DatabaseUserSettingAclArgs.builder()\n                        .topic(\"topic-2\")\n                        .permission(\"produceconsume\")\n                        .build(),\n                    DatabaseUserSettingAclArgs.builder()\n                        .topic(\"topic-*\")\n                        .permission(\"consume\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  kafka-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      engine: kafka\n      version: '3.5'\n      size: db-s-1vcpu-2gb\n      region: nyc1\n      nodeCount: 3\n  foobarTopic:\n    type: digitalocean:DatabaseKafkaTopic\n    properties:\n      clusterId: ${digitalocean_database_cluster.foobar.id}\n  foobarUser:\n    type: digitalocean:DatabaseUser\n    properties:\n      clusterId: ${digitalocean_database_cluster.foobar.id}\n      settings:\n        - acls:\n            - topic: topic-1\n              permission: produce\n            - topic: topic-2\n              permission: produceconsume\n            - topic: topic-*\n              permission: consume\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabase user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example\n\n```sh\n $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar\n```\n\n ",
             "properties": {
                 "clusterId": {
                     "type": "string",
@@ -9500,6 +9592,13 @@
                 "role": {
                     "type": "string",
                     "description": "Role for the database user. The value will be either \"primary\" or \"normal\".\n"
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DatabaseUserSetting:DatabaseUserSetting"
+                    },
+                    "description": "Contains optional settings for the user.\nThe `settings` block is documented below.\n"
                 }
             },
             "required": [
@@ -9522,6 +9621,13 @@
                     "type": "string",
                     "description": "The name for the database user.\n",
                     "willReplaceOnChanges": true
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DatabaseUserSetting:DatabaseUserSetting"
+                    },
+                    "description": "Contains optional settings for the user.\nThe `settings` block is documented below.\n"
                 }
             },
             "requiredInputs": [
@@ -9552,6 +9658,13 @@
                     "role": {
                         "type": "string",
                         "description": "Role for the database user. The value will be either \"primary\" or \"normal\".\n"
+                    },
+                    "settings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/DatabaseUserSetting:DatabaseUserSetting"
+                        },
+                        "description": "Contains optional settings for the user.\nThe `settings` block is documented below.\n"
                     }
                 },
                 "type": "object"
@@ -10584,7 +10697,7 @@
                 },
                 "ha": {
                     "type": "boolean",
-                    "description": "Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false\n"
+                    "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
                 },
                 "ipv4Address": {
                     "type": "string",
@@ -10677,8 +10790,7 @@
                 },
                 "ha": {
                     "type": "boolean",
-                    "description": "Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false\n",
-                    "willReplaceOnChanges": true
+                    "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
                 },
                 "maintenancePolicy": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -10765,8 +10877,7 @@
                     },
                     "ha": {
                         "type": "boolean",
-                        "description": "Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false\n",
-                        "willReplaceOnChanges": true
+                        "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
                     },
                     "ipv4Address": {
                         "type": "string",
@@ -13832,6 +13943,12 @@
                     "role": {
                         "type": "string",
                         "description": "The role of the database user. The value will be either `primary` or `normal`.\n"
+                    },
+                    "settings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDatabaseUserSetting:getDatabaseUserSetting"
+                        }
                     }
                 },
                 "type": "object",
@@ -13841,6 +13958,7 @@
                     "name",
                     "password",
                     "role",
+                    "settings",
                     "id"
                 ]
             }
