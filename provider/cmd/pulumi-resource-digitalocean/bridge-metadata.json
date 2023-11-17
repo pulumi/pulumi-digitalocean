@@ -24,6 +24,9 @@
                                 "env": {
                                     "maxItemsOne": false
                                 },
+                                "features": {
+                                    "maxItemsOne": false
+                                },
                                 "function": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -444,7 +447,19 @@
             },
             "digitalocean_database_user": {
                 "current": "digitalocean:index/databaseUser:DatabaseUser",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "acl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "digitalocean_domain": {
                 "current": "digitalocean:index/domain:Domain",
@@ -841,6 +856,9 @@
                                 "env": {
                                     "maxItemsOne": false
                                 },
+                                "features": {
+                                    "maxItemsOne": false
+                                },
                                 "function": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -1208,7 +1226,19 @@
             },
             "digitalocean_database_user": {
                 "current": "digitalocean:index/getDatabaseUser:getDatabaseUser",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "acl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "digitalocean_domain": {
                 "current": "digitalocean:index/getDomain:getDomain",
@@ -2053,6 +2083,9 @@
                 "segmentMs": "segment_ms",
                 "uncleanLeaderElectionEnable": "unclean_leader_election_enable"
             },
+            "digitalocean:index/DatabaseUserSetting:DatabaseUserSetting": {
+                "acls": "acl"
+            },
             "digitalocean:index/FirewallInboundRule:FirewallInboundRule": {
                 "portRange": "port_range",
                 "sourceAddresses": "source_addresses",
@@ -2559,6 +2592,9 @@
             "digitalocean:index/getDatabaseUser:getDatabaseUser": {
                 "clusterId": "cluster_id",
                 "mysqlAuthPlugin": "mysql_auth_plugin"
+            },
+            "digitalocean:index/getDatabaseUserSetting:getDatabaseUserSetting": {
+                "acls": "acl"
             },
             "digitalocean:index/getDomain:getDomain": {
                 "domainUrn": "urn",

@@ -93,6 +93,64 @@ import (
 //	}
 //
 // ```
+// ### Create a new user for a Kafka database cluster
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("kafka"),
+//				Version:   pulumi.String("3.5"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseKafkaTopic(ctx, "foobarTopic", &digitalocean.DatabaseKafkaTopicArgs{
+//				ClusterId: pulumi.Any(digitalocean_database_cluster.Foobar.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseUser(ctx, "foobarUser", &digitalocean.DatabaseUserArgs{
+//				ClusterId: pulumi.Any(digitalocean_database_cluster.Foobar.Id),
+//				Settings: digitalocean.DatabaseUserSettingArray{
+//					&digitalocean.DatabaseUserSettingArgs{
+//						Acls: digitalocean.DatabaseUserSettingAclArray{
+//							&digitalocean.DatabaseUserSettingAclArgs{
+//								Topic:      pulumi.String("topic-1"),
+//								Permission: pulumi.String("produce"),
+//							},
+//							&digitalocean.DatabaseUserSettingAclArgs{
+//								Topic:      pulumi.String("topic-2"),
+//								Permission: pulumi.String("produceconsume"),
+//							},
+//							&digitalocean.DatabaseUserSettingAclArgs{
+//								Topic:      pulumi.String("topic-*"),
+//								Permission: pulumi.String("consume"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -116,6 +174,9 @@ type DatabaseUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Role for the database user. The value will be either "primary" or "normal".
 	Role pulumi.StringOutput `pulumi:"role"`
+	// Contains optional settings for the user.
+	// The `settings` block is documented below.
+	Settings DatabaseUserSettingArrayOutput `pulumi:"settings"`
 }
 
 // NewDatabaseUser registers a new resource with the given unique name, arguments, and options.
@@ -165,6 +226,9 @@ type databaseUserState struct {
 	Password *string `pulumi:"password"`
 	// Role for the database user. The value will be either "primary" or "normal".
 	Role *string `pulumi:"role"`
+	// Contains optional settings for the user.
+	// The `settings` block is documented below.
+	Settings []DatabaseUserSetting `pulumi:"settings"`
 }
 
 type DatabaseUserState struct {
@@ -178,6 +242,9 @@ type DatabaseUserState struct {
 	Password pulumi.StringPtrInput
 	// Role for the database user. The value will be either "primary" or "normal".
 	Role pulumi.StringPtrInput
+	// Contains optional settings for the user.
+	// The `settings` block is documented below.
+	Settings DatabaseUserSettingArrayInput
 }
 
 func (DatabaseUserState) ElementType() reflect.Type {
@@ -191,6 +258,9 @@ type databaseUserArgs struct {
 	MysqlAuthPlugin *string `pulumi:"mysqlAuthPlugin"`
 	// The name for the database user.
 	Name *string `pulumi:"name"`
+	// Contains optional settings for the user.
+	// The `settings` block is documented below.
+	Settings []DatabaseUserSetting `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a DatabaseUser resource.
@@ -201,6 +271,9 @@ type DatabaseUserArgs struct {
 	MysqlAuthPlugin pulumi.StringPtrInput
 	// The name for the database user.
 	Name pulumi.StringPtrInput
+	// Contains optional settings for the user.
+	// The `settings` block is documented below.
+	Settings DatabaseUserSettingArrayInput
 }
 
 func (DatabaseUserArgs) ElementType() reflect.Type {
@@ -313,6 +386,12 @@ func (o DatabaseUserOutput) Password() pulumi.StringOutput {
 // Role for the database user. The value will be either "primary" or "normal".
 func (o DatabaseUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// Contains optional settings for the user.
+// The `settings` block is documented below.
+func (o DatabaseUserOutput) Settings() DatabaseUserSettingArrayOutput {
+	return o.ApplyT(func(v *DatabaseUser) DatabaseUserSettingArrayOutput { return v.Settings }).(DatabaseUserSettingArrayOutput)
 }
 
 type DatabaseUserArrayOutput struct{ *pulumi.OutputState }

@@ -24,6 +24,10 @@ export interface AppSpec {
      * Describes an environment variable made available to an app competent.
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
+    /**
+     * A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+     */
+    features?: pulumi.Input<pulumi.Input<string>[]>;
     functions?: pulumi.Input<pulumi.Input<inputs.AppSpecFunction>[]>;
     /**
      * Specification for component routing, rewrites, and redirects.
@@ -1583,6 +1587,30 @@ export interface DatabaseKafkaTopicConfig {
      * Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
      */
     uncleanLeaderElectionEnable?: pulumi.Input<boolean>;
+}
+
+export interface DatabaseUserSetting {
+    /**
+     * A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+     *
+     * An individual ACL includes the following:
+     */
+    acls?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSettingAcl>[]>;
+}
+
+export interface DatabaseUserSettingAcl {
+    /**
+     * An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+     */
+    permission: pulumi.Input<string>;
+    /**
+     * A regex for matching the topic(s) that this ACL should apply to.
+     */
+    topic: pulumi.Input<string>;
 }
 
 export interface FirewallInboundRule {

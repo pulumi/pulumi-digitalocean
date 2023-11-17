@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.DatabaseUserArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.DatabaseUserState;
+import com.pulumi.digitalocean.outputs.DatabaseUserSetting;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -107,6 +108,67 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Create a new user for a Kafka database cluster
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import com.pulumi.digitalocean.DatabaseKafkaTopic;
+ * import com.pulumi.digitalocean.DatabaseKafkaTopicArgs;
+ * import com.pulumi.digitalocean.DatabaseUser;
+ * import com.pulumi.digitalocean.DatabaseUserArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseUserSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var kafka_example = new DatabaseCluster(&#34;kafka-example&#34;, DatabaseClusterArgs.builder()        
+ *             .engine(&#34;kafka&#34;)
+ *             .version(&#34;3.5&#34;)
+ *             .size(&#34;db-s-1vcpu-2gb&#34;)
+ *             .region(&#34;nyc1&#34;)
+ *             .nodeCount(3)
+ *             .build());
+ * 
+ *         var foobarTopic = new DatabaseKafkaTopic(&#34;foobarTopic&#34;, DatabaseKafkaTopicArgs.builder()        
+ *             .clusterId(digitalocean_database_cluster.foobar().id())
+ *             .build());
+ * 
+ *         var foobarUser = new DatabaseUser(&#34;foobarUser&#34;, DatabaseUserArgs.builder()        
+ *             .clusterId(digitalocean_database_cluster.foobar().id())
+ *             .settings(DatabaseUserSettingArgs.builder()
+ *                 .acls(                
+ *                     DatabaseUserSettingAclArgs.builder()
+ *                         .topic(&#34;topic-1&#34;)
+ *                         .permission(&#34;produce&#34;)
+ *                         .build(),
+ *                     DatabaseUserSettingAclArgs.builder()
+ *                         .topic(&#34;topic-2&#34;)
+ *                         .permission(&#34;produceconsume&#34;)
+ *                         .build(),
+ *                     DatabaseUserSettingAclArgs.builder()
+ *                         .topic(&#34;topic-*&#34;)
+ *                         .permission(&#34;consume&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -188,6 +250,22 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      */
     public Output<String> role() {
         return this.role;
+    }
+    /**
+     * Contains optional settings for the user.
+     * The `settings` block is documented below.
+     * 
+     */
+    @Export(name="settings", refs={List.class,DatabaseUserSetting.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DatabaseUserSetting>> settings;
+
+    /**
+     * @return Contains optional settings for the user.
+     * The `settings` block is documented below.
+     * 
+     */
+    public Output<Optional<List<DatabaseUserSetting>>> settings() {
+        return Codegen.optional(this.settings);
     }
 
     /**

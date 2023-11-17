@@ -89,6 +89,8 @@ __all__ = [
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'DatabaseKafkaTopicConfigArgs',
+    'DatabaseUserSettingArgs',
+    'DatabaseUserSettingAclArgs',
     'FirewallInboundRuleArgs',
     'FirewallOutboundRuleArgs',
     'FirewallPendingChangeArgs',
@@ -146,6 +148,7 @@ class AppSpecArgs:
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  functions: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]] = None,
                  ingress: Optional[pulumi.Input['AppSpecIngressArgs']] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]] = None,
@@ -158,6 +161,7 @@ class AppSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param pulumi.Input['AppSpecIngressArgs'] ingress: Specification for component routing, rewrites, and redirects.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
         """
@@ -175,6 +179,8 @@ class AppSpecArgs:
             pulumi.set(__self__, "domains", domains)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if ingress is not None:
@@ -258,6 +264,18 @@ class AppSpecArgs:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]]):
         pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "features", value)
 
     @property
     @pulumi.getter
@@ -5996,6 +6014,86 @@ class DatabaseKafkaTopicConfigArgs:
     @unclean_leader_election_enable.setter
     def unclean_leader_election_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "unclean_leader_election_enable", value)
+
+
+@pulumi.input_type
+class DatabaseUserSettingArgs:
+    def __init__(__self__, *,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgs']]] acls: A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+               
+               An individual ACL includes the following:
+        """
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgs']]]]:
+        """
+        A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+
+        An individual ACL includes the following:
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgs']]]]):
+        pulumi.set(self, "acls", value)
+
+
+@pulumi.input_type
+class DatabaseUserSettingAclArgs:
+    def __init__(__self__, *,
+                 permission: pulumi.Input[str],
+                 topic: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        :param pulumi.Input[str] topic: A regex for matching the topic(s) that this ACL should apply to.
+        :param pulumi.Input[str] id: An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+        """
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "topic", topic)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[str]:
+        """
+        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permission", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        A regex for matching the topic(s) that this ACL should apply to.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type

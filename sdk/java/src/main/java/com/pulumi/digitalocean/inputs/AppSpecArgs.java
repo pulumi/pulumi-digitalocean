@@ -97,6 +97,21 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.envs);
     }
 
+    /**
+     * A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+     * 
+     */
+    @Import(name="features")
+    private @Nullable Output<List<String>> features;
+
+    /**
+     * @return A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+     * 
+     */
+    public Optional<Output<List<String>>> features() {
+        return Optional.ofNullable(this.features);
+    }
+
     @Import(name="functions")
     private @Nullable Output<List<AppSpecFunctionArgs>> functions;
 
@@ -185,6 +200,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         this.domainNames = $.domainNames;
         this.domains = $.domains;
         this.envs = $.envs;
+        this.features = $.features;
         this.functions = $.functions;
         this.ingress = $.ingress;
         this.jobs = $.jobs;
@@ -354,6 +370,37 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder envs(AppSpecEnvArgs... envs) {
             return envs(List.of(envs));
+        }
+
+        /**
+         * @param features A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(@Nullable Output<List<String>> features) {
+            $.features = features;
+            return this;
+        }
+
+        /**
+         * @param features A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(List<String> features) {
+            return features(Output.of(features));
+        }
+
+        /**
+         * @param features A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(String... features) {
+            return features(List.of(features));
         }
 
         public Builder functions(@Nullable Output<List<AppSpecFunctionArgs>> functions) {

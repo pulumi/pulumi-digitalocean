@@ -24,6 +24,10 @@ export interface AppSpec {
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.AppSpecEnv[];
+    /**
+     * A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+     */
+    features?: string[];
     functions?: outputs.AppSpecFunction[];
     /**
      * Specification for component routing, rewrites, and redirects.
@@ -1585,6 +1589,30 @@ export interface DatabaseKafkaTopicConfig {
     uncleanLeaderElectionEnable: boolean;
 }
 
+export interface DatabaseUserSetting {
+    /**
+     * A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+     *
+     * An individual ACL includes the following:
+     */
+    acls?: outputs.DatabaseUserSettingAcl[];
+}
+
+export interface DatabaseUserSettingAcl {
+    /**
+     * An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+     */
+    id: string;
+    /**
+     * The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+     */
+    permission: string;
+    /**
+     * A regex for matching the topic(s) that this ACL should apply to.
+     */
+    topic: string;
+}
+
 export interface FirewallInboundRule {
     /**
      * The ports on which traffic will be allowed
@@ -1694,6 +1722,7 @@ export interface GetAppSpec {
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.GetAppSpecEnv[];
+    features?: string[];
     functions?: outputs.GetAppSpecFunction[];
     ingress: outputs.GetAppSpecIngress;
     jobs?: outputs.GetAppSpecJob[];
@@ -3052,6 +3081,16 @@ export interface GetDatabaseClusterMaintenanceWindow {
      * The hour in UTC at which maintenance updates will be applied in 24 hour format.
      */
     hour: string;
+}
+
+export interface GetDatabaseUserSetting {
+    acls?: outputs.GetDatabaseUserSettingAcl[];
+}
+
+export interface GetDatabaseUserSettingAcl {
+    id: string;
+    permission: string;
+    topic: string;
 }
 
 export interface GetDomainsDomain {

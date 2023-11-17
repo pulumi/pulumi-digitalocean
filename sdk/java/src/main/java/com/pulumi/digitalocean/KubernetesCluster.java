@@ -126,14 +126,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
-     * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      * 
      */
     @Export(name="ha", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ha;
 
     /**
-     * @return Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
+     * @return Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      * 
      */
     public Output<Optional<Boolean>> ha() {

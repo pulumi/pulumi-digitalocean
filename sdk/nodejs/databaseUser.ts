@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -42,6 +45,39 @@ import * as utilities from "./utilities";
  *     region: "nyc1",
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: replica_example.uuid});
+ * ```
+ * ### Create a new user for a Kafka database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     engine: "kafka",
+ *     version: "3.5",
+ *     size: "db-s-1vcpu-2gb",
+ *     region: "nyc1",
+ *     nodeCount: 3,
+ * });
+ * const foobarTopic = new digitalocean.DatabaseKafkaTopic("foobarTopic", {clusterId: digitalocean_database_cluster.foobar.id});
+ * const foobarUser = new digitalocean.DatabaseUser("foobarUser", {
+ *     clusterId: digitalocean_database_cluster.foobar.id,
+ *     settings: [{
+ *         acls: [
+ *             {
+ *                 topic: "topic-1",
+ *                 permission: "produce",
+ *             },
+ *             {
+ *                 topic: "topic-2",
+ *                 permission: "produceconsume",
+ *             },
+ *             {
+ *                 topic: "topic-*",
+ *                 permission: "consume",
+ *             },
+ *         ],
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -100,6 +136,11 @@ export class DatabaseUser extends pulumi.CustomResource {
      * Role for the database user. The value will be either "primary" or "normal".
      */
     public /*out*/ readonly role!: pulumi.Output<string>;
+    /**
+     * Contains optional settings for the user.
+     * The `settings` block is documented below.
+     */
+    public readonly settings!: pulumi.Output<outputs.DatabaseUserSetting[] | undefined>;
 
     /**
      * Create a DatabaseUser resource with the given unique name, arguments, and options.
@@ -119,6 +160,7 @@ export class DatabaseUser extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as DatabaseUserArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -127,6 +169,7 @@ export class DatabaseUser extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["mysqlAuthPlugin"] = args ? args.mysqlAuthPlugin : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
         }
@@ -161,6 +204,11 @@ export interface DatabaseUserState {
      * Role for the database user. The value will be either "primary" or "normal".
      */
     role?: pulumi.Input<string>;
+    /**
+     * Contains optional settings for the user.
+     * The `settings` block is documented below.
+     */
+    settings?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSetting>[]>;
 }
 
 /**
@@ -179,4 +227,9 @@ export interface DatabaseUserArgs {
      * The name for the database user.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Contains optional settings for the user.
+     * The `settings` block is documented below.
+     */
+    settings?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSetting>[]>;
 }

@@ -45,6 +45,11 @@ public final class AppSpec {
      * 
      */
     private @Nullable List<AppSpecEnv> envs;
+    /**
+     * @return A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+     * 
+     */
+    private @Nullable List<String> features;
     private @Nullable List<AppSpecFunction> functions;
     /**
      * @return Specification for component routing, rewrites, and redirects.
@@ -100,6 +105,13 @@ public final class AppSpec {
     public List<AppSpecEnv> envs() {
         return this.envs == null ? List.of() : this.envs;
     }
+    /**
+     * @return A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+     * 
+     */
+    public List<String> features() {
+        return this.features == null ? List.of() : this.features;
+    }
     public List<AppSpecFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
     }
@@ -151,6 +163,7 @@ public final class AppSpec {
         private @Nullable List<AppSpecDomainName> domainNames;
         private @Nullable List<String> domains;
         private @Nullable List<AppSpecEnv> envs;
+        private @Nullable List<String> features;
         private @Nullable List<AppSpecFunction> functions;
         private @Nullable AppSpecIngress ingress;
         private @Nullable List<AppSpecJob> jobs;
@@ -167,6 +180,7 @@ public final class AppSpec {
     	      this.domainNames = defaults.domainNames;
     	      this.domains = defaults.domains;
     	      this.envs = defaults.envs;
+    	      this.features = defaults.features;
     	      this.functions = defaults.functions;
     	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
@@ -216,6 +230,14 @@ public final class AppSpec {
         }
         public Builder envs(AppSpecEnv... envs) {
             return envs(List.of(envs));
+        }
+        @CustomType.Setter
+        public Builder features(@Nullable List<String> features) {
+            this.features = features;
+            return this;
+        }
+        public Builder features(String... features) {
+            return features(List.of(features));
         }
         @CustomType.Setter
         public Builder functions(@Nullable List<AppSpecFunction> functions) {
@@ -279,6 +301,7 @@ public final class AppSpec {
             _resultValue.domainNames = domainNames;
             _resultValue.domains = domains;
             _resultValue.envs = envs;
+            _resultValue.features = features;
             _resultValue.functions = functions;
             _resultValue.ingress = ingress;
             _resultValue.jobs = jobs;

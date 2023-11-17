@@ -72,6 +72,60 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// ### Create a new user for a Kafka database cluster
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
+    ///     {
+    ///         Engine = "kafka",
+    ///         Version = "3.5",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 3,
+    ///     });
+    /// 
+    ///     var foobarTopic = new DigitalOcean.DatabaseKafkaTopic("foobarTopic", new()
+    ///     {
+    ///         ClusterId = digitalocean_database_cluster.Foobar.Id,
+    ///     });
+    /// 
+    ///     var foobarUser = new DigitalOcean.DatabaseUser("foobarUser", new()
+    ///     {
+    ///         ClusterId = digitalocean_database_cluster.Foobar.Id,
+    ///         Settings = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.DatabaseUserSettingArgs
+    ///             {
+    ///                 Acls = new[]
+    ///                 {
+    ///                     new DigitalOcean.Inputs.DatabaseUserSettingAclArgs
+    ///                     {
+    ///                         Topic = "topic-1",
+    ///                         Permission = "produce",
+    ///                     },
+    ///                     new DigitalOcean.Inputs.DatabaseUserSettingAclArgs
+    ///                     {
+    ///                         Topic = "topic-2",
+    ///                         Permission = "produceconsume",
+    ///                     },
+    ///                     new DigitalOcean.Inputs.DatabaseUserSettingAclArgs
+    ///                     {
+    ///                         Topic = "topic-*",
+    ///                         Permission = "consume",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -113,6 +167,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains optional settings for the user.
+        /// The `settings` block is documented below.
+        /// </summary>
+        [Output("settings")]
+        public Output<ImmutableArray<Outputs.DatabaseUserSetting>> Settings { get; private set; } = null!;
 
 
         /// <summary>
@@ -182,6 +243,19 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("settings")]
+        private InputList<Inputs.DatabaseUserSettingArgs>? _settings;
+
+        /// <summary>
+        /// Contains optional settings for the user.
+        /// The `settings` block is documented below.
+        /// </summary>
+        public InputList<Inputs.DatabaseUserSettingArgs> Settings
+        {
+            get => _settings ?? (_settings = new InputList<Inputs.DatabaseUserSettingArgs>());
+            set => _settings = value;
+        }
+
         public DatabaseUserArgs()
         {
         }
@@ -229,6 +303,19 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
+
+        [Input("settings")]
+        private InputList<Inputs.DatabaseUserSettingGetArgs>? _settings;
+
+        /// <summary>
+        /// Contains optional settings for the user.
+        /// The `settings` block is documented below.
+        /// </summary>
+        public InputList<Inputs.DatabaseUserSettingGetArgs> Settings
+        {
+            get => _settings ?? (_settings = new InputList<Inputs.DatabaseUserSettingGetArgs>());
+            set => _settings = value;
+        }
 
         public DatabaseUserState()
         {

@@ -65,6 +65,18 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _envs = value;
         }
 
+        [Input("features")]
+        private InputList<string>? _features;
+
+        /// <summary>
+        /// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+        /// </summary>
+        public InputList<string> Features
+        {
+            get => _features ?? (_features = new InputList<string>());
+            set => _features = value;
+        }
+
         [Input("functions")]
         private InputList<Inputs.AppSpecFunctionGetArgs>? _functions;
         public InputList<Inputs.AppSpecFunctionGetArgs> Functions

@@ -4,7 +4,9 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetDatabaseUserSetting;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -31,6 +33,7 @@ public final class GetDatabaseUserResult {
      * 
      */
     private String role;
+    private List<GetDatabaseUserSetting> settings;
 
     private GetDatabaseUserResult() {}
     public String clusterId() {
@@ -67,6 +70,9 @@ public final class GetDatabaseUserResult {
     public String role() {
         return this.role;
     }
+    public List<GetDatabaseUserSetting> settings() {
+        return this.settings;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -83,6 +89,7 @@ public final class GetDatabaseUserResult {
         private String name;
         private String password;
         private String role;
+        private List<GetDatabaseUserSetting> settings;
         public Builder() {}
         public Builder(GetDatabaseUserResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,6 +99,7 @@ public final class GetDatabaseUserResult {
     	      this.name = defaults.name;
     	      this.password = defaults.password;
     	      this.role = defaults.role;
+    	      this.settings = defaults.settings;
         }
 
         @CustomType.Setter
@@ -124,6 +132,14 @@ public final class GetDatabaseUserResult {
             this.role = Objects.requireNonNull(role);
             return this;
         }
+        @CustomType.Setter
+        public Builder settings(List<GetDatabaseUserSetting> settings) {
+            this.settings = Objects.requireNonNull(settings);
+            return this;
+        }
+        public Builder settings(GetDatabaseUserSetting... settings) {
+            return settings(List.of(settings));
+        }
         public GetDatabaseUserResult build() {
             final var _resultValue = new GetDatabaseUserResult();
             _resultValue.clusterId = clusterId;
@@ -132,6 +148,7 @@ public final class GetDatabaseUserResult {
             _resultValue.name = name;
             _resultValue.password = password;
             _resultValue.role = role;
+            _resultValue.settings = settings;
             return _resultValue;
         }
     }
