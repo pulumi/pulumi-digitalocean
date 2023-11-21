@@ -2920,7 +2920,8 @@
             },
             "digitalocean:index/reservedIp:ReservedIp": {
                 "dropletId": "droplet_id",
-                "ipAddress": "ip_address"
+                "ipAddress": "ip_address",
+                "reservedIpUrn": "urn"
             },
             "digitalocean:index/reservedIpAssignment:ReservedIpAssignment": {
                 "dropletId": "droplet_id",

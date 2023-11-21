@@ -79,7 +79,7 @@ export class ReservedIp extends pulumi.CustomResource {
     /**
      * The uniform resource name of the reserved ip
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly reservedIpUrn!: pulumi.Output<string>;
 
     /**
      * Create a ReservedIp resource with the given unique name, arguments, and options.
@@ -97,7 +97,7 @@ export class ReservedIp extends pulumi.CustomResource {
             resourceInputs["dropletId"] = state ? state.dropletId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
+            resourceInputs["reservedIpUrn"] = state ? state.reservedIpUrn : undefined;
         } else {
             const args = argsOrState as ReservedIpArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
@@ -106,7 +106,7 @@ export class ReservedIp extends pulumi.CustomResource {
             resourceInputs["dropletId"] = args ? args.dropletId : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["urn"] = undefined /*out*/;
+            resourceInputs["reservedIpUrn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ReservedIp.__pulumiType, name, resourceInputs, opts);
@@ -132,7 +132,7 @@ export interface ReservedIpState {
     /**
      * The uniform resource name of the reserved ip
      */
-    urn?: pulumi.Input<string>;
+    reservedIpUrn?: pulumi.Input<string>;
 }
 
 /**

@@ -65,15 +65,15 @@ public final class ReservedIpState extends com.pulumi.resources.ResourceArgs {
      * The uniform resource name of the reserved ip
      * 
      */
-    @Import(name="urn")
-    private @Nullable Output<String> urn;
+    @Import(name="reservedIpUrn")
+    private @Nullable Output<String> reservedIpUrn;
 
     /**
      * @return The uniform resource name of the reserved ip
      * 
      */
-    public Optional<Output<String>> urn() {
-        return Optional.ofNullable(this.urn);
+    public Optional<Output<String>> reservedIpUrn() {
+        return Optional.ofNullable(this.reservedIpUrn);
     }
 
     private ReservedIpState() {}
@@ -82,7 +82,7 @@ public final class ReservedIpState extends com.pulumi.resources.ResourceArgs {
         this.dropletId = $.dropletId;
         this.ipAddress = $.ipAddress;
         this.region = $.region;
-        this.urn = $.urn;
+        this.reservedIpUrn = $.reservedIpUrn;
     }
 
     public static Builder builder() {
@@ -167,24 +167,24 @@ public final class ReservedIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urn The uniform resource name of the reserved ip
+         * @param reservedIpUrn The uniform resource name of the reserved ip
          * 
          * @return builder
          * 
          */
-        public Builder urn(@Nullable Output<String> urn) {
-            $.urn = urn;
+        public Builder reservedIpUrn(@Nullable Output<String> reservedIpUrn) {
+            $.reservedIpUrn = reservedIpUrn;
             return this;
         }
 
         /**
-         * @param urn The uniform resource name of the reserved ip
+         * @param reservedIpUrn The uniform resource name of the reserved ip
          * 
          * @return builder
          * 
          */
-        public Builder urn(String urn) {
-            return urn(Output.of(urn));
+        public Builder reservedIpUrn(String reservedIpUrn) {
+            return reservedIpUrn(Output.of(reservedIpUrn));
         }
 
         public ReservedIpState build() {

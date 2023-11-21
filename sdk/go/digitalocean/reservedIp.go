@@ -72,7 +72,7 @@ type ReservedIp struct {
 	// The region that the reserved IP is reserved to.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The uniform resource name of the reserved ip
-	Urn pulumi.StringOutput `pulumi:"urn"`
+	ReservedIpUrn pulumi.StringOutput `pulumi:"reservedIpUrn"`
 }
 
 // NewReservedIp registers a new resource with the given unique name, arguments, and options.
@@ -115,7 +115,7 @@ type reservedIpState struct {
 	// The region that the reserved IP is reserved to.
 	Region *string `pulumi:"region"`
 	// The uniform resource name of the reserved ip
-	Urn *string `pulumi:"urn"`
+	ReservedIpUrn *string `pulumi:"reservedIpUrn"`
 }
 
 type ReservedIpState struct {
@@ -126,7 +126,7 @@ type ReservedIpState struct {
 	// The region that the reserved IP is reserved to.
 	Region pulumi.StringPtrInput
 	// The uniform resource name of the reserved ip
-	Urn pulumi.StringPtrInput
+	ReservedIpUrn pulumi.StringPtrInput
 }
 
 func (ReservedIpState) ElementType() reflect.Type {
@@ -255,8 +255,8 @@ func (o ReservedIpOutput) Region() pulumi.StringOutput {
 }
 
 // The uniform resource name of the reserved ip
-func (o ReservedIpOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *ReservedIp) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
+func (o ReservedIpOutput) ReservedIpUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedIp) pulumi.StringOutput { return v.ReservedIpUrn }).(pulumi.StringOutput)
 }
 
 type ReservedIpArrayOutput struct{ *pulumi.OutputState }
