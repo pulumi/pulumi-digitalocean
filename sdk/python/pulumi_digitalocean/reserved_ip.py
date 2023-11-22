@@ -72,13 +72,13 @@ class _ReservedIpState:
                  droplet_id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None):
+                 reserved_ip_urn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReservedIp resources.
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
-        :param pulumi.Input[str] urn: The uniform resource name of the reserved ip
+        :param pulumi.Input[str] reserved_ip_urn: The uniform resource name of the reserved ip
         """
         if droplet_id is not None:
             pulumi.set(__self__, "droplet_id", droplet_id)
@@ -86,8 +86,8 @@ class _ReservedIpState:
             pulumi.set(__self__, "ip_address", ip_address)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+        if reserved_ip_urn is not None:
+            pulumi.set(__self__, "reserved_ip_urn", reserved_ip_urn)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -126,16 +126,16 @@ class _ReservedIpState:
         pulumi.set(self, "region", value)
 
     @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="reservedIpUrn")
+    def reserved_ip_urn(self) -> Optional[pulumi.Input[str]]:
         """
         The uniform resource name of the reserved ip
         """
-        return pulumi.get(self, "urn")
+        return pulumi.get(self, "reserved_ip_urn")
 
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
+    @reserved_ip_urn.setter
+    def reserved_ip_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_ip_urn", value)
 
 
 class ReservedIp(pulumi.CustomResource):
@@ -251,7 +251,7 @@ class ReservedIp(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
-            __props__.__dict__["urn"] = None
+            __props__.__dict__["reserved_ip_urn"] = None
         super(ReservedIp, __self__).__init__(
             'digitalocean:index/reservedIp:ReservedIp',
             resource_name,
@@ -265,7 +265,7 @@ class ReservedIp(pulumi.CustomResource):
             droplet_id: Optional[pulumi.Input[int]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None) -> 'ReservedIp':
+            reserved_ip_urn: Optional[pulumi.Input[str]] = None) -> 'ReservedIp':
         """
         Get an existing ReservedIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -276,7 +276,7 @@ class ReservedIp(pulumi.CustomResource):
         :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[str] ip_address: The IP Address of the resource
         :param pulumi.Input[str] region: The region that the reserved IP is reserved to.
-        :param pulumi.Input[str] urn: The uniform resource name of the reserved ip
+        :param pulumi.Input[str] reserved_ip_urn: The uniform resource name of the reserved ip
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -285,7 +285,7 @@ class ReservedIp(pulumi.CustomResource):
         __props__.__dict__["droplet_id"] = droplet_id
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["region"] = region
-        __props__.__dict__["urn"] = urn
+        __props__.__dict__["reserved_ip_urn"] = reserved_ip_urn
         return ReservedIp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -313,10 +313,10 @@ class ReservedIp(pulumi.CustomResource):
         return pulumi.get(self, "region")
 
     @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="reservedIpUrn")
+    def reserved_ip_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the reserved ip
         """
-        return pulumi.get(self, "urn")
+        return pulumi.get(self, "reserved_ip_urn")
 

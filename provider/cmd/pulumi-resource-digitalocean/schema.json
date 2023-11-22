@@ -11881,7 +11881,7 @@
                     "type": "string",
                     "description": "The region that the reserved IP is reserved to.\n"
                 },
-                "urn": {
+                "reservedIpUrn": {
                     "type": "string",
                     "description": "The uniform resource name of the reserved ip\n"
                 }
@@ -11889,7 +11889,7 @@
             "required": [
                 "ipAddress",
                 "region",
-                "urn"
+                "reservedIpUrn"
             ],
             "inputProperties": {
                 "dropletId": {
@@ -11925,7 +11925,7 @@
                         "description": "The region that the reserved IP is reserved to.\n",
                         "willReplaceOnChanges": true
                     },
-                    "urn": {
+                    "reservedIpUrn": {
                         "type": "string",
                         "description": "The uniform resource name of the reserved ip\n"
                     }

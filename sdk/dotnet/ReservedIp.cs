@@ -74,8 +74,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The uniform resource name of the reserved ip
         /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
+        [Output("reservedIpUrn")]
+        public Output<string> ReservedIpUrn { get; private set; } = null!;
 
 
         /// <summary>
@@ -170,8 +170,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The uniform resource name of the reserved ip
         /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
+        [Input("reservedIpUrn")]
+        public Input<string>? ReservedIpUrn { get; set; }
 
         public ReservedIpState()
         {

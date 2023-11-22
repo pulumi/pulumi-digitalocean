@@ -287,10 +287,17 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_custom_image":           {Tok: makeResource(digitalOceanMod, "CustomImage")},
-			"digitalocean_monitor_alert":          {Tok: makeResource(digitalOceanMod, "MonitorAlert")},
-			"digitalocean_spaces_bucket_policy":   {Tok: makeResource(digitalOceanMod, "SpacesBucketPolicy")},
-			"digitalocean_reserved_ip":            {Tok: makeResource(digitalOceanMod, "ReservedIp")},
+			"digitalocean_custom_image":         {Tok: makeResource(digitalOceanMod, "CustomImage")},
+			"digitalocean_monitor_alert":        {Tok: makeResource(digitalOceanMod, "MonitorAlert")},
+			"digitalocean_spaces_bucket_policy": {Tok: makeResource(digitalOceanMod, "SpacesBucketPolicy")},
+			"digitalocean_reserved_ip": {
+				Tok: makeResource(digitalOceanMod, "ReservedIp"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {
+						Name: "reservedIpUrn",
+					},
+				},
+			},
 			"digitalocean_reserved_ip_assignment": {Tok: makeResource(digitalOceanMod, "ReservedIpAssignment")},
 		},
 		ExtraTypes: map[string]schema.ComplexTypeSpec{

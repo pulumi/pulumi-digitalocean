@@ -118,15 +118,15 @@ public class ReservedIp extends com.pulumi.resources.CustomResource {
      * The uniform resource name of the reserved ip
      * 
      */
-    @Export(name="urn", refs={String.class}, tree="[0]")
-    private Output<String> urn;
+    @Export(name="reservedIpUrn", refs={String.class}, tree="[0]")
+    private Output<String> reservedIpUrn;
 
     /**
      * @return The uniform resource name of the reserved ip
      * 
      */
-    public Output<String> urn_() {
-        return this.urn;
+    public Output<String> reservedIpUrn() {
+        return this.reservedIpUrn;
     }
 
     /**
