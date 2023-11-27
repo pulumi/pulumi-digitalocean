@@ -165,6 +165,7 @@ export const Region = {
     SFO2: "sfo2",
     SFO3: "sfo3",
     BLR1: "blr1",
+    SYD1: "syd1",
 } as const;
 
 export type Region = (typeof Region)[keyof typeof Region];
