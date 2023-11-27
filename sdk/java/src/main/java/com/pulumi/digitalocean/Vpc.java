@@ -109,7 +109,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * The date and time of when the VPC was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -123,7 +123,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * A boolean indicating whether or not the VPC is the default one for the region.
      * 
      */
-    @Export(name="default", type=Boolean.class, parameters={})
+    @Export(name="default", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> default_;
 
     /**
@@ -137,7 +137,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * A free-form text field up to a limit of 255 characters to describe the VPC.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -151,7 +151,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
      * 
      */
-    @Export(name="ipRange", type=String.class, parameters={})
+    @Export(name="ipRange", refs={String.class}, tree="[0]")
     private Output<String> ipRange;
 
     /**
@@ -165,7 +165,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -179,7 +179,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * The DigitalOcean region slug for the VPC&#39;s location.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -193,7 +193,7 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      * The uniform resource name (URN) for the VPC.
      * 
      */
-    @Export(name="vpcUrn", type=String.class, parameters={})
+    @Export(name="vpcUrn", refs={String.class}, tree="[0]")
     private Output<String> vpcUrn;
 
     /**

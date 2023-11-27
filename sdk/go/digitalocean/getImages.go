@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,9 +39,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
-//				Filters: []GetImagesFilter{
-//					GetImagesFilter{
+//			_, err := digitalocean.GetImages(ctx, &digitalocean.GetImagesArgs{
+//				Filters: []digitalocean.GetImagesFilter{
+//					{
 //						Key: "distribution",
 //						Values: []string{
 //							"Ubuntu",
@@ -71,23 +72,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetImages(ctx, &GetImagesArgs{
-//				Filters: []GetImagesFilter{
-//					GetImagesFilter{
+//			_, err := digitalocean.GetImages(ctx, &digitalocean.GetImagesArgs{
+//				Filters: []digitalocean.GetImagesFilter{
+//					{
 //						Key: "distribution",
 //						Values: []string{
 //							"Ubuntu",
 //						},
 //					},
-//					GetImagesFilter{
+//					{
 //						Key: "regions",
 //						Values: []string{
 //							"nyc3",
 //						},
 //					},
 //				},
-//				Sorts: []GetImagesSort{
-//					GetImagesSort{
+//				Sorts: []digitalocean.GetImagesSort{
+//					{
 //						Direction: pulumi.StringRef("desc"),
 //						Key:       "created",
 //					},
@@ -102,6 +103,7 @@ import (
 //
 // ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult
 	err := ctx.Invoke("digitalocean:index/getImages:getImages", args, &rv, opts...)
 	if err != nil {
@@ -126,10 +128,6 @@ type GetImagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
-	// - `slug`: Unique text identifier of the image.
-	// - `id`: The ID of the image.
-	// - `name`: The name of the image.
-	// - `type`: Type of the image.
 	Images []GetImagesImage `pulumi:"images"`
 	Sorts  []GetImagesSort  `pulumi:"sorts"`
 }
@@ -186,10 +184,6 @@ func (o GetImagesResultOutput) Id() pulumi.StringOutput {
 }
 
 // A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
-// - `slug`: Unique text identifier of the image.
-// - `id`: The ID of the image.
-// - `name`: The name of the image.
-// - `type`: Type of the image.
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
 }

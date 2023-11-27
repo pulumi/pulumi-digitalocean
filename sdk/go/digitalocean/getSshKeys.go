@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,9 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
-//				Sorts: []GetSshKeysSort{
-//					GetSshKeysSort{
+//			_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+//				Sorts: []digitalocean.GetSshKeysSort{
+//					{
 //						Direction: pulumi.StringRef("asc"),
 //						Key:       "name",
 //					},
@@ -65,9 +66,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSshKeys(ctx, &GetSshKeysArgs{
-//				Filters: []GetSshKeysFilter{
-//					GetSshKeysFilter{
+//			_, err := digitalocean.GetSshKeys(ctx, &digitalocean.GetSshKeysArgs{
+//				Filters: []digitalocean.GetSshKeysFilter{
+//					{
 //						Key: "name",
 //						Values: []string{
 //							"laptop",
@@ -85,6 +86,7 @@ import (
 //
 // ```
 func GetSshKeys(ctx *pulumi.Context, args *GetSshKeysArgs, opts ...pulumi.InvokeOption) (*GetSshKeysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSshKeysResult
 	err := ctx.Invoke("digitalocean:index/getSshKeys:getSshKeys", args, &rv, opts...)
 	if err != nil {

@@ -126,13 +126,13 @@ public final class AppSpecServiceAlert {
             return this;
         }
         public AppSpecServiceAlert build() {
-            final var o = new AppSpecServiceAlert();
-            o.disabled = disabled;
-            o.operator = operator;
-            o.rule = rule;
-            o.value = value;
-            o.window = window;
-            return o;
+            final var _resultValue = new AppSpecServiceAlert();
+            _resultValue.disabled = disabled;
+            _resultValue.operator = operator;
+            _resultValue.rule = rule;
+            _resultValue.value = value;
+            _resultValue.window = window;
+            return _resultValue;
         }
     }
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
+//			example, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
 //				Name: pulumi.StringRef("web"),
 //			}, nil)
 //			if err != nil {
@@ -61,7 +62,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
+//			_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
 //				Tag: pulumi.StringRef("web"),
 //			}, nil)
 //			if err != nil {
@@ -87,7 +88,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupDroplet(ctx, &GetDropletArgs{
+//			_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
 //				Id: pulumi.IntRef(digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id),
 //			}, nil)
 //			if err != nil {
@@ -99,6 +100,7 @@ import (
 //
 // ```
 func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.InvokeOption) (*LookupDropletResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDropletResult
 	err := ctx.Invoke("digitalocean:index/getDroplet:getDroplet", args, &rv, opts...)
 	if err != nil {
@@ -124,7 +126,8 @@ type LookupDropletResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplets disk in GB.
 	Disk int `pulumi:"disk"`
-	Id   int `pulumi:"id"`
+	// The ID of the Droplet.
+	Id int `pulumi:"id"`
 	// The Droplet image ID or slug.
 	Image string `pulumi:"image"`
 	// The Droplets public IPv4 address
@@ -225,6 +228,7 @@ func (o LookupDropletResultOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDropletResult) int { return v.Disk }).(pulumi.IntOutput)
 }
 
+// The ID of the Droplet.
 func (o LookupDropletResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDropletResult) int { return v.Id }).(pulumi.IntOutput)
 }

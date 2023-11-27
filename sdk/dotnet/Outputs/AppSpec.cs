@@ -28,6 +28,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecEnv> Envs;
         public readonly ImmutableArray<Outputs.AppSpecFunction> Functions;
+        /// <summary>
+        /// Specification for component routing, rewrites, and redirects.
+        /// </summary>
+        public readonly Outputs.AppSpecIngress? Ingress;
         public readonly ImmutableArray<Outputs.AppSpecJob> Jobs;
         /// <summary>
         /// The name of the component.
@@ -55,6 +59,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.AppSpecFunction> functions,
 
+            Outputs.AppSpecIngress? ingress,
+
             ImmutableArray<Outputs.AppSpecJob> jobs,
 
             string name,
@@ -73,6 +79,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Domains = domains;
             Envs = envs;
             Functions = functions;
+            Ingress = ingress;
             Jobs = jobs;
             Name = name;
             Region = region;

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +30,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -38,13 +37,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetDomains(ctx, &GetDomainsArgs{
-//				Filters: []GetDomainsFilter{
-//					GetDomainsFilter{
+//			_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
+//				Filters: []digitalocean.GetDomainsFilter{
+//					{
 //						Key:     "name",
 //						MatchBy: pulumi.StringRef("re"),
 //						Values: []string{
-//							fmt.Sprintf("example\\.com$"),
+//							"example\\.com$",
 //						},
 //					},
 //				},
@@ -58,6 +57,7 @@ import (
 //
 // ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult
 	err := ctx.Invoke("digitalocean:index/getDomains:getDomains", args, &rv, opts...)
 	if err != nil {

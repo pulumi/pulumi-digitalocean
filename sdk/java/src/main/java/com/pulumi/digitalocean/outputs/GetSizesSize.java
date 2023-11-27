@@ -205,17 +205,17 @@ public final class GetSizesSize {
             return this;
         }
         public GetSizesSize build() {
-            final var o = new GetSizesSize();
-            o.available = available;
-            o.disk = disk;
-            o.memory = memory;
-            o.priceHourly = priceHourly;
-            o.priceMonthly = priceMonthly;
-            o.regions = regions;
-            o.slug = slug;
-            o.transfer = transfer;
-            o.vcpus = vcpus;
-            return o;
+            final var _resultValue = new GetSizesSize();
+            _resultValue.available = available;
+            _resultValue.disk = disk;
+            _resultValue.memory = memory;
+            _resultValue.priceHourly = priceHourly;
+            _resultValue.priceMonthly = priceMonthly;
+            _resultValue.regions = regions;
+            _resultValue.slug = slug;
+            _resultValue.transfer = transfer;
+            _resultValue.vcpus = vcpus;
+            return _resultValue;
         }
     }
 }

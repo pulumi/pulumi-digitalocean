@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 //
 // ## Example Usage
-//
-// #### Basic Example
+// ### Basic Example
 //
 // ```go
 // package main
@@ -48,8 +48,7 @@ import (
 //	}
 //
 // ```
-//
-// #### Custom Sub-Domain Example
+// ### Custom Sub-Domain Example
 //
 // ```go
 // package main
@@ -133,6 +132,7 @@ func NewCdn(ctx *pulumi.Context,
 	if args.Origin == nil {
 		return nil, errors.New("invalid value for required argument 'Origin'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cdn
 	err := ctx.RegisterResource("digitalocean:index/cdn:Cdn", name, args, &resource, opts...)
 	if err != nil {

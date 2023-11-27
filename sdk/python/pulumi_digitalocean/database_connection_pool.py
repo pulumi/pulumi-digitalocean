@@ -450,6 +450,8 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             __props__.__dict__["private_host"] = None
             __props__.__dict__["private_uri"] = None
             __props__.__dict__["uri"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateUri", "uri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseConnectionPool, __self__).__init__(
             'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
             resource_name,

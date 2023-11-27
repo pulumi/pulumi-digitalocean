@@ -6,8 +6,10 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecAlert;
 import com.pulumi.digitalocean.outputs.GetAppSpecDatabase;
+import com.pulumi.digitalocean.outputs.GetAppSpecDomain;
 import com.pulumi.digitalocean.outputs.GetAppSpecEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunction;
+import com.pulumi.digitalocean.outputs.GetAppSpecIngress;
 import com.pulumi.digitalocean.outputs.GetAppSpecJob;
 import com.pulumi.digitalocean.outputs.GetAppSpecService;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSite;
@@ -26,6 +28,7 @@ public final class GetAppSpec {
      */
     private @Nullable List<GetAppSpecAlert> alerts;
     private @Nullable List<GetAppSpecDatabase> databases;
+    private List<GetAppSpecDomain> domain;
     /**
      * @deprecated
      * This attribute has been replaced by `domain` which supports additional functionality.
@@ -39,6 +42,7 @@ public final class GetAppSpec {
      */
     private @Nullable List<GetAppSpecEnv> envs;
     private @Nullable List<GetAppSpecFunction> functions;
+    private GetAppSpecIngress ingress;
     private @Nullable List<GetAppSpecJob> jobs;
     /**
      * @return The name of the component.
@@ -61,6 +65,9 @@ public final class GetAppSpec {
     public List<GetAppSpecDatabase> databases() {
         return this.databases == null ? List.of() : this.databases;
     }
+    public List<GetAppSpecDomain> domain() {
+        return this.domain;
+    }
     /**
      * @deprecated
      * This attribute has been replaced by `domain` which supports additional functionality.
@@ -79,6 +86,9 @@ public final class GetAppSpec {
     }
     public List<GetAppSpecFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
+    }
+    public GetAppSpecIngress ingress() {
+        return this.ingress;
     }
     public List<GetAppSpecJob> jobs() {
         return this.jobs == null ? List.of() : this.jobs;
@@ -114,9 +124,11 @@ public final class GetAppSpec {
     public static final class Builder {
         private @Nullable List<GetAppSpecAlert> alerts;
         private @Nullable List<GetAppSpecDatabase> databases;
+        private List<GetAppSpecDomain> domain;
         private List<String> domains;
         private @Nullable List<GetAppSpecEnv> envs;
         private @Nullable List<GetAppSpecFunction> functions;
+        private GetAppSpecIngress ingress;
         private @Nullable List<GetAppSpecJob> jobs;
         private String name;
         private @Nullable String region;
@@ -128,9 +140,11 @@ public final class GetAppSpec {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
     	      this.databases = defaults.databases;
+    	      this.domain = defaults.domain;
     	      this.domains = defaults.domains;
     	      this.envs = defaults.envs;
     	      this.functions = defaults.functions;
+    	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
@@ -156,6 +170,14 @@ public final class GetAppSpec {
             return databases(List.of(databases));
         }
         @CustomType.Setter
+        public Builder domain(List<GetAppSpecDomain> domain) {
+            this.domain = Objects.requireNonNull(domain);
+            return this;
+        }
+        public Builder domain(GetAppSpecDomain... domain) {
+            return domain(List.of(domain));
+        }
+        @CustomType.Setter
         public Builder domains(List<String> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -178,6 +200,11 @@ public final class GetAppSpec {
         }
         public Builder functions(GetAppSpecFunction... functions) {
             return functions(List.of(functions));
+        }
+        @CustomType.Setter
+        public Builder ingress(GetAppSpecIngress ingress) {
+            this.ingress = Objects.requireNonNull(ingress);
+            return this;
         }
         @CustomType.Setter
         public Builder jobs(@Nullable List<GetAppSpecJob> jobs) {
@@ -222,19 +249,21 @@ public final class GetAppSpec {
             return workers(List.of(workers));
         }
         public GetAppSpec build() {
-            final var o = new GetAppSpec();
-            o.alerts = alerts;
-            o.databases = databases;
-            o.domains = domains;
-            o.envs = envs;
-            o.functions = functions;
-            o.jobs = jobs;
-            o.name = name;
-            o.region = region;
-            o.services = services;
-            o.staticSites = staticSites;
-            o.workers = workers;
-            return o;
+            final var _resultValue = new GetAppSpec();
+            _resultValue.alerts = alerts;
+            _resultValue.databases = databases;
+            _resultValue.domain = domain;
+            _resultValue.domains = domains;
+            _resultValue.envs = envs;
+            _resultValue.functions = functions;
+            _resultValue.ingress = ingress;
+            _resultValue.jobs = jobs;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.services = services;
+            _resultValue.staticSites = staticSites;
+            _resultValue.workers = workers;
+            return _resultValue;
         }
     }
 }

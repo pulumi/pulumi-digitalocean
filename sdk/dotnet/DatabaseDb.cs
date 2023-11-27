@@ -16,6 +16,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new PostgreSQL database
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sfo2, err := digitalocean.GetRegion(ctx, &GetRegionArgs{
+//			sfo2, err := digitalocean.GetRegion(ctx, &digitalocean.GetRegionArgs{
 //				Slug: "sfo2",
 //			}, nil)
 //			if err != nil {
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionResult
 	err := ctx.Invoke("digitalocean:index/getRegion:getRegion", args, &rv, opts...)
 	if err != nil {

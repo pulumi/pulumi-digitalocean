@@ -30,6 +30,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -49,7 +50,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var barfoo = new DigitalOcean.ProjectResources("barfoo", new()
     ///     {
-    ///         Project = data.Digitalocean_project.Foo.Id,
+    ///         Project = playground.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         Resources = new[]
     ///         {
     ///             foobar.DropletUrn,

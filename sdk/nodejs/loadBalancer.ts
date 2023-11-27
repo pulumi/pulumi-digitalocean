@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -137,6 +139,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     */
+    public readonly firewall!: pulumi.Output<outputs.LoadBalancerFirewall>;
+    /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
@@ -146,6 +152,13 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
     public readonly healthcheck!: pulumi.Output<outputs.LoadBalancerHealthcheck>;
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     */
+    public readonly httpIdleTimeoutSeconds!: pulumi.Output<number>;
+    /**
+     * The ip of the Load Balancer
+     */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * The uniform resource name for the Load Balancer
@@ -156,6 +169,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
@@ -164,7 +181,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The region to start in
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
@@ -179,6 +196,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
+    /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
@@ -203,25 +224,26 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["dropletTag"] = state ? state.dropletTag : undefined;
             resourceInputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
             resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
+            resourceInputs["firewall"] = state ? state.firewall : undefined;
             resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
             resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
+            resourceInputs["httpIdleTimeoutSeconds"] = state ? state.httpIdleTimeoutSeconds : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["sizeUnit"] = state ? state.sizeUnit : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessions"] = state ? state.stickySessions : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if ((!args || args.forwardingRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'forwardingRules'");
-            }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
             }
             resourceInputs["algorithm"] = args ? args.algorithm : undefined;
             resourceInputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
@@ -229,14 +251,18 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["dropletTag"] = args ? args.dropletTag : undefined;
             resourceInputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
             resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
+            resourceInputs["firewall"] = args ? args.firewall : undefined;
             resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
             resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
+            resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sizeUnit"] = args ? args.sizeUnit : undefined;
             resourceInputs["stickySessions"] = args ? args.stickySessions : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["loadBalancerUrn"] = undefined /*out*/;
@@ -280,6 +306,10 @@ export interface LoadBalancerState {
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
     /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     */
+    firewall?: pulumi.Input<inputs.LoadBalancerFirewall>;
+    /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
@@ -289,6 +319,13 @@ export interface LoadBalancerState {
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
     healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     */
+    httpIdleTimeoutSeconds?: pulumi.Input<number>;
+    /**
+     * The ip of the Load Balancer
+     */
     ip?: pulumi.Input<string>;
     /**
      * The uniform resource name for the Load Balancer
@@ -298,6 +335,10 @@ export interface LoadBalancerState {
      * The Load Balancer name
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -322,6 +363,10 @@ export interface LoadBalancerState {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
@@ -361,6 +406,10 @@ export interface LoadBalancerArgs {
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
     /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     */
+    firewall?: pulumi.Input<inputs.LoadBalancerFirewall>;
+    /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
@@ -371,9 +420,17 @@ export interface LoadBalancerArgs {
      */
     healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
     /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     */
+    httpIdleTimeoutSeconds?: pulumi.Input<number>;
+    /**
      * The Load Balancer name
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -383,7 +440,7 @@ export interface LoadBalancerArgs {
     /**
      * The region to start in
      */
-    region: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
@@ -397,6 +454,10 @@ export interface LoadBalancerArgs {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */

@@ -122,12 +122,12 @@ public final class GetProjectsFilter {
             return values(List.of(values));
         }
         public GetProjectsFilter build() {
-            final var o = new GetProjectsFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetProjectsFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

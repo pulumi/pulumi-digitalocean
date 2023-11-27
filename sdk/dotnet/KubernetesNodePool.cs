@@ -17,6 +17,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -68,6 +69,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -87,7 +89,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+    /// If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
@@ -166,6 +168,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of taints applied to all nodes in the pool.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.KubernetesNodePoolTaint>> Taints { get; private set; } = null!;
@@ -287,6 +291,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of taints applied to all nodes in the pool.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         public InputList<Inputs.KubernetesNodePoolTaintArgs> Taints
         {
@@ -391,6 +397,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of taints applied to all nodes in the pool.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         public InputList<Inputs.KubernetesNodePoolTaintGetArgs> Taints
         {

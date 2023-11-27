@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.LookupProject(ctx, &GetProjectArgs{
+//			_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
 //				Name: pulumi.StringRef("My Staging Project"),
 //			}, nil)
 //			if err != nil {
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
 	err := ctx.Invoke("digitalocean:index/getProject:getProject", args, &rv, opts...)
 	if err != nil {

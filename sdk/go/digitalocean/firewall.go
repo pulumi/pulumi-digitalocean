@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +40,8 @@ import (
 //				DropletIds: pulumi.IntArray{
 //					webDroplet.ID(),
 //				},
-//				InboundRules: FirewallInboundRuleArray{
-//					&FirewallInboundRuleArgs{
+//				InboundRules: digitalocean.FirewallInboundRuleArray{
+//					&digitalocean.FirewallInboundRuleArgs{
 //						Protocol:  pulumi.String("tcp"),
 //						PortRange: pulumi.String("22"),
 //						SourceAddresses: pulumi.StringArray{
@@ -48,7 +49,7 @@ import (
 //							pulumi.String("2002:1:2::/48"),
 //						},
 //					},
-//					&FirewallInboundRuleArgs{
+//					&digitalocean.FirewallInboundRuleArgs{
 //						Protocol:  pulumi.String("tcp"),
 //						PortRange: pulumi.String("80"),
 //						SourceAddresses: pulumi.StringArray{
@@ -56,7 +57,7 @@ import (
 //							pulumi.String("::/0"),
 //						},
 //					},
-//					&FirewallInboundRuleArgs{
+//					&digitalocean.FirewallInboundRuleArgs{
 //						Protocol:  pulumi.String("tcp"),
 //						PortRange: pulumi.String("443"),
 //						SourceAddresses: pulumi.StringArray{
@@ -64,7 +65,7 @@ import (
 //							pulumi.String("::/0"),
 //						},
 //					},
-//					&FirewallInboundRuleArgs{
+//					&digitalocean.FirewallInboundRuleArgs{
 //						Protocol: pulumi.String("icmp"),
 //						SourceAddresses: pulumi.StringArray{
 //							pulumi.String("0.0.0.0/0"),
@@ -72,8 +73,8 @@ import (
 //						},
 //					},
 //				},
-//				OutboundRules: FirewallOutboundRuleArray{
-//					&FirewallOutboundRuleArgs{
+//				OutboundRules: digitalocean.FirewallOutboundRuleArray{
+//					&digitalocean.FirewallOutboundRuleArgs{
 //						Protocol:  pulumi.String("tcp"),
 //						PortRange: pulumi.String("53"),
 //						DestinationAddresses: pulumi.StringArray{
@@ -81,7 +82,7 @@ import (
 //							pulumi.String("::/0"),
 //						},
 //					},
-//					&FirewallOutboundRuleArgs{
+//					&digitalocean.FirewallOutboundRuleArgs{
 //						Protocol:  pulumi.String("udp"),
 //						PortRange: pulumi.String("53"),
 //						DestinationAddresses: pulumi.StringArray{
@@ -89,7 +90,7 @@ import (
 //							pulumi.String("::/0"),
 //						},
 //					},
-//					&FirewallOutboundRuleArgs{
+//					&digitalocean.FirewallOutboundRuleArgs{
 //						Protocol: pulumi.String("icmp"),
 //						DestinationAddresses: pulumi.StringArray{
 //							pulumi.String("0.0.0.0/0"),
@@ -152,6 +153,7 @@ func NewFirewall(ctx *pulumi.Context,
 		args = &FirewallArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Firewall
 	err := ctx.RegisterResource("digitalocean:index/firewall:Firewall", name, args, &resource, opts...)
 	if err != nil {

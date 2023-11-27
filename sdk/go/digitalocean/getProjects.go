@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,9 +37,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetProjects(ctx, &GetProjectsArgs{
-//				Filters: []GetProjectsFilter{
-//					GetProjectsFilter{
+//			_, err := digitalocean.GetProjects(ctx, &digitalocean.GetProjectsArgs{
+//				Filters: []digitalocean.GetProjectsFilter{
+//					{
 //						Key: "environment",
 //						Values: []string{
 //							"Staging",
@@ -69,23 +70,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetProjects(ctx, &GetProjectsArgs{
-//				Filters: []GetProjectsFilter{
-//					GetProjectsFilter{
+//			_, err := digitalocean.GetProjects(ctx, &digitalocean.GetProjectsArgs{
+//				Filters: []digitalocean.GetProjectsFilter{
+//					{
 //						Key: "environment",
 //						Values: []string{
 //							"Production",
 //						},
 //					},
-//					GetProjectsFilter{
+//					{
 //						Key: "is_default",
 //						Values: []string{
 //							"false",
 //						},
 //					},
 //				},
-//				Sorts: []GetProjectsSort{
-//					GetProjectsSort{
+//				Sorts: []digitalocean.GetProjectsSort{
+//					{
 //						Direction: pulumi.StringRef("asc"),
 //						Key:       "name",
 //					},
@@ -100,6 +101,7 @@ import (
 //
 // ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult
 	err := ctx.Invoke("digitalocean:index/getProjects:getProjects", args, &rv, opts...)
 	if err != nil {

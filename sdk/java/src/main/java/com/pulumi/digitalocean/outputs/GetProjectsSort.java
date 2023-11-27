@@ -69,10 +69,10 @@ public final class GetProjectsSort {
             return this;
         }
         public GetProjectsSort build() {
-            final var o = new GetProjectsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetProjectsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

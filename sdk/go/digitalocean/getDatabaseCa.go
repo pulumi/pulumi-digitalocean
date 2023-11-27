@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ca, err := digitalocean.GetDatabaseCa(ctx, &GetDatabaseCaArgs{
+//			ca, err := digitalocean.GetDatabaseCa(ctx, &digitalocean.GetDatabaseCaArgs{
 //				ClusterId: "aaa-bbb-ccc-ddd",
 //			}, nil)
 //			if err != nil {
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetDatabaseCa(ctx *pulumi.Context, args *GetDatabaseCaArgs, opts ...pulumi.InvokeOption) (*GetDatabaseCaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseCaResult
 	err := ctx.Invoke("digitalocean:index/getDatabaseCa:getDatabaseCa", args, &rv, opts...)
 	if err != nil {

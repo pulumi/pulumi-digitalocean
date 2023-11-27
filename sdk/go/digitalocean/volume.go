@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,7 +72,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//			foobarVolumeSnapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 //				Name: pulumi.StringRef("baz"),
 //			}, nil)
 //			if err != nil {
@@ -79,8 +80,8 @@ import (
 //			}
 //			_, err = digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
 //				Region:     pulumi.String("lon1"),
-//				Size:       pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
-//				SnapshotId: pulumi.String(foobarVolumeSnapshot.Id),
+//				Size:       *pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
+//				SnapshotId: *pulumi.String(foobarVolumeSnapshot.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -117,7 +118,7 @@ type Volume struct {
 	InitialFilesystemLabel pulumi.StringPtrOutput `pulumi:"initialFilesystemLabel"`
 	// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
 	InitialFilesystemType pulumi.StringPtrOutput `pulumi:"initialFilesystemType"`
-	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region that the block storage volume will be created in.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -144,6 +145,7 @@ func NewVolume(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Volume
 	err := ctx.RegisterResource("digitalocean:index/volume:Volume", name, args, &resource, opts...)
 	if err != nil {
@@ -180,7 +182,7 @@ type volumeState struct {
 	InitialFilesystemLabel *string `pulumi:"initialFilesystemLabel"`
 	// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
 	InitialFilesystemType *string `pulumi:"initialFilesystemType"`
-	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name *string `pulumi:"name"`
 	// The region that the block storage volume will be created in.
 	Region *string `pulumi:"region"`
@@ -209,7 +211,7 @@ type VolumeState struct {
 	InitialFilesystemLabel pulumi.StringPtrInput
 	// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
 	InitialFilesystemType pulumi.StringPtrInput
-	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name pulumi.StringPtrInput
 	// The region that the block storage volume will be created in.
 	Region pulumi.StringPtrInput
@@ -238,7 +240,7 @@ type volumeArgs struct {
 	InitialFilesystemLabel *string `pulumi:"initialFilesystemLabel"`
 	// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
 	InitialFilesystemType *string `pulumi:"initialFilesystemType"`
-	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name *string `pulumi:"name"`
 	// The region that the block storage volume will be created in.
 	Region string `pulumi:"region"`
@@ -262,7 +264,7 @@ type VolumeArgs struct {
 	InitialFilesystemLabel pulumi.StringPtrInput
 	// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
 	InitialFilesystemType pulumi.StringPtrInput
-	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+	// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name pulumi.StringPtrInput
 	// The region that the block storage volume will be created in.
 	Region pulumi.StringInput
@@ -393,7 +395,7 @@ func (o VolumeOutput) InitialFilesystemType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.InitialFilesystemType }).(pulumi.StringPtrOutput)
 }
 
-// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
 func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

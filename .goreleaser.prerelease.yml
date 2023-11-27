@@ -26,10 +26,13 @@ builds:
   - darwin
   - windows
   - linux
+  hooks:
+    post:
+    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
+    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
-  - -X
-    github.com/pulumi/pulumi-digitalocean/provider/v4/pkg/version.Version={{.Tag}}
+  - -X github.com/pulumi/pulumi-digitalocean/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-digitalocean/
 changelog:
   skip: true
@@ -37,3 +40,4 @@ release:
   disable: true
 snapshot:
   name_template: "{{ .Tag }}-SNAPSHOT"
+project_name: "pulumi-digitalocean"

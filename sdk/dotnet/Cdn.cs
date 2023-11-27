@@ -13,11 +13,11 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
     /// 
     /// ## Example Usage
-    /// 
-    /// #### Basic Example
+    /// ### Basic Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -42,11 +42,11 @@ namespace Pulumi.DigitalOcean
     ///     };
     /// });
     /// ```
-    /// 
-    /// #### Custom Sub-Domain Example
+    /// ### Custom Sub-Domain Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 

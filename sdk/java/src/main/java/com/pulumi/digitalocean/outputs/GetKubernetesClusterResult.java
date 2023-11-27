@@ -403,28 +403,28 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         public GetKubernetesClusterResult build() {
-            final var o = new GetKubernetesClusterResult();
-            o.autoUpgrade = autoUpgrade;
-            o.clusterSubnet = clusterSubnet;
-            o.createdAt = createdAt;
-            o.endpoint = endpoint;
-            o.ha = ha;
-            o.id = id;
-            o.ipv4Address = ipv4Address;
-            o.kubeConfigs = kubeConfigs;
-            o.maintenancePolicies = maintenancePolicies;
-            o.name = name;
-            o.nodePools = nodePools;
-            o.region = region;
-            o.serviceSubnet = serviceSubnet;
-            o.status = status;
-            o.surgeUpgrade = surgeUpgrade;
-            o.tags = tags;
-            o.updatedAt = updatedAt;
-            o.urn = urn;
-            o.version = version;
-            o.vpcUuid = vpcUuid;
-            return o;
+            final var _resultValue = new GetKubernetesClusterResult();
+            _resultValue.autoUpgrade = autoUpgrade;
+            _resultValue.clusterSubnet = clusterSubnet;
+            _resultValue.createdAt = createdAt;
+            _resultValue.endpoint = endpoint;
+            _resultValue.ha = ha;
+            _resultValue.id = id;
+            _resultValue.ipv4Address = ipv4Address;
+            _resultValue.kubeConfigs = kubeConfigs;
+            _resultValue.maintenancePolicies = maintenancePolicies;
+            _resultValue.name = name;
+            _resultValue.nodePools = nodePools;
+            _resultValue.region = region;
+            _resultValue.serviceSubnet = serviceSubnet;
+            _resultValue.status = status;
+            _resultValue.surgeUpgrade = surgeUpgrade;
+            _resultValue.tags = tags;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.urn = urn;
+            _resultValue.version = version;
+            _resultValue.vpcUuid = vpcUuid;
+            return _resultValue;
         }
     }
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
+//			_, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
 //				MostRecent: pulumi.BoolRef(true),
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
@@ -58,7 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			web_snapshot, err := digitalocean.LookupDropletSnapshot(ctx, &GetDropletSnapshotArgs{
+//			web_snapshot, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
 //				MostRecent: pulumi.BoolRef(true),
@@ -67,7 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "from-snapshot", &digitalocean.DropletArgs{
-//				Image:  pulumi.String(web_snapshot.Id),
+//				Image:  *pulumi.String(web_snapshot.Id),
 //				Region: pulumi.String("nyc3"),
 //				Size:   pulumi.String("s-2vcpu-4gb"),
 //			})
@@ -80,6 +81,7 @@ import (
 //
 // ```
 func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupDropletSnapshotResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDropletSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, &rv, opts...)
 	if err != nil {
@@ -91,6 +93,10 @@ func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs,
 // A collection of arguments for invoking getDropletSnapshot.
 type LookupDropletSnapshotArgs struct {
 	// If more than one result is returned, use the most recent Droplet snapshot.
+	//
+	// > **NOTE:** If more or less than a single match is returned by the search,
+	// the update will fail. Ensure that your search is specific enough to return
+	// a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
 	MostRecent *bool `pulumi:"mostRecent"`
 	// The name of the Droplet snapshot.
 	Name *string `pulumi:"name"`
@@ -136,6 +142,10 @@ func LookupDropletSnapshotOutput(ctx *pulumi.Context, args LookupDropletSnapshot
 // A collection of arguments for invoking getDropletSnapshot.
 type LookupDropletSnapshotOutputArgs struct {
 	// If more than one result is returned, use the most recent Droplet snapshot.
+	//
+	// > **NOTE:** If more or less than a single match is returned by the search,
+	// the update will fail. Ensure that your search is specific enough to return
+	// a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
 	// The name of the Droplet snapshot.
 	Name pulumi.StringPtrInput `pulumi:"name"`

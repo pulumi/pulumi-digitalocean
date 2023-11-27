@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupSpacesBucket(ctx, &GetSpacesBucketArgs{
+//			example, err := digitalocean.LookupSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
 //				Name:   "my-spaces-bucket",
 //				Region: "nyc3",
 //			}, nil)
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupSpacesBucket(ctx *pulumi.Context, args *LookupSpacesBucketArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", args, &rv, opts...)
 	if err != nil {
@@ -63,6 +65,8 @@ type LookupSpacesBucketArgs struct {
 type LookupSpacesBucketResult struct {
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName string `pulumi:"bucketDomainName"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint string `pulumi:"endpoint"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the Spaces bucket
@@ -116,6 +120,11 @@ func (o LookupSpacesBucketResultOutput) ToLookupSpacesBucketResultOutputWithCont
 // The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 func (o LookupSpacesBucketResultOutput) BucketDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+func (o LookupSpacesBucketResultOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacesBucketResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

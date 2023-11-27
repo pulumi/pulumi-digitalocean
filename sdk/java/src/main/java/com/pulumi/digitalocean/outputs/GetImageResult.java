@@ -15,45 +15,86 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImageResult {
+    /**
+     * @return When the image was created
+     * 
+     */
     private String created;
     private String description;
     /**
      * @return The name of the distribution of the OS of the image.
-     * * `min_disk_size`: The minimum &#39;disk&#39; required for the image.
-     * * `size_gigabytes`: The size of the image in GB.
      * 
      */
     private String distribution;
+    /**
+     * @return Any applicable error message pertaining to the image
+     * 
+     */
     private String errorMessage;
+    /**
+     * @return The ID of the image.
+     * 
+     */
     private Integer id;
     /**
      * @return The id of the image (legacy parameter).
      * 
      */
     private String image;
+    /**
+     * @return The minimum &#39;disk&#39; required for the image.
+     * 
+     */
     private Integer minDiskSize;
+    /**
+     * @return The name of the image.
+     * 
+     */
     private String name;
     /**
      * @return Is image a public image or not. Public images represent
      * Linux distributions or One-Click Applications, while non-public images represent
      * snapshots and backups and are only available within your account.
-     * * `regions`: A set of the regions that the image is available in.
-     * * `tags`: A set of tags applied to the image
-     * * `created`: When the image was created
-     * * `status`: Current status of the image
-     * * `error_message`: Any applicable error message pertaining to the image
      * 
      */
     private Boolean private_;
+    /**
+     * @return A set of the regions that the image is available in.
+     * 
+     */
     private List<String> regions;
+    /**
+     * @return The size of the image in GB.
+     * 
+     */
     private Double sizeGigabytes;
+    /**
+     * @return Unique text identifier of the image.
+     * 
+     */
     private String slug;
     private @Nullable String source;
+    /**
+     * @return Current status of the image
+     * 
+     */
     private String status;
+    /**
+     * @return A set of tags applied to the image
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return Type of the image.
+     * 
+     */
     private String type;
 
     private GetImageResult() {}
+    /**
+     * @return When the image was created
+     * 
+     */
     public String created() {
         return this.created;
     }
@@ -62,16 +103,22 @@ public final class GetImageResult {
     }
     /**
      * @return The name of the distribution of the OS of the image.
-     * * `min_disk_size`: The minimum &#39;disk&#39; required for the image.
-     * * `size_gigabytes`: The size of the image in GB.
      * 
      */
     public String distribution() {
         return this.distribution;
     }
+    /**
+     * @return Any applicable error message pertaining to the image
+     * 
+     */
     public String errorMessage() {
         return this.errorMessage;
     }
+    /**
+     * @return The ID of the image.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
@@ -82,9 +129,17 @@ public final class GetImageResult {
     public String image() {
         return this.image;
     }
+    /**
+     * @return The minimum &#39;disk&#39; required for the image.
+     * 
+     */
     public Integer minDiskSize() {
         return this.minDiskSize;
     }
+    /**
+     * @return The name of the image.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -92,34 +147,53 @@ public final class GetImageResult {
      * @return Is image a public image or not. Public images represent
      * Linux distributions or One-Click Applications, while non-public images represent
      * snapshots and backups and are only available within your account.
-     * * `regions`: A set of the regions that the image is available in.
-     * * `tags`: A set of tags applied to the image
-     * * `created`: When the image was created
-     * * `status`: Current status of the image
-     * * `error_message`: Any applicable error message pertaining to the image
      * 
      */
     public Boolean private_() {
         return this.private_;
     }
+    /**
+     * @return A set of the regions that the image is available in.
+     * 
+     */
     public List<String> regions() {
         return this.regions;
     }
+    /**
+     * @return The size of the image in GB.
+     * 
+     */
     public Double sizeGigabytes() {
         return this.sizeGigabytes;
     }
+    /**
+     * @return Unique text identifier of the image.
+     * 
+     */
     public String slug() {
         return this.slug;
     }
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return Current status of the image
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return A set of tags applied to the image
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Type of the image.
+     * 
+     */
     public String type() {
         return this.type;
     }
@@ -257,24 +331,24 @@ public final class GetImageResult {
             return this;
         }
         public GetImageResult build() {
-            final var o = new GetImageResult();
-            o.created = created;
-            o.description = description;
-            o.distribution = distribution;
-            o.errorMessage = errorMessage;
-            o.id = id;
-            o.image = image;
-            o.minDiskSize = minDiskSize;
-            o.name = name;
-            o.private_ = private_;
-            o.regions = regions;
-            o.sizeGigabytes = sizeGigabytes;
-            o.slug = slug;
-            o.source = source;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetImageResult();
+            _resultValue.created = created;
+            _resultValue.description = description;
+            _resultValue.distribution = distribution;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.id = id;
+            _resultValue.image = image;
+            _resultValue.minDiskSize = minDiskSize;
+            _resultValue.name = name;
+            _resultValue.private_ = private_;
+            _resultValue.regions = regions;
+            _resultValue.sizeGigabytes = sizeGigabytes;
+            _resultValue.slug = slug;
+            _resultValue.source = source;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

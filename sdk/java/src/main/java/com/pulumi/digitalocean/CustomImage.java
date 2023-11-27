@@ -74,9 +74,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/customImage:CustomImage")
 public class CustomImage extends com.pulumi.resources.CustomResource {
-    @Export(name="createdAt", type=String.class, parameters={})
+    /**
+     * A time value given in ISO8601 combined date and time format that represents when the image was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
+    /**
+     * @return A time value given in ISO8601 combined date and time format that represents when the image was created.
+     * 
+     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
@@ -84,7 +92,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * An optional description for the image.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +106,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
      * 
      */
-    @Export(name="distribution", type=String.class, parameters={})
+    @Export(name="distribution", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> distribution;
 
     /**
@@ -108,15 +116,31 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> distribution() {
         return Codegen.optional(this.distribution);
     }
-    @Export(name="imageId", type=Integer.class, parameters={})
+    /**
+     * A unique number that can be used to identify and reference a specific image.
+     * 
+     */
+    @Export(name="imageId", refs={Integer.class}, tree="[0]")
     private Output<Integer> imageId;
 
+    /**
+     * @return A unique number that can be used to identify and reference a specific image.
+     * 
+     */
     public Output<Integer> imageId() {
         return this.imageId;
     }
-    @Export(name="minDiskSize", type=Integer.class, parameters={})
+    /**
+     * The minimum disk size in GB required for a Droplet to use this image.
+     * 
+     */
+    @Export(name="minDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minDiskSize;
 
+    /**
+     * @return The minimum disk size in GB required for a Droplet to use this image.
+     * 
+     */
     public Output<Integer> minDiskSize() {
         return this.minDiskSize;
     }
@@ -124,7 +148,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * A name for the Custom Image.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -134,9 +158,17 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="public", type=Boolean.class, parameters={})
+    /**
+     * Indicates whether the image in question is public or not.
+     * 
+     */
+    @Export(name="public", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> public_;
 
+    /**
+     * @return Indicates whether the image in question is public or not.
+     * 
+     */
     public Output<Boolean> public_() {
         return this.public_;
     }
@@ -144,7 +176,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * A list of regions. (Currently only one is supported).
      * 
      */
-    @Export(name="regions", type=List.class, parameters={String.class})
+    @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
     /**
@@ -154,21 +186,45 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<List<String>> regions() {
         return this.regions;
     }
-    @Export(name="sizeGigabytes", type=Double.class, parameters={})
+    /**
+     * The size of the image in gigabytes.
+     * 
+     */
+    @Export(name="sizeGigabytes", refs={Double.class}, tree="[0]")
     private Output<Double> sizeGigabytes;
 
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
     public Output<Double> sizeGigabytes() {
         return this.sizeGigabytes;
     }
-    @Export(name="slug", type=String.class, parameters={})
+    /**
+     * A uniquely identifying string for each image.
+     * 
+     */
+    @Export(name="slug", refs={String.class}, tree="[0]")
     private Output<String> slug;
 
+    /**
+     * @return A uniquely identifying string for each image.
+     * 
+     */
     public Output<String> slug() {
         return this.slug;
     }
-    @Export(name="status", type=String.class, parameters={})
+    /**
+     * A status string indicating the state of a custom image.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return A status string indicating the state of a custom image.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
@@ -176,7 +232,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * A list of optional tags for the image.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -186,9 +242,17 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="type", type=String.class, parameters={})
+    /**
+     * Describes the kind of image.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
+    /**
+     * @return Describes the kind of image.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -196,7 +260,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * A URL from which the custom Linux virtual machine image may be retrieved.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

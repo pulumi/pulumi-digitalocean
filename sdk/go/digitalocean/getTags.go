@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,9 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			list, err := digitalocean.GetTags(ctx, &GetTagsArgs{
-//				Sorts: []GetTagsSort{
-//					GetTagsSort{
+//			list, err := digitalocean.GetTags(ctx, &digitalocean.GetTagsArgs{
+//				Sorts: []digitalocean.GetTagsSort{
+//					{
 //						Key:       "total_resource_count",
 //						Direction: pulumi.StringRef("asc"),
 //					},
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult
 	err := ctx.Invoke("digitalocean:index/getTags:getTags", args, &rv, opts...)
 	if err != nil {

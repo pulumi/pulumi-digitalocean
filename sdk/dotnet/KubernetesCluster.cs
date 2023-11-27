@@ -12,10 +12,16 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// ## Import
     /// 
-    /// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+    /// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+    /// ```
+    /// 
+    ///  Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/kubernetesCluster:KubernetesCluster")]
@@ -44,6 +50,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Output("destroyAllAssociatedResources")]
+        public Output<bool?> DestroyAllAssociatedResources { get; private set; } = null!;
 
         /// <summary>
         /// The base URL of the API server on the Kubernetes master node.
@@ -89,6 +103,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        /// </summary>
+        [Output("registryIntegration")]
+        public Output<bool?> RegistryIntegration { get; private set; } = null!;
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.
@@ -155,6 +175,10 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "kubeConfigs",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -185,6 +209,14 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
+        /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("destroyAllAssociatedResources")]
+        public Input<bool>? DestroyAllAssociatedResources { get; set; }
+
+        /// <summary>
         /// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         /// </summary>
         [Input("ha")]
@@ -213,6 +245,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region", required: true)]
         public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
+
+        /// <summary>
+        /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        /// </summary>
+        [Input("registryIntegration")]
+        public Input<bool>? RegistryIntegration { get; set; }
 
         /// <summary>
         /// Enable/disable surge upgrades for a cluster. Default: false
@@ -277,6 +315,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
+        /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("destroyAllAssociatedResources")]
+        public Input<bool>? DestroyAllAssociatedResources { get; set; }
+
+        /// <summary>
         /// The base URL of the API server on the Kubernetes master node.
         /// </summary>
         [Input("endpoint")]
@@ -299,7 +345,11 @@ namespace Pulumi.DigitalOcean
         public InputList<Inputs.KubernetesClusterKubeConfigGetArgs> KubeConfigs
         {
             get => _kubeConfigs ?? (_kubeConfigs = new InputList<Inputs.KubernetesClusterKubeConfigGetArgs>());
-            set => _kubeConfigs = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.KubernetesClusterKubeConfigGetArgs>());
+                _kubeConfigs = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -325,6 +375,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("region")]
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
+
+        /// <summary>
+        /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        /// </summary>
+        [Input("registryIntegration")]
+        public Input<bool>? RegistryIntegration { get; set; }
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.

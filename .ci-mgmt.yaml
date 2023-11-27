@@ -1,0 +1,10 @@
+provider: digitalocean
+major-version: 4
+env:
+  DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+makeTemplate: bridged
+plugins:
+  - name: kubernetes 
+    version: "3.10.0"
+team: ecosystem
+javaGenVersion: "v0.9.8"

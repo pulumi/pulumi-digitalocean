@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -24,22 +26,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const examples = pulumi.output(digitalocean.getDomains({
+ * const examples = digitalocean.getDomains({
  *     filters: [{
  *         key: "name",
  *         matchBy: "re",
  *         values: ["example\\.com$"],
  *     }],
- * }));
+ * });
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDomains:getDomains", {
         "filters": args.filters,
         "sorts": args.sorts,
@@ -77,9 +76,36 @@ export interface GetDomainsResult {
     readonly id: string;
     readonly sorts?: outputs.GetDomainsSort[];
 }
-
+/**
+ * Get information on domains for use in other resources, with the ability to filter and sort the results.
+ * If no filters are specified, all domains will be returned.
+ *
+ * This data source is useful if the domains in question are not managed by this provider or you need to
+ * utilize any of the domains' data.
+ *
+ * Note: You can use the `digitalocean.Domain` data source to obtain metadata
+ * about a single domain if you already know the `name`.
+ *
+ * ## Example Usage
+ *
+ * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+ * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const examples = digitalocean.getDomains({
+ *     filters: [{
+ *         key: "name",
+ *         matchBy: "re",
+ *         values: ["example\\.com$"],
+ *     }],
+ * });
+ * ```
+ */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply(a => getDomains(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
 }
 
 /**

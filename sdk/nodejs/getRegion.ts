@@ -21,11 +21,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getRegion:getRegion", {
         "slug": args.slug,
     }, opts);
@@ -70,9 +67,24 @@ export interface GetRegionResult {
      */
     readonly slug: string;
 }
-
+/**
+ * Get information on a single DigitalOcean region. This is useful to find out
+ * what Droplet sizes and features are supported within a region.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const sfo2 = digitalocean.getRegion({
+ *     slug: "sfo2",
+ * });
+ * export const regionName = sfo2.then(sfo2 => sfo2.name);
+ * ```
+ */
 export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
-    return pulumi.output(args).apply(a => getRegion(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegion(a, opts))
 }
 
 /**

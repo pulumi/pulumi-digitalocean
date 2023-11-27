@@ -69,10 +69,10 @@ public final class GetImagesSort {
             return this;
         }
         public GetImagesSort build() {
-            final var o = new GetImagesSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetImagesSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

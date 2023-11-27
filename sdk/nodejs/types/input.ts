@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 
 export interface AppSpec {
     /**
@@ -23,6 +25,10 @@ export interface AppSpec {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
     functions?: pulumi.Input<pulumi.Input<inputs.AppSpecFunction>[]>;
+    /**
+     * Specification for component routing, rewrites, and redirects.
+     */
+    ingress?: pulumi.Input<inputs.AppSpecIngress>;
     jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
     /**
      * The name of the component.
@@ -59,6 +65,8 @@ export interface AppSpecDatabase {
     dbName?: pulumi.Input<string>;
     /**
      * The name of the MySQL or PostgreSQL user to configure.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     dbUser?: pulumi.Input<string>;
     /**
@@ -124,6 +132,8 @@ export interface AppSpecFunction {
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlert>[]>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: pulumi.Input<inputs.AppSpecFunctionCors>;
     /**
@@ -150,6 +160,11 @@ export interface AppSpecFunction {
      * The name of the component.
      */
     name: pulumi.Input<string>;
+    /**
+     * An HTTP paths that should be routed to this component.
+     *
+     * @deprecated Service level routes are deprecated in favor of ingresses
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionRoute>[]>;
     /**
      * An optional path to the working directory to use for the build.
@@ -183,6 +198,10 @@ export interface AppSpecFunctionAlert {
 export interface AppSpecFunctionCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
@@ -315,6 +334,8 @@ export interface AppSpecFunctionLogDestinationDatadog {
 export interface AppSpecFunctionLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -335,6 +356,130 @@ export interface AppSpecFunctionRoute {
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
     preservePathPrefix?: pulumi.Input<boolean>;
+}
+
+export interface AppSpecIngress {
+    /**
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.AppSpecIngressRule>[]>;
+}
+
+export interface AppSpecIngressRule {
+    /**
+     * The component to route to. Only one of `component` or `redirect` may be set.
+     */
+    component?: pulumi.Input<inputs.AppSpecIngressRuleComponent>;
+    /**
+     * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     */
+    cors?: pulumi.Input<inputs.AppSpecIngressRuleCors>;
+    /**
+     * The match configuration for the rule
+     */
+    match?: pulumi.Input<inputs.AppSpecIngressRuleMatch>;
+    /**
+     * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     */
+    redirect?: pulumi.Input<inputs.AppSpecIngressRuleRedirect>;
+}
+
+export interface AppSpecIngressRuleComponent {
+    /**
+     * The name of the component.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * An optional flag to preserve the path that is forwarded to the backend service.
+     */
+    preservePathPrefix?: pulumi.Input<boolean>;
+    /**
+     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
+     */
+    rewrite?: pulumi.Input<string>;
+}
+
+export interface AppSpecIngressRuleCors {
+    /**
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
+     */
+    allowCredentials?: pulumi.Input<boolean>;
+    /**
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     */
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     */
+    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The `Access-Control-Allow-Origin` can be
+     */
+    allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins>;
+    /**
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+     */
+    maxAge?: pulumi.Input<string>;
+}
+
+export interface AppSpecIngressRuleCorsAllowOrigins {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact?: pulumi.Input<string>;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     */
+    regex?: pulumi.Input<string>;
+}
+
+export interface AppSpecIngressRuleMatch {
+    /**
+     * Paths must start with `/` and must be unique within the app.
+     */
+    path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath>;
+}
+
+export interface AppSpecIngressRuleMatchPath {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+export interface AppSpecIngressRuleRedirect {
+    /**
+     * The authority/host to redirect to. This can be a hostname or IP address.
+     */
+    authority?: pulumi.Input<string>;
+    /**
+     * The port to redirect to.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+     */
+    redirectCode?: pulumi.Input<number>;
+    /**
+     * The scheme to redirect to. Supported values are `http` or `https`
+     */
+    scheme?: pulumi.Input<string>;
+    /**
+     * An optional URI path to redirect to.
+     */
+    uri?: pulumi.Input<string>;
 }
 
 export interface AppSpecJob {
@@ -384,10 +529,6 @@ export interface AppSpecJob {
     instanceSizeSlug?: pulumi.Input<string>;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
-     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -554,6 +695,8 @@ export interface AppSpecJobLogDestinationDatadog {
 export interface AppSpecJobLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -576,6 +719,8 @@ export interface AppSpecService {
     buildCommand?: pulumi.Input<string>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: pulumi.Input<inputs.AppSpecServiceCors>;
     /**
@@ -634,6 +779,11 @@ export interface AppSpecService {
      * The name of the component.
      */
     name: pulumi.Input<string>;
+    /**
+     * An HTTP paths that should be routed to this component.
+     *
+     * @deprecated Service level routes are deprecated in favor of ingresses
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceRoute>[]>;
     /**
      * An optional run command to override the component's default.
@@ -671,6 +821,10 @@ export interface AppSpecServiceAlert {
 export interface AppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
@@ -860,6 +1014,8 @@ export interface AppSpecServiceLogDestinationDatadog {
 export interface AppSpecServiceLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -893,6 +1049,8 @@ export interface AppSpecStaticSite {
     catchallDocument?: pulumi.Input<string>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+     *
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
     cors?: pulumi.Input<inputs.AppSpecStaticSiteCors>;
     /**
@@ -935,6 +1093,11 @@ export interface AppSpecStaticSite {
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
     outputDir?: pulumi.Input<string>;
+    /**
+     * An HTTP paths that should be routed to this component.
+     *
+     * @deprecated Service level routes are deprecated in favor of ingresses
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteRoute>[]>;
     /**
      * An optional path to the working directory to use for the build.
@@ -945,6 +1108,10 @@ export interface AppSpecStaticSite {
 export interface AppSpecStaticSiteCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
@@ -1264,6 +1431,8 @@ export interface AppSpecWorkerLogDestinationDatadog {
 export interface AppSpecWorkerLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -1273,6 +1442,19 @@ export interface AppSpecWorkerLogDestinationPapertrail {
      * Datadog HTTP log intake endpoint.
      */
     endpoint: pulumi.Input<string>;
+}
+
+export interface DatabaseClusterBackupRestore {
+    /**
+     * The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    backupCreatedAt?: pulumi.Input<string>;
+    /**
+     * The name of an existing database cluster from which the backup will be restored.
+     */
+    databaseName: pulumi.Input<string>;
 }
 
 export interface DatabaseClusterMaintenanceWindow {
@@ -1303,6 +1485,104 @@ export interface DatabaseFirewallRule {
      * The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
      */
     value: pulumi.Input<string>;
+}
+
+export interface DatabaseKafkaTopicConfig {
+    /**
+     * The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * This may be one of "delete", "compact", or "compactDelete".
+     */
+    cleanupPolicy?: pulumi.Input<string>;
+    /**
+     * The topic compression codecs used for a given topic.
+     * This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+     */
+    compressionType?: pulumi.Input<string>;
+    /**
+     * The amount of time, in ms, that deleted records are retained.
+     */
+    deleteRetentionMs?: pulumi.Input<string>;
+    /**
+     * The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+     */
+    fileDeleteDelayMs?: pulumi.Input<string>;
+    /**
+     * The number of messages accumulated on a topic partition before they are flushed to disk.
+     */
+    flushMessages?: pulumi.Input<string>;
+    /**
+     * The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+     */
+    flushMs?: pulumi.Input<string>;
+    /**
+     * The interval, in bytes, in which entries are added to the offset index.
+     */
+    indexIntervalBytes?: pulumi.Input<string>;
+    /**
+     * The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+     */
+    maxCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * The maximum size, in bytes, of a message.
+     */
+    maxMessageBytes?: pulumi.Input<string>;
+    /**
+     * Determines whether down-conversion of message formats for consumers is enabled.
+     */
+    messageDownConversionEnable?: pulumi.Input<boolean>;
+    /**
+     * The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+     */
+    messageFormatVersion?: pulumi.Input<string>;
+    /**
+     * The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+     */
+    messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    /**
+     * Specifies which timestamp to use for the message. This may be one of "createTime" or "logAppendTime".
+     */
+    messageTimestampType?: pulumi.Input<string>;
+    /**
+     * A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
+     */
+    minCleanableDirtyRatio?: pulumi.Input<number>;
+    minCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     */
+    minInsyncReplicas?: pulumi.Input<number>;
+    /**
+     * Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+     */
+    preallocate?: pulumi.Input<boolean>;
+    /**
+     * The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+     */
+    retentionBytes?: pulumi.Input<string>;
+    /**
+     * The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+     */
+    retentionMs?: pulumi.Input<string>;
+    /**
+     * The maximum size, in bytes, of a single topic log file.
+     */
+    segmentBytes?: pulumi.Input<string>;
+    /**
+     * The maximum size, in bytes, of the offset index.
+     */
+    segmentIndexBytes?: pulumi.Input<string>;
+    /**
+     * The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+     */
+    segmentJitterMs?: pulumi.Input<string>;
+    /**
+     * The maximum time, in ms, before the topic log will flush to disk.
+     */
+    segmentMs?: pulumi.Input<string>;
+    /**
+     * Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
+     */
+    uncleanLeaderElectionEnable?: pulumi.Input<boolean>;
 }
 
 export interface FirewallInboundRule {
@@ -2053,18 +2333,6 @@ export interface GetSizesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSizesSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetSizesSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -2075,6 +2343,18 @@ export interface GetSizesSort {
      * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      */
     key: string;
+}
+
+export interface GetSizesSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the sizes by this key. This may be one of `slug`,
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetSpacesBucketsFilter {
@@ -2125,17 +2405,6 @@ export interface GetSpacesBucketsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSpacesBucketsSortArgs {
-    /**
-     * The sort direction. This may be either `asc` or `desc`.
-     */
-    direction?: pulumi.Input<string>;
-    /**
-     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-     */
-    key: pulumi.Input<string>;
-}
-
 export interface GetSpacesBucketsSort {
     /**
      * The sort direction. This may be either `asc` or `desc`.
@@ -2145,6 +2414,17 @@ export interface GetSpacesBucketsSort {
      * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
     key: string;
+}
+
+export interface GetSpacesBucketsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetSshKeysFilter {
@@ -2195,30 +2475,6 @@ export interface GetSshKeysSortArgs {
     key: pulumi.Input<string>;
 }
 
-export interface GetTagsFilterArgs {
-    /**
-     * Set to `true` to require that a field match all of the `values` instead of just one or more of
-     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-     * that all of the `values` are present in the list or set.
-     */
-    all?: pulumi.Input<boolean>;
-    /**
-     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-     * substrings to find within the string field.
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * Only retrieves tags which keys has value that matches
-     * one of the values provided here.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetTagsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -2241,6 +2497,30 @@ export interface GetTagsFilter {
      * one of the values provided here.
      */
     values: string[];
+}
+
+export interface GetTagsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * Only retrieves tags which keys has value that matches
+     * one of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetTagsSort {
@@ -2301,6 +2581,9 @@ export interface KubernetesClusterMaintenancePolicy {
      * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
      */
     day?: pulumi.Input<string>;
+    /**
+     * A string denoting the duration of the service window, e.g., "04:00".
+     */
     duration?: pulumi.Input<string>;
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
@@ -2443,6 +2726,18 @@ export interface KubernetesNodePoolTaint {
     value: pulumi.Input<string>;
 }
 
+export interface LoadBalancerFirewall {
+    /**
+     * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+     * * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+     */
+    allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+     */
+    denies?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LoadBalancerForwardingRule {
     /**
      * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
@@ -2459,7 +2754,7 @@ export interface LoadBalancerForwardingRule {
      */
     entryPort: pulumi.Input<number>;
     /**
-     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
      */
     entryProtocol: pulumi.Input<string>;
     /**
@@ -2467,7 +2762,7 @@ export interface LoadBalancerForwardingRule {
      */
     targetPort: pulumi.Input<number>;
     /**
-     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
      */
     targetProtocol: pulumi.Input<string>;
     /**
@@ -2478,7 +2773,7 @@ export interface LoadBalancerForwardingRule {
 
 export interface LoadBalancerHealthcheck {
     /**
-     * The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      */
     checkIntervalSeconds?: pulumi.Input<number>;
     /**
@@ -2532,6 +2827,33 @@ export interface MonitorAlertAlertsSlack {
     url: pulumi.Input<string>;
 }
 
+export interface SpacesBucketCorsConfigurationCorsRule {
+    /**
+     * Set of Headers that are specified in the Access-Control-Request-Headers header.
+     */
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+     */
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of origins you want customers to be able to access the bucket from.
+     */
+    allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Unique identifier for the rule. The value cannot be longer than 255 characters.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Time in seconds that your browser is to cache the preflight response for the specified resource.
+     */
+    maxAgeSeconds?: pulumi.Input<number>;
+}
+
 export interface SpacesBucketCorsRule {
     /**
      * A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
@@ -2571,6 +2893,8 @@ export interface SpacesBucketLifecycleRule {
     id?: pulumi.Input<string>;
     /**
      * Specifies when non-current object versions expire (documented below).
+     *
+     * At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
      */
     noncurrentVersionExpiration?: pulumi.Input<inputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration>;
     /**
@@ -2609,4 +2933,23 @@ export interface SpacesBucketVersioning {
      * state. You can, however, suspend versioning on that bucket.
      */
     enabled?: pulumi.Input<boolean>;
+}
+
+export interface UptimeAlertNotification {
+    /**
+     * List of email addresses to sent notifications to.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    slacks?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotificationSlack>[]>;
+}
+
+export interface UptimeAlertNotificationSlack {
+    /**
+     * The Slack channel to send alerts to.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * The webhook URL for Slack.
+     */
+    url: pulumi.Input<string>;
 }

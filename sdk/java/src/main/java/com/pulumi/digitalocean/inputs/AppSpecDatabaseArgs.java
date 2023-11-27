@@ -49,12 +49,16 @@ public final class AppSpecDatabaseArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The name of the MySQL or PostgreSQL user to configure.
      * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
      */
     @Import(name="dbUser")
     private @Nullable Output<String> dbUser;
 
     /**
      * @return The name of the MySQL or PostgreSQL user to configure.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<String>> dbUser() {
@@ -196,6 +200,8 @@ public final class AppSpecDatabaseArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param dbUser The name of the MySQL or PostgreSQL user to configure.
          * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
          * @return builder
          * 
          */
@@ -206,6 +212,8 @@ public final class AppSpecDatabaseArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param dbUser The name of the MySQL or PostgreSQL user to configure.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 

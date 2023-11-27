@@ -41,24 +41,26 @@ class AppArgs:
 class _AppState:
     def __init__(__self__, *,
                  active_deployment_id: Optional[pulumi.Input[str]] = None,
+                 app_urn: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  default_ingress: Optional[pulumi.Input[str]] = None,
                  live_url: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['AppSpecArgs']] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
-                 urn: Optional[pulumi.Input[str]] = None):
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering App resources.
         :param pulumi.Input[str] active_deployment_id: The ID the app's currently active deployment.
+        :param pulumi.Input[str] app_urn: The uniform resource identifier for the app.
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
         :param pulumi.Input['AppSpecArgs'] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[str] updated_at: The date and time of when the app was last updated.
-        :param pulumi.Input[str] urn: The uniform resource identifier for the app.
         """
         if active_deployment_id is not None:
             pulumi.set(__self__, "active_deployment_id", active_deployment_id)
+        if app_urn is not None:
+            pulumi.set(__self__, "app_urn", app_urn)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if default_ingress is not None:
@@ -69,8 +71,6 @@ class _AppState:
             pulumi.set(__self__, "spec", spec)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
 
     @property
     @pulumi.getter(name="activeDeploymentId")
@@ -83,6 +83,18 @@ class _AppState:
     @active_deployment_id.setter
     def active_deployment_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "active_deployment_id", value)
+
+    @property
+    @pulumi.getter(name="appUrn")
+    def app_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uniform resource identifier for the app.
+        """
+        return pulumi.get(self, "app_urn")
+
+    @app_urn.setter
+    def app_urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_urn", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -144,18 +156,6 @@ class _AppState:
     def updated_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "updated_at", value)
 
-    @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The uniform resource identifier for the app.
-        """
-        return pulumi.get(self, "urn")
-
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "urn", value)
-
 
 class App(pulumi.CustomResource):
     @overload
@@ -197,8 +197,8 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        static_ste_example = digitalocean.App("static-ste-example", spec=digitalocean.AppSpecArgs(
-            name="static-ste-example",
+        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
+            name="static-site-example",
             region="ams",
             static_sites=[digitalocean.AppSpecStaticSiteArgs(
                 build_command="bundle exec jekyll build -d ./public",
@@ -263,8 +263,8 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        static_ste_example = digitalocean.App("static-ste-example", spec=digitalocean.AppSpecArgs(
-            name="static-ste-example",
+        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
+            name="static-site-example",
             region="ams",
             static_sites=[digitalocean.AppSpecStaticSiteArgs(
                 build_command="bundle exec jekyll build -d ./public",
@@ -313,11 +313,11 @@ class App(pulumi.CustomResource):
 
             __props__.__dict__["spec"] = spec
             __props__.__dict__["active_deployment_id"] = None
+            __props__.__dict__["app_urn"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["default_ingress"] = None
             __props__.__dict__["live_url"] = None
             __props__.__dict__["updated_at"] = None
-            __props__.__dict__["urn"] = None
         super(App, __self__).__init__(
             'digitalocean:index/app:App',
             resource_name,
@@ -329,12 +329,12 @@ class App(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_deployment_id: Optional[pulumi.Input[str]] = None,
+            app_urn: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             default_ingress: Optional[pulumi.Input[str]] = None,
             live_url: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
-            updated_at: Optional[pulumi.Input[str]] = None,
-            urn: Optional[pulumi.Input[str]] = None) -> 'App':
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -343,24 +343,24 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] active_deployment_id: The ID the app's currently active deployment.
+        :param pulumi.Input[str] app_urn: The uniform resource identifier for the app.
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
         :param pulumi.Input[pulumi.InputType['AppSpecArgs']] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[str] updated_at: The date and time of when the app was last updated.
-        :param pulumi.Input[str] urn: The uniform resource identifier for the app.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AppState.__new__(_AppState)
 
         __props__.__dict__["active_deployment_id"] = active_deployment_id
+        __props__.__dict__["app_urn"] = app_urn
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["default_ingress"] = default_ingress
         __props__.__dict__["live_url"] = live_url
         __props__.__dict__["spec"] = spec
         __props__.__dict__["updated_at"] = updated_at
-        __props__.__dict__["urn"] = urn
         return App(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -370,6 +370,14 @@ class App(pulumi.CustomResource):
         The ID the app's currently active deployment.
         """
         return pulumi.get(self, "active_deployment_id")
+
+    @property
+    @pulumi.getter(name="appUrn")
+    def app_urn(self) -> pulumi.Output[str]:
+        """
+        The uniform resource identifier for the app.
+        """
+        return pulumi.get(self, "app_urn")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -410,12 +418,4 @@ class App(pulumi.CustomResource):
         The date and time of when the app was last updated.
         """
         return pulumi.get(self, "updated_at")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[str]:
-        """
-        The uniform resource identifier for the app.
-        """
-        return pulumi.get(self, "urn")
 

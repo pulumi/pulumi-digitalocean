@@ -153,6 +153,30 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
+        ### Create a new database firewall for a database replica
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        replica_example = digitalocean.DatabaseReplica("replica-example",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        # Create firewall rule for database replica
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=replica_example.uuid,
+            rules=[digitalocean.DatabaseFirewallRuleArgs(
+                type="ip_addr",
+                value="192.168.1.1",
+            )])
+        ```
 
         ## Import
 
@@ -225,6 +249,30 @@ class DatabaseFirewall(pulumi.CustomResource):
             rules=[digitalocean.DatabaseFirewallRuleArgs(
                 type="droplet",
                 value=web.id,
+            )])
+        ```
+        ### Create a new database firewall for a database replica
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            engine="pg",
+            version="11",
+            size="db-s-1vcpu-1gb",
+            region="nyc1",
+            node_count=1)
+        replica_example = digitalocean.DatabaseReplica("replica-example",
+            cluster_id=postgres_example.id,
+            size="db-s-1vcpu-1gb",
+            region="nyc1")
+        # Create firewall rule for database replica
+        example_fw = digitalocean.DatabaseFirewall("example-fw",
+            cluster_id=replica_example.uuid,
+            rules=[digitalocean.DatabaseFirewallRuleArgs(
+                type="ip_addr",
+                value="192.168.1.1",
             )])
         ```
 

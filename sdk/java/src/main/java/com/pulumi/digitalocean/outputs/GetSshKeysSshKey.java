@@ -10,35 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSshKeysSshKey {
+    /**
+     * @return The fingerprint of the public key of the ssh key.
+     * 
+     */
     private String fingerprint;
     /**
      * @return The ID of the ssh key.
-     * * `name`: The name of the ssh key.
-     * * `public_key`: The public key of the ssh key.
-     * * `fingerprint`: The fingerprint of the public key of the ssh key.
      * 
      */
     private Integer id;
+    /**
+     * @return The name of the ssh key.
+     * 
+     */
     private String name;
+    /**
+     * @return The public key of the ssh key.
+     * 
+     */
     private String publicKey;
 
     private GetSshKeysSshKey() {}
+    /**
+     * @return The fingerprint of the public key of the ssh key.
+     * 
+     */
     public String fingerprint() {
         return this.fingerprint;
     }
     /**
      * @return The ID of the ssh key.
-     * * `name`: The name of the ssh key.
-     * * `public_key`: The public key of the ssh key.
-     * * `fingerprint`: The fingerprint of the public key of the ssh key.
      * 
      */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The name of the ssh key.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The public key of the ssh key.
+     * 
+     */
     public String publicKey() {
         return this.publicKey;
     }
@@ -86,12 +104,12 @@ public final class GetSshKeysSshKey {
             return this;
         }
         public GetSshKeysSshKey build() {
-            final var o = new GetSshKeysSshKey();
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.name = name;
-            o.publicKey = publicKey;
-            return o;
+            final var _resultValue = new GetSshKeysSshKey();
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.publicKey = publicKey;
+            return _resultValue;
         }
     }
 }

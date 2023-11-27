@@ -126,7 +126,7 @@ class ProjectResources(pulumi.CustomResource):
             image="ubuntu-22-04-x64",
             region="nyc3")
         barfoo = digitalocean.ProjectResources("barfoo",
-            project=data["digitalocean_project"]["foo"]["id"],
+            project=playground.id,
             resources=[foobar.droplet_urn])
         ```
 
@@ -174,7 +174,7 @@ class ProjectResources(pulumi.CustomResource):
             image="ubuntu-22-04-x64",
             region="nyc3")
         barfoo = digitalocean.ProjectResources("barfoo",
-            project=data["digitalocean_project"]["foo"]["id"],
+            project=playground.id,
             resources=[foobar.droplet_urn])
         ```
 

@@ -18,6 +18,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new PostgreSQL database user
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -35,6 +36,38 @@ namespace Pulumi.DigitalOcean
     ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a new user for a PostgreSQL database replica
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
+    ///     {
+    ///         ClusterId = postgres_example.Id,
+    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = "nyc1",
+    ///     });
+    /// 
+    ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
+    ///     {
+    ///         ClusterId = replica_example.Uuid,
     ///     });
     /// 
     /// });
@@ -104,6 +137,10 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -171,11 +208,21 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for the database user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Role for the database user. The value will be either "primary" or "normal".

@@ -67,10 +67,10 @@ public final class GetDomainsSort {
             return this;
         }
         public GetDomainsSort build() {
-            final var o = new GetDomainsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetDomainsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

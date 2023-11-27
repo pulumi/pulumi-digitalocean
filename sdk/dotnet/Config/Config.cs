@@ -8,7 +8,7 @@ namespace Pulumi.DigitalOcean
 {
     public static class Config
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
         "Double underscore prefix used to avoid conflicts with variable names.")]
         private sealed class __Value<T>
         {
@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("digitalocean");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("digitalocean");
 
         private static readonly __Value<string?> _apiEndpoint = new __Value<string?>(() => __config.Get("apiEndpoint") ?? Utilities.GetEnv("DIGITALOCEAN_API_URL") ?? "https://api.digitalocean.com");
         /// <summary>
@@ -40,6 +40,46 @@ namespace Pulumi.DigitalOcean
         {
             get => _apiEndpoint.Get();
             set => _apiEndpoint.Set(value);
+        }
+
+        private static readonly __Value<int?> _httpRetryMax = new __Value<int?>(() => __config.GetInt32("httpRetryMax"));
+        /// <summary>
+        /// The maximum number of retries on a failed API request.
+        /// </summary>
+        public static int? HttpRetryMax
+        {
+            get => _httpRetryMax.Get();
+            set => _httpRetryMax.Set(value);
+        }
+
+        private static readonly __Value<double?> _httpRetryWaitMax = new __Value<double?>(() => __config.GetDouble("httpRetryWaitMax"));
+        /// <summary>
+        /// The maximum wait time (in seconds) between failed API requests.
+        /// </summary>
+        public static double? HttpRetryWaitMax
+        {
+            get => _httpRetryWaitMax.Get();
+            set => _httpRetryWaitMax.Set(value);
+        }
+
+        private static readonly __Value<double?> _httpRetryWaitMin = new __Value<double?>(() => __config.GetDouble("httpRetryWaitMin"));
+        /// <summary>
+        /// The minimum wait time (in seconds) between failed API requests.
+        /// </summary>
+        public static double? HttpRetryWaitMin
+        {
+            get => _httpRetryWaitMin.Get();
+            set => _httpRetryWaitMin.Set(value);
+        }
+
+        private static readonly __Value<double?> _requestsPerSecond = new __Value<double?>(() => __config.GetDouble("requestsPerSecond"));
+        /// <summary>
+        /// The rate of requests per second to limit the HTTP client.
+        /// </summary>
+        public static double? RequestsPerSecond
+        {
+            get => _requestsPerSecond.Get();
+            set => _requestsPerSecond.Set(value);
         }
 
         private static readonly __Value<string?> _spacesAccessId = new __Value<string?>(() => __config.Get("spacesAccessId"));

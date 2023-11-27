@@ -16,6 +16,9 @@ from .database_cluster import *
 from .database_connection_pool import *
 from .database_db import *
 from .database_firewall import *
+from .database_kafka_topic import *
+from .database_mysql_config import *
+from .database_redis_config import *
 from .database_replica import *
 from .database_user import *
 from .dns_record import *
@@ -32,6 +35,7 @@ from .get_container_registry import *
 from .get_database_ca import *
 from .get_database_cluster import *
 from .get_database_replica import *
+from .get_database_user import *
 from .get_domain import *
 from .get_domains import *
 from .get_droplet import *
@@ -73,10 +77,13 @@ from .provider import *
 from .reserved_ip import *
 from .reserved_ip_assignment import *
 from .spaces_bucket import *
+from .spaces_bucket_cors_configuration import *
 from .spaces_bucket_object import *
 from .spaces_bucket_policy import *
 from .ssh_key import *
 from .tag import *
+from .uptime_alert import *
+from .uptime_check import *
 from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
@@ -172,6 +179,30 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseFirewall:DatabaseFirewall": "DatabaseFirewall"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseKafkaTopic",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic": "DatabaseKafkaTopic"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseMysqlConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig": "DatabaseMysqlConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseRedisConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig": "DatabaseRedisConfig"
   }
  },
  {
@@ -320,6 +351,14 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
+  "mod": "index/spacesBucketCorsConfiguration",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration": "SpacesBucketCorsConfiguration"
+  }
+ },
+ {
+  "pkg": "digitalocean",
   "mod": "index/spacesBucketObject",
   "fqn": "pulumi_digitalocean",
   "classes": {
@@ -348,6 +387,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/tag:Tag": "Tag"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/uptimeAlert",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/uptimeAlert:UptimeAlert": "UptimeAlert"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/uptimeCheck",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/uptimeCheck:UptimeCheck": "UptimeCheck"
   }
  },
  {

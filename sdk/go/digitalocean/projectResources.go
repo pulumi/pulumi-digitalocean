@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,7 +42,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupProject(ctx, &GetProjectArgs{
+//			playground, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
 //				Name: pulumi.StringRef("playground"),
 //			}, nil)
 //			if err != nil {
@@ -56,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewProjectResources(ctx, "barfoo", &digitalocean.ProjectResourcesArgs{
-//				Project: pulumi.Any(data.Digitalocean_project.Foo.Id),
+//				Project: *pulumi.String(playground.Id),
 //				Resources: pulumi.StringArray{
 //					foobar.DropletUrn,
 //				},
@@ -95,6 +96,7 @@ func NewProjectResources(ctx *pulumi.Context,
 	if args.Resources == nil {
 		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectResources
 	err := ctx.RegisterResource("digitalocean:index/projectResources:ProjectResources", name, args, &resource, opts...)
 	if err != nil {

@@ -14,6 +14,26 @@ apiEndpoint: str
 The URL to use for the DigitalOcean API.
 """
 
+httpRetryMax: Optional[int]
+"""
+The maximum number of retries on a failed API request.
+"""
+
+httpRetryWaitMax: Optional[float]
+"""
+The maximum wait time (in seconds) between failed API requests.
+"""
+
+httpRetryWaitMin: Optional[float]
+"""
+The minimum wait time (in seconds) between failed API requests.
+"""
+
+requestsPerSecond: Optional[float]
+"""
+The rate of requests per second to limit the HTTP client.
+"""
+
 spacesAccessId: Optional[str]
 """
 The access key ID for Spaces API operations.

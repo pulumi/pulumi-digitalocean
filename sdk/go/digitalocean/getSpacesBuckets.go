@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,9 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
-//				Filters: []GetSpacesBucketsFilter{
-//					GetSpacesBucketsFilter{
+//			_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
+//				Filters: []digitalocean.GetSpacesBucketsFilter{
+//					{
 //						Key: "region",
 //						Values: []string{
 //							"nyc3",
@@ -66,17 +67,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetSpacesBuckets(ctx, &GetSpacesBucketsArgs{
-//				Filters: []GetSpacesBucketsFilter{
-//					GetSpacesBucketsFilter{
+//			_, err := digitalocean.GetSpacesBuckets(ctx, &digitalocean.GetSpacesBucketsArgs{
+//				Filters: []digitalocean.GetSpacesBucketsFilter{
+//					{
 //						Key: "region",
 //						Values: []string{
 //							"nyc3",
 //						},
 //					},
 //				},
-//				Sorts: []GetSpacesBucketsSort{
-//					GetSpacesBucketsSort{
+//				Sorts: []digitalocean.GetSpacesBucketsSort{
+//					{
 //						Direction: pulumi.StringRef("desc"),
 //						Key:       "name",
 //					},
@@ -91,6 +92,7 @@ import (
 //
 // ```
 func GetSpacesBuckets(ctx *pulumi.Context, args *GetSpacesBucketsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpacesBucketsResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args, &rv, opts...)
 	if err != nil {

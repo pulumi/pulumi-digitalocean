@@ -124,12 +124,12 @@ public final class GetSizesFilter {
             return values(List.of(values));
         }
         public GetSizesFilter build() {
-            final var o = new GetSizesFilter();
-            o.all = all;
-            o.key = key;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetSizesFilter();
+            _resultValue.all = all;
+            _resultValue.key = key;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

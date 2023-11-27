@@ -153,7 +153,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * Canned ACL applied on bucket creation (`private` or `public-read`)
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
@@ -167,7 +167,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
      * 
      */
-    @Export(name="bucketDomainName", type=String.class, parameters={})
+    @Export(name="bucketDomainName", refs={String.class}, tree="[0]")
     private Output<String> bucketDomainName;
 
     /**
@@ -181,7 +181,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * The uniform resource name for the bucket
      * 
      */
-    @Export(name="bucketUrn", type=String.class, parameters={})
+    @Export(name="bucketUrn", refs={String.class}, tree="[0]")
     private Output<String> bucketUrn;
 
     /**
@@ -194,8 +194,12 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      * 
+     * @deprecated
+     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * 
      */
-    @Export(name="corsRules", type=List.class, parameters={SpacesBucketCorsRule.class})
+    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
+    @Export(name="corsRules", refs={List.class,SpacesBucketCorsRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SpacesBucketCorsRule>> corsRules;
 
     /**
@@ -206,10 +210,24 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.corsRules);
     }
     /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
+    private Output<String> endpoint;
+
+    /**
+     * @return The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    public Output<String> endpoint() {
+        return this.endpoint;
+    }
+    /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -223,7 +241,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * A configuration of object lifecycle management (documented below).
      * 
      */
-    @Export(name="lifecycleRules", type=List.class, parameters={SpacesBucketLifecycleRule.class})
+    @Export(name="lifecycleRules", refs={List.class,SpacesBucketLifecycleRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SpacesBucketLifecycleRule>> lifecycleRules;
 
     /**
@@ -237,7 +255,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * The name of the bucket
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -251,7 +269,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * The region where the bucket resides (Defaults to `nyc3`)
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -265,7 +283,7 @@ public class SpacesBucket extends com.pulumi.resources.CustomResource {
      * A state of versioning (documented below)
      * 
      */
-    @Export(name="versioning", type=SpacesBucketVersioning.class, parameters={})
+    @Export(name="versioning", refs={SpacesBucketVersioning.class}, tree="[0]")
     private Output</* @Nullable */ SpacesBucketVersioning> versioning;
 
     /**

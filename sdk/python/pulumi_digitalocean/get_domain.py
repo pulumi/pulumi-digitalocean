@@ -43,7 +43,6 @@ class GetDomainResult:
     def domain_urn(self) -> str:
         """
         The uniform resource name of the domain
-        * `zone_file`: The zone file of the domain.
         """
         return pulumi.get(self, "domain_urn")
 
@@ -63,11 +62,17 @@ class GetDomainResult:
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        The TTL of the domain.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter(name="zoneFile")
     def zone_file(self) -> str:
+        """
+        The zone file of the domain.
+        """
         return pulumi.get(self, "zone_file")
 
 
@@ -104,11 +109,11 @@ def get_domain(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        domain_urn=__ret__.domain_urn,
-        id=__ret__.id,
-        name=__ret__.name,
-        ttl=__ret__.ttl,
-        zone_file=__ret__.zone_file)
+        domain_urn=pulumi.get(__ret__, 'domain_urn'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        zone_file=pulumi.get(__ret__, 'zone_file'))
 
 
 @_utilities.lift_output_func(get_domain)

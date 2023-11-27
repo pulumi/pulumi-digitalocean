@@ -87,11 +87,11 @@ public final class LoadBalancerStickySessions {
             return this;
         }
         public LoadBalancerStickySessions build() {
-            final var o = new LoadBalancerStickySessions();
-            o.cookieName = cookieName;
-            o.cookieTtlSeconds = cookieTtlSeconds;
-            o.type = type;
-            return o;
+            final var _resultValue = new LoadBalancerStickySessions();
+            _resultValue.cookieName = cookieName;
+            _resultValue.cookieTtlSeconds = cookieTtlSeconds;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

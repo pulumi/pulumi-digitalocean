@@ -94,10 +94,10 @@ def get_sizes(filters: Optional[Sequence[pulumi.InputType['GetSizesFilterArgs']]
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSizes:getSizes', __args__, opts=opts, typ=GetSizesResult).value
 
     return AwaitableGetSizesResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        sizes=__ret__.sizes,
-        sorts=__ret__.sorts)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        sizes=pulumi.get(__ret__, 'sizes'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_sizes)

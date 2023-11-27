@@ -140,6 +140,11 @@ namespace Pulumi.DigitalOcean.Inputs
 
         [Input("routes")]
         private InputList<Inputs.AppSpecServiceRouteGetArgs>? _routes;
+
+        /// <summary>
+        /// An HTTP paths that should be routed to this component.
+        /// </summary>
+        [Obsolete(@"Service level routes are deprecated in favor of ingresses")]
         public InputList<Inputs.AppSpecServiceRouteGetArgs> Routes
         {
             get => _routes ?? (_routes = new InputList<Inputs.AppSpecServiceRouteGetArgs>());

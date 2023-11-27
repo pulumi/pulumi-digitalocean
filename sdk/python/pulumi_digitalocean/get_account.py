@@ -13,6 +13,7 @@ __all__ = [
     'GetAccountResult',
     'AwaitableGetAccountResult',
     'get_account',
+    'get_account_output',
 ]
 
 @pulumi.output_type
@@ -49,21 +50,33 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="dropletLimit")
     def droplet_limit(self) -> int:
+        """
+        The total number of droplets current user or team may have active at one time.
+        """
         return pulumi.get(self, "droplet_limit")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The email address used by the current user to register for DigitalOcean.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="emailVerified")
     def email_verified(self) -> bool:
+        """
+        If true, the user has verified their account via email. False otherwise.
+        """
         return pulumi.get(self, "email_verified")
 
     @property
     @pulumi.getter(name="floatingIpLimit")
     def floating_ip_limit(self) -> int:
+        """
+        The total number of floating IPs the current user or team may have.
+        """
         return pulumi.get(self, "floating_ip_limit")
 
     @property
@@ -77,16 +90,25 @@ class GetAccountResult:
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        This value is one of "active", "warning" or "locked".
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> str:
+        """
+        A human-readable message giving more details about the status of the account.
+        """
         return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        The unique universal identifier for the current user.
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -126,11 +148,30 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        droplet_limit=__ret__.droplet_limit,
-        email=__ret__.email,
-        email_verified=__ret__.email_verified,
-        floating_ip_limit=__ret__.floating_ip_limit,
-        id=__ret__.id,
-        status=__ret__.status,
-        status_message=__ret__.status_message,
-        uuid=__ret__.uuid)
+        droplet_limit=pulumi.get(__ret__, 'droplet_limit'),
+        email=pulumi.get(__ret__, 'email'),
+        email_verified=pulumi.get(__ret__, 'email_verified'),
+        floating_ip_limit=pulumi.get(__ret__, 'floating_ip_limit'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        uuid=pulumi.get(__ret__, 'uuid'))
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    """
+    Get information on your DigitalOcean account.
+
+    ## Example Usage
+
+    Get the account:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_account()
+    ```
+    """
+    ...

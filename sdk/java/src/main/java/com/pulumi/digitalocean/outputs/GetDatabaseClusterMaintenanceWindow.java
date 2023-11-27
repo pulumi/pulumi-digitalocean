@@ -65,10 +65,10 @@ public final class GetDatabaseClusterMaintenanceWindow {
             return this;
         }
         public GetDatabaseClusterMaintenanceWindow build() {
-            final var o = new GetDatabaseClusterMaintenanceWindow();
-            o.day = day;
-            o.hour = hour;
-            return o;
+            final var _resultValue = new GetDatabaseClusterMaintenanceWindow();
+            _resultValue.day = day;
+            _resultValue.hour = hour;
+            return _resultValue;
         }
     }
 }

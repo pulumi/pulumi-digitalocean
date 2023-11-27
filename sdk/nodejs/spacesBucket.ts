@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -37,9 +39,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobar = new digitalocean.SpacesBucket("foobar", {
- *     region: "nyc3",
- * });
+ * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
  * ```
  * ### Create a New Bucket With CORS Rules
  *
@@ -120,8 +120,14 @@ export class SpacesBucket extends pulumi.CustomResource {
     public /*out*/ readonly bucketUrn!: pulumi.Output<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
+     *
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
      */
     public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
+    /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     */
+    public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
@@ -160,6 +166,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
             resourceInputs["bucketUrn"] = state ? state.bucketUrn : undefined;
             resourceInputs["corsRules"] = state ? state.corsRules : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -176,6 +183,7 @@ export class SpacesBucket extends pulumi.CustomResource {
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
             resourceInputs["bucketUrn"] = undefined /*out*/;
+            resourceInputs["endpoint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SpacesBucket.__pulumiType, name, resourceInputs, opts);
@@ -200,8 +208,14 @@ export interface SpacesBucketState {
     bucketUrn?: pulumi.Input<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
+     *
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
+    /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     */
+    endpoint?: pulumi.Input<string>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
@@ -234,6 +248,8 @@ export interface SpacesBucketArgs {
     acl?: pulumi.Input<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
+     *
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVpc(ctx, &GetVpcArgs{
+//			_, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
 //				Name: pulumi.StringRef("example-network"),
 //			}, nil)
 //			if err != nil {
@@ -60,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := digitalocean.LookupVpc(ctx, &GetVpcArgs{
+//			exampleVpc, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
 //				Name: pulumi.StringRef("example-network"),
 //			}, nil)
 //			if err != nil {
@@ -70,7 +71,7 @@ import (
 //				Size:    pulumi.String("s-1vcpu-1gb"),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String("nyc3"),
-//				VpcUuid: pulumi.String(exampleVpc.Id),
+//				VpcUuid: *pulumi.String(exampleVpc.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -81,6 +82,7 @@ import (
 //
 // ```
 func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOption) (*LookupVpcResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcResult
 	err := ctx.Invoke("digitalocean:index/getVpc:getVpc", args, &rv, opts...)
 	if err != nil {

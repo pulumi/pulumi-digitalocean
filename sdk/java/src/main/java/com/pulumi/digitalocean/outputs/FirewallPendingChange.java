@@ -74,11 +74,11 @@ public final class FirewallPendingChange {
             return this;
         }
         public FirewallPendingChange build() {
-            final var o = new FirewallPendingChange();
-            o.dropletId = dropletId;
-            o.removing = removing;
-            o.status = status;
-            return o;
+            final var _resultValue = new FirewallPendingChange();
+            _resultValue.dropletId = dropletId;
+            _resultValue.removing = removing;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

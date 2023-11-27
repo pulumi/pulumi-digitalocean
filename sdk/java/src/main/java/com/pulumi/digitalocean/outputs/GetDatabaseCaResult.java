@@ -76,11 +76,11 @@ public final class GetDatabaseCaResult {
             return this;
         }
         public GetDatabaseCaResult build() {
-            final var o = new GetDatabaseCaResult();
-            o.certificate = certificate;
-            o.clusterId = clusterId;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetDatabaseCaResult();
+            _resultValue.certificate = certificate;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

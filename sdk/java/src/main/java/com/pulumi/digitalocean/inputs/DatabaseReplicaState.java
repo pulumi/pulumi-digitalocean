@@ -171,14 +171,14 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Either<String,DatabaseSlug>> size;
 
     /**
-     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     public Optional<Output<Either<String,DatabaseSlug>>> size() {
@@ -230,6 +230,21 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.user);
     }
 
+    /**
+     * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+     * 
+     */
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
+    }
+
     private DatabaseReplicaState() {}
 
     private DatabaseReplicaState(DatabaseReplicaState $) {
@@ -247,6 +262,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         this.tags = $.tags;
         this.uri = $.uri;
         this.user = $.user;
+        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -498,7 +514,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -509,7 +525,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -519,7 +535,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -529,7 +545,7 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+         * @param size Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
          * 
          * @return builder
          * 
@@ -609,6 +625,27 @@ public final class DatabaseReplicaState extends com.pulumi.resources.ResourceArg
          */
         public Builder user(String user) {
             return user(Output.of(user));
+        }
+
+        /**
+         * @param uuid The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+        /**
+         * @param uuid The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
         }
 
         public DatabaseReplicaState build() {

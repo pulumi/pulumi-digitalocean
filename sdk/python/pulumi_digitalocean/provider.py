@@ -15,6 +15,10 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  api_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_retry_max: Optional[pulumi.Input[int]] = None,
+                 http_retry_wait_max: Optional[pulumi.Input[float]] = None,
+                 http_retry_wait_min: Optional[pulumi.Input[float]] = None,
+                 requests_per_second: Optional[pulumi.Input[float]] = None,
                  spaces_access_id: Optional[pulumi.Input[str]] = None,
                  spaces_endpoint: Optional[pulumi.Input[str]] = None,
                  spaces_secret_key: Optional[pulumi.Input[str]] = None,
@@ -22,6 +26,10 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] api_endpoint: The URL to use for the DigitalOcean API.
+        :param pulumi.Input[int] http_retry_max: The maximum number of retries on a failed API request.
+        :param pulumi.Input[float] http_retry_wait_max: The maximum wait time (in seconds) between failed API requests.
+        :param pulumi.Input[float] http_retry_wait_min: The minimum wait time (in seconds) between failed API requests.
+        :param pulumi.Input[float] requests_per_second: The rate of requests per second to limit the HTTP client.
         :param pulumi.Input[str] spaces_access_id: The access key ID for Spaces API operations.
         :param pulumi.Input[str] spaces_endpoint: The URL to use for the DigitalOcean Spaces API.
         :param pulumi.Input[str] spaces_secret_key: The secret access key for Spaces API operations.
@@ -31,6 +39,14 @@ class ProviderArgs:
             api_endpoint = (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
         if api_endpoint is not None:
             pulumi.set(__self__, "api_endpoint", api_endpoint)
+        if http_retry_max is not None:
+            pulumi.set(__self__, "http_retry_max", http_retry_max)
+        if http_retry_wait_max is not None:
+            pulumi.set(__self__, "http_retry_wait_max", http_retry_wait_max)
+        if http_retry_wait_min is not None:
+            pulumi.set(__self__, "http_retry_wait_min", http_retry_wait_min)
+        if requests_per_second is not None:
+            pulumi.set(__self__, "requests_per_second", requests_per_second)
         if spaces_access_id is not None:
             pulumi.set(__self__, "spaces_access_id", spaces_access_id)
         if spaces_endpoint is None:
@@ -53,6 +69,54 @@ class ProviderArgs:
     @api_endpoint.setter
     def api_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "api_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpRetryMax")
+    def http_retry_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of retries on a failed API request.
+        """
+        return pulumi.get(self, "http_retry_max")
+
+    @http_retry_max.setter
+    def http_retry_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_retry_max", value)
+
+    @property
+    @pulumi.getter(name="httpRetryWaitMax")
+    def http_retry_wait_max(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum wait time (in seconds) between failed API requests.
+        """
+        return pulumi.get(self, "http_retry_wait_max")
+
+    @http_retry_wait_max.setter
+    def http_retry_wait_max(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "http_retry_wait_max", value)
+
+    @property
+    @pulumi.getter(name="httpRetryWaitMin")
+    def http_retry_wait_min(self) -> Optional[pulumi.Input[float]]:
+        """
+        The minimum wait time (in seconds) between failed API requests.
+        """
+        return pulumi.get(self, "http_retry_wait_min")
+
+    @http_retry_wait_min.setter
+    def http_retry_wait_min(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "http_retry_wait_min", value)
+
+    @property
+    @pulumi.getter(name="requestsPerSecond")
+    def requests_per_second(self) -> Optional[pulumi.Input[float]]:
+        """
+        The rate of requests per second to limit the HTTP client.
+        """
+        return pulumi.get(self, "requests_per_second")
+
+    @requests_per_second.setter
+    def requests_per_second(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "requests_per_second", value)
 
     @property
     @pulumi.getter(name="spacesAccessId")
@@ -109,6 +173,10 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_retry_max: Optional[pulumi.Input[int]] = None,
+                 http_retry_wait_max: Optional[pulumi.Input[float]] = None,
+                 http_retry_wait_min: Optional[pulumi.Input[float]] = None,
+                 requests_per_second: Optional[pulumi.Input[float]] = None,
                  spaces_access_id: Optional[pulumi.Input[str]] = None,
                  spaces_endpoint: Optional[pulumi.Input[str]] = None,
                  spaces_secret_key: Optional[pulumi.Input[str]] = None,
@@ -123,6 +191,10 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_endpoint: The URL to use for the DigitalOcean API.
+        :param pulumi.Input[int] http_retry_max: The maximum number of retries on a failed API request.
+        :param pulumi.Input[float] http_retry_wait_max: The maximum wait time (in seconds) between failed API requests.
+        :param pulumi.Input[float] http_retry_wait_min: The minimum wait time (in seconds) between failed API requests.
+        :param pulumi.Input[float] requests_per_second: The rate of requests per second to limit the HTTP client.
         :param pulumi.Input[str] spaces_access_id: The access key ID for Spaces API operations.
         :param pulumi.Input[str] spaces_endpoint: The URL to use for the DigitalOcean Spaces API.
         :param pulumi.Input[str] spaces_secret_key: The secret access key for Spaces API operations.
@@ -156,6 +228,10 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_retry_max: Optional[pulumi.Input[int]] = None,
+                 http_retry_wait_max: Optional[pulumi.Input[float]] = None,
+                 http_retry_wait_min: Optional[pulumi.Input[float]] = None,
+                 requests_per_second: Optional[pulumi.Input[float]] = None,
                  spaces_access_id: Optional[pulumi.Input[str]] = None,
                  spaces_endpoint: Optional[pulumi.Input[str]] = None,
                  spaces_secret_key: Optional[pulumi.Input[str]] = None,
@@ -172,6 +248,10 @@ class Provider(pulumi.ProviderResource):
             if api_endpoint is None:
                 api_endpoint = (_utilities.get_env('DIGITALOCEAN_API_URL') or 'https://api.digitalocean.com')
             __props__.__dict__["api_endpoint"] = api_endpoint
+            __props__.__dict__["http_retry_max"] = pulumi.Output.from_input(http_retry_max).apply(pulumi.runtime.to_json) if http_retry_max is not None else None
+            __props__.__dict__["http_retry_wait_max"] = pulumi.Output.from_input(http_retry_wait_max).apply(pulumi.runtime.to_json) if http_retry_wait_max is not None else None
+            __props__.__dict__["http_retry_wait_min"] = pulumi.Output.from_input(http_retry_wait_min).apply(pulumi.runtime.to_json) if http_retry_wait_min is not None else None
+            __props__.__dict__["requests_per_second"] = pulumi.Output.from_input(requests_per_second).apply(pulumi.runtime.to_json) if requests_per_second is not None else None
             __props__.__dict__["spaces_access_id"] = spaces_access_id
             if spaces_endpoint is None:
                 spaces_endpoint = _utilities.get_env('SPACES_ENDPOINT_URL')

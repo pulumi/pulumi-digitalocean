@@ -21,6 +21,7 @@ class DropletArgs:
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
@@ -45,7 +46,10 @@ class DropletArgs:
                set it to `true`.
         :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+        :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false. If set to `true`, you can configure monitor alert policies
                [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
@@ -78,6 +82,8 @@ class DropletArgs:
             pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if name is not None:
@@ -162,6 +168,8 @@ class DropletArgs:
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -180,6 +188,18 @@ class DropletArgs:
     @ipv6.setter
     def ipv6(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv6 address
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @property
     @pulumi.getter
@@ -214,6 +234,9 @@ class DropletArgs:
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
+        warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+        pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
+
         return pulumi.get(self, "private_networking")
 
     @private_networking.setter
@@ -356,9 +379,10 @@ class _DropletState:
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
-               * `name`- The name of the Droplet
         :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
@@ -508,7 +532,6 @@ class _DropletState:
     def droplet_urn(self) -> Optional[pulumi.Input[str]]:
         """
         The uniform resource name of the Droplet
-        * `name`- The name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
 
@@ -522,6 +545,8 @@ class _DropletState:
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -667,6 +692,9 @@ class _DropletState:
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
+        warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+        pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
+
         return pulumi.get(self, "private_networking")
 
     @private_networking.setter
@@ -812,6 +840,7 @@ class Droplet(pulumi.CustomResource):
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
@@ -836,7 +865,7 @@ class Droplet(pulumi.CustomResource):
 
         # Create a new Web Droplet in the nyc2 region
         web = digitalocean.Droplet("web",
-            image="ubuntu-18-04-x64",
+            image="ubuntu-20-04-x64",
             region="nyc2",
             size="s-1vcpu-1gb")
         ```
@@ -861,8 +890,11 @@ class Droplet(pulumi.CustomResource):
                set it to `true`.
         :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+        :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false. If set to `true`, you can configure monitor alert policies
                [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
@@ -904,7 +936,7 @@ class Droplet(pulumi.CustomResource):
 
         # Create a new Web Droplet in the nyc2 region
         web = digitalocean.Droplet("web",
-            image="ubuntu-18-04-x64",
+            image="ubuntu-20-04-x64",
             region="nyc2",
             size="s-1vcpu-1gb")
         ```
@@ -937,6 +969,7 @@ class Droplet(pulumi.CustomResource):
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_networking: Optional[pulumi.Input[bool]] = None,
@@ -964,11 +997,9 @@ class Droplet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'image'")
             __props__.__dict__["image"] = image
             __props__.__dict__["ipv6"] = ipv6
+            __props__.__dict__["ipv6_address"] = ipv6_address
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
-            if private_networking is not None and not opts.urn:
-                warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
-                pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
             __props__.__dict__["private_networking"] = private_networking
             __props__.__dict__["region"] = region
             __props__.__dict__["resize_disk"] = resize_disk
@@ -985,7 +1016,6 @@ class Droplet(pulumi.CustomResource):
             __props__.__dict__["droplet_urn"] = None
             __props__.__dict__["ipv4_address"] = None
             __props__.__dict__["ipv4_address_private"] = None
-            __props__.__dict__["ipv6_address"] = None
             __props__.__dict__["locked"] = None
             __props__.__dict__["memory"] = None
             __props__.__dict__["price_hourly"] = None
@@ -1047,9 +1077,10 @@ class Droplet(pulumi.CustomResource):
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[str] droplet_urn: The uniform resource name of the Droplet
-               * `name`- The name of the Droplet
         :param pulumi.Input[bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
@@ -1157,7 +1188,6 @@ class Droplet(pulumi.CustomResource):
     def droplet_urn(self) -> pulumi.Output[str]:
         """
         The uniform resource name of the Droplet
-        * `name`- The name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
 
@@ -1167,6 +1197,8 @@ class Droplet(pulumi.CustomResource):
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -1264,6 +1296,9 @@ class Droplet(pulumi.CustomResource):
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
+        warnings.warn("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""", DeprecationWarning)
+        pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
+
         return pulumi.get(self, "private_networking")
 
     @property

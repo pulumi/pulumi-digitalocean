@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bootstrapScript, err := digitalocean.LookupSpacesBucketObject(ctx, &GetSpacesBucketObjectArgs{
+//			bootstrapScript, err := digitalocean.LookupSpacesBucketObject(ctx, &digitalocean.LookupSpacesBucketObjectArgs{
 //				Bucket: "ourcorp-deploy-config",
 //				Region: "nyc3",
 //				Key:    "droplet-bootstrap-script.sh",
@@ -46,7 +47,7 @@ import (
 //				Image:    pulumi.String("ubuntu-18-04-x64"),
 //				Region:   pulumi.String("nyc2"),
 //				Size:     pulumi.String("s-1vcpu-1gb"),
-//				UserData: pulumi.String(bootstrapScript.Body),
+//				UserData: *pulumi.String(bootstrapScript.Body),
 //			})
 //			if err != nil {
 //				return err
@@ -57,6 +58,7 @@ import (
 //
 // ```
 func LookupSpacesBucketObject(ctx *pulumi.Context, args *LookupSpacesBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketObjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketObjectResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args, &rv, opts...)
 	if err != nil {

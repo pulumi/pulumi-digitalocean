@@ -128,7 +128,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * that represents when the Firewall was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -144,7 +144,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * to the Firewall.
      * 
      */
-    @Export(name="dropletIds", type=List.class, parameters={Integer.class})
+    @Export(name="dropletIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> dropletIds;
 
     /**
@@ -160,7 +160,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The `inbound_rule` block is documented below.
      * 
      */
-    @Export(name="inboundRules", type=List.class, parameters={FirewallInboundRule.class})
+    @Export(name="inboundRules", refs={List.class,FirewallInboundRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallInboundRule>> inboundRules;
 
     /**
@@ -175,7 +175,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The Firewall name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -190,7 +190,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The `outbound_rule` block is documented below.
      * 
      */
-    @Export(name="outboundRules", type=List.class, parameters={FirewallOutboundRule.class})
+    @Export(name="outboundRules", refs={List.class,FirewallOutboundRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallOutboundRule>> outboundRules;
 
     /**
@@ -208,7 +208,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * have been successfully applied.
      * 
      */
-    @Export(name="pendingChanges", type=List.class, parameters={FirewallPendingChange.class})
+    @Export(name="pendingChanges", refs={List.class,FirewallPendingChange.class}, tree="[0,1]")
     private Output<List<FirewallPendingChange>> pendingChanges;
 
     /**
@@ -226,7 +226,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * This can be &#34;waiting&#34;, &#34;succeeded&#34;, or &#34;failed&#34;.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -241,7 +241,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The names of the Tags assigned to the Firewall.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

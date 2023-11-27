@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,10 @@ import (
 //	$ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
 //
 // ```
+//
+//	~>
+//
+// You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list <domain.name>`
 type DnsRecord struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +115,7 @@ func NewDnsRecord(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsRecord
 	err := ctx.RegisterResource("digitalocean:index/dnsRecord:DnsRecord", name, args, &resource, opts...)
 	if err != nil {

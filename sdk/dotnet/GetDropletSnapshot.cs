@@ -24,6 +24,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -43,6 +44,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -57,7 +59,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
-        ///         Image = web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult).Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Region = "nyc3",
         ///         Size = "s-2vcpu-4gb",
         ///     });
@@ -68,7 +70,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDropletSnapshotResult> InvokeAsync(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Droplet snapshots are saved instances of a Droplet. Use this data
@@ -83,6 +85,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -102,6 +105,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -116,7 +120,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
-        ///         Image = web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult).Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Region = "nyc3",
         ///         Size = "s-2vcpu-4gb",
         ///     });
@@ -127,7 +131,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDropletSnapshotResult> Invoke(GetDropletSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -135,6 +139,10 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// If more than one result is returned, use the most recent Droplet snapshot.
+        /// 
+        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
+        /// the update will fail. Ensure that your search is specific enough to return
+        /// a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
@@ -167,6 +175,10 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// If more than one result is returned, use the most recent Droplet snapshot.
+        /// 
+        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
+        /// the update will fail. Ensure that your search is specific enough to return
+        /// a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }

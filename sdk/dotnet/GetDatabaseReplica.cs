@@ -20,6 +20,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -38,7 +39,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["replicaOutput"] = read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult).Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
+        ///         ["replicaOutput"] = read_only.Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
         ///     };
         /// });
         /// ```
@@ -46,7 +47,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseReplicaResult> InvokeAsync(GetDatabaseReplicaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database replica.
@@ -57,6 +58,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -75,7 +77,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["replicaOutput"] = read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult).Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
+        ///         ["replicaOutput"] = read_only.Apply(read_only =&gt; read_only.Apply(getDatabaseReplicaResult =&gt; getDatabaseReplicaResult.Uri)),
         ///     };
         /// });
         /// ```
@@ -83,7 +85,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseReplicaResult> Invoke(GetDatabaseReplicaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseReplicaResult>("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args ?? new GetDatabaseReplicaInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -199,6 +201,10 @@ namespace Pulumi.DigitalOcean
         /// Username for the replica's default user.
         /// </summary>
         public readonly string User;
+        /// <summary>
+        /// The UUID of the database replica.
+        /// </summary>
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetDatabaseReplicaResult(
@@ -228,7 +234,9 @@ namespace Pulumi.DigitalOcean
 
             string uri,
 
-            string user)
+            string user,
+
+            string uuid)
         {
             ClusterId = clusterId;
             Database = database;
@@ -244,6 +252,7 @@ namespace Pulumi.DigitalOcean
             Tags = tags;
             Uri = uri;
             User = user;
+            Uuid = uuid;
         }
     }
 }

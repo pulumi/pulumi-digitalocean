@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerHealthcheck {
     /**
-     * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * @return The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
     private @Nullable Integer checkIntervalSeconds;
@@ -50,7 +50,7 @@ public final class LoadBalancerHealthcheck {
 
     private LoadBalancerHealthcheck() {}
     /**
-     * @return The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+     * @return The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      * 
      */
     public Optional<Integer> checkIntervalSeconds() {
@@ -163,15 +163,15 @@ public final class LoadBalancerHealthcheck {
             return this;
         }
         public LoadBalancerHealthcheck build() {
-            final var o = new LoadBalancerHealthcheck();
-            o.checkIntervalSeconds = checkIntervalSeconds;
-            o.healthyThreshold = healthyThreshold;
-            o.path = path;
-            o.port = port;
-            o.protocol = protocol;
-            o.responseTimeoutSeconds = responseTimeoutSeconds;
-            o.unhealthyThreshold = unhealthyThreshold;
-            return o;
+            final var _resultValue = new LoadBalancerHealthcheck();
+            _resultValue.checkIntervalSeconds = checkIntervalSeconds;
+            _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.responseTimeoutSeconds = responseTimeoutSeconds;
+            _resultValue.unhealthyThreshold = unhealthyThreshold;
+            return _resultValue;
         }
     }
 }

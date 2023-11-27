@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,13 +27,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDatabaseCluster(ctx, &GetDatabaseClusterArgs{
+//			example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 //				Name: "example-cluster",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			read_only, err := digitalocean.LookupDatabaseReplica(ctx, &GetDatabaseReplicaArgs{
+//			read_only, err := digitalocean.LookupDatabaseReplica(ctx, &digitalocean.LookupDatabaseReplicaArgs{
 //				ClusterId: example.Id,
 //				Name:      "terra-test-ro",
 //			}, nil)
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func LookupDatabaseReplica(ctx *pulumi.Context, args *LookupDatabaseReplicaArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseReplicaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseReplicaResult
 	err := ctx.Invoke("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args, &rv, opts...)
 	if err != nil {
@@ -90,6 +92,8 @@ type LookupDatabaseReplicaResult struct {
 	Uri string `pulumi:"uri"`
 	// Username for the replica's default user.
 	User string `pulumi:"user"`
+	// The UUID of the database replica.
+	Uuid string `pulumi:"uuid"`
 }
 
 func LookupDatabaseReplicaOutput(ctx *pulumi.Context, args LookupDatabaseReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseReplicaResultOutput {
@@ -198,6 +202,11 @@ func (o LookupDatabaseReplicaResultOutput) Uri() pulumi.StringOutput {
 // Username for the replica's default user.
 func (o LookupDatabaseReplicaResultOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.User }).(pulumi.StringOutput)
+}
+
+// The UUID of the database replica.
+func (o LookupDatabaseReplicaResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -112,7 +112,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * The canned ACL to apply. DigitalOcean supports &#34;private&#34; and &#34;public-read&#34;. (Defaults to &#34;private&#34;.)
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
@@ -126,7 +126,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * The name of the bucket to put the file in.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -140,7 +140,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
-    @Export(name="cacheControl", type=String.class, parameters={})
+    @Export(name="cacheControl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacheControl;
 
     /**
@@ -154,7 +154,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
@@ -168,7 +168,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      * 
      */
-    @Export(name="contentBase64", type=String.class, parameters={})
+    @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     /**
@@ -182,7 +182,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
-    @Export(name="contentDisposition", type=String.class, parameters={})
+    @Export(name="contentDisposition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentDisposition;
 
     /**
@@ -196,7 +196,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
      * 
      */
-    @Export(name="contentEncoding", type=String.class, parameters={})
+    @Export(name="contentEncoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentEncoding;
 
     /**
@@ -210,7 +210,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * The language the content is in e.g. en-US or en-GB.
      * 
      */
-    @Export(name="contentLanguage", type=String.class, parameters={})
+    @Export(name="contentLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentLanguage;
 
     /**
@@ -224,7 +224,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
@@ -238,7 +238,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Used to trigger updates.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -252,13 +252,21 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      * 
+     * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+     * 
+     * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+     * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
      * @return Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+     * 
+     * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+     * 
+     * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
      * 
      */
     public Output<Optional<Boolean>> forceDestroy() {
@@ -268,7 +276,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * The name of the object once it is in the bucket.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -282,7 +290,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -296,7 +304,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * The region where the bucket resides (Defaults to `nyc3`)
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -310,7 +318,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * The path to a file that will be read and uploaded as raw bytes for the object content.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
@@ -324,7 +332,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * A unique version ID value for the object, if bucket versioning is enabled.
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
@@ -338,7 +346,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
      * 
      */
-    @Export(name="websiteRedirect", type=String.class, parameters={})
+    @Export(name="websiteRedirect", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> websiteRedirect;
 
     /**

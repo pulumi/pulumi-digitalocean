@@ -25,6 +25,8 @@ public final class AppSpecDatabase {
     /**
      * @return The name of the MySQL or PostgreSQL user to configure.
      * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
      */
     private @Nullable String dbUser;
     /**
@@ -65,6 +67,8 @@ public final class AppSpecDatabase {
     }
     /**
      * @return The name of the MySQL or PostgreSQL user to configure.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<String> dbUser() {
@@ -163,15 +167,15 @@ public final class AppSpecDatabase {
             return this;
         }
         public AppSpecDatabase build() {
-            final var o = new AppSpecDatabase();
-            o.clusterName = clusterName;
-            o.dbName = dbName;
-            o.dbUser = dbUser;
-            o.engine = engine;
-            o.name = name;
-            o.production = production;
-            o.version = version;
-            return o;
+            final var _resultValue = new AppSpecDatabase();
+            _resultValue.clusterName = clusterName;
+            _resultValue.dbName = dbName;
+            _resultValue.dbUser = dbUser;
+            _resultValue.engine = engine;
+            _resultValue.name = name;
+            _resultValue.production = production;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

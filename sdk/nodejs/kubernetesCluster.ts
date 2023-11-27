@@ -2,16 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
  * ## Import
  *
- * Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+ * Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
  *
  * ```sh
  *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+ * ```
+ *
+ *  Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+ *
+ * ```sh
+ *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
  * ```
  */
 export class KubernetesCluster extends pulumi.CustomResource {
@@ -59,6 +67,12 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    public readonly destroyAllAssociatedResources!: pulumi.Output<boolean | undefined>;
+    /**
      * The base URL of the API server on the Kubernetes master node.
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
@@ -87,6 +101,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     */
+    public readonly registryIntegration!: pulumi.Output<boolean | undefined>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -133,6 +151,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
             resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["destroyAllAssociatedResources"] = state ? state.destroyAllAssociatedResources : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["ha"] = state ? state.ha : undefined;
             resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
@@ -141,6 +160,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodePool"] = state ? state.nodePool : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["registryIntegration"] = state ? state.registryIntegration : undefined;
             resourceInputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
@@ -160,11 +180,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            resourceInputs["destroyAllAssociatedResources"] = args ? args.destroyAllAssociatedResources : undefined;
             resourceInputs["ha"] = args ? args.ha : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodePool"] = args ? args.nodePool : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["registryIntegration"] = args ? args.registryIntegration : undefined;
             resourceInputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -180,6 +202,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["kubeConfigs"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(KubernetesCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -204,6 +228,12 @@ export interface KubernetesClusterState {
      * The date and time when the node was created.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    destroyAllAssociatedResources?: pulumi.Input<boolean>;
     /**
      * The base URL of the API server on the Kubernetes master node.
      */
@@ -233,6 +263,10 @@ export interface KubernetesClusterState {
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     region?: pulumi.Input<string | enums.Region>;
+    /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     */
+    registryIntegration?: pulumi.Input<boolean>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -272,6 +306,12 @@ export interface KubernetesClusterArgs {
      */
     autoUpgrade?: pulumi.Input<boolean>;
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    destroyAllAssociatedResources?: pulumi.Input<boolean>;
+    /**
      * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
      */
     ha?: pulumi.Input<boolean>;
@@ -291,6 +331,10 @@ export interface KubernetesClusterArgs {
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     region: pulumi.Input<string | enums.Region>;
+    /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     */
+    registryIntegration?: pulumi.Input<boolean>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: false
      */

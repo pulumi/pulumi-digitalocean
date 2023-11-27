@@ -26,6 +26,10 @@ builds:
   - darwin
   - windows
   - linux
+  hooks:
+    post:
+    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
+    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
   - -X
@@ -45,3 +49,4 @@ release:
   disable: false
 snapshot:
   name_template: "{{ .Tag }}-SNAPSHOT"
+project_name: "pulumi-digitalocean"

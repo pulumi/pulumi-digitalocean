@@ -21,9 +21,11 @@ class KubernetesClusterArgs:
                  region: pulumi.Input[Union[str, 'Region']],
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 registry_integration: Optional[pulumi.Input[bool]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
@@ -33,9 +35,13 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
@@ -45,12 +51,16 @@ class KubernetesClusterArgs:
         pulumi.set(__self__, "version", version)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if destroy_all_associated_resources is not None:
+            pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if registry_integration is not None:
+            pulumi.set(__self__, "registry_integration", registry_integration)
         if surge_upgrade is not None:
             pulumi.set(__self__, "surge_upgrade", surge_upgrade)
         if tags is not None:
@@ -107,6 +117,20 @@ class KubernetesClusterArgs:
         pulumi.set(self, "auto_upgrade", value)
 
     @property
+    @pulumi.getter(name="destroyAllAssociatedResources")
+    def destroy_all_associated_resources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "destroy_all_associated_resources")
+
+    @destroy_all_associated_resources.setter
+    def destroy_all_associated_resources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destroy_all_associated_resources", value)
+
+    @property
     @pulumi.getter
     def ha(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -141,6 +165,18 @@ class KubernetesClusterArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="registryIntegration")
+    def registry_integration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        """
+        return pulumi.get(self, "registry_integration")
+
+    @registry_integration.setter
+    def registry_integration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "registry_integration", value)
 
     @property
     @pulumi.getter(name="surgeUpgrade")
@@ -186,6 +222,7 @@ class _KubernetesClusterState:
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  cluster_urn: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
@@ -194,6 +231,7 @@ class _KubernetesClusterState:
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 registry_integration: Optional[pulumi.Input[bool]] = None,
                  service_subnet: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -207,6 +245,9 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -214,6 +255,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
@@ -230,6 +272,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "cluster_urn", cluster_urn)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if destroy_all_associated_resources is not None:
+            pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if ha is not None:
@@ -246,6 +290,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "node_pool", node_pool)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if registry_integration is not None:
+            pulumi.set(__self__, "registry_integration", registry_integration)
         if service_subnet is not None:
             pulumi.set(__self__, "service_subnet", service_subnet)
         if status is not None:
@@ -308,6 +354,20 @@ class _KubernetesClusterState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="destroyAllAssociatedResources")
+    def destroy_all_associated_resources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "destroy_all_associated_resources")
+
+    @destroy_all_associated_resources.setter
+    def destroy_all_associated_resources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destroy_all_associated_resources", value)
 
     @property
     @pulumi.getter
@@ -403,6 +463,18 @@ class _KubernetesClusterState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="registryIntegration")
+    def registry_integration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        """
+        return pulumi.get(self, "registry_integration")
+
+    @registry_integration.setter
+    def registry_integration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "registry_integration", value)
+
+    @property
     @pulumi.getter(name="serviceSubnet")
     def service_subnet(self) -> Optional[pulumi.Input[str]]:
         """
@@ -493,11 +565,13 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 registry_integration: Optional[pulumi.Input[bool]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -506,20 +580,30 @@ class KubernetesCluster(pulumi.CustomResource):
         """
         ## Import
 
-        Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+        Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
 
         ```sh
          $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
         ```
 
+         Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -534,10 +618,16 @@ class KubernetesCluster(pulumi.CustomResource):
         """
         ## Import
 
-        Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+        Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
 
         ```sh
          $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+        ```
+
+         Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+
+        ```sh
+         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
         ```
 
         :param str resource_name: The name of the resource.
@@ -556,11 +646,13 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMaintenancePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+                 registry_integration: Optional[pulumi.Input[bool]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -575,6 +667,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__ = KubernetesClusterArgs.__new__(KubernetesClusterArgs)
 
             __props__.__dict__["auto_upgrade"] = auto_upgrade
+            __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
@@ -584,6 +677,7 @@ class KubernetesCluster(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["registry_integration"] = registry_integration
             __props__.__dict__["surge_upgrade"] = surge_upgrade
             __props__.__dict__["tags"] = tags
             if version is None and not opts.urn:
@@ -599,6 +693,8 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["service_subnet"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeConfigs"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(KubernetesCluster, __self__).__init__(
             'digitalocean:index/kubernetesCluster:KubernetesCluster',
             resource_name,
@@ -613,6 +709,7 @@ class KubernetesCluster(pulumi.CustomResource):
             cluster_subnet: Optional[pulumi.Input[str]] = None,
             cluster_urn: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             ha: Optional[pulumi.Input[bool]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
@@ -621,6 +718,7 @@ class KubernetesCluster(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             node_pool: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
+            registry_integration: Optional[pulumi.Input[bool]] = None,
             service_subnet: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             surge_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -639,6 +737,9 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
+        :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -646,6 +747,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
+        :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
@@ -662,6 +764,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["cluster_subnet"] = cluster_subnet
         __props__.__dict__["cluster_urn"] = cluster_urn
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["ha"] = ha
         __props__.__dict__["ipv4_address"] = ipv4_address
@@ -670,6 +773,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["node_pool"] = node_pool
         __props__.__dict__["region"] = region
+        __props__.__dict__["registry_integration"] = registry_integration
         __props__.__dict__["service_subnet"] = service_subnet
         __props__.__dict__["status"] = status
         __props__.__dict__["surge_upgrade"] = surge_upgrade
@@ -710,6 +814,16 @@ class KubernetesCluster(pulumi.CustomResource):
         The date and time when the node was created.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="destroyAllAssociatedResources")
+    def destroy_all_associated_resources(self) -> pulumi.Output[Optional[bool]]:
+        """
+        **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "destroy_all_associated_resources")
 
     @property
     @pulumi.getter
@@ -771,6 +885,14 @@ class KubernetesCluster(pulumi.CustomResource):
         The slug identifier for the region where the Kubernetes cluster will be created.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="registryIntegration")
+    def registry_integration(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        """
+        return pulumi.get(self, "registry_integration")
 
     @property
     @pulumi.getter(name="serviceSubnet")

@@ -101,12 +101,12 @@ public final class GetSpacesBucketsResult {
             return sorts(List.of(sorts));
         }
         public GetSpacesBucketsResult build() {
-            final var o = new GetSpacesBucketsResult();
-            o.buckets = buckets;
-            o.filters = filters;
-            o.id = id;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetSpacesBucketsResult();
+            _resultValue.buckets = buckets;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

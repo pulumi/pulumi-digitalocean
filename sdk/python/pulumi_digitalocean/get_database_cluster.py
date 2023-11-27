@@ -22,7 +22,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, size=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
@@ -59,12 +59,18 @@ class GetDatabaseClusterResult:
         if private_uri and not isinstance(private_uri, str):
             raise TypeError("Expected argument 'private_uri' to be a str")
         pulumi.set(__self__, "private_uri", private_uri)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
         if size and not isinstance(size, str):
             raise TypeError("Expected argument 'size' to be a str")
         pulumi.set(__self__, "size", size)
+        if storage_size_mib and not isinstance(storage_size_mib, str):
+            raise TypeError("Expected argument 'storage_size_mib' to be a str")
+        pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -175,6 +181,14 @@ class GetDatabaseClusterResult:
         return pulumi.get(self, "private_uri")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project that the database cluster is assigned to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -189,6 +203,11 @@ class GetDatabaseClusterResult:
         Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageSizeMib")
+    def storage_size_mib(self) -> str:
+        return pulumi.get(self, "storage_size_mib")
 
     @property
     @pulumi.getter
@@ -246,8 +265,10 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             private_host=self.private_host,
             private_network_uuid=self.private_network_uuid,
             private_uri=self.private_uri,
+            project_id=self.project_id,
             region=self.region,
             size=self.size,
+            storage_size_mib=self.storage_size_mib,
             tags=self.tags,
             uri=self.uri,
             urn=self.urn,
@@ -281,25 +302,27 @@ def get_database_cluster(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseCluster:getDatabaseCluster', __args__, opts=opts, typ=GetDatabaseClusterResult).value
 
     return AwaitableGetDatabaseClusterResult(
-        database=__ret__.database,
-        engine=__ret__.engine,
-        host=__ret__.host,
-        id=__ret__.id,
-        maintenance_windows=__ret__.maintenance_windows,
-        name=__ret__.name,
-        node_count=__ret__.node_count,
-        password=__ret__.password,
-        port=__ret__.port,
-        private_host=__ret__.private_host,
-        private_network_uuid=__ret__.private_network_uuid,
-        private_uri=__ret__.private_uri,
-        region=__ret__.region,
-        size=__ret__.size,
-        tags=__ret__.tags,
-        uri=__ret__.uri,
-        urn=__ret__.urn,
-        user=__ret__.user,
-        version=__ret__.version)
+        database=pulumi.get(__ret__, 'database'),
+        engine=pulumi.get(__ret__, 'engine'),
+        host=pulumi.get(__ret__, 'host'),
+        id=pulumi.get(__ret__, 'id'),
+        maintenance_windows=pulumi.get(__ret__, 'maintenance_windows'),
+        name=pulumi.get(__ret__, 'name'),
+        node_count=pulumi.get(__ret__, 'node_count'),
+        password=pulumi.get(__ret__, 'password'),
+        port=pulumi.get(__ret__, 'port'),
+        private_host=pulumi.get(__ret__, 'private_host'),
+        private_network_uuid=pulumi.get(__ret__, 'private_network_uuid'),
+        private_uri=pulumi.get(__ret__, 'private_uri'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        size=pulumi.get(__ret__, 'size'),
+        storage_size_mib=pulumi.get(__ret__, 'storage_size_mib'),
+        tags=pulumi.get(__ret__, 'tags'),
+        uri=pulumi.get(__ret__, 'uri'),
+        urn=pulumi.get(__ret__, 'urn'),
+        user=pulumi.get(__ret__, 'user'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_database_cluster)

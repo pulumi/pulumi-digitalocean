@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
 // If no filters are specified, all records will be returned.
 func GetRecords(ctx *pulumi.Context, args *GetRecordsArgs, opts ...pulumi.InvokeOption) (*GetRecordsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecordsResult
 	err := ctx.Invoke("digitalocean:index/getRecords:getRecords", args, &rv, opts...)
 	if err != nil {
@@ -35,6 +37,7 @@ type GetRecordsArgs struct {
 
 // A collection of values returned by getRecords.
 type GetRecordsResult struct {
+	// Domain of the DNS record.
 	Domain  string             `pulumi:"domain"`
 	Filters []GetRecordsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -87,6 +90,7 @@ func (o GetRecordsResultOutput) ToGetRecordsResultOutputWithContext(ctx context.
 	return o
 }
 
+// Domain of the DNS record.
 func (o GetRecordsResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRecordsResult) string { return v.Domain }).(pulumi.StringOutput)
 }

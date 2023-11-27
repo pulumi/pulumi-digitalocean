@@ -66,6 +66,11 @@ public final class GetDatabaseReplicaResult {
      * 
      */
     private String user;
+    /**
+     * @return The UUID of the database replica.
+     * 
+     */
+    private String uuid;
 
     private GetDatabaseReplicaResult() {}
     public String clusterId() {
@@ -150,6 +155,13 @@ public final class GetDatabaseReplicaResult {
     public String user() {
         return this.user;
     }
+    /**
+     * @return The UUID of the database replica.
+     * 
+     */
+    public String uuid() {
+        return this.uuid;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -174,6 +186,7 @@ public final class GetDatabaseReplicaResult {
         private @Nullable List<String> tags;
         private String uri;
         private String user;
+        private String uuid;
         public Builder() {}
         public Builder(GetDatabaseReplicaResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -191,6 +204,7 @@ public final class GetDatabaseReplicaResult {
     	      this.tags = defaults.tags;
     	      this.uri = defaults.uri;
     	      this.user = defaults.user;
+    	      this.uuid = defaults.uuid;
         }
 
         @CustomType.Setter
@@ -266,23 +280,29 @@ public final class GetDatabaseReplicaResult {
             this.user = Objects.requireNonNull(user);
             return this;
         }
+        @CustomType.Setter
+        public Builder uuid(String uuid) {
+            this.uuid = Objects.requireNonNull(uuid);
+            return this;
+        }
         public GetDatabaseReplicaResult build() {
-            final var o = new GetDatabaseReplicaResult();
-            o.clusterId = clusterId;
-            o.database = database;
-            o.host = host;
-            o.id = id;
-            o.name = name;
-            o.password = password;
-            o.port = port;
-            o.privateHost = privateHost;
-            o.privateNetworkUuid = privateNetworkUuid;
-            o.privateUri = privateUri;
-            o.region = region;
-            o.tags = tags;
-            o.uri = uri;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetDatabaseReplicaResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.database = database;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.privateHost = privateHost;
+            _resultValue.privateNetworkUuid = privateNetworkUuid;
+            _resultValue.privateUri = privateUri;
+            _resultValue.region = region;
+            _resultValue.tags = tags;
+            _resultValue.uri = uri;
+            _resultValue.user = user;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

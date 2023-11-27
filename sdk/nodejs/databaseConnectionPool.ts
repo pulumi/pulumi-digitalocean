@@ -167,6 +167,8 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
             resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uri"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseConnectionPool.__pulumiType, name, resourceInputs, opts);
     }
 }

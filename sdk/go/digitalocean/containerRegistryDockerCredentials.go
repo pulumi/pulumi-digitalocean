@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,7 +60,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupContainerRegistry(ctx, &GetContainerRegistryArgs{
+//			_, err := digitalocean.LookupContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
@@ -79,8 +80,10 @@ import (
 type ContainerRegistryDockerCredentials struct {
 	pulumi.CustomResourceState
 
+	// The date and time the registry access token will expire.
 	CredentialExpirationTime pulumi.StringOutput `pulumi:"credentialExpirationTime"`
-	DockerCredentials        pulumi.StringOutput `pulumi:"dockerCredentials"`
+	// Credentials for the container registry.
+	DockerCredentials pulumi.StringOutput `pulumi:"dockerCredentials"`
 	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds pulumi.IntPtrOutput `pulumi:"expirySeconds"`
 	// The name of the container registry.
@@ -99,6 +102,11 @@ func NewContainerRegistryDockerCredentials(ctx *pulumi.Context,
 	if args.RegistryName == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"dockerCredentials",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContainerRegistryDockerCredentials
 	err := ctx.RegisterResource("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials", name, args, &resource, opts...)
 	if err != nil {
@@ -121,8 +129,10 @@ func GetContainerRegistryDockerCredentials(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerRegistryDockerCredentials resources.
 type containerRegistryDockerCredentialsState struct {
+	// The date and time the registry access token will expire.
 	CredentialExpirationTime *string `pulumi:"credentialExpirationTime"`
-	DockerCredentials        *string `pulumi:"dockerCredentials"`
+	// Credentials for the container registry.
+	DockerCredentials *string `pulumi:"dockerCredentials"`
 	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds *int `pulumi:"expirySeconds"`
 	// The name of the container registry.
@@ -132,8 +142,10 @@ type containerRegistryDockerCredentialsState struct {
 }
 
 type ContainerRegistryDockerCredentialsState struct {
+	// The date and time the registry access token will expire.
 	CredentialExpirationTime pulumi.StringPtrInput
-	DockerCredentials        pulumi.StringPtrInput
+	// Credentials for the container registry.
+	DockerCredentials pulumi.StringPtrInput
 	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds pulumi.IntPtrInput
 	// The name of the container registry.
@@ -252,10 +264,12 @@ func (o ContainerRegistryDockerCredentialsOutput) ToContainerRegistryDockerCrede
 	return o
 }
 
+// The date and time the registry access token will expire.
 func (o ContainerRegistryDockerCredentialsOutput) CredentialExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.StringOutput { return v.CredentialExpirationTime }).(pulumi.StringOutput)
 }
 
+// Credentials for the container registry.
 func (o ContainerRegistryDockerCredentialsOutput) DockerCredentials() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryDockerCredentials) pulumi.StringOutput { return v.DockerCredentials }).(pulumi.StringOutput)
 }

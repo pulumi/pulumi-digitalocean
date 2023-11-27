@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -17,22 +19,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const golang_sample = new digitalocean.App("golang-sample", {
- *     spec: {
- *         name: "golang-sample",
- *         region: "ams",
- *         services: [{
- *             environmentSlug: "go",
- *             git: {
- *                 branch: "main",
- *                 repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
- *             },
- *             instanceCount: 1,
- *             instanceSizeSlug: "professional-xs",
- *             name: "go-service",
- *         }],
- *     },
- * });
+ * const golang_sample = new digitalocean.App("golang-sample", {spec: {
+ *     name: "golang-sample",
+ *     region: "ams",
+ *     services: [{
+ *         environmentSlug: "go",
+ *         git: {
+ *             branch: "main",
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
+ *         },
+ *         instanceCount: 1,
+ *         instanceSizeSlug: "professional-xs",
+ *         name: "go-service",
+ *     }],
+ * }});
  * ```
  * ### Static Site Example
  *
@@ -40,90 +40,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const static_ste_example = new digitalocean.App("static-ste-example", {
- *     spec: {
- *         name: "static-ste-example",
- *         region: "ams",
- *         staticSites: [{
- *             buildCommand: "bundle exec jekyll build -d ./public",
- *             git: {
- *                 branch: "main",
- *                 repoCloneUrl: "https://github.com/digitalocean/sample-jekyll.git",
- *             },
- *             name: "sample-jekyll",
- *             outputDir: "/public",
- *         }],
- *     },
- * });
- * ```
- * ### Multiple Components Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const mono_repo_example = new digitalocean.App("mono-repo-example", {
- *     spec: {
- *         alerts: [{
- *             rule: "DEPLOYMENT_FAILED",
- *         }],
- *         databases: [{
- *             engine: "PG",
- *             name: "starter-db",
- *             production: false,
- *         }],
- *         domainNames: [{
- *             name: "foo.example.com",
- *         }],
- *         name: "mono-repo-example",
- *         region: "ams",
- *         // Build a Go project in the api/ directory that listens on port 3000
- *         // and serves it at https://foo.example.com/api
- *         services: [{
- *             alerts: [{
- *                 operator: "GREATER_THAN",
- *                 rule: "CPU_UTILIZATION",
- *                 value: 75,
- *                 window: "TEN_MINUTES",
- *             }],
- *             environmentSlug: "go",
- *             github: {
- *                 branch: "main",
- *                 deployOnPush: true,
- *                 repo: "username/repo",
- *             },
- *             httpPort: 3000,
- *             instanceCount: 2,
- *             instanceSizeSlug: "professional-xs",
- *             logDestinations: [{
- *                 name: "MyLogs",
- *                 papertrail: {
- *                     endpoint: "syslog+tls://example.com:12345",
- *                 },
- *             }],
- *             name: "api",
- *             routes: [{
- *                 path: "/api",
- *             }],
- *             runCommand: "bin/api",
- *             sourceDir: "api/",
- *         }],
- *         // Builds a static site in the project's root directory
- *         // and serves it at https://foo.example.com/
- *         staticSites: [{
- *             buildCommand: "npm run build",
- *             github: {
- *                 branch: "main",
- *                 deployOnPush: true,
- *                 repo: "username/repo",
- *             },
- *             name: "web",
- *             routes: [{
- *                 path: "/",
- *             }],
- *         }],
- *     },
- * });
+ * const static_site_example = new digitalocean.App("static-site-example", {spec: {
+ *     name: "static-site-example",
+ *     region: "ams",
+ *     staticSites: [{
+ *         buildCommand: "bundle exec jekyll build -d ./public",
+ *         git: {
+ *             branch: "main",
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-jekyll.git",
+ *         },
+ *         name: "sample-jekyll",
+ *         outputDir: "/public",
+ *     }],
+ * }});
  * ```
  *
  * ## Import
@@ -167,6 +96,10 @@ export class App extends pulumi.CustomResource {
      */
     public /*out*/ readonly activeDeploymentId!: pulumi.Output<string>;
     /**
+     * The uniform resource identifier for the app.
+     */
+    public /*out*/ readonly appUrn!: pulumi.Output<string>;
+    /**
      * The date and time of when the app was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -186,10 +119,6 @@ export class App extends pulumi.CustomResource {
      * The date and time of when the app was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
-    /**
-     * The uniform resource identifier for the app.
-     */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -205,21 +134,21 @@ export class App extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
             resourceInputs["activeDeploymentId"] = state ? state.activeDeploymentId : undefined;
+            resourceInputs["appUrn"] = state ? state.appUrn : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["defaultIngress"] = state ? state.defaultIngress : undefined;
             resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["activeDeploymentId"] = undefined /*out*/;
+            resourceInputs["appUrn"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["defaultIngress"] = undefined /*out*/;
             resourceInputs["liveUrl"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(App.__pulumiType, name, resourceInputs, opts);
@@ -234,6 +163,10 @@ export interface AppState {
      * The ID the app's currently active deployment.
      */
     activeDeploymentId?: pulumi.Input<string>;
+    /**
+     * The uniform resource identifier for the app.
+     */
+    appUrn?: pulumi.Input<string>;
     /**
      * The date and time of when the app was created.
      */
@@ -254,10 +187,6 @@ export interface AppState {
      * The date and time of when the app was last updated.
      */
     updatedAt?: pulumi.Input<string>;
-    /**
-     * The uniform resource identifier for the app.
-     */
-    urn?: pulumi.Input<string>;
 }
 
 /**

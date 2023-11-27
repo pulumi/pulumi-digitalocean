@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,10 +38,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseReplica(ctx, "read-replica", &digitalocean.DatabaseReplicaArgs{
+//			_, err = digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
 //				ClusterId: postgres_example.ID(),
 //				Size:      pulumi.String("db-s-1vcpu-1gb"),
 //				Region:    pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("uUID", replica_example.Uuid)
+//			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
+//				ClusterId: replica_example.Uuid,
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
+//						Type:  pulumi.String("ip_addr"),
+//						Value: pulumi.String("192.168.1.1"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +97,7 @@ type DatabaseReplica struct {
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 	Size pulumi.StringPtrOutput `pulumi:"size"`
 	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -91,6 +105,8 @@ type DatabaseReplica struct {
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Username for the replica's default user.
 	User pulumi.StringOutput `pulumi:"user"`
+	// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
 
 // NewDatabaseReplica registers a new resource with the given unique name, arguments, and options.
@@ -103,6 +119,13 @@ func NewDatabaseReplica(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"privateUri",
+		"uri",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseReplica
 	err := ctx.RegisterResource("digitalocean:index/databaseReplica:DatabaseReplica", name, args, &resource, opts...)
 	if err != nil {
@@ -145,7 +168,7 @@ type databaseReplicaState struct {
 	PrivateUri *string `pulumi:"privateUri"`
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
-	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 	Size *string `pulumi:"size"`
 	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
@@ -153,6 +176,8 @@ type databaseReplicaState struct {
 	Uri *string `pulumi:"uri"`
 	// Username for the replica's default user.
 	User *string `pulumi:"user"`
+	// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+	Uuid *string `pulumi:"uuid"`
 }
 
 type DatabaseReplicaState struct {
@@ -176,7 +201,7 @@ type DatabaseReplicaState struct {
 	PrivateUri pulumi.StringPtrInput
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrInput
-	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 	Size pulumi.StringPtrInput
 	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayInput
@@ -184,6 +209,8 @@ type DatabaseReplicaState struct {
 	Uri pulumi.StringPtrInput
 	// Username for the replica's default user.
 	User pulumi.StringPtrInput
+	// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+	Uuid pulumi.StringPtrInput
 }
 
 func (DatabaseReplicaState) ElementType() reflect.Type {
@@ -199,7 +226,7 @@ type databaseReplicaArgs struct {
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
-	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 	Size *string `pulumi:"size"`
 	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
@@ -215,7 +242,7 @@ type DatabaseReplicaArgs struct {
 	PrivateNetworkUuid pulumi.StringPtrInput
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrInput
-	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 	Size pulumi.StringPtrInput
 	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayInput
@@ -358,7 +385,7 @@ func (o DatabaseReplicaOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 func (o DatabaseReplicaOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringPtrOutput { return v.Size }).(pulumi.StringPtrOutput)
 }
@@ -376,6 +403,11 @@ func (o DatabaseReplicaOutput) Uri() pulumi.StringOutput {
 // Username for the replica's default user.
 func (o DatabaseReplicaOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
+// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+func (o DatabaseReplicaOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type DatabaseReplicaArrayOutput struct{ *pulumi.OutputState }

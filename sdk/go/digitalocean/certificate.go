@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,15 +19,14 @@ import (
 // Let's Encrypt.
 //
 // ## Example Usage
-//
-// #### Custom Certificate
+// ### Custom Certificate
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -34,7 +34,7 @@ import (
 // )
 //
 //	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
+//		data, err := os.ReadFile(path)
 //		if err != nil {
 //			panic(err.Error())
 //		}
@@ -57,8 +57,7 @@ import (
 //	}
 //
 // ```
-//
-// #### Let's Encrypt Certificate
+// ### Let's Encrypt Certificate
 //
 // ```go
 // package main
@@ -86,8 +85,7 @@ import (
 //	}
 //
 // ```
-//
-// #### Use with Other Resources
+// ### Use with Other Resources
 //
 // Both custom and Let's Encrypt certificates can be used with other resources
 // including the `LoadBalancer` and `Cdn` resources.
@@ -116,8 +114,8 @@ import (
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
 //				Region:     pulumi.String("nyc3"),
 //				DropletTag: pulumi.String("backend"),
-//				ForwardingRules: LoadBalancerForwardingRuleArray{
-//					&LoadBalancerForwardingRuleArgs{
+//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
+//					&digitalocean.LoadBalancerForwardingRuleArgs{
 //						EntryPort:       pulumi.Int(443),
 //						EntryProtocol:   pulumi.String("https"),
 //						TargetPort:      pulumi.Int(80),
@@ -182,6 +180,14 @@ func NewCertificate(ctx *pulumi.Context,
 		args = &CertificateArgs{}
 	}
 
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certificate
 	err := ctx.RegisterResource("digitalocean:index/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {

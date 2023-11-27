@@ -78,7 +78,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * The ID of Droplet that the Floating IP will be assigned to.
      * 
      */
-    @Export(name="dropletId", type=Integer.class, parameters={})
+    @Export(name="dropletId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dropletId;
 
     /**
@@ -92,7 +92,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * The uniform resource name of the floating ip
      * 
      */
-    @Export(name="floatingIpUrn", type=String.class, parameters={})
+    @Export(name="floatingIpUrn", refs={String.class}, tree="[0]")
     private Output<String> floatingIpUrn;
 
     /**
@@ -106,7 +106,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * The IP Address of the resource
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -120,7 +120,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * The region that the Floating IP is reserved to.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

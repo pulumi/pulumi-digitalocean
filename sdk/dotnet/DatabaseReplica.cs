@@ -16,6 +16,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new PostgreSQL database replica
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -30,13 +31,31 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var read_replica = new DigitalOcean.DatabaseReplica("read-replica", new()
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Size = "db-s-1vcpu-1gb",
     ///         Region = "nyc1",
     ///     });
     /// 
+    ///     // Create firewall rule for database replica
+    ///     var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new()
+    ///     {
+    ///         ClusterId = replica_example.Uuid,
+    ///         Rules = new[]
+    ///         {
+    ///             new DigitalOcean.Inputs.DatabaseFirewallRuleArgs
+    ///             {
+    ///                 Type = "ip_addr",
+    ///                 Value = "192.168.1.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["uUID"] = replica_example.Uuid,
+    ///     };
     /// });
     /// ```
     /// 
@@ -112,7 +131,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         /// </summary>
         [Output("size")]
         public Output<string?> Size { get; private set; } = null!;
@@ -134,6 +153,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
+
+        /// <summary>
+        /// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
 
 
         /// <summary>
@@ -158,6 +183,12 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "privateUri",
+                    "uri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -206,7 +237,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
@@ -255,11 +286,21 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for the replica's default user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Network port that the database replica is listening on.
@@ -279,11 +320,21 @@ namespace Pulumi.DigitalOcean
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
 
+        [Input("privateUri")]
+        private Input<string>? _privateUri;
+
         /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
-        [Input("privateUri")]
-        public Input<string>? PrivateUri { get; set; }
+        public Input<string>? PrivateUri
+        {
+            get => _privateUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// DigitalOcean region where the replica will reside.
@@ -292,7 +343,7 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+        /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
@@ -309,17 +360,33 @@ namespace Pulumi.DigitalOcean
             set => _tags = value;
         }
 
+        [Input("uri")]
+        private Input<string>? _uri;
+
         /// <summary>
         /// The full URI for connecting to the database replica.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        public Input<string>? Uri
+        {
+            get => _uri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for the replica's default user.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
+
+        /// <summary>
+        /// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public DatabaseReplicaState()
         {

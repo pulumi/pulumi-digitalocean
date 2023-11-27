@@ -23,6 +23,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -44,7 +45,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesBucketResult> InvokeAsync(GetSpacesBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
@@ -58,6 +59,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -79,7 +81,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSpacesBucketResult> Invoke(GetSpacesBucketInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -132,6 +134,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string BucketDomainName;
         /// <summary>
+        /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -152,6 +158,8 @@ namespace Pulumi.DigitalOcean
         private GetSpacesBucketResult(
             string bucketDomainName,
 
+            string endpoint,
+
             string id,
 
             string name,
@@ -161,6 +169,7 @@ namespace Pulumi.DigitalOcean
             string urn)
         {
             BucketDomainName = bucketDomainName;
+            Endpoint = endpoint;
             Id = id;
             Name = name;
             Region = region;

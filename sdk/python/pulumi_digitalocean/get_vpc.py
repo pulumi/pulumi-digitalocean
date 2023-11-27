@@ -179,14 +179,14 @@ def get_vpc(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult).value
 
     return AwaitableGetVpcResult(
-        created_at=__ret__.created_at,
-        default=__ret__.default,
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_range=__ret__.ip_range,
-        name=__ret__.name,
-        region=__ret__.region,
-        urn=__ret__.urn)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        default=pulumi.get(__ret__, 'default'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_range=pulumi.get(__ret__, 'ip_range'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_vpc)

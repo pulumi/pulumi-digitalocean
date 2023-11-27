@@ -41,6 +41,9 @@ class GetReservedIpResult:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> int:
+        """
+        The Droplet id that the reserved IP has been assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @property
@@ -59,11 +62,17 @@ class GetReservedIpResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region that the reserved IP is reserved to.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def urn(self) -> str:
+        """
+        The uniform resource name of the reserved IP.
+        """
         return pulumi.get(self, "urn")
 
 
@@ -106,11 +115,11 @@ def get_reserved_ip(ip_address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getReservedIp:getReservedIp', __args__, opts=opts, typ=GetReservedIpResult).value
 
     return AwaitableGetReservedIpResult(
-        droplet_id=__ret__.droplet_id,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        region=__ret__.region,
-        urn=__ret__.urn)
+        droplet_id=pulumi.get(__ret__, 'droplet_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        region=pulumi.get(__ret__, 'region'),
+        urn=pulumi.get(__ret__, 'urn'))
 
 
 @_utilities.lift_output_func(get_reserved_ip)

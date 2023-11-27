@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,12 +43,12 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 //				ClusterId: postgres_example.ID(),
-//				Rules: DatabaseFirewallRuleArray{
-//					&DatabaseFirewallRuleArgs{
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("ip_addr"),
 //						Value: pulumi.String("192.168.1.1"),
 //					},
-//					&DatabaseFirewallRuleArgs{
+//					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("ip_addr"),
 //						Value: pulumi.String("192.0.2.0"),
 //					},
@@ -95,10 +96,59 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 //				ClusterId: postgres_example.ID(),
-//				Rules: DatabaseFirewallRuleArray{
-//					&DatabaseFirewallRuleArgs{
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("droplet"),
 //						Value: web.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Create a new database firewall for a database replica
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
+//				ClusterId: postgres_example.ID(),
+//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
+//				ClusterId: replica_example.Uuid,
+//				Rules: digitalocean.DatabaseFirewallRuleArray{
+//					&digitalocean.DatabaseFirewallRuleArgs{
+//						Type:  pulumi.String("ip_addr"),
+//						Value: pulumi.String("192.168.1.1"),
 //					},
 //				},
 //			})
@@ -142,6 +192,7 @@ func NewDatabaseFirewall(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseFirewall
 	err := ctx.RegisterResource("digitalocean:index/databaseFirewall:DatabaseFirewall", name, args, &resource, opts...)
 	if err != nil {

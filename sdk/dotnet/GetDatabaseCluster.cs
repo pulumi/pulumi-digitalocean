@@ -20,6 +20,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -40,7 +41,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseClusterResult> InvokeAsync(GetDatabaseClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information on a DigitalOcean database cluster resource.
@@ -51,6 +52,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -71,7 +73,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseClusterResult> Invoke(GetDatabaseClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseClusterResult>("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args ?? new GetDatabaseClusterInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -169,6 +171,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string PrivateUri;
         /// <summary>
+        /// The ID of the project that the database cluster is assigned to.
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         public readonly string Region;
@@ -176,6 +182,7 @@ namespace Pulumi.DigitalOcean
         /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         public readonly string Size;
+        public readonly string StorageSizeMib;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// The full URI for connecting to the database cluster.
@@ -220,9 +227,13 @@ namespace Pulumi.DigitalOcean
 
             string privateUri,
 
+            string projectId,
+
             string region,
 
             string size,
+
+            string storageSizeMib,
 
             ImmutableArray<string> tags,
 
@@ -246,8 +257,10 @@ namespace Pulumi.DigitalOcean
             PrivateHost = privateHost;
             PrivateNetworkUuid = privateNetworkUuid;
             PrivateUri = privateUri;
+            ProjectId = projectId;
             Region = region;
             Size = size;
+            StorageSizeMib = storageSizeMib;
             Tags = tags;
             Uri = uri;
             Urn = urn;

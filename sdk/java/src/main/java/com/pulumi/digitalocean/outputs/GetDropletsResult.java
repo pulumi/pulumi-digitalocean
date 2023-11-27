@@ -101,12 +101,12 @@ public final class GetDropletsResult {
             return sorts(List.of(sorts));
         }
         public GetDropletsResult build() {
-            final var o = new GetDropletsResult();
-            o.droplets = droplets;
-            o.filters = filters;
-            o.id = id;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetDropletsResult();
+            _resultValue.droplets = droplets;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

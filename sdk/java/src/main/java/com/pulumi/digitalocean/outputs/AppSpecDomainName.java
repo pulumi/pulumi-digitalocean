@@ -106,12 +106,12 @@ public final class AppSpecDomainName {
             return this;
         }
         public AppSpecDomainName build() {
-            final var o = new AppSpecDomainName();
-            o.name = name;
-            o.type = type;
-            o.wildcard = wildcard;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new AppSpecDomainName();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            _resultValue.wildcard = wildcard;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

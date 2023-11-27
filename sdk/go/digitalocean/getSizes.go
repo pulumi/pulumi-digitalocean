@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 // the ability to filter and sort the results. If no filters are specified, all sizes
 // will be returned.
 func GetSizes(ctx *pulumi.Context, args *GetSizesArgs, opts ...pulumi.InvokeOption) (*GetSizesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSizesResult
 	err := ctx.Invoke("digitalocean:index/getSizes:getSizes", args, &rv, opts...)
 	if err != nil {

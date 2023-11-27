@@ -74,6 +74,9 @@ class GetImageResult:
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When the image was created
+        """
         return pulumi.get(self, "created")
 
     @property
@@ -86,19 +89,23 @@ class GetImageResult:
     def distribution(self) -> str:
         """
         The name of the distribution of the OS of the image.
-        * `min_disk_size`: The minimum 'disk' required for the image.
-        * `size_gigabytes`: The size of the image in GB.
         """
         return pulumi.get(self, "distribution")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> str:
+        """
+        Any applicable error message pertaining to the image
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the image.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -112,11 +119,17 @@ class GetImageResult:
     @property
     @pulumi.getter(name="minDiskSize")
     def min_disk_size(self) -> int:
+        """
+        The minimum 'disk' required for the image.
+        """
         return pulumi.get(self, "min_disk_size")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -126,27 +139,31 @@ class GetImageResult:
         Is image a public image or not. Public images represent
         Linux distributions or One-Click Applications, while non-public images represent
         snapshots and backups and are only available within your account.
-        * `regions`: A set of the regions that the image is available in.
-        * `tags`: A set of tags applied to the image
-        * `created`: When the image was created
-        * `status`: Current status of the image
-        * `error_message`: Any applicable error message pertaining to the image
         """
         return pulumi.get(self, "private")
 
     @property
     @pulumi.getter
     def regions(self) -> Sequence[str]:
+        """
+        A set of the regions that the image is available in.
+        """
         return pulumi.get(self, "regions")
 
     @property
     @pulumi.getter(name="sizeGigabytes")
     def size_gigabytes(self) -> float:
+        """
+        The size of the image in GB.
+        """
         return pulumi.get(self, "size_gigabytes")
 
     @property
     @pulumi.getter
     def slug(self) -> str:
+        """
+        Unique text identifier of the image.
+        """
         return pulumi.get(self, "slug")
 
     @property
@@ -157,16 +174,25 @@ class GetImageResult:
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Current status of the image
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        A set of tags applied to the image
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of the image.
+        """
         return pulumi.get(self, "type")
 
 
@@ -244,6 +270,8 @@ def get_image(id: Optional[int] = None,
     :param int id: The id of the image
     :param str name: The name of the image.
     :param str slug: The slug of the official image.
+           
+           If `name` is specified, you may also specify:
     :param str source: Restrict the search to one of the following categories of images:
     """
     __args__ = dict()
@@ -255,22 +283,22 @@ def get_image(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
-        created=__ret__.created,
-        description=__ret__.description,
-        distribution=__ret__.distribution,
-        error_message=__ret__.error_message,
-        id=__ret__.id,
-        image=__ret__.image,
-        min_disk_size=__ret__.min_disk_size,
-        name=__ret__.name,
-        private=__ret__.private,
-        regions=__ret__.regions,
-        size_gigabytes=__ret__.size_gigabytes,
-        slug=__ret__.slug,
-        source=__ret__.source,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        created=pulumi.get(__ret__, 'created'),
+        description=pulumi.get(__ret__, 'description'),
+        distribution=pulumi.get(__ret__, 'distribution'),
+        error_message=pulumi.get(__ret__, 'error_message'),
+        id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
+        min_disk_size=pulumi.get(__ret__, 'min_disk_size'),
+        name=pulumi.get(__ret__, 'name'),
+        private=pulumi.get(__ret__, 'private'),
+        regions=pulumi.get(__ret__, 'regions'),
+        size_gigabytes=pulumi.get(__ret__, 'size_gigabytes'),
+        slug=pulumi.get(__ret__, 'slug'),
+        source=pulumi.get(__ret__, 'source'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_image)
@@ -324,6 +352,8 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     :param int id: The id of the image
     :param str name: The name of the image.
     :param str slug: The slug of the official image.
+           
+           If `name` is specified, you may also specify:
     :param str source: Restrict the search to one of the following categories of images:
     """
     ...

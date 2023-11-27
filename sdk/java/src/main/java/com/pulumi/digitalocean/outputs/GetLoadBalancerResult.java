@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetLoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerForwardingRule;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerStickySession;
@@ -23,18 +24,22 @@ public final class GetLoadBalancerResult {
     private String dropletTag;
     private Boolean enableBackendKeepalive;
     private Boolean enableProxyProtocol;
+    private List<GetLoadBalancerFirewall> firewalls;
     private List<GetLoadBalancerForwardingRule> forwardingRules;
     private List<GetLoadBalancerHealthcheck> healthchecks;
+    private Integer httpIdleTimeoutSeconds;
     private @Nullable String id;
     private String ip;
     private String loadBalancerUrn;
     private @Nullable String name;
+    private String projectId;
     private Boolean redirectHttpToHttps;
     private String region;
     private String size;
     private Integer sizeUnit;
     private String status;
     private List<GetLoadBalancerStickySession> stickySessions;
+    private String type;
     private String vpcUuid;
 
     private GetLoadBalancerResult() {}
@@ -56,11 +61,17 @@ public final class GetLoadBalancerResult {
     public Boolean enableProxyProtocol() {
         return this.enableProxyProtocol;
     }
+    public List<GetLoadBalancerFirewall> firewalls() {
+        return this.firewalls;
+    }
     public List<GetLoadBalancerForwardingRule> forwardingRules() {
         return this.forwardingRules;
     }
     public List<GetLoadBalancerHealthcheck> healthchecks() {
         return this.healthchecks;
+    }
+    public Integer httpIdleTimeoutSeconds() {
+        return this.httpIdleTimeoutSeconds;
     }
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
@@ -73,6 +84,9 @@ public final class GetLoadBalancerResult {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    public String projectId() {
+        return this.projectId;
     }
     public Boolean redirectHttpToHttps() {
         return this.redirectHttpToHttps;
@@ -91,6 +105,9 @@ public final class GetLoadBalancerResult {
     }
     public List<GetLoadBalancerStickySession> stickySessions() {
         return this.stickySessions;
+    }
+    public String type() {
+        return this.type;
     }
     public String vpcUuid() {
         return this.vpcUuid;
@@ -111,18 +128,22 @@ public final class GetLoadBalancerResult {
         private String dropletTag;
         private Boolean enableBackendKeepalive;
         private Boolean enableProxyProtocol;
+        private List<GetLoadBalancerFirewall> firewalls;
         private List<GetLoadBalancerForwardingRule> forwardingRules;
         private List<GetLoadBalancerHealthcheck> healthchecks;
+        private Integer httpIdleTimeoutSeconds;
         private @Nullable String id;
         private String ip;
         private String loadBalancerUrn;
         private @Nullable String name;
+        private String projectId;
         private Boolean redirectHttpToHttps;
         private String region;
         private String size;
         private Integer sizeUnit;
         private String status;
         private List<GetLoadBalancerStickySession> stickySessions;
+        private String type;
         private String vpcUuid;
         public Builder() {}
         public Builder(GetLoadBalancerResult defaults) {
@@ -133,18 +154,22 @@ public final class GetLoadBalancerResult {
     	      this.dropletTag = defaults.dropletTag;
     	      this.enableBackendKeepalive = defaults.enableBackendKeepalive;
     	      this.enableProxyProtocol = defaults.enableProxyProtocol;
+    	      this.firewalls = defaults.firewalls;
     	      this.forwardingRules = defaults.forwardingRules;
     	      this.healthchecks = defaults.healthchecks;
+    	      this.httpIdleTimeoutSeconds = defaults.httpIdleTimeoutSeconds;
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.loadBalancerUrn = defaults.loadBalancerUrn;
     	      this.name = defaults.name;
+    	      this.projectId = defaults.projectId;
     	      this.redirectHttpToHttps = defaults.redirectHttpToHttps;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
     	      this.sizeUnit = defaults.sizeUnit;
     	      this.status = defaults.status;
     	      this.stickySessions = defaults.stickySessions;
+    	      this.type = defaults.type;
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
@@ -182,6 +207,14 @@ public final class GetLoadBalancerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder firewalls(List<GetLoadBalancerFirewall> firewalls) {
+            this.firewalls = Objects.requireNonNull(firewalls);
+            return this;
+        }
+        public Builder firewalls(GetLoadBalancerFirewall... firewalls) {
+            return firewalls(List.of(firewalls));
+        }
+        @CustomType.Setter
         public Builder forwardingRules(List<GetLoadBalancerForwardingRule> forwardingRules) {
             this.forwardingRules = Objects.requireNonNull(forwardingRules);
             return this;
@@ -196,6 +229,11 @@ public final class GetLoadBalancerResult {
         }
         public Builder healthchecks(GetLoadBalancerHealthcheck... healthchecks) {
             return healthchecks(List.of(healthchecks));
+        }
+        @CustomType.Setter
+        public Builder httpIdleTimeoutSeconds(Integer httpIdleTimeoutSeconds) {
+            this.httpIdleTimeoutSeconds = Objects.requireNonNull(httpIdleTimeoutSeconds);
+            return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
@@ -215,6 +253,11 @@ public final class GetLoadBalancerResult {
         @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
         @CustomType.Setter
@@ -251,32 +294,41 @@ public final class GetLoadBalancerResult {
             return stickySessions(List.of(stickySessions));
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             this.vpcUuid = Objects.requireNonNull(vpcUuid);
             return this;
         }
         public GetLoadBalancerResult build() {
-            final var o = new GetLoadBalancerResult();
-            o.algorithm = algorithm;
-            o.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
-            o.dropletIds = dropletIds;
-            o.dropletTag = dropletTag;
-            o.enableBackendKeepalive = enableBackendKeepalive;
-            o.enableProxyProtocol = enableProxyProtocol;
-            o.forwardingRules = forwardingRules;
-            o.healthchecks = healthchecks;
-            o.id = id;
-            o.ip = ip;
-            o.loadBalancerUrn = loadBalancerUrn;
-            o.name = name;
-            o.redirectHttpToHttps = redirectHttpToHttps;
-            o.region = region;
-            o.size = size;
-            o.sizeUnit = sizeUnit;
-            o.status = status;
-            o.stickySessions = stickySessions;
-            o.vpcUuid = vpcUuid;
-            return o;
+            final var _resultValue = new GetLoadBalancerResult();
+            _resultValue.algorithm = algorithm;
+            _resultValue.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
+            _resultValue.dropletIds = dropletIds;
+            _resultValue.dropletTag = dropletTag;
+            _resultValue.enableBackendKeepalive = enableBackendKeepalive;
+            _resultValue.enableProxyProtocol = enableProxyProtocol;
+            _resultValue.firewalls = firewalls;
+            _resultValue.forwardingRules = forwardingRules;
+            _resultValue.healthchecks = healthchecks;
+            _resultValue.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.loadBalancerUrn = loadBalancerUrn;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.redirectHttpToHttps = redirectHttpToHttps;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.sizeUnit = sizeUnit;
+            _resultValue.status = status;
+            _resultValue.stickySessions = stickySessions;
+            _resultValue.type = type;
+            _resultValue.vpcUuid = vpcUuid;
+            return _resultValue;
         }
     }
 }

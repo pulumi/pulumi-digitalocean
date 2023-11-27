@@ -84,12 +84,16 @@ public final class SpacesBucketLifecycleRuleArgs extends com.pulumi.resources.Re
     /**
      * Specifies when non-current object versions expire (documented below).
      * 
+     * At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+     * 
      */
     @Import(name="noncurrentVersionExpiration")
     private @Nullable Output<SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs> noncurrentVersionExpiration;
 
     /**
      * @return Specifies when non-current object versions expire (documented below).
+     * 
+     * At least one of `expiration` or `noncurrent_version_expiration` must be specified.
      * 
      */
     public Optional<Output<SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs>> noncurrentVersionExpiration() {
@@ -229,6 +233,8 @@ public final class SpacesBucketLifecycleRuleArgs extends com.pulumi.resources.Re
         /**
          * @param noncurrentVersionExpiration Specifies when non-current object versions expire (documented below).
          * 
+         * At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -239,6 +245,8 @@ public final class SpacesBucketLifecycleRuleArgs extends com.pulumi.resources.Re
 
         /**
          * @param noncurrentVersionExpiration Specifies when non-current object versions expire (documented below).
+         * 
+         * At least one of `expiration` or `noncurrent_version_expiration` must be specified.
          * 
          * @return builder
          * 

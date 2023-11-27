@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var barfoo = new ProjectResources(&#34;barfoo&#34;, ProjectResourcesArgs.builder()        
- *             .project(data.digitalocean_project().foo().id())
+ *             .project(playground.applyValue(getProjectResult -&gt; getProjectResult.id()))
  *             .resources(foobar.dropletUrn())
  *             .build());
  * 
@@ -87,7 +87,7 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
      * the ID of the project
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -101,7 +101,7 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
      * a list of uniform resource names (URNs) for the resources associated with the project
      * 
      */
-    @Export(name="resources", type=List.class, parameters={String.class})
+    @Export(name="resources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resources;
 
     /**

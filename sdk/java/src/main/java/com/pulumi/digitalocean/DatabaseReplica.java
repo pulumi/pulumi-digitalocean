@@ -31,6 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DatabaseClusterArgs;
  * import com.pulumi.digitalocean.DatabaseReplica;
  * import com.pulumi.digitalocean.DatabaseReplicaArgs;
+ * import com.pulumi.digitalocean.DatabaseFirewall;
+ * import com.pulumi.digitalocean.DatabaseFirewallArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,10 +55,19 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var read_replica = new DatabaseReplica(&#34;read-replica&#34;, DatabaseReplicaArgs.builder()        
+ *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
  *             .region(&#34;nyc1&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;uUID&#34;, replica_example.uuid());
+ *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *             .clusterId(replica_example.uuid())
+ *             .rules(DatabaseFirewallRuleArgs.builder()
+ *                 .type(&#34;ip_addr&#34;)
+ *                 .value(&#34;192.168.1.1&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -77,7 +89,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * The ID of the original source database cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -91,7 +103,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Name of the replica&#39;s default database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -105,7 +117,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Database replica&#39;s hostname.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -119,7 +131,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * The name for the database replica.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -133,7 +145,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Password for the replica&#39;s default user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -147,7 +159,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Network port that the database replica is listening on.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -161,7 +173,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Same as `host`, but only accessible from resources within the account and in the same region.
      * 
      */
-    @Export(name="privateHost", type=String.class, parameters={})
+    @Export(name="privateHost", refs={String.class}, tree="[0]")
     private Output<String> privateHost;
 
     /**
@@ -175,7 +187,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * The ID of the VPC where the database replica will be located.
      * 
      */
-    @Export(name="privateNetworkUuid", type=String.class, parameters={})
+    @Export(name="privateNetworkUuid", refs={String.class}, tree="[0]")
     private Output<String> privateNetworkUuid;
 
     /**
@@ -189,7 +201,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      * 
      */
-    @Export(name="privateUri", type=String.class, parameters={})
+    @Export(name="privateUri", refs={String.class}, tree="[0]")
     private Output<String> privateUri;
 
     /**
@@ -203,7 +215,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * DigitalOcean region where the replica will reside.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -214,14 +226,14 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
-    @Export(name="size", type=String.class, parameters={})
+    @Export(name="size", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> size;
 
     /**
-     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`).
+     * @return Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      * 
      */
     public Output<Optional<String>> size() {
@@ -231,7 +243,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * A list of tag names to be applied to the database replica.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -245,7 +257,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * The full URI for connecting to the database replica.
      * 
      */
-    @Export(name="uri", type=String.class, parameters={})
+    @Export(name="uri", refs={String.class}, tree="[0]")
     private Output<String> uri;
 
     /**
@@ -259,7 +271,7 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * Username for the replica&#39;s default user.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
@@ -268,6 +280,20 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      */
     public Output<String> user() {
         return this.user;
+    }
+    /**
+     * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+     * 
+     */
+    @Export(name="uuid", refs={String.class}, tree="[0]")
+    private Output<String> uuid;
+
+    /**
+     * @return The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  &#34;Create firewall rule for database replica&#34; above.
+     * 
+     */
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     /**
@@ -302,6 +328,11 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password",
+                "privateUri",
+                "uri"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

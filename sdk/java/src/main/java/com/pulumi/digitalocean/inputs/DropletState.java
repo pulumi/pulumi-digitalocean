@@ -88,7 +88,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      * 
      */
     @Import(name="dropletUrn")
@@ -96,7 +95,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The uniform resource name of the Droplet
-     * * `name`- The name of the Droplet
      * 
      */
     public Optional<Output<String>> dropletUrn() {
@@ -107,6 +105,8 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
+     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
      */
     @Import(name="gracefulShutdown")
     private @Nullable Output<Boolean> gracefulShutdown;
@@ -114,6 +114,8 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
+     * 
+     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     public Optional<Output<Boolean>> gracefulShutdown() {
@@ -609,7 +611,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletUrn The uniform resource name of the Droplet
-         * * `name`- The name of the Droplet
          * 
          * @return builder
          * 
@@ -621,7 +622,6 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletUrn The uniform resource name of the Droplet
-         * * `name`- The name of the Droplet
          * 
          * @return builder
          * 
@@ -634,6 +634,8 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
          * @param gracefulShutdown A boolean indicating whether the droplet
          * should be gracefully shut down before it is deleted.
          * 
+         * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+         * 
          * @return builder
          * 
          */
@@ -645,6 +647,8 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gracefulShutdown A boolean indicating whether the droplet
          * should be gracefully shut down before it is deleted.
+         * 
+         * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
          * 
          * @return builder
          * 

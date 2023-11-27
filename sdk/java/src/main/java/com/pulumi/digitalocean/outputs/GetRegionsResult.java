@@ -101,12 +101,12 @@ public final class GetRegionsResult {
             return sorts(List.of(sorts));
         }
         public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.filters = filters;
-            o.id = id;
-            o.regions = regions;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetRegionsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.regions = regions;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

@@ -20,9 +20,13 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
 	"github.com/pulumi/pulumi-digitalocean/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -66,14 +70,15 @@ func makeResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(digitalocean.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "digitalocean",
-		Description: "A Pulumi package for creating and managing DigitalOcean cloud resources.",
-		Keywords:    []string{"pulumi", "digitalocean"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-digitalocean",
-		GitHubOrg:   "digitalocean",
+		P:                p,
+		Name:             "digitalocean",
+		Description:      "A Pulumi package for creating and managing DigitalOcean cloud resources.",
+		Keywords:         []string{"pulumi", "digitalocean"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-digitalocean",
+		GitHubOrg:        "digitalocean",
+		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_endpoint": {
 				Default: &tfbridge.DefaultInfo{
@@ -270,6 +275,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_app": {
 				Tok: makeResource(digitalOceanMod, "App"),
 				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {Name: "appUrn"},
 					"spec": {
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
@@ -547,11 +553,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 			},
 		},
-		Python: &tfbridge.PythonInfo{
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
-		},
+		Python: (func() *tfbridge.PythonInfo {
+			i := &tfbridge.PythonInfo{
+				Requires: map[string]string{
+					"pulumi": ">=3.0.0,<4.0.0",
+				}}
+			i.PyProject.Enabled = true
+			return i
+		})(),
+
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", digitalOceanPkg),
@@ -569,9 +579,17 @@ func Provider() tfbridge.ProviderInfo {
 				"digitalocean": "DigitalOcean",
 			},
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		Version:      version.Version,
 	}
 
+	defaults := tfbridgetokens.SingleModule("digitalocean_", digitalOceanMod, tfbridgetokens.MakeStandard(digitalOceanPkg))
+	prov.MustComputeTokens(defaults)
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-digitalocean/bridge-metadata.json
+var metadata []byte

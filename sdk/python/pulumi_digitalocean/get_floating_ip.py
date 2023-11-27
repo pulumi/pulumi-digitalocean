@@ -41,11 +41,17 @@ class GetFloatingIpResult:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> int:
+        """
+        The Droplet id that the floating IP has been assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @property
     @pulumi.getter(name="floatingIpUrn")
     def floating_ip_urn(self) -> str:
+        """
+        The uniform resource name of the floating IP.
+        """
         return pulumi.get(self, "floating_ip_urn")
 
     @property
@@ -64,6 +70,9 @@ class GetFloatingIpResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region that the floating IP is reserved to.
+        """
         return pulumi.get(self, "region")
 
 
@@ -115,11 +124,11 @@ def get_floating_ip(ip_address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult).value
 
     return AwaitableGetFloatingIpResult(
-        droplet_id=__ret__.droplet_id,
-        floating_ip_urn=__ret__.floating_ip_urn,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        region=__ret__.region)
+        droplet_id=pulumi.get(__ret__, 'droplet_id'),
+        floating_ip_urn=pulumi.get(__ret__, 'floating_ip_urn'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_floating_ip)

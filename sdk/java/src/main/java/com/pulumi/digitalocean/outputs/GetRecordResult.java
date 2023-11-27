@@ -10,8 +10,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRecordResult {
+    /**
+     * @return Variable data depending on record type. For example, the &#34;data&#34; value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+     * 
+     */
     private String data;
     private String domain;
+    /**
+     * @return An unsigned integer between 0-255 used for CAA records.
+     * 
+     */
     private Integer flags;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -19,20 +27,52 @@ public final class GetRecordResult {
      */
     private String id;
     private String name;
+    /**
+     * @return The port for SRV records.
+     * 
+     */
     private Integer port;
+    /**
+     * @return The priority for SRV and MX records.
+     * 
+     */
     private Integer priority;
+    /**
+     * @return The parameter tag for CAA records.
+     * 
+     */
     private String tag;
+    /**
+     * @return This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+     * 
+     */
     private Integer ttl;
+    /**
+     * @return The type of the DNS record.
+     * 
+     */
     private String type;
+    /**
+     * @return The weight for SRV records.
+     * 
+     */
     private Integer weight;
 
     private GetRecordResult() {}
+    /**
+     * @return Variable data depending on record type. For example, the &#34;data&#34; value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+     * 
+     */
     public String data() {
         return this.data;
     }
     public String domain() {
         return this.domain;
     }
+    /**
+     * @return An unsigned integer between 0-255 used for CAA records.
+     * 
+     */
     public Integer flags() {
         return this.flags;
     }
@@ -46,21 +86,45 @@ public final class GetRecordResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The port for SRV records.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return The priority for SRV and MX records.
+     * 
+     */
     public Integer priority() {
         return this.priority;
     }
+    /**
+     * @return The parameter tag for CAA records.
+     * 
+     */
     public String tag() {
         return this.tag;
     }
+    /**
+     * @return This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+     * 
+     */
     public Integer ttl() {
         return this.ttl;
     }
+    /**
+     * @return The type of the DNS record.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The weight for SRV records.
+     * 
+     */
     public Integer weight() {
         return this.weight;
     }
@@ -157,19 +221,19 @@ public final class GetRecordResult {
             return this;
         }
         public GetRecordResult build() {
-            final var o = new GetRecordResult();
-            o.data = data;
-            o.domain = domain;
-            o.flags = flags;
-            o.id = id;
-            o.name = name;
-            o.port = port;
-            o.priority = priority;
-            o.tag = tag;
-            o.ttl = ttl;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetRecordResult();
+            _resultValue.data = data;
+            _resultValue.domain = domain;
+            _resultValue.flags = flags;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.priority = priority;
+            _resultValue.tag = tag;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

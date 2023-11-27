@@ -32,7 +32,7 @@ class VolumeArgs:
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Volume.
         """
@@ -98,6 +98,9 @@ class VolumeArgs:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
+        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
@@ -132,7 +135,7 @@ class VolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 
@@ -188,7 +191,7 @@ class _VolumeState:
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[Union[str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
@@ -265,6 +268,9 @@ class _VolumeState:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
+        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
@@ -299,7 +305,7 @@ class _VolumeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 
@@ -433,7 +439,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[Union[str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
@@ -523,9 +529,6 @@ class Volume(pulumi.CustomResource):
             __props__ = VolumeArgs.__new__(VolumeArgs)
 
             __props__.__dict__["description"] = description
-            if filesystem_type is not None and not opts.urn:
-                warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
-                pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
             __props__.__dict__["filesystem_type"] = filesystem_type
             __props__.__dict__["initial_filesystem_label"] = initial_filesystem_label
             __props__.__dict__["initial_filesystem_type"] = initial_filesystem_type
@@ -576,7 +579,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] filesystem_type: Filesystem type (`xfs` or `ext4`) for the block storage volume.
         :param pulumi.Input[str] initial_filesystem_label: Initial filesystem label for the block storage volume.
         :param pulumi.Input[Union[str, 'FileSystemType']] initial_filesystem_type: Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
-        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        :param pulumi.Input[str] name: A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         :param pulumi.Input[Union[str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[str] snapshot_id: The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
@@ -631,6 +634,9 @@ class Volume(pulumi.CustomResource):
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
+        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
+        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
+
         return pulumi.get(self, "filesystem_type")
 
     @property
@@ -653,7 +659,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters.
+        A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 

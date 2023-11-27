@@ -12,12 +12,16 @@ public final class AppSpecFunctionLogDestinationLogtail {
     /**
      * @return Logtail token.
      * 
+     * A `database` can contain:
+     * 
      */
     private String token;
 
     private AppSpecFunctionLogDestinationLogtail() {}
     /**
      * @return Logtail token.
+     * 
+     * A `database` can contain:
      * 
      */
     public String token() {
@@ -46,9 +50,9 @@ public final class AppSpecFunctionLogDestinationLogtail {
             return this;
         }
         public AppSpecFunctionLogDestinationLogtail build() {
-            final var o = new AppSpecFunctionLogDestinationLogtail();
-            o.token = token;
-            return o;
+            final var _resultValue = new AppSpecFunctionLogDestinationLogtail();
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

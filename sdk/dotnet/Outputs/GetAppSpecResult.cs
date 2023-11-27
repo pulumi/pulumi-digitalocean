@@ -18,12 +18,14 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecAlertResult> Alerts;
         public readonly ImmutableArray<Outputs.GetAppSpecDatabaseResult> Databases;
+        public readonly ImmutableArray<Outputs.GetAppSpecDomainResult> Domain;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// Describes an environment variable made available to an app competent.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecEnvResult> Envs;
         public readonly ImmutableArray<Outputs.GetAppSpecFunctionResult> Functions;
+        public readonly Outputs.GetAppSpecIngressResult Ingress;
         public readonly ImmutableArray<Outputs.GetAppSpecJobResult> Jobs;
         /// <summary>
         /// The name of the component.
@@ -40,11 +42,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecDatabaseResult> databases,
 
+            ImmutableArray<Outputs.GetAppSpecDomainResult> domain,
+
             ImmutableArray<string> domains,
 
             ImmutableArray<Outputs.GetAppSpecEnvResult> envs,
 
             ImmutableArray<Outputs.GetAppSpecFunctionResult> functions,
+
+            Outputs.GetAppSpecIngressResult ingress,
 
             ImmutableArray<Outputs.GetAppSpecJobResult> jobs,
 
@@ -60,9 +66,11 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Alerts = alerts;
             Databases = databases;
+            Domain = domain;
             Domains = domains;
             Envs = envs;
             Functions = functions;
+            Ingress = ingress;
             Jobs = jobs;
             Name = name;
             Region = region;

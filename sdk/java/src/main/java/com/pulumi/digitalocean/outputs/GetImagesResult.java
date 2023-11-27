@@ -22,10 +22,6 @@ public final class GetImagesResult {
     private String id;
     /**
      * @return A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
-     * - `slug`: Unique text identifier of the image.
-     * - `id`: The ID of the image.
-     * - `name`: The name of the image.
-     * - `type`: Type of the image.
      * 
      */
     private List<GetImagesImage> images;
@@ -44,10 +40,6 @@ public final class GetImagesResult {
     }
     /**
      * @return A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
-     * - `slug`: Unique text identifier of the image.
-     * - `id`: The ID of the image.
-     * - `name`: The name of the image.
-     * - `type`: Type of the image.
      * 
      */
     public List<GetImagesImage> images() {
@@ -109,12 +101,12 @@ public final class GetImagesResult {
             return sorts(List.of(sorts));
         }
         public GetImagesResult build() {
-            final var o = new GetImagesResult();
-            o.filters = filters;
-            o.id = id;
-            o.images = images;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetImagesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.images = images;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

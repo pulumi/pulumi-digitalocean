@@ -13,15 +13,21 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetSshKeysSshKeyResult
     {
+        /// <summary>
+        /// The fingerprint of the public key of the ssh key.
+        /// </summary>
         public readonly string Fingerprint;
         /// <summary>
         /// The ID of the ssh key.
-        /// * `name`: The name of the ssh key.
-        /// * `public_key`: The public key of the ssh key.
-        /// * `fingerprint`: The fingerprint of the public key of the ssh key.
         /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The name of the ssh key.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The public key of the ssh key.
+        /// </summary>
         public readonly string PublicKey;
 
         [OutputConstructor]

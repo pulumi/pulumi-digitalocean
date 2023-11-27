@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.DatabaseConnectionPoolState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -78,7 +79,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -92,7 +93,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The database for use with the connection pool.
      * 
      */
-    @Export(name="dbName", type=String.class, parameters={})
+    @Export(name="dbName", refs={String.class}, tree="[0]")
     private Output<String> dbName;
 
     /**
@@ -106,7 +107,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The hostname used to connect to the database connection pool.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -120,7 +121,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -134,7 +135,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The name for the database connection pool.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -148,7 +149,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * Password for the connection pool&#39;s user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -162,7 +163,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * Network port that the database connection pool is listening on.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -176,7 +177,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * Same as `host`, but only accessible from resources within the account and in the same region.
      * 
      */
-    @Export(name="privateHost", type=String.class, parameters={})
+    @Export(name="privateHost", refs={String.class}, tree="[0]")
     private Output<String> privateHost;
 
     /**
@@ -190,7 +191,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      * 
      */
-    @Export(name="privateUri", type=String.class, parameters={})
+    @Export(name="privateUri", refs={String.class}, tree="[0]")
     private Output<String> privateUri;
 
     /**
@@ -204,7 +205,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The desired size of the PGBouncer connection pool.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -218,7 +219,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The full URI for connecting to the database connection pool.
      * 
      */
-    @Export(name="uri", type=String.class, parameters={})
+    @Export(name="uri", refs={String.class}, tree="[0]")
     private Output<String> uri;
 
     /**
@@ -232,7 +233,7 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
      * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> user;
 
     /**
@@ -275,6 +276,11 @@ public class DatabaseConnectionPool extends com.pulumi.resources.CustomResource 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password",
+                "privateUri",
+                "uri"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

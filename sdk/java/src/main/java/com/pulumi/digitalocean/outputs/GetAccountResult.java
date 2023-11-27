@@ -11,29 +11,73 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountResult {
+    /**
+     * @return The total number of droplets current user or team may have active at one time.
+     * 
+     */
     private Integer dropletLimit;
+    /**
+     * @return The email address used by the current user to register for DigitalOcean.
+     * 
+     */
     private String email;
+    /**
+     * @return If true, the user has verified their account via email. False otherwise.
+     * 
+     */
     private Boolean emailVerified;
+    /**
+     * @return The total number of floating IPs the current user or team may have.
+     * 
+     */
     private Integer floatingIpLimit;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return This value is one of &#34;active&#34;, &#34;warning&#34; or &#34;locked&#34;.
+     * 
+     */
     private String status;
+    /**
+     * @return A human-readable message giving more details about the status of the account.
+     * 
+     */
     private String statusMessage;
+    /**
+     * @return The unique universal identifier for the current user.
+     * 
+     */
     private String uuid;
 
     private GetAccountResult() {}
+    /**
+     * @return The total number of droplets current user or team may have active at one time.
+     * 
+     */
     public Integer dropletLimit() {
         return this.dropletLimit;
     }
+    /**
+     * @return The email address used by the current user to register for DigitalOcean.
+     * 
+     */
     public String email() {
         return this.email;
     }
+    /**
+     * @return If true, the user has verified their account via email. False otherwise.
+     * 
+     */
     public Boolean emailVerified() {
         return this.emailVerified;
     }
+    /**
+     * @return The total number of floating IPs the current user or team may have.
+     * 
+     */
     public Integer floatingIpLimit() {
         return this.floatingIpLimit;
     }
@@ -44,12 +88,24 @@ public final class GetAccountResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return This value is one of &#34;active&#34;, &#34;warning&#34; or &#34;locked&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return A human-readable message giving more details about the status of the account.
+     * 
+     */
     public String statusMessage() {
         return this.statusMessage;
     }
+    /**
+     * @return The unique universal identifier for the current user.
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -125,16 +181,16 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.dropletLimit = dropletLimit;
-            o.email = email;
-            o.emailVerified = emailVerified;
-            o.floatingIpLimit = floatingIpLimit;
-            o.id = id;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.dropletLimit = dropletLimit;
+            _resultValue.email = email;
+            _resultValue.emailVerified = emailVerified;
+            _resultValue.floatingIpLimit = floatingIpLimit;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.statusMessage = statusMessage;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

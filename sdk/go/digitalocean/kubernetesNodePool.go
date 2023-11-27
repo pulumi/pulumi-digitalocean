@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +32,7 @@ import (
 //			foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
 //				Region:  pulumi.String("nyc1"),
 //				Version: pulumi.String("1.22.8-do.1"),
-//				NodePool: &KubernetesClusterNodePoolArgs{
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
 //					Name:      pulumi.String("front-end-pool"),
 //					Size:      pulumi.String("s-2vcpu-2gb"),
 //					NodeCount: pulumi.Int(3),
@@ -51,8 +52,8 @@ import (
 //					"service":  pulumi.String("backend"),
 //					"priority": pulumi.String("high"),
 //				},
-//				Taints: KubernetesNodePoolTaintArray{
-//					&KubernetesNodePoolTaintArgs{
+//				Taints: digitalocean.KubernetesNodePoolTaintArray{
+//					&digitalocean.KubernetesNodePoolTaintArgs{
 //						Key:    pulumi.String("workloadKind"),
 //						Value:  pulumi.String("database"),
 //						Effect: pulumi.String("NoSchedule"),
@@ -102,7 +103,7 @@ import (
 //
 // ## Import
 //
-// If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+// If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
 //
 // ```sh
 //
@@ -137,6 +138,8 @@ type KubernetesNodePool struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints KubernetesNodePoolTaintArrayOutput `pulumi:"taints"`
 }
 
@@ -153,6 +156,7 @@ func NewKubernetesNodePool(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesNodePool
 	err := ctx.RegisterResource("digitalocean:index/kubernetesNodePool:KubernetesNodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -198,6 +202,8 @@ type kubernetesNodePoolState struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints []KubernetesNodePoolTaint `pulumi:"taints"`
 }
 
@@ -225,6 +231,8 @@ type KubernetesNodePoolState struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints KubernetesNodePoolTaintArrayInput
 }
 
@@ -252,6 +260,8 @@ type kubernetesNodePoolArgs struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints []KubernetesNodePoolTaint `pulumi:"taints"`
 }
 
@@ -276,6 +286,8 @@ type KubernetesNodePoolArgs struct {
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
 	// A list of taints applied to all nodes in the pool.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Taints KubernetesNodePoolTaintArrayInput
 }
 
@@ -422,6 +434,8 @@ func (o KubernetesNodePoolOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // A list of taints applied to all nodes in the pool.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesNodePoolOutput) Taints() KubernetesNodePoolTaintArrayOutput {
 	return o.ApplyT(func(v *KubernetesNodePool) KubernetesNodePoolTaintArrayOutput { return v.Taints }).(KubernetesNodePoolTaintArrayOutput)
 }

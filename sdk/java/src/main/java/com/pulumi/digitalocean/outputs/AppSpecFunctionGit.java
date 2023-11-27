@@ -67,10 +67,10 @@ public final class AppSpecFunctionGit {
             return this;
         }
         public AppSpecFunctionGit build() {
-            final var o = new AppSpecFunctionGit();
-            o.branch = branch;
-            o.repoCloneUrl = repoCloneUrl;
-            return o;
+            final var _resultValue = new AppSpecFunctionGit();
+            _resultValue.branch = branch;
+            _resultValue.repoCloneUrl = repoCloneUrl;
+            return _resultValue;
         }
     }
 }

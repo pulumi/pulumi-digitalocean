@@ -17,6 +17,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -25,7 +26,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Web Droplet in the nyc2 region
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         Image = "ubuntu-18-04-x64",
+    ///         Image = "ubuntu-20-04-x64",
     ///         Region = "nyc2",
     ///         Size = "s-1vcpu-1gb",
     ///     });
@@ -73,7 +74,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The uniform resource name of the Droplet
-        /// * `name`- The name of the Droplet
         /// </summary>
         [Output("dropletUrn")]
         public Output<string> DropletUrn { get; private set; } = null!;
@@ -81,6 +81,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
+        /// 
+        /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Output("gracefulShutdown")]
         public Output<bool?> GracefulShutdown { get; private set; } = null!;
@@ -292,6 +294,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
+        /// 
+        /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
@@ -307,6 +311,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
+
+        /// <summary>
+        /// The IPv6 address
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
@@ -440,7 +450,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The uniform resource name of the Droplet
-        /// * `name`- The name of the Droplet
         /// </summary>
         [Input("dropletUrn")]
         public Input<string>? DropletUrn { get; set; }
@@ -448,6 +457,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
+        /// 
+        /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }

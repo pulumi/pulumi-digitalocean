@@ -73,7 +73,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * The fingerprint of the SSH key
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -87,7 +87,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * The name of the SSH key for identification
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -102,7 +102,7 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      * can be read using the file interpolation function
      * 
      */
-    @Export(name="publicKey", type=String.class, parameters={})
+    @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output<String> publicKey;
 
     /**

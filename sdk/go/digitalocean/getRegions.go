@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,9 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
-//				Filters: []GetRegionsFilter{
-//					GetRegionsFilter{
+//			_, err := digitalocean.GetRegions(ctx, &digitalocean.GetRegionsArgs{
+//				Filters: []digitalocean.GetRegionsFilter{
+//					{
 //						Key: "available",
 //						Values: []string{
 //							"true",
@@ -67,23 +68,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetRegions(ctx, &GetRegionsArgs{
-//				Filters: []GetRegionsFilter{
-//					GetRegionsFilter{
+//			_, err := digitalocean.GetRegions(ctx, &digitalocean.GetRegionsArgs{
+//				Filters: []digitalocean.GetRegionsFilter{
+//					{
 //						Key: "available",
 //						Values: []string{
 //							"true",
 //						},
 //					},
-//					GetRegionsFilter{
+//					{
 //						Key: "features",
 //						Values: []string{
 //							"private_networking",
 //						},
 //					},
 //				},
-//				Sorts: []GetRegionsSort{
-//					GetRegionsSort{
+//				Sorts: []digitalocean.GetRegionsSort{
+//					{
 //						Direction: pulumi.StringRef("desc"),
 //						Key:       "name",
 //					},
@@ -98,6 +99,7 @@ import (
 //
 // ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult
 	err := ctx.Invoke("digitalocean:index/getRegions:getRegions", args, &rv, opts...)
 	if err != nil {

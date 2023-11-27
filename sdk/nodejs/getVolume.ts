@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const example = pulumi.output(digitalocean.getVolume({
+ * const example = digitalocean.getVolume({
  *     name: "app-data",
  *     region: "nyc3",
- * }));
+ * });
  * ```
  *
  * Reuse the data about a volume to attach it to a Droplet:
@@ -48,11 +48,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getVolume:getVolume", {
         "description": args.description,
         "name": args.name,
@@ -112,11 +109,56 @@ export interface GetVolumeResult {
      * A list of the tags associated to the Volume.
      */
     readonly tags: string[];
+    /**
+     * The uniform resource name for the storage volume.
+     */
     readonly urn: string;
 }
-
+/**
+ * Get information on a volume for use in other resources. This data source provides
+ * all of the volumes properties as configured on your DigitalOcean account. This is
+ * useful if the volume in question is not managed by the provider or you need to utilize
+ * any of the volumes data.
+ *
+ * An error is triggered if the provided volume name does not exist.
+ *
+ * ## Example Usage
+ *
+ * Get the volume:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getVolume({
+ *     name: "app-data",
+ *     region: "nyc3",
+ * });
+ * ```
+ *
+ * Reuse the data about a volume to attach it to a Droplet:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const exampleVolume = digitalocean.getVolume({
+ *     name: "app-data",
+ *     region: "nyc3",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ *     size: "s-1vcpu-1gb",
+ *     image: "ubuntu-18-04-x64",
+ *     region: "nyc3",
+ * });
+ * const foobar = new digitalocean.VolumeAttachment("foobar", {
+ *     dropletId: exampleDroplet.id,
+ *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
+ * });
+ * ```
+ */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
-    return pulumi.output(args).apply(a => getVolume(a, opts))
+    return pulumi.output(args).apply((a: any) => getVolume(a, opts))
 }
 
 /**

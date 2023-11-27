@@ -7,17 +7,26 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Import
 //
-// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster's `id`, e.g.
+// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
 //
 // ```sh
 //
 //	$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+//
+// ```
+//
+//	Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+//
+// ```sh
+//
+//	$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
 //
 // ```
 type KubernetesCluster struct {
@@ -31,6 +40,10 @@ type KubernetesCluster struct {
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources pulumi.BoolPtrOutput `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
@@ -46,6 +59,8 @@ type KubernetesCluster struct {
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration pulumi.BoolPtrOutput `pulumi:"registryIntegration"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -78,6 +93,11 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeConfigs",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesCluster
 	err := ctx.RegisterResource("digitalocean:index/kubernetesCluster:KubernetesCluster", name, args, &resource, opts...)
 	if err != nil {
@@ -108,6 +128,10 @@ type kubernetesClusterState struct {
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
@@ -123,6 +147,8 @@ type kubernetesClusterState struct {
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region *string `pulumi:"region"`
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration *bool `pulumi:"registryIntegration"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -148,6 +174,10 @@ type KubernetesClusterState struct {
 	ClusterUrn pulumi.StringPtrInput
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringPtrInput
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
@@ -163,6 +193,8 @@ type KubernetesClusterState struct {
 	NodePool KubernetesClusterNodePoolPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringPtrInput
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration pulumi.BoolPtrInput
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet pulumi.StringPtrInput
 	// A string indicating the current status of the individual node.
@@ -186,6 +218,10 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha *bool `pulumi:"ha"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -196,6 +232,8 @@ type kubernetesClusterArgs struct {
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration *bool `pulumi:"registryIntegration"`
 	// Enable/disable surge upgrades for a cluster. Default: false
 	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -210,6 +248,10 @@ type kubernetesClusterArgs struct {
 type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
+	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
 	Ha pulumi.BoolPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -220,6 +262,8 @@ type KubernetesClusterArgs struct {
 	NodePool KubernetesClusterNodePoolInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput
+	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+	RegistryIntegration pulumi.BoolPtrInput
 	// Enable/disable surge upgrades for a cluster. Default: false
 	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -337,6 +381,13 @@ func (o KubernetesClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o KubernetesClusterOutput) DestroyAllAssociatedResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.DestroyAllAssociatedResources }).(pulumi.BoolPtrOutput)
+}
+
 // The base URL of the API server on the Kubernetes master node.
 func (o KubernetesClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
@@ -374,6 +425,11 @@ func (o KubernetesClusterOutput) NodePool() KubernetesClusterNodePoolOutput {
 // The slug identifier for the region where the Kubernetes cluster will be created.
 func (o KubernetesClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+func (o KubernetesClusterOutput) RegistryIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.RegistryIntegration }).(pulumi.BoolPtrOutput)
 }
 
 // The range of assignable IP addresses for services running in the Kubernetes cluster.

@@ -15,9 +15,11 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         /// <summary>
         /// (Required) The name of the domain.
-        /// - `ttl`-  The TTL of the domain.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The TTL of the domain.
+        /// </summary>
         public readonly int Ttl;
         /// <summary>
         /// The uniform resource name of the domain

@@ -38,11 +38,17 @@ class GetSshKeyResult:
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
+        """
+        The fingerprint of the public key of the ssh key.
+        """
         return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the ssh key.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -53,6 +59,9 @@ class GetSshKeyResult:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
+        """
+        The public key of the ssh key.
+        """
         return pulumi.get(self, "public_key")
 
 
@@ -103,10 +112,10 @@ def get_ssh_key(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult).value
 
     return AwaitableGetSshKeyResult(
-        fingerprint=__ret__.fingerprint,
-        id=__ret__.id,
-        name=__ret__.name,
-        public_key=__ret__.public_key)
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        public_key=pulumi.get(__ret__, 'public_key'))
 
 
 @_utilities.lift_output_func(get_ssh_key)

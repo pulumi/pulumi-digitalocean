@@ -24,6 +24,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -43,6 +44,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -68,7 +70,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Volume snapshots are saved instances of a block storage volume. Use this data
@@ -83,6 +85,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -102,6 +105,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -127,7 +131,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -135,6 +139,10 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// If more than one result is returned, use the most recent volume snapshot.
+        /// 
+        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
+        /// the provider will fail. Ensure that your search is specific enough to return
+        /// a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
@@ -167,6 +175,10 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// If more than one result is returned, use the most recent volume snapshot.
+        /// 
+        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
+        /// the provider will fail. Ensure that your search is specific enough to return
+        /// a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }

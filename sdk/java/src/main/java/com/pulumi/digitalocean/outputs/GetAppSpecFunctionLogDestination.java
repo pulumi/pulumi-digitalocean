@@ -108,12 +108,12 @@ public final class GetAppSpecFunctionLogDestination {
             return this;
         }
         public GetAppSpecFunctionLogDestination build() {
-            final var o = new GetAppSpecFunctionLogDestination();
-            o.datadog = datadog;
-            o.logtail = logtail;
-            o.name = name;
-            o.papertrail = papertrail;
-            return o;
+            final var _resultValue = new GetAppSpecFunctionLogDestination();
+            _resultValue.datadog = datadog;
+            _resultValue.logtail = logtail;
+            _resultValue.name = name;
+            _resultValue.papertrail = papertrail;
+            return _resultValue;
         }
     }
 }

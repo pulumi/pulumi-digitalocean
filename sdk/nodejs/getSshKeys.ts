@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -22,12 +24,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const keys = pulumi.output(digitalocean.getSshKeys({
+ * const keys = digitalocean.getSshKeys({
  *     sorts: [{
  *         direction: "asc",
  *         key: "name",
  *     }],
- * }));
+ * });
  * ```
  *
  * Or to find ones matching specific values:
@@ -36,7 +38,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const keys = pulumi.output(digitalocean.getSshKeys({
+ * const keys = digitalocean.getSshKeys({
  *     filters: [{
  *         key: "name",
  *         values: [
@@ -44,16 +46,13 @@ import * as utilities from "./utilities";
  *             "desktop",
  *         ],
  *     }],
- * }));
+ * });
  * ```
  */
 export function getSshKeys(args?: GetSshKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getSshKeys:getSshKeys", {
         "filters": args.filters,
         "sorts": args.sorts,
@@ -91,9 +90,50 @@ export interface GetSshKeysResult {
      */
     readonly sshKeys: outputs.GetSshKeysSshKey[];
 }
-
+/**
+ * Get information on SSH Keys for use in other resources.
+ *
+ * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+ * utilize any of the SSH Keys' data.
+ *
+ * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+ * about a single SSH Key if you already know the unique `name` to retrieve.
+ *
+ * ## Example Usage
+ *
+ * For example, to find all SSH keys:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = digitalocean.getSshKeys({
+ *     sorts: [{
+ *         direction: "asc",
+ *         key: "name",
+ *     }],
+ * });
+ * ```
+ *
+ * Or to find ones matching specific values:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const keys = digitalocean.getSshKeys({
+ *     filters: [{
+ *         key: "name",
+ *         values: [
+ *             "laptop",
+ *             "desktop",
+ *         ],
+ *     }],
+ * });
+ * ```
+ */
 export function getSshKeysOutput(args?: GetSshKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeysResult> {
-    return pulumi.output(args).apply(a => getSshKeys(a, opts))
+    return pulumi.output(args).apply((a: any) => getSshKeys(a, opts))
 }
 
 /**

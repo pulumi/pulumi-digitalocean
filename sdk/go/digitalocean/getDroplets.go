@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,9 +38,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
-//				Filters: []GetDropletsFilter{
-//					GetDropletsFilter{
+//			_, err := digitalocean.GetDroplets(ctx, &digitalocean.GetDropletsArgs{
+//				Filters: []digitalocean.GetDropletsFilter{
+//					{
 //						Key: "size",
 //						Values: []string{
 //							"s-1vcpu-1gb",
@@ -70,23 +71,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.GetDroplets(ctx, &GetDropletsArgs{
-//				Filters: []GetDropletsFilter{
-//					GetDropletsFilter{
+//			_, err := digitalocean.GetDroplets(ctx, &digitalocean.GetDropletsArgs{
+//				Filters: []digitalocean.GetDropletsFilter{
+//					{
 //						Key: "size",
 //						Values: []string{
 //							"s-1vcpu-1gb",
 //						},
 //					},
-//					GetDropletsFilter{
+//					{
 //						Key: "backups",
 //						Values: []string{
 //							"true",
 //						},
 //					},
 //				},
-//				Sorts: []GetDropletsSort{
-//					GetDropletsSort{
+//				Sorts: []digitalocean.GetDropletsSort{
+//					{
 //						Direction: pulumi.StringRef("desc"),
 //						Key:       "created_at",
 //					},
@@ -101,6 +102,7 @@ import (
 //
 // ```
 func GetDroplets(ctx *pulumi.Context, args *GetDropletsArgs, opts ...pulumi.InvokeOption) (*GetDropletsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDropletsResult
 	err := ctx.Invoke("digitalocean:index/getDroplets:getDroplets", args, &rv, opts...)
 	if err != nil {

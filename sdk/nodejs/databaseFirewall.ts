@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -61,6 +63,33 @@ import * as utilities from "./utilities";
  *     rules: [{
  *         type: "droplet",
  *         value: web.id,
+ *     }],
+ * });
+ * ```
+ * ### Create a new database firewall for a database replica
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ * });
+ * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
+ *     clusterId: postgres_example.id,
+ *     size: "db-s-1vcpu-1gb",
+ *     region: "nyc1",
+ * });
+ * // Create firewall rule for database replica
+ * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
+ *     clusterId: replica_example.uuid,
+ *     rules: [{
+ *         type: "ip_addr",
+ *         value: "192.168.1.1",
  *     }],
  * });
  * ```

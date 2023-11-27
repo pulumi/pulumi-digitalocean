@@ -46,6 +46,10 @@ class SpacesBucketObjectArgs:
         :param pulumi.Input[str] etag: Used to trigger updates.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
                Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
         :param pulumi.Input[str] website_redirect: Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
@@ -230,6 +234,10 @@ class SpacesBucketObjectArgs:
         """
         Allow the object to be deleted by removing any legal hold on any object version.
         Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+
+        If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+
+        > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -308,6 +316,10 @@ class _SpacesBucketObjectState:
         :param pulumi.Input[str] etag: Used to trigger updates.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
                Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -476,6 +488,10 @@ class _SpacesBucketObjectState:
         """
         Allow the object to be deleted by removing any legal hold on any object version.
         Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+
+        If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+
+        > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -639,6 +655,10 @@ class SpacesBucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Used to trigger updates.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
                Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -807,6 +827,10 @@ class SpacesBucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Used to trigger updates.
         :param pulumi.Input[bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
                Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -923,6 +947,10 @@ class SpacesBucketObject(pulumi.CustomResource):
         """
         Allow the object to be deleted by removing any legal hold on any object version.
         Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+
+        If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+
+        > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         """
         return pulumi.get(self, "force_destroy")
 

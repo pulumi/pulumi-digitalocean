@@ -83,6 +83,25 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Import(name="destroyAllAssociatedResources")
+    private @Nullable Output<Boolean> destroyAllAssociatedResources;
+
+    /**
+     * @return **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Optional<Output<Boolean>> destroyAllAssociatedResources() {
+        return Optional.ofNullable(this.destroyAllAssociatedResources);
+    }
+
+    /**
      * The base URL of the API server on the Kubernetes master node.
      * 
      */
@@ -192,6 +211,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<Either<String,Region>>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    @Import(name="registryIntegration")
+    private @Nullable Output<Boolean> registryIntegration;
+
+    /**
+     * @return Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    public Optional<Output<Boolean>> registryIntegration() {
+        return Optional.ofNullable(this.registryIntegration);
     }
 
     /**
@@ -306,6 +340,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.clusterSubnet = $.clusterSubnet;
         this.clusterUrn = $.clusterUrn;
         this.createdAt = $.createdAt;
+        this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.endpoint = $.endpoint;
         this.ha = $.ha;
         this.ipv4Address = $.ipv4Address;
@@ -314,6 +349,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.nodePool = $.nodePool;
         this.region = $.region;
+        this.registryIntegration = $.registryIntegration;
         this.serviceSubnet = $.serviceSubnet;
         this.status = $.status;
         this.surgeUpgrade = $.surgeUpgrade;
@@ -423,6 +459,31 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param destroyAllAssociatedResources **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destroyAllAssociatedResources(@Nullable Output<Boolean> destroyAllAssociatedResources) {
+            $.destroyAllAssociatedResources = destroyAllAssociatedResources;
+            return this;
+        }
+
+        /**
+         * @param destroyAllAssociatedResources **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destroyAllAssociatedResources(Boolean destroyAllAssociatedResources) {
+            return destroyAllAssociatedResources(Output.of(destroyAllAssociatedResources));
         }
 
         /**
@@ -603,6 +664,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder region(Region region) {
             return region(Either.ofRight(region));
+        }
+
+        /**
+         * @param registryIntegration Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryIntegration(@Nullable Output<Boolean> registryIntegration) {
+            $.registryIntegration = registryIntegration;
+            return this;
+        }
+
+        /**
+         * @param registryIntegration Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryIntegration(Boolean registryIntegration) {
+            return registryIntegration(Output.of(registryIntegration));
         }
 
         /**

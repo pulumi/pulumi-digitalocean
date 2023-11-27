@@ -160,12 +160,16 @@ public final class KubernetesNodePoolArgs extends com.pulumi.resources.ResourceA
     /**
      * A list of taints applied to all nodes in the pool.
      * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
      */
     @Import(name="taints")
     private @Nullable Output<List<KubernetesNodePoolTaintArgs>> taints;
 
     /**
      * @return A list of taints applied to all nodes in the pool.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<List<KubernetesNodePoolTaintArgs>>> taints() {
@@ -427,6 +431,8 @@ public final class KubernetesNodePoolArgs extends com.pulumi.resources.ResourceA
         /**
          * @param taints A list of taints applied to all nodes in the pool.
          * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
          * @return builder
          * 
          */
@@ -438,6 +444,8 @@ public final class KubernetesNodePoolArgs extends com.pulumi.resources.ResourceA
         /**
          * @param taints A list of taints applied to all nodes in the pool.
          * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
          * @return builder
          * 
          */
@@ -447,6 +455,8 @@ public final class KubernetesNodePoolArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param taints A list of taints applied to all nodes in the pool.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 

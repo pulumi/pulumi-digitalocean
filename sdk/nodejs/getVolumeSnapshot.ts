@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const snapshot = pulumi.output(digitalocean.getVolumeSnapshot({
+ * const snapshot = digitalocean.getVolumeSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }));
+ * });
  * ```
  *
  * Reuse the data about a volume snapshot to create a new volume based on it:
@@ -44,11 +44,8 @@ import * as utilities from "./utilities";
  */
 export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,
@@ -63,6 +60,10 @@ export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.In
 export interface GetVolumeSnapshotArgs {
     /**
      * If more than one result is returned, use the most recent volume snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * the provider will fail. Ensure that your search is specific enough to return
+     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
      */
     mostRecent?: boolean;
     /**
@@ -116,9 +117,46 @@ export interface GetVolumeSnapshotResult {
      */
     readonly volumeId: string;
 }
-
+/**
+ * Volume snapshots are saved instances of a block storage volume. Use this data
+ * source to retrieve the ID of a DigitalOcean volume snapshot for use in other
+ * resources.
+ *
+ * ## Example Usage
+ *
+ * Get the volume snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const snapshot = digitalocean.getVolumeSnapshot({
+ *     mostRecent: true,
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ * });
+ * ```
+ *
+ * Reuse the data about a volume snapshot to create a new volume based on it:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const snapshot = digitalocean.getVolumeSnapshot({
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ *     mostRecent: true,
+ * });
+ * const foobar = new digitalocean.Volume("foobar", {
+ *     region: "nyc3",
+ *     size: 100,
+ *     snapshotId: snapshot.then(snapshot => snapshot.id),
+ * });
+ * ```
+ */
 export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeSnapshotResult> {
-    return pulumi.output(args).apply(a => getVolumeSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getVolumeSnapshot(a, opts))
 }
 
 /**
@@ -127,6 +165,10 @@ export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts
 export interface GetVolumeSnapshotOutputArgs {
     /**
      * If more than one result is returned, use the most recent volume snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * the provider will fail. Ensure that your search is specific enough to return
+     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
      */
     mostRecent?: pulumi.Input<boolean>;
     /**

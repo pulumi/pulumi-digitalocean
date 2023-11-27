@@ -160,15 +160,15 @@ public final class GetKubernetesClusterKubeConfig {
             return this;
         }
         public GetKubernetesClusterKubeConfig build() {
-            final var o = new GetKubernetesClusterKubeConfig();
-            o.clientCertificate = clientCertificate;
-            o.clientKey = clientKey;
-            o.clusterCaCertificate = clusterCaCertificate;
-            o.expiresAt = expiresAt;
-            o.host = host;
-            o.rawConfig = rawConfig;
-            o.token = token;
-            return o;
+            final var _resultValue = new GetKubernetesClusterKubeConfig();
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCaCertificate = clusterCaCertificate;
+            _resultValue.expiresAt = expiresAt;
+            _resultValue.host = host;
+            _resultValue.rawConfig = rawConfig;
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

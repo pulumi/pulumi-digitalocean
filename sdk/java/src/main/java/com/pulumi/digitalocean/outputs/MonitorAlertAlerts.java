@@ -58,10 +58,10 @@ public final class MonitorAlertAlerts {
             return slacks(List.of(slacks));
         }
         public MonitorAlertAlerts build() {
-            final var o = new MonitorAlertAlerts();
-            o.emails = emails;
-            o.slacks = slacks;
-            return o;
+            final var _resultValue = new MonitorAlertAlerts();
+            _resultValue.emails = emails;
+            _resultValue.slacks = slacks;
+            return _resultValue;
         }
     }
 }

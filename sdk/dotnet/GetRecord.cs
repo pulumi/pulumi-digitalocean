@@ -20,7 +20,7 @@ namespace Pulumi.DigitalOcean
         /// your DigitalOcean account.
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information on a DNS record. This data source provides the name, TTL, and zone
@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         /// your DigitalOcean account.
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -79,19 +79,43 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetRecordResult
     {
+        /// <summary>
+        /// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+        /// </summary>
         public readonly string Data;
         public readonly string Domain;
+        /// <summary>
+        /// An unsigned integer between 0-255 used for CAA records.
+        /// </summary>
         public readonly int Flags;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// The port for SRV records.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The priority for SRV and MX records.
+        /// </summary>
         public readonly int Priority;
+        /// <summary>
+        /// The parameter tag for CAA records.
+        /// </summary>
         public readonly string Tag;
+        /// <summary>
+        /// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+        /// </summary>
         public readonly int Ttl;
+        /// <summary>
+        /// The type of the DNS record.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The weight for SRV records.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

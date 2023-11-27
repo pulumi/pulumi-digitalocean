@@ -59,6 +59,9 @@ class GetRecordResult:
     @property
     @pulumi.getter
     def data(self) -> str:
+        """
+        Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+        """
         return pulumi.get(self, "data")
 
     @property
@@ -69,6 +72,9 @@ class GetRecordResult:
     @property
     @pulumi.getter
     def flags(self) -> int:
+        """
+        An unsigned integer between 0-255 used for CAA records.
+        """
         return pulumi.get(self, "flags")
 
     @property
@@ -87,31 +93,49 @@ class GetRecordResult:
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port for SRV records.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def priority(self) -> int:
+        """
+        The priority for SRV and MX records.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        The parameter tag for CAA records.
+        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the DNS record.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight for SRV records.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -156,17 +180,17 @@ def get_record(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult).value
 
     return AwaitableGetRecordResult(
-        data=__ret__.data,
-        domain=__ret__.domain,
-        flags=__ret__.flags,
-        id=__ret__.id,
-        name=__ret__.name,
-        port=__ret__.port,
-        priority=__ret__.priority,
-        tag=__ret__.tag,
-        ttl=__ret__.ttl,
-        type=__ret__.type,
-        weight=__ret__.weight)
+        data=pulumi.get(__ret__, 'data'),
+        domain=pulumi.get(__ret__, 'domain'),
+        flags=pulumi.get(__ret__, 'flags'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        port=pulumi.get(__ret__, 'port'),
+        priority=pulumi.get(__ret__, 'priority'),
+        tag=pulumi.get(__ret__, 'tag'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'),
+        weight=pulumi.get(__ret__, 'weight'))
 
 
 @_utilities.lift_output_func(get_record)

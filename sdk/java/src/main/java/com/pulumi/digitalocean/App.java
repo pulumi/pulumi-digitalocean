@@ -87,9 +87,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_ste_example = new App(&#34;static-ste-example&#34;, AppArgs.builder()        
+ *         var static_site_example = new App(&#34;static-site-example&#34;, AppArgs.builder()        
  *             .spec(AppSpecArgs.builder()
- *                 .name(&#34;static-ste-example&#34;)
+ *                 .name(&#34;static-site-example&#34;)
  *                 .region(&#34;ams&#34;)
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
  *                     .buildCommand(&#34;bundle exec jekyll build -d ./public&#34;)
@@ -107,6 +107,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Multiple Components Example
+ * 
  * ```java
  * package generated_program;
  * 
@@ -116,6 +117,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.App;
  * import com.pulumi.digitalocean.AppArgs;
  * import com.pulumi.digitalocean.inputs.AppSpecArgs;
+ * import com.pulumi.digitalocean.inputs.AppSpecIngressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -140,6 +142,11 @@ import javax.annotation.Nullable;
  *                     .production(false)
  *                     .build())
  *                 .domains(Map.of(&#34;name&#34;, &#34;foo.example.com&#34;))
+ *                 .ingress(AppSpecIngressArgs.builder()
+ *                     .rule(                    
+ *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .build())
  *                 .name(&#34;mono-repo-example&#34;)
  *                 .region(&#34;ams&#34;)
  *                 .services(AppSpecServiceArgs.builder()
@@ -155,9 +162,6 @@ import javax.annotation.Nullable;
  *                     .instanceSizeSlug(&#34;professional-xs&#34;)
  *                     .logDestination(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                     .name(&#34;api&#34;)
- *                     .routes(AppSpecServiceRouteArgs.builder()
- *                         .path(&#34;/api&#34;)
- *                         .build())
  *                     .runCommand(&#34;bin/api&#34;)
  *                     .sourceDir(&#34;api/&#34;)
  *                     .build())
@@ -169,9 +173,6 @@ import javax.annotation.Nullable;
  *                         .repo(&#34;username/repo&#34;)
  *                         .build())
  *                     .name(&#34;web&#34;)
- *                     .routes(AppSpecStaticSiteRouteArgs.builder()
- *                         .path(&#34;/&#34;)
- *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
@@ -195,7 +196,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The ID the app&#39;s currently active deployment.
      * 
      */
-    @Export(name="activeDeploymentId", type=String.class, parameters={})
+    @Export(name="activeDeploymentId", refs={String.class}, tree="[0]")
     private Output<String> activeDeploymentId;
 
     /**
@@ -206,10 +207,24 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.activeDeploymentId;
     }
     /**
+     * The uniform resource identifier for the app.
+     * 
+     */
+    @Export(name="appUrn", refs={String.class}, tree="[0]")
+    private Output<String> appUrn;
+
+    /**
+     * @return The uniform resource identifier for the app.
+     * 
+     */
+    public Output<String> appUrn() {
+        return this.appUrn;
+    }
+    /**
      * The date and time of when the app was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -223,7 +238,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The default URL to access the app.
      * 
      */
-    @Export(name="defaultIngress", type=String.class, parameters={})
+    @Export(name="defaultIngress", refs={String.class}, tree="[0]")
     private Output<String> defaultIngress;
 
     /**
@@ -237,7 +252,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The live URL of the app.
      * 
      */
-    @Export(name="liveUrl", type=String.class, parameters={})
+    @Export(name="liveUrl", refs={String.class}, tree="[0]")
     private Output<String> liveUrl;
 
     /**
@@ -251,7 +266,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * A DigitalOcean App spec describing the app.
      * 
      */
-    @Export(name="spec", type=AppSpec.class, parameters={})
+    @Export(name="spec", refs={AppSpec.class}, tree="[0]")
     private Output</* @Nullable */ AppSpec> spec;
 
     /**
@@ -265,7 +280,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The date and time of when the app was last updated.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -274,20 +289,6 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updatedAt() {
         return this.updatedAt;
-    }
-    /**
-     * The uniform resource identifier for the app.
-     * 
-     */
-    @Export(name="urn", type=String.class, parameters={})
-    private Output<String> urn;
-
-    /**
-     * @return The uniform resource identifier for the app.
-     * 
-     */
-    public Output<String> urn() {
-        return this.urn;
     }
 
     /**

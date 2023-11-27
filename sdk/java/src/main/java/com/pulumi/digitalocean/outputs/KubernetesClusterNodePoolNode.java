@@ -143,14 +143,14 @@ public final class KubernetesClusterNodePoolNode {
             return this;
         }
         public KubernetesClusterNodePoolNode build() {
-            final var o = new KubernetesClusterNodePoolNode();
-            o.createdAt = createdAt;
-            o.dropletId = dropletId;
-            o.id = id;
-            o.name = name;
-            o.status = status;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new KubernetesClusterNodePoolNode();
+            _resultValue.createdAt = createdAt;
+            _resultValue.dropletId = dropletId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.status = status;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

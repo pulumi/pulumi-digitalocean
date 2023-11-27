@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
+//			example, err := digitalocean.LookupLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
 //				Name: pulumi.StringRef("app"),
 //			}, nil)
 //			if err != nil {
@@ -60,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupLoadBalancer(ctx, &GetLoadBalancerArgs{
+//			_, err := digitalocean.LookupLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
 //				Id: pulumi.StringRef("loadbalancer_id"),
 //			}, nil)
 //			if err != nil {
@@ -72,6 +73,7 @@ import (
 //
 // ```
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", args, &rv, opts...)
 	if err != nil {
@@ -86,6 +88,7 @@ type LookupLoadBalancerArgs struct {
 	Id *string `pulumi:"id"`
 	// The name of load balancer.
 	Name *string `pulumi:"name"`
+	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getLoadBalancer.
@@ -96,18 +99,22 @@ type LookupLoadBalancerResult struct {
 	DropletTag                   string                          `pulumi:"dropletTag"`
 	EnableBackendKeepalive       bool                            `pulumi:"enableBackendKeepalive"`
 	EnableProxyProtocol          bool                            `pulumi:"enableProxyProtocol"`
+	Firewalls                    []GetLoadBalancerFirewall       `pulumi:"firewalls"`
 	ForwardingRules              []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
 	Healthchecks                 []GetLoadBalancerHealthcheck    `pulumi:"healthchecks"`
+	HttpIdleTimeoutSeconds       int                             `pulumi:"httpIdleTimeoutSeconds"`
 	Id                           *string                         `pulumi:"id"`
 	Ip                           string                          `pulumi:"ip"`
 	LoadBalancerUrn              string                          `pulumi:"loadBalancerUrn"`
 	Name                         *string                         `pulumi:"name"`
+	ProjectId                    string                          `pulumi:"projectId"`
 	RedirectHttpToHttps          bool                            `pulumi:"redirectHttpToHttps"`
 	Region                       string                          `pulumi:"region"`
 	Size                         string                          `pulumi:"size"`
 	SizeUnit                     int                             `pulumi:"sizeUnit"`
 	Status                       string                          `pulumi:"status"`
 	StickySessions               []GetLoadBalancerStickySession  `pulumi:"stickySessions"`
+	Type                         string                          `pulumi:"type"`
 	VpcUuid                      string                          `pulumi:"vpcUuid"`
 }
 
@@ -130,6 +137,7 @@ type LookupLoadBalancerOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of load balancer.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
@@ -175,12 +183,20 @@ func (o LookupLoadBalancerResultOutput) EnableProxyProtocol() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
 }
 
+func (o LookupLoadBalancerResultOutput) Firewalls() GetLoadBalancerFirewallArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerFirewall { return v.Firewalls }).(GetLoadBalancerFirewallArrayOutput)
+}
+
 func (o LookupLoadBalancerResultOutput) ForwardingRules() GetLoadBalancerForwardingRuleArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerForwardingRule { return v.ForwardingRules }).(GetLoadBalancerForwardingRuleArrayOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) Healthchecks() GetLoadBalancerHealthcheckArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerHealthcheck { return v.Healthchecks }).(GetLoadBalancerHealthcheckArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) HttpIdleTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) int { return v.HttpIdleTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) Id() pulumi.StringPtrOutput {
@@ -197,6 +213,10 @@ func (o LookupLoadBalancerResultOutput) LoadBalancerUrn() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) RedirectHttpToHttps() pulumi.BoolOutput {
@@ -221,6 +241,10 @@ func (o LookupLoadBalancerResultOutput) Status() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) StickySessions() GetLoadBalancerStickySessionArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerStickySession { return v.StickySessions }).(GetLoadBalancerStickySessionArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) VpcUuid() pulumi.StringOutput {

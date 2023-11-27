@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
 func GetSpacesBucketObjects(ctx *pulumi.Context, args *GetSpacesBucketObjectsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketObjectsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpacesBucketObjectsResult
 	err := ctx.Invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args, &rv, opts...)
 	if err != nil {

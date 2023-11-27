@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDatabaseCluster(ctx, &GetDatabaseClusterArgs{
+//			example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 //				Name: "example-cluster",
 //			}, nil)
 //			if err != nil {
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupDatabaseCluster(ctx *pulumi.Context, args *LookupDatabaseClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseClusterResult
 	err := ctx.Invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", args, &rv, opts...)
 	if err != nil {
@@ -79,11 +81,14 @@ type LookupDatabaseClusterResult struct {
 	PrivateNetworkUuid string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri string `pulumi:"privateUri"`
+	// The ID of the project that the database cluster is assigned to.
+	ProjectId string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
-	Size string   `pulumi:"size"`
-	Tags []string `pulumi:"tags"`
+	Size           string   `pulumi:"size"`
+	StorageSizeMib string   `pulumi:"storageSizeMib"`
+	Tags           []string `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri string `pulumi:"uri"`
 	// The uniform resource name of the database cluster.
@@ -192,6 +197,11 @@ func (o LookupDatabaseClusterResultOutput) PrivateUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.PrivateUri }).(pulumi.StringOutput)
 }
 
+// The ID of the project that the database cluster is assigned to.
+func (o LookupDatabaseClusterResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
 // DigitalOcean region where the cluster will reside.
 func (o LookupDatabaseClusterResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Region }).(pulumi.StringOutput)
@@ -200,6 +210,10 @@ func (o LookupDatabaseClusterResultOutput) Region() pulumi.StringOutput {
 // Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
 func (o LookupDatabaseClusterResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseClusterResultOutput) StorageSizeMib() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.StorageSizeMib }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseClusterResultOutput) Tags() pulumi.StringArrayOutput {

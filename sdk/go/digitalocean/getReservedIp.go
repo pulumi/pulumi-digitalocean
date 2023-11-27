@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			publicIp := cfg.RequireObject("publicIp")
-//			example, err := digitalocean.LookupReservedIp(ctx, &GetReservedIpArgs{
+//			example, err := digitalocean.LookupReservedIp(ctx, &digitalocean.LookupReservedIpArgs{
 //				IpAddress: publicIp,
 //			}, nil)
 //			if err != nil {
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func LookupReservedIp(ctx *pulumi.Context, args *LookupReservedIpArgs, opts ...pulumi.InvokeOption) (*LookupReservedIpResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReservedIpResult
 	err := ctx.Invoke("digitalocean:index/getReservedIp:getReservedIp", args, &rv, opts...)
 	if err != nil {
@@ -58,12 +60,15 @@ type LookupReservedIpArgs struct {
 
 // A collection of values returned by getReservedIp.
 type LookupReservedIpResult struct {
+	// The Droplet id that the reserved IP has been assigned to.
 	DropletId int `pulumi:"dropletId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string `pulumi:"id"`
 	IpAddress string `pulumi:"ipAddress"`
-	Region    string `pulumi:"region"`
-	Urn       string `pulumi:"urn"`
+	// The region that the reserved IP is reserved to.
+	Region string `pulumi:"region"`
+	// The uniform resource name of the reserved IP.
+	Urn string `pulumi:"urn"`
 }
 
 func LookupReservedIpOutput(ctx *pulumi.Context, args LookupReservedIpOutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpResultOutput {
@@ -104,6 +109,7 @@ func (o LookupReservedIpResultOutput) ToLookupReservedIpResultOutputWithContext(
 	return o
 }
 
+// The Droplet id that the reserved IP has been assigned to.
 func (o LookupReservedIpResultOutput) DropletId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupReservedIpResult) int { return v.DropletId }).(pulumi.IntOutput)
 }
@@ -117,10 +123,12 @@ func (o LookupReservedIpResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpResult) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The region that the reserved IP is reserved to.
 func (o LookupReservedIpResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The uniform resource name of the reserved IP.
 func (o LookupReservedIpResultOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpResult) string { return v.Urn }).(pulumi.StringOutput)
 }

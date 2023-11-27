@@ -54,11 +54,7 @@ class GetImagesResult:
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
         """
-        A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:  
-        - `slug`: Unique text identifier of the image.
-        - `id`: The ID of the image.
-        - `name`: The name of the image.
-        - `type`: Type of the image.
+        A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
         """
         return pulumi.get(self, "images")
 
@@ -145,10 +141,10 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
 
     return AwaitableGetImagesResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        images=__ret__.images,
-        sorts=__ret__.sorts)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        images=pulumi.get(__ret__, 'images'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_images)

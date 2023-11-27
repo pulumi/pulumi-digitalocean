@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseDb{}
 	case "digitalocean:index/databaseFirewall:DatabaseFirewall":
 		r = &DatabaseFirewall{}
+	case "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic":
+		r = &DatabaseKafkaTopic{}
+	case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
+		r = &DatabaseMysqlConfig{}
+	case "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig":
+		r = &DatabaseRedisConfig{}
 	case "digitalocean:index/databaseReplica:DatabaseReplica":
 		r = &DatabaseReplica{}
 	case "digitalocean:index/databaseUser:DatabaseUser":
@@ -76,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReservedIpAssignment{}
 	case "digitalocean:index/spacesBucket:SpacesBucket":
 		r = &SpacesBucket{}
+	case "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration":
+		r = &SpacesBucketCorsConfiguration{}
 	case "digitalocean:index/spacesBucketObject:SpacesBucketObject":
 		r = &SpacesBucketObject{}
 	case "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy":
@@ -84,6 +93,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SshKey{}
 	case "digitalocean:index/tag:Tag":
 		r = &Tag{}
+	case "digitalocean:index/uptimeAlert:UptimeAlert":
+		r = &UptimeAlert{}
+	case "digitalocean:index/uptimeCheck:UptimeCheck":
+		r = &UptimeCheck{}
 	case "digitalocean:index/volume:Volume":
 		r = &Volume{}
 	case "digitalocean:index/volumeAttachment:VolumeAttachment":
@@ -119,7 +132,10 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/app",
@@ -168,6 +184,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseFirewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseKafkaTopic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseMysqlConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseRedisConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -262,6 +293,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
+		"index/spacesBucketCorsConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
 		"index/spacesBucketObject",
 		&module{version},
 	)
@@ -278,6 +314,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/tag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/uptimeAlert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/uptimeCheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

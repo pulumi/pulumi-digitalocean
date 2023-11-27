@@ -58,6 +58,9 @@ class CdnArgs:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
+        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
+
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -145,6 +148,9 @@ class _CdnState:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
+        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
+
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -239,8 +245,7 @@ class Cdn(pulumi.CustomResource):
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
         ## Example Usage
-
-        #### Basic Example
+        ### Basic Example
 
         ```python
         import pulumi
@@ -254,8 +259,7 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-
-        #### Custom Sub-Domain Example
+        ### Custom Sub-Domain Example
 
         ```python
         import pulumi
@@ -302,8 +306,7 @@ class Cdn(pulumi.CustomResource):
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 
         ## Example Usage
-
-        #### Basic Example
+        ### Basic Example
 
         ```python
         import pulumi
@@ -317,8 +320,7 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-
-        #### Custom Sub-Domain Example
+        ### Custom Sub-Domain Example
 
         ```python
         import pulumi
@@ -376,9 +378,6 @@ class Cdn(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CdnArgs.__new__(CdnArgs)
 
-            if certificate_id is not None and not opts.urn:
-                warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
             __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["certificate_name"] = certificate_name
             __props__.__dict__["custom_domain"] = custom_domain
@@ -439,6 +438,9 @@ class Cdn(pulumi.CustomResource):
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
+        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
+
         return pulumi.get(self, "certificate_id")
 
     @property

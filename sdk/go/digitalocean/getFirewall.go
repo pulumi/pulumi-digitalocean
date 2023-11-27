@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupFirewall(ctx, &GetFirewallArgs{
+//			example, err := digitalocean.LookupFirewall(ctx, &digitalocean.LookupFirewallArgs{
 //				FirewallId: "1df48973-6eef-4214-854f-fa7726e7e583",
 //			}, nil)
 //			if err != nil {
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulumi.InvokeOption) (*LookupFirewallResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallResult
 	err := ctx.Invoke("digitalocean:index/getFirewall:getFirewall", args, &rv, opts...)
 	if err != nil {

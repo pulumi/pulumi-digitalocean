@@ -92,11 +92,11 @@ public final class SpacesBucketLifecycleRuleExpiration {
             return this;
         }
         public SpacesBucketLifecycleRuleExpiration build() {
-            final var o = new SpacesBucketLifecycleRuleExpiration();
-            o.date = date;
-            o.days = days;
-            o.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
-            return o;
+            final var _resultValue = new SpacesBucketLifecycleRuleExpiration();
+            _resultValue.date = date;
+            _resultValue.days = days;
+            _resultValue.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
+            return _resultValue;
         }
     }
 }

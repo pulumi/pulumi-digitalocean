@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -39,6 +41,10 @@ import * as utilities from "./utilities";
  * ```sh
  *  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
  * ```
+ *
+ *  ~>
+ *
+ * You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list <domain.name>`
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**

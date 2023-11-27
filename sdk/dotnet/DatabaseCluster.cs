@@ -16,6 +16,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new PostgreSQL database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -27,7 +28,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///         Region = "nyc1",
     ///         Size = "db-s-1vcpu-1gb",
-    ///         Version = "11",
+    ///         Version = "15",
     ///     });
     /// 
     /// });
@@ -35,6 +36,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new MySQL database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -54,6 +56,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new Redis database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -65,7 +68,27 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///         Region = "nyc1",
     ///         Size = "db-s-1vcpu-1gb",
-    ///         Version = "6",
+    ///         Version = "7",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a new Kafka database cluster
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
+    ///     {
+    ///         Engine = "kafka",
+    ///         NodeCount = 3,
+    ///         Region = "nyc1",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Version = "3.5",
     ///     });
     /// 
     /// });
@@ -73,6 +96,7 @@ namespace Pulumi.DigitalOcean
     /// ### Create a new MongoDB database cluster
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -85,6 +109,54 @@ namespace Pulumi.DigitalOcean
     ///         Region = "nyc3",
     ///         Size = "db-s-1vcpu-1gb",
     ///         Version = "4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Create a new database cluster based on a backup of an existing cluster.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var doby = new DigitalOcean.DatabaseCluster("doby", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///         Tags = new[]
+    ///         {
+    ///             "production",
+    ///         },
+    ///     });
+    /// 
+    ///     var dobyBackup = new DigitalOcean.DatabaseCluster("dobyBackup", new()
+    ///     {
+    ///         Engine = "pg",
+    ///         Version = "11",
+    ///         Size = "db-s-1vcpu-2gb",
+    ///         Region = "nyc1",
+    ///         NodeCount = 1,
+    ///         Tags = new[]
+    ///         {
+    ///             "production",
+    ///         },
+    ///         BackupRestore = new DigitalOcean.Inputs.DatabaseClusterBackupRestoreArgs
+    ///         {
+    ///             DatabaseName = "dobydb",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             doby,
+    ///         },
     ///     });
     /// 
     /// });
@@ -102,6 +174,12 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseCluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Create a new database cluster based on a backup of an existing cluster.
+        /// </summary>
+        [Output("backupRestore")]
+        public Output<Outputs.DatabaseClusterBackupRestore?> BackupRestore { get; private set; } = null!;
+
+        /// <summary>
         /// The uniform resource name of the database cluster.
         /// </summary>
         [Output("clusterUrn")]
@@ -114,7 +192,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -144,7 +222,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster.
+        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -180,6 +258,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> PrivateUri { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// DigitalOcean region where the cluster will reside.
         /// </summary>
         [Output("region")]
@@ -196,6 +280,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("sqlMode")]
         public Output<string?> SqlMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// </summary>
+        [Output("storageSizeMib")]
+        public Output<string> StorageSizeMib { get; private set; } = null!;
 
         /// <summary>
         /// A list of tag names to be applied to the database cluster.
@@ -216,7 +306,8 @@ namespace Pulumi.DigitalOcean
         public Output<string> User { get; private set; } = null!;
 
         /// <summary>
-        /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -244,6 +335,12 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "privateUri",
+                    "uri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -268,7 +365,13 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+        /// Create a new database cluster based on a backup of an existing cluster.
+        /// </summary>
+        [Input("backupRestore")]
+        public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
+
+        /// <summary>
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -298,7 +401,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster.
+        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         /// </summary>
         [Input("nodeCount", required: true)]
         public Input<int> NodeCount { get; set; } = null!;
@@ -308,6 +411,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// DigitalOcean region where the cluster will reside.
@@ -327,6 +436,12 @@ namespace Pulumi.DigitalOcean
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
 
+        /// <summary>
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// </summary>
+        [Input("storageSizeMib")]
+        public Input<string>? StorageSizeMib { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -340,7 +455,8 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -354,6 +470,12 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Create a new database cluster based on a backup of an existing cluster.
+        /// </summary>
+        [Input("backupRestore")]
+        public Input<Inputs.DatabaseClusterBackupRestoreGetArgs>? BackupRestore { get; set; }
+
+        /// <summary>
         /// The uniform resource name of the database cluster.
         /// </summary>
         [Input("clusterUrn")]
@@ -366,7 +488,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -402,16 +524,26 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster.
+        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for the cluster's default user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Network port that the database cluster is listening on.
@@ -431,11 +563,27 @@ namespace Pulumi.DigitalOcean
         [Input("privateNetworkUuid")]
         public Input<string>? PrivateNetworkUuid { get; set; }
 
+        [Input("privateUri")]
+        private Input<string>? _privateUri;
+
         /// <summary>
         /// Same as `uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
-        [Input("privateUri")]
-        public Input<string>? PrivateUri { get; set; }
+        public Input<string>? PrivateUri
+        {
+            get => _privateUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// DigitalOcean region where the cluster will reside.
@@ -455,6 +603,12 @@ namespace Pulumi.DigitalOcean
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
 
+        /// <summary>
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// </summary>
+        [Input("storageSizeMib")]
+        public Input<string>? StorageSizeMib { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -467,11 +621,21 @@ namespace Pulumi.DigitalOcean
             set => _tags = value;
         }
 
+        [Input("uri")]
+        private Input<string>? _uri;
+
         /// <summary>
         /// The full URI for connecting to the database cluster.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        public Input<string>? Uri
+        {
+            get => _uri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for the cluster's default user.
@@ -480,7 +644,8 @@ namespace Pulumi.DigitalOcean
         public Input<string>? User { get; set; }
 
         /// <summary>
-        /// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+        /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+        /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

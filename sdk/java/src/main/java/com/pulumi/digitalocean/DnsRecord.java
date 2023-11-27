@@ -73,6 +73,10 @@ import javax.annotation.Nullable;
  *  $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
  * ```
  * 
+ *  ~&gt;
+ * 
+ * You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list &lt;domain.name&gt;`
+ * 
  */
 @ResourceType(type="digitalocean:index/dnsRecord:DnsRecord")
 public class DnsRecord extends com.pulumi.resources.CustomResource {
@@ -80,7 +84,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The domain to add the record to.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -94,7 +98,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      * 
      */
-    @Export(name="flags", type=Integer.class, parameters={})
+    @Export(name="flags", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> flags;
 
     /**
@@ -108,7 +112,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The FQDN of the record
      * 
      */
-    @Export(name="fqdn", type=String.class, parameters={})
+    @Export(name="fqdn", refs={String.class}, tree="[0]")
     private Output<String> fqdn;
 
     /**
@@ -122,7 +126,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The hostname of the record. Use `@` for records on domain&#39;s name itself.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -136,7 +140,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -150,7 +154,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -164,7 +168,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tag;
 
     /**
@@ -178,7 +182,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
@@ -192,7 +196,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -206,7 +210,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The value of the record.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
@@ -220,7 +224,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> weight;
 
     /**

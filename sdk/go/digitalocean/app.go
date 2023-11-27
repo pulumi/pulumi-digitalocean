@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,13 +31,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewApp(ctx, "golang-sample", &digitalocean.AppArgs{
-//				Spec: &AppSpecArgs{
+//				Spec: &digitalocean.AppSpecArgs{
 //					Name:   pulumi.String("golang-sample"),
 //					Region: pulumi.String("ams"),
-//					Services: AppSpecServiceArray{
-//						&AppSpecServiceArgs{
+//					Services: digitalocean.AppSpecServiceArray{
+//						&digitalocean.AppSpecServiceArgs{
 //							EnvironmentSlug: pulumi.String("go"),
-//							Git: &AppSpecServiceGitArgs{
+//							Git: &digitalocean.AppSpecServiceGitArgs{
 //								Branch:       pulumi.String("main"),
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
 //							},
@@ -69,14 +70,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewApp(ctx, "static-ste-example", &digitalocean.AppArgs{
-//				Spec: &AppSpecArgs{
-//					Name:   pulumi.String("static-ste-example"),
+//			_, err := digitalocean.NewApp(ctx, "static-site-example", &digitalocean.AppArgs{
+//				Spec: &digitalocean.AppSpecArgs{
+//					Name:   pulumi.String("static-site-example"),
 //					Region: pulumi.String("ams"),
-//					StaticSites: AppSpecStaticSiteArray{
-//						&AppSpecStaticSiteArgs{
+//					StaticSites: digitalocean.AppSpecStaticSiteArray{
+//						&digitalocean.AppSpecStaticSiteArgs{
 //							BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
-//							Git: &AppSpecStaticSiteGitArgs{
+//							Git: &digitalocean.AppSpecStaticSiteGitArgs{
 //								Branch:       pulumi.String("main"),
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
 //							},
@@ -109,6 +110,8 @@ type App struct {
 
 	// The ID the app's currently active deployment.
 	ActiveDeploymentId pulumi.StringOutput `pulumi:"activeDeploymentId"`
+	// The uniform resource identifier for the app.
+	AppUrn pulumi.StringOutput `pulumi:"appUrn"`
 	// The date and time of when the app was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The default URL to access the app.
@@ -119,8 +122,6 @@ type App struct {
 	Spec AppSpecPtrOutput `pulumi:"spec"`
 	// The date and time of when the app was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The uniform resource identifier for the app.
-	Urn pulumi.StringOutput `pulumi:"urn"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -130,6 +131,7 @@ func NewApp(ctx *pulumi.Context,
 		args = &AppArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource App
 	err := ctx.RegisterResource("digitalocean:index/app:App", name, args, &resource, opts...)
 	if err != nil {
@@ -154,6 +156,8 @@ func GetApp(ctx *pulumi.Context,
 type appState struct {
 	// The ID the app's currently active deployment.
 	ActiveDeploymentId *string `pulumi:"activeDeploymentId"`
+	// The uniform resource identifier for the app.
+	AppUrn *string `pulumi:"appUrn"`
 	// The date and time of when the app was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The default URL to access the app.
@@ -164,13 +168,13 @@ type appState struct {
 	Spec *AppSpec `pulumi:"spec"`
 	// The date and time of when the app was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The uniform resource identifier for the app.
-	Urn *string `pulumi:"urn"`
 }
 
 type AppState struct {
 	// The ID the app's currently active deployment.
 	ActiveDeploymentId pulumi.StringPtrInput
+	// The uniform resource identifier for the app.
+	AppUrn pulumi.StringPtrInput
 	// The date and time of when the app was created.
 	CreatedAt pulumi.StringPtrInput
 	// The default URL to access the app.
@@ -181,8 +185,6 @@ type AppState struct {
 	Spec AppSpecPtrInput
 	// The date and time of when the app was last updated.
 	UpdatedAt pulumi.StringPtrInput
-	// The uniform resource identifier for the app.
-	Urn pulumi.StringPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -292,6 +294,11 @@ func (o AppOutput) ActiveDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ActiveDeploymentId }).(pulumi.StringOutput)
 }
 
+// The uniform resource identifier for the app.
+func (o AppOutput) AppUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AppUrn }).(pulumi.StringOutput)
+}
+
 // The date and time of when the app was created.
 func (o AppOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
@@ -315,11 +322,6 @@ func (o AppOutput) Spec() AppSpecPtrOutput {
 // The date and time of when the app was last updated.
 func (o AppOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// The uniform resource identifier for the app.
-func (o AppOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

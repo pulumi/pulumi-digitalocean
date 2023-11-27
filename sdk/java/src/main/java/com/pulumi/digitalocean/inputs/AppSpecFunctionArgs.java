@@ -42,14 +42,22 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     @Import(name="cors")
     private @Nullable Output<AppSpecFunctionCorsArgs> cors;
 
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
+     * @deprecated
+     * Service level CORS rules are deprecated in favor of ingresses
+     * 
      */
+    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
     public Optional<Output<AppSpecFunctionCorsArgs>> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -144,9 +152,25 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
         return this.name;
     }
 
+    /**
+     * An HTTP paths that should be routed to this component.
+     * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
+     */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     @Import(name="routes")
     private @Nullable Output<List<AppSpecFunctionRouteArgs>> routes;
 
+    /**
+     * @return An HTTP paths that should be routed to this component.
+     * 
+     * @deprecated
+     * Service level routes are deprecated in favor of ingresses
+     * 
+     */
+    @Deprecated /* Service level routes are deprecated in favor of ingresses */
     public Optional<Output<List<AppSpecFunctionRouteArgs>>> routes() {
         return Optional.ofNullable(this.routes);
     }
@@ -235,7 +259,11 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level CORS rules are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
         public Builder cors(@Nullable Output<AppSpecFunctionCorsArgs> cors) {
             $.cors = cors;
             return this;
@@ -246,7 +274,11 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Service level CORS rules are deprecated in favor of ingresses
+         * 
          */
+        @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
         public Builder cors(AppSpecFunctionCorsArgs cors) {
             return cors(Output.of(cors));
         }
@@ -397,15 +429,45 @@ public final class AppSpecFunctionArgs extends com.pulumi.resources.ResourceArgs
             return name(Output.of(name));
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Service level routes are deprecated in favor of ingresses
+         * 
+         */
+        @Deprecated /* Service level routes are deprecated in favor of ingresses */
         public Builder routes(@Nullable Output<List<AppSpecFunctionRouteArgs>> routes) {
             $.routes = routes;
             return this;
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Service level routes are deprecated in favor of ingresses
+         * 
+         */
+        @Deprecated /* Service level routes are deprecated in favor of ingresses */
         public Builder routes(List<AppSpecFunctionRouteArgs> routes) {
             return routes(Output.of(routes));
         }
 
+        /**
+         * @param routes An HTTP paths that should be routed to this component.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Service level routes are deprecated in favor of ingresses
+         * 
+         */
+        @Deprecated /* Service level routes are deprecated in favor of ingresses */
         public Builder routes(AppSpecFunctionRouteArgs... routes) {
             return routes(List.of(routes));
         }

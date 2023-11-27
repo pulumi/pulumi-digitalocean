@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const web_snapshot = pulumi.output(digitalocean.getDropletSnapshot({
+ * const web-snapshot = digitalocean.getDropletSnapshot({
  *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
- * }));
+ * });
  * ```
  *
  * Create image from snapshot:
@@ -44,11 +44,8 @@ import * as utilities from "./utilities";
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
         "mostRecent": args.mostRecent,
         "name": args.name,
@@ -63,6 +60,10 @@ export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.
 export interface GetDropletSnapshotArgs {
     /**
      * If more than one result is returned, use the most recent Droplet snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * the update will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
      */
     mostRecent?: boolean;
     /**
@@ -112,9 +113,46 @@ export interface GetDropletSnapshotResult {
      */
     readonly size: number;
 }
-
+/**
+ * Droplet snapshots are saved instances of a Droplet. Use this data
+ * source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
+ * resources.
+ *
+ * ## Example Usage
+ *
+ * Get the Droplet snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web-snapshot = digitalocean.getDropletSnapshot({
+ *     mostRecent: true,
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ * });
+ * ```
+ *
+ * Create image from snapshot:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const web-snapshot = digitalocean.getDropletSnapshot({
+ *     nameRegex: "^web",
+ *     region: "nyc3",
+ *     mostRecent: true,
+ * });
+ * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
+ *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     region: "nyc3",
+ *     size: "s-2vcpu-4gb",
+ * });
+ * ```
+ */
 export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
-    return pulumi.output(args).apply(a => getDropletSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getDropletSnapshot(a, opts))
 }
 
 /**
@@ -123,6 +161,10 @@ export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, op
 export interface GetDropletSnapshotOutputArgs {
     /**
      * If more than one result is returned, use the most recent Droplet snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * the update will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
      */
     mostRecent?: pulumi.Input<boolean>;
     /**

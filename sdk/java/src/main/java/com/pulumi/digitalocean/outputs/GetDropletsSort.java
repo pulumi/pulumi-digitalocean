@@ -73,10 +73,10 @@ public final class GetDropletsSort {
             return this;
         }
         public GetDropletsSort build() {
-            final var o = new GetDropletsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetDropletsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

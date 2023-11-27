@@ -32,6 +32,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The uniform resource identifier for the app.
+     * 
+     */
+    @Import(name="appUrn")
+    private @Nullable Output<String> appUrn;
+
+    /**
+     * @return The uniform resource identifier for the app.
+     * 
+     */
+    public Optional<Output<String>> appUrn() {
+        return Optional.ofNullable(this.appUrn);
+    }
+
+    /**
      * The date and time of when the app was created.
      * 
      */
@@ -106,31 +121,16 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updatedAt);
     }
 
-    /**
-     * The uniform resource identifier for the app.
-     * 
-     */
-    @Import(name="urn")
-    private @Nullable Output<String> urn;
-
-    /**
-     * @return The uniform resource identifier for the app.
-     * 
-     */
-    public Optional<Output<String>> urn() {
-        return Optional.ofNullable(this.urn);
-    }
-
     private AppState() {}
 
     private AppState(AppState $) {
         this.activeDeploymentId = $.activeDeploymentId;
+        this.appUrn = $.appUrn;
         this.createdAt = $.createdAt;
         this.defaultIngress = $.defaultIngress;
         this.liveUrl = $.liveUrl;
         this.spec = $.spec;
         this.updatedAt = $.updatedAt;
-        this.urn = $.urn;
     }
 
     public static Builder builder() {
@@ -170,6 +170,27 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder activeDeploymentId(String activeDeploymentId) {
             return activeDeploymentId(Output.of(activeDeploymentId));
+        }
+
+        /**
+         * @param appUrn The uniform resource identifier for the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appUrn(@Nullable Output<String> appUrn) {
+            $.appUrn = appUrn;
+            return this;
+        }
+
+        /**
+         * @param appUrn The uniform resource identifier for the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appUrn(String appUrn) {
+            return appUrn(Output.of(appUrn));
         }
 
         /**
@@ -275,27 +296,6 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
-        }
-
-        /**
-         * @param urn The uniform resource identifier for the app.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder urn(@Nullable Output<String> urn) {
-            $.urn = urn;
-            return this;
-        }
-
-        /**
-         * @param urn The uniform resource identifier for the app.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder urn(String urn) {
-            return urn(Output.of(urn));
         }
 
         public AppState build() {

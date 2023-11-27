@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         /// <summary>
         /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        /// 
+        /// A spec can contain multiple components.
+        /// 
+        /// A `service` can contain:
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }

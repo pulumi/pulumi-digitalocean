@@ -50,9 +50,9 @@ public final class SpacesBucketVersioning {
             return this;
         }
         public SpacesBucketVersioning build() {
-            final var o = new SpacesBucketVersioning();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new SpacesBucketVersioning();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

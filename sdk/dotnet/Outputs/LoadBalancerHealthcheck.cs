@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerHealthcheck
     {
         /// <summary>
-        /// The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        /// The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
         /// </summary>
         public readonly int? CheckIntervalSeconds;
         /// <summary>

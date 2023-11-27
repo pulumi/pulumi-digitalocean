@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,8 +90,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-//				CorsRules: SpacesBucketCorsRuleArray{
-//					&SpacesBucketCorsRuleArgs{
+//				CorsRules: digitalocean.SpacesBucketCorsRuleArray{
+//					&digitalocean.SpacesBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
@@ -102,7 +103,7 @@ import (
 //						},
 //						MaxAgeSeconds: pulumi.Int(3000),
 //					},
-//					&SpacesBucketCorsRuleArgs{
+//					&digitalocean.SpacesBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
@@ -147,7 +148,11 @@ type SpacesBucket struct {
 	// The uniform resource name for the bucket
 	BucketUrn pulumi.StringOutput `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
+	//
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
 	CorsRules SpacesBucketCorsRuleArrayOutput `pulumi:"corsRules"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// A configuration of object lifecycle management (documented below).
@@ -167,6 +172,7 @@ func NewSpacesBucket(ctx *pulumi.Context,
 		args = &SpacesBucketArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpacesBucket
 	err := ctx.RegisterResource("digitalocean:index/spacesBucket:SpacesBucket", name, args, &resource, opts...)
 	if err != nil {
@@ -196,7 +202,11 @@ type spacesBucketState struct {
 	// The uniform resource name for the bucket
 	BucketUrn *string `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
+	//
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint *string `pulumi:"endpoint"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A configuration of object lifecycle management (documented below).
@@ -217,7 +227,11 @@ type SpacesBucketState struct {
 	// The uniform resource name for the bucket
 	BucketUrn pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
+	//
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
 	CorsRules SpacesBucketCorsRuleArrayInput
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint pulumi.StringPtrInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrInput
 	// A configuration of object lifecycle management (documented below).
@@ -238,6 +252,8 @@ type spacesBucketArgs struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
 	Acl *string `pulumi:"acl"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
+	//
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -256,6 +272,8 @@ type SpacesBucketArgs struct {
 	// Canned ACL applied on bucket creation (`private` or `public-read`)
 	Acl pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
+	//
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
 	CorsRules SpacesBucketCorsRuleArrayInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrInput
@@ -372,8 +390,15 @@ func (o SpacesBucketOutput) BucketUrn() pulumi.StringOutput {
 }
 
 // A rule of Cross-Origin Resource Sharing (documented below).
+//
+// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
 func (o SpacesBucketOutput) CorsRules() SpacesBucketCorsRuleArrayOutput {
 	return o.ApplyT(func(v *SpacesBucket) SpacesBucketCorsRuleArrayOutput { return v.CorsRules }).(SpacesBucketCorsRuleArrayOutput)
+}
+
+// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+func (o SpacesBucketOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpacesBucket) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)

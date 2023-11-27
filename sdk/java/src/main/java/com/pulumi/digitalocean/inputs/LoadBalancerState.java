@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Algorithm;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.LoadBalancerFirewallArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerStickySessionsArgs;
@@ -123,6 +124,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     * 
+     */
+    @Import(name="firewall")
+    private @Nullable Output<LoadBalancerFirewallArgs> firewall;
+
+    /**
+     * @return A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+     * 
+     */
+    public Optional<Output<LoadBalancerFirewallArgs>> firewall() {
+        return Optional.ofNullable(this.firewall);
+    }
+
+    /**
      * A list of `forwarding_rule` to be assigned to the
      * Load Balancer. The `forwarding_rule` block is documented below.
      * 
@@ -156,9 +172,32 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.healthcheck);
     }
 
+    /**
+     * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    @Import(name="httpIdleTimeoutSeconds")
+    private @Nullable Output<Integer> httpIdleTimeoutSeconds;
+
+    /**
+     * @return Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+     * 
+     */
+    public Optional<Output<Integer>> httpIdleTimeoutSeconds() {
+        return Optional.ofNullable(this.httpIdleTimeoutSeconds);
+    }
+
+    /**
+     * The ip of the Load Balancer
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return The ip of the Load Balancer
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -191,6 +230,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -282,6 +336,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * The ID of the VPC where the load balancer will be located.
      * 
      */
@@ -305,17 +374,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.dropletTag = $.dropletTag;
         this.enableBackendKeepalive = $.enableBackendKeepalive;
         this.enableProxyProtocol = $.enableProxyProtocol;
+        this.firewall = $.firewall;
         this.forwardingRules = $.forwardingRules;
         this.healthcheck = $.healthcheck;
+        this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
         this.ip = $.ip;
         this.loadBalancerUrn = $.loadBalancerUrn;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.redirectHttpToHttps = $.redirectHttpToHttps;
         this.region = $.region;
         this.size = $.size;
         this.sizeUnit = $.sizeUnit;
         this.status = $.status;
         this.stickySessions = $.stickySessions;
+        this.type = $.type;
         this.vpcUuid = $.vpcUuid;
     }
 
@@ -506,6 +579,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param firewall A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewall(@Nullable Output<LoadBalancerFirewallArgs> firewall) {
+            $.firewall = firewall;
+            return this;
+        }
+
+        /**
+         * @param firewall A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewall(LoadBalancerFirewallArgs firewall) {
+            return firewall(Output.of(firewall));
+        }
+
+        /**
          * @param forwardingRules A list of `forwarding_rule` to be assigned to the
          * Load Balancer. The `forwarding_rule` block is documented below.
          * 
@@ -562,11 +656,44 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
             return healthcheck(Output.of(healthcheck));
         }
 
+        /**
+         * @param httpIdleTimeoutSeconds Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpIdleTimeoutSeconds(@Nullable Output<Integer> httpIdleTimeoutSeconds) {
+            $.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
+            return this;
+        }
+
+        /**
+         * @param httpIdleTimeoutSeconds Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpIdleTimeoutSeconds(Integer httpIdleTimeoutSeconds) {
+            return httpIdleTimeoutSeconds(Output.of(httpIdleTimeoutSeconds));
+        }
+
+        /**
+         * @param ip The ip of the Load Balancer
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip The ip of the Load Balancer
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
@@ -611,6 +738,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**
@@ -751,6 +899,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stickySessions(LoadBalancerStickySessionsArgs stickySessions) {
             return stickySessions(Output.of(stickySessions));
+        }
+
+        /**
+         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

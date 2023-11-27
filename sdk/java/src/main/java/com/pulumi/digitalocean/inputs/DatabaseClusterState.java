@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.DatabaseSlug;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;
 import com.pulumi.digitalocean.inputs.DatabaseClusterMaintenanceWindowArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class DatabaseClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final DatabaseClusterState Empty = new DatabaseClusterState();
+
+    /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     * 
+     */
+    @Import(name="backupRestore")
+    private @Nullable Output<DatabaseClusterBackupRestoreArgs> backupRestore;
+
+    /**
+     * @return Create a new database cluster based on a backup of an existing cluster.
+     * 
+     */
+    public Optional<Output<DatabaseClusterBackupRestoreArgs>> backupRestore() {
+        return Optional.ofNullable(this.backupRestore);
+    }
 
     /**
      * The uniform resource name of the database cluster.
@@ -52,14 +68,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     public Optional<Output<String>> engine() {
@@ -127,14 +143,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
     @Import(name="nodeCount")
     private @Nullable Output<Integer> nodeCount;
 
     /**
-     * @return Number of nodes that will be included in the cluster.
+     * @return Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -217,6 +233,21 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * DigitalOcean region where the cluster will reside.
      * 
      */
@@ -259,6 +290,21 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> sqlMode() {
         return Optional.ofNullable(this.sqlMode);
+    }
+
+    /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * 
+     */
+    @Import(name="storageSizeMib")
+    private @Nullable Output<String> storageSizeMib;
+
+    /**
+     * @return Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * 
+     */
+    public Optional<Output<String>> storageSizeMib() {
+        return Optional.ofNullable(this.storageSizeMib);
     }
 
     /**
@@ -307,14 +353,16 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * @return Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     public Optional<Output<String>> version() {
@@ -324,6 +372,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     private DatabaseClusterState() {}
 
     private DatabaseClusterState(DatabaseClusterState $) {
+        this.backupRestore = $.backupRestore;
         this.clusterUrn = $.clusterUrn;
         this.database = $.database;
         this.engine = $.engine;
@@ -337,9 +386,11 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         this.privateHost = $.privateHost;
         this.privateNetworkUuid = $.privateNetworkUuid;
         this.privateUri = $.privateUri;
+        this.projectId = $.projectId;
         this.region = $.region;
         this.size = $.size;
         this.sqlMode = $.sqlMode;
+        this.storageSizeMib = $.storageSizeMib;
         this.tags = $.tags;
         this.uri = $.uri;
         this.user = $.user;
@@ -362,6 +413,27 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
 
         public Builder(DatabaseClusterState defaults) {
             $ = new DatabaseClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupRestore Create a new database cluster based on a backup of an existing cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRestore(@Nullable Output<DatabaseClusterBackupRestoreArgs> backupRestore) {
+            $.backupRestore = backupRestore;
+            return this;
+        }
+
+        /**
+         * @param backupRestore Create a new database cluster based on a backup of an existing cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRestore(DatabaseClusterBackupRestoreArgs backupRestore) {
+            return backupRestore(Output.of(backupRestore));
         }
 
         /**
@@ -407,7 +479,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -418,7 +490,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -522,7 +594,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeCount Number of nodes that will be included in the cluster.
+         * @param nodeCount Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
          * 
          * @return builder
          * 
@@ -533,7 +605,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeCount Number of nodes that will be included in the cluster.
+         * @param nodeCount Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
          * 
          * @return builder
          * 
@@ -648,6 +720,27 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param projectId The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
+        }
+
+        /**
          * @param region DigitalOcean region where the cluster will reside.
          * 
          * @return builder
@@ -751,6 +844,27 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSizeMib(@Nullable Output<String> storageSizeMib) {
+            $.storageSizeMib = storageSizeMib;
+            return this;
+        }
+
+        /**
+         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSizeMib(String storageSizeMib) {
+            return storageSizeMib(Output.of(storageSizeMib));
+        }
+
+        /**
          * @param tags A list of tag names to be applied to the database cluster.
          * 
          * @return builder
@@ -824,7 +938,8 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+         * @param version Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
          * 
          * @return builder
          * 
@@ -835,7 +950,8 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+         * @param version Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
          * 
          * @return builder
          * 

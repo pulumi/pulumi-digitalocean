@@ -125,6 +125,9 @@ class GetDropletResult:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the Droplet.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -388,32 +391,32 @@ def get_droplet(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts, typ=GetDropletResult).value
 
     return AwaitableGetDropletResult(
-        backups=__ret__.backups,
-        created_at=__ret__.created_at,
-        disk=__ret__.disk,
-        id=__ret__.id,
-        image=__ret__.image,
-        ipv4_address=__ret__.ipv4_address,
-        ipv4_address_private=__ret__.ipv4_address_private,
-        ipv6=__ret__.ipv6,
-        ipv6_address=__ret__.ipv6_address,
-        ipv6_address_private=__ret__.ipv6_address_private,
-        locked=__ret__.locked,
-        memory=__ret__.memory,
-        monitoring=__ret__.monitoring,
-        name=__ret__.name,
-        price_hourly=__ret__.price_hourly,
-        price_monthly=__ret__.price_monthly,
-        private_networking=__ret__.private_networking,
-        region=__ret__.region,
-        size=__ret__.size,
-        status=__ret__.status,
-        tag=__ret__.tag,
-        tags=__ret__.tags,
-        urn=__ret__.urn,
-        vcpus=__ret__.vcpus,
-        volume_ids=__ret__.volume_ids,
-        vpc_uuid=__ret__.vpc_uuid)
+        backups=pulumi.get(__ret__, 'backups'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        disk=pulumi.get(__ret__, 'disk'),
+        id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
+        ipv4_address=pulumi.get(__ret__, 'ipv4_address'),
+        ipv4_address_private=pulumi.get(__ret__, 'ipv4_address_private'),
+        ipv6=pulumi.get(__ret__, 'ipv6'),
+        ipv6_address=pulumi.get(__ret__, 'ipv6_address'),
+        ipv6_address_private=pulumi.get(__ret__, 'ipv6_address_private'),
+        locked=pulumi.get(__ret__, 'locked'),
+        memory=pulumi.get(__ret__, 'memory'),
+        monitoring=pulumi.get(__ret__, 'monitoring'),
+        name=pulumi.get(__ret__, 'name'),
+        price_hourly=pulumi.get(__ret__, 'price_hourly'),
+        price_monthly=pulumi.get(__ret__, 'price_monthly'),
+        private_networking=pulumi.get(__ret__, 'private_networking'),
+        region=pulumi.get(__ret__, 'region'),
+        size=pulumi.get(__ret__, 'size'),
+        status=pulumi.get(__ret__, 'status'),
+        tag=pulumi.get(__ret__, 'tag'),
+        tags=pulumi.get(__ret__, 'tags'),
+        urn=pulumi.get(__ret__, 'urn'),
+        vcpus=pulumi.get(__ret__, 'vcpus'),
+        volume_ids=pulumi.get(__ret__, 'volume_ids'),
+        vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
 
 
 @_utilities.lift_output_func(get_droplet)

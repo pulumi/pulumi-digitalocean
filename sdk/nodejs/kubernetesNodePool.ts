@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -60,7 +62,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * If you are importing an existing Kubernetes cluster, just import the cluster. Importing a cluster also imports all of its associated node pools. If you still need to import a single node pool, then import it by using its `id`, e.g.
+ * If you are importing an existing Kubernetes cluster with a single node pool, just import the cluster. Additional node pools can be imported by using their `id`, e.g.
  *
  * ```sh
  *  $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
@@ -142,6 +144,8 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     public readonly taints!: pulumi.Output<outputs.KubernetesNodePoolTaint[] | undefined>;
 
@@ -246,6 +250,8 @@ export interface KubernetesNodePoolState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of taints applied to all nodes in the pool.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[]>;
 }
@@ -292,6 +298,8 @@ export interface KubernetesNodePoolArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of taints applied to all nodes in the pool.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[]>;
 }

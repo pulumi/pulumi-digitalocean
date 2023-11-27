@@ -30,6 +30,14 @@ __all__ = [
     'AppSpecFunctionLogDestinationLogtail',
     'AppSpecFunctionLogDestinationPapertrail',
     'AppSpecFunctionRoute',
+    'AppSpecIngress',
+    'AppSpecIngressRule',
+    'AppSpecIngressRuleComponent',
+    'AppSpecIngressRuleCors',
+    'AppSpecIngressRuleCorsAllowOrigins',
+    'AppSpecIngressRuleMatch',
+    'AppSpecIngressRuleMatchPath',
+    'AppSpecIngressRuleRedirect',
     'AppSpecJob',
     'AppSpecJobAlert',
     'AppSpecJobEnv',
@@ -78,8 +86,10 @@ __all__ = [
     'AppSpecWorkerLogDestinationDatadog',
     'AppSpecWorkerLogDestinationLogtail',
     'AppSpecWorkerLogDestinationPapertrail',
+    'DatabaseClusterBackupRestore',
     'DatabaseClusterMaintenanceWindow',
     'DatabaseFirewallRule',
+    'DatabaseKafkaTopicConfig',
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
@@ -90,19 +100,24 @@ __all__ = [
     'KubernetesClusterNodePoolTaint',
     'KubernetesNodePoolNode',
     'KubernetesNodePoolTaint',
+    'LoadBalancerFirewall',
     'LoadBalancerForwardingRule',
     'LoadBalancerHealthcheck',
     'LoadBalancerStickySessions',
     'MonitorAlertAlerts',
     'MonitorAlertAlertsSlack',
+    'SpacesBucketCorsConfigurationCorsRule',
     'SpacesBucketCorsRule',
     'SpacesBucketLifecycleRule',
     'SpacesBucketLifecycleRuleExpiration',
     'SpacesBucketLifecycleRuleNoncurrentVersionExpiration',
     'SpacesBucketVersioning',
+    'UptimeAlertNotification',
+    'UptimeAlertNotificationSlack',
     'GetAppSpecResult',
     'GetAppSpecAlertResult',
     'GetAppSpecDatabaseResult',
+    'GetAppSpecDomainResult',
     'GetAppSpecEnvResult',
     'GetAppSpecFunctionResult',
     'GetAppSpecFunctionAlertResult',
@@ -117,6 +132,14 @@ __all__ = [
     'GetAppSpecFunctionLogDestinationLogtailResult',
     'GetAppSpecFunctionLogDestinationPapertrailResult',
     'GetAppSpecFunctionRouteResult',
+    'GetAppSpecIngressResult',
+    'GetAppSpecIngressRuleResult',
+    'GetAppSpecIngressRuleComponentResult',
+    'GetAppSpecIngressRuleCorsResult',
+    'GetAppSpecIngressRuleCorsAllowOriginsResult',
+    'GetAppSpecIngressRuleMatchResult',
+    'GetAppSpecIngressRuleMatchPathResult',
+    'GetAppSpecIngressRuleRedirectResult',
     'GetAppSpecJobResult',
     'GetAppSpecJobAlertResult',
     'GetAppSpecJobEnvResult',
@@ -183,6 +206,7 @@ __all__ = [
     'GetKubernetesClusterNodePoolResult',
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
+    'GetLoadBalancerFirewallResult',
     'GetLoadBalancerForwardingRuleResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
@@ -238,6 +262,7 @@ class AppSpec(dict):
                  domains: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.AppSpecEnv']] = None,
                  functions: Optional[Sequence['outputs.AppSpecFunction']] = None,
+                 ingress: Optional['outputs.AppSpecIngress'] = None,
                  jobs: Optional[Sequence['outputs.AppSpecJob']] = None,
                  region: Optional[str] = None,
                  services: Optional[Sequence['outputs.AppSpecService']] = None,
@@ -248,6 +273,7 @@ class AppSpec(dict):
         :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
         :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
         """
         pulumi.set(__self__, "name", name)
@@ -263,6 +289,8 @@ class AppSpec(dict):
             pulumi.set(__self__, "envs", envs)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
+        if ingress is not None:
+            pulumi.set(__self__, "ingress", ingress)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if region is not None:
@@ -306,6 +334,9 @@ class AppSpec(dict):
     @property
     @pulumi.getter
     def domains(self) -> Optional[Sequence[str]]:
+        warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
+        pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
+
         return pulumi.get(self, "domains")
 
     @property
@@ -320,6 +351,14 @@ class AppSpec(dict):
     @pulumi.getter
     def functions(self) -> Optional[Sequence['outputs.AppSpecFunction']]:
         return pulumi.get(self, "functions")
+
+    @property
+    @pulumi.getter
+    def ingress(self) -> Optional['outputs.AppSpecIngress']:
+        """
+        Specification for component routing, rewrites, and redirects.
+        """
+        return pulumi.get(self, "ingress")
 
     @property
     @pulumi.getter
@@ -415,6 +454,8 @@ class AppSpecDatabase(dict):
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str db_name: The name of the MySQL or PostgreSQL database to configure.
         :param str db_user: The name of the MySQL or PostgreSQL user to configure.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param str engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
         :param str name: The name of the component.
         :param bool production: Whether this is a production or dev database.
@@ -456,6 +497,8 @@ class AppSpecDatabase(dict):
     def db_user(self) -> Optional[str]:
         """
         The name of the MySQL or PostgreSQL user to configure.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "db_user")
 
@@ -642,6 +685,7 @@ class AppSpecFunction(dict):
         :param 'AppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param Sequence['AppSpecFunctionLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
+        :param Sequence['AppSpecFunctionRouteArgs'] routes: An HTTP paths that should be routed to this component.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
@@ -686,6 +730,9 @@ class AppSpecFunction(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -731,6 +778,12 @@ class AppSpecFunction(dict):
     @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecFunctionRoute']]:
+        """
+        An HTTP paths that should be routed to this component.
+        """
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -843,6 +896,10 @@ class AppSpecFunctionCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecFunctionCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -867,6 +924,10 @@ class AppSpecFunctionCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1284,6 +1345,8 @@ class AppSpecFunctionLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -1292,6 +1355,8 @@ class AppSpecFunctionLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -1363,6 +1428,419 @@ class AppSpecFunctionRoute(dict):
 
 
 @pulumi.output_type
+class AppSpecIngress(dict):
+    def __init__(__self__, *,
+                 rules: Optional[Sequence['outputs.AppSpecIngressRule']] = None):
+        """
+        :param Sequence['AppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.AppSpecIngressRule']]:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class AppSpecIngressRule(dict):
+    def __init__(__self__, *,
+                 component: Optional['outputs.AppSpecIngressRuleComponent'] = None,
+                 cors: Optional['outputs.AppSpecIngressRuleCors'] = None,
+                 match: Optional['outputs.AppSpecIngressRuleMatch'] = None,
+                 redirect: Optional['outputs.AppSpecIngressRuleRedirect'] = None):
+        """
+        :param 'AppSpecIngressRuleComponentArgs' component: The component to route to. Only one of `component` or `redirect` may be set.
+        :param 'AppSpecIngressRuleCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param 'AppSpecIngressRuleMatchArgs' match: The match configuration for the rule
+        :param 'AppSpecIngressRuleRedirectArgs' redirect: The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional['outputs.AppSpecIngressRuleComponent']:
+        """
+        The component to route to. Only one of `component` or `redirect` may be set.
+        """
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional['outputs.AppSpecIngressRuleCors']:
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.AppSpecIngressRuleMatch']:
+        """
+        The match configuration for the rule
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional['outputs.AppSpecIngressRuleRedirect']:
+        """
+        The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        """
+        return pulumi.get(self, "redirect")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preservePathPrefix":
+            suggest = "preserve_path_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngressRuleComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngressRuleComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngressRuleComponent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 preserve_path_prefix: Optional[bool] = None,
+                 rewrite: Optional[str] = None):
+        """
+        :param str name: The name of the component.
+        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        :param str rewrite: An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if preserve_path_prefix is not None:
+            pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+        if rewrite is not None:
+            pulumi.set(__self__, "rewrite", rewrite)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> Optional[bool]:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @property
+    @pulumi.getter
+    def rewrite(self) -> Optional[str]:
+        """
+        An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        """
+        return pulumi.get(self, "rewrite")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleCors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngressRuleCors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngressRuleCors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngressRuleCors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.AppSpecIngressRuleCorsAllowOrigins'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.AppSpecIngressRuleCorsAllowOrigins']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleCorsAllowOrigins(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleMatch(dict):
+    def __init__(__self__, *,
+                 path: Optional['outputs.AppSpecIngressRuleMatchPath'] = None):
+        """
+        :param 'AppSpecIngressRuleMatchPathArgs' path: Paths must start with `/` and must be unique within the app.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional['outputs.AppSpecIngressRuleMatchPath']:
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleMatchPath(dict):
+    def __init__(__self__, *,
+                 prefix: Optional[str] = None):
+        """
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectCode":
+            suggest = "redirect_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngressRuleRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngressRuleRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngressRuleRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authority: Optional[str] = None,
+                 port: Optional[int] = None,
+                 redirect_code: Optional[int] = None,
+                 scheme: Optional[str] = None,
+                 uri: Optional[str] = None):
+        """
+        :param str authority: The authority/host to redirect to. This can be a hostname or IP address.
+        :param int port: The port to redirect to.
+        :param int redirect_code: The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        :param str scheme: The scheme to redirect to. Supported values are `http` or `https`
+        :param str uri: An optional URI path to redirect to.
+        """
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if redirect_code is not None:
+            pulumi.set(__self__, "redirect_code", redirect_code)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> Optional[str]:
+        """
+        The authority/host to redirect to. This can be a hostname or IP address.
+        """
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to redirect to.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="redirectCode")
+    def redirect_code(self) -> Optional[int]:
+        """
+        The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        """
+        return pulumi.get(self, "redirect_code")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        The scheme to redirect to. Supported values are `http` or `https`
+        """
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        An optional URI path to redirect to.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class AppSpecJob(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1426,10 +1904,6 @@ class AppSpecJob(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
-               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['AppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -1567,10 +2041,6 @@ class AppSpecJob(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
-        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -2095,6 +2565,8 @@ class AppSpecJobLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -2103,6 +2575,8 @@ class AppSpecJobLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -2203,6 +2677,7 @@ class AppSpecService(dict):
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param Sequence['AppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
+        :param Sequence['AppSpecServiceRouteArgs'] routes: An HTTP paths that should be routed to this component.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -2276,6 +2751,9 @@ class AppSpecService(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -2385,6 +2863,12 @@ class AppSpecService(dict):
     @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecServiceRoute']]:
+        """
+        An HTTP paths that should be routed to this component.
+        """
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -2505,6 +2989,10 @@ class AppSpecServiceCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecServiceCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -2529,6 +3017,10 @@ class AppSpecServiceCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -3155,6 +3647,8 @@ class AppSpecServiceLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -3163,6 +3657,8 @@ class AppSpecServiceLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -3296,6 +3792,7 @@ class AppSpecStaticSite(dict):
         :param 'AppSpecStaticSiteGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param str index_document: The name of the index document to use when serving this static site.
         :param str output_dir: An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+        :param Sequence['AppSpecStaticSiteRouteArgs'] routes: An HTTP paths that should be routed to this component.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
@@ -3358,6 +3855,9 @@ class AppSpecStaticSite(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -3435,6 +3935,12 @@ class AppSpecStaticSite(dict):
     @property
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.AppSpecStaticSiteRoute']]:
+        """
+        An HTTP paths that should be routed to this component.
+        """
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -3484,6 +3990,10 @@ class AppSpecStaticSiteCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -3508,6 +4018,10 @@ class AppSpecStaticSiteCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -4579,6 +5093,8 @@ class AppSpecWorkerLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -4587,6 +5103,8 @@ class AppSpecWorkerLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -4607,6 +5125,59 @@ class AppSpecWorkerLogDestinationPapertrail(dict):
         Datadog HTTP log intake endpoint.
         """
         return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class DatabaseClusterBackupRestore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+        elif key == "backupCreatedAt":
+            suggest = "backup_created_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseClusterBackupRestore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseClusterBackupRestore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseClusterBackupRestore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_name: str,
+                 backup_created_at: Optional[str] = None):
+        """
+        :param str database_name: The name of an existing database cluster from which the backup will be restored.
+        :param str backup_created_at: The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        if backup_created_at is not None:
+            pulumi.set(__self__, "backup_created_at", backup_created_at)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        """
+        The name of an existing database cluster from which the backup will be restored.
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="backupCreatedAt")
+    def backup_created_at(self) -> Optional[str]:
+        """
+        The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "backup_created_at")
 
 
 @pulumi.output_type
@@ -4706,6 +5277,362 @@ class DatabaseFirewallRule(dict):
         A unique identifier for the firewall rule.
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class DatabaseKafkaTopicConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanupPolicy":
+            suggest = "cleanup_policy"
+        elif key == "compressionType":
+            suggest = "compression_type"
+        elif key == "deleteRetentionMs":
+            suggest = "delete_retention_ms"
+        elif key == "fileDeleteDelayMs":
+            suggest = "file_delete_delay_ms"
+        elif key == "flushMessages":
+            suggest = "flush_messages"
+        elif key == "flushMs":
+            suggest = "flush_ms"
+        elif key == "indexIntervalBytes":
+            suggest = "index_interval_bytes"
+        elif key == "maxCompactionLagMs":
+            suggest = "max_compaction_lag_ms"
+        elif key == "maxMessageBytes":
+            suggest = "max_message_bytes"
+        elif key == "messageDownConversionEnable":
+            suggest = "message_down_conversion_enable"
+        elif key == "messageFormatVersion":
+            suggest = "message_format_version"
+        elif key == "messageTimestampDifferenceMaxMs":
+            suggest = "message_timestamp_difference_max_ms"
+        elif key == "messageTimestampType":
+            suggest = "message_timestamp_type"
+        elif key == "minCleanableDirtyRatio":
+            suggest = "min_cleanable_dirty_ratio"
+        elif key == "minCompactionLagMs":
+            suggest = "min_compaction_lag_ms"
+        elif key == "minInsyncReplicas":
+            suggest = "min_insync_replicas"
+        elif key == "retentionBytes":
+            suggest = "retention_bytes"
+        elif key == "retentionMs":
+            suggest = "retention_ms"
+        elif key == "segmentBytes":
+            suggest = "segment_bytes"
+        elif key == "segmentIndexBytes":
+            suggest = "segment_index_bytes"
+        elif key == "segmentJitterMs":
+            suggest = "segment_jitter_ms"
+        elif key == "segmentMs":
+            suggest = "segment_ms"
+        elif key == "uncleanLeaderElectionEnable":
+            suggest = "unclean_leader_election_enable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseKafkaTopicConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseKafkaTopicConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseKafkaTopicConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cleanup_policy: Optional[str] = None,
+                 compression_type: Optional[str] = None,
+                 delete_retention_ms: Optional[str] = None,
+                 file_delete_delay_ms: Optional[str] = None,
+                 flush_messages: Optional[str] = None,
+                 flush_ms: Optional[str] = None,
+                 index_interval_bytes: Optional[str] = None,
+                 max_compaction_lag_ms: Optional[str] = None,
+                 max_message_bytes: Optional[str] = None,
+                 message_down_conversion_enable: Optional[bool] = None,
+                 message_format_version: Optional[str] = None,
+                 message_timestamp_difference_max_ms: Optional[str] = None,
+                 message_timestamp_type: Optional[str] = None,
+                 min_cleanable_dirty_ratio: Optional[float] = None,
+                 min_compaction_lag_ms: Optional[str] = None,
+                 min_insync_replicas: Optional[int] = None,
+                 preallocate: Optional[bool] = None,
+                 retention_bytes: Optional[str] = None,
+                 retention_ms: Optional[str] = None,
+                 segment_bytes: Optional[str] = None,
+                 segment_index_bytes: Optional[str] = None,
+                 segment_jitter_ms: Optional[str] = None,
+                 segment_ms: Optional[str] = None,
+                 unclean_leader_election_enable: Optional[bool] = None):
+        """
+        :param str cleanup_policy: The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+               This may be one of "delete", "compact", or "compact_delete".
+        :param str compression_type: The topic compression codecs used for a given topic.
+               This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+        :param str delete_retention_ms: The amount of time, in ms, that deleted records are retained.
+        :param str file_delete_delay_ms: The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+        :param str flush_messages: The number of messages accumulated on a topic partition before they are flushed to disk.
+        :param str flush_ms: The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+        :param str index_interval_bytes: The interval, in bytes, in which entries are added to the offset index.
+        :param str max_compaction_lag_ms: The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+        :param str max_message_bytes: The maximum size, in bytes, of a message.
+        :param bool message_down_conversion_enable: Determines whether down-conversion of message formats for consumers is enabled.
+        :param str message_format_version: The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+        :param str message_timestamp_difference_max_ms: The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+        :param str message_timestamp_type: Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+        :param float min_cleanable_dirty_ratio: A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+        :param int min_insync_replicas: The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        :param bool preallocate: Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+        :param str retention_bytes: The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+        :param str retention_ms: The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+        :param str segment_bytes: The maximum size, in bytes, of a single topic log file.
+        :param str segment_index_bytes: The maximum size, in bytes, of the offset index.
+        :param str segment_jitter_ms: The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+        :param str segment_ms: The maximum time, in ms, before the topic log will flush to disk.
+        :param bool unclean_leader_election_enable: Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
+        """
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if compression_type is not None:
+            pulumi.set(__self__, "compression_type", compression_type)
+        if delete_retention_ms is not None:
+            pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if file_delete_delay_ms is not None:
+            pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
+        if flush_messages is not None:
+            pulumi.set(__self__, "flush_messages", flush_messages)
+        if flush_ms is not None:
+            pulumi.set(__self__, "flush_ms", flush_ms)
+        if index_interval_bytes is not None:
+            pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if max_compaction_lag_ms is not None:
+            pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
+        if max_message_bytes is not None:
+            pulumi.set(__self__, "max_message_bytes", max_message_bytes)
+        if message_down_conversion_enable is not None:
+            pulumi.set(__self__, "message_down_conversion_enable", message_down_conversion_enable)
+        if message_format_version is not None:
+            pulumi.set(__self__, "message_format_version", message_format_version)
+        if message_timestamp_difference_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
+        if message_timestamp_type is not None:
+            pulumi.set(__self__, "message_timestamp_type", message_timestamp_type)
+        if min_cleanable_dirty_ratio is not None:
+            pulumi.set(__self__, "min_cleanable_dirty_ratio", min_cleanable_dirty_ratio)
+        if min_compaction_lag_ms is not None:
+            pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        if preallocate is not None:
+            pulumi.set(__self__, "preallocate", preallocate)
+        if retention_bytes is not None:
+            pulumi.set(__self__, "retention_bytes", retention_bytes)
+        if retention_ms is not None:
+            pulumi.set(__self__, "retention_ms", retention_ms)
+        if segment_bytes is not None:
+            pulumi.set(__self__, "segment_bytes", segment_bytes)
+        if segment_index_bytes is not None:
+            pulumi.set(__self__, "segment_index_bytes", segment_index_bytes)
+        if segment_jitter_ms is not None:
+            pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
+        if segment_ms is not None:
+            pulumi.set(__self__, "segment_ms", segment_ms)
+        if unclean_leader_election_enable is not None:
+            pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
+
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[str]:
+        """
+        The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        This may be one of "delete", "compact", or "compact_delete".
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @property
+    @pulumi.getter(name="compressionType")
+    def compression_type(self) -> Optional[str]:
+        """
+        The topic compression codecs used for a given topic.
+        This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+        """
+        return pulumi.get(self, "compression_type")
+
+    @property
+    @pulumi.getter(name="deleteRetentionMs")
+    def delete_retention_ms(self) -> Optional[str]:
+        """
+        The amount of time, in ms, that deleted records are retained.
+        """
+        return pulumi.get(self, "delete_retention_ms")
+
+    @property
+    @pulumi.getter(name="fileDeleteDelayMs")
+    def file_delete_delay_ms(self) -> Optional[str]:
+        """
+        The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+        """
+        return pulumi.get(self, "file_delete_delay_ms")
+
+    @property
+    @pulumi.getter(name="flushMessages")
+    def flush_messages(self) -> Optional[str]:
+        """
+        The number of messages accumulated on a topic partition before they are flushed to disk.
+        """
+        return pulumi.get(self, "flush_messages")
+
+    @property
+    @pulumi.getter(name="flushMs")
+    def flush_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+        """
+        return pulumi.get(self, "flush_ms")
+
+    @property
+    @pulumi.getter(name="indexIntervalBytes")
+    def index_interval_bytes(self) -> Optional[str]:
+        """
+        The interval, in bytes, in which entries are added to the offset index.
+        """
+        return pulumi.get(self, "index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="maxCompactionLagMs")
+    def max_compaction_lag_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+        """
+        return pulumi.get(self, "max_compaction_lag_ms")
+
+    @property
+    @pulumi.getter(name="maxMessageBytes")
+    def max_message_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of a message.
+        """
+        return pulumi.get(self, "max_message_bytes")
+
+    @property
+    @pulumi.getter(name="messageDownConversionEnable")
+    def message_down_conversion_enable(self) -> Optional[bool]:
+        """
+        Determines whether down-conversion of message formats for consumers is enabled.
+        """
+        return pulumi.get(self, "message_down_conversion_enable")
+
+    @property
+    @pulumi.getter(name="messageFormatVersion")
+    def message_format_version(self) -> Optional[str]:
+        """
+        The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+        """
+        return pulumi.get(self, "message_format_version")
+
+    @property
+    @pulumi.getter(name="messageTimestampDifferenceMaxMs")
+    def message_timestamp_difference_max_ms(self) -> Optional[str]:
+        """
+        The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+        """
+        return pulumi.get(self, "message_timestamp_difference_max_ms")
+
+    @property
+    @pulumi.getter(name="messageTimestampType")
+    def message_timestamp_type(self) -> Optional[str]:
+        """
+        Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+        """
+        return pulumi.get(self, "message_timestamp_type")
+
+    @property
+    @pulumi.getter(name="minCleanableDirtyRatio")
+    def min_cleanable_dirty_ratio(self) -> Optional[float]:
+        """
+        A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+        """
+        return pulumi.get(self, "min_cleanable_dirty_ratio")
+
+    @property
+    @pulumi.getter(name="minCompactionLagMs")
+    def min_compaction_lag_ms(self) -> Optional[str]:
+        return pulumi.get(self, "min_compaction_lag_ms")
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[int]:
+        """
+        The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        """
+        return pulumi.get(self, "min_insync_replicas")
+
+    @property
+    @pulumi.getter
+    def preallocate(self) -> Optional[bool]:
+        """
+        Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+        """
+        return pulumi.get(self, "preallocate")
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @property
+    @pulumi.getter(name="retentionMs")
+    def retention_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+        """
+        return pulumi.get(self, "retention_ms")
+
+    @property
+    @pulumi.getter(name="segmentBytes")
+    def segment_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of a single topic log file.
+        """
+        return pulumi.get(self, "segment_bytes")
+
+    @property
+    @pulumi.getter(name="segmentIndexBytes")
+    def segment_index_bytes(self) -> Optional[str]:
+        """
+        The maximum size, in bytes, of the offset index.
+        """
+        return pulumi.get(self, "segment_index_bytes")
+
+    @property
+    @pulumi.getter(name="segmentJitterMs")
+    def segment_jitter_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+        """
+        return pulumi.get(self, "segment_jitter_ms")
+
+    @property
+    @pulumi.getter(name="segmentMs")
+    def segment_ms(self) -> Optional[str]:
+        """
+        The maximum time, in ms, before the topic log will flush to disk.
+        """
+        return pulumi.get(self, "segment_ms")
+
+    @property
+    @pulumi.getter(name="uncleanLeaderElectionEnable")
+    def unclean_leader_election_enable(self) -> Optional[bool]:
+        """
+        Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
+        """
+        return pulumi.get(self, "unclean_leader_election_enable")
 
 
 @pulumi.output_type
@@ -5181,6 +6108,7 @@ class KubernetesClusterMaintenancePolicy(dict):
                  start_time: Optional[str] = None):
         """
         :param str day: The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        :param str duration: A string denoting the duration of the service window, e.g., "04:00".
         :param str start_time: The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
         """
         if day is not None:
@@ -5201,6 +6129,9 @@ class KubernetesClusterMaintenancePolicy(dict):
     @property
     @pulumi.getter
     def duration(self) -> Optional[str]:
+        """
+        A string denoting the duration of the service window, e.g., "04:00".
+        """
         return pulumi.get(self, "duration")
 
     @property
@@ -5667,6 +6598,39 @@ class KubernetesNodePoolTaint(dict):
 
 
 @pulumi.output_type
+class LoadBalancerFirewall(dict):
+    def __init__(__self__, *,
+                 allows: Optional[Sequence[str]] = None,
+                 denies: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allows: A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+               * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+        :param Sequence[str] denies: A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+        """
+        if allows is not None:
+            pulumi.set(__self__, "allows", allows)
+        if denies is not None:
+            pulumi.set(__self__, "denies", denies)
+
+    @property
+    @pulumi.getter
+    def allows(self) -> Optional[Sequence[str]]:
+        """
+        A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+        * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+        """
+        return pulumi.get(self, "allows")
+
+    @property
+    @pulumi.getter
+    def denies(self) -> Optional[Sequence[str]]:
+        """
+        A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+        """
+        return pulumi.get(self, "denies")
+
+
+@pulumi.output_type
 class LoadBalancerForwardingRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5707,9 +6671,9 @@ class LoadBalancerForwardingRule(dict):
                  tls_passthrough: Optional[bool] = None):
         """
         :param int entry_port: An integer representing the port on which the Load Balancer instance will listen.
-        :param str entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        :param str entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         :param int target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         :param str certificate_id: **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         :param str certificate_name: The unique name of the TLS certificate to be used for SSL termination.
         :param bool tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
@@ -5737,7 +6701,7 @@ class LoadBalancerForwardingRule(dict):
     @pulumi.getter(name="entryProtocol")
     def entry_protocol(self) -> str:
         """
-        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2` or `tcp`.
+        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         """
         return pulumi.get(self, "entry_protocol")
 
@@ -5753,7 +6717,7 @@ class LoadBalancerForwardingRule(dict):
     @pulumi.getter(name="targetProtocol")
     def target_protocol(self) -> str:
         """
-        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2` or `tcp`.
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
         """
         return pulumi.get(self, "target_protocol")
 
@@ -5763,6 +6727,9 @@ class LoadBalancerForwardingRule(dict):
         """
         **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         """
+        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
+
         return pulumi.get(self, "certificate_id")
 
     @property
@@ -5818,7 +6785,7 @@ class LoadBalancerHealthcheck(dict):
         """
         :param int port: An integer representing the port on the backend Droplets on which the health check will attempt a connection.
         :param str protocol: The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
-        :param int check_interval_seconds: The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        :param int check_interval_seconds: The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
         :param int healthy_threshold: The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
         :param str path: The path on the backend Droplets to which the Load Balancer instance will send a request.
         :param int response_timeout_seconds: The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
@@ -5857,7 +6824,7 @@ class LoadBalancerHealthcheck(dict):
     @pulumi.getter(name="checkIntervalSeconds")
     def check_interval_seconds(self) -> Optional[int]:
         """
-        The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.
+        The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
         """
         return pulumi.get(self, "check_interval_seconds")
 
@@ -5997,6 +6964,108 @@ class MonitorAlertAlertsSlack(dict):
 
 
 @pulumi.output_type
+class SpacesBucketCorsConfigurationCorsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpacesBucketCorsConfigurationCorsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpacesBucketCorsConfigurationCorsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpacesBucketCorsConfigurationCorsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_methods: Sequence[str],
+                 allowed_origins: Sequence[str],
+                 allowed_headers: Optional[Sequence[str]] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 id: Optional[str] = None,
+                 max_age_seconds: Optional[int] = None):
+        """
+        :param Sequence[str] allowed_methods: Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+        :param Sequence[str] allowed_origins: Set of origins you want customers to be able to access the bucket from.
+        :param Sequence[str] allowed_headers: Set of Headers that are specified in the Access-Control-Request-Headers header.
+        :param Sequence[str] expose_headers: Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+        :param str id: Unique identifier for the rule. The value cannot be longer than 255 characters.
+        :param int max_age_seconds: Time in seconds that your browser is to cache the preflight response for the specified resource.
+        """
+        pulumi.set(__self__, "allowed_methods", allowed_methods)
+        pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if allowed_headers is not None:
+            pulumi.set(__self__, "allowed_headers", allowed_headers)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_age_seconds is not None:
+            pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Sequence[str]:
+        """
+        Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Sequence[str]:
+        """
+        Set of origins you want customers to be able to access the bucket from.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Optional[Sequence[str]]:
+        """
+        Set of Headers that are specified in the Access-Control-Request-Headers header.
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier for the rule. The value cannot be longer than 255 characters.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> Optional[int]:
+        """
+        Time in seconds that your browser is to cache the preflight response for the specified resource.
+        """
+        return pulumi.get(self, "max_age_seconds")
+
+
+@pulumi.output_type
 class SpacesBucketCorsRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6107,6 +7176,8 @@ class SpacesBucketLifecycleRule(dict):
         :param 'SpacesBucketLifecycleRuleExpirationArgs' expiration: Specifies a time period after which applicable objects expire (documented below).
         :param str id: Unique identifier for the rule.
         :param 'SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs' noncurrent_version_expiration: Specifies when non-current object versions expire (documented below).
+               
+               At least one of `expiration` or `noncurrent_version_expiration` must be specified.
         :param str prefix: Object key prefix identifying one or more objects to which the rule applies.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -6159,6 +7230,8 @@ class SpacesBucketLifecycleRule(dict):
     def noncurrent_version_expiration(self) -> Optional['outputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration']:
         """
         Specifies when non-current object versions expire (documented below).
+
+        At least one of `expiration` or `noncurrent_version_expiration` must be specified.
         """
         return pulumi.get(self, "noncurrent_version_expiration")
 
@@ -6276,9 +7349,67 @@ class SpacesBucketVersioning(dict):
 
 
 @pulumi.output_type
+class UptimeAlertNotification(dict):
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 slacks: Optional[Sequence['outputs.UptimeAlertNotificationSlack']] = None):
+        """
+        :param Sequence[str] emails: List of email addresses to sent notifications to.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slacks is not None:
+            pulumi.set(__self__, "slacks", slacks)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        """
+        List of email addresses to sent notifications to.
+        """
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def slacks(self) -> Optional[Sequence['outputs.UptimeAlertNotificationSlack']]:
+        return pulumi.get(self, "slacks")
+
+
+@pulumi.output_type
+class UptimeAlertNotificationSlack(dict):
+    def __init__(__self__, *,
+                 channel: str,
+                 url: str):
+        """
+        :param str channel: The Slack channel to send alerts to.
+        :param str url: The webhook URL for Slack.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        The Slack channel to send alerts to.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The webhook URL for Slack.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class GetAppSpecResult(dict):
     def __init__(__self__, *,
+                 domain: Sequence['outputs.GetAppSpecDomainResult'],
                  domains: Sequence[str],
+                 ingress: 'outputs.GetAppSpecIngressResult',
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
@@ -6294,7 +7425,9 @@ class GetAppSpecResult(dict):
         :param Sequence['GetAppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['GetAppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         """
+        pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "ingress", ingress)
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
@@ -6317,8 +7450,21 @@ class GetAppSpecResult(dict):
 
     @property
     @pulumi.getter
+    def domain(self) -> Sequence['outputs.GetAppSpecDomainResult']:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
     def domains(self) -> Sequence[str]:
+        warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
+        pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
+
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def ingress(self) -> 'outputs.GetAppSpecIngressResult':
+        return pulumi.get(self, "ingress")
 
     @property
     @pulumi.getter
@@ -6502,6 +7648,50 @@ class GetAppSpecDatabaseResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecDomainResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str,
+                 wildcard: bool,
+                 zone: Optional[str] = None):
+        """
+        :param str name: The name of the component.
+        :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "wildcard", wildcard)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def wildcard(self) -> bool:
+        return pulumi.get(self, "wildcard")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
 class GetAppSpecEnvResult(dict):
     def __init__(__self__, *,
                  type: str,
@@ -6609,6 +7799,9 @@ class GetAppSpecFunctionResult(dict):
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAppSpecFunctionRouteResult']:
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -6625,6 +7818,9 @@ class GetAppSpecFunctionResult(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -7184,6 +8380,303 @@ class GetAppSpecFunctionRouteResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecIngressResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetAppSpecIngressRuleResult']):
+        """
+        :param Sequence['GetAppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetAppSpecIngressRuleResult']:
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleResult(dict):
+    def __init__(__self__, *,
+                 component: 'outputs.GetAppSpecIngressRuleComponentResult',
+                 cors: 'outputs.GetAppSpecIngressRuleCorsResult',
+                 match: 'outputs.GetAppSpecIngressRuleMatchResult',
+                 redirect: Optional['outputs.GetAppSpecIngressRuleRedirectResult'] = None):
+        """
+        :param 'GetAppSpecIngressRuleCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "cors", cors)
+        pulumi.set(__self__, "match", match)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @property
+    @pulumi.getter
+    def component(self) -> 'outputs.GetAppSpecIngressRuleComponentResult':
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> 'outputs.GetAppSpecIngressRuleCorsResult':
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter
+    def match(self) -> 'outputs.GetAppSpecIngressRuleMatchResult':
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional['outputs.GetAppSpecIngressRuleRedirectResult']:
+        return pulumi.get(self, "redirect")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleComponentResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 preserve_path_prefix: bool,
+                 rewrite: str):
+        """
+        :param str name: The name of the component.
+        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "preserve_path_prefix", preserve_path_prefix)
+        pulumi.set(__self__, "rewrite", rewrite)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the component.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="preservePathPrefix")
+    def preserve_path_prefix(self) -> bool:
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+        return pulumi.get(self, "preserve_path_prefix")
+
+    @property
+    @pulumi.getter
+    def rewrite(self) -> str:
+        return pulumi.get(self, "rewrite")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleCorsResult(dict):
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional['outputs.GetAppSpecIngressRuleCorsAllowOriginsResult'] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param 'GetAppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional['outputs.GetAppSpecIngressRuleCorsAllowOriginsResult']:
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleCorsAllowOriginsResult(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleMatchResult(dict):
+    def __init__(__self__, *,
+                 path: 'outputs.GetAppSpecIngressRuleMatchPathResult'):
+        """
+        :param 'GetAppSpecIngressRuleMatchPathArgs' path: Paths must start with `/` and must be unique within the app.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> 'outputs.GetAppSpecIngressRuleMatchPathResult':
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleMatchPathResult(dict):
+    def __init__(__self__, *,
+                 prefix: str):
+        """
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleRedirectResult(dict):
+    def __init__(__self__, *,
+                 authority: Optional[str] = None,
+                 port: Optional[int] = None,
+                 redirect_code: Optional[int] = None,
+                 scheme: Optional[str] = None,
+                 uri: Optional[str] = None):
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if redirect_code is not None:
+            pulumi.set(__self__, "redirect_code", redirect_code)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> Optional[str]:
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="redirectCode")
+    def redirect_code(self) -> Optional[int]:
+        return pulumi.get(self, "redirect_code")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class GetAppSpecJobResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -7216,10 +8709,6 @@ class GetAppSpecJobResult(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
-               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['GetAppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -7357,10 +8846,6 @@ class GetAppSpecJobResult(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
-        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -7926,6 +9411,9 @@ class GetAppSpecServiceResult(dict):
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAppSpecServiceRouteResult']:
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -7958,6 +9446,9 @@ class GetAppSpecServiceResult(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -8808,6 +10299,9 @@ class GetAppSpecStaticSiteResult(dict):
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAppSpecStaticSiteRouteResult']:
+        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "routes")
 
     @property
@@ -8832,6 +10326,9 @@ class GetAppSpecStaticSiteResult(dict):
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
+        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
+        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
+
         return pulumi.get(self, "cors")
 
     @property
@@ -9899,7 +11396,7 @@ class GetDomainsDomainResult(dict):
                  urn: str):
         """
         :param str name: (Required) The name of the domain.
-               - `ttl`-  The TTL of the domain.
+        :param int ttl: The TTL of the domain.
         :param str urn: The uniform resource name of the domain
         """
         pulumi.set(__self__, "name", name)
@@ -9911,13 +11408,15 @@ class GetDomainsDomainResult(dict):
     def name(self) -> str:
         """
         (Required) The name of the domain.
-        - `ttl`-  The TTL of the domain.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        The TTL of the domain.
+        """
         return pulumi.get(self, "ttl")
 
     @property
@@ -10736,18 +12235,22 @@ class GetImagesImageResult(dict):
                  tags: Sequence[str],
                  type: str):
         """
+        :param str created: When the image was created
         :param str distribution: The name of the distribution of the OS of the image.
-               - `min_disk_size`: The minimum 'disk' required for the image.
-               - `size_gigabytes`: The size of the image in GB.
+        :param str error_message: Any applicable error message pertaining to the image
+        :param int id: The ID of the image.
         :param str image: The id of the image (legacy parameter).
+        :param int min_disk_size: The minimum 'disk' required for the image.
+        :param str name: The name of the image.
         :param bool private: Is image a public image or not. Public images represent
                Linux distributions or One-Click Applications, while non-public images represent
                snapshots and backups and are only available within your account.
-               - `regions`: A set of the regions that the image is available in.
-               - `tags`: A set of tags applied to the image
-               - `created`: When the image was created
-               - `status`: Current status of the image
-               - `error_message`: Any applicable error message pertaining to the image
+        :param Sequence[str] regions: A set of the regions that the image is available in.
+        :param float size_gigabytes: The size of the image in GB.
+        :param str slug: Unique text identifier of the image.
+        :param str status: Current status of the image
+        :param Sequence[str] tags: A set of tags applied to the image
+        :param str type: Type of the image.
         """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "description", description)
@@ -10768,6 +12271,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        When the image was created
+        """
         return pulumi.get(self, "created")
 
     @property
@@ -10780,19 +12286,23 @@ class GetImagesImageResult(dict):
     def distribution(self) -> str:
         """
         The name of the distribution of the OS of the image.
-        - `min_disk_size`: The minimum 'disk' required for the image.
-        - `size_gigabytes`: The size of the image in GB.
         """
         return pulumi.get(self, "distribution")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> str:
+        """
+        Any applicable error message pertaining to the image
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the image.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -10806,11 +12316,17 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter(name="minDiskSize")
     def min_disk_size(self) -> int:
+        """
+        The minimum 'disk' required for the image.
+        """
         return pulumi.get(self, "min_disk_size")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -10820,42 +12336,55 @@ class GetImagesImageResult(dict):
         Is image a public image or not. Public images represent
         Linux distributions or One-Click Applications, while non-public images represent
         snapshots and backups and are only available within your account.
-        - `regions`: A set of the regions that the image is available in.
-        - `tags`: A set of tags applied to the image
-        - `created`: When the image was created
-        - `status`: Current status of the image
-        - `error_message`: Any applicable error message pertaining to the image
         """
         return pulumi.get(self, "private")
 
     @property
     @pulumi.getter
     def regions(self) -> Sequence[str]:
+        """
+        A set of the regions that the image is available in.
+        """
         return pulumi.get(self, "regions")
 
     @property
     @pulumi.getter(name="sizeGigabytes")
     def size_gigabytes(self) -> float:
+        """
+        The size of the image in GB.
+        """
         return pulumi.get(self, "size_gigabytes")
 
     @property
     @pulumi.getter
     def slug(self) -> str:
+        """
+        Unique text identifier of the image.
+        """
         return pulumi.get(self, "slug")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Current status of the image
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        A set of tags applied to the image
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of the image.
+        """
         return pulumi.get(self, "type")
 
 
@@ -11261,6 +12790,25 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
         An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetLoadBalancerFirewallResult(dict):
+    def __init__(__self__, *,
+                 allows: Sequence[str],
+                 denies: Sequence[str]):
+        pulumi.set(__self__, "allows", allows)
+        pulumi.set(__self__, "denies", denies)
+
+    @property
+    @pulumi.getter
+    def allows(self) -> Sequence[str]:
+        return pulumi.get(self, "allows")
+
+    @property
+    @pulumi.getter
+    def denies(self) -> Sequence[str]:
+        return pulumi.get(self, "denies")
 
 
 @pulumi.output_type
@@ -11699,6 +13247,16 @@ class GetRecordsRecordResult(dict):
                  weight: int):
         """
         :param str domain: The domain name to search for DNS records
+        :param int flags: An unsigned integer between 0-255 used for CAA records.
+        :param int id: The ID of the record.
+        :param str name: The name of the DNS record.
+        :param int port: The port for SRV records.
+        :param int priority: The priority for SRV and MX records.
+        :param str tag: The parameter tag for CAA records.
+        :param int ttl: This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+        :param str type: The type of the DNS record.
+        :param str value: Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+        :param int weight: The weight for SRV records.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "flags", flags)
@@ -11723,51 +13281,81 @@ class GetRecordsRecordResult(dict):
     @property
     @pulumi.getter
     def flags(self) -> int:
+        """
+        An unsigned integer between 0-255 used for CAA records.
+        """
         return pulumi.get(self, "flags")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The ID of the record.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the DNS record.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port for SRV records.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def priority(self) -> int:
+        """
+        The priority for SRV and MX records.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        The parameter tag for CAA records.
+        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def ttl(self) -> int:
+        """
+        This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the DNS record.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight for SRV records.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -12171,16 +13759,19 @@ class GetSizesSortResult(dict):
 class GetSpacesBucketsBucketResult(dict):
     def __init__(__self__, *,
                  bucket_domain_name: str,
+                 endpoint: str,
                  name: str,
                  region: str,
                  urn: str):
         """
         :param str bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+        :param str endpoint: The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
         :param str name: The name of the Spaces bucket
         :param str region: The slug of the region where the bucket is stored.
         :param str urn: The uniform resource name of the bucket
         """
         pulumi.set(__self__, "bucket_domain_name", bucket_domain_name)
+        pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "urn", urn)
@@ -12192,6 +13783,14 @@ class GetSpacesBucketsBucketResult(dict):
         The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         """
         return pulumi.get(self, "bucket_domain_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
@@ -12394,10 +13993,10 @@ class GetSshKeysSshKeyResult(dict):
                  name: str,
                  public_key: str):
         """
+        :param str fingerprint: The fingerprint of the public key of the ssh key.
         :param int id: The ID of the ssh key.
-               * `name`: The name of the ssh key.
-               * `public_key`: The public key of the ssh key.
-               * `fingerprint`: The fingerprint of the public key of the ssh key.
+        :param str name: The name of the ssh key.
+        :param str public_key: The public key of the ssh key.
         """
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "id", id)
@@ -12407,6 +14006,9 @@ class GetSshKeysSshKeyResult(dict):
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
+        """
+        The fingerprint of the public key of the ssh key.
+        """
         return pulumi.get(self, "fingerprint")
 
     @property
@@ -12414,20 +14016,23 @@ class GetSshKeysSshKeyResult(dict):
     def id(self) -> int:
         """
         The ID of the ssh key.
-        * `name`: The name of the ssh key.
-        * `public_key`: The public key of the ssh key.
-        * `fingerprint`: The fingerprint of the public key of the ssh key.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the ssh key.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
+        """
+        The public key of the ssh key.
+        """
         return pulumi.get(self, "public_key")
 
 

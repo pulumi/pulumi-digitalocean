@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,8 +58,8 @@ import (
 //			}
 //			_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
 //				Region:  pulumi.String("lon1"),
-//				Version: pulumi.String(example.LatestVersion),
-//				NodePool: &KubernetesClusterNodePoolArgs{
+//				Version: *pulumi.String(example.LatestVersion),
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
 //					Name:      pulumi.String("default"),
 //					Size:      pulumi.String("s-1vcpu-2gb"),
 //					NodeCount: pulumi.Int(3),
@@ -86,7 +87,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.GetKubernetesVersions(ctx, &GetKubernetesVersionsArgs{
+//			example, err := digitalocean.GetKubernetesVersions(ctx, &digitalocean.GetKubernetesVersionsArgs{
 //				VersionPrefix: pulumi.StringRef("1.22."),
 //			}, nil)
 //			if err != nil {
@@ -94,8 +95,8 @@ import (
 //			}
 //			_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
 //				Region:  pulumi.String("lon1"),
-//				Version: pulumi.String(example.LatestVersion),
-//				NodePool: &KubernetesClusterNodePoolArgs{
+//				Version: *pulumi.String(example.LatestVersion),
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
 //					Name:      pulumi.String("default"),
 //					Size:      pulumi.String("s-1vcpu-2gb"),
 //					NodeCount: pulumi.Int(3),
@@ -110,6 +111,7 @@ import (
 //
 // ```
 func GetKubernetesVersions(ctx *pulumi.Context, args *GetKubernetesVersionsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesVersionsResult
 	err := ctx.Invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, &rv, opts...)
 	if err != nil {

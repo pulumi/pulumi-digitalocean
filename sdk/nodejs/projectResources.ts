@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * const barfoo = new digitalocean.ProjectResources("barfoo", {
- *     project: data.digitalocean_project.foo.id,
+ *     project: playground.then(playground => playground.id),
  *     resources: [foobar.dropletUrn],
  * });
  * ```

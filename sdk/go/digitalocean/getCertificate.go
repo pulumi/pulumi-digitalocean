@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupCertificate(ctx, &GetCertificateArgs{
+//			_, err := digitalocean.LookupCertificate(ctx, &digitalocean.LookupCertificateArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
 	err := ctx.Invoke("digitalocean:index/getCertificate:getCertificate", args, &rv, opts...)
 	if err != nil {
@@ -61,15 +63,21 @@ type LookupCertificateArgs struct {
 
 // A collection of values returned by getCertificate.
 type LookupCertificateResult struct {
+	// Domains for which the certificate was issued.
 	Domains []string `pulumi:"domains"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string `pulumi:"id"`
-	Name            string `pulumi:"name"`
-	NotAfter        string `pulumi:"notAfter"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// The expiration date and time of the certificate.
+	NotAfter string `pulumi:"notAfter"`
+	// The SHA1 fingerprint of the certificate.
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
-	State           string `pulumi:"state"`
-	Type            string `pulumi:"type"`
-	Uuid            string `pulumi:"uuid"`
+	// the current state of the certificate.
+	State string `pulumi:"state"`
+	// The type of the certificate.
+	Type string `pulumi:"type"`
+	// The ID of the certificate.
+	Uuid string `pulumi:"uuid"`
 }
 
 func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
@@ -110,6 +118,7 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 	return o
 }
 
+// Domains for which the certificate was issued.
 func (o LookupCertificateResultOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCertificateResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
@@ -123,22 +132,27 @@ func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The expiration date and time of the certificate.
 func (o LookupCertificateResultOutput) NotAfter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.NotAfter }).(pulumi.StringOutput)
 }
 
+// The SHA1 fingerprint of the certificate.
 func (o LookupCertificateResultOutput) Sha1Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }
 
+// the current state of the certificate.
 func (o LookupCertificateResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The type of the certificate.
 func (o LookupCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The ID of the certificate.
 func (o LookupCertificateResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Uuid }).(pulumi.StringOutput)
 }

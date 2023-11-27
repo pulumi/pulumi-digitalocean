@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTag, err := digitalocean.LookupTag(ctx, &GetTagArgs{
+//			exampleTag, err := digitalocean.LookupTag(ctx, &digitalocean.LookupTagArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
@@ -43,7 +44,7 @@ import (
 //				Region: pulumi.String("nyc2"),
 //				Size:   pulumi.String("s-1vcpu-1gb"),
 //				Tags: pulumi.StringArray{
-//					pulumi.String(exampleTag.Name),
+//					*pulumi.String(exampleTag.Name),
 //				},
 //			})
 //			if err != nil {
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagResult
 	err := ctx.Invoke("digitalocean:index/getTag:getTag", args, &rv, opts...)
 	if err != nil {

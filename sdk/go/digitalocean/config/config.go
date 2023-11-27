@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The URL to use for the DigitalOcean API.
 func GetApiEndpoint(ctx *pulumi.Context) string {
@@ -14,7 +17,31 @@ func GetApiEndpoint(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL").(string)
+	var value string
+	if d := internal.GetEnvOrDefault("https://api.digitalocean.com", nil, "DIGITALOCEAN_API_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
+}
+
+// The maximum number of retries on a failed API request.
+func GetHttpRetryMax(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "digitalocean:httpRetryMax")
+}
+
+// The maximum wait time (in seconds) between failed API requests.
+func GetHttpRetryWaitMax(ctx *pulumi.Context) float64 {
+	return config.GetFloat64(ctx, "digitalocean:httpRetryWaitMax")
+}
+
+// The minimum wait time (in seconds) between failed API requests.
+func GetHttpRetryWaitMin(ctx *pulumi.Context) float64 {
+	return config.GetFloat64(ctx, "digitalocean:httpRetryWaitMin")
+}
+
+// The rate of requests per second to limit the HTTP client.
+func GetRequestsPerSecond(ctx *pulumi.Context) float64 {
+	return config.GetFloat64(ctx, "digitalocean:requestsPerSecond")
 }
 
 // The access key ID for Spaces API operations.
@@ -28,7 +55,11 @@ func GetSpacesEndpoint(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "SPACES_ENDPOINT_URL").(string)
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "SPACES_ENDPOINT_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The secret access key for Spaces API operations.

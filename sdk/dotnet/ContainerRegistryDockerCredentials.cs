@@ -21,6 +21,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -39,6 +40,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -60,9 +62,15 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")]
     public partial class ContainerRegistryDockerCredentials : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The date and time the registry access token will expire.
+        /// </summary>
         [Output("credentialExpirationTime")]
         public Output<string> CredentialExpirationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Credentials for the container registry.
+        /// </summary>
         [Output("dockerCredentials")]
         public Output<string> DockerCredentials { get; private set; } = null!;
 
@@ -107,6 +115,10 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "dockerCredentials",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -156,11 +168,27 @@ namespace Pulumi.DigitalOcean
 
     public sealed class ContainerRegistryDockerCredentialsState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The date and time the registry access token will expire.
+        /// </summary>
         [Input("credentialExpirationTime")]
         public Input<string>? CredentialExpirationTime { get; set; }
 
         [Input("dockerCredentials")]
-        public Input<string>? DockerCredentials { get; set; }
+        private Input<string>? _dockerCredentials;
+
+        /// <summary>
+        /// Credentials for the container registry.
+        /// </summary>
+        public Input<string>? DockerCredentials
+        {
+            get => _dockerCredentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _dockerCredentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.

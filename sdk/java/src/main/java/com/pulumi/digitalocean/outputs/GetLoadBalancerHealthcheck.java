@@ -105,15 +105,15 @@ public final class GetLoadBalancerHealthcheck {
             return this;
         }
         public GetLoadBalancerHealthcheck build() {
-            final var o = new GetLoadBalancerHealthcheck();
-            o.checkIntervalSeconds = checkIntervalSeconds;
-            o.healthyThreshold = healthyThreshold;
-            o.path = path;
-            o.port = port;
-            o.protocol = protocol;
-            o.responseTimeoutSeconds = responseTimeoutSeconds;
-            o.unhealthyThreshold = unhealthyThreshold;
-            return o;
+            final var _resultValue = new GetLoadBalancerHealthcheck();
+            _resultValue.checkIntervalSeconds = checkIntervalSeconds;
+            _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.responseTimeoutSeconds = responseTimeoutSeconds;
+            _resultValue.unhealthyThreshold = unhealthyThreshold;
+            return _resultValue;
         }
     }
 }

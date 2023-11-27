@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupApp(ctx, &GetAppArgs{
+//			example, err := digitalocean.LookupApp(ctx, &digitalocean.LookupAppArgs{
 //				AppId: "e665d18d-7b56-44a9-92ce-31979174d544",
 //			}, nil)
 //			if err != nil {
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppResult
 	err := ctx.Invoke("digitalocean:index/getApp:getApp", args, &rv, opts...)
 	if err != nil {

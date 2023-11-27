@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -19,7 +21,7 @@ import * as utilities from "./utilities";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
- *     version: "11",
+ *     version: "15",
  * });
  * ```
  * ### Create a new MySQL database cluster
@@ -45,7 +47,20 @@ import * as utilities from "./utilities";
  *     nodeCount: 1,
  *     region: "nyc1",
  *     size: "db-s-1vcpu-1gb",
- *     version: "6",
+ *     version: "7",
+ * });
+ * ```
+ * ### Create a new Kafka database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     engine: "kafka",
+ *     nodeCount: 3,
+ *     region: "nyc1",
+ *     size: "db-s-1vcpu-2gb",
+ *     version: "3.5",
  * });
  * ```
  * ### Create a new MongoDB database cluster
@@ -59,6 +74,34 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  *     size: "db-s-1vcpu-1gb",
  *     version: "4",
+ * });
+ * ```
+ * ## Create a new database cluster based on a backup of an existing cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const doby = new digitalocean.DatabaseCluster("doby", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-2gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ *     tags: ["production"],
+ * });
+ * const dobyBackup = new digitalocean.DatabaseCluster("dobyBackup", {
+ *     engine: "pg",
+ *     version: "11",
+ *     size: "db-s-1vcpu-2gb",
+ *     region: "nyc1",
+ *     nodeCount: 1,
+ *     tags: ["production"],
+ *     backupRestore: {
+ *         databaseName: "dobydb",
+ *     },
+ * }, {
+ *     dependsOn: [doby],
  * });
  * ```
  *
@@ -99,6 +142,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
     }
 
     /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     */
+    public readonly backupRestore!: pulumi.Output<outputs.DatabaseClusterBackupRestore | undefined>;
+    /**
      * The uniform resource name of the database cluster.
      */
     public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
@@ -107,7 +154,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly database!: pulumi.Output<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -127,7 +174,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -151,6 +198,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateUri!: pulumi.Output<string>;
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * DigitalOcean region where the cluster will reside.
      */
     public readonly region!: pulumi.Output<string>;
@@ -162,6 +213,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
     public readonly sqlMode!: pulumi.Output<string | undefined>;
+    /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     */
+    public readonly storageSizeMib!: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
@@ -175,7 +230,8 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
     /**
-     * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      */
     public readonly version!: pulumi.Output<string | undefined>;
 
@@ -192,6 +248,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseClusterState | undefined;
+            resourceInputs["backupRestore"] = state ? state.backupRestore : undefined;
             resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
@@ -205,9 +262,11 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["privateHost"] = state ? state.privateHost : undefined;
             resourceInputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
             resourceInputs["privateUri"] = state ? state.privateUri : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
+            resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
@@ -226,15 +285,18 @@ export class DatabaseCluster extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
+            resourceInputs["backupRestore"] = args ? args.backupRestore : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["evictionPolicy"] = args ? args.evictionPolicy : undefined;
             resourceInputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sqlMode"] = args ? args.sqlMode : undefined;
+            resourceInputs["storageSizeMib"] = args ? args.storageSizeMib : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["clusterUrn"] = undefined /*out*/;
@@ -248,6 +310,8 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uri"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -257,6 +321,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
  */
 export interface DatabaseClusterState {
     /**
+     * Create a new database cluster based on a backup of an existing cluster.
+     */
+    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
+    /**
      * The uniform resource name of the database cluster.
      */
     clusterUrn?: pulumi.Input<string>;
@@ -265,7 +333,7 @@ export interface DatabaseClusterState {
      */
     database?: pulumi.Input<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -285,7 +353,7 @@ export interface DatabaseClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -309,6 +377,10 @@ export interface DatabaseClusterState {
      */
     privateUri?: pulumi.Input<string>;
     /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * DigitalOcean region where the cluster will reside.
      */
     region?: pulumi.Input<string | enums.Region>;
@@ -320,6 +392,10 @@ export interface DatabaseClusterState {
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
     sqlMode?: pulumi.Input<string>;
+    /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     */
+    storageSizeMib?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
@@ -333,7 +409,8 @@ export interface DatabaseClusterState {
      */
     user?: pulumi.Input<string>;
     /**
-     * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      */
     version?: pulumi.Input<string>;
 }
@@ -343,7 +420,11 @@ export interface DatabaseClusterState {
  */
 export interface DatabaseClusterArgs {
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+     * Create a new database cluster based on a backup of an existing cluster.
+     */
+    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
+    /**
+     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine: pulumi.Input<string>;
     /**
@@ -359,13 +440,17 @@ export interface DatabaseClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of nodes that will be included in the cluster.
+     * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
     nodeCount: pulumi.Input<number>;
     /**
      * The ID of the VPC where the database cluster will be located.
      */
     privateNetworkUuid?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
@@ -379,11 +464,16 @@ export interface DatabaseClusterArgs {
      */
     sqlMode?: pulumi.Input<string>;
     /**
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     */
+    storageSizeMib?: pulumi.Input<string>;
+    /**
      * A list of tag names to be applied to the database cluster.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+     * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
      */
     version?: pulumi.Input<string>;
 }

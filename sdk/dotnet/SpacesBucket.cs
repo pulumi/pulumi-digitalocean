@@ -26,6 +26,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -44,6 +45,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -60,6 +62,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -144,6 +147,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("corsRules")]
         public Output<ImmutableArray<Outputs.SpacesBucketCorsRule>> CorsRules { get; private set; } = null!;
+
+        /// <summary>
+        /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        /// </summary>
+        [Output("endpoint")]
+        public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
         /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -233,6 +242,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
+        [Obsolete(@"Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.")]
         public InputList<Inputs.SpacesBucketCorsRuleArgs> CorsRules
         {
             get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleArgs>());
@@ -307,11 +317,18 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
+        [Obsolete(@"Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.")]
         public InputList<Inputs.SpacesBucketCorsRuleGetArgs> CorsRules
         {
             get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleGetArgs>());
             set => _corsRules = value;
         }
+
+        /// <summary>
+        /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         /// <summary>
         /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)

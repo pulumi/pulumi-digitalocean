@@ -45,6 +45,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The name of the component.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// An HTTP paths that should be routed to this component.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecFunctionRoute> Routes;
         /// <summary>
         /// An optional path to the working directory to use for the build.

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVolume(ctx, &GetVolumeArgs{
+//			_, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
 //				Name:   "app-data",
 //				Region: pulumi.StringRef("nyc3"),
 //			}, nil)
@@ -60,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVolume, err := digitalocean.LookupVolume(ctx, &GetVolumeArgs{
+//			exampleVolume, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
 //				Name:   "app-data",
 //				Region: pulumi.StringRef("nyc3"),
 //			}, nil)
@@ -77,7 +78,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
 //				DropletId: exampleDroplet.ID(),
-//				VolumeId:  pulumi.String(exampleVolume.Id),
+//				VolumeId:  *pulumi.String(exampleVolume.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -88,6 +89,7 @@ import (
 //
 // ```
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
 	err := ctx.Invoke("digitalocean:index/getVolume:getVolume", args, &rv, opts...)
 	if err != nil {
@@ -124,7 +126,8 @@ type LookupVolumeResult struct {
 	Size int `pulumi:"size"`
 	// A list of the tags associated to the Volume.
 	Tags []string `pulumi:"tags"`
-	Urn  string   `pulumi:"urn"`
+	// The uniform resource name for the storage volume.
+	Urn string `pulumi:"urn"`
 }
 
 func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeResultOutput {
@@ -212,6 +215,7 @@ func (o LookupVolumeResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVolumeResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The uniform resource name for the storage volume.
 func (o LookupVolumeResultOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Urn }).(pulumi.StringOutput)
 }

@@ -192,6 +192,10 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
 
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
+           
+           > **NOTE:** If more or less than a single match is returned by the search,
+           the provider will fail. Ensure that your search is specific enough to return
+           a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
     :param str name: The name of the volume snapshot.
     :param str name_regex: A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
@@ -205,17 +209,17 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts, typ=GetVolumeSnapshotResult).value
 
     return AwaitableGetVolumeSnapshotResult(
-        created_at=__ret__.created_at,
-        id=__ret__.id,
-        min_disk_size=__ret__.min_disk_size,
-        most_recent=__ret__.most_recent,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        region=__ret__.region,
-        regions=__ret__.regions,
-        size=__ret__.size,
-        tags=__ret__.tags,
-        volume_id=__ret__.volume_id)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        id=pulumi.get(__ret__, 'id'),
+        min_disk_size=pulumi.get(__ret__, 'min_disk_size'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        region=pulumi.get(__ret__, 'region'),
+        regions=pulumi.get(__ret__, 'regions'),
+        size=pulumi.get(__ret__, 'size'),
+        tags=pulumi.get(__ret__, 'tags'),
+        volume_id=pulumi.get(__ret__, 'volume_id'))
 
 
 @_utilities.lift_output_func(get_volume_snapshot)
@@ -259,6 +263,10 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
 
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
+           
+           > **NOTE:** If more or less than a single match is returned by the search,
+           the provider will fail. Ensure that your search is specific enough to return
+           a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
     :param str name: The name of the volume snapshot.
     :param str name_regex: A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.

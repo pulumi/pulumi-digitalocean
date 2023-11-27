@@ -50,6 +50,9 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def domains(self) -> Sequence[str]:
+        """
+        Domains for which the certificate was issued.
+        """
         return pulumi.get(self, "domains")
 
     @property
@@ -68,26 +71,41 @@ class GetCertificateResult:
     @property
     @pulumi.getter(name="notAfter")
     def not_after(self) -> str:
+        """
+        The expiration date and time of the certificate.
+        """
         return pulumi.get(self, "not_after")
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> str:
+        """
+        The SHA1 fingerprint of the certificate.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        the current state of the certificate.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the certificate.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        The ID of the certificate.
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -137,14 +155,14 @@ def get_certificate(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        domains=__ret__.domains,
-        id=__ret__.id,
-        name=__ret__.name,
-        not_after=__ret__.not_after,
-        sha1_fingerprint=__ret__.sha1_fingerprint,
-        state=__ret__.state,
-        type=__ret__.type,
-        uuid=__ret__.uuid)
+        domains=pulumi.get(__ret__, 'domains'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        not_after=pulumi.get(__ret__, 'not_after'),
+        sha1_fingerprint=pulumi.get(__ret__, 'sha1_fingerprint'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_certificate)

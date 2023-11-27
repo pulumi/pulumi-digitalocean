@@ -172,16 +172,16 @@ public final class GetTagResult {
             return this;
         }
         public GetTagResult build() {
-            final var o = new GetTagResult();
-            o.databasesCount = databasesCount;
-            o.dropletsCount = dropletsCount;
-            o.id = id;
-            o.imagesCount = imagesCount;
-            o.name = name;
-            o.totalResourceCount = totalResourceCount;
-            o.volumeSnapshotsCount = volumeSnapshotsCount;
-            o.volumesCount = volumesCount;
-            return o;
+            final var _resultValue = new GetTagResult();
+            _resultValue.databasesCount = databasesCount;
+            _resultValue.dropletsCount = dropletsCount;
+            _resultValue.id = id;
+            _resultValue.imagesCount = imagesCount;
+            _resultValue.name = name;
+            _resultValue.totalResourceCount = totalResourceCount;
+            _resultValue.volumeSnapshotsCount = volumeSnapshotsCount;
+            _resultValue.volumesCount = volumesCount;
+            return _resultValue;
         }
     }
 }

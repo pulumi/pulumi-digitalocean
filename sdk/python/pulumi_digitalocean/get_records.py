@@ -43,6 +43,9 @@ class GetRecordsResult:
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        Domain of the DNS record.
+        """
         return pulumi.get(self, "domain")
 
     @property
@@ -105,11 +108,11 @@ def get_records(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getRecords:getRecords', __args__, opts=opts, typ=GetRecordsResult).value
 
     return AwaitableGetRecordsResult(
-        domain=__ret__.domain,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        records=__ret__.records,
-        sorts=__ret__.sorts)
+        domain=pulumi.get(__ret__, 'domain'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        records=pulumi.get(__ret__, 'records'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_records)

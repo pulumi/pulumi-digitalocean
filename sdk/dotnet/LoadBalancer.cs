@@ -17,6 +17,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -64,6 +65,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
     /// 
@@ -162,6 +164,12 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> EnableProxyProtocol { get; private set; } = null!;
 
         /// <summary>
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// </summary>
+        [Output("firewall")]
+        public Output<Outputs.LoadBalancerFirewall> Firewall { get; private set; } = null!;
+
+        /// <summary>
         /// A list of `forwarding_rule` to be assigned to the
         /// Load Balancer. The `forwarding_rule` block is documented below.
         /// </summary>
@@ -175,6 +183,15 @@ namespace Pulumi.DigitalOcean
         [Output("healthcheck")]
         public Output<Outputs.LoadBalancerHealthcheck> Healthcheck { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        /// </summary>
+        [Output("httpIdleTimeoutSeconds")]
+        public Output<int> HttpIdleTimeoutSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// The ip of the Load Balancer
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
@@ -191,6 +208,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// A boolean value indicating whether
         /// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
         /// Default value is `false`.
@@ -202,7 +225,7 @@ namespace Pulumi.DigitalOcean
         /// The region to start in
         /// </summary>
         [Output("region")]
-        public Output<string> Region { get; private set; } = null!;
+        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
         /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
@@ -225,6 +248,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("stickySessions")]
         public Output<Outputs.LoadBalancerStickySessions> StickySessions { get; private set; } = null!;
+
+        /// <summary>
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.
@@ -324,6 +353,12 @@ namespace Pulumi.DigitalOcean
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
 
+        /// <summary>
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// </summary>
+        [Input("firewall")]
+        public Input<Inputs.LoadBalancerFirewallArgs>? Firewall { get; set; }
+
         [Input("forwardingRules", required: true)]
         private InputList<Inputs.LoadBalancerForwardingRuleArgs>? _forwardingRules;
 
@@ -345,10 +380,22 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.LoadBalancerHealthcheckArgs>? Healthcheck { get; set; }
 
         /// <summary>
+        /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        /// </summary>
+        [Input("httpIdleTimeoutSeconds")]
+        public Input<int>? HttpIdleTimeoutSeconds { get; set; }
+
+        /// <summary>
         /// The Load Balancer name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether
@@ -361,8 +408,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The region to start in
         /// </summary>
-        [Input("region", required: true)]
-        public InputUnion<string, Pulumi.DigitalOcean.Region> Region { get; set; } = null!;
+        [Input("region")]
+        public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
         /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
@@ -382,6 +429,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsArgs>? StickySessions { get; set; }
+
+        /// <summary>
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.
@@ -443,6 +496,12 @@ namespace Pulumi.DigitalOcean
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
 
+        /// <summary>
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// </summary>
+        [Input("firewall")]
+        public Input<Inputs.LoadBalancerFirewallGetArgs>? Firewall { get; set; }
+
         [Input("forwardingRules")]
         private InputList<Inputs.LoadBalancerForwardingRuleGetArgs>? _forwardingRules;
 
@@ -463,6 +522,15 @@ namespace Pulumi.DigitalOcean
         [Input("healthcheck")]
         public Input<Inputs.LoadBalancerHealthcheckGetArgs>? Healthcheck { get; set; }
 
+        /// <summary>
+        /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        /// </summary>
+        [Input("httpIdleTimeoutSeconds")]
+        public Input<int>? HttpIdleTimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// The ip of the Load Balancer
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
@@ -477,6 +545,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether
@@ -513,6 +587,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsGetArgs>? StickySessions { get; set; }
+
+        /// <summary>
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.

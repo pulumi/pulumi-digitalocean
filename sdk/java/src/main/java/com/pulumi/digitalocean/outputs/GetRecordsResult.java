@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRecordsResult {
+    /**
+     * @return Domain of the DNS record.
+     * 
+     */
     private String domain;
     private @Nullable List<GetRecordsFilter> filters;
     /**
@@ -25,6 +29,10 @@ public final class GetRecordsResult {
     private @Nullable List<GetRecordsSort> sorts;
 
     private GetRecordsResult() {}
+    /**
+     * @return Domain of the DNS record.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
@@ -104,13 +112,13 @@ public final class GetRecordsResult {
             return sorts(List.of(sorts));
         }
         public GetRecordsResult build() {
-            final var o = new GetRecordsResult();
-            o.domain = domain;
-            o.filters = filters;
-            o.id = id;
-            o.records = records;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetRecordsResult();
+            _resultValue.domain = domain;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.records = records;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

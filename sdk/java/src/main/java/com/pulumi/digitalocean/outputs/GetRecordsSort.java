@@ -69,10 +69,10 @@ public final class GetRecordsSort {
             return this;
         }
         public GetRecordsSort build() {
-            final var o = new GetRecordsSort();
-            o.direction = direction;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetRecordsSort();
+            _resultValue.direction = direction;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

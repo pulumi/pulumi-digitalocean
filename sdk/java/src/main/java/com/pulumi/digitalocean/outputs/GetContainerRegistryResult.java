@@ -180,16 +180,16 @@ public final class GetContainerRegistryResult {
             return this;
         }
         public GetContainerRegistryResult build() {
-            final var o = new GetContainerRegistryResult();
-            o.createdAt = createdAt;
-            o.endpoint = endpoint;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.serverUrl = serverUrl;
-            o.storageUsageBytes = storageUsageBytes;
-            o.subscriptionTierSlug = subscriptionTierSlug;
-            return o;
+            final var _resultValue = new GetContainerRegistryResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.endpoint = endpoint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.serverUrl = serverUrl;
+            _resultValue.storageUsageBytes = storageUsageBytes;
+            _resultValue.subscriptionTierSlug = subscriptionTierSlug;
+            return _resultValue;
         }
     }
 }

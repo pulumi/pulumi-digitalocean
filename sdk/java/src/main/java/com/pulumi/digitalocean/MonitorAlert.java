@@ -43,7 +43,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * read more in [Slack&#39;s documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
      * 
      */
-    @Export(name="alerts", type=MonitorAlertAlerts.class, parameters={})
+    @Export(name="alerts", refs={MonitorAlertAlerts.class}, tree="[0]")
     private Output<MonitorAlertAlerts> alerts;
 
     /**
@@ -60,7 +60,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * This may be either `GreaterThan` or `LessThan`.
      * 
      */
-    @Export(name="compare", type=String.class, parameters={})
+    @Export(name="compare", refs={String.class}, tree="[0]")
     private Output<String> compare;
 
     /**
@@ -75,7 +75,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * The description of the alert.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -89,7 +89,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * The status of the alert.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -103,7 +103,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * A list of IDs for the resources to which the alert policy applies.
      * 
      */
-    @Export(name="entities", type=List.class, parameters={String.class})
+    @Export(name="entities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> entities;
 
     /**
@@ -117,7 +117,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -135,10 +135,16 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/insights/lbaas/increase_in_http_error_rate_percentage_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_percentage_4xx`,
+     * `v1/insights/lbaas/increase_in_http_error_rate_count_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_count_4xx`,
+     * `v1/insights/lbaas/high_http_request_response_time`, `v1/insights/lbaas/high_http_request_response_time_50p`,
+     * `v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -149,7 +155,13 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * `v1/insights/droplet/public_outbound_bandwidth`, `v1/insights/droplet/public_inbound_bandwidth`,
      * `v1/insights/droplet/private_outbound_bandwidth`, `v1/insights/droplet/private_inbound_bandwidth`,
      * `v1/insights/lbaas/avg_cpu_utilization_percent`, `v1/insights/lbaas/connection_utilization_percent`,
-     * `v1/insights/lbaas/droplet_health`, or `v1/insights/lbaas/tls_connections_per_second_utilization_percent`.
+     * `v1/insights/lbaas/droplet_health`, `v1/insights/lbaas/tls_connections_per_second_utilization_percent`,
+     * `v1/insights/lbaas/increase_in_http_error_rate_percentage_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_percentage_4xx`,
+     * `v1/insights/lbaas/increase_in_http_error_rate_count_5xx`, `v1/insights/lbaas/increase_in_http_error_rate_count_4xx`,
+     * `v1/insights/lbaas/high_http_request_response_time`, `v1/insights/lbaas/high_http_request_response_time_50p`,
+     * `v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,
+     * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
+     * `v1/dbaas/alerts/disk_utilization_alerts`.
      * 
      */
     public Output<String> type() {
@@ -159,7 +171,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * The uuid of the alert.
      * 
      */
-    @Export(name="uuid", type=String.class, parameters={})
+    @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
@@ -174,7 +186,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * DigitalOcean will show the correct unit in the web panel.
      * 
      */
-    @Export(name="value", type=Double.class, parameters={})
+    @Export(name="value", refs={Double.class}, tree="[0]")
     private Output<Double> value;
 
     /**
@@ -189,7 +201,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
      * 
      */
-    @Export(name="window", type=String.class, parameters={})
+    @Export(name="window", refs={String.class}, tree="[0]")
     private Output<String> window;
 
     /**

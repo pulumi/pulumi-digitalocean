@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -21,11 +23,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
         "name": args.name,
         "tags": args.tags,
@@ -93,6 +92,10 @@ export interface GetDatabaseClusterResult {
      */
     readonly privateUri: string;
     /**
+     * The ID of the project that the database cluster is assigned to.
+     */
+    readonly projectId: string;
+    /**
      * DigitalOcean region where the cluster will reside.
      */
     readonly region: string;
@@ -100,6 +103,7 @@ export interface GetDatabaseClusterResult {
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size: string;
+    readonly storageSizeMib: string;
     readonly tags?: string[];
     /**
      * The full URI for connecting to the database cluster.
@@ -118,9 +122,23 @@ export interface GetDatabaseClusterResult {
      */
     readonly version: string;
 }
-
+/**
+ * Provides information on a DigitalOcean database cluster resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDatabaseCluster({
+ *     name: "example-cluster",
+ * });
+ * export const databaseOutput = example.then(example => example.uri);
+ * ```
+ */
 export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseClusterResult> {
-    return pulumi.output(args).apply(a => getDatabaseCluster(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabaseCluster(a, opts))
 }
 
 /**

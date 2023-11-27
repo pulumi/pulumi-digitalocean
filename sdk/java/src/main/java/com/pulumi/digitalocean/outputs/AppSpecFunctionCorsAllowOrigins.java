@@ -86,11 +86,11 @@ public final class AppSpecFunctionCorsAllowOrigins {
             return this;
         }
         public AppSpecFunctionCorsAllowOrigins build() {
-            final var o = new AppSpecFunctionCorsAllowOrigins();
-            o.exact = exact;
-            o.prefix = prefix;
-            o.regex = regex;
-            return o;
+            final var _resultValue = new AppSpecFunctionCorsAllowOrigins();
+            _resultValue.exact = exact;
+            _resultValue.prefix = prefix;
+            _resultValue.regex = regex;
+            return _resultValue;
         }
     }
 }

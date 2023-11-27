@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//			_, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 //				MostRecent: pulumi.BoolRef(true),
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
@@ -58,7 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &GetVolumeSnapshotArgs{
+//			snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
 //				MostRecent: pulumi.BoolRef(true),
@@ -69,7 +70,7 @@ import (
 //			_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
 //				Region:     pulumi.String("nyc3"),
 //				Size:       pulumi.Int(100),
-//				SnapshotId: pulumi.String(snapshot.Id),
+//				SnapshotId: *pulumi.String(snapshot.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -80,6 +81,7 @@ import (
 //
 // ```
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeSnapshotResult
 	err := ctx.Invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, &rv, opts...)
 	if err != nil {
@@ -91,6 +93,10 @@ func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, o
 // A collection of arguments for invoking getVolumeSnapshot.
 type LookupVolumeSnapshotArgs struct {
 	// If more than one result is returned, use the most recent volume snapshot.
+	//
+	// > **NOTE:** If more or less than a single match is returned by the search,
+	// the provider will fail. Ensure that your search is specific enough to return
+	// a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
 	MostRecent *bool `pulumi:"mostRecent"`
 	// The name of the volume snapshot.
 	Name *string `pulumi:"name"`
@@ -138,6 +144,10 @@ func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOu
 // A collection of arguments for invoking getVolumeSnapshot.
 type LookupVolumeSnapshotOutputArgs struct {
 	// If more than one result is returned, use the most recent volume snapshot.
+	//
+	// > **NOTE:** If more or less than a single match is returned by the search,
+	// the provider will fail. Ensure that your search is specific enough to return
+	// a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
 	// The name of the volume snapshot.
 	Name pulumi.StringPtrInput `pulumi:"name"`

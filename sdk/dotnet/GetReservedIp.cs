@@ -20,6 +20,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -42,7 +43,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReservedIpResult> InvokeAsync(GetReservedIpArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -53,6 +54,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using DigitalOcean = Pulumi.DigitalOcean;
         /// 
@@ -75,7 +77,7 @@ namespace Pulumi.DigitalOcean
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReservedIpResult> Invoke(GetReservedIpInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -111,13 +113,22 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetReservedIpResult
     {
+        /// <summary>
+        /// The Droplet id that the reserved IP has been assigned to.
+        /// </summary>
         public readonly int DropletId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string IpAddress;
+        /// <summary>
+        /// The region that the reserved IP is reserved to.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The uniform resource name of the reserved IP.
+        /// </summary>
         public readonly string Urn;
 
         [OutputConstructor]

@@ -22,10 +22,16 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Before importing a Kubernetes cluster, the cluster&#39;s default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and all of its node pools can be imported using the cluster&#39;s `id`, e.g.
+ * Before importing a Kubernetes cluster, the cluster&#39;s default node pool must be tagged with the `terraform:default-node-pool` tag. The provider will automatically add this tag if the cluster only has a single node pool. Clusters with more than one node pool, however, will require that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be the default node pool. Then the Kubernetes cluster and its default node pool can be imported using the cluster&#39;s `id`, e.g.
  * 
  * ```sh
  *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
+ * ```
+ * 
+ *  Additional node pools must be imported separately as `digitalocean_kubernetes_cluster` resources, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
  * ```
  * 
  */
@@ -35,7 +41,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      * 
      */
-    @Export(name="autoUpgrade", type=Boolean.class, parameters={})
+    @Export(name="autoUpgrade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoUpgrade;
 
     /**
@@ -49,7 +55,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      * 
      */
-    @Export(name="clusterSubnet", type=String.class, parameters={})
+    @Export(name="clusterSubnet", refs={String.class}, tree="[0]")
     private Output<String> clusterSubnet;
 
     /**
@@ -63,7 +69,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The uniform resource name (URN) for the Kubernetes cluster.
      * 
      */
-    @Export(name="clusterUrn", type=String.class, parameters={})
+    @Export(name="clusterUrn", refs={String.class}, tree="[0]")
     private Output<String> clusterUrn;
 
     /**
@@ -77,7 +83,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The date and time when the node was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -88,10 +94,28 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Export(name="destroyAllAssociatedResources", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> destroyAllAssociatedResources;
+
+    /**
+     * @return **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Output<Optional<Boolean>> destroyAllAssociatedResources() {
+        return Codegen.optional(this.destroyAllAssociatedResources);
+    }
+    /**
      * The base URL of the API server on the Kubernetes master node.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -105,7 +129,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * Enable/disable the high availability control plane for a cluster. High availability can only be set when creating a cluster. Any update will create a new cluster. Default: false
      * 
      */
-    @Export(name="ha", type=Boolean.class, parameters={})
+    @Export(name="ha", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ha;
 
     /**
@@ -119,7 +143,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      * 
      */
-    @Export(name="ipv4Address", type=String.class, parameters={})
+    @Export(name="ipv4Address", refs={String.class}, tree="[0]")
     private Output<String> ipv4Address;
 
     /**
@@ -129,7 +153,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     public Output<String> ipv4Address() {
         return this.ipv4Address;
     }
-    @Export(name="kubeConfigs", type=List.class, parameters={KubernetesClusterKubeConfig.class})
+    @Export(name="kubeConfigs", refs={List.class,KubernetesClusterKubeConfig.class}, tree="[0,1]")
     private Output<List<KubernetesClusterKubeConfig>> kubeConfigs;
 
     public Output<List<KubernetesClusterKubeConfig>> kubeConfigs() {
@@ -139,7 +163,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * A block representing the cluster&#39;s maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
      * 
      */
-    @Export(name="maintenancePolicy", type=KubernetesClusterMaintenancePolicy.class, parameters={})
+    @Export(name="maintenancePolicy", refs={KubernetesClusterMaintenancePolicy.class}, tree="[0]")
     private Output<KubernetesClusterMaintenancePolicy> maintenancePolicy;
 
     /**
@@ -153,7 +177,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * A name for the node pool.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -167,7 +191,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * A block representing the cluster&#39;s default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      * 
      */
-    @Export(name="nodePool", type=KubernetesClusterNodePool.class, parameters={})
+    @Export(name="nodePool", refs={KubernetesClusterNodePool.class}, tree="[0]")
     private Output<KubernetesClusterNodePool> nodePool;
 
     /**
@@ -181,7 +205,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The slug identifier for the region where the Kubernetes cluster will be created.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -192,10 +216,24 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    @Export(name="registryIntegration", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> registryIntegration;
+
+    /**
+     * @return Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+     * 
+     */
+    public Output<Optional<Boolean>> registryIntegration() {
+        return Codegen.optional(this.registryIntegration);
+    }
+    /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      * 
      */
-    @Export(name="serviceSubnet", type=String.class, parameters={})
+    @Export(name="serviceSubnet", refs={String.class}, tree="[0]")
     private Output<String> serviceSubnet;
 
     /**
@@ -209,7 +247,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * A string indicating the current status of the individual node.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -223,7 +261,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * Enable/disable surge upgrades for a cluster. Default: false
      * 
      */
-    @Export(name="surgeUpgrade", type=Boolean.class, parameters={})
+    @Export(name="surgeUpgrade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> surgeUpgrade;
 
     /**
@@ -237,7 +275,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * A list of tag names to be applied to the Kubernetes cluster.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -251,7 +289,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The date and time when the node was last updated.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -265,7 +303,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
@@ -279,7 +317,7 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      * The ID of the VPC where the Kubernetes cluster will be located.
      * 
      */
-    @Export(name="vpcUuid", type=String.class, parameters={})
+    @Export(name="vpcUuid", refs={String.class}, tree="[0]")
     private Output<String> vpcUuid;
 
     /**
@@ -322,6 +360,9 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "kubeConfigs"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

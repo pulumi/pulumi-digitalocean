@@ -74,7 +74,7 @@ public class VolumeAttachment extends com.pulumi.resources.CustomResource {
      * ID of the Droplet to attach the volume to.
      * 
      */
-    @Export(name="dropletId", type=Integer.class, parameters={})
+    @Export(name="dropletId", refs={Integer.class}, tree="[0]")
     private Output<Integer> dropletId;
 
     /**
@@ -88,7 +88,7 @@ public class VolumeAttachment extends com.pulumi.resources.CustomResource {
      * ID of the Volume to be attached to the Droplet.
      * 
      */
-    @Export(name="volumeId", type=String.class, parameters={})
+    @Export(name="volumeId", refs={String.class}, tree="[0]")
     private Output<String> volumeId;
 
     /**

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleSshKey, err := digitalocean.LookupSshKey(ctx, &GetSshKeyArgs{
+//			exampleSshKey, err := digitalocean.LookupSshKey(ctx, &digitalocean.LookupSshKeyArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
@@ -44,7 +45,7 @@ import (
 //				Region: pulumi.String("nyc2"),
 //				Size:   pulumi.String("s-1vcpu-1gb"),
 //				SshKeys: pulumi.StringArray{
-//					pulumi.Int(exampleSshKey.Id),
+//					*pulumi.Int(exampleSshKey.Id),
 //				},
 //			})
 //			if err != nil {
@@ -56,6 +57,7 @@ import (
 //
 // ```
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSshKeyResult
 	err := ctx.Invoke("digitalocean:index/getSshKey:getSshKey", args, &rv, opts...)
 	if err != nil {
@@ -72,10 +74,13 @@ type LookupSshKeyArgs struct {
 
 // A collection of values returned by getSshKey.
 type LookupSshKeyResult struct {
+	// The fingerprint of the public key of the ssh key.
 	Fingerprint string `pulumi:"fingerprint"`
-	Id          int    `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	PublicKey   string `pulumi:"publicKey"`
+	// The ID of the ssh key.
+	Id   int    `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// The public key of the ssh key.
+	PublicKey string `pulumi:"publicKey"`
 }
 
 func LookupSshKeyOutput(ctx *pulumi.Context, args LookupSshKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSshKeyResultOutput {
@@ -116,10 +121,12 @@ func (o LookupSshKeyResultOutput) ToLookupSshKeyResultOutputWithContext(ctx cont
 	return o
 }
 
+// The fingerprint of the public key of the ssh key.
 func (o LookupSshKeyResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
+// The ID of the ssh key.
 func (o LookupSshKeyResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -128,6 +135,7 @@ func (o LookupSshKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The public key of the ssh key.
 func (o LookupSshKeyResultOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) string { return v.PublicKey }).(pulumi.StringOutput)
 }

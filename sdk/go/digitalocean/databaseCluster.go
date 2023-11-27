@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +33,7 @@ import (
 //				NodeCount: pulumi.Int(1),
 //				Region:    pulumi.String("nyc1"),
 //				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //			})
 //			if err != nil {
 //				return err
@@ -88,7 +89,35 @@ import (
 //				NodeCount: pulumi.Int(1),
 //				Region:    pulumi.String("nyc1"),
 //				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Version:   pulumi.String("6"),
+//				Version:   pulumi.String("7"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Create a new Kafka database cluster
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("kafka"),
+//				NodeCount: pulumi.Int(3),
+//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Version:   pulumi.String("3.5"),
 //			})
 //			if err != nil {
 //				return err
@@ -126,6 +155,56 @@ import (
 //	}
 //
 // ```
+// ## Create a new database cluster based on a backup of an existing cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			doby, err := digitalocean.NewDatabaseCluster(ctx, "doby", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("production"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDatabaseCluster(ctx, "dobyBackup", &digitalocean.DatabaseClusterArgs{
+//				Engine:    pulumi.String("pg"),
+//				Version:   pulumi.String("11"),
+//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Region:    pulumi.String("nyc1"),
+//				NodeCount: pulumi.Int(1),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("production"),
+//				},
+//				BackupRestore: &digitalocean.DatabaseClusterBackupRestoreArgs{
+//					DatabaseName: pulumi.String("dobydb"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				doby,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -139,11 +218,13 @@ import (
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
 
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore DatabaseClusterBackupRestorePtrOutput `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrOutput `pulumi:"evictionPolicy"`
@@ -153,7 +234,7 @@ type DatabaseCluster struct {
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayOutput `pulumi:"maintenanceWindows"`
 	// The name of the database cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// Password for the cluster's default user.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -165,19 +246,24 @@ type DatabaseCluster struct {
 	PrivateNetworkUuid pulumi.StringOutput `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringOutput `pulumi:"privateUri"`
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrOutput `pulumi:"sqlMode"`
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib pulumi.StringOutput `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Username for the cluster's default user.
 	User pulumi.StringOutput `pulumi:"user"`
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -200,6 +286,13 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"privateUri",
+		"uri",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseCluster
 	err := ctx.RegisterResource("digitalocean:index/databaseCluster:DatabaseCluster", name, args, &resource, opts...)
 	if err != nil {
@@ -222,11 +315,13 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseCluster resources.
 type databaseClusterState struct {
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database *string `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine *string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -236,7 +331,7 @@ type databaseClusterState struct {
 	MaintenanceWindows []DatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// The name of the database cluster.
 	Name *string `pulumi:"name"`
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Password for the cluster's default user.
 	Password *string `pulumi:"password"`
@@ -248,28 +343,35 @@ type databaseClusterState struct {
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri *string `pulumi:"privateUri"`
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId *string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
 	Size *string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database cluster.
 	Uri *string `pulumi:"uri"`
 	// Username for the cluster's default user.
 	User *string `pulumi:"user"`
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version *string `pulumi:"version"`
 }
 
 type DatabaseClusterState struct {
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringPtrInput
 	// Name of the cluster's default database.
 	Database pulumi.StringPtrInput
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringPtrInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
@@ -279,7 +381,7 @@ type DatabaseClusterState struct {
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayInput
 	// The name of the database cluster.
 	Name pulumi.StringPtrInput
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount pulumi.IntPtrInput
 	// Password for the cluster's default user.
 	Password pulumi.StringPtrInput
@@ -291,19 +393,24 @@ type DatabaseClusterState struct {
 	PrivateNetworkUuid pulumi.StringPtrInput
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
 	PrivateUri pulumi.StringPtrInput
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
 	Size pulumi.StringPtrInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
 	// The full URI for connecting to the database cluster.
 	Uri pulumi.StringPtrInput
 	// Username for the cluster's default user.
 	User pulumi.StringPtrInput
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrInput
 }
 
@@ -312,7 +419,9 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 }
 
 type databaseClusterArgs struct {
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine string `pulumi:"engine"`
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -320,25 +429,32 @@ type databaseClusterArgs struct {
 	MaintenanceWindows []DatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// The name of the database cluster.
 	Name *string `pulumi:"name"`
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount int `pulumi:"nodeCount"`
 	// The ID of the VPC where the database cluster will be located.
 	PrivateNetworkUuid *string `pulumi:"privateNetworkUuid"`
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId *string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
 	Size string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
-	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+	// Create a new database cluster based on a backup of an existing cluster.
+	BackupRestore DatabaseClusterBackupRestorePtrInput
+	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringInput
 	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
@@ -346,19 +462,24 @@ type DatabaseClusterArgs struct {
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayInput
 	// The name of the database cluster.
 	Name pulumi.StringPtrInput
-	// Number of nodes that will be included in the cluster.
+	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 	NodeCount pulumi.IntInput
 	// The ID of the VPC where the database cluster will be located.
 	PrivateNetworkUuid pulumi.StringPtrInput
+	// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+	ProjectId pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringInput
 	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
 	Size pulumi.StringInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
+	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
-	// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrInput
 }
 
@@ -449,6 +570,11 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// Create a new database cluster based on a backup of an existing cluster.
+func (o DatabaseClusterOutput) BackupRestore() DatabaseClusterBackupRestorePtrOutput {
+	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterBackupRestorePtrOutput { return v.BackupRestore }).(DatabaseClusterBackupRestorePtrOutput)
+}
+
 // The uniform resource name of the database cluster.
 func (o DatabaseClusterOutput) ClusterUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.ClusterUrn }).(pulumi.StringOutput)
@@ -459,7 +585,7 @@ func (o DatabaseClusterOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
-// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, or `mongodb` for MongoDB).
+// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 func (o DatabaseClusterOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -484,7 +610,7 @@ func (o DatabaseClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of nodes that will be included in the cluster.
+// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
 func (o DatabaseClusterOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -514,6 +640,11 @@ func (o DatabaseClusterOutput) PrivateUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.PrivateUri }).(pulumi.StringOutput)
 }
 
+// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
+func (o DatabaseClusterOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
 // DigitalOcean region where the cluster will reside.
 func (o DatabaseClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -527,6 +658,11 @@ func (o DatabaseClusterOutput) Size() pulumi.StringOutput {
 // A comma separated string specifying the  SQL modes for a MySQL cluster.
 func (o DatabaseClusterOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.SqlMode }).(pulumi.StringPtrOutput)
+}
+
+// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+func (o DatabaseClusterOutput) StorageSizeMib() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.StorageSizeMib }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the database cluster.
@@ -544,7 +680,8 @@ func (o DatabaseClusterOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
 }
 
-// Engine version used by the cluster (ex. `11` for PostgreSQL 11).
+// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
+// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
 func (o DatabaseClusterOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

@@ -70,16 +70,39 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      * 
+     * @deprecated
+     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * 
      */
+    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
     @Import(name="corsRules")
     private @Nullable Output<List<SpacesBucketCorsRuleArgs>> corsRules;
 
     /**
      * @return A rule of Cross-Origin Resource Sharing (documented below).
      * 
+     * @deprecated
+     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * 
      */
+    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
     public Optional<Output<List<SpacesBucketCorsRuleArgs>>> corsRules() {
         return Optional.ofNullable(this.corsRules);
+    }
+
+    /**
+     * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    @Import(name="endpoint")
+    private @Nullable Output<String> endpoint;
+
+    /**
+     * @return The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+     * 
+     */
+    public Optional<Output<String>> endpoint() {
+        return Optional.ofNullable(this.endpoint);
     }
 
     /**
@@ -164,6 +187,7 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
         this.bucketDomainName = $.bucketDomainName;
         this.bucketUrn = $.bucketUrn;
         this.corsRules = $.corsRules;
+        this.endpoint = $.endpoint;
         this.forceDestroy = $.forceDestroy;
         this.lifecycleRules = $.lifecycleRules;
         this.name = $.name;
@@ -257,7 +281,11 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+         * 
          */
+        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
         public Builder corsRules(@Nullable Output<List<SpacesBucketCorsRuleArgs>> corsRules) {
             $.corsRules = corsRules;
             return this;
@@ -268,7 +296,11 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+         * 
          */
+        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
         public Builder corsRules(List<SpacesBucketCorsRuleArgs> corsRules) {
             return corsRules(Output.of(corsRules));
         }
@@ -278,9 +310,34 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+         * 
          */
+        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
         public Builder corsRules(SpacesBucketCorsRuleArgs... corsRules) {
             return corsRules(List.of(corsRules));
+        }
+
+        /**
+         * @param endpoint The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(@Nullable Output<String> endpoint) {
+            $.endpoint = endpoint;
+            return this;
+        }
+
+        /**
+         * @param endpoint The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoint(String endpoint) {
+            return endpoint(Output.of(endpoint));
         }
 
         /**

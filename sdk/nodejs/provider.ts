@@ -22,7 +22,7 @@ export class Provider extends pulumi.ProviderResource {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Provider.__pulumiType;
+        return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
     /**
@@ -58,6 +58,10 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
+            resourceInputs["httpRetryMax"] = pulumi.output(args ? args.httpRetryMax : undefined).apply(JSON.stringify);
+            resourceInputs["httpRetryWaitMax"] = pulumi.output(args ? args.httpRetryWaitMax : undefined).apply(JSON.stringify);
+            resourceInputs["httpRetryWaitMin"] = pulumi.output(args ? args.httpRetryWaitMin : undefined).apply(JSON.stringify);
+            resourceInputs["requestsPerSecond"] = pulumi.output(args ? args.requestsPerSecond : undefined).apply(JSON.stringify);
             resourceInputs["spacesAccessId"] = args ? args.spacesAccessId : undefined;
             resourceInputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
             resourceInputs["spacesSecretKey"] = args ? args.spacesSecretKey : undefined;
@@ -76,6 +80,22 @@ export interface ProviderArgs {
      * The URL to use for the DigitalOcean API.
      */
     apiEndpoint?: pulumi.Input<string>;
+    /**
+     * The maximum number of retries on a failed API request.
+     */
+    httpRetryMax?: pulumi.Input<number>;
+    /**
+     * The maximum wait time (in seconds) between failed API requests.
+     */
+    httpRetryWaitMax?: pulumi.Input<number>;
+    /**
+     * The minimum wait time (in seconds) between failed API requests.
+     */
+    httpRetryWaitMin?: pulumi.Input<number>;
+    /**
+     * The rate of requests per second to limit the HTTP client.
+     */
+    requestsPerSecond?: pulumi.Input<number>;
     /**
      * The access key ID for Spaces API operations.
      */
