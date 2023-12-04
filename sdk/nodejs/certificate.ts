@@ -25,9 +25,9 @@ import * as utilities from "./utilities";
  *
  * const cert = new digitalocean.Certificate("cert", {
  *     type: "custom",
- *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem"),
- *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem"),
- *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem"),
+ *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem", "utf8"),
+ *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem", "utf8"),
+ *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem", "utf8"),
  * });
  * ```
  * ### Let's Encrypt Certificate
