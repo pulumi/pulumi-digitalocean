@@ -1765,6 +1765,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "digitalocean:index/app:App": "digitalocean_app",
