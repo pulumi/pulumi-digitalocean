@@ -469,7 +469,7 @@ export interface AppSpecIngressRuleRedirect {
      */
     authority?: string;
     /**
-     * The port to redirect to.
+     * The health check will be performed on this port instead of component's HTTP port.
      */
     port?: number;
     /**
@@ -945,6 +945,10 @@ export interface AppSpecServiceHealthCheck {
      * The number of seconds to wait between health checks.
      */
     periodSeconds?: number;
+    /**
+     * The health check will be performed on this port instead of component's HTTP port.
+     */
+    port?: number;
     /**
      * The number of successful health checks before considered healthy.
      */
@@ -1552,9 +1556,9 @@ export interface DatabaseKafkaTopicConfig {
     minCleanableDirtyRatio: number;
     minCompactionLagMs: string;
     /**
-     * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
      */
-    minInsyncReplicas: number;
+    minInsyncReplicas?: number;
     /**
      * Determines whether to preallocate a file on disk when creating a new log segment within a topic.
      */
@@ -1583,10 +1587,6 @@ export interface DatabaseKafkaTopicConfig {
      * The maximum time, in ms, before the topic log will flush to disk.
      */
     segmentMs: string;
-    /**
-     * Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-     */
-    uncleanLeaderElectionEnable: boolean;
 }
 
 export interface DatabaseUserSetting {
@@ -1608,7 +1608,7 @@ export interface DatabaseUserSettingAcl {
      */
     permission: string;
     /**
-     * A regex for matching the topic(s) that this ACL should apply to.
+     * A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
      */
     topic: string;
 }
@@ -2579,6 +2579,7 @@ export interface GetAppSpecServiceHealthCheck {
      * The number of seconds to wait between health checks.
      */
     periodSeconds?: number;
+    port?: number;
     /**
      * The number of successful health checks before considered healthy.
      */

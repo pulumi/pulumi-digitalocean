@@ -29,6 +29,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The number of seconds to wait between health checks.
         /// </summary>
         public readonly int? PeriodSeconds;
+        public readonly int? Port;
         /// <summary>
         /// The number of successful health checks before considered healthy.
         /// </summary>
@@ -48,6 +49,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             int? periodSeconds,
 
+            int? port,
+
             int? successThreshold,
 
             int? timeoutSeconds)
@@ -56,6 +59,7 @@ namespace Pulumi.DigitalOcean.Outputs
             HttpPath = httpPath;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;
+            Port = port;
             SuccessThreshold = successThreshold;
             TimeoutSeconds = timeoutSeconds;
         }

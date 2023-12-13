@@ -22,7 +22,7 @@ public final class DatabaseUserSettingAcl {
      */
     private String permission;
     /**
-     * @return A regex for matching the topic(s) that this ACL should apply to.
+     * @return A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
      * 
      */
     private String topic;
@@ -43,7 +43,7 @@ public final class DatabaseUserSettingAcl {
         return this.permission;
     }
     /**
-     * @return A regex for matching the topic(s) that this ACL should apply to.
+     * @return A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
      * 
      */
     public String topic() {

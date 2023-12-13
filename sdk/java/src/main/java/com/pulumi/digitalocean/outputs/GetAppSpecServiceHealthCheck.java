@@ -32,6 +32,7 @@ public final class GetAppSpecServiceHealthCheck {
      * 
      */
     private @Nullable Integer periodSeconds;
+    private @Nullable Integer port;
     /**
      * @return The number of successful health checks before considered healthy.
      * 
@@ -72,6 +73,9 @@ public final class GetAppSpecServiceHealthCheck {
     public Optional<Integer> periodSeconds() {
         return Optional.ofNullable(this.periodSeconds);
     }
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
+    }
     /**
      * @return The number of successful health checks before considered healthy.
      * 
@@ -100,6 +104,7 @@ public final class GetAppSpecServiceHealthCheck {
         private @Nullable String httpPath;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
+        private @Nullable Integer port;
         private @Nullable Integer successThreshold;
         private @Nullable Integer timeoutSeconds;
         public Builder() {}
@@ -109,6 +114,7 @@ public final class GetAppSpecServiceHealthCheck {
     	      this.httpPath = defaults.httpPath;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
+    	      this.port = defaults.port;
     	      this.successThreshold = defaults.successThreshold;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
@@ -134,6 +140,11 @@ public final class GetAppSpecServiceHealthCheck {
             return this;
         }
         @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+            this.port = port;
+            return this;
+        }
+        @CustomType.Setter
         public Builder successThreshold(@Nullable Integer successThreshold) {
             this.successThreshold = successThreshold;
             return this;
@@ -149,6 +160,7 @@ public final class GetAppSpecServiceHealthCheck {
             _resultValue.httpPath = httpPath;
             _resultValue.initialDelaySeconds = initialDelaySeconds;
             _resultValue.periodSeconds = periodSeconds;
+            _resultValue.port = port;
             _resultValue.successThreshold = successThreshold;
             _resultValue.timeoutSeconds = timeoutSeconds;
             return _resultValue;

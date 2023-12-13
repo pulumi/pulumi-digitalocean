@@ -43,6 +43,7 @@
         "getContainerRegistry.ts",
         "getDatabaseCa.ts",
         "getDatabaseCluster.ts",
+        "getDatabaseConnectionPool.ts",
         "getDatabaseReplica.ts",
         "getDatabaseUser.ts",
         "getDomain.ts",

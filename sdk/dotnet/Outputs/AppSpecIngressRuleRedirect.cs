@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Authority;
         /// <summary>
-        /// The port to redirect to.
+        /// The health check will be performed on this port instead of component's HTTP port.
         /// </summary>
         public readonly int? Port;
         /// <summary>

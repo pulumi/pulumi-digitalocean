@@ -30,6 +30,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int? PeriodSeconds;
         /// <summary>
+        /// The health check will be performed on this port instead of component's HTTP port.
+        /// </summary>
+        public readonly int? Port;
+        /// <summary>
         /// The number of successful health checks before considered healthy.
         /// </summary>
         public readonly int? SuccessThreshold;
@@ -48,6 +52,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             int? periodSeconds,
 
+            int? port,
+
             int? successThreshold,
 
             int? timeoutSeconds)
@@ -56,6 +62,7 @@ namespace Pulumi.DigitalOcean.Outputs
             HttpPath = httpPath;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;
+            Port = port;
             SuccessThreshold = successThreshold;
             TimeoutSeconds = timeoutSeconds;
         }

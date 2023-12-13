@@ -46,14 +46,14 @@ public final class DatabaseUserSettingAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * A regex for matching the topic(s) that this ACL should apply to.
+     * A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
      * 
      */
     @Import(name="topic", required=true)
     private Output<String> topic;
 
     /**
-     * @return A regex for matching the topic(s) that this ACL should apply to.
+     * @return A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
      * 
      */
     public Output<String> topic() {
@@ -129,7 +129,7 @@ public final class DatabaseUserSettingAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param topic A regex for matching the topic(s) that this ACL should apply to.
+         * @param topic A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DatabaseUserSettingAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param topic A regex for matching the topic(s) that this ACL should apply to.
+         * @param topic A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
          * 
          * @return builder
          * 

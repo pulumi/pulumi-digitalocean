@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .engine(&#34;kafka&#34;)
  *             .nodeCount(3)
  *             .region(&#34;nyc1&#34;)
- *             .size(&#34;db-s-1vcpu-2gb&#34;)
+ *             .size(&#34;db-s-2vcpu-2gb&#34;)
  *             .version(&#34;3.5&#34;)
  *             .build());
  * 

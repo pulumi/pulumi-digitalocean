@@ -231,7 +231,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
             engine="kafka",
             version="3.5",
-            size="db-s-1vcpu-2gb",
+            size="db-s-2vcpu-2gb",
             region="nyc1",
             node_count=3,
             tags=["production"])
@@ -263,7 +263,6 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                 segment_index_bytes="10485760",
                 segment_jitter_ms="0",
                 segment_ms="604800000",
-                unclean_leader_election_enable=True,
             )])
         ```
 
@@ -302,7 +301,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
             engine="kafka",
             version="3.5",
-            size="db-s-1vcpu-2gb",
+            size="db-s-2vcpu-2gb",
             region="nyc1",
             node_count=3,
             tags=["production"])
@@ -334,7 +333,6 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                 segment_index_bytes="10485760",
                 segment_jitter_ms="0",
                 segment_ms="604800000",
-                unclean_leader_election_enable=True,
             )])
         ```
 

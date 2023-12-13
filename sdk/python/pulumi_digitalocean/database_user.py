@@ -246,7 +246,7 @@ class DatabaseUser(pulumi.CustomResource):
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
             engine="kafka",
             version="3.5",
-            size="db-s-1vcpu-2gb",
+            size="db-s-2vcpu-2gb",
             region="nyc1",
             node_count=3)
         foobar_topic = digitalocean.DatabaseKafkaTopic("foobarTopic", cluster_id=digitalocean_database_cluster["foobar"]["id"])
@@ -336,7 +336,7 @@ class DatabaseUser(pulumi.CustomResource):
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
             engine="kafka",
             version="3.5",
-            size="db-s-1vcpu-2gb",
+            size="db-s-2vcpu-2gb",
             region="nyc1",
             node_count=3)
         foobar_topic = digitalocean.DatabaseKafkaTopic("foobarTopic", cluster_id=digitalocean_database_cluster["foobar"]["id"])

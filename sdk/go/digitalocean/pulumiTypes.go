@@ -4064,7 +4064,7 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 type AppSpecIngressRuleRedirect struct {
 	// The authority/host to redirect to. This can be a hostname or IP address.
 	Authority *string `pulumi:"authority"`
-	// The port to redirect to.
+	// The health check will be performed on this port instead of component's HTTP port.
 	Port *int `pulumi:"port"`
 	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 	RedirectCode *int `pulumi:"redirectCode"`
@@ -4088,7 +4088,7 @@ type AppSpecIngressRuleRedirectInput interface {
 type AppSpecIngressRuleRedirectArgs struct {
 	// The authority/host to redirect to. This can be a hostname or IP address.
 	Authority pulumi.StringPtrInput `pulumi:"authority"`
-	// The port to redirect to.
+	// The health check will be performed on this port instead of component's HTTP port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 	RedirectCode pulumi.IntPtrInput `pulumi:"redirectCode"`
@@ -4180,7 +4180,7 @@ func (o AppSpecIngressRuleRedirectOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
-// The port to redirect to.
+// The health check will be performed on this port instead of component's HTTP port.
 func (o AppSpecIngressRuleRedirectOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -4234,7 +4234,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Authority() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port to redirect to.
+// The health check will be performed on this port instead of component's HTTP port.
 func (o AppSpecIngressRuleRedirectPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *int {
 		if v == nil {
@@ -7616,6 +7616,8 @@ type AppSpecServiceHealthCheck struct {
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// The number of seconds to wait between health checks.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The health check will be performed on this port instead of component's HTTP port.
+	Port *int `pulumi:"port"`
 	// The number of successful health checks before considered healthy.
 	SuccessThreshold *int `pulumi:"successThreshold"`
 	// The number of seconds after which the check times out.
@@ -7642,6 +7644,8 @@ type AppSpecServiceHealthCheckArgs struct {
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// The number of seconds to wait between health checks.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The health check will be performed on this port instead of component's HTTP port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The number of successful health checks before considered healthy.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
 	// The number of seconds after which the check times out.
@@ -7745,6 +7749,11 @@ func (o AppSpecServiceHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The health check will be performed on this port instead of component's HTTP port.
+func (o AppSpecServiceHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 // The number of successful health checks before considered healthy.
 func (o AppSpecServiceHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
@@ -7816,6 +7825,16 @@ func (o AppSpecServiceHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput 
 			return nil
 		}
 		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The health check will be performed on this port instead of component's HTTP port.
+func (o AppSpecServiceHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -12495,7 +12514,7 @@ type DatabaseKafkaTopicConfig struct {
 	// A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
 	MinCleanableDirtyRatio *float64 `pulumi:"minCleanableDirtyRatio"`
 	MinCompactionLagMs     *string  `pulumi:"minCompactionLagMs"`
-	// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+	// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
 	MinInsyncReplicas *int `pulumi:"minInsyncReplicas"`
 	// Determines whether to preallocate a file on disk when creating a new log segment within a topic.
 	Preallocate *bool `pulumi:"preallocate"`
@@ -12511,8 +12530,6 @@ type DatabaseKafkaTopicConfig struct {
 	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
 	// The maximum time, in ms, before the topic log will flush to disk.
 	SegmentMs *string `pulumi:"segmentMs"`
-	// Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-	UncleanLeaderElectionEnable *bool `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 // DatabaseKafkaTopicConfigInput is an input type that accepts DatabaseKafkaTopicConfigArgs and DatabaseKafkaTopicConfigOutput values.
@@ -12558,7 +12575,7 @@ type DatabaseKafkaTopicConfigArgs struct {
 	// A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
 	MinCleanableDirtyRatio pulumi.Float64PtrInput `pulumi:"minCleanableDirtyRatio"`
 	MinCompactionLagMs     pulumi.StringPtrInput  `pulumi:"minCompactionLagMs"`
-	// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+	// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
 	MinInsyncReplicas pulumi.IntPtrInput `pulumi:"minInsyncReplicas"`
 	// Determines whether to preallocate a file on disk when creating a new log segment within a topic.
 	Preallocate pulumi.BoolPtrInput `pulumi:"preallocate"`
@@ -12574,8 +12591,6 @@ type DatabaseKafkaTopicConfigArgs struct {
 	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
 	// The maximum time, in ms, before the topic log will flush to disk.
 	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
-	// Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-	UncleanLeaderElectionEnable pulumi.BoolPtrInput `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 func (DatabaseKafkaTopicConfigArgs) ElementType() reflect.Type {
@@ -12705,7 +12720,7 @@ func (o DatabaseKafkaTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOut
 	return o.ApplyT(func(v DatabaseKafkaTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
 func (o DatabaseKafkaTopicConfigOutput) MinInsyncReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseKafkaTopicConfig) *int { return v.MinInsyncReplicas }).(pulumi.IntPtrOutput)
 }
@@ -12743,11 +12758,6 @@ func (o DatabaseKafkaTopicConfigOutput) SegmentJitterMs() pulumi.StringPtrOutput
 // The maximum time, in ms, before the topic log will flush to disk.
 func (o DatabaseKafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-func (o DatabaseKafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseKafkaTopicConfig) *bool { return v.UncleanLeaderElectionEnable }).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseKafkaTopicConfigArrayOutput struct{ *pulumi.OutputState }
@@ -12878,7 +12888,7 @@ type DatabaseUserSettingAcl struct {
 	Id *string `pulumi:"id"`
 	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
 	Permission string `pulumi:"permission"`
-	// A regex for matching the topic(s) that this ACL should apply to.
+	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
 	Topic string `pulumi:"topic"`
 }
 
@@ -12898,7 +12908,7 @@ type DatabaseUserSettingAclArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
 	Permission pulumi.StringInput `pulumi:"permission"`
-	// A regex for matching the topic(s) that this ACL should apply to.
+	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -12963,7 +12973,7 @@ func (o DatabaseUserSettingAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// A regex for matching the topic(s) that this ACL should apply to.
+// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
 func (o DatabaseUserSettingAclOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -23548,6 +23558,7 @@ type GetAppSpecServiceHealthCheck struct {
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// The number of seconds to wait between health checks.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
+	Port          *int `pulumi:"port"`
 	// The number of successful health checks before considered healthy.
 	SuccessThreshold *int `pulumi:"successThreshold"`
 	// The number of seconds after which the check times out.
@@ -23574,6 +23585,7 @@ type GetAppSpecServiceHealthCheckArgs struct {
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// The number of seconds to wait between health checks.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	Port          pulumi.IntPtrInput `pulumi:"port"`
 	// The number of successful health checks before considered healthy.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
 	// The number of seconds after which the check times out.
@@ -23677,6 +23689,10 @@ func (o GetAppSpecServiceHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
+func (o GetAppSpecServiceHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 // The number of successful health checks before considered healthy.
 func (o GetAppSpecServiceHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
@@ -23748,6 +23764,15 @@ func (o GetAppSpecServiceHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutp
 			return nil
 		}
 		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 

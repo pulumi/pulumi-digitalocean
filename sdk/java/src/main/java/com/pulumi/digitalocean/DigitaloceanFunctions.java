@@ -18,6 +18,8 @@ import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseCaPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseClusterPlainArgs;
+import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
+import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseReplicaPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
@@ -90,6 +92,7 @@ import com.pulumi.digitalocean.outputs.GetCertificateResult;
 import com.pulumi.digitalocean.outputs.GetContainerRegistryResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseCaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseClusterResult;
+import com.pulumi.digitalocean.outputs.GetDatabaseConnectionPoolResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseReplicaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseUserResult;
 import com.pulumi.digitalocean.outputs.GetDomainResult;
@@ -1162,6 +1165,182 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetDatabaseClusterResult> getDatabaseClusterPlain(GetDatabaseClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseCluster:getDatabaseCluster", TypeShape.of(GetDatabaseClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean PostgreSQL database connection pool.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;example-cluster&#34;)
+     *             .build());
+     * 
+     *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;pool-01&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs args) {
+        return getDatabaseConnectionPool(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean PostgreSQL database connection pool.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;example-cluster&#34;)
+     *             .build());
+     * 
+     *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;pool-01&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseConnectionPoolResult> getDatabaseConnectionPoolPlain(GetDatabaseConnectionPoolPlainArgs args) {
+        return getDatabaseConnectionPoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean PostgreSQL database connection pool.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;example-cluster&#34;)
+     *             .build());
+     * 
+     *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;pool-01&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", TypeShape.of(GetDatabaseConnectionPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean PostgreSQL database connection pool.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name(&#34;example-cluster&#34;)
+     *             .build());
+     * 
+     *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
+     *             .name(&#34;pool-01&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseConnectionPoolResult> getDatabaseConnectionPoolPlain(GetDatabaseConnectionPoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", TypeShape.of(GetDatabaseConnectionPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information on a DigitalOcean database replica.

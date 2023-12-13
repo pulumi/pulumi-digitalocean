@@ -54,7 +54,7 @@ import * as utilities from "./utilities";
  * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
  *     engine: "kafka",
  *     version: "3.5",
- *     size: "db-s-1vcpu-2gb",
+ *     size: "db-s-2vcpu-2gb",
  *     region: "nyc1",
  *     nodeCount: 3,
  * });

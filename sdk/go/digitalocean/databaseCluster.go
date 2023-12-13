@@ -116,7 +116,7 @@ import (
 //				Engine:    pulumi.String("kafka"),
 //				NodeCount: pulumi.Int(3),
 //				Region:    pulumi.String("nyc1"),
-//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Size:      pulumi.String("db-s-2vcpu-2gb"),
 //				Version:   pulumi.String("3.5"),
 //			})
 //			if err != nil {
