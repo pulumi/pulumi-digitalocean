@@ -73,7 +73,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly double? MinCleanableDirtyRatio;
         public readonly string? MinCompactionLagMs;
         /// <summary>
-        /// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        /// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
         /// </summary>
         public readonly int? MinInsyncReplicas;
         /// <summary>
@@ -104,10 +104,6 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The maximum time, in ms, before the topic log will flush to disk.
         /// </summary>
         public readonly string? SegmentMs;
-        /// <summary>
-        /// Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-        /// </summary>
-        public readonly bool? UncleanLeaderElectionEnable;
 
         [OutputConstructor]
         private DatabaseKafkaTopicConfig(
@@ -155,9 +151,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? segmentJitterMs,
 
-            string? segmentMs,
-
-            bool? uncleanLeaderElectionEnable)
+            string? segmentMs)
         {
             CleanupPolicy = cleanupPolicy;
             CompressionType = compressionType;
@@ -182,7 +176,6 @@ namespace Pulumi.DigitalOcean.Outputs
             SegmentIndexBytes = segmentIndexBytes;
             SegmentJitterMs = segmentJitterMs;
             SegmentMs = segmentMs;
-            UncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
         }
     }
 }

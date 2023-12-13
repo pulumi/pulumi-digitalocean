@@ -33,6 +33,11 @@ public final class AppSpecServiceHealthCheck {
      */
     private @Nullable Integer periodSeconds;
     /**
+     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
+     * 
+     */
+    private @Nullable Integer port;
+    /**
      * @return The number of successful health checks before considered healthy.
      * 
      */
@@ -73,6 +78,13 @@ public final class AppSpecServiceHealthCheck {
         return Optional.ofNullable(this.periodSeconds);
     }
     /**
+     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
+     * 
+     */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
+    }
+    /**
      * @return The number of successful health checks before considered healthy.
      * 
      */
@@ -100,6 +112,7 @@ public final class AppSpecServiceHealthCheck {
         private @Nullable String httpPath;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
+        private @Nullable Integer port;
         private @Nullable Integer successThreshold;
         private @Nullable Integer timeoutSeconds;
         public Builder() {}
@@ -109,6 +122,7 @@ public final class AppSpecServiceHealthCheck {
     	      this.httpPath = defaults.httpPath;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
+    	      this.port = defaults.port;
     	      this.successThreshold = defaults.successThreshold;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
@@ -134,6 +148,11 @@ public final class AppSpecServiceHealthCheck {
             return this;
         }
         @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+            this.port = port;
+            return this;
+        }
+        @CustomType.Setter
         public Builder successThreshold(@Nullable Integer successThreshold) {
             this.successThreshold = successThreshold;
             return this;
@@ -149,6 +168,7 @@ public final class AppSpecServiceHealthCheck {
             _resultValue.httpPath = httpPath;
             _resultValue.initialDelaySeconds = initialDelaySeconds;
             _resultValue.periodSeconds = periodSeconds;
+            _resultValue.port = port;
             _resultValue.successThreshold = successThreshold;
             _resultValue.timeoutSeconds = timeoutSeconds;
             return _resultValue;

@@ -145,6 +145,11 @@ export const getDatabaseCluster: typeof import("./getDatabaseCluster").getDataba
 export const getDatabaseClusterOutput: typeof import("./getDatabaseCluster").getDatabaseClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseCluster","getDatabaseClusterOutput"], () => require("./getDatabaseCluster"));
 
+export { GetDatabaseConnectionPoolArgs, GetDatabaseConnectionPoolResult, GetDatabaseConnectionPoolOutputArgs } from "./getDatabaseConnectionPool";
+export const getDatabaseConnectionPool: typeof import("./getDatabaseConnectionPool").getDatabaseConnectionPool = null as any;
+export const getDatabaseConnectionPoolOutput: typeof import("./getDatabaseConnectionPool").getDatabaseConnectionPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseConnectionPool","getDatabaseConnectionPoolOutput"], () => require("./getDatabaseConnectionPool"));
+
 export { GetDatabaseReplicaArgs, GetDatabaseReplicaResult, GetDatabaseReplicaOutputArgs } from "./getDatabaseReplica";
 export const getDatabaseReplica: typeof import("./getDatabaseReplica").getDatabaseReplica = null as any;
 export const getDatabaseReplicaOutput: typeof import("./getDatabaseReplica").getDatabaseReplicaOutput = null as any;

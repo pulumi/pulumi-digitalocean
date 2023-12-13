@@ -88,7 +88,7 @@ public final class DatabaseKafkaTopicConfig {
     private @Nullable Double minCleanableDirtyRatio;
     private @Nullable String minCompactionLagMs;
     /**
-     * @return The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     * @return The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
      * 
      */
     private @Nullable Integer minInsyncReplicas;
@@ -127,11 +127,6 @@ public final class DatabaseKafkaTopicConfig {
      * 
      */
     private @Nullable String segmentMs;
-    /**
-     * @return Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to &#34;true&#34; could result in data loss.
-     * 
-     */
-    private @Nullable Boolean uncleanLeaderElectionEnable;
 
     private DatabaseKafkaTopicConfig() {}
     /**
@@ -238,7 +233,7 @@ public final class DatabaseKafkaTopicConfig {
         return Optional.ofNullable(this.minCompactionLagMs);
     }
     /**
-     * @return The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     * @return The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
      * 
      */
     public Optional<Integer> minInsyncReplicas() {
@@ -293,13 +288,6 @@ public final class DatabaseKafkaTopicConfig {
     public Optional<String> segmentMs() {
         return Optional.ofNullable(this.segmentMs);
     }
-    /**
-     * @return Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to &#34;true&#34; could result in data loss.
-     * 
-     */
-    public Optional<Boolean> uncleanLeaderElectionEnable() {
-        return Optional.ofNullable(this.uncleanLeaderElectionEnable);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -333,7 +321,6 @@ public final class DatabaseKafkaTopicConfig {
         private @Nullable String segmentIndexBytes;
         private @Nullable String segmentJitterMs;
         private @Nullable String segmentMs;
-        private @Nullable Boolean uncleanLeaderElectionEnable;
         public Builder() {}
         public Builder(DatabaseKafkaTopicConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -360,7 +347,6 @@ public final class DatabaseKafkaTopicConfig {
     	      this.segmentIndexBytes = defaults.segmentIndexBytes;
     	      this.segmentJitterMs = defaults.segmentJitterMs;
     	      this.segmentMs = defaults.segmentMs;
-    	      this.uncleanLeaderElectionEnable = defaults.uncleanLeaderElectionEnable;
         }
 
         @CustomType.Setter
@@ -478,11 +464,6 @@ public final class DatabaseKafkaTopicConfig {
             this.segmentMs = segmentMs;
             return this;
         }
-        @CustomType.Setter
-        public Builder uncleanLeaderElectionEnable(@Nullable Boolean uncleanLeaderElectionEnable) {
-            this.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
-            return this;
-        }
         public DatabaseKafkaTopicConfig build() {
             final var _resultValue = new DatabaseKafkaTopicConfig();
             _resultValue.cleanupPolicy = cleanupPolicy;
@@ -508,7 +489,6 @@ public final class DatabaseKafkaTopicConfig {
             _resultValue.segmentIndexBytes = segmentIndexBytes;
             _resultValue.segmentJitterMs = segmentJitterMs;
             _resultValue.segmentMs = segmentMs;
-            _resultValue.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return _resultValue;
         }
     }

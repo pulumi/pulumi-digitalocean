@@ -37,6 +37,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int>? PeriodSeconds { get; set; }
 
         /// <summary>
+        /// The health check will be performed on this port instead of component's HTTP port.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        /// <summary>
         /// The number of successful health checks before considered healthy.
         /// </summary>
         [Input("successThreshold")]

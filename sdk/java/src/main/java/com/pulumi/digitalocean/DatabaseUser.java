@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *         var kafka_example = new DatabaseCluster(&#34;kafka-example&#34;, DatabaseClusterArgs.builder()        
  *             .engine(&#34;kafka&#34;)
  *             .version(&#34;3.5&#34;)
- *             .size(&#34;db-s-1vcpu-2gb&#34;)
+ *             .size(&#34;db-s-2vcpu-2gb&#34;)
  *             .region(&#34;nyc1&#34;)
  *             .nodeCount(3)
  *             .build());

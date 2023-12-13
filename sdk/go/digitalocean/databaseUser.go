@@ -109,7 +109,7 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("kafka"),
 //				Version:   pulumi.String("3.5"),
-//				Size:      pulumi.String("db-s-1vcpu-2gb"),
+//				Size:      pulumi.String("db-s-2vcpu-2gb"),
 //				Region:    pulumi.String("nyc1"),
 //				NodeCount: pulumi.Int(3),
 //			})

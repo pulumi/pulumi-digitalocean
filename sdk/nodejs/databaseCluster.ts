@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *     engine: "kafka",
  *     nodeCount: 3,
  *     region: "nyc1",
- *     size: "db-s-1vcpu-2gb",
+ *     size: "db-s-2vcpu-2gb",
  *     version: "3.5",
  * });
  * ```

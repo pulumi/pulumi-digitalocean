@@ -691,7 +691,7 @@ class DatabaseCluster(pulumi.CustomResource):
             engine="kafka",
             node_count=3,
             region="nyc1",
-            size="db-s-1vcpu-2gb",
+            size="db-s-2vcpu-2gb",
             version="3.5")
         ```
         ### Create a new MongoDB database cluster
@@ -813,7 +813,7 @@ class DatabaseCluster(pulumi.CustomResource):
             engine="kafka",
             node_count=3,
             region="nyc1",
-            size="db-s-1vcpu-2gb",
+            size="db-s-2vcpu-2gb",
             version="3.5")
         ```
         ### Create a new MongoDB database cluster

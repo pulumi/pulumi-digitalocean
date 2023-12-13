@@ -77,6 +77,21 @@ public final class AppSpecServiceHealthCheckArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The health check will be performed on this port instead of component&#39;s HTTP port.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
+     * 
+     */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * The number of successful health checks before considered healthy.
      * 
      */
@@ -113,6 +128,7 @@ public final class AppSpecServiceHealthCheckArgs extends com.pulumi.resources.Re
         this.httpPath = $.httpPath;
         this.initialDelaySeconds = $.initialDelaySeconds;
         this.periodSeconds = $.periodSeconds;
+        this.port = $.port;
         this.successThreshold = $.successThreshold;
         this.timeoutSeconds = $.timeoutSeconds;
     }
@@ -217,6 +233,27 @@ public final class AppSpecServiceHealthCheckArgs extends com.pulumi.resources.Re
          */
         public Builder periodSeconds(Integer periodSeconds) {
             return periodSeconds(Output.of(periodSeconds));
+        }
+
+        /**
+         * @param port The health check will be performed on this port instead of component&#39;s HTTP port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port The health check will be performed on this port instead of component&#39;s HTTP port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         /**

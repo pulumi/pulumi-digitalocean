@@ -240,14 +240,14 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
      * 
      */
     @Import(name="minInsyncReplicas")
     private @Nullable Output<Integer> minInsyncReplicas;
 
     /**
-     * @return The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+     * @return The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
      * 
      */
     public Optional<Output<Integer>> minInsyncReplicas() {
@@ -359,21 +359,6 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.segmentMs);
     }
 
-    /**
-     * Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to &#34;true&#34; could result in data loss.
-     * 
-     */
-    @Import(name="uncleanLeaderElectionEnable")
-    private @Nullable Output<Boolean> uncleanLeaderElectionEnable;
-
-    /**
-     * @return Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to &#34;true&#34; could result in data loss.
-     * 
-     */
-    public Optional<Output<Boolean>> uncleanLeaderElectionEnable() {
-        return Optional.ofNullable(this.uncleanLeaderElectionEnable);
-    }
-
     private DatabaseKafkaTopicConfigArgs() {}
 
     private DatabaseKafkaTopicConfigArgs(DatabaseKafkaTopicConfigArgs $) {
@@ -400,7 +385,6 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         this.segmentIndexBytes = $.segmentIndexBytes;
         this.segmentJitterMs = $.segmentJitterMs;
         this.segmentMs = $.segmentMs;
-        this.uncleanLeaderElectionEnable = $.uncleanLeaderElectionEnable;
     }
 
     public static Builder builder() {
@@ -729,7 +713,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param minInsyncReplicas The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+         * @param minInsyncReplicas The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
          * 
          * @return builder
          * 
@@ -740,7 +724,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param minInsyncReplicas The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+         * @param minInsyncReplicas The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
          * 
          * @return builder
          * 
@@ -894,27 +878,6 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
          */
         public Builder segmentMs(String segmentMs) {
             return segmentMs(Output.of(segmentMs));
-        }
-
-        /**
-         * @param uncleanLeaderElectionEnable Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to &#34;true&#34; could result in data loss.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uncleanLeaderElectionEnable(@Nullable Output<Boolean> uncleanLeaderElectionEnable) {
-            $.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
-            return this;
-        }
-
-        /**
-         * @param uncleanLeaderElectionEnable Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to &#34;true&#34; could result in data loss.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uncleanLeaderElectionEnable(Boolean uncleanLeaderElectionEnable) {
-            return uncleanLeaderElectionEnable(Output.of(uncleanLeaderElectionEnable));
         }
 
         public DatabaseKafkaTopicConfigArgs build() {

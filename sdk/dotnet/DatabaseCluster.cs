@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
     ///         Engine = "kafka",
     ///         NodeCount = 3,
     ///         Region = "nyc1",
-    ///         Size = "db-s-1vcpu-2gb",
+    ///         Size = "db-s-2vcpu-2gb",
     ///         Version = "3.5",
     ///     });
     /// 

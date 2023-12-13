@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// A regex for matching the topic(s) that this ACL should apply to.
+        /// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "&lt;prefix&gt;*", or "&lt;literal&gt;". "*" is a special value indicating a wildcard that matches on all topics. "&lt;prefix&gt;*" defines a regex that matches all topics with the prefix. "&lt;literal&gt;" performs an exact match on a topic name and only applies to that topic.
         /// </summary>
         public readonly string Topic;
 

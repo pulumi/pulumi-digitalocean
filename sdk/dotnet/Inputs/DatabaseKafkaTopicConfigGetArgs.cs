@@ -102,7 +102,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? MinCompactionLagMs { get; set; }
 
         /// <summary>
-        /// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        /// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
         /// </summary>
         [Input("minInsyncReplicas")]
         public Input<int>? MinInsyncReplicas { get; set; }
@@ -148,12 +148,6 @@ namespace Pulumi.DigitalOcean.Inputs
         /// </summary>
         [Input("segmentMs")]
         public Input<string>? SegmentMs { get; set; }
-
-        /// <summary>
-        /// Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-        /// </summary>
-        [Input("uncleanLeaderElectionEnable")]
-        public Input<bool>? UncleanLeaderElectionEnable { get; set; }
 
         public DatabaseKafkaTopicConfigGetArgs()
         {

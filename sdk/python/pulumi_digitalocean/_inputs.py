@@ -1862,7 +1862,7 @@ class AppSpecIngressRuleRedirectArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] authority: The authority/host to redirect to. This can be a hostname or IP address.
-        :param pulumi.Input[int] port: The port to redirect to.
+        :param pulumi.Input[int] port: The health check will be performed on this port instead of component's HTTP port.
         :param pulumi.Input[int] redirect_code: The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
         :param pulumi.Input[str] scheme: The scheme to redirect to. Supported values are `http` or `https`
         :param pulumi.Input[str] uri: An optional URI path to redirect to.
@@ -1894,7 +1894,7 @@ class AppSpecIngressRuleRedirectArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port to redirect to.
+        The health check will be performed on this port instead of component's HTTP port.
         """
         return pulumi.get(self, "port")
 
@@ -3582,6 +3582,7 @@ class AppSpecServiceHealthCheckArgs:
                  http_path: Optional[pulumi.Input[str]] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  success_threshold: Optional[pulumi.Input[int]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
@@ -3589,6 +3590,7 @@ class AppSpecServiceHealthCheckArgs:
         :param pulumi.Input[str] http_path: The route path used for the HTTP health check ping.
         :param pulumi.Input[int] initial_delay_seconds: The number of seconds to wait before beginning health checks.
         :param pulumi.Input[int] period_seconds: The number of seconds to wait between health checks.
+        :param pulumi.Input[int] port: The health check will be performed on this port instead of component's HTTP port.
         :param pulumi.Input[int] success_threshold: The number of successful health checks before considered healthy.
         :param pulumi.Input[int] timeout_seconds: The number of seconds after which the check times out.
         """
@@ -3600,6 +3602,8 @@ class AppSpecServiceHealthCheckArgs:
             pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
             pulumi.set(__self__, "period_seconds", period_seconds)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if success_threshold is not None:
             pulumi.set(__self__, "success_threshold", success_threshold)
         if timeout_seconds is not None:
@@ -3652,6 +3656,18 @@ class AppSpecServiceHealthCheckArgs:
     @period_seconds.setter
     def period_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The health check will be performed on this port instead of component's HTTP port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="successThreshold")
@@ -5650,8 +5666,7 @@ class DatabaseKafkaTopicConfigArgs:
                  segment_bytes: Optional[pulumi.Input[str]] = None,
                  segment_index_bytes: Optional[pulumi.Input[str]] = None,
                  segment_jitter_ms: Optional[pulumi.Input[str]] = None,
-                 segment_ms: Optional[pulumi.Input[str]] = None,
-                 unclean_leader_election_enable: Optional[pulumi.Input[bool]] = None):
+                 segment_ms: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cleanup_policy: The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
                This may be one of "delete", "compact", or "compact_delete".
@@ -5669,7 +5684,7 @@ class DatabaseKafkaTopicConfigArgs:
         :param pulumi.Input[str] message_timestamp_difference_max_ms: The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
         :param pulumi.Input[str] message_timestamp_type: Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
         :param pulumi.Input[float] min_cleanable_dirty_ratio: A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
-        :param pulumi.Input[int] min_insync_replicas: The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        :param pulumi.Input[int] min_insync_replicas: The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
         :param pulumi.Input[bool] preallocate: Determines whether to preallocate a file on disk when creating a new log segment within a topic.
         :param pulumi.Input[str] retention_bytes: The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
         :param pulumi.Input[str] retention_ms: The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
@@ -5677,7 +5692,6 @@ class DatabaseKafkaTopicConfigArgs:
         :param pulumi.Input[str] segment_index_bytes: The maximum size, in bytes, of the offset index.
         :param pulumi.Input[str] segment_jitter_ms: The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
         :param pulumi.Input[str] segment_ms: The maximum time, in ms, before the topic log will flush to disk.
-        :param pulumi.Input[bool] unclean_leader_election_enable: Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
         """
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -5725,8 +5739,6 @@ class DatabaseKafkaTopicConfigArgs:
             pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
         if segment_ms is not None:
             pulumi.set(__self__, "segment_ms", segment_ms)
-        if unclean_leader_election_enable is not None:
-            pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
 
     @property
     @pulumi.getter(name="cleanupPolicy")
@@ -5911,7 +5923,7 @@ class DatabaseKafkaTopicConfigArgs:
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful.
+        The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -6003,18 +6015,6 @@ class DatabaseKafkaTopicConfigArgs:
     def segment_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "segment_ms", value)
 
-    @property
-    @pulumi.getter(name="uncleanLeaderElectionEnable")
-    def unclean_leader_election_enable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines whether to allow nodes that are not part of the in-sync replica set (IRS) to be elected as leader. Note: setting this to "true" could result in data loss.
-        """
-        return pulumi.get(self, "unclean_leader_election_enable")
-
-    @unclean_leader_election_enable.setter
-    def unclean_leader_election_enable(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "unclean_leader_election_enable", value)
-
 
 @pulumi.input_type
 class DatabaseUserSettingArgs:
@@ -6051,7 +6051,7 @@ class DatabaseUserSettingAclArgs:
                  id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        :param pulumi.Input[str] topic: A regex for matching the topic(s) that this ACL should apply to.
+        :param pulumi.Input[str] topic: A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
         :param pulumi.Input[str] id: An identifier for the ACL, this will be automatically assigned when you create an ACL entry
         """
         pulumi.set(__self__, "permission", permission)
@@ -6075,7 +6075,7 @@ class DatabaseUserSettingAclArgs:
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
         """
-        A regex for matching the topic(s) that this ACL should apply to.
+        A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
         """
         return pulumi.get(self, "topic")
 
