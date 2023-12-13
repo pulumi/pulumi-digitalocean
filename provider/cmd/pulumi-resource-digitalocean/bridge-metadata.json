@@ -1215,6 +1215,10 @@
                     }
                 }
             },
+            "digitalocean_database_connection_pool": {
+                "current": "digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool",
+                "majorVersion": 4
+            },
             "digitalocean_database_replica": {
                 "current": "digitalocean:index/getDatabaseReplica:getDatabaseReplica",
                 "majorVersion": 4,
@@ -1817,6 +1821,7 @@
             "digitalocean:index/getContainerRegistry:getContainerRegistry": "digitalocean_container_registry",
             "digitalocean:index/getDatabaseCa:getDatabaseCa": "digitalocean_database_ca",
             "digitalocean:index/getDatabaseCluster:getDatabaseCluster": "digitalocean_database_cluster",
+            "digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool": "digitalocean_database_connection_pool",
             "digitalocean:index/getDatabaseReplica:getDatabaseReplica": "digitalocean_database_replica",
             "digitalocean:index/getDatabaseUser:getDatabaseUser": "digitalocean_database_user",
             "digitalocean:index/getDomain:getDomain": "digitalocean_domain",
@@ -2080,8 +2085,7 @@
                 "segmentBytes": "segment_bytes",
                 "segmentIndexBytes": "segment_index_bytes",
                 "segmentJitterMs": "segment_jitter_ms",
-                "segmentMs": "segment_ms",
-                "uncleanLeaderElectionEnable": "unclean_leader_election_enable"
+                "segmentMs": "segment_ms"
             },
             "digitalocean:index/DatabaseUserSetting:DatabaseUserSetting": {
                 "acls": "acl"
@@ -2582,6 +2586,12 @@
                 "privateUri": "private_uri",
                 "projectId": "project_id",
                 "storageSizeMib": "storage_size_mib"
+            },
+            "digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool": {
+                "clusterId": "cluster_id",
+                "dbName": "db_name",
+                "privateHost": "private_host",
+                "privateUri": "private_uri"
             },
             "digitalocean:index/getDatabaseReplica:getDatabaseReplica": {
                 "clusterId": "cluster_id",
