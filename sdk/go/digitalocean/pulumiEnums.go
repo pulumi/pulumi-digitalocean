@@ -137,10 +137,11 @@ func (o AlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// AlgorithmInput is an input type that accepts AlgorithmArgs and AlgorithmOutput values.
-// You can construct a concrete instance of `AlgorithmInput` via:
+// AlgorithmInput is an input type that accepts values of the Algorithm enum
+// A concrete instance of `AlgorithmInput` can be one of the following:
 //
-//	AlgorithmArgs{...}
+//	AlgorithmRoundRobin
+//	AlgorithmLeastConnections
 type AlgorithmInput interface {
 	pulumi.Input
 
@@ -307,10 +308,11 @@ func (o CertificateTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// CertificateTypeInput is an input type that accepts CertificateTypeArgs and CertificateTypeOutput values.
-// You can construct a concrete instance of `CertificateTypeInput` via:
+// CertificateTypeInput is an input type that accepts values of the CertificateType enum
+// A concrete instance of `CertificateTypeInput` can be one of the following:
 //
-//	CertificateTypeArgs{...}
+//	CertificateTypeLetsEncrypt
+//	CertificateTypeCustom
 type CertificateTypeInput interface {
 	pulumi.Input
 
@@ -482,10 +484,16 @@ func (o DatabaseSlugPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseSlugInput is an input type that accepts DatabaseSlugArgs and DatabaseSlugOutput values.
-// You can construct a concrete instance of `DatabaseSlugInput` via:
+// DatabaseSlugInput is an input type that accepts values of the DatabaseSlug enum
+// A concrete instance of `DatabaseSlugInput` can be one of the following:
 //
-//	DatabaseSlugArgs{...}
+//	DatabaseSlug_DB_1VPCU1GB
+//	DatabaseSlug_DB_1VPCU2GB
+//	DatabaseSlug_DB_2VPCU4GB
+//	DatabaseSlug_DB_4VPCU8GB
+//	DatabaseSlug_DB_6VPCU16GB
+//	DatabaseSlug_DB_8VPCU32GB
+//	DatabaseSlug_DB_16VPCU64GB
 type DatabaseSlugInput interface {
 	pulumi.Input
 
@@ -738,10 +746,97 @@ func (o DropletSlugPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// DropletSlugInput is an input type that accepts DropletSlugArgs and DropletSlugOutput values.
-// You can construct a concrete instance of `DropletSlugInput` via:
+// DropletSlugInput is an input type that accepts values of the DropletSlug enum
+// A concrete instance of `DropletSlugInput` can be one of the following:
 //
-//	DropletSlugArgs{...}
+//	DropletSlugDropletS1VCPU1GB
+//	DropletSlug_DropletS1VCPU1GB_AMD
+//	DropletSlug_DropletS1VCPU1GB_INTEL
+//	DropletSlugDropletS1VCPU2GB
+//	DropletSlug_DropletS1VCPU2GB_AMD
+//	DropletSlug_DropletS1VCPU2GB_INTEL
+//	DropletSlugDropletS2VCPU2GB
+//	DropletSlug_DropletS2VCPU2GB_AMD
+//	DropletSlug_DropletS2VCPU2GB_INTEL
+//	DropletSlugDropletS2VCPU4GB
+//	DropletSlug_DropletS2VCPU4GB_AMD
+//	DropletSlug_DropletS2VCPU4GB_INTEL
+//	DropletSlugDropletS4VCPU8GB
+//	DropletSlug_DropletS4VCPU8GB_AMD
+//	DropletSlug_DropletS4VCPU8GB_INTEL
+//	DropletSlug_DropletS8VCPU16GB_AMD
+//	DropletSlug_DropletS8VCPU16GB_INTEL
+//	DropletSlugDropletC2
+//	DropletSlugDropletC22VCPU4GB
+//	DropletSlugDropletC22VCPU8GB
+//	DropletSlugDropletC28VCPU16GB
+//	DropletSlugDropletC216VCPU32GB
+//	DropletSlugDropletC232VCPU64GB
+//	DropletSlugDropletC4
+//	DropletSlugDropletC8
+//	DropletSlugDropletC16
+//	DropletSlugDropletC32
+//	DropletSlugDropletG2VCPU8GB
+//	DropletSlugDropletG4VCPU16GB
+//	DropletSlugDropletG8VCPU32GB
+//	DropletSlugDropletG16VCPU64GB
+//	DropletSlugDropletG32VCPU128GB
+//	DropletSlugDropletG40VCPU160GB
+//	DropletSlugDropletGD2VCPU8GB
+//	DropletSlugDropletGD4VCPU16GB
+//	DropletSlugDropletGD8VCPU32GB
+//	DropletSlugDropletGD16VCPU64GB
+//	DropletSlugDropletGD32VCPU128GB
+//	DropletSlugDropletGD40VCPU160GB
+//	DropletSlugDropletS8VCPU16GB
+//	DropletSlugDropletM2VCPU16GB
+//	DropletSlugDropletM4VCPU32GB
+//	DropletSlugDropletM8VCPU64GB
+//	DropletSlugDropletM16VCPU128GB
+//	DropletSlugDropletM24VCPU192GB
+//	DropletSlugDropletM32VCPU256GB
+//	DropletSlugDropletM32VCPU16GB
+//	DropletSlugDropletM34VCPU32GB
+//	DropletSlugDropletM38VCPU64GB
+//	DropletSlugDropletM316VCPU128GB
+//	DropletSlugDropletM324VCPU192GB
+//	DropletSlugDropletM332VCPU256GB
+//	DropletSlugDropletM62VCPU16GB
+//	DropletSlugDropletM64VCPU32GB
+//	DropletSlugDropletM68VCPU64GB
+//	DropletSlugDropletM616VCPU128GB
+//	DropletSlugDropletM624VCPU192GB
+//	DropletSlugDropletM632VCPU256GB
+//	DropletSlugDropletSO2VCPU16GB
+//	DropletSlugDropletSO4VCPU32GB
+//	DropletSlugDropletSO8VCPU64GB
+//	DropletSlugDropletSO16VCPU128GB
+//	DropletSlugDropletSO24VCPU192GB
+//	DropletSlugDropletSO32VCPU256GB
+//	DropletSlugDropletSO152VCPU16GB
+//	DropletSlugDropletSO154VCPU32GB
+//	DropletSlugDropletSO158VCPU64GB
+//	DropletSlugDropletSO1516VCPU128GB
+//	DropletSlugDropletSO1524VCPU192GB
+//	DropletSlugDropletSO1532VCPU256GB
+//	DropletSlugDroplet512mb
+//	DropletSlugDroplet1GB
+//	DropletSlugDroplet2GB
+//	DropletSlugDroplet4GB
+//	DropletSlugDroplet8GB
+//	DropletSlugDroplet16GB
+//	DropletSlugDroplet32GB
+//	DropletSlugDroplet48GB
+//	DropletSlugDroplet64GB
+//	DropletSlugDropletS1VCPU3GB
+//	DropletSlugDropletS3VCPU1GB
+//	DropletSlugDropletS6VCPU16GB
+//	DropletSlugDropletS8VCPU32GB
+//	DropletSlugDropletS12VCPU48GB
+//	DropletSlugDropletS16VCPU64GB
+//	DropletSlugDropletS20VCPU96GB
+//	DropletSlugDropletS24VCPU128GB
+//	DropletSlugDropletS32VCPU192GB
 type DropletSlugInput interface {
 	pulumi.Input
 
@@ -908,10 +1003,11 @@ func (o FileSystemTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// FileSystemTypeInput is an input type that accepts FileSystemTypeArgs and FileSystemTypeOutput values.
-// You can construct a concrete instance of `FileSystemTypeInput` via:
+// FileSystemTypeInput is an input type that accepts values of the FileSystemType enum
+// A concrete instance of `FileSystemTypeInput` can be one of the following:
 //
-//	FileSystemTypeArgs{...}
+//	FileSystemTypeEXT4
+//	FileSystemTypeXFS
 type FileSystemTypeInput interface {
 	pulumi.Input
 
@@ -1081,10 +1177,14 @@ func (o ProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProtocolInput is an input type that accepts ProtocolArgs and ProtocolOutput values.
-// You can construct a concrete instance of `ProtocolInput` via:
+// ProtocolInput is an input type that accepts values of the Protocol enum
+// A concrete instance of `ProtocolInput` can be one of the following:
 //
-//	ProtocolArgs{...}
+//	ProtocolTCP
+//	ProtocolUDP
+//	ProtocolICMP
+//	ProtocolHTTP
+//	ProtocolHTTPS
 type ProtocolInput interface {
 	pulumi.Input
 
@@ -1257,10 +1357,17 @@ func (o RecordTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// RecordTypeInput is an input type that accepts RecordTypeArgs and RecordTypeOutput values.
-// You can construct a concrete instance of `RecordTypeInput` via:
+// RecordTypeInput is an input type that accepts values of the RecordType enum
+// A concrete instance of `RecordTypeInput` can be one of the following:
 //
-//	RecordTypeArgs{...}
+//	RecordTypeA
+//	RecordTypeAAAA
+//	RecordTypeCAA
+//	RecordTypeCNAME
+//	RecordTypeMX
+//	RecordTypeNS
+//	RecordTypeTXT
+//	RecordTypeSRV
 type RecordTypeInput interface {
 	pulumi.Input
 
@@ -1439,10 +1546,23 @@ func (o RegionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// RegionInput is an input type that accepts RegionArgs and RegionOutput values.
-// You can construct a concrete instance of `RegionInput` via:
+// RegionInput is an input type that accepts values of the Region enum
+// A concrete instance of `RegionInput` can be one of the following:
 //
-//	RegionArgs{...}
+//	RegionNYC1
+//	RegionNYC2
+//	RegionNYC3
+//	RegionSGP1
+//	RegionLON1
+//	RegionAMS2
+//	RegionAMS3
+//	RegionFRA1
+//	RegionTOR1
+//	RegionSFO1
+//	RegionSFO2
+//	RegionSFO3
+//	RegionBLR1
+//	RegionSYD1
 type RegionInput interface {
 	pulumi.Input
 
