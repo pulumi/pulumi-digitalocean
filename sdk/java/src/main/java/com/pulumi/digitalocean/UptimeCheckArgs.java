@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -236,7 +237,9 @@ public final class UptimeCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UptimeCheckArgs build() {
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("UptimeCheckArgs", "target");
+            }
             return $;
         }
     }

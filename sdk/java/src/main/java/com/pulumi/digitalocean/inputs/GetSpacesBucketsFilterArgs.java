@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -220,8 +221,12 @@ public final class GetSpacesBucketsFilterArgs extends com.pulumi.resources.Resou
         }
 
         public GetSpacesBucketsFilterArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("GetSpacesBucketsFilterArgs", "key");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetSpacesBucketsFilterArgs", "values");
+            }
             return $;
         }
     }

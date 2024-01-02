@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.AppSpecServiceHealthCheck;
 import com.pulumi.digitalocean.outputs.AppSpecServiceImage;
 import com.pulumi.digitalocean.outputs.AppSpecServiceLogDestination;
 import com.pulumi.digitalocean.outputs.AppSpecServiceRoute;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -338,6 +339,7 @@ public final class AppSpecService {
 
         @CustomType.Setter
         public Builder alerts(@Nullable List<AppSpecServiceAlert> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -346,26 +348,31 @@ public final class AppSpecService {
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
+
             this.buildCommand = buildCommand;
             return this;
         }
         @CustomType.Setter
         public Builder cors(@Nullable AppSpecServiceCors cors) {
+
             this.cors = cors;
             return this;
         }
         @CustomType.Setter
         public Builder dockerfilePath(@Nullable String dockerfilePath) {
+
             this.dockerfilePath = dockerfilePath;
             return this;
         }
         @CustomType.Setter
         public Builder environmentSlug(@Nullable String environmentSlug) {
+
             this.environmentSlug = environmentSlug;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<AppSpecServiceEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -374,46 +381,55 @@ public final class AppSpecService {
         }
         @CustomType.Setter
         public Builder git(@Nullable AppSpecServiceGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder github(@Nullable AppSpecServiceGithub github) {
+
             this.github = github;
             return this;
         }
         @CustomType.Setter
         public Builder gitlab(@Nullable AppSpecServiceGitlab gitlab) {
+
             this.gitlab = gitlab;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheck(@Nullable AppSpecServiceHealthCheck healthCheck) {
+
             this.healthCheck = healthCheck;
             return this;
         }
         @CustomType.Setter
         public Builder httpPort(@Nullable Integer httpPort) {
+
             this.httpPort = httpPort;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable AppSpecServiceImage image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder instanceCount(@Nullable Integer instanceCount) {
+
             this.instanceCount = instanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSizeSlug(@Nullable String instanceSizeSlug) {
+
             this.instanceSizeSlug = instanceSizeSlug;
             return this;
         }
         @CustomType.Setter
         public Builder internalPorts(@Nullable List<Integer> internalPorts) {
+
             this.internalPorts = internalPorts;
             return this;
         }
@@ -422,6 +438,7 @@ public final class AppSpecService {
         }
         @CustomType.Setter
         public Builder logDestinations(@Nullable List<AppSpecServiceLogDestination> logDestinations) {
+
             this.logDestinations = logDestinations;
             return this;
         }
@@ -430,11 +447,15 @@ public final class AppSpecService {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AppSpecService", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder routes(@Nullable List<AppSpecServiceRoute> routes) {
+
             this.routes = routes;
             return this;
         }
@@ -443,11 +464,13 @@ public final class AppSpecService {
         }
         @CustomType.Setter
         public Builder runCommand(@Nullable String runCommand) {
+
             this.runCommand = runCommand;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
+
             this.sourceDir = sourceDir;
             return this;
         }

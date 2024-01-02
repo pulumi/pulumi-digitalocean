@@ -73,16 +73,19 @@ public final class AppSpecIngressRuleComponent {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder preservePathPrefix(@Nullable Boolean preservePathPrefix) {
+
             this.preservePathPrefix = preservePathPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder rewrite(@Nullable String rewrite) {
+
             this.rewrite = rewrite;
             return this;
         }

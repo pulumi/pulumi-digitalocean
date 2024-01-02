@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolNodeArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolTaintArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -519,8 +520,12 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
         }
 
         public KubernetesClusterNodePoolArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("KubernetesClusterNodePoolArgs", "name");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("KubernetesClusterNodePoolArgs", "size");
+            }
             return $;
         }
     }

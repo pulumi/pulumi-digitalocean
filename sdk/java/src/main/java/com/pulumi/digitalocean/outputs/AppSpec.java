@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.AppSpecJob;
 import com.pulumi.digitalocean.outputs.AppSpecService;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSite;
 import com.pulumi.digitalocean.outputs.AppSpecWorker;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -193,6 +194,7 @@ public final class AppSpec {
 
         @CustomType.Setter
         public Builder alerts(@Nullable List<AppSpecAlert> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -201,6 +203,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder databases(@Nullable List<AppSpecDatabase> databases) {
+
             this.databases = databases;
             return this;
         }
@@ -209,6 +212,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder domainNames(@Nullable List<AppSpecDomainName> domainNames) {
+
             this.domainNames = domainNames;
             return this;
         }
@@ -217,6 +221,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder domains(@Nullable List<String> domains) {
+
             this.domains = domains;
             return this;
         }
@@ -225,6 +230,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<AppSpecEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -233,6 +239,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder features(@Nullable List<String> features) {
+
             this.features = features;
             return this;
         }
@@ -241,6 +248,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder functions(@Nullable List<AppSpecFunction> functions) {
+
             this.functions = functions;
             return this;
         }
@@ -249,11 +257,13 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder ingress(@Nullable AppSpecIngress ingress) {
+
             this.ingress = ingress;
             return this;
         }
         @CustomType.Setter
         public Builder jobs(@Nullable List<AppSpecJob> jobs) {
+
             this.jobs = jobs;
             return this;
         }
@@ -262,16 +272,21 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AppSpec", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder services(@Nullable List<AppSpecService> services) {
+
             this.services = services;
             return this;
         }
@@ -280,6 +295,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder staticSites(@Nullable List<AppSpecStaticSite> staticSites) {
+
             this.staticSites = staticSites;
             return this;
         }
@@ -288,6 +304,7 @@ public final class AppSpec {
         }
         @CustomType.Setter
         public Builder workers(@Nullable List<AppSpecWorker> workers) {
+
             this.workers = workers;
             return this;
         }

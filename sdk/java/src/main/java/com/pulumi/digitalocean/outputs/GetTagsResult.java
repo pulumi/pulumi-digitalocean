@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetTagsFilter;
 import com.pulumi.digitalocean.outputs.GetTagsSort;
 import com.pulumi.digitalocean.outputs.GetTagsTag;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -65,6 +66,7 @@ public final class GetTagsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetTagsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -73,11 +75,15 @@ public final class GetTagsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTagsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetTagsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }
@@ -86,7 +92,10 @@ public final class GetTagsResult {
         }
         @CustomType.Setter
         public Builder tags(List<GetTagsTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTagsResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetTagsTag... tags) {

@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.inputs.AppSpecJobGithubArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobGitlabArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobImageArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobLogDestinationArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -670,7 +671,9 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppSpecJobArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobArgs", "name");
+            }
             return $;
         }
     }

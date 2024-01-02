@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -375,7 +376,9 @@ public final class GetFirewallOutboundRuleArgs extends com.pulumi.resources.Reso
         }
 
         public GetFirewallOutboundRuleArgs build() {
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("GetFirewallOutboundRuleArgs", "protocol");
+            }
             return $;
         }
     }

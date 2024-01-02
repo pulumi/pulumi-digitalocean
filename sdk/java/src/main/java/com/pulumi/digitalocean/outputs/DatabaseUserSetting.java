@@ -48,6 +48,7 @@ public final class DatabaseUserSetting {
 
         @CustomType.Setter
         public Builder acls(@Nullable List<DatabaseUserSettingAcl> acls) {
+
             this.acls = acls;
             return this;
         }

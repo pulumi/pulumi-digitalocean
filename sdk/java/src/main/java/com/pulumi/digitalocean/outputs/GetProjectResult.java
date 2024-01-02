@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -161,52 +162,82 @@ public final class GetProjectResult {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder environment(String environment) {
-            this.environment = Objects.requireNonNull(environment);
+            if (environment == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "environment");
+            }
+            this.environment = environment;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ownerId(Integer ownerId) {
-            this.ownerId = Objects.requireNonNull(ownerId);
+            if (ownerId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ownerId");
+            }
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
         public Builder ownerUuid(String ownerUuid) {
-            this.ownerUuid = Objects.requireNonNull(ownerUuid);
+            if (ownerUuid == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "ownerUuid");
+            }
+            this.ownerUuid = ownerUuid;
             return this;
         }
         @CustomType.Setter
         public Builder purpose(String purpose) {
-            this.purpose = Objects.requireNonNull(purpose);
+            if (purpose == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "purpose");
+            }
+            this.purpose = purpose;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<String> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
@@ -214,7 +245,10 @@ public final class GetProjectResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetProjectResult build() {

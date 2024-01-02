@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.SpacesBucketCorsConfigurationCorsRuleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -160,9 +161,15 @@ public final class SpacesBucketCorsConfigurationArgs extends com.pulumi.resource
         }
 
         public SpacesBucketCorsConfigurationArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.corsRules = Objects.requireNonNull($.corsRules, "expected parameter 'corsRules' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("SpacesBucketCorsConfigurationArgs", "bucket");
+            }
+            if ($.corsRules == null) {
+                throw new MissingRequiredPropertyException("SpacesBucketCorsConfigurationArgs", "corsRules");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("SpacesBucketCorsConfigurationArgs", "region");
+            }
             return $;
         }
     }

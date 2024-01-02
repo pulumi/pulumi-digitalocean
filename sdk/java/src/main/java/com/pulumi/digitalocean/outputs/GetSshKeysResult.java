@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetSshKeysFilter;
 import com.pulumi.digitalocean.outputs.GetSshKeysSort;
 import com.pulumi.digitalocean.outputs.GetSshKeysSshKey;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,6 +74,7 @@ public final class GetSshKeysResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetSshKeysFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -81,11 +83,15 @@ public final class GetSshKeysResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSshKeysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetSshKeysSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }
@@ -94,7 +100,10 @@ public final class GetSshKeysResult {
         }
         @CustomType.Setter
         public Builder sshKeys(List<GetSshKeysSshKey> sshKeys) {
-            this.sshKeys = Objects.requireNonNull(sshKeys);
+            if (sshKeys == null) {
+              throw new MissingRequiredPropertyException("GetSshKeysResult", "sshKeys");
+            }
+            this.sshKeys = sshKeys;
             return this;
         }
         public Builder sshKeys(GetSshKeysSshKey... sshKeys) {

@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -133,42 +134,66 @@ public final class GetTagResult {
 
         @CustomType.Setter
         public Builder databasesCount(Integer databasesCount) {
-            this.databasesCount = Objects.requireNonNull(databasesCount);
+            if (databasesCount == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "databasesCount");
+            }
+            this.databasesCount = databasesCount;
             return this;
         }
         @CustomType.Setter
         public Builder dropletsCount(Integer dropletsCount) {
-            this.dropletsCount = Objects.requireNonNull(dropletsCount);
+            if (dropletsCount == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "dropletsCount");
+            }
+            this.dropletsCount = dropletsCount;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imagesCount(Integer imagesCount) {
-            this.imagesCount = Objects.requireNonNull(imagesCount);
+            if (imagesCount == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "imagesCount");
+            }
+            this.imagesCount = imagesCount;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder totalResourceCount(Integer totalResourceCount) {
-            this.totalResourceCount = Objects.requireNonNull(totalResourceCount);
+            if (totalResourceCount == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "totalResourceCount");
+            }
+            this.totalResourceCount = totalResourceCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumeSnapshotsCount(Integer volumeSnapshotsCount) {
-            this.volumeSnapshotsCount = Objects.requireNonNull(volumeSnapshotsCount);
+            if (volumeSnapshotsCount == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "volumeSnapshotsCount");
+            }
+            this.volumeSnapshotsCount = volumeSnapshotsCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumesCount(Integer volumesCount) {
-            this.volumesCount = Objects.requireNonNull(volumesCount);
+            if (volumesCount == null) {
+              throw new MissingRequiredPropertyException("GetTagResult", "volumesCount");
+            }
+            this.volumesCount = volumesCount;
             return this;
         }
         public GetTagResult build() {

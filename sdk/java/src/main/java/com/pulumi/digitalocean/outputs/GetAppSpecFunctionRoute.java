@@ -59,11 +59,13 @@ public final class GetAppSpecFunctionRoute {
 
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder preservePathPrefix(@Nullable Boolean preservePathPrefix) {
+
             this.preservePathPrefix = preservePathPrefix;
             return this;
         }

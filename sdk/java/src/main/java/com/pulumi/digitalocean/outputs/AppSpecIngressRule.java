@@ -89,21 +89,25 @@ public final class AppSpecIngressRule {
 
         @CustomType.Setter
         public Builder component(@Nullable AppSpecIngressRuleComponent component) {
+
             this.component = component;
             return this;
         }
         @CustomType.Setter
         public Builder cors(@Nullable AppSpecIngressRuleCors cors) {
+
             this.cors = cors;
             return this;
         }
         @CustomType.Setter
         public Builder match(@Nullable AppSpecIngressRuleMatch match) {
+
             this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder redirect(@Nullable AppSpecIngressRuleRedirect redirect) {
+
             this.redirect = redirect;
             return this;
         }

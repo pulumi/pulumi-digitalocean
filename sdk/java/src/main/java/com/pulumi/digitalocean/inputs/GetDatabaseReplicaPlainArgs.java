@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,8 +131,12 @@ public final class GetDatabaseReplicaPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetDatabaseReplicaPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseReplicaPlainArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseReplicaPlainArgs", "name");
+            }
             return $;
         }
     }

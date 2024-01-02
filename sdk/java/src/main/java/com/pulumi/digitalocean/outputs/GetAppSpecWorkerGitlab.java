@@ -73,16 +73,19 @@ public final class GetAppSpecWorkerGitlab {
 
         @CustomType.Setter
         public Builder branch(@Nullable String branch) {
+
             this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder deployOnPush(@Nullable Boolean deployOnPush) {
+
             this.deployOnPush = deployOnPush;
             return this;
         }
         @CustomType.Setter
         public Builder repo(@Nullable String repo) {
+
             this.repo = repo;
             return this;
         }

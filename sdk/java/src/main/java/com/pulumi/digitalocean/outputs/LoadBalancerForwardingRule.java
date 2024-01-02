@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -138,36 +139,51 @@ public final class LoadBalancerForwardingRule {
 
         @CustomType.Setter
         public Builder certificateId(@Nullable String certificateId) {
+
             this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder certificateName(@Nullable String certificateName) {
+
             this.certificateName = certificateName;
             return this;
         }
         @CustomType.Setter
         public Builder entryPort(Integer entryPort) {
-            this.entryPort = Objects.requireNonNull(entryPort);
+            if (entryPort == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerForwardingRule", "entryPort");
+            }
+            this.entryPort = entryPort;
             return this;
         }
         @CustomType.Setter
         public Builder entryProtocol(String entryProtocol) {
-            this.entryProtocol = Objects.requireNonNull(entryProtocol);
+            if (entryProtocol == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerForwardingRule", "entryProtocol");
+            }
+            this.entryProtocol = entryProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
-            this.targetPort = Objects.requireNonNull(targetPort);
+            if (targetPort == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerForwardingRule", "targetPort");
+            }
+            this.targetPort = targetPort;
             return this;
         }
         @CustomType.Setter
         public Builder targetProtocol(String targetProtocol) {
-            this.targetProtocol = Objects.requireNonNull(targetProtocol);
+            if (targetProtocol == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerForwardingRule", "targetProtocol");
+            }
+            this.targetProtocol = targetProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder tlsPassthrough(@Nullable Boolean tlsPassthrough) {
+
             this.tlsPassthrough = tlsPassthrough;
             return this;
         }

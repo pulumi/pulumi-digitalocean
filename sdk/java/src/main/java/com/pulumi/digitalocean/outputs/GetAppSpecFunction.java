@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecFunctionGithub;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionGitlab;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionLogDestination;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionRoute;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -191,6 +192,7 @@ public final class GetAppSpecFunction {
 
         @CustomType.Setter
         public Builder alerts(@Nullable List<GetAppSpecFunctionAlert> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -199,11 +201,13 @@ public final class GetAppSpecFunction {
         }
         @CustomType.Setter
         public Builder cors(@Nullable GetAppSpecFunctionCors cors) {
+
             this.cors = cors;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecFunctionEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -212,21 +216,25 @@ public final class GetAppSpecFunction {
         }
         @CustomType.Setter
         public Builder git(@Nullable GetAppSpecFunctionGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder github(@Nullable GetAppSpecFunctionGithub github) {
+
             this.github = github;
             return this;
         }
         @CustomType.Setter
         public Builder gitlab(@Nullable GetAppSpecFunctionGitlab gitlab) {
+
             this.gitlab = gitlab;
             return this;
         }
         @CustomType.Setter
         public Builder logDestinations(@Nullable List<GetAppSpecFunctionLogDestination> logDestinations) {
+
             this.logDestinations = logDestinations;
             return this;
         }
@@ -235,12 +243,18 @@ public final class GetAppSpecFunction {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecFunction", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder routes(List<GetAppSpecFunctionRoute> routes) {
-            this.routes = Objects.requireNonNull(routes);
+            if (routes == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecFunction", "routes");
+            }
+            this.routes = routes;
             return this;
         }
         public Builder routes(GetAppSpecFunctionRoute... routes) {
@@ -248,6 +262,7 @@ public final class GetAppSpecFunction {
         }
         @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
+
             this.sourceDir = sourceDir;
             return this;
         }

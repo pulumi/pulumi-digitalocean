@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.MonitorAlertAlertsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -464,12 +465,24 @@ public final class MonitorAlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MonitorAlertArgs build() {
-            $.alerts = Objects.requireNonNull($.alerts, "expected parameter 'alerts' to be non-null");
-            $.compare = Objects.requireNonNull($.compare, "expected parameter 'compare' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
-            $.window = Objects.requireNonNull($.window, "expected parameter 'window' to be non-null");
+            if ($.alerts == null) {
+                throw new MissingRequiredPropertyException("MonitorAlertArgs", "alerts");
+            }
+            if ($.compare == null) {
+                throw new MissingRequiredPropertyException("MonitorAlertArgs", "compare");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("MonitorAlertArgs", "description");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("MonitorAlertArgs", "type");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("MonitorAlertArgs", "value");
+            }
+            if ($.window == null) {
+                throw new MissingRequiredPropertyException("MonitorAlertArgs", "window");
+            }
             return $;
         }
     }

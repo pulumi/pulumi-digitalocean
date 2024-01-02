@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetRegionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRegionArgs build() {
-            $.slug = Objects.requireNonNull($.slug, "expected parameter 'slug' to be non-null");
+            if ($.slug == null) {
+                throw new MissingRequiredPropertyException("GetRegionArgs", "slug");
+            }
             return $;
         }
     }

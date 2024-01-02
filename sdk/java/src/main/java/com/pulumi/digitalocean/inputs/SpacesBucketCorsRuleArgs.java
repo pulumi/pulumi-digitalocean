@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -219,8 +220,12 @@ public final class SpacesBucketCorsRuleArgs extends com.pulumi.resources.Resourc
         }
 
         public SpacesBucketCorsRuleArgs build() {
-            $.allowedMethods = Objects.requireNonNull($.allowedMethods, "expected parameter 'allowedMethods' to be non-null");
-            $.allowedOrigins = Objects.requireNonNull($.allowedOrigins, "expected parameter 'allowedOrigins' to be non-null");
+            if ($.allowedMethods == null) {
+                throw new MissingRequiredPropertyException("SpacesBucketCorsRuleArgs", "allowedMethods");
+            }
+            if ($.allowedOrigins == null) {
+                throw new MissingRequiredPropertyException("SpacesBucketCorsRuleArgs", "allowedOrigins");
+            }
             return $;
         }
     }

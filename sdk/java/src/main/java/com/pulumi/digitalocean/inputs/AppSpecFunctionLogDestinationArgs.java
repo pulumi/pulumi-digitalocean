@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecFunctionLogDestinationDatadogArgs;
 import com.pulumi.digitalocean.inputs.AppSpecFunctionLogDestinationLogtailArgs;
 import com.pulumi.digitalocean.inputs.AppSpecFunctionLogDestinationPapertrailArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -190,7 +191,9 @@ public final class AppSpecFunctionLogDestinationArgs extends com.pulumi.resource
         }
 
         public AppSpecFunctionLogDestinationArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AppSpecFunctionLogDestinationArgs", "name");
+            }
             return $;
         }
     }

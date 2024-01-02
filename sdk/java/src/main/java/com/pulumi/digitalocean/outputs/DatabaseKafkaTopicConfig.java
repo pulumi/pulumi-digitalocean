@@ -351,116 +351,139 @@ public final class DatabaseKafkaTopicConfig {
 
         @CustomType.Setter
         public Builder cleanupPolicy(@Nullable String cleanupPolicy) {
+
             this.cleanupPolicy = cleanupPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder compressionType(@Nullable String compressionType) {
+
             this.compressionType = compressionType;
             return this;
         }
         @CustomType.Setter
         public Builder deleteRetentionMs(@Nullable String deleteRetentionMs) {
+
             this.deleteRetentionMs = deleteRetentionMs;
             return this;
         }
         @CustomType.Setter
         public Builder fileDeleteDelayMs(@Nullable String fileDeleteDelayMs) {
+
             this.fileDeleteDelayMs = fileDeleteDelayMs;
             return this;
         }
         @CustomType.Setter
         public Builder flushMessages(@Nullable String flushMessages) {
+
             this.flushMessages = flushMessages;
             return this;
         }
         @CustomType.Setter
         public Builder flushMs(@Nullable String flushMs) {
+
             this.flushMs = flushMs;
             return this;
         }
         @CustomType.Setter
         public Builder indexIntervalBytes(@Nullable String indexIntervalBytes) {
+
             this.indexIntervalBytes = indexIntervalBytes;
             return this;
         }
         @CustomType.Setter
         public Builder maxCompactionLagMs(@Nullable String maxCompactionLagMs) {
+
             this.maxCompactionLagMs = maxCompactionLagMs;
             return this;
         }
         @CustomType.Setter
         public Builder maxMessageBytes(@Nullable String maxMessageBytes) {
+
             this.maxMessageBytes = maxMessageBytes;
             return this;
         }
         @CustomType.Setter
         public Builder messageDownConversionEnable(@Nullable Boolean messageDownConversionEnable) {
+
             this.messageDownConversionEnable = messageDownConversionEnable;
             return this;
         }
         @CustomType.Setter
         public Builder messageFormatVersion(@Nullable String messageFormatVersion) {
+
             this.messageFormatVersion = messageFormatVersion;
             return this;
         }
         @CustomType.Setter
         public Builder messageTimestampDifferenceMaxMs(@Nullable String messageTimestampDifferenceMaxMs) {
+
             this.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
             return this;
         }
         @CustomType.Setter
         public Builder messageTimestampType(@Nullable String messageTimestampType) {
+
             this.messageTimestampType = messageTimestampType;
             return this;
         }
         @CustomType.Setter
         public Builder minCleanableDirtyRatio(@Nullable Double minCleanableDirtyRatio) {
+
             this.minCleanableDirtyRatio = minCleanableDirtyRatio;
             return this;
         }
         @CustomType.Setter
         public Builder minCompactionLagMs(@Nullable String minCompactionLagMs) {
+
             this.minCompactionLagMs = minCompactionLagMs;
             return this;
         }
         @CustomType.Setter
         public Builder minInsyncReplicas(@Nullable Integer minInsyncReplicas) {
+
             this.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder preallocate(@Nullable Boolean preallocate) {
+
             this.preallocate = preallocate;
             return this;
         }
         @CustomType.Setter
         public Builder retentionBytes(@Nullable String retentionBytes) {
+
             this.retentionBytes = retentionBytes;
             return this;
         }
         @CustomType.Setter
         public Builder retentionMs(@Nullable String retentionMs) {
+
             this.retentionMs = retentionMs;
             return this;
         }
         @CustomType.Setter
         public Builder segmentBytes(@Nullable String segmentBytes) {
+
             this.segmentBytes = segmentBytes;
             return this;
         }
         @CustomType.Setter
         public Builder segmentIndexBytes(@Nullable String segmentIndexBytes) {
+
             this.segmentIndexBytes = segmentIndexBytes;
             return this;
         }
         @CustomType.Setter
         public Builder segmentJitterMs(@Nullable String segmentJitterMs) {
+
             this.segmentJitterMs = segmentJitterMs;
             return this;
         }
         @CustomType.Setter
         public Builder segmentMs(@Nullable String segmentMs) {
+
             this.segmentMs = segmentMs;
             return this;
         }

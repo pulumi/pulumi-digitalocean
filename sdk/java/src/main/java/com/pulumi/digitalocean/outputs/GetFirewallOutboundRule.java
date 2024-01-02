@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -144,6 +145,7 @@ public final class GetFirewallOutboundRule {
 
         @CustomType.Setter
         public Builder destinationAddresses(@Nullable List<String> destinationAddresses) {
+
             this.destinationAddresses = destinationAddresses;
             return this;
         }
@@ -152,6 +154,7 @@ public final class GetFirewallOutboundRule {
         }
         @CustomType.Setter
         public Builder destinationDropletIds(@Nullable List<Integer> destinationDropletIds) {
+
             this.destinationDropletIds = destinationDropletIds;
             return this;
         }
@@ -160,6 +163,7 @@ public final class GetFirewallOutboundRule {
         }
         @CustomType.Setter
         public Builder destinationKubernetesIds(@Nullable List<String> destinationKubernetesIds) {
+
             this.destinationKubernetesIds = destinationKubernetesIds;
             return this;
         }
@@ -168,6 +172,7 @@ public final class GetFirewallOutboundRule {
         }
         @CustomType.Setter
         public Builder destinationLoadBalancerUids(@Nullable List<String> destinationLoadBalancerUids) {
+
             this.destinationLoadBalancerUids = destinationLoadBalancerUids;
             return this;
         }
@@ -176,6 +181,7 @@ public final class GetFirewallOutboundRule {
         }
         @CustomType.Setter
         public Builder destinationTags(@Nullable List<String> destinationTags) {
+
             this.destinationTags = destinationTags;
             return this;
         }
@@ -184,12 +190,16 @@ public final class GetFirewallOutboundRule {
         }
         @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
+
             this.portRange = portRange;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetFirewallOutboundRule", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public GetFirewallOutboundRule build() {

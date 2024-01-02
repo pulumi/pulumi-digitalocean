@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetDatabaseUserSettingAcl {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserSettingAcl", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder permission(String permission) {
-            this.permission = Objects.requireNonNull(permission);
+            if (permission == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserSettingAcl", "permission");
+            }
+            this.permission = permission;
             return this;
         }
         @CustomType.Setter
         public Builder topic(String topic) {
-            this.topic = Objects.requireNonNull(topic);
+            if (topic == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserSettingAcl", "topic");
+            }
+            this.topic = topic;
             return this;
         }
         public GetDatabaseUserSettingAcl build() {

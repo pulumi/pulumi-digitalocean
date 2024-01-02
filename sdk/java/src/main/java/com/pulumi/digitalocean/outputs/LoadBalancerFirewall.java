@@ -60,6 +60,7 @@ public final class LoadBalancerFirewall {
 
         @CustomType.Setter
         public Builder allows(@Nullable List<String> allows) {
+
             this.allows = allows;
             return this;
         }
@@ -68,6 +69,7 @@ public final class LoadBalancerFirewall {
         }
         @CustomType.Setter
         public Builder denies(@Nullable List<String> denies) {
+
             this.denies = denies;
             return this;
         }

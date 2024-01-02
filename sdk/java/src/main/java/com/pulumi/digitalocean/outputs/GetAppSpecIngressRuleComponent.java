@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -63,17 +64,26 @@ public final class GetAppSpecIngressRuleComponent {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleComponent", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder preservePathPrefix(Boolean preservePathPrefix) {
-            this.preservePathPrefix = Objects.requireNonNull(preservePathPrefix);
+            if (preservePathPrefix == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleComponent", "preservePathPrefix");
+            }
+            this.preservePathPrefix = preservePathPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder rewrite(String rewrite) {
-            this.rewrite = Objects.requireNonNull(rewrite);
+            if (rewrite == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleComponent", "rewrite");
+            }
+            this.rewrite = rewrite;
             return this;
         }
         public GetAppSpecIngressRuleComponent build() {

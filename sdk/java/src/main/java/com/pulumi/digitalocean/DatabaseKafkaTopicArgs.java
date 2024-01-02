@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.DatabaseKafkaTopicConfigArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -242,7 +243,9 @@ public final class DatabaseKafkaTopicArgs extends com.pulumi.resources.ResourceA
         }
 
         public DatabaseKafkaTopicArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("DatabaseKafkaTopicArgs", "clusterId");
+            }
             return $;
         }
     }

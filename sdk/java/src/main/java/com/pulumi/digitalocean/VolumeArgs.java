@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.FileSystemType;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -443,8 +444,12 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VolumeArgs build() {
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("VolumeArgs", "region");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("VolumeArgs", "size");
+            }
             return $;
         }
     }

@@ -121,36 +121,43 @@ public final class GetAppSpecServiceHealthCheck {
 
         @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
+
             this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder httpPath(@Nullable String httpPath) {
+
             this.httpPath = httpPath;
             return this;
         }
         @CustomType.Setter
         public Builder initialDelaySeconds(@Nullable Integer initialDelaySeconds) {
+
             this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder periodSeconds(@Nullable Integer periodSeconds) {
+
             this.periodSeconds = periodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder successThreshold(@Nullable Integer successThreshold) {
+
             this.successThreshold = successThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }

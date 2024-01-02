@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.DropletSlug;
 import com.pulumi.digitalocean.inputs.KubernetesNodePoolTaintArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -466,8 +467,12 @@ public final class KubernetesNodePoolArgs extends com.pulumi.resources.ResourceA
         }
 
         public KubernetesNodePoolArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("KubernetesNodePoolArgs", "clusterId");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("KubernetesNodePoolArgs", "size");
+            }
             return $;
         }
     }

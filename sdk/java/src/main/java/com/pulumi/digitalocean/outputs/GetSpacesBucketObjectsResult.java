@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -124,12 +125,18 @@ public final class GetSpacesBucketObjectsResult {
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectsResult", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder commonPrefixes(List<String> commonPrefixes) {
-            this.commonPrefixes = Objects.requireNonNull(commonPrefixes);
+            if (commonPrefixes == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectsResult", "commonPrefixes");
+            }
+            this.commonPrefixes = commonPrefixes;
             return this;
         }
         public Builder commonPrefixes(String... commonPrefixes) {
@@ -137,22 +144,30 @@ public final class GetSpacesBucketObjectsResult {
         }
         @CustomType.Setter
         public Builder delimiter(@Nullable String delimiter) {
+
             this.delimiter = delimiter;
             return this;
         }
         @CustomType.Setter
         public Builder encodingType(@Nullable String encodingType) {
+
             this.encodingType = encodingType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keys(List<String> keys) {
-            this.keys = Objects.requireNonNull(keys);
+            if (keys == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectsResult", "keys");
+            }
+            this.keys = keys;
             return this;
         }
         public Builder keys(String... keys) {
@@ -160,12 +175,16 @@ public final class GetSpacesBucketObjectsResult {
         }
         @CustomType.Setter
         public Builder maxKeys(@Nullable Integer maxKeys) {
+
             this.maxKeys = maxKeys;
             return this;
         }
         @CustomType.Setter
         public Builder owners(List<String> owners) {
-            this.owners = Objects.requireNonNull(owners);
+            if (owners == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectsResult", "owners");
+            }
+            this.owners = owners;
             return this;
         }
         public Builder owners(String... owners) {
@@ -173,12 +192,16 @@ public final class GetSpacesBucketObjectsResult {
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectsResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetSpacesBucketObjectsResult build() {

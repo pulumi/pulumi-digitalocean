@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorkerImageDeployOnPush;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -102,7 +103,10 @@ public final class GetAppSpecWorkerImage {
 
         @CustomType.Setter
         public Builder deployOnPushes(List<GetAppSpecWorkerImageDeployOnPush> deployOnPushes) {
-            this.deployOnPushes = Objects.requireNonNull(deployOnPushes);
+            if (deployOnPushes == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecWorkerImage", "deployOnPushes");
+            }
+            this.deployOnPushes = deployOnPushes;
             return this;
         }
         public Builder deployOnPushes(GetAppSpecWorkerImageDeployOnPush... deployOnPushes) {
@@ -110,21 +114,29 @@ public final class GetAppSpecWorkerImage {
         }
         @CustomType.Setter
         public Builder registry(@Nullable String registry) {
+
             this.registry = registry;
             return this;
         }
         @CustomType.Setter
         public Builder registryType(String registryType) {
-            this.registryType = Objects.requireNonNull(registryType);
+            if (registryType == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecWorkerImage", "registryType");
+            }
+            this.registryType = registryType;
             return this;
         }
         @CustomType.Setter
         public Builder repository(String repository) {
-            this.repository = Objects.requireNonNull(repository);
+            if (repository == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecWorkerImage", "repository");
+            }
+            this.repository = repository;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }

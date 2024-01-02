@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -102,27 +103,40 @@ public final class GetAppSpecJobAlert {
 
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecJobAlert", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder rule(String rule) {
-            this.rule = Objects.requireNonNull(rule);
+            if (rule == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecJobAlert", "rule");
+            }
+            this.rule = rule;
             return this;
         }
         @CustomType.Setter
         public Builder value(Double value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecJobAlert", "value");
+            }
+            this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder window(String window) {
-            this.window = Objects.requireNonNull(window);
+            if (window == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecJobAlert", "window");
+            }
+            this.window = window;
             return this;
         }
         public GetAppSpecJobAlert build() {

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class AppSpecJobLogDestinationDatadogArgs extends com.pulumi.resour
         }
 
         public AppSpecJobLogDestinationDatadogArgs build() {
-            $.apiKey = Objects.requireNonNull($.apiKey, "expected parameter 'apiKey' to be non-null");
+            if ($.apiKey == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobLogDestinationDatadogArgs", "apiKey");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -267,97 +268,152 @@ public final class GetSpacesBucketObjectResult {
 
         @CustomType.Setter
         public Builder body(String body) {
-            this.body = Objects.requireNonNull(body);
+            if (body == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "body");
+            }
+            this.body = body;
             return this;
         }
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder cacheControl(String cacheControl) {
-            this.cacheControl = Objects.requireNonNull(cacheControl);
+            if (cacheControl == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "cacheControl");
+            }
+            this.cacheControl = cacheControl;
             return this;
         }
         @CustomType.Setter
         public Builder contentDisposition(String contentDisposition) {
-            this.contentDisposition = Objects.requireNonNull(contentDisposition);
+            if (contentDisposition == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "contentDisposition");
+            }
+            this.contentDisposition = contentDisposition;
             return this;
         }
         @CustomType.Setter
         public Builder contentEncoding(String contentEncoding) {
-            this.contentEncoding = Objects.requireNonNull(contentEncoding);
+            if (contentEncoding == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "contentEncoding");
+            }
+            this.contentEncoding = contentEncoding;
             return this;
         }
         @CustomType.Setter
         public Builder contentLanguage(String contentLanguage) {
-            this.contentLanguage = Objects.requireNonNull(contentLanguage);
+            if (contentLanguage == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "contentLanguage");
+            }
+            this.contentLanguage = contentLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder contentLength(Integer contentLength) {
-            this.contentLength = Objects.requireNonNull(contentLength);
+            if (contentLength == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "contentLength");
+            }
+            this.contentLength = contentLength;
             return this;
         }
         @CustomType.Setter
         public Builder contentType(String contentType) {
-            this.contentType = Objects.requireNonNull(contentType);
+            if (contentType == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "contentType");
+            }
+            this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(String expiration) {
-            this.expiration = Objects.requireNonNull(expiration);
+            if (expiration == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "expiration");
+            }
+            this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder expires(String expires) {
-            this.expires = Objects.requireNonNull(expires);
+            if (expires == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "expires");
+            }
+            this.expires = expires;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder lastModified(String lastModified) {
-            this.lastModified = Objects.requireNonNull(lastModified);
+            if (lastModified == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "lastModified");
+            }
+            this.lastModified = lastModified;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder range(@Nullable String range) {
+
             this.range = range;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder versionId(String versionId) {
-            this.versionId = Objects.requireNonNull(versionId);
+            if (versionId == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "versionId");
+            }
+            this.versionId = versionId;
             return this;
         }
         @CustomType.Setter
         public Builder websiteRedirectLocation(String websiteRedirectLocation) {
-            this.websiteRedirectLocation = Objects.requireNonNull(websiteRedirectLocation);
+            if (websiteRedirectLocation == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "websiteRedirectLocation");
+            }
+            this.websiteRedirectLocation = websiteRedirectLocation;
             return this;
         }
         public GetSpacesBucketObjectResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -316,10 +317,18 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         public LoadBalancerForwardingRuleArgs build() {
-            $.entryPort = Objects.requireNonNull($.entryPort, "expected parameter 'entryPort' to be non-null");
-            $.entryProtocol = Objects.requireNonNull($.entryProtocol, "expected parameter 'entryProtocol' to be non-null");
-            $.targetPort = Objects.requireNonNull($.targetPort, "expected parameter 'targetPort' to be non-null");
-            $.targetProtocol = Objects.requireNonNull($.targetProtocol, "expected parameter 'targetProtocol' to be non-null");
+            if ($.entryPort == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerForwardingRuleArgs", "entryPort");
+            }
+            if ($.entryProtocol == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerForwardingRuleArgs", "entryProtocol");
+            }
+            if ($.targetPort == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerForwardingRuleArgs", "targetPort");
+            }
+            if ($.targetProtocol == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerForwardingRuleArgs", "targetProtocol");
+            }
             return $;
         }
     }

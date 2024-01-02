@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -156,12 +157,16 @@ public final class GetVolumeResult {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
-            this.dropletIds = Objects.requireNonNull(dropletIds);
+            if (dropletIds == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "dropletIds");
+            }
+            this.dropletIds = dropletIds;
             return this;
         }
         public Builder dropletIds(Integer... dropletIds) {
@@ -169,37 +174,56 @@ public final class GetVolumeResult {
         }
         @CustomType.Setter
         public Builder filesystemLabel(String filesystemLabel) {
-            this.filesystemLabel = Objects.requireNonNull(filesystemLabel);
+            if (filesystemLabel == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "filesystemLabel");
+            }
+            this.filesystemLabel = filesystemLabel;
             return this;
         }
         @CustomType.Setter
         public Builder filesystemType(String filesystemType) {
-            this.filesystemType = Objects.requireNonNull(filesystemType);
+            if (filesystemType == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "filesystemType");
+            }
+            this.filesystemType = filesystemType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -207,7 +231,10 @@ public final class GetVolumeResult {
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         public GetVolumeResult build() {

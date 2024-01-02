@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -133,7 +134,10 @@ public final class GetCertificateResult {
 
         @CustomType.Setter
         public Builder domains(List<String> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(String... domains) {
@@ -141,37 +145,58 @@ public final class GetCertificateResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notAfter(String notAfter) {
-            this.notAfter = Objects.requireNonNull(notAfter);
+            if (notAfter == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "notAfter");
+            }
+            this.notAfter = notAfter;
             return this;
         }
         @CustomType.Setter
         public Builder sha1Fingerprint(String sha1Fingerprint) {
-            this.sha1Fingerprint = Objects.requireNonNull(sha1Fingerprint);
+            if (sha1Fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "sha1Fingerprint");
+            }
+            this.sha1Fingerprint = sha1Fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetCertificateResult build() {

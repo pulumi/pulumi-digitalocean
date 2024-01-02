@@ -7,6 +7,7 @@ import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.RecordType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -432,9 +433,15 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DnsRecordArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DnsRecordArgs", "domain");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DnsRecordArgs", "type");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("DnsRecordArgs", "value");
+            }
             return $;
         }
     }

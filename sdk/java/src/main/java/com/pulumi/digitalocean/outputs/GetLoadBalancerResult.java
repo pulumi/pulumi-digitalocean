@@ -8,6 +8,7 @@ import com.pulumi.digitalocean.outputs.GetLoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerForwardingRule;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerStickySession;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -175,17 +176,26 @@ public final class GetLoadBalancerResult {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder disableLetsEncryptDnsRecords(Boolean disableLetsEncryptDnsRecords) {
-            this.disableLetsEncryptDnsRecords = Objects.requireNonNull(disableLetsEncryptDnsRecords);
+            if (disableLetsEncryptDnsRecords == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "disableLetsEncryptDnsRecords");
+            }
+            this.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
             return this;
         }
         @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
-            this.dropletIds = Objects.requireNonNull(dropletIds);
+            if (dropletIds == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "dropletIds");
+            }
+            this.dropletIds = dropletIds;
             return this;
         }
         public Builder dropletIds(Integer... dropletIds) {
@@ -193,22 +203,34 @@ public final class GetLoadBalancerResult {
         }
         @CustomType.Setter
         public Builder dropletTag(String dropletTag) {
-            this.dropletTag = Objects.requireNonNull(dropletTag);
+            if (dropletTag == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "dropletTag");
+            }
+            this.dropletTag = dropletTag;
             return this;
         }
         @CustomType.Setter
         public Builder enableBackendKeepalive(Boolean enableBackendKeepalive) {
-            this.enableBackendKeepalive = Objects.requireNonNull(enableBackendKeepalive);
+            if (enableBackendKeepalive == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "enableBackendKeepalive");
+            }
+            this.enableBackendKeepalive = enableBackendKeepalive;
             return this;
         }
         @CustomType.Setter
         public Builder enableProxyProtocol(Boolean enableProxyProtocol) {
-            this.enableProxyProtocol = Objects.requireNonNull(enableProxyProtocol);
+            if (enableProxyProtocol == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "enableProxyProtocol");
+            }
+            this.enableProxyProtocol = enableProxyProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder firewalls(List<GetLoadBalancerFirewall> firewalls) {
-            this.firewalls = Objects.requireNonNull(firewalls);
+            if (firewalls == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "firewalls");
+            }
+            this.firewalls = firewalls;
             return this;
         }
         public Builder firewalls(GetLoadBalancerFirewall... firewalls) {
@@ -216,7 +238,10 @@ public final class GetLoadBalancerResult {
         }
         @CustomType.Setter
         public Builder forwardingRules(List<GetLoadBalancerForwardingRule> forwardingRules) {
-            this.forwardingRules = Objects.requireNonNull(forwardingRules);
+            if (forwardingRules == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "forwardingRules");
+            }
+            this.forwardingRules = forwardingRules;
             return this;
         }
         public Builder forwardingRules(GetLoadBalancerForwardingRule... forwardingRules) {
@@ -224,7 +249,10 @@ public final class GetLoadBalancerResult {
         }
         @CustomType.Setter
         public Builder healthchecks(List<GetLoadBalancerHealthcheck> healthchecks) {
-            this.healthchecks = Objects.requireNonNull(healthchecks);
+            if (healthchecks == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "healthchecks");
+            }
+            this.healthchecks = healthchecks;
             return this;
         }
         public Builder healthchecks(GetLoadBalancerHealthcheck... healthchecks) {
@@ -232,62 +260,94 @@ public final class GetLoadBalancerResult {
         }
         @CustomType.Setter
         public Builder httpIdleTimeoutSeconds(Integer httpIdleTimeoutSeconds) {
-            this.httpIdleTimeoutSeconds = Objects.requireNonNull(httpIdleTimeoutSeconds);
+            if (httpIdleTimeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "httpIdleTimeoutSeconds");
+            }
+            this.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerUrn(String loadBalancerUrn) {
-            this.loadBalancerUrn = Objects.requireNonNull(loadBalancerUrn);
+            if (loadBalancerUrn == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "loadBalancerUrn");
+            }
+            this.loadBalancerUrn = loadBalancerUrn;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder redirectHttpToHttps(Boolean redirectHttpToHttps) {
-            this.redirectHttpToHttps = Objects.requireNonNull(redirectHttpToHttps);
+            if (redirectHttpToHttps == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "redirectHttpToHttps");
+            }
+            this.redirectHttpToHttps = redirectHttpToHttps;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder sizeUnit(Integer sizeUnit) {
-            this.sizeUnit = Objects.requireNonNull(sizeUnit);
+            if (sizeUnit == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "sizeUnit");
+            }
+            this.sizeUnit = sizeUnit;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessions(List<GetLoadBalancerStickySession> stickySessions) {
-            this.stickySessions = Objects.requireNonNull(stickySessions);
+            if (stickySessions == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "stickySessions");
+            }
+            this.stickySessions = stickySessions;
             return this;
         }
         public Builder stickySessions(GetLoadBalancerStickySession... stickySessions) {
@@ -295,12 +355,18 @@ public final class GetLoadBalancerResult {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
-            this.vpcUuid = Objects.requireNonNull(vpcUuid);
+            if (vpcUuid == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "vpcUuid");
+            }
+            this.vpcUuid = vpcUuid;
             return this;
         }
         public GetLoadBalancerResult build() {

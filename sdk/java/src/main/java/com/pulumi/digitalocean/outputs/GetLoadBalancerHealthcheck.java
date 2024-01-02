@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,37 +72,58 @@ public final class GetLoadBalancerHealthcheck {
 
         @CustomType.Setter
         public Builder checkIntervalSeconds(Integer checkIntervalSeconds) {
-            this.checkIntervalSeconds = Objects.requireNonNull(checkIntervalSeconds);
+            if (checkIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "checkIntervalSeconds");
+            }
+            this.checkIntervalSeconds = checkIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
-            this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
+            if (healthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "healthyThreshold");
+            }
+            this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder responseTimeoutSeconds(Integer responseTimeoutSeconds) {
-            this.responseTimeoutSeconds = Objects.requireNonNull(responseTimeoutSeconds);
+            if (responseTimeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "responseTimeoutSeconds");
+            }
+            this.responseTimeoutSeconds = responseTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
-            this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
+            if (unhealthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerHealthcheck", "unhealthyThreshold");
+            }
+            this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }
         public GetLoadBalancerHealthcheck build() {

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -226,10 +227,18 @@ public final class AppSpecJobAlertArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AppSpecJobAlertArgs build() {
-            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
-            $.rule = Objects.requireNonNull($.rule, "expected parameter 'rule' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
-            $.window = Objects.requireNonNull($.window, "expected parameter 'window' to be non-null");
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobAlertArgs", "operator");
+            }
+            if ($.rule == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobAlertArgs", "rule");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobAlertArgs", "value");
+            }
+            if ($.window == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobAlertArgs", "window");
+            }
             return $;
         }
     }
