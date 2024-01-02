@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -282,8 +283,12 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CustomImageArgs build() {
-            $.regions = Objects.requireNonNull($.regions, "expected parameter 'regions' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.regions == null) {
+                throw new MissingRequiredPropertyException("CustomImageArgs", "regions");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("CustomImageArgs", "url");
+            }
             return $;
         }
     }

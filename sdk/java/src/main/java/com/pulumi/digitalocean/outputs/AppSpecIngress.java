@@ -44,6 +44,7 @@ public final class AppSpecIngress {
 
         @CustomType.Setter
         public Builder rules(@Nullable List<AppSpecIngressRule> rules) {
+
             this.rules = rules;
             return this;
         }

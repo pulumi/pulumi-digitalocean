@@ -15,6 +15,7 @@ import com.pulumi.digitalocean.inputs.AppSpecServiceHealthCheckArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceImageArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceRouteArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -877,7 +878,9 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AppSpecServiceArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AppSpecServiceArgs", "name");
+            }
             return $;
         }
     }

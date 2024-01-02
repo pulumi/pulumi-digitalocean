@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class DatabaseClusterMaintenanceWindow {
 
         @CustomType.Setter
         public Builder day(String day) {
-            this.day = Objects.requireNonNull(day);
+            if (day == null) {
+              throw new MissingRequiredPropertyException("DatabaseClusterMaintenanceWindow", "day");
+            }
+            this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder hour(String hour) {
-            this.hour = Objects.requireNonNull(hour);
+            if (hour == null) {
+              throw new MissingRequiredPropertyException("DatabaseClusterMaintenanceWindow", "hour");
+            }
+            this.hour = hour;
             return this;
         }
         public DatabaseClusterMaintenanceWindow build() {

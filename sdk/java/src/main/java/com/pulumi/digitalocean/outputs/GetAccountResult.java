@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -142,42 +143,66 @@ public final class GetAccountResult {
 
         @CustomType.Setter
         public Builder dropletLimit(Integer dropletLimit) {
-            this.dropletLimit = Objects.requireNonNull(dropletLimit);
+            if (dropletLimit == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "dropletLimit");
+            }
+            this.dropletLimit = dropletLimit;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder emailVerified(Boolean emailVerified) {
-            this.emailVerified = Objects.requireNonNull(emailVerified);
+            if (emailVerified == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "emailVerified");
+            }
+            this.emailVerified = emailVerified;
             return this;
         }
         @CustomType.Setter
         public Builder floatingIpLimit(Integer floatingIpLimit) {
-            this.floatingIpLimit = Objects.requireNonNull(floatingIpLimit);
+            if (floatingIpLimit == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "floatingIpLimit");
+            }
+            this.floatingIpLimit = floatingIpLimit;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
-            this.statusMessage = Objects.requireNonNull(statusMessage);
+            if (statusMessage == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "statusMessage");
+            }
+            this.statusMessage = statusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetAccountResult build() {

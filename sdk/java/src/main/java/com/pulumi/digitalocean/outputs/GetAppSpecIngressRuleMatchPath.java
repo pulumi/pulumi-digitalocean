@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetAppSpecIngressRuleMatchPath {
 
         @CustomType.Setter
         public Builder prefix(String prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleMatchPath", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         public GetAppSpecIngressRuleMatchPath build() {

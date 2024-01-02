@@ -8,6 +8,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleComponent;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleCors;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleMatch;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleRedirect;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -65,21 +66,31 @@ public final class GetAppSpecIngressRule {
 
         @CustomType.Setter
         public Builder component(GetAppSpecIngressRuleComponent component) {
-            this.component = Objects.requireNonNull(component);
+            if (component == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRule", "component");
+            }
+            this.component = component;
             return this;
         }
         @CustomType.Setter
         public Builder cors(GetAppSpecIngressRuleCors cors) {
-            this.cors = Objects.requireNonNull(cors);
+            if (cors == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRule", "cors");
+            }
+            this.cors = cors;
             return this;
         }
         @CustomType.Setter
         public Builder match(GetAppSpecIngressRuleMatch match) {
-            this.match = Objects.requireNonNull(match);
+            if (match == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRule", "match");
+            }
+            this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder redirect(@Nullable GetAppSpecIngressRuleRedirect redirect) {
+
             this.redirect = redirect;
             return this;
         }

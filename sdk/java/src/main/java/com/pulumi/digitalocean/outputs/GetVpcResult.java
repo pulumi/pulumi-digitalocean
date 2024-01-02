@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetVpcResult {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipRange(String ipRange) {
-            this.ipRange = Objects.requireNonNull(ipRange);
+            if (ipRange == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "ipRange");
+            }
+            this.ipRange = ipRange;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         public GetVpcResult build() {

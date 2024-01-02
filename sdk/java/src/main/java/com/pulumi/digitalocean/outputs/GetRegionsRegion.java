@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -100,12 +101,18 @@ public final class GetRegionsRegion {
 
         @CustomType.Setter
         public Builder available(Boolean available) {
-            this.available = Objects.requireNonNull(available);
+            if (available == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "available");
+            }
+            this.available = available;
             return this;
         }
         @CustomType.Setter
         public Builder features(List<String> features) {
-            this.features = Objects.requireNonNull(features);
+            if (features == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "features");
+            }
+            this.features = features;
             return this;
         }
         public Builder features(String... features) {
@@ -113,12 +120,18 @@ public final class GetRegionsRegion {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sizes(List<String> sizes) {
-            this.sizes = Objects.requireNonNull(sizes);
+            if (sizes == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "sizes");
+            }
+            this.sizes = sizes;
             return this;
         }
         public Builder sizes(String... sizes) {
@@ -126,7 +139,10 @@ public final class GetRegionsRegion {
         }
         @CustomType.Setter
         public Builder slug(String slug) {
-            this.slug = Objects.requireNonNull(slug);
+            if (slug == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "slug");
+            }
+            this.slug = slug;
             return this;
         }
         public GetRegionsRegion build() {

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class UptimeAlertNotificationSlackArgs extends com.pulumi.resources
         }
 
         public UptimeAlertNotificationSlackArgs build() {
-            $.channel = Objects.requireNonNull($.channel, "expected parameter 'channel' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.channel == null) {
+                throw new MissingRequiredPropertyException("UptimeAlertNotificationSlackArgs", "channel");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("UptimeAlertNotificationSlackArgs", "url");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetFloatingIpArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFloatingIpArgs build() {
-            $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
+            if ($.ipAddress == null) {
+                throw new MissingRequiredPropertyException("GetFloatingIpArgs", "ipAddress");
+            }
             return $;
         }
     }

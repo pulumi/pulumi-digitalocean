@@ -44,6 +44,7 @@ public final class AppSpecIngressRuleMatch {
 
         @CustomType.Setter
         public Builder path(@Nullable AppSpecIngressRuleMatchPath path) {
+
             this.path = path;
             return this;
         }

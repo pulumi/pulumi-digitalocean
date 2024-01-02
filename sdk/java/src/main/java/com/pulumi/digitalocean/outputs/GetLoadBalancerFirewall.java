@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class GetLoadBalancerFirewall {
 
         @CustomType.Setter
         public Builder allows(List<String> allows) {
-            this.allows = Objects.requireNonNull(allows);
+            if (allows == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerFirewall", "allows");
+            }
+            this.allows = allows;
             return this;
         }
         public Builder allows(String... allows) {
@@ -49,7 +53,10 @@ public final class GetLoadBalancerFirewall {
         }
         @CustomType.Setter
         public Builder denies(List<String> denies) {
-            this.denies = Objects.requireNonNull(denies);
+            if (denies == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerFirewall", "denies");
+            }
+            this.denies = denies;
             return this;
         }
         public Builder denies(String... denies) {

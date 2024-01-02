@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class AppSpecWorkerLogDestinationPapertrailArgs extends com.pulumi.
         }
 
         public AppSpecWorkerLogDestinationPapertrailArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("AppSpecWorkerLogDestinationPapertrailArgs", "endpoint");
+            }
             return $;
         }
     }

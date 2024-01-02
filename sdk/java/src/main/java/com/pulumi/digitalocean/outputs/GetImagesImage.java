@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -238,52 +239,82 @@ public final class GetImagesImage {
 
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder distribution(String distribution) {
-            this.distribution = Objects.requireNonNull(distribution);
+            if (distribution == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "distribution");
+            }
+            this.distribution = distribution;
             return this;
         }
         @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
-            this.errorMessage = Objects.requireNonNull(errorMessage);
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder minDiskSize(Integer minDiskSize) {
-            this.minDiskSize = Objects.requireNonNull(minDiskSize);
+            if (minDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "minDiskSize");
+            }
+            this.minDiskSize = minDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter("private")
         public Builder private_(Boolean private_) {
-            this.private_ = Objects.requireNonNull(private_);
+            if (private_ == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "private_");
+            }
+            this.private_ = private_;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<String> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(String... regions) {
@@ -291,22 +322,34 @@ public final class GetImagesImage {
         }
         @CustomType.Setter
         public Builder sizeGigabytes(Double sizeGigabytes) {
-            this.sizeGigabytes = Objects.requireNonNull(sizeGigabytes);
+            if (sizeGigabytes == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "sizeGigabytes");
+            }
+            this.sizeGigabytes = sizeGigabytes;
             return this;
         }
         @CustomType.Setter
         public Builder slug(String slug) {
-            this.slug = Objects.requireNonNull(slug);
+            if (slug == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "slug");
+            }
+            this.slug = slug;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -314,7 +357,10 @@ public final class GetImagesImage {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetImagesImage build() {

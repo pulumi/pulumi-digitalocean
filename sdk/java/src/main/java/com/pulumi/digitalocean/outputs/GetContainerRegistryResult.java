@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetContainerRegistryResult {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serverUrl(String serverUrl) {
-            this.serverUrl = Objects.requireNonNull(serverUrl);
+            if (serverUrl == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "serverUrl");
+            }
+            this.serverUrl = serverUrl;
             return this;
         }
         @CustomType.Setter
         public Builder storageUsageBytes(Integer storageUsageBytes) {
-            this.storageUsageBytes = Objects.requireNonNull(storageUsageBytes);
+            if (storageUsageBytes == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "storageUsageBytes");
+            }
+            this.storageUsageBytes = storageUsageBytes;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionTierSlug(String subscriptionTierSlug) {
-            this.subscriptionTierSlug = Objects.requireNonNull(subscriptionTierSlug);
+            if (subscriptionTierSlug == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "subscriptionTierSlug");
+            }
+            this.subscriptionTierSlug = subscriptionTierSlug;
             return this;
         }
         public GetContainerRegistryResult build() {

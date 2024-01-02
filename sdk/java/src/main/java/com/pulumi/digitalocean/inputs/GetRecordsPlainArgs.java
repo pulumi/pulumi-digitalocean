@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetRecordsFilter;
 import com.pulumi.digitalocean.inputs.GetRecordsSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -150,7 +151,9 @@ public final class GetRecordsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRecordsPlainArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GetRecordsPlainArgs", "domain");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,7 +162,9 @@ public final class VolumeSnapshotArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VolumeSnapshotArgs build() {
-            $.volumeId = Objects.requireNonNull($.volumeId, "expected parameter 'volumeId' to be non-null");
+            if ($.volumeId == null) {
+                throw new MissingRequiredPropertyException("VolumeSnapshotArgs", "volumeId");
+            }
             return $;
         }
     }

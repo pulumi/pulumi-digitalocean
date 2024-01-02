@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
         }
 
         public DatabaseClusterMaintenanceWindowArgs build() {
-            $.day = Objects.requireNonNull($.day, "expected parameter 'day' to be non-null");
-            $.hour = Objects.requireNonNull($.hour, "expected parameter 'hour' to be non-null");
+            if ($.day == null) {
+                throw new MissingRequiredPropertyException("DatabaseClusterMaintenanceWindowArgs", "day");
+            }
+            if ($.hour == null) {
+                throw new MissingRequiredPropertyException("DatabaseClusterMaintenanceWindowArgs", "hour");
+            }
             return $;
         }
     }

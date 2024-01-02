@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -152,16 +153,21 @@ public final class FirewallInboundRule {
 
         @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
+
             this.portRange = portRange;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("FirewallInboundRule", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder sourceAddresses(@Nullable List<String> sourceAddresses) {
+
             this.sourceAddresses = sourceAddresses;
             return this;
         }
@@ -170,6 +176,7 @@ public final class FirewallInboundRule {
         }
         @CustomType.Setter
         public Builder sourceDropletIds(@Nullable List<Integer> sourceDropletIds) {
+
             this.sourceDropletIds = sourceDropletIds;
             return this;
         }
@@ -178,6 +185,7 @@ public final class FirewallInboundRule {
         }
         @CustomType.Setter
         public Builder sourceKubernetesIds(@Nullable List<String> sourceKubernetesIds) {
+
             this.sourceKubernetesIds = sourceKubernetesIds;
             return this;
         }
@@ -186,6 +194,7 @@ public final class FirewallInboundRule {
         }
         @CustomType.Setter
         public Builder sourceLoadBalancerUids(@Nullable List<String> sourceLoadBalancerUids) {
+
             this.sourceLoadBalancerUids = sourceLoadBalancerUids;
             return this;
         }
@@ -194,6 +203,7 @@ public final class FirewallInboundRule {
         }
         @CustomType.Setter
         public Builder sourceTags(@Nullable List<String> sourceTags) {
+
             this.sourceTags = sourceTags;
             return this;
         }

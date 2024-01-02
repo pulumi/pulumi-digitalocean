@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketsBucket;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketsFilter;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketsSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class GetSpacesBucketsResult {
 
         @CustomType.Setter
         public Builder buckets(List<GetSpacesBucketsBucket> buckets) {
-            this.buckets = Objects.requireNonNull(buckets);
+            if (buckets == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketsResult", "buckets");
+            }
+            this.buckets = buckets;
             return this;
         }
         public Builder buckets(GetSpacesBucketsBucket... buckets) {
@@ -81,6 +85,7 @@ public final class GetSpacesBucketsResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetSpacesBucketsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -89,11 +94,15 @@ public final class GetSpacesBucketsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSpacesBucketsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetSpacesBucketsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

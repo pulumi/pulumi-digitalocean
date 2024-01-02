@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -152,7 +153,9 @@ public final class ContainerRegistryDockerCredentialsArgs extends com.pulumi.res
         }
 
         public ContainerRegistryDockerCredentialsArgs build() {
-            $.registryName = Objects.requireNonNull($.registryName, "expected parameter 'registryName' to be non-null");
+            if ($.registryName == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryDockerCredentialsArgs", "registryName");
+            }
             return $;
         }
     }

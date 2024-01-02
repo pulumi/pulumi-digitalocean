@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,27 +92,42 @@ public final class GetFloatingIpResult {
 
         @CustomType.Setter
         public Builder dropletId(Integer dropletId) {
-            this.dropletId = Objects.requireNonNull(dropletId);
+            if (dropletId == null) {
+              throw new MissingRequiredPropertyException("GetFloatingIpResult", "dropletId");
+            }
+            this.dropletId = dropletId;
             return this;
         }
         @CustomType.Setter
         public Builder floatingIpUrn(String floatingIpUrn) {
-            this.floatingIpUrn = Objects.requireNonNull(floatingIpUrn);
+            if (floatingIpUrn == null) {
+              throw new MissingRequiredPropertyException("GetFloatingIpResult", "floatingIpUrn");
+            }
+            this.floatingIpUrn = floatingIpUrn;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFloatingIpResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetFloatingIpResult", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetFloatingIpResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetFloatingIpResult build() {

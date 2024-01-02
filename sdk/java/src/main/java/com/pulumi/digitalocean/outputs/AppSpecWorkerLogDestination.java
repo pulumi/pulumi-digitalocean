@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationDatadog;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationLogtail;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationPapertrail;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -89,21 +90,27 @@ public final class AppSpecWorkerLogDestination {
 
         @CustomType.Setter
         public Builder datadog(@Nullable AppSpecWorkerLogDestinationDatadog datadog) {
+
             this.datadog = datadog;
             return this;
         }
         @CustomType.Setter
         public Builder logtail(@Nullable AppSpecWorkerLogDestinationLogtail logtail) {
+
             this.logtail = logtail;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AppSpecWorkerLogDestination", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder papertrail(@Nullable AppSpecWorkerLogDestinationPapertrail papertrail) {
+
             this.papertrail = papertrail;
             return this;
         }

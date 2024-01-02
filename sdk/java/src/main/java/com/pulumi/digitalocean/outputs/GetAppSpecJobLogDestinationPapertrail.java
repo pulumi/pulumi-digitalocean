@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetAppSpecJobLogDestinationPapertrail {
 
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecJobLogDestinationPapertrail", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         public GetAppSpecJobLogDestinationPapertrail build() {

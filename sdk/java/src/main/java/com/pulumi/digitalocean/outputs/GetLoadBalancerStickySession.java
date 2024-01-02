@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetLoadBalancerStickySession {
 
         @CustomType.Setter
         public Builder cookieName(String cookieName) {
-            this.cookieName = Objects.requireNonNull(cookieName);
+            if (cookieName == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerStickySession", "cookieName");
+            }
+            this.cookieName = cookieName;
             return this;
         }
         @CustomType.Setter
         public Builder cookieTtlSeconds(Integer cookieTtlSeconds) {
-            this.cookieTtlSeconds = Objects.requireNonNull(cookieTtlSeconds);
+            if (cookieTtlSeconds == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerStickySession", "cookieTtlSeconds");
+            }
+            this.cookieTtlSeconds = cookieTtlSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerStickySession", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetLoadBalancerStickySession build() {

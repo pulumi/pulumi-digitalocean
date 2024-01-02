@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.UptimeAlertNotificationArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -311,9 +312,15 @@ public final class UptimeAlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UptimeAlertArgs build() {
-            $.checkId = Objects.requireNonNull($.checkId, "expected parameter 'checkId' to be non-null");
-            $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.checkId == null) {
+                throw new MissingRequiredPropertyException("UptimeAlertArgs", "checkId");
+            }
+            if ($.notifications == null) {
+                throw new MissingRequiredPropertyException("UptimeAlertArgs", "notifications");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("UptimeAlertArgs", "type");
+            }
             return $;
         }
     }

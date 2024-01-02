@@ -117,11 +117,13 @@ public final class GetAppSpecFunctionCors {
 
         @CustomType.Setter
         public Builder allowCredentials(@Nullable Boolean allowCredentials) {
+
             this.allowCredentials = allowCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder allowHeaders(@Nullable List<String> allowHeaders) {
+
             this.allowHeaders = allowHeaders;
             return this;
         }
@@ -130,6 +132,7 @@ public final class GetAppSpecFunctionCors {
         }
         @CustomType.Setter
         public Builder allowMethods(@Nullable List<String> allowMethods) {
+
             this.allowMethods = allowMethods;
             return this;
         }
@@ -138,11 +141,13 @@ public final class GetAppSpecFunctionCors {
         }
         @CustomType.Setter
         public Builder allowOrigins(@Nullable GetAppSpecFunctionCorsAllowOrigins allowOrigins) {
+
             this.allowOrigins = allowOrigins;
             return this;
         }
         @CustomType.Setter
         public Builder exposeHeaders(@Nullable List<String> exposeHeaders) {
+
             this.exposeHeaders = exposeHeaders;
             return this;
         }
@@ -151,6 +156,7 @@ public final class GetAppSpecFunctionCors {
         }
         @CustomType.Setter
         public Builder maxAge(@Nullable String maxAge) {
+
             this.maxAge = maxAge;
             return this;
         }

@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecJob;
 import com.pulumi.digitalocean.outputs.GetAppSpecService;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSite;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorker;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,6 +162,7 @@ public final class GetAppSpec {
 
         @CustomType.Setter
         public Builder alerts(@Nullable List<GetAppSpecAlert> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -169,6 +171,7 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder databases(@Nullable List<GetAppSpecDatabase> databases) {
+
             this.databases = databases;
             return this;
         }
@@ -177,7 +180,10 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder domain(List<GetAppSpecDomain> domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetAppSpec", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         public Builder domain(GetAppSpecDomain... domain) {
@@ -185,7 +191,10 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder domains(List<String> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetAppSpec", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(String... domains) {
@@ -193,6 +202,7 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -201,6 +211,7 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder features(@Nullable List<String> features) {
+
             this.features = features;
             return this;
         }
@@ -209,6 +220,7 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder functions(@Nullable List<GetAppSpecFunction> functions) {
+
             this.functions = functions;
             return this;
         }
@@ -217,11 +229,15 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder ingress(GetAppSpecIngress ingress) {
-            this.ingress = Objects.requireNonNull(ingress);
+            if (ingress == null) {
+              throw new MissingRequiredPropertyException("GetAppSpec", "ingress");
+            }
+            this.ingress = ingress;
             return this;
         }
         @CustomType.Setter
         public Builder jobs(@Nullable List<GetAppSpecJob> jobs) {
+
             this.jobs = jobs;
             return this;
         }
@@ -230,16 +246,21 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppSpec", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder services(@Nullable List<GetAppSpecService> services) {
+
             this.services = services;
             return this;
         }
@@ -248,6 +269,7 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder staticSites(@Nullable List<GetAppSpecStaticSite> staticSites) {
+
             this.staticSites = staticSites;
             return this;
         }
@@ -256,6 +278,7 @@ public final class GetAppSpec {
         }
         @CustomType.Setter
         public Builder workers(@Nullable List<GetAppSpecWorker> workers) {
+
             this.workers = workers;
             return this;
         }

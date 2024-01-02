@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class AppSpecWorkerLogDestinationLogtail {
 
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("AppSpecWorkerLogDestinationLogtail", "token");
+            }
+            this.token = token;
             return this;
         }
         public AppSpecWorkerLogDestinationLogtail build() {

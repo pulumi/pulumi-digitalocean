@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetRecordPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRecordPlainArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GetRecordPlainArgs", "domain");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetRecordPlainArgs", "name");
+            }
             return $;
         }
     }

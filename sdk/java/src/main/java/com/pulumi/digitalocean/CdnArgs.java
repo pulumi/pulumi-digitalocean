@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -241,7 +242,9 @@ public final class CdnArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CdnArgs build() {
-            $.origin = Objects.requireNonNull($.origin, "expected parameter 'origin' to be non-null");
+            if ($.origin == null) {
+                throw new MissingRequiredPropertyException("CdnArgs", "origin");
+            }
             return $;
         }
     }

@@ -72,16 +72,19 @@ public final class AppSpecFunctionCorsAllowOrigins {
 
         @CustomType.Setter
         public Builder exact(@Nullable String exact) {
+
             this.exact = exact;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable String regex) {
+
             this.regex = regex;
             return this;
         }

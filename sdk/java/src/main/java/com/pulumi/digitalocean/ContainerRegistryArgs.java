@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class ContainerRegistryArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ContainerRegistryArgs build() {
-            $.subscriptionTierSlug = Objects.requireNonNull($.subscriptionTierSlug, "expected parameter 'subscriptionTierSlug' to be non-null");
+            if ($.subscriptionTierSlug == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryArgs", "subscriptionTierSlug");
+            }
             return $;
         }
     }

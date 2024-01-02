@@ -51,6 +51,7 @@ public final class UptimeAlertNotification {
 
         @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
+
             this.emails = emails;
             return this;
         }
@@ -59,6 +60,7 @@ public final class UptimeAlertNotification {
         }
         @CustomType.Setter
         public Builder slacks(@Nullable List<UptimeAlertNotificationSlack> slacks) {
+
             this.slacks = slacks;
             return this;
         }

@@ -128,36 +128,43 @@ public final class KubernetesClusterKubeConfig {
 
         @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCaCertificate(@Nullable String clusterCaCertificate) {
+
             this.clusterCaCertificate = clusterCaCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder expiresAt(@Nullable String expiresAt) {
+
             this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder rawConfig(@Nullable String rawConfig) {
+
             this.rawConfig = rawConfig;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }

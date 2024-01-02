@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecServiceImageDeployOnPushArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,8 +237,12 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
         }
 
         public AppSpecServiceImageArgs build() {
-            $.registryType = Objects.requireNonNull($.registryType, "expected parameter 'registryType' to be non-null");
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
+            if ($.registryType == null) {
+                throw new MissingRequiredPropertyException("AppSpecServiceImageArgs", "registryType");
+            }
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("AppSpecServiceImageArgs", "repository");
+            }
             return $;
         }
     }

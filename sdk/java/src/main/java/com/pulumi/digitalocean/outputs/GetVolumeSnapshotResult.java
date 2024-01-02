@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -156,42 +157,58 @@ public final class GetVolumeSnapshotResult {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder minDiskSize(Integer minDiskSize) {
-            this.minDiskSize = Objects.requireNonNull(minDiskSize);
+            if (minDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "minDiskSize");
+            }
+            this.minDiskSize = minDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<String> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(String... regions) {
@@ -199,12 +216,18 @@ public final class GetVolumeSnapshotResult {
         }
         @CustomType.Setter
         public Builder size(Double size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -212,7 +235,10 @@ public final class GetVolumeSnapshotResult {
         }
         @CustomType.Setter
         public Builder volumeId(String volumeId) {
-            this.volumeId = Objects.requireNonNull(volumeId);
+            if (volumeId == null) {
+              throw new MissingRequiredPropertyException("GetVolumeSnapshotResult", "volumeId");
+            }
+            this.volumeId = volumeId;
             return this;
         }
         public GetVolumeSnapshotResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,21 +87,27 @@ public final class GetAppSpecStaticSiteEnv {
 
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecStaticSiteEnv", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

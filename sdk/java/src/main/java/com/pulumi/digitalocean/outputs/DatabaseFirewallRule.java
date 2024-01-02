@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,30 @@ public final class DatabaseFirewallRule {
 
         @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("DatabaseFirewallRule", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("DatabaseFirewallRule", "value");
+            }
+            this.value = value;
             return this;
         }
         public DatabaseFirewallRule build() {

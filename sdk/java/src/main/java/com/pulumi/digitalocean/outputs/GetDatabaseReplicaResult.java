@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -209,61 +210,95 @@ public final class GetDatabaseReplicaResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder privateHost(String privateHost) {
-            this.privateHost = Objects.requireNonNull(privateHost);
+            if (privateHost == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "privateHost");
+            }
+            this.privateHost = privateHost;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetworkUuid(String privateNetworkUuid) {
-            this.privateNetworkUuid = Objects.requireNonNull(privateNetworkUuid);
+            if (privateNetworkUuid == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "privateNetworkUuid");
+            }
+            this.privateNetworkUuid = privateNetworkUuid;
             return this;
         }
         @CustomType.Setter
         public Builder privateUri(String privateUri) {
-            this.privateUri = Objects.requireNonNull(privateUri);
+            if (privateUri == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "privateUri");
+            }
+            this.privateUri = privateUri;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -272,17 +307,26 @@ public final class GetDatabaseReplicaResult {
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "user");
+            }
+            this.user = user;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetDatabaseReplicaResult build() {

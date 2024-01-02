@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetImagesFilter;
 import com.pulumi.digitalocean.outputs.GetImagesImage;
 import com.pulumi.digitalocean.outputs.GetImagesSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,6 +74,7 @@ public final class GetImagesResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetImagesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -81,12 +83,18 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder images(List<GetImagesImage> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(GetImagesImage... images) {
@@ -94,6 +102,7 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetImagesSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

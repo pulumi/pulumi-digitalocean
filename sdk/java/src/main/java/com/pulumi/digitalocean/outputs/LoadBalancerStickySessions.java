@@ -73,16 +73,19 @@ public final class LoadBalancerStickySessions {
 
         @CustomType.Setter
         public Builder cookieName(@Nullable String cookieName) {
+
             this.cookieName = cookieName;
             return this;
         }
         @CustomType.Setter
         public Builder cookieTtlSeconds(@Nullable Integer cookieTtlSeconds) {
+
             this.cookieTtlSeconds = cookieTtlSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

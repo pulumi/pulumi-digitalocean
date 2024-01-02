@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePoolNode;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePoolTaint;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -204,46 +205,57 @@ public final class KubernetesClusterNodePool {
 
         @CustomType.Setter
         public Builder actualNodeCount(@Nullable Integer actualNodeCount) {
+
             this.actualNodeCount = actualNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder autoScale(@Nullable Boolean autoScale) {
+
             this.autoScale = autoScale;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodes(@Nullable Integer maxNodes) {
+
             this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(@Nullable Integer minNodes) {
+
             this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("KubernetesClusterNodePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(@Nullable List<KubernetesClusterNodePoolNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
@@ -252,11 +264,15 @@ public final class KubernetesClusterNodePool {
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("KubernetesClusterNodePool", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -265,6 +281,7 @@ public final class KubernetesClusterNodePool {
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<KubernetesClusterNodePoolTaint> taints) {
+
             this.taints = taints;
             return this;
         }
