@@ -101,26 +101,31 @@ public final class AppSpecIngressRuleRedirect {
 
         @CustomType.Setter
         public Builder authority(@Nullable String authority) {
+
             this.authority = authority;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder redirectCode(@Nullable Integer redirectCode) {
+
             this.redirectCode = redirectCode;
             return this;
         }
         @CustomType.Setter
         public Builder scheme(@Nullable String scheme) {
+
             this.scheme = scheme;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
             return this;
         }

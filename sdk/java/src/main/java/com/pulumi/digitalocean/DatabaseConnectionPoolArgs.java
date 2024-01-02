@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,10 +263,18 @@ public final class DatabaseConnectionPoolArgs extends com.pulumi.resources.Resou
         }
 
         public DatabaseConnectionPoolArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.dbName = Objects.requireNonNull($.dbName, "expected parameter 'dbName' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("DatabaseConnectionPoolArgs", "clusterId");
+            }
+            if ($.dbName == null) {
+                throw new MissingRequiredPropertyException("DatabaseConnectionPoolArgs", "dbName");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("DatabaseConnectionPoolArgs", "mode");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("DatabaseConnectionPoolArgs", "size");
+            }
             return $;
         }
     }

@@ -10,6 +10,7 @@ import com.pulumi.digitalocean.enums.DatabaseSlug;
 import com.pulumi.digitalocean.enums.Region;
 import com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;
 import com.pulumi.digitalocean.inputs.DatabaseClusterMaintenanceWindowArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -628,10 +629,18 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DatabaseClusterArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("DatabaseClusterArgs", "engine");
+            }
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("DatabaseClusterArgs", "nodeCount");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("DatabaseClusterArgs", "region");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("DatabaseClusterArgs", "size");
+            }
             return $;
         }
     }

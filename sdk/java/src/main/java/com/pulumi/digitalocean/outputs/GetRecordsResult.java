@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetRecordsFilter;
 import com.pulumi.digitalocean.outputs.GetRecordsRecord;
 import com.pulumi.digitalocean.outputs.GetRecordsSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -79,11 +80,15 @@ public final class GetRecordsResult {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetRecordsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -92,12 +97,18 @@ public final class GetRecordsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder records(List<GetRecordsRecord> records) {
-            this.records = Objects.requireNonNull(records);
+            if (records == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "records");
+            }
+            this.records = records;
             return this;
         }
         public Builder records(GetRecordsRecord... records) {
@@ -105,6 +116,7 @@ public final class GetRecordsResult {
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetRecordsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

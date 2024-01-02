@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class DatabaseFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DatabaseFirewallArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("DatabaseFirewallArgs", "clusterId");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("DatabaseFirewallArgs", "rules");
+            }
             return $;
         }
     }

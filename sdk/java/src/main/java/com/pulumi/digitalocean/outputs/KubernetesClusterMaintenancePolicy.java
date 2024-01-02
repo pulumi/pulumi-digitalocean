@@ -72,16 +72,19 @@ public final class KubernetesClusterMaintenancePolicy {
 
         @CustomType.Setter
         public Builder day(@Nullable String day) {
+
             this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder duration(@Nullable String duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }

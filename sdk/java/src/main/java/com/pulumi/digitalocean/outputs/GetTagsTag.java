@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetTagsTag {
 
         @CustomType.Setter
         public Builder databasesCount(Integer databasesCount) {
-            this.databasesCount = Objects.requireNonNull(databasesCount);
+            if (databasesCount == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "databasesCount");
+            }
+            this.databasesCount = databasesCount;
             return this;
         }
         @CustomType.Setter
         public Builder dropletsCount(Integer dropletsCount) {
-            this.dropletsCount = Objects.requireNonNull(dropletsCount);
+            if (dropletsCount == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "dropletsCount");
+            }
+            this.dropletsCount = dropletsCount;
             return this;
         }
         @CustomType.Setter
         public Builder imagesCount(Integer imagesCount) {
-            this.imagesCount = Objects.requireNonNull(imagesCount);
+            if (imagesCount == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "imagesCount");
+            }
+            this.imagesCount = imagesCount;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder totalResourceCount(Integer totalResourceCount) {
-            this.totalResourceCount = Objects.requireNonNull(totalResourceCount);
+            if (totalResourceCount == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "totalResourceCount");
+            }
+            this.totalResourceCount = totalResourceCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumeSnapshotsCount(Integer volumeSnapshotsCount) {
-            this.volumeSnapshotsCount = Objects.requireNonNull(volumeSnapshotsCount);
+            if (volumeSnapshotsCount == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "volumeSnapshotsCount");
+            }
+            this.volumeSnapshotsCount = volumeSnapshotsCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumesCount(Integer volumesCount) {
-            this.volumesCount = Objects.requireNonNull(volumesCount);
+            if (volumesCount == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "volumesCount");
+            }
+            this.volumesCount = volumesCount;
             return this;
         }
         public GetTagsTag build() {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetFirewallInboundRuleArgs;
 import com.pulumi.digitalocean.inputs.GetFirewallOutboundRuleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -225,7 +226,9 @@ public final class GetFirewallArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFirewallArgs build() {
-            $.firewallId = Objects.requireNonNull($.firewallId, "expected parameter 'firewallId' to be non-null");
+            if ($.firewallId == null) {
+                throw new MissingRequiredPropertyException("GetFirewallArgs", "firewallId");
+            }
             return $;
         }
     }

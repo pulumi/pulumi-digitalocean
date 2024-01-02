@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetDomainsDomain;
 import com.pulumi.digitalocean.outputs.GetDomainsFilter;
 import com.pulumi.digitalocean.outputs.GetDomainsSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class GetDomainsResult {
 
         @CustomType.Setter
         public Builder domains(List<GetDomainsDomain> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(GetDomainsDomain... domains) {
@@ -81,6 +85,7 @@ public final class GetDomainsResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetDomainsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -89,11 +94,15 @@ public final class GetDomainsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetDomainsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

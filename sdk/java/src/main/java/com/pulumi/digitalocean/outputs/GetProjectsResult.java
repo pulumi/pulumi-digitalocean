@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetProjectsFilter;
 import com.pulumi.digitalocean.outputs.GetProjectsProject;
 import com.pulumi.digitalocean.outputs.GetProjectsSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +76,7 @@ public final class GetProjectsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetProjectsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -83,12 +85,18 @@ public final class GetProjectsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder projects(List<GetProjectsProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetProjectsResult", "projects");
+            }
+            this.projects = projects;
             return this;
         }
         public Builder projects(GetProjectsProject... projects) {
@@ -96,6 +104,7 @@ public final class GetProjectsResult {
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetProjectsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }

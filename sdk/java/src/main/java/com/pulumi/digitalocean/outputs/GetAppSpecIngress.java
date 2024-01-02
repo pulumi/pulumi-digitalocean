@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRule;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class GetAppSpecIngress {
 
         @CustomType.Setter
         public Builder rules(List<GetAppSpecIngressRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngress", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetAppSpecIngressRule... rules) {

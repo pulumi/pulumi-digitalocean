@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Region;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -527,9 +528,15 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         public KubernetesClusterArgs build() {
-            $.nodePool = Objects.requireNonNull($.nodePool, "expected parameter 'nodePool' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.nodePool == null) {
+                throw new MissingRequiredPropertyException("KubernetesClusterArgs", "nodePool");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("KubernetesClusterArgs", "region");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("KubernetesClusterArgs", "version");
+            }
             return $;
         }
     }

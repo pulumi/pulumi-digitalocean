@@ -43,6 +43,7 @@ public final class MonitorAlertAlerts {
 
         @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
+
             this.emails = emails;
             return this;
         }
@@ -51,6 +52,7 @@ public final class MonitorAlertAlerts {
         }
         @CustomType.Setter
         public Builder slacks(@Nullable List<MonitorAlertAlertsSlack> slacks) {
+
             this.slacks = slacks;
             return this;
         }

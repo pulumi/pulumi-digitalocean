@@ -10,6 +10,7 @@ import com.pulumi.digitalocean.outputs.AppSpecStaticSiteGit;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSiteGithub;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSiteGitlab;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSiteRoute;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -263,31 +264,37 @@ public final class AppSpecStaticSite {
 
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
+
             this.buildCommand = buildCommand;
             return this;
         }
         @CustomType.Setter
         public Builder catchallDocument(@Nullable String catchallDocument) {
+
             this.catchallDocument = catchallDocument;
             return this;
         }
         @CustomType.Setter
         public Builder cors(@Nullable AppSpecStaticSiteCors cors) {
+
             this.cors = cors;
             return this;
         }
         @CustomType.Setter
         public Builder dockerfilePath(@Nullable String dockerfilePath) {
+
             this.dockerfilePath = dockerfilePath;
             return this;
         }
         @CustomType.Setter
         public Builder environmentSlug(@Nullable String environmentSlug) {
+
             this.environmentSlug = environmentSlug;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<AppSpecStaticSiteEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -296,41 +303,51 @@ public final class AppSpecStaticSite {
         }
         @CustomType.Setter
         public Builder errorDocument(@Nullable String errorDocument) {
+
             this.errorDocument = errorDocument;
             return this;
         }
         @CustomType.Setter
         public Builder git(@Nullable AppSpecStaticSiteGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder github(@Nullable AppSpecStaticSiteGithub github) {
+
             this.github = github;
             return this;
         }
         @CustomType.Setter
         public Builder gitlab(@Nullable AppSpecStaticSiteGitlab gitlab) {
+
             this.gitlab = gitlab;
             return this;
         }
         @CustomType.Setter
         public Builder indexDocument(@Nullable String indexDocument) {
+
             this.indexDocument = indexDocument;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AppSpecStaticSite", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder outputDir(@Nullable String outputDir) {
+
             this.outputDir = outputDir;
             return this;
         }
         @CustomType.Setter
         public Builder routes(@Nullable List<AppSpecStaticSiteRoute> routes) {
+
             this.routes = routes;
             return this;
         }
@@ -339,6 +356,7 @@ public final class AppSpecStaticSite {
         }
         @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
+
             this.sourceDir = sourceDir;
             return this;
         }

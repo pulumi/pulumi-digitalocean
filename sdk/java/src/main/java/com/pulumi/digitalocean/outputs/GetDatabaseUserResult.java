@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetDatabaseUserSetting;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -104,37 +105,58 @@ public final class GetDatabaseUserResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mysqlAuthPlugin(String mysqlAuthPlugin) {
-            this.mysqlAuthPlugin = Objects.requireNonNull(mysqlAuthPlugin);
+            if (mysqlAuthPlugin == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "mysqlAuthPlugin");
+            }
+            this.mysqlAuthPlugin = mysqlAuthPlugin;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder settings(List<GetDatabaseUserSetting> settings) {
-            this.settings = Objects.requireNonNull(settings);
+            if (settings == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "settings");
+            }
+            this.settings = settings;
             return this;
         }
         public Builder settings(GetDatabaseUserSetting... settings) {

@@ -114,31 +114,37 @@ public final class KubernetesNodePoolNode {
 
         @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder dropletId(@Nullable String dropletId) {
+
             this.dropletId = dropletId;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(@Nullable String updatedAt) {
+
             this.updatedAt = updatedAt;
             return this;
         }

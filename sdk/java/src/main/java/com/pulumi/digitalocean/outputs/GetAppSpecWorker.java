@@ -11,6 +11,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecWorkerGithub;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorkerGitlab;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorkerImage;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorkerLogDestination;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -249,6 +250,7 @@ public final class GetAppSpecWorker {
 
         @CustomType.Setter
         public Builder alerts(@Nullable List<GetAppSpecWorkerAlert> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -257,21 +259,25 @@ public final class GetAppSpecWorker {
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
+
             this.buildCommand = buildCommand;
             return this;
         }
         @CustomType.Setter
         public Builder dockerfilePath(@Nullable String dockerfilePath) {
+
             this.dockerfilePath = dockerfilePath;
             return this;
         }
         @CustomType.Setter
         public Builder environmentSlug(@Nullable String environmentSlug) {
+
             this.environmentSlug = environmentSlug;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecWorkerEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -280,36 +286,43 @@ public final class GetAppSpecWorker {
         }
         @CustomType.Setter
         public Builder git(@Nullable GetAppSpecWorkerGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder github(@Nullable GetAppSpecWorkerGithub github) {
+
             this.github = github;
             return this;
         }
         @CustomType.Setter
         public Builder gitlab(@Nullable GetAppSpecWorkerGitlab gitlab) {
+
             this.gitlab = gitlab;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable GetAppSpecWorkerImage image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder instanceCount(@Nullable Integer instanceCount) {
+
             this.instanceCount = instanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSizeSlug(@Nullable String instanceSizeSlug) {
+
             this.instanceSizeSlug = instanceSizeSlug;
             return this;
         }
         @CustomType.Setter
         public Builder logDestinations(@Nullable List<GetAppSpecWorkerLogDestination> logDestinations) {
+
             this.logDestinations = logDestinations;
             return this;
         }
@@ -318,16 +331,21 @@ public final class GetAppSpecWorker {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecWorker", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder runCommand(@Nullable String runCommand) {
+
             this.runCommand = runCommand;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
+
             this.sourceDir = sourceDir;
             return this;
         }

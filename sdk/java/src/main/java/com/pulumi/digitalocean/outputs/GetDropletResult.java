@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -374,112 +375,176 @@ public final class GetDropletResult {
 
         @CustomType.Setter
         public Builder backups(Boolean backups) {
-            this.backups = Objects.requireNonNull(backups);
+            if (backups == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "backups");
+            }
+            this.backups = backups;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder disk(Integer disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Address(String ipv4Address) {
-            this.ipv4Address = Objects.requireNonNull(ipv4Address);
+            if (ipv4Address == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "ipv4Address");
+            }
+            this.ipv4Address = ipv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4AddressPrivate(String ipv4AddressPrivate) {
-            this.ipv4AddressPrivate = Objects.requireNonNull(ipv4AddressPrivate);
+            if (ipv4AddressPrivate == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "ipv4AddressPrivate");
+            }
+            this.ipv4AddressPrivate = ipv4AddressPrivate;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6(Boolean ipv6) {
-            this.ipv6 = Objects.requireNonNull(ipv6);
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "ipv6");
+            }
+            this.ipv6 = ipv6;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
-            this.ipv6Address = Objects.requireNonNull(ipv6Address);
+            if (ipv6Address == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "ipv6Address");
+            }
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AddressPrivate(String ipv6AddressPrivate) {
-            this.ipv6AddressPrivate = Objects.requireNonNull(ipv6AddressPrivate);
+            if (ipv6AddressPrivate == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "ipv6AddressPrivate");
+            }
+            this.ipv6AddressPrivate = ipv6AddressPrivate;
             return this;
         }
         @CustomType.Setter
         public Builder locked(Boolean locked) {
-            this.locked = Objects.requireNonNull(locked);
+            if (locked == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "locked");
+            }
+            this.locked = locked;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(Boolean monitoring) {
-            this.monitoring = Objects.requireNonNull(monitoring);
+            if (monitoring == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "monitoring");
+            }
+            this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder priceHourly(Double priceHourly) {
-            this.priceHourly = Objects.requireNonNull(priceHourly);
+            if (priceHourly == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "priceHourly");
+            }
+            this.priceHourly = priceHourly;
             return this;
         }
         @CustomType.Setter
         public Builder priceMonthly(Double priceMonthly) {
-            this.priceMonthly = Objects.requireNonNull(priceMonthly);
+            if (priceMonthly == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "priceMonthly");
+            }
+            this.priceMonthly = priceMonthly;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetworking(Boolean privateNetworking) {
-            this.privateNetworking = Objects.requireNonNull(privateNetworking);
+            if (privateNetworking == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "privateNetworking");
+            }
+            this.privateNetworking = privateNetworking;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -487,17 +552,26 @@ public final class GetDropletResult {
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
-            this.vcpus = Objects.requireNonNull(vcpus);
+            if (vcpus == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "vcpus");
+            }
+            this.vcpus = vcpus;
             return this;
         }
         @CustomType.Setter
         public Builder volumeIds(List<String> volumeIds) {
-            this.volumeIds = Objects.requireNonNull(volumeIds);
+            if (volumeIds == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "volumeIds");
+            }
+            this.volumeIds = volumeIds;
             return this;
         }
         public Builder volumeIds(String... volumeIds) {
@@ -505,7 +579,10 @@ public final class GetDropletResult {
         }
         @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
-            this.vpcUuid = Objects.requireNonNull(vpcUuid);
+            if (vpcUuid == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "vpcUuid");
+            }
+            this.vpcUuid = vpcUuid;
             return this;
         }
         public GetDropletResult build() {

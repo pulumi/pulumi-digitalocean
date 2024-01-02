@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -129,36 +130,47 @@ public final class LoadBalancerHealthcheck {
 
         @CustomType.Setter
         public Builder checkIntervalSeconds(@Nullable Integer checkIntervalSeconds) {
+
             this.checkIntervalSeconds = checkIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(@Nullable Integer healthyThreshold) {
+
             this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerHealthcheck", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerHealthcheck", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder responseTimeoutSeconds(@Nullable Integer responseTimeoutSeconds) {
+
             this.responseTimeoutSeconds = responseTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(@Nullable Integer unhealthyThreshold) {
+
             this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }

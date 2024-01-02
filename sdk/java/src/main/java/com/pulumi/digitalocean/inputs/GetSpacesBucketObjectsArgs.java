@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class GetSpacesBucketObjectsArgs extends com.pulumi.resources.Invok
         }
 
         public GetSpacesBucketObjectsArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("GetSpacesBucketObjectsArgs", "bucket");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetSpacesBucketObjectsArgs", "region");
+            }
             return $;
         }
     }

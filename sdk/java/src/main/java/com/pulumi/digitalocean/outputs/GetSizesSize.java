@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -158,32 +159,50 @@ public final class GetSizesSize {
 
         @CustomType.Setter
         public Builder available(Boolean available) {
-            this.available = Objects.requireNonNull(available);
+            if (available == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "available");
+            }
+            this.available = available;
             return this;
         }
         @CustomType.Setter
         public Builder disk(Integer disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder priceHourly(Double priceHourly) {
-            this.priceHourly = Objects.requireNonNull(priceHourly);
+            if (priceHourly == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "priceHourly");
+            }
+            this.priceHourly = priceHourly;
             return this;
         }
         @CustomType.Setter
         public Builder priceMonthly(Double priceMonthly) {
-            this.priceMonthly = Objects.requireNonNull(priceMonthly);
+            if (priceMonthly == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "priceMonthly");
+            }
+            this.priceMonthly = priceMonthly;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<String> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(String... regions) {
@@ -191,17 +210,26 @@ public final class GetSizesSize {
         }
         @CustomType.Setter
         public Builder slug(String slug) {
-            this.slug = Objects.requireNonNull(slug);
+            if (slug == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "slug");
+            }
+            this.slug = slug;
             return this;
         }
         @CustomType.Setter
         public Builder transfer(Double transfer) {
-            this.transfer = Objects.requireNonNull(transfer);
+            if (transfer == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "transfer");
+            }
+            this.transfer = transfer;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
-            this.vcpus = Objects.requireNonNull(vcpus);
+            if (vcpus == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "vcpus");
+            }
+            this.vcpus = vcpus;
             return this;
         }
         public GetSizesSize build() {

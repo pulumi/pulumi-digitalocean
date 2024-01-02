@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePoolNode;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePoolTaint;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -202,47 +203,74 @@ public final class GetKubernetesClusterNodePool {
 
         @CustomType.Setter
         public Builder actualNodeCount(Integer actualNodeCount) {
-            this.actualNodeCount = Objects.requireNonNull(actualNodeCount);
+            if (actualNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "actualNodeCount");
+            }
+            this.actualNodeCount = actualNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder autoScale(Boolean autoScale) {
-            this.autoScale = Objects.requireNonNull(autoScale);
+            if (autoScale == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "autoScale");
+            }
+            this.autoScale = autoScale;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodes(Integer maxNodes) {
-            this.maxNodes = Objects.requireNonNull(maxNodes);
+            if (maxNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "maxNodes");
+            }
+            this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
-            this.minNodes = Objects.requireNonNull(minNodes);
+            if (minNodes == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "minNodes");
+            }
+            this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(List<GetKubernetesClusterNodePoolNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetKubernetesClusterNodePoolNode... nodes) {
@@ -250,12 +278,18 @@ public final class GetKubernetesClusterNodePool {
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -263,7 +297,10 @@ public final class GetKubernetesClusterNodePool {
         }
         @CustomType.Setter
         public Builder taints(List<GetKubernetesClusterNodePoolTaint> taints) {
-            this.taints = Objects.requireNonNull(taints);
+            if (taints == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "taints");
+            }
+            this.taints = taints;
             return this;
         }
         public Builder taints(GetKubernetesClusterNodePoolTaint... taints) {

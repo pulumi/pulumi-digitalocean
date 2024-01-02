@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class FloatingIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         public FloatingIpAssignmentArgs build() {
-            $.dropletId = Objects.requireNonNull($.dropletId, "expected parameter 'dropletId' to be non-null");
-            $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
+            if ($.dropletId == null) {
+                throw new MissingRequiredPropertyException("FloatingIpAssignmentArgs", "dropletId");
+            }
+            if ($.ipAddress == null) {
+                throw new MissingRequiredPropertyException("FloatingIpAssignmentArgs", "ipAddress");
+            }
             return $;
         }
     }

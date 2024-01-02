@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecJobImageDeployOnPushArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,8 +237,12 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AppSpecJobImageArgs build() {
-            $.registryType = Objects.requireNonNull($.registryType, "expected parameter 'registryType' to be non-null");
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
+            if ($.registryType == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobImageArgs", "registryType");
+            }
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("AppSpecJobImageArgs", "repository");
+            }
             return $;
         }
     }

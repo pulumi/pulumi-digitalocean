@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecServiceHealthCheck;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceImage;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceLogDestination;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceRoute;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -334,6 +335,7 @@ public final class GetAppSpecService {
 
         @CustomType.Setter
         public Builder alerts(@Nullable List<GetAppSpecServiceAlert> alerts) {
+
             this.alerts = alerts;
             return this;
         }
@@ -342,26 +344,31 @@ public final class GetAppSpecService {
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
+
             this.buildCommand = buildCommand;
             return this;
         }
         @CustomType.Setter
         public Builder cors(@Nullable GetAppSpecServiceCors cors) {
+
             this.cors = cors;
             return this;
         }
         @CustomType.Setter
         public Builder dockerfilePath(@Nullable String dockerfilePath) {
+
             this.dockerfilePath = dockerfilePath;
             return this;
         }
         @CustomType.Setter
         public Builder environmentSlug(@Nullable String environmentSlug) {
+
             this.environmentSlug = environmentSlug;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecServiceEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -370,46 +377,57 @@ public final class GetAppSpecService {
         }
         @CustomType.Setter
         public Builder git(@Nullable GetAppSpecServiceGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder github(@Nullable GetAppSpecServiceGithub github) {
+
             this.github = github;
             return this;
         }
         @CustomType.Setter
         public Builder gitlab(@Nullable GetAppSpecServiceGitlab gitlab) {
+
             this.gitlab = gitlab;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheck(@Nullable GetAppSpecServiceHealthCheck healthCheck) {
+
             this.healthCheck = healthCheck;
             return this;
         }
         @CustomType.Setter
         public Builder httpPort(Integer httpPort) {
-            this.httpPort = Objects.requireNonNull(httpPort);
+            if (httpPort == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecService", "httpPort");
+            }
+            this.httpPort = httpPort;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable GetAppSpecServiceImage image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder instanceCount(@Nullable Integer instanceCount) {
+
             this.instanceCount = instanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSizeSlug(@Nullable String instanceSizeSlug) {
+
             this.instanceSizeSlug = instanceSizeSlug;
             return this;
         }
         @CustomType.Setter
         public Builder internalPorts(@Nullable List<Integer> internalPorts) {
+
             this.internalPorts = internalPorts;
             return this;
         }
@@ -418,6 +436,7 @@ public final class GetAppSpecService {
         }
         @CustomType.Setter
         public Builder logDestinations(@Nullable List<GetAppSpecServiceLogDestination> logDestinations) {
+
             this.logDestinations = logDestinations;
             return this;
         }
@@ -426,12 +445,18 @@ public final class GetAppSpecService {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecService", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder routes(List<GetAppSpecServiceRoute> routes) {
-            this.routes = Objects.requireNonNull(routes);
+            if (routes == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecService", "routes");
+            }
+            this.routes = routes;
             return this;
         }
         public Builder routes(GetAppSpecServiceRoute... routes) {
@@ -439,11 +464,15 @@ public final class GetAppSpecService {
         }
         @CustomType.Setter
         public Builder runCommand(String runCommand) {
-            this.runCommand = Objects.requireNonNull(runCommand);
+            if (runCommand == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecService", "runCommand");
+            }
+            this.runCommand = runCommand;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDir(@Nullable String sourceDir) {
+
             this.sourceDir = sourceDir;
             return this;
         }

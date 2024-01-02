@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.inputs.LoadBalancerFirewallArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerStickySessionsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -853,7 +854,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoadBalancerArgs build() {
-            $.forwardingRules = Objects.requireNonNull($.forwardingRules, "expected parameter 'forwardingRules' to be non-null");
+            if ($.forwardingRules == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "forwardingRules");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -79,17 +80,26 @@ public final class GetKubernetesVersionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latestVersion(String latestVersion) {
-            this.latestVersion = Objects.requireNonNull(latestVersion);
+            if (latestVersion == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesVersionsResult", "latestVersion");
+            }
+            this.latestVersion = latestVersion;
             return this;
         }
         @CustomType.Setter
         public Builder validVersions(List<String> validVersions) {
-            this.validVersions = Objects.requireNonNull(validVersions);
+            if (validVersions == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesVersionsResult", "validVersions");
+            }
+            this.validVersions = validVersions;
             return this;
         }
         public Builder validVersions(String... validVersions) {
@@ -97,6 +107,7 @@ public final class GetKubernetesVersionsResult {
         }
         @CustomType.Setter
         public Builder versionPrefix(@Nullable String versionPrefix) {
+
             this.versionPrefix = versionPrefix;
             return this;
         }

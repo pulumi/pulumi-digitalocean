@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecJobImageDeployOnPush;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -102,6 +103,7 @@ public final class AppSpecJobImage {
 
         @CustomType.Setter
         public Builder deployOnPushes(@Nullable List<AppSpecJobImageDeployOnPush> deployOnPushes) {
+
             this.deployOnPushes = deployOnPushes;
             return this;
         }
@@ -110,21 +112,29 @@ public final class AppSpecJobImage {
         }
         @CustomType.Setter
         public Builder registry(@Nullable String registry) {
+
             this.registry = registry;
             return this;
         }
         @CustomType.Setter
         public Builder registryType(String registryType) {
-            this.registryType = Objects.requireNonNull(registryType);
+            if (registryType == null) {
+              throw new MissingRequiredPropertyException("AppSpecJobImage", "registryType");
+            }
+            this.registryType = registryType;
             return this;
         }
         @CustomType.Setter
         public Builder repository(String repository) {
-            this.repository = Objects.requireNonNull(repository);
+            if (repository == null) {
+              throw new MissingRequiredPropertyException("AppSpecJobImage", "repository");
+            }
+            this.repository = repository;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }

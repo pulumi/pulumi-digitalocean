@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -72,37 +73,58 @@ public final class GetLoadBalancerForwardingRule {
 
         @CustomType.Setter
         public Builder certificateId(String certificateId) {
-            this.certificateId = Objects.requireNonNull(certificateId);
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "certificateId");
+            }
+            this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder certificateName(String certificateName) {
-            this.certificateName = Objects.requireNonNull(certificateName);
+            if (certificateName == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "certificateName");
+            }
+            this.certificateName = certificateName;
             return this;
         }
         @CustomType.Setter
         public Builder entryPort(Integer entryPort) {
-            this.entryPort = Objects.requireNonNull(entryPort);
+            if (entryPort == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "entryPort");
+            }
+            this.entryPort = entryPort;
             return this;
         }
         @CustomType.Setter
         public Builder entryProtocol(String entryProtocol) {
-            this.entryProtocol = Objects.requireNonNull(entryProtocol);
+            if (entryProtocol == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "entryProtocol");
+            }
+            this.entryProtocol = entryProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
-            this.targetPort = Objects.requireNonNull(targetPort);
+            if (targetPort == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "targetPort");
+            }
+            this.targetPort = targetPort;
             return this;
         }
         @CustomType.Setter
         public Builder targetProtocol(String targetProtocol) {
-            this.targetProtocol = Objects.requireNonNull(targetProtocol);
+            if (targetProtocol == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "targetProtocol");
+            }
+            this.targetProtocol = targetProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder tlsPassthrough(Boolean tlsPassthrough) {
-            this.tlsPassthrough = Objects.requireNonNull(tlsPassthrough);
+            if (tlsPassthrough == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerForwardingRule", "tlsPassthrough");
+            }
+            this.tlsPassthrough = tlsPassthrough;
             return this;
         }
         public GetLoadBalancerForwardingRule build() {

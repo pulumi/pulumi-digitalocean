@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpec;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -148,37 +149,58 @@ public final class GetAppResult {
 
         @CustomType.Setter
         public Builder activeDeploymentId(String activeDeploymentId) {
-            this.activeDeploymentId = Objects.requireNonNull(activeDeploymentId);
+            if (activeDeploymentId == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "activeDeploymentId");
+            }
+            this.activeDeploymentId = activeDeploymentId;
             return this;
         }
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder defaultIngress(String defaultIngress) {
-            this.defaultIngress = Objects.requireNonNull(defaultIngress);
+            if (defaultIngress == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "defaultIngress");
+            }
+            this.defaultIngress = defaultIngress;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder liveUrl(String liveUrl) {
-            this.liveUrl = Objects.requireNonNull(liveUrl);
+            if (liveUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "liveUrl");
+            }
+            this.liveUrl = liveUrl;
             return this;
         }
         @CustomType.Setter
         public Builder specs(List<GetAppSpec> specs) {
-            this.specs = Objects.requireNonNull(specs);
+            if (specs == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "specs");
+            }
+            this.specs = specs;
             return this;
         }
         public Builder specs(GetAppSpec... specs) {
@@ -186,12 +208,18 @@ public final class GetAppResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         public GetAppResult build() {

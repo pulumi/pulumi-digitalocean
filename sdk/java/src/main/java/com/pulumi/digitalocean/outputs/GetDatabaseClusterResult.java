@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetDatabaseClusterMaintenanceWindow;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -302,27 +303,42 @@ public final class GetDatabaseClusterResult {
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindows(List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows) {
-            this.maintenanceWindows = Objects.requireNonNull(maintenanceWindows);
+            if (maintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "maintenanceWindows");
+            }
+            this.maintenanceWindows = maintenanceWindows;
             return this;
         }
         public Builder maintenanceWindows(GetDatabaseClusterMaintenanceWindow... maintenanceWindows) {
@@ -330,61 +346,95 @@ public final class GetDatabaseClusterResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder privateHost(String privateHost) {
-            this.privateHost = Objects.requireNonNull(privateHost);
+            if (privateHost == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "privateHost");
+            }
+            this.privateHost = privateHost;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetworkUuid(String privateNetworkUuid) {
-            this.privateNetworkUuid = Objects.requireNonNull(privateNetworkUuid);
+            if (privateNetworkUuid == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "privateNetworkUuid");
+            }
+            this.privateNetworkUuid = privateNetworkUuid;
             return this;
         }
         @CustomType.Setter
         public Builder privateUri(String privateUri) {
-            this.privateUri = Objects.requireNonNull(privateUri);
+            if (privateUri == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "privateUri");
+            }
+            this.privateUri = privateUri;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder storageSizeMib(String storageSizeMib) {
-            this.storageSizeMib = Objects.requireNonNull(storageSizeMib);
+            if (storageSizeMib == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "storageSizeMib");
+            }
+            this.storageSizeMib = storageSizeMib;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -393,22 +443,34 @@ public final class GetDatabaseClusterResult {
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder urn(String urn) {
-            this.urn = Objects.requireNonNull(urn);
+            if (urn == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "urn");
+            }
+            this.urn = urn;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "user");
+            }
+            this.user = user;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDatabaseClusterResult build() {

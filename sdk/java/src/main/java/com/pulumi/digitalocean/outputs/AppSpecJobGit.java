@@ -58,11 +58,13 @@ public final class AppSpecJobGit {
 
         @CustomType.Setter
         public Builder branch(@Nullable String branch) {
+
             this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder repoCloneUrl(@Nullable String repoCloneUrl) {
+
             this.repoCloneUrl = repoCloneUrl;
             return this;
         }

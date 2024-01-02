@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -183,8 +184,12 @@ public final class GetDropletsFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDropletsFilter build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("GetDropletsFilter", "key");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetDropletsFilter", "values");
+            }
             return $;
         }
     }

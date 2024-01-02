@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetFirewallInboundRule;
 import com.pulumi.digitalocean.outputs.GetFirewallOutboundRule;
 import com.pulumi.digitalocean.outputs.GetFirewallPendingChange;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -161,12 +162,18 @@ public final class GetFirewallResult {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
-            this.dropletIds = Objects.requireNonNull(dropletIds);
+            if (dropletIds == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "dropletIds");
+            }
+            this.dropletIds = dropletIds;
             return this;
         }
         public Builder dropletIds(Integer... dropletIds) {
@@ -174,17 +181,26 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder firewallId(String firewallId) {
-            this.firewallId = Objects.requireNonNull(firewallId);
+            if (firewallId == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "firewallId");
+            }
+            this.firewallId = firewallId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inboundRules(List<GetFirewallInboundRule> inboundRules) {
-            this.inboundRules = Objects.requireNonNull(inboundRules);
+            if (inboundRules == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "inboundRules");
+            }
+            this.inboundRules = inboundRules;
             return this;
         }
         public Builder inboundRules(GetFirewallInboundRule... inboundRules) {
@@ -192,12 +208,18 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder outboundRules(List<GetFirewallOutboundRule> outboundRules) {
-            this.outboundRules = Objects.requireNonNull(outboundRules);
+            if (outboundRules == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "outboundRules");
+            }
+            this.outboundRules = outboundRules;
             return this;
         }
         public Builder outboundRules(GetFirewallOutboundRule... outboundRules) {
@@ -205,7 +227,10 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder pendingChanges(List<GetFirewallPendingChange> pendingChanges) {
-            this.pendingChanges = Objects.requireNonNull(pendingChanges);
+            if (pendingChanges == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "pendingChanges");
+            }
+            this.pendingChanges = pendingChanges;
             return this;
         }
         public Builder pendingChanges(GetFirewallPendingChange... pendingChanges) {
@@ -213,12 +238,18 @@ public final class GetFirewallResult {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetDropletsDroplet;
 import com.pulumi.digitalocean.outputs.GetDropletsFilter;
 import com.pulumi.digitalocean.outputs.GetDropletsSort;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class GetDropletsResult {
 
         @CustomType.Setter
         public Builder droplets(List<GetDropletsDroplet> droplets) {
-            this.droplets = Objects.requireNonNull(droplets);
+            if (droplets == null) {
+              throw new MissingRequiredPropertyException("GetDropletsResult", "droplets");
+            }
+            this.droplets = droplets;
             return this;
         }
         public Builder droplets(GetDropletsDroplet... droplets) {
@@ -81,6 +85,7 @@ public final class GetDropletsResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetDropletsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -89,11 +94,15 @@ public final class GetDropletsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDropletsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder sorts(@Nullable List<GetDropletsSort> sorts) {
+
             this.sorts = sorts;
             return this;
         }
