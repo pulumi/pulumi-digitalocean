@@ -21,7 +21,13 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The type of the environment variable, `GENERAL` or `SECRET`.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Indicates whether the domain includes all sub-domains, in addition to the given domain.
+        /// </summary>
         public readonly bool Wildcard;
+        /// <summary>
+        /// If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+        /// </summary>
         public readonly string? Zone;
 
         [OutputConstructor]

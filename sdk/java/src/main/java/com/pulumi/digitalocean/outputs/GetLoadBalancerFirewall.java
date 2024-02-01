@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerFirewall {
+    /**
+     * @return the rules for ALLOWING traffic to the LB (strings in the form: &#39;ip:1.2.3.4&#39; or &#39;cidr:1.2.0.0/16&#39;)
+     * 
+     */
     private List<String> allows;
+    /**
+     * @return the rules for DENYING traffic to the LB (strings in the form: &#39;ip:1.2.3.4&#39; or &#39;cidr:1.2.0.0/16&#39;)
+     * 
+     */
     private List<String> denies;
 
     private GetLoadBalancerFirewall() {}
+    /**
+     * @return the rules for ALLOWING traffic to the LB (strings in the form: &#39;ip:1.2.3.4&#39; or &#39;cidr:1.2.0.0/16&#39;)
+     * 
+     */
     public List<String> allows() {
         return this.allows;
     }
+    /**
+     * @return the rules for DENYING traffic to the LB (strings in the form: &#39;ip:1.2.3.4&#39; or &#39;cidr:1.2.0.0/16&#39;)
+     * 
+     */
     public List<String> denies() {
         return this.denies;
     }

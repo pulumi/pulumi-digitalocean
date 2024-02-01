@@ -17,6 +17,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// When the image was created
         /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// a description of the image
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The name of the distribution of the OS of the image.

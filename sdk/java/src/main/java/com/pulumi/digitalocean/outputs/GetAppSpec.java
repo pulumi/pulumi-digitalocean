@@ -42,6 +42,10 @@ public final class GetAppSpec {
      * 
      */
     private @Nullable List<GetAppSpecEnv> envs;
+    /**
+     * @return List of features which is applied to the app
+     * 
+     */
     private @Nullable List<String> features;
     private @Nullable List<GetAppSpecFunction> functions;
     private GetAppSpecIngress ingress;
@@ -51,6 +55,10 @@ public final class GetAppSpec {
      * 
      */
     private String name;
+    /**
+     * @return The slug for the DigitalOcean data center region hosting the app
+     * 
+     */
     private @Nullable String region;
     private @Nullable List<GetAppSpecService> services;
     private @Nullable List<GetAppSpecStaticSite> staticSites;
@@ -86,6 +94,10 @@ public final class GetAppSpec {
     public List<GetAppSpecEnv> envs() {
         return this.envs == null ? List.of() : this.envs;
     }
+    /**
+     * @return List of features which is applied to the app
+     * 
+     */
     public List<String> features() {
         return this.features == null ? List.of() : this.features;
     }
@@ -105,6 +117,10 @@ public final class GetAppSpec {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The slug for the DigitalOcean data center region hosting the app
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

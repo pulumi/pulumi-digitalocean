@@ -17,6 +17,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Whether backups are enabled.
         /// </summary>
         public readonly bool Backups;
+        /// <summary>
+        /// the creation date for the Droplet
+        /// </summary>
         public readonly string CreatedAt;
         /// <summary>
         /// The size of the Droplet's disk in GB.
@@ -62,6 +65,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Whether monitoring agent is installed.
         /// </summary>
         public readonly bool Monitoring;
+        /// <summary>
+        /// name of the Droplet
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Droplet hourly price.

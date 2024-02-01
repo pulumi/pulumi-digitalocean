@@ -12,33 +12,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerForwardingRule {
+    /**
+     * @return the id of the tls certificate used for ssl termination if enabled
+     * 
+     */
     private String certificateId;
+    /**
+     * @return the name of the tls certificate used for ssl termination if enabled
+     * 
+     */
     private String certificateName;
+    /**
+     * @return the port on which the load balancer instance will listen
+     * 
+     */
     private Integer entryPort;
+    /**
+     * @return the protocol used for traffic to the load balancer
+     * 
+     */
     private String entryProtocol;
+    /**
+     * @return the port on the backend Droplets to which the load balancer will send traffic
+     * 
+     */
     private Integer targetPort;
+    /**
+     * @return the protocol used for traffic to the backend droplets
+     * 
+     */
     private String targetProtocol;
+    /**
+     * @return whether ssl encrypted traffic will be passed through to the backend droplets
+     * 
+     */
     private Boolean tlsPassthrough;
 
     private GetLoadBalancerForwardingRule() {}
+    /**
+     * @return the id of the tls certificate used for ssl termination if enabled
+     * 
+     */
     public String certificateId() {
         return this.certificateId;
     }
+    /**
+     * @return the name of the tls certificate used for ssl termination if enabled
+     * 
+     */
     public String certificateName() {
         return this.certificateName;
     }
+    /**
+     * @return the port on which the load balancer instance will listen
+     * 
+     */
     public Integer entryPort() {
         return this.entryPort;
     }
+    /**
+     * @return the protocol used for traffic to the load balancer
+     * 
+     */
     public String entryProtocol() {
         return this.entryProtocol;
     }
+    /**
+     * @return the port on the backend Droplets to which the load balancer will send traffic
+     * 
+     */
     public Integer targetPort() {
         return this.targetPort;
     }
+    /**
+     * @return the protocol used for traffic to the backend droplets
+     * 
+     */
     public String targetProtocol() {
         return this.targetProtocol;
     }
+    /**
+     * @return whether ssl encrypted traffic will be passed through to the backend droplets
+     * 
+     */
     public Boolean tlsPassthrough() {
         return this.tlsPassthrough;
     }

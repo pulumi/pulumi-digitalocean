@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorAlertAlerts {
+    /**
+     * @return List of email addresses to sent notifications to
+     * 
+     */
     private @Nullable List<String> emails;
     private @Nullable List<MonitorAlertAlertsSlack> slacks;
 
     private MonitorAlertAlerts() {}
+    /**
+     * @return List of email addresses to sent notifications to
+     * 
+     */
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
     }

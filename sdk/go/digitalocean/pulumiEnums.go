@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Algorithm string
@@ -176,12 +175,6 @@ func (in *algorithmPtr) ToAlgorithmPtrOutputWithContext(ctx context.Context) Alg
 	return pulumi.ToOutputWithContext(ctx, in).(AlgorithmPtrOutput)
 }
 
-func (in *algorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*Algorithm] {
-	return pulumix.Output[*Algorithm]{
-		OutputState: in.ToAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateType string
 
 const (
@@ -345,12 +338,6 @@ func (in *certificateTypePtr) ToCertificateTypePtrOutput() CertificateTypePtrOut
 
 func (in *certificateTypePtr) ToCertificateTypePtrOutputWithContext(ctx context.Context) CertificateTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateTypePtrOutput)
-}
-
-func (in *certificateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateType] {
-	return pulumix.Output[*CertificateType]{
-		OutputState: in.ToCertificateTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DatabaseSlug string
@@ -526,12 +513,6 @@ func (in *databaseSlugPtr) ToDatabaseSlugPtrOutput() DatabaseSlugPtrOutput {
 
 func (in *databaseSlugPtr) ToDatabaseSlugPtrOutputWithContext(ctx context.Context) DatabaseSlugPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseSlugPtrOutput)
-}
-
-func (in *databaseSlugPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseSlug] {
-	return pulumix.Output[*DatabaseSlug]{
-		OutputState: in.ToDatabaseSlugPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DropletSlug string
@@ -871,12 +852,6 @@ func (in *dropletSlugPtr) ToDropletSlugPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(DropletSlugPtrOutput)
 }
 
-func (in *dropletSlugPtr) ToOutput(ctx context.Context) pulumix.Output[*DropletSlug] {
-	return pulumix.Output[*DropletSlug]{
-		OutputState: in.ToDropletSlugPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FileSystemType string
 
 const (
@@ -1040,12 +1015,6 @@ func (in *fileSystemTypePtr) ToFileSystemTypePtrOutput() FileSystemTypePtrOutput
 
 func (in *fileSystemTypePtr) ToFileSystemTypePtrOutputWithContext(ctx context.Context) FileSystemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FileSystemTypePtrOutput)
-}
-
-func (in *fileSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileSystemType] {
-	return pulumix.Output[*FileSystemType]{
-		OutputState: in.ToFileSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type Protocol string
@@ -1217,12 +1186,6 @@ func (in *protocolPtr) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
-}
-
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type RecordType string
@@ -1400,12 +1363,6 @@ func (in *recordTypePtr) ToRecordTypePtrOutput() RecordTypePtrOutput {
 
 func (in *recordTypePtr) ToRecordTypePtrOutputWithContext(ctx context.Context) RecordTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecordTypePtrOutput)
-}
-
-func (in *recordTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RecordType] {
-	return pulumix.Output[*RecordType]{
-		OutputState: in.ToRecordTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type Region string
@@ -1595,12 +1552,6 @@ func (in *regionPtr) ToRegionPtrOutput() RegionPtrOutput {
 
 func (in *regionPtr) ToRegionPtrOutputWithContext(ctx context.Context) RegionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionPtrOutput)
-}
-
-func (in *regionPtr) ToOutput(ctx context.Context) pulumix.Output[*Region] {
-	return pulumix.Output[*Region]{
-		OutputState: in.ToRegionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
