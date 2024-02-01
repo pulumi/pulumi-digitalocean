@@ -2842,7 +2842,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of email addresses to sent notifications to\n"
                 },
                 "slacks": {
                     "type": "array",
@@ -2856,10 +2857,12 @@
         "digitalocean:index/MonitorAlertAlertsSlack:MonitorAlertAlertsSlack": {
             "properties": {
                 "channel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Slack channel to send alerts to\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The webhook URL for Slack\n"
                 }
             },
             "type": "object",
@@ -3096,7 +3099,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of features which is applied to the app\n"
                 },
                 "functions": {
                     "type": "array",
@@ -3118,7 +3122,8 @@
                     "description": "The name of the component.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The slug for the DigitalOcean data center region hosting the app\n"
                 },
                 "services": {
                     "type": "array",
@@ -3217,10 +3222,12 @@
                     "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n"
                 },
                 "wildcard": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether the domain includes all sub-domains, in addition to the given domain.\n"
                 },
                 "zone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.\n"
                 }
             },
             "type": "object",
@@ -4409,7 +4416,8 @@
                     "description": "The number of seconds to wait between health checks.\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.\n"
                 },
                 "successThreshold": {
                     "type": "integer",
@@ -5253,7 +5261,8 @@
                     "description": "Whether backups are enabled.\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the creation date for the Droplet\n"
                 },
                 "disk": {
                     "type": "integer",
@@ -5300,7 +5309,8 @@
                     "description": "Whether monitoring agent is installed.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "name of the Droplet\n"
                 },
                 "priceHourly": {
                     "type": "number",
@@ -5581,7 +5591,8 @@
                     "description": "When the image was created\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "a description of the image\n"
                 },
                 "distribution": {
                     "type": "string",
@@ -5914,13 +5925,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')\n"
                 },
                 "denies": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')\n"
                 }
             },
             "type": "object",
@@ -5937,25 +5950,32 @@
         "digitalocean:index/getLoadBalancerForwardingRule:getLoadBalancerForwardingRule": {
             "properties": {
                 "certificateId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the id of the tls certificate used for ssl termination if enabled\n"
                 },
                 "certificateName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the name of the tls certificate used for ssl termination if enabled\n"
                 },
                 "entryPort": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the port on which the load balancer instance will listen\n"
                 },
                 "entryProtocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the protocol used for traffic to the load balancer\n"
                 },
                 "targetPort": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the port on the backend Droplets to which the load balancer will send traffic\n"
                 },
                 "targetProtocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the protocol used for traffic to the backend droplets\n"
                 },
                 "tlsPassthrough": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether ssl encrypted traffic will be passed through to the backend droplets\n"
                 }
             },
             "type": "object",
@@ -5977,25 +5997,32 @@
         "digitalocean:index/getLoadBalancerHealthcheck:getLoadBalancerHealthcheck": {
             "properties": {
                 "checkIntervalSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the number of seconds between between two consecutive health checks\n"
                 },
                 "healthyThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool\n"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the path on the backend Droplets to which the Load Balancer will send a request\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the port on the backend droplets on which the health check will attempt a connection\n"
                 },
                 "protocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the protocol used for health checks sent to the backend droplets\n"
                 },
                 "responseTimeoutSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the number of seconds to wait for a response until marking a health check as failed\n"
                 },
                 "unhealthyThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool\n"
                 }
             },
             "type": "object",
@@ -6017,13 +6044,16 @@
         "digitalocean:index/getLoadBalancerStickySession:getLoadBalancerStickySession": {
             "properties": {
                 "cookieName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the name of the cookie sent to the client\n"
                 },
                 "cookieTtlSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the number of seconds until the cookie set by the Load Balancer expires\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how and if requests from a client will be persistently served by the same backend droplet\n"
                 }
             },
             "type": "object",
