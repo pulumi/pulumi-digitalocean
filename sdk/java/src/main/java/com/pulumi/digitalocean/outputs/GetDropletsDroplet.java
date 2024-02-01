@@ -19,6 +19,10 @@ public final class GetDropletsDroplet {
      * 
      */
     private Boolean backups;
+    /**
+     * @return the creation date for the Droplet
+     * 
+     */
     private String createdAt;
     /**
      * @return The size of the Droplet&#39;s disk in GB.
@@ -75,6 +79,10 @@ public final class GetDropletsDroplet {
      * 
      */
     private Boolean monitoring;
+    /**
+     * @return name of the Droplet
+     * 
+     */
     private String name;
     /**
      * @return Droplet hourly price.
@@ -140,6 +148,10 @@ public final class GetDropletsDroplet {
     public Boolean backups() {
         return this.backups;
     }
+    /**
+     * @return the creation date for the Droplet
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
@@ -220,6 +232,10 @@ public final class GetDropletsDroplet {
     public Boolean monitoring() {
         return this.monitoring;
     }
+    /**
+     * @return name of the Droplet
+     * 
+     */
     public String name() {
         return this.name;
     }

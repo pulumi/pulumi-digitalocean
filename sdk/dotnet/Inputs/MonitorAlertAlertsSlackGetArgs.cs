@@ -12,9 +12,15 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class MonitorAlertAlertsSlackGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Slack channel to send alerts to
+        /// </summary>
         [Input("channel", required: true)]
         public Input<string> Channel { get; set; } = null!;
 
+        /// <summary>
+        /// The webhook URL for Slack
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 

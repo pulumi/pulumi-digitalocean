@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerStickySession {
+    /**
+     * @return the name of the cookie sent to the client
+     * 
+     */
     private String cookieName;
+    /**
+     * @return the number of seconds until the cookie set by the Load Balancer expires
+     * 
+     */
     private Integer cookieTtlSeconds;
+    /**
+     * @return how and if requests from a client will be persistently served by the same backend droplet
+     * 
+     */
     private String type;
 
     private GetLoadBalancerStickySession() {}
+    /**
+     * @return the name of the cookie sent to the client
+     * 
+     */
     public String cookieName() {
         return this.cookieName;
     }
+    /**
+     * @return the number of seconds until the cookie set by the Load Balancer expires
+     * 
+     */
     public Integer cookieTtlSeconds() {
         return this.cookieTtlSeconds;
     }
+    /**
+     * @return how and if requests from a client will be persistently served by the same backend droplet
+     * 
+     */
     public String type() {
         return this.type;
     }

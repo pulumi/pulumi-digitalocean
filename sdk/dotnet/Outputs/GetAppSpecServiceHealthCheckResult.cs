@@ -29,6 +29,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The number of seconds to wait between health checks.
         /// </summary>
         public readonly int? PeriodSeconds;
+        /// <summary>
+        /// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+        /// </summary>
         public readonly int? Port;
         /// <summary>
         /// The number of successful health checks before considered healthy.

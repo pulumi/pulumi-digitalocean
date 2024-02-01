@@ -7006,6 +7006,9 @@ class MonitorAlertAlerts(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  slacks: Optional[Sequence['outputs.MonitorAlertAlertsSlack']] = None):
+        """
+        :param Sequence[str] emails: List of email addresses to sent notifications to
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if slacks is not None:
@@ -7014,6 +7017,9 @@ class MonitorAlertAlerts(dict):
     @property
     @pulumi.getter
     def emails(self) -> Optional[Sequence[str]]:
+        """
+        List of email addresses to sent notifications to
+        """
         return pulumi.get(self, "emails")
 
     @property
@@ -7027,17 +7033,27 @@ class MonitorAlertAlertsSlack(dict):
     def __init__(__self__, *,
                  channel: str,
                  url: str):
+        """
+        :param str channel: The Slack channel to send alerts to
+        :param str url: The webhook URL for Slack
+        """
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
     def channel(self) -> str:
+        """
+        The Slack channel to send alerts to
+        """
         return pulumi.get(self, "channel")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The webhook URL for Slack
+        """
         return pulumi.get(self, "url")
 
 
@@ -7503,6 +7519,8 @@ class GetAppSpecResult(dict):
         :param str name: The name of the component.
         :param Sequence['GetAppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['GetAppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence[str] features: List of features which is applied to the app
+        :param str region: The slug for the DigitalOcean data center region hosting the app
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domains", domains)
@@ -7579,6 +7597,9 @@ class GetAppSpecResult(dict):
     @property
     @pulumi.getter
     def features(self) -> Optional[Sequence[str]]:
+        """
+        List of features which is applied to the app
+        """
         return pulumi.get(self, "features")
 
     @property
@@ -7594,6 +7615,9 @@ class GetAppSpecResult(dict):
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        The slug for the DigitalOcean data center region hosting the app
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -7743,6 +7767,8 @@ class GetAppSpecDomainResult(dict):
         """
         :param str name: The name of the component.
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param bool wildcard: Indicates whether the domain includes all sub-domains, in addition to the given domain.
+        :param str zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -7769,11 +7795,17 @@ class GetAppSpecDomainResult(dict):
     @property
     @pulumi.getter
     def wildcard(self) -> bool:
+        """
+        Indicates whether the domain includes all sub-domains, in addition to the given domain.
+        """
         return pulumi.get(self, "wildcard")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -10013,6 +10045,7 @@ class GetAppSpecServiceHealthCheckResult(dict):
         :param str http_path: The route path used for the HTTP health check ping.
         :param int initial_delay_seconds: The number of seconds to wait before beginning health checks.
         :param int period_seconds: The number of seconds to wait between health checks.
+        :param int port: The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
         :param int success_threshold: The number of successful health checks before considered healthy.
         :param int timeout_seconds: The number of seconds after which the check times out.
         """
@@ -10066,6 +10099,9 @@ class GetAppSpecServiceHealthCheckResult(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -11684,6 +11720,7 @@ class GetDropletsDropletResult(dict):
                  vpc_uuid: str):
         """
         :param bool backups: Whether backups are enabled.
+        :param str created_at: the creation date for the Droplet
         :param int disk: The size of the Droplet's disk in GB.
         :param int id: The ID of the Droplet.
         :param str image: The Droplet image ID or slug.
@@ -11695,6 +11732,7 @@ class GetDropletsDropletResult(dict):
         :param bool locked: Whether the Droplet is locked.
         :param int memory: The amount of the Droplet's memory in MB.
         :param bool monitoring: Whether monitoring agent is installed.
+        :param str name: name of the Droplet
         :param float price_hourly: Droplet hourly price.
         :param float price_monthly: Droplet monthly price.
         :param bool private_networking: Whether private networks are enabled.
@@ -11744,6 +11782,9 @@ class GetDropletsDropletResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        the creation date for the Droplet
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -11837,6 +11878,9 @@ class GetDropletsDropletResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        name of the Droplet
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -12369,6 +12413,7 @@ class GetImagesImageResult(dict):
                  type: str):
         """
         :param str created: When the image was created
+        :param str description: a description of the image
         :param str distribution: The name of the distribution of the OS of the image.
         :param str error_message: Any applicable error message pertaining to the image
         :param int id: The ID of the image.
@@ -12412,6 +12457,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        a description of the image
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -12930,17 +12978,27 @@ class GetLoadBalancerFirewallResult(dict):
     def __init__(__self__, *,
                  allows: Sequence[str],
                  denies: Sequence[str]):
+        """
+        :param Sequence[str] allows: the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
+        :param Sequence[str] denies: the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
+        """
         pulumi.set(__self__, "allows", allows)
         pulumi.set(__self__, "denies", denies)
 
     @property
     @pulumi.getter
     def allows(self) -> Sequence[str]:
+        """
+        the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
+        """
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter
     def denies(self) -> Sequence[str]:
+        """
+        the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
+        """
         return pulumi.get(self, "denies")
 
 
@@ -12954,6 +13012,15 @@ class GetLoadBalancerForwardingRuleResult(dict):
                  target_port: int,
                  target_protocol: str,
                  tls_passthrough: bool):
+        """
+        :param str certificate_id: the id of the tls certificate used for ssl termination if enabled
+        :param str certificate_name: the name of the tls certificate used for ssl termination if enabled
+        :param int entry_port: the port on which the load balancer instance will listen
+        :param str entry_protocol: the protocol used for traffic to the load balancer
+        :param int target_port: the port on the backend Droplets to which the load balancer will send traffic
+        :param str target_protocol: the protocol used for traffic to the backend droplets
+        :param bool tls_passthrough: whether ssl encrypted traffic will be passed through to the backend droplets
+        """
         pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "certificate_name", certificate_name)
         pulumi.set(__self__, "entry_port", entry_port)
@@ -12965,36 +13032,57 @@ class GetLoadBalancerForwardingRuleResult(dict):
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
+        """
+        the id of the tls certificate used for ssl termination if enabled
+        """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> str:
+        """
+        the name of the tls certificate used for ssl termination if enabled
+        """
         return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter(name="entryPort")
     def entry_port(self) -> int:
+        """
+        the port on which the load balancer instance will listen
+        """
         return pulumi.get(self, "entry_port")
 
     @property
     @pulumi.getter(name="entryProtocol")
     def entry_protocol(self) -> str:
+        """
+        the protocol used for traffic to the load balancer
+        """
         return pulumi.get(self, "entry_protocol")
 
     @property
     @pulumi.getter(name="targetPort")
     def target_port(self) -> int:
+        """
+        the port on the backend Droplets to which the load balancer will send traffic
+        """
         return pulumi.get(self, "target_port")
 
     @property
     @pulumi.getter(name="targetProtocol")
     def target_protocol(self) -> str:
+        """
+        the protocol used for traffic to the backend droplets
+        """
         return pulumi.get(self, "target_protocol")
 
     @property
     @pulumi.getter(name="tlsPassthrough")
     def tls_passthrough(self) -> bool:
+        """
+        whether ssl encrypted traffic will be passed through to the backend droplets
+        """
         return pulumi.get(self, "tls_passthrough")
 
 
@@ -13008,6 +13096,15 @@ class GetLoadBalancerHealthcheckResult(dict):
                  protocol: str,
                  response_timeout_seconds: int,
                  unhealthy_threshold: int):
+        """
+        :param int check_interval_seconds: the number of seconds between between two consecutive health checks
+        :param int healthy_threshold: the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
+        :param str path: the path on the backend Droplets to which the Load Balancer will send a request
+        :param int port: the port on the backend droplets on which the health check will attempt a connection
+        :param str protocol: the protocol used for health checks sent to the backend droplets
+        :param int response_timeout_seconds: the number of seconds to wait for a response until marking a health check as failed
+        :param int unhealthy_threshold: The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
+        """
         pulumi.set(__self__, "check_interval_seconds", check_interval_seconds)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         pulumi.set(__self__, "path", path)
@@ -13019,36 +13116,57 @@ class GetLoadBalancerHealthcheckResult(dict):
     @property
     @pulumi.getter(name="checkIntervalSeconds")
     def check_interval_seconds(self) -> int:
+        """
+        the number of seconds between between two consecutive health checks
+        """
         return pulumi.get(self, "check_interval_seconds")
 
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> int:
+        """
+        the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        the path on the backend Droplets to which the Load Balancer will send a request
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        the port on the backend droplets on which the health check will attempt a connection
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        the protocol used for health checks sent to the backend droplets
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="responseTimeoutSeconds")
     def response_timeout_seconds(self) -> int:
+        """
+        the number of seconds to wait for a response until marking a health check as failed
+        """
         return pulumi.get(self, "response_timeout_seconds")
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> int:
+        """
+        The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
 
@@ -13058,6 +13176,11 @@ class GetLoadBalancerStickySessionResult(dict):
                  cookie_name: str,
                  cookie_ttl_seconds: int,
                  type: str):
+        """
+        :param str cookie_name: the name of the cookie sent to the client
+        :param int cookie_ttl_seconds: the number of seconds until the cookie set by the Load Balancer expires
+        :param str type: how and if requests from a client will be persistently served by the same backend droplet
+        """
         pulumi.set(__self__, "cookie_name", cookie_name)
         pulumi.set(__self__, "cookie_ttl_seconds", cookie_ttl_seconds)
         pulumi.set(__self__, "type", type)
@@ -13065,16 +13188,25 @@ class GetLoadBalancerStickySessionResult(dict):
     @property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> str:
+        """
+        the name of the cookie sent to the client
+        """
         return pulumi.get(self, "cookie_name")
 
     @property
     @pulumi.getter(name="cookieTtlSeconds")
     def cookie_ttl_seconds(self) -> int:
+        """
+        the number of seconds until the cookie set by the Load Balancer expires
+        """
         return pulumi.get(self, "cookie_ttl_seconds")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        how and if requests from a client will be persistently served by the same backend droplet
+        """
         return pulumi.get(self, "type")
 
 

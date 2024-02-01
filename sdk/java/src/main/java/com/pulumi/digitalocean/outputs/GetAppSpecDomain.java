@@ -23,7 +23,15 @@ public final class GetAppSpecDomain {
      * 
      */
     private String type;
+    /**
+     * @return Indicates whether the domain includes all sub-domains, in addition to the given domain.
+     * 
+     */
     private Boolean wildcard;
+    /**
+     * @return If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+     * 
+     */
     private @Nullable String zone;
 
     private GetAppSpecDomain() {}
@@ -41,9 +49,17 @@ public final class GetAppSpecDomain {
     public String type() {
         return this.type;
     }
+    /**
+     * @return Indicates whether the domain includes all sub-domains, in addition to the given domain.
+     * 
+     */
     public Boolean wildcard() {
         return this.wildcard;
     }
+    /**
+     * @return If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

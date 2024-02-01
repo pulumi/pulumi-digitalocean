@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorAlertAlertsSlack {
+    /**
+     * @return The Slack channel to send alerts to
+     * 
+     */
     private String channel;
+    /**
+     * @return The webhook URL for Slack
+     * 
+     */
     private String url;
 
     private MonitorAlertAlertsSlack() {}
+    /**
+     * @return The Slack channel to send alerts to
+     * 
+     */
     public String channel() {
         return this.channel;
     }
+    /**
+     * @return The webhook URL for Slack
+     * 
+     */
     public String url() {
         return this.url;
     }
