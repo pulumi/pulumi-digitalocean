@@ -19,6 +19,10 @@ public final class GetImagesImage {
      * 
      */
     private String created;
+    /**
+     * @return a description of the image
+     * 
+     */
     private String description;
     /**
      * @return The name of the distribution of the OS of the image.
@@ -96,6 +100,10 @@ public final class GetImagesImage {
     public String created() {
         return this.created;
     }
+    /**
+     * @return a description of the image
+     * 
+     */
     public String description() {
         return this.description;
     }

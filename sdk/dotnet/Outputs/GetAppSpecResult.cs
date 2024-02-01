@@ -24,6 +24,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Describes an environment variable made available to an app competent.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecEnvResult> Envs;
+        /// <summary>
+        /// List of features which is applied to the app
+        /// </summary>
         public readonly ImmutableArray<string> Features;
         public readonly ImmutableArray<Outputs.GetAppSpecFunctionResult> Functions;
         public readonly Outputs.GetAppSpecIngressResult Ingress;
@@ -32,6 +35,9 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The name of the component.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The slug for the DigitalOcean data center region hosting the app
+        /// </summary>
         public readonly string? Region;
         public readonly ImmutableArray<Outputs.GetAppSpecServiceResult> Services;
         public readonly ImmutableArray<Outputs.GetAppSpecStaticSiteResult> StaticSites;

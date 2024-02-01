@@ -13,12 +13,33 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetLoadBalancerForwardingRuleResult
     {
+        /// <summary>
+        /// the id of the tls certificate used for ssl termination if enabled
+        /// </summary>
         public readonly string CertificateId;
+        /// <summary>
+        /// the name of the tls certificate used for ssl termination if enabled
+        /// </summary>
         public readonly string CertificateName;
+        /// <summary>
+        /// the port on which the load balancer instance will listen
+        /// </summary>
         public readonly int EntryPort;
+        /// <summary>
+        /// the protocol used for traffic to the load balancer
+        /// </summary>
         public readonly string EntryProtocol;
+        /// <summary>
+        /// the port on the backend Droplets to which the load balancer will send traffic
+        /// </summary>
         public readonly int TargetPort;
+        /// <summary>
+        /// the protocol used for traffic to the backend droplets
+        /// </summary>
         public readonly string TargetProtocol;
+        /// <summary>
+        /// whether ssl encrypted traffic will be passed through to the backend droplets
+        /// </summary>
         public readonly bool TlsPassthrough;
 
         [OutputConstructor]

@@ -1722,6 +1722,9 @@ export interface GetAppSpec {
      * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.GetAppSpecEnv[];
+    /**
+     * List of features which is applied to the app
+     */
     features?: string[];
     functions?: outputs.GetAppSpecFunction[];
     ingress: outputs.GetAppSpecIngress;
@@ -1730,6 +1733,9 @@ export interface GetAppSpec {
      * The name of the component.
      */
     name: string;
+    /**
+     * The slug for the DigitalOcean data center region hosting the app
+     */
     region?: string;
     services?: outputs.GetAppSpecService[];
     staticSites?: outputs.GetAppSpecStaticSite[];
@@ -1787,7 +1793,13 @@ export interface GetAppSpecDomain {
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
     type: string;
+    /**
+     * Indicates whether the domain includes all sub-domains, in addition to the given domain.
+     */
     wildcard: boolean;
+    /**
+     * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+     */
     zone?: string;
 }
 
@@ -2579,6 +2591,9 @@ export interface GetAppSpecServiceHealthCheck {
      * The number of seconds to wait between health checks.
      */
     periodSeconds?: number;
+    /**
+     * The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+     */
     port?: number;
     /**
      * The number of successful health checks before considered healthy.
@@ -3149,6 +3164,9 @@ export interface GetDropletsDroplet {
      * Whether backups are enabled.
      */
     backups: boolean;
+    /**
+     * the creation date for the Droplet
+     */
     createdAt: string;
     /**
      * The size of the Droplet's disk in GB.
@@ -3194,6 +3212,9 @@ export interface GetDropletsDroplet {
      * Whether monitoring agent is installed.
      */
     monitoring: boolean;
+    /**
+     * name of the Droplet
+     */
     name: string;
     /**
      * Droplet hourly price.
@@ -3399,6 +3420,9 @@ export interface GetImagesImage {
      * When the image was created
      */
     created: string;
+    /**
+     * a description of the image
+     */
     description: string;
     /**
      * The name of the distribution of the OS of the image.
@@ -3605,33 +3629,90 @@ export interface GetKubernetesClusterNodePoolTaint {
 }
 
 export interface GetLoadBalancerFirewall {
+    /**
+     * the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
+     */
     allows: string[];
+    /**
+     * the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
+     */
     denies: string[];
 }
 
 export interface GetLoadBalancerForwardingRule {
+    /**
+     * the id of the tls certificate used for ssl termination if enabled
+     */
     certificateId: string;
+    /**
+     * the name of the tls certificate used for ssl termination if enabled
+     */
     certificateName: string;
+    /**
+     * the port on which the load balancer instance will listen
+     */
     entryPort: number;
+    /**
+     * the protocol used for traffic to the load balancer
+     */
     entryProtocol: string;
+    /**
+     * the port on the backend Droplets to which the load balancer will send traffic
+     */
     targetPort: number;
+    /**
+     * the protocol used for traffic to the backend droplets
+     */
     targetProtocol: string;
+    /**
+     * whether ssl encrypted traffic will be passed through to the backend droplets
+     */
     tlsPassthrough: boolean;
 }
 
 export interface GetLoadBalancerHealthcheck {
+    /**
+     * the number of seconds between between two consecutive health checks
+     */
     checkIntervalSeconds: number;
+    /**
+     * the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
+     */
     healthyThreshold: number;
+    /**
+     * the path on the backend Droplets to which the Load Balancer will send a request
+     */
     path: string;
+    /**
+     * the port on the backend droplets on which the health check will attempt a connection
+     */
     port: number;
+    /**
+     * the protocol used for health checks sent to the backend droplets
+     */
     protocol: string;
+    /**
+     * the number of seconds to wait for a response until marking a health check as failed
+     */
     responseTimeoutSeconds: number;
+    /**
+     * The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
+     */
     unhealthyThreshold: number;
 }
 
 export interface GetLoadBalancerStickySession {
+    /**
+     * the name of the cookie sent to the client
+     */
     cookieName: string;
+    /**
+     * the number of seconds until the cookie set by the Load Balancer expires
+     */
     cookieTtlSeconds: number;
+    /**
+     * how and if requests from a client will be persistently served by the same backend droplet
+     */
     type: string;
 }
 
@@ -4377,12 +4458,21 @@ export interface LoadBalancerStickySessions {
 }
 
 export interface MonitorAlertAlerts {
+    /**
+     * List of email addresses to sent notifications to
+     */
     emails?: string[];
     slacks?: outputs.MonitorAlertAlertsSlack[];
 }
 
 export interface MonitorAlertAlertsSlack {
+    /**
+     * The Slack channel to send alerts to
+     */
     channel: string;
+    /**
+     * The webhook URL for Slack
+     */
     url: string;
 }
 

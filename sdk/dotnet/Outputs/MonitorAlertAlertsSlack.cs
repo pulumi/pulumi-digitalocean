@@ -13,7 +13,13 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class MonitorAlertAlertsSlack
     {
+        /// <summary>
+        /// The Slack channel to send alerts to
+        /// </summary>
         public readonly string Channel;
+        /// <summary>
+        /// The webhook URL for Slack
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

@@ -32,6 +32,10 @@ public final class GetAppSpecServiceHealthCheck {
      * 
      */
     private @Nullable Integer periodSeconds;
+    /**
+     * @return The port on which the health check will be performed. If not set, the health check will be performed on the component&#39;s http_port.
+     * 
+     */
     private @Nullable Integer port;
     /**
      * @return The number of successful health checks before considered healthy.
@@ -73,6 +77,10 @@ public final class GetAppSpecServiceHealthCheck {
     public Optional<Integer> periodSeconds() {
         return Optional.ofNullable(this.periodSeconds);
     }
+    /**
+     * @return The port on which the health check will be performed. If not set, the health check will be performed on the component&#39;s http_port.
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
