@@ -13,8 +13,17 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetLoadBalancerStickySessionResult
     {
+        /// <summary>
+        /// the name of the cookie sent to the client
+        /// </summary>
         public readonly string CookieName;
+        /// <summary>
+        /// the number of seconds until the cookie set by the Load Balancer expires
+        /// </summary>
         public readonly int CookieTtlSeconds;
+        /// <summary>
+        /// how and if requests from a client will be persistently served by the same backend droplet
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

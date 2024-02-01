@@ -11,33 +11,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerHealthcheck {
+    /**
+     * @return the number of seconds between between two consecutive health checks
+     * 
+     */
     private Integer checkIntervalSeconds;
+    /**
+     * @return the number of times a health check must pass for a backend droplet to be marked &#39;healthy&#39; and be re-added to the pool
+     * 
+     */
     private Integer healthyThreshold;
+    /**
+     * @return the path on the backend Droplets to which the Load Balancer will send a request
+     * 
+     */
     private String path;
+    /**
+     * @return the port on the backend droplets on which the health check will attempt a connection
+     * 
+     */
     private Integer port;
+    /**
+     * @return the protocol used for health checks sent to the backend droplets
+     * 
+     */
     private String protocol;
+    /**
+     * @return the number of seconds to wait for a response until marking a health check as failed
+     * 
+     */
     private Integer responseTimeoutSeconds;
+    /**
+     * @return The number of times a health check must fail for a backend droplet to be marked &#39;unhealthy&#39; and be removed from the pool
+     * 
+     */
     private Integer unhealthyThreshold;
 
     private GetLoadBalancerHealthcheck() {}
+    /**
+     * @return the number of seconds between between two consecutive health checks
+     * 
+     */
     public Integer checkIntervalSeconds() {
         return this.checkIntervalSeconds;
     }
+    /**
+     * @return the number of times a health check must pass for a backend droplet to be marked &#39;healthy&#39; and be re-added to the pool
+     * 
+     */
     public Integer healthyThreshold() {
         return this.healthyThreshold;
     }
+    /**
+     * @return the path on the backend Droplets to which the Load Balancer will send a request
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return the port on the backend droplets on which the health check will attempt a connection
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return the protocol used for health checks sent to the backend droplets
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }
+    /**
+     * @return the number of seconds to wait for a response until marking a health check as failed
+     * 
+     */
     public Integer responseTimeoutSeconds() {
         return this.responseTimeoutSeconds;
     }
+    /**
+     * @return The number of times a health check must fail for a backend droplet to be marked &#39;unhealthy&#39; and be removed from the pool
+     * 
+     */
     public Integer unhealthyThreshold() {
         return this.unhealthyThreshold;
     }

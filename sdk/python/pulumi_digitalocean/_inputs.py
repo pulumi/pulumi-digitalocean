@@ -7445,6 +7445,9 @@ class MonitorAlertAlertsArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  slacks: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: List of email addresses to sent notifications to
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if slacks is not None:
@@ -7453,6 +7456,9 @@ class MonitorAlertAlertsArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of email addresses to sent notifications to
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -7474,12 +7480,19 @@ class MonitorAlertAlertsSlackArgs:
     def __init__(__self__, *,
                  channel: pulumi.Input[str],
                  url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] channel: The Slack channel to send alerts to
+        :param pulumi.Input[str] url: The webhook URL for Slack
+        """
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
     def channel(self) -> pulumi.Input[str]:
+        """
+        The Slack channel to send alerts to
+        """
         return pulumi.get(self, "channel")
 
     @channel.setter
@@ -7489,6 +7502,9 @@ class MonitorAlertAlertsSlackArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        The webhook URL for Slack
+        """
         return pulumi.get(self, "url")
 
     @url.setter

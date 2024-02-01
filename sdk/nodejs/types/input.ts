@@ -2846,12 +2846,21 @@ export interface LoadBalancerStickySessions {
 }
 
 export interface MonitorAlertAlerts {
+    /**
+     * List of email addresses to sent notifications to
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     slacks?: pulumi.Input<pulumi.Input<inputs.MonitorAlertAlertsSlack>[]>;
 }
 
 export interface MonitorAlertAlertsSlack {
+    /**
+     * The Slack channel to send alerts to
+     */
     channel: pulumi.Input<string>;
+    /**
+     * The webhook URL for Slack
+     */
     url: pulumi.Input<string>;
 }
 

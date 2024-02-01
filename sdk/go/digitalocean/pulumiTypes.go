@@ -15408,6 +15408,7 @@ func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type MonitorAlertAlerts struct {
+	// List of email addresses to sent notifications to
 	Emails []string                  `pulumi:"emails"`
 	Slacks []MonitorAlertAlertsSlack `pulumi:"slacks"`
 }
@@ -15424,6 +15425,7 @@ type MonitorAlertAlertsInput interface {
 }
 
 type MonitorAlertAlertsArgs struct {
+	// List of email addresses to sent notifications to
 	Emails pulumi.StringArrayInput           `pulumi:"emails"`
 	Slacks MonitorAlertAlertsSlackArrayInput `pulumi:"slacks"`
 }
@@ -15505,6 +15507,7 @@ func (o MonitorAlertAlertsOutput) ToMonitorAlertAlertsPtrOutputWithContext(ctx c
 	}).(MonitorAlertAlertsPtrOutput)
 }
 
+// List of email addresses to sent notifications to
 func (o MonitorAlertAlertsOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorAlertAlerts) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
@@ -15537,6 +15540,7 @@ func (o MonitorAlertAlertsPtrOutput) Elem() MonitorAlertAlertsOutput {
 	}).(MonitorAlertAlertsOutput)
 }
 
+// List of email addresses to sent notifications to
 func (o MonitorAlertAlertsPtrOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MonitorAlertAlerts) []string {
 		if v == nil {
@@ -15556,8 +15560,10 @@ func (o MonitorAlertAlertsPtrOutput) Slacks() MonitorAlertAlertsSlackArrayOutput
 }
 
 type MonitorAlertAlertsSlack struct {
+	// The Slack channel to send alerts to
 	Channel string `pulumi:"channel"`
-	Url     string `pulumi:"url"`
+	// The webhook URL for Slack
+	Url string `pulumi:"url"`
 }
 
 // MonitorAlertAlertsSlackInput is an input type that accepts MonitorAlertAlertsSlackArgs and MonitorAlertAlertsSlackOutput values.
@@ -15572,8 +15578,10 @@ type MonitorAlertAlertsSlackInput interface {
 }
 
 type MonitorAlertAlertsSlackArgs struct {
+	// The Slack channel to send alerts to
 	Channel pulumi.StringInput `pulumi:"channel"`
-	Url     pulumi.StringInput `pulumi:"url"`
+	// The webhook URL for Slack
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (MonitorAlertAlertsSlackArgs) ElementType() reflect.Type {
@@ -15627,10 +15635,12 @@ func (o MonitorAlertAlertsSlackOutput) ToMonitorAlertAlertsSlackOutputWithContex
 	return o
 }
 
+// The Slack channel to send alerts to
 func (o MonitorAlertAlertsSlackOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorAlertAlertsSlack) string { return v.Channel }).(pulumi.StringOutput)
 }
 
+// The webhook URL for Slack
 func (o MonitorAlertAlertsSlackOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorAlertAlertsSlack) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -16752,13 +16762,15 @@ type GetAppSpec struct {
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs      []GetAppSpecEnv      `pulumi:"envs"`
+	Envs []GetAppSpecEnv `pulumi:"envs"`
+	// List of features which is applied to the app
 	Features  []string             `pulumi:"features"`
 	Functions []GetAppSpecFunction `pulumi:"functions"`
 	Ingress   GetAppSpecIngress    `pulumi:"ingress"`
 	Jobs      []GetAppSpecJob      `pulumi:"jobs"`
 	// The name of the component.
-	Name        string                 `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The slug for the DigitalOcean data center region hosting the app
 	Region      *string                `pulumi:"region"`
 	Services    []GetAppSpecService    `pulumi:"services"`
 	StaticSites []GetAppSpecStaticSite `pulumi:"staticSites"`
@@ -16784,13 +16796,15 @@ type GetAppSpecArgs struct {
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Describes an environment variable made available to an app competent.
-	Envs      GetAppSpecEnvArrayInput      `pulumi:"envs"`
+	Envs GetAppSpecEnvArrayInput `pulumi:"envs"`
+	// List of features which is applied to the app
 	Features  pulumi.StringArrayInput      `pulumi:"features"`
 	Functions GetAppSpecFunctionArrayInput `pulumi:"functions"`
 	Ingress   GetAppSpecIngressInput       `pulumi:"ingress"`
 	Jobs      GetAppSpecJobArrayInput      `pulumi:"jobs"`
 	// The name of the component.
-	Name        pulumi.StringInput             `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The slug for the DigitalOcean data center region hosting the app
 	Region      pulumi.StringPtrInput          `pulumi:"region"`
 	Services    GetAppSpecServiceArrayInput    `pulumi:"services"`
 	StaticSites GetAppSpecStaticSiteArrayInput `pulumi:"staticSites"`
@@ -16871,6 +16885,7 @@ func (o GetAppSpecOutput) Envs() GetAppSpecEnvArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEnv { return v.Envs }).(GetAppSpecEnvArrayOutput)
 }
 
+// List of features which is applied to the app
 func (o GetAppSpecOutput) Features() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []string { return v.Features }).(pulumi.StringArrayOutput)
 }
@@ -16892,6 +16907,7 @@ func (o GetAppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpec) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The slug for the DigitalOcean data center region hosting the app
 func (o GetAppSpecOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpec) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -17189,9 +17205,11 @@ type GetAppSpecDomain struct {
 	// The name of the component.
 	Name string `pulumi:"name"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
-	Type     string  `pulumi:"type"`
-	Wildcard bool    `pulumi:"wildcard"`
-	Zone     *string `pulumi:"zone"`
+	Type string `pulumi:"type"`
+	// Indicates whether the domain includes all sub-domains, in addition to the given domain.
+	Wildcard bool `pulumi:"wildcard"`
+	// If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+	Zone *string `pulumi:"zone"`
 }
 
 // GetAppSpecDomainInput is an input type that accepts GetAppSpecDomainArgs and GetAppSpecDomainOutput values.
@@ -17209,9 +17227,11 @@ type GetAppSpecDomainArgs struct {
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
-	Type     pulumi.StringInput    `pulumi:"type"`
-	Wildcard pulumi.BoolInput      `pulumi:"wildcard"`
-	Zone     pulumi.StringPtrInput `pulumi:"zone"`
+	Type pulumi.StringInput `pulumi:"type"`
+	// Indicates whether the domain includes all sub-domains, in addition to the given domain.
+	Wildcard pulumi.BoolInput `pulumi:"wildcard"`
+	// If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (GetAppSpecDomainArgs) ElementType() reflect.Type {
@@ -17275,10 +17295,12 @@ func (o GetAppSpecDomainOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecDomain) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Indicates whether the domain includes all sub-domains, in addition to the given domain.
 func (o GetAppSpecDomainOutput) Wildcard() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppSpecDomain) bool { return v.Wildcard }).(pulumi.BoolOutput)
 }
 
+// If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
 func (o GetAppSpecDomainOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecDomain) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -23558,7 +23580,8 @@ type GetAppSpecServiceHealthCheck struct {
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// The number of seconds to wait between health checks.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	Port          *int `pulumi:"port"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port *int `pulumi:"port"`
 	// The number of successful health checks before considered healthy.
 	SuccessThreshold *int `pulumi:"successThreshold"`
 	// The number of seconds after which the check times out.
@@ -23585,7 +23608,8 @@ type GetAppSpecServiceHealthCheckArgs struct {
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// The number of seconds to wait between health checks.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	Port          pulumi.IntPtrInput `pulumi:"port"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The number of successful health checks before considered healthy.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
 	// The number of seconds after which the check times out.
@@ -23689,6 +23713,7 @@ func (o GetAppSpecServiceHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
 func (o GetAppSpecServiceHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -23767,6 +23792,7 @@ func (o GetAppSpecServiceHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
 func (o GetAppSpecServiceHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
 		if v == nil {
@@ -28658,7 +28684,8 @@ func (o GetDomainsSortArrayOutput) Index(i pulumi.IntInput) GetDomainsSortOutput
 
 type GetDropletsDroplet struct {
 	// Whether backups are enabled.
-	Backups   bool   `pulumi:"backups"`
+	Backups bool `pulumi:"backups"`
+	// the creation date for the Droplet
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplet's disk in GB.
 	Disk int `pulumi:"disk"`
@@ -28681,8 +28708,9 @@ type GetDropletsDroplet struct {
 	// The amount of the Droplet's memory in MB.
 	Memory int `pulumi:"memory"`
 	// Whether monitoring agent is installed.
-	Monitoring bool   `pulumi:"monitoring"`
-	Name       string `pulumi:"name"`
+	Monitoring bool `pulumi:"monitoring"`
+	// name of the Droplet
+	Name string `pulumi:"name"`
 	// Droplet hourly price.
 	PriceHourly float64 `pulumi:"priceHourly"`
 	// Droplet monthly price.
@@ -28720,7 +28748,8 @@ type GetDropletsDropletInput interface {
 
 type GetDropletsDropletArgs struct {
 	// Whether backups are enabled.
-	Backups   pulumi.BoolInput   `pulumi:"backups"`
+	Backups pulumi.BoolInput `pulumi:"backups"`
+	// the creation date for the Droplet
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The size of the Droplet's disk in GB.
 	Disk pulumi.IntInput `pulumi:"disk"`
@@ -28743,8 +28772,9 @@ type GetDropletsDropletArgs struct {
 	// The amount of the Droplet's memory in MB.
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// Whether monitoring agent is installed.
-	Monitoring pulumi.BoolInput   `pulumi:"monitoring"`
-	Name       pulumi.StringInput `pulumi:"name"`
+	Monitoring pulumi.BoolInput `pulumi:"monitoring"`
+	// name of the Droplet
+	Name pulumi.StringInput `pulumi:"name"`
 	// Droplet hourly price.
 	PriceHourly pulumi.Float64Input `pulumi:"priceHourly"`
 	// Droplet monthly price.
@@ -28825,6 +28855,7 @@ func (o GetDropletsDropletOutput) Backups() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Backups }).(pulumi.BoolOutput)
 }
 
+// the creation date for the Droplet
 func (o GetDropletsDropletOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -28884,6 +28915,7 @@ func (o GetDropletsDropletOutput) Monitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) bool { return v.Monitoring }).(pulumi.BoolOutput)
 }
 
+// name of the Droplet
 func (o GetDropletsDropletOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -29841,7 +29873,8 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 
 type GetImagesImage struct {
 	// When the image was created
-	Created     string `pulumi:"created"`
+	Created string `pulumi:"created"`
+	// a description of the image
 	Description string `pulumi:"description"`
 	// The name of the distribution of the OS of the image.
 	Distribution string `pulumi:"distribution"`
@@ -29886,7 +29919,8 @@ type GetImagesImageInput interface {
 
 type GetImagesImageArgs struct {
 	// When the image was created
-	Created     pulumi.StringInput `pulumi:"created"`
+	Created pulumi.StringInput `pulumi:"created"`
+	// a description of the image
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the distribution of the OS of the image.
 	Distribution pulumi.StringInput `pulumi:"distribution"`
@@ -29974,6 +30008,7 @@ func (o GetImagesImageOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// a description of the image
 func (o GetImagesImageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -30891,7 +30926,9 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetLoadBalancerFirewall struct {
+	// the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 	Allows []string `pulumi:"allows"`
+	// the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 	Denies []string `pulumi:"denies"`
 }
 
@@ -30907,7 +30944,9 @@ type GetLoadBalancerFirewallInput interface {
 }
 
 type GetLoadBalancerFirewallArgs struct {
+	// the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 	Allows pulumi.StringArrayInput `pulumi:"allows"`
+	// the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 	Denies pulumi.StringArrayInput `pulumi:"denies"`
 }
 
@@ -30962,10 +31001,12 @@ func (o GetLoadBalancerFirewallOutput) ToGetLoadBalancerFirewallOutputWithContex
 	return o
 }
 
+// the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 func (o GetLoadBalancerFirewallOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancerFirewall) []string { return v.Allows }).(pulumi.StringArrayOutput)
 }
 
+// the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 func (o GetLoadBalancerFirewallOutput) Denies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancerFirewall) []string { return v.Denies }).(pulumi.StringArrayOutput)
 }
@@ -30991,13 +31032,20 @@ func (o GetLoadBalancerFirewallArrayOutput) Index(i pulumi.IntInput) GetLoadBala
 }
 
 type GetLoadBalancerForwardingRule struct {
-	CertificateId   string `pulumi:"certificateId"`
+	// the id of the tls certificate used for ssl termination if enabled
+	CertificateId string `pulumi:"certificateId"`
+	// the name of the tls certificate used for ssl termination if enabled
 	CertificateName string `pulumi:"certificateName"`
-	EntryPort       int    `pulumi:"entryPort"`
-	EntryProtocol   string `pulumi:"entryProtocol"`
-	TargetPort      int    `pulumi:"targetPort"`
-	TargetProtocol  string `pulumi:"targetProtocol"`
-	TlsPassthrough  bool   `pulumi:"tlsPassthrough"`
+	// the port on which the load balancer instance will listen
+	EntryPort int `pulumi:"entryPort"`
+	// the protocol used for traffic to the load balancer
+	EntryProtocol string `pulumi:"entryProtocol"`
+	// the port on the backend Droplets to which the load balancer will send traffic
+	TargetPort int `pulumi:"targetPort"`
+	// the protocol used for traffic to the backend droplets
+	TargetProtocol string `pulumi:"targetProtocol"`
+	// whether ssl encrypted traffic will be passed through to the backend droplets
+	TlsPassthrough bool `pulumi:"tlsPassthrough"`
 }
 
 // GetLoadBalancerForwardingRuleInput is an input type that accepts GetLoadBalancerForwardingRuleArgs and GetLoadBalancerForwardingRuleOutput values.
@@ -31012,13 +31060,20 @@ type GetLoadBalancerForwardingRuleInput interface {
 }
 
 type GetLoadBalancerForwardingRuleArgs struct {
-	CertificateId   pulumi.StringInput `pulumi:"certificateId"`
+	// the id of the tls certificate used for ssl termination if enabled
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// the name of the tls certificate used for ssl termination if enabled
 	CertificateName pulumi.StringInput `pulumi:"certificateName"`
-	EntryPort       pulumi.IntInput    `pulumi:"entryPort"`
-	EntryProtocol   pulumi.StringInput `pulumi:"entryProtocol"`
-	TargetPort      pulumi.IntInput    `pulumi:"targetPort"`
-	TargetProtocol  pulumi.StringInput `pulumi:"targetProtocol"`
-	TlsPassthrough  pulumi.BoolInput   `pulumi:"tlsPassthrough"`
+	// the port on which the load balancer instance will listen
+	EntryPort pulumi.IntInput `pulumi:"entryPort"`
+	// the protocol used for traffic to the load balancer
+	EntryProtocol pulumi.StringInput `pulumi:"entryProtocol"`
+	// the port on the backend Droplets to which the load balancer will send traffic
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// the protocol used for traffic to the backend droplets
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+	// whether ssl encrypted traffic will be passed through to the backend droplets
+	TlsPassthrough pulumi.BoolInput `pulumi:"tlsPassthrough"`
 }
 
 func (GetLoadBalancerForwardingRuleArgs) ElementType() reflect.Type {
@@ -31072,30 +31127,37 @@ func (o GetLoadBalancerForwardingRuleOutput) ToGetLoadBalancerForwardingRuleOutp
 	return o
 }
 
+// the id of the tls certificate used for ssl termination if enabled
 func (o GetLoadBalancerForwardingRuleOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.CertificateId }).(pulumi.StringOutput)
 }
 
+// the name of the tls certificate used for ssl termination if enabled
 func (o GetLoadBalancerForwardingRuleOutput) CertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.CertificateName }).(pulumi.StringOutput)
 }
 
+// the port on which the load balancer instance will listen
 func (o GetLoadBalancerForwardingRuleOutput) EntryPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) int { return v.EntryPort }).(pulumi.IntOutput)
 }
 
+// the protocol used for traffic to the load balancer
 func (o GetLoadBalancerForwardingRuleOutput) EntryProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.EntryProtocol }).(pulumi.StringOutput)
 }
 
+// the port on the backend Droplets to which the load balancer will send traffic
 func (o GetLoadBalancerForwardingRuleOutput) TargetPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) int { return v.TargetPort }).(pulumi.IntOutput)
 }
 
+// the protocol used for traffic to the backend droplets
 func (o GetLoadBalancerForwardingRuleOutput) TargetProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) string { return v.TargetProtocol }).(pulumi.StringOutput)
 }
 
+// whether ssl encrypted traffic will be passed through to the backend droplets
 func (o GetLoadBalancerForwardingRuleOutput) TlsPassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancerForwardingRule) bool { return v.TlsPassthrough }).(pulumi.BoolOutput)
 }
@@ -31121,13 +31183,20 @@ func (o GetLoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) GetLo
 }
 
 type GetLoadBalancerHealthcheck struct {
-	CheckIntervalSeconds   int    `pulumi:"checkIntervalSeconds"`
-	HealthyThreshold       int    `pulumi:"healthyThreshold"`
-	Path                   string `pulumi:"path"`
-	Port                   int    `pulumi:"port"`
-	Protocol               string `pulumi:"protocol"`
-	ResponseTimeoutSeconds int    `pulumi:"responseTimeoutSeconds"`
-	UnhealthyThreshold     int    `pulumi:"unhealthyThreshold"`
+	// the number of seconds between between two consecutive health checks
+	CheckIntervalSeconds int `pulumi:"checkIntervalSeconds"`
+	// the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// the path on the backend Droplets to which the Load Balancer will send a request
+	Path string `pulumi:"path"`
+	// the port on the backend droplets on which the health check will attempt a connection
+	Port int `pulumi:"port"`
+	// the protocol used for health checks sent to the backend droplets
+	Protocol string `pulumi:"protocol"`
+	// the number of seconds to wait for a response until marking a health check as failed
+	ResponseTimeoutSeconds int `pulumi:"responseTimeoutSeconds"`
+	// The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
 }
 
 // GetLoadBalancerHealthcheckInput is an input type that accepts GetLoadBalancerHealthcheckArgs and GetLoadBalancerHealthcheckOutput values.
@@ -31142,13 +31211,20 @@ type GetLoadBalancerHealthcheckInput interface {
 }
 
 type GetLoadBalancerHealthcheckArgs struct {
-	CheckIntervalSeconds   pulumi.IntInput    `pulumi:"checkIntervalSeconds"`
-	HealthyThreshold       pulumi.IntInput    `pulumi:"healthyThreshold"`
-	Path                   pulumi.StringInput `pulumi:"path"`
-	Port                   pulumi.IntInput    `pulumi:"port"`
-	Protocol               pulumi.StringInput `pulumi:"protocol"`
-	ResponseTimeoutSeconds pulumi.IntInput    `pulumi:"responseTimeoutSeconds"`
-	UnhealthyThreshold     pulumi.IntInput    `pulumi:"unhealthyThreshold"`
+	// the number of seconds between between two consecutive health checks
+	CheckIntervalSeconds pulumi.IntInput `pulumi:"checkIntervalSeconds"`
+	// the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// the path on the backend Droplets to which the Load Balancer will send a request
+	Path pulumi.StringInput `pulumi:"path"`
+	// the port on the backend droplets on which the health check will attempt a connection
+	Port pulumi.IntInput `pulumi:"port"`
+	// the protocol used for health checks sent to the backend droplets
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// the number of seconds to wait for a response until marking a health check as failed
+	ResponseTimeoutSeconds pulumi.IntInput `pulumi:"responseTimeoutSeconds"`
+	// The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
 }
 
 func (GetLoadBalancerHealthcheckArgs) ElementType() reflect.Type {
@@ -31202,30 +31278,37 @@ func (o GetLoadBalancerHealthcheckOutput) ToGetLoadBalancerHealthcheckOutputWith
 	return o
 }
 
+// the number of seconds between between two consecutive health checks
 func (o GetLoadBalancerHealthcheckOutput) CheckIntervalSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.CheckIntervalSeconds }).(pulumi.IntOutput)
 }
 
+// the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
 func (o GetLoadBalancerHealthcheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
+// the path on the backend Droplets to which the Load Balancer will send a request
 func (o GetLoadBalancerHealthcheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// the port on the backend droplets on which the health check will attempt a connection
 func (o GetLoadBalancerHealthcheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// the protocol used for health checks sent to the backend droplets
 func (o GetLoadBalancerHealthcheckOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// the number of seconds to wait for a response until marking a health check as failed
 func (o GetLoadBalancerHealthcheckOutput) ResponseTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.ResponseTimeoutSeconds }).(pulumi.IntOutput)
 }
 
+// The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
 func (o GetLoadBalancerHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
@@ -31251,9 +31334,12 @@ func (o GetLoadBalancerHealthcheckArrayOutput) Index(i pulumi.IntInput) GetLoadB
 }
 
 type GetLoadBalancerStickySession struct {
-	CookieName       string `pulumi:"cookieName"`
-	CookieTtlSeconds int    `pulumi:"cookieTtlSeconds"`
-	Type             string `pulumi:"type"`
+	// the name of the cookie sent to the client
+	CookieName string `pulumi:"cookieName"`
+	// the number of seconds until the cookie set by the Load Balancer expires
+	CookieTtlSeconds int `pulumi:"cookieTtlSeconds"`
+	// how and if requests from a client will be persistently served by the same backend droplet
+	Type string `pulumi:"type"`
 }
 
 // GetLoadBalancerStickySessionInput is an input type that accepts GetLoadBalancerStickySessionArgs and GetLoadBalancerStickySessionOutput values.
@@ -31268,9 +31354,12 @@ type GetLoadBalancerStickySessionInput interface {
 }
 
 type GetLoadBalancerStickySessionArgs struct {
-	CookieName       pulumi.StringInput `pulumi:"cookieName"`
-	CookieTtlSeconds pulumi.IntInput    `pulumi:"cookieTtlSeconds"`
-	Type             pulumi.StringInput `pulumi:"type"`
+	// the name of the cookie sent to the client
+	CookieName pulumi.StringInput `pulumi:"cookieName"`
+	// the number of seconds until the cookie set by the Load Balancer expires
+	CookieTtlSeconds pulumi.IntInput `pulumi:"cookieTtlSeconds"`
+	// how and if requests from a client will be persistently served by the same backend droplet
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetLoadBalancerStickySessionArgs) ElementType() reflect.Type {
@@ -31324,14 +31413,17 @@ func (o GetLoadBalancerStickySessionOutput) ToGetLoadBalancerStickySessionOutput
 	return o
 }
 
+// the name of the cookie sent to the client
 func (o GetLoadBalancerStickySessionOutput) CookieName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerStickySession) string { return v.CookieName }).(pulumi.StringOutput)
 }
 
+// the number of seconds until the cookie set by the Load Balancer expires
 func (o GetLoadBalancerStickySessionOutput) CookieTtlSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerStickySession) int { return v.CookieTtlSeconds }).(pulumi.IntOutput)
 }
 
+// how and if requests from a client will be persistently served by the same backend droplet
 func (o GetLoadBalancerStickySessionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerStickySession) string { return v.Type }).(pulumi.StringOutput)
 }
