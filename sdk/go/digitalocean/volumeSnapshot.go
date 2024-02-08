@@ -53,9 +53,7 @@ import (
 // Volume Snapshots can be imported using the `snapshot id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
-//
+// $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
 // ```
 type VolumeSnapshot struct {
 	pulumi.CustomResourceState

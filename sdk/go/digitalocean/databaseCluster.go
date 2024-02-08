@@ -211,9 +211,7 @@ import (
 // Database clusters can be imported using the `id` returned from DigitalOcean, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
-//
+// $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
 // ```
 type DatabaseCluster struct {
 	pulumi.CustomResourceState

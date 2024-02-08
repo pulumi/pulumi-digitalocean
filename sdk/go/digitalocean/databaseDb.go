@@ -52,12 +52,12 @@ import (
 //
 // ## Import
 //
-// Database can be imported using the `id` of the source database cluster and the `name` of the database joined with a comma. For example
+// Database can be imported using the `id` of the source database cluster
+//
+//	and the `name` of the database joined with a comma. For example:
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
-//
+// $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
 // ```
 type DatabaseDb struct {
 	pulumi.CustomResourceState

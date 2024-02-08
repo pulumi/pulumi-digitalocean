@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Uptime checks can be imported using the uptime alert&#39;s `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
+ * $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
  * ```
  * 
  */

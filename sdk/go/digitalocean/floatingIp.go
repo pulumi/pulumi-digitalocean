@@ -60,9 +60,7 @@ import (
 // Floating IPs can be imported using the `ip`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
-//
+// $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
 // ```
 type FloatingIp struct {
 	pulumi.CustomResourceState

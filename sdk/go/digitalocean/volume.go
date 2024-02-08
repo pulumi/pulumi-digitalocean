@@ -97,9 +97,7 @@ import (
 // Volumes can be imported using the `volume id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
-//
+// $ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
 // ```
 type Volume struct {
 	pulumi.CustomResourceState

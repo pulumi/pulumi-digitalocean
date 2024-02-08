@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * Reserved IPs can be imported using the `ip`, e.g.
  *
  * ```sh
- *  $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
+ * $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
  * ```
  */
 export class ReservedIp extends pulumi.CustomResource {

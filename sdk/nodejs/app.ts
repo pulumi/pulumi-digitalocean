@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  * An app can be imported using its `id`, e.g.
  *
  * ```sh
- *  $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
+ * $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
  * ```
  */
 export class App extends pulumi.CustomResource {

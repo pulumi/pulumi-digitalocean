@@ -187,7 +187,7 @@ class DropletSnapshot(pulumi.CustomResource):
         Droplet Snapshots can be imported using the `snapshot id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+        $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -226,7 +226,7 @@ class DropletSnapshot(pulumi.CustomResource):
         Droplet Snapshots can be imported using the `snapshot id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
+        $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
         ```
 
         :param str resource_name: The name of the resource.
