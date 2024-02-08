@@ -97,9 +97,7 @@ import (
 // CDN Endpoints can be imported using the CDN `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
-//
+// $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
 // ```
 type Cdn struct {
 	pulumi.CustomResourceState

@@ -177,10 +177,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Database firewalls can be imported using the `id` of the target database cluster For example
+ * Database firewalls can be imported using the `id` of the target database cluster
+ * 
+ *  For example:
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
+ * $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
  * ```
  * 
  */

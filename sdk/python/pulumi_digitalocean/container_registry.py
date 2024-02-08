@@ -214,7 +214,7 @@ class ContainerRegistry(pulumi.CustomResource):
         Container Registries can be imported using the `name`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+        $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
         ```
 
         :param str resource_name: The name of the resource.
@@ -248,7 +248,7 @@ class ContainerRegistry(pulumi.CustomResource):
         Container Registries can be imported using the `name`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
+        $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
         ```
 
         :param str resource_name: The name of the resource.

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * Domains can be imported using the `domain name`, e.g.
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+ * $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
  * ```
  * 
  */
