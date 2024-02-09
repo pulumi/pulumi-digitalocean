@@ -381,7 +381,7 @@ class Certificate(pulumi.CustomResource):
         Certificates can be imported using the certificate `name`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+        $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
         ```
 
         :param str resource_name: The name of the resource.
@@ -467,7 +467,7 @@ class Certificate(pulumi.CustomResource):
         Certificates can be imported using the certificate `name`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+        $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
         ```
 
         :param str resource_name: The name of the resource.

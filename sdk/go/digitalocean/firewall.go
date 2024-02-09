@@ -113,9 +113,7 @@ import (
 // Firewalls can be imported using the firewall `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
-//
+// $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
 // ```
 type Firewall struct {
 	pulumi.CustomResourceState

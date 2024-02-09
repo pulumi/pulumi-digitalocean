@@ -166,10 +166,10 @@ class SpacesBucketPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Bucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma)
+        Bucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma):
 
         ```sh
-         $ pulumi import digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy foobar `region`,`bucket`
+        $ pulumi import digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy foobar `region`,`bucket`
         ```
 
         :param str resource_name: The name of the resource.
@@ -221,10 +221,10 @@ class SpacesBucketPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Bucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma)
+        Bucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma):
 
         ```sh
-         $ pulumi import digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy foobar `region`,`bucket`
+        $ pulumi import digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy foobar `region`,`bucket`
         ```
 
         :param str resource_name: The name of the resource.

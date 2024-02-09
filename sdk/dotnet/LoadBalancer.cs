@@ -117,7 +117,7 @@ namespace Pulumi.DigitalOcean
     /// Load Balancers can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
+    /// $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/loadBalancer:LoadBalancer")]

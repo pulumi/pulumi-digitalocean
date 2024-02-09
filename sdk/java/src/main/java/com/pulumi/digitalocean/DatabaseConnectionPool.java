@@ -66,10 +66,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Database connection pools can be imported using the `id` of the source database cluster and the `name` of the connection pool joined with a comma. For example
+ * Database connection pools can be imported using the `id` of the source database cluster
+ * 
+ *  and the `name` of the connection pool joined with a comma. For example:
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
+ * $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
  * ```
  * 
  */

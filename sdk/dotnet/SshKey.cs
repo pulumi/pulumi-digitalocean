@@ -52,7 +52,7 @@ namespace Pulumi.DigitalOcean
     /// SSH Keys can be imported using the `ssh key id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+    /// $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/sshKey:SshKey")]

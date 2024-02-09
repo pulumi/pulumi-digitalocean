@@ -176,7 +176,7 @@ class FloatingIp(pulumi.CustomResource):
         Floating IPs can be imported using the `ip`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+        $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
         ```
 
         :param str resource_name: The name of the resource.
@@ -220,7 +220,7 @@ class FloatingIp(pulumi.CustomResource):
         Floating IPs can be imported using the `ip`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
+        $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
         ```
 
         :param str resource_name: The name of the resource.

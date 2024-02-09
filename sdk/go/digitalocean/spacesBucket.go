@@ -131,12 +131,10 @@ import (
 //
 // ## Import
 //
-// Buckets can be imported using the `region` and `name` attributes (delimited by a comma)
+// Buckets can be imported using the `region` and `name` attributes (delimited by a comma):
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
-//
+// $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
 // ```
 type SpacesBucket struct {
 	pulumi.CustomResourceState

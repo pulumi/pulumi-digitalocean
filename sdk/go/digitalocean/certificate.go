@@ -138,9 +138,7 @@ import (
 // Certificates can be imported using the certificate `name`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
-//
+// $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState

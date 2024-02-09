@@ -61,9 +61,7 @@ import (
 // Droplet Snapshots can be imported using the `snapshot id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
-//
+// $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
 // ```
 type DropletSnapshot struct {
 	pulumi.CustomResourceState

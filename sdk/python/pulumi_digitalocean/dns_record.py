@@ -404,15 +404,15 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Import
 
-        Records can be imported using the domain name and record `id` when joined with a comma. See the following example
+        Records can be imported using the domain name and record `id` when joined with a comma. See the following example:
 
         ```sh
-         $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+        $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
         ```
 
          ~>
 
-        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list <domain.name>`
+        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -460,15 +460,15 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Import
 
-        Records can be imported using the domain name and record `id` when joined with a comma. See the following example
+        Records can be imported using the domain name and record `id` when joined with a comma. See the following example:
 
         ```sh
-         $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
+        $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
         ```
 
          ~>
 
-        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain`doctl compute domain records list <domain.name>`
+        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
 
         :param str resource_name: The name of the resource.
         :param DnsRecordArgs args: The arguments to use to populate this resource's properties.

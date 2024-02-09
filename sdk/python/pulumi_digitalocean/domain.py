@@ -154,7 +154,7 @@ class Domain(pulumi.CustomResource):
         Domains can be imported using the `domain name`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+        $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -189,7 +189,7 @@ class Domain(pulumi.CustomResource):
         Domains can be imported using the `domain name`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
+        $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
         ```
 
         :param str resource_name: The name of the resource.

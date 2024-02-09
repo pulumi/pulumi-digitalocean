@@ -875,7 +875,7 @@ class Droplet(pulumi.CustomResource):
         Droplets can be imported using the Droplet `id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+        $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
         ```
 
         :param str resource_name: The name of the resource.
@@ -946,7 +946,7 @@ class Droplet(pulumi.CustomResource):
         Droplets can be imported using the Droplet `id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+        $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
         ```
 
         :param str resource_name: The name of the resource.
