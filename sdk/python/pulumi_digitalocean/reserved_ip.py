@@ -174,7 +174,7 @@ class ReservedIp(pulumi.CustomResource):
         Reserved IPs can be imported using the `ip`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
+        $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
         ```
 
         :param str resource_name: The name of the resource.
@@ -216,7 +216,7 @@ class ReservedIp(pulumi.CustomResource):
         Reserved IPs can be imported using the `ip`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
+        $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
         ```
 
         :param str resource_name: The name of the resource.

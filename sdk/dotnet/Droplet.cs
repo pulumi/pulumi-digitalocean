@@ -39,7 +39,7 @@ namespace Pulumi.DigitalOcean
     /// Droplets can be imported using the Droplet `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
+    /// $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/droplet:Droplet")]

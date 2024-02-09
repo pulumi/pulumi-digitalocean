@@ -268,10 +268,10 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
 
         ## Import
 
-        Topics can be imported using the `id` of the source cluster and the `name` of the topic joined with a comma. For example
+        Topics can be imported using the `id` of the source cluster and the `name` of the topic joined with a comma. For example:
 
         ```sh
-         $ pulumi import digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic topic-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,topic-01
+        $ pulumi import digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic topic-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,topic-01
         ```
 
         :param str resource_name: The name of the resource.
@@ -338,10 +338,10 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
 
         ## Import
 
-        Topics can be imported using the `id` of the source cluster and the `name` of the topic joined with a comma. For example
+        Topics can be imported using the `id` of the source cluster and the `name` of the topic joined with a comma. For example:
 
         ```sh
-         $ pulumi import digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic topic-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,topic-01
+        $ pulumi import digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic topic-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,topic-01
         ```
 
         :param str resource_name: The name of the resource.

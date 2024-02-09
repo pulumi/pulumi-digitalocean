@@ -50,7 +50,7 @@ namespace Pulumi.DigitalOcean
     /// A Redis database cluster's configuration can be imported using the `id` the parent cluster, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/databaseRedisConfig:DatabaseRedisConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+    /// $ pulumi import digitalocean:index/databaseRedisConfig:DatabaseRedisConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig")]

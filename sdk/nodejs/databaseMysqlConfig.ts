@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  * A MySQL database cluster's configuration can be imported using the `id` the parent cluster, e.g.
  *
  * ```sh
- *  $ pulumi import digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig example 4b62829a-9c42-465b-aaa3-84051048e712
+ * $ pulumi import digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig example 4b62829a-9c42-465b-aaa3-84051048e712
  * ```
  */
 export class DatabaseMysqlConfig extends pulumi.CustomResource {

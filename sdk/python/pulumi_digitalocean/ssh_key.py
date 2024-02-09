@@ -145,7 +145,7 @@ class SshKey(pulumi.CustomResource):
         SSH Keys can be imported using the `ssh key id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+        $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
         ```
 
         :param str resource_name: The name of the resource.
@@ -187,7 +187,7 @@ class SshKey(pulumi.CustomResource):
         SSH Keys can be imported using the `ssh key id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
+        $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
         ```
 
         :param str resource_name: The name of the resource.

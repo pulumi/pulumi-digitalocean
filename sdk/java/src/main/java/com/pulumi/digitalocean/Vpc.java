@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * A VPC can be imported using its `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
+ * $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
  * ```
  * 
  */

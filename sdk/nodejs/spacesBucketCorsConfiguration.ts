@@ -34,10 +34,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Bucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma)
+ * Bucket policies can be imported using the `region` and `bucket` attributes (delimited by a comma):
  *
  * ```sh
- *  $ pulumi import digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration foobar `region`,`bucket`
+ * $ pulumi import digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration foobar `region`,`bucket`
  * ```
  */
 export class SpacesBucketCorsConfiguration extends pulumi.CustomResource {

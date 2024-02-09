@@ -172,10 +172,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Database user can be imported using the `id` of the source database cluster and the `name` of the user joined with a comma. For example
+ * Database user can be imported using the `id` of the source database cluster
+ * 
+ *  and the `name` of the user joined with a comma. For example:
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
+ * $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
  * ```
  * 
  */

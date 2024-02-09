@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
     /// Projects can be imported using the `id` returned from DigitalOcean, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+    /// $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
     /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/project:Project")]

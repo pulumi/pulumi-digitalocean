@@ -206,7 +206,7 @@ class UptimeCheck(pulumi.CustomResource):
         Uptime checks can be imported using the uptime check's `id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
+        $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
 
         :param str resource_name: The name of the resource.
@@ -232,7 +232,7 @@ class UptimeCheck(pulumi.CustomResource):
         Uptime checks can be imported using the uptime check's `id`, e.g.
 
         ```sh
-         $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
+        $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
 
         :param str resource_name: The name of the resource.

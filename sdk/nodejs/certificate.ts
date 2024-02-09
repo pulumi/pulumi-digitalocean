@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  * Certificates can be imported using the certificate `name`, e.g.
  *
  * ```sh
- *  $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
+ * $ pulumi import digitalocean:index/certificate:Certificate mycertificate cert-01
  * ```
  */
 export class Certificate extends pulumi.CustomResource {

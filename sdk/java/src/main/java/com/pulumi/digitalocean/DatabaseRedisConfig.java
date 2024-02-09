@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * A Redis database cluster&#39;s configuration can be imported using the `id` the parent cluster, e.g.
  * 
  * ```sh
- *  $ pulumi import digitalocean:index/databaseRedisConfig:DatabaseRedisConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+ * $ pulumi import digitalocean:index/databaseRedisConfig:DatabaseRedisConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
  * ```
  * 
  */
