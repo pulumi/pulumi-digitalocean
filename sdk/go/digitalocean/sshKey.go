@@ -41,12 +41,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new SSH key
 //			_, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
 //				PublicKey: readFileOrPanic("/Users/myuser/.ssh/id_rsa.pub"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Droplet using the SSH key
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String("nyc3"),
