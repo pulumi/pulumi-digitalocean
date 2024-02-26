@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Spaces Bucket
 //			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
 //				Region: pulumi.String("sfo2"),
 //				Acl:    pulumi.String("public-read"),
@@ -36,6 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Add a CDN endpoint to the Spaces Bucket
 //			mycdn, err := digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
 //				Origin: mybucket.BucketDomainName,
 //			})
@@ -62,6 +64,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Spaces Bucket
 //			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
 //				Region: pulumi.String("sfo2"),
 //				Acl:    pulumi.String("public-read"),
@@ -69,6 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a DigitalOcean managed Let's Encrypt Certificate
 //			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
 //				Type: pulumi.String("lets_encrypt"),
 //				Domains: pulumi.StringArray{
@@ -78,6 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
 //			_, err = digitalocean.NewCdn(ctx, "mycdn", &digitalocean.CdnArgs{
 //				Origin:          mybucket.BucketDomainName,
 //				CustomDomain:    pulumi.String("static.example.com"),

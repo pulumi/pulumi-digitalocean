@@ -111,6 +111,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Load Balancer with TLS termination
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
 //				Region:     pulumi.String("nyc3"),
 //				DropletTag: pulumi.String("backend"),
