@@ -4,9 +4,9 @@ go 1.21
 
 require (
 	github.com/digitalocean/terraform-provider-digitalocean v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.75.0
-	github.com/pulumi/pulumi/pkg/v3 v3.105.0
-	github.com/pulumi/pulumi/sdk/v3 v3.105.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.75.1-0.20240226174935-ab5a954ee5fb
+	github.com/pulumi/pulumi/pkg/v3 v3.107.0
+	github.com/pulumi/pulumi/sdk/v3 v3.107.0
 )
 
 replace (
