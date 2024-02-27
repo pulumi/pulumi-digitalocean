@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy", {
  *     region: foobarSpacesBucket.region,
  *     bucket: foobarSpacesBucket.name,
- *     policy: pulumi.all([foobarSpacesBucket.name, foobarSpacesBucket.name]).apply(([foobarSpacesBucketName, foobarSpacesBucketName1]) => JSON.stringify({
+ *     policy: pulumi.jsonStringify({
  *         Version: "2012-10-17",
  *         Statement: [{
  *             Sid: "IPAllow",
@@ -24,8 +24,8 @@ import * as utilities from "./utilities";
  *             Principal: "*",
  *             Action: "s3:*",
  *             Resource: [
- *                 `arn:aws:s3:::${foobarSpacesBucketName}`,
- *                 `arn:aws:s3:::${foobarSpacesBucketName1}/*`,
+ *                 pulumi.interpolate`arn:aws:s3:::${foobarSpacesBucket.name}`,
+ *                 pulumi.interpolate`arn:aws:s3:::${foobarSpacesBucket.name}/*`,
  *             ],
  *             Condition: {
  *                 NotIpAddress: {
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *                 },
  *             },
  *         }],
- *     })),
+ *     }),
  * });
  * ```
  *

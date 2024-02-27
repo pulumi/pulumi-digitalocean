@@ -30,10 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new tag
 //			foobar, err := digitalocean.NewTag(ctx, "foobar", nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Droplet in nyc3 with the foobar tag
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String("nyc3"),

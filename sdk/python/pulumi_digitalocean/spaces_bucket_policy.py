@@ -142,7 +142,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
             region=foobar_spaces_bucket.region,
             bucket=foobar_spaces_bucket.name,
-            policy=pulumi.Output.all(foobar_spaces_bucket.name, foobar_spaces_bucket.name).apply(lambda foobarSpacesBucketName, foobarSpacesBucketName1: json.dumps({
+            policy=pulumi.Output.json_dumps({
                 "Version": "2012-10-17",
                 "Statement": [{
                     "Sid": "IPAllow",
@@ -150,8 +150,8 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                     "Principal": "*",
                     "Action": "s3:*",
                     "Resource": [
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name}",
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name1}/*",
+                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}"),
+                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}/*"),
                     ],
                     "Condition": {
                         "NotIpAddress": {
@@ -159,7 +159,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                         },
                     },
                 }],
-            })))
+            }))
         ```
 
         !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
@@ -197,7 +197,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
             region=foobar_spaces_bucket.region,
             bucket=foobar_spaces_bucket.name,
-            policy=pulumi.Output.all(foobar_spaces_bucket.name, foobar_spaces_bucket.name).apply(lambda foobarSpacesBucketName, foobarSpacesBucketName1: json.dumps({
+            policy=pulumi.Output.json_dumps({
                 "Version": "2012-10-17",
                 "Statement": [{
                     "Sid": "IPAllow",
@@ -205,8 +205,8 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                     "Principal": "*",
                     "Action": "s3:*",
                     "Resource": [
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name}",
-                        f"arn:aws:s3:::{foobar_spaces_bucket_name1}/*",
+                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}"),
+                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}/*"),
                     ],
                     "Condition": {
                         "NotIpAddress": {
@@ -214,7 +214,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                         },
                     },
                 }],
-            })))
+            }))
         ```
 
         !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.

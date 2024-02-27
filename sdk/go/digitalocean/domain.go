@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new domain
 //			_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
 //				Name:      pulumi.String("example.com"),
 //				IpAddress: pulumi.Any(digitalocean_droplet.Foo.Ipv4_address),

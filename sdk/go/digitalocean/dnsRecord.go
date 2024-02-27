@@ -34,6 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Add an A record to the domain for www.example.com.
 //			www, err := digitalocean.NewDnsRecord(ctx, "www", &digitalocean.DnsRecordArgs{
 //				Domain: _default.ID(),
 //				Type:   pulumi.String("A"),
@@ -42,6 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Add a MX record for the example.com domain itself.
 //			mx, err := digitalocean.NewDnsRecord(ctx, "mx", &digitalocean.DnsRecordArgs{
 //				Domain:   _default.ID(),
 //				Type:     pulumi.String("MX"),
