@@ -31,37 +31,32 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Region = foobarSpacesBucket.Region,
     ///         Bucket = foobarSpacesBucket.Name,
-    ///         Policy = Output.Tuple(foobarSpacesBucket.Name, foobarSpacesBucket.Name).Apply(values =&gt;
+    ///         Policy = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             var foobarSpacesBucketName = values.Item1;
-    ///             var foobarSpacesBucketName1 = values.Item2;
-    ///             return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["Version"] = "2012-10-17",
+    ///             ["Statement"] = new[]
     ///             {
-    ///                 ["Version"] = "2012-10-17",
-    ///                 ["Statement"] = new[]
+    ///                 new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
+    ///                     ["Sid"] = "IPAllow",
+    ///                     ["Effect"] = "Deny",
+    ///                     ["Principal"] = "*",
+    ///                     ["Action"] = "s3:*",
+    ///                     ["Resource"] = new[]
     ///                     {
-    ///                         ["Sid"] = "IPAllow",
-    ///                         ["Effect"] = "Deny",
-    ///                         ["Principal"] = "*",
-    ///                         ["Action"] = "s3:*",
-    ///                         ["Resource"] = new[]
+    ///                         foobarSpacesBucket.Name.Apply(name =&gt; $"arn:aws:s3:::{name}"),
+    ///                         foobarSpacesBucket.Name.Apply(name =&gt; $"arn:aws:s3:::{name}/*"),
+    ///                     },
+    ///                     ["Condition"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["NotIpAddress"] = new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             $"arn:aws:s3:::{foobarSpacesBucketName}",
-    ///                             $"arn:aws:s3:::{foobarSpacesBucketName1}/*",
-    ///                         },
-    ///                         ["Condition"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["NotIpAddress"] = new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["aws:SourceIp"] = "54.240.143.0/24",
-    ///                             },
+    ///                             ["aws:SourceIp"] = "54.240.143.0/24",
     ///                         },
     ///                     },
     ///                 },
-    ///             });
-    ///         }),
+    ///             },
+    ///         })),
     ///     });
     /// 
     /// });

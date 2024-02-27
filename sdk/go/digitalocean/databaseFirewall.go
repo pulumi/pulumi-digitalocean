@@ -143,6 +143,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create firewall rule for database replica
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 //				ClusterId: replica_example.Uuid,
 //				Rules: digitalocean.DatabaseFirewallRuleArray{
