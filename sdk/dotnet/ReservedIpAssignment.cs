@@ -16,6 +16,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,12 +47,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Reserved IP assignments can be imported using the reserved IP itself and the `id` of
     /// 
-    ///  the Droplet joined with a comma. For example:
+    /// the Droplet joined with a comma. For example:
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/reservedIpAssignment:ReservedIpAssignment foobar 192.0.2.1,123456

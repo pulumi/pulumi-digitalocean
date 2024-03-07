@@ -115,6 +115,7 @@ def get_spaces_bucket(name: Optional[str] = None,
 
     Get the bucket by name:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -123,6 +124,7 @@ def get_spaces_bucket(name: Optional[str] = None,
         region="nyc3")
     pulumi.export("bucketDomainName", example.bucket_domain_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Spaces bucket.
@@ -155,6 +157,7 @@ def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
 
     Get the bucket by name:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -163,6 +166,7 @@ def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
         region="nyc3")
     pulumi.export("bucketDomainName", example.bucket_domain_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Spaces bucket.

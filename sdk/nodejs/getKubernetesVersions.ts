@@ -8,8 +8,10 @@ import * as utilities from "./utilities";
  * Provides access to the available DigitalOcean Kubernetes Service versions.
  *
  * ## Example Usage
+ *
  * ### Output a list of all available versions
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -21,8 +23,11 @@ import * as utilities from "./utilities";
  *     };
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a Kubernetes cluster using the most recent version available
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -38,8 +43,11 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Pin a Kubernetes cluster to a specific minor version
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -57,6 +65,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionsResult> {
     args = args || {};
@@ -99,8 +108,10 @@ export interface GetKubernetesVersionsResult {
  * Provides access to the available DigitalOcean Kubernetes Service versions.
  *
  * ## Example Usage
+ *
  * ### Output a list of all available versions
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -112,8 +123,11 @@ export interface GetKubernetesVersionsResult {
  *     };
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a Kubernetes cluster using the most recent version available
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -129,8 +143,11 @@ export interface GetKubernetesVersionsResult {
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Pin a Kubernetes cluster to a specific minor version
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -148,6 +165,7 @@ export interface GetKubernetesVersionsResult {
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesVersionsOutput(args?: GetKubernetesVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionsResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesVersions(a, opts))

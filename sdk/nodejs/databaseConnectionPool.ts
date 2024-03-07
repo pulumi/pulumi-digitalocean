@@ -8,7 +8,9 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean database connection pool resource.
  *
  * ## Example Usage
+ *
  * ### Create a new PostgreSQL database connection pool
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -28,12 +30,13 @@ import * as utilities from "./utilities";
  *     user: "doadmin",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database connection pools can be imported using the `id` of the source database cluster
  *
- *  and the `name` of the connection pool joined with a comma. For example:
+ * and the `name` of the connection pool joined with a comma. For example:
  *
  * ```sh
  * $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01

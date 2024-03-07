@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for a Droplet:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -33,6 +34,7 @@ import * as utilities from "./utilities";
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucketObject(args: GetSpacesBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectResult> {
 
@@ -151,6 +153,7 @@ export interface GetSpacesBucketObjectResult {
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for a Droplet:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -167,6 +170,7 @@ export interface GetSpacesBucketObjectResult {
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucketObjectOutput(args: GetSpacesBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectResult> {
     return pulumi.output(args).apply((a: any) => getSpacesBucketObject(a, opts))

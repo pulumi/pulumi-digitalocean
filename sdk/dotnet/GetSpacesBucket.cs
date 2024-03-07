@@ -15,12 +15,11 @@ namespace Pulumi.DigitalOcean
         /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
         /// is not managed by the provider or you need to utilize any of the bucket's data.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get the bucket by name:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSpacesBucketResult> InvokeAsync(GetSpacesBucketArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketArgs(), options.WithDefaults());
@@ -51,12 +49,11 @@ namespace Pulumi.DigitalOcean
         /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
         /// is not managed by the provider or you need to utilize any of the bucket's data.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get the bucket by name:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSpacesBucketResult> Invoke(GetSpacesBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithDefaults());

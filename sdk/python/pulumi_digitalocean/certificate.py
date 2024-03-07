@@ -329,8 +329,10 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
+
         ### Custom Certificate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -341,8 +343,11 @@ class Certificate(pulumi.CustomResource):
             leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
             certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Let's Encrypt Certificate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -351,11 +356,14 @@ class Certificate(pulumi.CustomResource):
             domains=["example.com"],
             type="lets_encrypt")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Use with Other Resources
 
         Both custom and Let's Encrypt certificates can be used with other resources
         including the `LoadBalancer` and `Cdn` resources.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -375,6 +383,7 @@ class Certificate(pulumi.CustomResource):
                 certificate_name=cert.name,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -415,8 +424,10 @@ class Certificate(pulumi.CustomResource):
         Let's Encrypt.
 
         ## Example Usage
+
         ### Custom Certificate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -427,8 +438,11 @@ class Certificate(pulumi.CustomResource):
             leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
             certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Let's Encrypt Certificate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -437,11 +451,14 @@ class Certificate(pulumi.CustomResource):
             domains=["example.com"],
             type="lets_encrypt")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Use with Other Resources
 
         Both custom and Let's Encrypt certificates can be used with other resources
         including the `LoadBalancer` and `Cdn` resources.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -461,6 +478,7 @@ class Certificate(pulumi.CustomResource):
                 certificate_name=cert.name,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

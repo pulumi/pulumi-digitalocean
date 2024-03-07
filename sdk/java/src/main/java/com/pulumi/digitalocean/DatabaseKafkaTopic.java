@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Create a new Kafka topic
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Topics can be imported using the `id` of the source cluster and the `name` of the topic joined with a comma. For example:

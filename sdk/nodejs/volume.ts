@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -32,9 +33,11 @@ import * as utilities from "./utilities";
  *     volumeId: foobarVolume.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * You can also create a volume from an existing snapshot.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -48,6 +51,7 @@ import * as utilities from "./utilities";
  *     snapshotId: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.id),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

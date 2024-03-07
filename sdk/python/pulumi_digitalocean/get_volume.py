@@ -162,6 +162,7 @@ def get_volume(description: Optional[str] = None,
 
     Get the volume:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -169,9 +170,11 @@ def get_volume(description: Optional[str] = None,
     example = digitalocean.get_volume(name="app-data",
         region="nyc3")
     ```
+    <!--End PulumiCodeChooser -->
 
     Reuse the data about a volume to attach it to a Droplet:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -186,6 +189,7 @@ def get_volume(description: Optional[str] = None,
         droplet_id=example_droplet.id,
         volume_id=example_volume.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: Text describing a block storage volume.
@@ -229,6 +233,7 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
 
     Get the volume:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -236,9 +241,11 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     example = digitalocean.get_volume(name="app-data",
         region="nyc3")
     ```
+    <!--End PulumiCodeChooser -->
 
     Reuse the data about a volume to attach it to a Droplet:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -253,6 +260,7 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
         droplet_id=example_droplet.id,
         volume_id=example_volume.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: Text describing a block storage volume.

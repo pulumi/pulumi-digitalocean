@@ -17,10 +17,12 @@ import (
 // An error is triggered if the provided container registry name does not exist.
 //
 // ## Example Usage
+//
 // ### Basic Example
 //
 // Get the container registry:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,10 +46,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Docker Provider Example
 //
 // Use the `endpoint` and `dockerCredentials` with the Docker provider:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,6 +82,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type ContainerRegistryDockerCredentials struct {
 	pulumi.CustomResourceState
 

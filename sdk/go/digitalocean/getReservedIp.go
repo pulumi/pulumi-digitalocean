@@ -15,6 +15,7 @@ import (
 //
 // Get the reserved IP:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupReservedIp(ctx *pulumi.Context, args *LookupReservedIpArgs, opts ...pulumi.InvokeOption) (*LookupReservedIpResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReservedIpResult

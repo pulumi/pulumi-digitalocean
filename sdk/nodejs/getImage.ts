@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * Get the data about a snapshot:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -24,9 +25,11 @@ import * as utilities from "./utilities";
  *     name: "example-1.0.0",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a snapshot to create a Droplet:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -40,9 +43,11 @@ import * as utilities from "./utilities";
  *     size: "s-1vcpu-1gb",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get the data about an official image:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -51,6 +56,7 @@ import * as utilities from "./utilities";
  *     slug: "ubuntu-18-04-x64",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
@@ -165,6 +171,7 @@ export interface GetImageResult {
  *
  * Get the data about a snapshot:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -173,9 +180,11 @@ export interface GetImageResult {
  *     name: "example-1.0.0",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a snapshot to create a Droplet:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -189,9 +198,11 @@ export interface GetImageResult {
  *     size: "s-1vcpu-1gb",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Get the data about an official image:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -200,6 +211,7 @@ export interface GetImageResult {
  *     slug: "ubuntu-18-04-x64",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
     return pulumi.output(args).apply((a: any) => getImage(a, opts))

@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  * });
  * export const sortedTags = list.then(list => list.tags);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
@@ -72,6 +74,7 @@ export interface GetTagsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -84,6 +87,7 @@ export interface GetTagsResult {
  * });
  * export const sortedTags = list.then(list => list.tags);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
     return pulumi.output(args).apply((a: any) => getTags(a, opts))

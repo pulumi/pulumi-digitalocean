@@ -166,6 +166,7 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
 
     Get the volume snapshot:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -174,9 +175,11 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
         name_regex="^web",
         region="nyc3")
     ```
+    <!--End PulumiCodeChooser -->
 
     Reuse the data about a volume snapshot to create a new volume based on it:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -189,6 +192,7 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
         size=100,
         snapshot_id=snapshot.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.
@@ -237,6 +241,7 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
 
     Get the volume snapshot:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -245,9 +250,11 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
         name_regex="^web",
         region="nyc3")
     ```
+    <!--End PulumiCodeChooser -->
 
     Reuse the data about a volume snapshot to create a new volume based on it:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -260,6 +267,7 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
         size=100,
         snapshot_id=snapshot.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool most_recent: If more than one result is returned, use the most recent volume snapshot.

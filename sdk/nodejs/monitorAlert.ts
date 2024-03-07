@@ -100,7 +100,7 @@ export class MonitorAlert extends pulumi.CustomResource {
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+     * The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
     public readonly value!: pulumi.Output<number>;
@@ -221,7 +221,7 @@ export interface MonitorAlertState {
      */
     uuid?: pulumi.Input<string>;
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+     * The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
     value?: pulumi.Input<number>;
@@ -280,7 +280,7 @@ export interface MonitorAlertArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+     * The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
     value: pulumi.Input<number>;

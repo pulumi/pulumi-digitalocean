@@ -13,7 +13,9 @@ import * as utilities from "./utilities";
  * > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
  *
  * ## Example Usage
+ *
  * ### Create a new PostgreSQL database user
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -27,7 +29,10 @@ import * as utilities from "./utilities";
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a new user for a PostgreSQL database replica
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -46,7 +51,10 @@ import * as utilities from "./utilities";
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: replica_example.uuid});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a new user for a Kafka database cluster
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -79,12 +87,13 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database user can be imported using the `id` of the source database cluster
  *
- *  and the `name` of the user joined with a comma. For example:
+ * and the `name` of the user joined with a comma. For example:
  *
  * ```sh
  * $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar

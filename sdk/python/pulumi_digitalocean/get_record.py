@@ -169,6 +169,22 @@ def get_record(domain: Optional[str] = None,
     An error is triggered if the provided domain name or record are not managed with
     your DigitalOcean account.
 
+    ## Example Usage
+
+    Get data from a DNS record:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_record(domain="example.com",
+        name="test")
+    pulumi.export("recordType", example.type)
+    pulumi.export("recordTtl", example.ttl)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str domain: The domain name of the record.
     :param str name: The name of the record.
@@ -204,6 +220,22 @@ def get_record_output(domain: Optional[pulumi.Input[str]] = None,
 
     An error is triggered if the provided domain name or record are not managed with
     your DigitalOcean account.
+
+    ## Example Usage
+
+    Get data from a DNS record:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_record(domain="example.com",
+        name="test")
+    pulumi.export("recordType", example.type)
+    pulumi.export("recordTtl", example.ttl)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain: The domain name of the record.

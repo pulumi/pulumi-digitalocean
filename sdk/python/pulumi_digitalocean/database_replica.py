@@ -379,7 +379,9 @@ class DatabaseReplica(pulumi.CustomResource):
         Provides a DigitalOcean database replica resource.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database replica
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -403,12 +405,13 @@ class DatabaseReplica(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database replicas can be imported using the `id` of the source database cluster
 
-         and the `name` of the replica joined with a comma. For example:
+        and the `name` of the replica joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
@@ -433,7 +436,9 @@ class DatabaseReplica(pulumi.CustomResource):
         Provides a DigitalOcean database replica resource.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database replica
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -457,12 +462,13 @@ class DatabaseReplica(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database replicas can be imported using the `id` of the source database cluster
 
-         and the `name` of the replica joined with a comma. For example:
+        and the `name` of the replica joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica

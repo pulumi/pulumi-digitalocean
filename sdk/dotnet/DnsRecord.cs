@@ -14,6 +14,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,6 +52,7 @@ namespace Pulumi.DigitalOcean
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -60,9 +62,7 @@ namespace Pulumi.DigitalOcean
     /// $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
     /// ```
     /// 
-    ///  ~&gt;
-    /// 
-    /// You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list &lt;domain.name&gt;`
+    /// ~&gt;  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list &lt;domain.name&gt;`
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/dnsRecord:DnsRecord")]
     public partial class DnsRecord : global::Pulumi.CustomResource

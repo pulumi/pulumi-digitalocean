@@ -92,6 +92,7 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
 
     For example, to find all SSH keys:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -101,9 +102,11 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
         key="name",
     )])
     ```
+    <!--End PulumiCodeChooser -->
 
     Or to find ones matching specific values:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -116,6 +119,7 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
         ],
     )])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetSshKeysFilterArgs']] filters: Filter the results.
@@ -153,6 +157,7 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
 
     For example, to find all SSH keys:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -162,9 +167,11 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
         key="name",
     )])
     ```
+    <!--End PulumiCodeChooser -->
 
     Or to find ones matching specific values:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -177,6 +184,7 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
         ],
     )])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetSshKeysFilterArgs']] filters: Filter the results.

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * Get the tag:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -29,6 +30,7 @@ import * as utilities from "./utilities";
  *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
 
@@ -93,6 +95,7 @@ export interface GetTagResult {
  *
  * Get the tag:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -107,6 +110,7 @@ export interface GetTagResult {
  *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagResult> {
     return pulumi.output(args).apply((a: any) => getTag(a, opts))

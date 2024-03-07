@@ -17,6 +17,39 @@ import (
 //
 // An error is triggered if the provided domain name or record are not managed with
 // your DigitalOcean account.
+//
+// ## Example Usage
+//
+// Get data from a DNS record:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := digitalocean.GetRecord(ctx, &digitalocean.GetRecordArgs{
+//				Domain: "example.com",
+//				Name:   "test",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("recordType", example.Type)
+//			ctx.Export("recordTtl", example.Ttl)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetRecord(ctx *pulumi.Context, args *GetRecordArgs, opts ...pulumi.InvokeOption) (*GetRecordResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecordResult
