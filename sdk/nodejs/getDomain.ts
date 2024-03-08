@@ -12,6 +12,22 @@ import * as utilities from "./utilities";
  *
  * An error is triggered if the provided domain name is not managed with your
  * DigitalOcean account.
+ *
+ * ## Example Usage
+ *
+ * Get the zone file for a domain:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDomain({
+ *     name: "example.com",
+ * });
+ * export const domainOutput = example.then(example => example.zoneFile);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
 
@@ -61,6 +77,22 @@ export interface GetDomainResult {
  *
  * An error is triggered if the provided domain name is not managed with your
  * DigitalOcean account.
+ *
+ * ## Example Usage
+ *
+ * Get the zone file for a domain:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getDomain({
+ *     name: "example.com",
+ * });
+ * export const domainOutput = example.then(example => example.zoneFile);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
     return pulumi.output(args).apply((a: any) => getDomain(a, opts))

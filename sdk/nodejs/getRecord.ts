@@ -11,6 +11,24 @@ import * as utilities from "./utilities";
  *
  * An error is triggered if the provided domain name or record are not managed with
  * your DigitalOcean account.
+ *
+ * ## Example Usage
+ *
+ * Get data from a DNS record:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getRecord({
+ *     domain: "example.com",
+ *     name: "test",
+ * });
+ * export const recordType = example.then(example => example.type);
+ * export const recordTtl = example.then(example => example.ttl);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
 
@@ -85,6 +103,24 @@ export interface GetRecordResult {
  *
  * An error is triggered if the provided domain name or record are not managed with
  * your DigitalOcean account.
+ *
+ * ## Example Usage
+ *
+ * Get data from a DNS record:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getRecord({
+ *     domain: "example.com",
+ *     name: "test",
+ * });
+ * export const recordType = example.then(example => example.type);
+ * export const recordTtl = example.then(example => example.ttl);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
     return pulumi.output(args).apply((a: any) => getRecord(a, opts))

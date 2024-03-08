@@ -209,6 +209,7 @@ def get_database_replica(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -218,6 +219,7 @@ def get_database_replica(cluster_id: Optional[str] = None,
         name="terra-test-ro")
     pulumi.export("replicaOutput", read_only.uri)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the original source database cluster.
@@ -259,6 +261,7 @@ def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -268,6 +271,7 @@ def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="terra-test-ro")
     pulumi.export("replicaOutput", read_only.uri)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the original source database cluster.

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * Get the reserved IP:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  * });
  * export const fipOutput = example.then(example => example.dropletId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReservedIp(args: GetReservedIpArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpResult> {
 
@@ -66,6 +68,7 @@ export interface GetReservedIpResult {
  *
  * Get the reserved IP:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -77,6 +80,7 @@ export interface GetReservedIpResult {
  * });
  * export const fipOutput = example.then(example => example.dropletId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReservedIpOutput(args: GetReservedIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpResult> {
     return pulumi.output(args).apply((a: any) => getReservedIp(a, opts))

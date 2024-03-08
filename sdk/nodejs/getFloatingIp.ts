@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * Get the floating IP:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -29,6 +30,7 @@ import * as utilities from "./utilities";
  * });
  * export const fipOutput = example.then(example => example.dropletId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFloatingIp(args: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
 
@@ -84,6 +86,7 @@ export interface GetFloatingIpResult {
  *
  * Get the floating IP:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -95,6 +98,7 @@ export interface GetFloatingIpResult {
  * });
  * export const fipOutput = example.then(example => example.dropletId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFloatingIpOutput(args: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
     return pulumi.output(args).apply((a: any) => getFloatingIp(a, opts))

@@ -208,7 +208,9 @@ class DatabaseUser(pulumi.CustomResource):
         > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database user
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -221,7 +223,10 @@ class DatabaseUser(pulumi.CustomResource):
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new user for a PostgreSQL database replica
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -238,7 +243,10 @@ class DatabaseUser(pulumi.CustomResource):
             region="nyc1")
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new user for a Kafka database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -269,12 +277,13 @@ class DatabaseUser(pulumi.CustomResource):
                 ],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database user can be imported using the `id` of the source database cluster
 
-         and the `name` of the user joined with a comma. For example:
+        and the `name` of the user joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
@@ -300,7 +309,9 @@ class DatabaseUser(pulumi.CustomResource):
         > **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database user
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -313,7 +324,10 @@ class DatabaseUser(pulumi.CustomResource):
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new user for a PostgreSQL database replica
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -330,7 +344,10 @@ class DatabaseUser(pulumi.CustomResource):
             region="nyc1")
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new user for a Kafka database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -361,12 +378,13 @@ class DatabaseUser(pulumi.CustomResource):
                 ],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database user can be imported using the `id` of the source database cluster
 
-         and the `name` of the user joined with a comma. For example:
+        and the `name` of the user joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar

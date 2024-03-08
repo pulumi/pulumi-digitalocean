@@ -23,9 +23,12 @@ import javax.annotation.Nullable;
  * An error is triggered if the provided container registry name does not exist.
  * 
  * ## Example Usage
+ * 
  * ### Basic Example
  * 
  * Get the container registry:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,9 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Docker Provider Example
  * 
  * Use the `endpoint` and `docker_credentials` with the Docker provider:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,6 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")

@@ -964,6 +964,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -979,6 +980,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
             connect_timeout=10,
             default_time_zone="UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1033,6 +1035,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -1048,6 +1051,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
             connect_timeout=10,
             default_time_zone="UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

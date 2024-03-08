@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * }));
  * export const replicaOutput = read_only.then(read_only => read_only.uri);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseReplica(args: GetDatabaseReplicaArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseReplicaResult> {
 
@@ -109,6 +111,7 @@ export interface GetDatabaseReplicaResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -122,6 +125,7 @@ export interface GetDatabaseReplicaResult {
  * }));
  * export const replicaOutput = read_only.then(read_only => read_only.uri);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseReplicaOutput(args: GetDatabaseReplicaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseReplicaResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseReplica(a, opts))

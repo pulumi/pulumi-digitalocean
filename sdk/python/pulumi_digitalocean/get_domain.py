@@ -100,6 +100,20 @@ def get_domain(name: Optional[str] = None,
     An error is triggered if the provided domain name is not managed with your
     DigitalOcean account.
 
+    ## Example Usage
+
+    Get the zone file for a domain:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_domain(name="example.com")
+    pulumi.export("domainOutput", example.zone_file)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str name: The name of the domain.
     """
@@ -127,6 +141,20 @@ def get_domain_output(name: Optional[pulumi.Input[str]] = None,
 
     An error is triggered if the provided domain name is not managed with your
     DigitalOcean account.
+
+    ## Example Usage
+
+    Get the zone file for a domain:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_domain(name="example.com")
+    pulumi.export("domainOutput", example.zone_file)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the domain.

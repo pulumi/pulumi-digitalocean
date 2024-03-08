@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * Get the bucket by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * });
  * export const bucketDomainName = example.then(example => example.bucketDomainName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucket(args: GetSpacesBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketResult> {
 
@@ -83,6 +85,7 @@ export interface GetSpacesBucketResult {
  *
  * Get the bucket by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -93,6 +96,7 @@ export interface GetSpacesBucketResult {
  * });
  * export const bucketDomainName = example.then(example => example.bucketDomainName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucketOutput(args: GetSpacesBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketResult> {
     return pulumi.output(args).apply((a: any) => getSpacesBucket(a, opts))

@@ -611,6 +611,7 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -618,12 +619,15 @@ class SpacesBucketObject(pulumi.CustomResource):
         static_assets = digitalocean.SpacesBucket("static-assets")
         # ...
         ```
+        <!--End PulumiCodeChooser -->
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
+
         ### Create a Key in a Spaces Bucket
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -636,6 +640,7 @@ class SpacesBucketObject(pulumi.CustomResource):
             content="<html><body><p>This page is empty.</p></body></html>",
             content_type="text/html")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -688,6 +693,7 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -695,12 +701,15 @@ class SpacesBucketObject(pulumi.CustomResource):
         static_assets = digitalocean.SpacesBucket("static-assets")
         # ...
         ```
+        <!--End PulumiCodeChooser -->
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
         ## Example Usage
+
         ### Create a Key in a Spaces Bucket
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -713,6 +722,7 @@ class SpacesBucketObject(pulumi.CustomResource):
             content="<html><body><p>This page is empty.</p></body></html>",
             content_type="text/html")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

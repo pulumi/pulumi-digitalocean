@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  * });
  * export const regionName = sfo2.then(sfo2 => sfo2.name);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
 
@@ -73,6 +75,7 @@ export interface GetRegionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -82,6 +85,7 @@ export interface GetRegionResult {
  * });
  * export const regionName = sfo2.then(sfo2 => sfo2.name);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
     return pulumi.output(args).apply((a: any) => getRegion(a, opts))

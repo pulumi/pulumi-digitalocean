@@ -95,6 +95,7 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
 
     For example to find all Droplets with size `s-1vcpu-1gb`:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -104,9 +105,11 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
         values=["s-1vcpu-1gb"],
     )])
     ```
+    <!--End PulumiCodeChooser -->
 
     You can filter on multiple fields and sort the results as well:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -126,6 +129,7 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
             key="created_at",
         )])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
@@ -166,6 +170,7 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
 
     For example to find all Droplets with size `s-1vcpu-1gb`:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -175,9 +180,11 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
         values=["s-1vcpu-1gb"],
     )])
     ```
+    <!--End PulumiCodeChooser -->
 
     You can filter on multiple fields and sort the results as well:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -197,6 +204,7 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
             key="created_at",
         )])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.

@@ -172,7 +172,7 @@ public final class MonitorAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+     * The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      * 
      */
@@ -180,7 +180,7 @@ public final class MonitorAlertState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Double> value;
 
     /**
-     * @return The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+     * @return The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      * 
      */
@@ -457,7 +457,7 @@ public final class MonitorAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+         * @param value The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
          * DigitalOcean will show the correct unit in the web panel.
          * 
          * @return builder
@@ -469,7 +469,7 @@ public final class MonitorAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+         * @param value The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
          * DigitalOcean will show the correct unit in the web panel.
          * 
          * @return builder

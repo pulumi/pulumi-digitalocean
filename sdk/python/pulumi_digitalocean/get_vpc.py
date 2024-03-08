@@ -143,17 +143,21 @@ def get_vpc(id: Optional[str] = None,
     return that that region's default VPC.
 
     ## Example Usage
+
     ### VPC By Name
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_vpc(name="example-network")
     ```
+    <!--End PulumiCodeChooser -->
 
     Reuse the data about a VPC to assign a Droplet to it:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -165,6 +169,7 @@ def get_vpc(id: Optional[str] = None,
         region="nyc3",
         vpc_uuid=example_vpc.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier of an existing VPC.
@@ -205,17 +210,21 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     return that that region's default VPC.
 
     ## Example Usage
+
     ### VPC By Name
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_vpc(name="example-network")
     ```
+    <!--End PulumiCodeChooser -->
 
     Reuse the data about a VPC to assign a Droplet to it:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -227,6 +236,7 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         region="nyc3",
         vpc_uuid=example_vpc.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier of an existing VPC.

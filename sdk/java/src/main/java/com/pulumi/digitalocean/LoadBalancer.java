@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * modify, and delete Load Balancers.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -75,12 +77,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
  * lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
  * operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
  * as there cannot be multiple certificates with the same name in an account.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -138,6 +143,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
