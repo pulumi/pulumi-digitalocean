@@ -19,13 +19,13 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if the provided container registry name does not exist.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Basic Example
         /// 
         /// Get the container registry:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +41,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithDefaults());
@@ -55,13 +54,13 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if the provided container registry name does not exist.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Basic Example
         /// 
         /// Get the container registry:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +76,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());

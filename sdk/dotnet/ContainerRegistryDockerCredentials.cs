@@ -15,10 +15,12 @@ namespace Pulumi.DigitalOcean
     /// An error is triggered if the provided container registry name does not exist.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Basic Example
     /// 
     /// Get the container registry:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,10 +36,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Docker Provider Example
     /// 
     /// Use the `endpoint` and `docker_credentials` with the Docker provider:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,6 +63,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")]
     public partial class ContainerRegistryDockerCredentials : global::Pulumi.CustomResource

@@ -15,8 +15,10 @@ import (
 // Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 //
 // ## Example Usage
+//
 // ### Basic Example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,11 +70,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Autoscaling Example
 //
 // Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
 // For example:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,24 +105,25 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// If you are importing an existing Kubernetes cluster with a single node pool, just
+// # If you are importing an existing Kubernetes cluster with a single node pool, just
 //
-//	import the cluster. Additional node pools can be imported by using their `id`, e.g.
+// import the cluster. Additional node pools can be imported by using their `id`, e.g.
 //
 // ```sh
 // $ pulumi import digitalocean:index/kubernetesNodePool:KubernetesNodePool mynodepool 9d76f410-9284-4436-9633-4066852442c8
 // ```
 //
-//	Note: If the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an
+// Note: If the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an
 //
-//	existing cluster. The provider will refuse to import the node pool in that case because the node pool
+// existing cluster. The provider will refuse to import the node pool in that case because the node pool
 //
-//	is managed by the `digitalocean_kubernetes_cluster` resource and not by this
+// is managed by the `digitalocean_kubernetes_cluster` resource and not by this
 //
-//	`digitalocean_kubernetes_node_pool` resource.
+// `digitalocean_kubernetes_node_pool` resource.
 type KubernetesNodePool struct {
 	pulumi.CustomResourceState
 

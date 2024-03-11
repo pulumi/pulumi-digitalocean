@@ -15,10 +15,9 @@ namespace Pulumi.DigitalOcean
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.DigitalOcean
         /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
         /// then this data source returns the default project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

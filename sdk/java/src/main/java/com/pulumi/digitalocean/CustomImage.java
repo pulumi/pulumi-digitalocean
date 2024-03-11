@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * Image documentation for [additional requirements](https://www.digitalocean.com/docs/images/custom-images/#image-requirements).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,6 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="digitalocean:index/customImage:CustomImage")

@@ -23,6 +23,7 @@ import (
 // The following example retrieves a text object (which must have a `Content-Type`
 // value starting with `text/`) and uses it as the `userData` for a Droplet:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,6 +58,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupSpacesBucketObject(ctx *pulumi.Context, args *LookupSpacesBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketObjectResult

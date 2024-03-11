@@ -15,7 +15,9 @@ import (
 // Provides a DigitalOcean Kafka topic for Kafka clusters.
 //
 // ## Example Usage
+//
 // ### Create a new Kafka topic
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,6 +83,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

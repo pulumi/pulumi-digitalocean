@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * Get all buckets in a region:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -31,8 +32,10 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * You can sort the results as well:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -48,6 +51,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBuckets(args?: GetSpacesBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketsResult> {
     args = args || {};
@@ -103,6 +107,7 @@ export interface GetSpacesBucketsResult {
  *
  * Get all buckets in a region:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -114,8 +119,10 @@ export interface GetSpacesBucketsResult {
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * You can sort the results as well:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -131,6 +138,7 @@ export interface GetSpacesBucketsResult {
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucketsOutput(args?: GetSpacesBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketsResult> {
     return pulumi.output(args).apply((a: any) => getSpacesBuckets(a, opts))

@@ -18,14 +18,13 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.SpacesBucket` data source to
         /// obtain metadata about a single bucket if you already know its `name` and `region`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Use the `filter` block with a `key` string and `values` list to filter buckets.
         /// 
         /// Get all buckets in a region:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,8 +50,10 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// You can sort the results as well:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -86,8 +87,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSpacesBucketsResult> InvokeAsync(GetSpacesBucketsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsArgs(), options.WithDefaults());
@@ -99,14 +99,13 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.SpacesBucket` data source to
         /// obtain metadata about a single bucket if you already know its `name` and `region`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Use the `filter` block with a `key` string and `values` list to filter buckets.
         /// 
         /// Get all buckets in a region:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,8 +131,10 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// You can sort the results as well:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -167,8 +168,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSpacesBucketsResult> Invoke(GetSpacesBucketsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithDefaults());

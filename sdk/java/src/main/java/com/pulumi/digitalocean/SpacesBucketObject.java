@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * the provider&#39;s `spaces_access_id` and `spaces_secret_key` arguments to the
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,11 +59,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  * 
  * ## Example Usage
+ * 
  * ### Create a Key in a Spaces Bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -100,6 +106,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

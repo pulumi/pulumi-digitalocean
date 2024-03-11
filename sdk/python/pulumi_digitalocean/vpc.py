@@ -220,6 +220,7 @@ class Vpc(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -228,12 +229,15 @@ class Vpc(pulumi.CustomResource):
             ip_range="10.10.10.0/24",
             region="nyc3")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Resource Assignment
 
         `Droplet`, `KubernetesCluster`,
         `digitalocean_load_balancer`, and `DatabaseCluster` resources
         may be assigned to a VPC by referencing its `id`. For example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -245,6 +249,7 @@ class Vpc(pulumi.CustomResource):
             region="nyc3",
             vpc_uuid=example_vpc.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,6 +280,7 @@ class Vpc(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -283,12 +289,15 @@ class Vpc(pulumi.CustomResource):
             ip_range="10.10.10.0/24",
             region="nyc3")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Resource Assignment
 
         `Droplet`, `KubernetesCluster`,
         `digitalocean_load_balancer`, and `DatabaseCluster` resources
         may be assigned to a VPC by referencing its `id`. For example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -300,6 +309,7 @@ class Vpc(pulumi.CustomResource):
             region="nyc3",
             vpc_uuid=example_vpc.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -8,8 +8,10 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
  *
  * ## Example Usage
+ *
  * ### Basic Example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -23,8 +25,11 @@ import * as utilities from "./utilities";
  * const mycdn = new digitalocean.Cdn("mycdn", {origin: mybucket.bucketDomainName});
  * export const fqdn = mycdn.endpoint;
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Custom Sub-Domain Example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -46,6 +51,7 @@ import * as utilities from "./utilities";
  *     certificateName: cert.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

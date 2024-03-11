@@ -200,6 +200,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -210,6 +211,7 @@ class VolumeSnapshot(pulumi.CustomResource):
             description="an example volume")
         foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -236,6 +238,7 @@ class VolumeSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -246,6 +249,7 @@ class VolumeSnapshot(pulumi.CustomResource):
             description="an example volume")
         foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

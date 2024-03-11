@@ -646,7 +646,9 @@ class DatabaseCluster(pulumi.CustomResource):
         Provides a DigitalOcean database cluster resource.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -658,7 +660,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="15")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new MySQL database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -670,7 +675,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="8")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new Redis database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -682,7 +690,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="7")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new Kafka database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -694,7 +705,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-2vcpu-2gb",
             version="3.5")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new MongoDB database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -706,8 +720,11 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="6")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Create a new database cluster based on a backup of an existing cluster.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -731,6 +748,7 @@ class DatabaseCluster(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[doby]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -768,7 +786,9 @@ class DatabaseCluster(pulumi.CustomResource):
         Provides a DigitalOcean database cluster resource.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -780,7 +800,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="15")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new MySQL database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -792,7 +815,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="8")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new Redis database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -804,7 +830,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="7")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new Kafka database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -816,7 +845,10 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-2vcpu-2gb",
             version="3.5")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new MongoDB database cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -828,8 +860,11 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-1vcpu-1gb",
             version="6")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Create a new database cluster based on a backup of an existing cluster.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -853,6 +888,7 @@ class DatabaseCluster(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[doby]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

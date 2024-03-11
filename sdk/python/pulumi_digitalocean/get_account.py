@@ -136,12 +136,14 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
 
     Get the account:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_account()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -167,11 +169,13 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
 
     Get the account:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_account()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -319,6 +319,7 @@ class Project(pulumi.CustomResource):
 
         The following example demonstrates the creation of an empty project:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -328,9 +329,11 @@ class Project(pulumi.CustomResource):
             environment="Development",
             purpose="Web Application")
         ```
+        <!--End PulumiCodeChooser -->
 
         The following example demonstrates the creation of a project with a Droplet resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -345,6 +348,7 @@ class Project(pulumi.CustomResource):
             environment="Development",
             resources=[foobar.droplet_urn])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -393,6 +397,7 @@ class Project(pulumi.CustomResource):
 
         The following example demonstrates the creation of an empty project:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -402,9 +407,11 @@ class Project(pulumi.CustomResource):
             environment="Development",
             purpose="Web Application")
         ```
+        <!--End PulumiCodeChooser -->
 
         The following example demonstrates the creation of a project with a Droplet resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -419,6 +426,7 @@ class Project(pulumi.CustomResource):
             environment="Development",
             resources=[foobar.droplet_urn])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

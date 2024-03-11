@@ -25,6 +25,7 @@ import (
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,12 +47,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 //
 // ## Example Usage
+//
 // ### Create a New Bucket
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,8 +79,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Create a New Bucket With CORS Rules
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,6 +135,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -15,7 +15,9 @@ namespace Pulumi.DigitalOcean
     /// &gt; **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a new PostgreSQL database user
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,7 +42,10 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create a new user for a PostgreSQL database replica
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -72,7 +77,10 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create a new user for a Kafka database cluster
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -126,12 +134,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Database user can be imported using the `id` of the source database cluster
     /// 
-    ///  and the `name` of the user joined with a comma. For example:
+    /// and the `name` of the user joined with a comma. For example:
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar

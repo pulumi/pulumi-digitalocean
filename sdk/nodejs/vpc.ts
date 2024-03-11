@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -21,12 +22,15 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Resource Assignment
  *
  * `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
  * `digitaloceanLoadBalancer`, and `digitalocean.DatabaseCluster` resources
  * may be assigned to a VPC by referencing its `id`. For example:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -39,6 +43,7 @@ import * as utilities from "./utilities";
  *     vpcUuid: exampleVpc.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

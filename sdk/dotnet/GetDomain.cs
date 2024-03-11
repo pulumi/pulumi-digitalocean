@@ -19,6 +19,32 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if the provided domain name is not managed with your
         /// DigitalOcean account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the zone file for a domain:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domainOutput"] = example.Apply(getDomainResult =&gt; getDomainResult.ZoneFile),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
@@ -31,6 +57,32 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if the provided domain name is not managed with your
         /// DigitalOcean account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the zone file for a domain:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domainOutput"] = example.Apply(getDomainResult =&gt; getDomainResult.ZoneFile),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());

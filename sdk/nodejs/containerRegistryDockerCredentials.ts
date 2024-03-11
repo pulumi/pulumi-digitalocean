@@ -10,20 +10,25 @@ import * as utilities from "./utilities";
  * An error is triggered if the provided container registry name does not exist.
  *
  * ## Example Usage
+ *
  * ### Basic Example
  *
  * Get the container registry:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = new digitalocean.ContainerRegistryDockerCredentials("example", {registryName: "example"});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Docker Provider Example
  *
  * Use the `endpoint` and `dockerCredentials` with the Docker provider:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -33,6 +38,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleContainerRegistryDockerCredentials = new digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", {registryName: "example"});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     /**

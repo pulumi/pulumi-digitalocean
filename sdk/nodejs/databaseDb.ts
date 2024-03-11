@@ -8,7 +8,9 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
  *
  * ## Example Usage
+ *
  * ### Create a new PostgreSQL database
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,12 +24,13 @@ import * as utilities from "./utilities";
  * });
  * const database_example = new digitalocean.DatabaseDb("database-example", {clusterId: postgres_example.id});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database can be imported using the `id` of the source database cluster
  *
- *  and the `name` of the database joined with a comma. For example:
+ * and the `name` of the database joined with a comma. For example:
  *
  * ```sh
  * $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar

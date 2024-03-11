@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Create a Key in a Spaces Bucket
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,6 +65,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

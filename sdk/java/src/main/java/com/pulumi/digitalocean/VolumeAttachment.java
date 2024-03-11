@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Volumes can be attached either directly on the `digitalocean.Droplet` resource, or using the `digitalocean.VolumeAttachment` resource - but the two cannot be used together. If both are used against the same Droplet, the volume attachments will constantly drift.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,6 +68,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="digitalocean:index/volumeAttachment:VolumeAttachment")

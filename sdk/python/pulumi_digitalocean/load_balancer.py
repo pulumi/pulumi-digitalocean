@@ -748,6 +748,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -770,6 +771,7 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
         lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -777,6 +779,7 @@ class LoadBalancer(pulumi.CustomResource):
         `Delete old certificate`. When doing so, you must also change the name of the certificate,
         as there cannot be multiple certificates with the same name in an account.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -803,6 +806,7 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -855,6 +859,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -877,6 +882,7 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
         lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -884,6 +890,7 @@ class LoadBalancer(pulumi.CustomResource):
         `Delete old certificate`. When doing so, you must also change the name of the certificate,
         as there cannot be multiple certificates with the same name in an account.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -910,6 +917,7 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

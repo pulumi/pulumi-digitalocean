@@ -112,6 +112,7 @@ def get_region(slug: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -119,6 +120,7 @@ def get_region(slug: Optional[str] = None,
     sfo2 = digitalocean.get_region(slug="sfo2")
     pulumi.export("regionName", sfo2.name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str slug: A human-readable string that is used as a unique identifier for each region.
@@ -146,6 +148,7 @@ def get_region_output(slug: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -153,6 +156,7 @@ def get_region_output(slug: Optional[pulumi.Input[str]] = None,
     sfo2 = digitalocean.get_region(slug="sfo2")
     pulumi.export("regionName", sfo2.name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str slug: A human-readable string that is used as a unique identifier for each region.

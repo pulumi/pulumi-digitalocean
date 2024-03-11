@@ -133,8 +133,10 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Create a Key in a Spaces Bucket
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -154,6 +156,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                 max_age_seconds=3000,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -177,8 +180,10 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Create a Key in a Spaces Bucket
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -198,6 +203,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                 max_age_seconds=3000,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

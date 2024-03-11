@@ -13,8 +13,10 @@ import * as utilities from "./utilities";
  * specific Droplets, Kubernetes clusters, or IP addresses.
  *
  * ## Example Usage
+ *
  * ### Create a new database firewall allowing multiple IP addresses
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -40,8 +42,11 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a new database firewall allowing a Droplet
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -66,8 +71,11 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a new database firewall for a database replica
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -93,12 +101,13 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database firewalls can be imported using the `id` of the target database cluster
  *
- *  For example:
+ * For example:
  *
  * ```sh
  * $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54

@@ -19,12 +19,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if zero or more than one result is returned by the query.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get the data about a snapshot:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,9 +39,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a snapshot to create a Droplet:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,9 +66,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the data about an official image:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +86,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
@@ -97,12 +99,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if zero or more than one result is returned by the query.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get the data about a snapshot:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -118,9 +119,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a snapshot to create a Droplet:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -143,9 +146,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the data about an official image:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -161,8 +166,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());

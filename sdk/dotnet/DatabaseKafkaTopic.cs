@@ -13,7 +13,9 @@ namespace Pulumi.DigitalOcean
     /// Provides a DigitalOcean Kafka topic for Kafka clusters.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a new Kafka topic
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,6 +75,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

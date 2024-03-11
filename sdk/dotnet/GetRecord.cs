@@ -18,6 +18,34 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if the provided domain name or record are not managed with
         /// your DigitalOcean account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get data from a DNS record:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetRecord.Invoke(new()
+        ///     {
+        ///         Domain = "example.com",
+        ///         Name = "test",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["recordType"] = example.Apply(getRecordResult =&gt; getRecordResult.Type),
+        ///         ["recordTtl"] = example.Apply(getRecordResult =&gt; getRecordResult.Ttl),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
@@ -29,6 +57,34 @@ namespace Pulumi.DigitalOcean
         /// 
         /// An error is triggered if the provided domain name or record are not managed with
         /// your DigitalOcean account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get data from a DNS record:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetRecord.Invoke(new()
+        ///     {
+        ///         Domain = "example.com",
+        ///         Name = "test",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["recordType"] = example.Apply(getRecordResult =&gt; getRecordResult.Type),
+        ///         ["recordTtl"] = example.Apply(getRecordResult =&gt; getRecordResult.Ttl),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());

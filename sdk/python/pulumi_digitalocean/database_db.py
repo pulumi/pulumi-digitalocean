@@ -102,7 +102,9 @@ class DatabaseDb(pulumi.CustomResource):
         Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -115,12 +117,13 @@ class DatabaseDb(pulumi.CustomResource):
             node_count=1)
         database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database can be imported using the `id` of the source database cluster
 
-         and the `name` of the database joined with a comma. For example:
+        and the `name` of the database joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
@@ -141,7 +144,9 @@ class DatabaseDb(pulumi.CustomResource):
         Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -154,12 +159,13 @@ class DatabaseDb(pulumi.CustomResource):
             node_count=1)
         database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database can be imported using the `id` of the source database cluster
 
-         and the `name` of the database joined with a comma. For example:
+        and the `name` of the database joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar

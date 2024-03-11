@@ -23,6 +23,7 @@ import (
 //
 // For example, to find all SSH keys:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,9 +52,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Or to find ones matching specific values:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,6 +88,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSshKeys(ctx *pulumi.Context, args *GetSshKeysArgs, opts ...pulumi.InvokeOption) (*GetSshKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSshKeysResult

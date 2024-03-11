@@ -27,6 +27,7 @@ import (
 //
 // For example to find all Ubuntu images:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,9 +58,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // You can filter on multiple fields and sort the results as well:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,6 +105,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult

@@ -138,6 +138,7 @@ def get_tag(name: Optional[str] = None,
 
     Get the tag:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -149,6 +150,7 @@ def get_tag(name: Optional[str] = None,
         size="s-1vcpu-1gb",
         tags=[example_tag.name])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the tag.
@@ -183,6 +185,7 @@ def get_tag_output(name: Optional[pulumi.Input[str]] = None,
 
     Get the tag:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -194,6 +197,7 @@ def get_tag_output(name: Optional[pulumi.Input[str]] = None,
         size="s-1vcpu-1gb",
         tags=[example_tag.name])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the tag.

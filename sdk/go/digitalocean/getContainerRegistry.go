@@ -19,10 +19,12 @@ import (
 // An error is triggered if the provided container registry name does not exist.
 //
 // ## Example Usage
+//
 // ### Basic Example
 //
 // Get the container registry:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryResult
