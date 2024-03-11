@@ -95,6 +95,13 @@ public final class DatabaseReplicaArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.size);
     }
 
+    @Import(name="storageSizeMib")
+    private @Nullable Output<String> storageSizeMib;
+
+    public Optional<Output<String>> storageSizeMib() {
+        return Optional.ofNullable(this.storageSizeMib);
+    }
+
     /**
      * A list of tag names to be applied to the database replica.
      * 
@@ -118,6 +125,7 @@ public final class DatabaseReplicaArgs extends com.pulumi.resources.ResourceArgs
         this.privateNetworkUuid = $.privateNetworkUuid;
         this.region = $.region;
         this.size = $.size;
+        this.storageSizeMib = $.storageSizeMib;
         this.tags = $.tags;
     }
 
@@ -282,6 +290,15 @@ public final class DatabaseReplicaArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder size(DatabaseSlug size) {
             return size(Either.ofRight(size));
+        }
+
+        public Builder storageSizeMib(@Nullable Output<String> storageSizeMib) {
+            $.storageSizeMib = storageSizeMib;
+            return this;
+        }
+
+        public Builder storageSizeMib(String storageSizeMib) {
+            return storageSizeMib(Output.of(storageSizeMib));
         }
 
         /**

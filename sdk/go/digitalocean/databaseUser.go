@@ -164,6 +164,10 @@ import (
 type DatabaseUser struct {
 	pulumi.CustomResourceState
 
+	// Access certificate for TLS client authentication. (Kafka only)
+	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
+	// Access key for TLS client authentication. (Kafka only)
+	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
@@ -190,6 +194,8 @@ func NewDatabaseUser(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessCert",
+		"accessKey",
 		"password",
 	})
 	opts = append(opts, secrets)
@@ -216,6 +222,10 @@ func GetDatabaseUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseUser resources.
 type databaseUserState struct {
+	// Access certificate for TLS client authentication. (Kafka only)
+	AccessCert *string `pulumi:"accessCert"`
+	// Access key for TLS client authentication. (Kafka only)
+	AccessKey *string `pulumi:"accessKey"`
 	// The ID of the original source database cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
@@ -232,6 +242,10 @@ type databaseUserState struct {
 }
 
 type DatabaseUserState struct {
+	// Access certificate for TLS client authentication. (Kafka only)
+	AccessCert pulumi.StringPtrInput
+	// Access key for TLS client authentication. (Kafka only)
+	AccessKey pulumi.StringPtrInput
 	// The ID of the original source database cluster.
 	ClusterId pulumi.StringPtrInput
 	// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
@@ -361,6 +375,16 @@ func (o DatabaseUserOutput) ToDatabaseUserOutput() DatabaseUserOutput {
 
 func (o DatabaseUserOutput) ToDatabaseUserOutputWithContext(ctx context.Context) DatabaseUserOutput {
 	return o
+}
+
+// Access certificate for TLS client authentication. (Kafka only)
+func (o DatabaseUserOutput) AccessCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
+}
+
+// Access key for TLS client authentication. (Kafka only)
+func (o DatabaseUserOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
 // The ID of the original source database cluster.

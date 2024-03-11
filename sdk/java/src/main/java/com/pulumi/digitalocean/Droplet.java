@@ -203,6 +203,9 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     }
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      * 
      */
     @Export(name="ipv6", refs={Boolean.class}, tree="[0]")
@@ -210,6 +213,9 @@ public class Droplet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      * 
      */
     public Output<Optional<Boolean>> ipv6() {

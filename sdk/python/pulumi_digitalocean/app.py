@@ -16,13 +16,37 @@ __all__ = ['AppArgs', 'App']
 @pulumi.input_type
 class AppArgs:
     def __init__(__self__, *,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['AppSpecArgs']] = None):
         """
         The set of arguments for constructing a App resource.
+        :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param pulumi.Input['AppSpecArgs'] spec: A DigitalOcean App spec describing the app.
         """
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the app is assigned to.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter
@@ -45,6 +69,7 @@ class _AppState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  default_ingress: Optional[pulumi.Input[str]] = None,
                  live_url: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['AppSpecArgs']] = None,
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
@@ -54,6 +79,11 @@ class _AppState:
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
+        :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param pulumi.Input['AppSpecArgs'] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[str] updated_at: The date and time of when the app was last updated.
         """
@@ -67,6 +97,8 @@ class _AppState:
             pulumi.set(__self__, "default_ingress", default_ingress)
         if live_url is not None:
             pulumi.set(__self__, "live_url", live_url)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if updated_at is not None:
@@ -133,6 +165,22 @@ class _AppState:
         pulumi.set(self, "live_url", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project that the app is assigned to.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['AppSpecArgs']]:
         """
@@ -162,6 +210,7 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
                  __props__=None):
         """
@@ -222,6 +271,11 @@ class App(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param pulumi.Input[pulumi.InputType['AppSpecArgs']] spec: A DigitalOcean App spec describing the app.
         """
         ...
@@ -301,6 +355,7 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -311,6 +366,7 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppArgs.__new__(AppArgs)
 
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["active_deployment_id"] = None
             __props__.__dict__["app_urn"] = None
@@ -333,6 +389,7 @@ class App(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             default_ingress: Optional[pulumi.Input[str]] = None,
             live_url: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'App':
         """
@@ -347,6 +404,11 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
+        :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
+               
+               A spec can contain multiple components.
+               
+               A `service` can contain:
         :param pulumi.Input[pulumi.InputType['AppSpecArgs']] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[str] updated_at: The date and time of when the app was last updated.
         """
@@ -359,6 +421,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["default_ingress"] = default_ingress
         __props__.__dict__["live_url"] = live_url
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["spec"] = spec
         __props__.__dict__["updated_at"] = updated_at
         return App(resource_name, opts=opts, __props__=__props__)
@@ -402,6 +465,18 @@ class App(pulumi.CustomResource):
         The live URL of the app.
         """
         return pulumi.get(self, "live_url")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project that the app is assigned to.
+
+        A spec can contain multiple components.
+
+        A `service` can contain:
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter

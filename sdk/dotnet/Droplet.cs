@@ -107,6 +107,9 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling if IPv6 is enabled. Defaults to false.
+        /// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+        /// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+        /// is required.
         /// </summary>
         [Output("ipv6")]
         public Output<bool?> Ipv6 { get; private set; } = null!;
@@ -308,6 +311,9 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling if IPv6 is enabled. Defaults to false.
+        /// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+        /// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+        /// is required.
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
@@ -483,6 +489,9 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling if IPv6 is enabled. Defaults to false.
+        /// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+        /// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+        /// is required.
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }

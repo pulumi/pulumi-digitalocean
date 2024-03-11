@@ -12,6 +12,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseUserResult {
+    /**
+     * @return Access certificate for TLS client authentication. (Kafka only)
+     * 
+     */
+    private String accessCert;
+    /**
+     * @return Access key for TLS client authentication. (Kafka only)
+     * 
+     */
+    private String accessKey;
     private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -37,6 +47,20 @@ public final class GetDatabaseUserResult {
     private List<GetDatabaseUserSetting> settings;
 
     private GetDatabaseUserResult() {}
+    /**
+     * @return Access certificate for TLS client authentication. (Kafka only)
+     * 
+     */
+    public String accessCert() {
+        return this.accessCert;
+    }
+    /**
+     * @return Access key for TLS client authentication. (Kafka only)
+     * 
+     */
+    public String accessKey() {
+        return this.accessKey;
+    }
     public String clusterId() {
         return this.clusterId;
     }
@@ -84,6 +108,8 @@ public final class GetDatabaseUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accessCert;
+        private String accessKey;
         private String clusterId;
         private String id;
         private String mysqlAuthPlugin;
@@ -94,6 +120,8 @@ public final class GetDatabaseUserResult {
         public Builder() {}
         public Builder(GetDatabaseUserResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessCert = defaults.accessCert;
+    	      this.accessKey = defaults.accessKey;
     	      this.clusterId = defaults.clusterId;
     	      this.id = defaults.id;
     	      this.mysqlAuthPlugin = defaults.mysqlAuthPlugin;
@@ -103,6 +131,22 @@ public final class GetDatabaseUserResult {
     	      this.settings = defaults.settings;
         }
 
+        @CustomType.Setter
+        public Builder accessCert(String accessCert) {
+            if (accessCert == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "accessCert");
+            }
+            this.accessCert = accessCert;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accessKey(String accessKey) {
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseUserResult", "accessKey");
+            }
+            this.accessKey = accessKey;
+            return this;
+        }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
             if (clusterId == null) {
@@ -164,6 +208,8 @@ public final class GetDatabaseUserResult {
         }
         public GetDatabaseUserResult build() {
             final var _resultValue = new GetDatabaseUserResult();
+            _resultValue.accessCert = accessCert;
+            _resultValue.accessKey = accessKey;
             _resultValue.clusterId = clusterId;
             _resultValue.id = id;
             _resultValue.mysqlAuthPlugin = mysqlAuthPlugin;

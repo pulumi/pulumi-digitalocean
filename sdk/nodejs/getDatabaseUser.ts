@@ -53,6 +53,14 @@ export interface GetDatabaseUserArgs {
  * A collection of values returned by getDatabaseUser.
  */
 export interface GetDatabaseUserResult {
+    /**
+     * Access certificate for TLS client authentication. (Kafka only)
+     */
+    readonly accessCert: string;
+    /**
+     * Access key for TLS client authentication. (Kafka only)
+     */
+    readonly accessKey: string;
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.

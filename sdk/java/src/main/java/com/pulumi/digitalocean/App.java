@@ -263,6 +263,28 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.liveUrl;
     }
     /**
+     * The ID of the project that the app is assigned to.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
+     */
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the app is assigned to.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
+    }
+    /**
      * A DigitalOcean App spec describing the app.
      * 
      */

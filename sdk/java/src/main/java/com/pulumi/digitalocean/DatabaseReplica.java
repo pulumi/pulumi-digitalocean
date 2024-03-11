@@ -241,6 +241,12 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> size() {
         return Codegen.optional(this.size);
     }
+    @Export(name="storageSizeMib", refs={String.class}, tree="[0]")
+    private Output<String> storageSizeMib;
+
+    public Output<String> storageSizeMib() {
+        return this.storageSizeMib;
+    }
     /**
      * A list of tag names to be applied to the database replica.
      * 

@@ -52,6 +52,7 @@ public final class GetDatabaseReplicaResult {
      */
     private String privateUri;
     private String region;
+    private String storageSizeMib;
     /**
      * @return A list of tag names to be applied to the database replica.
      * 
@@ -135,6 +136,9 @@ public final class GetDatabaseReplicaResult {
     public String region() {
         return this.region;
     }
+    public String storageSizeMib() {
+        return this.storageSizeMib;
+    }
     /**
      * @return A list of tag names to be applied to the database replica.
      * 
@@ -184,6 +188,7 @@ public final class GetDatabaseReplicaResult {
         private String privateNetworkUuid;
         private String privateUri;
         private String region;
+        private String storageSizeMib;
         private @Nullable List<String> tags;
         private String uri;
         private String user;
@@ -202,6 +207,7 @@ public final class GetDatabaseReplicaResult {
     	      this.privateNetworkUuid = defaults.privateNetworkUuid;
     	      this.privateUri = defaults.privateUri;
     	      this.region = defaults.region;
+    	      this.storageSizeMib = defaults.storageSizeMib;
     	      this.tags = defaults.tags;
     	      this.uri = defaults.uri;
     	      this.user = defaults.user;
@@ -297,6 +303,14 @@ public final class GetDatabaseReplicaResult {
             return this;
         }
         @CustomType.Setter
+        public Builder storageSizeMib(String storageSizeMib) {
+            if (storageSizeMib == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseReplicaResult", "storageSizeMib");
+            }
+            this.storageSizeMib = storageSizeMib;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
 
             this.tags = tags;
@@ -342,6 +356,7 @@ public final class GetDatabaseReplicaResult {
             _resultValue.privateNetworkUuid = privateNetworkUuid;
             _resultValue.privateUri = privateUri;
             _resultValue.region = region;
+            _resultValue.storageSizeMib = storageSizeMib;
             _resultValue.tags = tags;
             _resultValue.uri = uri;
             _resultValue.user = user;

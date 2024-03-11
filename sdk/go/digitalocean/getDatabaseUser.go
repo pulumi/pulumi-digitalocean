@@ -66,6 +66,10 @@ type LookupDatabaseUserArgs struct {
 
 // A collection of values returned by getDatabaseUser.
 type LookupDatabaseUserResult struct {
+	// Access certificate for TLS client authentication. (Kafka only)
+	AccessCert string `pulumi:"accessCert"`
+	// Access key for TLS client authentication. (Kafka only)
+	AccessKey string `pulumi:"accessKey"`
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -117,6 +121,16 @@ func (o LookupDatabaseUserResultOutput) ToLookupDatabaseUserResultOutput() Looku
 
 func (o LookupDatabaseUserResultOutput) ToLookupDatabaseUserResultOutputWithContext(ctx context.Context) LookupDatabaseUserResultOutput {
 	return o
+}
+
+// Access certificate for TLS client authentication. (Kafka only)
+func (o LookupDatabaseUserResultOutput) AccessCert() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
+}
+
+// Access key for TLS client authentication. (Kafka only)
+func (o LookupDatabaseUserResultOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseUserResultOutput) ClusterId() pulumi.StringOutput {

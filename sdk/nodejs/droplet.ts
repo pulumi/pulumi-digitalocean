@@ -105,6 +105,9 @@ export class Droplet extends pulumi.CustomResource {
     public /*out*/ readonly ipv4AddressPrivate!: pulumi.Output<string>;
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      */
     public readonly ipv6!: pulumi.Output<boolean | undefined>;
     /**
@@ -321,6 +324,9 @@ export interface DropletState {
     ipv4AddressPrivate?: pulumi.Input<string>;
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      */
     ipv6?: pulumi.Input<boolean>;
     /**
@@ -438,6 +444,9 @@ export interface DropletArgs {
     image: pulumi.Input<string>;
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      */
     ipv6?: pulumi.Input<boolean>;
     /**

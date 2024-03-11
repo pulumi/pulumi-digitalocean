@@ -133,6 +133,14 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetDatabaseUserResult
     {
+        /// <summary>
+        /// Access certificate for TLS client authentication. (Kafka only)
+        /// </summary>
+        public readonly string AccessCert;
+        /// <summary>
+        /// Access key for TLS client authentication. (Kafka only)
+        /// </summary>
+        public readonly string AccessKey;
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -155,6 +163,10 @@ namespace Pulumi.DigitalOcean
 
         [OutputConstructor]
         private GetDatabaseUserResult(
+            string accessCert,
+
+            string accessKey,
+
             string clusterId,
 
             string id,
@@ -169,6 +181,8 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetDatabaseUserSettingResult> settings)
         {
+            AccessCert = accessCert;
+            AccessKey = accessKey;
             ClusterId = clusterId;
             Id = id;
             MysqlAuthPlugin = mysqlAuthPlugin;

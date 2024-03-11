@@ -119,6 +119,14 @@ export class DatabaseUser extends pulumi.CustomResource {
     }
 
     /**
+     * Access certificate for TLS client authentication. (Kafka only)
+     */
+    public /*out*/ readonly accessCert!: pulumi.Output<string>;
+    /**
+     * Access key for TLS client authentication. (Kafka only)
+     */
+    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    /**
      * The ID of the original source database cluster.
      */
     public readonly clusterId!: pulumi.Output<string>;
@@ -157,6 +165,8 @@ export class DatabaseUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseUserState | undefined;
+            resourceInputs["accessCert"] = state ? state.accessCert : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["mysqlAuthPlugin"] = state ? state.mysqlAuthPlugin : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -172,11 +182,13 @@ export class DatabaseUser extends pulumi.CustomResource {
             resourceInputs["mysqlAuthPlugin"] = args ? args.mysqlAuthPlugin : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["accessCert"] = undefined /*out*/;
+            resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseUser.__pulumiType, name, resourceInputs, opts);
     }
@@ -186,6 +198,14 @@ export class DatabaseUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseUser resources.
  */
 export interface DatabaseUserState {
+    /**
+     * Access certificate for TLS client authentication. (Kafka only)
+     */
+    accessCert?: pulumi.Input<string>;
+    /**
+     * Access key for TLS client authentication. (Kafka only)
+     */
+    accessKey?: pulumi.Input<string>;
     /**
      * The ID of the original source database cluster.
      */

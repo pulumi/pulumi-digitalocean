@@ -84,8 +84,9 @@ type LookupDatabaseReplicaResult struct {
 	PrivateHost        string `pulumi:"privateHost"`
 	PrivateNetworkUuid string `pulumi:"privateNetworkUuid"`
 	// Same as `uri`, but only accessible from resources within the account and in the same region.
-	PrivateUri string `pulumi:"privateUri"`
-	Region     string `pulumi:"region"`
+	PrivateUri     string `pulumi:"privateUri"`
+	Region         string `pulumi:"region"`
+	StorageSizeMib string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
@@ -187,6 +188,10 @@ func (o LookupDatabaseReplicaResultOutput) PrivateUri() pulumi.StringOutput {
 
 func (o LookupDatabaseReplicaResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseReplicaResultOutput) StorageSizeMib() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseReplicaResult) string { return v.StorageSizeMib }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the database replica.

@@ -184,6 +184,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="digitalocean:index/databaseUser:DatabaseUser")
 public class DatabaseUser extends com.pulumi.resources.CustomResource {
     /**
+     * Access certificate for TLS client authentication. (Kafka only)
+     * 
+     */
+    @Export(name="accessCert", refs={String.class}, tree="[0]")
+    private Output<String> accessCert;
+
+    /**
+     * @return Access certificate for TLS client authentication. (Kafka only)
+     * 
+     */
+    public Output<String> accessCert() {
+        return this.accessCert;
+    }
+    /**
+     * Access key for TLS client authentication. (Kafka only)
+     * 
+     */
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
+    private Output<String> accessKey;
+
+    /**
+     * @return Access key for TLS client authentication. (Kafka only)
+     * 
+     */
+    public Output<String> accessKey() {
+        return this.accessKey;
+    }
+    /**
      * The ID of the original source database cluster.
      * 
      */
@@ -303,6 +331,8 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "accessCert",
+                "accessKey",
                 "password"
             ))
             .build();

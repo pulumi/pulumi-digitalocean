@@ -112,6 +112,14 @@ export class App extends pulumi.CustomResource {
      */
     public /*out*/ readonly liveUrl!: pulumi.Output<string>;
     /**
+     * The ID of the project that the app is assigned to.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * A DigitalOcean App spec describing the app.
      */
     public readonly spec!: pulumi.Output<outputs.AppSpec | undefined>;
@@ -138,10 +146,12 @@ export class App extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["defaultIngress"] = state ? state.defaultIngress : undefined;
             resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["activeDeploymentId"] = undefined /*out*/;
             resourceInputs["appUrn"] = undefined /*out*/;
@@ -180,6 +190,14 @@ export interface AppState {
      */
     liveUrl?: pulumi.Input<string>;
     /**
+     * The ID of the project that the app is assigned to.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * A DigitalOcean App spec describing the app.
      */
     spec?: pulumi.Input<inputs.AppSpec>;
@@ -193,6 +211,14 @@ export interface AppState {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
+    /**
+     * The ID of the project that the app is assigned to.
+     *
+     * A spec can contain multiple components.
+     *
+     * A `service` can contain:
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * A DigitalOcean App spec describing the app.
      */

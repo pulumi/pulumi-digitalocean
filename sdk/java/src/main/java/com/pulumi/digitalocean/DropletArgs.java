@@ -101,6 +101,9 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      * 
      */
     @Import(name="ipv6")
@@ -108,6 +111,9 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Boolean controlling if IPv6 is enabled. Defaults to false.
+     * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+     * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+     * is required.
      * 
      */
     public Optional<Output<Boolean>> ipv6() {
@@ -468,6 +474,9 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6 Boolean controlling if IPv6 is enabled. Defaults to false.
+         * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+         * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+         * is required.
          * 
          * @return builder
          * 
@@ -479,6 +488,9 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6 Boolean controlling if IPv6 is enabled. Defaults to false.
+         * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+         * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+         * is required.
          * 
          * @return builder
          * 

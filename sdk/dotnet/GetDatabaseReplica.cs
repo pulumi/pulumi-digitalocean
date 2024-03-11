@@ -189,6 +189,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string PrivateUri;
         public readonly string Region;
+        public readonly string StorageSizeMib;
         /// <summary>
         /// A list of tag names to be applied to the database replica.
         /// </summary>
@@ -230,6 +231,8 @@ namespace Pulumi.DigitalOcean
 
             string region,
 
+            string storageSizeMib,
+
             ImmutableArray<string> tags,
 
             string uri,
@@ -249,6 +252,7 @@ namespace Pulumi.DigitalOcean
             PrivateNetworkUuid = privateNetworkUuid;
             PrivateUri = privateUri;
             Region = region;
+            StorageSizeMib = storageSizeMib;
             Tags = tags;
             Uri = uri;
             User = user;

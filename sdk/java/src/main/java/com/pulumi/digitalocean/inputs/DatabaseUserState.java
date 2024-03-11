@@ -18,6 +18,36 @@ public final class DatabaseUserState extends com.pulumi.resources.ResourceArgs {
     public static final DatabaseUserState Empty = new DatabaseUserState();
 
     /**
+     * Access certificate for TLS client authentication. (Kafka only)
+     * 
+     */
+    @Import(name="accessCert")
+    private @Nullable Output<String> accessCert;
+
+    /**
+     * @return Access certificate for TLS client authentication. (Kafka only)
+     * 
+     */
+    public Optional<Output<String>> accessCert() {
+        return Optional.ofNullable(this.accessCert);
+    }
+
+    /**
+     * Access key for TLS client authentication. (Kafka only)
+     * 
+     */
+    @Import(name="accessKey")
+    private @Nullable Output<String> accessKey;
+
+    /**
+     * @return Access key for TLS client authentication. (Kafka only)
+     * 
+     */
+    public Optional<Output<String>> accessKey() {
+        return Optional.ofNullable(this.accessKey);
+    }
+
+    /**
      * The ID of the original source database cluster.
      * 
      */
@@ -112,6 +142,8 @@ public final class DatabaseUserState extends com.pulumi.resources.ResourceArgs {
     private DatabaseUserState() {}
 
     private DatabaseUserState(DatabaseUserState $) {
+        this.accessCert = $.accessCert;
+        this.accessKey = $.accessKey;
         this.clusterId = $.clusterId;
         this.mysqlAuthPlugin = $.mysqlAuthPlugin;
         this.name = $.name;
@@ -136,6 +168,48 @@ public final class DatabaseUserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DatabaseUserState defaults) {
             $ = new DatabaseUserState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessCert Access certificate for TLS client authentication. (Kafka only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessCert(@Nullable Output<String> accessCert) {
+            $.accessCert = accessCert;
+            return this;
+        }
+
+        /**
+         * @param accessCert Access certificate for TLS client authentication. (Kafka only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessCert(String accessCert) {
+            return accessCert(Output.of(accessCert));
+        }
+
+        /**
+         * @param accessKey Access key for TLS client authentication. (Kafka only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessKey(@Nullable Output<String> accessKey) {
+            $.accessKey = accessKey;
+            return this;
+        }
+
+        /**
+         * @param accessKey Access key for TLS client authentication. (Kafka only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessKey(String accessKey) {
+            return accessKey(Output.of(accessKey));
         }
 
         /**

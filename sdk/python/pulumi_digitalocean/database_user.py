@@ -89,6 +89,8 @@ class DatabaseUserArgs:
 @pulumi.input_type
 class _DatabaseUserState:
     def __init__(__self__, *,
+                 access_cert: Optional[pulumi.Input[str]] = None,
+                 access_key: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -97,6 +99,8 @@ class _DatabaseUserState:
                  settings: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
         """
         Input properties used for looking up and filtering DatabaseUser resources.
+        :param pulumi.Input[str] access_cert: Access certificate for TLS client authentication. (Kafka only)
+        :param pulumi.Input[str] access_key: Access key for TLS client authentication. (Kafka only)
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         :param pulumi.Input[str] name: The name for the database user.
@@ -105,6 +109,10 @@ class _DatabaseUserState:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]] settings: Contains optional settings for the user.
                The `settings` block is documented below.
         """
+        if access_cert is not None:
+            pulumi.set(__self__, "access_cert", access_cert)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if mysql_auth_plugin is not None:
@@ -117,6 +125,30 @@ class _DatabaseUserState:
             pulumi.set(__self__, "role", role)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="accessCert")
+    def access_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access certificate for TLS client authentication. (Kafka only)
+        """
+        return pulumi.get(self, "access_cert")
+
+    @access_cert.setter
+    def access_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_cert", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access key for TLS client authentication. (Kafka only)
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -406,9 +438,11 @@ class DatabaseUser(pulumi.CustomResource):
             __props__.__dict__["mysql_auth_plugin"] = mysql_auth_plugin
             __props__.__dict__["name"] = name
             __props__.__dict__["settings"] = settings
+            __props__.__dict__["access_cert"] = None
+            __props__.__dict__["access_key"] = None
             __props__.__dict__["password"] = None
             __props__.__dict__["role"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseUser, __self__).__init__(
             'digitalocean:index/databaseUser:DatabaseUser',
@@ -420,6 +454,8 @@ class DatabaseUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_cert: Optional[pulumi.Input[str]] = None,
+            access_key: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             mysql_auth_plugin: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -433,6 +469,8 @@ class DatabaseUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_cert: Access certificate for TLS client authentication. (Kafka only)
+        :param pulumi.Input[str] access_key: Access key for TLS client authentication. (Kafka only)
         :param pulumi.Input[str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         :param pulumi.Input[str] name: The name for the database user.
@@ -445,6 +483,8 @@ class DatabaseUser(pulumi.CustomResource):
 
         __props__ = _DatabaseUserState.__new__(_DatabaseUserState)
 
+        __props__.__dict__["access_cert"] = access_cert
+        __props__.__dict__["access_key"] = access_key
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["mysql_auth_plugin"] = mysql_auth_plugin
         __props__.__dict__["name"] = name
@@ -452,6 +492,22 @@ class DatabaseUser(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         __props__.__dict__["settings"] = settings
         return DatabaseUser(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessCert")
+    def access_cert(self) -> pulumi.Output[str]:
+        """
+        Access certificate for TLS client authentication. (Kafka only)
+        """
+        return pulumi.get(self, "access_cert")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Output[str]:
+        """
+        Access key for TLS client authentication. (Kafka only)
+        """
+        return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="clusterId")

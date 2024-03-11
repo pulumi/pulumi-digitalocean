@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .region(&#34;nyc3&#34;)
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;4&#34;)
+ *             .version(&#34;6&#34;)
  *             .build());
  * 
  *     }

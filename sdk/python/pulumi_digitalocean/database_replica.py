@@ -20,6 +20,7 @@ class DatabaseReplicaArgs:
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DatabaseReplica resource.
@@ -39,6 +40,8 @@ class DatabaseReplicaArgs:
             pulumi.set(__self__, "region", region)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_size_mib is not None:
+            pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -103,6 +106,15 @@ class DatabaseReplicaArgs:
         pulumi.set(self, "size", value)
 
     @property
+    @pulumi.getter(name="storageSizeMib")
+    def storage_size_mib(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_size_mib")
+
+    @storage_size_mib.setter
+    def storage_size_mib(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_size_mib", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -129,6 +141,7 @@ class _DatabaseReplicaState:
                  private_uri: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
@@ -173,6 +186,8 @@ class _DatabaseReplicaState:
             pulumi.set(__self__, "region", region)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_size_mib is not None:
+            pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if uri is not None:
@@ -315,6 +330,15 @@ class _DatabaseReplicaState:
         pulumi.set(self, "size", value)
 
     @property
+    @pulumi.getter(name="storageSizeMib")
+    def storage_size_mib(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_size_mib")
+
+    @storage_size_mib.setter
+    def storage_size_mib(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_size_mib", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -373,6 +397,7 @@ class DatabaseReplica(pulumi.CustomResource):
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -488,6 +513,7 @@ class DatabaseReplica(pulumi.CustomResource):
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -505,6 +531,7 @@ class DatabaseReplica(pulumi.CustomResource):
             __props__.__dict__["private_network_uuid"] = private_network_uuid
             __props__.__dict__["region"] = region
             __props__.__dict__["size"] = size
+            __props__.__dict__["storage_size_mib"] = storage_size_mib
             __props__.__dict__["tags"] = tags
             __props__.__dict__["database"] = None
             __props__.__dict__["host"] = None
@@ -538,6 +565,7 @@ class DatabaseReplica(pulumi.CustomResource):
             private_uri: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
             size: Optional[pulumi.Input[Union[str, 'DatabaseSlug']]] = None,
+            storage_size_mib: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uri: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None,
@@ -580,6 +608,7 @@ class DatabaseReplica(pulumi.CustomResource):
         __props__.__dict__["private_uri"] = private_uri
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
+        __props__.__dict__["storage_size_mib"] = storage_size_mib
         __props__.__dict__["tags"] = tags
         __props__.__dict__["uri"] = uri
         __props__.__dict__["user"] = user
@@ -673,6 +702,11 @@ class DatabaseReplica(pulumi.CustomResource):
         Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageSizeMib")
+    def storage_size_mib(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "storage_size_mib")
 
     @property
     @pulumi.getter
