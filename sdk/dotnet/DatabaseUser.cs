@@ -141,6 +141,18 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseUser : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Access certificate for TLS client authentication. (Kafka only)
+        /// </summary>
+        [Output("accessCert")]
+        public Output<string> AccessCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Access key for TLS client authentication. (Kafka only)
+        /// </summary>
+        [Output("accessKey")]
+        public Output<string> AccessKey { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the original source database cluster.
         /// </summary>
         [Output("clusterId")]
@@ -202,6 +214,8 @@ namespace Pulumi.DigitalOcean
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "accessCert",
+                    "accessKey",
                     "password",
                 },
             };
@@ -266,6 +280,38 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DatabaseUserState : global::Pulumi.ResourceArgs
     {
+        [Input("accessCert")]
+        private Input<string>? _accessCert;
+
+        /// <summary>
+        /// Access certificate for TLS client authentication. (Kafka only)
+        /// </summary>
+        public Input<string>? AccessCert
+        {
+            get => _accessCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
+
+        /// <summary>
+        /// Access key for TLS client authentication. (Kafka only)
+        /// </summary>
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The ID of the original source database cluster.
         /// </summary>

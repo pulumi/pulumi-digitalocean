@@ -138,6 +138,9 @@ namespace Pulumi.DigitalOcean
         [Output("size")]
         public Output<string?> Size { get; private set; } = null!;
 
+        [Output("storageSizeMib")]
+        public Output<string> StorageSizeMib { get; private set; } = null!;
+
         /// <summary>
         /// A list of tag names to be applied to the database replica.
         /// </summary>
@@ -244,6 +247,9 @@ namespace Pulumi.DigitalOcean
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
 
+        [Input("storageSizeMib")]
+        public Input<string>? StorageSizeMib { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -349,6 +355,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DatabaseSlug>? Size { get; set; }
+
+        [Input("storageSizeMib")]
+        public Input<string>? StorageSizeMib { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

@@ -68,6 +68,10 @@ export interface GetAppResult {
      */
     readonly liveUrl: string;
     /**
+     * The ID of the project that the app is assigned to.
+     */
+    readonly projectId: string;
+    /**
      * A DigitalOcean App spec describing the app.
      */
     readonly specs: outputs.GetAppSpec[];

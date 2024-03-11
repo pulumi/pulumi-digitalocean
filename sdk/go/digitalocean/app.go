@@ -116,6 +116,12 @@ type App struct {
 	DefaultIngress pulumi.StringOutput `pulumi:"defaultIngress"`
 	// The live URL of the app.
 	LiveUrl pulumi.StringOutput `pulumi:"liveUrl"`
+	// The ID of the project that the app is assigned to.
+	//
+	// A spec can contain multiple components.
+	//
+	// A `service` can contain:
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// A DigitalOcean App spec describing the app.
 	Spec AppSpecPtrOutput `pulumi:"spec"`
 	// The date and time of when the app was last updated.
@@ -162,6 +168,12 @@ type appState struct {
 	DefaultIngress *string `pulumi:"defaultIngress"`
 	// The live URL of the app.
 	LiveUrl *string `pulumi:"liveUrl"`
+	// The ID of the project that the app is assigned to.
+	//
+	// A spec can contain multiple components.
+	//
+	// A `service` can contain:
+	ProjectId *string `pulumi:"projectId"`
 	// A DigitalOcean App spec describing the app.
 	Spec *AppSpec `pulumi:"spec"`
 	// The date and time of when the app was last updated.
@@ -179,6 +191,12 @@ type AppState struct {
 	DefaultIngress pulumi.StringPtrInput
 	// The live URL of the app.
 	LiveUrl pulumi.StringPtrInput
+	// The ID of the project that the app is assigned to.
+	//
+	// A spec can contain multiple components.
+	//
+	// A `service` can contain:
+	ProjectId pulumi.StringPtrInput
 	// A DigitalOcean App spec describing the app.
 	Spec AppSpecPtrInput
 	// The date and time of when the app was last updated.
@@ -190,12 +208,24 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
+	// The ID of the project that the app is assigned to.
+	//
+	// A spec can contain multiple components.
+	//
+	// A `service` can contain:
+	ProjectId *string `pulumi:"projectId"`
 	// A DigitalOcean App spec describing the app.
 	Spec *AppSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	// The ID of the project that the app is assigned to.
+	//
+	// A spec can contain multiple components.
+	//
+	// A `service` can contain:
+	ProjectId pulumi.StringPtrInput
 	// A DigitalOcean App spec describing the app.
 	Spec AppSpecPtrInput
 }
@@ -310,6 +340,15 @@ func (o AppOutput) DefaultIngress() pulumi.StringOutput {
 // The live URL of the app.
 func (o AppOutput) LiveUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.LiveUrl }).(pulumi.StringOutput)
+}
+
+// The ID of the project that the app is assigned to.
+//
+// A spec can contain multiple components.
+//
+// A `service` can contain:
+func (o AppOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // A DigitalOcean App spec describing the app.

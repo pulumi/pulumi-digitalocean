@@ -22,7 +22,13 @@ class GetDatabaseUserResult:
     """
     A collection of values returned by getDatabaseUser.
     """
-    def __init__(__self__, cluster_id=None, id=None, mysql_auth_plugin=None, name=None, password=None, role=None, settings=None):
+    def __init__(__self__, access_cert=None, access_key=None, cluster_id=None, id=None, mysql_auth_plugin=None, name=None, password=None, role=None, settings=None):
+        if access_cert and not isinstance(access_cert, str):
+            raise TypeError("Expected argument 'access_cert' to be a str")
+        pulumi.set(__self__, "access_cert", access_cert)
+        if access_key and not isinstance(access_key, str):
+            raise TypeError("Expected argument 'access_key' to be a str")
+        pulumi.set(__self__, "access_key", access_key)
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -44,6 +50,22 @@ class GetDatabaseUserResult:
         if settings and not isinstance(settings, list):
             raise TypeError("Expected argument 'settings' to be a list")
         pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="accessCert")
+    def access_cert(self) -> str:
+        """
+        Access certificate for TLS client authentication. (Kafka only)
+        """
+        return pulumi.get(self, "access_cert")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        Access key for TLS client authentication. (Kafka only)
+        """
+        return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -99,6 +121,8 @@ class AwaitableGetDatabaseUserResult(GetDatabaseUserResult):
         if False:
             yield self
         return GetDatabaseUserResult(
+            access_cert=self.access_cert,
+            access_key=self.access_key,
             cluster_id=self.cluster_id,
             id=self.id,
             mysql_auth_plugin=self.mysql_auth_plugin,
@@ -137,6 +161,8 @@ def get_database_user(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDatabaseUser:getDatabaseUser', __args__, opts=opts, typ=GetDatabaseUserResult).value
 
     return AwaitableGetDatabaseUserResult(
+        access_cert=pulumi.get(__ret__, 'access_cert'),
+        access_key=pulumi.get(__ret__, 'access_key'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         id=pulumi.get(__ret__, 'id'),
         mysql_auth_plugin=pulumi.get(__ret__, 'mysql_auth_plugin'),

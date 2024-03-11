@@ -912,10 +912,6 @@ class AppSpecFunctionCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-               
-               A spec can contain multiple components.
-               
-               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecFunctionCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -940,10 +936,6 @@ class AppSpecFunctionCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-
-        A spec can contain multiple components.
-
-        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1615,10 +1607,6 @@ class AppSpecIngressRuleCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-               
-               A spec can contain multiple components.
-               
-               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -1643,10 +1631,6 @@ class AppSpecIngressRuleCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-
-        A spec can contain multiple components.
-
-        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -3005,10 +2989,6 @@ class AppSpecServiceCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-               
-               A spec can contain multiple components.
-               
-               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecServiceCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -3033,10 +3013,6 @@ class AppSpecServiceCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-
-        A spec can contain multiple components.
-
-        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -4018,10 +3994,6 @@ class AppSpecStaticSiteCors(dict):
                  max_age: Optional[str] = None):
         """
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-               
-               A spec can contain multiple components.
-               
-               A `service` can contain:
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
@@ -4046,10 +4018,6 @@ class AppSpecStaticSiteCors(dict):
     def allow_credentials(self) -> Optional[bool]:
         """
         Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-
-        A spec can contain multiple components.
-
-        A `service` can contain:
         """
         return pulumi.get(self, "allow_credentials")
 

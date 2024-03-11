@@ -99,7 +99,8 @@ type DatabaseReplica struct {
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
-	Size pulumi.StringPtrOutput `pulumi:"size"`
+	Size           pulumi.StringPtrOutput `pulumi:"size"`
+	StorageSizeMib pulumi.StringOutput    `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
@@ -170,7 +171,8 @@ type databaseReplicaState struct {
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
-	Size *string `pulumi:"size"`
+	Size           *string `pulumi:"size"`
+	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
 	// The full URI for connecting to the database replica.
@@ -203,7 +205,8 @@ type DatabaseReplicaState struct {
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
-	Size pulumi.StringPtrInput
+	Size           pulumi.StringPtrInput
+	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayInput
 	// The full URI for connecting to the database replica.
@@ -228,7 +231,8 @@ type databaseReplicaArgs struct {
 	// DigitalOcean region where the replica will reside.
 	Region *string `pulumi:"region"`
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
-	Size *string `pulumi:"size"`
+	Size           *string `pulumi:"size"`
+	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database replica.
 	Tags []string `pulumi:"tags"`
 }
@@ -244,7 +248,8 @@ type DatabaseReplicaArgs struct {
 	// DigitalOcean region where the replica will reside.
 	Region pulumi.StringPtrInput
 	// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
-	Size pulumi.StringPtrInput
+	Size           pulumi.StringPtrInput
+	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database replica.
 	Tags pulumi.StringArrayInput
 }
@@ -389,6 +394,10 @@ func (o DatabaseReplicaOutput) Region() pulumi.StringPtrOutput {
 // Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
 func (o DatabaseReplicaOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringPtrOutput { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseReplicaOutput) StorageSizeMib() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseReplica) pulumi.StringOutput { return v.StorageSizeMib }).(pulumi.StringOutput)
 }
 
 // A list of tag names to be applied to the database replica.

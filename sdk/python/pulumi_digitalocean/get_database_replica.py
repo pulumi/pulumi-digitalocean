@@ -21,7 +21,7 @@ class GetDatabaseReplicaResult:
     """
     A collection of values returned by getDatabaseReplica.
     """
-    def __init__(__self__, cluster_id=None, database=None, host=None, id=None, name=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, tags=None, uri=None, user=None, uuid=None):
+    def __init__(__self__, cluster_id=None, database=None, host=None, id=None, name=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, region=None, storage_size_mib=None, tags=None, uri=None, user=None, uuid=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -55,6 +55,9 @@ class GetDatabaseReplicaResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if storage_size_mib and not isinstance(storage_size_mib, str):
+            raise TypeError("Expected argument 'storage_size_mib' to be a str")
+        pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -145,6 +148,11 @@ class GetDatabaseReplicaResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="storageSizeMib")
+    def storage_size_mib(self) -> str:
+        return pulumi.get(self, "storage_size_mib")
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
@@ -194,6 +202,7 @@ class AwaitableGetDatabaseReplicaResult(GetDatabaseReplicaResult):
             private_network_uuid=self.private_network_uuid,
             private_uri=self.private_uri,
             region=self.region,
+            storage_size_mib=self.storage_size_mib,
             tags=self.tags,
             uri=self.uri,
             user=self.user,
@@ -243,6 +252,7 @@ def get_database_replica(cluster_id: Optional[str] = None,
         private_network_uuid=pulumi.get(__ret__, 'private_network_uuid'),
         private_uri=pulumi.get(__ret__, 'private_uri'),
         region=pulumi.get(__ret__, 'region'),
+        storage_size_mib=pulumi.get(__ret__, 'storage_size_mib'),
         tags=pulumi.get(__ret__, 'tags'),
         uri=pulumi.get(__ret__, 'uri'),
         user=pulumi.get(__ret__, 'user'),

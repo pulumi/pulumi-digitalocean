@@ -22,7 +22,7 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, default_ingress=None, id=None, live_url=None, specs=None, updated_at=None, urn=None):
+    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, default_ingress=None, id=None, live_url=None, project_id=None, specs=None, updated_at=None, urn=None):
         if active_deployment_id and not isinstance(active_deployment_id, str):
             raise TypeError("Expected argument 'active_deployment_id' to be a str")
         pulumi.set(__self__, "active_deployment_id", active_deployment_id)
@@ -41,6 +41,9 @@ class GetAppResult:
         if live_url and not isinstance(live_url, str):
             raise TypeError("Expected argument 'live_url' to be a str")
         pulumi.set(__self__, "live_url", live_url)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if specs and not isinstance(specs, list):
             raise TypeError("Expected argument 'specs' to be a list")
         pulumi.set(__self__, "specs", specs)
@@ -97,6 +100,14 @@ class GetAppResult:
         return pulumi.get(self, "live_url")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project that the app is assigned to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def specs(self) -> Sequence['outputs.GetAppSpecResult']:
         """
@@ -133,6 +144,7 @@ class AwaitableGetAppResult(GetAppResult):
             default_ingress=self.default_ingress,
             id=self.id,
             live_url=self.live_url,
+            project_id=self.project_id,
             specs=self.specs,
             updated_at=self.updated_at,
             urn=self.urn)
@@ -170,6 +182,7 @@ def get_app(app_id: Optional[str] = None,
         default_ingress=pulumi.get(__ret__, 'default_ingress'),
         id=pulumi.get(__ret__, 'id'),
         live_url=pulumi.get(__ret__, 'live_url'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         specs=pulumi.get(__ret__, 'specs'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         urn=pulumi.get(__ret__, 'urn'))

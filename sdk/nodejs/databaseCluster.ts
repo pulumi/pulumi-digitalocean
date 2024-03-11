@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  *     nodeCount: 1,
  *     region: "nyc3",
  *     size: "db-s-1vcpu-1gb",
- *     version: "4",
+ *     version: "6",
  * });
  * ```
  * ## Create a new database cluster based on a backup of an existing cluster.

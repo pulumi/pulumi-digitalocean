@@ -135,6 +135,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string LiveUrl;
         /// <summary>
+        /// The ID of the project that the app is assigned to.
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
         /// A DigitalOcean App spec describing the app.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecResult> Specs;
@@ -161,6 +165,8 @@ namespace Pulumi.DigitalOcean
 
             string liveUrl,
 
+            string projectId,
+
             ImmutableArray<Outputs.GetAppSpecResult> specs,
 
             string updatedAt,
@@ -173,6 +179,7 @@ namespace Pulumi.DigitalOcean
             DefaultIngress = defaultIngress;
             Id = id;
             LiveUrl = liveUrl;
+            ProjectId = projectId;
             Specs = specs;
             UpdatedAt = updatedAt;
             Urn = urn;

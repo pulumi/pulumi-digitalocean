@@ -202,10 +202,6 @@ export interface AppSpecFunctionAlert {
 export interface AppSpecFunctionCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-     *
-     * A spec can contain multiple components.
-     *
-     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
@@ -406,10 +402,6 @@ export interface AppSpecIngressRuleComponent {
 export interface AppSpecIngressRuleCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-     *
-     * A spec can contain multiple components.
-     *
-     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
@@ -825,10 +817,6 @@ export interface AppSpecServiceAlert {
 export interface AppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-     *
-     * A spec can contain multiple components.
-     *
-     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
@@ -1116,10 +1104,6 @@ export interface AppSpecStaticSite {
 export interface AppSpecStaticSiteCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-     *
-     * A spec can contain multiple components.
-     *
-     * A `service` can contain:
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**

@@ -70,6 +70,8 @@ type LookupAppResult struct {
 	Id string `pulumi:"id"`
 	// The live URL of the app.
 	LiveUrl string `pulumi:"liveUrl"`
+	// The ID of the project that the app is assigned to.
+	ProjectId string `pulumi:"projectId"`
 	// A DigitalOcean App spec describing the app.
 	Specs []GetAppSpec `pulumi:"specs"`
 	// The date and time of when the app was last updated.
@@ -143,6 +145,11 @@ func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 // The live URL of the app.
 func (o LookupAppResultOutput) LiveUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.LiveUrl }).(pulumi.StringOutput)
+}
+
+// The ID of the project that the app is assigned to.
+func (o LookupAppResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // A DigitalOcean App spec describing the app.

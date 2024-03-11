@@ -39,6 +39,11 @@ public final class GetAppResult {
      */
     private String liveUrl;
     /**
+     * @return The ID of the project that the app is assigned to.
+     * 
+     */
+    private String projectId;
+    /**
      * @return A DigitalOcean App spec describing the app.
      * 
      */
@@ -94,6 +99,13 @@ public final class GetAppResult {
         return this.liveUrl;
     }
     /**
+     * @return The ID of the project that the app is assigned to.
+     * 
+     */
+    public String projectId() {
+        return this.projectId;
+    }
+    /**
      * @return A DigitalOcean App spec describing the app.
      * 
      */
@@ -130,6 +142,7 @@ public final class GetAppResult {
         private String defaultIngress;
         private String id;
         private String liveUrl;
+        private String projectId;
         private List<GetAppSpec> specs;
         private String updatedAt;
         private String urn;
@@ -142,6 +155,7 @@ public final class GetAppResult {
     	      this.defaultIngress = defaults.defaultIngress;
     	      this.id = defaults.id;
     	      this.liveUrl = defaults.liveUrl;
+    	      this.projectId = defaults.projectId;
     	      this.specs = defaults.specs;
     	      this.updatedAt = defaults.updatedAt;
     	      this.urn = defaults.urn;
@@ -196,6 +210,14 @@ public final class GetAppResult {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "projectId");
+            }
+            this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder specs(List<GetAppSpec> specs) {
             if (specs == null) {
               throw new MissingRequiredPropertyException("GetAppResult", "specs");
@@ -230,6 +252,7 @@ public final class GetAppResult {
             _resultValue.defaultIngress = defaultIngress;
             _resultValue.id = id;
             _resultValue.liveUrl = liveUrl;
+            _resultValue.projectId = projectId;
             _resultValue.specs = specs;
             _resultValue.updatedAt = updatedAt;
             _resultValue.urn = urn;

@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,29 @@ import javax.annotation.Nullable;
 public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppArgs Empty = new AppArgs();
+
+    /**
+     * The ID of the project that the app is assigned to.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the app is assigned to.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
 
     /**
      * A DigitalOcean App spec describing the app.
@@ -33,6 +57,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     private AppArgs() {}
 
     private AppArgs(AppArgs $) {
+        this.projectId = $.projectId;
         this.spec = $.spec;
     }
 
@@ -52,6 +77,35 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AppArgs defaults) {
             $ = new AppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param projectId The ID of the project that the app is assigned to.
+         * 
+         * A spec can contain multiple components.
+         * 
+         * A `service` can contain:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the app is assigned to.
+         * 
+         * A spec can contain multiple components.
+         * 
+         * A `service` can contain:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

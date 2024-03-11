@@ -121,6 +121,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
     public readonly size!: pulumi.Output<string | undefined>;
+    public readonly storageSizeMib!: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the database replica.
      */
@@ -162,6 +163,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             resourceInputs["privateUri"] = state ? state.privateUri : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
@@ -176,6 +178,7 @@ export class DatabaseReplica extends pulumi.CustomResource {
             resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["storageSizeMib"] = args ? args.storageSizeMib : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["database"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
@@ -242,6 +245,7 @@ export interface DatabaseReplicaState {
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
     size?: pulumi.Input<string | enums.DatabaseSlug>;
+    storageSizeMib?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database replica.
      */
@@ -284,6 +288,7 @@ export interface DatabaseReplicaArgs {
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
     size?: pulumi.Input<string | enums.DatabaseSlug>;
+    storageSizeMib?: pulumi.Input<string>;
     /**
      * A list of tag names to be applied to the database replica.
      */

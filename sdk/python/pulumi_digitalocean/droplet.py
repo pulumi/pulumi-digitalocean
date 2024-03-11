@@ -49,6 +49,9 @@ class DropletArgs:
                
                > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+               Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+               an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+               is required.
         :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false. If set to `true`, you can configure monitor alert policies
@@ -182,6 +185,9 @@ class DropletArgs:
     def ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean controlling if IPv6 is enabled. Defaults to false.
+        Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+        an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+        is required.
         """
         return pulumi.get(self, "ipv6")
 
@@ -387,6 +393,9 @@ class _DropletState:
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+               Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+               an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+               is required.
         :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] locked: Is the Droplet locked
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
@@ -595,6 +604,9 @@ class _DropletState:
     def ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean controlling if IPv6 is enabled. Defaults to false.
+        Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+        an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+        is required.
         """
         return pulumi.get(self, "ipv6")
 
@@ -894,6 +906,9 @@ class Droplet(pulumi.CustomResource):
                > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+               Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+               an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+               is required.
         :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
                Defaults to false. If set to `true`, you can configure monitor alert policies
@@ -1085,6 +1100,9 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
+               Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+               an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+               is required.
         :param pulumi.Input[str] ipv6_address: The IPv6 address
         :param pulumi.Input[bool] locked: Is the Droplet locked
         :param pulumi.Input[bool] monitoring: Boolean controlling whether monitoring agent is installed.
@@ -1231,6 +1249,9 @@ class Droplet(pulumi.CustomResource):
     def ipv6(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean controlling if IPv6 is enabled. Defaults to false.
+        Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+        an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+        is required.
         """
         return pulumi.get(self, "ipv6")
 

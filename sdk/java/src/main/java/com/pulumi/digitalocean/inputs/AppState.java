@@ -92,6 +92,29 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the project that the app is assigned to.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID of the project that the app is assigned to.
+     * 
+     * A spec can contain multiple components.
+     * 
+     * A `service` can contain:
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * A DigitalOcean App spec describing the app.
      * 
      */
@@ -129,6 +152,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.defaultIngress = $.defaultIngress;
         this.liveUrl = $.liveUrl;
+        this.projectId = $.projectId;
         this.spec = $.spec;
         this.updatedAt = $.updatedAt;
     }
@@ -254,6 +278,35 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder liveUrl(String liveUrl) {
             return liveUrl(Output.of(liveUrl));
+        }
+
+        /**
+         * @param projectId The ID of the project that the app is assigned to.
+         * 
+         * A spec can contain multiple components.
+         * 
+         * A `service` can contain:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project that the app is assigned to.
+         * 
+         * A spec can contain multiple components.
+         * 
+         * A `service` can contain:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

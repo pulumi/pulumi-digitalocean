@@ -1209,10 +1209,6 @@ func (o AppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 
 type AppSpecFunctionCors struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials *bool `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
@@ -1239,10 +1235,6 @@ type AppSpecFunctionCorsInput interface {
 
 type AppSpecFunctionCorsArgs struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
@@ -1334,10 +1326,6 @@ func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsPtrOutputWithContext(ctx
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecFunctionCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -1392,10 +1380,6 @@ func (o AppSpecFunctionCorsPtrOutput) Elem() AppSpecFunctionCorsOutput {
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) *bool {
 		if v == nil {
@@ -3366,10 +3350,6 @@ func (o AppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
 
 type AppSpecIngressRuleCors struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials *bool `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
@@ -3396,10 +3376,6 @@ type AppSpecIngressRuleCorsInput interface {
 
 type AppSpecIngressRuleCorsArgs struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
@@ -3491,10 +3467,6 @@ func (o AppSpecIngressRuleCorsOutput) ToAppSpecIngressRuleCorsPtrOutputWithConte
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecIngressRuleCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -3549,10 +3521,6 @@ func (o AppSpecIngressRuleCorsPtrOutput) Elem() AppSpecIngressRuleCorsOutput {
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) *bool {
 		if v == nil {
@@ -6556,10 +6524,6 @@ func (o AppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) AppSpecServiceA
 
 type AppSpecServiceCors struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials *bool `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
@@ -6586,10 +6550,6 @@ type AppSpecServiceCorsInput interface {
 
 type AppSpecServiceCorsArgs struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
@@ -6681,10 +6641,6 @@ func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutputWithContext(ctx c
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -6739,10 +6695,6 @@ func (o AppSpecServiceCorsPtrOutput) Elem() AppSpecServiceCorsOutput {
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) *bool {
 		if v == nil {
@@ -9073,10 +9025,6 @@ func (o AppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSite
 
 type AppSpecStaticSiteCors struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials *bool `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
@@ -9103,10 +9051,6 @@ type AppSpecStaticSiteCorsInput interface {
 
 type AppSpecStaticSiteCorsArgs struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	//
-	// A spec can contain multiple components.
-	//
-	// A `service` can contain:
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
 	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
@@ -9198,10 +9142,6 @@ func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutputWithContext
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -9256,10 +9196,6 @@ func (o AppSpecStaticSiteCorsPtrOutput) Elem() AppSpecStaticSiteCorsOutput {
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-//
-// A spec can contain multiple components.
-//
-// A `service` can contain:
 func (o AppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) *bool {
 		if v == nil {

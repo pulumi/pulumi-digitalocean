@@ -87,6 +87,7 @@ export interface GetDatabaseReplicaResult {
      */
     readonly privateUri: string;
     readonly region: string;
+    readonly storageSizeMib: string;
     /**
      * A list of tag names to be applied to the database replica.
      */

@@ -129,6 +129,16 @@ namespace Pulumi.DigitalOcean
         public Output<string> LiveUrl { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project that the app is assigned to.
+        /// 
+        /// A spec can contain multiple components.
+        /// 
+        /// A `service` can contain:
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// A DigitalOcean App spec describing the app.
         /// </summary>
         [Output("spec")]
@@ -187,6 +197,16 @@ namespace Pulumi.DigitalOcean
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID of the project that the app is assigned to.
+        /// 
+        /// A spec can contain multiple components.
+        /// 
+        /// A `service` can contain:
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// A DigitalOcean App spec describing the app.
         /// </summary>
         [Input("spec")]
@@ -229,6 +249,16 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("liveUrl")]
         public Input<string>? LiveUrl { get; set; }
+
+        /// <summary>
+        /// The ID of the project that the app is assigned to.
+        /// 
+        /// A spec can contain multiple components.
+        /// 
+        /// A `service` can contain:
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// A DigitalOcean App spec describing the app.

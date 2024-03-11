@@ -81,6 +81,9 @@ type Droplet struct {
 	// The private networking IPv4 address
 	Ipv4AddressPrivate pulumi.StringOutput `pulumi:"ipv4AddressPrivate"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
+	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+	// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+	// is required.
 	Ipv6 pulumi.BoolPtrOutput `pulumi:"ipv6"`
 	// The IPv6 address
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
@@ -195,6 +198,9 @@ type dropletState struct {
 	// The private networking IPv4 address
 	Ipv4AddressPrivate *string `pulumi:"ipv4AddressPrivate"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
+	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+	// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+	// is required.
 	Ipv6 *bool `pulumi:"ipv6"`
 	// The IPv6 address
 	Ipv6Address *string `pulumi:"ipv6Address"`
@@ -274,6 +280,9 @@ type DropletState struct {
 	// The private networking IPv4 address
 	Ipv4AddressPrivate pulumi.StringPtrInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
+	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+	// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+	// is required.
 	Ipv6 pulumi.BoolPtrInput
 	// The IPv6 address
 	Ipv6Address pulumi.StringPtrInput
@@ -348,6 +357,9 @@ type dropletArgs struct {
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image string `pulumi:"image"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
+	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+	// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+	// is required.
 	Ipv6 *bool `pulumi:"ipv6"`
 	// The IPv6 address
 	Ipv6Address *string `pulumi:"ipv6Address"`
@@ -408,6 +420,9 @@ type DropletArgs struct {
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
 	Image pulumi.StringInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
+	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+	// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+	// is required.
 	Ipv6 pulumi.BoolPtrInput
 	// The IPv6 address
 	Ipv6Address pulumi.StringPtrInput
@@ -589,6 +604,9 @@ func (o DropletOutput) Ipv4AddressPrivate() pulumi.StringOutput {
 }
 
 // Boolean controlling if IPv6 is enabled. Defaults to false.
+// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
+// an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
+// is required.
 func (o DropletOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.Ipv6 }).(pulumi.BoolPtrOutput)
 }
