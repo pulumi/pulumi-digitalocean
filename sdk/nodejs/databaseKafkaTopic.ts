@@ -11,7 +11,9 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean Kafka topic for Kafka clusters.
  *
  * ## Example Usage
+ *
  * ### Create a new Kafka topic
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -55,6 +57,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

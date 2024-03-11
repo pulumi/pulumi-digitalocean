@@ -104,6 +104,7 @@ class VolumeAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -121,6 +122,7 @@ class VolumeAttachment(pulumi.CustomResource):
             droplet_id=foobar_droplet.id,
             volume_id=foobar_volume.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,6 +142,7 @@ class VolumeAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -157,6 +160,7 @@ class VolumeAttachment(pulumi.CustomResource):
             droplet_id=foobar_droplet.id,
             volume_id=foobar_volume.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param VolumeAttachmentArgs args: The arguments to use to populate this resource's properties.

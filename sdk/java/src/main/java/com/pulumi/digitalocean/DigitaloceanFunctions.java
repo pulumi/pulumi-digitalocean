@@ -136,6 +136,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -161,6 +163,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount() {
@@ -172,6 +175,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -197,6 +202,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain() {
@@ -208,6 +214,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -233,6 +241,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args) {
@@ -244,6 +253,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -269,6 +280,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args) {
@@ -280,6 +292,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -305,6 +319,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOptions options) {
@@ -316,6 +331,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -341,6 +358,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
@@ -352,6 +370,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +401,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args) {
@@ -392,6 +413,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -421,6 +444,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args) {
@@ -432,6 +456,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -461,6 +487,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOptions options) {
@@ -472,6 +499,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -501,6 +530,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args, InvokeOptions options) {
@@ -517,6 +547,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the certificate:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -545,6 +577,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args) {
@@ -561,6 +594,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the certificate:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -589,6 +624,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args) {
@@ -605,6 +641,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the certificate:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -633,6 +671,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
@@ -649,6 +688,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the certificate:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -677,6 +718,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
@@ -691,9 +733,12 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided container registry name does not exist.
      * 
      * ## Example Usage
+     * 
      * ### Basic Example
      * 
      * Get the container registry:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -722,6 +767,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryResult> getContainerRegistry(GetContainerRegistryArgs args) {
@@ -736,9 +782,12 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided container registry name does not exist.
      * 
      * ## Example Usage
+     * 
      * ### Basic Example
      * 
      * Get the container registry:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -767,6 +816,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryResult> getContainerRegistryPlain(GetContainerRegistryPlainArgs args) {
@@ -781,9 +831,12 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided container registry name does not exist.
      * 
      * ## Example Usage
+     * 
      * ### Basic Example
      * 
      * Get the container registry:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -812,6 +865,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryResult> getContainerRegistry(GetContainerRegistryArgs args, InvokeOptions options) {
@@ -826,9 +880,12 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided container registry name does not exist.
      * 
      * ## Example Usage
+     * 
      * ### Basic Example
      * 
      * Get the container registry:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -857,6 +914,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryResult> getContainerRegistryPlain(GetContainerRegistryPlainArgs args, InvokeOptions options) {
@@ -866,6 +924,8 @@ public final class DigitaloceanFunctions {
      * Provides the CA certificate for a DigitalOcean database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -895,6 +955,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseCaResult> getDatabaseCa(GetDatabaseCaArgs args) {
@@ -904,6 +965,8 @@ public final class DigitaloceanFunctions {
      * Provides the CA certificate for a DigitalOcean database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -933,6 +996,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseCaResult> getDatabaseCaPlain(GetDatabaseCaPlainArgs args) {
@@ -942,6 +1006,8 @@ public final class DigitaloceanFunctions {
      * Provides the CA certificate for a DigitalOcean database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -971,6 +1037,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseCaResult> getDatabaseCa(GetDatabaseCaArgs args, InvokeOptions options) {
@@ -980,6 +1047,8 @@ public final class DigitaloceanFunctions {
      * Provides the CA certificate for a DigitalOcean database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1009,6 +1078,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseCaResult> getDatabaseCaPlain(GetDatabaseCaPlainArgs args, InvokeOptions options) {
@@ -1018,6 +1088,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database cluster resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1047,6 +1119,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseClusterResult> getDatabaseCluster(GetDatabaseClusterArgs args) {
@@ -1056,6 +1129,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database cluster resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1085,6 +1160,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseClusterResult> getDatabaseClusterPlain(GetDatabaseClusterPlainArgs args) {
@@ -1094,6 +1170,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database cluster resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1123,6 +1201,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseClusterResult> getDatabaseCluster(GetDatabaseClusterArgs args, InvokeOptions options) {
@@ -1132,6 +1211,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database cluster resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1161,6 +1242,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseClusterResult> getDatabaseClusterPlain(GetDatabaseClusterPlainArgs args, InvokeOptions options) {
@@ -1170,6 +1252,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean PostgreSQL database connection pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1205,6 +1289,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs args) {
@@ -1214,6 +1299,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean PostgreSQL database connection pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1249,6 +1336,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseConnectionPoolResult> getDatabaseConnectionPoolPlain(GetDatabaseConnectionPoolPlainArgs args) {
@@ -1258,6 +1346,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean PostgreSQL database connection pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1293,6 +1383,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs args, InvokeOptions options) {
@@ -1302,6 +1393,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean PostgreSQL database connection pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1337,6 +1430,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseConnectionPoolResult> getDatabaseConnectionPoolPlain(GetDatabaseConnectionPoolPlainArgs args, InvokeOptions options) {
@@ -1346,6 +1440,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database replica.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1381,6 +1477,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseReplicaResult> getDatabaseReplica(GetDatabaseReplicaArgs args) {
@@ -1390,6 +1487,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database replica.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1425,6 +1524,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseReplicaResult> getDatabaseReplicaPlain(GetDatabaseReplicaPlainArgs args) {
@@ -1434,6 +1534,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database replica.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1469,6 +1571,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseReplicaResult> getDatabaseReplica(GetDatabaseReplicaArgs args, InvokeOptions options) {
@@ -1478,6 +1581,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database replica.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1513,6 +1618,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseReplicaResult> getDatabaseReplicaPlain(GetDatabaseReplicaPlainArgs args, InvokeOptions options) {
@@ -1522,6 +1628,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database user resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1557,6 +1665,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseUserResult> getDatabaseUser(GetDatabaseUserArgs args) {
@@ -1566,6 +1675,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database user resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1601,6 +1712,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseUserResult> getDatabaseUserPlain(GetDatabaseUserPlainArgs args) {
@@ -1610,6 +1722,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database user resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1645,6 +1759,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseUserResult> getDatabaseUser(GetDatabaseUserArgs args, InvokeOptions options) {
@@ -1654,6 +1769,8 @@ public final class DigitaloceanFunctions {
      * Provides information on a DigitalOcean database user resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1689,6 +1806,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseUserResult> getDatabaseUserPlain(GetDatabaseUserPlainArgs args, InvokeOptions options) {
@@ -1703,6 +1821,42 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided domain name is not managed with your
      * DigitalOcean account.
      * 
+     * ## Example Usage
+     * 
+     * Get the zone file for a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
+     *             .name(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args) {
         return getDomain(args, InvokeOptions.Empty);
@@ -1715,6 +1869,42 @@ public final class DigitaloceanFunctions {
      * 
      * An error is triggered if the provided domain name is not managed with your
      * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get the zone file for a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
+     *             .name(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args) {
@@ -1729,6 +1919,42 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided domain name is not managed with your
      * DigitalOcean account.
      * 
+     * ## Example Usage
+     * 
+     * Get the zone file for a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
+     *             .name(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
@@ -1741,6 +1967,42 @@ public final class DigitaloceanFunctions {
      * 
      * An error is triggered if the provided domain name is not managed with your
      * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get the zone file for a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
+     *             .name(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainResult> getDomainPlain(GetDomainPlainArgs args, InvokeOptions options) {
@@ -1760,6 +2022,8 @@ public final class DigitaloceanFunctions {
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1792,6 +2056,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains() {
@@ -1811,6 +2076,8 @@ public final class DigitaloceanFunctions {
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1843,6 +2110,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -1862,6 +2130,8 @@ public final class DigitaloceanFunctions {
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1894,6 +2164,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
@@ -1913,6 +2184,8 @@ public final class DigitaloceanFunctions {
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1945,6 +2218,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -1964,6 +2238,8 @@ public final class DigitaloceanFunctions {
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1996,6 +2272,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
@@ -2015,6 +2292,8 @@ public final class DigitaloceanFunctions {
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2047,6 +2326,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -2064,6 +2344,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2093,8 +2375,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2123,8 +2408,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2153,6 +2441,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletResult> getDroplet() {
@@ -2170,6 +2459,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2199,8 +2490,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2229,8 +2523,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2259,6 +2556,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletResult> getDropletPlain() {
@@ -2276,6 +2574,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2305,8 +2605,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2335,8 +2638,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2365,6 +2671,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletResult> getDroplet(GetDropletArgs args) {
@@ -2382,6 +2689,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2411,8 +2720,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2441,8 +2753,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2471,6 +2786,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletResult> getDropletPlain(GetDropletPlainArgs args) {
@@ -2488,6 +2804,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2517,8 +2835,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2547,8 +2868,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2577,6 +2901,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletResult> getDroplet(GetDropletArgs args, InvokeOptions options) {
@@ -2594,6 +2919,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2623,8 +2950,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2653,8 +2983,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2683,6 +3016,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletResult> getDropletPlain(GetDropletPlainArgs args, InvokeOptions options) {
@@ -2696,6 +3030,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2726,8 +3062,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2766,6 +3105,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletSnapshotResult> getDropletSnapshot() {
@@ -2779,6 +3119,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2809,8 +3151,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2849,6 +3194,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletSnapshotResult> getDropletSnapshotPlain() {
@@ -2862,6 +3208,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2892,8 +3240,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2932,6 +3283,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletSnapshotResult> getDropletSnapshot(GetDropletSnapshotArgs args) {
@@ -2945,6 +3297,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2975,8 +3329,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3015,6 +3372,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletSnapshotResult> getDropletSnapshotPlain(GetDropletSnapshotPlainArgs args) {
@@ -3028,6 +3386,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3058,8 +3418,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3098,6 +3461,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletSnapshotResult> getDropletSnapshot(GetDropletSnapshotArgs args, InvokeOptions options) {
@@ -3111,6 +3475,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3141,8 +3507,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3181,6 +3550,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletSnapshotResult> getDropletSnapshotPlain(GetDropletSnapshotPlainArgs args, InvokeOptions options) {
@@ -3201,6 +3571,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3232,8 +3604,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3274,6 +3649,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletsResult> getDroplets() {
@@ -3294,6 +3670,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3325,8 +3703,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3367,6 +3748,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletsResult> getDropletsPlain() {
@@ -3387,6 +3769,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3418,8 +3802,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3460,6 +3847,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletsResult> getDroplets(GetDropletsArgs args) {
@@ -3480,6 +3868,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3511,8 +3901,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3553,6 +3946,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletsResult> getDropletsPlain(GetDropletsPlainArgs args) {
@@ -3573,6 +3967,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3604,8 +4000,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3646,6 +4045,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDropletsResult> getDroplets(GetDropletsArgs args, InvokeOptions options) {
@@ -3666,6 +4066,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3697,8 +4099,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3739,6 +4144,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDropletsResult> getDropletsPlain(GetDropletsPlainArgs args, InvokeOptions options) {
@@ -3750,6 +4156,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the firewall:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3779,6 +4187,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args) {
@@ -3790,6 +4199,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the firewall:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3819,6 +4230,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args) {
@@ -3830,6 +4242,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the firewall:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3859,6 +4273,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args, InvokeOptions options) {
@@ -3870,6 +4285,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the firewall:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3899,6 +4316,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args, InvokeOptions options) {
@@ -3917,6 +4335,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the floating IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3948,6 +4368,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args) {
@@ -3966,6 +4387,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the floating IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3997,6 +4420,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args) {
@@ -4015,6 +4439,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the floating IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4046,6 +4472,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args, InvokeOptions options) {
@@ -4064,6 +4491,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the floating IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4095,6 +4524,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args, InvokeOptions options) {
@@ -4111,6 +4541,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4139,8 +4571,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4177,8 +4612,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4207,6 +4645,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage() {
@@ -4223,6 +4662,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4251,8 +4692,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4289,8 +4733,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4319,6 +4766,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain() {
@@ -4335,6 +4783,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4363,8 +4813,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4401,8 +4854,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4431,6 +4887,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args) {
@@ -4447,6 +4904,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4475,8 +4934,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4513,8 +4975,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4543,6 +5008,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args) {
@@ -4559,6 +5025,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4587,8 +5055,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4625,8 +5096,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4655,6 +5129,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOptions options) {
@@ -4671,6 +5146,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4699,8 +5176,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4737,8 +5217,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4767,6 +5250,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
@@ -4788,6 +5272,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4819,8 +5305,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4861,6 +5350,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImagesResult> getImages() {
@@ -4882,6 +5372,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4913,8 +5405,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4955,6 +5450,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain() {
@@ -4976,6 +5472,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5007,8 +5505,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5049,6 +5550,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args) {
@@ -5070,6 +5572,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5101,8 +5605,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5143,6 +5650,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
@@ -5164,6 +5672,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5195,8 +5705,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5237,6 +5750,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
@@ -5258,6 +5772,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter images.
      * 
      * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5289,8 +5805,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5331,6 +5850,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
@@ -5368,7 +5888,10 @@ public final class DigitaloceanFunctions {
      * Provides access to the available DigitalOcean Kubernetes Service versions.
      * 
      * ## Example Usage
+     * 
      * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5396,7 +5919,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5436,7 +5963,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5478,6 +6009,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesVersionsResult> getKubernetesVersions() {
@@ -5487,7 +6019,10 @@ public final class DigitaloceanFunctions {
      * Provides access to the available DigitalOcean Kubernetes Service versions.
      * 
      * ## Example Usage
+     * 
      * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5515,7 +6050,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5555,7 +6094,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5597,6 +6140,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesVersionsResult> getKubernetesVersionsPlain() {
@@ -5606,7 +6150,10 @@ public final class DigitaloceanFunctions {
      * Provides access to the available DigitalOcean Kubernetes Service versions.
      * 
      * ## Example Usage
+     * 
      * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5634,7 +6181,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5674,7 +6225,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5716,6 +6271,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesVersionsResult> getKubernetesVersions(GetKubernetesVersionsArgs args) {
@@ -5725,7 +6281,10 @@ public final class DigitaloceanFunctions {
      * Provides access to the available DigitalOcean Kubernetes Service versions.
      * 
      * ## Example Usage
+     * 
      * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5753,7 +6312,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5793,7 +6356,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5835,6 +6402,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesVersionsResult> getKubernetesVersionsPlain(GetKubernetesVersionsPlainArgs args) {
@@ -5844,7 +6412,10 @@ public final class DigitaloceanFunctions {
      * Provides access to the available DigitalOcean Kubernetes Service versions.
      * 
      * ## Example Usage
+     * 
      * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5872,7 +6443,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5912,7 +6487,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5954,6 +6533,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesVersionsResult> getKubernetesVersions(GetKubernetesVersionsArgs args, InvokeOptions options) {
@@ -5963,7 +6543,10 @@ public final class DigitaloceanFunctions {
      * Provides access to the available DigitalOcean Kubernetes Service versions.
      * 
      * ## Example Usage
+     * 
      * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5991,7 +6574,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6031,7 +6618,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6073,6 +6664,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesVersionsResult> getKubernetesVersionsPlain(GetKubernetesVersionsPlainArgs args, InvokeOptions options) {
@@ -6089,6 +6681,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6118,8 +6712,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6148,6 +6745,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer() {
@@ -6164,6 +6762,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6193,8 +6793,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6223,6 +6826,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain() {
@@ -6239,6 +6843,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6268,8 +6874,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6298,6 +6907,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args) {
@@ -6314,6 +6924,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6343,8 +6955,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6373,6 +6988,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args) {
@@ -6389,6 +7005,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6418,8 +7036,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6448,6 +7069,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOptions options) {
@@ -6464,6 +7086,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6493,8 +7117,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6523,6 +7150,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
@@ -6533,6 +7161,8 @@ public final class DigitaloceanFunctions {
      * then this data source returns the default project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6563,6 +7193,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject() {
@@ -6573,6 +7204,8 @@ public final class DigitaloceanFunctions {
      * then this data source returns the default project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6603,6 +7236,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain() {
@@ -6613,6 +7247,8 @@ public final class DigitaloceanFunctions {
      * then this data source returns the default project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6643,6 +7279,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -6653,6 +7290,8 @@ public final class DigitaloceanFunctions {
      * then this data source returns the default project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6683,6 +7322,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -6693,6 +7333,8 @@ public final class DigitaloceanFunctions {
      * then this data source returns the default project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6723,6 +7365,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -6733,6 +7376,8 @@ public final class DigitaloceanFunctions {
      * then this data source returns the default project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6763,6 +7408,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -6782,6 +7428,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter projects.
      * 
      * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6813,8 +7461,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6855,6 +7506,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectsResult> getProjects() {
@@ -6874,6 +7526,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter projects.
      * 
      * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6905,8 +7559,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6947,6 +7604,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain() {
@@ -6966,6 +7624,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter projects.
      * 
      * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6997,8 +7657,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7039,6 +7702,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args) {
@@ -7058,6 +7722,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter projects.
      * 
      * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7089,8 +7755,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7131,6 +7800,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args) {
@@ -7150,6 +7820,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter projects.
      * 
      * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7181,8 +7853,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7223,6 +7898,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOptions options) {
@@ -7242,6 +7918,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter projects.
      * 
      * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7273,8 +7951,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7315,6 +7996,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
@@ -7328,6 +8010,44 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided domain name or record are not managed with
      * your DigitalOcean account.
      * 
+     * ## Example Usage
+     * 
+     * Get data from a DNS record:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
+     *             .domain(&#34;example.com&#34;)
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
+     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRecordResult> getRecord(GetRecordArgs args) {
         return getRecord(args, InvokeOptions.Empty);
@@ -7339,6 +8059,44 @@ public final class DigitaloceanFunctions {
      * 
      * An error is triggered if the provided domain name or record are not managed with
      * your DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get data from a DNS record:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
+     *             .domain(&#34;example.com&#34;)
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
+     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args) {
@@ -7352,6 +8110,44 @@ public final class DigitaloceanFunctions {
      * An error is triggered if the provided domain name or record are not managed with
      * your DigitalOcean account.
      * 
+     * ## Example Usage
+     * 
+     * Get data from a DNS record:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
+     *             .domain(&#34;example.com&#34;)
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
+     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRecordResult> getRecord(GetRecordArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
@@ -7363,6 +8159,44 @@ public final class DigitaloceanFunctions {
      * 
      * An error is triggered if the provided domain name or record are not managed with
      * your DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get data from a DNS record:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
+     *             .domain(&#34;example.com&#34;)
+     *             .name(&#34;test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
+     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args, InvokeOptions options) {
@@ -7405,6 +8239,8 @@ public final class DigitaloceanFunctions {
      * what Droplet sizes and features are supported within a region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7434,6 +8270,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args) {
@@ -7444,6 +8281,8 @@ public final class DigitaloceanFunctions {
      * what Droplet sizes and features are supported within a region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7473,6 +8312,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args) {
@@ -7483,6 +8323,8 @@ public final class DigitaloceanFunctions {
      * what Droplet sizes and features are supported within a region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7512,6 +8354,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args, InvokeOptions options) {
@@ -7522,6 +8365,8 @@ public final class DigitaloceanFunctions {
      * what Droplet sizes and features are supported within a region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7551,6 +8396,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionResult> getRegionPlain(GetRegionPlainArgs args, InvokeOptions options) {
@@ -7568,6 +8414,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter regions.
      * 
      * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7599,8 +8447,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7641,6 +8492,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions() {
@@ -7658,6 +8510,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter regions.
      * 
      * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7689,8 +8543,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7731,6 +8588,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -7748,6 +8606,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter regions.
      * 
      * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7779,8 +8639,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7821,6 +8684,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -7838,6 +8702,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter regions.
      * 
      * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7869,8 +8735,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7911,6 +8780,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -7928,6 +8798,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter regions.
      * 
      * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7959,8 +8831,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8001,6 +8876,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -8018,6 +8894,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter regions.
      * 
      * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8049,8 +8927,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8091,6 +8972,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -8100,6 +8982,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the reserved IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8131,6 +9015,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReservedIpResult> getReservedIp(GetReservedIpArgs args) {
@@ -8140,6 +9025,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the reserved IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8171,6 +9058,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReservedIpResult> getReservedIpPlain(GetReservedIpPlainArgs args) {
@@ -8180,6 +9068,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the reserved IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8211,6 +9101,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReservedIpResult> getReservedIp(GetReservedIpArgs args, InvokeOptions options) {
@@ -8220,6 +9111,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the reserved IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8251,6 +9144,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReservedIpResult> getReservedIpPlain(GetReservedIpPlainArgs args, InvokeOptions options) {
@@ -8317,6 +9211,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the bucket by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8347,6 +9243,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketResult> getSpacesBucket(GetSpacesBucketArgs args) {
@@ -8359,6 +9256,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the bucket by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8389,6 +9288,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketResult> getSpacesBucketPlain(GetSpacesBucketPlainArgs args) {
@@ -8401,6 +9301,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the bucket by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8431,6 +9333,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketResult> getSpacesBucket(GetSpacesBucketArgs args, InvokeOptions options) {
@@ -8443,6 +9346,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the bucket by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8473,6 +9378,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketResult> getSpacesBucketPlain(GetSpacesBucketPlainArgs args, InvokeOptions options) {
@@ -8490,6 +9396,8 @@ public final class DigitaloceanFunctions {
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8529,6 +9437,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketObjectResult> getSpacesBucketObject(GetSpacesBucketObjectArgs args) {
@@ -8546,6 +9455,8 @@ public final class DigitaloceanFunctions {
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8585,6 +9496,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketObjectResult> getSpacesBucketObjectPlain(GetSpacesBucketObjectPlainArgs args) {
@@ -8602,6 +9514,8 @@ public final class DigitaloceanFunctions {
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8641,6 +9555,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketObjectResult> getSpacesBucketObject(GetSpacesBucketObjectArgs args, InvokeOptions options) {
@@ -8658,6 +9573,8 @@ public final class DigitaloceanFunctions {
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8697,6 +9614,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketObjectResult> getSpacesBucketObjectPlain(GetSpacesBucketObjectPlainArgs args, InvokeOptions options) {
@@ -8750,6 +9668,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter buckets.
      * 
      * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8781,7 +9701,10 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8817,6 +9740,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketsResult> getSpacesBuckets() {
@@ -8834,6 +9758,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter buckets.
      * 
      * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8865,7 +9791,10 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8901,6 +9830,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketsResult> getSpacesBucketsPlain() {
@@ -8918,6 +9848,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter buckets.
      * 
      * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8949,7 +9881,10 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8985,6 +9920,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketsResult> getSpacesBuckets(GetSpacesBucketsArgs args) {
@@ -9002,6 +9938,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter buckets.
      * 
      * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9033,7 +9971,10 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9069,6 +10010,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketsResult> getSpacesBucketsPlain(GetSpacesBucketsPlainArgs args) {
@@ -9086,6 +10028,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter buckets.
      * 
      * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9117,7 +10061,10 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9153,6 +10100,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpacesBucketsResult> getSpacesBuckets(GetSpacesBucketsArgs args, InvokeOptions options) {
@@ -9170,6 +10118,8 @@ public final class DigitaloceanFunctions {
      * Use the `filter` block with a `key` string and `values` list to filter buckets.
      * 
      * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9201,7 +10151,10 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9237,6 +10190,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpacesBucketsResult> getSpacesBucketsPlain(GetSpacesBucketsPlainArgs args, InvokeOptions options) {
@@ -9253,6 +10207,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the ssh key:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9290,6 +10246,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args) {
@@ -9306,6 +10263,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the ssh key:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9343,6 +10302,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args) {
@@ -9359,6 +10319,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the ssh key:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9396,6 +10358,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args, InvokeOptions options) {
@@ -9412,6 +10375,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the ssh key:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9449,6 +10414,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeyResult> getSshKeyPlain(GetSshKeyPlainArgs args, InvokeOptions options) {
@@ -9466,6 +10432,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9497,8 +10465,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9532,6 +10503,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeysResult> getSshKeys() {
@@ -9549,6 +10521,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9580,8 +10554,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9615,6 +10592,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeysResult> getSshKeysPlain() {
@@ -9632,6 +10610,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9663,8 +10643,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9698,6 +10681,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeysResult> getSshKeys(GetSshKeysArgs args) {
@@ -9715,6 +10699,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9746,8 +10732,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9781,6 +10770,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeysResult> getSshKeysPlain(GetSshKeysPlainArgs args) {
@@ -9798,6 +10788,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9829,8 +10821,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9864,6 +10859,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSshKeysResult> getSshKeys(GetSshKeysArgs args, InvokeOptions options) {
@@ -9881,6 +10877,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9912,8 +10910,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9947,6 +10948,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSshKeysResult> getSshKeysPlain(GetSshKeysPlainArgs args, InvokeOptions options) {
@@ -9962,6 +10964,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9999,6 +11003,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args) {
@@ -10014,6 +11019,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10051,6 +11058,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args) {
@@ -10066,6 +11074,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10103,6 +11113,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOptions options) {
@@ -10118,6 +11129,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10155,6 +11168,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {
@@ -10166,6 +11180,8 @@ public final class DigitaloceanFunctions {
      * returned.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10198,6 +11214,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagsResult> getTags() {
@@ -10209,6 +11226,8 @@ public final class DigitaloceanFunctions {
      * returned.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10241,6 +11260,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain() {
@@ -10252,6 +11272,8 @@ public final class DigitaloceanFunctions {
      * returned.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10284,6 +11306,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagsResult> getTags(GetTagsArgs args) {
@@ -10295,6 +11318,8 @@ public final class DigitaloceanFunctions {
      * returned.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10327,6 +11352,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain(GetTagsPlainArgs args) {
@@ -10338,6 +11364,8 @@ public final class DigitaloceanFunctions {
      * returned.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10370,6 +11398,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagsResult> getTags(GetTagsArgs args, InvokeOptions options) {
@@ -10381,6 +11410,8 @@ public final class DigitaloceanFunctions {
      * returned.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10413,6 +11444,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain(GetTagsPlainArgs args, InvokeOptions options) {
@@ -10429,6 +11461,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10458,8 +11492,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10504,6 +11541,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
@@ -10520,6 +11558,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10549,8 +11589,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10595,6 +11638,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
@@ -10611,6 +11655,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10640,8 +11686,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10686,6 +11735,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
@@ -10702,6 +11752,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10731,8 +11783,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10777,6 +11832,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
@@ -10790,6 +11846,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10820,8 +11878,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10860,6 +11921,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeSnapshotResult> getVolumeSnapshot() {
@@ -10873,6 +11935,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10903,8 +11967,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10943,6 +12010,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeSnapshotResult> getVolumeSnapshotPlain() {
@@ -10956,6 +12024,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10986,8 +12056,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11026,6 +12099,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeSnapshotResult> getVolumeSnapshot(GetVolumeSnapshotArgs args) {
@@ -11039,6 +12113,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11069,8 +12145,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11109,6 +12188,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeSnapshotResult> getVolumeSnapshotPlain(GetVolumeSnapshotPlainArgs args) {
@@ -11122,6 +12202,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11152,8 +12234,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11192,6 +12277,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeSnapshotResult> getVolumeSnapshot(GetVolumeSnapshotArgs args, InvokeOptions options) {
@@ -11205,6 +12291,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11235,8 +12323,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11275,6 +12366,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeSnapshotResult> getVolumeSnapshotPlain(GetVolumeSnapshotPlainArgs args, InvokeOptions options) {
@@ -11291,7 +12383,10 @@ public final class DigitaloceanFunctions {
      * return that that region&#39;s default VPC.
      * 
      * ## Example Usage
+     * 
      * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11320,8 +12415,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11359,6 +12457,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcResult> getVpc() {
@@ -11375,7 +12474,10 @@ public final class DigitaloceanFunctions {
      * return that that region&#39;s default VPC.
      * 
      * ## Example Usage
+     * 
      * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11404,8 +12506,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11443,6 +12548,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain() {
@@ -11459,7 +12565,10 @@ public final class DigitaloceanFunctions {
      * return that that region&#39;s default VPC.
      * 
      * ## Example Usage
+     * 
      * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11488,8 +12597,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11527,6 +12639,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args) {
@@ -11543,7 +12656,10 @@ public final class DigitaloceanFunctions {
      * return that that region&#39;s default VPC.
      * 
      * ## Example Usage
+     * 
      * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11572,8 +12688,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11611,6 +12730,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args) {
@@ -11627,7 +12747,10 @@ public final class DigitaloceanFunctions {
      * return that that region&#39;s default VPC.
      * 
      * ## Example Usage
+     * 
      * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11656,8 +12779,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11695,6 +12821,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOptions options) {
@@ -11711,7 +12838,10 @@ public final class DigitaloceanFunctions {
      * return that that region&#39;s default VPC.
      * 
      * ## Example Usage
+     * 
      * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11740,8 +12870,11 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11779,6 +12912,7 @@ public final class DigitaloceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {

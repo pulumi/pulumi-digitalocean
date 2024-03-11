@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -28,12 +29,15 @@ import * as utilities from "./utilities";
  * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
  * // ...
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
  * ## Example Usage
+ *
  * ### Create a Key in a Spaces Bucket
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -47,6 +51,7 @@ import * as utilities from "./utilities";
  *     contentType: "text/html",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

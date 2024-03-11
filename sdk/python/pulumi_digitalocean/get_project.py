@@ -164,6 +164,7 @@ def get_project(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -171,6 +172,7 @@ def get_project(id: Optional[str] = None,
     default = digitalocean.get_project()
     staging = digitalocean.get_project(name="My Staging Project")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: the ID of the project to retrieve
@@ -207,6 +209,7 @@ def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -214,6 +217,7 @@ def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     default = digitalocean.get_project()
     staging = digitalocean.get_project(name="My Staging Project")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: the ID of the project to retrieve

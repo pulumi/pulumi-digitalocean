@@ -327,7 +327,9 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         Provides a DigitalOcean database connection pool resource.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database connection pool
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -345,12 +347,13 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             db_name="defaultdb",
             user="doadmin")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database connection pools can be imported using the `id` of the source database cluster
 
-         and the `name` of the connection pool joined with a comma. For example:
+        and the `name` of the connection pool joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
@@ -375,7 +378,9 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         Provides a DigitalOcean database connection pool resource.
 
         ## Example Usage
+
         ### Create a new PostgreSQL database connection pool
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -393,12 +398,13 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             db_name="defaultdb",
             user="doadmin")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database connection pools can be imported using the `id` of the source database cluster
 
-         and the `name` of the connection pool joined with a comma. For example:
+        and the `name` of the connection pool joined with a comma. For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01

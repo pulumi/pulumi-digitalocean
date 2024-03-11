@@ -13,8 +13,10 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * To create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.
+ *
  * ### Basic Example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -34,8 +36,11 @@ import * as utilities from "./utilities";
  *     }],
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Static Site Example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -54,6 +59,7 @@ import * as utilities from "./utilities";
  *     }],
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

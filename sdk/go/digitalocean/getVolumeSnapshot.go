@@ -19,6 +19,7 @@ import (
 //
 // Get the volume snapshot:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,9 +45,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Reuse the data about a volume snapshot to create a new volume based on it:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,6 +83,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeSnapshotResult

@@ -25,6 +25,7 @@ import (
 //
 // For example to find all staging environment projects:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,9 +56,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // You can filter on multiple fields and sort the results as well:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,6 +103,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult

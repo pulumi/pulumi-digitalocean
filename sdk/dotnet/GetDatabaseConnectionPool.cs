@@ -14,10 +14,9 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Provides information on a DigitalOcean PostgreSQL database connection pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseConnectionPoolResult> InvokeAsync(GetDatabaseConnectionPoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseConnectionPoolResult>("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args ?? new GetDatabaseConnectionPoolArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Provides information on a DigitalOcean PostgreSQL database connection pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseConnectionPoolResult> Invoke(GetDatabaseConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseConnectionPoolResult>("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args ?? new GetDatabaseConnectionPoolInvokeArgs(), options.WithDefaults());

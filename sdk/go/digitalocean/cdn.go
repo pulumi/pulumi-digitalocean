@@ -15,8 +15,10 @@ import (
 // Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
 //
 // ## Example Usage
+//
 // ### Basic Example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,8 +52,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Custom Sub-Domain Example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,6 +101,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -17,7 +17,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Create a Key in a Spaces Bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,6 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -33,6 +34,7 @@ import * as utilities from "./utilities";
  * export const wwwFqdn = www.fqdn;
  * export const mxFqdn = mx.fqdn;
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -42,9 +44,7 @@ import * as utilities from "./utilities";
  * $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
  * ```
  *
- *  ~>
- *
- * You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
+ * ~>  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**

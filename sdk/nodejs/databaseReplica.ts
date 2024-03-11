@@ -11,7 +11,9 @@ import * as utilities from "./utilities";
  * Provides a DigitalOcean database replica resource.
  *
  * ## Example Usage
+ *
  * ### Create a new PostgreSQL database replica
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -38,12 +40,13 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database replicas can be imported using the `id` of the source database cluster
  *
- *  and the `name` of the replica joined with a comma. For example:
+ * and the `name` of the replica joined with a comma. For example:
  *
  * ```sh
  * $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica

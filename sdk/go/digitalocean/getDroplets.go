@@ -26,6 +26,7 @@ import (
 //
 // For example to find all Droplets with size `s-1vcpu-1gb`:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,9 +57,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // You can filter on multiple fields and sort the results as well:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,6 +104,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDroplets(ctx *pulumi.Context, args *GetDropletsArgs, opts ...pulumi.InvokeOption) (*GetDropletsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDropletsResult

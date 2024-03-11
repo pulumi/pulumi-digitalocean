@@ -16,12 +16,11 @@ namespace Pulumi.DigitalOcean
         /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
         /// resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get the volume snapshot:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,9 +38,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a volume snapshot to create a new volume based on it:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,8 +67,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithDefaults());
@@ -77,12 +77,11 @@ namespace Pulumi.DigitalOcean
         /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
         /// resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get the volume snapshot:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,9 +99,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a volume snapshot to create a new volume based on it:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -127,8 +128,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());

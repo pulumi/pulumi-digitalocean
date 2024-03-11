@@ -18,14 +18,13 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.getRegion` data source
         /// to obtain metadata about a single region if you already know the `slug` to retrieve.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Use the `filter` block with a `key` string and `values` list to filter regions.
         /// 
         /// For example to find all available regions:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,9 +50,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +96,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -108,14 +108,13 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.getRegion` data source
         /// to obtain metadata about a single region if you already know the `slug` to retrieve.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Use the `filter` block with a `key` string and `values` list to filter regions.
         /// 
         /// For example to find all available regions:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -141,9 +140,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -185,8 +186,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());

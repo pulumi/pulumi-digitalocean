@@ -105,8 +105,10 @@ class DatabaseFirewall(pulumi.CustomResource):
         specific Droplets, Kubernetes clusters, or IP addresses.
 
         ## Example Usage
+
         ### Create a new database firewall allowing multiple IP addresses
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -130,8 +132,11 @@ class DatabaseFirewall(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new database firewall allowing a Droplet
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -153,8 +158,11 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new database firewall for a database replica
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -177,12 +185,13 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database firewalls can be imported using the `id` of the target database cluster
 
-         For example:
+        For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
@@ -205,8 +214,10 @@ class DatabaseFirewall(pulumi.CustomResource):
         specific Droplets, Kubernetes clusters, or IP addresses.
 
         ## Example Usage
+
         ### Create a new database firewall allowing multiple IP addresses
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -230,8 +241,11 @@ class DatabaseFirewall(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new database firewall allowing a Droplet
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -253,8 +267,11 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a new database firewall for a database replica
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -277,12 +294,13 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database firewalls can be imported using the `id` of the target database cluster
 
-         For example:
+        For example:
 
         ```sh
         $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54

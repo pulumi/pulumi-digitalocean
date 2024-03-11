@@ -105,6 +105,7 @@ def get_floating_ip(ip_address: Optional[str] = None,
 
     Get the floating IP:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -114,6 +115,7 @@ def get_floating_ip(ip_address: Optional[str] = None,
     example = digitalocean.get_floating_ip(ip_address=public_ip)
     pulumi.export("fipOutput", example.droplet_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
@@ -148,6 +150,7 @@ def get_floating_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
 
     Get the floating IP:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -157,6 +160,7 @@ def get_floating_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
     example = digitalocean.get_floating_ip(ip_address=public_ip)
     pulumi.export("fipOutput", example.droplet_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ip_address: The allocated IP address of the specific floating IP to retrieve.

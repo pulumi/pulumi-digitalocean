@@ -223,7 +223,9 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         Provides a DigitalOcean Kafka topic for Kafka clusters.
 
         ## Example Usage
+
         ### Create a new Kafka topic
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -265,6 +267,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                 segment_ms="604800000",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -293,7 +296,9 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         Provides a DigitalOcean Kafka topic for Kafka clusters.
 
         ## Example Usage
+
         ### Create a new Kafka topic
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -335,6 +340,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                 segment_ms="604800000",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

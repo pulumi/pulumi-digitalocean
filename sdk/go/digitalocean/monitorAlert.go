@@ -61,7 +61,7 @@ type MonitorAlert struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The uuid of the alert.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
-	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+	// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
 	Value pulumi.Float64Output `pulumi:"value"`
 	// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -148,7 +148,7 @@ type monitorAlertState struct {
 	Type *string `pulumi:"type"`
 	// The uuid of the alert.
 	Uuid *string `pulumi:"uuid"`
-	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+	// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
 	Value *float64 `pulumi:"value"`
 	// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -188,7 +188,7 @@ type MonitorAlertState struct {
 	Type pulumi.StringPtrInput
 	// The uuid of the alert.
 	Uuid pulumi.StringPtrInput
-	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+	// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
 	Value pulumi.Float64PtrInput
 	// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -230,7 +230,7 @@ type monitorAlertArgs struct {
 	// `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
 	// `v1/dbaas/alerts/disk_utilization_alerts`.
 	Type string `pulumi:"type"`
-	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+	// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
 	Value float64 `pulumi:"value"`
 	// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -269,7 +269,7 @@ type MonitorAlertArgs struct {
 	// `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
 	// `v1/dbaas/alerts/disk_utilization_alerts`.
 	Type pulumi.StringInput
-	// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+	// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
 	// DigitalOcean will show the correct unit in the web panel.
 	Value pulumi.Float64Input
 	// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
@@ -419,7 +419,7 @@ func (o MonitorAlertOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitorAlert) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
 // DigitalOcean will show the correct unit in the web panel.
 func (o MonitorAlertOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v *MonitorAlert) pulumi.Float64Output { return v.Value }).(pulumi.Float64Output)

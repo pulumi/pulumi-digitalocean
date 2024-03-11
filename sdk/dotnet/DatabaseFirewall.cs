@@ -15,8 +15,10 @@ namespace Pulumi.DigitalOcean
     /// specific Droplets, Kubernetes clusters, or IP addresses.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a new database firewall allowing multiple IP addresses
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,8 +56,11 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create a new database firewall allowing a Droplet
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,8 +100,11 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create a new database firewall for a database replica
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -137,12 +145,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Database firewalls can be imported using the `id` of the target database cluster
     /// 
-    ///  For example:
+    /// For example:
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54

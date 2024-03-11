@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,12 +59,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// Reserved IP assignments can be imported using the reserved IP itself and the `id` of
+// # Reserved IP assignments can be imported using the reserved IP itself and the `id` of
 //
-//	the Droplet joined with a comma. For example:
+// the Droplet joined with a comma. For example:
 //
 // ```sh
 // $ pulumi import digitalocean:index/reservedIpAssignment:ReservedIpAssignment foobar 192.0.2.1,123456

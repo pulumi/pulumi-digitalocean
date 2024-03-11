@@ -154,6 +154,7 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
 
     Get the Droplet snapshot:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -162,9 +163,11 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
         name_regex="^web",
         region="nyc3")
     ```
+    <!--End PulumiCodeChooser -->
 
     Create image from snapshot:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -177,6 +180,7 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
         region="nyc3",
         size="s-2vcpu-4gb")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
@@ -224,6 +228,7 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
 
     Get the Droplet snapshot:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -232,9 +237,11 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
         name_regex="^web",
         region="nyc3")
     ```
+    <!--End PulumiCodeChooser -->
 
     Create image from snapshot:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -247,6 +254,7 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
         region="nyc3",
         size="s-2vcpu-4gb")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.

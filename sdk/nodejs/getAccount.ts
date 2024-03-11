@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * Get the account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getAccount({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
@@ -69,12 +71,14 @@ export interface GetAccountResult {
  *
  * Get the account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getAccount({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(getAccount(opts))

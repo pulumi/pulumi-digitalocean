@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * }));
  * export const connectionPoolUriOutput = read_only.then(read_only => read_only.uri);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseConnectionPool(args: GetDatabaseConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseConnectionPoolResult> {
 
@@ -102,6 +104,7 @@ export interface GetDatabaseConnectionPoolResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -115,6 +118,7 @@ export interface GetDatabaseConnectionPoolResult {
  * }));
  * export const connectionPoolUriOutput = read_only.then(read_only => read_only.uri);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseConnectionPoolOutput(args: GetDatabaseConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseConnectionPoolResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseConnectionPool(a, opts))

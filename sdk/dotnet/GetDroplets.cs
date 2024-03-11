@@ -21,14 +21,13 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
         /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Use the `filter` block with a `key` string and `values` list to filter images.
         /// 
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,9 +53,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,8 +99,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDropletsResult> InvokeAsync(GetDropletsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsArgs(), options.WithDefaults());
@@ -114,14 +114,13 @@ namespace Pulumi.DigitalOcean
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
         /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Use the `filter` block with a `key` string and `values` list to filter images.
         /// 
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -147,9 +146,11 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -191,8 +192,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDropletsResult> Invoke(GetDropletsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsInvokeArgs(), options.WithDefaults());

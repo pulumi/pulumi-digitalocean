@@ -93,7 +93,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+        /// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
         /// DigitalOcean will show the correct unit in the web panel.
         /// </summary>
         [Output("value")]
@@ -222,7 +222,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+        /// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
         /// DigitalOcean will show the correct unit in the web panel.
         /// </summary>
         [Input("value", required: true)]
@@ -319,7 +319,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
+        /// The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
         /// DigitalOcean will show the correct unit in the web panel.
         /// </summary>
         [Input("value")]

@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The following example assigns a droplet to a Project managed outside of the provider:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -75,6 +77,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

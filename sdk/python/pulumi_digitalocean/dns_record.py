@@ -382,6 +382,7 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -401,6 +402,7 @@ class DnsRecord(pulumi.CustomResource):
         pulumi.export("wwwFqdn", www.fqdn)
         pulumi.export("mxFqdn", mx.fqdn)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -410,9 +412,7 @@ class DnsRecord(pulumi.CustomResource):
         $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
         ```
 
-         ~>
-
-        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
+        ~>  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -438,6 +438,7 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -457,6 +458,7 @@ class DnsRecord(pulumi.CustomResource):
         pulumi.export("wwwFqdn", www.fqdn)
         pulumi.export("mxFqdn", mx.fqdn)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -466,9 +468,7 @@ class DnsRecord(pulumi.CustomResource):
         $ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678
         ```
 
-         ~>
-
-        You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
+        ~>  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
 
         :param str resource_name: The name of the resource.
         :param DnsRecordArgs args: The arguments to use to populate this resource's properties.

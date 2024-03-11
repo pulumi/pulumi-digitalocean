@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * Get the volume:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -25,9 +26,11 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a volume to attach it to a Droplet:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -46,6 +49,7 @@ import * as utilities from "./utilities";
  *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
 
@@ -126,6 +130,7 @@ export interface GetVolumeResult {
  *
  * Get the volume:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -135,9 +140,11 @@ export interface GetVolumeResult {
  *     region: "nyc3",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a volume to attach it to a Droplet:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -156,6 +163,7 @@ export interface GetVolumeResult {
  *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
     return pulumi.output(args).apply((a: any) => getVolume(a, opts))

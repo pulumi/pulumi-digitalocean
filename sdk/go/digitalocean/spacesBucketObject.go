@@ -28,6 +28,7 @@ import (
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,12 +50,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 //
 // ## Example Usage
+//
 // ### Create a Key in a Spaces Bucket
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,6 +92,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

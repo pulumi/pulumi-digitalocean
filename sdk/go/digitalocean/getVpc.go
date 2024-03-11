@@ -21,8 +21,10 @@ import (
 // return that that region's default VPC.
 //
 // ## Example Usage
+//
 // ### VPC By Name
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,9 +48,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Reuse the data about a VPC to assign a Droplet to it:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,6 +85,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOption) (*LookupVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcResult
