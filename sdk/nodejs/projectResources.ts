@@ -10,14 +10,15 @@ import * as utilities from "./utilities";
  *
  * The following resource types can be associated with a project:
  *
+ * * App Platform Apps
  * * Database Clusters
  * * Domains
  * * Droplets
- * * Floating IP
- * * Kubernetes Cluster
+ * * Floating IPs
+ * * Kubernetes Clusters
  * * Load Balancers
- * * Spaces Bucket
- * * Volume
+ * * Spaces Buckets
+ * * Volumes
  *
  * ## Example Usage
  *

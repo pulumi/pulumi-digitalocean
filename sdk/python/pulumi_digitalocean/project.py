@@ -304,14 +304,15 @@ class Project(pulumi.CustomResource):
 
         The following resource types can be associated with a project:
 
+        * App Platform Apps
         * Database Clusters
         * Domains
         * Droplets
-        * Floating IP
-        * Kubernetes Cluster
+        * Floating IPs
+        * Kubernetes Clusters
         * Load Balancers
-        * Spaces Bucket
-        * Volume
+        * Spaces Buckets
+        * Volumes
 
         **Note:** A provider managed project cannot be set as a default project.
 
@@ -382,14 +383,15 @@ class Project(pulumi.CustomResource):
 
         The following resource types can be associated with a project:
 
+        * App Platform Apps
         * Database Clusters
         * Domains
         * Droplets
-        * Floating IP
-        * Kubernetes Cluster
+        * Floating IPs
+        * Kubernetes Clusters
         * Load Balancers
-        * Spaces Bucket
-        * Volume
+        * Spaces Buckets
+        * Volumes
 
         **Note:** A provider managed project cannot be set as a default project.
 
