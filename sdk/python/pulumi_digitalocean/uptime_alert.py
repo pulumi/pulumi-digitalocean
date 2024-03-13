@@ -269,10 +269,12 @@ class UptimeAlert(pulumi.CustomResource):
 
         ## Import
 
-        Uptime checks can be imported using the uptime alert's `id`, e.g.
+        Uptime alerts can be imported using both the ID of the alert's parent check and
+
+        its own separated by a comma in the format: `check_id,alert_id`. For example:
 
         ```sh
-        $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
+        $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 94a7d216-d821-11ee-a327-33d3239ffc4b,5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
 
         :param str resource_name: The name of the resource.
@@ -297,10 +299,12 @@ class UptimeAlert(pulumi.CustomResource):
 
         ## Import
 
-        Uptime checks can be imported using the uptime alert's `id`, e.g.
+        Uptime alerts can be imported using both the ID of the alert's parent check and
+
+        its own separated by a comma in the format: `check_id,alert_id`. For example:
 
         ```sh
-        $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
+        $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 94a7d216-d821-11ee-a327-33d3239ffc4b,5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
 
         :param str resource_name: The name of the resource.
