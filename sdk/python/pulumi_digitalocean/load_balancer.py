@@ -754,11 +754,11 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         public = digitalocean.LoadBalancer("public",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
                 entry_port=80,
                 entry_protocol="http",
@@ -788,11 +788,11 @@ class LoadBalancer(pulumi.CustomResource):
             private_key="file('key.pem')",
             leaf_certificate="file('cert.pem')")
         web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         public = digitalocean.LoadBalancer("public",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
                 entry_port=443,
                 entry_protocol="https",
@@ -865,11 +865,11 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         public = digitalocean.LoadBalancer("public",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
                 entry_port=80,
                 entry_protocol="http",
@@ -899,11 +899,11 @@ class LoadBalancer(pulumi.CustomResource):
             private_key="file('key.pem')",
             leaf_certificate="file('cert.pem')")
         web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         public = digitalocean.LoadBalancer("public",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
                 entry_port=443,
                 entry_protocol="https",

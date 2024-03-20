@@ -31,15 +31,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
 //					&digitalocean.LoadBalancerForwardingRuleArgs{
 //						EntryPort:      pulumi.Int(80),
@@ -93,15 +93,15 @@ import (
 //				return err
 //			}
 //			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
 //					&digitalocean.LoadBalancerForwardingRuleArgs{
 //						EntryPort:       pulumi.Int(443),

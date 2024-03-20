@@ -52,7 +52,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
-        ///         Region = "lon1",
+        ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
         ///         {
@@ -84,7 +84,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
-        ///         Region = "lon1",
+        ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
         ///         {
@@ -142,7 +142,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
-        ///         Region = "lon1",
+        ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
         ///         {
@@ -174,7 +174,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
-        ///         Region = "lon1",
+        ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
         ///         {

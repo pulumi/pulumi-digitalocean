@@ -21,8 +21,8 @@ import * as utilities from "./utilities";
  * // Create a new Web Droplet in the nyc2 region
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-20-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC2,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -143,7 +143,7 @@ export class Droplet extends pulumi.CustomResource {
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      *
-     * @deprecated This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+     * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     public readonly privateNetworking!: pulumi.Output<boolean>;
     /**
@@ -362,7 +362,7 @@ export interface DropletState {
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      *
-     * @deprecated This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+     * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**
@@ -469,7 +469,7 @@ export interface DropletArgs {
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      *
-     * @deprecated This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+     * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     privateNetworking?: pulumi.Input<boolean>;
     /**

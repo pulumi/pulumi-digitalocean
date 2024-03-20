@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Spaces Bucket
     ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
-    ///         Region = "sfo2",
+    ///         Region = DigitalOcean.Region.SFO2,
     ///         Acl = "public-read",
     ///     });
     /// 
@@ -60,14 +60,14 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Spaces Bucket
     ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
-    ///         Region = "sfo2",
+    ///         Region = DigitalOcean.Region.SFO2,
     ///         Acl = "public-read",
     ///     });
     /// 
     ///     // Create a DigitalOcean managed Let's Encrypt Certificate
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         Type = "lets_encrypt",
+    ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
     ///         Domains = new[]
     ///         {
     ///             "static.example.com",

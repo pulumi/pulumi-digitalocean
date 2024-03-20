@@ -32,9 +32,9 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///         Ipv6 = true,
     ///         PrivateNetworking = true,
     ///     });

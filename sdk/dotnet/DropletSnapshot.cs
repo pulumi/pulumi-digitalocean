@@ -25,9 +25,9 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     ///     var web_snapshot = new DigitalOcean.DropletSnapshot("web-snapshot", new()
@@ -38,8 +38,8 @@ namespace Pulumi.DigitalOcean
     ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
     ///     {
     ///         Image = web_snapshot.Id,
-    ///         Region = "nyc3",
-    ///         Size = "s-2vcpu-4gb",
+    ///         Region = DigitalOcean.Region.NYC3,
+    ///         Size = DigitalOcean.DropletSlug.DropletS2VCPU4GB,
     ///     });
     /// 
     /// });

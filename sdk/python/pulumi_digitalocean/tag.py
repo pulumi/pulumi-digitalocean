@@ -180,8 +180,8 @@ class Tag(pulumi.CustomResource):
         # Create a new Droplet in nyc3 with the foobar tag
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
-            region="nyc3",
-            size="s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             tags=[foobar.id])
         ```
         <!--End PulumiCodeChooser -->
@@ -222,8 +222,8 @@ class Tag(pulumi.CustomResource):
         # Create a new Droplet in nyc3 with the foobar tag
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
-            region="nyc3",
-            size="s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             tags=[foobar.id])
         ```
         <!--End PulumiCodeChooser -->

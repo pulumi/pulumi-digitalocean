@@ -43,10 +43,10 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String("nyc2"),
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Region: pulumi.String(digitalocean.RegionNYC2),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				SshKeys: pulumi.StringArray{
-//					*pulumi.Int(exampleSshKey.Id),
+//					pulumi.Int(exampleSshKey.Id),
 //				},
 //			})
 //			if err != nil {

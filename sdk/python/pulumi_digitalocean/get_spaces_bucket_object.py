@@ -277,8 +277,8 @@ def get_spaces_bucket_object(bucket: Optional[str] = None,
         key="droplet-bootstrap-script.sh")
     web = digitalocean.Droplet("web",
         image="ubuntu-18-04-x64",
-        region="nyc2",
-        size="s-1vcpu-1gb",
+        region=digitalocean.Region.NYC2,
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         user_data=bootstrap_script.body)
     ```
     <!--End PulumiCodeChooser -->
@@ -350,8 +350,8 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
         key="droplet-bootstrap-script.sh")
     web = digitalocean.Droplet("web",
         image="ubuntu-18-04-x64",
-        region="nyc2",
-        size="s-1vcpu-1gb",
+        region=digitalocean.Region.NYC2,
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         user_data=bootstrap_script.body)
     ```
     <!--End PulumiCodeChooser -->

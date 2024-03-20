@@ -70,9 +70,9 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-//				Image:  *pulumi.Int(exampleImage.Id),
-//				Region: pulumi.String("nyc2"),
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Image:  pulumi.Int(exampleImage.Id),
+//				Region: pulumi.String(digitalocean.RegionNYC2),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //			})
 //			if err != nil {
 //				return err

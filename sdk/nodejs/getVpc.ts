@@ -40,9 +40,9 @@ import * as utilities from "./utilities";
  *     name: "example-network",
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
  * });
  * ```
@@ -150,9 +150,9 @@ export interface GetVpcResult {
  *     name: "example-network",
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
  * });
  * ```

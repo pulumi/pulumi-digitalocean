@@ -632,7 +632,7 @@ class SpacesBucketObject(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
         index = digitalocean.SpacesBucketObject("index",
             region=foobar.region,
             bucket=foobar.name,
@@ -714,7 +714,7 @@ class SpacesBucketObject(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region="nyc3")
+        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
         index = digitalocean.SpacesBucketObject("index",
             region=foobar.region,
             bucket=foobar.name,

@@ -256,8 +256,8 @@ def get_image(id: Optional[int] = None,
     example_image = digitalocean.get_image(name="example-1.0.0")
     example_droplet = digitalocean.Droplet("exampleDroplet",
         image=example_image.id,
-        region="nyc2",
-        size="s-1vcpu-1gb")
+        region=digitalocean.Region.NYC2,
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -344,8 +344,8 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     example_image = digitalocean.get_image(name="example-1.0.0")
     example_droplet = digitalocean.Droplet("exampleDroplet",
         image=example_image.id,
-        region="nyc2",
-        size="s-1vcpu-1gb")
+        region=digitalocean.Region.NYC2,
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
     ```
     <!--End PulumiCodeChooser -->
 

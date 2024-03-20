@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as fs from "fs";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     type: "custom",
+ *     type: digitalocean.CertificateType.Custom,
  *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem", "utf8"),
  *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem", "utf8"),
  *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem", "utf8"),
@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *
  * const cert = new digitalocean.Certificate("cert", {
  *     domains: ["example.com"],
- *     type: "lets_encrypt",
+ *     type: digitalocean.CertificateType.LetsEncrypt,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -59,12 +59,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     type: "lets_encrypt",
+ *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["example.com"],
  * });
  * // Create a new Load Balancer with TLS termination
  * const _public = new digitalocean.LoadBalancer("public", {
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     dropletTag: "backend",
  *     forwardingRules: [{
  *         entryPort: 443,

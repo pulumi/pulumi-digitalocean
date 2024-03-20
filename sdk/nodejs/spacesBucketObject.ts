@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
+ * const foobar = new digitalocean.SpacesBucket("foobar", {region: digitalocean.Region.NYC3});
  * const index = new digitalocean.SpacesBucketObject("index", {
  *     region: foobar.region,
  *     bucket: foobar.name,

@@ -26,9 +26,9 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var webDroplet = new DigitalOcean.Droplet("webDroplet", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     ///     var webFirewall = new DigitalOcean.Firewall("webFirewall", new()

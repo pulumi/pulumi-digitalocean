@@ -60,7 +60,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var foobar = new DigitalOcean.Volume("foobar", new()
         ///     {
-        ///         Region = "nyc3",
+        ///         Region = DigitalOcean.Region.NYC3,
         ///         Size = 100,
         ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
         ///     });
@@ -121,7 +121,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var foobar = new DigitalOcean.Volume("foobar", new()
         ///     {
-        ///         Region = "nyc3",
+        ///         Region = DigitalOcean.Region.NYC3,
         ///         Size = 100,
         ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
         ///     });

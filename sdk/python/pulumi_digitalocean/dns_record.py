@@ -391,12 +391,12 @@ class DnsRecord(pulumi.CustomResource):
         # Add an A record to the domain for www.example.com.
         www = digitalocean.DnsRecord("www",
             domain=default.id,
-            type="A",
+            type=digitalocean.RecordType.A,
             value="192.168.0.11")
         # Add a MX record for the example.com domain itself.
         mx = digitalocean.DnsRecord("mx",
             domain=default.id,
-            type="MX",
+            type=digitalocean.RecordType.MX,
             priority=10,
             value="mail.example.com.")
         pulumi.export("wwwFqdn", www.fqdn)
@@ -447,12 +447,12 @@ class DnsRecord(pulumi.CustomResource):
         # Add an A record to the domain for www.example.com.
         www = digitalocean.DnsRecord("www",
             domain=default.id,
-            type="A",
+            type=digitalocean.RecordType.A,
             value="192.168.0.11")
         # Add a MX record for the example.com domain itself.
         mx = digitalocean.DnsRecord("mx",
             domain=default.id,
-            type="MX",
+            type=digitalocean.RecordType.MX,
             priority=10,
             value="mail.example.com.")
         pulumi.export("wwwFqdn", www.fqdn)

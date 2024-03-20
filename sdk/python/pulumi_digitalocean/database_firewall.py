@@ -116,8 +116,8 @@ class DatabaseFirewall(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
@@ -142,14 +142,14 @@ class DatabaseFirewall(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
@@ -170,13 +170,13 @@ class DatabaseFirewall(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
-            size="db-s-1vcpu-1gb",
-            region="nyc1")
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1)
         # Create firewall rule for database replica
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=replica_example.uuid,
@@ -225,8 +225,8 @@ class DatabaseFirewall(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
@@ -251,14 +251,14 @@ class DatabaseFirewall(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
@@ -279,13 +279,13 @@ class DatabaseFirewall(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
-            size="db-s-1vcpu-1gb",
-            region="nyc1")
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1)
         # Create firewall rule for database replica
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=replica_example.uuid,

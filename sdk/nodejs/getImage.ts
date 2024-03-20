@@ -39,8 +39,8 @@ import * as utilities from "./utilities";
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
  *     image: exampleImage.then(exampleImage => exampleImage.id),
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC2,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -194,8 +194,8 @@ export interface GetImageResult {
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
  *     image: exampleImage.then(exampleImage => exampleImage.id),
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC2,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

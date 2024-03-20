@@ -162,9 +162,9 @@ class FloatingIp(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="sgp1",
+            region=digitalocean.Region.SGP1,
             ipv6=True,
             private_networking=True)
         foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp",
@@ -208,9 +208,9 @@ class FloatingIp(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="sgp1",
+            region=digitalocean.Region.SGP1,
             ipv6=True,
             private_networking=True)
         foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp",

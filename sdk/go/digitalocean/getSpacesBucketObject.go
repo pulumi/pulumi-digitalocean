@@ -46,9 +46,9 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:    pulumi.String("ubuntu-18-04-x64"),
-//				Region:   pulumi.String("nyc2"),
-//				Size:     pulumi.String("s-1vcpu-1gb"),
-//				UserData: *pulumi.String(bootstrapScript.Body),
+//				Region:   pulumi.String(digitalocean.RegionNYC2),
+//				Size:     pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
+//				UserData: pulumi.String(bootstrapScript.Body),
 //			})
 //			if err != nil {
 //				return err

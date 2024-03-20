@@ -29,7 +29,7 @@ namespace Pulumi.DigitalOcean
     ///         Engine = "kafka",
     ///         Version = "3.5",
     ///         Size = "db-s-2vcpu-2gb",
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 3,
     ///         Tags = new[]
     ///         {

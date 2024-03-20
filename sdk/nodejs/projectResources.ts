@@ -33,9 +33,9 @@ import * as utilities from "./utilities";
  *     name: "playground",
  * });
  * const foobar = new digitalocean.Droplet("foobar", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const barfoo = new digitalocean.ProjectResources("barfoo", {
  *     project: playground.then(playground => playground.id),

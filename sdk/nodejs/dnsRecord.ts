@@ -21,13 +21,13 @@ import * as utilities from "./utilities";
  * // Add an A record to the domain for www.example.com.
  * const www = new digitalocean.DnsRecord("www", {
  *     domain: _default.id,
- *     type: "A",
+ *     type: digitalocean.RecordType.A,
  *     value: "192.168.0.11",
  * });
  * // Add a MX record for the example.com domain itself.
  * const mx = new digitalocean.DnsRecord("mx", {
  *     domain: _default.id,
- *     type: "MX",
+ *     type: digitalocean.RecordType.MX,
  *     priority: 10,
  *     value: "mail.example.com.",
  * });

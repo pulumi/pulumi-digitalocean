@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const webDroplet = new digitalocean.Droplet("webDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const webFirewall = new digitalocean.Firewall("webFirewall", {
  *     dropletIds: [webDroplet.id],

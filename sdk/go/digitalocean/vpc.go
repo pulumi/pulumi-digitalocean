@@ -72,9 +72,9 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-//				Size:    pulumi.String("s-1vcpu-1gb"),
+//				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
-//				Region:  pulumi.String("nyc3"),
+//				Region:  pulumi.String(digitalocean.RegionNYC3),
 //				VpcUuid: exampleVpc.ID(),
 //			})
 //			if err != nil {

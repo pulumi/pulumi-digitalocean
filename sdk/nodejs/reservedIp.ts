@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     ipv6: true,
  *     privateNetworking: true,
  * });

@@ -79,9 +79,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-22-04-x64"),
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err

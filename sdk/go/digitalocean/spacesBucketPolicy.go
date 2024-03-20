@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobarSpacesBucket, err := digitalocean.NewSpacesBucket(ctx, "foobarSpacesBucket", &digitalocean.SpacesBucketArgs{
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err

@@ -21,14 +21,14 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  * });
  * export const uUID = replica_example.uuid;
  * // Create firewall rule for database replica

@@ -30,18 +30,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-//				Region:                pulumi.String("nyc1"),
+//				Region:                pulumi.String(digitalocean.RegionNYC1),
 //				Size:                  pulumi.Int(100),
-//				InitialFilesystemType: pulumi.String("ext4"),
+//				InitialFilesystemType: pulumi.String(digitalocean.FileSystemTypeEXT4),
 //				Description:           pulumi.String("an example volume"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String("nyc1"),
+//				Region: pulumi.String(digitalocean.RegionNYC1),
 //			})
 //			if err != nil {
 //				return err
@@ -82,9 +82,9 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-//				Region:     pulumi.String("lon1"),
-//				Size:       *pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
-//				SnapshotId: *pulumi.String(foobarVolumeSnapshot.Id),
+//				Region:     pulumi.String(digitalocean.RegionLON1),
+//				Size:       pulumi.Int(foobarVolumeSnapshot.MinDiskSize),
+//				SnapshotId: pulumi.String(foobarVolumeSnapshot.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -114,7 +114,7 @@ type Volume struct {
 	FilesystemLabel pulumi.StringOutput `pulumi:"filesystemLabel"`
 	// Filesystem type (`xfs` or `ext4`) for the block storage volume.
 	//
-	// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+	// Deprecated: This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
 	FilesystemType pulumi.StringOutput `pulumi:"filesystemType"`
 	// Initial filesystem label for the block storage volume.
 	InitialFilesystemLabel pulumi.StringPtrOutput `pulumi:"initialFilesystemLabel"`
@@ -178,7 +178,7 @@ type volumeState struct {
 	FilesystemLabel *string `pulumi:"filesystemLabel"`
 	// Filesystem type (`xfs` or `ext4`) for the block storage volume.
 	//
-	// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+	// Deprecated: This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
 	FilesystemType *string `pulumi:"filesystemType"`
 	// Initial filesystem label for the block storage volume.
 	InitialFilesystemLabel *string `pulumi:"initialFilesystemLabel"`
@@ -207,7 +207,7 @@ type VolumeState struct {
 	FilesystemLabel pulumi.StringPtrInput
 	// Filesystem type (`xfs` or `ext4`) for the block storage volume.
 	//
-	// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+	// Deprecated: This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
 	FilesystemType pulumi.StringPtrInput
 	// Initial filesystem label for the block storage volume.
 	InitialFilesystemLabel pulumi.StringPtrInput
@@ -236,7 +236,7 @@ type volumeArgs struct {
 	Description *string `pulumi:"description"`
 	// Filesystem type (`xfs` or `ext4`) for the block storage volume.
 	//
-	// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+	// Deprecated: This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
 	FilesystemType *string `pulumi:"filesystemType"`
 	// Initial filesystem label for the block storage volume.
 	InitialFilesystemLabel *string `pulumi:"initialFilesystemLabel"`
@@ -260,7 +260,7 @@ type VolumeArgs struct {
 	Description pulumi.StringPtrInput
 	// Filesystem type (`xfs` or `ext4`) for the block storage volume.
 	//
-	// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+	// Deprecated: This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
 	FilesystemType pulumi.StringPtrInput
 	// Initial filesystem label for the block storage volume.
 	InitialFilesystemLabel pulumi.StringPtrInput
@@ -382,7 +382,7 @@ func (o VolumeOutput) FilesystemLabel() pulumi.StringOutput {
 
 // Filesystem type (`xfs` or `ext4`) for the block storage volume.
 //
-// Deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+// Deprecated: This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
 func (o VolumeOutput) FilesystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.FilesystemType }).(pulumi.StringOutput)
 }

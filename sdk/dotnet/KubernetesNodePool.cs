@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
     ///     {
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         Version = "1.22.8-do.1",
     ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
     ///         {
@@ -40,7 +40,7 @@ namespace Pulumi.DigitalOcean
     ///     var bar = new DigitalOcean.KubernetesNodePool("bar", new()
     ///     {
     ///         ClusterId = foo.Id,
-    ///         Size = "c-2",
+    ///         Size = DigitalOcean.DropletSlug.DropletC2,
     ///         NodeCount = 2,
     ///         Tags = new[]
     ///         {
@@ -83,7 +83,7 @@ namespace Pulumi.DigitalOcean
     ///     var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool("autoscale-pool-01", new()
     ///     {
     ///         ClusterId = digitalocean_kubernetes_cluster.Foo.Id,
-    ///         Size = "s-1vcpu-2gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU2GB,
     ///         AutoScale = true,
     ///         MinNodes = 1,
     ///         MaxNodes = 5,

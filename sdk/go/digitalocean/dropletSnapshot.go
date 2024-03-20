@@ -30,9 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-22-04-x64"),
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
@@ -45,8 +45,8 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "from-snapshot", &digitalocean.DropletArgs{
 //				Image:  web_snapshot.ID(),
-//				Region: pulumi.String("nyc3"),
-//				Size:   pulumi.String("s-2vcpu-4gb"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS2VCPU4GB),
 //			})
 //			if err != nil {
 //				return err

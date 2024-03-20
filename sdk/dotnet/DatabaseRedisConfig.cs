@@ -30,8 +30,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "redis",
     ///         Version = "7",
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///     });
     /// 
