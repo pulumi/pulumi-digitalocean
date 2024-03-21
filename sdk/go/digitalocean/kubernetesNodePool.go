@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
-//				Region:  pulumi.String("nyc1"),
+//				Region:  pulumi.String(digitalocean.RegionNYC1),
 //				Version: pulumi.String("1.22.8-do.1"),
 //				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
 //					Name:      pulumi.String("front-end-pool"),
@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
 //				ClusterId: foo.ID(),
-//				Size:      pulumi.String("c-2"),
+//				Size:      pulumi.String(digitalocean.DropletSlugDropletC2),
 //				NodeCount: pulumi.Int(2),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("backend"),
@@ -92,7 +92,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewKubernetesNodePool(ctx, "autoscale-pool-01", &digitalocean.KubernetesNodePoolArgs{
 //				ClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),
-//				Size:      pulumi.String("s-1vcpu-2gb"),
+//				Size:      pulumi.String(digitalocean.DropletSlugDropletS1VCPU2GB),
 //				AutoScale: pulumi.Bool(true),
 //				MinNodes:  pulumi.Int(1),
 //				MaxNodes:  pulumi.Int(5),

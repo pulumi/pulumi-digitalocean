@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const _public = new digitalocean.LoadBalancer("public", {
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     forwardingRules: [{
  *         entryPort: 80,
  *         entryProtocol: "http",
@@ -56,12 +56,12 @@ import * as utilities from "./utilities";
  *     leafCertificate: "file('cert.pem')",
  * });
  * const web = new digitalocean.Droplet("web", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const _public = new digitalocean.LoadBalancer("public", {
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     forwardingRules: [{
  *         entryPort: 443,
  *         entryProtocol: "https",

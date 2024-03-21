@@ -46,7 +46,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-//				Type:             pulumi.String("custom"),
+//				Type:             pulumi.String(digitalocean.CertificateTypeCustom),
 //				PrivateKey:       readFileOrPanic("/Users/myuser/certs/privkey.pem"),
 //				LeafCertificate:  readFileOrPanic("/Users/myuser/certs/cert.pem"),
 //				CertificateChain: readFileOrPanic("/Users/myuser/certs/fullchain.pem"),
@@ -80,7 +80,7 @@ import (
 //				Domains: pulumi.StringArray{
 //					pulumi.String("example.com"),
 //				},
-//				Type: pulumi.String("lets_encrypt"),
+//				Type: pulumi.String(digitalocean.CertificateTypeLetsEncrypt),
 //			})
 //			if err != nil {
 //				return err
@@ -111,7 +111,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-//				Type: pulumi.String("lets_encrypt"),
+//				Type: pulumi.String(digitalocean.CertificateTypeLetsEncrypt),
 //				Domains: pulumi.StringArray{
 //					pulumi.String("example.com"),
 //				},
@@ -121,7 +121,7 @@ import (
 //			}
 //			// Create a new Load Balancer with TLS termination
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-//				Region:     pulumi.String("nyc3"),
+//				Region:     pulumi.String(digitalocean.RegionNYC3),
 //				DropletTag: pulumi.String("backend"),
 //				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
 //					&digitalocean.LoadBalancerForwardingRuleArgs{

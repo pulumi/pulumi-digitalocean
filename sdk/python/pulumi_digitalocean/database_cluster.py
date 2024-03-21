@@ -656,8 +656,8 @@ class DatabaseCluster(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC1,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="15")
         ```
         <!--End PulumiCodeChooser -->
@@ -671,8 +671,8 @@ class DatabaseCluster(pulumi.CustomResource):
         mysql_example = digitalocean.DatabaseCluster("mysql-example",
             engine="mysql",
             node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC1,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="8")
         ```
         <!--End PulumiCodeChooser -->
@@ -686,8 +686,8 @@ class DatabaseCluster(pulumi.CustomResource):
         redis_example = digitalocean.DatabaseCluster("redis-example",
             engine="redis",
             node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC1,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="7")
         ```
         <!--End PulumiCodeChooser -->
@@ -701,7 +701,7 @@ class DatabaseCluster(pulumi.CustomResource):
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
             engine="kafka",
             node_count=3,
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             size="db-s-2vcpu-2gb",
             version="3.5")
         ```
@@ -716,8 +716,8 @@ class DatabaseCluster(pulumi.CustomResource):
         mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
             engine="mongodb",
             node_count=1,
-            region="nyc3",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="6")
         ```
         <!--End PulumiCodeChooser -->
@@ -732,15 +732,15 @@ class DatabaseCluster(pulumi.CustomResource):
         doby = digitalocean.DatabaseCluster("doby",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
         doby_backup = digitalocean.DatabaseCluster("dobyBackup",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"],
             backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
@@ -796,8 +796,8 @@ class DatabaseCluster(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC1,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="15")
         ```
         <!--End PulumiCodeChooser -->
@@ -811,8 +811,8 @@ class DatabaseCluster(pulumi.CustomResource):
         mysql_example = digitalocean.DatabaseCluster("mysql-example",
             engine="mysql",
             node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC1,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="8")
         ```
         <!--End PulumiCodeChooser -->
@@ -826,8 +826,8 @@ class DatabaseCluster(pulumi.CustomResource):
         redis_example = digitalocean.DatabaseCluster("redis-example",
             engine="redis",
             node_count=1,
-            region="nyc1",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC1,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="7")
         ```
         <!--End PulumiCodeChooser -->
@@ -841,7 +841,7 @@ class DatabaseCluster(pulumi.CustomResource):
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
             engine="kafka",
             node_count=3,
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             size="db-s-2vcpu-2gb",
             version="3.5")
         ```
@@ -856,8 +856,8 @@ class DatabaseCluster(pulumi.CustomResource):
         mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
             engine="mongodb",
             node_count=1,
-            region="nyc3",
-            size="db-s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="6")
         ```
         <!--End PulumiCodeChooser -->
@@ -872,15 +872,15 @@ class DatabaseCluster(pulumi.CustomResource):
         doby = digitalocean.DatabaseCluster("doby",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
         doby_backup = digitalocean.DatabaseCluster("dobyBackup",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-2gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"],
             backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(

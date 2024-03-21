@@ -182,9 +182,9 @@ def get_volume(description: Optional[str] = None,
     example_volume = digitalocean.get_volume(name="app-data",
         region="nyc3")
     example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         image="ubuntu-18-04-x64",
-        region="nyc3")
+        region=digitalocean.Region.NYC3)
     foobar = digitalocean.VolumeAttachment("foobar",
         droplet_id=example_droplet.id,
         volume_id=example_volume.id)
@@ -253,9 +253,9 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     example_volume = digitalocean.get_volume(name="app-data",
         region="nyc3")
     example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         image="ubuntu-18-04-x64",
-        region="nyc3")
+        region=digitalocean.Region.NYC3)
     foobar = digitalocean.VolumeAttachment("foobar",
         droplet_id=example_droplet.id,
         volume_id=example_volume.id)

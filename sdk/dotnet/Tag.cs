@@ -33,8 +33,8 @@ namespace Pulumi.DigitalOcean
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
     ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc3",
-    ///         Size = "s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC3,
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Tags = new[]
     ///         {
     ///             foobar.Id,

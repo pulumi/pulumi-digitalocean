@@ -111,9 +111,9 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
         example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             ipv6=True,
             private_networking=True)
         example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
@@ -157,9 +157,9 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
         example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             ipv6=True,
             private_networking=True)
         example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",

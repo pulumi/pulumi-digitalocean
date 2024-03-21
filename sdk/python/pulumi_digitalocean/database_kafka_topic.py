@@ -234,7 +234,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             node_count=3,
             tags=["production"])
         topic_01 = digitalocean.DatabaseKafkaTopic("topic-01",
@@ -307,7 +307,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             node_count=3,
             tags=["production"])
         topic_01 = digitalocean.DatabaseKafkaTopic("topic-01",

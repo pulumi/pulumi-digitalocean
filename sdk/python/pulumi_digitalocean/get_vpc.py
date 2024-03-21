@@ -164,9 +164,9 @@ def get_vpc(id: Optional[str] = None,
 
     example_vpc = digitalocean.get_vpc(name="example-network")
     example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         image="ubuntu-18-04-x64",
-        region="nyc3",
+        region=digitalocean.Region.NYC3,
         vpc_uuid=example_vpc.id)
     ```
     <!--End PulumiCodeChooser -->
@@ -231,9 +231,9 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     example_vpc = digitalocean.get_vpc(name="example-network")
     example_droplet = digitalocean.Droplet("exampleDroplet",
-        size="s-1vcpu-1gb",
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         image="ubuntu-18-04-x64",
-        region="nyc3",
+        region=digitalocean.Region.NYC3,
         vpc_uuid=example_vpc.id)
     ```
     <!--End PulumiCodeChooser -->

@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
     ///     var www = new DigitalOcean.DnsRecord("www", new()
     ///     {
     ///         Domain = @default.Id,
-    ///         Type = "A",
+    ///         Type = DigitalOcean.RecordType.A,
     ///         Value = "192.168.0.11",
     ///     });
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.DigitalOcean
     ///     var mx = new DigitalOcean.DnsRecord("mx", new()
     ///     {
     ///         Domain = @default.Id,
-    ///         Type = "MX",
+    ///         Type = DigitalOcean.RecordType.MX,
     ///         Priority = 10,
     ///         Value = "mail.example.com.",
     ///     });

@@ -23,8 +23,8 @@ import * as utilities from "./utilities";
  * // Create a new Droplet using the SSH key
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     sshKeys: [_default.fingerprint],
  * });
  * ```

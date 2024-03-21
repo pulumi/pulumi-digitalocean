@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         Type = "custom",
+    ///         Type = DigitalOcean.CertificateType.Custom,
     ///         PrivateKey = File.ReadAllText("/Users/myuser/certs/privkey.pem"),
     ///         LeafCertificate = File.ReadAllText("/Users/myuser/certs/cert.pem"),
     ///         CertificateChain = File.ReadAllText("/Users/myuser/certs/fullchain.pem"),
@@ -60,7 +60,7 @@ namespace Pulumi.DigitalOcean
     ///         {
     ///             "example.com",
     ///         },
-    ///         Type = "lets_encrypt",
+    ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
     ///     });
     /// 
     /// });
@@ -83,7 +83,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         Type = "lets_encrypt",
+    ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
     ///         Domains = new[]
     ///         {
     ///             "example.com",
@@ -93,7 +93,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Load Balancer with TLS termination
     ///     var @public = new DigitalOcean.LoadBalancer("public", new()
     ///     {
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///         DropletTag = "backend",
     ///         ForwardingRules = new[]
     ///         {

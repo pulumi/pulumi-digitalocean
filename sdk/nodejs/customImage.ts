@@ -30,8 +30,8 @@ import * as utilities from "./utilities";
  * });
  * const example = new digitalocean.Droplet("example", {
  *     image: flatcar.id,
- *     region: "nyc3",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     sshKeys: ["12345"],
  * });
  * ```

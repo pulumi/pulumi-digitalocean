@@ -40,8 +40,8 @@ namespace Pulumi.DigitalOcean
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
         ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
@@ -84,8 +84,8 @@ namespace Pulumi.DigitalOcean
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
         ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),

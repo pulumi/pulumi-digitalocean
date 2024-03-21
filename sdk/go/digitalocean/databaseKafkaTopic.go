@@ -34,7 +34,7 @@ import (
 //				Engine:    pulumi.String("kafka"),
 //				Version:   pulumi.String("3.5"),
 //				Size:      pulumi.String("db-s-2vcpu-2gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(3),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("production"),

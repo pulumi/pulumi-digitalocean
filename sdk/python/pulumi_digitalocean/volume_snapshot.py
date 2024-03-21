@@ -206,7 +206,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar_volume = digitalocean.Volume("foobarVolume",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             size=100,
             description="an example volume")
         foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)
@@ -244,7 +244,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar_volume = digitalocean.Volume("foobarVolume",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             size=100,
             description="an example volume")
         foobar_volume_snapshot = digitalocean.VolumeSnapshot("foobarVolumeSnapshot", volume_id=foobar_volume.id)

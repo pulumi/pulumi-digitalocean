@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
- *     region: "sfo2",
+ *     region: digitalocean.Region.SFO2,
  *     acl: "public-read",
  * });
  * // Add a CDN endpoint to the Spaces Bucket
@@ -36,12 +36,12 @@ import * as utilities from "./utilities";
  *
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
- *     region: "sfo2",
+ *     region: digitalocean.Region.SFO2,
  *     acl: "public-read",
  * });
  * // Create a DigitalOcean managed Let's Encrypt Certificate
  * const cert = new digitalocean.Certificate("cert", {
- *     type: "lets_encrypt",
+ *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["static.example.com"],
  * });
  * // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket

@@ -972,8 +972,8 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
             engine="mysql",
             version="8",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_database_mysql_config = digitalocean.DatabaseMysqlConfig("exampleDatabaseMysqlConfig",
             cluster_id=example_database_cluster.id,
@@ -1043,8 +1043,8 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
             engine="mysql",
             version="8",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_database_mysql_config = digitalocean.DatabaseMysqlConfig("exampleDatabaseMysqlConfig",
             cluster_id=example_database_cluster.id,

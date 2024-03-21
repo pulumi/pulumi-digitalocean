@@ -417,7 +417,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foo = digitalocean.KubernetesCluster("foo",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             version="1.22.8-do.1",
             node_pool=digitalocean.KubernetesClusterNodePoolArgs(
                 name="front-end-pool",
@@ -426,7 +426,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             ))
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,
-            size="c-2",
+            size=digitalocean.DropletSlug.DROPLET_C2,
             node_count=2,
             tags=["backend"],
             labels={
@@ -453,7 +453,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
             cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
-            size="s-1vcpu-2gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU2_GB,
             auto_scale=True,
             min_nodes=1,
             max_nodes=5)
@@ -512,7 +512,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foo = digitalocean.KubernetesCluster("foo",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             version="1.22.8-do.1",
             node_pool=digitalocean.KubernetesClusterNodePoolArgs(
                 name="front-end-pool",
@@ -521,7 +521,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             ))
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,
-            size="c-2",
+            size=digitalocean.DropletSlug.DROPLET_C2,
             node_count=2,
             tags=["backend"],
             labels={
@@ -548,7 +548,7 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
             cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
-            size="s-1vcpu-2gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU2_GB,
             auto_scale=True,
             min_nodes=1,
             max_nodes=5)

@@ -26,14 +26,14 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     ///     var @public = new DigitalOcean.LoadBalancer("public", new()
     ///     {
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///         ForwardingRules = new[]
     ///         {
     ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
@@ -82,14 +82,14 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     ///     var @public = new DigitalOcean.LoadBalancer("public", new()
     ///     {
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///         ForwardingRules = new[]
     ///         {
     ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs

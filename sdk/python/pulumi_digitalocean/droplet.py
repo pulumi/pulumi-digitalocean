@@ -879,8 +879,8 @@ class Droplet(pulumi.CustomResource):
         # Create a new Web Droplet in the nyc2 region
         web = digitalocean.Droplet("web",
             image="ubuntu-20-04-x64",
-            region="nyc2",
-            size="s-1vcpu-1gb")
+            region=digitalocean.Region.NYC2,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -955,8 +955,8 @@ class Droplet(pulumi.CustomResource):
         # Create a new Web Droplet in the nyc2 region
         web = digitalocean.Droplet("web",
             image="ubuntu-20-04-x64",
-            region="nyc2",
-            size="s-1vcpu-1gb")
+            region=digitalocean.Region.NYC2,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
         ```
         <!--End PulumiCodeChooser -->
 

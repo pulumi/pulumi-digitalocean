@@ -39,8 +39,8 @@ import (
 //			// Create a new Droplet in nyc3 with the foobar tag
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String("nyc3"),
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Tags: pulumi.StringArray{
 //					foobar.ID(),
 //				},

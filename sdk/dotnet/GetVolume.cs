@@ -61,9 +61,9 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
-        ///         Size = "s-1vcpu-1gb",
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc3",
+        ///         Region = DigitalOcean.Region.NYC3,
         ///     });
         /// 
         ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
@@ -129,9 +129,9 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
-        ///         Size = "s-1vcpu-1gb",
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc3",
+        ///         Region = DigitalOcean.Region.NYC3,
         ///     });
         /// 
         ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()

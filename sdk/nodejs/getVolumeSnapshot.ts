@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *     mostRecent: true,
  * });
  * const foobar = new digitalocean.Volume("foobar", {
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     size: 100,
  *     snapshotId: snapshot.then(snapshot => snapshot.id),
  * });
@@ -156,7 +156,7 @@ export interface GetVolumeSnapshotResult {
  *     mostRecent: true,
  * });
  * const foobar = new digitalocean.Volume("foobar", {
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     size: 100,
  *     snapshotId: snapshot.then(snapshot => snapshot.id),
  * });

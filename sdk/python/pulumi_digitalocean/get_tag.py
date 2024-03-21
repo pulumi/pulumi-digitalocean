@@ -146,8 +146,8 @@ def get_tag(name: Optional[str] = None,
     example_tag = digitalocean.get_tag(name="example")
     example_droplet = digitalocean.Droplet("exampleDroplet",
         image="ubuntu-18-04-x64",
-        region="nyc2",
-        size="s-1vcpu-1gb",
+        region=digitalocean.Region.NYC2,
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         tags=[example_tag.name])
     ```
     <!--End PulumiCodeChooser -->
@@ -193,8 +193,8 @@ def get_tag_output(name: Optional[pulumi.Input[str]] = None,
     example_tag = digitalocean.get_tag(name="example")
     example_droplet = digitalocean.Droplet("exampleDroplet",
         image="ubuntu-18-04-x64",
-        region="nyc2",
-        size="s-1vcpu-1gb",
+        region=digitalocean.Region.NYC2,
+        size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         tags=[example_tag.name])
     ```
     <!--End PulumiCodeChooser -->

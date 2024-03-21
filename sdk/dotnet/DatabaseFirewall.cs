@@ -31,8 +31,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///     });
     /// 
@@ -71,17 +71,17 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///     });
     /// 
@@ -117,16 +117,16 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///     });
     /// 
     ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///     });
     /// 
     ///     // Create firewall rule for database replica

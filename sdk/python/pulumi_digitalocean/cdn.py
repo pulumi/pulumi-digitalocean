@@ -255,7 +255,7 @@ class Cdn(pulumi.CustomResource):
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
+            region=digitalocean.Region.SFO2,
             acl="public-read")
         # Add a CDN endpoint to the Spaces Bucket
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
@@ -272,11 +272,11 @@ class Cdn(pulumi.CustomResource):
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
+            region=digitalocean.Region.SFO2,
             acl="public-read")
         # Create a DigitalOcean managed Let's Encrypt Certificate
         cert = digitalocean.Certificate("cert",
-            type="lets_encrypt",
+            type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["static.example.com"])
         # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
         mycdn = digitalocean.Cdn("mycdn",
@@ -322,7 +322,7 @@ class Cdn(pulumi.CustomResource):
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
+            region=digitalocean.Region.SFO2,
             acl="public-read")
         # Add a CDN endpoint to the Spaces Bucket
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
@@ -339,11 +339,11 @@ class Cdn(pulumi.CustomResource):
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
-            region="sfo2",
+            region=digitalocean.Region.SFO2,
             acl="public-read")
         # Create a DigitalOcean managed Let's Encrypt Certificate
         cert = digitalocean.Certificate("cert",
-            type="lets_encrypt",
+            type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["static.example.com"])
         # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
         mycdn = digitalocean.Cdn("mycdn",

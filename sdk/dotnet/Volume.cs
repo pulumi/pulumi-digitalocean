@@ -25,17 +25,17 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
     ///     {
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         Size = 100,
-    ///         InitialFilesystemType = "ext4",
+    ///         InitialFilesystemType = DigitalOcean.FileSystemType.EXT4,
     ///         Description = "an example volume",
     ///     });
     /// 
     ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
     ///     {
-    ///         Size = "s-1vcpu-1gb",
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///     });
     /// 
     ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new()
@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
     ///     {
-    ///         Region = "lon1",
+    ///         Region = DigitalOcean.Region.LON1,
     ///         Size = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.MinDiskSize),
     ///         SnapshotId = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
     ///     });

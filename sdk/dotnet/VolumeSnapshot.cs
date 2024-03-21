@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
     ///     {
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         Size = 100,
     ///         Description = "an example volume",
     ///     });

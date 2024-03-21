@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobarSpacesBucket = new digitalocean.SpacesBucket("foobarSpacesBucket", {region: "nyc3"});
+ * const foobarSpacesBucket = new digitalocean.SpacesBucket("foobarSpacesBucket", {region: digitalocean.Region.NYC3});
  * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy", {
  *     region: foobarSpacesBucket.region,
  *     bucket: foobarSpacesBucket.name,

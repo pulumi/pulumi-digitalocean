@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foo = new digitalocean.KubernetesCluster("foo", {
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     version: "1.22.8-do.1",
  *     nodePool: {
  *         name: "front-end-pool",
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * });
  * const bar = new digitalocean.KubernetesNodePool("bar", {
  *     clusterId: foo.id,
- *     size: "c-2",
+ *     size: digitalocean.DropletSlug.DropletC2,
  *     nodeCount: 2,
  *     tags: ["backend"],
  *     labels: {
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *
  * const autoscale_pool_01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
  *     clusterId: digitalocean_kubernetes_cluster.foo.id,
- *     size: "s-1vcpu-2gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU2GB,
  *     autoScale: true,
  *     minNodes: 1,
  *     maxNodes: 5,

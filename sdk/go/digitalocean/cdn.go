@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Spaces Bucket
 //			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
-//				Region: pulumi.String("sfo2"),
+//				Region: pulumi.String(digitalocean.RegionSFO2),
 //				Acl:    pulumi.String("public-read"),
 //			})
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Spaces Bucket
 //			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
-//				Region: pulumi.String("sfo2"),
+//				Region: pulumi.String(digitalocean.RegionSFO2),
 //				Acl:    pulumi.String("public-read"),
 //			})
 //			if err != nil {
@@ -79,7 +79,7 @@ import (
 //			}
 //			// Create a DigitalOcean managed Let's Encrypt Certificate
 //			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-//				Type: pulumi.String("lets_encrypt"),
+//				Type: pulumi.String(digitalocean.CertificateTypeLetsEncrypt),
 //				Domains: pulumi.StringArray{
 //					pulumi.String("static.example.com"),
 //				},

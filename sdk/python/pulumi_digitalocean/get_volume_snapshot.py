@@ -188,7 +188,7 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
         region="nyc3",
         most_recent=True)
     foobar = digitalocean.Volume("foobar",
-        region="nyc3",
+        region=digitalocean.Region.NYC3,
         size=100,
         snapshot_id=snapshot.id)
     ```
@@ -263,7 +263,7 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
         region="nyc3",
         most_recent=True)
     foobar = digitalocean.Volume("foobar",
-        region="nyc3",
+        region=digitalocean.Region.NYC3,
         size=100,
         snapshot_id=snapshot.id)
     ```

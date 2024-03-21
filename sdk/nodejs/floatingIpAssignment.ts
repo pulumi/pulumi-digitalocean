@@ -20,9 +20,9 @@ import * as utilities from "./utilities";
  *
  * const foobarFloatingIp = new digitalocean.FloatingIp("foobarFloatingIp", {region: "sgp1"});
  * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "sgp1",
+ *     region: digitalocean.Region.SGP1,
  *     ipv6: true,
  *     privateNetworking: true,
  * });

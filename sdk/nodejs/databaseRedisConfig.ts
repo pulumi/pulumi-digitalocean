@@ -20,8 +20,8 @@ import * as utilities from "./utilities";
  * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("exampleDatabaseCluster", {
  *     engine: "redis",
  *     version: "7",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const exampleDatabaseRedisConfig = new digitalocean.DatabaseRedisConfig("exampleDatabaseRedisConfig", {

@@ -444,8 +444,8 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
             engine="redis",
             version="7",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_database_redis_config = digitalocean.DatabaseRedisConfig("exampleDatabaseRedisConfig",
             cluster_id=example_database_cluster.id,
@@ -500,8 +500,8 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
             engine="redis",
             version="7",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         example_database_redis_config = digitalocean.DatabaseRedisConfig("exampleDatabaseRedisConfig",
             cluster_id=example_database_cluster.id,

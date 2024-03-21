@@ -38,9 +38,9 @@ import (
 //				return err
 //			}
 //			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-//				Size:              pulumi.String("s-1vcpu-1gb"),
+//				Size:              pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:             pulumi.String("ubuntu-22-04-x64"),
-//				Region:            pulumi.String("nyc3"),
+//				Region:            pulumi.String(digitalocean.RegionNYC3),
 //				Ipv6:              pulumi.Bool(true),
 //				PrivateNetworking: pulumi.Bool(true),
 //			})

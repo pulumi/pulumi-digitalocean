@@ -71,9 +71,9 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
-//				Region:     pulumi.String("nyc3"),
+//				Region:     pulumi.String(digitalocean.RegionNYC3),
 //				Size:       pulumi.Int(100),
-//				SnapshotId: *pulumi.String(snapshot.Id),
+//				SnapshotId: pulumi.String(snapshot.Id),
 //			})
 //			if err != nil {
 //				return err

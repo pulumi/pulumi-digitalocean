@@ -140,7 +140,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         import json
         import pulumi_digitalocean as digitalocean
 
-        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region="nyc3")
+        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region=digitalocean.Region.NYC3)
         foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
             region=foobar_spaces_bucket.region,
             bucket=foobar_spaces_bucket.name,
@@ -198,7 +198,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         import json
         import pulumi_digitalocean as digitalocean
 
-        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region="nyc3")
+        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region=digitalocean.Region.NYC3)
         foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
             region=foobar_spaces_bucket.region,
             bucket=foobar_spaces_bucket.name,
