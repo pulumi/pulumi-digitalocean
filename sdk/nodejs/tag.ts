@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  * // Create a new Droplet in nyc3 with the foobar tag
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     tags: [foobar.id],
  * });
  * ```

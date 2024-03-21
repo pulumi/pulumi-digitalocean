@@ -40,8 +40,8 @@ import * as utilities from "./utilities";
  * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
- *     region: "nyc3",
- *     size: "s-2vcpu-4gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -153,8 +153,8 @@ export interface GetDropletSnapshotResult {
  * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
- *     region: "nyc3",
- *     size: "s-2vcpu-4gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

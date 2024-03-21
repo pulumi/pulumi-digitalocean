@@ -50,8 +50,8 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
 //				Image:  flatcar.ID(),
-//				Region: pulumi.String("nyc3"),
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				SshKeys: pulumi.StringArray{
 //					pulumi.String("12345"),
 //				},

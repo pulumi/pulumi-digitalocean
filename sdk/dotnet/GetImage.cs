@@ -60,8 +60,8 @@ namespace Pulumi.DigitalOcean
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
         ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///     });
         /// 
         /// });
@@ -140,8 +140,8 @@ namespace Pulumi.DigitalOcean
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
         ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///     });
         /// 
         /// });

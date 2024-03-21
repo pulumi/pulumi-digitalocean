@@ -25,8 +25,8 @@ import * as utilities from "./utilities";
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC2,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
  * });
  * ```
@@ -105,8 +105,8 @@ export interface GetTagResult {
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc2",
- *     size: "s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC2,
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
  * });
  * ```

@@ -28,8 +28,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         NodeCount = 1,
-    ///         Region = "nyc1",
-    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "15",
     ///     });
     /// 
@@ -51,8 +51,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "mysql",
     ///         NodeCount = 1,
-    ///         Region = "nyc1",
-    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "8",
     ///     });
     /// 
@@ -74,8 +74,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "redis",
     ///         NodeCount = 1,
-    ///         Region = "nyc1",
-    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "7",
     ///     });
     /// 
@@ -97,7 +97,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "kafka",
     ///         NodeCount = 3,
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         Size = "db-s-2vcpu-2gb",
     ///         Version = "3.5",
     ///     });
@@ -120,8 +120,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "mongodb",
     ///         NodeCount = 1,
-    ///         Region = "nyc3",
-    ///         Size = "db-s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC3,
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "6",
     ///     });
     /// 
@@ -144,8 +144,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-2gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///         Tags = new[]
     ///         {
@@ -157,8 +157,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-2gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///         Tags = new[]
     ///         {

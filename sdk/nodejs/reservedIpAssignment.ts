@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  *
  * const exampleReservedIp = new digitalocean.ReservedIp("exampleReservedIp", {region: "nyc3"});
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  *     ipv6: true,
  *     privateNetworking: true,
  * });

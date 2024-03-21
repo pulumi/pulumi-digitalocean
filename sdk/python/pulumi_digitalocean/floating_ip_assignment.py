@@ -113,9 +113,9 @@ class FloatingIpAssignment(pulumi.CustomResource):
 
         foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
         foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="sgp1",
+            region=digitalocean.Region.SGP1,
             ipv6=True,
             private_networking=True)
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
@@ -161,9 +161,9 @@ class FloatingIpAssignment(pulumi.CustomResource):
 
         foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
         foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="sgp1",
+            region=digitalocean.Region.SGP1,
             ipv6=True,
             private_networking=True)
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",

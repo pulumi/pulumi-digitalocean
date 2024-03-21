@@ -18,15 +18,15 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foobarVolume = new digitalocean.Volume("foobarVolume", {
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     size: 100,
- *     initialFilesystemType: "ext4",
+ *     initialFilesystemType: digitalocean.FileSystemType.EXT4,
  *     description: "an example volume",
  * });
  * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  * });
  * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobarVolumeAttachment", {
  *     dropletId: foobarDroplet.id,
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *     name: "baz",
  * });
  * const foobarVolume = new digitalocean.Volume("foobarVolume", {
- *     region: "lon1",
+ *     region: digitalocean.Region.LON1,
  *     size: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.minDiskSize),
  *     snapshotId: foobarVolumeSnapshot.then(foobarVolumeSnapshot => foobarVolumeSnapshot.id),
  * });
@@ -104,7 +104,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      *
-     * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+     * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     public readonly filesystemType!: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export interface VolumeState {
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      *
-     * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+     * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     filesystemType?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface VolumeArgs {
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      *
-     * @deprecated This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+     * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
     filesystemType?: pulumi.Input<string>;
     /**

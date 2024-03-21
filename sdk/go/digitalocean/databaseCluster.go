@@ -33,8 +33,8 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
 //				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String("nyc1"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("15"),
 //			})
 //			if err != nil {
@@ -64,8 +64,8 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "mysql-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("mysql"),
 //				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String("nyc1"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("8"),
 //			})
 //			if err != nil {
@@ -95,8 +95,8 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("redis"),
 //				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String("nyc1"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("7"),
 //			})
 //			if err != nil {
@@ -126,7 +126,7 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("kafka"),
 //				NodeCount: pulumi.Int(3),
-//				Region:    pulumi.String("nyc1"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				Size:      pulumi.String("db-s-2vcpu-2gb"),
 //				Version:   pulumi.String("3.5"),
 //			})
@@ -157,8 +157,8 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("mongodb"),
 //				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String("nyc3"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
+//				Region:    pulumi.String(digitalocean.RegionNYC3),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("6"),
 //			})
 //			if err != nil {
@@ -189,8 +189,8 @@ import (
 //			doby, err := digitalocean.NewDatabaseCluster(ctx, "doby", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("11"),
-//				Size:      pulumi.String("db-s-1vcpu-2gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("production"),
@@ -202,8 +202,8 @@ import (
 //			_, err = digitalocean.NewDatabaseCluster(ctx, "dobyBackup", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("11"),
-//				Size:      pulumi.String("db-s-1vcpu-2gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("production"),

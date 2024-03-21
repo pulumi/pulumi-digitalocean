@@ -15,15 +15,15 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.id,
- *     region: "nyc3",
- *     size: "s-2vcpu-4gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

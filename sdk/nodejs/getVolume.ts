@@ -40,9 +40,9 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,
@@ -154,9 +154,9 @@ export interface GetVolumeResult {
  *     region: "nyc3",
  * });
  * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,

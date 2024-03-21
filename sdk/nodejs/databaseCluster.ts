@@ -21,8 +21,8 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     nodeCount: 1,
- *     region: "nyc1",
- *     size: "db-s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC1,
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "15",
  * });
  * ```
@@ -37,8 +37,8 @@ import * as utilities from "./utilities";
  * const mysql_example = new digitalocean.DatabaseCluster("mysql-example", {
  *     engine: "mysql",
  *     nodeCount: 1,
- *     region: "nyc1",
- *     size: "db-s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC1,
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "8",
  * });
  * ```
@@ -53,8 +53,8 @@ import * as utilities from "./utilities";
  * const redis_example = new digitalocean.DatabaseCluster("redis-example", {
  *     engine: "redis",
  *     nodeCount: 1,
- *     region: "nyc1",
- *     size: "db-s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC1,
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "7",
  * });
  * ```
@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
  *     engine: "kafka",
  *     nodeCount: 3,
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     size: "db-s-2vcpu-2gb",
  *     version: "3.5",
  * });
@@ -85,8 +85,8 @@ import * as utilities from "./utilities";
  * const mongodb_example = new digitalocean.DatabaseCluster("mongodb-example", {
  *     engine: "mongodb",
  *     nodeCount: 1,
- *     region: "nyc3",
- *     size: "db-s-1vcpu-1gb",
+ *     region: digitalocean.Region.NYC3,
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "6",
  * });
  * ```
@@ -102,16 +102,16 @@ import * as utilities from "./utilities";
  * const doby = new digitalocean.DatabaseCluster("doby", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-2gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  *     tags: ["production"],
  * });
  * const dobyBackup = new digitalocean.DatabaseCluster("dobyBackup", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-2gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  *     tags: ["production"],
  *     backupRestore: {

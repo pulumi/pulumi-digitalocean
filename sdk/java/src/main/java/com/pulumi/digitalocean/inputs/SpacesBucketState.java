@@ -71,10 +71,10 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
      * A rule of Cross-Origin Resource Sharing (documented below).
      * 
      * @deprecated
-     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      * 
      */
-    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
+    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead. */
     @Import(name="corsRules")
     private @Nullable Output<List<SpacesBucketCorsRuleArgs>> corsRules;
 
@@ -82,10 +82,10 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
      * @return A rule of Cross-Origin Resource Sharing (documented below).
      * 
      * @deprecated
-     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      * 
      */
-    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
+    @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead. */
     public Optional<Output<List<SpacesBucketCorsRuleArgs>>> corsRules() {
         return Optional.ofNullable(this.corsRules);
     }
@@ -282,10 +282,10 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
          * 
          */
-        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
+        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead. */
         public Builder corsRules(@Nullable Output<List<SpacesBucketCorsRuleArgs>> corsRules) {
             $.corsRules = corsRules;
             return this;
@@ -297,10 +297,10 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
          * 
          */
-        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
+        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead. */
         public Builder corsRules(List<SpacesBucketCorsRuleArgs> corsRules) {
             return corsRules(Output.of(corsRules));
         }
@@ -311,10 +311,10 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+         * Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
          * 
          */
-        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead. */
+        @Deprecated /* Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead. */
         public Builder corsRules(SpacesBucketCorsRuleArgs... corsRules) {
             return corsRules(List.of(corsRules));
         }

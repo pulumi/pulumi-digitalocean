@@ -36,8 +36,8 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("11"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -82,9 +82,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-22-04-x64"),
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
@@ -92,8 +92,8 @@ import (
 //			_, err = digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("11"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -136,8 +136,8 @@ import (
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("11"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -145,8 +145,8 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
 //				ClusterId: postgres_example.ID(),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //			})
 //			if err != nil {
 //				return err

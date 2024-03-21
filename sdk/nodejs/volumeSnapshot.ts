@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foobarVolume = new digitalocean.Volume("foobarVolume", {
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     size: 100,
  *     description: "an example volume",
  * });

@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *
  * const example = digitalocean.getKubernetesVersions({});
  * const example_cluster = new digitalocean.KubernetesCluster("example-cluster", {
- *     region: "lon1",
+ *     region: digitalocean.Region.LON1,
  *     version: example.then(example => example.latestVersion),
  *     nodePool: {
  *         name: "default",
@@ -56,7 +56,7 @@ import * as utilities from "./utilities";
  *     versionPrefix: "1.22.",
  * });
  * const example_cluster = new digitalocean.KubernetesCluster("example-cluster", {
- *     region: "lon1",
+ *     region: digitalocean.Region.LON1,
  *     version: example.then(example => example.latestVersion),
  *     nodePool: {
  *         name: "default",
@@ -134,7 +134,7 @@ export interface GetKubernetesVersionsResult {
  *
  * const example = digitalocean.getKubernetesVersions({});
  * const example_cluster = new digitalocean.KubernetesCluster("example-cluster", {
- *     region: "lon1",
+ *     region: digitalocean.Region.LON1,
  *     version: example.then(example => example.latestVersion),
  *     nodePool: {
  *         name: "default",
@@ -156,7 +156,7 @@ export interface GetKubernetesVersionsResult {
  *     versionPrefix: "1.22.",
  * });
  * const example_cluster = new digitalocean.KubernetesCluster("example-cluster", {
- *     region: "lon1",
+ *     region: digitalocean.Region.LON1,
  *     version: example.then(example => example.latestVersion),
  *     nodePool: {
  *         name: "default",

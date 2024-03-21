@@ -105,7 +105,7 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
 
     example = digitalocean.get_kubernetes_versions()
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
-        region="lon1",
+        region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
             name="default",
@@ -124,7 +124,7 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
 
     example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
-        region="lon1",
+        region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
             name="default",
@@ -178,7 +178,7 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
 
     example = digitalocean.get_kubernetes_versions()
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
-        region="lon1",
+        region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
             name="default",
@@ -197,7 +197,7 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
 
     example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
-        region="lon1",
+        region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
             name="default",

@@ -69,7 +69,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
@@ -125,7 +125,7 @@ import (
 //						MaxAgeSeconds: pulumi.Int(3000),
 //					},
 //				},
-//				Region: pulumi.String("nyc3"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
@@ -155,7 +155,7 @@ type SpacesBucket struct {
 	BucketUrn pulumi.StringOutput `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
-	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.
 	CorsRules SpacesBucketCorsRuleArrayOutput `pulumi:"corsRules"`
 	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
@@ -209,7 +209,7 @@ type spacesBucketState struct {
 	BucketUrn *string `pulumi:"bucketUrn"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
-	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
 	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
 	Endpoint *string `pulumi:"endpoint"`
@@ -234,7 +234,7 @@ type SpacesBucketState struct {
 	BucketUrn pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
-	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.
 	CorsRules SpacesBucketCorsRuleArrayInput
 	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
 	Endpoint pulumi.StringPtrInput
@@ -259,7 +259,7 @@ type spacesBucketArgs struct {
 	Acl *string `pulumi:"acl"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
-	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.
 	CorsRules []SpacesBucketCorsRule `pulumi:"corsRules"`
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -279,7 +279,7 @@ type SpacesBucketArgs struct {
 	Acl pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
-	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+	// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.
 	CorsRules SpacesBucketCorsRuleArrayInput
 	// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
 	ForceDestroy pulumi.BoolPtrInput
@@ -397,7 +397,7 @@ func (o SpacesBucketOutput) BucketUrn() pulumi.StringOutput {
 
 // A rule of Cross-Origin Resource Sharing (documented below).
 //
-// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+// Deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.
 func (o SpacesBucketOutput) CorsRules() SpacesBucketCorsRuleArrayOutput {
 	return o.ApplyT(func(v *SpacesBucket) SpacesBucketCorsRuleArrayOutput { return v.CorsRules }).(SpacesBucketCorsRuleArrayOutput)
 }

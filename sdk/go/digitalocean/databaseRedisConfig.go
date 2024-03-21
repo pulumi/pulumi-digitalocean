@@ -35,8 +35,8 @@ import (
 //			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "exampleDatabaseCluster", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("redis"),
 //				Version:   pulumi.String("7"),
-//				Size:      pulumi.String("db-s-1vcpu-1gb"),
-//				Region:    pulumi.String("nyc1"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {

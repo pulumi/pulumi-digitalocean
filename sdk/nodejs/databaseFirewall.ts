@@ -24,8 +24,8 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
@@ -52,15 +52,15 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
@@ -83,14 +83,14 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  * });
  * // Create firewall rule for database replica
  * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {

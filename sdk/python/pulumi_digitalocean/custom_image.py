@@ -382,8 +382,8 @@ class CustomImage(pulumi.CustomResource):
             regions=["nyc3"])
         example = digitalocean.Droplet("example",
             image=flatcar.id,
-            region="nyc3",
-            size="s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])
         ```
         <!--End PulumiCodeChooser -->
@@ -428,8 +428,8 @@ class CustomImage(pulumi.CustomResource):
             regions=["nyc3"])
         example = digitalocean.Droplet("example",
             image=flatcar.id,
-            region="nyc3",
-            size="s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])
         ```
         <!--End PulumiCodeChooser -->

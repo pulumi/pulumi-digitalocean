@@ -17,15 +17,15 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foobarVolume = new digitalocean.Volume("foobarVolume", {
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     size: 100,
- *     initialFilesystemType: "ext4",
+ *     initialFilesystemType: digitalocean.FileSystemType.EXT4,
  *     description: "an example volume",
  * });
  * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
- *     size: "s-1vcpu-1gb",
+ *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  * });
  * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobarVolumeAttachment", {
  *     dropletId: foobarDroplet.id,

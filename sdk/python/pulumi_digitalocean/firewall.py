@@ -282,9 +282,9 @@ class Firewall(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web_droplet = digitalocean.Droplet("webDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         web_firewall = digitalocean.Firewall("webFirewall",
             droplet_ids=[web_droplet.id],
             inbound_rules=[
@@ -385,9 +385,9 @@ class Firewall(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web_droplet = digitalocean.Droplet("webDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3")
+            region=digitalocean.Region.NYC3)
         web_firewall = digitalocean.Firewall("webFirewall",
             droplet_ids=[web_droplet.id],
             inbound_rules=[

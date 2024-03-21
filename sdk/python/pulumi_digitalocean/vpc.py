@@ -244,9 +244,9 @@ class Vpc(pulumi.CustomResource):
 
         example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
         example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             vpc_uuid=example_vpc.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -304,9 +304,9 @@ class Vpc(pulumi.CustomResource):
 
         example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
         example_droplet = digitalocean.Droplet("exampleDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc3",
+            region=digitalocean.Region.NYC3,
             vpc_uuid=example_vpc.id)
         ```
         <!--End PulumiCodeChooser -->

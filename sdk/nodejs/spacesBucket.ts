@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: "nyc3"});
+ * const foobar = new digitalocean.SpacesBucket("foobar", {region: digitalocean.Region.NYC3});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  *             maxAgeSeconds: 3000,
  *         },
  *     ],
- *     region: "nyc3",
+ *     region: digitalocean.Region.NYC3,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -129,7 +129,7 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
-     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      */
     public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
     /**
@@ -217,7 +217,7 @@ export interface SpacesBucketState {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
-     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
@@ -257,7 +257,7 @@ export interface SpacesBucketArgs {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
-     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**

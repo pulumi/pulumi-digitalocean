@@ -23,8 +23,8 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
@@ -40,14 +40,14 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: replica_example.uuid});
  * ```
@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  *     engine: "kafka",
  *     version: "3.5",
  *     size: "db-s-2vcpu-2gb",
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 3,
  * });
  * const foobarTopic = new digitalocean.DatabaseKafkaTopic("foobarTopic", {clusterId: digitalocean_database_cluster.foobar.id});

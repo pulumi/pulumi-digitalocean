@@ -30,8 +30,8 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///     });
     /// 
@@ -58,16 +58,16 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Engine = "pg",
     ///         Version = "11",
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
     ///     });
     /// 
     ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
-    ///         Size = "db-s-1vcpu-1gb",
-    ///         Region = "nyc1",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
     ///     });
     /// 
     ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
@@ -94,7 +94,7 @@ namespace Pulumi.DigitalOcean
     ///         Engine = "kafka",
     ///         Version = "3.5",
     ///         Size = "db-s-2vcpu-2gb",
-    ///         Region = "nyc1",
+    ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 3,
     ///     });
     /// 

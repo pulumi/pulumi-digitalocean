@@ -59,7 +59,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
-    ///         Region = "nyc3",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     ///     var index = new DigitalOcean.SpacesBucketObject("index", new()

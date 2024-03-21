@@ -136,8 +136,8 @@ class SshKey(pulumi.CustomResource):
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
-            region="nyc3",
-            size="s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=[default.fingerprint])
         ```
         <!--End PulumiCodeChooser -->
@@ -180,8 +180,8 @@ class SshKey(pulumi.CustomResource):
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
-            region="nyc3",
-            size="s-1vcpu-1gb",
+            region=digitalocean.Region.NYC3,
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=[default.fingerprint])
         ```
         <!--End PulumiCodeChooser -->

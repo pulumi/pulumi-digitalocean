@@ -39,8 +39,8 @@ namespace Pulumi.DigitalOcean
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Tags = new[]
         ///         {
         ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
@@ -82,8 +82,8 @@ namespace Pulumi.DigitalOcean
         ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
-        ///         Region = "nyc2",
-        ///         Size = "s-1vcpu-1gb",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Tags = new[]
         ///         {
         ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),

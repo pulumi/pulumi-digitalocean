@@ -32,18 +32,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
-//				Region:                pulumi.String("nyc1"),
+//				Region:                pulumi.String(digitalocean.RegionNYC1),
 //				Size:                  pulumi.Int(100),
-//				InitialFilesystemType: pulumi.String("ext4"),
+//				InitialFilesystemType: pulumi.String(digitalocean.FileSystemTypeEXT4),
 //				Description:           pulumi.String("an example volume"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String("nyc1"),
+//				Region: pulumi.String(digitalocean.RegionNYC1),
 //			})
 //			if err != nil {
 //				return err

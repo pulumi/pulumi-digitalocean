@@ -28,8 +28,8 @@ namespace Pulumi.DigitalOcean
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
     ///         Image = "ubuntu-20-04-x64",
-    ///         Region = "nyc2",
-    ///         Size = "s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC2,
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///     });
     /// 
     /// });

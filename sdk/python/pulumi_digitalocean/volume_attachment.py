@@ -110,14 +110,14 @@ class VolumeAttachment(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar_volume = digitalocean.Volume("foobarVolume",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             size=100,
-            initial_filesystem_type="ext4",
+            initial_filesystem_type=digitalocean.FileSystemType.EXT4,
             description="an example volume")
         foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc1")
+            region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
             droplet_id=foobar_droplet.id,
             volume_id=foobar_volume.id)
@@ -148,14 +148,14 @@ class VolumeAttachment(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar_volume = digitalocean.Volume("foobarVolume",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             size=100,
-            initial_filesystem_type="ext4",
+            initial_filesystem_type=digitalocean.FileSystemType.EXT4,
             description="an example volume")
         foobar_droplet = digitalocean.Droplet("foobarDroplet",
-            size="s-1vcpu-1gb",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
-            region="nyc1")
+            region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
             droplet_id=foobar_droplet.id,
             volume_id=foobar_volume.id)

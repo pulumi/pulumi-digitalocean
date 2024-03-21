@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     engine: "kafka",
  *     version: "3.5",
  *     size: "db-s-2vcpu-2gb",
- *     region: "nyc1",
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 3,
  *     tags: ["production"],
  * });

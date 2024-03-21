@@ -33,8 +33,8 @@ import (
 //			// Create a new Web Droplet in the nyc2 region
 //			_, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-20-04-x64"),
-//				Region: pulumi.String("nyc2"),
-//				Size:   pulumi.String("s-1vcpu-1gb"),
+//				Region: pulumi.String(digitalocean.RegionNYC2),
+//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //			})
 //			if err != nil {
 //				return err
@@ -105,7 +105,7 @@ type Droplet struct {
 	// **Deprecated** Boolean controlling if private networking
 	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	//
-	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolOutput `pulumi:"privateNetworking"`
 	// The region where the Droplet will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -222,7 +222,7 @@ type dropletState struct {
 	// **Deprecated** Boolean controlling if private networking
 	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	//
-	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
 	// The region where the Droplet will be created.
 	Region *string `pulumi:"region"`
@@ -304,7 +304,7 @@ type DropletState struct {
 	// **Deprecated** Boolean controlling if private networking
 	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	//
-	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
 	// The region where the Droplet will be created.
 	Region pulumi.StringPtrInput
@@ -374,7 +374,7 @@ type dropletArgs struct {
 	// **Deprecated** Boolean controlling if private networking
 	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	//
-	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
 	// The region where the Droplet will be created.
 	Region *string `pulumi:"region"`
@@ -437,7 +437,7 @@ type DropletArgs struct {
 	// **Deprecated** Boolean controlling if private networking
 	// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	//
-	// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
 	// The region where the Droplet will be created.
 	Region pulumi.StringPtrInput
@@ -652,7 +652,7 @@ func (o DropletOutput) PriceMonthly() pulumi.Float64Output {
 // **Deprecated** Boolean controlling if private networking
 // is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 //
-// Deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 func (o DropletOutput) PrivateNetworking() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolOutput { return v.PrivateNetworking }).(pulumi.BoolOutput)
 }

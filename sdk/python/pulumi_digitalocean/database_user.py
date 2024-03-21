@@ -250,8 +250,8 @@ class DatabaseUser(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
@@ -266,13 +266,13 @@ class DatabaseUser(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
-            size="db-s-1vcpu-1gb",
-            region="nyc1")
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
         <!--End PulumiCodeChooser -->
@@ -287,7 +287,7 @@ class DatabaseUser(pulumi.CustomResource):
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             node_count=3)
         foobar_topic = digitalocean.DatabaseKafkaTopic("foobarTopic", cluster_id=digitalocean_database_cluster["foobar"]["id"])
         foobar_user = digitalocean.DatabaseUser("foobarUser",
@@ -351,8 +351,8 @@ class DatabaseUser(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
@@ -367,13 +367,13 @@ class DatabaseUser(pulumi.CustomResource):
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
             version="11",
-            size="db-s-1vcpu-1gb",
-            region="nyc1",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
-            size="db-s-1vcpu-1gb",
-            region="nyc1")
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
         <!--End PulumiCodeChooser -->
@@ -388,7 +388,7 @@ class DatabaseUser(pulumi.CustomResource):
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
-            region="nyc1",
+            region=digitalocean.Region.NYC1,
             node_count=3)
         foobar_topic = digitalocean.DatabaseKafkaTopic("foobarTopic", cluster_id=digitalocean_database_cluster["foobar"]["id"])
         foobar_user = digitalocean.DatabaseUser("foobarUser",

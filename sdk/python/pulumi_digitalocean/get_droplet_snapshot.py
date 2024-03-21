@@ -177,8 +177,8 @@ def get_droplet_snapshot(most_recent: Optional[bool] = None,
         most_recent=True)
     from_snapshot = digitalocean.Droplet("from-snapshot",
         image=web_snapshot.id,
-        region="nyc3",
-        size="s-2vcpu-4gb")
+        region=digitalocean.Region.NYC3,
+        size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -251,8 +251,8 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
         most_recent=True)
     from_snapshot = digitalocean.Droplet("from-snapshot",
         image=web_snapshot.id,
-        region="nyc3",
-        size="s-2vcpu-4gb")
+        region=digitalocean.Region.NYC3,
+        size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)
     ```
     <!--End PulumiCodeChooser -->
 

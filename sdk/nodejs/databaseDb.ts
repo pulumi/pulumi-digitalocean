@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
  *     version: "11",
- *     size: "db-s-1vcpu-1gb",
- *     region: "nyc1",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const database_example = new digitalocean.DatabaseDb("database-example", {clusterId: postgres_example.id});

@@ -45,8 +45,8 @@ namespace Pulumi.DigitalOcean
     ///     var example = new DigitalOcean.Droplet("example", new()
     ///     {
     ///         Image = flatcar.Id,
-    ///         Region = "nyc3",
-    ///         Size = "s-1vcpu-1gb",
+    ///         Region = DigitalOcean.Region.NYC3,
+    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         SshKeys = new[]
     ///         {
     ///             "12345",
