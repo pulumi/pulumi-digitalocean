@@ -250,7 +250,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
-        [Obsolete(@"Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.")]
+        [Obsolete(@"Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.")]
         public InputList<Inputs.SpacesBucketCorsRuleArgs> CorsRules
         {
             get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleArgs>());
@@ -325,7 +325,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A rule of Cross-Origin Resource Sharing (documented below).
         /// </summary>
-        [Obsolete(@"Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.")]
+        [Obsolete(@"Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.")]
         public InputList<Inputs.SpacesBucketCorsRuleGetArgs> CorsRules
         {
             get => _corsRules ?? (_corsRules = new InputList<Inputs.SpacesBucketCorsRuleGetArgs>());

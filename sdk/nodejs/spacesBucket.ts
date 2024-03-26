@@ -129,7 +129,7 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
-     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
      */
     public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
     /**
@@ -217,7 +217,7 @@ export interface SpacesBucketState {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
-     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
@@ -257,7 +257,7 @@ export interface SpacesBucketArgs {
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
-     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
+     * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.
      */
     corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
     /**
