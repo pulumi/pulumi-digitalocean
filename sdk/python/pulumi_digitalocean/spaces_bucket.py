@@ -37,8 +37,8 @@ class SpacesBucketArgs:
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if cors_rules is not None:
-            warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""", DeprecationWarning)
-            pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
+            warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
+            pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
         if cors_rules is not None:
             pulumi.set(__self__, "cors_rules", cors_rules)
         if force_destroy is not None:
@@ -70,8 +70,8 @@ class SpacesBucketArgs:
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
-        warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""", DeprecationWarning)
-        pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
+        warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
+        pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
 
         return pulumi.get(self, "cors_rules")
 
@@ -173,8 +173,8 @@ class _SpacesBucketState:
         if bucket_urn is not None:
             pulumi.set(__self__, "bucket_urn", bucket_urn)
         if cors_rules is not None:
-            warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""", DeprecationWarning)
-            pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
+            warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
+            pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
         if cors_rules is not None:
             pulumi.set(__self__, "cors_rules", cors_rules)
         if endpoint is not None:
@@ -232,8 +232,8 @@ class _SpacesBucketState:
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
-        warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""", DeprecationWarning)
-        pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
+        warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
+        pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
 
         return pulumi.get(self, "cors_rules")
 
@@ -624,8 +624,8 @@ class SpacesBucket(pulumi.CustomResource):
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
-        warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""", DeprecationWarning)
-        pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
+        warnings.warn("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""", DeprecationWarning)
+        pulumi.log.warn("""cors_rules is deprecated: Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead.""")
 
         return pulumi.get(self, "cors_rules")
 
