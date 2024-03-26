@@ -12083,7 +12083,7 @@
                         "$ref": "#/types/digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule"
                     },
                     "description": "A rule of Cross-Origin Resource Sharing (documented below).\n",
-                    "deprecationMessage": "Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead."
+                    "deprecationMessage": "Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead."
                 },
                 "endpoint": {
                     "type": "string",
@@ -12130,7 +12130,7 @@
                         "$ref": "#/types/digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule"
                     },
                     "description": "A rule of Cross-Origin Resource Sharing (documented below).\n",
-                    "deprecationMessage": "Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead."
+                    "deprecationMessage": "Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead."
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -12187,7 +12187,7 @@
                             "$ref": "#/types/digitalocean:index/SpacesBucketCorsRule:SpacesBucketCorsRule"
                         },
                         "description": "A rule of Cross-Origin Resource Sharing (documented below).\n",
-                        "deprecationMessage": "Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead."
+                        "deprecationMessage": "Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean_spaces_bucket_cors_configuration` instead."
                     },
                     "endpoint": {
                         "type": "string",
