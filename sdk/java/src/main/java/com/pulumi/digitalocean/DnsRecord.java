@@ -48,12 +48,14 @@ import javax.annotation.Nullable;
  *             .name(&#34;example.com&#34;)
  *             .build());
  * 
+ *         // Add an A record to the domain for www.example.com.
  *         var www = new DnsRecord(&#34;www&#34;, DnsRecordArgs.builder()        
  *             .domain(default_.id())
  *             .type(&#34;A&#34;)
  *             .value(&#34;192.168.0.11&#34;)
  *             .build());
  * 
+ *         // Add a MX record for the example.com domain itself.
  *         var mx = new DnsRecord(&#34;mx&#34;, DnsRecordArgs.builder()        
  *             .domain(default_.id())
  *             .type(&#34;MX&#34;)

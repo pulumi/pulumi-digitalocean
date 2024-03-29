@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new domain
  *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
  *             .name(&#34;example.com&#34;)
  *             .ipAddress(digitalocean_droplet.foo().ipv4_address())

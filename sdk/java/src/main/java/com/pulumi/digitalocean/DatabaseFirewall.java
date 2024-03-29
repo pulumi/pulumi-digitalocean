@@ -174,6 +174,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;nyc1&#34;)
  *             .build());
  * 
+ *         // Create firewall rule for database replica
  *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
  *             .clusterId(replica_example.uuid())
  *             .rules(DatabaseFirewallRuleArgs.builder()
