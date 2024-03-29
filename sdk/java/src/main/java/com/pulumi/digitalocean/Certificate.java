@@ -130,6 +130,7 @@ import javax.annotation.Nullable;
  *             .domains(&#34;example.com&#34;)
  *             .build());
  * 
+ *         // Create a new Load Balancer with TLS termination
  *         var public_ = new LoadBalancer(&#34;public&#34;, LoadBalancerArgs.builder()        
  *             .region(&#34;nyc3&#34;)
  *             .dropletTag(&#34;backend&#34;)

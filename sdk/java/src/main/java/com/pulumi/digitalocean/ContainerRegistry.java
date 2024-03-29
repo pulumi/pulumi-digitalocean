@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new container registry
  *         var foobar = new ContainerRegistry(&#34;foobar&#34;, ContainerRegistryArgs.builder()        
  *             .subscriptionTierSlug(&#34;starter&#34;)
  *             .build());

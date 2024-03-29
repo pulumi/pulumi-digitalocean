@@ -170,9 +170,9 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             doby,
+    ///             doby, 
     ///         },
     ///     });
     /// 

@@ -45,10 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new SSH key
  *         var default_ = new SshKey(&#34;default&#34;, SshKeyArgs.builder()        
  *             .publicKey(Files.readString(Paths.get(&#34;/Users/myuser/.ssh/id_rsa.pub&#34;)))
  *             .build());
  * 
+ *         // Create a new Droplet using the SSH key
  *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
  *             .image(&#34;ubuntu-18-04-x64&#34;)
  *             .region(&#34;nyc3&#34;)
