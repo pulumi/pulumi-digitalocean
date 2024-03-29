@@ -45,8 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new tag
  *         var foobar = new Tag(&#34;foobar&#34;);
  * 
+ *         // Create a new Droplet in nyc3 with the foobar tag
  *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
  *             .image(&#34;ubuntu-18-04-x64&#34;)
  *             .region(&#34;nyc3&#34;)

@@ -46,11 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Spaces Bucket
  *         var mybucket = new SpacesBucket(&#34;mybucket&#34;, SpacesBucketArgs.builder()        
  *             .region(&#34;sfo2&#34;)
  *             .acl(&#34;public-read&#34;)
  *             .build());
  * 
+ *         // Add a CDN endpoint to the Spaces Bucket
  *         var mycdn = new Cdn(&#34;mycdn&#34;, CdnArgs.builder()        
  *             .origin(mybucket.bucketDomainName())
  *             .build());
@@ -89,16 +91,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Spaces Bucket
  *         var mybucket = new SpacesBucket(&#34;mybucket&#34;, SpacesBucketArgs.builder()        
  *             .region(&#34;sfo2&#34;)
  *             .acl(&#34;public-read&#34;)
  *             .build());
  * 
+ *         // Create a DigitalOcean managed Let&#39;s Encrypt Certificate
  *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
  *             .type(&#34;lets_encrypt&#34;)
  *             .domains(&#34;static.example.com&#34;)
  *             .build());
  * 
+ *         // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
  *         var mycdn = new Cdn(&#34;mycdn&#34;, CdnArgs.builder()        
  *             .origin(mybucket.bucketDomainName())
  *             .customDomain(&#34;static.example.com&#34;)

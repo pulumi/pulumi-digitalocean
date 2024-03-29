@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var static_assets = new SpacesBucket(&#34;static-assets&#34;);
  * 
+ *         // ...
  *     }
  * }
  * ```
