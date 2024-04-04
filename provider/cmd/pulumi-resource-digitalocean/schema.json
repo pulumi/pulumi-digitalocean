@@ -10788,6 +10788,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
                     },
+                    "description": "A representation of the Kubernetes cluster's kubeconfig with the following attributes:\n",
                     "secret": true
                 },
                 "maintenancePolicy": {
@@ -10968,6 +10969,7 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig"
                         },
+                        "description": "A representation of the Kubernetes cluster's kubeconfig with the following attributes:\n",
                         "secret": true
                     },
                     "maintenancePolicy": {
@@ -11635,7 +11637,7 @@
                 },
                 "value": {
                     "type": "number",
-                    "description": "The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
+                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
                 },
                 "window": {
                     "type": "string",
@@ -11688,7 +11690,7 @@
                 },
                 "value": {
                     "type": "number",
-                    "description": "The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
+                    "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
                 },
                 "window": {
                     "type": "string",
@@ -11746,7 +11748,7 @@
                     },
                     "value": {
                         "type": "number",
-                        "description": "The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
+                        "description": "The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.\nDigitalOcean will show the correct unit in the web panel.\n"
                     },
                     "window": {
                         "type": "string",
@@ -14919,7 +14921,7 @@
                 "properties": {
                     "autoUpgrade": {
                         "type": "boolean",
-                        "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n* `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:\n"
+                        "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
                     },
                     "clusterSubnet": {
                         "type": "string",
@@ -14949,6 +14951,7 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig"
                         },
+                        "description": "A representation of the Kubernetes cluster's kubeconfig with the following attributes:\n",
                         "secret": true
                     },
                     "maintenancePolicies": {
