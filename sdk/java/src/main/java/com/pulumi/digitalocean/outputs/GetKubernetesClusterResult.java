@@ -18,7 +18,6 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterResult {
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-     * * `kube_config.0` - A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
      * 
      */
     private Boolean autoUpgrade;
@@ -48,6 +47,10 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String ipv4Address;
+    /**
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * 
+     */
     private List<GetKubernetesClusterKubeConfig> kubeConfigs;
     /**
      * @return The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
@@ -109,7 +112,6 @@ public final class GetKubernetesClusterResult {
     private GetKubernetesClusterResult() {}
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-     * * `kube_config.0` - A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
      * 
      */
     public Boolean autoUpgrade() {
@@ -153,6 +155,10 @@ public final class GetKubernetesClusterResult {
     public String ipv4Address() {
         return this.ipv4Address;
     }
+    /**
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * 
+     */
     public List<GetKubernetesClusterKubeConfig> kubeConfigs() {
         return this.kubeConfigs;
     }

@@ -89,6 +89,9 @@ namespace Pulumi.DigitalOcean
         [Output("ipv4Address")]
         public Output<string> Ipv4Address { get; private set; } = null!;
 
+        /// <summary>
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// </summary>
         [Output("kubeConfigs")]
         public Output<ImmutableArray<Outputs.KubernetesClusterKubeConfig>> KubeConfigs { get; private set; } = null!;
 
@@ -354,6 +357,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("kubeConfigs")]
         private InputList<Inputs.KubernetesClusterKubeConfigGetArgs>? _kubeConfigs;
+
+        /// <summary>
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// </summary>
         public InputList<Inputs.KubernetesClusterKubeConfigGetArgs> KubeConfigs
         {
             get => _kubeConfigs ?? (_kubeConfigs = new InputList<Inputs.KubernetesClusterKubeConfigGetArgs>());

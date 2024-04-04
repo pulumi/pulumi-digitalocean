@@ -39,7 +39,6 @@ export interface GetKubernetesClusterArgs {
 export interface GetKubernetesClusterResult {
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     readonly autoUpgrade: boolean;
     /**
@@ -63,6 +62,9 @@ export interface GetKubernetesClusterResult {
      * The public IPv4 address of the Kubernetes master node.
      */
     readonly ipv4Address: string;
+    /**
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     */
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
     /**
      * The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.

@@ -89,7 +89,6 @@ class GetKubernetesClusterResult:
     def auto_upgrade(self) -> bool:
         """
         A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -141,6 +140,9 @@ class GetKubernetesClusterResult:
     @property
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> Sequence['outputs.GetKubernetesClusterKubeConfigResult']:
+        """
+        A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        """
         return pulumi.get(self, "kube_configs")
 
     @property
