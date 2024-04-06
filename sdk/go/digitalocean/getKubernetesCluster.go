@@ -33,7 +33,6 @@ type LookupKubernetesClusterArgs struct {
 // A collection of values returned by getKubernetesCluster.
 type LookupKubernetesClusterResult struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	AutoUpgrade bool `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet string `pulumi:"clusterSubnet"`
@@ -45,7 +44,8 @@ type LookupKubernetesClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The public IPv4 address of the Kubernetes master node.
-	Ipv4Address string                           `pulumi:"ipv4Address"`
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
 	MaintenancePolicies []GetKubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicies"`
@@ -113,7 +113,6 @@ func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutp
 }
 
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 func (o LookupKubernetesClusterResultOutput) AutoUpgrade() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
 }
@@ -147,6 +146,7 @@ func (o LookupKubernetesClusterResultOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
+// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 func (o LookupKubernetesClusterResultOutput) KubeConfigs() GetKubernetesClusterKubeConfigArrayOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterKubeConfig { return v.KubeConfigs }).(GetKubernetesClusterKubeConfigArrayOutput)
 }

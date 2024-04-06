@@ -165,9 +165,17 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     public Output<String> ipv4Address() {
         return this.ipv4Address;
     }
+    /**
+     * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * 
+     */
     @Export(name="kubeConfigs", refs={List.class,KubernetesClusterKubeConfig.class}, tree="[0,1]")
     private Output<List<KubernetesClusterKubeConfig>> kubeConfigs;
 
+    /**
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * 
+     */
     public Output<List<KubernetesClusterKubeConfig>> kubeConfigs() {
         return this.kubeConfigs;
     }
