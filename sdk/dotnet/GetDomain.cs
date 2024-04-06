@@ -45,6 +45,25 @@ namespace Pulumi.DigitalOcean
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ```
+        /// 
+        /// data.digitalocean_domain.example: Refreshing state...
+        /// 
+        /// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+        /// 
+        /// Outputs:
+        /// 
+        /// domain_output = $ORIGIN example.com.
+        /// $TTL 1800
+        /// example.com. IN SOA ns1.digitalocean.com. hostmaster.example.com. 1516944700 10800 3600 604800 1800
+        /// example.com. 1800 IN NS ns1.digitalocean.com.
+        /// example.com. 1800 IN NS ns2.digitalocean.com.
+        /// example.com. 1800 IN NS ns3.digitalocean.com.
+        /// www.example.com. 3600 IN A 176.107.155.137
+        /// db.example.com. 3600 IN A 179.189.166.115
+        /// jira.example.com. 3600 IN A 207.189.228.15
+        /// ```
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
@@ -83,6 +102,25 @@ namespace Pulumi.DigitalOcean
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ```
+        /// 
+        /// data.digitalocean_domain.example: Refreshing state...
+        /// 
+        /// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+        /// 
+        /// Outputs:
+        /// 
+        /// domain_output = $ORIGIN example.com.
+        /// $TTL 1800
+        /// example.com. IN SOA ns1.digitalocean.com. hostmaster.example.com. 1516944700 10800 3600 604800 1800
+        /// example.com. 1800 IN NS ns1.digitalocean.com.
+        /// example.com. 1800 IN NS ns2.digitalocean.com.
+        /// example.com. 1800 IN NS ns3.digitalocean.com.
+        /// www.example.com. 3600 IN A 176.107.155.137
+        /// db.example.com. 3600 IN A 179.189.166.115
+        /// jira.example.com. 3600 IN A 207.189.228.15
+        /// ```
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());

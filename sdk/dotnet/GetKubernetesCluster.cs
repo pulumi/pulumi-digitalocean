@@ -83,7 +83,6 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        /// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         /// </summary>
         public readonly bool AutoUpgrade;
         /// <summary>
@@ -107,6 +106,9 @@ namespace Pulumi.DigitalOcean
         /// The public IPv4 address of the Kubernetes master node.
         /// </summary>
         public readonly string Ipv4Address;
+        /// <summary>
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
         /// <summary>
         /// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.

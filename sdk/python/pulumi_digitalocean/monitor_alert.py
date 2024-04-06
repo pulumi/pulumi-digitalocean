@@ -47,7 +47,7 @@ class MonitorAlertArgs:
                `v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,
                `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
                `v1/dbaas/alerts/disk_utilization_alerts`.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         :param pulumi.Input[bool] enabled: The status of the alert.
@@ -135,7 +135,7 @@ class MonitorAlertArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[float]:
         """
-        The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         DigitalOcean will show the correct unit in the web panel.
         """
         return pulumi.get(self, "value")
@@ -232,7 +232,7 @@ class _MonitorAlertState:
                `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
                `v1/dbaas/alerts/disk_utilization_alerts`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
@@ -373,7 +373,7 @@ class _MonitorAlertState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[float]]:
         """
-        The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         DigitalOcean will show the correct unit in the web panel.
         """
         return pulumi.get(self, "value")
@@ -451,7 +451,7 @@ class MonitorAlert(pulumi.CustomResource):
                `v1/insights/lbaas/high_http_request_response_time_95p`, `v1/insights/lbaas/high_http_request_response_time_99p`,
                `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
                `v1/dbaas/alerts/disk_utilization_alerts`.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
@@ -583,7 +583,7 @@ class MonitorAlert(pulumi.CustomResource):
                `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
                `v1/dbaas/alerts/disk_utilization_alerts`.
         :param pulumi.Input[str] uuid: The uuid of the alert.
-        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        :param pulumi.Input[float] value: The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
                DigitalOcean will show the correct unit in the web panel.
         :param pulumi.Input[str] window: The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
         """
@@ -687,7 +687,7 @@ class MonitorAlert(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[float]:
         """
-        The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+        The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
         DigitalOcean will show the correct unit in the web panel.
         """
         return pulumi.get(self, "value")

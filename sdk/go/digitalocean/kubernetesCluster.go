@@ -57,7 +57,8 @@ type KubernetesCluster struct {
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
 	Ha pulumi.BoolPtrOutput `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
-	Ipv4Address pulumi.StringOutput                    `pulumi:"ipv4Address"`
+	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
@@ -145,7 +146,8 @@ type kubernetesClusterState struct {
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
 	Ha *bool `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
-	Ipv4Address *string                       `pulumi:"ipv4Address"`
+	Ipv4Address *string `pulumi:"ipv4Address"`
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -192,6 +194,7 @@ type KubernetesClusterState struct {
 	Ha pulumi.BoolPtrInput
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringPtrInput
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
@@ -411,6 +414,7 @@ func (o KubernetesClusterOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
+// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 func (o KubernetesClusterOutput) KubeConfigs() KubernetesClusterKubeConfigArrayOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterKubeConfigArrayOutput { return v.KubeConfigs }).(KubernetesClusterKubeConfigArrayOutput)
 }
