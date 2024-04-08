@@ -1,0 +1,20 @@
+name: index_databaseuserm5M0MpqlyIVZ
+runtime: yaml
+description: A minimal valid Pulumi program to create a DigitalOcean database user.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/7531c830-6697-4b0b-9b87-d2477ef5ac16.zip
+resources:
+  my-database-cluster:
+    properties:
+      engine: pg
+      nodeCount: 1
+      region: nyc1
+      size: db-s-1vcpu-1gb
+      version: "12"
+    type: digitalocean:DatabaseCluster
+  my-database-user:
+    properties:
+      clusterId: ${my-database-cluster.id}
+    type: digitalocean:DatabaseUser
