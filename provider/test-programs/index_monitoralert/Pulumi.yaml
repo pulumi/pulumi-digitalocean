@@ -1,0 +1,28 @@
+name: index_monitoralertKreelJsNN3TA
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/ca4dfc29-2472-47ab-adf0-524cb422a95d.zip
+resources:
+  myDroplet:
+    properties:
+      image: ubuntu-18-04-x64
+      region: nyc3
+      size: s-1vcpu-1gb
+    type: digitalocean:Droplet
+  myDropletMonitorAlert:
+    properties:
+      alerts:
+        emails:
+          - admin@example.com
+      compare: ">="
+      description: Droplet CPU Usage Alert
+      enabled: true
+      entities:
+        - ${myDroplet.id}
+      type: v1/insights/droplet/cpu
+      value: 70
+      window: 5m
+    type: digitalocean:MonitorAlert

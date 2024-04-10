@@ -22,6 +22,7 @@ const providerName = "digitalocean"
 const defaultBaselineVersion = "4.27.0"
 
 var programs = []string{
+	"test-programs/index_monitoralert",
 	"test-programs/index_volume",
 	"test-programs/index_droplet",
 	"test-programs/index_tag",
@@ -100,6 +101,7 @@ func testProgram(t *testing.T, dir string) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, dir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.SkipInstall(),
 	)
 	test.Up()
 }
