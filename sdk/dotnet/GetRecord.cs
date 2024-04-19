@@ -23,7 +23,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get data from a DNS record:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ```
         /// 
@@ -74,7 +72,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get data from a DNS record:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,7 +93,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ```
         /// 

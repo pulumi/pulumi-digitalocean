@@ -242,7 +242,6 @@ class DatabaseUser(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database user
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -255,10 +254,8 @@ class DatabaseUser(pulumi.CustomResource):
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a PostgreSQL database replica
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -275,10 +272,8 @@ class DatabaseUser(pulumi.CustomResource):
             region=digitalocean.Region.NYC1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -309,7 +304,6 @@ class DatabaseUser(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -343,7 +337,6 @@ class DatabaseUser(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database user
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -356,10 +349,8 @@ class DatabaseUser(pulumi.CustomResource):
             node_count=1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a PostgreSQL database replica
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -376,10 +367,8 @@ class DatabaseUser(pulumi.CustomResource):
             region=digitalocean.Region.NYC1)
         user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -410,7 +399,6 @@ class DatabaseUser(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

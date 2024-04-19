@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,10 +44,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new MySQL database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,10 +73,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new Redis database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,10 +102,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new Kafka database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,10 +131,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new MongoDB database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,11 +160,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Create a new database cluster based on a backup of an existing cluster.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,7 +211,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

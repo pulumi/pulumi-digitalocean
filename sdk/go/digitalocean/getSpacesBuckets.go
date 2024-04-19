@@ -23,7 +23,6 @@ import (
 //
 // Get all buckets in a region:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // You can sort the results as well:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +91,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSpacesBuckets(ctx *pulumi.Context, args *GetSpacesBucketsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpacesBucketsResult

@@ -26,7 +26,6 @@ namespace Pulumi.DigitalOcean
         /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
         /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -73,7 +71,6 @@ namespace Pulumi.DigitalOcean
         /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
         /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

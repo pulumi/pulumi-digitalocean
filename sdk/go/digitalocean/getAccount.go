@@ -17,7 +17,6 @@ import (
 //
 // Get the account:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountResult

@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * Get the Droplet by name:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -27,11 +26,9 @@ import * as utilities from "./utilities";
  * });
  * export const dropletOutput = example.then(example => example.ipv4Address);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get the Droplet by tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -40,11 +37,9 @@ import * as utilities from "./utilities";
  *     tag: "web",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get the Droplet by ID:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -53,7 +48,6 @@ import * as utilities from "./utilities";
  *     id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletResult> {
     args = args || {};
@@ -197,7 +191,6 @@ export interface GetDropletResult {
  *
  * Get the Droplet by name:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -207,11 +200,9 @@ export interface GetDropletResult {
  * });
  * export const dropletOutput = example.then(example => example.ipv4Address);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get the Droplet by tag:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -220,11 +211,9 @@ export interface GetDropletResult {
  *     tag: "web",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get the Droplet by ID:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -233,7 +222,6 @@ export interface GetDropletResult {
  *     id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDropletOutput(args?: GetDropletOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletResult> {
     return pulumi.output(args).apply((a: any) => getDroplet(a, opts))

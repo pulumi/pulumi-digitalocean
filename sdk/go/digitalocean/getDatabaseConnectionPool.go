@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupDatabaseConnectionPool(ctx *pulumi.Context, args *LookupDatabaseConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseConnectionPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseConnectionPoolResult

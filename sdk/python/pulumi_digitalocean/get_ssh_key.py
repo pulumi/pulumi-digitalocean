@@ -91,7 +91,6 @@ def get_ssh_key(name: Optional[str] = None,
 
     Get the ssh key:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -103,7 +102,6 @@ def get_ssh_key(name: Optional[str] = None,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         ssh_keys=[example_ssh_key.id])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the ssh key.
@@ -135,7 +133,6 @@ def get_ssh_key_output(name: Optional[pulumi.Input[str]] = None,
 
     Get the ssh key:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -147,7 +144,6 @@ def get_ssh_key_output(name: Optional[pulumi.Input[str]] = None,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         ssh_keys=[example_ssh_key.id])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the ssh key.

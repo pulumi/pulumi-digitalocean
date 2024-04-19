@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new PostgreSQL database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -26,10 +25,8 @@ import * as utilities from "./utilities";
  *     version: "15",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new MySQL database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -42,10 +39,8 @@ import * as utilities from "./utilities";
  *     version: "8",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new Redis database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -58,10 +53,8 @@ import * as utilities from "./utilities";
  *     version: "7",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new Kafka database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -74,10 +67,8 @@ import * as utilities from "./utilities";
  *     version: "3.5",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new MongoDB database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -90,11 +81,9 @@ import * as utilities from "./utilities";
  *     version: "6",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Create a new database cluster based on a backup of an existing cluster.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -121,7 +110,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [doby],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

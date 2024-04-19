@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database replica
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

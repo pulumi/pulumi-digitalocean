@@ -167,7 +167,6 @@ class DropletSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -182,7 +181,6 @@ class DropletSnapshot(pulumi.CustomResource):
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -208,7 +206,6 @@ class DropletSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -223,7 +220,6 @@ class DropletSnapshot(pulumi.CustomResource):
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

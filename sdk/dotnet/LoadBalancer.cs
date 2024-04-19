@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,7 +56,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
     /// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -65,7 +63,6 @@ namespace Pulumi.DigitalOcean
     /// `Delete old certificate`. When doing so, you must also change the name of the certificate,
     /// as there cannot be multiple certificates with the same name in an account.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -114,7 +111,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

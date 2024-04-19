@@ -284,7 +284,6 @@ def get_database_cluster(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -292,7 +291,6 @@ def get_database_cluster(name: Optional[str] = None,
     example = digitalocean.get_database_cluster(name="example-cluster")
     pulumi.export("databaseOutput", example.uri)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the database cluster.
@@ -336,7 +334,6 @@ def get_database_cluster_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -344,7 +341,6 @@ def get_database_cluster_output(name: Optional[pulumi.Input[str]] = None,
     example = digitalocean.get_database_cluster(name="example-cluster")
     pulumi.export("databaseOutput", example.uri)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the database cluster.

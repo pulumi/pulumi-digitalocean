@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get the Droplet snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -24,11 +23,9 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create image from snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -44,7 +41,6 @@ import * as utilities from "./utilities";
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
@@ -126,7 +122,6 @@ export interface GetDropletSnapshotResult {
  *
  * Get the Droplet snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -137,11 +132,9 @@ export interface GetDropletSnapshotResult {
  *     region: "nyc3",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create image from snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -157,7 +150,6 @@ export interface GetDropletSnapshotResult {
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getDropletSnapshot(a, opts))

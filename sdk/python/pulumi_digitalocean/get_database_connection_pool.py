@@ -190,7 +190,6 @@ def get_database_connection_pool(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -200,7 +199,6 @@ def get_database_connection_pool(cluster_id: Optional[str] = None,
         name="pool-01")
     pulumi.export("connectionPoolUriOutput", read_only.uri)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the original source database cluster.
@@ -237,7 +235,6 @@ def get_database_connection_pool_output(cluster_id: Optional[pulumi.Input[str]] 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -247,7 +244,6 @@ def get_database_connection_pool_output(cluster_id: Optional[pulumi.Input[str]] 
         name="pool-01")
     pulumi.export("connectionPoolUriOutput", read_only.uri)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the original source database cluster.

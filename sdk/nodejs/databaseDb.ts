@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new PostgreSQL database
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  * });
  * const database_example = new digitalocean.DatabaseDb("database-example", {clusterId: postgres_example.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

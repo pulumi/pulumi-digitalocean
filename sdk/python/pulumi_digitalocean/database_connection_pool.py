@@ -329,7 +329,6 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database connection pool
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -347,7 +346,6 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             db_name="defaultdb",
             user="doadmin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -380,7 +378,6 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database connection pool
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -398,7 +395,6 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             db_name="defaultdb",
             user="doadmin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

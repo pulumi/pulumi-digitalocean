@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Resource Assignment
 //
@@ -52,7 +50,6 @@ import (
 // `digitaloceanLoadBalancer`, and `DatabaseCluster` resources
 // may be assigned to a VPC by referencing its `id`. For example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,7 +82,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -94,7 +94,6 @@ def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArg
     Use the `filter` block with a `key` string and `values` list to filter domains. (This example
     also uses the regular expression `match_by` mode in order to match domains by suffix.)
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -105,7 +104,6 @@ def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArg
         values=["example\\\\.com$"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.
@@ -145,7 +143,6 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     Use the `filter` block with a `key` string and `values` list to filter domains. (This example
     also uses the regular expression `match_by` mode in order to match domains by suffix.)
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -156,7 +153,6 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
         values=["example\\\\.com$"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetDomainsFilterArgs']] filters: Filter the results.

@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * Get the account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  * });
  * export const defaultIngress = example.then(example => example.defaultIngress);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
 
@@ -93,7 +91,6 @@ export interface GetAppResult {
  *
  * Get the account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -103,7 +100,6 @@ export interface GetAppResult {
  * });
  * export const defaultIngress = example.then(example => example.defaultIngress);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
     return pulumi.output(args).apply((a: any) => getApp(a, opts))
