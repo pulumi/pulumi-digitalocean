@@ -172,7 +172,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         DependsOn =
     ///         {
-    ///             doby, 
+    ///             doby,
     ///         },
     ///     });
     /// 
