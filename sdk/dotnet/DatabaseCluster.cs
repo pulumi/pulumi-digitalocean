@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ### Create a new PostgreSQL database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,10 +34,8 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new MySQL database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,10 +55,8 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new Redis database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -81,10 +76,8 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new Kafka database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -104,10 +97,8 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new MongoDB database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -127,11 +118,9 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Create a new database cluster based on a backup of an existing cluster.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -172,13 +161,12 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         DependsOn =
     ///         {
-    ///             doby, 
+    ///             doby,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -191,9 +179,6 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/databaseCluster:DatabaseCluster")]
     public partial class DatabaseCluster : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Create a new database cluster based on a backup of an existing cluster.
-        /// </summary>
         [Output("backupRestore")]
         public Output<Outputs.DatabaseClusterBackupRestore?> BackupRestore { get; private set; } = null!;
 
@@ -382,9 +367,6 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DatabaseClusterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Create a new database cluster based on a backup of an existing cluster.
-        /// </summary>
         [Input("backupRestore")]
         public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
 
@@ -487,9 +469,6 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DatabaseClusterState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Create a new database cluster based on a backup of an existing cluster.
-        /// </summary>
         [Input("backupRestore")]
         public Input<Inputs.DatabaseClusterBackupRestoreGetArgs>? BackupRestore { get; set; }
 

@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * ### Basic Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -36,11 +35,9 @@ import * as utilities from "./utilities";
  *     }],
  * }});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Static Site Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -59,7 +56,6 @@ import * as utilities from "./utilities";
  *     }],
  * }});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

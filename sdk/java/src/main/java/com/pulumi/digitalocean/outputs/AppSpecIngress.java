@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecIngress {
     /**
-     * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * @return Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      * 
      */
     private @Nullable List<AppSpecIngressRule> rules;
 
     private AppSpecIngress() {}
     /**
-     * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * @return Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      * 
      */
     public List<AppSpecIngressRule> rules() {

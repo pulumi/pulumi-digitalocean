@@ -637,9 +637,9 @@ func (o AppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) AppSpecDatabaseOutp
 }
 
 type AppSpecDomainName struct {
-	// The name of the component.
+	// The hostname for the domain.
 	Name string `pulumi:"name"`
-	// The type of the environment variable, `GENERAL` or `SECRET`.
+	// The domain type, which can be one of the following:
 	Type *string `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard *bool `pulumi:"wildcard"`
@@ -659,9 +659,9 @@ type AppSpecDomainNameInput interface {
 }
 
 type AppSpecDomainNameArgs struct {
-	// The name of the component.
+	// The hostname for the domain.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The type of the environment variable, `GENERAL` or `SECRET`.
+	// The domain type, which can be one of the following:
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
@@ -720,12 +720,12 @@ func (o AppSpecDomainNameOutput) ToAppSpecDomainNameOutputWithContext(ctx contex
 	return o
 }
 
-// The name of the component.
+// The hostname for the domain.
 func (o AppSpecDomainNameOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecDomainName) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the environment variable, `GENERAL` or `SECRET`.
+// The domain type, which can be one of the following:
 func (o AppSpecDomainNameOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDomainName) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -767,7 +767,7 @@ type AppSpecEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -789,7 +789,7 @@ type AppSpecEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -859,7 +859,7 @@ func (o AppSpecEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1208,15 +1208,15 @@ func (o AppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 }
 
 type AppSpecFunctionCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecFunctionCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -1234,15 +1234,15 @@ type AppSpecFunctionCorsInput interface {
 }
 
 type AppSpecFunctionCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecFunctionCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -1325,27 +1325,27 @@ func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsPtrOutputWithContext(ctx
 	}).(AppSpecFunctionCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecFunctionCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecFunctionCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecFunctionCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecFunctionCorsOutput) AllowOrigins() AppSpecFunctionCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) *AppSpecFunctionCorsAllowOrigins { return v.AllowOrigins }).(AppSpecFunctionCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecFunctionCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -1379,7 +1379,7 @@ func (o AppSpecFunctionCorsPtrOutput) Elem() AppSpecFunctionCorsOutput {
 	}).(AppSpecFunctionCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) *bool {
 		if v == nil {
@@ -1389,7 +1389,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecFunctionCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
 		if v == nil {
@@ -1399,7 +1399,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecFunctionCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
 		if v == nil {
@@ -1409,7 +1409,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecFunctionCorsPtrOutput) AllowOrigins() AppSpecFunctionCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) *AppSpecFunctionCorsAllowOrigins {
 		if v == nil {
@@ -1419,7 +1419,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowOrigins() AppSpecFunctionCorsAllowOri
 	}).(AppSpecFunctionCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecFunctionCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
 		if v == nil {
@@ -1440,11 +1440,11 @@ func (o AppSpecFunctionCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecFunctionCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -1460,11 +1460,11 @@ type AppSpecFunctionCorsAllowOriginsInput interface {
 }
 
 type AppSpecFunctionCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -1545,17 +1545,17 @@ func (o AppSpecFunctionCorsAllowOriginsOutput) ToAppSpecFunctionCorsAllowOrigins
 	}).(AppSpecFunctionCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -1584,7 +1584,7 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Elem() AppSpecFunctionCorsAllo
 	}).(AppSpecFunctionCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -1594,7 +1594,7 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -1604,7 +1604,7 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -1621,7 +1621,7 @@ type AppSpecFunctionEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -1643,7 +1643,7 @@ type AppSpecFunctionEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1713,7 +1713,7 @@ func (o AppSpecFunctionEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecFunctionEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2249,7 +2249,7 @@ type AppSpecFunctionLogDestination struct {
 	Datadog *AppSpecFunctionLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
@@ -2271,7 +2271,7 @@ type AppSpecFunctionLogDestinationArgs struct {
 	Datadog AppSpecFunctionLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -2338,7 +2338,7 @@ func (o AppSpecFunctionLogDestinationOutput) Logtail() AppSpecFunctionLogDestina
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationLogtail { return v.Logtail }).(AppSpecFunctionLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2526,8 +2526,6 @@ func (o AppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringP
 
 type AppSpecFunctionLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -2544,8 +2542,6 @@ type AppSpecFunctionLogDestinationLogtailInput interface {
 
 type AppSpecFunctionLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -2627,8 +2623,6 @@ func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinat
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -2658,8 +2652,6 @@ func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Elem() AppSpecFunctionLog
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionLogDestinationLogtail) *string {
 		if v == nil {
@@ -2670,7 +2662,7 @@ func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrO
 }
 
 type AppSpecFunctionLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -2686,7 +2678,7 @@ type AppSpecFunctionLogDestinationPapertrailInput interface {
 }
 
 type AppSpecFunctionLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -2767,7 +2759,7 @@ func (o AppSpecFunctionLogDestinationPapertrailOutput) ToAppSpecFunctionLogDesti
 	}).(AppSpecFunctionLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecFunctionLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -2796,7 +2788,7 @@ func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) Elem() AppSpecFunction
 	}).(AppSpecFunctionLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionLogDestinationPapertrail) *string {
 		if v == nil {
@@ -2913,7 +2905,7 @@ func (o AppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 }
 
 type AppSpecIngress struct {
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 	Rules []AppSpecIngressRule `pulumi:"rules"`
 }
 
@@ -2929,7 +2921,7 @@ type AppSpecIngressInput interface {
 }
 
 type AppSpecIngressArgs struct {
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 	Rules AppSpecIngressRuleArrayInput `pulumi:"rules"`
 }
 
@@ -3010,7 +3002,7 @@ func (o AppSpecIngressOutput) ToAppSpecIngressPtrOutputWithContext(ctx context.C
 	}).(AppSpecIngressPtrOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 func (o AppSpecIngressOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v AppSpecIngress) []AppSpecIngressRule { return v.Rules }).(AppSpecIngressRuleArrayOutput)
 }
@@ -3039,7 +3031,7 @@ func (o AppSpecIngressPtrOutput) Elem() AppSpecIngressOutput {
 	}).(AppSpecIngressOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngress) []AppSpecIngressRule {
 		if v == nil {
@@ -3050,13 +3042,10 @@ func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 }
 
 type AppSpecIngressRule struct {
-	// The component to route to. Only one of `component` or `redirect` may be set.
 	Component *AppSpecIngressRuleComponent `pulumi:"component"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	Cors *AppSpecIngressRuleCors `pulumi:"cors"`
-	// The match configuration for the rule
-	Match *AppSpecIngressRuleMatch `pulumi:"match"`
-	// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+	Cors     *AppSpecIngressRuleCors     `pulumi:"cors"`
+	Match    *AppSpecIngressRuleMatch    `pulumi:"match"`
 	Redirect *AppSpecIngressRuleRedirect `pulumi:"redirect"`
 }
 
@@ -3072,13 +3061,10 @@ type AppSpecIngressRuleInput interface {
 }
 
 type AppSpecIngressRuleArgs struct {
-	// The component to route to. Only one of `component` or `redirect` may be set.
 	Component AppSpecIngressRuleComponentPtrInput `pulumi:"component"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	Cors AppSpecIngressRuleCorsPtrInput `pulumi:"cors"`
-	// The match configuration for the rule
-	Match AppSpecIngressRuleMatchPtrInput `pulumi:"match"`
-	// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+	Cors     AppSpecIngressRuleCorsPtrInput     `pulumi:"cors"`
+	Match    AppSpecIngressRuleMatchPtrInput    `pulumi:"match"`
 	Redirect AppSpecIngressRuleRedirectPtrInput `pulumi:"redirect"`
 }
 
@@ -3133,7 +3119,6 @@ func (o AppSpecIngressRuleOutput) ToAppSpecIngressRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The component to route to. Only one of `component` or `redirect` may be set.
 func (o AppSpecIngressRuleOutput) Component() AppSpecIngressRuleComponentPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleComponent { return v.Component }).(AppSpecIngressRuleComponentPtrOutput)
 }
@@ -3143,12 +3128,10 @@ func (o AppSpecIngressRuleOutput) Cors() AppSpecIngressRuleCorsPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleCors { return v.Cors }).(AppSpecIngressRuleCorsPtrOutput)
 }
 
-// The match configuration for the rule
 func (o AppSpecIngressRuleOutput) Match() AppSpecIngressRuleMatchPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleMatch { return v.Match }).(AppSpecIngressRuleMatchPtrOutput)
 }
 
-// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
 func (o AppSpecIngressRuleOutput) Redirect() AppSpecIngressRuleRedirectPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleRedirect { return v.Redirect }).(AppSpecIngressRuleRedirectPtrOutput)
 }
@@ -3175,11 +3158,9 @@ func (o AppSpecIngressRuleArrayOutput) Index(i pulumi.IntInput) AppSpecIngressRu
 
 type AppSpecIngressRuleComponent struct {
 	// The name of the component.
-	Name *string `pulumi:"name"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
-	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
-	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
-	Rewrite *string `pulumi:"rewrite"`
+	Name               *string `pulumi:"name"`
+	PreservePathPrefix *bool   `pulumi:"preservePathPrefix"`
+	Rewrite            *string `pulumi:"rewrite"`
 }
 
 // AppSpecIngressRuleComponentInput is an input type that accepts AppSpecIngressRuleComponentArgs and AppSpecIngressRuleComponentOutput values.
@@ -3195,11 +3176,9 @@ type AppSpecIngressRuleComponentInput interface {
 
 type AppSpecIngressRuleComponentArgs struct {
 	// The name of the component.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
-	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
-	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
-	Rewrite pulumi.StringPtrInput `pulumi:"rewrite"`
+	Name               pulumi.StringPtrInput `pulumi:"name"`
+	PreservePathPrefix pulumi.BoolPtrInput   `pulumi:"preservePathPrefix"`
+	Rewrite            pulumi.StringPtrInput `pulumi:"rewrite"`
 }
 
 func (AppSpecIngressRuleComponentArgs) ElementType() reflect.Type {
@@ -3284,12 +3263,10 @@ func (o AppSpecIngressRuleComponentOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// An optional flag to preserve the path that is forwarded to the backend service.
 func (o AppSpecIngressRuleComponentOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
-// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 func (o AppSpecIngressRuleComponentOutput) Rewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *string { return v.Rewrite }).(pulumi.StringPtrOutput)
 }
@@ -3328,7 +3305,6 @@ func (o AppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An optional flag to preserve the path that is forwarded to the backend service.
 func (o AppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *bool {
 		if v == nil {
@@ -3338,7 +3314,6 @@ func (o AppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 func (o AppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *string {
 		if v == nil {
@@ -3349,15 +3324,15 @@ func (o AppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecIngressRuleCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -3375,15 +3350,15 @@ type AppSpecIngressRuleCorsInput interface {
 }
 
 type AppSpecIngressRuleCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecIngressRuleCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -3466,27 +3441,27 @@ func (o AppSpecIngressRuleCorsOutput) ToAppSpecIngressRuleCorsPtrOutputWithConte
 	}).(AppSpecIngressRuleCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecIngressRuleCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecIngressRuleCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecIngressRuleCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecIngressRuleCorsOutput) AllowOrigins() AppSpecIngressRuleCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *AppSpecIngressRuleCorsAllowOrigins { return v.AllowOrigins }).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecIngressRuleCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -3520,7 +3495,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) Elem() AppSpecIngressRuleCorsOutput {
 	}).(AppSpecIngressRuleCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) *bool {
 		if v == nil {
@@ -3530,7 +3505,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3540,7 +3515,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3550,7 +3525,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowOrigins() AppSpecIngressRuleCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) *AppSpecIngressRuleCorsAllowOrigins {
 		if v == nil {
@@ -3560,7 +3535,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowOrigins() AppSpecIngressRuleCorsAl
 	}).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecIngressRuleCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3581,11 +3556,11 @@ func (o AppSpecIngressRuleCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -3601,11 +3576,11 @@ type AppSpecIngressRuleCorsAllowOriginsInput interface {
 }
 
 type AppSpecIngressRuleCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -3686,17 +3661,17 @@ func (o AppSpecIngressRuleCorsAllowOriginsOutput) ToAppSpecIngressRuleCorsAllowO
 	}).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -3725,7 +3700,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Elem() AppSpecIngressRuleCo
 	}).(AppSpecIngressRuleCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -3735,7 +3710,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -3745,7 +3720,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -3756,7 +3731,6 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOut
 }
 
 type AppSpecIngressRuleMatch struct {
-	// Paths must start with `/` and must be unique within the app.
 	Path *AppSpecIngressRuleMatchPath `pulumi:"path"`
 }
 
@@ -3772,7 +3746,6 @@ type AppSpecIngressRuleMatchInput interface {
 }
 
 type AppSpecIngressRuleMatchArgs struct {
-	// Paths must start with `/` and must be unique within the app.
 	Path AppSpecIngressRuleMatchPathPtrInput `pulumi:"path"`
 }
 
@@ -3853,7 +3826,6 @@ func (o AppSpecIngressRuleMatchOutput) ToAppSpecIngressRuleMatchPtrOutputWithCon
 	}).(AppSpecIngressRuleMatchPtrOutput)
 }
 
-// Paths must start with `/` and must be unique within the app.
 func (o AppSpecIngressRuleMatchOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath { return v.Path }).(AppSpecIngressRuleMatchPathPtrOutput)
 }
@@ -3882,7 +3854,6 @@ func (o AppSpecIngressRuleMatchPtrOutput) Elem() AppSpecIngressRuleMatchOutput {
 	}).(AppSpecIngressRuleMatchOutput)
 }
 
-// Paths must start with `/` and must be unique within the app.
 func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath {
 		if v == nil {
@@ -3893,7 +3864,6 @@ func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrO
 }
 
 type AppSpecIngressRuleMatchPath struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix *string `pulumi:"prefix"`
 }
 
@@ -3909,7 +3879,6 @@ type AppSpecIngressRuleMatchPathInput interface {
 }
 
 type AppSpecIngressRuleMatchPathArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 }
 
@@ -3990,7 +3959,6 @@ func (o AppSpecIngressRuleMatchPathOutput) ToAppSpecIngressRuleMatchPathPtrOutpu
 	}).(AppSpecIngressRuleMatchPathPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o AppSpecIngressRuleMatchPathOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatchPath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -4019,7 +3987,6 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Elem() AppSpecIngressRuleMatchPath
 	}).(AppSpecIngressRuleMatchPathOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatchPath) *string {
 		if v == nil {
@@ -4030,16 +3997,11 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleRedirect struct {
-	// The authority/host to redirect to. This can be a hostname or IP address.
-	Authority *string `pulumi:"authority"`
-	// The health check will be performed on this port instead of component's HTTP port.
-	Port *int `pulumi:"port"`
-	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-	RedirectCode *int `pulumi:"redirectCode"`
-	// The scheme to redirect to. Supported values are `http` or `https`
-	Scheme *string `pulumi:"scheme"`
-	// An optional URI path to redirect to.
-	Uri *string `pulumi:"uri"`
+	Authority    *string `pulumi:"authority"`
+	Port         *int    `pulumi:"port"`
+	RedirectCode *int    `pulumi:"redirectCode"`
+	Scheme       *string `pulumi:"scheme"`
+	Uri          *string `pulumi:"uri"`
 }
 
 // AppSpecIngressRuleRedirectInput is an input type that accepts AppSpecIngressRuleRedirectArgs and AppSpecIngressRuleRedirectOutput values.
@@ -4054,16 +4016,11 @@ type AppSpecIngressRuleRedirectInput interface {
 }
 
 type AppSpecIngressRuleRedirectArgs struct {
-	// The authority/host to redirect to. This can be a hostname or IP address.
-	Authority pulumi.StringPtrInput `pulumi:"authority"`
-	// The health check will be performed on this port instead of component's HTTP port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-	RedirectCode pulumi.IntPtrInput `pulumi:"redirectCode"`
-	// The scheme to redirect to. Supported values are `http` or `https`
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-	// An optional URI path to redirect to.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	Authority    pulumi.StringPtrInput `pulumi:"authority"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	RedirectCode pulumi.IntPtrInput    `pulumi:"redirectCode"`
+	Scheme       pulumi.StringPtrInput `pulumi:"scheme"`
+	Uri          pulumi.StringPtrInput `pulumi:"uri"`
 }
 
 func (AppSpecIngressRuleRedirectArgs) ElementType() reflect.Type {
@@ -4143,27 +4100,22 @@ func (o AppSpecIngressRuleRedirectOutput) ToAppSpecIngressRuleRedirectPtrOutputW
 	}).(AppSpecIngressRuleRedirectPtrOutput)
 }
 
-// The authority/host to redirect to. This can be a hostname or IP address.
 func (o AppSpecIngressRuleRedirectOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
-// The health check will be performed on this port instead of component's HTTP port.
 func (o AppSpecIngressRuleRedirectOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 func (o AppSpecIngressRuleRedirectOutput) RedirectCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *int { return v.RedirectCode }).(pulumi.IntPtrOutput)
 }
 
-// The scheme to redirect to. Supported values are `http` or `https`
 func (o AppSpecIngressRuleRedirectOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
-// An optional URI path to redirect to.
 func (o AppSpecIngressRuleRedirectOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -4192,7 +4144,6 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Elem() AppSpecIngressRuleRedirectOu
 	}).(AppSpecIngressRuleRedirectOutput)
 }
 
-// The authority/host to redirect to. This can be a hostname or IP address.
 func (o AppSpecIngressRuleRedirectPtrOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *string {
 		if v == nil {
@@ -4202,7 +4153,6 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Authority() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The health check will be performed on this port instead of component's HTTP port.
 func (o AppSpecIngressRuleRedirectPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *int {
 		if v == nil {
@@ -4212,7 +4162,6 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 func (o AppSpecIngressRuleRedirectPtrOutput) RedirectCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *int {
 		if v == nil {
@@ -4222,7 +4171,6 @@ func (o AppSpecIngressRuleRedirectPtrOutput) RedirectCode() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The scheme to redirect to. Supported values are `http` or `https`
 func (o AppSpecIngressRuleRedirectPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *string {
 		if v == nil {
@@ -4232,7 +4180,6 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Scheme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An optional URI path to redirect to.
 func (o AppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *string {
 		if v == nil {
@@ -4614,7 +4561,7 @@ type AppSpecJobEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -4636,7 +4583,7 @@ type AppSpecJobEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4706,7 +4653,7 @@ func (o AppSpecJobEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecJobEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5238,7 +5185,7 @@ func (o AppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecJobImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
@@ -5262,7 +5209,7 @@ type AppSpecJobImageInput interface {
 }
 
 type AppSpecJobImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
@@ -5351,7 +5298,7 @@ func (o AppSpecJobImageOutput) ToAppSpecJobImagePtrOutputWithContext(ctx context
 	}).(AppSpecJobImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecJobImageOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecJobImage) []AppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(AppSpecJobImageDeployOnPushArrayOutput)
 }
@@ -5400,7 +5347,7 @@ func (o AppSpecJobImagePtrOutput) Elem() AppSpecJobImageOutput {
 	}).(AppSpecJobImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecJobImagePtrOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecJobImage) []AppSpecJobImageDeployOnPush {
 		if v == nil {
@@ -5552,7 +5499,7 @@ type AppSpecJobLogDestination struct {
 	Datadog *AppSpecJobLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecJobLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
@@ -5574,7 +5521,7 @@ type AppSpecJobLogDestinationArgs struct {
 	Datadog AppSpecJobLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -5641,7 +5588,7 @@ func (o AppSpecJobLogDestinationOutput) Logtail() AppSpecJobLogDestinationLogtai
 	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationLogtail { return v.Logtail }).(AppSpecJobLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5829,8 +5776,6 @@ func (o AppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOut
 
 type AppSpecJobLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -5847,8 +5792,6 @@ type AppSpecJobLogDestinationLogtailInput interface {
 
 type AppSpecJobLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -5930,8 +5873,6 @@ func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtail
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -5961,8 +5902,6 @@ func (o AppSpecJobLogDestinationLogtailPtrOutput) Elem() AppSpecJobLogDestinatio
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobLogDestinationLogtail) *string {
 		if v == nil {
@@ -5973,7 +5912,7 @@ func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput
 }
 
 type AppSpecJobLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -5989,7 +5928,7 @@ type AppSpecJobLogDestinationPapertrailInput interface {
 }
 
 type AppSpecJobLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -6070,7 +6009,7 @@ func (o AppSpecJobLogDestinationPapertrailOutput) ToAppSpecJobLogDestinationPape
 	}).(AppSpecJobLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecJobLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -6099,7 +6038,7 @@ func (o AppSpecJobLogDestinationPapertrailPtrOutput) Elem() AppSpecJobLogDestina
 	}).(AppSpecJobLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobLogDestinationPapertrail) *string {
 		if v == nil {
@@ -6523,15 +6462,15 @@ func (o AppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) AppSpecServiceA
 }
 
 type AppSpecServiceCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -6549,15 +6488,15 @@ type AppSpecServiceCorsInput interface {
 }
 
 type AppSpecServiceCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -6640,27 +6579,27 @@ func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutputWithContext(ctx c
 	}).(AppSpecServiceCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecServiceCorsOutput) AllowOrigins() AppSpecServiceCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) *AppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -6694,7 +6633,7 @@ func (o AppSpecServiceCorsPtrOutput) Elem() AppSpecServiceCorsOutput {
 	}).(AppSpecServiceCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) *bool {
 		if v == nil {
@@ -6704,7 +6643,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) []string {
 		if v == nil {
@@ -6714,7 +6653,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) []string {
 		if v == nil {
@@ -6724,7 +6663,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecServiceCorsPtrOutput) AllowOrigins() AppSpecServiceCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) *AppSpecServiceCorsAllowOrigins {
 		if v == nil {
@@ -6734,7 +6673,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowOrigins() AppSpecServiceCorsAllowOrigi
 	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) []string {
 		if v == nil {
@@ -6755,11 +6694,11 @@ func (o AppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecServiceCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -6775,11 +6714,11 @@ type AppSpecServiceCorsAllowOriginsInput interface {
 }
 
 type AppSpecServiceCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -6860,17 +6799,17 @@ func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsPt
 	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecServiceCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -6899,7 +6838,7 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Elem() AppSpecServiceCorsAllowO
 	}).(AppSpecServiceCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -6909,7 +6848,7 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -6919,7 +6858,7 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -6936,7 +6875,7 @@ type AppSpecServiceEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -6958,7 +6897,7 @@ type AppSpecServiceEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -7028,7 +6967,7 @@ func (o AppSpecServiceEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -7811,7 +7750,7 @@ func (o AppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput
 }
 
 type AppSpecServiceImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
@@ -7835,7 +7774,7 @@ type AppSpecServiceImageInput interface {
 }
 
 type AppSpecServiceImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
@@ -7924,7 +7863,7 @@ func (o AppSpecServiceImageOutput) ToAppSpecServiceImagePtrOutputWithContext(ctx
 	}).(AppSpecServiceImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecServiceImageOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) []AppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(AppSpecServiceImageDeployOnPushArrayOutput)
 }
@@ -7973,7 +7912,7 @@ func (o AppSpecServiceImagePtrOutput) Elem() AppSpecServiceImageOutput {
 	}).(AppSpecServiceImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecServiceImagePtrOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceImage) []AppSpecServiceImageDeployOnPush {
 		if v == nil {
@@ -8125,7 +8064,7 @@ type AppSpecServiceLogDestination struct {
 	Datadog *AppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
@@ -8147,7 +8086,7 @@ type AppSpecServiceLogDestinationArgs struct {
 	Datadog AppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -8214,7 +8153,7 @@ func (o AppSpecServiceLogDestinationOutput) Logtail() AppSpecServiceLogDestinati
 	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationLogtail { return v.Logtail }).(AppSpecServiceLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8402,8 +8341,6 @@ func (o AppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPt
 
 type AppSpecServiceLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -8420,8 +8357,6 @@ type AppSpecServiceLogDestinationLogtailInput interface {
 
 type AppSpecServiceLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -8503,8 +8438,6 @@ func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinatio
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -8534,8 +8467,6 @@ func (o AppSpecServiceLogDestinationLogtailPtrOutput) Elem() AppSpecServiceLogDe
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceLogDestinationLogtail) *string {
 		if v == nil {
@@ -8546,7 +8477,7 @@ func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOu
 }
 
 type AppSpecServiceLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -8562,7 +8493,7 @@ type AppSpecServiceLogDestinationPapertrailInput interface {
 }
 
 type AppSpecServiceLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -8643,7 +8574,7 @@ func (o AppSpecServiceLogDestinationPapertrailOutput) ToAppSpecServiceLogDestina
 	}).(AppSpecServiceLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -8672,7 +8603,7 @@ func (o AppSpecServiceLogDestinationPapertrailPtrOutput) Elem() AppSpecServiceLo
 	}).(AppSpecServiceLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceLogDestinationPapertrail) *string {
 		if v == nil {
@@ -9024,15 +8955,15 @@ func (o AppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSite
 }
 
 type AppSpecStaticSiteCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecStaticSiteCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -9050,15 +8981,15 @@ type AppSpecStaticSiteCorsInput interface {
 }
 
 type AppSpecStaticSiteCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecStaticSiteCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -9141,27 +9072,27 @@ func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutputWithContext
 	}).(AppSpecStaticSiteCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecStaticSiteCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecStaticSiteCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecStaticSiteCorsOutput) AllowOrigins() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) *AppSpecStaticSiteCorsAllowOrigins { return v.AllowOrigins }).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecStaticSiteCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -9195,7 +9126,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) Elem() AppSpecStaticSiteCorsOutput {
 	}).(AppSpecStaticSiteCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) *bool {
 		if v == nil {
@@ -9205,7 +9136,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -9215,7 +9146,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -9225,7 +9156,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowOrigins() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) *AppSpecStaticSiteCorsAllowOrigins {
 		if v == nil {
@@ -9235,7 +9166,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowOrigins() AppSpecStaticSiteCorsAllo
 	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecStaticSiteCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -9256,11 +9187,11 @@ func (o AppSpecStaticSiteCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecStaticSiteCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -9276,11 +9207,11 @@ type AppSpecStaticSiteCorsAllowOriginsInput interface {
 }
 
 type AppSpecStaticSiteCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -9361,17 +9292,17 @@ func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOri
 	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -9400,7 +9331,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() AppSpecStaticSiteCors
 	}).(AppSpecStaticSiteCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -9410,7 +9341,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -9420,7 +9351,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -9437,7 +9368,7 @@ type AppSpecStaticSiteEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -9459,7 +9390,7 @@ type AppSpecStaticSiteEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -9529,7 +9460,7 @@ func (o AppSpecStaticSiteEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -10529,7 +10460,7 @@ type AppSpecWorkerEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -10551,7 +10482,7 @@ type AppSpecWorkerEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -10621,7 +10552,7 @@ func (o AppSpecWorkerEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -11153,7 +11084,7 @@ func (o AppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecWorkerImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
@@ -11177,7 +11108,7 @@ type AppSpecWorkerImageInput interface {
 }
 
 type AppSpecWorkerImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
@@ -11266,7 +11197,7 @@ func (o AppSpecWorkerImageOutput) ToAppSpecWorkerImagePtrOutputWithContext(ctx c
 	}).(AppSpecWorkerImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecWorkerImageOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(AppSpecWorkerImageDeployOnPushArrayOutput)
 }
@@ -11315,7 +11246,7 @@ func (o AppSpecWorkerImagePtrOutput) Elem() AppSpecWorkerImageOutput {
 	}).(AppSpecWorkerImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecWorkerImagePtrOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush {
 		if v == nil {
@@ -11467,7 +11398,7 @@ type AppSpecWorkerLogDestination struct {
 	Datadog *AppSpecWorkerLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
@@ -11489,7 +11420,7 @@ type AppSpecWorkerLogDestinationArgs struct {
 	Datadog AppSpecWorkerLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -11556,7 +11487,7 @@ func (o AppSpecWorkerLogDestinationOutput) Logtail() AppSpecWorkerLogDestination
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationLogtail { return v.Logtail }).(AppSpecWorkerLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11744,8 +11675,6 @@ func (o AppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtr
 
 type AppSpecWorkerLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -11762,8 +11691,6 @@ type AppSpecWorkerLogDestinationLogtailInput interface {
 
 type AppSpecWorkerLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -11845,8 +11772,6 @@ func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationL
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -11876,8 +11801,6 @@ func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Elem() AppSpecWorkerLogDest
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerLogDestinationLogtail) *string {
 		if v == nil {
@@ -11888,7 +11811,7 @@ func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOut
 }
 
 type AppSpecWorkerLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -11904,7 +11827,7 @@ type AppSpecWorkerLogDestinationPapertrailInput interface {
 }
 
 type AppSpecWorkerLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -11985,7 +11908,7 @@ func (o AppSpecWorkerLogDestinationPapertrailOutput) ToAppSpecWorkerLogDestinati
 	}).(AppSpecWorkerLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecWorkerLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -12014,7 +11937,7 @@ func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Elem() AppSpecWorkerLogD
 	}).(AppSpecWorkerLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerLogDestinationPapertrail) *string {
 		if v == nil {
@@ -12821,11 +12744,9 @@ func (o DatabaseUserSettingArrayOutput) Index(i pulumi.IntInput) DatabaseUserSet
 
 type DatabaseUserSettingAcl struct {
 	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-	Id *string `pulumi:"id"`
-	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-	Permission string `pulumi:"permission"`
-	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-	Topic string `pulumi:"topic"`
+	Id         *string `pulumi:"id"`
+	Permission string  `pulumi:"permission"`
+	Topic      string  `pulumi:"topic"`
 }
 
 // DatabaseUserSettingAclInput is an input type that accepts DatabaseUserSettingAclArgs and DatabaseUserSettingAclOutput values.
@@ -12841,11 +12762,9 @@ type DatabaseUserSettingAclInput interface {
 
 type DatabaseUserSettingAclArgs struct {
 	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-	Permission pulumi.StringInput `pulumi:"permission"`
-	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-	Topic pulumi.StringInput `pulumi:"topic"`
+	Id         pulumi.StringPtrInput `pulumi:"id"`
+	Permission pulumi.StringInput    `pulumi:"permission"`
+	Topic      pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (DatabaseUserSettingAclArgs) ElementType() reflect.Type {
@@ -12904,12 +12823,10 @@ func (o DatabaseUserSettingAclOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
 func (o DatabaseUserSettingAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
 func (o DatabaseUserSettingAclOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -13761,7 +13678,7 @@ type KubernetesClusterNodePool struct {
 	Nodes []KubernetesClusterNodePoolNode `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size string `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
 	Taints []KubernetesClusterNodePoolTaint `pulumi:"taints"`
@@ -13799,7 +13716,7 @@ type KubernetesClusterNodePoolArgs struct {
 	Nodes KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size pulumi.StringInput `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
 	Taints KubernetesClusterNodePoolTaintArrayInput `pulumi:"taints"`
@@ -13932,7 +13849,7 @@ func (o KubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o KubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -14066,7 +13983,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) []string {
 		if v == nil {
@@ -14093,7 +14010,7 @@ type KubernetesClusterNodePoolNode struct {
 	DropletId *string `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node.
 	Id *string `pulumi:"id"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
@@ -14119,7 +14036,7 @@ type KubernetesClusterNodePoolNodeArgs struct {
 	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -14193,7 +14110,7 @@ func (o KubernetesClusterNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// A name for the node pool.
+// A name for the Kubernetes cluster.
 func (o KubernetesClusterNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

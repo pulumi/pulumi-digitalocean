@@ -12,65 +12,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecIngressRuleRedirect {
-    /**
-     * @return The authority/host to redirect to. This can be a hostname or IP address.
-     * 
-     */
     private @Nullable String authority;
-    /**
-     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
-     * 
-     */
     private @Nullable Integer port;
-    /**
-     * @return The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-     * 
-     */
     private @Nullable Integer redirectCode;
-    /**
-     * @return The scheme to redirect to. Supported values are `http` or `https`
-     * 
-     */
     private @Nullable String scheme;
-    /**
-     * @return An optional URI path to redirect to.
-     * 
-     */
     private @Nullable String uri;
 
     private AppSpecIngressRuleRedirect() {}
-    /**
-     * @return The authority/host to redirect to. This can be a hostname or IP address.
-     * 
-     */
     public Optional<String> authority() {
         return Optional.ofNullable(this.authority);
     }
-    /**
-     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-     * 
-     */
     public Optional<Integer> redirectCode() {
         return Optional.ofNullable(this.redirectCode);
     }
-    /**
-     * @return The scheme to redirect to. Supported values are `http` or `https`
-     * 
-     */
     public Optional<String> scheme() {
         return Optional.ofNullable(this.scheme);
     }
-    /**
-     * @return An optional URI path to redirect to.
-     * 
-     */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }

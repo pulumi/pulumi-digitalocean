@@ -72,7 +72,6 @@ def get_database_ca(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -80,7 +79,6 @@ def get_database_ca(cluster_id: Optional[str] = None,
     ca = digitalocean.get_database_ca(cluster_id="aaa-bbb-ccc-ddd")
     pulumi.export("caOutput", ca.certificate)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the source database cluster.
@@ -104,7 +102,6 @@ def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -112,7 +109,6 @@ def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
     ca = digitalocean.get_database_ca(cluster_id="aaa-bbb-ccc-ddd")
     pulumi.export("caOutput", ca.certificate)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the source database cluster.

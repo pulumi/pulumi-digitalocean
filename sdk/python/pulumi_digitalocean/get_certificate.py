@@ -139,14 +139,12 @@ def get_certificate(name: Optional[str] = None,
 
     Get the certificate:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_certificate(name="example")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of certificate.
@@ -182,14 +180,12 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
 
     Get the certificate:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_certificate(name="example")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of certificate.

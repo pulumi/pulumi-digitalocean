@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  *
  * The following example demonstrates the creation of an empty project:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -40,11 +39,9 @@ import * as utilities from "./utilities";
  *     purpose: "Web Application",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The following example demonstrates the creation of a project with a Droplet resource:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -61,7 +58,6 @@ import * as utilities from "./utilities";
  *     resources: [foobar.dropletUrn],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

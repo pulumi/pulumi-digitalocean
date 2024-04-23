@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  * });
  * export const databaseOutput = example.then(example => example.uri);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
 
@@ -129,7 +127,6 @@ export interface GetDatabaseClusterResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -139,7 +136,6 @@ export interface GetDatabaseClusterResult {
  * });
  * export const databaseOutput = example.then(example => example.uri);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseClusterResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseCluster(a, opts))

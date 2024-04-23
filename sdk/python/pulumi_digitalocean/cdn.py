@@ -248,7 +248,6 @@ class Cdn(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -261,11 +260,9 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Custom Sub-Domain Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -284,7 +281,6 @@ class Cdn(pulumi.CustomResource):
             custom_domain="static.example.com",
             certificate_name=cert.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -315,7 +311,6 @@ class Cdn(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -328,11 +323,9 @@ class Cdn(pulumi.CustomResource):
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Custom Sub-Domain Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -351,7 +344,6 @@ class Cdn(pulumi.CustomResource):
             custom_domain="static.example.com",
             certificate_name=cert.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -108,7 +108,6 @@ class DatabaseFirewall(pulumi.CustomResource):
 
         ### Create a new database firewall allowing multiple IP addresses
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -132,11 +131,9 @@ class DatabaseFirewall(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall allowing a Droplet
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -158,11 +155,9 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall for a database replica
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -185,7 +180,6 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,7 +211,6 @@ class DatabaseFirewall(pulumi.CustomResource):
 
         ### Create a new database firewall allowing multiple IP addresses
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -241,11 +234,9 @@ class DatabaseFirewall(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall allowing a Droplet
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -267,11 +258,9 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall for a database replica
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -294,7 +283,6 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

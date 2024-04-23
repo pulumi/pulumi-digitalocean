@@ -15,14 +15,14 @@ public final class AppSpecFunctionLogDestinationPapertrailArgs extends com.pulum
     public static final AppSpecFunctionLogDestinationPapertrailArgs Empty = new AppSpecFunctionLogDestinationPapertrailArgs();
 
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return Papertrail syslog endpoint.
      * 
      */
     public Output<String> endpoint() {
@@ -54,7 +54,7 @@ public final class AppSpecFunctionLogDestinationPapertrailArgs extends com.pulum
         }
 
         /**
-         * @param endpoint Datadog HTTP log intake endpoint.
+         * @param endpoint Papertrail syslog endpoint.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class AppSpecFunctionLogDestinationPapertrailArgs extends com.pulum
         }
 
         /**
-         * @param endpoint Datadog HTTP log intake endpoint.
+         * @param endpoint Papertrail syslog endpoint.
          * 
          * @return builder
          * 

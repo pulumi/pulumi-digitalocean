@@ -164,7 +164,6 @@ def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
 
     Get the firewall:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -172,7 +171,6 @@ def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
     example = digitalocean.get_firewall(firewall_id="1df48973-6eef-4214-854f-fa7726e7e583")
     pulumi.export("exampleFirewallName", example.name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[int] droplet_ids: The list of the IDs of the Droplets assigned to
@@ -217,7 +215,6 @@ def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int
 
     Get the firewall:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -225,7 +222,6 @@ def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int
     example = digitalocean.get_firewall(firewall_id="1df48973-6eef-4214-854f-fa7726e7e583")
     pulumi.export("exampleFirewallName", example.name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[int] droplet_ids: The list of the IDs of the Droplets assigned to

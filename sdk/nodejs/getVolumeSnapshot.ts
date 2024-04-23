@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get the volume snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -24,11 +23,9 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a volume snapshot to create a new volume based on it:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -44,7 +41,6 @@ import * as utilities from "./utilities";
  *     snapshotId: snapshot.then(snapshot => snapshot.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
     args = args || {};
@@ -130,7 +126,6 @@ export interface GetVolumeSnapshotResult {
  *
  * Get the volume snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -141,11 +136,9 @@ export interface GetVolumeSnapshotResult {
  *     region: "nyc3",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a volume snapshot to create a new volume based on it:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -161,7 +154,6 @@ export interface GetVolumeSnapshotResult {
  *     snapshotId: snapshot.then(snapshot => snapshot.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getVolumeSnapshot(a, opts))

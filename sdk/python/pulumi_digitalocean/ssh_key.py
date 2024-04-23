@@ -126,7 +126,6 @@ class SshKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -140,7 +139,6 @@ class SshKey(pulumi.CustomResource):
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=[default.fingerprint])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,7 +168,6 @@ class SshKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -184,7 +181,6 @@ class SshKey(pulumi.CustomResource):
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=[default.fingerprint])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

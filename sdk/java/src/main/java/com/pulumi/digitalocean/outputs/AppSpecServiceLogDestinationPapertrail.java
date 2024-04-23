@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class AppSpecServiceLogDestinationPapertrail {
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return Papertrail syslog endpoint.
      * 
      */
     private String endpoint;
 
     private AppSpecServiceLogDestinationPapertrail() {}
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return Papertrail syslog endpoint.
      * 
      */
     public String endpoint() {

@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,10 +44,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new MySQL database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,10 +73,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new Redis database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,10 +102,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new Kafka database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,10 +131,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new MongoDB database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,11 +160,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Create a new database cluster based on a backup of an existing cluster.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,7 +211,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -234,7 +222,6 @@ import (
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
 
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrOutput `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
@@ -331,7 +318,6 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseCluster resources.
 type databaseClusterState struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn *string `pulumi:"clusterUrn"`
@@ -381,7 +367,6 @@ type databaseClusterState struct {
 }
 
 type DatabaseClusterState struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringPtrInput
@@ -435,7 +420,6 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 }
 
 type databaseClusterArgs struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine string `pulumi:"engine"`
@@ -468,7 +452,6 @@ type databaseClusterArgs struct {
 
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringInput
@@ -586,7 +569,6 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-// Create a new database cluster based on a backup of an existing cluster.
 func (o DatabaseClusterOutput) BackupRestore() DatabaseClusterBackupRestorePtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterBackupRestorePtrOutput { return v.BackupRestore }).(DatabaseClusterBackupRestorePtrOutput)
 }

@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * Get the firewall:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  * });
  * export const exampleFirewallName = example.then(example => example.name);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
 
@@ -109,7 +107,6 @@ export interface GetFirewallResult {
  *
  * Get the firewall:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -119,7 +116,6 @@ export interface GetFirewallResult {
  * });
  * export const exampleFirewallName = example.then(example => example.name);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallResult> {
     return pulumi.output(args).apply((a: any) => getFirewall(a, opts))

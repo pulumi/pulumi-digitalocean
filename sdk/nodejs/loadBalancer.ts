@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -38,7 +37,6 @@ import * as utilities from "./utilities";
  *     dropletIds: [web.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
  * lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -46,7 +44,6 @@ import * as utilities from "./utilities";
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
  * as there cannot be multiple certificates with the same name in an account.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -76,7 +73,6 @@ import * as utilities from "./utilities";
  *     dropletIds: [web.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -201,7 +197,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * the type of the load balancer (GLOBAL or REGIONAL)
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -368,7 +364,7 @@ export interface LoadBalancerState {
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * the type of the load balancer (GLOBAL or REGIONAL)
      */
     type?: pulumi.Input<string>;
     /**
@@ -459,7 +455,7 @@ export interface LoadBalancerArgs {
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * the type of the load balancer (GLOBAL or REGIONAL)
      */
     type?: pulumi.Input<string>;
     /**

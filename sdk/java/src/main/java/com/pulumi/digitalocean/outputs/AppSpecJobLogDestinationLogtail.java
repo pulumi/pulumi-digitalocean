@@ -13,16 +13,12 @@ public final class AppSpecJobLogDestinationLogtail {
     /**
      * @return Logtail token.
      * 
-     * A `database` can contain:
-     * 
      */
     private String token;
 
     private AppSpecJobLogDestinationLogtail() {}
     /**
      * @return Logtail token.
-     * 
-     * A `database` can contain:
      * 
      */
     public String token() {

@@ -18,14 +18,14 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
     public static final AppSpecDomainNameArgs Empty = new AppSpecDomainNameArgs();
 
     /**
-     * The name of the component.
+     * The hostname for the domain.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     public Output<String> name() {
@@ -33,14 +33,14 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of the environment variable, `GENERAL` or `SECRET`.
+     * The domain type, which can be one of the following:
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the environment variable, `GENERAL` or `SECRET`.
+     * @return The domain type, which can be one of the following:
      * 
      */
     public Optional<Output<String>> type() {
@@ -105,7 +105,7 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The hostname for the domain.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The hostname for the domain.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The type of the environment variable, `GENERAL` or `SECRET`.
+         * @param type The domain type, which can be one of the following:
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The type of the environment variable, `GENERAL` or `SECRET`.
+         * @param type The domain type, which can be one of the following:
          * 
          * @return builder
          * 

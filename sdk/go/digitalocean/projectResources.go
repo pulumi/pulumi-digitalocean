@@ -31,7 +31,6 @@ import (
 //
 // The following example assigns a droplet to a Project managed outside of the provider:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,7 +71,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

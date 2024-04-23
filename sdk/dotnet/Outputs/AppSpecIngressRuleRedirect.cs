@@ -13,25 +13,10 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class AppSpecIngressRuleRedirect
     {
-        /// <summary>
-        /// The authority/host to redirect to. This can be a hostname or IP address.
-        /// </summary>
         public readonly string? Authority;
-        /// <summary>
-        /// The health check will be performed on this port instead of component's HTTP port.
-        /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-        /// </summary>
         public readonly int? RedirectCode;
-        /// <summary>
-        /// The scheme to redirect to. Supported values are `http` or `https`
-        /// </summary>
         public readonly string? Scheme;
-        /// <summary>
-        /// An optional URI path to redirect to.
-        /// </summary>
         public readonly string? Uri;
 
         [OutputConstructor]

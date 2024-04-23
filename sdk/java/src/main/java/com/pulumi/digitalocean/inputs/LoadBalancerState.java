@@ -336,14 +336,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * @return the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     public Optional<Output<String>> type() {
@@ -902,7 +902,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * @param type the type of the load balancer (GLOBAL or REGIONAL)
          * 
          * @return builder
          * 
@@ -913,7 +913,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * @param type the type of the load balancer (GLOBAL or REGIONAL)
          * 
          * @return builder
          * 

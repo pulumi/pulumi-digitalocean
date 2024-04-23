@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
  * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -93,7 +91,6 @@ export interface GetDomainsResult {
  * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
  * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -106,7 +103,6 @@ export interface GetDomainsResult {
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

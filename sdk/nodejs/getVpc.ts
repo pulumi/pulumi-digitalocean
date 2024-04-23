@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *
  * ### VPC By Name
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -27,11 +26,9 @@ import * as utilities from "./utilities";
  *     name: "example-network",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a VPC to assign a Droplet to it:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -46,7 +43,6 @@ import * as utilities from "./utilities";
  *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     args = args || {};
@@ -128,7 +124,6 @@ export interface GetVpcResult {
  *
  * ### VPC By Name
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -137,11 +132,9 @@ export interface GetVpcResult {
  *     name: "example-network",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a VPC to assign a Droplet to it:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -156,7 +149,6 @@ export interface GetVpcResult {
  *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcOutput(args?: GetVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcResult> {
     return pulumi.output(args).apply((a: any) => getVpc(a, opts))

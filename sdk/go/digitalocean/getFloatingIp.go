@@ -24,7 +24,6 @@ import (
 //
 // Get the floating IP:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFloatingIpResult

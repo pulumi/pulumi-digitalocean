@@ -394,7 +394,6 @@ class Volume(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -412,11 +411,9 @@ class Volume(pulumi.CustomResource):
             droplet_id=foobar_droplet.id,
             volume_id=foobar_volume.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         You can also create a volume from an existing snapshot.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -427,7 +424,6 @@ class Volume(pulumi.CustomResource):
             size=foobar_volume_snapshot.min_disk_size,
             snapshot_id=foobar_volume_snapshot.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -460,7 +456,6 @@ class Volume(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -478,11 +473,9 @@ class Volume(pulumi.CustomResource):
             droplet_id=foobar_droplet.id,
             volume_id=foobar_volume.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         You can also create a volume from an existing snapshot.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -493,7 +486,6 @@ class Volume(pulumi.CustomResource):
             size=foobar_volume_snapshot.min_disk_size,
             snapshot_id=foobar_volume_snapshot.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
