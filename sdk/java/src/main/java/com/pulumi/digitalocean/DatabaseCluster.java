@@ -268,17 +268,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/databaseCluster:DatabaseCluster")
 public class DatabaseCluster extends com.pulumi.resources.CustomResource {
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     * 
-     */
     @Export(name="backupRestore", refs={DatabaseClusterBackupRestore.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseClusterBackupRestore> backupRestore;
 
-    /**
-     * @return Create a new database cluster based on a backup of an existing cluster.
-     * 
-     */
     public Output<Optional<DatabaseClusterBackupRestore>> backupRestore() {
         return Codegen.optional(this.backupRestore);
     }

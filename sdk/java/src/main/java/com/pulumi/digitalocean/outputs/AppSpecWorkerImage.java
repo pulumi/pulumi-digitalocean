@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecWorkerImage {
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     private @Nullable List<AppSpecWorkerImageDeployOnPush> deployOnPushes;
@@ -42,7 +42,7 @@ public final class AppSpecWorkerImage {
 
     private AppSpecWorkerImage() {}
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     public List<AppSpecWorkerImageDeployOnPush> deployOnPushes() {

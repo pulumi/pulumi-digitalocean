@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecIngressRuleMatch {
-    /**
-     * @return Paths must start with `/` and must be unique within the app.
-     * 
-     */
     private @Nullable AppSpecIngressRuleMatchPath path;
 
     private AppSpecIngressRuleMatch() {}
-    /**
-     * @return Paths must start with `/` and must be unique within the app.
-     * 
-     */
     public Optional<AppSpecIngressRuleMatchPath> path() {
         return Optional.ofNullable(this.path);
     }

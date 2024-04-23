@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Size;
         /// <summary>
-        /// A list of tag names to be applied to the Kubernetes cluster.
+        /// A list of tag names applied to the node pool.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecJobLogDestinationPapertrail
     {
         /// <summary>
-        /// Datadog HTTP log intake endpoint.
+        /// Papertrail syslog endpoint.
         /// </summary>
         public readonly string Endpoint;
 

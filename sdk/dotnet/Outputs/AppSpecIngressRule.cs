@@ -13,21 +13,12 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class AppSpecIngressRule
     {
-        /// <summary>
-        /// The component to route to. Only one of `component` or `redirect` may be set.
-        /// </summary>
         public readonly Outputs.AppSpecIngressRuleComponent? Component;
         /// <summary>
         /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleCors? Cors;
-        /// <summary>
-        /// The match configuration for the rule
-        /// </summary>
         public readonly Outputs.AppSpecIngressRuleMatch? Match;
-        /// <summary>
-        /// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-        /// </summary>
         public readonly Outputs.AppSpecIngressRuleRedirect? Redirect;
 
         [OutputConstructor]

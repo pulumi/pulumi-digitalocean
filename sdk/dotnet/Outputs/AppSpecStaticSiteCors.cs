@@ -14,23 +14,23 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecStaticSiteCors
     {
         /// <summary>
-        /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        /// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         /// </summary>
         public readonly bool? AllowCredentials;
         /// <summary>
-        /// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        /// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         /// </summary>
         public readonly ImmutableArray<string> AllowHeaders;
         /// <summary>
-        /// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        /// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
         /// <summary>
-        /// The `Access-Control-Allow-Origin` can be
+        /// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         /// </summary>
         public readonly Outputs.AppSpecStaticSiteCorsAllowOrigins? AllowOrigins;
         /// <summary>
-        /// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        /// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         /// </summary>
         public readonly ImmutableArray<string> ExposeHeaders;
         /// <summary>

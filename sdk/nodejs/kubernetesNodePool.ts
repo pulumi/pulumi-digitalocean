@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ### Basic Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -44,14 +43,12 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Autoscaling Example
  *
  * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
  * For example:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -64,7 +61,6 @@ import * as utilities from "./utilities";
  *     maxNodes: 5,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

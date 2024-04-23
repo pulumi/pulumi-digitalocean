@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * Get data from a DNS record:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  * export const recordType = example.then(example => example.type);
  * export const recordTtl = example.then(example => example.ttl);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
 
@@ -108,7 +106,6 @@ export interface GetRecordResult {
  *
  * Get data from a DNS record:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -120,7 +117,6 @@ export interface GetRecordResult {
  * export const recordType = example.then(example => example.type);
  * export const recordTtl = example.then(example => example.ttl);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
     return pulumi.output(args).apply((a: any) => getRecord(a, opts))

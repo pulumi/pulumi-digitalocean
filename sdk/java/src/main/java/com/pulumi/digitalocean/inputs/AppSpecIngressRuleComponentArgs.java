@@ -31,32 +31,16 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * An optional flag to preserve the path that is forwarded to the backend service.
-     * 
-     */
     @Import(name="preservePathPrefix")
     private @Nullable Output<Boolean> preservePathPrefix;
 
-    /**
-     * @return An optional flag to preserve the path that is forwarded to the backend service.
-     * 
-     */
     public Optional<Output<Boolean>> preservePathPrefix() {
         return Optional.ofNullable(this.preservePathPrefix);
     }
 
-    /**
-     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-     * 
-     */
     @Import(name="rewrite")
     private @Nullable Output<String> rewrite;
 
-    /**
-     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-     * 
-     */
     public Optional<Output<String>> rewrite() {
         return Optional.ofNullable(this.rewrite);
     }
@@ -108,44 +92,20 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
             return name(Output.of(name));
         }
 
-        /**
-         * @param preservePathPrefix An optional flag to preserve the path that is forwarded to the backend service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preservePathPrefix(@Nullable Output<Boolean> preservePathPrefix) {
             $.preservePathPrefix = preservePathPrefix;
             return this;
         }
 
-        /**
-         * @param preservePathPrefix An optional flag to preserve the path that is forwarded to the backend service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preservePathPrefix(Boolean preservePathPrefix) {
             return preservePathPrefix(Output.of(preservePathPrefix));
         }
 
-        /**
-         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rewrite(@Nullable Output<String> rewrite) {
             $.rewrite = rewrite;
             return this;
         }
 
-        /**
-         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rewrite(String rewrite) {
             return rewrite(Output.of(rewrite));
         }

@@ -96,7 +96,6 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
     For example to find all Ubuntu images:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -106,11 +105,9 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
         values=["Ubuntu"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
 
     You can filter on multiple fields and sort the results as well:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -130,7 +127,6 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
             key="created",
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
@@ -172,7 +168,6 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
 
     For example to find all Ubuntu images:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -182,11 +177,9 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
         values=["Ubuntu"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
 
     You can filter on multiple fields and sort the results as well:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -206,7 +199,6 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
             key="created",
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.

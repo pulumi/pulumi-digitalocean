@@ -15,27 +15,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecStaticSiteCors {
     /**
-     * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * @return Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      * 
      */
     private @Nullable Boolean allowCredentials;
     /**
-     * @return The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * @return The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      * 
      */
     private @Nullable List<String> allowHeaders;
     /**
-     * @return The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * @return The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      * 
      */
     private @Nullable List<String> allowMethods;
     /**
-     * @return The `Access-Control-Allow-Origin` can be
+     * @return The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      * 
      */
     private @Nullable AppSpecStaticSiteCorsAllowOrigins allowOrigins;
     /**
-     * @return The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * @return The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      * 
      */
     private @Nullable List<String> exposeHeaders;
@@ -47,35 +47,35 @@ public final class AppSpecStaticSiteCors {
 
     private AppSpecStaticSiteCors() {}
     /**
-     * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * @return Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      * 
      */
     public Optional<Boolean> allowCredentials() {
         return Optional.ofNullable(this.allowCredentials);
     }
     /**
-     * @return The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * @return The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      * 
      */
     public List<String> allowHeaders() {
         return this.allowHeaders == null ? List.of() : this.allowHeaders;
     }
     /**
-     * @return The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * @return The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      * 
      */
     public List<String> allowMethods() {
         return this.allowMethods == null ? List.of() : this.allowMethods;
     }
     /**
-     * @return The `Access-Control-Allow-Origin` can be
+     * @return The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      * 
      */
     public Optional<AppSpecStaticSiteCorsAllowOrigins> allowOrigins() {
         return Optional.ofNullable(this.allowOrigins);
     }
     /**
-     * @return The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * @return The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      * 
      */
     public List<String> exposeHeaders() {

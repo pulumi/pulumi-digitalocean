@@ -382,7 +382,6 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -402,7 +401,6 @@ class DnsRecord(pulumi.CustomResource):
         pulumi.export("wwwFqdn", www.fqdn)
         pulumi.export("mxFqdn", mx.fqdn)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -438,7 +436,6 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -458,7 +455,6 @@ class DnsRecord(pulumi.CustomResource):
         pulumi.export("wwwFqdn", www.fqdn)
         pulumi.export("mxFqdn", mx.fqdn)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

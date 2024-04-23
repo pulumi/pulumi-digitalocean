@@ -26,7 +26,7 @@ public final class AppSpecWorkerLogDestination {
      */
     private @Nullable AppSpecWorkerLogDestinationLogtail logtail;
     /**
-     * @return The name of the component.
+     * @return Name of the log destination. Minimum length: 2. Maximum length: 42.
      * 
      */
     private String name;
@@ -52,7 +52,7 @@ public final class AppSpecWorkerLogDestination {
         return Optional.ofNullable(this.logtail);
     }
     /**
-     * @return The name of the component.
+     * @return Name of the log destination. Minimum length: 2. Maximum length: 42.
      * 
      */
     public String name() {

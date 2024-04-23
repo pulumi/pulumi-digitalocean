@@ -64,7 +64,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-        :param pulumi.Input[str] type: An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         pulumi.set(__self__, "forwarding_rules", forwarding_rules)
@@ -322,7 +322,7 @@ class LoadBalancerArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        the type of the load balancer (GLOBAL or REGIONAL)
         """
         return pulumi.get(self, "type")
 
@@ -398,7 +398,7 @@ class _LoadBalancerState:
         :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-        :param pulumi.Input[str] type: An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -696,7 +696,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        the type of the load balancer (GLOBAL or REGIONAL)
         """
         return pulumi.get(self, "type")
 
@@ -748,7 +748,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -771,7 +770,6 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
         lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -779,7 +777,6 @@ class LoadBalancer(pulumi.CustomResource):
         `Delete old certificate`. When doing so, you must also change the name of the certificate,
         as there cannot be multiple certificates with the same name in an account.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -806,7 +803,6 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -844,7 +840,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-        :param pulumi.Input[str] type: An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         ...
@@ -859,7 +855,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -882,7 +877,6 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
         lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -890,7 +884,6 @@ class LoadBalancer(pulumi.CustomResource):
         `Delete old certificate`. When doing so, you must also change the name of the certificate,
         as there cannot be multiple certificates with the same name in an account.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -917,7 +910,6 @@ class LoadBalancer(pulumi.CustomResource):
             ),
             droplet_ids=[web.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1061,7 +1053,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
-        :param pulumi.Input[str] type: An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1262,7 +1254,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        the type of the load balancer (GLOBAL or REGIONAL)
         """
         return pulumi.get(self, "type")
 

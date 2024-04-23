@@ -447,14 +447,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.stickySessions;
     }
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * @return the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     public Output<Optional<String>> type() {

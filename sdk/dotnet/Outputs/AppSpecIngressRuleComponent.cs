@@ -17,13 +17,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The name of the component.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// An optional flag to preserve the path that is forwarded to the backend service.
-        /// </summary>
         public readonly bool? PreservePathPrefix;
-        /// <summary>
-        /// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-        /// </summary>
         public readonly string? Rewrite;
 
         [OutputConstructor]

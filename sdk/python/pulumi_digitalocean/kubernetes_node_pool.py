@@ -411,7 +411,6 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -439,14 +438,12 @@ class KubernetesNodePool(pulumi.CustomResource):
                 effect="NoSchedule",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Autoscaling Example
 
         Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
         For example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -458,7 +455,6 @@ class KubernetesNodePool(pulumi.CustomResource):
             min_nodes=1,
             max_nodes=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -506,7 +502,6 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -534,14 +529,12 @@ class KubernetesNodePool(pulumi.CustomResource):
                 effect="NoSchedule",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Autoscaling Example
 
         Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
         For example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -553,7 +546,6 @@ class KubernetesNodePool(pulumi.CustomResource):
             min_nodes=1,
             max_nodes=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

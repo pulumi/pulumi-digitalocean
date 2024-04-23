@@ -104,7 +104,6 @@ class DatabaseDb(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -117,7 +116,6 @@ class DatabaseDb(pulumi.CustomResource):
             node_count=1)
         database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -146,7 +144,6 @@ class DatabaseDb(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -159,7 +156,6 @@ class DatabaseDb(pulumi.CustomResource):
             node_count=1)
         database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

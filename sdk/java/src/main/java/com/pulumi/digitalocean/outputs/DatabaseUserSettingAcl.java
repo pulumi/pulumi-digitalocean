@@ -17,15 +17,7 @@ public final class DatabaseUserSettingAcl {
      * 
      */
     private @Nullable String id;
-    /**
-     * @return The permission level applied to the ACL. This includes &#34;admin&#34;, &#34;consume&#34;, &#34;produce&#34;, and &#34;produceconsume&#34;. &#34;admin&#34; allows for producing and consuming as well as add/delete/update permission for topics. &#34;consume&#34; allows only for reading topic messages. &#34;produce&#34; allows only for writing topic messages. &#34;produceconsume&#34; allows for both reading and writing topic messages.
-     * 
-     */
     private String permission;
-    /**
-     * @return A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
-     * 
-     */
     private String topic;
 
     private DatabaseUserSettingAcl() {}
@@ -36,17 +28,9 @@ public final class DatabaseUserSettingAcl {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
-    /**
-     * @return The permission level applied to the ACL. This includes &#34;admin&#34;, &#34;consume&#34;, &#34;produce&#34;, and &#34;produceconsume&#34;. &#34;admin&#34; allows for producing and consuming as well as add/delete/update permission for topics. &#34;consume&#34; allows only for reading topic messages. &#34;produce&#34; allows only for writing topic messages. &#34;produceconsume&#34; allows for both reading and writing topic messages.
-     * 
-     */
     public String permission() {
         return this.permission;
     }
-    /**
-     * @return A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
-     * 
-     */
     public String topic() {
         return this.topic;
     }

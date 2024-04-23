@@ -406,7 +406,6 @@ class DatabaseReplica(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database replica
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -430,7 +429,6 @@ class DatabaseReplica(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -463,7 +461,6 @@ class DatabaseReplica(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database replica
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -487,7 +484,6 @@ class DatabaseReplica(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

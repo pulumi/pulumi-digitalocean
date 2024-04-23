@@ -93,11 +93,11 @@ export interface AppSpecDatabase {
 
 export interface AppSpecDomainName {
     /**
-     * The name of the component.
+     * The hostname for the domain.
      */
     name: pulumi.Input<string>;
     /**
-     * The type of the environment variable, `GENERAL` or `SECRET`.
+     * The domain type, which can be one of the following:
      */
     type?: pulumi.Input<string>;
     /**
@@ -124,7 +124,7 @@ export interface AppSpecEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -201,23 +201,23 @@ export interface AppSpecFunctionAlert {
 
 export interface AppSpecFunctionCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecFunctionCorsAllowOrigins>;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -228,15 +228,15 @@ export interface AppSpecFunctionCors {
 
 export interface AppSpecFunctionCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: pulumi.Input<string>;
 }
@@ -255,7 +255,7 @@ export interface AppSpecFunctionEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -311,7 +311,7 @@ export interface AppSpecFunctionLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -334,15 +334,13 @@ export interface AppSpecFunctionLogDestinationDatadog {
 export interface AppSpecFunctionLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
 
 export interface AppSpecFunctionLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: pulumi.Input<string>;
 }
@@ -360,27 +358,18 @@ export interface AppSpecFunctionRoute {
 
 export interface AppSpecIngress {
     /**
-     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.AppSpecIngressRule>[]>;
 }
 
 export interface AppSpecIngressRule {
-    /**
-     * The component to route to. Only one of `component` or `redirect` may be set.
-     */
     component?: pulumi.Input<inputs.AppSpecIngressRuleComponent>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      */
     cors?: pulumi.Input<inputs.AppSpecIngressRuleCors>;
-    /**
-     * The match configuration for the rule
-     */
     match?: pulumi.Input<inputs.AppSpecIngressRuleMatch>;
-    /**
-     * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-     */
     redirect?: pulumi.Input<inputs.AppSpecIngressRuleRedirect>;
 }
 
@@ -389,35 +378,29 @@ export interface AppSpecIngressRuleComponent {
      * The name of the component.
      */
     name?: pulumi.Input<string>;
-    /**
-     * An optional flag to preserve the path that is forwarded to the backend service.
-     */
     preservePathPrefix?: pulumi.Input<boolean>;
-    /**
-     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
-     */
     rewrite?: pulumi.Input<string>;
 }
 
 export interface AppSpecIngressRuleCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins>;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -428,53 +411,32 @@ export interface AppSpecIngressRuleCors {
 
 export interface AppSpecIngressRuleCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: pulumi.Input<string>;
 }
 
 export interface AppSpecIngressRuleMatch {
-    /**
-     * Paths must start with `/` and must be unique within the app.
-     */
     path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath>;
 }
 
 export interface AppSpecIngressRuleMatchPath {
-    /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-     */
     prefix?: pulumi.Input<string>;
 }
 
 export interface AppSpecIngressRuleRedirect {
-    /**
-     * The authority/host to redirect to. This can be a hostname or IP address.
-     */
     authority?: pulumi.Input<string>;
-    /**
-     * The health check will be performed on this port instead of component's HTTP port.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-     */
     redirectCode?: pulumi.Input<number>;
-    /**
-     * The scheme to redirect to. Supported values are `http` or `https`
-     */
     scheme?: pulumi.Input<string>;
-    /**
-     * An optional URI path to redirect to.
-     */
     uri?: pulumi.Input<string>;
 }
 
@@ -582,7 +544,7 @@ export interface AppSpecJobEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -630,7 +592,7 @@ export interface AppSpecJobGitlab {
 
 export interface AppSpecJobImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecJobImageDeployOnPush>[]>;
     /**
@@ -668,7 +630,7 @@ export interface AppSpecJobLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecJobLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -691,15 +653,13 @@ export interface AppSpecJobLogDestinationDatadog {
 export interface AppSpecJobLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
 
 export interface AppSpecJobLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: pulumi.Input<string>;
 }
@@ -816,23 +776,23 @@ export interface AppSpecServiceAlert {
 
 export interface AppSpecServiceCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecServiceCorsAllowOrigins>;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -843,15 +803,15 @@ export interface AppSpecServiceCors {
 
 export interface AppSpecServiceCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: pulumi.Input<string>;
 }
@@ -870,7 +830,7 @@ export interface AppSpecServiceEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -949,7 +909,7 @@ export interface AppSpecServiceHealthCheck {
 
 export interface AppSpecServiceImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceImageDeployOnPush>[]>;
     /**
@@ -987,7 +947,7 @@ export interface AppSpecServiceLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecServiceLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -1010,15 +970,13 @@ export interface AppSpecServiceLogDestinationDatadog {
 export interface AppSpecServiceLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: pulumi.Input<string>;
 }
@@ -1103,23 +1061,23 @@ export interface AppSpecStaticSite {
 
 export interface AppSpecStaticSiteCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecStaticSiteCorsAllowOrigins>;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1130,15 +1088,15 @@ export interface AppSpecStaticSiteCors {
 
 export interface AppSpecStaticSiteCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: pulumi.Input<string>;
 }
@@ -1157,7 +1115,7 @@ export interface AppSpecStaticSiteEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -1314,7 +1272,7 @@ export interface AppSpecWorkerEnv {
      */
     type?: pulumi.Input<string>;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -1362,7 +1320,7 @@ export interface AppSpecWorkerGitlab {
 
 export interface AppSpecWorkerImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerImageDeployOnPush>[]>;
     /**
@@ -1400,7 +1358,7 @@ export interface AppSpecWorkerLogDestination {
      */
     logtail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationLogtail>;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: pulumi.Input<string>;
     /**
@@ -1423,15 +1381,13 @@ export interface AppSpecWorkerLogDestinationDatadog {
 export interface AppSpecWorkerLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
 
 export interface AppSpecWorkerLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: pulumi.Input<string>;
 }
@@ -1587,13 +1543,7 @@ export interface DatabaseUserSettingAcl {
      * An identifier for the ACL, this will be automatically assigned when you create an ACL entry
      */
     id?: pulumi.Input<string>;
-    /**
-     * The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-     */
     permission: pulumi.Input<string>;
-    /**
-     * A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-     */
     topic: pulumi.Input<string>;
 }
 
@@ -2645,7 +2595,7 @@ export interface KubernetesClusterNodePool {
      */
     size: pulumi.Input<string>;
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2668,7 +2618,7 @@ export interface KubernetesClusterNodePoolNode {
      */
     id?: pulumi.Input<string>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string>;
     /**

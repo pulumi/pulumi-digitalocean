@@ -436,7 +436,6 @@ class DatabaseRedisConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -453,7 +452,6 @@ class DatabaseRedisConfig(pulumi.CustomResource):
             notify_keyspace_events="KEA",
             timeout=90)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -492,7 +490,6 @@ class DatabaseRedisConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -509,7 +506,6 @@ class DatabaseRedisConfig(pulumi.CustomResource):
             notify_keyspace_events="KEA",
             timeout=90)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

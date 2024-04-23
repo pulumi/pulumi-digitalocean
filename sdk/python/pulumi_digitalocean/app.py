@@ -222,7 +222,6 @@ class App(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -242,11 +241,9 @@ class App(pulumi.CustomResource):
             )],
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Static Site Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -265,7 +262,6 @@ class App(pulumi.CustomResource):
             )],
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -299,7 +295,6 @@ class App(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -319,11 +314,9 @@ class App(pulumi.CustomResource):
             )],
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Static Site Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -342,7 +335,6 @@ class App(pulumi.CustomResource):
             )],
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

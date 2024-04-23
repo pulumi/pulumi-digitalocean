@@ -237,18 +237,15 @@ def get_image(id: Optional[int] = None,
 
     Get the data about a snapshot:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example1 = digitalocean.get_image(name="example-1.0.0")
     ```
-    <!--End PulumiCodeChooser -->
 
     Reuse the data about a snapshot to create a Droplet:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -259,18 +256,15 @@ def get_image(id: Optional[int] = None,
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the data about an official image:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example2 = digitalocean.get_image(slug="ubuntu-18-04-x64")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The id of the image
@@ -325,18 +319,15 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
 
     Get the data about a snapshot:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example1 = digitalocean.get_image(name="example-1.0.0")
     ```
-    <!--End PulumiCodeChooser -->
 
     Reuse the data about a snapshot to create a Droplet:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -347,18 +338,15 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the data about an official image:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example2 = digitalocean.get_image(slug="ubuntu-18-04-x64")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The id of the image

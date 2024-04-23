@@ -352,7 +352,6 @@ def get_droplet(id: Optional[int] = None,
 
     Get the Droplet by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -360,29 +359,24 @@ def get_droplet(id: Optional[int] = None,
     example = digitalocean.get_droplet(name="web")
     pulumi.export("dropletOutput", example.ipv4_address)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the Droplet by tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_droplet(tag="web")
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the Droplet by ID:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_droplet(id=digitalocean_kubernetes_cluster["example"]["node_pool"][0]["nodes"][0]["droplet_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The ID of the Droplet
@@ -443,7 +437,6 @@ def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
 
     Get the Droplet by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -451,29 +444,24 @@ def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     example = digitalocean.get_droplet(name="web")
     pulumi.export("dropletOutput", example.ipv4_address)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the Droplet by tag:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_droplet(tag="web")
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the Droplet by ID:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_droplet(id=digitalocean_kubernetes_cluster["example"]["node_pool"][0]["nodes"][0]["droplet_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int id: The ID of the Droplet

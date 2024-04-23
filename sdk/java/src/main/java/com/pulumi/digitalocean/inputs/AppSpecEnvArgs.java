@@ -61,14 +61,14 @@ public final class AppSpecEnvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The threshold for the type of the warning.
+     * @return The value of the environment variable.
      * 
      */
     public Optional<Output<String>> value() {
@@ -166,7 +166,7 @@ public final class AppSpecEnvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The threshold for the type of the warning.
+         * @param value The value of the environment variable.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class AppSpecEnvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The threshold for the type of the warning.
+         * @param value The value of the environment variable.
          * 
          * @return builder
          * 

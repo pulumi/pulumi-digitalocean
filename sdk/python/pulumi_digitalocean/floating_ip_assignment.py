@@ -106,7 +106,6 @@ class FloatingIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -122,7 +121,6 @@ class FloatingIpAssignment(pulumi.CustomResource):
             ip_address=foobar_floating_ip.ip_address,
             droplet_id=foobar_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -154,7 +152,6 @@ class FloatingIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -170,7 +167,6 @@ class FloatingIpAssignment(pulumi.CustomResource):
             ip_address=foobar_floating_ip.ip_address,
             droplet_id=foobar_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

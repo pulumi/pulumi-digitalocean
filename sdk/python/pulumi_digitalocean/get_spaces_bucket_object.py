@@ -267,7 +267,6 @@ def get_spaces_bucket_object(bucket: Optional[str] = None,
     The following example retrieves a text object (which must have a `Content-Type`
     value starting with `text/`) and uses it as the `user_data` for a Droplet:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -281,7 +280,6 @@ def get_spaces_bucket_object(bucket: Optional[str] = None,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         user_data=bootstrap_script.body)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the bucket to read the object from.
@@ -340,7 +338,6 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
     The following example retrieves a text object (which must have a `Content-Type`
     value starting with `text/`) and uses it as the `user_data` for a Droplet:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -354,7 +351,6 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         user_data=bootstrap_script.body)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the bucket to read the object from.

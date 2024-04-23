@@ -174,20 +174,17 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         Get the container registry:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Docker Provider Example
 
         Use the `endpoint` and `docker_credentials` with the Docker provider:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -195,7 +192,6 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         example_container_registry = digitalocean.get_container_registry(name="example")
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -220,20 +216,17 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         Get the container registry:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Docker Provider Example
 
         Use the `endpoint` and `docker_credentials` with the Docker provider:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -241,7 +234,6 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         example_container_registry = digitalocean.get_container_registry(name="example")
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryDockerCredentialsArgs args: The arguments to use to populate this resource's properties.

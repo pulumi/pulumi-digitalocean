@@ -12,9 +12,6 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecIngressRuleMatchGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Paths must start with `/` and must be unique within the app.
-        /// </summary>
         [Input("path")]
         public Input<Inputs.AppSpecIngressRuleMatchPathGetArgs>? Path { get; set; }
 

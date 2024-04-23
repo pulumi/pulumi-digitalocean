@@ -104,7 +104,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -120,7 +119,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
             ip_address=example_reserved_ip.ip_address,
             droplet_id=example_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -150,7 +148,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -166,7 +163,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
             ip_address=example_reserved_ip.ip_address,
             droplet_id=example_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

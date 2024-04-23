@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new PostgreSQL database user
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -29,10 +28,8 @@ import * as utilities from "./utilities";
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new user for a PostgreSQL database replica
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -51,10 +48,8 @@ import * as utilities from "./utilities";
  * });
  * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: replica_example.uuid});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new user for a Kafka database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -87,7 +82,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
