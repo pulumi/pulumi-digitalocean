@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,7 +63,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
 // lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
@@ -72,7 +70,6 @@ import (
 // `Delete old certificate`. When doing so, you must also change the name of the certificate,
 // as there cannot be multiple certificates with the same name in an account.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,7 +124,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -187,7 +183,7 @@ type LoadBalancer struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -274,7 +270,7 @@ type loadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -329,7 +325,7 @@ type LoadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -383,7 +379,7 @@ type loadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -434,7 +430,7 @@ type LoadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -635,7 +631,7 @@ func (o LoadBalancerOutput) StickySessions() LoadBalancerStickySessionsOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerStickySessionsOutput { return v.StickySessions }).(LoadBalancerStickySessionsOutput)
 }
 
-// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+// the type of the load balancer (GLOBAL or REGIONAL)
 func (o LoadBalancerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

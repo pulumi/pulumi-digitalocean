@@ -12,33 +12,18 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecIngressRuleRedirectGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The authority/host to redirect to. This can be a hostname or IP address.
-        /// </summary>
         [Input("authority")]
         public Input<string>? Authority { get; set; }
 
-        /// <summary>
-        /// The health check will be performed on this port instead of component's HTTP port.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-        /// </summary>
         [Input("redirectCode")]
         public Input<int>? RedirectCode { get; set; }
 
-        /// <summary>
-        /// The scheme to redirect to. Supported values are `http` or `https`
-        /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 
-        /// <summary>
-        /// An optional URI path to redirect to.
-        /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 

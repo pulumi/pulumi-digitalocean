@@ -559,8 +559,8 @@ class AppSpecDomainName(dict):
                  wildcard: Optional[bool] = None,
                  zone: Optional[str] = None):
         """
-        :param str name: The name of the component.
-        :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param str name: The hostname for the domain.
+        :param str type: The domain type, which can be one of the following:
         :param bool wildcard: A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
         :param str zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
@@ -576,7 +576,7 @@ class AppSpecDomainName(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the component.
+        The hostname for the domain.
         """
         return pulumi.get(self, "name")
 
@@ -584,7 +584,7 @@ class AppSpecDomainName(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of the environment variable, `GENERAL` or `SECRET`.
+        The domain type, which can be one of the following:
         """
         return pulumi.get(self, "type")
 
@@ -616,7 +616,7 @@ class AppSpecEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The threshold for the type of the warning.
+        :param str value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -655,7 +655,7 @@ class AppSpecEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -911,11 +911,11 @@ class AppSpecFunctionCors(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
         """
-        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param 'AppSpecFunctionCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
-        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param 'AppSpecFunctionCorsAllowOriginsArgs' allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -935,7 +935,7 @@ class AppSpecFunctionCors(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -943,7 +943,7 @@ class AppSpecFunctionCors(dict):
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -951,7 +951,7 @@ class AppSpecFunctionCors(dict):
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -959,7 +959,7 @@ class AppSpecFunctionCors(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.AppSpecFunctionCorsAllowOrigins']:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -967,7 +967,7 @@ class AppSpecFunctionCors(dict):
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -987,9 +987,9 @@ class AppSpecFunctionCorsAllowOrigins(dict):
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
         """
-        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param str exact: Exact string match.
+        :param str prefix: Prefix-based match.
+        :param str regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -1002,7 +1002,7 @@ class AppSpecFunctionCorsAllowOrigins(dict):
     @pulumi.getter
     def exact(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -1010,7 +1010,7 @@ class AppSpecFunctionCorsAllowOrigins(dict):
     @pulumi.getter
     def prefix(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -1018,7 +1018,7 @@ class AppSpecFunctionCorsAllowOrigins(dict):
     @pulumi.getter
     def regex(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -1034,7 +1034,7 @@ class AppSpecFunctionEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The threshold for the type of the warning.
+        :param str value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1073,7 +1073,7 @@ class AppSpecFunctionEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -1254,7 +1254,7 @@ class AppSpecFunctionLogDestination(dict):
                  logtail: Optional['outputs.AppSpecFunctionLogDestinationLogtail'] = None,
                  papertrail: Optional['outputs.AppSpecFunctionLogDestinationPapertrail'] = None):
         """
-        :param str name: The name of the component.
+        :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecFunctionLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecFunctionLogDestinationLogtailArgs' logtail: Logtail configuration.
         :param 'AppSpecFunctionLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
@@ -1271,7 +1271,7 @@ class AppSpecFunctionLogDestination(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -1353,8 +1353,6 @@ class AppSpecFunctionLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -1363,8 +1361,6 @@ class AppSpecFunctionLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -1374,7 +1370,7 @@ class AppSpecFunctionLogDestinationPapertrail(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -1382,7 +1378,7 @@ class AppSpecFunctionLogDestinationPapertrail(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -1440,7 +1436,7 @@ class AppSpecIngress(dict):
     def __init__(__self__, *,
                  rules: Optional[Sequence['outputs.AppSpecIngressRule']] = None):
         """
-        :param Sequence['AppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param Sequence['AppSpecIngressRuleArgs'] rules: Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
@@ -1449,7 +1445,7 @@ class AppSpecIngress(dict):
     @pulumi.getter
     def rules(self) -> Optional[Sequence['outputs.AppSpecIngressRule']]:
         """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         return pulumi.get(self, "rules")
 
@@ -1462,10 +1458,7 @@ class AppSpecIngressRule(dict):
                  match: Optional['outputs.AppSpecIngressRuleMatch'] = None,
                  redirect: Optional['outputs.AppSpecIngressRuleRedirect'] = None):
         """
-        :param 'AppSpecIngressRuleComponentArgs' component: The component to route to. Only one of `component` or `redirect` may be set.
         :param 'AppSpecIngressRuleCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-        :param 'AppSpecIngressRuleMatchArgs' match: The match configuration for the rule
-        :param 'AppSpecIngressRuleRedirectArgs' redirect: The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
         """
         if component is not None:
             pulumi.set(__self__, "component", component)
@@ -1479,9 +1472,6 @@ class AppSpecIngressRule(dict):
     @property
     @pulumi.getter
     def component(self) -> Optional['outputs.AppSpecIngressRuleComponent']:
-        """
-        The component to route to. Only one of `component` or `redirect` may be set.
-        """
         return pulumi.get(self, "component")
 
     @property
@@ -1495,17 +1485,11 @@ class AppSpecIngressRule(dict):
     @property
     @pulumi.getter
     def match(self) -> Optional['outputs.AppSpecIngressRuleMatch']:
-        """
-        The match configuration for the rule
-        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def redirect(self) -> Optional['outputs.AppSpecIngressRuleRedirect']:
-        """
-        The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-        """
         return pulumi.get(self, "redirect")
 
 
@@ -1534,8 +1518,6 @@ class AppSpecIngressRuleComponent(dict):
                  rewrite: Optional[str] = None):
         """
         :param str name: The name of the component.
-        :param bool preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
-        :param str rewrite: An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1555,17 +1537,11 @@ class AppSpecIngressRuleComponent(dict):
     @property
     @pulumi.getter(name="preservePathPrefix")
     def preserve_path_prefix(self) -> Optional[bool]:
-        """
-        An optional flag to preserve the path that is forwarded to the backend service.
-        """
         return pulumi.get(self, "preserve_path_prefix")
 
     @property
     @pulumi.getter
     def rewrite(self) -> Optional[str]:
-        """
-        An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-        """
         return pulumi.get(self, "rewrite")
 
 
@@ -1606,11 +1582,11 @@ class AppSpecIngressRuleCors(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
         """
-        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
-        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -1630,7 +1606,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1638,7 +1614,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -1646,7 +1622,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -1654,7 +1630,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.AppSpecIngressRuleCorsAllowOrigins']:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -1662,7 +1638,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -1682,9 +1658,9 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
         """
-        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param str exact: Exact string match.
+        :param str prefix: Prefix-based match.
+        :param str regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -1697,7 +1673,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
     @pulumi.getter
     def exact(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -1705,7 +1681,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
     @pulumi.getter
     def prefix(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -1713,7 +1689,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
     @pulumi.getter
     def regex(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -1722,18 +1698,12 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
 class AppSpecIngressRuleMatch(dict):
     def __init__(__self__, *,
                  path: Optional['outputs.AppSpecIngressRuleMatchPath'] = None):
-        """
-        :param 'AppSpecIngressRuleMatchPathArgs' path: Paths must start with `/` and must be unique within the app.
-        """
         if path is not None:
             pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
     def path(self) -> Optional['outputs.AppSpecIngressRuleMatchPath']:
-        """
-        Paths must start with `/` and must be unique within the app.
-        """
         return pulumi.get(self, "path")
 
 
@@ -1741,18 +1711,12 @@ class AppSpecIngressRuleMatch(dict):
 class AppSpecIngressRuleMatchPath(dict):
     def __init__(__self__, *,
                  prefix: Optional[str] = None):
-        """
-        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        """
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
 
     @property
     @pulumi.getter
     def prefix(self) -> Optional[str]:
-        """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        """
         return pulumi.get(self, "prefix")
 
 
@@ -1781,13 +1745,6 @@ class AppSpecIngressRuleRedirect(dict):
                  redirect_code: Optional[int] = None,
                  scheme: Optional[str] = None,
                  uri: Optional[str] = None):
-        """
-        :param str authority: The authority/host to redirect to. This can be a hostname or IP address.
-        :param int port: The health check will be performed on this port instead of component's HTTP port.
-        :param int redirect_code: The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-        :param str scheme: The scheme to redirect to. Supported values are `http` or `https`
-        :param str uri: An optional URI path to redirect to.
-        """
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
         if port is not None:
@@ -1802,41 +1759,26 @@ class AppSpecIngressRuleRedirect(dict):
     @property
     @pulumi.getter
     def authority(self) -> Optional[str]:
-        """
-        The authority/host to redirect to. This can be a hostname or IP address.
-        """
         return pulumi.get(self, "authority")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
-        """
-        The health check will be performed on this port instead of component's HTTP port.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="redirectCode")
     def redirect_code(self) -> Optional[int]:
-        """
-        The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-        """
         return pulumi.get(self, "redirect_code")
 
     @property
     @pulumi.getter
     def scheme(self) -> Optional[str]:
-        """
-        The scheme to redirect to. Supported values are `http` or `https`
-        """
         return pulumi.get(self, "scheme")
 
     @property
     @pulumi.getter
     def uri(self) -> Optional[str]:
-        """
-        An optional URI path to redirect to.
-        """
         return pulumi.get(self, "uri")
 
 
@@ -2143,7 +2085,7 @@ class AppSpecJobEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The threshold for the type of the warning.
+        :param str value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2182,7 +2124,7 @@ class AppSpecJobEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -2385,7 +2327,7 @@ class AppSpecJobImage(dict):
         """
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
-        :param Sequence['AppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param Sequence['AppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
@@ -2418,7 +2360,7 @@ class AppSpecJobImage(dict):
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[Sequence['outputs.AppSpecJobImageDeployOnPush']]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -2466,7 +2408,7 @@ class AppSpecJobLogDestination(dict):
                  logtail: Optional['outputs.AppSpecJobLogDestinationLogtail'] = None,
                  papertrail: Optional['outputs.AppSpecJobLogDestinationPapertrail'] = None):
         """
-        :param str name: The name of the component.
+        :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecJobLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecJobLogDestinationLogtailArgs' logtail: Logtail configuration.
         :param 'AppSpecJobLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
@@ -2483,7 +2425,7 @@ class AppSpecJobLogDestination(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -2565,8 +2507,6 @@ class AppSpecJobLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -2575,8 +2515,6 @@ class AppSpecJobLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -2586,7 +2524,7 @@ class AppSpecJobLogDestinationPapertrail(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -2594,7 +2532,7 @@ class AppSpecJobLogDestinationPapertrail(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -2988,11 +2926,11 @@ class AppSpecServiceCors(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
         """
-        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param 'AppSpecServiceCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
-        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param 'AppSpecServiceCorsAllowOriginsArgs' allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -3012,7 +2950,7 @@ class AppSpecServiceCors(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -3020,7 +2958,7 @@ class AppSpecServiceCors(dict):
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -3028,7 +2966,7 @@ class AppSpecServiceCors(dict):
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -3036,7 +2974,7 @@ class AppSpecServiceCors(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.AppSpecServiceCorsAllowOrigins']:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -3044,7 +2982,7 @@ class AppSpecServiceCors(dict):
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -3064,9 +3002,9 @@ class AppSpecServiceCorsAllowOrigins(dict):
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
         """
-        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param str exact: Exact string match.
+        :param str prefix: Prefix-based match.
+        :param str regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -3079,7 +3017,7 @@ class AppSpecServiceCorsAllowOrigins(dict):
     @pulumi.getter
     def exact(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -3087,7 +3025,7 @@ class AppSpecServiceCorsAllowOrigins(dict):
     @pulumi.getter
     def prefix(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -3095,7 +3033,7 @@ class AppSpecServiceCorsAllowOrigins(dict):
     @pulumi.getter
     def regex(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -3111,7 +3049,7 @@ class AppSpecServiceEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The threshold for the type of the warning.
+        :param str value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -3150,7 +3088,7 @@ class AppSpecServiceEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -3471,7 +3409,7 @@ class AppSpecServiceImage(dict):
         """
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
-        :param Sequence['AppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param Sequence['AppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
@@ -3504,7 +3442,7 @@ class AppSpecServiceImage(dict):
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[Sequence['outputs.AppSpecServiceImageDeployOnPush']]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -3552,7 +3490,7 @@ class AppSpecServiceLogDestination(dict):
                  logtail: Optional['outputs.AppSpecServiceLogDestinationLogtail'] = None,
                  papertrail: Optional['outputs.AppSpecServiceLogDestinationPapertrail'] = None):
         """
-        :param str name: The name of the component.
+        :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecServiceLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecServiceLogDestinationLogtailArgs' logtail: Logtail configuration.
         :param 'AppSpecServiceLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
@@ -3569,7 +3507,7 @@ class AppSpecServiceLogDestination(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -3651,8 +3589,6 @@ class AppSpecServiceLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -3661,8 +3597,6 @@ class AppSpecServiceLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -3672,7 +3606,7 @@ class AppSpecServiceLogDestinationPapertrail(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -3680,7 +3614,7 @@ class AppSpecServiceLogDestinationPapertrail(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -3993,11 +3927,11 @@ class AppSpecStaticSiteCors(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
         """
-        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param 'AppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
-        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param 'AppSpecStaticSiteCorsAllowOriginsArgs' allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -4017,7 +3951,7 @@ class AppSpecStaticSiteCors(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -4025,7 +3959,7 @@ class AppSpecStaticSiteCors(dict):
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -4033,7 +3967,7 @@ class AppSpecStaticSiteCors(dict):
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -4041,7 +3975,7 @@ class AppSpecStaticSiteCors(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.AppSpecStaticSiteCorsAllowOrigins']:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -4049,7 +3983,7 @@ class AppSpecStaticSiteCors(dict):
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -4069,9 +4003,9 @@ class AppSpecStaticSiteCorsAllowOrigins(dict):
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
         """
-        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param str exact: Exact string match.
+        :param str prefix: Prefix-based match.
+        :param str regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -4084,7 +4018,7 @@ class AppSpecStaticSiteCorsAllowOrigins(dict):
     @pulumi.getter
     def exact(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -4092,7 +4026,7 @@ class AppSpecStaticSiteCorsAllowOrigins(dict):
     @pulumi.getter
     def prefix(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -4100,7 +4034,7 @@ class AppSpecStaticSiteCorsAllowOrigins(dict):
     @pulumi.getter
     def regex(self) -> Optional[str]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -4116,7 +4050,7 @@ class AppSpecStaticSiteEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The threshold for the type of the warning.
+        :param str value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -4155,7 +4089,7 @@ class AppSpecStaticSiteEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -4667,7 +4601,7 @@ class AppSpecWorkerEnv(dict):
         :param str key: The name of the environment variable.
         :param str scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param str value: The threshold for the type of the warning.
+        :param str value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -4706,7 +4640,7 @@ class AppSpecWorkerEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -4909,7 +4843,7 @@ class AppSpecWorkerImage(dict):
         """
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
-        :param Sequence['AppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param Sequence['AppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
@@ -4942,7 +4876,7 @@ class AppSpecWorkerImage(dict):
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[Sequence['outputs.AppSpecWorkerImageDeployOnPush']]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -4990,7 +4924,7 @@ class AppSpecWorkerLogDestination(dict):
                  logtail: Optional['outputs.AppSpecWorkerLogDestinationLogtail'] = None,
                  papertrail: Optional['outputs.AppSpecWorkerLogDestinationPapertrail'] = None):
         """
-        :param str name: The name of the component.
+        :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecWorkerLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecWorkerLogDestinationLogtailArgs' logtail: Logtail configuration.
         :param 'AppSpecWorkerLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
@@ -5007,7 +4941,7 @@ class AppSpecWorkerLogDestination(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -5089,8 +5023,6 @@ class AppSpecWorkerLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -5099,8 +5031,6 @@ class AppSpecWorkerLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -5110,7 +5040,7 @@ class AppSpecWorkerLogDestinationPapertrail(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -5118,7 +5048,7 @@ class AppSpecWorkerLogDestinationPapertrail(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -5647,8 +5577,6 @@ class DatabaseUserSettingAcl(dict):
                  topic: str,
                  id: Optional[str] = None):
         """
-        :param str permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        :param str topic: A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
         :param str id: An identifier for the ACL, this will be automatically assigned when you create an ACL entry
         """
         pulumi.set(__self__, "permission", permission)
@@ -5659,17 +5587,11 @@ class DatabaseUserSettingAcl(dict):
     @property
     @pulumi.getter
     def permission(self) -> str:
-        """
-        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def topic(self) -> str:
-        """
-        A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-        """
         return pulumi.get(self, "topic")
 
     @property
@@ -6240,7 +6162,7 @@ class KubernetesClusterNodePool(dict):
         :param int min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param int node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param Sequence['KubernetesClusterNodePoolNodeArgs'] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param Sequence[str] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param Sequence[str] tags: A list of tag names applied to the node pool.
         :param Sequence['KubernetesClusterNodePoolTaintArgs'] taints: A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
         """
         pulumi.set(__self__, "name", name)
@@ -6350,7 +6272,7 @@ class KubernetesClusterNodePool(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        A list of tag names to be applied to the Kubernetes cluster.
+        A list of tag names applied to the node pool.
         """
         return pulumi.get(self, "tags")
 
@@ -6397,7 +6319,7 @@ class KubernetesClusterNodePoolNode(dict):
         :param str created_at: The date and time when the node was created.
         :param str droplet_id: The id of the node's droplet
         :param str id: A unique ID that can be used to identify and reference the node.
-        :param str name: A name for the node pool.
+        :param str name: A name for the Kubernetes cluster.
         :param str status: A string indicating the current status of the individual node.
         :param str updated_at: The date and time when the node was last updated.
         """
@@ -6442,7 +6364,7 @@ class KubernetesClusterNodePoolNode(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        A name for the node pool.
+        A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 

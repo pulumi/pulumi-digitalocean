@@ -256,7 +256,6 @@ def get_load_balancer(id: Optional[str] = None,
 
     Get the load balancer by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -264,18 +263,15 @@ def get_load_balancer(id: Optional[str] = None,
     example = digitalocean.get_load_balancer(name="app")
     pulumi.export("lbOutput", example.ip)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the load balancer by ID:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_load_balancer(id="loadbalancer_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of load balancer.
@@ -331,7 +327,6 @@ def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Get the load balancer by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -339,18 +334,15 @@ def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     example = digitalocean.get_load_balancer(name="app")
     pulumi.export("lbOutput", example.ip)
     ```
-    <!--End PulumiCodeChooser -->
 
     Get the load balancer by ID:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_load_balancer(id="loadbalancer_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of load balancer.

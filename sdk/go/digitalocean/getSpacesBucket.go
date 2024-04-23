@@ -18,7 +18,6 @@ import (
 //
 // Get the bucket by name:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupSpacesBucket(ctx *pulumi.Context, args *LookupSpacesBucketArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketResult

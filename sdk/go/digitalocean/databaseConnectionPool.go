@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database connection pool
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,7 +54,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

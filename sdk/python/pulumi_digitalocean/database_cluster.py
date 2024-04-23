@@ -37,7 +37,6 @@ class DatabaseClusterArgs:
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
-        :param pulumi.Input['DatabaseClusterBackupRestoreArgs'] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
@@ -125,9 +124,6 @@ class DatabaseClusterArgs:
     @property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]:
-        """
-        Create a new database cluster based on a backup of an existing cluster.
-        """
         return pulumi.get(self, "backup_restore")
 
     @backup_restore.setter
@@ -272,7 +268,6 @@ class _DatabaseClusterState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DatabaseCluster resources.
-        :param pulumi.Input['DatabaseClusterBackupRestoreArgs'] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
@@ -347,9 +342,6 @@ class _DatabaseClusterState:
     @property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]:
-        """
-        Create a new database cluster based on a backup of an existing cluster.
-        """
         return pulumi.get(self, "backup_restore")
 
     @backup_restore.setter
@@ -648,7 +640,6 @@ class DatabaseCluster(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -660,10 +651,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="15")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MySQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -675,10 +664,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="8")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Redis database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -690,10 +677,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="7")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -705,10 +690,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-2vcpu-2gb",
             version="3.5")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MongoDB database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -720,11 +703,9 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="6")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Create a new database cluster based on a backup of an existing cluster.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -748,7 +729,6 @@ class DatabaseCluster(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[doby]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -760,7 +740,6 @@ class DatabaseCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
@@ -788,7 +767,6 @@ class DatabaseCluster(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -800,10 +778,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="15")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MySQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -815,10 +791,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="8")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Redis database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -830,10 +804,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="7")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -845,10 +817,8 @@ class DatabaseCluster(pulumi.CustomResource):
             size="db-s-2vcpu-2gb",
             version="3.5")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MongoDB database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -860,11 +830,9 @@ class DatabaseCluster(pulumi.CustomResource):
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             version="6")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Create a new database cluster based on a backup of an existing cluster.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -888,7 +856,6 @@ class DatabaseCluster(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[doby]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1009,7 +976,6 @@ class DatabaseCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
@@ -1066,9 +1032,6 @@ class DatabaseCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> pulumi.Output[Optional['outputs.DatabaseClusterBackupRestore']]:
-        """
-        Create a new database cluster based on a backup of an existing cluster.
-        """
         return pulumi.get(self, "backup_restore")
 
     @property

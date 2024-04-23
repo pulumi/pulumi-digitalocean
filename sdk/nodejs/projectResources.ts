@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  *
  * The following example assigns a droplet to a Project managed outside of the provider:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -42,7 +41,6 @@ import * as utilities from "./utilities";
  *     resources: [foobar.dropletUrn],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -24,7 +24,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// For example to find all available regions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,11 +49,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,7 +93,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -114,7 +110,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// For example to find all available regions:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -140,11 +135,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -186,7 +179,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());

@@ -92,7 +92,6 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
 
     Get all buckets in a region:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -102,10 +101,8 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
         values=["nyc3"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
     You can sort the results as well:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -119,7 +116,6 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
             key="name",
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
@@ -157,7 +153,6 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
 
     Get all buckets in a region:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -167,10 +162,8 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
         values=["nyc3"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
     You can sort the results as well:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -184,7 +177,6 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
             key="name",
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.

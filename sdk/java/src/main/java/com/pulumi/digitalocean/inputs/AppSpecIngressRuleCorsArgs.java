@@ -19,14 +19,14 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
     public static final AppSpecIngressRuleCorsArgs Empty = new AppSpecIngressRuleCorsArgs();
 
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      * 
      */
     @Import(name="allowCredentials")
     private @Nullable Output<Boolean> allowCredentials;
 
     /**
-     * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * @return Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      * 
      */
     public Optional<Output<Boolean>> allowCredentials() {
@@ -34,14 +34,14 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      * 
      */
     @Import(name="allowHeaders")
     private @Nullable Output<List<String>> allowHeaders;
 
     /**
-     * @return The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * @return The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      * 
      */
     public Optional<Output<List<String>>> allowHeaders() {
@@ -49,14 +49,14 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      * 
      */
     @Import(name="allowMethods")
     private @Nullable Output<List<String>> allowMethods;
 
     /**
-     * @return The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * @return The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      * 
      */
     public Optional<Output<List<String>>> allowMethods() {
@@ -64,14 +64,14 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      * 
      */
     @Import(name="allowOrigins")
     private @Nullable Output<AppSpecIngressRuleCorsAllowOriginsArgs> allowOrigins;
 
     /**
-     * @return The `Access-Control-Allow-Origin` can be
+     * @return The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      * 
      */
     public Optional<Output<AppSpecIngressRuleCorsAllowOriginsArgs>> allowOrigins() {
@@ -79,14 +79,14 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      * 
      */
     @Import(name="exposeHeaders")
     private @Nullable Output<List<String>> exposeHeaders;
 
     /**
-     * @return The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * @return The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      * 
      */
     public Optional<Output<List<String>>> exposeHeaders() {
@@ -138,7 +138,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowCredentials Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+         * @param allowCredentials Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowCredentials Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+         * @param allowCredentials Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowHeaders The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+         * @param allowHeaders The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowHeaders The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+         * @param allowHeaders The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowHeaders The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+         * @param allowHeaders The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowMethods The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+         * @param allowMethods The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowMethods The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+         * @param allowMethods The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowMethods The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+         * @param allowMethods The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowOrigins The `Access-Control-Allow-Origin` can be
+         * @param allowOrigins The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowOrigins The `Access-Control-Allow-Origin` can be
+         * @param allowOrigins The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param exposeHeaders The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+         * @param exposeHeaders The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param exposeHeaders The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+         * @param exposeHeaders The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param exposeHeaders The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+         * @param exposeHeaders The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
          * 
          * @return builder
          * 

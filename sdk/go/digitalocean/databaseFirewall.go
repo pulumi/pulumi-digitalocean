@@ -20,7 +20,6 @@ import (
 //
 // ### Create a new database firewall allowing multiple IP addresses
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,11 +63,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new database firewall allowing a Droplet
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,11 +113,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new database firewall for a database replica
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,7 +164,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

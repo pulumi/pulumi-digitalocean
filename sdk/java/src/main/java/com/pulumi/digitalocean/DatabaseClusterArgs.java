@@ -23,17 +23,9 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
 
     public static final DatabaseClusterArgs Empty = new DatabaseClusterArgs();
 
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     * 
-     */
     @Import(name="backupRestore")
     private @Nullable Output<DatabaseClusterBackupRestoreArgs> backupRestore;
 
-    /**
-     * @return Create a new database cluster based on a backup of an existing cluster.
-     * 
-     */
     public Optional<Output<DatabaseClusterBackupRestoreArgs>> backupRestore() {
         return Optional.ofNullable(this.backupRestore);
     }
@@ -272,23 +264,11 @@ public final class DatabaseClusterArgs extends com.pulumi.resources.ResourceArgs
             $ = new DatabaseClusterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param backupRestore Create a new database cluster based on a backup of an existing cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backupRestore(@Nullable Output<DatabaseClusterBackupRestoreArgs> backupRestore) {
             $.backupRestore = backupRestore;
             return this;
         }
 
-        /**
-         * @param backupRestore Create a new database cluster based on a backup of an existing cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backupRestore(DatabaseClusterBackupRestoreArgs backupRestore) {
             return backupRestore(Output.of(backupRestore));
         }

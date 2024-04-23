@@ -372,7 +372,6 @@ class CustomImage(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -386,7 +385,6 @@ class CustomImage(pulumi.CustomResource):
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,7 +416,6 @@ class CustomImage(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -432,7 +429,6 @@ class CustomImage(pulumi.CustomResource):
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CustomImageArgs args: The arguments to use to populate this resource's properties.

@@ -17,14 +17,14 @@ public final class AppSpecIngressArgs extends com.pulumi.resources.ResourceArgs 
     public static final AppSpecIngressArgs Empty = new AppSpecIngressArgs();
 
     /**
-     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<AppSpecIngressRuleArgs>> rules;
 
     /**
-     * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * @return Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      * 
      */
     public Optional<Output<List<AppSpecIngressRuleArgs>>> rules() {
@@ -56,7 +56,7 @@ public final class AppSpecIngressArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rules The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+         * @param rules Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class AppSpecIngressArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rules The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+         * @param rules Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class AppSpecIngressArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rules The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+         * @param rules Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
          * 
          * @return builder
          * 

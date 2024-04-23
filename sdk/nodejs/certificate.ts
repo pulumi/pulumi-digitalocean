@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * ### Custom Certificate
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -32,11 +31,9 @@ import * as utilities from "./utilities";
  *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem", "utf8"),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Let's Encrypt Certificate
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -46,14 +43,12 @@ import * as utilities from "./utilities";
  *     type: digitalocean.CertificateType.LetsEncrypt,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Use with Other Resources
  *
  * Both custom and Let's Encrypt certificates can be used with other resources
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -75,7 +70,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

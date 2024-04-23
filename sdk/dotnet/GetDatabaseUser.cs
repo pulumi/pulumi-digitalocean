@@ -16,7 +16,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseUserResult> InvokeAsync(GetDatabaseUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseUserResult>("digitalocean:index/getDatabaseUser:getDatabaseUser", args ?? new GetDatabaseUserArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseUserResult> Invoke(GetDatabaseUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseUserResult>("digitalocean:index/getDatabaseUser:getDatabaseUser", args ?? new GetDatabaseUserInvokeArgs(), options.WithDefaults());

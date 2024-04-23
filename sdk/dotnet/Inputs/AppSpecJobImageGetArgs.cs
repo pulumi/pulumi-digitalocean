@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecJobImageDeployOnPushGetArgs>? _deployOnPushes;
 
         /// <summary>
-        /// Whether to automatically deploy new commits made to the repo.
+        /// Configures automatically deploying images pushed to DOCR.
         /// </summary>
         public InputList<Inputs.AppSpecJobImageDeployOnPushGetArgs> DeployOnPushes
         {

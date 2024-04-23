@@ -19,7 +19,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database user
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,10 +52,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new user for a PostgreSQL database replica
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,10 +95,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new user for a Kafka database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -159,7 +154,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

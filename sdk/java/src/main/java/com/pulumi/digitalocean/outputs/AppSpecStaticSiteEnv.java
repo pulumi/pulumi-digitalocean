@@ -27,7 +27,7 @@ public final class AppSpecStaticSiteEnv {
      */
     private @Nullable String type;
     /**
-     * @return The threshold for the type of the warning.
+     * @return The value of the environment variable.
      * 
      */
     private @Nullable String value;
@@ -55,7 +55,7 @@ public final class AppSpecStaticSiteEnv {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The threshold for the type of the warning.
+     * @return The value of the environment variable.
      * 
      */
     public Optional<String> value() {

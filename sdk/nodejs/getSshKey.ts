@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * Get the ssh key:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -31,7 +30,6 @@ import * as utilities from "./utilities";
  *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
 
@@ -81,7 +79,6 @@ export interface GetSshKeyResult {
  *
  * Get the ssh key:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -96,7 +93,6 @@ export interface GetSshKeyResult {
  *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeyResult> {
     return pulumi.output(args).apply((a: any) => getSshKey(a, opts))

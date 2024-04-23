@@ -12,9 +12,6 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecIngressRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The component to route to. Only one of `component` or `redirect` may be set.
-        /// </summary>
         [Input("component")]
         public Input<Inputs.AppSpecIngressRuleComponentArgs>? Component { get; set; }
 
@@ -24,15 +21,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("cors")]
         public Input<Inputs.AppSpecIngressRuleCorsArgs>? Cors { get; set; }
 
-        /// <summary>
-        /// The match configuration for the rule
-        /// </summary>
         [Input("match")]
         public Input<Inputs.AppSpecIngressRuleMatchArgs>? Match { get; set; }
 
-        /// <summary>
-        /// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-        /// </summary>
         [Input("redirect")]
         public Input<Inputs.AppSpecIngressRuleRedirectArgs>? Redirect { get; set; }
 

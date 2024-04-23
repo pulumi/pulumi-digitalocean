@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// A name for the node pool.
+        /// A name for the Kubernetes cluster.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -194,14 +194,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.maintenancePolicy;
     }
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A name for the node pool.
+     * @return A name for the Kubernetes cluster.
      * 
      */
     public Output<String> name() {

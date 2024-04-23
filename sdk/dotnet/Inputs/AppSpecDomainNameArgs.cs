@@ -13,13 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecDomainNameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the component.
+        /// The hostname for the domain.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of the environment variable, `GENERAL` or `SECRET`.
+        /// The domain type, which can be one of the following:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

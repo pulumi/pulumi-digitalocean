@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  * });
  * export const caOutput = ca.then(ca => ca.certificate);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseCa(args: GetDatabaseCaArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseCaResult> {
 
@@ -58,7 +56,6 @@ export interface GetDatabaseCaResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -68,7 +65,6 @@ export interface GetDatabaseCaResult {
  * });
  * export const caOutput = ca.then(ca => ca.certificate);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseCaOutput(args: GetDatabaseCaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseCaResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseCa(a, opts))

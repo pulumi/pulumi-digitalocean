@@ -12,9 +12,6 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecIngressRuleMatchPathGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 

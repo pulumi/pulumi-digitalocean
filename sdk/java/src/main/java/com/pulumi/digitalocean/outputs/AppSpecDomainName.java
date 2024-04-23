@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecDomainName {
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     private String name;
     /**
-     * @return The type of the environment variable, `GENERAL` or `SECRET`.
+     * @return The domain type, which can be one of the following:
      * 
      */
     private @Nullable String type;
@@ -36,14 +36,14 @@ public final class AppSpecDomainName {
 
     private AppSpecDomainName() {}
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The type of the environment variable, `GENERAL` or `SECRET`.
+     * @return The domain type, which can be one of the following:
      * 
      */
     public Optional<String> type() {

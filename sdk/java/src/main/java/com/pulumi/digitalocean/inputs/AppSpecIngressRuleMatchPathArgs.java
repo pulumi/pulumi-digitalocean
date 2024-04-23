@@ -15,17 +15,9 @@ public final class AppSpecIngressRuleMatchPathArgs extends com.pulumi.resources.
 
     public static final AppSpecIngressRuleMatchPathArgs Empty = new AppSpecIngressRuleMatchPathArgs();
 
-    /**
-     * The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
-     * 
-     */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
-    /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
-     * 
-     */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -54,23 +46,11 @@ public final class AppSpecIngressRuleMatchPathArgs extends com.pulumi.resources.
             $ = new AppSpecIngressRuleMatchPathArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param prefix The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
-         * 
-         * @return builder
-         * 
-         */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
 
-        /**
-         * @param prefix The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
-         * 
-         * @return builder
-         * 
-         */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }

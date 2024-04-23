@@ -24,7 +24,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/customImage:CustomImage")]
     public partial class CustomImage : global::Pulumi.CustomResource

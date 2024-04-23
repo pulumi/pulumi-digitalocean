@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new PostgreSQL database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -26,10 +25,8 @@ import * as utilities from "./utilities";
  *     version: "15",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new MySQL database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -42,10 +39,8 @@ import * as utilities from "./utilities";
  *     version: "8",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new Redis database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -58,10 +53,8 @@ import * as utilities from "./utilities";
  *     version: "7",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new Kafka database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -74,10 +67,8 @@ import * as utilities from "./utilities";
  *     version: "3.5",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new MongoDB database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -90,11 +81,9 @@ import * as utilities from "./utilities";
  *     version: "6",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Create a new database cluster based on a backup of an existing cluster.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -121,7 +110,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [doby],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -159,9 +147,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseCluster.__pulumiType;
     }
 
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     */
     public readonly backupRestore!: pulumi.Output<outputs.DatabaseClusterBackupRestore | undefined>;
     /**
      * The uniform resource name of the database cluster.
@@ -338,9 +323,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseCluster resources.
  */
 export interface DatabaseClusterState {
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     */
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
      * The uniform resource name of the database cluster.
@@ -437,9 +419,6 @@ export interface DatabaseClusterState {
  * The set of arguments for constructing a DatabaseCluster resource.
  */
 export interface DatabaseClusterArgs {
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     */
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).

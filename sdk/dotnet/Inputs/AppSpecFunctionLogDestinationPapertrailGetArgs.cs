@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecFunctionLogDestinationPapertrailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Datadog HTTP log intake endpoint.
+        /// Papertrail syslog endpoint.
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;

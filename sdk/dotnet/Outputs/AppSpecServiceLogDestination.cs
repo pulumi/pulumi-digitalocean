@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.AppSpecServiceLogDestinationLogtail? Logtail;
         /// <summary>
-        /// The name of the component.
+        /// Name of the log destination. Minimum length: 2. Maximum length: 42.
         /// </summary>
         public readonly string Name;
         /// <summary>
