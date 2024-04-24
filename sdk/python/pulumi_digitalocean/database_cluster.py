@@ -712,14 +712,14 @@ class DatabaseCluster(pulumi.CustomResource):
 
         doby = digitalocean.DatabaseCluster("doby",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
         doby_backup = digitalocean.DatabaseCluster("dobyBackup",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
@@ -839,14 +839,14 @@ class DatabaseCluster(pulumi.CustomResource):
 
         doby = digitalocean.DatabaseCluster("doby",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
         doby_backup = digitalocean.DatabaseCluster("dobyBackup",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,

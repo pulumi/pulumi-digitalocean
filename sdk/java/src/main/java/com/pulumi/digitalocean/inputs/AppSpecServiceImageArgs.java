@@ -49,6 +49,21 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Access credentials for third-party registries
+     * 
+     */
+    @Import(name="registryCredentials", required=true)
+    private Output<String> registryCredentials;
+
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    public Output<String> registryCredentials() {
+        return this.registryCredentials;
+    }
+
+    /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
      */
@@ -98,6 +113,7 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
     private AppSpecServiceImageArgs(AppSpecServiceImageArgs $) {
         this.deployOnPushes = $.deployOnPushes;
         this.registry = $.registry;
+        this.registryCredentials = $.registryCredentials;
         this.registryType = $.registryType;
         this.repository = $.repository;
         this.tag = $.tag;
@@ -174,6 +190,27 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param registryCredentials Access credentials for third-party registries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryCredentials(Output<String> registryCredentials) {
+            $.registryCredentials = registryCredentials;
+            return this;
+        }
+
+        /**
+         * @param registryCredentials Access credentials for third-party registries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryCredentials(String registryCredentials) {
+            return registryCredentials(Output.of(registryCredentials));
+        }
+
+        /**
          * @param registryType The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
          * 
          * @return builder
@@ -237,6 +274,9 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
         }
 
         public AppSpecServiceImageArgs build() {
+            if ($.registryCredentials == null) {
+                throw new MissingRequiredPropertyException("AppSpecServiceImageArgs", "registryCredentials");
+            }
             if ($.registryType == null) {
                 throw new MissingRequiredPropertyException("AppSpecServiceImageArgs", "registryType");
             }

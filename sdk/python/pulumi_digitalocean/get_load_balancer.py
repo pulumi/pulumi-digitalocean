@@ -22,13 +22,16 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, type=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
         if disable_lets_encrypt_dns_records and not isinstance(disable_lets_encrypt_dns_records, bool):
             raise TypeError("Expected argument 'disable_lets_encrypt_dns_records' to be a bool")
         pulumi.set(__self__, "disable_lets_encrypt_dns_records", disable_lets_encrypt_dns_records)
+        if domains and not isinstance(domains, list):
+            raise TypeError("Expected argument 'domains' to be a list")
+        pulumi.set(__self__, "domains", domains)
         if droplet_ids and not isinstance(droplet_ids, list):
             raise TypeError("Expected argument 'droplet_ids' to be a list")
         pulumi.set(__self__, "droplet_ids", droplet_ids)
@@ -47,6 +50,9 @@ class GetLoadBalancerResult:
         if forwarding_rules and not isinstance(forwarding_rules, list):
             raise TypeError("Expected argument 'forwarding_rules' to be a list")
         pulumi.set(__self__, "forwarding_rules", forwarding_rules)
+        if glb_settings and not isinstance(glb_settings, list):
+            raise TypeError("Expected argument 'glb_settings' to be a list")
+        pulumi.set(__self__, "glb_settings", glb_settings)
         if healthchecks and not isinstance(healthchecks, list):
             raise TypeError("Expected argument 'healthchecks' to be a list")
         pulumi.set(__self__, "healthchecks", healthchecks)
@@ -86,6 +92,9 @@ class GetLoadBalancerResult:
         if sticky_sessions and not isinstance(sticky_sessions, list):
             raise TypeError("Expected argument 'sticky_sessions' to be a list")
         pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if target_load_balancer_ids and not isinstance(target_load_balancer_ids, list):
+            raise TypeError("Expected argument 'target_load_balancer_ids' to be a list")
+        pulumi.set(__self__, "target_load_balancer_ids", target_load_balancer_ids)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -96,12 +105,20 @@ class GetLoadBalancerResult:
     @property
     @pulumi.getter
     def algorithm(self) -> str:
+        warnings.warn("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""", DeprecationWarning)
+        pulumi.log.warn("""algorithm is deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
+
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="disableLetsEncryptDnsRecords")
     def disable_lets_encrypt_dns_records(self) -> bool:
         return pulumi.get(self, "disable_lets_encrypt_dns_records")
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Sequence['outputs.GetLoadBalancerDomainResult']:
+        return pulumi.get(self, "domains")
 
     @property
     @pulumi.getter(name="dropletIds")
@@ -132,6 +149,11 @@ class GetLoadBalancerResult:
     @pulumi.getter(name="forwardingRules")
     def forwarding_rules(self) -> Sequence['outputs.GetLoadBalancerForwardingRuleResult']:
         return pulumi.get(self, "forwarding_rules")
+
+    @property
+    @pulumi.getter(name="glbSettings")
+    def glb_settings(self) -> Sequence['outputs.GetLoadBalancerGlbSettingResult']:
+        return pulumi.get(self, "glb_settings")
 
     @property
     @pulumi.getter
@@ -199,6 +221,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "sticky_sessions")
 
     @property
+    @pulumi.getter(name="targetLoadBalancerIds")
+    def target_load_balancer_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "target_load_balancer_ids")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
@@ -217,12 +244,14 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
         return GetLoadBalancerResult(
             algorithm=self.algorithm,
             disable_lets_encrypt_dns_records=self.disable_lets_encrypt_dns_records,
+            domains=self.domains,
             droplet_ids=self.droplet_ids,
             droplet_tag=self.droplet_tag,
             enable_backend_keepalive=self.enable_backend_keepalive,
             enable_proxy_protocol=self.enable_proxy_protocol,
             firewalls=self.firewalls,
             forwarding_rules=self.forwarding_rules,
+            glb_settings=self.glb_settings,
             healthchecks=self.healthchecks,
             http_idle_timeout_seconds=self.http_idle_timeout_seconds,
             id=self.id,
@@ -236,13 +265,13 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             size_unit=self.size_unit,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
+            target_load_balancer_ids=self.target_load_balancer_ids,
             type=self.type,
             vpc_uuid=self.vpc_uuid)
 
 
 def get_load_balancer(id: Optional[str] = None,
                       name: Optional[str] = None,
-                      type: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
     Get information on a load balancer for use in other resources. This data source
@@ -280,19 +309,20 @@ def get_load_balancer(id: Optional[str] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult).value
 
     return AwaitableGetLoadBalancerResult(
         algorithm=pulumi.get(__ret__, 'algorithm'),
         disable_lets_encrypt_dns_records=pulumi.get(__ret__, 'disable_lets_encrypt_dns_records'),
+        domains=pulumi.get(__ret__, 'domains'),
         droplet_ids=pulumi.get(__ret__, 'droplet_ids'),
         droplet_tag=pulumi.get(__ret__, 'droplet_tag'),
         enable_backend_keepalive=pulumi.get(__ret__, 'enable_backend_keepalive'),
         enable_proxy_protocol=pulumi.get(__ret__, 'enable_proxy_protocol'),
         firewalls=pulumi.get(__ret__, 'firewalls'),
         forwarding_rules=pulumi.get(__ret__, 'forwarding_rules'),
+        glb_settings=pulumi.get(__ret__, 'glb_settings'),
         healthchecks=pulumi.get(__ret__, 'healthchecks'),
         http_idle_timeout_seconds=pulumi.get(__ret__, 'http_idle_timeout_seconds'),
         id=pulumi.get(__ret__, 'id'),
@@ -306,6 +336,7 @@ def get_load_balancer(id: Optional[str] = None,
         size_unit=pulumi.get(__ret__, 'size_unit'),
         status=pulumi.get(__ret__, 'status'),
         sticky_sessions=pulumi.get(__ret__, 'sticky_sessions'),
+        target_load_balancer_ids=pulumi.get(__ret__, 'target_load_balancer_ids'),
         type=pulumi.get(__ret__, 'type'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
 
@@ -313,7 +344,6 @@ def get_load_balancer(id: Optional[str] = None,
 @_utilities.lift_output_func(get_load_balancer)
 def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
-                             type: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
     Get information on a load balancer for use in other resources. This data source

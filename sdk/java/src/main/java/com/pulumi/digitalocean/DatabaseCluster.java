@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var doby = new DatabaseCluster(&#34;doby&#34;, DatabaseClusterArgs.builder()        
  *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
+ *             .version(&#34;15&#34;)
  *             .size(&#34;db-s-1vcpu-2gb&#34;)
  *             .region(&#34;nyc1&#34;)
  *             .nodeCount(1)
@@ -240,7 +240,7 @@ import javax.annotation.Nullable;
  * 
  *         var dobyBackup = new DatabaseCluster(&#34;dobyBackup&#34;, DatabaseClusterArgs.builder()        
  *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
+ *             .version(&#34;15&#34;)
  *             .size(&#34;db-s-1vcpu-2gb&#34;)
  *             .region(&#34;nyc1&#34;)
  *             .nodeCount(1)

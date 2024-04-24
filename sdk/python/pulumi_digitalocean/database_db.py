@@ -110,7 +110,7 @@ class DatabaseDb(pulumi.CustomResource):
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -150,7 +150,7 @@ class DatabaseDb(pulumi.CustomResource):
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)

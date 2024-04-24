@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.LoadBalancerArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.LoadBalancerState;
+import com.pulumi.digitalocean.outputs.LoadBalancerDomain;
 import com.pulumi.digitalocean.outputs.LoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.LoadBalancerForwardingRule;
+import com.pulumi.digitalocean.outputs.LoadBalancerGlbSettings;
 import com.pulumi.digitalocean.outputs.LoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.LoadBalancerStickySessions;
 import java.lang.Boolean;
@@ -157,17 +159,19 @@ import javax.annotation.Nullable;
 @ResourceType(type="digitalocean:index/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
+     * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `least_connections`. The default value is `round_robin`.
      * 
+     * @deprecated
+     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * 
      */
+    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
     @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> algorithm;
 
     /**
-     * @return The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
+     * @return **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `least_connections`. The default value is `round_robin`.
      * 
      */
@@ -187,6 +191,22 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> disableLetsEncryptDnsRecords() {
         return Codegen.optional(this.disableLetsEncryptDnsRecords);
+    }
+    /**
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="domains", refs={List.class,LoadBalancerDomain.class}, tree="[0,1]")
+    private Output<List<LoadBalancerDomain>> domains;
+
+    /**
+     * @return A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Output<List<LoadBalancerDomain>> domains() {
+        return this.domains;
     }
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -268,15 +288,31 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="forwardingRules", refs={List.class,LoadBalancerForwardingRule.class}, tree="[0,1]")
-    private Output<List<LoadBalancerForwardingRule>> forwardingRules;
+    private Output</* @Nullable */ List<LoadBalancerForwardingRule>> forwardingRules;
 
     /**
      * @return A list of `forwarding_rule` to be assigned to the
      * Load Balancer. The `forwarding_rule` block is documented below.
      * 
      */
-    public Output<List<LoadBalancerForwardingRule>> forwardingRules() {
-        return this.forwardingRules;
+    public Output<Optional<List<LoadBalancerForwardingRule>>> forwardingRules() {
+        return Codegen.optional(this.forwardingRules);
+    }
+    /**
+     * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="glbSettings", refs={LoadBalancerGlbSettings.class}, tree="[0]")
+    private Output<LoadBalancerGlbSettings> glbSettings;
+
+    /**
+     * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Output<LoadBalancerGlbSettings> glbSettings() {
+        return this.glbSettings;
     }
     /**
      * A `healthcheck` block to be assigned to the
@@ -447,6 +483,22 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.stickySessions;
     }
     /**
+     * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="targetLoadBalancerIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> targetLoadBalancerIds;
+
+    /**
+     * @return A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Output<List<String>> targetLoadBalancerIds() {
+        return this.targetLoadBalancerIds;
+    }
+    /**
      * the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
@@ -487,7 +539,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancer(String name, LoadBalancerArgs args) {
+    public LoadBalancer(String name, @Nullable LoadBalancerArgs args) {
         this(name, args, null);
     }
     /**
@@ -496,7 +548,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancer(String name, LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LoadBalancer(String name, @Nullable LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/loadBalancer:LoadBalancer", name, args == null ? LoadBalancerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

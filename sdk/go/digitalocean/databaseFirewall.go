@@ -34,7 +34,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -88,7 +88,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -130,7 +130,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),

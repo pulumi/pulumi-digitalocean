@@ -132,7 +132,7 @@ namespace Pulumi.DigitalOcean
     ///     var doby = new DigitalOcean.DatabaseCluster("doby", new()
     ///     {
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
@@ -145,7 +145,7 @@ namespace Pulumi.DigitalOcean
     ///     var dobyBackup = new DigitalOcean.DatabaseCluster("dobyBackup", new()
     ///     {
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,

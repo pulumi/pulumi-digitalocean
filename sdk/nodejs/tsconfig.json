@@ -27,6 +27,7 @@
         "databaseFirewall.ts",
         "databaseKafkaTopic.ts",
         "databaseMysqlConfig.ts",
+        "databasePostgresqlConfig.ts",
         "databaseRedisConfig.ts",
         "databaseReplica.ts",
         "databaseUser.ts",

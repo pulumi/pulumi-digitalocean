@@ -88,19 +88,21 @@ type LookupLoadBalancerArgs struct {
 	Id *string `pulumi:"id"`
 	// The name of load balancer.
 	Name *string `pulumi:"name"`
-	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getLoadBalancer.
 type LookupLoadBalancerResult struct {
+	// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	Algorithm                    string                          `pulumi:"algorithm"`
 	DisableLetsEncryptDnsRecords bool                            `pulumi:"disableLetsEncryptDnsRecords"`
+	Domains                      []GetLoadBalancerDomain         `pulumi:"domains"`
 	DropletIds                   []int                           `pulumi:"dropletIds"`
 	DropletTag                   string                          `pulumi:"dropletTag"`
 	EnableBackendKeepalive       bool                            `pulumi:"enableBackendKeepalive"`
 	EnableProxyProtocol          bool                            `pulumi:"enableProxyProtocol"`
 	Firewalls                    []GetLoadBalancerFirewall       `pulumi:"firewalls"`
 	ForwardingRules              []GetLoadBalancerForwardingRule `pulumi:"forwardingRules"`
+	GlbSettings                  []GetLoadBalancerGlbSetting     `pulumi:"glbSettings"`
 	Healthchecks                 []GetLoadBalancerHealthcheck    `pulumi:"healthchecks"`
 	HttpIdleTimeoutSeconds       int                             `pulumi:"httpIdleTimeoutSeconds"`
 	Id                           *string                         `pulumi:"id"`
@@ -114,6 +116,7 @@ type LookupLoadBalancerResult struct {
 	SizeUnit                     int                             `pulumi:"sizeUnit"`
 	Status                       string                          `pulumi:"status"`
 	StickySessions               []GetLoadBalancerStickySession  `pulumi:"stickySessions"`
+	TargetLoadBalancerIds        []string                        `pulumi:"targetLoadBalancerIds"`
 	Type                         string                          `pulumi:"type"`
 	VpcUuid                      string                          `pulumi:"vpcUuid"`
 }
@@ -137,7 +140,6 @@ type LookupLoadBalancerOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of load balancer.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
@@ -159,12 +161,17 @@ func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithCont
 	return o
 }
 
+// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 func (o LookupLoadBalancerResultOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) DisableLetsEncryptDnsRecords() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) bool { return v.DisableLetsEncryptDnsRecords }).(pulumi.BoolOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Domains() GetLoadBalancerDomainArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerDomain { return v.Domains }).(GetLoadBalancerDomainArrayOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) DropletIds() pulumi.IntArrayOutput {
@@ -189,6 +196,10 @@ func (o LookupLoadBalancerResultOutput) Firewalls() GetLoadBalancerFirewallArray
 
 func (o LookupLoadBalancerResultOutput) ForwardingRules() GetLoadBalancerForwardingRuleArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerForwardingRule { return v.ForwardingRules }).(GetLoadBalancerForwardingRuleArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) GlbSettings() GetLoadBalancerGlbSettingArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerGlbSetting { return v.GlbSettings }).(GetLoadBalancerGlbSettingArrayOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) Healthchecks() GetLoadBalancerHealthcheckArrayOutput {
@@ -241,6 +252,10 @@ func (o LookupLoadBalancerResultOutput) Status() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) StickySessions() GetLoadBalancerStickySessionArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerStickySession { return v.StickySessions }).(GetLoadBalancerStickySessionArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) []string { return v.TargetLoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) Type() pulumi.StringOutput {

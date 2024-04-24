@@ -89,6 +89,8 @@ __all__ = [
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'DatabaseKafkaTopicConfigArgs',
+    'DatabasePostgresqlConfigPgbouncerArgs',
+    'DatabasePostgresqlConfigTimescaledbArgs',
     'DatabaseUserSettingArgs',
     'DatabaseUserSettingAclArgs',
     'FirewallInboundRuleArgs',
@@ -101,8 +103,11 @@ __all__ = [
     'KubernetesClusterNodePoolTaintArgs',
     'KubernetesNodePoolNodeArgs',
     'KubernetesNodePoolTaintArgs',
+    'LoadBalancerDomainArgs',
     'LoadBalancerFirewallArgs',
     'LoadBalancerForwardingRuleArgs',
+    'LoadBalancerGlbSettingsArgs',
+    'LoadBalancerGlbSettingsCdnArgs',
     'LoadBalancerHealthcheckArgs',
     'LoadBalancerStickySessionsArgs',
     'MonitorAlertAlertsArgs',
@@ -2433,18 +2438,21 @@ class AppSpecJobGitlabArgs:
 @pulumi.input_type
 class AppSpecJobImageArgs:
     def __init__(__self__, *,
+                 registry_credentials: pulumi.Input[str],
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
@@ -2453,6 +2461,18 @@ class AppSpecJobImageArgs:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> pulumi.Input[str]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter(name="registryType")
@@ -3611,18 +3631,21 @@ class AppSpecServiceHealthCheckArgs:
 @pulumi.input_type
 class AppSpecServiceImageArgs:
     def __init__(__self__, *,
+                 registry_credentials: pulumi.Input[str],
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
@@ -3631,6 +3654,18 @@ class AppSpecServiceImageArgs:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> pulumi.Input[str]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter(name="registryType")
@@ -5134,18 +5169,21 @@ class AppSpecWorkerGitlabArgs:
 @pulumi.input_type
 class AppSpecWorkerImageArgs:
     def __init__(__self__, *,
+                 registry_credentials: pulumi.Input[str],
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
@@ -5154,6 +5192,18 @@ class AppSpecWorkerImageArgs:
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> pulumi.Input[str]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter(name="registryType")
@@ -5912,6 +5962,142 @@ class DatabaseKafkaTopicConfigArgs:
     @segment_ms.setter
     def segment_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "segment_ms", value)
+
+
+@pulumi.input_type
+class DatabasePostgresqlConfigPgbouncerArgs:
+    def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[pulumi.Input[int]] = None,
+                 autodb_max_db_connections: Optional[pulumi.Input[int]] = None,
+                 autodb_pool_mode: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_size: Optional[pulumi.Input[int]] = None,
+                 ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 min_pool_size: Optional[pulumi.Input[int]] = None,
+                 server_idle_timeout: Optional[pulumi.Input[int]] = None,
+                 server_lifetime: Optional[pulumi.Input[int]] = None,
+                 server_reset_query_always: Optional[pulumi.Input[bool]] = None):
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
+        if ignore_startup_parameters is not None:
+            pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
+        if server_reset_query_always is not None:
+            pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @autodb_idle_timeout.setter
+    def autodb_idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autodb_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @autodb_max_db_connections.setter
+    def autodb_max_db_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autodb_max_db_connections", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @autodb_pool_mode.setter
+    def autodb_pool_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_pool_mode", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "autodb_pool_size")
+
+    @autodb_pool_size.setter
+    def autodb_pool_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autodb_pool_size", value)
+
+    @property
+    @pulumi.getter(name="ignoreStartupParameters")
+    def ignore_startup_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ignore_startup_parameters")
+
+    @ignore_startup_parameters.setter
+    def ignore_startup_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_pool_size")
+
+    @min_pool_size.setter
+    def min_pool_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_pool_size", value)
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "server_idle_timeout")
+
+    @server_idle_timeout.setter
+    def server_idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "server_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "server_lifetime")
+
+    @server_lifetime.setter
+    def server_lifetime(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "server_lifetime", value)
+
+    @property
+    @pulumi.getter(name="serverResetQueryAlways")
+    def server_reset_query_always(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "server_reset_query_always")
+
+    @server_reset_query_always.setter
+    def server_reset_query_always(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "server_reset_query_always", value)
+
+
+@pulumi.input_type
+class DatabasePostgresqlConfigTimescaledbArgs:
+    def __init__(__self__, *,
+                 timescaledb: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] timescaledb: TimescaleDB extension configuration values
+        """
+        if timescaledb is not None:
+            pulumi.set(__self__, "timescaledb", timescaledb)
+
+    @property
+    @pulumi.getter
+    def timescaledb(self) -> Optional[pulumi.Input[int]]:
+        """
+        TimescaleDB extension configuration values
+        """
+        return pulumi.get(self, "timescaledb")
+
+    @timescaledb.setter
+    def timescaledb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timescaledb", value)
 
 
 @pulumi.input_type
@@ -6997,6 +7183,92 @@ class KubernetesNodePoolTaintArgs:
 
 
 @pulumi.input_type
+class LoadBalancerDomainArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 certificate_name: Optional[pulumi.Input[str]] = None,
+                 is_managed: Optional[pulumi.Input[bool]] = None,
+                 ssl_validation_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verification_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: The domain name to be used for ingressing traffic to a Global Load Balancer.
+        :param pulumi.Input[str] certificate_name: name of certificate required for TLS handshaking
+        :param pulumi.Input[bool] is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_validation_error_reasons: list of domain SSL validation errors
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] verification_error_reasons: list of domain verification errors
+        """
+        pulumi.set(__self__, "name", name)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if is_managed is not None:
+            pulumi.set(__self__, "is_managed", is_managed)
+        if ssl_validation_error_reasons is not None:
+            pulumi.set(__self__, "ssl_validation_error_reasons", ssl_validation_error_reasons)
+        if verification_error_reasons is not None:
+            pulumi.set(__self__, "verification_error_reasons", verification_error_reasons)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The domain name to be used for ingressing traffic to a Global Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of certificate required for TLS handshaking
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @property
+    @pulumi.getter(name="isManaged")
+    def is_managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Control flag to specify whether the domain is managed by DigitalOcean.
+        """
+        return pulumi.get(self, "is_managed")
+
+    @is_managed.setter
+    def is_managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_managed", value)
+
+    @property
+    @pulumi.getter(name="sslValidationErrorReasons")
+    def ssl_validation_error_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of domain SSL validation errors
+        """
+        return pulumi.get(self, "ssl_validation_error_reasons")
+
+    @ssl_validation_error_reasons.setter
+    def ssl_validation_error_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ssl_validation_error_reasons", value)
+
+    @property
+    @pulumi.getter(name="verificationErrorReasons")
+    def verification_error_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of domain verification errors
+        """
+        return pulumi.get(self, "verification_error_reasons")
+
+    @verification_error_reasons.setter
+    def verification_error_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "verification_error_reasons", value)
+
+
+@pulumi.input_type
 class LoadBalancerFirewallArgs:
     def __init__(__self__, *,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7156,6 +7428,82 @@ class LoadBalancerForwardingRuleArgs:
     @tls_passthrough.setter
     def tls_passthrough(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls_passthrough", value)
+
+
+@pulumi.input_type
+class LoadBalancerGlbSettingsArgs:
+    def __init__(__self__, *,
+                 target_port: pulumi.Input[int],
+                 target_protocol: pulumi.Input[str],
+                 cdn: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']] = None):
+        """
+        :param pulumi.Input[int] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        :param pulumi.Input[str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        :param pulumi.Input['LoadBalancerGlbSettingsCdnArgs'] cdn: CDN configuration supporting the following:
+        """
+        pulumi.set(__self__, "target_port", target_port)
+        pulumi.set(__self__, "target_protocol", target_protocol)
+        if cdn is not None:
+            pulumi.set(__self__, "cdn", cdn)
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> pulumi.Input[int]:
+        """
+        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        """
+        return pulumi.get(self, "target_port")
+
+    @target_port.setter
+    def target_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "target_port", value)
+
+    @property
+    @pulumi.getter(name="targetProtocol")
+    def target_protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        """
+        return pulumi.get(self, "target_protocol")
+
+    @target_protocol.setter
+    def target_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_protocol", value)
+
+    @property
+    @pulumi.getter
+    def cdn(self) -> Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']]:
+        """
+        CDN configuration supporting the following:
+        """
+        return pulumi.get(self, "cdn")
+
+    @cdn.setter
+    def cdn(self, value: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']]):
+        pulumi.set(self, "cdn", value)
+
+
+@pulumi.input_type
+class LoadBalancerGlbSettingsCdnArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Control flag to specify if caching is enabled.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Control flag to specify if caching is enabled.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
 
 
 @pulumi.input_type

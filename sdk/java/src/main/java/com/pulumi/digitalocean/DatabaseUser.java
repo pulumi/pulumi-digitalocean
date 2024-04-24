@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
  *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
+ *             .version(&#34;15&#34;)
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
  *             .region(&#34;nyc1&#34;)
  *             .nodeCount(1)
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
  *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
+ *             .version(&#34;15&#34;)
  *             .size(&#34;db-s-1vcpu-1gb&#34;)
  *             .region(&#34;nyc1&#34;)
  *             .nodeCount(1)

@@ -65,6 +65,11 @@ export type DatabaseMysqlConfig = import("./databaseMysqlConfig").DatabaseMysqlC
 export const DatabaseMysqlConfig: typeof import("./databaseMysqlConfig").DatabaseMysqlConfig = null as any;
 utilities.lazyLoad(exports, ["DatabaseMysqlConfig"], () => require("./databaseMysqlConfig"));
 
+export { DatabasePostgresqlConfigArgs, DatabasePostgresqlConfigState } from "./databasePostgresqlConfig";
+export type DatabasePostgresqlConfig = import("./databasePostgresqlConfig").DatabasePostgresqlConfig;
+export const DatabasePostgresqlConfig: typeof import("./databasePostgresqlConfig").DatabasePostgresqlConfig = null as any;
+utilities.lazyLoad(exports, ["DatabasePostgresqlConfig"], () => require("./databasePostgresqlConfig"));
+
 export { DatabaseRedisConfigArgs, DatabaseRedisConfigState } from "./databaseRedisConfig";
 export type DatabaseRedisConfig = import("./databaseRedisConfig").DatabaseRedisConfig;
 export const DatabaseRedisConfig: typeof import("./databaseRedisConfig").DatabaseRedisConfig = null as any;
@@ -461,6 +466,8 @@ const _module = {
                 return new DatabaseKafkaTopic(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
                 return new DatabaseMysqlConfig(name, <any>undefined, { urn })
+            case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
+                return new DatabasePostgresqlConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig":
                 return new DatabaseRedisConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseReplica:DatabaseReplica":
@@ -538,6 +545,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseDb", _modul
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseFirewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaTopic", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMysqlConfig", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databasePostgresqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseRedisConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseReplica", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseUser", _module)

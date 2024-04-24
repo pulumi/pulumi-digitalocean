@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,

@@ -4,8 +4,10 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetLoadBalancerDomain;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerForwardingRule;
+import com.pulumi.digitalocean.outputs.GetLoadBalancerGlbSetting;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerStickySession;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,14 +21,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerResult {
+    /**
+     * @deprecated
+     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * 
+     */
+    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
     private String algorithm;
     private Boolean disableLetsEncryptDnsRecords;
+    private List<GetLoadBalancerDomain> domains;
     private List<Integer> dropletIds;
     private String dropletTag;
     private Boolean enableBackendKeepalive;
     private Boolean enableProxyProtocol;
     private List<GetLoadBalancerFirewall> firewalls;
     private List<GetLoadBalancerForwardingRule> forwardingRules;
+    private List<GetLoadBalancerGlbSetting> glbSettings;
     private List<GetLoadBalancerHealthcheck> healthchecks;
     private Integer httpIdleTimeoutSeconds;
     private @Nullable String id;
@@ -40,15 +50,25 @@ public final class GetLoadBalancerResult {
     private Integer sizeUnit;
     private String status;
     private List<GetLoadBalancerStickySession> stickySessions;
+    private List<String> targetLoadBalancerIds;
     private String type;
     private String vpcUuid;
 
     private GetLoadBalancerResult() {}
+    /**
+     * @deprecated
+     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * 
+     */
+    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
     public String algorithm() {
         return this.algorithm;
     }
     public Boolean disableLetsEncryptDnsRecords() {
         return this.disableLetsEncryptDnsRecords;
+    }
+    public List<GetLoadBalancerDomain> domains() {
+        return this.domains;
     }
     public List<Integer> dropletIds() {
         return this.dropletIds;
@@ -67,6 +87,9 @@ public final class GetLoadBalancerResult {
     }
     public List<GetLoadBalancerForwardingRule> forwardingRules() {
         return this.forwardingRules;
+    }
+    public List<GetLoadBalancerGlbSetting> glbSettings() {
+        return this.glbSettings;
     }
     public List<GetLoadBalancerHealthcheck> healthchecks() {
         return this.healthchecks;
@@ -107,6 +130,9 @@ public final class GetLoadBalancerResult {
     public List<GetLoadBalancerStickySession> stickySessions() {
         return this.stickySessions;
     }
+    public List<String> targetLoadBalancerIds() {
+        return this.targetLoadBalancerIds;
+    }
     public String type() {
         return this.type;
     }
@@ -125,12 +151,14 @@ public final class GetLoadBalancerResult {
     public static final class Builder {
         private String algorithm;
         private Boolean disableLetsEncryptDnsRecords;
+        private List<GetLoadBalancerDomain> domains;
         private List<Integer> dropletIds;
         private String dropletTag;
         private Boolean enableBackendKeepalive;
         private Boolean enableProxyProtocol;
         private List<GetLoadBalancerFirewall> firewalls;
         private List<GetLoadBalancerForwardingRule> forwardingRules;
+        private List<GetLoadBalancerGlbSetting> glbSettings;
         private List<GetLoadBalancerHealthcheck> healthchecks;
         private Integer httpIdleTimeoutSeconds;
         private @Nullable String id;
@@ -144,6 +172,7 @@ public final class GetLoadBalancerResult {
         private Integer sizeUnit;
         private String status;
         private List<GetLoadBalancerStickySession> stickySessions;
+        private List<String> targetLoadBalancerIds;
         private String type;
         private String vpcUuid;
         public Builder() {}
@@ -151,12 +180,14 @@ public final class GetLoadBalancerResult {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.disableLetsEncryptDnsRecords = defaults.disableLetsEncryptDnsRecords;
+    	      this.domains = defaults.domains;
     	      this.dropletIds = defaults.dropletIds;
     	      this.dropletTag = defaults.dropletTag;
     	      this.enableBackendKeepalive = defaults.enableBackendKeepalive;
     	      this.enableProxyProtocol = defaults.enableProxyProtocol;
     	      this.firewalls = defaults.firewalls;
     	      this.forwardingRules = defaults.forwardingRules;
+    	      this.glbSettings = defaults.glbSettings;
     	      this.healthchecks = defaults.healthchecks;
     	      this.httpIdleTimeoutSeconds = defaults.httpIdleTimeoutSeconds;
     	      this.id = defaults.id;
@@ -170,6 +201,7 @@ public final class GetLoadBalancerResult {
     	      this.sizeUnit = defaults.sizeUnit;
     	      this.status = defaults.status;
     	      this.stickySessions = defaults.stickySessions;
+    	      this.targetLoadBalancerIds = defaults.targetLoadBalancerIds;
     	      this.type = defaults.type;
     	      this.vpcUuid = defaults.vpcUuid;
         }
@@ -189,6 +221,17 @@ public final class GetLoadBalancerResult {
             }
             this.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
             return this;
+        }
+        @CustomType.Setter
+        public Builder domains(List<GetLoadBalancerDomain> domains) {
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "domains");
+            }
+            this.domains = domains;
+            return this;
+        }
+        public Builder domains(GetLoadBalancerDomain... domains) {
+            return domains(List.of(domains));
         }
         @CustomType.Setter
         public Builder dropletIds(List<Integer> dropletIds) {
@@ -246,6 +289,17 @@ public final class GetLoadBalancerResult {
         }
         public Builder forwardingRules(GetLoadBalancerForwardingRule... forwardingRules) {
             return forwardingRules(List.of(forwardingRules));
+        }
+        @CustomType.Setter
+        public Builder glbSettings(List<GetLoadBalancerGlbSetting> glbSettings) {
+            if (glbSettings == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "glbSettings");
+            }
+            this.glbSettings = glbSettings;
+            return this;
+        }
+        public Builder glbSettings(GetLoadBalancerGlbSetting... glbSettings) {
+            return glbSettings(List.of(glbSettings));
         }
         @CustomType.Setter
         public Builder healthchecks(List<GetLoadBalancerHealthcheck> healthchecks) {
@@ -354,6 +408,17 @@ public final class GetLoadBalancerResult {
             return stickySessions(List.of(stickySessions));
         }
         @CustomType.Setter
+        public Builder targetLoadBalancerIds(List<String> targetLoadBalancerIds) {
+            if (targetLoadBalancerIds == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "targetLoadBalancerIds");
+            }
+            this.targetLoadBalancerIds = targetLoadBalancerIds;
+            return this;
+        }
+        public Builder targetLoadBalancerIds(String... targetLoadBalancerIds) {
+            return targetLoadBalancerIds(List.of(targetLoadBalancerIds));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancerResult", "type");
@@ -373,12 +438,14 @@ public final class GetLoadBalancerResult {
             final var _resultValue = new GetLoadBalancerResult();
             _resultValue.algorithm = algorithm;
             _resultValue.disableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
+            _resultValue.domains = domains;
             _resultValue.dropletIds = dropletIds;
             _resultValue.dropletTag = dropletTag;
             _resultValue.enableBackendKeepalive = enableBackendKeepalive;
             _resultValue.enableProxyProtocol = enableProxyProtocol;
             _resultValue.firewalls = firewalls;
             _resultValue.forwardingRules = forwardingRules;
+            _resultValue.glbSettings = glbSettings;
             _resultValue.healthchecks = healthchecks;
             _resultValue.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             _resultValue.id = id;
@@ -392,6 +459,7 @@ public final class GetLoadBalancerResult {
             _resultValue.sizeUnit = sizeUnit;
             _resultValue.status = status;
             _resultValue.stickySessions = stickySessions;
+            _resultValue.targetLoadBalancerIds = targetLoadBalancerIds;
             _resultValue.type = type;
             _resultValue.vpcUuid = vpcUuid;
             return _resultValue;

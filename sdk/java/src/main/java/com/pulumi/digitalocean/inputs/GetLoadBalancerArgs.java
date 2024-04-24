@@ -45,19 +45,11 @@ public final class GetLoadBalancerArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.name);
     }
 
-    @Import(name="type")
-    private @Nullable Output<String> type;
-
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
-    }
-
     private GetLoadBalancerArgs() {}
 
     private GetLoadBalancerArgs(GetLoadBalancerArgs $) {
         this.id = $.id;
         this.name = $.name;
-        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -118,15 +110,6 @@ public final class GetLoadBalancerArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        public Builder type(@Nullable Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        public Builder type(String type) {
-            return type(Output.of(type));
         }
 
         public GetLoadBalancerArgs build() {
