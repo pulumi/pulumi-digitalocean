@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,

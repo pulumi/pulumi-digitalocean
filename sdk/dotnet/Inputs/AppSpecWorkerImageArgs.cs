@@ -30,6 +30,22 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("registry")]
         public Input<string>? Registry { get; set; }
 
+        [Input("registryCredentials", required: true)]
+        private Input<string>? _registryCredentials;
+
+        /// <summary>
+        /// Access credentials for third-party registries
+        /// </summary>
+        public Input<string>? RegistryCredentials
+        {
+            get => _registryCredentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _registryCredentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         /// </summary>

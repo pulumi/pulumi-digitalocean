@@ -18,6 +18,7 @@ from .database_db import *
 from .database_firewall import *
 from .database_kafka_topic import *
 from .database_mysql_config import *
+from .database_postgresql_config import *
 from .database_redis_config import *
 from .database_replica import *
 from .database_user import *
@@ -196,6 +197,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig": "DatabaseMysqlConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databasePostgresqlConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig": "DatabasePostgresqlConfig"
   }
  },
  {

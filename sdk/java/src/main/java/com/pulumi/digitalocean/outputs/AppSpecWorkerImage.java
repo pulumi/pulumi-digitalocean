@@ -25,6 +25,11 @@ public final class AppSpecWorkerImage {
      */
     private @Nullable String registry;
     /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    private String registryCredentials;
+    /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
      */
@@ -54,6 +59,13 @@ public final class AppSpecWorkerImage {
      */
     public Optional<String> registry() {
         return Optional.ofNullable(this.registry);
+    }
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    public String registryCredentials() {
+        return this.registryCredentials;
     }
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -88,6 +100,7 @@ public final class AppSpecWorkerImage {
     public static final class Builder {
         private @Nullable List<AppSpecWorkerImageDeployOnPush> deployOnPushes;
         private @Nullable String registry;
+        private String registryCredentials;
         private String registryType;
         private String repository;
         private @Nullable String tag;
@@ -96,6 +109,7 @@ public final class AppSpecWorkerImage {
     	      Objects.requireNonNull(defaults);
     	      this.deployOnPushes = defaults.deployOnPushes;
     	      this.registry = defaults.registry;
+    	      this.registryCredentials = defaults.registryCredentials;
     	      this.registryType = defaults.registryType;
     	      this.repository = defaults.repository;
     	      this.tag = defaults.tag;
@@ -114,6 +128,14 @@ public final class AppSpecWorkerImage {
         public Builder registry(@Nullable String registry) {
 
             this.registry = registry;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder registryCredentials(String registryCredentials) {
+            if (registryCredentials == null) {
+              throw new MissingRequiredPropertyException("AppSpecWorkerImage", "registryCredentials");
+            }
+            this.registryCredentials = registryCredentials;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +164,7 @@ public final class AppSpecWorkerImage {
             final var _resultValue = new AppSpecWorkerImage();
             _resultValue.deployOnPushes = deployOnPushes;
             _resultValue.registry = registry;
+            _resultValue.registryCredentials = registryCredentials;
             _resultValue.registryType = registryType;
             _resultValue.repository = repository;
             _resultValue.tag = tag;

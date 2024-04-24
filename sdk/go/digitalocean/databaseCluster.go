@@ -177,7 +177,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			doby, err := digitalocean.NewDatabaseCluster(ctx, "doby", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -190,7 +190,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseCluster(ctx, "dobyBackup", &digitalocean.DatabaseClusterArgs{
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),

@@ -111,15 +111,21 @@ export class LoadBalancer extends pulumi.CustomResource {
     }
 
     /**
-     * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `roundRobin`
+     * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `leastConnections`. The default value is `roundRobin`.
+     *
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      */
     public readonly algorithm!: pulumi.Output<string | undefined>;
     /**
      * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
      */
     public readonly disableLetsEncryptDnsRecords!: pulumi.Output<boolean | undefined>;
+    /**
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    public readonly domains!: pulumi.Output<outputs.LoadBalancerDomain[]>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -146,7 +152,12 @@ export class LoadBalancer extends pulumi.CustomResource {
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    public readonly forwardingRules!: pulumi.Output<outputs.LoadBalancerForwardingRule[]>;
+    public readonly forwardingRules!: pulumi.Output<outputs.LoadBalancerForwardingRule[] | undefined>;
+    /**
+     * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    public readonly glbSettings!: pulumi.Output<outputs.LoadBalancerGlbSettings>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -197,6 +208,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
     /**
+     * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    public readonly targetLoadBalancerIds!: pulumi.Output<string[]>;
+    /**
      * the type of the load balancer (GLOBAL or REGIONAL)
      */
     public readonly type!: pulumi.Output<string | undefined>;
@@ -212,7 +228,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -220,12 +236,14 @@ export class LoadBalancer extends pulumi.CustomResource {
             const state = argsOrState as LoadBalancerState | undefined;
             resourceInputs["algorithm"] = state ? state.algorithm : undefined;
             resourceInputs["disableLetsEncryptDnsRecords"] = state ? state.disableLetsEncryptDnsRecords : undefined;
+            resourceInputs["domains"] = state ? state.domains : undefined;
             resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
             resourceInputs["dropletTag"] = state ? state.dropletTag : undefined;
             resourceInputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
             resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
             resourceInputs["firewall"] = state ? state.firewall : undefined;
             resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
+            resourceInputs["glbSettings"] = state ? state.glbSettings : undefined;
             resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
             resourceInputs["httpIdleTimeoutSeconds"] = state ? state.httpIdleTimeoutSeconds : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
@@ -238,21 +256,21 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["sizeUnit"] = state ? state.sizeUnit : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessions"] = state ? state.stickySessions : undefined;
+            resourceInputs["targetLoadBalancerIds"] = state ? state.targetLoadBalancerIds : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.forwardingRules === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'forwardingRules'");
-            }
             resourceInputs["algorithm"] = args ? args.algorithm : undefined;
             resourceInputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
+            resourceInputs["domains"] = args ? args.domains : undefined;
             resourceInputs["dropletIds"] = args ? args.dropletIds : undefined;
             resourceInputs["dropletTag"] = args ? args.dropletTag : undefined;
             resourceInputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
             resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             resourceInputs["firewall"] = args ? args.firewall : undefined;
             resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
+            resourceInputs["glbSettings"] = args ? args.glbSettings : undefined;
             resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
             resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -262,6 +280,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["sizeUnit"] = args ? args.sizeUnit : undefined;
             resourceInputs["stickySessions"] = args ? args.stickySessions : undefined;
+            resourceInputs["targetLoadBalancerIds"] = args ? args.targetLoadBalancerIds : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             resourceInputs["ip"] = undefined /*out*/;
@@ -278,15 +297,21 @@ export class LoadBalancer extends pulumi.CustomResource {
  */
 export interface LoadBalancerState {
     /**
-     * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `roundRobin`
+     * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `leastConnections`. The default value is `roundRobin`.
+     *
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      */
     algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
      * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
      */
     disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
+    /**
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -314,6 +339,11 @@ export interface LoadBalancerState {
      * Load Balancer. The `forwardingRule` block is documented below.
      */
     forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    /**
+     * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -364,6 +394,11 @@ export interface LoadBalancerState {
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
+     * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * the type of the load balancer (GLOBAL or REGIONAL)
      */
     type?: pulumi.Input<string>;
@@ -378,15 +413,21 @@ export interface LoadBalancerState {
  */
 export interface LoadBalancerArgs {
     /**
-     * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `roundRobin`
+     * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `leastConnections`. The default value is `roundRobin`.
+     *
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      */
     algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
      * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
      */
     disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
+    /**
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
@@ -413,7 +454,12 @@ export interface LoadBalancerArgs {
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    forwardingRules: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    /**
+     * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -454,6 +500,11 @@ export interface LoadBalancerArgs {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    /**
+     * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     */
+    targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * the type of the load balancer (GLOBAL or REGIONAL)
      */

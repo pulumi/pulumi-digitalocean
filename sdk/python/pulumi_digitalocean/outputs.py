@@ -90,6 +90,8 @@ __all__ = [
     'DatabaseClusterMaintenanceWindow',
     'DatabaseFirewallRule',
     'DatabaseKafkaTopicConfig',
+    'DatabasePostgresqlConfigPgbouncer',
+    'DatabasePostgresqlConfigTimescaledb',
     'DatabaseUserSetting',
     'DatabaseUserSettingAcl',
     'FirewallInboundRule',
@@ -102,8 +104,11 @@ __all__ = [
     'KubernetesClusterNodePoolTaint',
     'KubernetesNodePoolNode',
     'KubernetesNodePoolTaint',
+    'LoadBalancerDomain',
     'LoadBalancerFirewall',
     'LoadBalancerForwardingRule',
+    'LoadBalancerGlbSettings',
+    'LoadBalancerGlbSettingsCdn',
     'LoadBalancerHealthcheck',
     'LoadBalancerStickySessions',
     'MonitorAlertAlerts',
@@ -210,8 +215,11 @@ __all__ = [
     'GetKubernetesClusterNodePoolResult',
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
+    'GetLoadBalancerDomainResult',
     'GetLoadBalancerFirewallResult',
     'GetLoadBalancerForwardingRuleResult',
+    'GetLoadBalancerGlbSettingResult',
+    'GetLoadBalancerGlbSettingCdnResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
     'GetProjectsFilterResult',
@@ -2302,7 +2310,9 @@ class AppSpecJobImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "registryType":
+        if key == "registryCredentials":
+            suggest = "registry_credentials"
+        elif key == "registryType":
             suggest = "registry_type"
         elif key == "deployOnPushes":
             suggest = "deploy_on_pushes"
@@ -2319,18 +2329,21 @@ class AppSpecJobImage(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 registry_credentials: str,
                  registry_type: str,
                  repository: str,
                  deploy_on_pushes: Optional[Sequence['outputs.AppSpecJobImageDeployOnPush']] = None,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
+        :param str registry_credentials: Access credentials for third-party registries
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param Sequence['AppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
@@ -2339,6 +2352,14 @@ class AppSpecJobImage(dict):
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> str:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
 
     @property
     @pulumi.getter(name="registryType")
@@ -3384,7 +3405,9 @@ class AppSpecServiceImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "registryType":
+        if key == "registryCredentials":
+            suggest = "registry_credentials"
+        elif key == "registryType":
             suggest = "registry_type"
         elif key == "deployOnPushes":
             suggest = "deploy_on_pushes"
@@ -3401,18 +3424,21 @@ class AppSpecServiceImage(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 registry_credentials: str,
                  registry_type: str,
                  repository: str,
                  deploy_on_pushes: Optional[Sequence['outputs.AppSpecServiceImageDeployOnPush']] = None,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
+        :param str registry_credentials: Access credentials for third-party registries
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param Sequence['AppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
@@ -3421,6 +3447,14 @@ class AppSpecServiceImage(dict):
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> str:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
 
     @property
     @pulumi.getter(name="registryType")
@@ -4818,7 +4852,9 @@ class AppSpecWorkerImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "registryType":
+        if key == "registryCredentials":
+            suggest = "registry_credentials"
+        elif key == "registryType":
             suggest = "registry_type"
         elif key == "deployOnPushes":
             suggest = "deploy_on_pushes"
@@ -4835,18 +4871,21 @@ class AppSpecWorkerImage(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 registry_credentials: str,
                  registry_type: str,
                  repository: str,
                  deploy_on_pushes: Optional[Sequence['outputs.AppSpecWorkerImageDeployOnPush']] = None,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
+        :param str registry_credentials: Access credentials for third-party registries
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param Sequence['AppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
@@ -4855,6 +4894,14 @@ class AppSpecWorkerImage(dict):
             pulumi.set(__self__, "registry", registry)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> str:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
 
     @property
     @pulumi.getter(name="registryType")
@@ -5545,6 +5592,135 @@ class DatabaseKafkaTopicConfig(dict):
         The maximum time, in ms, before the topic log will flush to disk.
         """
         return pulumi.get(self, "segment_ms")
+
+
+@pulumi.output_type
+class DatabasePostgresqlConfigPgbouncer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autodbIdleTimeout":
+            suggest = "autodb_idle_timeout"
+        elif key == "autodbMaxDbConnections":
+            suggest = "autodb_max_db_connections"
+        elif key == "autodbPoolMode":
+            suggest = "autodb_pool_mode"
+        elif key == "autodbPoolSize":
+            suggest = "autodb_pool_size"
+        elif key == "ignoreStartupParameters":
+            suggest = "ignore_startup_parameters"
+        elif key == "minPoolSize":
+            suggest = "min_pool_size"
+        elif key == "serverIdleTimeout":
+            suggest = "server_idle_timeout"
+        elif key == "serverLifetime":
+            suggest = "server_lifetime"
+        elif key == "serverResetQueryAlways":
+            suggest = "server_reset_query_always"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlConfigPgbouncer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabasePostgresqlConfigPgbouncer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabasePostgresqlConfigPgbouncer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[int] = None,
+                 autodb_max_db_connections: Optional[int] = None,
+                 autodb_pool_mode: Optional[str] = None,
+                 autodb_pool_size: Optional[int] = None,
+                 ignore_startup_parameters: Optional[Sequence[str]] = None,
+                 min_pool_size: Optional[int] = None,
+                 server_idle_timeout: Optional[int] = None,
+                 server_lifetime: Optional[int] = None,
+                 server_reset_query_always: Optional[bool] = None):
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
+        if ignore_startup_parameters is not None:
+            pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
+        if server_reset_query_always is not None:
+            pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[int]:
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[str]:
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[int]:
+        return pulumi.get(self, "autodb_pool_size")
+
+    @property
+    @pulumi.getter(name="ignoreStartupParameters")
+    def ignore_startup_parameters(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ignore_startup_parameters")
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[int]:
+        return pulumi.get(self, "min_pool_size")
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "server_idle_timeout")
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[int]:
+        return pulumi.get(self, "server_lifetime")
+
+    @property
+    @pulumi.getter(name="serverResetQueryAlways")
+    def server_reset_query_always(self) -> Optional[bool]:
+        return pulumi.get(self, "server_reset_query_always")
+
+
+@pulumi.output_type
+class DatabasePostgresqlConfigTimescaledb(dict):
+    def __init__(__self__, *,
+                 timescaledb: Optional[int] = None):
+        """
+        :param int timescaledb: TimescaleDB extension configuration values
+        """
+        if timescaledb is not None:
+            pulumi.set(__self__, "timescaledb", timescaledb)
+
+    @property
+    @pulumi.getter
+    def timescaledb(self) -> Optional[int]:
+        """
+        TimescaleDB extension configuration values
+        """
+        return pulumi.get(self, "timescaledb")
 
 
 @pulumi.output_type
@@ -6566,6 +6742,95 @@ class KubernetesNodePoolTaint(dict):
 
 
 @pulumi.output_type
+class LoadBalancerDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateName":
+            suggest = "certificate_name"
+        elif key == "isManaged":
+            suggest = "is_managed"
+        elif key == "sslValidationErrorReasons":
+            suggest = "ssl_validation_error_reasons"
+        elif key == "verificationErrorReasons":
+            suggest = "verification_error_reasons"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 certificate_name: Optional[str] = None,
+                 is_managed: Optional[bool] = None,
+                 ssl_validation_error_reasons: Optional[Sequence[str]] = None,
+                 verification_error_reasons: Optional[Sequence[str]] = None):
+        """
+        :param str name: The domain name to be used for ingressing traffic to a Global Load Balancer.
+        :param str certificate_name: name of certificate required for TLS handshaking
+        :param bool is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
+        :param Sequence[str] ssl_validation_error_reasons: list of domain SSL validation errors
+        :param Sequence[str] verification_error_reasons: list of domain verification errors
+        """
+        pulumi.set(__self__, "name", name)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if is_managed is not None:
+            pulumi.set(__self__, "is_managed", is_managed)
+        if ssl_validation_error_reasons is not None:
+            pulumi.set(__self__, "ssl_validation_error_reasons", ssl_validation_error_reasons)
+        if verification_error_reasons is not None:
+            pulumi.set(__self__, "verification_error_reasons", verification_error_reasons)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The domain name to be used for ingressing traffic to a Global Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[str]:
+        """
+        name of certificate required for TLS handshaking
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @property
+    @pulumi.getter(name="isManaged")
+    def is_managed(self) -> Optional[bool]:
+        """
+        Control flag to specify whether the domain is managed by DigitalOcean.
+        """
+        return pulumi.get(self, "is_managed")
+
+    @property
+    @pulumi.getter(name="sslValidationErrorReasons")
+    def ssl_validation_error_reasons(self) -> Optional[Sequence[str]]:
+        """
+        list of domain SSL validation errors
+        """
+        return pulumi.get(self, "ssl_validation_error_reasons")
+
+    @property
+    @pulumi.getter(name="verificationErrorReasons")
+    def verification_error_reasons(self) -> Optional[Sequence[str]]:
+        """
+        list of domain verification errors
+        """
+        return pulumi.get(self, "verification_error_reasons")
+
+
+@pulumi.output_type
 class LoadBalancerFirewall(dict):
     def __init__(__self__, *,
                  allows: Optional[Sequence[str]] = None,
@@ -6715,6 +6980,102 @@ class LoadBalancerForwardingRule(dict):
         A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
         """
         return pulumi.get(self, "tls_passthrough")
+
+
+@pulumi.output_type
+class LoadBalancerGlbSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetPort":
+            suggest = "target_port"
+        elif key == "targetProtocol":
+            suggest = "target_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerGlbSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerGlbSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerGlbSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_port: int,
+                 target_protocol: str,
+                 cdn: Optional['outputs.LoadBalancerGlbSettingsCdn'] = None):
+        """
+        :param int target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        :param 'LoadBalancerGlbSettingsCdnArgs' cdn: CDN configuration supporting the following:
+        """
+        pulumi.set(__self__, "target_port", target_port)
+        pulumi.set(__self__, "target_protocol", target_protocol)
+        if cdn is not None:
+            pulumi.set(__self__, "cdn", cdn)
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> int:
+        """
+        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        """
+        return pulumi.get(self, "target_port")
+
+    @property
+    @pulumi.getter(name="targetProtocol")
+    def target_protocol(self) -> str:
+        """
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        """
+        return pulumi.get(self, "target_protocol")
+
+    @property
+    @pulumi.getter
+    def cdn(self) -> Optional['outputs.LoadBalancerGlbSettingsCdn']:
+        """
+        CDN configuration supporting the following:
+        """
+        return pulumi.get(self, "cdn")
+
+
+@pulumi.output_type
+class LoadBalancerGlbSettingsCdn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerGlbSettingsCdn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerGlbSettingsCdn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerGlbSettingsCdn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None):
+        """
+        :param bool is_enabled: Control flag to specify if caching is enabled.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        """
+        Control flag to specify if caching is enabled.
+        """
+        return pulumi.get(self, "is_enabled")
 
 
 @pulumi.output_type
@@ -9120,18 +9481,21 @@ class GetAppSpecJobGitlabResult(dict):
 class GetAppSpecJobImageResult(dict):
     def __init__(__self__, *,
                  deploy_on_pushes: Sequence['outputs.GetAppSpecJobImageDeployOnPushResult'],
+                 registry_credentials: str,
                  registry_type: str,
                  repository: str,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
         :param Sequence['GetAppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param str registry_credentials: Access credentials for third-party registries
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if registry is not None:
@@ -9146,6 +9510,14 @@ class GetAppSpecJobImageResult(dict):
         Whether to automatically deploy new commits made to the repo.
         """
         return pulumi.get(self, "deploy_on_pushes")
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> str:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
 
     @property
     @pulumi.getter(name="registryType")
@@ -10015,18 +10387,21 @@ class GetAppSpecServiceHealthCheckResult(dict):
 class GetAppSpecServiceImageResult(dict):
     def __init__(__self__, *,
                  deploy_on_pushes: Sequence['outputs.GetAppSpecServiceImageDeployOnPushResult'],
+                 registry_credentials: str,
                  registry_type: str,
                  repository: str,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
         :param Sequence['GetAppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param str registry_credentials: Access credentials for third-party registries
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if registry is not None:
@@ -10041,6 +10416,14 @@ class GetAppSpecServiceImageResult(dict):
         Whether to automatically deploy new commits made to the repo.
         """
         return pulumi.get(self, "deploy_on_pushes")
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> str:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
 
     @property
     @pulumi.getter(name="registryType")
@@ -11180,18 +11563,21 @@ class GetAppSpecWorkerGitlabResult(dict):
 class GetAppSpecWorkerImageResult(dict):
     def __init__(__self__, *,
                  deploy_on_pushes: Sequence['outputs.GetAppSpecWorkerImageDeployOnPushResult'],
+                 registry_credentials: str,
                  registry_type: str,
                  repository: str,
                  registry: Optional[str] = None,
                  tag: Optional[str] = None):
         """
         :param Sequence['GetAppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param str registry_credentials: Access credentials for third-party registries
         :param str registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param str repository: The repository name.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
+        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if registry is not None:
@@ -11206,6 +11592,14 @@ class GetAppSpecWorkerImageResult(dict):
         Whether to automatically deploy new commits made to the repo.
         """
         return pulumi.get(self, "deploy_on_pushes")
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> str:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
 
     @property
     @pulumi.getter(name="registryType")
@@ -12864,6 +13258,79 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
 
 
 @pulumi.output_type
+class GetLoadBalancerDomainResult(dict):
+    def __init__(__self__, *,
+                 certificate_id: str,
+                 certificate_name: str,
+                 is_managed: bool,
+                 name: str,
+                 ssl_validation_error_reasons: Sequence[str],
+                 verification_error_reasons: Sequence[str]):
+        """
+        :param str certificate_id: certificate ID for TLS handshaking
+        :param str certificate_name: name of certificate required for TLS handshaking
+        :param bool is_managed: flag indicating if domain is managed by DigitalOcean
+        :param str name: The name of load balancer.
+        :param Sequence[str] ssl_validation_error_reasons: list of domain SSL validation errors
+        :param Sequence[str] verification_error_reasons: list of domain verification errors
+        """
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "is_managed", is_managed)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ssl_validation_error_reasons", ssl_validation_error_reasons)
+        pulumi.set(__self__, "verification_error_reasons", verification_error_reasons)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> str:
+        """
+        certificate ID for TLS handshaking
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> str:
+        """
+        name of certificate required for TLS handshaking
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @property
+    @pulumi.getter(name="isManaged")
+    def is_managed(self) -> bool:
+        """
+        flag indicating if domain is managed by DigitalOcean
+        """
+        return pulumi.get(self, "is_managed")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of load balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sslValidationErrorReasons")
+    def ssl_validation_error_reasons(self) -> Sequence[str]:
+        """
+        list of domain SSL validation errors
+        """
+        return pulumi.get(self, "ssl_validation_error_reasons")
+
+    @property
+    @pulumi.getter(name="verificationErrorReasons")
+    def verification_error_reasons(self) -> Sequence[str]:
+        """
+        list of domain verification errors
+        """
+        return pulumi.get(self, "verification_error_reasons")
+
+
+@pulumi.output_type
 class GetLoadBalancerFirewallResult(dict):
     def __init__(__self__, *,
                  allows: Sequence[str],
@@ -12974,6 +13441,64 @@ class GetLoadBalancerForwardingRuleResult(dict):
         whether ssl encrypted traffic will be passed through to the backend droplets
         """
         return pulumi.get(self, "tls_passthrough")
+
+
+@pulumi.output_type
+class GetLoadBalancerGlbSettingResult(dict):
+    def __init__(__self__, *,
+                 cdns: Sequence['outputs.GetLoadBalancerGlbSettingCdnResult'],
+                 target_port: int,
+                 target_protocol: str):
+        """
+        :param Sequence['GetLoadBalancerGlbSettingCdnArgs'] cdns: CDN specific configurations
+        :param int target_port: target port rules
+        :param str target_protocol: target protocol rules
+        """
+        pulumi.set(__self__, "cdns", cdns)
+        pulumi.set(__self__, "target_port", target_port)
+        pulumi.set(__self__, "target_protocol", target_protocol)
+
+    @property
+    @pulumi.getter
+    def cdns(self) -> Sequence['outputs.GetLoadBalancerGlbSettingCdnResult']:
+        """
+        CDN specific configurations
+        """
+        return pulumi.get(self, "cdns")
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> int:
+        """
+        target port rules
+        """
+        return pulumi.get(self, "target_port")
+
+    @property
+    @pulumi.getter(name="targetProtocol")
+    def target_protocol(self) -> str:
+        """
+        target protocol rules
+        """
+        return pulumi.get(self, "target_protocol")
+
+
+@pulumi.output_type
+class GetLoadBalancerGlbSettingCdnResult(dict):
+    def __init__(__self__, *,
+                 is_enabled: bool):
+        """
+        :param bool is_enabled: cache enable flag
+        """
+        pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        """
+        cache enable flag
+        """
+        return pulumi.get(self, "is_enabled")
 
 
 @pulumi.output_type

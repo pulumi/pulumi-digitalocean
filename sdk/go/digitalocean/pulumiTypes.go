@@ -5189,6 +5189,8 @@ type AppSpecJobImage struct {
 	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -5213,6 +5215,8 @@ type AppSpecJobImageArgs struct {
 	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -5308,6 +5312,11 @@ func (o AppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o AppSpecJobImageOutput) RegistryCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o AppSpecJobImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -5364,6 +5373,16 @@ func (o AppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7754,6 +7773,8 @@ type AppSpecServiceImage struct {
 	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -7778,6 +7799,8 @@ type AppSpecServiceImageArgs struct {
 	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -7873,6 +7896,11 @@ func (o AppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o AppSpecServiceImageOutput) RegistryCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o AppSpecServiceImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -7929,6 +7957,16 @@ func (o AppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11088,6 +11126,8 @@ type AppSpecWorkerImage struct {
 	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -11112,6 +11152,8 @@ type AppSpecWorkerImageArgs struct {
 	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -11207,6 +11249,11 @@ func (o AppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o AppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o AppSpecWorkerImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -11263,6 +11310,16 @@ func (o AppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12637,6 +12694,245 @@ func (o DatabaseKafkaTopicConfigArrayOutput) Index(i pulumi.IntInput) DatabaseKa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseKafkaTopicConfig {
 		return vs[0].([]DatabaseKafkaTopicConfig)[vs[1].(int)]
 	}).(DatabaseKafkaTopicConfigOutput)
+}
+
+type DatabasePostgresqlConfigPgbouncer struct {
+	AutodbIdleTimeout       *int     `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  *int     `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          *string  `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          *int     `pulumi:"autodbPoolSize"`
+	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             *int     `pulumi:"minPoolSize"`
+	ServerIdleTimeout       *int     `pulumi:"serverIdleTimeout"`
+	ServerLifetime          *int     `pulumi:"serverLifetime"`
+	ServerResetQueryAlways  *bool    `pulumi:"serverResetQueryAlways"`
+}
+
+// DatabasePostgresqlConfigPgbouncerInput is an input type that accepts DatabasePostgresqlConfigPgbouncerArgs and DatabasePostgresqlConfigPgbouncerOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigPgbouncerInput` via:
+//
+//	DatabasePostgresqlConfigPgbouncerArgs{...}
+type DatabasePostgresqlConfigPgbouncerInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigPgbouncerOutput() DatabasePostgresqlConfigPgbouncerOutput
+	ToDatabasePostgresqlConfigPgbouncerOutputWithContext(context.Context) DatabasePostgresqlConfigPgbouncerOutput
+}
+
+type DatabasePostgresqlConfigPgbouncerArgs struct {
+	AutodbIdleTimeout       pulumi.IntPtrInput      `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  pulumi.IntPtrInput      `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          pulumi.StringPtrInput   `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          pulumi.IntPtrInput      `pulumi:"autodbPoolSize"`
+	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             pulumi.IntPtrInput      `pulumi:"minPoolSize"`
+	ServerIdleTimeout       pulumi.IntPtrInput      `pulumi:"serverIdleTimeout"`
+	ServerLifetime          pulumi.IntPtrInput      `pulumi:"serverLifetime"`
+	ServerResetQueryAlways  pulumi.BoolPtrInput     `pulumi:"serverResetQueryAlways"`
+}
+
+func (DatabasePostgresqlConfigPgbouncerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArgs) ToDatabasePostgresqlConfigPgbouncerOutput() DatabasePostgresqlConfigPgbouncerOutput {
+	return i.ToDatabasePostgresqlConfigPgbouncerOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArgs) ToDatabasePostgresqlConfigPgbouncerOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigPgbouncerOutput)
+}
+
+// DatabasePostgresqlConfigPgbouncerArrayInput is an input type that accepts DatabasePostgresqlConfigPgbouncerArray and DatabasePostgresqlConfigPgbouncerArrayOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigPgbouncerArrayInput` via:
+//
+//	DatabasePostgresqlConfigPgbouncerArray{ DatabasePostgresqlConfigPgbouncerArgs{...} }
+type DatabasePostgresqlConfigPgbouncerArrayInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigPgbouncerArrayOutput() DatabasePostgresqlConfigPgbouncerArrayOutput
+	ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(context.Context) DatabasePostgresqlConfigPgbouncerArrayOutput
+}
+
+type DatabasePostgresqlConfigPgbouncerArray []DatabasePostgresqlConfigPgbouncerInput
+
+func (DatabasePostgresqlConfigPgbouncerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArray) ToDatabasePostgresqlConfigPgbouncerArrayOutput() DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return i.ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArray) ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigPgbouncerArrayOutput)
+}
+
+type DatabasePostgresqlConfigPgbouncerOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigPgbouncerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ToDatabasePostgresqlConfigPgbouncerOutput() DatabasePostgresqlConfigPgbouncerOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ToDatabasePostgresqlConfigPgbouncerOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.AutodbIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.AutodbMaxDbConnections }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.AutodbPoolSize }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) MinPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.MinPoolSize }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ServerIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.ServerIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ServerLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.ServerLifetime }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+}
+
+type DatabasePostgresqlConfigPgbouncerArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigPgbouncerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigPgbouncerArrayOutput) ToDatabasePostgresqlConfigPgbouncerArrayOutput() DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerArrayOutput) ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerArrayOutput) Index(i pulumi.IntInput) DatabasePostgresqlConfigPgbouncerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabasePostgresqlConfigPgbouncer {
+		return vs[0].([]DatabasePostgresqlConfigPgbouncer)[vs[1].(int)]
+	}).(DatabasePostgresqlConfigPgbouncerOutput)
+}
+
+type DatabasePostgresqlConfigTimescaledb struct {
+	// TimescaleDB extension configuration values
+	Timescaledb *int `pulumi:"timescaledb"`
+}
+
+// DatabasePostgresqlConfigTimescaledbInput is an input type that accepts DatabasePostgresqlConfigTimescaledbArgs and DatabasePostgresqlConfigTimescaledbOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigTimescaledbInput` via:
+//
+//	DatabasePostgresqlConfigTimescaledbArgs{...}
+type DatabasePostgresqlConfigTimescaledbInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigTimescaledbOutput() DatabasePostgresqlConfigTimescaledbOutput
+	ToDatabasePostgresqlConfigTimescaledbOutputWithContext(context.Context) DatabasePostgresqlConfigTimescaledbOutput
+}
+
+type DatabasePostgresqlConfigTimescaledbArgs struct {
+	// TimescaleDB extension configuration values
+	Timescaledb pulumi.IntPtrInput `pulumi:"timescaledb"`
+}
+
+func (DatabasePostgresqlConfigTimescaledbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArgs) ToDatabasePostgresqlConfigTimescaledbOutput() DatabasePostgresqlConfigTimescaledbOutput {
+	return i.ToDatabasePostgresqlConfigTimescaledbOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArgs) ToDatabasePostgresqlConfigTimescaledbOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigTimescaledbOutput)
+}
+
+// DatabasePostgresqlConfigTimescaledbArrayInput is an input type that accepts DatabasePostgresqlConfigTimescaledbArray and DatabasePostgresqlConfigTimescaledbArrayOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigTimescaledbArrayInput` via:
+//
+//	DatabasePostgresqlConfigTimescaledbArray{ DatabasePostgresqlConfigTimescaledbArgs{...} }
+type DatabasePostgresqlConfigTimescaledbArrayInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigTimescaledbArrayOutput() DatabasePostgresqlConfigTimescaledbArrayOutput
+	ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(context.Context) DatabasePostgresqlConfigTimescaledbArrayOutput
+}
+
+type DatabasePostgresqlConfigTimescaledbArray []DatabasePostgresqlConfigTimescaledbInput
+
+func (DatabasePostgresqlConfigTimescaledbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArray) ToDatabasePostgresqlConfigTimescaledbArrayOutput() DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return i.ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArray) ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigTimescaledbArrayOutput)
+}
+
+type DatabasePostgresqlConfigTimescaledbOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigTimescaledbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigTimescaledbOutput) ToDatabasePostgresqlConfigTimescaledbOutput() DatabasePostgresqlConfigTimescaledbOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigTimescaledbOutput) ToDatabasePostgresqlConfigTimescaledbOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbOutput {
+	return o
+}
+
+// TimescaleDB extension configuration values
+func (o DatabasePostgresqlConfigTimescaledbOutput) Timescaledb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigTimescaledb) *int { return v.Timescaledb }).(pulumi.IntPtrOutput)
+}
+
+type DatabasePostgresqlConfigTimescaledbArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigTimescaledbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigTimescaledbArrayOutput) ToDatabasePostgresqlConfigTimescaledbArrayOutput() DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigTimescaledbArrayOutput) ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigTimescaledbArrayOutput) Index(i pulumi.IntInput) DatabasePostgresqlConfigTimescaledbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabasePostgresqlConfigTimescaledb {
+		return vs[0].([]DatabasePostgresqlConfigTimescaledb)[vs[1].(int)]
+	}).(DatabasePostgresqlConfigTimescaledbOutput)
 }
 
 type DatabaseUserSetting struct {
@@ -14517,6 +14813,139 @@ func (o KubernetesNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesN
 	}).(KubernetesNodePoolTaintOutput)
 }
 
+type LoadBalancerDomain struct {
+	// name of certificate required for TLS handshaking
+	CertificateName *string `pulumi:"certificateName"`
+	// Control flag to specify whether the domain is managed by DigitalOcean.
+	IsManaged *bool `pulumi:"isManaged"`
+	// The domain name to be used for ingressing traffic to a Global Load Balancer.
+	Name string `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons []string `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons []string `pulumi:"verificationErrorReasons"`
+}
+
+// LoadBalancerDomainInput is an input type that accepts LoadBalancerDomainArgs and LoadBalancerDomainOutput values.
+// You can construct a concrete instance of `LoadBalancerDomainInput` via:
+//
+//	LoadBalancerDomainArgs{...}
+type LoadBalancerDomainInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDomainOutput() LoadBalancerDomainOutput
+	ToLoadBalancerDomainOutputWithContext(context.Context) LoadBalancerDomainOutput
+}
+
+type LoadBalancerDomainArgs struct {
+	// name of certificate required for TLS handshaking
+	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
+	// Control flag to specify whether the domain is managed by DigitalOcean.
+	IsManaged pulumi.BoolPtrInput `pulumi:"isManaged"`
+	// The domain name to be used for ingressing traffic to a Global Load Balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons pulumi.StringArrayInput `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons pulumi.StringArrayInput `pulumi:"verificationErrorReasons"`
+}
+
+func (LoadBalancerDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDomain)(nil)).Elem()
+}
+
+func (i LoadBalancerDomainArgs) ToLoadBalancerDomainOutput() LoadBalancerDomainOutput {
+	return i.ToLoadBalancerDomainOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDomainArgs) ToLoadBalancerDomainOutputWithContext(ctx context.Context) LoadBalancerDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDomainOutput)
+}
+
+// LoadBalancerDomainArrayInput is an input type that accepts LoadBalancerDomainArray and LoadBalancerDomainArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerDomainArrayInput` via:
+//
+//	LoadBalancerDomainArray{ LoadBalancerDomainArgs{...} }
+type LoadBalancerDomainArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDomainArrayOutput() LoadBalancerDomainArrayOutput
+	ToLoadBalancerDomainArrayOutputWithContext(context.Context) LoadBalancerDomainArrayOutput
+}
+
+type LoadBalancerDomainArray []LoadBalancerDomainInput
+
+func (LoadBalancerDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerDomain)(nil)).Elem()
+}
+
+func (i LoadBalancerDomainArray) ToLoadBalancerDomainArrayOutput() LoadBalancerDomainArrayOutput {
+	return i.ToLoadBalancerDomainArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDomainArray) ToLoadBalancerDomainArrayOutputWithContext(ctx context.Context) LoadBalancerDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDomainArrayOutput)
+}
+
+type LoadBalancerDomainOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDomain)(nil)).Elem()
+}
+
+func (o LoadBalancerDomainOutput) ToLoadBalancerDomainOutput() LoadBalancerDomainOutput {
+	return o
+}
+
+func (o LoadBalancerDomainOutput) ToLoadBalancerDomainOutputWithContext(ctx context.Context) LoadBalancerDomainOutput {
+	return o
+}
+
+// name of certificate required for TLS handshaking
+func (o LoadBalancerDomainOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
+}
+
+// Control flag to specify whether the domain is managed by DigitalOcean.
+func (o LoadBalancerDomainOutput) IsManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) *bool { return v.IsManaged }).(pulumi.BoolPtrOutput)
+}
+
+// The domain name to be used for ingressing traffic to a Global Load Balancer.
+func (o LoadBalancerDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// list of domain SSL validation errors
+func (o LoadBalancerDomainOutput) SslValidationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) []string { return v.SslValidationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+// list of domain verification errors
+func (o LoadBalancerDomainOutput) VerificationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) []string { return v.VerificationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+type LoadBalancerDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerDomain)(nil)).Elem()
+}
+
+func (o LoadBalancerDomainArrayOutput) ToLoadBalancerDomainArrayOutput() LoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o LoadBalancerDomainArrayOutput) ToLoadBalancerDomainArrayOutputWithContext(ctx context.Context) LoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o LoadBalancerDomainArrayOutput) Index(i pulumi.IntInput) LoadBalancerDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerDomain {
+		return vs[0].([]LoadBalancerDomain)[vs[1].(int)]
+	}).(LoadBalancerDomainOutput)
+}
+
 type LoadBalancerFirewall struct {
 	// A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
 	// * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
@@ -14832,6 +15261,318 @@ func (o LoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) LoadBala
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerForwardingRule {
 		return vs[0].([]LoadBalancerForwardingRule)[vs[1].(int)]
 	}).(LoadBalancerForwardingRuleOutput)
+}
+
+type LoadBalancerGlbSettings struct {
+	// CDN configuration supporting the following:
+	Cdn *LoadBalancerGlbSettingsCdn `pulumi:"cdn"`
+	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+	TargetPort int `pulumi:"targetPort"`
+	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+	TargetProtocol string `pulumi:"targetProtocol"`
+}
+
+// LoadBalancerGlbSettingsInput is an input type that accepts LoadBalancerGlbSettingsArgs and LoadBalancerGlbSettingsOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsInput` via:
+//
+//	LoadBalancerGlbSettingsArgs{...}
+type LoadBalancerGlbSettingsInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsOutput() LoadBalancerGlbSettingsOutput
+	ToLoadBalancerGlbSettingsOutputWithContext(context.Context) LoadBalancerGlbSettingsOutput
+}
+
+type LoadBalancerGlbSettingsArgs struct {
+	// CDN configuration supporting the following:
+	Cdn LoadBalancerGlbSettingsCdnPtrInput `pulumi:"cdn"`
+	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+}
+
+func (LoadBalancerGlbSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsOutput() LoadBalancerGlbSettingsOutput {
+	return i.ToLoadBalancerGlbSettingsOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsOutput)
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return i.ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsOutput).ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerGlbSettingsPtrInput is an input type that accepts LoadBalancerGlbSettingsArgs, LoadBalancerGlbSettingsPtr and LoadBalancerGlbSettingsPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsPtrInput` via:
+//
+//	        LoadBalancerGlbSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerGlbSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput
+	ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Context) LoadBalancerGlbSettingsPtrOutput
+}
+
+type loadBalancerGlbSettingsPtrType LoadBalancerGlbSettingsArgs
+
+func LoadBalancerGlbSettingsPtr(v *LoadBalancerGlbSettingsArgs) LoadBalancerGlbSettingsPtrInput {
+	return (*loadBalancerGlbSettingsPtrType)(v)
+}
+
+func (*loadBalancerGlbSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (i *loadBalancerGlbSettingsPtrType) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return i.ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerGlbSettingsPtrType) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsPtrOutput)
+}
+
+type LoadBalancerGlbSettingsOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsOutput() LoadBalancerGlbSettingsOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return o.ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerGlbSettings) *LoadBalancerGlbSettings {
+		return &v
+	}).(LoadBalancerGlbSettingsPtrOutput)
+}
+
+// CDN configuration supporting the following:
+func (o LoadBalancerGlbSettingsOutput) Cdn() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) *LoadBalancerGlbSettingsCdn { return v.Cdn }).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+func (o LoadBalancerGlbSettingsOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+func (o LoadBalancerGlbSettingsOutput) TargetProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) string { return v.TargetProtocol }).(pulumi.StringOutput)
+}
+
+type LoadBalancerGlbSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsPtrOutput) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsPtrOutput) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsPtrOutput) Elem() LoadBalancerGlbSettingsOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) LoadBalancerGlbSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerGlbSettings
+		return ret
+	}).(LoadBalancerGlbSettingsOutput)
+}
+
+// CDN configuration supporting the following:
+func (o LoadBalancerGlbSettingsPtrOutput) Cdn() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *LoadBalancerGlbSettingsCdn {
+		if v == nil {
+			return nil
+		}
+		return v.Cdn
+	}).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+func (o LoadBalancerGlbSettingsPtrOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+func (o LoadBalancerGlbSettingsPtrOutput) TargetProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerGlbSettingsCdn struct {
+	// Control flag to specify if caching is enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
+}
+
+// LoadBalancerGlbSettingsCdnInput is an input type that accepts LoadBalancerGlbSettingsCdnArgs and LoadBalancerGlbSettingsCdnOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsCdnInput` via:
+//
+//	LoadBalancerGlbSettingsCdnArgs{...}
+type LoadBalancerGlbSettingsCdnInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsCdnOutput() LoadBalancerGlbSettingsCdnOutput
+	ToLoadBalancerGlbSettingsCdnOutputWithContext(context.Context) LoadBalancerGlbSettingsCdnOutput
+}
+
+type LoadBalancerGlbSettingsCdnArgs struct {
+	// Control flag to specify if caching is enabled.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+}
+
+func (LoadBalancerGlbSettingsCdnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnOutput() LoadBalancerGlbSettingsCdnOutput {
+	return i.ToLoadBalancerGlbSettingsCdnOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsCdnOutput)
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return i.ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsCdnOutput).ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerGlbSettingsCdnPtrInput is an input type that accepts LoadBalancerGlbSettingsCdnArgs, LoadBalancerGlbSettingsCdnPtr and LoadBalancerGlbSettingsCdnPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsCdnPtrInput` via:
+//
+//	        LoadBalancerGlbSettingsCdnArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerGlbSettingsCdnPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput
+	ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Context) LoadBalancerGlbSettingsCdnPtrOutput
+}
+
+type loadBalancerGlbSettingsCdnPtrType LoadBalancerGlbSettingsCdnArgs
+
+func LoadBalancerGlbSettingsCdnPtr(v *LoadBalancerGlbSettingsCdnArgs) LoadBalancerGlbSettingsCdnPtrInput {
+	return (*loadBalancerGlbSettingsCdnPtrType)(v)
+}
+
+func (*loadBalancerGlbSettingsCdnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (i *loadBalancerGlbSettingsCdnPtrType) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return i.ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerGlbSettingsCdnPtrType) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+type LoadBalancerGlbSettingsCdnOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsCdnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnOutput() LoadBalancerGlbSettingsCdnOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerGlbSettingsCdn) *LoadBalancerGlbSettingsCdn {
+		return &v
+	}).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// Control flag to specify if caching is enabled.
+func (o LoadBalancerGlbSettingsCdnOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettingsCdn) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type LoadBalancerGlbSettingsCdnPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsCdnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsCdnPtrOutput) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnPtrOutput) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnPtrOutput) Elem() LoadBalancerGlbSettingsCdnOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettingsCdn) LoadBalancerGlbSettingsCdn {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerGlbSettingsCdn
+		return ret
+	}).(LoadBalancerGlbSettingsCdnOutput)
+}
+
+// Control flag to specify if caching is enabled.
+func (o LoadBalancerGlbSettingsCdnPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettingsCdn) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type LoadBalancerHealthcheck struct {
@@ -21121,6 +21862,8 @@ type GetAppSpecJobImage struct {
 	DeployOnPushes []GetAppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -21145,6 +21888,8 @@ type GetAppSpecJobImageArgs struct {
 	DeployOnPushes GetAppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -21240,6 +21985,11 @@ func (o GetAppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o GetAppSpecJobImageOutput) RegistryCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o GetAppSpecJobImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -21296,6 +22046,16 @@ func (o GetAppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23680,6 +24440,8 @@ type GetAppSpecServiceImage struct {
 	DeployOnPushes []GetAppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -23704,6 +24466,8 @@ type GetAppSpecServiceImageArgs struct {
 	DeployOnPushes GetAppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -23799,6 +24563,11 @@ func (o GetAppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o GetAppSpecServiceImageOutput) RegistryCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o GetAppSpecServiceImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -23855,6 +24624,16 @@ func (o GetAppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27010,6 +27789,8 @@ type GetAppSpecWorkerImage struct {
 	DeployOnPushes []GetAppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -27034,6 +27815,8 @@ type GetAppSpecWorkerImageArgs struct {
 	DeployOnPushes GetAppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -27129,6 +27912,11 @@ func (o GetAppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o GetAppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o GetAppSpecWorkerImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -27185,6 +27973,16 @@ func (o GetAppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30778,6 +31576,148 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetKubernetesClusterNodePoolTaintOutput)
 }
 
+type GetLoadBalancerDomain struct {
+	// certificate ID for TLS handshaking
+	CertificateId string `pulumi:"certificateId"`
+	// name of certificate required for TLS handshaking
+	CertificateName string `pulumi:"certificateName"`
+	// flag indicating if domain is managed by DigitalOcean
+	IsManaged bool `pulumi:"isManaged"`
+	// The name of load balancer.
+	Name string `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons []string `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons []string `pulumi:"verificationErrorReasons"`
+}
+
+// GetLoadBalancerDomainInput is an input type that accepts GetLoadBalancerDomainArgs and GetLoadBalancerDomainOutput values.
+// You can construct a concrete instance of `GetLoadBalancerDomainInput` via:
+//
+//	GetLoadBalancerDomainArgs{...}
+type GetLoadBalancerDomainInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerDomainOutput() GetLoadBalancerDomainOutput
+	ToGetLoadBalancerDomainOutputWithContext(context.Context) GetLoadBalancerDomainOutput
+}
+
+type GetLoadBalancerDomainArgs struct {
+	// certificate ID for TLS handshaking
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// name of certificate required for TLS handshaking
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// flag indicating if domain is managed by DigitalOcean
+	IsManaged pulumi.BoolInput `pulumi:"isManaged"`
+	// The name of load balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons pulumi.StringArrayInput `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons pulumi.StringArrayInput `pulumi:"verificationErrorReasons"`
+}
+
+func (GetLoadBalancerDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (i GetLoadBalancerDomainArgs) ToGetLoadBalancerDomainOutput() GetLoadBalancerDomainOutput {
+	return i.ToGetLoadBalancerDomainOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerDomainArgs) ToGetLoadBalancerDomainOutputWithContext(ctx context.Context) GetLoadBalancerDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerDomainOutput)
+}
+
+// GetLoadBalancerDomainArrayInput is an input type that accepts GetLoadBalancerDomainArray and GetLoadBalancerDomainArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerDomainArrayInput` via:
+//
+//	GetLoadBalancerDomainArray{ GetLoadBalancerDomainArgs{...} }
+type GetLoadBalancerDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerDomainArrayOutput() GetLoadBalancerDomainArrayOutput
+	ToGetLoadBalancerDomainArrayOutputWithContext(context.Context) GetLoadBalancerDomainArrayOutput
+}
+
+type GetLoadBalancerDomainArray []GetLoadBalancerDomainInput
+
+func (GetLoadBalancerDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (i GetLoadBalancerDomainArray) ToGetLoadBalancerDomainArrayOutput() GetLoadBalancerDomainArrayOutput {
+	return i.ToGetLoadBalancerDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerDomainArray) ToGetLoadBalancerDomainArrayOutputWithContext(ctx context.Context) GetLoadBalancerDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerDomainArrayOutput)
+}
+
+type GetLoadBalancerDomainOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (o GetLoadBalancerDomainOutput) ToGetLoadBalancerDomainOutput() GetLoadBalancerDomainOutput {
+	return o
+}
+
+func (o GetLoadBalancerDomainOutput) ToGetLoadBalancerDomainOutputWithContext(ctx context.Context) GetLoadBalancerDomainOutput {
+	return o
+}
+
+// certificate ID for TLS handshaking
+func (o GetLoadBalancerDomainOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// name of certificate required for TLS handshaking
+func (o GetLoadBalancerDomainOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// flag indicating if domain is managed by DigitalOcean
+func (o GetLoadBalancerDomainOutput) IsManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) bool { return v.IsManaged }).(pulumi.BoolOutput)
+}
+
+// The name of load balancer.
+func (o GetLoadBalancerDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// list of domain SSL validation errors
+func (o GetLoadBalancerDomainOutput) SslValidationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) []string { return v.SslValidationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+// list of domain verification errors
+func (o GetLoadBalancerDomainOutput) VerificationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) []string { return v.VerificationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+type GetLoadBalancerDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (o GetLoadBalancerDomainArrayOutput) ToGetLoadBalancerDomainArrayOutput() GetLoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerDomainArrayOutput) ToGetLoadBalancerDomainArrayOutputWithContext(ctx context.Context) GetLoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerDomainArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerDomain {
+		return vs[0].([]GetLoadBalancerDomain)[vs[1].(int)]
+	}).(GetLoadBalancerDomainOutput)
+}
+
 type GetLoadBalancerFirewall struct {
 	// the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 	Allows []string `pulumi:"allows"`
@@ -31033,6 +31973,218 @@ func (o GetLoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) GetLo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerForwardingRule {
 		return vs[0].([]GetLoadBalancerForwardingRule)[vs[1].(int)]
 	}).(GetLoadBalancerForwardingRuleOutput)
+}
+
+type GetLoadBalancerGlbSetting struct {
+	// CDN specific configurations
+	Cdns []GetLoadBalancerGlbSettingCdn `pulumi:"cdns"`
+	// target port rules
+	TargetPort int `pulumi:"targetPort"`
+	// target protocol rules
+	TargetProtocol string `pulumi:"targetProtocol"`
+}
+
+// GetLoadBalancerGlbSettingInput is an input type that accepts GetLoadBalancerGlbSettingArgs and GetLoadBalancerGlbSettingOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingInput` via:
+//
+//	GetLoadBalancerGlbSettingArgs{...}
+type GetLoadBalancerGlbSettingInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingOutput() GetLoadBalancerGlbSettingOutput
+	ToGetLoadBalancerGlbSettingOutputWithContext(context.Context) GetLoadBalancerGlbSettingOutput
+}
+
+type GetLoadBalancerGlbSettingArgs struct {
+	// CDN specific configurations
+	Cdns GetLoadBalancerGlbSettingCdnArrayInput `pulumi:"cdns"`
+	// target port rules
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// target protocol rules
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+}
+
+func (GetLoadBalancerGlbSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingArgs) ToGetLoadBalancerGlbSettingOutput() GetLoadBalancerGlbSettingOutput {
+	return i.ToGetLoadBalancerGlbSettingOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingArgs) ToGetLoadBalancerGlbSettingOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingOutput)
+}
+
+// GetLoadBalancerGlbSettingArrayInput is an input type that accepts GetLoadBalancerGlbSettingArray and GetLoadBalancerGlbSettingArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingArrayInput` via:
+//
+//	GetLoadBalancerGlbSettingArray{ GetLoadBalancerGlbSettingArgs{...} }
+type GetLoadBalancerGlbSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingArrayOutput() GetLoadBalancerGlbSettingArrayOutput
+	ToGetLoadBalancerGlbSettingArrayOutputWithContext(context.Context) GetLoadBalancerGlbSettingArrayOutput
+}
+
+type GetLoadBalancerGlbSettingArray []GetLoadBalancerGlbSettingInput
+
+func (GetLoadBalancerGlbSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingArray) ToGetLoadBalancerGlbSettingArrayOutput() GetLoadBalancerGlbSettingArrayOutput {
+	return i.ToGetLoadBalancerGlbSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingArray) ToGetLoadBalancerGlbSettingArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingArrayOutput)
+}
+
+type GetLoadBalancerGlbSettingOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingOutput) ToGetLoadBalancerGlbSettingOutput() GetLoadBalancerGlbSettingOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingOutput) ToGetLoadBalancerGlbSettingOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingOutput {
+	return o
+}
+
+// CDN specific configurations
+func (o GetLoadBalancerGlbSettingOutput) Cdns() GetLoadBalancerGlbSettingCdnArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) []GetLoadBalancerGlbSettingCdn { return v.Cdns }).(GetLoadBalancerGlbSettingCdnArrayOutput)
+}
+
+// target port rules
+func (o GetLoadBalancerGlbSettingOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+// target protocol rules
+func (o GetLoadBalancerGlbSettingOutput) TargetProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) string { return v.TargetProtocol }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancerGlbSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingArrayOutput) ToGetLoadBalancerGlbSettingArrayOutput() GetLoadBalancerGlbSettingArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingArrayOutput) ToGetLoadBalancerGlbSettingArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerGlbSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerGlbSetting {
+		return vs[0].([]GetLoadBalancerGlbSetting)[vs[1].(int)]
+	}).(GetLoadBalancerGlbSettingOutput)
+}
+
+type GetLoadBalancerGlbSettingCdn struct {
+	// cache enable flag
+	IsEnabled bool `pulumi:"isEnabled"`
+}
+
+// GetLoadBalancerGlbSettingCdnInput is an input type that accepts GetLoadBalancerGlbSettingCdnArgs and GetLoadBalancerGlbSettingCdnOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingCdnInput` via:
+//
+//	GetLoadBalancerGlbSettingCdnArgs{...}
+type GetLoadBalancerGlbSettingCdnInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingCdnOutput() GetLoadBalancerGlbSettingCdnOutput
+	ToGetLoadBalancerGlbSettingCdnOutputWithContext(context.Context) GetLoadBalancerGlbSettingCdnOutput
+}
+
+type GetLoadBalancerGlbSettingCdnArgs struct {
+	// cache enable flag
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+}
+
+func (GetLoadBalancerGlbSettingCdnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingCdnArgs) ToGetLoadBalancerGlbSettingCdnOutput() GetLoadBalancerGlbSettingCdnOutput {
+	return i.ToGetLoadBalancerGlbSettingCdnOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingCdnArgs) ToGetLoadBalancerGlbSettingCdnOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingCdnOutput)
+}
+
+// GetLoadBalancerGlbSettingCdnArrayInput is an input type that accepts GetLoadBalancerGlbSettingCdnArray and GetLoadBalancerGlbSettingCdnArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingCdnArrayInput` via:
+//
+//	GetLoadBalancerGlbSettingCdnArray{ GetLoadBalancerGlbSettingCdnArgs{...} }
+type GetLoadBalancerGlbSettingCdnArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingCdnArrayOutput() GetLoadBalancerGlbSettingCdnArrayOutput
+	ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(context.Context) GetLoadBalancerGlbSettingCdnArrayOutput
+}
+
+type GetLoadBalancerGlbSettingCdnArray []GetLoadBalancerGlbSettingCdnInput
+
+func (GetLoadBalancerGlbSettingCdnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingCdnArray) ToGetLoadBalancerGlbSettingCdnArrayOutput() GetLoadBalancerGlbSettingCdnArrayOutput {
+	return i.ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingCdnArray) ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingCdnArrayOutput)
+}
+
+type GetLoadBalancerGlbSettingCdnOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingCdnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingCdnOutput) ToGetLoadBalancerGlbSettingCdnOutput() GetLoadBalancerGlbSettingCdnOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingCdnOutput) ToGetLoadBalancerGlbSettingCdnOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnOutput {
+	return o
+}
+
+// cache enable flag
+func (o GetLoadBalancerGlbSettingCdnOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSettingCdn) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+type GetLoadBalancerGlbSettingCdnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingCdnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingCdnArrayOutput) ToGetLoadBalancerGlbSettingCdnArrayOutput() GetLoadBalancerGlbSettingCdnArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingCdnArrayOutput) ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingCdnArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerGlbSettingCdnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerGlbSettingCdn {
+		return vs[0].([]GetLoadBalancerGlbSettingCdn)[vs[1].(int)]
+	}).(GetLoadBalancerGlbSettingCdnOutput)
 }
 
 type GetLoadBalancerHealthcheck struct {
@@ -34260,6 +35412,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleArrayInput)(nil)).Elem(), DatabaseFirewallRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaTopicConfigInput)(nil)).Elem(), DatabaseKafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaTopicConfigArrayInput)(nil)).Elem(), DatabaseKafkaTopicConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigPgbouncerInput)(nil)).Elem(), DatabasePostgresqlConfigPgbouncerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigPgbouncerArrayInput)(nil)).Elem(), DatabasePostgresqlConfigPgbouncerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigTimescaledbInput)(nil)).Elem(), DatabasePostgresqlConfigTimescaledbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigTimescaledbArrayInput)(nil)).Elem(), DatabasePostgresqlConfigTimescaledbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingInput)(nil)).Elem(), DatabaseUserSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingArrayInput)(nil)).Elem(), DatabaseUserSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclInput)(nil)).Elem(), DatabaseUserSettingAclArgs{})
@@ -34284,10 +35440,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeArrayInput)(nil)).Elem(), KubernetesNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintInput)(nil)).Elem(), KubernetesNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintArrayInput)(nil)).Elem(), KubernetesNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDomainInput)(nil)).Elem(), LoadBalancerDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDomainArrayInput)(nil)).Elem(), LoadBalancerDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFirewallInput)(nil)).Elem(), LoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFirewallPtrInput)(nil)).Elem(), LoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleInput)(nil)).Elem(), LoadBalancerForwardingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleArrayInput)(nil)).Elem(), LoadBalancerForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsInput)(nil)).Elem(), LoadBalancerGlbSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsPtrInput)(nil)).Elem(), LoadBalancerGlbSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsCdnInput)(nil)).Elem(), LoadBalancerGlbSettingsCdnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsCdnPtrInput)(nil)).Elem(), LoadBalancerGlbSettingsCdnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckPtrInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
@@ -34495,10 +35657,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainInput)(nil)).Elem(), GetLoadBalancerDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainArrayInput)(nil)).Elem(), GetLoadBalancerDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallInput)(nil)).Elem(), GetLoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallArrayInput)(nil)).Elem(), GetLoadBalancerFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleArrayInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingInput)(nil)).Elem(), GetLoadBalancerGlbSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingArrayInput)(nil)).Elem(), GetLoadBalancerGlbSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingCdnInput)(nil)).Elem(), GetLoadBalancerGlbSettingCdnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingCdnArrayInput)(nil)).Elem(), GetLoadBalancerGlbSettingCdnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckInput)(nil)).Elem(), GetLoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
@@ -34701,6 +35869,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseFirewallRuleArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaTopicConfigArrayOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigPgbouncerOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigPgbouncerArrayOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigTimescaledbOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigTimescaledbArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingAclOutput{})
@@ -34725,10 +35897,16 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDomainOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDomainArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerFirewallOutput{})
 	pulumi.RegisterOutputType(LoadBalancerFirewallPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsCdnOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsCdnPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckOutput{})
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsOutput{})
@@ -34936,10 +36114,16 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerDomainOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFirewallOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingCdnOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingCdnArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})

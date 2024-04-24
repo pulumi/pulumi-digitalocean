@@ -25,6 +25,11 @@ public final class AppSpecServiceImage {
      */
     private @Nullable String registry;
     /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    private String registryCredentials;
+    /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
      */
@@ -54,6 +59,13 @@ public final class AppSpecServiceImage {
      */
     public Optional<String> registry() {
         return Optional.ofNullable(this.registry);
+    }
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    public String registryCredentials() {
+        return this.registryCredentials;
     }
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -88,6 +100,7 @@ public final class AppSpecServiceImage {
     public static final class Builder {
         private @Nullable List<AppSpecServiceImageDeployOnPush> deployOnPushes;
         private @Nullable String registry;
+        private String registryCredentials;
         private String registryType;
         private String repository;
         private @Nullable String tag;
@@ -96,6 +109,7 @@ public final class AppSpecServiceImage {
     	      Objects.requireNonNull(defaults);
     	      this.deployOnPushes = defaults.deployOnPushes;
     	      this.registry = defaults.registry;
+    	      this.registryCredentials = defaults.registryCredentials;
     	      this.registryType = defaults.registryType;
     	      this.repository = defaults.repository;
     	      this.tag = defaults.tag;
@@ -114,6 +128,14 @@ public final class AppSpecServiceImage {
         public Builder registry(@Nullable String registry) {
 
             this.registry = registry;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder registryCredentials(String registryCredentials) {
+            if (registryCredentials == null) {
+              throw new MissingRequiredPropertyException("AppSpecServiceImage", "registryCredentials");
+            }
+            this.registryCredentials = registryCredentials;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +164,7 @@ public final class AppSpecServiceImage {
             final var _resultValue = new AppSpecServiceImage();
             _resultValue.deployOnPushes = deployOnPushes;
             _resultValue.registry = registry;
+            _resultValue.registryCredentials = registryCredentials;
             _resultValue.registryType = registryType;
             _resultValue.repository = repository;
             _resultValue.tag = tag;

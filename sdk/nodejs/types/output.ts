@@ -600,6 +600,10 @@ export interface AppSpecJobImage {
      */
     registry?: string;
     /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: string;
+    /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
     registryType: string;
@@ -916,6 +920,10 @@ export interface AppSpecServiceImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -1328,6 +1336,10 @@ export interface AppSpecWorkerImage {
      */
     registry?: string;
     /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: string;
+    /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
     registryType: string;
@@ -1527,6 +1539,25 @@ export interface DatabaseKafkaTopicConfig {
      * The maximum time, in ms, before the topic log will flush to disk.
      */
     segmentMs: string;
+}
+
+export interface DatabasePostgresqlConfigPgbouncer {
+    autodbIdleTimeout: number;
+    autodbMaxDbConnections: number;
+    autodbPoolMode: string;
+    autodbPoolSize: number;
+    ignoreStartupParameters: string[];
+    minPoolSize: number;
+    serverIdleTimeout: number;
+    serverLifetime: number;
+    serverResetQueryAlways: boolean;
+}
+
+export interface DatabasePostgresqlConfigTimescaledb {
+    /**
+     * TimescaleDB extension configuration values
+     */
+    timescaledb?: number;
 }
 
 export interface DatabaseUserSetting {
@@ -2234,6 +2265,10 @@ export interface GetAppSpecJobImage {
      */
     registry?: string;
     /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: string;
+    /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
     registryType: string;
@@ -2548,6 +2583,10 @@ export interface GetAppSpecServiceImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -2957,6 +2996,10 @@ export interface GetAppSpecWorkerImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -3562,6 +3605,33 @@ export interface GetKubernetesClusterNodePoolTaint {
     value: string;
 }
 
+export interface GetLoadBalancerDomain {
+    /**
+     * certificate ID for TLS handshaking
+     */
+    certificateId: string;
+    /**
+     * name of certificate required for TLS handshaking
+     */
+    certificateName: string;
+    /**
+     * flag indicating if domain is managed by DigitalOcean
+     */
+    isManaged: boolean;
+    /**
+     * The name of load balancer.
+     */
+    name: string;
+    /**
+     * list of domain SSL validation errors
+     */
+    sslValidationErrorReasons: string[];
+    /**
+     * list of domain verification errors
+     */
+    verificationErrorReasons: string[];
+}
+
 export interface GetLoadBalancerFirewall {
     /**
      * the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
@@ -3602,6 +3672,28 @@ export interface GetLoadBalancerForwardingRule {
      * whether ssl encrypted traffic will be passed through to the backend droplets
      */
     tlsPassthrough: boolean;
+}
+
+export interface GetLoadBalancerGlbSetting {
+    /**
+     * CDN specific configurations
+     */
+    cdns: outputs.GetLoadBalancerGlbSettingCdn[];
+    /**
+     * target port rules
+     */
+    targetPort: number;
+    /**
+     * target protocol rules
+     */
+    targetProtocol: string;
+}
+
+export interface GetLoadBalancerGlbSettingCdn {
+    /**
+     * cache enable flag
+     */
+    isEnabled: boolean;
 }
 
 export interface GetLoadBalancerHealthcheck {
@@ -4300,6 +4392,29 @@ export interface KubernetesNodePoolTaint {
     value: string;
 }
 
+export interface LoadBalancerDomain {
+    /**
+     * name of certificate required for TLS handshaking
+     */
+    certificateName: string;
+    /**
+     * Control flag to specify whether the domain is managed by DigitalOcean.
+     */
+    isManaged?: boolean;
+    /**
+     * The domain name to be used for ingressing traffic to a Global Load Balancer.
+     */
+    name: string;
+    /**
+     * list of domain SSL validation errors
+     */
+    sslValidationErrorReasons: string[];
+    /**
+     * list of domain verification errors
+     */
+    verificationErrorReasons: string[];
+}
+
 export interface LoadBalancerFirewall {
     /**
      * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
@@ -4343,6 +4458,28 @@ export interface LoadBalancerForwardingRule {
      * A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
      */
     tlsPassthrough?: boolean;
+}
+
+export interface LoadBalancerGlbSettings {
+    /**
+     * CDN configuration supporting the following:
+     */
+    cdn?: outputs.LoadBalancerGlbSettingsCdn;
+    /**
+     * An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+     */
+    targetPort: number;
+    /**
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+     */
+    targetProtocol: string;
+}
+
+export interface LoadBalancerGlbSettingsCdn {
+    /**
+     * Control flag to specify if caching is enabled.
+     */
+    isEnabled?: boolean;
 }
 
 export interface LoadBalancerHealthcheck {

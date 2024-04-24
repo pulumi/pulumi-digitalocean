@@ -90,7 +90,7 @@ import * as utilities from "./utilities";
  *
  * const doby = new digitalocean.DatabaseCluster("doby", {
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
@@ -98,7 +98,7 @@ import * as utilities from "./utilities";
  * });
  * const dobyBackup = new digitalocean.DatabaseCluster("dobyBackup", {
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,

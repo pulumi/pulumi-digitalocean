@@ -600,6 +600,10 @@ export interface AppSpecJobImage {
      */
     registry?: pulumi.Input<string>;
     /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: pulumi.Input<string>;
+    /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
     registryType: pulumi.Input<string>;
@@ -916,6 +920,10 @@ export interface AppSpecServiceImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: pulumi.Input<string>;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: pulumi.Input<string>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -1328,6 +1336,10 @@ export interface AppSpecWorkerImage {
      */
     registry?: pulumi.Input<string>;
     /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials: pulumi.Input<string>;
+    /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
     registryType: pulumi.Input<string>;
@@ -1527,6 +1539,25 @@ export interface DatabaseKafkaTopicConfig {
      * The maximum time, in ms, before the topic log will flush to disk.
      */
     segmentMs?: pulumi.Input<string>;
+}
+
+export interface DatabasePostgresqlConfigPgbouncer {
+    autodbIdleTimeout?: pulumi.Input<number>;
+    autodbMaxDbConnections?: pulumi.Input<number>;
+    autodbPoolMode?: pulumi.Input<string>;
+    autodbPoolSize?: pulumi.Input<number>;
+    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    minPoolSize?: pulumi.Input<number>;
+    serverIdleTimeout?: pulumi.Input<number>;
+    serverLifetime?: pulumi.Input<number>;
+    serverResetQueryAlways?: pulumi.Input<boolean>;
+}
+
+export interface DatabasePostgresqlConfigTimescaledb {
+    /**
+     * TimescaleDB extension configuration values
+     */
+    timescaledb?: pulumi.Input<number>;
 }
 
 export interface DatabaseUserSetting {
@@ -2688,6 +2719,29 @@ export interface KubernetesNodePoolTaint {
     value: pulumi.Input<string>;
 }
 
+export interface LoadBalancerDomain {
+    /**
+     * name of certificate required for TLS handshaking
+     */
+    certificateName?: pulumi.Input<string>;
+    /**
+     * Control flag to specify whether the domain is managed by DigitalOcean.
+     */
+    isManaged?: pulumi.Input<boolean>;
+    /**
+     * The domain name to be used for ingressing traffic to a Global Load Balancer.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * list of domain SSL validation errors
+     */
+    sslValidationErrorReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * list of domain verification errors
+     */
+    verificationErrorReasons?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LoadBalancerFirewall {
     /**
      * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
@@ -2731,6 +2785,28 @@ export interface LoadBalancerForwardingRule {
      * A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
      */
     tlsPassthrough?: pulumi.Input<boolean>;
+}
+
+export interface LoadBalancerGlbSettings {
+    /**
+     * CDN configuration supporting the following:
+     */
+    cdn?: pulumi.Input<inputs.LoadBalancerGlbSettingsCdn>;
+    /**
+     * An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+     */
+    targetPort: pulumi.Input<number>;
+    /**
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+     */
+    targetProtocol: pulumi.Input<string>;
+}
+
+export interface LoadBalancerGlbSettingsCdn {
+    /**
+     * Control flag to specify if caching is enabled.
+     */
+    isEnabled?: pulumi.Input<boolean>;
 }
 
 export interface LoadBalancerHealthcheck {
