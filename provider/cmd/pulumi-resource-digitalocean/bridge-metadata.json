@@ -432,6 +432,25 @@
                 "current": "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig",
                 "majorVersion": 4
             },
+            "digitalocean_database_postgresql_config": {
+                "current": "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig",
+                "majorVersion": 4,
+                "fields": {
+                    "pgbouncer": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ignore_startup_parameters": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "timescaledb": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_database_redis_config": {
                 "current": "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig",
                 "majorVersion": 4
@@ -606,6 +625,19 @@
                 "current": "digitalocean:index/loadBalancer:LoadBalancer",
                 "majorVersion": 4,
                 "fields": {
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ssl_validation_error_reasons": {
+                                    "maxItemsOne": false
+                                },
+                                "verification_error_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "droplet_ids": {
                         "maxItemsOne": false
                     },
@@ -625,11 +657,24 @@
                     "forwarding_rule": {
                         "maxItemsOne": false
                     },
+                    "glb_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cdn": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "healthcheck": {
                         "maxItemsOne": true
                     },
                     "sticky_sessions": {
                         "maxItemsOne": true
+                    },
+                    "target_load_balancer_ids": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1474,6 +1519,19 @@
                 "current": "digitalocean:index/getLoadBalancer:getLoadBalancer",
                 "majorVersion": 4,
                 "fields": {
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ssl_validation_error_reasons": {
+                                    "maxItemsOne": false
+                                },
+                                "verification_error_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "droplet_ids": {
                         "maxItemsOne": false
                     },
@@ -1493,10 +1551,23 @@
                     "forwarding_rule": {
                         "maxItemsOne": false
                     },
+                    "glb_settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "cdn": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "healthcheck": {
                         "maxItemsOne": false
                     },
                     "sticky_sessions": {
+                        "maxItemsOne": false
+                    },
+                    "target_load_balancer_ids": {
                         "maxItemsOne": false
                     }
                 }
