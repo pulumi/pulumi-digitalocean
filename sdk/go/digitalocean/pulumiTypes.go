@@ -5190,7 +5190,7 @@ type AppSpecJobImage struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials string `pulumi:"registryCredentials"`
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -5216,7 +5216,7 @@ type AppSpecJobImageArgs struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -5313,8 +5313,8 @@ func (o AppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 }
 
 // Access credentials for third-party registries
-func (o AppSpecJobImageOutput) RegistryCredentials() pulumi.StringOutput {
-	return o.ApplyT(func(v AppSpecJobImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+func (o AppSpecJobImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -5382,7 +5382,7 @@ func (o AppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.RegistryCredentials
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7774,7 +7774,7 @@ type AppSpecServiceImage struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials string `pulumi:"registryCredentials"`
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -7800,7 +7800,7 @@ type AppSpecServiceImageArgs struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -7897,8 +7897,8 @@ func (o AppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 }
 
 // Access credentials for third-party registries
-func (o AppSpecServiceImageOutput) RegistryCredentials() pulumi.StringOutput {
-	return o.ApplyT(func(v AppSpecServiceImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+func (o AppSpecServiceImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -7966,7 +7966,7 @@ func (o AppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.RegistryCredentials
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11127,7 +11127,7 @@ type AppSpecWorkerImage struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials string `pulumi:"registryCredentials"`
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -11153,7 +11153,7 @@ type AppSpecWorkerImageArgs struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -11250,8 +11250,8 @@ func (o AppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 }
 
 // Access credentials for third-party registries
-func (o AppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringOutput {
-	return o.ApplyT(func(v AppSpecWorkerImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+func (o AppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -11319,7 +11319,7 @@ func (o AppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.RegistryCredentials
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21863,7 +21863,7 @@ type GetAppSpecJobImage struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials string `pulumi:"registryCredentials"`
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -21889,7 +21889,7 @@ type GetAppSpecJobImageArgs struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -21986,8 +21986,8 @@ func (o GetAppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 }
 
 // Access credentials for third-party registries
-func (o GetAppSpecJobImageOutput) RegistryCredentials() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecJobImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+func (o GetAppSpecJobImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -22055,7 +22055,7 @@ func (o GetAppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.RegistryCredentials
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24441,7 +24441,7 @@ type GetAppSpecServiceImage struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials string `pulumi:"registryCredentials"`
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -24467,7 +24467,7 @@ type GetAppSpecServiceImageArgs struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -24564,8 +24564,8 @@ func (o GetAppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 }
 
 // Access credentials for third-party registries
-func (o GetAppSpecServiceImageOutput) RegistryCredentials() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+func (o GetAppSpecServiceImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -24633,7 +24633,7 @@ func (o GetAppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return &v.RegistryCredentials
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27790,7 +27790,7 @@ type GetAppSpecWorkerImage struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials string `pulumi:"registryCredentials"`
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -27816,7 +27816,7 @@ type GetAppSpecWorkerImageArgs struct {
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
-	RegistryCredentials pulumi.StringInput `pulumi:"registryCredentials"`
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -27913,8 +27913,8 @@ func (o GetAppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 }
 
 // Access credentials for third-party registries
-func (o GetAppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecWorkerImage) string { return v.RegistryCredentials }).(pulumi.StringOutput)
+func (o GetAppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -27982,7 +27982,7 @@ func (o GetAppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return &v.RegistryCredentials
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 

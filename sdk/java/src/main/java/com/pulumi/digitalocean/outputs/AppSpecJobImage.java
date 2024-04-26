@@ -28,7 +28,7 @@ public final class AppSpecJobImage {
      * @return Access credentials for third-party registries
      * 
      */
-    private String registryCredentials;
+    private @Nullable String registryCredentials;
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
@@ -64,8 +64,8 @@ public final class AppSpecJobImage {
      * @return Access credentials for third-party registries
      * 
      */
-    public String registryCredentials() {
-        return this.registryCredentials;
+    public Optional<String> registryCredentials() {
+        return Optional.ofNullable(this.registryCredentials);
     }
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -100,7 +100,7 @@ public final class AppSpecJobImage {
     public static final class Builder {
         private @Nullable List<AppSpecJobImageDeployOnPush> deployOnPushes;
         private @Nullable String registry;
-        private String registryCredentials;
+        private @Nullable String registryCredentials;
         private String registryType;
         private String repository;
         private @Nullable String tag;
@@ -131,10 +131,8 @@ public final class AppSpecJobImage {
             return this;
         }
         @CustomType.Setter
-        public Builder registryCredentials(String registryCredentials) {
-            if (registryCredentials == null) {
-              throw new MissingRequiredPropertyException("AppSpecJobImage", "registryCredentials");
-            }
+        public Builder registryCredentials(@Nullable String registryCredentials) {
+
             this.registryCredentials = registryCredentials;
             return this;
         }
