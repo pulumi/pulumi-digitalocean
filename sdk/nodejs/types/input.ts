@@ -602,7 +602,7 @@ export interface AppSpecJobImage {
     /**
      * Access credentials for third-party registries
      */
-    registryCredentials: pulumi.Input<string>;
+    registryCredentials?: pulumi.Input<string>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -923,7 +923,7 @@ export interface AppSpecServiceImage {
     /**
      * Access credentials for third-party registries
      */
-    registryCredentials: pulumi.Input<string>;
+    registryCredentials?: pulumi.Input<string>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -1338,7 +1338,7 @@ export interface AppSpecWorkerImage {
     /**
      * Access credentials for third-party registries
      */
-    registryCredentials: pulumi.Input<string>;
+    registryCredentials?: pulumi.Input<string>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */

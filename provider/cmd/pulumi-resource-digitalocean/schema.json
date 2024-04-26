@@ -1025,7 +1025,6 @@
             },
             "type": "object",
             "required": [
-                "registryCredentials",
                 "registryType",
                 "repository"
             ],
@@ -1033,7 +1032,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "deployOnPushes",
-                        "registryCredentials",
                         "registryType",
                         "repository"
                     ]
@@ -1456,7 +1454,6 @@
             },
             "type": "object",
             "required": [
-                "registryCredentials",
                 "registryType",
                 "repository"
             ],
@@ -1464,7 +1461,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "deployOnPushes",
-                        "registryCredentials",
                         "registryType",
                         "repository"
                     ]
@@ -2002,7 +1998,6 @@
             },
             "type": "object",
             "required": [
-                "registryCredentials",
                 "registryType",
                 "repository"
             ],
@@ -2010,7 +2005,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "deployOnPushes",
-                        "registryCredentials",
                         "registryType",
                         "repository"
                     ]
@@ -4160,7 +4154,6 @@
             "type": "object",
             "required": [
                 "deployOnPushes",
-                "registryCredentials",
                 "registryType",
                 "repository"
             ],
@@ -4610,7 +4603,6 @@
             "type": "object",
             "required": [
                 "deployOnPushes",
-                "registryCredentials",
                 "registryType",
                 "repository"
             ],
@@ -5181,7 +5173,6 @@
             "type": "object",
             "required": [
                 "deployOnPushes",
-                "registryCredentials",
                 "registryType",
                 "repository"
             ],

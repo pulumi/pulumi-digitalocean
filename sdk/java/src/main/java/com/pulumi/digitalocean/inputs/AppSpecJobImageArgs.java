@@ -52,15 +52,15 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
      * Access credentials for third-party registries
      * 
      */
-    @Import(name="registryCredentials", required=true)
-    private Output<String> registryCredentials;
+    @Import(name="registryCredentials")
+    private @Nullable Output<String> registryCredentials;
 
     /**
      * @return Access credentials for third-party registries
      * 
      */
-    public Output<String> registryCredentials() {
-        return this.registryCredentials;
+    public Optional<Output<String>> registryCredentials() {
+        return Optional.ofNullable(this.registryCredentials);
     }
 
     /**
@@ -195,7 +195,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder registryCredentials(Output<String> registryCredentials) {
+        public Builder registryCredentials(@Nullable Output<String> registryCredentials) {
             $.registryCredentials = registryCredentials;
             return this;
         }
@@ -274,9 +274,6 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AppSpecJobImageArgs build() {
-            if ($.registryCredentials == null) {
-                throw new MissingRequiredPropertyException("AppSpecJobImageArgs", "registryCredentials");
-            }
             if ($.registryType == null) {
                 throw new MissingRequiredPropertyException("AppSpecJobImageArgs", "registryType");
             }

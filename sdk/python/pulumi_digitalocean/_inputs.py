@@ -2438,41 +2438,30 @@ class AppSpecJobGitlabArgs:
 @pulumi.input_type
 class AppSpecJobImageArgs:
     def __init__(__self__, *,
-                 registry_credentials: pulumi.Input[str],
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
+                 registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
-        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
+        if registry_credentials is not None:
+            pulumi.set(__self__, "registry_credentials", registry_credentials)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
-
-    @property
-    @pulumi.getter(name="registryCredentials")
-    def registry_credentials(self) -> pulumi.Input[str]:
-        """
-        Access credentials for third-party registries
-        """
-        return pulumi.get(self, "registry_credentials")
-
-    @registry_credentials.setter
-    def registry_credentials(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter(name="registryType")
@@ -2521,6 +2510,18 @@ class AppSpecJobImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter
@@ -3631,41 +3632,30 @@ class AppSpecServiceHealthCheckArgs:
 @pulumi.input_type
 class AppSpecServiceImageArgs:
     def __init__(__self__, *,
-                 registry_credentials: pulumi.Input[str],
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
+                 registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
-        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
+        if registry_credentials is not None:
+            pulumi.set(__self__, "registry_credentials", registry_credentials)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
-
-    @property
-    @pulumi.getter(name="registryCredentials")
-    def registry_credentials(self) -> pulumi.Input[str]:
-        """
-        Access credentials for third-party registries
-        """
-        return pulumi.get(self, "registry_credentials")
-
-    @registry_credentials.setter
-    def registry_credentials(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter(name="registryType")
@@ -3714,6 +3704,18 @@ class AppSpecServiceImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter
@@ -5169,41 +5171,30 @@ class AppSpecWorkerGitlabArgs:
 @pulumi.input_type
 class AppSpecWorkerImageArgs:
     def __init__(__self__, *,
-                 registry_credentials: pulumi.Input[str],
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
+                 registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
-        pulumi.set(__self__, "registry_credentials", registry_credentials)
         pulumi.set(__self__, "registry_type", registry_type)
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
+        if registry_credentials is not None:
+            pulumi.set(__self__, "registry_credentials", registry_credentials)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
-
-    @property
-    @pulumi.getter(name="registryCredentials")
-    def registry_credentials(self) -> pulumi.Input[str]:
-        """
-        Access credentials for third-party registries
-        """
-        return pulumi.get(self, "registry_credentials")
-
-    @registry_credentials.setter
-    def registry_credentials(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter(name="registryType")
@@ -5252,6 +5243,18 @@ class AppSpecWorkerImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter

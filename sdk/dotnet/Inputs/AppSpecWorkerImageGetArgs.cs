@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("registry")]
         public Input<string>? Registry { get; set; }
 
-        [Input("registryCredentials", required: true)]
+        [Input("registryCredentials")]
         private Input<string>? _registryCredentials;
 
         /// <summary>
