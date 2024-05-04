@@ -106,6 +106,30 @@ export interface GetDatabaseClusterResult {
     readonly storageSizeMib: string;
     readonly tags?: string[];
     /**
+     * Name of the OpenSearch dashboard db.
+     */
+    readonly uiDatabase: string;
+    /**
+     * Hostname for the OpenSearch dashboard.
+     */
+    readonly uiHost: string;
+    /**
+     * Password for the OpenSearch dashboard's default user.
+     */
+    readonly uiPassword: string;
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     */
+    readonly uiPort: number;
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     */
+    readonly uiUri: string;
+    /**
+     * Username for OpenSearch dashboard's default user.
+     */
+    readonly uiUser: string;
+    /**
      * The full URI for connecting to the database cluster.
      */
     readonly uri: string;

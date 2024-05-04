@@ -297,6 +297,42 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the OpenSearch dashboard db.
+        /// </summary>
+        [Output("uiDatabase")]
+        public Output<string> UiDatabase { get; private set; } = null!;
+
+        /// <summary>
+        /// Hostname for the OpenSearch dashboard.
+        /// </summary>
+        [Output("uiHost")]
+        public Output<string> UiHost { get; private set; } = null!;
+
+        /// <summary>
+        /// Password for the OpenSearch dashboard's default user.
+        /// </summary>
+        [Output("uiPassword")]
+        public Output<string> UiPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// Network port that the OpenSearch dashboard is listening on.
+        /// </summary>
+        [Output("uiPort")]
+        public Output<int> UiPort { get; private set; } = null!;
+
+        /// <summary>
+        /// The full URI for connecting to the OpenSearch dashboard.
+        /// </summary>
+        [Output("uiUri")]
+        public Output<string> UiUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Username for OpenSearch dashboard's default user.
+        /// </summary>
+        [Output("uiUser")]
+        public Output<string> UiUser { get; private set; } = null!;
+
+        /// <summary>
         /// The full URI for connecting to the database cluster.
         /// </summary>
         [Output("uri")]
@@ -342,6 +378,8 @@ namespace Pulumi.DigitalOcean
                 {
                     "password",
                     "privateUri",
+                    "uiPassword",
+                    "uiUri",
                     "uri",
                 },
             };
@@ -617,6 +655,62 @@ namespace Pulumi.DigitalOcean
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Name of the OpenSearch dashboard db.
+        /// </summary>
+        [Input("uiDatabase")]
+        public Input<string>? UiDatabase { get; set; }
+
+        /// <summary>
+        /// Hostname for the OpenSearch dashboard.
+        /// </summary>
+        [Input("uiHost")]
+        public Input<string>? UiHost { get; set; }
+
+        [Input("uiPassword")]
+        private Input<string>? _uiPassword;
+
+        /// <summary>
+        /// Password for the OpenSearch dashboard's default user.
+        /// </summary>
+        public Input<string>? UiPassword
+        {
+            get => _uiPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uiPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Network port that the OpenSearch dashboard is listening on.
+        /// </summary>
+        [Input("uiPort")]
+        public Input<int>? UiPort { get; set; }
+
+        [Input("uiUri")]
+        private Input<string>? _uiUri;
+
+        /// <summary>
+        /// The full URI for connecting to the OpenSearch dashboard.
+        /// </summary>
+        public Input<string>? UiUri
+        {
+            get => _uiUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uiUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Username for OpenSearch dashboard's default user.
+        /// </summary>
+        [Input("uiUser")]
+        public Input<string>? UiUser { get; set; }
 
         [Input("uri")]
         private Input<string>? _uri;

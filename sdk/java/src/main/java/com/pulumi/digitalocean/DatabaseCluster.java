@@ -541,6 +541,90 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
+     * Name of the OpenSearch dashboard db.
+     * 
+     */
+    @Export(name="uiDatabase", refs={String.class}, tree="[0]")
+    private Output<String> uiDatabase;
+
+    /**
+     * @return Name of the OpenSearch dashboard db.
+     * 
+     */
+    public Output<String> uiDatabase() {
+        return this.uiDatabase;
+    }
+    /**
+     * Hostname for the OpenSearch dashboard.
+     * 
+     */
+    @Export(name="uiHost", refs={String.class}, tree="[0]")
+    private Output<String> uiHost;
+
+    /**
+     * @return Hostname for the OpenSearch dashboard.
+     * 
+     */
+    public Output<String> uiHost() {
+        return this.uiHost;
+    }
+    /**
+     * Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    @Export(name="uiPassword", refs={String.class}, tree="[0]")
+    private Output<String> uiPassword;
+
+    /**
+     * @return Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public Output<String> uiPassword() {
+        return this.uiPassword;
+    }
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    @Export(name="uiPort", refs={Integer.class}, tree="[0]")
+    private Output<Integer> uiPort;
+
+    /**
+     * @return Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    public Output<Integer> uiPort() {
+        return this.uiPort;
+    }
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    @Export(name="uiUri", refs={String.class}, tree="[0]")
+    private Output<String> uiUri;
+
+    /**
+     * @return The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    public Output<String> uiUri() {
+        return this.uiUri;
+    }
+    /**
+     * Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    @Export(name="uiUser", refs={String.class}, tree="[0]")
+    private Output<String> uiUser;
+
+    /**
+     * @return Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public Output<String> uiUser() {
+        return this.uiUser;
+    }
+    /**
      * The full URI for connecting to the database cluster.
      * 
      */
@@ -620,6 +704,8 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "password",
                 "privateUri",
+                "uiPassword",
+                "uiUri",
                 "uri"
             ))
             .build();

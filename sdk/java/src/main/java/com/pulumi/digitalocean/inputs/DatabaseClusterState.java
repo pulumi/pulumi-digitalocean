@@ -315,6 +315,96 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Name of the OpenSearch dashboard db.
+     * 
+     */
+    @Import(name="uiDatabase")
+    private @Nullable Output<String> uiDatabase;
+
+    /**
+     * @return Name of the OpenSearch dashboard db.
+     * 
+     */
+    public Optional<Output<String>> uiDatabase() {
+        return Optional.ofNullable(this.uiDatabase);
+    }
+
+    /**
+     * Hostname for the OpenSearch dashboard.
+     * 
+     */
+    @Import(name="uiHost")
+    private @Nullable Output<String> uiHost;
+
+    /**
+     * @return Hostname for the OpenSearch dashboard.
+     * 
+     */
+    public Optional<Output<String>> uiHost() {
+        return Optional.ofNullable(this.uiHost);
+    }
+
+    /**
+     * Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    @Import(name="uiPassword")
+    private @Nullable Output<String> uiPassword;
+
+    /**
+     * @return Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public Optional<Output<String>> uiPassword() {
+        return Optional.ofNullable(this.uiPassword);
+    }
+
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    @Import(name="uiPort")
+    private @Nullable Output<Integer> uiPort;
+
+    /**
+     * @return Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    public Optional<Output<Integer>> uiPort() {
+        return Optional.ofNullable(this.uiPort);
+    }
+
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    @Import(name="uiUri")
+    private @Nullable Output<String> uiUri;
+
+    /**
+     * @return The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    public Optional<Output<String>> uiUri() {
+        return Optional.ofNullable(this.uiUri);
+    }
+
+    /**
+     * Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    @Import(name="uiUser")
+    private @Nullable Output<String> uiUser;
+
+    /**
+     * @return Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public Optional<Output<String>> uiUser() {
+        return Optional.ofNullable(this.uiUser);
+    }
+
+    /**
      * The full URI for connecting to the database cluster.
      * 
      */
@@ -384,6 +474,12 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         this.sqlMode = $.sqlMode;
         this.storageSizeMib = $.storageSizeMib;
         this.tags = $.tags;
+        this.uiDatabase = $.uiDatabase;
+        this.uiHost = $.uiHost;
+        this.uiPassword = $.uiPassword;
+        this.uiPort = $.uiPort;
+        this.uiUri = $.uiUri;
+        this.uiUser = $.uiUser;
         this.uri = $.uri;
         this.user = $.user;
         this.version = $.version;
@@ -873,6 +969,132 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param uiDatabase Name of the OpenSearch dashboard db.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiDatabase(@Nullable Output<String> uiDatabase) {
+            $.uiDatabase = uiDatabase;
+            return this;
+        }
+
+        /**
+         * @param uiDatabase Name of the OpenSearch dashboard db.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiDatabase(String uiDatabase) {
+            return uiDatabase(Output.of(uiDatabase));
+        }
+
+        /**
+         * @param uiHost Hostname for the OpenSearch dashboard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiHost(@Nullable Output<String> uiHost) {
+            $.uiHost = uiHost;
+            return this;
+        }
+
+        /**
+         * @param uiHost Hostname for the OpenSearch dashboard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiHost(String uiHost) {
+            return uiHost(Output.of(uiHost));
+        }
+
+        /**
+         * @param uiPassword Password for the OpenSearch dashboard&#39;s default user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiPassword(@Nullable Output<String> uiPassword) {
+            $.uiPassword = uiPassword;
+            return this;
+        }
+
+        /**
+         * @param uiPassword Password for the OpenSearch dashboard&#39;s default user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiPassword(String uiPassword) {
+            return uiPassword(Output.of(uiPassword));
+        }
+
+        /**
+         * @param uiPort Network port that the OpenSearch dashboard is listening on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiPort(@Nullable Output<Integer> uiPort) {
+            $.uiPort = uiPort;
+            return this;
+        }
+
+        /**
+         * @param uiPort Network port that the OpenSearch dashboard is listening on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiPort(Integer uiPort) {
+            return uiPort(Output.of(uiPort));
+        }
+
+        /**
+         * @param uiUri The full URI for connecting to the OpenSearch dashboard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiUri(@Nullable Output<String> uiUri) {
+            $.uiUri = uiUri;
+            return this;
+        }
+
+        /**
+         * @param uiUri The full URI for connecting to the OpenSearch dashboard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiUri(String uiUri) {
+            return uiUri(Output.of(uiUri));
+        }
+
+        /**
+         * @param uiUser Username for OpenSearch dashboard&#39;s default user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiUser(@Nullable Output<String> uiUser) {
+            $.uiUser = uiUser;
+            return this;
+        }
+
+        /**
+         * @param uiUser Username for OpenSearch dashboard&#39;s default user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiUser(String uiUser) {
+            return uiUser(Output.of(uiUser));
         }
 
         /**
