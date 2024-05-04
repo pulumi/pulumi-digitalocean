@@ -8432,6 +8432,32 @@
                     },
                     "description": "A list of tag names to be applied to the database cluster.\n"
                 },
+                "uiDatabase": {
+                    "type": "string",
+                    "description": "Name of the OpenSearch dashboard db.\n"
+                },
+                "uiHost": {
+                    "type": "string",
+                    "description": "Hostname for the OpenSearch dashboard.\n"
+                },
+                "uiPassword": {
+                    "type": "string",
+                    "description": "Password for the OpenSearch dashboard's default user.\n",
+                    "secret": true
+                },
+                "uiPort": {
+                    "type": "integer",
+                    "description": "Network port that the OpenSearch dashboard is listening on.\n"
+                },
+                "uiUri": {
+                    "type": "string",
+                    "description": "The full URI for connecting to the OpenSearch dashboard.\n",
+                    "secret": true
+                },
+                "uiUser": {
+                    "type": "string",
+                    "description": "Username for OpenSearch dashboard's default user.\n"
+                },
                 "uri": {
                     "type": "string",
                     "description": "The full URI for connecting to the database cluster.\n",
@@ -8461,6 +8487,12 @@
                 "region",
                 "size",
                 "storageSizeMib",
+                "uiDatabase",
+                "uiHost",
+                "uiPassword",
+                "uiPort",
+                "uiUri",
+                "uiUser",
                 "uri",
                 "clusterUrn",
                 "user"
@@ -8667,6 +8699,32 @@
                             "type": "string"
                         },
                         "description": "A list of tag names to be applied to the database cluster.\n"
+                    },
+                    "uiDatabase": {
+                        "type": "string",
+                        "description": "Name of the OpenSearch dashboard db.\n"
+                    },
+                    "uiHost": {
+                        "type": "string",
+                        "description": "Hostname for the OpenSearch dashboard.\n"
+                    },
+                    "uiPassword": {
+                        "type": "string",
+                        "description": "Password for the OpenSearch dashboard's default user.\n",
+                        "secret": true
+                    },
+                    "uiPort": {
+                        "type": "integer",
+                        "description": "Network port that the OpenSearch dashboard is listening on.\n"
+                    },
+                    "uiUri": {
+                        "type": "string",
+                        "description": "The full URI for connecting to the OpenSearch dashboard.\n",
+                        "secret": true
+                    },
+                    "uiUser": {
+                        "type": "string",
+                        "description": "Username for OpenSearch dashboard's default user.\n"
                     },
                     "uri": {
                         "type": "string",
@@ -14841,6 +14899,32 @@
                             "type": "string"
                         }
                     },
+                    "uiDatabase": {
+                        "type": "string",
+                        "description": "Name of the OpenSearch dashboard db.\n"
+                    },
+                    "uiHost": {
+                        "type": "string",
+                        "description": "Hostname for the OpenSearch dashboard.\n"
+                    },
+                    "uiPassword": {
+                        "type": "string",
+                        "description": "Password for the OpenSearch dashboard's default user.\n",
+                        "secret": true
+                    },
+                    "uiPort": {
+                        "type": "integer",
+                        "description": "Network port that the OpenSearch dashboard is listening on.\n"
+                    },
+                    "uiUri": {
+                        "type": "string",
+                        "description": "The full URI for connecting to the OpenSearch dashboard.\n",
+                        "secret": true
+                    },
+                    "uiUser": {
+                        "type": "string",
+                        "description": "Username for OpenSearch dashboard's default user.\n"
+                    },
                     "uri": {
                         "type": "string",
                         "description": "The full URI for connecting to the database cluster.\n",
@@ -14876,6 +14960,12 @@
                     "region",
                     "size",
                     "storageSizeMib",
+                    "uiDatabase",
+                    "uiHost",
+                    "uiPassword",
+                    "uiPort",
+                    "uiUri",
+                    "uiUser",
                     "uri",
                     "urn",
                     "user",
