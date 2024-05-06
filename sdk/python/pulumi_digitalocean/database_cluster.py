@@ -263,6 +263,12 @@ class _DatabaseClusterState:
                  sql_mode: Optional[pulumi.Input[str]] = None,
                  storage_size_mib: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ui_database: Optional[pulumi.Input[str]] = None,
+                 ui_host: Optional[pulumi.Input[str]] = None,
+                 ui_password: Optional[pulumi.Input[str]] = None,
+                 ui_port: Optional[pulumi.Input[int]] = None,
+                 ui_uri: Optional[pulumi.Input[str]] = None,
+                 ui_user: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -287,6 +293,12 @@ class _DatabaseClusterState:
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[str] ui_database: Name of the OpenSearch dashboard db.
+        :param pulumi.Input[str] ui_host: Hostname for the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_password: Password for the OpenSearch dashboard's default user.
+        :param pulumi.Input[int] ui_port: Network port that the OpenSearch dashboard is listening on.
+        :param pulumi.Input[str] ui_uri: The full URI for connecting to the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_user: Username for OpenSearch dashboard's default user.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -332,6 +344,18 @@ class _DatabaseClusterState:
             pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if ui_database is not None:
+            pulumi.set(__self__, "ui_database", ui_database)
+        if ui_host is not None:
+            pulumi.set(__self__, "ui_host", ui_host)
+        if ui_password is not None:
+            pulumi.set(__self__, "ui_password", ui_password)
+        if ui_port is not None:
+            pulumi.set(__self__, "ui_port", ui_port)
+        if ui_uri is not None:
+            pulumi.set(__self__, "ui_uri", ui_uri)
+        if ui_user is not None:
+            pulumi.set(__self__, "ui_user", ui_user)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
         if user is not None:
@@ -575,6 +599,78 @@ class _DatabaseClusterState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="uiDatabase")
+    def ui_database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the OpenSearch dashboard db.
+        """
+        return pulumi.get(self, "ui_database")
+
+    @ui_database.setter
+    def ui_database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_database", value)
+
+    @property
+    @pulumi.getter(name="uiHost")
+    def ui_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname for the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_host")
+
+    @ui_host.setter
+    def ui_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_host", value)
+
+    @property
+    @pulumi.getter(name="uiPassword")
+    def ui_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_password")
+
+    @ui_password.setter
+    def ui_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_password", value)
+
+    @property
+    @pulumi.getter(name="uiPort")
+    def ui_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Network port that the OpenSearch dashboard is listening on.
+        """
+        return pulumi.get(self, "ui_port")
+
+    @ui_port.setter
+    def ui_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ui_port", value)
+
+    @property
+    @pulumi.getter(name="uiUri")
+    def ui_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full URI for connecting to the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_uri")
+
+    @ui_uri.setter
+    def ui_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_uri", value)
+
+    @property
+    @pulumi.getter(name="uiUser")
+    def ui_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_user")
+
+    @ui_user.setter
+    def ui_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_user", value)
 
     @property
     @pulumi.getter
@@ -932,9 +1028,15 @@ class DatabaseCluster(pulumi.CustomResource):
             __props__.__dict__["port"] = None
             __props__.__dict__["private_host"] = None
             __props__.__dict__["private_uri"] = None
+            __props__.__dict__["ui_database"] = None
+            __props__.__dict__["ui_host"] = None
+            __props__.__dict__["ui_password"] = None
+            __props__.__dict__["ui_port"] = None
+            __props__.__dict__["ui_uri"] = None
+            __props__.__dict__["ui_user"] = None
             __props__.__dict__["uri"] = None
             __props__.__dict__["user"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateUri", "uri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateUri", "uiPassword", "uiUri", "uri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseCluster, __self__).__init__(
             'digitalocean:index/databaseCluster:DatabaseCluster',
@@ -966,6 +1068,12 @@ class DatabaseCluster(pulumi.CustomResource):
             sql_mode: Optional[pulumi.Input[str]] = None,
             storage_size_mib: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ui_database: Optional[pulumi.Input[str]] = None,
+            ui_host: Optional[pulumi.Input[str]] = None,
+            ui_password: Optional[pulumi.Input[str]] = None,
+            ui_port: Optional[pulumi.Input[int]] = None,
+            ui_uri: Optional[pulumi.Input[str]] = None,
+            ui_user: Optional[pulumi.Input[str]] = None,
             uri: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'DatabaseCluster':
@@ -995,6 +1103,12 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[str] ui_database: Name of the OpenSearch dashboard db.
+        :param pulumi.Input[str] ui_host: Hostname for the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_password: Password for the OpenSearch dashboard's default user.
+        :param pulumi.Input[int] ui_port: Network port that the OpenSearch dashboard is listening on.
+        :param pulumi.Input[str] ui_uri: The full URI for connecting to the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_user: Username for OpenSearch dashboard's default user.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -1024,6 +1138,12 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__.__dict__["sql_mode"] = sql_mode
         __props__.__dict__["storage_size_mib"] = storage_size_mib
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["ui_database"] = ui_database
+        __props__.__dict__["ui_host"] = ui_host
+        __props__.__dict__["ui_password"] = ui_password
+        __props__.__dict__["ui_port"] = ui_port
+        __props__.__dict__["ui_uri"] = ui_uri
+        __props__.__dict__["ui_user"] = ui_user
         __props__.__dict__["uri"] = uri
         __props__.__dict__["user"] = user
         __props__.__dict__["version"] = version
@@ -1185,6 +1305,54 @@ class DatabaseCluster(pulumi.CustomResource):
         A list of tag names to be applied to the database cluster.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="uiDatabase")
+    def ui_database(self) -> pulumi.Output[str]:
+        """
+        Name of the OpenSearch dashboard db.
+        """
+        return pulumi.get(self, "ui_database")
+
+    @property
+    @pulumi.getter(name="uiHost")
+    def ui_host(self) -> pulumi.Output[str]:
+        """
+        Hostname for the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_host")
+
+    @property
+    @pulumi.getter(name="uiPassword")
+    def ui_password(self) -> pulumi.Output[str]:
+        """
+        Password for the OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_password")
+
+    @property
+    @pulumi.getter(name="uiPort")
+    def ui_port(self) -> pulumi.Output[int]:
+        """
+        Network port that the OpenSearch dashboard is listening on.
+        """
+        return pulumi.get(self, "ui_port")
+
+    @property
+    @pulumi.getter(name="uiUri")
+    def ui_uri(self) -> pulumi.Output[str]:
+        """
+        The full URI for connecting to the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_uri")
+
+    @property
+    @pulumi.getter(name="uiUser")
+    def ui_user(self) -> pulumi.Output[str]:
+        """
+        Username for OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_user")
 
     @property
     @pulumi.getter

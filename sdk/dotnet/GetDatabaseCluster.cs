@@ -177,6 +177,30 @@ namespace Pulumi.DigitalOcean
         public readonly string StorageSizeMib;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// Name of the OpenSearch dashboard db.
+        /// </summary>
+        public readonly string UiDatabase;
+        /// <summary>
+        /// Hostname for the OpenSearch dashboard.
+        /// </summary>
+        public readonly string UiHost;
+        /// <summary>
+        /// Password for the OpenSearch dashboard's default user.
+        /// </summary>
+        public readonly string UiPassword;
+        /// <summary>
+        /// Network port that the OpenSearch dashboard is listening on.
+        /// </summary>
+        public readonly int UiPort;
+        /// <summary>
+        /// The full URI for connecting to the OpenSearch dashboard.
+        /// </summary>
+        public readonly string UiUri;
+        /// <summary>
+        /// Username for OpenSearch dashboard's default user.
+        /// </summary>
+        public readonly string UiUser;
+        /// <summary>
         /// The full URI for connecting to the database cluster.
         /// </summary>
         public readonly string Uri;
@@ -229,6 +253,18 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<string> tags,
 
+            string uiDatabase,
+
+            string uiHost,
+
+            string uiPassword,
+
+            int uiPort,
+
+            string uiUri,
+
+            string uiUser,
+
             string uri,
 
             string urn,
@@ -254,6 +290,12 @@ namespace Pulumi.DigitalOcean
             Size = size;
             StorageSizeMib = storageSizeMib;
             Tags = tags;
+            UiDatabase = uiDatabase;
+            UiHost = uiHost;
+            UiPassword = uiPassword;
+            UiPort = uiPort;
+            UiUri = uiUri;
+            UiUser = uiUser;
             Uri = uri;
             Urn = urn;
             User = user;

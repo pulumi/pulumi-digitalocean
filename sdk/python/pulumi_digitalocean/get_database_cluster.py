@@ -22,7 +22,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, ui_database=None, ui_host=None, ui_password=None, ui_port=None, ui_uri=None, ui_user=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
@@ -74,6 +74,24 @@ class GetDatabaseClusterResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if ui_database and not isinstance(ui_database, str):
+            raise TypeError("Expected argument 'ui_database' to be a str")
+        pulumi.set(__self__, "ui_database", ui_database)
+        if ui_host and not isinstance(ui_host, str):
+            raise TypeError("Expected argument 'ui_host' to be a str")
+        pulumi.set(__self__, "ui_host", ui_host)
+        if ui_password and not isinstance(ui_password, str):
+            raise TypeError("Expected argument 'ui_password' to be a str")
+        pulumi.set(__self__, "ui_password", ui_password)
+        if ui_port and not isinstance(ui_port, int):
+            raise TypeError("Expected argument 'ui_port' to be a int")
+        pulumi.set(__self__, "ui_port", ui_port)
+        if ui_uri and not isinstance(ui_uri, str):
+            raise TypeError("Expected argument 'ui_uri' to be a str")
+        pulumi.set(__self__, "ui_uri", ui_uri)
+        if ui_user and not isinstance(ui_user, str):
+            raise TypeError("Expected argument 'ui_user' to be a str")
+        pulumi.set(__self__, "ui_user", ui_user)
         if uri and not isinstance(uri, str):
             raise TypeError("Expected argument 'uri' to be a str")
         pulumi.set(__self__, "uri", uri)
@@ -215,6 +233,54 @@ class GetDatabaseClusterResult:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="uiDatabase")
+    def ui_database(self) -> str:
+        """
+        Name of the OpenSearch dashboard db.
+        """
+        return pulumi.get(self, "ui_database")
+
+    @property
+    @pulumi.getter(name="uiHost")
+    def ui_host(self) -> str:
+        """
+        Hostname for the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_host")
+
+    @property
+    @pulumi.getter(name="uiPassword")
+    def ui_password(self) -> str:
+        """
+        Password for the OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_password")
+
+    @property
+    @pulumi.getter(name="uiPort")
+    def ui_port(self) -> int:
+        """
+        Network port that the OpenSearch dashboard is listening on.
+        """
+        return pulumi.get(self, "ui_port")
+
+    @property
+    @pulumi.getter(name="uiUri")
+    def ui_uri(self) -> str:
+        """
+        The full URI for connecting to the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_uri")
+
+    @property
+    @pulumi.getter(name="uiUser")
+    def ui_user(self) -> str:
+        """
+        Username for OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_user")
+
+    @property
     @pulumi.getter
     def uri(self) -> str:
         """
@@ -270,6 +336,12 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             size=self.size,
             storage_size_mib=self.storage_size_mib,
             tags=self.tags,
+            ui_database=self.ui_database,
+            ui_host=self.ui_host,
+            ui_password=self.ui_password,
+            ui_port=self.ui_port,
+            ui_uri=self.ui_uri,
+            ui_user=self.ui_user,
             uri=self.uri,
             urn=self.urn,
             user=self.user,
@@ -319,6 +391,12 @@ def get_database_cluster(name: Optional[str] = None,
         size=pulumi.get(__ret__, 'size'),
         storage_size_mib=pulumi.get(__ret__, 'storage_size_mib'),
         tags=pulumi.get(__ret__, 'tags'),
+        ui_database=pulumi.get(__ret__, 'ui_database'),
+        ui_host=pulumi.get(__ret__, 'ui_host'),
+        ui_password=pulumi.get(__ret__, 'ui_password'),
+        ui_port=pulumi.get(__ret__, 'ui_port'),
+        ui_uri=pulumi.get(__ret__, 'ui_uri'),
+        ui_user=pulumi.get(__ret__, 'ui_user'),
         uri=pulumi.get(__ret__, 'uri'),
         urn=pulumi.get(__ret__, 'urn'),
         user=pulumi.get(__ret__, 'user'),

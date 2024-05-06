@@ -225,6 +225,30 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
+     * Name of the OpenSearch dashboard db.
+     */
+    public /*out*/ readonly uiDatabase!: pulumi.Output<string>;
+    /**
+     * Hostname for the OpenSearch dashboard.
+     */
+    public /*out*/ readonly uiHost!: pulumi.Output<string>;
+    /**
+     * Password for the OpenSearch dashboard's default user.
+     */
+    public /*out*/ readonly uiPassword!: pulumi.Output<string>;
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     */
+    public /*out*/ readonly uiPort!: pulumi.Output<number>;
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     */
+    public /*out*/ readonly uiUri!: pulumi.Output<string>;
+    /**
+     * Username for OpenSearch dashboard's default user.
+     */
+    public /*out*/ readonly uiUser!: pulumi.Output<string>;
+    /**
      * The full URI for connecting to the database cluster.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
@@ -271,6 +295,12 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
             resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uiDatabase"] = state ? state.uiDatabase : undefined;
+            resourceInputs["uiHost"] = state ? state.uiHost : undefined;
+            resourceInputs["uiPassword"] = state ? state.uiPassword : undefined;
+            resourceInputs["uiPort"] = state ? state.uiPort : undefined;
+            resourceInputs["uiUri"] = state ? state.uiUri : undefined;
+            resourceInputs["uiUser"] = state ? state.uiUser : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -309,11 +339,17 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["privateHost"] = undefined /*out*/;
             resourceInputs["privateUri"] = undefined /*out*/;
+            resourceInputs["uiDatabase"] = undefined /*out*/;
+            resourceInputs["uiHost"] = undefined /*out*/;
+            resourceInputs["uiPassword"] = undefined /*out*/;
+            resourceInputs["uiPort"] = undefined /*out*/;
+            resourceInputs["uiUri"] = undefined /*out*/;
+            resourceInputs["uiUser"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uri"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uiPassword", "uiUri", "uri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -400,6 +436,30 @@ export interface DatabaseClusterState {
      * A list of tag names to be applied to the database cluster.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the OpenSearch dashboard db.
+     */
+    uiDatabase?: pulumi.Input<string>;
+    /**
+     * Hostname for the OpenSearch dashboard.
+     */
+    uiHost?: pulumi.Input<string>;
+    /**
+     * Password for the OpenSearch dashboard's default user.
+     */
+    uiPassword?: pulumi.Input<string>;
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     */
+    uiPort?: pulumi.Input<number>;
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     */
+    uiUri?: pulumi.Input<string>;
+    /**
+     * Username for OpenSearch dashboard's default user.
+     */
+    uiUser?: pulumi.Input<string>;
     /**
      * The full URI for connecting to the database cluster.
      */
