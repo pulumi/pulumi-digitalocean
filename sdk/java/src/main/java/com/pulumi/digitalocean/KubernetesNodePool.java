@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Basic Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,35 +54,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new KubernetesCluster(&#34;foo&#34;, KubernetesClusterArgs.builder()        
- *             .region(&#34;nyc1&#34;)
- *             .version(&#34;1.22.8-do.1&#34;)
+ *         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()        
+ *             .region("nyc1")
+ *             .version("1.22.8-do.1")
  *             .nodePool(KubernetesClusterNodePoolArgs.builder()
- *                 .name(&#34;front-end-pool&#34;)
- *                 .size(&#34;s-2vcpu-2gb&#34;)
+ *                 .name("front-end-pool")
+ *                 .size("s-2vcpu-2gb")
  *                 .nodeCount(3)
  *                 .build())
  *             .build());
  * 
- *         var bar = new KubernetesNodePool(&#34;bar&#34;, KubernetesNodePoolArgs.builder()        
+ *         var bar = new KubernetesNodePool("bar", KubernetesNodePoolArgs.builder()        
  *             .clusterId(foo.id())
- *             .size(&#34;c-2&#34;)
+ *             .size("c-2")
  *             .nodeCount(2)
- *             .tags(&#34;backend&#34;)
+ *             .tags("backend")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;service&#34;, &#34;backend&#34;),
- *                 Map.entry(&#34;priority&#34;, &#34;high&#34;)
+ *                 Map.entry("service", "backend"),
+ *                 Map.entry("priority", "high")
  *             ))
  *             .taints(KubernetesNodePoolTaintArgs.builder()
- *                 .key(&#34;workloadKind&#34;)
- *                 .value(&#34;database&#34;)
- *                 .effect(&#34;NoSchedule&#34;)
+ *                 .key("workloadKind")
+ *                 .value("database")
+ *                 .effect("NoSchedule")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Autoscaling Example
@@ -90,7 +92,8 @@ import javax.annotation.Nullable;
  * For example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -111,9 +114,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var autoscale_pool_01 = new KubernetesNodePool(&#34;autoscale-pool-01&#34;, KubernetesNodePoolArgs.builder()        
+ *         var autoscale_pool_01 = new KubernetesNodePool("autoscale-pool-01", KubernetesNodePoolArgs.builder()        
  *             .clusterId(digitalocean_kubernetes_cluster.foo().id())
- *             .size(&#34;s-1vcpu-2gb&#34;)
+ *             .size("s-1vcpu-2gb")
  *             .autoScale(true)
  *             .minNodes(1)
  *             .maxNodes(5)
@@ -121,7 +124,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

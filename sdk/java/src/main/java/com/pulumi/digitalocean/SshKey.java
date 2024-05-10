@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,21 +47,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new SSH key
- *         var default_ = new SshKey(&#34;default&#34;, SshKeyArgs.builder()        
- *             .publicKey(Files.readString(Paths.get(&#34;/Users/myuser/.ssh/id_rsa.pub&#34;)))
+ *         var default_ = new SshKey("default", SshKeyArgs.builder()        
+ *             .publicKey(Files.readString(Paths.get("/Users/myuser/.ssh/id_rsa.pub")))
  *             .build());
  * 
  *         // Create a new Droplet using the SSH key
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
- *             .size(&#34;s-1vcpu-1gb&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
+ *             .size("s-1vcpu-1gb")
  *             .sshKeys(default_.fingerprint())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

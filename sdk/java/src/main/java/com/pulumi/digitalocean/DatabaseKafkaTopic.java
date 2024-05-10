@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * 
  * ### Create a new Kafka topic
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,22 +49,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_example = new DatabaseCluster(&#34;kafka-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;kafka&#34;)
- *             .version(&#34;3.5&#34;)
- *             .size(&#34;db-s-2vcpu-2gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()        
+ *             .engine("kafka")
+ *             .version("3.5")
+ *             .size("db-s-2vcpu-2gb")
+ *             .region("nyc1")
  *             .nodeCount(3)
- *             .tags(&#34;production&#34;)
+ *             .tags("production")
  *             .build());
  * 
- *         var topic_01 = new DatabaseKafkaTopic(&#34;topic-01&#34;, DatabaseKafkaTopicArgs.builder()        
+ *         var topic_01 = new DatabaseKafkaTopic("topic-01", DatabaseKafkaTopicArgs.builder()        
  *             .clusterId(kafka_example.id())
  *             .partitionCount(3)
  *             .replicationFactor(2)
  *             .configs(DatabaseKafkaTopicConfigArgs.builder()
- *                 .cleanupPolicy(&#34;compact&#34;)
- *                 .compressionType(&#34;uncompressed&#34;)
+ *                 .cleanupPolicy("compact")
+ *                 .compressionType("uncompressed")
  *                 .deleteRetentionMs(14000)
  *                 .fileDeleteDelayMs(170000)
  *                 .flushMessages(92233)
@@ -72,15 +73,15 @@ import javax.annotation.Nullable;
  *                 .maxCompactionLagMs(9223372036854775807)
  *                 .maxMessageBytes(1048588)
  *                 .messageDownConversionEnable(true)
- *                 .messageFormatVersion(&#34;3.0-IV1&#34;)
+ *                 .messageFormatVersion("3.0-IV1")
  *                 .messageTimestampDifferenceMaxMs(9223372036854775807)
- *                 .messageTimestampType(&#34;log_append_time&#34;)
+ *                 .messageTimestampType("log_append_time")
  *                 .minCleanableDirtyRatio(0.5)
  *                 .minCompactionLagMs(20000)
  *                 .minInsyncReplicas(2)
  *                 .preallocate(false)
- *                 .retentionBytes(&#34;TODO: GenUnaryOpExpression&#34;)
- *                 .retentionMs(&#34;TODO: GenUnaryOpExpression&#34;)
+ *                 .retentionBytes("TODO: GenUnaryOpExpression")
+ *                 .retentionMs("TODO: GenUnaryOpExpression")
  *                 .segmentBytes(209715200)
  *                 .segmentIndexBytes(10485760)
  *                 .segmentJitterMs(0)
@@ -90,7 +91,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

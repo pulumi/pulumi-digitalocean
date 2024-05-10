@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,15 +48,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Web Droplet in the nyc2 region
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .image(&#34;ubuntu-20-04-x64&#34;)
- *             .region(&#34;nyc2&#34;)
- *             .size(&#34;s-1vcpu-1gb&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .image("ubuntu-20-04-x64")
+ *             .region("nyc2")
+ *             .size("s-1vcpu-1gb")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

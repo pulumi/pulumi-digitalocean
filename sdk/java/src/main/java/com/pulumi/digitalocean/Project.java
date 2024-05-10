@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  * The following example demonstrates the creation of an empty project:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,21 +65,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var playground = new Project(&#34;playground&#34;, ProjectArgs.builder()        
- *             .description(&#34;A project to represent development resources.&#34;)
- *             .environment(&#34;Development&#34;)
- *             .purpose(&#34;Web Application&#34;)
+ *         var playground = new Project("playground", ProjectArgs.builder()        
+ *             .description("A project to represent development resources.")
+ *             .environment("Development")
+ *             .purpose("Web Application")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The following example demonstrates the creation of a project with a Droplet resource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -101,22 +104,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Droplet(&#34;foobar&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-22-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var foobar = new Droplet("foobar", DropletArgs.builder()        
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var playground = new Project(&#34;playground&#34;, ProjectArgs.builder()        
- *             .description(&#34;A project to represent development resources.&#34;)
- *             .purpose(&#34;Web Application&#34;)
- *             .environment(&#34;Development&#34;)
+ *         var playground = new Project("playground", ProjectArgs.builder()        
+ *             .description("A project to represent development resources.")
+ *             .purpose("Web Application")
+ *             .environment("Development")
  *             .resources(foobar.dropletUrn())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

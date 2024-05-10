@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * 
  * ### Create a new PostgreSQL database user
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,26 +49,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;15&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var user_example = new DatabaseUser(&#34;user-example&#34;, DatabaseUserArgs.builder()        
+ *         var user_example = new DatabaseUser("user-example", DatabaseUserArgs.builder()        
  *             .clusterId(postgres_example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new user for a PostgreSQL database replica
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,32 +95,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;15&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
+ *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .build());
  * 
- *         var user_example = new DatabaseUser(&#34;user-example&#34;, DatabaseUserArgs.builder()        
+ *         var user_example = new DatabaseUser("user-example", DatabaseUserArgs.builder()        
  *             .clusterId(replica_example.uuid())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new user for a Kafka database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -143,40 +148,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_example = new DatabaseCluster(&#34;kafka-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;kafka&#34;)
- *             .version(&#34;3.5&#34;)
- *             .size(&#34;db-s-2vcpu-2gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()        
+ *             .engine("kafka")
+ *             .version("3.5")
+ *             .size("db-s-2vcpu-2gb")
+ *             .region("nyc1")
  *             .nodeCount(3)
  *             .build());
  * 
- *         var foobarTopic = new DatabaseKafkaTopic(&#34;foobarTopic&#34;, DatabaseKafkaTopicArgs.builder()        
+ *         var foobarTopic = new DatabaseKafkaTopic("foobarTopic", DatabaseKafkaTopicArgs.builder()        
  *             .clusterId(digitalocean_database_cluster.foobar().id())
  *             .build());
  * 
- *         var foobarUser = new DatabaseUser(&#34;foobarUser&#34;, DatabaseUserArgs.builder()        
+ *         var foobarUser = new DatabaseUser("foobarUser", DatabaseUserArgs.builder()        
  *             .clusterId(digitalocean_database_cluster.foobar().id())
  *             .settings(DatabaseUserSettingArgs.builder()
  *                 .acls(                
  *                     DatabaseUserSettingAclArgs.builder()
- *                         .topic(&#34;topic-1&#34;)
- *                         .permission(&#34;produce&#34;)
+ *                         .topic("topic-1")
+ *                         .permission("produce")
  *                         .build(),
  *                     DatabaseUserSettingAclArgs.builder()
- *                         .topic(&#34;topic-2&#34;)
- *                         .permission(&#34;produceconsume&#34;)
+ *                         .topic("topic-2")
+ *                         .permission("produceconsume")
  *                         .build(),
  *                     DatabaseUserSettingAclArgs.builder()
- *                         .topic(&#34;topic-*&#34;)
- *                         .permission(&#34;consume&#34;)
+ *                         .topic("topic-*")
+ *                         .permission("consume")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

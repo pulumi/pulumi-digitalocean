@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Basic Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,32 +48,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var golang_sample = new App(&#34;golang-sample&#34;, AppArgs.builder()        
+ *         var golang_sample = new App("golang-sample", AppArgs.builder()        
  *             .spec(AppSpecArgs.builder()
- *                 .name(&#34;golang-sample&#34;)
- *                 .region(&#34;ams&#34;)
+ *                 .name("golang-sample")
+ *                 .region("ams")
  *                 .services(AppSpecServiceArgs.builder()
- *                     .environmentSlug(&#34;go&#34;)
+ *                     .environmentSlug("go")
  *                     .git(AppSpecServiceGitArgs.builder()
- *                         .branch(&#34;main&#34;)
- *                         .repoCloneUrl(&#34;https://github.com/digitalocean/sample-golang.git&#34;)
+ *                         .branch("main")
+ *                         .repoCloneUrl("https://github.com/digitalocean/sample-golang.git")
  *                         .build())
  *                     .instanceCount(1)
- *                     .instanceSizeSlug(&#34;professional-xs&#34;)
- *                     .name(&#34;go-service&#34;)
+ *                     .instanceSizeSlug("professional-xs")
+ *                     .name("go-service")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Static Site Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,31 +97,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_site_example = new App(&#34;static-site-example&#34;, AppArgs.builder()        
+ *         var static_site_example = new App("static-site-example", AppArgs.builder()        
  *             .spec(AppSpecArgs.builder()
- *                 .name(&#34;static-site-example&#34;)
- *                 .region(&#34;ams&#34;)
+ *                 .name("static-site-example")
+ *                 .region("ams")
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
- *                     .buildCommand(&#34;bundle exec jekyll build -d ./public&#34;)
+ *                     .buildCommand("bundle exec jekyll build -d ./public")
  *                     .git(AppSpecStaticSiteGitArgs.builder()
- *                         .branch(&#34;main&#34;)
- *                         .repoCloneUrl(&#34;https://github.com/digitalocean/sample-jekyll.git&#34;)
+ *                         .branch("main")
+ *                         .repoCloneUrl("https://github.com/digitalocean/sample-jekyll.git")
  *                         .build())
- *                     .name(&#34;sample-jekyll&#34;)
- *                     .outputDir(&#34;/public&#34;)
+ *                     .name("sample-jekyll")
+ *                     .outputDir("/public")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Multiple Components Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -141,55 +146,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mono_repo_example = new App(&#34;mono-repo-example&#34;, AppArgs.builder()        
+ *         var mono_repo_example = new App("mono-repo-example", AppArgs.builder()        
  *             .spec(AppSpecArgs.builder()
  *                 .alerts(AppSpecAlertArgs.builder()
- *                     .rule(&#34;DEPLOYMENT_FAILED&#34;)
+ *                     .rule("DEPLOYMENT_FAILED")
  *                     .build())
  *                 .databases(AppSpecDatabaseArgs.builder()
- *                     .engine(&#34;PG&#34;)
- *                     .name(&#34;starter-db&#34;)
+ *                     .engine("PG")
+ *                     .name("starter-db")
  *                     .production(false)
  *                     .build())
- *                 .domains(Map.of(&#34;name&#34;, &#34;foo.example.com&#34;))
+ *                 .domains(Map.of("name", "foo.example.com"))
  *                 .ingress(AppSpecIngressArgs.builder()
  *                     .rule(                    
  *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
  *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                     .build())
- *                 .name(&#34;mono-repo-example&#34;)
- *                 .region(&#34;ams&#34;)
+ *                 .name("mono-repo-example")
+ *                 .region("ams")
  *                 .services(AppSpecServiceArgs.builder()
  *                     .alert(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .environmentSlug(&#34;go&#34;)
+ *                     .environmentSlug("go")
  *                     .github(AppSpecServiceGithubArgs.builder()
- *                         .branch(&#34;main&#34;)
+ *                         .branch("main")
  *                         .deployOnPush(true)
- *                         .repo(&#34;username/repo&#34;)
+ *                         .repo("username/repo")
  *                         .build())
  *                     .httpPort(3000)
  *                     .instanceCount(2)
- *                     .instanceSizeSlug(&#34;professional-xs&#34;)
+ *                     .instanceSizeSlug("professional-xs")
  *                     .logDestination(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .name(&#34;api&#34;)
- *                     .runCommand(&#34;bin/api&#34;)
- *                     .sourceDir(&#34;api/&#34;)
+ *                     .name("api")
+ *                     .runCommand("bin/api")
+ *                     .sourceDir("api/")
  *                     .build())
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
- *                     .buildCommand(&#34;npm run build&#34;)
+ *                     .buildCommand("npm run build")
  *                     .github(AppSpecStaticSiteGithubArgs.builder()
- *                         .branch(&#34;main&#34;)
+ *                         .branch("main")
  *                         .deployOnPush(true)
- *                         .repo(&#34;username/repo&#34;)
+ *                         .repo("username/repo")
  *                         .build())
- *                     .name(&#34;web&#34;)
+ *                     .name("web")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

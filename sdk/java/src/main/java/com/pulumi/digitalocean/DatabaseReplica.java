@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * 
  * ### Create a new PostgreSQL database replica
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,33 +50,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;15&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
+ *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .build());
  * 
- *         ctx.export(&#34;uUID&#34;, replica_example.uuid());
+ *         ctx.export("uUID", replica_example.uuid());
  *         // Create firewall rule for database replica
- *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()        
  *             .clusterId(replica_example.uuid())
  *             .rules(DatabaseFirewallRuleArgs.builder()
- *                 .type(&#34;ip_addr&#34;)
- *                 .value(&#34;192.168.1.1&#34;)
+ *                 .type("ip_addr")
+ *                 .value("192.168.1.1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

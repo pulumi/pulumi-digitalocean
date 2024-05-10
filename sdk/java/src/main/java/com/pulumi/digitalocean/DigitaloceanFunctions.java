@@ -138,7 +138,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -162,7 +163,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -177,7 +179,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -201,7 +204,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +220,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -240,7 +245,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -255,7 +261,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -279,7 +286,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +302,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -318,7 +327,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -333,7 +343,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -357,7 +368,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -372,7 +384,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -394,13 +407,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getApp(GetAppArgs.builder()
-     *             .appId(&#34;e665d18d-7b56-44a9-92ce-31979174d544&#34;)
+     *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export(&#34;defaultIngress&#34;, example.applyValue(getAppResult -&gt; getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -415,7 +429,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -437,13 +452,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getApp(GetAppArgs.builder()
-     *             .appId(&#34;e665d18d-7b56-44a9-92ce-31979174d544&#34;)
+     *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export(&#34;defaultIngress&#34;, example.applyValue(getAppResult -&gt; getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -458,7 +474,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -480,13 +497,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getApp(GetAppArgs.builder()
-     *             .appId(&#34;e665d18d-7b56-44a9-92ce-31979174d544&#34;)
+     *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export(&#34;defaultIngress&#34;, example.applyValue(getAppResult -&gt; getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -501,7 +519,8 @@ public final class DigitaloceanFunctions {
      * Get the account:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -523,13 +542,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getApp(GetAppArgs.builder()
-     *             .appId(&#34;e665d18d-7b56-44a9-92ce-31979174d544&#34;)
+     *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export(&#34;defaultIngress&#34;, example.applyValue(getAppResult -&gt; getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -549,7 +569,8 @@ public final class DigitaloceanFunctions {
      * Get the certificate:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -571,12 +592,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -596,7 +618,8 @@ public final class DigitaloceanFunctions {
      * Get the certificate:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -618,12 +641,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -643,7 +667,8 @@ public final class DigitaloceanFunctions {
      * Get the certificate:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -665,12 +690,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -690,7 +716,8 @@ public final class DigitaloceanFunctions {
      * Get the certificate:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -712,12 +739,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -739,7 +767,8 @@ public final class DigitaloceanFunctions {
      * Get the container registry:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -761,12 +790,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -788,7 +818,8 @@ public final class DigitaloceanFunctions {
      * Get the container registry:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,12 +841,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -837,7 +869,8 @@ public final class DigitaloceanFunctions {
      * Get the container registry:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -859,12 +892,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -886,7 +920,8 @@ public final class DigitaloceanFunctions {
      * Get the container registry:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -908,12 +943,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -926,7 +962,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -948,13 +985,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ca = DigitaloceanFunctions.getDatabaseCa(GetDatabaseCaArgs.builder()
-     *             .clusterId(&#34;aaa-bbb-ccc-ddd&#34;)
+     *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export(&#34;caOutput&#34;, ca.applyValue(getDatabaseCaResult -&gt; getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -967,7 +1005,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -989,13 +1028,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ca = DigitaloceanFunctions.getDatabaseCa(GetDatabaseCaArgs.builder()
-     *             .clusterId(&#34;aaa-bbb-ccc-ddd&#34;)
+     *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export(&#34;caOutput&#34;, ca.applyValue(getDatabaseCaResult -&gt; getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1008,7 +1048,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1030,13 +1071,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ca = DigitaloceanFunctions.getDatabaseCa(GetDatabaseCaArgs.builder()
-     *             .clusterId(&#34;aaa-bbb-ccc-ddd&#34;)
+     *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export(&#34;caOutput&#34;, ca.applyValue(getDatabaseCaResult -&gt; getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1049,7 +1091,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1071,13 +1114,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ca = DigitaloceanFunctions.getDatabaseCa(GetDatabaseCaArgs.builder()
-     *             .clusterId(&#34;aaa-bbb-ccc-ddd&#34;)
+     *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export(&#34;caOutput&#34;, ca.applyValue(getDatabaseCaResult -&gt; getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1090,7 +1134,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1112,13 +1157,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseOutput&#34;, example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1131,7 +1177,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1153,13 +1200,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseOutput&#34;, example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1172,7 +1220,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1194,13 +1243,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseOutput&#34;, example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1213,7 +1263,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1235,13 +1286,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseOutput&#34;, example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1254,7 +1306,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1277,18 +1330,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;pool-01&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("pool-01")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *         ctx.export("connectionPoolUriOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1301,7 +1355,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1324,18 +1379,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;pool-01&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("pool-01")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *         ctx.export("connectionPoolUriOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1348,7 +1404,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1371,18 +1428,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;pool-01&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("pool-01")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *         ctx.export("connectionPoolUriOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1395,7 +1453,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1418,18 +1477,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;pool-01&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("pool-01")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionPoolUriOutput&#34;, read_only.uri());
+     *         ctx.export("connectionPoolUriOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1442,7 +1502,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1465,18 +1526,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;terra-test-ro&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("terra-test-ro")
      *             .build());
      * 
-     *         ctx.export(&#34;replicaOutput&#34;, read_only.uri());
+     *         ctx.export("replicaOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1489,7 +1551,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1512,18 +1575,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;terra-test-ro&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("terra-test-ro")
      *             .build());
      * 
-     *         ctx.export(&#34;replicaOutput&#34;, read_only.uri());
+     *         ctx.export("replicaOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1536,7 +1600,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1559,18 +1624,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;terra-test-ro&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("terra-test-ro")
      *             .build());
      * 
-     *         ctx.export(&#34;replicaOutput&#34;, read_only.uri());
+     *         ctx.export("replicaOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1583,7 +1649,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1606,18 +1673,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;example-cluster&#34;)
+     *             .name("example-cluster")
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;terra-test-ro&#34;)
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("terra-test-ro")
      *             .build());
      * 
-     *         ctx.export(&#34;replicaOutput&#34;, read_only.uri());
+     *         ctx.export("replicaOutput", read_only.uri());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1630,7 +1698,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1653,18 +1722,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;main-cluster&#34;)
+     *             .name("main-cluster")
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;example-user&#34;)
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1677,7 +1747,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1700,18 +1771,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;main-cluster&#34;)
+     *             .name("main-cluster")
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;example-user&#34;)
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1724,7 +1796,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1747,18 +1820,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;main-cluster&#34;)
+     *             .name("main-cluster")
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;example-user&#34;)
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1771,7 +1845,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1794,18 +1869,19 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
-     *             .name(&#34;main-cluster&#34;)
+     *             .name("main-cluster")
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -&gt; getDatabaseClusterResult.id()))
-     *             .name(&#34;example-user&#34;)
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseUserPassword&#34;, example.applyValue(getDatabaseUserResult -&gt; getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1826,7 +1902,8 @@ public final class DigitaloceanFunctions {
      * Get the zone file for a domain:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1848,13 +1925,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1875,7 +1953,8 @@ public final class DigitaloceanFunctions {
      * Get the zone file for a domain:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1897,13 +1976,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1924,7 +2004,8 @@ public final class DigitaloceanFunctions {
      * Get the zone file for a domain:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1946,13 +2027,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1973,7 +2055,8 @@ public final class DigitaloceanFunctions {
      * Get the zone file for a domain:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1995,13 +2078,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainOutput&#34;, example.applyValue(getDomainResult -&gt; getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2024,7 +2108,8 @@ public final class DigitaloceanFunctions {
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2047,15 +2132,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
-     *                 .matchBy(&#34;re&#34;)
-     *                 .values(&#34;example\\.com$&#34;)
+     *                 .key("name")
+     *                 .matchBy("re")
+     *                 .values("example\\.com$")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2078,7 +2164,8 @@ public final class DigitaloceanFunctions {
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2101,15 +2188,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
-     *                 .matchBy(&#34;re&#34;)
-     *                 .values(&#34;example\\.com$&#34;)
+     *                 .key("name")
+     *                 .matchBy("re")
+     *                 .values("example\\.com$")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2132,7 +2220,8 @@ public final class DigitaloceanFunctions {
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2155,15 +2244,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
-     *                 .matchBy(&#34;re&#34;)
-     *                 .values(&#34;example\\.com$&#34;)
+     *                 .key("name")
+     *                 .matchBy("re")
+     *                 .values("example\\.com$")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2186,7 +2276,8 @@ public final class DigitaloceanFunctions {
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2209,15 +2300,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
-     *                 .matchBy(&#34;re&#34;)
-     *                 .values(&#34;example\\.com$&#34;)
+     *                 .key("name")
+     *                 .matchBy("re")
+     *                 .values("example\\.com$")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2240,7 +2332,8 @@ public final class DigitaloceanFunctions {
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2263,15 +2356,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
-     *                 .matchBy(&#34;re&#34;)
-     *                 .values(&#34;example\\.com$&#34;)
+     *                 .key("name")
+     *                 .matchBy("re")
+     *                 .values("example\\.com$")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2294,7 +2388,8 @@ public final class DigitaloceanFunctions {
      * also uses the regular expression `match_by` mode in order to match domains by suffix.)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2317,15 +2412,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
-     *                 .matchBy(&#34;re&#34;)
-     *                 .values(&#34;example\\.com$&#34;)
+     *                 .key("name")
+     *                 .matchBy("re")
+     *                 .values("example\\.com$")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2346,7 +2442,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2368,19 +2465,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .name(&#34;web&#34;)
+     *             .name("web")
      *             .build());
      * 
-     *         ctx.export(&#34;dropletOutput&#34;, example.applyValue(getDropletResult -&gt; getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2402,18 +2501,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .tag(&#34;web&#34;)
+     *             .tag("web")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2440,7 +2541,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2461,7 +2563,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2483,19 +2586,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .name(&#34;web&#34;)
+     *             .name("web")
      *             .build());
      * 
-     *         ctx.export(&#34;dropletOutput&#34;, example.applyValue(getDropletResult -&gt; getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2517,18 +2622,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .tag(&#34;web&#34;)
+     *             .tag("web")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2555,7 +2662,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2576,7 +2684,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2598,19 +2707,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .name(&#34;web&#34;)
+     *             .name("web")
      *             .build());
      * 
-     *         ctx.export(&#34;dropletOutput&#34;, example.applyValue(getDropletResult -&gt; getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2632,18 +2743,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .tag(&#34;web&#34;)
+     *             .tag("web")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2670,7 +2783,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2691,7 +2805,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2713,19 +2828,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .name(&#34;web&#34;)
+     *             .name("web")
      *             .build());
      * 
-     *         ctx.export(&#34;dropletOutput&#34;, example.applyValue(getDropletResult -&gt; getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2747,18 +2864,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .tag(&#34;web&#34;)
+     *             .tag("web")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2785,7 +2904,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2806,7 +2926,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2828,19 +2949,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .name(&#34;web&#34;)
+     *             .name("web")
      *             .build());
      * 
-     *         ctx.export(&#34;dropletOutput&#34;, example.applyValue(getDropletResult -&gt; getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2862,18 +2985,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .tag(&#34;web&#34;)
+     *             .tag("web")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2900,7 +3025,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2921,7 +3047,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2943,19 +3070,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .name(&#34;web&#34;)
+     *             .name("web")
      *             .build());
      * 
-     *         ctx.export(&#34;dropletOutput&#34;, example.applyValue(getDropletResult -&gt; getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2977,18 +3106,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .tag(&#34;web&#34;)
+     *             .tag("web")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the Droplet by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3015,7 +3146,8 @@ public final class DigitaloceanFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3032,7 +3164,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3055,19 +3188,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3091,20 +3226,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
-     *             .region(&#34;nyc3&#34;)
-     *             .size(&#34;s-2vcpu-4gb&#34;)
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3121,7 +3257,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3144,19 +3281,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3180,20 +3319,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
-     *             .region(&#34;nyc3&#34;)
-     *             .size(&#34;s-2vcpu-4gb&#34;)
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3210,7 +3350,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3233,19 +3374,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3269,20 +3412,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
-     *             .region(&#34;nyc3&#34;)
-     *             .size(&#34;s-2vcpu-4gb&#34;)
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3299,7 +3443,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3322,19 +3467,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3358,20 +3505,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
-     *             .region(&#34;nyc3&#34;)
-     *             .size(&#34;s-2vcpu-4gb&#34;)
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3388,7 +3536,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3411,19 +3560,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3447,20 +3598,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
-     *             .region(&#34;nyc3&#34;)
-     *             .size(&#34;s-2vcpu-4gb&#34;)
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3477,7 +3629,8 @@ public final class DigitaloceanFunctions {
      * Get the Droplet snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3500,19 +3653,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Create image from snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3536,20 +3691,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
-     *             .region(&#34;nyc3&#34;)
-     *             .size(&#34;s-2vcpu-4gb&#34;)
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3573,7 +3729,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Droplets with size `s-1vcpu-1gb`:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3596,20 +3753,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(GetDropletsFilterArgs.builder()
-     *                 .key(&#34;size&#34;)
-     *                 .values(&#34;s-1vcpu-1gb&#34;)
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3633,22 +3792,23 @@ public final class DigitaloceanFunctions {
      *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(            
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;size&#34;)
-     *                     .values(&#34;s-1vcpu-1gb&#34;)
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
      *                     .build(),
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;backups&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("backups")
+     *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created_at&#34;)
+     *                 .direction("desc")
+     *                 .key("created_at")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3672,7 +3832,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Droplets with size `s-1vcpu-1gb`:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3695,20 +3856,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(GetDropletsFilterArgs.builder()
-     *                 .key(&#34;size&#34;)
-     *                 .values(&#34;s-1vcpu-1gb&#34;)
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3732,22 +3895,23 @@ public final class DigitaloceanFunctions {
      *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(            
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;size&#34;)
-     *                     .values(&#34;s-1vcpu-1gb&#34;)
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
      *                     .build(),
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;backups&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("backups")
+     *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created_at&#34;)
+     *                 .direction("desc")
+     *                 .key("created_at")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3771,7 +3935,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Droplets with size `s-1vcpu-1gb`:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3794,20 +3959,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(GetDropletsFilterArgs.builder()
-     *                 .key(&#34;size&#34;)
-     *                 .values(&#34;s-1vcpu-1gb&#34;)
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3831,22 +3998,23 @@ public final class DigitaloceanFunctions {
      *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(            
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;size&#34;)
-     *                     .values(&#34;s-1vcpu-1gb&#34;)
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
      *                     .build(),
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;backups&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("backups")
+     *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created_at&#34;)
+     *                 .direction("desc")
+     *                 .key("created_at")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3870,7 +4038,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Droplets with size `s-1vcpu-1gb`:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3893,20 +4062,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(GetDropletsFilterArgs.builder()
-     *                 .key(&#34;size&#34;)
-     *                 .values(&#34;s-1vcpu-1gb&#34;)
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3930,22 +4101,23 @@ public final class DigitaloceanFunctions {
      *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(            
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;size&#34;)
-     *                     .values(&#34;s-1vcpu-1gb&#34;)
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
      *                     .build(),
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;backups&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("backups")
+     *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created_at&#34;)
+     *                 .direction("desc")
+     *                 .key("created_at")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3969,7 +4141,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Droplets with size `s-1vcpu-1gb`:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3992,20 +4165,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(GetDropletsFilterArgs.builder()
-     *                 .key(&#34;size&#34;)
-     *                 .values(&#34;s-1vcpu-1gb&#34;)
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4029,22 +4204,23 @@ public final class DigitaloceanFunctions {
      *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(            
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;size&#34;)
-     *                     .values(&#34;s-1vcpu-1gb&#34;)
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
      *                     .build(),
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;backups&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("backups")
+     *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created_at&#34;)
+     *                 .direction("desc")
+     *                 .key("created_at")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4068,7 +4244,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Droplets with size `s-1vcpu-1gb`:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4091,20 +4268,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(GetDropletsFilterArgs.builder()
-     *                 .key(&#34;size&#34;)
-     *                 .values(&#34;s-1vcpu-1gb&#34;)
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4128,22 +4307,23 @@ public final class DigitaloceanFunctions {
      *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
      *             .filters(            
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;size&#34;)
-     *                     .values(&#34;s-1vcpu-1gb&#34;)
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
      *                     .build(),
      *                 GetDropletsFilterArgs.builder()
-     *                     .key(&#34;backups&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("backups")
+     *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created_at&#34;)
+     *                 .direction("desc")
+     *                 .key("created_at")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4158,7 +4338,8 @@ public final class DigitaloceanFunctions {
      * Get the firewall:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4180,13 +4361,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getFirewall(GetFirewallArgs.builder()
-     *             .firewallId(&#34;1df48973-6eef-4214-854f-fa7726e7e583&#34;)
+     *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export(&#34;exampleFirewallName&#34;, example.applyValue(getFirewallResult -&gt; getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4201,7 +4383,8 @@ public final class DigitaloceanFunctions {
      * Get the firewall:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4223,13 +4406,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getFirewall(GetFirewallArgs.builder()
-     *             .firewallId(&#34;1df48973-6eef-4214-854f-fa7726e7e583&#34;)
+     *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export(&#34;exampleFirewallName&#34;, example.applyValue(getFirewallResult -&gt; getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4244,7 +4428,8 @@ public final class DigitaloceanFunctions {
      * Get the firewall:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4266,13 +4451,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getFirewall(GetFirewallArgs.builder()
-     *             .firewallId(&#34;1df48973-6eef-4214-854f-fa7726e7e583&#34;)
+     *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export(&#34;exampleFirewallName&#34;, example.applyValue(getFirewallResult -&gt; getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4287,7 +4473,8 @@ public final class DigitaloceanFunctions {
      * Get the firewall:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4309,13 +4496,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getFirewall(GetFirewallArgs.builder()
-     *             .firewallId(&#34;1df48973-6eef-4214-854f-fa7726e7e583&#34;)
+     *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export(&#34;exampleFirewallName&#34;, example.applyValue(getFirewallResult -&gt; getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4337,7 +4525,8 @@ public final class DigitaloceanFunctions {
      * Get the floating IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4359,15 +4548,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getFloatingIpResult -&gt; getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4389,7 +4579,8 @@ public final class DigitaloceanFunctions {
      * Get the floating IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4411,15 +4602,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getFloatingIpResult -&gt; getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4441,7 +4633,8 @@ public final class DigitaloceanFunctions {
      * Get the floating IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4463,15 +4656,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getFloatingIpResult -&gt; getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4493,7 +4687,8 @@ public final class DigitaloceanFunctions {
      * Get the floating IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4515,15 +4710,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getFloatingIpResult -&gt; getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4543,7 +4739,8 @@ public final class DigitaloceanFunctions {
      * Get the data about a snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4565,18 +4762,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4600,24 +4799,26 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -&gt; getImageResult.id()))
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4639,12 +4840,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .slug(&#34;ubuntu-18-04-x64&#34;)
+     *             .slug("ubuntu-18-04-x64")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4664,7 +4866,8 @@ public final class DigitaloceanFunctions {
      * Get the data about a snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4686,18 +4889,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4721,24 +4926,26 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -&gt; getImageResult.id()))
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4760,12 +4967,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .slug(&#34;ubuntu-18-04-x64&#34;)
+     *             .slug("ubuntu-18-04-x64")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4785,7 +4993,8 @@ public final class DigitaloceanFunctions {
      * Get the data about a snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4807,18 +5016,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4842,24 +5053,26 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -&gt; getImageResult.id()))
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4881,12 +5094,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .slug(&#34;ubuntu-18-04-x64&#34;)
+     *             .slug("ubuntu-18-04-x64")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4906,7 +5120,8 @@ public final class DigitaloceanFunctions {
      * Get the data about a snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4928,18 +5143,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4963,24 +5180,26 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -&gt; getImageResult.id()))
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5002,12 +5221,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .slug(&#34;ubuntu-18-04-x64&#34;)
+     *             .slug("ubuntu-18-04-x64")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5027,7 +5247,8 @@ public final class DigitaloceanFunctions {
      * Get the data about a snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5049,18 +5270,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5084,24 +5307,26 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -&gt; getImageResult.id()))
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5123,12 +5348,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .slug(&#34;ubuntu-18-04-x64&#34;)
+     *             .slug("ubuntu-18-04-x64")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5148,7 +5374,8 @@ public final class DigitaloceanFunctions {
      * Get the data about a snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5170,18 +5397,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a snapshot to create a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5205,24 +5434,26 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;example-1.0.0&#34;)
+     *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -&gt; getImageResult.id()))
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the data about an official image:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5244,12 +5475,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
-     *             .slug(&#34;ubuntu-18-04-x64&#34;)
+     *             .slug("ubuntu-18-04-x64")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5274,7 +5506,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Ubuntu images:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5297,20 +5530,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(GetImagesFilterArgs.builder()
-     *                 .key(&#34;distribution&#34;)
-     *                 .values(&#34;Ubuntu&#34;)
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5334,22 +5569,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;distribution&#34;)
-     *                     .values(&#34;Ubuntu&#34;)
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;regions&#34;)
-     *                     .values(&#34;nyc3&#34;)
+     *                     .key("regions")
+     *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created&#34;)
+     *                 .direction("desc")
+     *                 .key("created")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5374,7 +5610,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Ubuntu images:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5397,20 +5634,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(GetImagesFilterArgs.builder()
-     *                 .key(&#34;distribution&#34;)
-     *                 .values(&#34;Ubuntu&#34;)
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5434,22 +5673,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;distribution&#34;)
-     *                     .values(&#34;Ubuntu&#34;)
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;regions&#34;)
-     *                     .values(&#34;nyc3&#34;)
+     *                     .key("regions")
+     *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created&#34;)
+     *                 .direction("desc")
+     *                 .key("created")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5474,7 +5714,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Ubuntu images:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5497,20 +5738,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(GetImagesFilterArgs.builder()
-     *                 .key(&#34;distribution&#34;)
-     *                 .values(&#34;Ubuntu&#34;)
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5534,22 +5777,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;distribution&#34;)
-     *                     .values(&#34;Ubuntu&#34;)
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;regions&#34;)
-     *                     .values(&#34;nyc3&#34;)
+     *                     .key("regions")
+     *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created&#34;)
+     *                 .direction("desc")
+     *                 .key("created")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5574,7 +5818,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Ubuntu images:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5597,20 +5842,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(GetImagesFilterArgs.builder()
-     *                 .key(&#34;distribution&#34;)
-     *                 .values(&#34;Ubuntu&#34;)
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5634,22 +5881,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;distribution&#34;)
-     *                     .values(&#34;Ubuntu&#34;)
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;regions&#34;)
-     *                     .values(&#34;nyc3&#34;)
+     *                     .key("regions")
+     *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created&#34;)
+     *                 .direction("desc")
+     *                 .key("created")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5674,7 +5922,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Ubuntu images:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5697,20 +5946,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(GetImagesFilterArgs.builder()
-     *                 .key(&#34;distribution&#34;)
-     *                 .values(&#34;Ubuntu&#34;)
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5734,22 +5985,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;distribution&#34;)
-     *                     .values(&#34;Ubuntu&#34;)
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;regions&#34;)
-     *                     .values(&#34;nyc3&#34;)
+     *                     .key("regions")
+     *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created&#34;)
+     *                 .direction("desc")
+     *                 .key("created")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5774,7 +6026,8 @@ public final class DigitaloceanFunctions {
      * For example to find all Ubuntu images:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5797,20 +6050,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(GetImagesFilterArgs.builder()
-     *                 .key(&#34;distribution&#34;)
-     *                 .values(&#34;Ubuntu&#34;)
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5834,22 +6089,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
      *             .filters(            
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;distribution&#34;)
-     *                     .values(&#34;Ubuntu&#34;)
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
      *                     .build(),
      *                 GetImagesFilterArgs.builder()
-     *                     .key(&#34;regions&#34;)
-     *                     .values(&#34;nyc3&#34;)
+     *                     .key("regions")
+     *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;created&#34;)
+     *                 .direction("desc")
+     *                 .key("created")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5892,7 +6148,8 @@ public final class DigitaloceanFunctions {
      * ### Output a list of all available versions
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5915,16 +6172,18 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         ctx.export(&#34;k8s-versions&#34;, example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Create a Kubernetes cluster using the most recent version available
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5950,25 +6209,27 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Pin a Kubernetes cluster to a specific minor version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5993,22 +6254,23 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
-     *             .versionPrefix(&#34;1.22.&#34;)
+     *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6023,7 +6285,8 @@ public final class DigitaloceanFunctions {
      * ### Output a list of all available versions
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6046,16 +6309,18 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         ctx.export(&#34;k8s-versions&#34;, example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Create a Kubernetes cluster using the most recent version available
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6081,25 +6346,27 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Pin a Kubernetes cluster to a specific minor version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6124,22 +6391,23 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
-     *             .versionPrefix(&#34;1.22.&#34;)
+     *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6154,7 +6422,8 @@ public final class DigitaloceanFunctions {
      * ### Output a list of all available versions
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6177,16 +6446,18 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         ctx.export(&#34;k8s-versions&#34;, example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Create a Kubernetes cluster using the most recent version available
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6212,25 +6483,27 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Pin a Kubernetes cluster to a specific minor version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6255,22 +6528,23 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
-     *             .versionPrefix(&#34;1.22.&#34;)
+     *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6285,7 +6559,8 @@ public final class DigitaloceanFunctions {
      * ### Output a list of all available versions
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6308,16 +6583,18 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         ctx.export(&#34;k8s-versions&#34;, example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Create a Kubernetes cluster using the most recent version available
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6343,25 +6620,27 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Pin a Kubernetes cluster to a specific minor version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6386,22 +6665,23 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
-     *             .versionPrefix(&#34;1.22.&#34;)
+     *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6416,7 +6696,8 @@ public final class DigitaloceanFunctions {
      * ### Output a list of all available versions
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6439,16 +6720,18 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         ctx.export(&#34;k8s-versions&#34;, example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Create a Kubernetes cluster using the most recent version available
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6474,25 +6757,27 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Pin a Kubernetes cluster to a specific minor version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6517,22 +6802,23 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
-     *             .versionPrefix(&#34;1.22.&#34;)
+     *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6547,7 +6833,8 @@ public final class DigitaloceanFunctions {
      * ### Output a list of all available versions
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6570,16 +6857,18 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         ctx.export(&#34;k8s-versions&#34;, example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Create a Kubernetes cluster using the most recent version available
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6605,25 +6894,27 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Pin a Kubernetes cluster to a specific minor version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6648,22 +6939,23 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
-     *             .versionPrefix(&#34;1.22.&#34;)
+     *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster(&#34;example-cluster&#34;, KubernetesClusterArgs.builder()        
-     *             .region(&#34;lon1&#34;)
-     *             .version(example.applyValue(getKubernetesVersionsResult -&gt; getKubernetesVersionsResult.latestVersion()))
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
-     *                 .name(&#34;default&#34;)
-     *                 .size(&#34;s-1vcpu-2gb&#34;)
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
      *                 .nodeCount(3)
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6683,7 +6975,8 @@ public final class DigitaloceanFunctions {
      * Get the load balancer by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6705,19 +6998,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .name(&#34;app&#34;)
+     *             .name("app")
      *             .build());
      * 
-     *         ctx.export(&#34;lbOutput&#34;, example.applyValue(getLoadBalancerResult -&gt; getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6739,12 +7034,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .id(&#34;loadbalancer_id&#34;)
+     *             .id("loadbalancer_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6764,7 +7060,8 @@ public final class DigitaloceanFunctions {
      * Get the load balancer by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6786,19 +7083,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .name(&#34;app&#34;)
+     *             .name("app")
      *             .build());
      * 
-     *         ctx.export(&#34;lbOutput&#34;, example.applyValue(getLoadBalancerResult -&gt; getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6820,12 +7119,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .id(&#34;loadbalancer_id&#34;)
+     *             .id("loadbalancer_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6845,7 +7145,8 @@ public final class DigitaloceanFunctions {
      * Get the load balancer by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6867,19 +7168,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .name(&#34;app&#34;)
+     *             .name("app")
      *             .build());
      * 
-     *         ctx.export(&#34;lbOutput&#34;, example.applyValue(getLoadBalancerResult -&gt; getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6901,12 +7204,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .id(&#34;loadbalancer_id&#34;)
+     *             .id("loadbalancer_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6926,7 +7230,8 @@ public final class DigitaloceanFunctions {
      * Get the load balancer by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6948,19 +7253,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .name(&#34;app&#34;)
+     *             .name("app")
      *             .build());
      * 
-     *         ctx.export(&#34;lbOutput&#34;, example.applyValue(getLoadBalancerResult -&gt; getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6982,12 +7289,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .id(&#34;loadbalancer_id&#34;)
+     *             .id("loadbalancer_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7007,7 +7315,8 @@ public final class DigitaloceanFunctions {
      * Get the load balancer by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7029,19 +7338,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .name(&#34;app&#34;)
+     *             .name("app")
      *             .build());
      * 
-     *         ctx.export(&#34;lbOutput&#34;, example.applyValue(getLoadBalancerResult -&gt; getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7063,12 +7374,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .id(&#34;loadbalancer_id&#34;)
+     *             .id("loadbalancer_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7088,7 +7400,8 @@ public final class DigitaloceanFunctions {
      * Get the load balancer by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7110,19 +7423,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .name(&#34;app&#34;)
+     *             .name("app")
      *             .build());
      * 
-     *         ctx.export(&#34;lbOutput&#34;, example.applyValue(getLoadBalancerResult -&gt; getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Get the load balancer by ID:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7144,12 +7459,13 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .id(&#34;loadbalancer_id&#34;)
+     *             .id("loadbalancer_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7163,7 +7479,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7187,12 +7504,13 @@ public final class DigitaloceanFunctions {
      *         final var default = DigitaloceanFunctions.getProject();
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;My Staging Project&#34;)
+     *             .name("My Staging Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7206,7 +7524,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7230,12 +7549,13 @@ public final class DigitaloceanFunctions {
      *         final var default = DigitaloceanFunctions.getProject();
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;My Staging Project&#34;)
+     *             .name("My Staging Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7249,7 +7569,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7273,12 +7594,13 @@ public final class DigitaloceanFunctions {
      *         final var default = DigitaloceanFunctions.getProject();
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;My Staging Project&#34;)
+     *             .name("My Staging Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7292,7 +7614,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7316,12 +7639,13 @@ public final class DigitaloceanFunctions {
      *         final var default = DigitaloceanFunctions.getProject();
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;My Staging Project&#34;)
+     *             .name("My Staging Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7335,7 +7659,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7359,12 +7684,13 @@ public final class DigitaloceanFunctions {
      *         final var default = DigitaloceanFunctions.getProject();
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;My Staging Project&#34;)
+     *             .name("My Staging Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7378,7 +7704,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7402,12 +7729,13 @@ public final class DigitaloceanFunctions {
      *         final var default = DigitaloceanFunctions.getProject();
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;My Staging Project&#34;)
+     *             .name("My Staging Project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7430,7 +7758,8 @@ public final class DigitaloceanFunctions {
      * For example to find all staging environment projects:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7453,20 +7782,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(GetProjectsFilterArgs.builder()
-     *                 .key(&#34;environment&#34;)
-     *                 .values(&#34;Staging&#34;)
+     *                 .key("environment")
+     *                 .values("Staging")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7490,22 +7821,23 @@ public final class DigitaloceanFunctions {
      *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(            
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;environment&#34;)
-     *                     .values(&#34;Production&#34;)
+     *                     .key("environment")
+     *                     .values("Production")
      *                     .build(),
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;is_default&#34;)
-     *                     .values(&#34;false&#34;)
+     *                     .key("is_default")
+     *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7528,7 +7860,8 @@ public final class DigitaloceanFunctions {
      * For example to find all staging environment projects:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7551,20 +7884,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(GetProjectsFilterArgs.builder()
-     *                 .key(&#34;environment&#34;)
-     *                 .values(&#34;Staging&#34;)
+     *                 .key("environment")
+     *                 .values("Staging")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7588,22 +7923,23 @@ public final class DigitaloceanFunctions {
      *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(            
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;environment&#34;)
-     *                     .values(&#34;Production&#34;)
+     *                     .key("environment")
+     *                     .values("Production")
      *                     .build(),
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;is_default&#34;)
-     *                     .values(&#34;false&#34;)
+     *                     .key("is_default")
+     *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7626,7 +7962,8 @@ public final class DigitaloceanFunctions {
      * For example to find all staging environment projects:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7649,20 +7986,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(GetProjectsFilterArgs.builder()
-     *                 .key(&#34;environment&#34;)
-     *                 .values(&#34;Staging&#34;)
+     *                 .key("environment")
+     *                 .values("Staging")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7686,22 +8025,23 @@ public final class DigitaloceanFunctions {
      *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(            
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;environment&#34;)
-     *                     .values(&#34;Production&#34;)
+     *                     .key("environment")
+     *                     .values("Production")
      *                     .build(),
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;is_default&#34;)
-     *                     .values(&#34;false&#34;)
+     *                     .key("is_default")
+     *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7724,7 +8064,8 @@ public final class DigitaloceanFunctions {
      * For example to find all staging environment projects:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7747,20 +8088,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(GetProjectsFilterArgs.builder()
-     *                 .key(&#34;environment&#34;)
-     *                 .values(&#34;Staging&#34;)
+     *                 .key("environment")
+     *                 .values("Staging")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7784,22 +8127,23 @@ public final class DigitaloceanFunctions {
      *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(            
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;environment&#34;)
-     *                     .values(&#34;Production&#34;)
+     *                     .key("environment")
+     *                     .values("Production")
      *                     .build(),
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;is_default&#34;)
-     *                     .values(&#34;false&#34;)
+     *                     .key("is_default")
+     *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7822,7 +8166,8 @@ public final class DigitaloceanFunctions {
      * For example to find all staging environment projects:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7845,20 +8190,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(GetProjectsFilterArgs.builder()
-     *                 .key(&#34;environment&#34;)
-     *                 .values(&#34;Staging&#34;)
+     *                 .key("environment")
+     *                 .values("Staging")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7882,22 +8229,23 @@ public final class DigitaloceanFunctions {
      *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(            
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;environment&#34;)
-     *                     .values(&#34;Production&#34;)
+     *                     .key("environment")
+     *                     .values("Production")
      *                     .build(),
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;is_default&#34;)
-     *                     .values(&#34;false&#34;)
+     *                     .key("is_default")
+     *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7920,7 +8268,8 @@ public final class DigitaloceanFunctions {
      * For example to find all staging environment projects:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7943,20 +8292,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(GetProjectsFilterArgs.builder()
-     *                 .key(&#34;environment&#34;)
-     *                 .values(&#34;Staging&#34;)
+     *                 .key("environment")
+     *                 .values("Staging")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7980,22 +8331,23 @@ public final class DigitaloceanFunctions {
      *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
      *             .filters(            
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;environment&#34;)
-     *                     .values(&#34;Production&#34;)
+     *                     .key("environment")
+     *                     .values("Production")
      *                     .build(),
      *                 GetProjectsFilterArgs.builder()
-     *                     .key(&#34;is_default&#34;)
-     *                     .values(&#34;false&#34;)
+     *                     .key("is_default")
+     *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8015,7 +8367,8 @@ public final class DigitaloceanFunctions {
      * Get data from a DNS record:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8037,15 +8390,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
-     *             .domain(&#34;example.com&#34;)
-     *             .name(&#34;test&#34;)
+     *             .domain("example.com")
+     *             .name("test")
      *             .build());
      * 
-     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
-     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
+     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8065,7 +8419,8 @@ public final class DigitaloceanFunctions {
      * Get data from a DNS record:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8087,15 +8442,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
-     *             .domain(&#34;example.com&#34;)
-     *             .name(&#34;test&#34;)
+     *             .domain("example.com")
+     *             .name("test")
      *             .build());
      * 
-     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
-     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
+     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8115,7 +8471,8 @@ public final class DigitaloceanFunctions {
      * Get data from a DNS record:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8137,15 +8494,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
-     *             .domain(&#34;example.com&#34;)
-     *             .name(&#34;test&#34;)
+     *             .domain("example.com")
+     *             .name("test")
      *             .build());
      * 
-     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
-     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
+     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8165,7 +8523,8 @@ public final class DigitaloceanFunctions {
      * Get data from a DNS record:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8187,15 +8546,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
-     *             .domain(&#34;example.com&#34;)
-     *             .name(&#34;test&#34;)
+     *             .domain("example.com")
+     *             .name("test")
      *             .build());
      * 
-     *         ctx.export(&#34;recordType&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.type()));
-     *         ctx.export(&#34;recordTtl&#34;, example.applyValue(getRecordResult -&gt; getRecordResult.ttl()));
+     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
+     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8241,7 +8601,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8263,13 +8624,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sfo2 = DigitaloceanFunctions.getRegion(GetRegionArgs.builder()
-     *             .slug(&#34;sfo2&#34;)
+     *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export(&#34;regionName&#34;, sfo2.applyValue(getRegionResult -&gt; getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8283,7 +8645,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8305,13 +8668,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sfo2 = DigitaloceanFunctions.getRegion(GetRegionArgs.builder()
-     *             .slug(&#34;sfo2&#34;)
+     *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export(&#34;regionName&#34;, sfo2.applyValue(getRegionResult -&gt; getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8325,7 +8689,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8347,13 +8712,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sfo2 = DigitaloceanFunctions.getRegion(GetRegionArgs.builder()
-     *             .slug(&#34;sfo2&#34;)
+     *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export(&#34;regionName&#34;, sfo2.applyValue(getRegionResult -&gt; getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8367,7 +8733,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8389,13 +8756,14 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sfo2 = DigitaloceanFunctions.getRegion(GetRegionArgs.builder()
-     *             .slug(&#34;sfo2&#34;)
+     *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export(&#34;regionName&#34;, sfo2.applyValue(getRegionResult -&gt; getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8416,7 +8784,8 @@ public final class DigitaloceanFunctions {
      * For example to find all available regions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8439,20 +8808,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(GetRegionsFilterArgs.builder()
-     *                 .key(&#34;available&#34;)
-     *                 .values(&#34;true&#34;)
+     *                 .key("available")
+     *                 .values("true")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8476,22 +8847,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;available&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("available")
+     *                     .values("true")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;features&#34;)
-     *                     .values(&#34;private_networking&#34;)
+     *                     .key("features")
+     *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8512,7 +8884,8 @@ public final class DigitaloceanFunctions {
      * For example to find all available regions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8535,20 +8908,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(GetRegionsFilterArgs.builder()
-     *                 .key(&#34;available&#34;)
-     *                 .values(&#34;true&#34;)
+     *                 .key("available")
+     *                 .values("true")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8572,22 +8947,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;available&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("available")
+     *                     .values("true")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;features&#34;)
-     *                     .values(&#34;private_networking&#34;)
+     *                     .key("features")
+     *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8608,7 +8984,8 @@ public final class DigitaloceanFunctions {
      * For example to find all available regions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8631,20 +9008,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(GetRegionsFilterArgs.builder()
-     *                 .key(&#34;available&#34;)
-     *                 .values(&#34;true&#34;)
+     *                 .key("available")
+     *                 .values("true")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8668,22 +9047,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;available&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("available")
+     *                     .values("true")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;features&#34;)
-     *                     .values(&#34;private_networking&#34;)
+     *                     .key("features")
+     *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8704,7 +9084,8 @@ public final class DigitaloceanFunctions {
      * For example to find all available regions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8727,20 +9108,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(GetRegionsFilterArgs.builder()
-     *                 .key(&#34;available&#34;)
-     *                 .values(&#34;true&#34;)
+     *                 .key("available")
+     *                 .values("true")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8764,22 +9147,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;available&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("available")
+     *                     .values("true")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;features&#34;)
-     *                     .values(&#34;private_networking&#34;)
+     *                     .key("features")
+     *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8800,7 +9184,8 @@ public final class DigitaloceanFunctions {
      * For example to find all available regions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8823,20 +9208,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(GetRegionsFilterArgs.builder()
-     *                 .key(&#34;available&#34;)
-     *                 .values(&#34;true&#34;)
+     *                 .key("available")
+     *                 .values("true")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8860,22 +9247,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;available&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("available")
+     *                     .values("true")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;features&#34;)
-     *                     .values(&#34;private_networking&#34;)
+     *                     .key("features")
+     *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8896,7 +9284,8 @@ public final class DigitaloceanFunctions {
      * For example to find all available regions:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8919,20 +9308,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(GetRegionsFilterArgs.builder()
-     *                 .key(&#34;available&#34;)
-     *                 .values(&#34;true&#34;)
+     *                 .key("available")
+     *                 .values("true")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * You can filter on multiple fields and sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8956,22 +9347,23 @@ public final class DigitaloceanFunctions {
      *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
      *             .filters(            
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;available&#34;)
-     *                     .values(&#34;true&#34;)
+     *                     .key("available")
+     *                     .values("true")
      *                     .build(),
      *                 GetRegionsFilterArgs.builder()
-     *                     .key(&#34;features&#34;)
-     *                     .values(&#34;private_networking&#34;)
+     *                     .key("features")
+     *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8984,7 +9376,8 @@ public final class DigitaloceanFunctions {
      * Get the reserved IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9006,15 +9399,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getReservedIpResult -&gt; getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9027,7 +9421,8 @@ public final class DigitaloceanFunctions {
      * Get the reserved IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9049,15 +9444,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getReservedIpResult -&gt; getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9070,7 +9466,8 @@ public final class DigitaloceanFunctions {
      * Get the reserved IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9092,15 +9489,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getReservedIpResult -&gt; getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9113,7 +9511,8 @@ public final class DigitaloceanFunctions {
      * Get the reserved IP:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9135,15 +9534,16 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get(&#34;publicIp&#34;);
+     *         final var publicIp = config.get("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export(&#34;fipOutput&#34;, example.applyValue(getReservedIpResult -&gt; getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9213,7 +9613,8 @@ public final class DigitaloceanFunctions {
      * Get the bucket by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9235,14 +9636,15 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getSpacesBucket(GetSpacesBucketArgs.builder()
-     *             .name(&#34;my-spaces-bucket&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("my-spaces-bucket")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export(&#34;bucketDomainName&#34;, example.applyValue(getSpacesBucketResult -&gt; getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9258,7 +9660,8 @@ public final class DigitaloceanFunctions {
      * Get the bucket by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9280,14 +9683,15 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getSpacesBucket(GetSpacesBucketArgs.builder()
-     *             .name(&#34;my-spaces-bucket&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("my-spaces-bucket")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export(&#34;bucketDomainName&#34;, example.applyValue(getSpacesBucketResult -&gt; getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9303,7 +9707,8 @@ public final class DigitaloceanFunctions {
      * Get the bucket by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9325,14 +9730,15 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getSpacesBucket(GetSpacesBucketArgs.builder()
-     *             .name(&#34;my-spaces-bucket&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("my-spaces-bucket")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export(&#34;bucketDomainName&#34;, example.applyValue(getSpacesBucketResult -&gt; getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9348,7 +9754,8 @@ public final class DigitaloceanFunctions {
      * Get the bucket by name:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9370,14 +9777,15 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getSpacesBucket(GetSpacesBucketArgs.builder()
-     *             .name(&#34;my-spaces-bucket&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("my-spaces-bucket")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export(&#34;bucketDomainName&#34;, example.applyValue(getSpacesBucketResult -&gt; getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9398,7 +9806,8 @@ public final class DigitaloceanFunctions {
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9422,21 +9831,22 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bootstrapScript = DigitaloceanFunctions.getSpacesBucketObject(GetSpacesBucketObjectArgs.builder()
-     *             .bucket(&#34;ourcorp-deploy-config&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .key(&#34;droplet-bootstrap-script.sh&#34;)
+     *             .bucket("ourcorp-deploy-config")
+     *             .region("nyc3")
+     *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -&gt; getSpacesBucketObjectResult.body()))
+     *         var web = new Droplet("web", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9457,7 +9867,8 @@ public final class DigitaloceanFunctions {
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9481,21 +9892,22 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bootstrapScript = DigitaloceanFunctions.getSpacesBucketObject(GetSpacesBucketObjectArgs.builder()
-     *             .bucket(&#34;ourcorp-deploy-config&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .key(&#34;droplet-bootstrap-script.sh&#34;)
+     *             .bucket("ourcorp-deploy-config")
+     *             .region("nyc3")
+     *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -&gt; getSpacesBucketObjectResult.body()))
+     *         var web = new Droplet("web", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9516,7 +9928,8 @@ public final class DigitaloceanFunctions {
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9540,21 +9953,22 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bootstrapScript = DigitaloceanFunctions.getSpacesBucketObject(GetSpacesBucketObjectArgs.builder()
-     *             .bucket(&#34;ourcorp-deploy-config&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .key(&#34;droplet-bootstrap-script.sh&#34;)
+     *             .bucket("ourcorp-deploy-config")
+     *             .region("nyc3")
+     *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -&gt; getSpacesBucketObjectResult.body()))
+     *         var web = new Droplet("web", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9575,7 +9989,8 @@ public final class DigitaloceanFunctions {
      * value starting with `text/`) and uses it as the `user_data` for a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9599,21 +10014,22 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bootstrapScript = DigitaloceanFunctions.getSpacesBucketObject(GetSpacesBucketObjectArgs.builder()
-     *             .bucket(&#34;ourcorp-deploy-config&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .key(&#34;droplet-bootstrap-script.sh&#34;)
+     *             .bucket("ourcorp-deploy-config")
+     *             .region("nyc3")
+     *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -&gt; getSpacesBucketObjectResult.body()))
+     *         var web = new Droplet("web", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9670,7 +10086,8 @@ public final class DigitaloceanFunctions {
      * Get all buckets in a region:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9693,19 +10110,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9728,18 +10147,19 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9760,7 +10180,8 @@ public final class DigitaloceanFunctions {
      * Get all buckets in a region:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9783,19 +10204,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9818,18 +10241,19 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9850,7 +10274,8 @@ public final class DigitaloceanFunctions {
      * Get all buckets in a region:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9873,19 +10298,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9908,18 +10335,19 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9940,7 +10368,8 @@ public final class DigitaloceanFunctions {
      * Get all buckets in a region:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9963,19 +10392,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9998,18 +10429,19 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10030,7 +10462,8 @@ public final class DigitaloceanFunctions {
      * Get all buckets in a region:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10053,19 +10486,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10088,18 +10523,19 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10120,7 +10556,8 @@ public final class DigitaloceanFunctions {
      * Get all buckets in a region:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10143,19 +10580,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * You can sort the results as well:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10178,18 +10617,19 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
      *             .filters(GetSpacesBucketsFilterArgs.builder()
-     *                 .key(&#34;region&#34;)
-     *                 .values(&#34;nyc3&#34;)
+     *                 .key("region")
+     *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction(&#34;desc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("desc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10209,7 +10649,8 @@ public final class DigitaloceanFunctions {
      * Get the ssh key:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10233,19 +10674,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -&gt; getSshKeyResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10265,7 +10707,8 @@ public final class DigitaloceanFunctions {
      * Get the ssh key:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10289,19 +10732,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -&gt; getSshKeyResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10321,7 +10765,8 @@ public final class DigitaloceanFunctions {
      * Get the ssh key:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10345,19 +10790,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -&gt; getSshKeyResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10377,7 +10823,8 @@ public final class DigitaloceanFunctions {
      * Get the ssh key:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10401,19 +10848,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -&gt; getSshKeyResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10434,7 +10882,8 @@ public final class DigitaloceanFunctions {
      * For example, to find all SSH keys:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10457,20 +10906,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10493,16 +10944,17 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .filters(GetSshKeysFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
+     *                 .key("name")
      *                 .values(                
-     *                     &#34;laptop&#34;,
-     *                     &#34;desktop&#34;)
+     *                     "laptop",
+     *                     "desktop")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10523,7 +10975,8 @@ public final class DigitaloceanFunctions {
      * For example, to find all SSH keys:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10546,20 +10999,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10582,16 +11037,17 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .filters(GetSshKeysFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
+     *                 .key("name")
      *                 .values(                
-     *                     &#34;laptop&#34;,
-     *                     &#34;desktop&#34;)
+     *                     "laptop",
+     *                     "desktop")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10612,7 +11068,8 @@ public final class DigitaloceanFunctions {
      * For example, to find all SSH keys:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10635,20 +11092,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10671,16 +11130,17 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .filters(GetSshKeysFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
+     *                 .key("name")
      *                 .values(                
-     *                     &#34;laptop&#34;,
-     *                     &#34;desktop&#34;)
+     *                     "laptop",
+     *                     "desktop")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10701,7 +11161,8 @@ public final class DigitaloceanFunctions {
      * For example, to find all SSH keys:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10724,20 +11185,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10760,16 +11223,17 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .filters(GetSshKeysFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
+     *                 .key("name")
      *                 .values(                
-     *                     &#34;laptop&#34;,
-     *                     &#34;desktop&#34;)
+     *                     "laptop",
+     *                     "desktop")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10790,7 +11254,8 @@ public final class DigitaloceanFunctions {
      * For example, to find all SSH keys:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10813,20 +11278,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10849,16 +11316,17 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .filters(GetSshKeysFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
+     *                 .key("name")
      *                 .values(                
-     *                     &#34;laptop&#34;,
-     *                     &#34;desktop&#34;)
+     *                     "laptop",
+     *                     "desktop")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10879,7 +11347,8 @@ public final class DigitaloceanFunctions {
      * For example, to find all SSH keys:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10902,20 +11371,22 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction(&#34;asc&#34;)
-     *                 .key(&#34;name&#34;)
+     *                 .direction("asc")
+     *                 .key("name")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Or to find ones matching specific values:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10938,16 +11409,17 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .filters(GetSshKeysFilterArgs.builder()
-     *                 .key(&#34;name&#34;)
+     *                 .key("name")
      *                 .values(                
-     *                     &#34;laptop&#34;,
-     *                     &#34;desktop&#34;)
+     *                     "laptop",
+     *                     "desktop")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10966,7 +11438,8 @@ public final class DigitaloceanFunctions {
      * Get the tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10990,19 +11463,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .tags(exampleTag.applyValue(getTagResult -&gt; getTagResult.name()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11021,7 +11495,8 @@ public final class DigitaloceanFunctions {
      * Get the tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11045,19 +11520,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .tags(exampleTag.applyValue(getTagResult -&gt; getTagResult.name()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11076,7 +11552,8 @@ public final class DigitaloceanFunctions {
      * Get the tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11100,19 +11577,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .tags(exampleTag.applyValue(getTagResult -&gt; getTagResult.name()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11131,7 +11609,8 @@ public final class DigitaloceanFunctions {
      * Get the tag:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11155,19 +11634,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example&#34;)
+     *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc2&#34;)
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .tags(exampleTag.applyValue(getTagResult -&gt; getTagResult.name()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11182,7 +11662,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11205,15 +11686,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
      *             .sorts(GetTagsSortArgs.builder()
-     *                 .key(&#34;total_resource_count&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;sortedTags&#34;, list.applyValue(getTagsResult -&gt; getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11228,7 +11710,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11251,15 +11734,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
      *             .sorts(GetTagsSortArgs.builder()
-     *                 .key(&#34;total_resource_count&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;sortedTags&#34;, list.applyValue(getTagsResult -&gt; getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11274,7 +11758,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11297,15 +11782,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
      *             .sorts(GetTagsSortArgs.builder()
-     *                 .key(&#34;total_resource_count&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;sortedTags&#34;, list.applyValue(getTagsResult -&gt; getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11320,7 +11806,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11343,15 +11830,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
      *             .sorts(GetTagsSortArgs.builder()
-     *                 .key(&#34;total_resource_count&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;sortedTags&#34;, list.applyValue(getTagsResult -&gt; getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11366,7 +11854,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11389,15 +11878,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
      *             .sorts(GetTagsSortArgs.builder()
-     *                 .key(&#34;total_resource_count&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;sortedTags&#34;, list.applyValue(getTagsResult -&gt; getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11412,7 +11902,8 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11435,15 +11926,16 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
      *             .sorts(GetTagsSortArgs.builder()
-     *                 .key(&#34;total_resource_count&#34;)
-     *                 .direction(&#34;asc&#34;)
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;sortedTags&#34;, list.applyValue(getTagsResult -&gt; getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11463,7 +11955,8 @@ public final class DigitaloceanFunctions {
      * Get the volume:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11485,19 +11978,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11523,24 +12018,25 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment(&#34;foobar&#34;, VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -&gt; getVolumeResult.id()))
+     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11560,7 +12056,8 @@ public final class DigitaloceanFunctions {
      * Get the volume:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11582,19 +12079,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11620,24 +12119,25 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment(&#34;foobar&#34;, VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -&gt; getVolumeResult.id()))
+     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11657,7 +12157,8 @@ public final class DigitaloceanFunctions {
      * Get the volume:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11679,19 +12180,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11717,24 +12220,25 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment(&#34;foobar&#34;, VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -&gt; getVolumeResult.id()))
+     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11754,7 +12258,8 @@ public final class DigitaloceanFunctions {
      * Get the volume:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11776,19 +12281,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume to attach it to a Droplet:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11814,24 +12321,25 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
-     *             .name(&#34;app-data&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .name("app-data")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment(&#34;foobar&#34;, VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -&gt; getVolumeResult.id()))
+     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11848,7 +12356,8 @@ public final class DigitaloceanFunctions {
      * Get the volume snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11871,19 +12380,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11907,20 +12418,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
-     *             .region(&#34;nyc3&#34;)
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *             .region("nyc3")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -&gt; getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11937,7 +12449,8 @@ public final class DigitaloceanFunctions {
      * Get the volume snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11960,19 +12473,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11996,20 +12511,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
-     *             .region(&#34;nyc3&#34;)
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *             .region("nyc3")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -&gt; getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12026,7 +12542,8 @@ public final class DigitaloceanFunctions {
      * Get the volume snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12049,19 +12566,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12085,20 +12604,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
-     *             .region(&#34;nyc3&#34;)
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *             .region("nyc3")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -&gt; getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12115,7 +12635,8 @@ public final class DigitaloceanFunctions {
      * Get the volume snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12138,19 +12659,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12174,20 +12697,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
-     *             .region(&#34;nyc3&#34;)
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *             .region("nyc3")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -&gt; getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12204,7 +12728,8 @@ public final class DigitaloceanFunctions {
      * Get the volume snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12227,19 +12752,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12263,20 +12790,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
-     *             .region(&#34;nyc3&#34;)
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *             .region("nyc3")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -&gt; getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12293,7 +12821,8 @@ public final class DigitaloceanFunctions {
      * Get the volume snapshot:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12316,19 +12845,21 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
      *             .mostRecent(true)
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a volume snapshot to create a new volume based on it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12352,20 +12883,21 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .nameRegex(&#34;^web&#34;)
-     *             .region(&#34;nyc3&#34;)
+     *             .nameRegex("^web")
+     *             .region("nyc3")
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume(&#34;foobar&#34;, VolumeArgs.builder()        
-     *             .region(&#34;nyc3&#34;)
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *             .region("nyc3")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -&gt; getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12387,7 +12919,8 @@ public final class DigitaloceanFunctions {
      * ### VPC By Name
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12409,18 +12942,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12444,19 +12979,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -&gt; getVpcResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12478,7 +13014,8 @@ public final class DigitaloceanFunctions {
      * ### VPC By Name
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12500,18 +13037,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12535,19 +13074,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -&gt; getVpcResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12569,7 +13109,8 @@ public final class DigitaloceanFunctions {
      * ### VPC By Name
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12591,18 +13132,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12626,19 +13169,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -&gt; getVpcResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12660,7 +13204,8 @@ public final class DigitaloceanFunctions {
      * ### VPC By Name
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12682,18 +13227,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12717,19 +13264,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -&gt; getVpcResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12751,7 +13299,8 @@ public final class DigitaloceanFunctions {
      * ### VPC By Name
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12773,18 +13322,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12808,19 +13359,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -&gt; getVpcResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12842,7 +13394,8 @@ public final class DigitaloceanFunctions {
      * ### VPC By Name
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12864,18 +13417,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Reuse the data about a VPC to assign a Droplet to it:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -12899,19 +13454,20 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
-     *             .name(&#34;example-network&#34;)
+     *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
-     *             .size(&#34;s-1vcpu-1gb&#34;)
-     *             .image(&#34;ubuntu-18-04-x64&#34;)
-     *             .region(&#34;nyc3&#34;)
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -&gt; getVpcResult.id()))
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

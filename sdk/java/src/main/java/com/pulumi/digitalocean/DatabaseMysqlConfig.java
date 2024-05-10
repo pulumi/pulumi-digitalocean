@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDatabaseCluster = new DatabaseCluster(&#34;exampleDatabaseCluster&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;mysql&#34;)
- *             .version(&#34;8&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()        
+ *             .engine("mysql")
+ *             .version("8")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var exampleDatabaseMysqlConfig = new DatabaseMysqlConfig(&#34;exampleDatabaseMysqlConfig&#34;, DatabaseMysqlConfigArgs.builder()        
+ *         var exampleDatabaseMysqlConfig = new DatabaseMysqlConfig("exampleDatabaseMysqlConfig", DatabaseMysqlConfigArgs.builder()        
  *             .clusterId(exampleDatabaseCluster.id())
  *             .connectTimeout(10)
- *             .defaultTimeZone(&#34;UTC&#34;)
+ *             .defaultTimeZone("UTC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

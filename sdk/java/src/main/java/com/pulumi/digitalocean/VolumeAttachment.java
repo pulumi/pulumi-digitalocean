@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,27 +48,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarVolume = new Volume(&#34;foobarVolume&#34;, VolumeArgs.builder()        
- *             .region(&#34;nyc1&#34;)
+ *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()        
+ *             .region("nyc1")
  *             .size(100)
- *             .initialFilesystemType(&#34;ext4&#34;)
- *             .description(&#34;an example volume&#34;)
+ *             .initialFilesystemType("ext4")
+ *             .description("an example volume")
  *             .build());
  * 
- *         var foobarDroplet = new Droplet(&#34;foobarDroplet&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var foobarDroplet = new Droplet("foobarDroplet", DropletArgs.builder()        
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc1")
  *             .build());
  * 
- *         var foobarVolumeAttachment = new VolumeAttachment(&#34;foobarVolumeAttachment&#34;, VolumeAttachmentArgs.builder()        
+ *         var foobarVolumeAttachment = new VolumeAttachment("foobarVolumeAttachment", VolumeAttachmentArgs.builder()        
  *             .dropletId(foobarDroplet.id())
  *             .volumeId(foobarVolume.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
