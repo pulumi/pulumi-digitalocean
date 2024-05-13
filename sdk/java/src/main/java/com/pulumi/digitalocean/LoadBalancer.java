@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,30 +56,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var public_ = new LoadBalancer(&#34;public&#34;, LoadBalancerArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
+ *             .region("nyc3")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
  *                 .entryPort(80)
- *                 .entryProtocol(&#34;http&#34;)
+ *                 .entryProtocol("http")
  *                 .targetPort(80)
- *                 .targetProtocol(&#34;http&#34;)
+ *                 .targetProtocol("http")
  *                 .build())
  *             .healthcheck(LoadBalancerHealthcheckArgs.builder()
  *                 .port(22)
- *                 .protocol(&#34;tcp&#34;)
+ *                 .protocol("tcp")
  *                 .build())
  *             .dropletIds(web.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
@@ -88,7 +90,8 @@ import javax.annotation.Nullable;
  * as there cannot be multiple certificates with the same name in an account.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -115,36 +118,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
- *             .privateKey(&#34;file(&#39;key.pem&#39;)&#34;)
- *             .leafCertificate(&#34;file(&#39;cert.pem&#39;)&#34;)
+ *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *             .privateKey("file('key.pem')")
+ *             .leafCertificate("file('cert.pem')")
  *             .build());
  * 
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var public_ = new LoadBalancer(&#34;public&#34;, LoadBalancerArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
+ *             .region("nyc3")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
  *                 .entryPort(443)
- *                 .entryProtocol(&#34;https&#34;)
+ *                 .entryProtocol("https")
  *                 .targetPort(80)
- *                 .targetProtocol(&#34;http&#34;)
+ *                 .targetProtocol("http")
  *                 .certificateName(cert.name())
  *                 .build())
  *             .healthcheck(LoadBalancerHealthcheckArgs.builder()
  *                 .port(22)
- *                 .protocol(&#34;tcp&#34;)
+ *                 .protocol("tcp")
  *                 .build())
  *             .dropletIds(web.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

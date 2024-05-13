@@ -64,14 +64,14 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostname of the record. Use `@` for records on domain&#39;s name itself.
+     * The hostname of the record. Use `{@literal @}` for records on domain&#39;s name itself.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The hostname of the record. Use `@` for records on domain&#39;s name itself.
+     * @return The hostname of the record. Use `{@literal @}` for records on domain&#39;s name itself.
      * 
      */
     public Optional<Output<String>> name() {
@@ -281,7 +281,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The hostname of the record. Use `@` for records on domain&#39;s name itself.
+         * @param name The hostname of the record. Use `{@literal @}` for records on domain&#39;s name itself.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The hostname of the record. Use `@` for records on domain&#39;s name itself.
+         * @param name The hostname of the record. Use `{@literal @}` for records on domain&#39;s name itself.
          * 
          * @return builder
          * 

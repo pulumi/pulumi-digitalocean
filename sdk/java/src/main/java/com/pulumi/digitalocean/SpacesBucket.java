@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,12 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_assets = new SpacesBucket(&#34;static-assets&#34;);
+ *         var static_assets = new SpacesBucket("static-assets");
  * 
  *         // ...
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -70,7 +72,8 @@ import javax.annotation.Nullable;
  * ### Create a New Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,19 +94,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket(&#34;foobar&#34;, SpacesBucketArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
+ *             .region("nyc3")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a New Bucket With CORS Rules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,29 +130,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket(&#34;foobar&#34;, SpacesBucketArgs.builder()        
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
  *             .corsRules(            
  *                 SpacesBucketCorsRuleArgs.builder()
- *                     .allowedHeaders(&#34;*&#34;)
- *                     .allowedMethods(&#34;GET&#34;)
- *                     .allowedOrigins(&#34;*&#34;)
+ *                     .allowedHeaders("*")
+ *                     .allowedMethods("GET")
+ *                     .allowedOrigins("*")
  *                     .maxAgeSeconds(3000)
  *                     .build(),
  *                 SpacesBucketCorsRuleArgs.builder()
- *                     .allowedHeaders(&#34;*&#34;)
+ *                     .allowedHeaders("*")
  *                     .allowedMethods(                    
- *                         &#34;PUT&#34;,
- *                         &#34;POST&#34;,
- *                         &#34;DELETE&#34;)
- *                     .allowedOrigins(&#34;https://www.example.com&#34;)
+ *                         "PUT",
+ *                         "POST",
+ *                         "DELETE")
+ *                     .allowedOrigins("https://www.example.com")
  *                     .maxAgeSeconds(3000)
  *                     .build())
- *             .region(&#34;nyc3&#34;)
+ *             .region("nyc3")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

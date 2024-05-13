@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * 
  * ### Create a new PostgreSQL database connection pool
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,25 +47,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;15&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var pool_01 = new DatabaseConnectionPool(&#34;pool-01&#34;, DatabaseConnectionPoolArgs.builder()        
+ *         var pool_01 = new DatabaseConnectionPool("pool-01", DatabaseConnectionPoolArgs.builder()        
  *             .clusterId(postgres_example.id())
- *             .mode(&#34;transaction&#34;)
+ *             .mode("transaction")
  *             .size(20)
- *             .dbName(&#34;defaultdb&#34;)
- *             .user(&#34;doadmin&#34;)
+ *             .dbName("defaultdb")
+ *             .user("doadmin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

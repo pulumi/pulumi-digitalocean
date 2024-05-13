@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ### Limiting access to specific IP addresses
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,31 +44,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarSpacesBucket = new SpacesBucket(&#34;foobarSpacesBucket&#34;, SpacesBucketArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var foobarSpacesBucket = new SpacesBucket("foobarSpacesBucket", SpacesBucketArgs.builder()        
+ *             .region("nyc3")
  *             .build());
  * 
- *         var foobarSpacesBucketPolicy = new SpacesBucketPolicy(&#34;foobarSpacesBucketPolicy&#34;, SpacesBucketPolicyArgs.builder()        
+ *         var foobarSpacesBucketPolicy = new SpacesBucketPolicy("foobarSpacesBucketPolicy", SpacesBucketPolicyArgs.builder()        
  *             .region(foobarSpacesBucket.region())
  *             .bucket(foobarSpacesBucket.name())
- *             .policy(Output.tuple(foobarSpacesBucket.name(), foobarSpacesBucket.name()).applyValue(values -&gt; {
+ *             .policy(Output.tuple(foobarSpacesBucket.name(), foobarSpacesBucket.name()).applyValue(values -> {
  *                 var foobarSpacesBucketName = values.t1;
  *                 var foobarSpacesBucketName1 = values.t2;
  *                 return serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;Version&#34;, &#34;2012-10-17&#34;),
- *                         jsonProperty(&#34;Statement&#34;, jsonArray(jsonObject(
- *                             jsonProperty(&#34;Sid&#34;, &#34;IPAllow&#34;),
- *                             jsonProperty(&#34;Effect&#34;, &#34;Deny&#34;),
- *                             jsonProperty(&#34;Principal&#34;, &#34;*&#34;),
- *                             jsonProperty(&#34;Action&#34;, &#34;s3:*&#34;),
- *                             jsonProperty(&#34;Resource&#34;, jsonArray(
- *                                 String.format(&#34;arn:aws:s3:::%s&#34;, foobarSpacesBucketName), 
- *                                 String.format(&#34;arn:aws:s3:::%s/*&#34;, foobarSpacesBucketName1)
+ *                         jsonProperty("Version", "2012-10-17"),
+ *                         jsonProperty("Statement", jsonArray(jsonObject(
+ *                             jsonProperty("Sid", "IPAllow"),
+ *                             jsonProperty("Effect", "Deny"),
+ *                             jsonProperty("Principal", "*"),
+ *                             jsonProperty("Action", "s3:*"),
+ *                             jsonProperty("Resource", jsonArray(
+ *                                 String.format("arn:aws:s3:::%s", foobarSpacesBucketName), 
+ *                                 String.format("arn:aws:s3:::%s/*", foobarSpacesBucketName1)
  *                             )),
- *                             jsonProperty(&#34;Condition&#34;, jsonObject(
- *                                 jsonProperty(&#34;NotIpAddress&#34;, jsonObject(
- *                                     jsonProperty(&#34;aws:SourceIp&#34;, &#34;54.240.143.0/24&#34;)
+ *                             jsonProperty("Condition", jsonObject(
+ *                                 jsonProperty("NotIpAddress", jsonObject(
+ *                                     jsonProperty("aws:SourceIp", "54.240.143.0/24")
  *                                 ))
  *                             ))
  *                         )))
@@ -77,7 +78,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * !&gt; **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.

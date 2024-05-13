@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,30 +45,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
- *             .name(&#34;example.com&#34;)
+ *         var default_ = new Domain("default", DomainArgs.builder()        
+ *             .name("example.com")
  *             .build());
  * 
  *         // Add an A record to the domain for www.example.com.
- *         var www = new DnsRecord(&#34;www&#34;, DnsRecordArgs.builder()        
+ *         var www = new DnsRecord("www", DnsRecordArgs.builder()        
  *             .domain(default_.id())
- *             .type(&#34;A&#34;)
- *             .value(&#34;192.168.0.11&#34;)
+ *             .type("A")
+ *             .value("192.168.0.11")
  *             .build());
  * 
  *         // Add a MX record for the example.com domain itself.
- *         var mx = new DnsRecord(&#34;mx&#34;, DnsRecordArgs.builder()        
+ *         var mx = new DnsRecord("mx", DnsRecordArgs.builder()        
  *             .domain(default_.id())
- *             .type(&#34;MX&#34;)
+ *             .type("MX")
  *             .priority(10)
- *             .value(&#34;mail.example.com.&#34;)
+ *             .value("mail.example.com.")
  *             .build());
  * 
- *         ctx.export(&#34;wwwFqdn&#34;, www.fqdn());
- *         ctx.export(&#34;mxFqdn&#34;, mx.fqdn());
+ *         ctx.export("wwwFqdn", www.fqdn());
+ *         ctx.export("mxFqdn", mx.fqdn());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -126,14 +128,14 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
         return this.fqdn;
     }
     /**
-     * The hostname of the record. Use `@` for records on domain&#39;s name itself.
+     * The hostname of the record. Use `{@literal @}` for records on domain&#39;s name itself.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The hostname of the record. Use `@` for records on domain&#39;s name itself.
+     * @return The hostname of the record. Use `{@literal @}` for records on domain&#39;s name itself.
      * 
      */
     public Output<String> name() {

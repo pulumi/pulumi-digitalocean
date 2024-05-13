@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Get the container registry:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,13 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ContainerRegistryDockerCredentials(&#34;example&#34;, ContainerRegistryDockerCredentialsArgs.builder()        
- *             .registryName(&#34;example&#34;)
+ *         var example = new ContainerRegistryDockerCredentials("example", ContainerRegistryDockerCredentialsArgs.builder()        
+ *             .registryName("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Docker Provider Example
@@ -64,7 +66,8 @@ import javax.annotation.Nullable;
  * Use the `endpoint` and `docker_credentials` with the Docker provider:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -88,16 +91,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var exampleContainerRegistry = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
- *             .name(&#34;example&#34;)
+ *             .name("example")
  *             .build());
  * 
- *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials(&#34;exampleContainerRegistryDockerCredentials&#34;, ContainerRegistryDockerCredentialsArgs.builder()        
- *             .registryName(&#34;example&#34;)
+ *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()        
+ *             .registryName("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

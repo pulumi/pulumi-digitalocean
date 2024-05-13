@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,19 +47,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new tag
- *         var foobar = new Tag(&#34;foobar&#34;);
+ *         var foobar = new Tag("foobar");
  * 
  *         // Create a new Droplet in nyc3 with the foobar tag
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
- *             .size(&#34;s-1vcpu-1gb&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
+ *             .size("s-1vcpu-1gb")
  *             .tags(foobar.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

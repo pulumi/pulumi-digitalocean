@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,19 +47,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarVolume = new Volume(&#34;foobarVolume&#34;, VolumeArgs.builder()        
- *             .region(&#34;nyc1&#34;)
+ *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()        
+ *             .region("nyc1")
  *             .size(100)
- *             .description(&#34;an example volume&#34;)
+ *             .description("an example volume")
  *             .build());
  * 
- *         var foobarVolumeSnapshot = new VolumeSnapshot(&#34;foobarVolumeSnapshot&#34;, VolumeSnapshotArgs.builder()        
+ *         var foobarVolumeSnapshot = new VolumeSnapshot("foobarVolumeSnapshot", VolumeSnapshotArgs.builder()        
  *             .volumeId(foobarVolume.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
