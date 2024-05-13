@@ -25,8 +25,9 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster("exampleDatabaseCluster", new()
+    ///     var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster("example", new()
     ///     {
+    ///         Name = "example-postgresql-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -34,7 +35,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var exampleDatabasePostgresqlConfig = new DigitalOcean.DatabasePostgresqlConfig("exampleDatabasePostgresqlConfig", new()
+    ///     var example = new DigitalOcean.DatabasePostgresqlConfig("example", new()
     ///     {
     ///         ClusterId = exampleDatabaseCluster.Id,
     ///         Timezone = "UTC",

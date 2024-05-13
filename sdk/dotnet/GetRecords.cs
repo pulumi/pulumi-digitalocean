@@ -14,6 +14,46 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
         /// If no filters are specified, all records will be returned.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get data for all MX records in a domain:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetRecords.Invoke(new()
+        ///     {
+        ///         Domain = "example.com",
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRecordsFilterInputArgs
+        ///             {
+        ///                 Key = "type",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "MX",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mailServers"] = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = ",",
+        ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetRecordsResult> InvokeAsync(GetRecordsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsArgs(), options.WithDefaults());
@@ -21,6 +61,46 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
         /// If no filters are specified, all records will be returned.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get data for all MX records in a domain:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetRecords.Invoke(new()
+        ///     {
+        ///         Domain = "example.com",
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRecordsFilterInputArgs
+        ///             {
+        ///                 Key = "type",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "MX",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mailServers"] = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = ",",
+        ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRecordsResult> Invoke(GetRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordsResult>("digitalocean:index/getRecords:getRecords", args ?? new GetRecordsInvokeArgs(), options.WithDefaults());

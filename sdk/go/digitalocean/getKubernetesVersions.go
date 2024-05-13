@@ -59,6 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("example-cluster"),
 //				Region:  pulumi.String(digitalocean.RegionLON1),
 //				Version: pulumi.String(example.LatestVersion),
 //				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
@@ -97,6 +98,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("example-cluster"),
 //				Region:  pulumi.String(digitalocean.RegionLON1),
 //				Version: pulumi.String(example.LatestVersion),
 //				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{

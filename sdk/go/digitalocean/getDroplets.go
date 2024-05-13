@@ -88,8 +88,8 @@ import (
 //				},
 //				Sorts: []digitalocean.GetDropletsSort{
 //					{
-//						Direction: pulumi.StringRef("desc"),
 //						Key:       "created_at",
+//						Direction: pulumi.StringRef("desc"),
 //					},
 //				},
 //			}, nil)

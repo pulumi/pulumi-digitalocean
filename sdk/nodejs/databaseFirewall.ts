@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
@@ -49,11 +50,13 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
+ *     name: "web-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
@@ -76,6 +79,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
@@ -84,6 +88,7 @@ import * as utilities from "./utilities";
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
+ *     name: "replica-example",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  * });

@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "exampleDatabaseCluster", &digitalocean.DatabaseClusterArgs{
+//			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgresql-cluster"),
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
@@ -41,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabasePostgresqlConfig(ctx, "exampleDatabasePostgresqlConfig", &digitalocean.DatabasePostgresqlConfigArgs{
+//			_, err = digitalocean.NewDatabasePostgresqlConfig(ctx, "example", &digitalocean.DatabasePostgresqlConfigArgs{
 //				ClusterId: exampleDatabaseCluster.ID(),
 //				Timezone:  pulumi.String("UTC"),
 //				WorkMem:   pulumi.Int(16),

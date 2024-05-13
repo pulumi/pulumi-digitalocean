@@ -13,6 +13,49 @@ import (
 
 // Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
 // If no filters are specified, all records will be returned.
+//
+// ## Example Usage
+//
+// Get data for all MX records in a domain:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := digitalocean.GetRecords(ctx, &digitalocean.GetRecordsArgs{
+// Domain: "example.com",
+// Filters: []digitalocean.GetRecordsFilter{
+// {
+// Key: "type",
+// Values: []string{
+// "MX",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("mailServers", std.Join(ctx, var splat0 []*string
+// for _, val0 := range example.Records {
+// splat0 = append(splat0, val0.Value)
+// }
+// &std.JoinArgs{
+// Separator: ",",
+// Input: splat0,
+// }, nil).Result)
+// return nil
+// })
+// }
+// ```
 func GetRecords(ctx *pulumi.Context, args *GetRecordsArgs, opts ...pulumi.InvokeOption) (*GetRecordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecordsResult

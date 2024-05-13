@@ -50,11 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarFloatingIp = new FloatingIp("foobarFloatingIp", FloatingIpArgs.builder()        
+ *         var foobar = new FloatingIp("foobar", FloatingIpArgs.builder()        
  *             .region("sgp1")
  *             .build());
  * 
  *         var foobarDroplet = new Droplet("foobarDroplet", DropletArgs.builder()        
+ *             .name("baz")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")
  *             .region("sgp1")
@@ -63,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobarFloatingIpAssignment = new FloatingIpAssignment("foobarFloatingIpAssignment", FloatingIpAssignmentArgs.builder()        
- *             .ipAddress(foobarFloatingIp.ipAddress())
+ *             .ipAddress(foobar.ipAddress())
  *             .dropletId(foobarDroplet.id())
  *             .build());
  * 

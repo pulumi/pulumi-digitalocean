@@ -51,10 +51,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *             .name("custom-example")
  *             .type("custom")
- *             .privateKey(Files.readString(Paths.get("/Users/myuser/certs/privkey.pem")))
- *             .leafCertificate(Files.readString(Paths.get("/Users/myuser/certs/cert.pem")))
- *             .certificateChain(Files.readString(Paths.get("/Users/myuser/certs/fullchain.pem")))
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/certs/privkey.pem")
+ *                 .build()).result())
+ *             .leafCertificate(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/certs/cert.pem")
+ *                 .build()).result())
+ *             .certificateChain(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/certs/fullchain.pem")
+ *                 .build()).result())
  *             .build());
  * 
  *     }
@@ -89,8 +96,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cert = new Certificate("cert", CertificateArgs.builder()        
- *             .domains("example.com")
+ *             .name("le-example")
  *             .type("lets_encrypt")
+ *             .domains("example.com")
  *             .build());
  * 
  *     }
@@ -131,12 +139,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *             .name("le-example")
  *             .type("lets_encrypt")
  *             .domains("example.com")
  *             .build());
  * 
  *         // Create a new Load Balancer with TLS termination
  *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
+ *             .name("secure-loadbalancer-1")
  *             .region("nyc3")
  *             .dropletTag("backend")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()

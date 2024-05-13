@@ -22,25 +22,27 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
+    ///     var foobar = new DigitalOcean.Volume("foobar", new()
     ///     {
     ///         Region = DigitalOcean.Region.NYC1,
+    ///         Name = "baz",
     ///         Size = 100,
     ///         InitialFilesystemType = DigitalOcean.FileSystemType.EXT4,
     ///         Description = "an example volume",
     ///     });
     /// 
-    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobar", new()
     ///     {
+    ///         Name = "baz",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });
     /// 
-    ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobarVolumeAttachment", new()
+    ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobar", new()
     ///     {
     ///         DropletId = foobarDroplet.Id,
-    ///         VolumeId = foobarVolume.Id,
+    ///         VolumeId = foobar.Id,
     ///     });
     /// 
     /// });
@@ -56,16 +58,17 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarVolumeSnapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+    ///     var foobar = DigitalOcean.GetVolumeSnapshot.Invoke(new()
     ///     {
     ///         Name = "baz",
     ///     });
     /// 
-    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
+    ///     var foobarVolume = new DigitalOcean.Volume("foobar", new()
     ///     {
     ///         Region = DigitalOcean.Region.LON1,
-    ///         Size = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.MinDiskSize),
-    ///         SnapshotId = foobarVolumeSnapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
+    ///         Name = "foo",
+    ///         Size = foobar.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.MinDiskSize),
+    ///         SnapshotId = foobar.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
     ///     });
     /// 
     /// });

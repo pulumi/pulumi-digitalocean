@@ -325,9 +325,10 @@ class Project(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
+            purpose="Web Application",
+            environment="Development")
         ```
 
         The following example demonstrates the creation of a project with a Droplet resource:
@@ -337,10 +338,12 @@ class Project(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.Droplet("foobar",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
             purpose="Web Application",
             environment="Development",
@@ -400,9 +403,10 @@ class Project(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
+            purpose="Web Application",
+            environment="Development")
         ```
 
         The following example demonstrates the creation of a project with a Droplet resource:
@@ -412,10 +416,12 @@ class Project(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.Droplet("foobar",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
             purpose="Web Application",
             environment="Development",

@@ -26,8 +26,8 @@ import * as utilities from "./utilities";
  *
  * const keys = digitalocean.getSshKeys({
  *     sorts: [{
- *         direction: "asc",
  *         key: "name",
+ *         direction: "asc",
  *     }],
  * });
  * ```
@@ -109,8 +109,8 @@ export interface GetSshKeysResult {
  *
  * const keys = digitalocean.getSshKeys({
  *     sorts: [{
- *         direction: "asc",
  *         key: "name",
+ *         direction: "asc",
  *     }],
  * });
  * ```

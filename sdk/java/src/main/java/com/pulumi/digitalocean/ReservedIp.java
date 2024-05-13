@@ -47,7 +47,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+ *         var example = new Droplet("example", DropletArgs.builder()        
+ *             .name("example")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
@@ -56,8 +57,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleReservedIp = new ReservedIp("exampleReservedIp", ReservedIpArgs.builder()        
- *             .dropletId(exampleDroplet.id())
- *             .region(exampleDroplet.region())
+ *             .dropletId(example.id())
+ *             .region(example.region())
  *             .build());
  * 
  *     }

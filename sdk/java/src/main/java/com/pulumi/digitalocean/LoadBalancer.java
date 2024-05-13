@@ -57,12 +57,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .name("web-1")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
  *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
+ *             .name("loadbalancer-1")
  *             .region("nyc3")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
  *                 .entryPort(80)
@@ -88,68 +90,6 @@ import javax.annotation.Nullable;
  * operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
  * as there cannot be multiple certificates with the same name in an account.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.digitalocean.Certificate;
- * import com.pulumi.digitalocean.CertificateArgs;
- * import com.pulumi.digitalocean.Droplet;
- * import com.pulumi.digitalocean.DropletArgs;
- * import com.pulumi.digitalocean.LoadBalancer;
- * import com.pulumi.digitalocean.LoadBalancerArgs;
- * import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
- * import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var cert = new Certificate("cert", CertificateArgs.builder()        
- *             .privateKey("file('key.pem')")
- *             .leafCertificate("file('cert.pem')")
- *             .build());
- * 
- *         var web = new Droplet("web", DropletArgs.builder()        
- *             .size("s-1vcpu-1gb")
- *             .image("ubuntu-18-04-x64")
- *             .region("nyc3")
- *             .build());
- * 
- *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
- *             .region("nyc3")
- *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
- *                 .entryPort(443)
- *                 .entryProtocol("https")
- *                 .targetPort(80)
- *                 .targetProtocol("http")
- *                 .certificateName(cert.name())
- *                 .build())
- *             .healthcheck(LoadBalancerHealthcheckArgs.builder()
- *                 .port(22)
- *                 .protocol("tcp")
- *                 .build())
- *             .dropletIds(web.id())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

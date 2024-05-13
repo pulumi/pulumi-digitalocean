@@ -108,18 +108,20 @@ class VolumeAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar_volume = digitalocean.Volume("foobarVolume",
+        foobar = digitalocean.Volume("foobar",
             region=digitalocean.Region.NYC1,
+            name="baz",
             size=100,
             initial_filesystem_type=digitalocean.FileSystemType.EXT4,
             description="an example volume")
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+        foobar_droplet = digitalocean.Droplet("foobar",
+            name="baz",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
-        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
             droplet_id=foobar_droplet.id,
-            volume_id=foobar_volume.id)
+            volume_id=foobar.id)
         ```
 
         :param str resource_name: The name of the resource.
@@ -144,18 +146,20 @@ class VolumeAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar_volume = digitalocean.Volume("foobarVolume",
+        foobar = digitalocean.Volume("foobar",
             region=digitalocean.Region.NYC1,
+            name="baz",
             size=100,
             initial_filesystem_type=digitalocean.FileSystemType.EXT4,
             description="an example volume")
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+        foobar_droplet = digitalocean.Droplet("foobar",
+            name="baz",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
-        foobar_volume_attachment = digitalocean.VolumeAttachment("foobarVolumeAttachment",
+        foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
             droplet_id=foobar_droplet.id,
-            volume_id=foobar_volume.id)
+            volume_id=foobar.id)
         ```
 
         :param str resource_name: The name of the resource.

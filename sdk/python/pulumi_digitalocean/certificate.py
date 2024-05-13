@@ -335,12 +335,14 @@ class Certificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
+        import pulumi_std as std
 
         cert = digitalocean.Certificate("cert",
+            name="custom-example",
             type=digitalocean.CertificateType.CUSTOM,
-            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
-            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
-            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
+            private_key=std.file(input="/Users/myuser/certs/privkey.pem").result,
+            leaf_certificate=std.file(input="/Users/myuser/certs/cert.pem").result,
+            certificate_chain=std.file(input="/Users/myuser/certs/fullchain.pem").result)
         ```
 
         ### Let's Encrypt Certificate
@@ -350,8 +352,9 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
-            domains=["example.com"],
-            type=digitalocean.CertificateType.LETS_ENCRYPT)
+            name="le-example",
+            type=digitalocean.CertificateType.LETS_ENCRYPT,
+            domains=["example.com"])
         ```
 
         ### Use with Other Resources
@@ -364,10 +367,12 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
+            name="le-example",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["example.com"])
         # Create a new Load Balancer with TLS termination
         public = digitalocean.LoadBalancer("public",
+            name="secure-loadbalancer-1",
             region=digitalocean.Region.NYC3,
             droplet_tag="backend",
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
@@ -424,12 +429,14 @@ class Certificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
+        import pulumi_std as std
 
         cert = digitalocean.Certificate("cert",
+            name="custom-example",
             type=digitalocean.CertificateType.CUSTOM,
-            private_key=(lambda path: open(path).read())("/Users/myuser/certs/privkey.pem"),
-            leaf_certificate=(lambda path: open(path).read())("/Users/myuser/certs/cert.pem"),
-            certificate_chain=(lambda path: open(path).read())("/Users/myuser/certs/fullchain.pem"))
+            private_key=std.file(input="/Users/myuser/certs/privkey.pem").result,
+            leaf_certificate=std.file(input="/Users/myuser/certs/cert.pem").result,
+            certificate_chain=std.file(input="/Users/myuser/certs/fullchain.pem").result)
         ```
 
         ### Let's Encrypt Certificate
@@ -439,8 +446,9 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
-            domains=["example.com"],
-            type=digitalocean.CertificateType.LETS_ENCRYPT)
+            name="le-example",
+            type=digitalocean.CertificateType.LETS_ENCRYPT,
+            domains=["example.com"])
         ```
 
         ### Use with Other Resources
@@ -453,10 +461,12 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
+            name="le-example",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["example.com"])
         # Create a new Load Balancer with TLS termination
         public = digitalocean.LoadBalancer("public",
+            name="secure-loadbalancer-1",
             region=digitalocean.Region.NYC3,
             droplet_tag="backend",
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(

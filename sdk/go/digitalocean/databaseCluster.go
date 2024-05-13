@@ -30,11 +30,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgres-cluster"),
 //				Engine:    pulumi.String("pg"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("15"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -59,11 +60,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "mysql-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-mysql-cluster"),
 //				Engine:    pulumi.String("mysql"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("8"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -88,11 +90,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-redis-cluster"),
 //				Engine:    pulumi.String("redis"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("7"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -117,11 +120,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-kafka-cluster"),
 //				Engine:    pulumi.String("kafka"),
-//				NodeCount: pulumi.Int(3),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String("db-s-2vcpu-2gb"),
 //				Version:   pulumi.String("3.5"),
+//				Size:      pulumi.String("db-s-2vcpu-2gb"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err
@@ -146,11 +150,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-mongo-cluster"),
 //				Engine:    pulumi.String("mongodb"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC3),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("6"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC3),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -176,6 +181,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			doby, err := digitalocean.NewDatabaseCluster(ctx, "doby", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("dobydb"),
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
@@ -188,7 +194,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseCluster(ctx, "dobyBackup", &digitalocean.DatabaseClusterArgs{
+//			_, err = digitalocean.NewDatabaseCluster(ctx, "doby_backup", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("dobydupe"),
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),

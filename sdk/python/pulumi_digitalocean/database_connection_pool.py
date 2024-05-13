@@ -334,6 +334,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
@@ -341,6 +342,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             node_count=1)
         pool_01 = digitalocean.DatabaseConnectionPool("pool-01",
             cluster_id=postgres_example.id,
+            name="pool-01",
             mode="transaction",
             size=20,
             db_name="defaultdb",
@@ -383,6 +385,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
@@ -390,6 +393,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
             node_count=1)
         pool_01 = digitalocean.DatabaseConnectionPool("pool-01",
             cluster_id=postgres_example.id,
+            name="pool-01",
             mode="transaction",
             size=20,
             db_name="defaultdb",

@@ -142,12 +142,13 @@ def get_tag(name: Optional[str] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example_tag = digitalocean.get_tag(name="example")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
+    example = digitalocean.get_tag(name="example")
+    example_droplet = digitalocean.Droplet("example",
         image="ubuntu-18-04-x64",
+        name="example-1",
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-        tags=[example_tag.name])
+        tags=[example.name])
     ```
 
 
@@ -187,12 +188,13 @@ def get_tag_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example_tag = digitalocean.get_tag(name="example")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
+    example = digitalocean.get_tag(name="example")
+    example_droplet = digitalocean.Droplet("example",
         image="ubuntu-18-04-x64",
+        name="example-1",
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-        tags=[example_tag.name])
+        tags=[example.name])
     ```
 
 

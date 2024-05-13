@@ -32,7 +32,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Name:              pulumi.String("baz"),
 //				Size:              pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:             pulumi.String("ubuntu-18-04-x64"),
 //				Region:            pulumi.String(digitalocean.RegionSGP1),
@@ -42,9 +43,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
-//				DropletId: foobarDroplet.ID(),
-//				Region:    foobarDroplet.Region,
+//			_, err = digitalocean.NewFloatingIp(ctx, "foobar", &digitalocean.FloatingIpArgs{
+//				DropletId: foobar.ID(),
+//				Region:    foobar.Region,
 //			})
 //			if err != nil {
 //				return err

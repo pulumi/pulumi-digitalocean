@@ -44,9 +44,10 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var playground = new DigitalOcean.Project("playground", new()
     ///     {
+    ///         Name = "playground",
     ///         Description = "A project to represent development resources.",
-    ///         Environment = "Development",
     ///         Purpose = "Web Application",
+    ///         Environment = "Development",
     ///     });
     /// 
     /// });
@@ -64,6 +65,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.Droplet("foobar", new()
     ///     {
+    ///         Name = "example",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -71,6 +73,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var playground = new DigitalOcean.Project("playground", new()
     ///     {
+    ///         Name = "playground",
     ///         Description = "A project to represent development resources.",
     ///         Purpose = "Web Application",
     ///         Environment = "Development",

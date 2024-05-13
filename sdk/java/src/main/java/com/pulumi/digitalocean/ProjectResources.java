@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new Droplet("foobar", DropletArgs.builder()        
+ *             .name("example")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")

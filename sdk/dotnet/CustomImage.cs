@@ -34,6 +34,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var flatcar = new DigitalOcean.CustomImage("flatcar", new()
     ///     {
+    ///         Name = "flatcar",
     ///         Url = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
     ///         Regions = new[]
     ///         {
@@ -44,6 +45,7 @@ namespace Pulumi.DigitalOcean
     ///     var example = new DigitalOcean.Droplet("example", new()
     ///     {
     ///         Image = flatcar.Id,
+    ///         Name = "example-01",
     ///         Region = DigitalOcean.Region.NYC3,
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         SshKeys = new[]

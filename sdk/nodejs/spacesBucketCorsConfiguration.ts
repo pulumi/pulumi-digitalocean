@@ -16,7 +16,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: digitalocean.Region.NYC3});
+ * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     name: "foobar",
+ *     region: digitalocean.Region.NYC3,
+ * });
  * const test = new digitalocean.SpacesBucketCorsConfiguration("test", {
  *     bucket: foobar.id,
  *     region: "nyc3",

@@ -1762,13 +1762,14 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
+        example_database_cluster = digitalocean.DatabaseCluster("example",
+            name="example-postgresql-cluster",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        example_database_postgresql_config = digitalocean.DatabasePostgresqlConfig("exampleDatabasePostgresqlConfig",
+        example = digitalocean.DatabasePostgresqlConfig("example",
             cluster_id=example_database_cluster.id,
             timezone="UTC",
             work_mem=16)
@@ -1857,13 +1858,14 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
+        example_database_cluster = digitalocean.DatabaseCluster("example",
+            name="example-postgresql-cluster",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        example_database_postgresql_config = digitalocean.DatabasePostgresqlConfig("exampleDatabasePostgresqlConfig",
+        example = digitalocean.DatabasePostgresqlConfig("example",
             cluster_id=example_database_cluster.id,
             timezone="UTC",
             work_mem=16)

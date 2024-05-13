@@ -31,19 +31,20 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSshKey = DigitalOcean.GetSshKey.Invoke(new()
+        ///     var example = DigitalOcean.GetSshKey.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
-        ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///             example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
         ///         },
         ///     });
         /// 
@@ -73,19 +74,20 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSshKey = DigitalOcean.GetSshKey.Invoke(new()
+        ///     var example = DigitalOcean.GetSshKey.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
-        ///             exampleSshKey.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///             example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
         ///         },
         ///     });
         /// 

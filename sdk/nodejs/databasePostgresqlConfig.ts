@@ -19,14 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("exampleDatabaseCluster", {
+ * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("example", {
+ *     name: "example-postgresql-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
- * const exampleDatabasePostgresqlConfig = new digitalocean.DatabasePostgresqlConfig("exampleDatabasePostgresqlConfig", {
+ * const example = new digitalocean.DatabasePostgresqlConfig("example", {
  *     clusterId: exampleDatabaseCluster.id,
  *     timezone: "UTC",
  *     workMem: 16,

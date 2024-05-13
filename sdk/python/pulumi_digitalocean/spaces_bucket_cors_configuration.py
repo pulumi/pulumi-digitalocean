@@ -140,7 +140,9 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         test = digitalocean.SpacesBucketCorsConfiguration("test",
             bucket=foobar.id,
             region="nyc3",
@@ -185,7 +187,9 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         test = digitalocean.SpacesBucketCorsConfiguration("test",
             bucket=foobar.id,
             region="nyc3",

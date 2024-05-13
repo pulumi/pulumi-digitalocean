@@ -89,7 +89,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
-//				Id: pulumi.IntRef(digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id),
+//				Id: pulumi.IntRef(exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId),
 //			}, nil)
 //			if err != nil {
 //				return err

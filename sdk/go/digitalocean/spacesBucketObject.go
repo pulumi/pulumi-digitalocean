@@ -69,6 +69,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobar, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("foobar"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {

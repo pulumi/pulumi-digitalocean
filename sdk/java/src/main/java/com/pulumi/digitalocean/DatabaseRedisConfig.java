@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()        
+ *             .name("example-redis-cluster")
  *             .engine("redis")
  *             .version("7")
  *             .size("db-s-1vcpu-1gb")
@@ -56,7 +57,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var exampleDatabaseRedisConfig = new DatabaseRedisConfig("exampleDatabaseRedisConfig", DatabaseRedisConfigArgs.builder()        
+ *         var example = new DatabaseRedisConfig("example", DatabaseRedisConfigArgs.builder()        
  *             .clusterId(exampleDatabaseCluster.id())
  *             .maxmemoryPolicy("allkeys-lru")
  *             .notifyKeyspaceEvents("KEA")

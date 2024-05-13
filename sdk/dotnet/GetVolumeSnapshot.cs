@@ -30,9 +30,9 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
@@ -58,6 +58,7 @@ namespace Pulumi.DigitalOcean
         ///     var foobar = new DigitalOcean.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
+        ///         Name = "baz",
         ///         Size = 100,
         ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
         ///     });
@@ -87,9 +88,9 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
@@ -115,6 +116,7 @@ namespace Pulumi.DigitalOcean
         ///     var foobar = new DigitalOcean.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
+        ///         Name = "baz",
         ///         Size = 100,
         ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
         ///     });

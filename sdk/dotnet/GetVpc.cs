@@ -51,17 +51,18 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
+        ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Image = "ubuntu-18-04-x64",
         ///         Region = DigitalOcean.Region.NYC3,
-        ///         VpcUuid = exampleVpc.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///         VpcUuid = example.Apply(getVpcResult =&gt; getVpcResult.Id),
         ///     });
         /// 
         /// });
@@ -110,17 +111,18 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
+        ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Image = "ubuntu-18-04-x64",
         ///         Region = DigitalOcean.Region.NYC3,
-        ///         VpcUuid = exampleVpc.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///         VpcUuid = example.Apply(getVpcResult =&gt; getVpcResult.Id),
         ///     });
         /// 
         /// });

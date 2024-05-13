@@ -25,6 +25,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -35,6 +36,7 @@ namespace Pulumi.DigitalOcean
     ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "replica-example",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });
@@ -55,7 +57,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["uUID"] = replica_example.Uuid,
+    ///         ["UUID"] = replica_example.Uuid,
     ///     };
     /// });
     /// ```

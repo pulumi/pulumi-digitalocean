@@ -119,8 +119,8 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
             ),
         ],
         sorts=[digitalocean.GetRegionsSortArgs(
-            direction="desc",
             key="name",
+            direction="desc",
         )])
     ```
 
@@ -187,8 +187,8 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
             ),
         ],
         sorts=[digitalocean.GetRegionsSortArgs(
-            direction="desc",
             key="name",
+            direction="desc",
         )])
     ```
 

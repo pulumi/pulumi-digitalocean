@@ -30,19 +30,20 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTag = DigitalOcean.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Tags = new[]
         ///         {
-        ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
+        ///             example.Apply(getTagResult =&gt; getTagResult.Name),
         ///         },
         ///     });
         /// 
@@ -71,19 +72,20 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTag = DigitalOcean.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Tags = new[]
         ///         {
-        ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
+        ///             example.Apply(getTagResult =&gt; getTagResult.Name),
         ///         },
         ///     });
         /// 

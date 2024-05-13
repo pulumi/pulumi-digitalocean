@@ -93,6 +93,24 @@ def get_records(domain: Optional[str] = None,
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
     If no filters are specified, all records will be returned.
 
+    ## Example Usage
+
+    Get data for all MX records in a domain:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+    import pulumi_std as std
+
+    example = digitalocean.get_records(domain="example.com",
+        filters=[digitalocean.GetRecordsFilterArgs(
+            key="type",
+            values=["MX"],
+        )])
+    pulumi.export("mailServers", std.join(separator=",",
+        input=[__item.value for __item in example.records]).result)
+    ```
+
 
     :param str domain: The domain name to search for DNS records
     :param Sequence[pulumi.InputType['GetRecordsFilterArgs']] filters: Filter the results.
@@ -123,6 +141,24 @@ def get_records_output(domain: Optional[pulumi.Input[str]] = None,
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
     If no filters are specified, all records will be returned.
+
+    ## Example Usage
+
+    Get data for all MX records in a domain:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+    import pulumi_std as std
+
+    example = digitalocean.get_records(domain="example.com",
+        filters=[digitalocean.GetRecordsFilterArgs(
+            key="type",
+            values=["MX"],
+        )])
+    pulumi.export("mailServers", std.join(separator=",",
+        input=[__item.value for __item in example.records]).result)
+    ```
 
 
     :param str domain: The domain name to search for DNS records

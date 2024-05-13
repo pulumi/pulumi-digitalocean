@@ -54,8 +54,8 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "created",
+ *         direction: "desc",
  *     }],
  * });
  * ```
@@ -148,8 +148,8 @@ export interface GetImagesResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "created",
+ *         direction: "desc",
  *     }],
  * });
  * ```

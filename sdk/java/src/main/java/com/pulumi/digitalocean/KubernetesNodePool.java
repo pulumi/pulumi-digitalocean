@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()        
+ *             .name("foo")
  *             .region("nyc1")
  *             .version("1.22.8-do.1")
  *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var bar = new KubernetesNodePool("bar", KubernetesNodePoolArgs.builder()        
  *             .clusterId(foo.id())
+ *             .name("backend-pool")
  *             .size("c-2")
  *             .nodeCount(2)
  *             .tags("backend")
@@ -115,7 +117,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var autoscale_pool_01 = new KubernetesNodePool("autoscale-pool-01", KubernetesNodePoolArgs.builder()        
- *             .clusterId(digitalocean_kubernetes_cluster.foo().id())
+ *             .clusterId(foo.id())
+ *             .name("autoscale-pool-01")
  *             .size("s-1vcpu-2gb")
  *             .autoScale(true)
  *             .minNodes(1)

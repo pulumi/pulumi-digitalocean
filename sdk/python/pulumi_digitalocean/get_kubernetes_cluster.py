@@ -273,6 +273,15 @@ def get_kubernetes_cluster(name: Optional[str] = None,
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+    ```
+
 
     :param str name: The name of Kubernetes cluster.
     :param Sequence[str] tags: A list of tag names applied to the node pool.
@@ -312,6 +321,15 @@ def get_kubernetes_cluster_output(name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesClusterResult]:
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+    ```
 
 
     :param str name: The name of Kubernetes cluster.

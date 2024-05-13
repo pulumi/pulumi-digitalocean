@@ -89,8 +89,8 @@ import (
 //				},
 //				Sorts: []digitalocean.GetImagesSort{
 //					{
-//						Direction: pulumi.StringRef("desc"),
 //						Key:       "created",
+//						Direction: pulumi.StringRef("desc"),
 //					},
 //				},
 //			}, nil)

@@ -18,11 +18,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC1,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "15",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 1,
  * });
  * ```
  *
@@ -32,11 +33,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const mysql_example = new digitalocean.DatabaseCluster("mysql-example", {
+ *     name: "example-mysql-cluster",
  *     engine: "mysql",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC1,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "8",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 1,
  * });
  * ```
  *
@@ -46,11 +48,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const redis_example = new digitalocean.DatabaseCluster("redis-example", {
+ *     name: "example-redis-cluster",
  *     engine: "redis",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC1,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "7",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 1,
  * });
  * ```
  *
@@ -60,11 +63,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     name: "example-kafka-cluster",
  *     engine: "kafka",
- *     nodeCount: 3,
- *     region: digitalocean.Region.NYC1,
- *     size: "db-s-2vcpu-2gb",
  *     version: "3.5",
+ *     size: "db-s-2vcpu-2gb",
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 3,
  * });
  * ```
  *
@@ -74,11 +78,12 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const mongodb_example = new digitalocean.DatabaseCluster("mongodb-example", {
+ *     name: "example-mongo-cluster",
  *     engine: "mongodb",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC3,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "6",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC3,
+ *     nodeCount: 1,
  * });
  * ```
  *
@@ -89,6 +94,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const doby = new digitalocean.DatabaseCluster("doby", {
+ *     name: "dobydb",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
@@ -96,7 +102,8 @@ import * as utilities from "./utilities";
  *     nodeCount: 1,
  *     tags: ["production"],
  * });
- * const dobyBackup = new digitalocean.DatabaseCluster("dobyBackup", {
+ * const dobyBackup = new digitalocean.DatabaseCluster("doby_backup", {
+ *     name: "dobydupe",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,

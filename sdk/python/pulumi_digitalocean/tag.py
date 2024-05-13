@@ -175,10 +175,11 @@ class Tag(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         # Create a new tag
-        foobar = digitalocean.Tag("foobar")
+        foobar = digitalocean.Tag("foobar", name="foobar")
         # Create a new Droplet in nyc3 with the foobar tag
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
+            name="web-1",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             tags=[foobar.id])
@@ -215,10 +216,11 @@ class Tag(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         # Create a new tag
-        foobar = digitalocean.Tag("foobar")
+        foobar = digitalocean.Tag("foobar", name="foobar")
         # Create a new Droplet in nyc3 with the foobar tag
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
+            name="web-1",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             tags=[foobar.id])

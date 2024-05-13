@@ -48,11 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleReservedIp = new ReservedIp("exampleReservedIp", ReservedIpArgs.builder()        
+ *         var example = new ReservedIp("example", ReservedIpArgs.builder()        
  *             .region("nyc3")
  *             .build());
  * 
  *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+ *             .name("baz")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
@@ -61,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleReservedIpAssignment = new ReservedIpAssignment("exampleReservedIpAssignment", ReservedIpAssignmentArgs.builder()        
- *             .ipAddress(exampleReservedIp.ipAddress())
+ *             .ipAddress(example.ipAddress())
  *             .dropletId(exampleDroplet.id())
  *             .build());
  * 

@@ -28,6 +28,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -68,6 +69,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
+    ///         Name = "web-01",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -75,6 +77,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -110,6 +113,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -120,6 +124,7 @@ namespace Pulumi.DigitalOcean
     ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "replica-example",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });

@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
-//				MostRecent: pulumi.BoolRef(true),
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
+//				MostRecent: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -69,6 +69,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
 //				Region:     pulumi.String(digitalocean.RegionNYC3),
+//				Name:       pulumi.String("baz"),
 //				Size:       pulumi.Int(100),
 //				SnapshotId: pulumi.String(snapshot.Id),
 //			})

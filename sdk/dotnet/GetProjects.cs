@@ -87,8 +87,8 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
         ///             {
-        ///                 Direction = "asc",
         ///                 Key = "name",
+        ///                 Direction = "asc",
         ///             },
         ///         },
         ///     });
@@ -175,8 +175,8 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
         ///             {
-        ///                 Direction = "asc",
         ///                 Key = "name",
+        ///                 Direction = "asc",
         ///             },
         ///         },
         ///     });

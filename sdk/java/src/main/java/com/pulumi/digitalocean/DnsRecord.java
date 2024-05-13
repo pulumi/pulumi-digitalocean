@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *         var www = new DnsRecord("www", DnsRecordArgs.builder()        
  *             .domain(default_.id())
  *             .type("A")
+ *             .name("www")
  *             .value("192.168.0.11")
  *             .build());
  * 
@@ -60,6 +61,7 @@ import javax.annotation.Nullable;
  *         var mx = new DnsRecord("mx", DnsRecordArgs.builder()        
  *             .domain(default_.id())
  *             .type("MX")
+ *             .name("{@literal @}")
  *             .priority(10)
  *             .value("mail.example.com.")
  *             .build());

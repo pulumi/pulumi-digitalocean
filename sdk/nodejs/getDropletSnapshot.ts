@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web-snapshot = digitalocean.getDropletSnapshot({
- *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
+ *     mostRecent: true,
  * });
  * ```
  *
@@ -37,6 +37,7 @@ import * as utilities from "./utilities";
  * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     name: "web-02",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
@@ -127,9 +128,9 @@ export interface GetDropletSnapshotResult {
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web-snapshot = digitalocean.getDropletSnapshot({
- *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
+ *     mostRecent: true,
  * });
  * ```
  *
@@ -146,6 +147,7 @@ export interface GetDropletSnapshotResult {
  * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     name: "web-02",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });

@@ -36,7 +36,6 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
     /// 
-    ///     // ...
     /// });
     /// ```
     /// 
@@ -56,6 +55,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 

@@ -15,13 +15,17 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
- * const database_example = new digitalocean.DatabaseDb("database-example", {clusterId: postgres_example.id});
+ * const database_example = new digitalocean.DatabaseDb("database-example", {
+ *     clusterId: postgres_example.id,
+ *     name: "foobar",
+ * });
  * ```
  *
  * ## Import

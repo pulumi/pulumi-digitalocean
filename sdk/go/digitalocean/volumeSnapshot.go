@@ -28,16 +28,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+//			foobar, err := digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
 //				Region:      pulumi.String(digitalocean.RegionNYC1),
+//				Name:        pulumi.String("baz"),
 //				Size:        pulumi.Int(100),
 //				Description: pulumi.String("an example volume"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewVolumeSnapshot(ctx, "foobarVolumeSnapshot", &digitalocean.VolumeSnapshotArgs{
-//				VolumeId: foobarVolume.ID(),
+//			_, err = digitalocean.NewVolumeSnapshot(ctx, "foobar", &digitalocean.VolumeSnapshotArgs{
+//				Name:     pulumi.String("foo"),
+//				VolumeId: foobar.ID(),
 //			})
 //			if err != nil {
 //				return err

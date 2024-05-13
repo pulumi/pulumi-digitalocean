@@ -42,6 +42,7 @@ namespace Pulumi.DigitalOcean
         ///     var web = new DigitalOcean.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),
@@ -84,6 +85,7 @@ namespace Pulumi.DigitalOcean
         ///     var web = new DigitalOcean.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),

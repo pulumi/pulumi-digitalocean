@@ -85,8 +85,8 @@ import (
 //				},
 //				Sorts: []digitalocean.GetRegionsSort{
 //					{
-//						Direction: pulumi.StringRef("desc"),
 //						Key:       "name",
+//						Direction: pulumi.StringRef("desc"),
 //					},
 //				},
 //			}, nil)

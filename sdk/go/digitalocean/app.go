@@ -37,14 +37,14 @@ import (
 //					Region: pulumi.String("ams"),
 //					Services: digitalocean.AppSpecServiceArray{
 //						&digitalocean.AppSpecServiceArgs{
-//							EnvironmentSlug: pulumi.String("go"),
-//							Git: &digitalocean.AppSpecServiceGitArgs{
-//								Branch:       pulumi.String("main"),
-//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
-//							},
+//							Name:             pulumi.String("go-service"),
+//							EnvironmentSlug:  pulumi.String("go"),
 //							InstanceCount:    pulumi.Int(1),
 //							InstanceSizeSlug: pulumi.String("professional-xs"),
-//							Name:             pulumi.String("go-service"),
+//							Git: &digitalocean.AppSpecServiceGitArgs{
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
+//								Branch:       pulumi.String("main"),
+//							},
 //						},
 //					},
 //				},
@@ -78,13 +78,13 @@ import (
 //					Region: pulumi.String("ams"),
 //					StaticSites: digitalocean.AppSpecStaticSiteArray{
 //						&digitalocean.AppSpecStaticSiteArgs{
+//							Name:         pulumi.String("sample-jekyll"),
 //							BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
+//							OutputDir:    pulumi.String("/public"),
 //							Git: &digitalocean.AppSpecStaticSiteGitArgs{
-//								Branch:       pulumi.String("main"),
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
+//								Branch:       pulumi.String("main"),
 //							},
-//							Name:      pulumi.String("sample-jekyll"),
-//							OutputDir: pulumi.String("/public"),
 //						},
 //					},
 //				},

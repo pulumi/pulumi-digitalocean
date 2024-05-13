@@ -24,11 +24,13 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const flatcar = new digitalocean.CustomImage("flatcar", {
+ *     name: "flatcar",
  *     url: "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
  *     regions: ["nyc3"],
  * });
  * const example = new digitalocean.Droplet("example", {
  *     image: flatcar.id,
+ *     name: "example-01",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     sshKeys: ["12345"],

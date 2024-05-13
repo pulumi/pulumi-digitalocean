@@ -122,8 +122,8 @@ def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterA
             ),
         ],
         sorts=[digitalocean.GetProjectsSortArgs(
-            direction="asc",
             key="name",
+            direction="asc",
         )])
     ```
 
@@ -192,8 +192,8 @@ def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
             ),
         ],
         sorts=[digitalocean.GetProjectsSortArgs(
-            direction="asc",
             key="name",
+            direction="asc",
         )])
     ```
 

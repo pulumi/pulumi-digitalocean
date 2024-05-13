@@ -24,8 +24,9 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+    ///     var example = new DigitalOcean.Droplet("example", new()
     ///     {
+    ///         Name = "example",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -33,10 +34,10 @@ namespace Pulumi.DigitalOcean
     ///         PrivateNetworking = true,
     ///     });
     /// 
-    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new()
+    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("example", new()
     ///     {
-    ///         DropletId = exampleDroplet.Id,
-    ///         Region = exampleDroplet.Region,
+    ///         DropletId = example.Id,
+    ///         Region = example.Region,
     ///     });
     /// 
     /// });

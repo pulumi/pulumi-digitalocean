@@ -100,8 +100,8 @@ def get_domains(filters: Optional[Sequence[pulumi.InputType['GetDomainsFilterArg
 
     examples = digitalocean.get_domains(filters=[digitalocean.GetDomainsFilterArgs(
         key="name",
-        match_by="re",
         values=["example\\\\.com$"],
+        match_by="re",
     )])
     ```
 
@@ -149,8 +149,8 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     examples = digitalocean.get_domains(filters=[digitalocean.GetDomainsFilterArgs(
         key="name",
-        match_by="re",
         values=["example\\\\.com$"],
+        match_by="re",
     )])
     ```
 

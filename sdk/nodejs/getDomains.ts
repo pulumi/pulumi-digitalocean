@@ -29,8 +29,8 @@ import * as utilities from "./utilities";
  * const examples = digitalocean.getDomains({
  *     filters: [{
  *         key: "name",
- *         matchBy: "re",
  *         values: ["example\\.com$"],
+ *         matchBy: "re",
  *     }],
  * });
  * ```
@@ -98,8 +98,8 @@ export interface GetDomainsResult {
  * const examples = digitalocean.getDomains({
  *     filters: [{
  *         key: "name",
- *         matchBy: "re",
  *         values: ["example\\.com$"],
+ *         matchBy: "re",
  *     }],
  * });
  * ```

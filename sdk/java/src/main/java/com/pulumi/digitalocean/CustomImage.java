@@ -59,12 +59,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var flatcar = new CustomImage("flatcar", CustomImageArgs.builder()        
+ *             .name("flatcar")
  *             .url("https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2")
  *             .regions("nyc3")
  *             .build());
  * 
  *         var example = new Droplet("example", DropletArgs.builder()        
  *             .image(flatcar.id())
+ *             .name("example-01")
  *             .region("nyc3")
  *             .size("s-1vcpu-1gb")
  *             .sshKeys(12345)

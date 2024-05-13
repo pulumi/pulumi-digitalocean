@@ -440,13 +440,14 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
+        example_database_cluster = digitalocean.DatabaseCluster("example",
+            name="example-redis-cluster",
             engine="redis",
             version="7",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        example_database_redis_config = digitalocean.DatabaseRedisConfig("exampleDatabaseRedisConfig",
+        example = digitalocean.DatabaseRedisConfig("example",
             cluster_id=example_database_cluster.id,
             maxmemory_policy="allkeys-lru",
             notify_keyspace_events="KEA",
@@ -494,13 +495,14 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
+        example_database_cluster = digitalocean.DatabaseCluster("example",
+            name="example-redis-cluster",
             engine="redis",
             version="7",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        example_database_redis_config = digitalocean.DatabaseRedisConfig("exampleDatabaseRedisConfig",
+        example = digitalocean.DatabaseRedisConfig("example",
             cluster_id=example_database_cluster.id,
             maxmemory_policy="allkeys-lru",
             notify_keyspace_events="KEA",

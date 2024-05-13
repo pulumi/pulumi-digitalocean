@@ -31,13 +31,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new tag
-//			foobar, err := digitalocean.NewTag(ctx, "foobar", nil)
+//			foobar, err := digitalocean.NewTag(ctx, "foobar", &digitalocean.TagArgs{
+//				Name: pulumi.String("foobar"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new Droplet in nyc3 with the foobar tag
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Name:   pulumi.String("web-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Tags: pulumi.StringArray{

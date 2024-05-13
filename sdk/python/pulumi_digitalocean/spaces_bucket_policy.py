@@ -139,10 +139,12 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         import json
         import pulumi_digitalocean as digitalocean
 
-        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region=digitalocean.Region.NYC3)
-        foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
-            region=foobar_spaces_bucket.region,
-            bucket=foobar_spaces_bucket.name,
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
+        foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobar",
+            region=foobar.region,
+            bucket=foobar.name,
             policy=pulumi.Output.json_dumps({
                 "Version": "2012-10-17",
                 "Statement": [{
@@ -151,8 +153,8 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                     "Principal": "*",
                     "Action": "s3:*",
                     "Resource": [
-                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}"),
-                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}/*"),
+                        foobar.name.apply(lambda name: f"arn:aws:s3:::{name}"),
+                        foobar.name.apply(lambda name: f"arn:aws:s3:::{name}/*"),
                     ],
                     "Condition": {
                         "NotIpAddress": {
@@ -195,10 +197,12 @@ class SpacesBucketPolicy(pulumi.CustomResource):
         import json
         import pulumi_digitalocean as digitalocean
 
-        foobar_spaces_bucket = digitalocean.SpacesBucket("foobarSpacesBucket", region=digitalocean.Region.NYC3)
-        foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy",
-            region=foobar_spaces_bucket.region,
-            bucket=foobar_spaces_bucket.name,
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
+        foobar_spaces_bucket_policy = digitalocean.SpacesBucketPolicy("foobar",
+            region=foobar.region,
+            bucket=foobar.name,
             policy=pulumi.Output.json_dumps({
                 "Version": "2012-10-17",
                 "Statement": [{
@@ -207,8 +211,8 @@ class SpacesBucketPolicy(pulumi.CustomResource):
                     "Principal": "*",
                     "Action": "s3:*",
                     "Resource": [
-                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}"),
-                        foobar_spaces_bucket.name.apply(lambda name: f"arn:aws:s3:::{name}/*"),
+                        foobar.name.apply(lambda name: f"arn:aws:s3:::{name}"),
+                        foobar.name.apply(lambda name: f"arn:aws:s3:::{name}/*"),
                     ],
                     "Condition": {
                         "NotIpAddress": {

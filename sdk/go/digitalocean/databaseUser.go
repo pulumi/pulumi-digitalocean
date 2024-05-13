@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgres-cluster"),
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
@@ -43,6 +44,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
 //				ClusterId: postgres_example.ID(),
+//				Name:      pulumi.String("foobar"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,6 +69,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgres-cluster"),
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
@@ -78,6 +81,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
 //				ClusterId: postgres_example.ID(),
+//				Name:      pulumi.String("replica-example"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //			})
@@ -86,6 +90,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
 //				ClusterId: replica_example.Uuid,
+//				Name:      pulumi.String("foobar"),
 //			})
 //			if err != nil {
 //				return err
@@ -110,6 +115,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-kafka-cluster"),
 //				Engine:    pulumi.String("kafka"),
 //				Version:   pulumi.String("3.5"),
 //				Size:      pulumi.String("db-s-2vcpu-2gb"),
@@ -119,14 +125,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseKafkaTopic(ctx, "foobarTopic", &digitalocean.DatabaseKafkaTopicArgs{
-//				ClusterId: pulumi.Any(digitalocean_database_cluster.Foobar.Id),
+//			_, err = digitalocean.NewDatabaseKafkaTopic(ctx, "foobar_topic", &digitalocean.DatabaseKafkaTopicArgs{
+//				ClusterId: pulumi.Any(foobar.Id),
+//				Name:      pulumi.String("topic-1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseUser(ctx, "foobarUser", &digitalocean.DatabaseUserArgs{
-//				ClusterId: pulumi.Any(digitalocean_database_cluster.Foobar.Id),
+//			_, err = digitalocean.NewDatabaseUser(ctx, "foobar_user", &digitalocean.DatabaseUserArgs{
+//				ClusterId: pulumi.Any(foobar.Id),
+//				Name:      pulumi.String("example-user"),
 //				Settings: digitalocean.DatabaseUserSettingArray{
 //					&digitalocean.DatabaseUserSettingArgs{
 //						Acls: digitalocean.DatabaseUserSettingAclArray{

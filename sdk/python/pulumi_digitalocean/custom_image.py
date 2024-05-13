@@ -377,10 +377,12 @@ class CustomImage(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         flatcar = digitalocean.CustomImage("flatcar",
+            name="flatcar",
             url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
             regions=["nyc3"])
         example = digitalocean.Droplet("example",
             image=flatcar.id,
+            name="example-01",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])
@@ -421,10 +423,12 @@ class CustomImage(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         flatcar = digitalocean.CustomImage("flatcar",
+            name="flatcar",
             url="https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2",
             regions=["nyc3"])
         example = digitalocean.Droplet("example",
             image=flatcar.id,
+            name="example-01",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])

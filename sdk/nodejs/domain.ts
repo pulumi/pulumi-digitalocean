@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * // Create a new domain
  * const _default = new digitalocean.Domain("default", {
  *     name: "example.com",
- *     ipAddress: digitalocean_droplet.foo.ipv4_address,
+ *     ipAddress: foo.ipv4Address,
  * });
  * ```
  *

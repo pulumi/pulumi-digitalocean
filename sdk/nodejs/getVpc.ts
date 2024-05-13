@@ -33,14 +33,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVpc = digitalocean.getVpc({
+ * const example = digitalocean.getVpc({
  *     name: "example-network",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "example-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
- *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
+ *     vpcUuid: example.then(example => example.id),
  * });
  * ```
  */
@@ -139,14 +140,15 @@ export interface GetVpcResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVpc = digitalocean.getVpc({
+ * const example = digitalocean.getVpc({
  *     name: "example-network",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "example-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
- *     vpcUuid: exampleVpc.then(exampleVpc => exampleVpc.id),
+ *     vpcUuid: example.then(example => example.id),
  * });
  * ```
  */
