@@ -22,13 +22,20 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
  * const cert = new digitalocean.Certificate("cert", {
+ *     name: "custom-example",
  *     type: digitalocean.CertificateType.Custom,
- *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem", "utf8"),
- *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem", "utf8"),
- *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem", "utf8"),
+ *     privateKey: std.file({
+ *         input: "/Users/myuser/certs/privkey.pem",
+ *     }).then(invoke => invoke.result),
+ *     leafCertificate: std.file({
+ *         input: "/Users/myuser/certs/cert.pem",
+ *     }).then(invoke => invoke.result),
+ *     certificateChain: std.file({
+ *         input: "/Users/myuser/certs/fullchain.pem",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *
@@ -39,8 +46,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     domains: ["example.com"],
+ *     name: "le-example",
  *     type: digitalocean.CertificateType.LetsEncrypt,
+ *     domains: ["example.com"],
  * });
  * ```
  *
@@ -54,11 +62,13 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
+ *     name: "le-example",
  *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["example.com"],
  * });
  * // Create a new Load Balancer with TLS termination
  * const _public = new digitalocean.LoadBalancer("public", {
+ *     name: "secure-loadbalancer-1",
  *     region: digitalocean.Region.NYC3,
  *     dropletTag: "backend",
  *     forwardingRules: [{

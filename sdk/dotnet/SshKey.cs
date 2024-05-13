@@ -19,23 +19,28 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new SSH key
     ///     var @default = new DigitalOcean.SshKey("default", new()
     ///     {
-    ///         PublicKey = File.ReadAllText("/Users/myuser/.ssh/id_rsa.pub"),
+    ///         Name = "Example",
+    ///         PublicKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "/Users/myuser/.ssh/id_rsa.pub",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     ///     // Create a new Droplet using the SSH key
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
     ///         Image = "ubuntu-18-04-x64",
+    ///         Name = "web-1",
     ///         Region = DigitalOcean.Region.NYC3,
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         SshKeys = new[]

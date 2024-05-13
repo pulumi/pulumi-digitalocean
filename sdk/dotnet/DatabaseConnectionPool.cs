@@ -25,6 +25,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -35,6 +36,7 @@ namespace Pulumi.DigitalOcean
     ///     var pool_01 = new DigitalOcean.DatabaseConnectionPool("pool-01", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "pool-01",
     ///         Mode = "transaction",
     ///         Size = 20,
     ///         DbName = "defaultdb",

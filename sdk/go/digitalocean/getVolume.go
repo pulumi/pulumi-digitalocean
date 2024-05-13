@@ -61,14 +61,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVolume, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+//			example, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
 //				Name:   "app-data",
 //				Region: pulumi.StringRef("nyc3"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("foo"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -78,7 +79,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
 //				DropletId: exampleDroplet.ID(),
-//				VolumeId:  pulumi.String(exampleVolume.Id),
+//				VolumeId:  pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err

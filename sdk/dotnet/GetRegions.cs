@@ -85,8 +85,8 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetRegionsSortInputArgs
         ///             {
-        ///                 Direction = "desc",
         ///                 Key = "name",
+        ///                 Direction = "desc",
         ///             },
         ///         },
         ///     });
@@ -171,8 +171,8 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetRegionsSortInputArgs
         ///             {
-        ///                 Direction = "desc",
         ///                 Key = "name",
+        ///                 Direction = "desc",
         ///             },
         ///         },
         ///     });

@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new Spaces Bucket
  *         var mybucket = new SpacesBucket("mybucket", SpacesBucketArgs.builder()        
+ *             .name("example")
  *             .region("sfo2")
  *             .acl("public-read")
  *             .build());
@@ -96,12 +97,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new Spaces Bucket
  *         var mybucket = new SpacesBucket("mybucket", SpacesBucketArgs.builder()        
+ *             .name("example")
  *             .region("sfo2")
  *             .acl("public-read")
  *             .build());
  * 
  *         // Create a DigitalOcean managed Let's Encrypt Certificate
  *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *             .name("cdn-cert")
  *             .type("lets_encrypt")
  *             .domains("static.example.com")
  *             .build());

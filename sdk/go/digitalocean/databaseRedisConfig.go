@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "exampleDatabaseCluster", &digitalocean.DatabaseClusterArgs{
+//			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-redis-cluster"),
 //				Engine:    pulumi.String("redis"),
 //				Version:   pulumi.String("7"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
@@ -41,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseRedisConfig(ctx, "exampleDatabaseRedisConfig", &digitalocean.DatabaseRedisConfigArgs{
+//			_, err = digitalocean.NewDatabaseRedisConfig(ctx, "example", &digitalocean.DatabaseRedisConfigArgs{
 //				ClusterId:            exampleDatabaseCluster.ID(),
 //				MaxmemoryPolicy:      pulumi.String("allkeys-lru"),
 //				NotifyKeyspaceEvents: pulumi.String("KEA"),

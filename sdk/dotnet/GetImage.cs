@@ -49,14 +49,15 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = DigitalOcean.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///     });
@@ -123,14 +124,15 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = DigitalOcean.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///     });

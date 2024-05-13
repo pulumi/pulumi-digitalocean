@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgres-cluster"),
 //				Engine:    pulumi.String("pg"),
 //				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
@@ -41,6 +42,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseDb(ctx, "database-example", &digitalocean.DatabaseDbArgs{
 //				ClusterId: postgres_example.ID(),
+//				Name:      pulumi.String("foobar"),
 //			})
 //			if err != nil {
 //				return err

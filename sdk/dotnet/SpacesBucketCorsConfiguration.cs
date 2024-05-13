@@ -24,6 +24,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 

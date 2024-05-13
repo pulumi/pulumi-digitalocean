@@ -25,6 +25,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
     ///     {
+    ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
     ///         Version = "3.5",
     ///         Size = "db-s-2vcpu-2gb",
@@ -39,6 +40,7 @@ namespace Pulumi.DigitalOcean
     ///     var topic_01 = new DigitalOcean.DatabaseKafkaTopic("topic-01", new()
     ///     {
     ///         ClusterId = kafka_example.Id,
+    ///         Name = "topic-01",
     ///         PartitionCount = 3,
     ///         ReplicationFactor = 2,
     ///         Configs = new[]

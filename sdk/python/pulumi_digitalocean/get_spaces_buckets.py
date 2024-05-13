@@ -112,8 +112,8 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
             values=["nyc3"],
         )],
         sorts=[digitalocean.GetSpacesBucketsSortArgs(
-            direction="desc",
             key="name",
+            direction="desc",
         )])
     ```
 
@@ -173,8 +173,8 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
             values=["nyc3"],
         )],
         sorts=[digitalocean.GetSpacesBucketsSortArgs(
-            direction="desc",
             key="name",
+            direction="desc",
         )])
     ```
 

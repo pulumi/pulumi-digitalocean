@@ -90,12 +90,67 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleContainerRegistry = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+ *         final var example = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
  *             .name("example")
  *             .build());
  * 
  *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()        
  *             .registryName("example")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Kubernetes Example
+ * 
+ * Combined with the Kubernetes Provider&#39;s `kubernetes_secret` resource, you can
+ * access the registry from inside your cluster:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.ContainerRegistryDockerCredentials;
+ * import com.pulumi.digitalocean.ContainerRegistryDockerCredentialsArgs;
+ * import com.pulumi.digitalocean.DigitaloceanFunctions;
+ * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+ * import com.pulumi.kubernetes.core_v1.Secret;
+ * import com.pulumi.kubernetes.core_v1.SecretArgs;
+ * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()        
+ *             .registryName("example")
+ *             .build());
+ * 
+ *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+ *             .name("prod-cluster-01")
+ *             .build());
+ * 
+ *         var exampleSecret = new Secret("exampleSecret", SecretArgs.builder()        
+ *             .metadata(ObjectMetaArgs.builder()
+ *                 .name("docker-cfg")
+ *                 .build())
+ *             .data(Map.of(".dockerconfigjson", exampleContainerRegistryDockerCredentials.dockerCredentials()))
+ *             .type("kubernetes.io/dockerconfigjson")
  *             .build());
  * 
  *     }

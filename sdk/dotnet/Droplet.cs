@@ -27,6 +27,7 @@ namespace Pulumi.DigitalOcean
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
     ///         Image = "ubuntu-20-04-x64",
+    ///         Name = "web-1",
     ///         Region = DigitalOcean.Region.NYC2,
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///     });

@@ -97,8 +97,8 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
     import pulumi_digitalocean as digitalocean
 
     keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
-        direction="asc",
         key="name",
+        direction="asc",
     )])
     ```
 
@@ -158,8 +158,8 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi_digitalocean as digitalocean
 
     keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
-        direction="asc",
         key="name",
+        direction="asc",
     )])
     ```
 

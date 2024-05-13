@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  * // Create a new Web Droplet in the nyc2 region
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-20-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });

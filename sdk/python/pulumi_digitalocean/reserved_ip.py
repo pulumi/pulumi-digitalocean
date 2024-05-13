@@ -158,15 +158,16 @@ class ReservedIp(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.Droplet("example",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3,
             ipv6=True,
             private_networking=True)
-        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp",
-            droplet_id=example_droplet.id,
-            region=example_droplet.region)
+        example_reserved_ip = digitalocean.ReservedIp("example",
+            droplet_id=example.id,
+            region=example.region)
         ```
 
         ## Import
@@ -200,15 +201,16 @@ class ReservedIp(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.Droplet("example",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3,
             ipv6=True,
             private_networking=True)
-        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp",
-            droplet_id=example_droplet.id,
-            region=example_droplet.region)
+        example_reserved_ip = digitalocean.ReservedIp("example",
+            droplet_id=example.id,
+            region=example.region)
         ```
 
         ## Import

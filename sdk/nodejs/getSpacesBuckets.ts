@@ -43,8 +43,8 @@ import * as utilities from "./utilities";
  *         values: ["nyc3"],
  *     }],
  *     sorts: [{
- *         direction: "desc",
  *         key: "name",
+ *         direction: "desc",
  *     }],
  * });
  * ```
@@ -126,8 +126,8 @@ export interface GetSpacesBucketsResult {
  *         values: ["nyc3"],
  *     }],
  *     sorts: [{
- *         direction: "desc",
  *         key: "name",
+ *         direction: "desc",
  *     }],
  * });
  * ```

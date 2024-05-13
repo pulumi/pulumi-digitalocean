@@ -87,8 +87,8 @@ import (
 //				},
 //				Sorts: []digitalocean.GetProjectsSort{
 //					{
-//						Direction: pulumi.StringRef("asc"),
 //						Key:       "name",
+//						Direction: pulumi.StringRef("asc"),
 //					},
 //				},
 //			}, nil)

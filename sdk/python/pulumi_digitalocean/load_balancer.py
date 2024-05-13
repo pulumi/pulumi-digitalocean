@@ -873,10 +873,12 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
+            name="web-1",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3)
         public = digitalocean.LoadBalancer("public",
+            name="loadbalancer-1",
             region=digitalocean.Region.NYC3,
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
                 entry_port=80,
@@ -896,33 +898,6 @@ class LoadBalancer(pulumi.CustomResource):
         operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
         `Delete old certificate`. When doing so, you must also change the name of the certificate,
         as there cannot be multiple certificates with the same name in an account.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            private_key="file('key.pem')",
-            leaf_certificate="file('cert.pem')")
-        web = digitalocean.Droplet("web",
-            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-            image="ubuntu-18-04-x64",
-            region=digitalocean.Region.NYC3)
-        public = digitalocean.LoadBalancer("public",
-            region=digitalocean.Region.NYC3,
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=443,
-                entry_protocol="https",
-                target_port=80,
-                target_protocol="http",
-                certificate_name=cert.name,
-            )],
-            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
-                port=22,
-                protocol="tcp",
-            ),
-            droplet_ids=[web.id])
-        ```
 
         ## Import
 
@@ -985,10 +960,12 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
+            name="web-1",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3)
         public = digitalocean.LoadBalancer("public",
+            name="loadbalancer-1",
             region=digitalocean.Region.NYC3,
             forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
                 entry_port=80,
@@ -1008,33 +985,6 @@ class LoadBalancer(pulumi.CustomResource):
         operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
         `Delete old certificate`. When doing so, you must also change the name of the certificate,
         as there cannot be multiple certificates with the same name in an account.
-
-        ```python
-        import pulumi
-        import pulumi_digitalocean as digitalocean
-
-        cert = digitalocean.Certificate("cert",
-            private_key="file('key.pem')",
-            leaf_certificate="file('cert.pem')")
-        web = digitalocean.Droplet("web",
-            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-            image="ubuntu-18-04-x64",
-            region=digitalocean.Region.NYC3)
-        public = digitalocean.LoadBalancer("public",
-            region=digitalocean.Region.NYC3,
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=443,
-                entry_protocol="https",
-                target_port=80,
-                target_protocol="http",
-                certificate_name=cert.name,
-            )],
-            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
-                port=22,
-                protocol="tcp",
-            ),
-            droplet_ids=[web.id])
-        ```
 
         ## Import
 

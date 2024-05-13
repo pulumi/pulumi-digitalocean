@@ -18,11 +18,13 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
+ *     name: "web-1",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const _public = new digitalocean.LoadBalancer("public", {
+ *     name: "loadbalancer-1",
  *     region: digitalocean.Region.NYC3,
  *     forwardingRules: [{
  *         entryPort: 80,
@@ -43,36 +45,6 @@ import * as utilities from "./utilities";
  * operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
  * as there cannot be multiple certificates with the same name in an account.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const cert = new digitalocean.Certificate("cert", {
- *     privateKey: "file('key.pem')",
- *     leafCertificate: "file('cert.pem')",
- * });
- * const web = new digitalocean.Droplet("web", {
- *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     image: "ubuntu-18-04-x64",
- *     region: digitalocean.Region.NYC3,
- * });
- * const _public = new digitalocean.LoadBalancer("public", {
- *     region: digitalocean.Region.NYC3,
- *     forwardingRules: [{
- *         entryPort: 443,
- *         entryProtocol: "https",
- *         targetPort: 80,
- *         targetProtocol: "http",
- *         certificateName: cert.name,
- *     }],
- *     healthcheck: {
- *         port: 22,
- *         protocol: "tcp",
- *     },
- *     dropletIds: [web.id],
- * });
- * ```
  *
  * ## Import
  *

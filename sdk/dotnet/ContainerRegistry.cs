@@ -26,6 +26,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new container registry
     ///     var foobar = new DigitalOcean.ContainerRegistry("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         SubscriptionTierSlug = "starter",
     ///     });
     /// 

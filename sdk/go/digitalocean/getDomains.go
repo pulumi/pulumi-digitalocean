@@ -40,11 +40,11 @@ import (
 //			_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
 //				Filters: []digitalocean.GetDomainsFilter{
 //					{
-//						Key:     "name",
-//						MatchBy: pulumi.StringRef("re"),
+//						Key: "name",
 //						Values: []string{
 //							"example\\.com$",
 //						},
+//						MatchBy: pulumi.StringRef("re"),
 //					},
 //				},
 //			}, nil)

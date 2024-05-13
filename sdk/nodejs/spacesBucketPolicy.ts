@@ -13,10 +13,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobarSpacesBucket = new digitalocean.SpacesBucket("foobarSpacesBucket", {region: digitalocean.Region.NYC3});
- * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy", {
- *     region: foobarSpacesBucket.region,
- *     bucket: foobarSpacesBucket.name,
+ * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     name: "foobar",
+ *     region: digitalocean.Region.NYC3,
+ * });
+ * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobar", {
+ *     region: foobar.region,
+ *     bucket: foobar.name,
  *     policy: pulumi.jsonStringify({
  *         Version: "2012-10-17",
  *         Statement: [{
@@ -25,8 +28,8 @@ import * as utilities from "./utilities";
  *             Principal: "*",
  *             Action: "s3:*",
  *             Resource: [
- *                 pulumi.interpolate`arn:aws:s3:::${foobarSpacesBucket.name}`,
- *                 pulumi.interpolate`arn:aws:s3:::${foobarSpacesBucket.name}/*`,
+ *                 pulumi.interpolate`arn:aws:s3:::${foobar.name}`,
+ *                 pulumi.interpolate`arn:aws:s3:::${foobar.name}/*`,
  *             ],
  *             Condition: {
  *                 NotIpAddress: {

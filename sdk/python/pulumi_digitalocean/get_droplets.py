@@ -122,8 +122,8 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
             ),
         ],
         sorts=[digitalocean.GetDropletsSortArgs(
-            direction="desc",
             key="created_at",
+            direction="desc",
         )])
     ```
 
@@ -193,8 +193,8 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
             ),
         ],
         sorts=[digitalocean.GetDropletsSortArgs(
-            direction="desc",
             key="created_at",
+            direction="desc",
         )])
     ```
 

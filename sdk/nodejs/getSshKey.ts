@@ -20,14 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleSshKey = digitalocean.getSshKey({
+ * const example = digitalocean.getSshKey({
  *     name: "example",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
+ *     sshKeys: [example.then(example => example.id)],
  * });
  * ```
  */
@@ -83,14 +84,15 @@ export interface GetSshKeyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleSshKey = digitalocean.getSshKey({
+ * const example = digitalocean.getSshKey({
  *     name: "example",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
+ *     sshKeys: [example.then(example => example.id)],
  * });
  * ```
  */

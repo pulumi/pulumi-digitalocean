@@ -48,12 +48,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new SSH key
  *         var default_ = new SshKey("default", SshKeyArgs.builder()        
- *             .publicKey(Files.readString(Paths.get("/Users/myuser/.ssh/id_rsa.pub")))
+ *             .name("Example")
+ *             .publicKey(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/.ssh/id_rsa.pub")
+ *                 .build()).result())
  *             .build());
  * 
  *         // Create a new Droplet using the SSH key
  *         var web = new Droplet("web", DropletArgs.builder()        
  *             .image("ubuntu-18-04-x64")
+ *             .name("web-1")
  *             .region("nyc3")
  *             .size("s-1vcpu-1gb")
  *             .sshKeys(default_.fingerprint())

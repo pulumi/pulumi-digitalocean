@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("web-1"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -37,6 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Name:   pulumi.String("loadbalancer-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
 //					&digitalocean.LoadBalancerForwardingRuleArgs{
@@ -68,61 +70,6 @@ import (
 // operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
 // `Delete old certificate`. When doing so, you must also change the name of the certificate,
 // as there cannot be multiple certificates with the same name in an account.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-//				PrivateKey:      pulumi.String("file('key.pem')"),
-//				LeafCertificate: pulumi.String("file('cert.pem')"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
-//				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String(digitalocean.RegionNYC3),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-//				Region: pulumi.String(digitalocean.RegionNYC3),
-//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
-//					&digitalocean.LoadBalancerForwardingRuleArgs{
-//						EntryPort:       pulumi.Int(443),
-//						EntryProtocol:   pulumi.String("https"),
-//						TargetPort:      pulumi.Int(80),
-//						TargetProtocol:  pulumi.String("http"),
-//						CertificateName: cert.Name,
-//					},
-//				},
-//				Healthcheck: &digitalocean.LoadBalancerHealthcheckArgs{
-//					Port:     pulumi.Int(22),
-//					Protocol: pulumi.String("tcp"),
-//				},
-//				DropletIds: pulumi.IntArray{
-//					web.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

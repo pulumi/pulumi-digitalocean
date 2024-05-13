@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getDroplet({
- *     id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,
+ *     id: exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId,
  * });
  * ```
  */
@@ -219,7 +219,7 @@ export interface GetDropletResult {
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getDroplet({
- *     id: digitalocean_kubernetes_cluster.example.node_pool[0].nodes[0].droplet_id,
+ *     id: exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId,
  * });
  * ```
  */

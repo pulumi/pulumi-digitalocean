@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var user_example = new DatabaseUser("user-example", DatabaseUserArgs.builder()        
  *             .clusterId(postgres_example.id())
+ *             .name("foobar")
  *             .build());
  * 
  *     }
@@ -96,6 +98,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -105,12 +108,14 @@ import javax.annotation.Nullable;
  * 
  *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
+ *             .name("replica-example")
  *             .size("db-s-1vcpu-1gb")
  *             .region("nyc1")
  *             .build());
  * 
  *         var user_example = new DatabaseUser("user-example", DatabaseUserArgs.builder()        
  *             .clusterId(replica_example.uuid())
+ *             .name("foobar")
  *             .build());
  * 
  *     }
@@ -149,6 +154,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()        
+ *             .name("example-kafka-cluster")
  *             .engine("kafka")
  *             .version("3.5")
  *             .size("db-s-2vcpu-2gb")
@@ -157,11 +163,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobarTopic = new DatabaseKafkaTopic("foobarTopic", DatabaseKafkaTopicArgs.builder()        
- *             .clusterId(digitalocean_database_cluster.foobar().id())
+ *             .clusterId(foobar.id())
+ *             .name("topic-1")
  *             .build());
  * 
  *         var foobarUser = new DatabaseUser("foobarUser", DatabaseUserArgs.builder()        
- *             .clusterId(digitalocean_database_cluster.foobar().id())
+ *             .clusterId(foobar.id())
+ *             .name("example-user")
  *             .settings(DatabaseUserSettingArgs.builder()
  *                 .acls(                
  *                     DatabaseUserSettingAclArgs.builder()

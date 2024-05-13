@@ -60,14 +60,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleImage, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+//			example, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
 //				Name: pulumi.StringRef("example-1.0.0"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-//				Image:  pulumi.Int(exampleImage.Id),
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Image:  pulumi.Int(example.Id),
+//				Name:   pulumi.String("example-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //			})

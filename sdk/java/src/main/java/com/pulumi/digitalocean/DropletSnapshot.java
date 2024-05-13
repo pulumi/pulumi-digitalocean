@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .name("web-01")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
@@ -54,10 +55,12 @@ import javax.annotation.Nullable;
  * 
  *         var web_snapshot = new DropletSnapshot("web-snapshot", DropletSnapshotArgs.builder()        
  *             .dropletId(web.id())
+ *             .name("web-snapshot-01")
  *             .build());
  * 
  *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
  *             .image(web_snapshot.id())
+ *             .name("web-02")
  *             .region("nyc3")
  *             .size("s-2vcpu-4gb")
  *             .build());

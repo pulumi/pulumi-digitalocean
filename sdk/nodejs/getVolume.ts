@@ -32,18 +32,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVolume = digitalocean.getVolume({
+ * const example = digitalocean.getVolume({
  *     name: "app-data",
  *     region: "nyc3",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "foo",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
+ *     volumeId: example.then(example => example.id),
  * });
  * ```
  */
@@ -142,18 +143,19 @@ export interface GetVolumeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVolume = digitalocean.getVolume({
+ * const example = digitalocean.getVolume({
  *     name: "app-data",
  *     region: "nyc3",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "foo",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
+ *     volumeId: example.then(example => example.id),
  * });
  * ```
  */

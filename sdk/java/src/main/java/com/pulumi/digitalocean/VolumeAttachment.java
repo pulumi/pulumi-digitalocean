@@ -48,14 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()        
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()        
  *             .region("nyc1")
+ *             .name("baz")
  *             .size(100)
  *             .initialFilesystemType("ext4")
  *             .description("an example volume")
  *             .build());
  * 
  *         var foobarDroplet = new Droplet("foobarDroplet", DropletArgs.builder()        
+ *             .name("baz")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")
  *             .region("nyc1")
@@ -63,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var foobarVolumeAttachment = new VolumeAttachment("foobarVolumeAttachment", VolumeAttachmentArgs.builder()        
  *             .dropletId(foobarDroplet.id())
- *             .volumeId(foobarVolume.id())
+ *             .volumeId(foobar.id())
  *             .build());
  * 
  *     }

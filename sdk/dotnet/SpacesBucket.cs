@@ -34,7 +34,6 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
     /// 
-    ///     // ...
     /// });
     /// ```
     /// 
@@ -54,6 +53,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
@@ -72,6 +72,8 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
+    ///         Region = DigitalOcean.Region.NYC3,
     ///         CorsRules = new[]
     ///         {
     ///             new DigitalOcean.Inputs.SpacesBucketCorsRuleArgs
@@ -109,7 +111,6 @@ namespace Pulumi.DigitalOcean
     ///                 MaxAgeSeconds = 3000,
     ///             },
     ///         },
-    ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
     /// });

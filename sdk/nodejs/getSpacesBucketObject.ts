@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  * });
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
@@ -162,6 +163,7 @@ export interface GetSpacesBucketObjectResult {
  * });
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),

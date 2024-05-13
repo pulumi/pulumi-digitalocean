@@ -25,6 +25,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
+    ///         Name = "web-1",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -32,6 +33,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var @public = new DigitalOcean.LoadBalancer("public", new()
     ///     {
+    ///         Name = "loadbalancer-1",
     ///         Region = DigitalOcean.Region.NYC3,
     ///         ForwardingRules = new[]
     ///         {
@@ -62,55 +64,6 @@ namespace Pulumi.DigitalOcean
     /// operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
     /// `Delete old certificate`. When doing so, you must also change the name of the certificate,
     /// as there cannot be multiple certificates with the same name in an account.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var cert = new DigitalOcean.Certificate("cert", new()
-    ///     {
-    ///         PrivateKey = "file('key.pem')",
-    ///         LeafCertificate = "file('cert.pem')",
-    ///     });
-    /// 
-    ///     var web = new DigitalOcean.Droplet("web", new()
-    ///     {
-    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
-    ///         Image = "ubuntu-18-04-x64",
-    ///         Region = DigitalOcean.Region.NYC3,
-    ///     });
-    /// 
-    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
-    ///     {
-    ///         Region = DigitalOcean.Region.NYC3,
-    ///         ForwardingRules = new[]
-    ///         {
-    ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
-    ///             {
-    ///                 EntryPort = 443,
-    ///                 EntryProtocol = "https",
-    ///                 TargetPort = 80,
-    ///                 TargetProtocol = "http",
-    ///                 CertificateName = cert.Name,
-    ///             },
-    ///         },
-    ///         Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
-    ///         {
-    ///             Port = 22,
-    ///             Protocol = "tcp",
-    ///         },
-    ///         DropletIds = new[]
-    ///         {
-    ///             web.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

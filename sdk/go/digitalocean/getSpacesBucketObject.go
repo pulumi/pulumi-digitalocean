@@ -45,6 +45,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:    pulumi.String("ubuntu-18-04-x64"),
+//				Name:     pulumi.String("web-1"),
 //				Region:   pulumi.String(digitalocean.RegionNYC2),
 //				Size:     pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				UserData: pulumi.String(bootstrapScript.Body),

@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     ///     var @default = new DigitalOcean.Domain("default", new()
     ///     {
     ///         Name = "example.com",
-    ///         IpAddress = digitalocean_droplet.Foo.Ipv4_address,
+    ///         IpAddress = foo.Ipv4Address,
     ///     });
     /// 
     /// });

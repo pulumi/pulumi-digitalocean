@@ -741,11 +741,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="15")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
 
         ### Create a new MySQL database cluster
@@ -754,11 +755,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mysql_example = digitalocean.DatabaseCluster("mysql-example",
+            name="example-mysql-cluster",
             engine="mysql",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="8")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
 
         ### Create a new Redis database cluster
@@ -767,11 +769,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         redis_example = digitalocean.DatabaseCluster("redis-example",
+            name="example-redis-cluster",
             engine="redis",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="7",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="7")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
 
         ### Create a new Kafka database cluster
@@ -780,11 +783,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
-            node_count=3,
-            region=digitalocean.Region.NYC1,
+            version="3.5",
             size="db-s-2vcpu-2gb",
-            version="3.5")
+            region=digitalocean.Region.NYC1,
+            node_count=3)
         ```
 
         ### Create a new MongoDB database cluster
@@ -793,11 +797,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
+            name="example-mongo-cluster",
             engine="mongodb",
-            node_count=1,
-            region=digitalocean.Region.NYC3,
+            version="6",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="6")
+            region=digitalocean.Region.NYC3,
+            node_count=1)
         ```
 
         ## Create a new database cluster based on a backup of an existing cluster.
@@ -807,13 +812,15 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         doby = digitalocean.DatabaseCluster("doby",
+            name="dobydb",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
-        doby_backup = digitalocean.DatabaseCluster("dobyBackup",
+        doby_backup = digitalocean.DatabaseCluster("doby_backup",
+            name="dobydupe",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
@@ -868,11 +875,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="15")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
 
         ### Create a new MySQL database cluster
@@ -881,11 +889,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mysql_example = digitalocean.DatabaseCluster("mysql-example",
+            name="example-mysql-cluster",
             engine="mysql",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="8")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
 
         ### Create a new Redis database cluster
@@ -894,11 +903,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         redis_example = digitalocean.DatabaseCluster("redis-example",
+            name="example-redis-cluster",
             engine="redis",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="7",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="7")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
 
         ### Create a new Kafka database cluster
@@ -907,11 +917,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
-            node_count=3,
-            region=digitalocean.Region.NYC1,
+            version="3.5",
             size="db-s-2vcpu-2gb",
-            version="3.5")
+            region=digitalocean.Region.NYC1,
+            node_count=3)
         ```
 
         ### Create a new MongoDB database cluster
@@ -920,11 +931,12 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
+            name="example-mongo-cluster",
             engine="mongodb",
-            node_count=1,
-            region=digitalocean.Region.NYC3,
+            version="6",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="6")
+            region=digitalocean.Region.NYC3,
+            node_count=1)
         ```
 
         ## Create a new database cluster based on a backup of an existing cluster.
@@ -934,13 +946,15 @@ class DatabaseCluster(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         doby = digitalocean.DatabaseCluster("doby",
+            name="dobydb",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
-        doby_backup = digitalocean.DatabaseCluster("dobyBackup",
+        doby_backup = digitalocean.DatabaseCluster("doby_backup",
+            name="dobydupe",
             engine="pg",
             version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,

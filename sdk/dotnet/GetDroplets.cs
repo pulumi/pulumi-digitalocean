@@ -88,8 +88,8 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
         ///             {
-        ///                 Direction = "desc",
         ///                 Key = "created_at",
+        ///                 Direction = "desc",
         ///             },
         ///         },
         ///     });
@@ -177,8 +177,8 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
         ///             {
-        ///                 Direction = "desc",
         ///                 Key = "created_at",
+        ///                 Direction = "desc",
         ///             },
         ///         },
         ///     });

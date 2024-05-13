@@ -31,11 +31,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleImage = digitalocean.getImage({
+ * const example = digitalocean.getImage({
  *     name: "example-1.0.0",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     image: exampleImage.then(exampleImage => exampleImage.id),
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     image: example.then(example => example.id),
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });
@@ -180,11 +181,12 @@ export interface GetImageResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleImage = digitalocean.getImage({
+ * const example = digitalocean.getImage({
  *     name: "example-1.0.0",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
- *     image: exampleImage.then(exampleImage => exampleImage.id),
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     image: example.then(example => example.id),
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });

@@ -24,14 +24,14 @@ import * as utilities from "./utilities";
  *     name: "golang-sample",
  *     region: "ams",
  *     services: [{
+ *         name: "go-service",
  *         environmentSlug: "go",
- *         git: {
- *             branch: "main",
- *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
- *         },
  *         instanceCount: 1,
  *         instanceSizeSlug: "professional-xs",
- *         name: "go-service",
+ *         git: {
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
+ *             branch: "main",
+ *         },
  *     }],
  * }});
  * ```
@@ -46,13 +46,13 @@ import * as utilities from "./utilities";
  *     name: "static-site-example",
  *     region: "ams",
  *     staticSites: [{
- *         buildCommand: "bundle exec jekyll build -d ./public",
- *         git: {
- *             branch: "main",
- *             repoCloneUrl: "https://github.com/digitalocean/sample-jekyll.git",
- *         },
  *         name: "sample-jekyll",
+ *         buildCommand: "bundle exec jekyll build -d ./public",
  *         outputDir: "/public",
+ *         git: {
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-jekyll.git",
+ *             branch: "main",
+ *         },
  *     }],
  * }});
  * ```

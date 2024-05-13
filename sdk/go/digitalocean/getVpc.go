@@ -62,17 +62,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
+//			example, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
 //				Name: pulumi.StringRef("example-network"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Name:    pulumi.String("example-01"),
 //				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String(digitalocean.RegionNYC3),
-//				VpcUuid: pulumi.String(exampleVpc.Id),
+//				VpcUuid: pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err

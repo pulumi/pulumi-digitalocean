@@ -32,6 +32,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Domain = @default.Id,
     ///         Type = DigitalOcean.RecordType.A,
+    ///         Name = "www",
     ///         Value = "192.168.0.11",
     ///     });
     /// 
@@ -40,6 +41,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Domain = @default.Id,
     ///         Type = DigitalOcean.RecordType.MX,
+    ///         Name = "@",
     ///         Priority = 10,
     ///         Value = "mail.example.com.",
     ///     });

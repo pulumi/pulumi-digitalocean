@@ -230,14 +230,14 @@ class App(pulumi.CustomResource):
             name="golang-sample",
             region="ams",
             services=[digitalocean.AppSpecServiceArgs(
+                name="go-service",
                 environment_slug="go",
-                git=digitalocean.AppSpecServiceGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
-                ),
                 instance_count=1,
                 instance_size_slug="professional-xs",
-                name="go-service",
+                git=digitalocean.AppSpecServiceGitArgs(
+                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
+                    branch="main",
+                ),
             )],
         ))
         ```
@@ -252,13 +252,13 @@ class App(pulumi.CustomResource):
             name="static-site-example",
             region="ams",
             static_sites=[digitalocean.AppSpecStaticSiteArgs(
-                build_command="bundle exec jekyll build -d ./public",
-                git=digitalocean.AppSpecStaticSiteGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
-                ),
                 name="sample-jekyll",
+                build_command="bundle exec jekyll build -d ./public",
                 output_dir="/public",
+                git=digitalocean.AppSpecStaticSiteGitArgs(
+                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
+                    branch="main",
+                ),
             )],
         ))
         ```
@@ -303,14 +303,14 @@ class App(pulumi.CustomResource):
             name="golang-sample",
             region="ams",
             services=[digitalocean.AppSpecServiceArgs(
+                name="go-service",
                 environment_slug="go",
-                git=digitalocean.AppSpecServiceGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
-                ),
                 instance_count=1,
                 instance_size_slug="professional-xs",
-                name="go-service",
+                git=digitalocean.AppSpecServiceGitArgs(
+                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
+                    branch="main",
+                ),
             )],
         ))
         ```
@@ -325,13 +325,13 @@ class App(pulumi.CustomResource):
             name="static-site-example",
             region="ams",
             static_sites=[digitalocean.AppSpecStaticSiteArgs(
-                build_command="bundle exec jekyll build -d ./public",
-                git=digitalocean.AppSpecStaticSiteGitArgs(
-                    branch="main",
-                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
-                ),
                 name="sample-jekyll",
+                build_command="bundle exec jekyll build -d ./public",
                 output_dir="/public",
+                git=digitalocean.AppSpecStaticSiteGitArgs(
+                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
+                    branch="main",
+                ),
             )],
         ))
         ```

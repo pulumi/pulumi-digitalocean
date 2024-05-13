@@ -78,8 +78,8 @@ import (
 //				},
 //				Sorts: []digitalocean.GetSpacesBucketsSort{
 //					{
-//						Direction: pulumi.StringRef("desc"),
 //						Key:       "name",
+//						Direction: pulumi.StringRef("desc"),
 //					},
 //				},
 //			}, nil)

@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.digitalocean.Tag;
+ * import com.pulumi.digitalocean.TagArgs;
  * import com.pulumi.digitalocean.Droplet;
  * import com.pulumi.digitalocean.DropletArgs;
  * import java.util.List;
@@ -47,11 +48,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new tag
- *         var foobar = new Tag("foobar");
+ *         var foobar = new Tag("foobar", TagArgs.builder()        
+ *             .name("foobar")
+ *             .build());
  * 
  *         // Create a new Droplet in nyc3 with the foobar tag
  *         var web = new Droplet("web", DropletArgs.builder()        
  *             .image("ubuntu-18-04-x64")
+ *             .name("web-1")
  *             .region("nyc3")
  *             .size("s-1vcpu-1gb")
  *             .tags(foobar.id())

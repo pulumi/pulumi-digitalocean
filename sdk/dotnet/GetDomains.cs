@@ -41,11 +41,11 @@ namespace Pulumi.DigitalOcean
         ///             new DigitalOcean.Inputs.GetDomainsFilterInputArgs
         ///             {
         ///                 Key = "name",
-        ///                 MatchBy = "re",
         ///                 Values = new[]
         ///                 {
         ///                     "example\\.com$",
         ///                 },
+        ///                 MatchBy = "re",
         ///             },
         ///         },
         ///     });
@@ -86,11 +86,11 @@ namespace Pulumi.DigitalOcean
         ///             new DigitalOcean.Inputs.GetDomainsFilterInputArgs
         ///             {
         ///                 Key = "name",
-        ///                 MatchBy = "re",
         ///                 Values = new[]
         ///                 {
         ///                     "example\\.com$",
         ///                 },
+        ///                 MatchBy = "re",
         ///             },
         ///         },
         ///     });

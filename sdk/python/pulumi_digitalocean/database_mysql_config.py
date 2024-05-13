@@ -968,13 +968,14 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
+        example_database_cluster = digitalocean.DatabaseCluster("example",
+            name="example-mysql-cluster",
             engine="mysql",
             version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        example_database_mysql_config = digitalocean.DatabaseMysqlConfig("exampleDatabaseMysqlConfig",
+        example = digitalocean.DatabaseMysqlConfig("example",
             cluster_id=example_database_cluster.id,
             connect_timeout=10,
             default_time_zone="UTC")
@@ -1037,13 +1038,14 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_database_cluster = digitalocean.DatabaseCluster("exampleDatabaseCluster",
+        example_database_cluster = digitalocean.DatabaseCluster("example",
+            name="example-mysql-cluster",
             engine="mysql",
             version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        example_database_mysql_config = digitalocean.DatabaseMysqlConfig("exampleDatabaseMysqlConfig",
+        example = digitalocean.DatabaseMysqlConfig("example",
             cluster_id=example_database_cluster.id,
             connect_timeout=10,
             default_time_zone="UTC")

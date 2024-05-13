@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
+ *             .name("foobar")
  *             .region("nyc3")
  *             .build());
  * 

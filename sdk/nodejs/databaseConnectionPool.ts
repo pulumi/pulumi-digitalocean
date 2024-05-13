@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  * });
  * const pool_01 = new digitalocean.DatabaseConnectionPool("pool-01", {
  *     clusterId: postgres_example.id,
+ *     name: "pool-01",
  *     mode: "transaction",
  *     size: 20,
  *     dbName: "defaultdb",

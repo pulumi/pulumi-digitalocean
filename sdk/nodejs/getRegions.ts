@@ -50,8 +50,8 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "name",
+ *         direction: "desc",
  *     }],
  * });
  * ```
@@ -140,8 +140,8 @@ export interface GetRegionsResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "name",
+ *         direction: "desc",
  *     }],
  * });
  * ```

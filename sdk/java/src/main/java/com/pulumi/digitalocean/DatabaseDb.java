@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -54,6 +55,7 @@ import javax.annotation.Nullable;
  * 
  *         var database_example = new DatabaseDb("database-example", DatabaseDbArgs.builder()        
  *             .clusterId(postgres_example.id())
+ *             .name("foobar")
  *             .build());
  * 
  *     }

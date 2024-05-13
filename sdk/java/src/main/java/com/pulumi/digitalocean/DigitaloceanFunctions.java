@@ -2133,8 +2133,8 @@ public final class DigitaloceanFunctions {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
      *                 .key("name")
-     *                 .matchBy("re")
      *                 .values("example\\.com$")
+     *                 .matchBy("re")
      *                 .build())
      *             .build());
      * 
@@ -2189,8 +2189,8 @@ public final class DigitaloceanFunctions {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
      *                 .key("name")
-     *                 .matchBy("re")
      *                 .values("example\\.com$")
+     *                 .matchBy("re")
      *                 .build())
      *             .build());
      * 
@@ -2245,8 +2245,8 @@ public final class DigitaloceanFunctions {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
      *                 .key("name")
-     *                 .matchBy("re")
      *                 .values("example\\.com$")
+     *                 .matchBy("re")
      *                 .build())
      *             .build());
      * 
@@ -2301,8 +2301,8 @@ public final class DigitaloceanFunctions {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
      *                 .key("name")
-     *                 .matchBy("re")
      *                 .values("example\\.com$")
+     *                 .matchBy("re")
      *                 .build())
      *             .build());
      * 
@@ -2357,8 +2357,8 @@ public final class DigitaloceanFunctions {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
      *                 .key("name")
-     *                 .matchBy("re")
      *                 .values("example\\.com$")
+     *                 .matchBy("re")
      *                 .build())
      *             .build());
      * 
@@ -2413,8 +2413,8 @@ public final class DigitaloceanFunctions {
      *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
      *             .filters(GetDomainsFilterArgs.builder()
      *                 .key("name")
-     *                 .matchBy("re")
      *                 .values("example\\.com$")
+     *                 .matchBy("re")
      *                 .build())
      *             .build());
      * 
@@ -2536,7 +2536,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(digitalocean_kubernetes_cluster.example().node_pool()[0].nodes()[0].droplet_id())
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
      *             .build());
      * 
      *     }
@@ -2657,7 +2657,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(digitalocean_kubernetes_cluster.example().node_pool()[0].nodes()[0].droplet_id())
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
      *             .build());
      * 
      *     }
@@ -2778,7 +2778,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(digitalocean_kubernetes_cluster.example().node_pool()[0].nodes()[0].droplet_id())
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
      *             .build());
      * 
      *     }
@@ -2899,7 +2899,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(digitalocean_kubernetes_cluster.example().node_pool()[0].nodes()[0].droplet_id())
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
      *             .build());
      * 
      *     }
@@ -3020,7 +3020,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(digitalocean_kubernetes_cluster.example().node_pool()[0].nodes()[0].droplet_id())
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
      *             .build());
      * 
      *     }
@@ -3141,7 +3141,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(digitalocean_kubernetes_cluster.example().node_pool()[0].nodes()[0].droplet_id())
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
      *             .build());
      * 
      *     }
@@ -3187,9 +3187,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -3233,6 +3233,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
+     *             .name("web-02")
      *             .region("nyc3")
      *             .size("s-2vcpu-4gb")
      *             .build());
@@ -3280,9 +3281,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -3326,6 +3327,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
+     *             .name("web-02")
      *             .region("nyc3")
      *             .size("s-2vcpu-4gb")
      *             .build());
@@ -3373,9 +3375,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -3419,6 +3421,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
+     *             .name("web-02")
      *             .region("nyc3")
      *             .size("s-2vcpu-4gb")
      *             .build());
@@ -3466,9 +3469,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -3512,6 +3515,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
+     *             .name("web-02")
      *             .region("nyc3")
      *             .size("s-2vcpu-4gb")
      *             .build());
@@ -3559,9 +3563,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -3605,6 +3609,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
+     *             .name("web-02")
      *             .region("nyc3")
      *             .size("s-2vcpu-4gb")
      *             .build());
@@ -3652,9 +3657,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -3698,6 +3703,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
      *             .image(web_snapshot.id())
+     *             .name("web-02")
      *             .region("nyc3")
      *             .size("s-2vcpu-4gb")
      *             .build());
@@ -3800,8 +3806,8 @@ public final class DigitaloceanFunctions {
      *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created_at")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -3903,8 +3909,8 @@ public final class DigitaloceanFunctions {
      *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created_at")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -4006,8 +4012,8 @@ public final class DigitaloceanFunctions {
      *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created_at")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -4109,8 +4115,8 @@ public final class DigitaloceanFunctions {
      *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created_at")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -4212,8 +4218,8 @@ public final class DigitaloceanFunctions {
      *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created_at")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -4315,8 +4321,8 @@ public final class DigitaloceanFunctions {
      *                     .values("true")
      *                     .build())
      *             .sorts(GetDropletsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created_at")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -4798,12 +4804,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
      *             .name("example-1.0.0")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .build());
@@ -4925,12 +4932,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
      *             .name("example-1.0.0")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .build());
@@ -5052,12 +5060,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
      *             .name("example-1.0.0")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .build());
@@ -5179,12 +5188,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
      *             .name("example-1.0.0")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .build());
@@ -5306,12 +5316,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
      *             .name("example-1.0.0")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .build());
@@ -5433,12 +5444,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleImage = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
      *             .name("example-1.0.0")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
-     *             .image(exampleImage.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .build());
@@ -5577,8 +5589,8 @@ public final class DigitaloceanFunctions {
      *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -5681,8 +5693,8 @@ public final class DigitaloceanFunctions {
      *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -5785,8 +5797,8 @@ public final class DigitaloceanFunctions {
      *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -5889,8 +5901,8 @@ public final class DigitaloceanFunctions {
      *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -5993,8 +6005,8 @@ public final class DigitaloceanFunctions {
      *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -6097,8 +6109,8 @@ public final class DigitaloceanFunctions {
      *                     .values("nyc3")
      *                     .build())
      *             .sorts(GetImagesSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("created")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -6115,12 +6127,82 @@ public final class DigitaloceanFunctions {
     /**
      * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+     *             .name("prod-cluster-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesClusterResult> getKubernetesCluster(GetKubernetesClusterArgs args) {
         return getKubernetesCluster(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+     *             .name("prod-cluster-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesClusterResult> getKubernetesClusterPlain(GetKubernetesClusterPlainArgs args) {
@@ -6129,12 +6211,82 @@ public final class DigitaloceanFunctions {
     /**
      * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+     *             .name("prod-cluster-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesClusterResult> getKubernetesCluster(GetKubernetesClusterArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", TypeShape.of(GetKubernetesClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+     *             .name("prod-cluster-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesClusterResult> getKubernetesClusterPlain(GetKubernetesClusterPlainArgs args, InvokeOptions options) {
@@ -6210,6 +6362,7 @@ public final class DigitaloceanFunctions {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6258,6 +6411,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6347,6 +6501,7 @@ public final class DigitaloceanFunctions {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6395,6 +6550,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6484,6 +6640,7 @@ public final class DigitaloceanFunctions {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6532,6 +6689,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6621,6 +6779,7 @@ public final class DigitaloceanFunctions {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6669,6 +6828,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6758,6 +6918,7 @@ public final class DigitaloceanFunctions {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6806,6 +6967,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6895,6 +7057,7 @@ public final class DigitaloceanFunctions {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -6943,6 +7106,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
@@ -7829,8 +7993,8 @@ public final class DigitaloceanFunctions {
      *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -7931,8 +8095,8 @@ public final class DigitaloceanFunctions {
      *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -8033,8 +8197,8 @@ public final class DigitaloceanFunctions {
      *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -8135,8 +8299,8 @@ public final class DigitaloceanFunctions {
      *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -8237,8 +8401,8 @@ public final class DigitaloceanFunctions {
      *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -8339,8 +8503,8 @@ public final class DigitaloceanFunctions {
      *                     .values("false")
      *                     .build())
      *             .sorts(GetProjectsSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -8566,6 +8730,51 @@ public final class DigitaloceanFunctions {
      * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
      * If no filters are specified, all records will be returned.
      * 
+     * ## Example Usage
+     * 
+     * Get data for all MX records in a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domain("example.com")
+     *             .filters(GetRecordsFilterArgs.builder()
+     *                 .key("type")
+     *                 .values("MX")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args) {
         return getRecords(args, InvokeOptions.Empty);
@@ -8573,6 +8782,51 @@ public final class DigitaloceanFunctions {
     /**
      * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
      * If no filters are specified, all records will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * Get data for all MX records in a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domain("example.com")
+     *             .filters(GetRecordsFilterArgs.builder()
+     *                 .key("type")
+     *                 .values("MX")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args) {
@@ -8582,6 +8836,51 @@ public final class DigitaloceanFunctions {
      * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
      * If no filters are specified, all records will be returned.
      * 
+     * ## Example Usage
+     * 
+     * Get data for all MX records in a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domain("example.com")
+     *             .filters(GetRecordsFilterArgs.builder()
+     *                 .key("type")
+     *                 .values("MX")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getRecords:getRecords", TypeShape.of(GetRecordsResult.class), args, Utilities.withVersion(options));
@@ -8589,6 +8888,51 @@ public final class DigitaloceanFunctions {
     /**
      * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
      * If no filters are specified, all records will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * Get data for all MX records in a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domain("example.com")
+     *             .filters(GetRecordsFilterArgs.builder()
+     *                 .key("type")
+     *                 .values("MX")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args, InvokeOptions options) {
@@ -8855,8 +9199,8 @@ public final class DigitaloceanFunctions {
      *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -8955,8 +9299,8 @@ public final class DigitaloceanFunctions {
      *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -9055,8 +9399,8 @@ public final class DigitaloceanFunctions {
      *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -9155,8 +9499,8 @@ public final class DigitaloceanFunctions {
      *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -9255,8 +9599,8 @@ public final class DigitaloceanFunctions {
      *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -9355,8 +9699,8 @@ public final class DigitaloceanFunctions {
      *                     .values("private_networking")
      *                     .build())
      *             .sorts(GetRegionsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -9838,6 +10182,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var web = new Droplet("web", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
@@ -9899,6 +10244,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var web = new Droplet("web", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
@@ -9960,6 +10306,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var web = new Droplet("web", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
@@ -10021,6 +10368,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var web = new Droplet("web", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
      *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
@@ -10151,8 +10499,8 @@ public final class DigitaloceanFunctions {
      *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -10245,8 +10593,8 @@ public final class DigitaloceanFunctions {
      *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -10339,8 +10687,8 @@ public final class DigitaloceanFunctions {
      *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -10433,8 +10781,8 @@ public final class DigitaloceanFunctions {
      *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -10527,8 +10875,8 @@ public final class DigitaloceanFunctions {
      *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -10621,8 +10969,8 @@ public final class DigitaloceanFunctions {
      *                 .values("nyc3")
      *                 .build())
      *             .sorts(GetSpacesBucketsSortArgs.builder()
-     *                 .direction("desc")
      *                 .key("name")
+     *                 .direction("desc")
      *                 .build())
      *             .build());
      * 
@@ -10673,15 +11021,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
+     *         final var example = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
@@ -10731,15 +11080,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
+     *         final var example = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
@@ -10789,15 +11139,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
+     *         final var example = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
@@ -10847,15 +11198,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleSshKey = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
+     *         final var example = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(exampleSshKey.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
      *             .build());
      * 
      *     }
@@ -10906,8 +11258,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -10999,8 +11351,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -11092,8 +11444,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -11185,8 +11537,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -11278,8 +11630,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -11371,8 +11723,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
      *             .sorts(GetSshKeysSortArgs.builder()
-     *                 .direction("asc")
      *                 .key("name")
+     *                 .direction("asc")
      *                 .build())
      *             .build());
      * 
@@ -11462,15 +11814,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
+     *         final var example = DigitaloceanFunctions.getTag(GetTagArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
@@ -11519,15 +11872,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
+     *         final var example = DigitaloceanFunctions.getTag(GetTagArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
@@ -11576,15 +11930,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
+     *         final var example = DigitaloceanFunctions.getTag(GetTagArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
@@ -11633,15 +11988,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTag = DigitaloceanFunctions.getTag(GetTagArgs.builder()
+     *         final var example = DigitaloceanFunctions.getTag(GetTagArgs.builder()
      *             .name("example")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
      *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(exampleTag.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
      *             .build());
      * 
      *     }
@@ -12017,12 +12373,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
      *             .name("app-data")
      *             .region("nyc3")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
@@ -12030,7 +12387,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
@@ -12118,12 +12475,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
      *             .name("app-data")
      *             .region("nyc3")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
@@ -12131,7 +12489,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
@@ -12219,12 +12577,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
      *             .name("app-data")
      *             .region("nyc3")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
@@ -12232,7 +12591,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
@@ -12320,12 +12679,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVolume = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
      *             .name("app-data")
      *             .region("nyc3")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
@@ -12333,7 +12693,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(exampleVolume.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
      * 
      *     }
@@ -12379,9 +12739,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -12425,6 +12785,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new Volume("foobar", VolumeArgs.builder()        
      *             .region("nyc3")
+     *             .name("baz")
      *             .size(100)
      *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
@@ -12472,9 +12833,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -12518,6 +12879,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new Volume("foobar", VolumeArgs.builder()        
      *             .region("nyc3")
+     *             .name("baz")
      *             .size(100)
      *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
@@ -12565,9 +12927,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -12611,6 +12973,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new Volume("foobar", VolumeArgs.builder()        
      *             .region("nyc3")
+     *             .name("baz")
      *             .size(100)
      *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
@@ -12658,9 +13021,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -12704,6 +13067,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new Volume("foobar", VolumeArgs.builder()        
      *             .region("nyc3")
+     *             .name("baz")
      *             .size(100)
      *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
@@ -12751,9 +13115,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -12797,6 +13161,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new Volume("foobar", VolumeArgs.builder()        
      *             .region("nyc3")
+     *             .name("baz")
      *             .size(100)
      *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
@@ -12844,9 +13209,9 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
-     *             .mostRecent(true)
      *             .nameRegex("^web")
      *             .region("nyc3")
+     *             .mostRecent(true)
      *             .build());
      * 
      *     }
@@ -12890,6 +13255,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new Volume("foobar", VolumeArgs.builder()        
      *             .region("nyc3")
+     *             .name("baz")
      *             .size(100)
      *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
      *             .build());
@@ -12978,15 +13344,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
      *             .name("example-network")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
@@ -13073,15 +13440,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
      *             .name("example-network")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
@@ -13168,15 +13536,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
      *             .name("example-network")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
@@ -13263,15 +13632,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
      *             .name("example-network")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
@@ -13358,15 +13728,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
      *             .name("example-network")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }
@@ -13453,15 +13824,16 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
      *             .name("example-network")
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(exampleVpc.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
      *             .build());
      * 
      *     }

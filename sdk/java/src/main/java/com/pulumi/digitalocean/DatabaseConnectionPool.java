@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -57,6 +58,7 @@ import javax.annotation.Nullable;
  * 
  *         var pool_01 = new DatabaseConnectionPool("pool-01", DatabaseConnectionPoolArgs.builder()        
  *             .clusterId(postgres_example.id())
+ *             .name("pool-01")
  *             .mode("transaction")
  *             .size(20)
  *             .dbName("defaultdb")

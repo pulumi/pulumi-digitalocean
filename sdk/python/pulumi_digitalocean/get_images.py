@@ -123,8 +123,8 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
             ),
         ],
         sorts=[digitalocean.GetImagesSortArgs(
-            direction="desc",
             key="created",
+            direction="desc",
         )])
     ```
 
@@ -195,8 +195,8 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
             ),
         ],
         sorts=[digitalocean.GetImagesSortArgs(
-            direction="desc",
             key="created",
+            direction="desc",
         )])
     ```
 

@@ -44,16 +44,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarSpacesBucket = new SpacesBucket("foobarSpacesBucket", SpacesBucketArgs.builder()        
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
+ *             .name("foobar")
  *             .region("nyc3")
  *             .build());
  * 
  *         var foobarSpacesBucketPolicy = new SpacesBucketPolicy("foobarSpacesBucketPolicy", SpacesBucketPolicyArgs.builder()        
- *             .region(foobarSpacesBucket.region())
- *             .bucket(foobarSpacesBucket.name())
- *             .policy(Output.tuple(foobarSpacesBucket.name(), foobarSpacesBucket.name()).applyValue(values -> {
- *                 var foobarSpacesBucketName = values.t1;
- *                 var foobarSpacesBucketName1 = values.t2;
+ *             .region(foobar.region())
+ *             .bucket(foobar.name())
+ *             .policy(Output.tuple(foobar.name(), foobar.name()).applyValue(values -> {
+ *                 var foobarName = values.t1;
+ *                 var foobarName1 = values.t2;
  *                 return serializeJson(
  *                     jsonObject(
  *                         jsonProperty("Version", "2012-10-17"),
@@ -63,8 +64,8 @@ import javax.annotation.Nullable;
  *                             jsonProperty("Principal", "*"),
  *                             jsonProperty("Action", "s3:*"),
  *                             jsonProperty("Resource", jsonArray(
- *                                 String.format("arn:aws:s3:::%s", foobarSpacesBucketName), 
- *                                 String.format("arn:aws:s3:::%s/*", foobarSpacesBucketName1)
+ *                                 String.format("arn:aws:s3:::%s", foobarName), 
+ *                                 String.format("arn:aws:s3:::%s/*", foobarName1)
  *                             )),
  *                             jsonProperty("Condition", jsonObject(
  *                                 jsonProperty("NotIpAddress", jsonObject(

@@ -347,7 +347,6 @@ class SpacesBucket(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
         ```
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -360,7 +359,9 @@ class SpacesBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         ```
 
         ### Create a New Bucket With CORS Rules
@@ -370,6 +371,8 @@ class SpacesBucket(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3,
             cors_rules=[
                 digitalocean.SpacesBucketCorsRuleArgs(
                     allowed_headers=["*"],
@@ -387,8 +390,7 @@ class SpacesBucket(pulumi.CustomResource):
                     allowed_origins=["https://www.example.com"],
                     max_age_seconds=3000,
                 ),
-            ],
-            region=digitalocean.Region.NYC3)
+            ])
         ```
 
         ## Import
@@ -435,7 +437,6 @@ class SpacesBucket(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
         ```
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -448,7 +449,9 @@ class SpacesBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         ```
 
         ### Create a New Bucket With CORS Rules
@@ -458,6 +461,8 @@ class SpacesBucket(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3,
             cors_rules=[
                 digitalocean.SpacesBucketCorsRuleArgs(
                     allowed_headers=["*"],
@@ -475,8 +480,7 @@ class SpacesBucket(pulumi.CustomResource):
                     allowed_origins=["https://www.example.com"],
                     max_age_seconds=3000,
                 ),
-            ],
-            region=digitalocean.Region.NYC3)
+            ])
         ```
 
         ## Import

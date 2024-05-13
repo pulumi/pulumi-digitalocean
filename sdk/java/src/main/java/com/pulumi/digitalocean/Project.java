@@ -66,9 +66,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var playground = new Project("playground", ProjectArgs.builder()        
+ *             .name("playground")
  *             .description("A project to represent development resources.")
- *             .environment("Development")
  *             .purpose("Web Application")
+ *             .environment("Development")
  *             .build());
  * 
  *     }
@@ -105,12 +106,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new Droplet("foobar", DropletArgs.builder()        
+ *             .name("example")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
  *         var playground = new Project("playground", ProjectArgs.builder()        
+ *             .name("playground")
  *             .description("A project to represent development resources.")
  *             .purpose("Web Application")
  *             .environment("Development")

@@ -19,14 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleTag = digitalocean.getTag({
+ * const example = digitalocean.getTag({
  *     name: "example",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
+ *     tags: [example.then(example => example.name)],
  * });
  * ```
  */
@@ -97,14 +98,15 @@ export interface GetTagResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleTag = digitalocean.getTag({
+ * const example = digitalocean.getTag({
  *     name: "example",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     tags: [exampleTag.then(exampleTag => exampleTag.name)],
+ *     tags: [example.then(example => example.name)],
  * });
  * ```
  */

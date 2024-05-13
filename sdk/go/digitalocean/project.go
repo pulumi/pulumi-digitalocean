@@ -48,9 +48,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
+//				Name:        pulumi.String("playground"),
 //				Description: pulumi.String("A project to represent development resources."),
-//				Environment: pulumi.String("Development"),
 //				Purpose:     pulumi.String("Web Application"),
+//				Environment: pulumi.String("Development"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,6 +77,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("example"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-22-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -84,6 +86,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewProject(ctx, "playground", &digitalocean.ProjectArgs{
+//				Name:        pulumi.String("playground"),
 //				Description: pulumi.String("A project to represent development resources."),
 //				Purpose:     pulumi.String("Web Application"),
 //				Environment: pulumi.String("Development"),

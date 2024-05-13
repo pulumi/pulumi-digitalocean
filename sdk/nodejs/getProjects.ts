@@ -52,8 +52,8 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "asc",
  *         key: "name",
+ *         direction: "asc",
  *     }],
  * });
  * ```
@@ -145,8 +145,8 @@ export interface GetProjectsResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "asc",
  *         key: "name",
+ *         direction: "asc",
  *     }],
  * });
  * ```

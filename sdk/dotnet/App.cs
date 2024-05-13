@@ -36,15 +36,15 @@ namespace Pulumi.DigitalOcean
     ///             {
     ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
     ///                 {
+    ///                     Name = "go-service",
     ///                     EnvironmentSlug = "go",
-    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
-    ///                     {
-    ///                         Branch = "main",
-    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
-    ///                     },
     ///                     InstanceCount = 1,
     ///                     InstanceSizeSlug = "professional-xs",
-    ///                     Name = "go-service",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
+    ///                     {
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
+    ///                         Branch = "main",
+    ///                     },
     ///                 },
     ///             },
     ///         },
@@ -73,14 +73,14 @@ namespace Pulumi.DigitalOcean
     ///             {
     ///                 new DigitalOcean.Inputs.AppSpecStaticSiteArgs
     ///                 {
+    ///                     Name = "sample-jekyll",
     ///                     BuildCommand = "bundle exec jekyll build -d ./public",
+    ///                     OutputDir = "/public",
     ///                     Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs
     ///                     {
-    ///                         Branch = "main",
     ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-jekyll.git",
+    ///                         Branch = "main",
     ///                     },
-    ///                     Name = "sample-jekyll",
-    ///                     OutputDir = "/public",
     ///                 },
     ///             },
     ///         },

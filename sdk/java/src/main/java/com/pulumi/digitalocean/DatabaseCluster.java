@@ -48,11 +48,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
- *             .nodeCount(1)
- *             .region("nyc1")
- *             .size("db-s-1vcpu-1gb")
  *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
+ *             .nodeCount(1)
  *             .build());
  * 
  *     }
@@ -86,11 +87,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mysql_example = new DatabaseCluster("mysql-example", DatabaseClusterArgs.builder()        
+ *             .name("example-mysql-cluster")
  *             .engine("mysql")
- *             .nodeCount(1)
- *             .region("nyc1")
- *             .size("db-s-1vcpu-1gb")
  *             .version("8")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
+ *             .nodeCount(1)
  *             .build());
  * 
  *     }
@@ -124,11 +126,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var redis_example = new DatabaseCluster("redis-example", DatabaseClusterArgs.builder()        
+ *             .name("example-redis-cluster")
  *             .engine("redis")
- *             .nodeCount(1)
- *             .region("nyc1")
- *             .size("db-s-1vcpu-1gb")
  *             .version("7")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
+ *             .nodeCount(1)
  *             .build());
  * 
  *     }
@@ -162,11 +165,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()        
+ *             .name("example-kafka-cluster")
  *             .engine("kafka")
- *             .nodeCount(3)
- *             .region("nyc1")
- *             .size("db-s-2vcpu-2gb")
  *             .version("3.5")
+ *             .size("db-s-2vcpu-2gb")
+ *             .region("nyc1")
+ *             .nodeCount(3)
  *             .build());
  * 
  *     }
@@ -200,11 +204,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mongodb_example = new DatabaseCluster("mongodb-example", DatabaseClusterArgs.builder()        
+ *             .name("example-mongo-cluster")
  *             .engine("mongodb")
- *             .nodeCount(1)
- *             .region("nyc3")
- *             .size("db-s-1vcpu-1gb")
  *             .version("6")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc3")
+ *             .nodeCount(1)
  *             .build());
  * 
  *     }
@@ -241,6 +246,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var doby = new DatabaseCluster("doby", DatabaseClusterArgs.builder()        
+ *             .name("dobydb")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-2gb")
@@ -250,6 +256,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dobyBackup = new DatabaseCluster("dobyBackup", DatabaseClusterArgs.builder()        
+ *             .name("dobydupe")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-2gb")

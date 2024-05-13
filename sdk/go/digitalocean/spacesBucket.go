@@ -66,6 +66,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("foobar"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
@@ -92,6 +93,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("foobar"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //				CorsRules: digitalocean.SpacesBucketCorsRuleArray{
 //					&digitalocean.SpacesBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
@@ -120,7 +123,6 @@ import (
 //						MaxAgeSeconds: pulumi.Int(3000),
 //					},
 //				},
-//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err

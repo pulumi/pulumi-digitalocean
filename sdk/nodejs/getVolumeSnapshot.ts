@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const snapshot = digitalocean.getVolumeSnapshot({
- *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
+ *     mostRecent: true,
  * });
  * ```
  *
@@ -37,6 +37,7 @@ import * as utilities from "./utilities";
  * });
  * const foobar = new digitalocean.Volume("foobar", {
  *     region: digitalocean.Region.NYC3,
+ *     name: "baz",
  *     size: 100,
  *     snapshotId: snapshot.then(snapshot => snapshot.id),
  * });
@@ -131,9 +132,9 @@ export interface GetVolumeSnapshotResult {
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const snapshot = digitalocean.getVolumeSnapshot({
- *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
+ *     mostRecent: true,
  * });
  * ```
  *
@@ -150,6 +151,7 @@ export interface GetVolumeSnapshotResult {
  * });
  * const foobar = new digitalocean.Volume("foobar", {
  *     region: digitalocean.Region.NYC3,
+ *     name: "baz",
  *     size: 100,
  *     snapshotId: snapshot.then(snapshot => snapshot.id),
  * });

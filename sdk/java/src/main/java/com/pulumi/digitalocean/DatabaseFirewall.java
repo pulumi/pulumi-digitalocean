@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -108,12 +109,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new Droplet("web", DropletArgs.builder()        
+ *             .name("web-01")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -166,6 +169,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -175,6 +179,7 @@ import javax.annotation.Nullable;
  * 
  *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
+ *             .name("replica-example")
  *             .size("db-s-1vcpu-1gb")
  *             .region("nyc1")
  *             .build());

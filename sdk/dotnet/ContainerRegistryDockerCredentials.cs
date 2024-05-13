@@ -48,14 +48,54 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContainerRegistry = DigitalOcean.GetContainerRegistry.Invoke(new()
+    ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
     ///     {
     ///         Name = "example",
     ///     });
     /// 
-    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", new()
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
     ///     {
     ///         RegistryName = "example",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Kubernetes Example
+    /// 
+    /// Combined with the Kubernetes Provider's `kubernetes_secret` resource, you can
+    /// access the registry from inside your cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// using Kubernetes = Pulumi.Kubernetes;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
+    ///     {
+    ///         RegistryName = "example",
+    ///     });
+    /// 
+    ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+    ///     {
+    ///         Name = "prod-cluster-01",
+    ///     });
+    /// 
+    ///     var exampleSecret = new Kubernetes.Core.V1.Secret("example", new()
+    ///     {
+    ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
+    ///         {
+    ///             Name = "docker-cfg",
+    ///         },
+    ///         Data = 
+    ///         {
+    ///             { ".dockerconfigjson", exampleContainerRegistryDockerCredentials.DockerCredentials },
+    ///         },
+    ///         Type = "kubernetes.io/dockerconfigjson",
     ///     });
     /// 
     /// });

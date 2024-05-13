@@ -10,6 +10,28 @@ import * as utilities from "./utilities";
 /**
  * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
  * If no filters are specified, all records will be returned.
+ *
+ * ## Example Usage
+ *
+ * Get data for all MX records in a domain:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = digitalocean.getRecords({
+ *     domain: "example.com",
+ *     filters: [{
+ *         key: "type",
+ *         values: ["MX"],
+ *     }],
+ * });
+ * export const mailServers = example.then(example => std.join({
+ *     separator: ",",
+ *     input: example.records.map(__item => __item.value),
+ * })).then(invoke => invoke.result);
+ * ```
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
 
@@ -60,6 +82,28 @@ export interface GetRecordsResult {
 /**
  * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
  * If no filters are specified, all records will be returned.
+ *
+ * ## Example Usage
+ *
+ * Get data for all MX records in a domain:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = digitalocean.getRecords({
+ *     domain: "example.com",
+ *     filters: [{
+ *         key: "type",
+ *         values: ["MX"],
+ *     }],
+ * });
+ * export const mailServers = example.then(example => std.join({
+ *     separator: ",",
+ *     input: example.records.map(__item => __item.value),
+ * })).then(invoke => invoke.result);
+ * ```
  */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
     return pulumi.output(args).apply((a: any) => getRecords(a, opts))

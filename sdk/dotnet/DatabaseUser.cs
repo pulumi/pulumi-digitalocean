@@ -27,6 +27,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -37,6 +38,7 @@ namespace Pulumi.DigitalOcean
     ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "foobar",
     ///     });
     /// 
     /// });
@@ -53,6 +55,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
     ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
@@ -63,6 +66,7 @@ namespace Pulumi.DigitalOcean
     ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "replica-example",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });
@@ -70,6 +74,7 @@ namespace Pulumi.DigitalOcean
     ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
     ///     {
     ///         ClusterId = replica_example.Uuid,
+    ///         Name = "foobar",
     ///     });
     /// 
     /// });
@@ -86,6 +91,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
     ///     {
+    ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
     ///         Version = "3.5",
     ///         Size = "db-s-2vcpu-2gb",
@@ -93,14 +99,16 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 3,
     ///     });
     /// 
-    ///     var foobarTopic = new DigitalOcean.DatabaseKafkaTopic("foobarTopic", new()
+    ///     var foobarTopic = new DigitalOcean.DatabaseKafkaTopic("foobar_topic", new()
     ///     {
-    ///         ClusterId = digitalocean_database_cluster.Foobar.Id,
+    ///         ClusterId = foobar.Id,
+    ///         Name = "topic-1",
     ///     });
     /// 
-    ///     var foobarUser = new DigitalOcean.DatabaseUser("foobarUser", new()
+    ///     var foobarUser = new DigitalOcean.DatabaseUser("foobar_user", new()
     ///     {
-    ///         ClusterId = digitalocean_database_cluster.Foobar.Id,
+    ///         ClusterId = foobar.Id,
+    ///         Name = "example-user",
     ///         Settings = new[]
     ///         {
     ///             new DigitalOcean.Inputs.DatabaseUserSettingArgs

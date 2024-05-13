@@ -20,13 +20,17 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
- * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: postgres_example.id});
+ * const user_example = new digitalocean.DatabaseUser("user-example", {
+ *     clusterId: postgres_example.id,
+ *     name: "foobar",
+ * });
  * ```
  *
  * ### Create a new user for a PostgreSQL database replica
@@ -35,6 +39,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
@@ -43,10 +48,14 @@ import * as utilities from "./utilities";
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
+ *     name: "replica-example",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  * });
- * const user_example = new digitalocean.DatabaseUser("user-example", {clusterId: replica_example.uuid});
+ * const user_example = new digitalocean.DatabaseUser("user-example", {
+ *     clusterId: replica_example.uuid,
+ *     name: "foobar",
+ * });
  * ```
  *
  * ### Create a new user for a Kafka database cluster
@@ -55,15 +64,20 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     name: "example-kafka-cluster",
  *     engine: "kafka",
  *     version: "3.5",
  *     size: "db-s-2vcpu-2gb",
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 3,
  * });
- * const foobarTopic = new digitalocean.DatabaseKafkaTopic("foobarTopic", {clusterId: digitalocean_database_cluster.foobar.id});
- * const foobarUser = new digitalocean.DatabaseUser("foobarUser", {
- *     clusterId: digitalocean_database_cluster.foobar.id,
+ * const foobarTopic = new digitalocean.DatabaseKafkaTopic("foobar_topic", {
+ *     clusterId: foobar.id,
+ *     name: "topic-1",
+ * });
+ * const foobarUser = new digitalocean.DatabaseUser("foobar_user", {
+ *     clusterId: foobar.id,
+ *     name: "example-user",
  *     settings: [{
  *         acls: [
  *             {

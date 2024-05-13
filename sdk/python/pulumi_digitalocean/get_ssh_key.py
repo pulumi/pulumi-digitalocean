@@ -95,12 +95,13 @@ def get_ssh_key(name: Optional[str] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example_ssh_key = digitalocean.get_ssh_key(name="example")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
+    example = digitalocean.get_ssh_key(name="example")
+    example_droplet = digitalocean.Droplet("example",
         image="ubuntu-18-04-x64",
+        name="example-1",
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-        ssh_keys=[example_ssh_key.id])
+        ssh_keys=[example.id])
     ```
 
 
@@ -137,12 +138,13 @@ def get_ssh_key_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example_ssh_key = digitalocean.get_ssh_key(name="example")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
+    example = digitalocean.get_ssh_key(name="example")
+    example_droplet = digitalocean.Droplet("example",
         image="ubuntu-18-04-x64",
+        name="example-1",
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-        ssh_keys=[example_ssh_key.id])
+        ssh_keys=[example.id])
     ```
 
 

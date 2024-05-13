@@ -74,7 +74,7 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });
         /// 
         /// });
@@ -146,7 +146,7 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });
         /// 
         /// });

@@ -47,14 +47,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()        
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()        
  *             .region("nyc1")
+ *             .name("baz")
  *             .size(100)
  *             .description("an example volume")
  *             .build());
  * 
  *         var foobarVolumeSnapshot = new VolumeSnapshot("foobarVolumeSnapshot", VolumeSnapshotArgs.builder()        
- *             .volumeId(foobarVolume.id())
+ *             .name("foo")
+ *             .volumeId(foobar.id())
  *             .build());
  * 
  *     }

@@ -53,8 +53,8 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "created_at",
+ *         direction: "desc",
  *     }],
  * });
  * ```
@@ -146,8 +146,8 @@ export interface GetDropletsResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "created_at",
+ *         direction: "desc",
  *     }],
  * });
  * ```

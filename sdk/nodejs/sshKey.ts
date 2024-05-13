@@ -15,13 +15,19 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
  * // Create a new SSH key
- * const _default = new digitalocean.SshKey("default", {publicKey: fs.readFileSync("/Users/myuser/.ssh/id_rsa.pub", "utf8")});
+ * const _default = new digitalocean.SshKey("default", {
+ *     name: "Example",
+ *     publicKey: std.file({
+ *         input: "/Users/myuser/.ssh/id_rsa.pub",
+ *     }).then(invoke => invoke.result),
+ * });
  * // Create a new Droplet using the SSH key
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     sshKeys: [_default.fingerprint],

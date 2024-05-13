@@ -23,15 +23,16 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarSpacesBucket = new DigitalOcean.SpacesBucket("foobarSpacesBucket", new()
+    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
-    ///     var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy("foobarSpacesBucketPolicy", new()
+    ///     var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy("foobar", new()
     ///     {
-    ///         Region = foobarSpacesBucket.Region,
-    ///         Bucket = foobarSpacesBucket.Name,
+    ///         Region = foobar.Region,
+    ///         Bucket = foobar.Name,
     ///         Policy = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Version"] = "2012-10-17",
@@ -45,8 +46,8 @@ namespace Pulumi.DigitalOcean
     ///                     ["Action"] = "s3:*",
     ///                     ["Resource"] = new[]
     ///                     {
-    ///                         foobarSpacesBucket.Name.Apply(name =&gt; $"arn:aws:s3:::{name}"),
-    ///                         foobarSpacesBucket.Name.Apply(name =&gt; $"arn:aws:s3:::{name}/*"),
+    ///                         foobar.Name.Apply(name =&gt; $"arn:aws:s3:::{name}"),
+    ///                         foobar.Name.Apply(name =&gt; $"arn:aws:s3:::{name}/*"),
     ///                     },
     ///                     ["Condition"] = new Dictionary&lt;string, object?&gt;
     ///                     {

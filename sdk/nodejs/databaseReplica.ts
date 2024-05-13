@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
  *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
@@ -26,10 +27,11 @@ import * as utilities from "./utilities";
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
+ *     name: "replica-example",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  * });
- * export const uUID = replica_example.uuid;
+ * export const UUID = replica_example.uuid;
  * // Create firewall rule for database replica
  * const example_fw = new digitalocean.DatabaseFirewall("example-fw", {
  *     clusterId: replica_example.uuid,

@@ -32,6 +32,7 @@ import * as utilities from "./utilities";
  *     name: "playground",
  * });
  * const foobar = new digitalocean.Droplet("foobar", {
+ *     name: "example",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
  *     region: digitalocean.Region.NYC3,

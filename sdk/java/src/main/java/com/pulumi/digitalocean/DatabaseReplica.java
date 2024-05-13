@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
  *             .size("db-s-1vcpu-1gb")
@@ -60,11 +61,12 @@ import javax.annotation.Nullable;
  * 
  *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()        
  *             .clusterId(postgres_example.id())
+ *             .name("replica-example")
  *             .size("db-s-1vcpu-1gb")
  *             .region("nyc1")
  *             .build());
  * 
- *         ctx.export("uUID", replica_example.uuid());
+ *         ctx.export("UUID", replica_example.uuid());
  *         // Create firewall rule for database replica
  *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()        
  *             .clusterId(replica_example.uuid())

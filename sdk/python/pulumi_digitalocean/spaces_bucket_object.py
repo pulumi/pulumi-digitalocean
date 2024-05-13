@@ -616,7 +616,6 @@ class SpacesBucketObject(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
         ```
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -629,7 +628,9 @@ class SpacesBucketObject(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         index = digitalocean.SpacesBucketObject("index",
             region=foobar.region,
             bucket=foobar.name,
@@ -694,7 +695,6 @@ class SpacesBucketObject(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
         ```
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -707,7 +707,9 @@ class SpacesBucketObject(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         index = digitalocean.SpacesBucketObject("index",
             region=foobar.region,
             bucket=foobar.name,

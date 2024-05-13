@@ -225,8 +225,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.Vpc("example",
-            ip_range="10.10.10.0/24",
-            region="nyc3")
+            name="example-project-network",
+            region="nyc3",
+            ip_range="10.10.10.0/24")
         ```
 
         ### Resource Assignment
@@ -239,12 +240,15 @@ class Vpc(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.Vpc("example",
+            name="example-project-network",
+            region="nyc3")
+        example_droplet = digitalocean.Droplet("example",
+            name="example-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3,
-            vpc_uuid=example_vpc.id)
+            vpc_uuid=example.id)
         ```
 
         ## Import
@@ -281,8 +285,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.Vpc("example",
-            ip_range="10.10.10.0/24",
-            region="nyc3")
+            name="example-project-network",
+            region="nyc3",
+            ip_range="10.10.10.0/24")
         ```
 
         ### Resource Assignment
@@ -295,12 +300,15 @@ class Vpc(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.Vpc("example",
+            name="example-project-network",
+            region="nyc3")
+        example_droplet = digitalocean.Droplet("example",
+            name="example-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3,
-            vpc_uuid=example_vpc.id)
+            vpc_uuid=example.id)
         ```
 
         ## Import
