@@ -19,7 +19,7 @@ const example = new digitalocean.DatabaseCluster("example", {
     nodeCount: 1,
     region: digitalocean.Region.NYC3,
     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
-    version: "12",
+    version: "15",
 });
 
 export let name = example.name;
