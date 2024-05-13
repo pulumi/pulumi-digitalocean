@@ -7,7 +7,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		vol, err := digitalocean.NewVolume(ctx, "demoName", &digitalocean.VolumeArgs{
+		vol, err := digitalocean.NewVolume(ctx, "demoname", &digitalocean.VolumeArgs{
 			Region:     pulumi.String("lon1"),
 			Size:       pulumi.Int(10),
 		})

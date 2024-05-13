@@ -5,7 +5,7 @@ class MyStack : Stack
 {
     public MyStack()
     {
-        var volume = new DigitalOcean.Volume("demoNameCs", new DigitalOcean.VolumeArgs
+        var volume = new DigitalOcean.Volume("demonamecs", new DigitalOcean.VolumeArgs
         {
             Region = "lon1",
             Size = 100,
