@@ -569,6 +569,9 @@ class AppSpecDomainName(dict):
         """
         :param str name: The hostname for the domain.
         :param str type: The domain type, which can be one of the following:
+               - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+               - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+               - `ALIAS`: A non-primary domain.
         :param bool wildcard: A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
         :param str zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
@@ -593,6 +596,9 @@ class AppSpecDomainName(dict):
     def type(self) -> Optional[str]:
         """
         The domain type, which can be one of the following:
+        - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+        - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+        - `ALIAS`: A non-primary domain.
         """
         return pulumi.get(self, "type")
 
@@ -1854,6 +1860,10 @@ class AppSpecJob(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
+               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['AppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -1991,6 +2001,10 @@ class AppSpecJob(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -9081,6 +9095,10 @@ class GetAppSpecJobResult(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
+               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['GetAppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -9218,6 +9236,10 @@ class GetAppSpecJobResult(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
