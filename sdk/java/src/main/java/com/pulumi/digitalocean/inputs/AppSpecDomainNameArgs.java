@@ -34,6 +34,9 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The domain type, which can be one of the following:
+     * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+     * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app&#39;s live URL. Only one domain may be set as primary.
+     * - `ALIAS`: A non-primary domain.
      * 
      */
     @Import(name="type")
@@ -41,6 +44,9 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The domain type, which can be one of the following:
+     * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+     * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app&#39;s live URL. Only one domain may be set as primary.
+     * - `ALIAS`: A non-primary domain.
      * 
      */
     public Optional<Output<String>> type() {
@@ -127,6 +133,9 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The domain type, which can be one of the following:
+         * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+         * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app&#39;s live URL. Only one domain may be set as primary.
+         * - `ALIAS`: A non-primary domain.
          * 
          * @return builder
          * 
@@ -138,6 +147,9 @@ public final class AppSpecDomainNameArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The domain type, which can be one of the following:
+         * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+         * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app&#39;s live URL. Only one domain may be set as primary.
+         * - `ALIAS`: A non-primary domain.
          * 
          * @return builder
          * 

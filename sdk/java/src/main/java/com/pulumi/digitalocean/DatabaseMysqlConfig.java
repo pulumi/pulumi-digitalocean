@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()        
+ *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()
  *             .name("example-mysql-cluster")
  *             .engine("mysql")
  *             .version("8")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var example = new DatabaseMysqlConfig("example", DatabaseMysqlConfigArgs.builder()        
+ *         var example = new DatabaseMysqlConfig("example", DatabaseMysqlConfigArgs.builder()
  *             .clusterId(exampleDatabaseCluster.id())
  *             .connectTimeout(10)
  *             .defaultTimeZone("UTC")

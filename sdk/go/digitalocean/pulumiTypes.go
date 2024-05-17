@@ -640,6 +640,9 @@ type AppSpecDomainName struct {
 	// The hostname for the domain.
 	Name string `pulumi:"name"`
 	// The domain type, which can be one of the following:
+	// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+	// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+	// - `ALIAS`: A non-primary domain.
 	Type *string `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard *bool `pulumi:"wildcard"`
@@ -662,6 +665,9 @@ type AppSpecDomainNameArgs struct {
 	// The hostname for the domain.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The domain type, which can be one of the following:
+	// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+	// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+	// - `ALIAS`: A non-primary domain.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
@@ -726,6 +732,9 @@ func (o AppSpecDomainNameOutput) Name() pulumi.StringOutput {
 }
 
 // The domain type, which can be one of the following:
+// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+// - `ALIAS`: A non-primary domain.
 func (o AppSpecDomainNameOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDomainName) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4213,6 +4222,10 @@ type AppSpecJob struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -4259,6 +4272,10 @@ type AppSpecJobArgs struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -4377,6 +4394,10 @@ func (o AppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
+// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o AppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -20886,6 +20907,10 @@ type GetAppSpecJob struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -20932,6 +20957,10 @@ type GetAppSpecJobArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -21050,6 +21079,10 @@ func (o GetAppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
+// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o GetAppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

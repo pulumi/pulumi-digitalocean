@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()
  *             .name("foobar")
  *             .region("nyc3")
  *             .build());
  * 
- *         var foobarSpacesBucketPolicy = new SpacesBucketPolicy("foobarSpacesBucketPolicy", SpacesBucketPolicyArgs.builder()        
+ *         var foobarSpacesBucketPolicy = new SpacesBucketPolicy("foobarSpacesBucketPolicy", SpacesBucketPolicyArgs.builder()
  *             .region(foobar.region())
  *             .bucket(foobar.name())
  *             .policy(Output.tuple(foobar.name(), foobar.name()).applyValue(values -> {

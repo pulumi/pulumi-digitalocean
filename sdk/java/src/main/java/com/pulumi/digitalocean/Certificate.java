@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
  *             .name("custom-example")
  *             .type("custom")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
  *             .name("le-example")
  *             .type("lets_encrypt")
  *             .domains("example.com")
@@ -138,14 +138,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
  *             .name("le-example")
  *             .type("lets_encrypt")
  *             .domains("example.com")
  *             .build());
  * 
  *         // Create a new Load Balancer with TLS termination
- *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
+ *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()
  *             .name("secure-loadbalancer-1")
  *             .region("nyc3")
  *             .dropletTag("backend")

@@ -92,6 +92,10 @@ namespace Pulumi.DigitalOcean.Inputs
 
         /// <summary>
         /// The type of job and when it will be run during the deployment process. It may be one of:
+        /// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        /// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        /// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        /// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
