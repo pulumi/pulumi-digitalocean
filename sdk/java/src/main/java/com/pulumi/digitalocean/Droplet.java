@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Web Droplet in the nyc2 region
- *         var web = new Droplet("web", DropletArgs.builder()        
+ *         var web = new Droplet("web", DropletArgs.builder()
  *             .image("ubuntu-20-04-x64")
  *             .name("web-1")
  *             .region("nyc2")

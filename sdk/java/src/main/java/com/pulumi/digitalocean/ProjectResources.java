@@ -65,14 +65,14 @@ import javax.annotation.Nullable;
  *             .name("playground")
  *             .build());
  * 
- *         var foobar = new Droplet("foobar", DropletArgs.builder()        
+ *         var foobar = new Droplet("foobar", DropletArgs.builder()
  *             .name("example")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
- *         var barfoo = new ProjectResources("barfoo", ProjectResourcesArgs.builder()        
+ *         var barfoo = new ProjectResources("barfoo", ProjectResourcesArgs.builder()
  *             .project(playground.applyValue(getProjectResult -> getProjectResult.id()))
  *             .resources(foobar.dropletUrn())
  *             .build());

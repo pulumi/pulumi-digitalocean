@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecIngressRuleMatchPath {
+    /**
+     * @return Prefix-based match.
+     * 
+     */
     private @Nullable String prefix;
 
     private AppSpecIngressRuleMatchPath() {}
+    /**
+     * @return Prefix-based match.
+     * 
+     */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }

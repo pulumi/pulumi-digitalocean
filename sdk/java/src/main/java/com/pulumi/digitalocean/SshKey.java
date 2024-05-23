@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new SSH key
- *         var default_ = new SshKey("default", SshKeyArgs.builder()        
+ *         var default_ = new SshKey("default", SshKeyArgs.builder()
  *             .name("Example")
  *             .publicKey(StdFunctions.file(FileArgs.builder()
  *                 .input("/Users/myuser/.ssh/id_rsa.pub")
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new Droplet using the SSH key
- *         var web = new Droplet("web", DropletArgs.builder()        
+ *         var web = new Droplet("web", DropletArgs.builder()
  *             .image("ubuntu-18-04-x64")
  *             .name("web-1")
  *             .region("nyc3")

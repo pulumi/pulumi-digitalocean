@@ -8,7 +8,7 @@ import * as enums from "../types/enums";
 
 export interface AppSpec {
     /**
-     * Describes an alert policy for the component.
+     * Describes an alert policy for the app.
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[]>;
     databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
@@ -21,7 +21,7 @@ export interface AppSpec {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Describes an environment variable made available to an app competent.
+     * Describes an app-wide environment variable made available to all components.
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
     /**
@@ -35,7 +35,7 @@ export interface AppSpec {
     ingress?: pulumi.Input<inputs.AppSpecIngress>;
     jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
     /**
-     * The name of the component.
+     * The name of the app. Must be unique across all apps in the same account.
      */
     name: pulumi.Input<string>;
     /**
@@ -53,7 +53,7 @@ export interface AppSpecAlert {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
      */
     rule: pulumi.Input<string>;
 }
@@ -98,6 +98,9 @@ export interface AppSpecDomainName {
     name: pulumi.Input<string>;
     /**
      * The domain type, which can be one of the following:
+     * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+     * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+     * - `ALIAS`: A non-primary domain.
      */
     type?: pulumi.Input<string>;
     /**
@@ -334,6 +337,8 @@ export interface AppSpecFunctionLogDestinationDatadog {
 export interface AppSpecFunctionLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -364,21 +369,36 @@ export interface AppSpecIngress {
 }
 
 export interface AppSpecIngressRule {
+    /**
+     * The component to route to. Only one of `component` or `redirect` may be set.
+     */
     component?: pulumi.Input<inputs.AppSpecIngressRuleComponent>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      */
     cors?: pulumi.Input<inputs.AppSpecIngressRuleCors>;
+    /**
+     * The match configuration for the rule
+     */
     match?: pulumi.Input<inputs.AppSpecIngressRuleMatch>;
+    /**
+     * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     */
     redirect?: pulumi.Input<inputs.AppSpecIngressRuleRedirect>;
 }
 
 export interface AppSpecIngressRuleComponent {
     /**
-     * The name of the component.
+     * The name of the component to route to.
      */
     name?: pulumi.Input<string>;
+    /**
+     * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+     */
     preservePathPrefix?: pulumi.Input<boolean>;
+    /**
+     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
+     */
     rewrite?: pulumi.Input<string>;
 }
 
@@ -396,7 +416,7 @@ export interface AppSpecIngressRuleCors {
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+     * The `Access-Control-Allow-Origin` can be
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins>;
     /**
@@ -411,32 +431,53 @@ export interface AppSpecIngressRuleCors {
 
 export interface AppSpecIngressRuleCorsAllowOrigins {
     /**
-     * Exact string match.
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
      */
     exact?: pulumi.Input<string>;
     /**
-     * Prefix-based match.
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * RE2 style regex-based match.
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
      */
     regex?: pulumi.Input<string>;
 }
 
 export interface AppSpecIngressRuleMatch {
+    /**
+     * The path to match on.
+     */
     path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath>;
 }
 
 export interface AppSpecIngressRuleMatchPath {
+    /**
+     * Prefix-based match.
+     */
     prefix?: pulumi.Input<string>;
 }
 
 export interface AppSpecIngressRuleRedirect {
+    /**
+     * The authority/host to redirect to. This can be a hostname or IP address.
+     */
     authority?: pulumi.Input<string>;
+    /**
+     * The port to redirect to.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+     */
     redirectCode?: pulumi.Input<number>;
+    /**
+     * The scheme to redirect to. Supported values are `http` or `https`
+     */
     scheme?: pulumi.Input<string>;
+    /**
+     * An optional URI path to redirect to.
+     */
     uri?: pulumi.Input<string>;
 }
 
@@ -487,6 +528,10 @@ export interface AppSpecJob {
     instanceSizeSlug?: pulumi.Input<string>;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
+     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -657,6 +702,8 @@ export interface AppSpecJobLogDestinationDatadog {
 export interface AppSpecJobLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -978,6 +1025,8 @@ export interface AppSpecServiceLogDestinationDatadog {
 export interface AppSpecServiceLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }
@@ -1393,6 +1442,8 @@ export interface AppSpecWorkerLogDestinationDatadog {
 export interface AppSpecWorkerLogDestinationLogtail {
     /**
      * Logtail token.
+     *
+     * A `database` can contain:
      */
     token: pulumi.Input<string>;
 }

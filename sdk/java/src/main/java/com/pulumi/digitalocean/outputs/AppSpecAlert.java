@@ -19,7 +19,7 @@ public final class AppSpecAlert {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * @return The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
      * 
      */
     private String rule;
@@ -33,7 +33,7 @@ public final class AppSpecAlert {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * @return The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
      * 
      */
     public String rule() {

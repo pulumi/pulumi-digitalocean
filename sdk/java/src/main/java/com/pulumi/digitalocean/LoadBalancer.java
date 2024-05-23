@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet("web", DropletArgs.builder()        
+ *         var web = new Droplet("web", DropletArgs.builder()
  *             .name("web-1")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
- *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()        
+ *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()
  *             .name("loadbalancer-1")
  *             .region("nyc3")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()

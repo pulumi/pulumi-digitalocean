@@ -64,14 +64,14 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+     * The `Access-Control-Allow-Origin` can be
      * 
      */
     @Import(name="allowOrigins")
     private @Nullable Output<AppSpecIngressRuleCorsAllowOriginsArgs> allowOrigins;
 
     /**
-     * @return The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+     * @return The `Access-Control-Allow-Origin` can be
      * 
      */
     public Optional<Output<AppSpecIngressRuleCorsAllowOriginsArgs>> allowOrigins() {
@@ -221,7 +221,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowOrigins The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+         * @param allowOrigins The `Access-Control-Allow-Origin` can be
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class AppSpecIngressRuleCorsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowOrigins The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+         * @param allowOrigins The `Access-Control-Allow-Origin` can be
          * 
          * @return builder
          * 
