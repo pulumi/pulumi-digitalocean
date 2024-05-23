@@ -282,10 +282,10 @@ class AppSpec(dict):
                  static_sites: Optional[Sequence['outputs.AppSpecStaticSite']] = None,
                  workers: Optional[Sequence['outputs.AppSpecWorker']] = None):
         """
-        :param str name: The name of the component.
-        :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
+        :param str name: The name of the app. Must be unique across all apps in the same account.
+        :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the app.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
-        :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
+        :param Sequence['AppSpecEnvArgs'] envs: Describes an app-wide environment variable made available to all components.
         :param Sequence[str] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
@@ -322,7 +322,7 @@ class AppSpec(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the component.
+        The name of the app. Must be unique across all apps in the same account.
         """
         return pulumi.get(self, "name")
 
@@ -330,7 +330,7 @@ class AppSpec(dict):
     @pulumi.getter
     def alerts(self) -> Optional[Sequence['outputs.AppSpecAlert']]:
         """
-        Describes an alert policy for the component.
+        Describes an alert policy for the app.
         """
         return pulumi.get(self, "alerts")
 
@@ -359,7 +359,7 @@ class AppSpec(dict):
     @pulumi.getter
     def envs(self) -> Optional[Sequence['outputs.AppSpecEnv']]:
         """
-        Describes an environment variable made available to an app competent.
+        Describes an app-wide environment variable made available to all components.
         """
         return pulumi.get(self, "envs")
 
@@ -419,7 +419,7 @@ class AppSpecAlert(dict):
                  rule: str,
                  disabled: Optional[bool] = None):
         """
-        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param str rule: The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
         :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "rule", rule)
@@ -430,7 +430,7 @@ class AppSpecAlert(dict):
     @pulumi.getter
     def rule(self) -> str:
         """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
         """
         return pulumi.get(self, "rule")
 
@@ -569,6 +569,9 @@ class AppSpecDomainName(dict):
         """
         :param str name: The hostname for the domain.
         :param str type: The domain type, which can be one of the following:
+               - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+               - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+               - `ALIAS`: A non-primary domain.
         :param bool wildcard: A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
         :param str zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
@@ -593,6 +596,9 @@ class AppSpecDomainName(dict):
     def type(self) -> Optional[str]:
         """
         The domain type, which can be one of the following:
+        - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+        - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+        - `ALIAS`: A non-primary domain.
         """
         return pulumi.get(self, "type")
 
@@ -1361,6 +1367,8 @@ class AppSpecFunctionLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -1369,6 +1377,8 @@ class AppSpecFunctionLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -1466,7 +1476,10 @@ class AppSpecIngressRule(dict):
                  match: Optional['outputs.AppSpecIngressRuleMatch'] = None,
                  redirect: Optional['outputs.AppSpecIngressRuleRedirect'] = None):
         """
+        :param 'AppSpecIngressRuleComponentArgs' component: The component to route to. Only one of `component` or `redirect` may be set.
         :param 'AppSpecIngressRuleCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        :param 'AppSpecIngressRuleMatchArgs' match: The match configuration for the rule
+        :param 'AppSpecIngressRuleRedirectArgs' redirect: The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
         """
         if component is not None:
             pulumi.set(__self__, "component", component)
@@ -1480,6 +1493,9 @@ class AppSpecIngressRule(dict):
     @property
     @pulumi.getter
     def component(self) -> Optional['outputs.AppSpecIngressRuleComponent']:
+        """
+        The component to route to. Only one of `component` or `redirect` may be set.
+        """
         return pulumi.get(self, "component")
 
     @property
@@ -1493,11 +1509,17 @@ class AppSpecIngressRule(dict):
     @property
     @pulumi.getter
     def match(self) -> Optional['outputs.AppSpecIngressRuleMatch']:
+        """
+        The match configuration for the rule
+        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def redirect(self) -> Optional['outputs.AppSpecIngressRuleRedirect']:
+        """
+        The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        """
         return pulumi.get(self, "redirect")
 
 
@@ -1525,7 +1547,9 @@ class AppSpecIngressRuleComponent(dict):
                  preserve_path_prefix: Optional[bool] = None,
                  rewrite: Optional[str] = None):
         """
-        :param str name: The name of the component.
+        :param str name: The name of the component to route to.
+        :param bool preserve_path_prefix: An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+        :param str rewrite: An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1538,18 +1562,24 @@ class AppSpecIngressRuleComponent(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the component.
+        The name of the component to route to.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="preservePathPrefix")
     def preserve_path_prefix(self) -> Optional[bool]:
+        """
+        An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+        """
         return pulumi.get(self, "preserve_path_prefix")
 
     @property
     @pulumi.getter
     def rewrite(self) -> Optional[str]:
+        """
+        An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        """
         return pulumi.get(self, "rewrite")
 
 
@@ -1593,7 +1623,7 @@ class AppSpecIngressRuleCors(dict):
         :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
-        :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
         :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
@@ -1638,7 +1668,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional['outputs.AppSpecIngressRuleCorsAllowOrigins']:
         """
-        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        The `Access-Control-Allow-Origin` can be
         """
         return pulumi.get(self, "allow_origins")
 
@@ -1666,9 +1696,9 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
                  prefix: Optional[str] = None,
                  regex: Optional[str] = None):
         """
-        :param str exact: Exact string match.
-        :param str prefix: Prefix-based match.
-        :param str regex: RE2 style regex-based match.
+        :param str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        :param str prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param str regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -1681,7 +1711,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
     @pulumi.getter
     def exact(self) -> Optional[str]:
         """
-        Exact string match.
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
         """
         return pulumi.get(self, "exact")
 
@@ -1689,7 +1719,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
     @pulumi.getter
     def prefix(self) -> Optional[str]:
         """
-        Prefix-based match.
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
         """
         return pulumi.get(self, "prefix")
 
@@ -1697,7 +1727,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
     @pulumi.getter
     def regex(self) -> Optional[str]:
         """
-        RE2 style regex-based match.
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
         """
         return pulumi.get(self, "regex")
 
@@ -1706,12 +1736,18 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
 class AppSpecIngressRuleMatch(dict):
     def __init__(__self__, *,
                  path: Optional['outputs.AppSpecIngressRuleMatchPath'] = None):
+        """
+        :param 'AppSpecIngressRuleMatchPathArgs' path: The path to match on.
+        """
         if path is not None:
             pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
     def path(self) -> Optional['outputs.AppSpecIngressRuleMatchPath']:
+        """
+        The path to match on.
+        """
         return pulumi.get(self, "path")
 
 
@@ -1719,12 +1755,18 @@ class AppSpecIngressRuleMatch(dict):
 class AppSpecIngressRuleMatchPath(dict):
     def __init__(__self__, *,
                  prefix: Optional[str] = None):
+        """
+        :param str prefix: Prefix-based match.
+        """
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
 
     @property
     @pulumi.getter
     def prefix(self) -> Optional[str]:
+        """
+        Prefix-based match.
+        """
         return pulumi.get(self, "prefix")
 
 
@@ -1753,6 +1795,13 @@ class AppSpecIngressRuleRedirect(dict):
                  redirect_code: Optional[int] = None,
                  scheme: Optional[str] = None,
                  uri: Optional[str] = None):
+        """
+        :param str authority: The authority/host to redirect to. This can be a hostname or IP address.
+        :param int port: The port to redirect to.
+        :param int redirect_code: The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        :param str scheme: The scheme to redirect to. Supported values are `http` or `https`
+        :param str uri: An optional URI path to redirect to.
+        """
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
         if port is not None:
@@ -1767,26 +1816,41 @@ class AppSpecIngressRuleRedirect(dict):
     @property
     @pulumi.getter
     def authority(self) -> Optional[str]:
+        """
+        The authority/host to redirect to. This can be a hostname or IP address.
+        """
         return pulumi.get(self, "authority")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        The port to redirect to.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="redirectCode")
     def redirect_code(self) -> Optional[int]:
+        """
+        The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        """
         return pulumi.get(self, "redirect_code")
 
     @property
     @pulumi.getter
     def scheme(self) -> Optional[str]:
+        """
+        The scheme to redirect to. Supported values are `http` or `https`
+        """
         return pulumi.get(self, "scheme")
 
     @property
     @pulumi.getter
     def uri(self) -> Optional[str]:
+        """
+        An optional URI path to redirect to.
+        """
         return pulumi.get(self, "uri")
 
 
@@ -1854,6 +1918,10 @@ class AppSpecJob(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
+               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['AppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -1991,6 +2059,10 @@ class AppSpecJob(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -2529,6 +2601,8 @@ class AppSpecJobLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -2537,6 +2611,8 @@ class AppSpecJobLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -3625,6 +3701,8 @@ class AppSpecServiceLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -3633,6 +3711,8 @@ class AppSpecServiceLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -5073,6 +5153,8 @@ class AppSpecWorkerLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
+               
+               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -5081,6 +5163,8 @@ class AppSpecWorkerLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
+
+        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
@@ -9081,6 +9165,10 @@ class GetAppSpecJobResult(dict):
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
+               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param Sequence['GetAppSpecJobLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -9218,6 +9306,10 @@ class GetAppSpecJobResult(dict):
     def kind(self) -> Optional[str]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 

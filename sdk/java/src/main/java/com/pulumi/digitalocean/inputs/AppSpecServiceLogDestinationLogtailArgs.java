@@ -17,12 +17,16 @@ public final class AppSpecServiceLogDestinationLogtailArgs extends com.pulumi.re
     /**
      * Logtail token.
      * 
+     * A `database` can contain:
+     * 
      */
     @Import(name="token", required=true)
     private Output<String> token;
 
     /**
      * @return Logtail token.
+     * 
+     * A `database` can contain:
      * 
      */
     public Output<String> token() {
@@ -56,6 +60,8 @@ public final class AppSpecServiceLogDestinationLogtailArgs extends com.pulumi.re
         /**
          * @param token Logtail token.
          * 
+         * A `database` can contain:
+         * 
          * @return builder
          * 
          */
@@ -66,6 +72,8 @@ public final class AppSpecServiceLogDestinationLogtailArgs extends com.pulumi.re
 
         /**
          * @param token Logtail token.
+         * 
+         * A `database` can contain:
          * 
          * @return builder
          * 

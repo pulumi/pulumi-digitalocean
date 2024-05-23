@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()        
+ *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()
  *             .name("example-postgresql-cluster")
  *             .engine("pg")
  *             .version("15")
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var example = new DatabasePostgresqlConfig("example", DatabasePostgresqlConfigArgs.builder()        
+ *         var example = new DatabasePostgresqlConfig("example", DatabasePostgresqlConfigArgs.builder()
  *             .clusterId(exampleDatabaseCluster.id())
  *             .timezone("UTC")
  *             .workMem(16)

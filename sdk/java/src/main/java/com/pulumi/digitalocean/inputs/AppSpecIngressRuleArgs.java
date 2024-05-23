@@ -18,9 +18,17 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
 
     public static final AppSpecIngressRuleArgs Empty = new AppSpecIngressRuleArgs();
 
+    /**
+     * The component to route to. Only one of `component` or `redirect` may be set.
+     * 
+     */
     @Import(name="component")
     private @Nullable Output<AppSpecIngressRuleComponentArgs> component;
 
+    /**
+     * @return The component to route to. Only one of `component` or `redirect` may be set.
+     * 
+     */
     public Optional<Output<AppSpecIngressRuleComponentArgs>> component() {
         return Optional.ofNullable(this.component);
     }
@@ -40,16 +48,32 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.cors);
     }
 
+    /**
+     * The match configuration for the rule
+     * 
+     */
     @Import(name="match")
     private @Nullable Output<AppSpecIngressRuleMatchArgs> match;
 
+    /**
+     * @return The match configuration for the rule
+     * 
+     */
     public Optional<Output<AppSpecIngressRuleMatchArgs>> match() {
         return Optional.ofNullable(this.match);
     }
 
+    /**
+     * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     * 
+     */
     @Import(name="redirect")
     private @Nullable Output<AppSpecIngressRuleRedirectArgs> redirect;
 
+    /**
+     * @return The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     * 
+     */
     public Optional<Output<AppSpecIngressRuleRedirectArgs>> redirect() {
         return Optional.ofNullable(this.redirect);
     }
@@ -81,11 +105,23 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
             $ = new AppSpecIngressRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param component The component to route to. Only one of `component` or `redirect` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder component(@Nullable Output<AppSpecIngressRuleComponentArgs> component) {
             $.component = component;
             return this;
         }
 
+        /**
+         * @param component The component to route to. Only one of `component` or `redirect` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder component(AppSpecIngressRuleComponentArgs component) {
             return component(Output.of(component));
         }
@@ -111,20 +147,44 @@ public final class AppSpecIngressRuleArgs extends com.pulumi.resources.ResourceA
             return cors(Output.of(cors));
         }
 
+        /**
+         * @param match The match configuration for the rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(@Nullable Output<AppSpecIngressRuleMatchArgs> match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param match The match configuration for the rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(AppSpecIngressRuleMatchArgs match) {
             return match(Output.of(match));
         }
 
+        /**
+         * @param redirect The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redirect(@Nullable Output<AppSpecIngressRuleRedirectArgs> redirect) {
             $.redirect = redirect;
             return this;
         }
 
+        /**
+         * @param redirect The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redirect(AppSpecIngressRuleRedirectArgs redirect) {
             return redirect(Output.of(redirect));
         }

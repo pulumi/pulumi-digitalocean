@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ContainerRegistryDockerCredentials("example", ContainerRegistryDockerCredentialsArgs.builder()        
+ *         var example = new ContainerRegistryDockerCredentials("example", ContainerRegistryDockerCredentialsArgs.builder()
  *             .registryName("example")
  *             .build());
  * 
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *             .name("example")
  *             .build());
  * 
- *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()        
+ *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()
  *             .registryName("example")
  *             .build());
  * 
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()        
+ *         var exampleContainerRegistryDockerCredentials = new ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", ContainerRegistryDockerCredentialsArgs.builder()
  *             .registryName("example")
  *             .build());
  * 
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *             .name("prod-cluster-01")
  *             .build());
  * 
- *         var exampleSecret = new Secret("exampleSecret", SecretArgs.builder()        
+ *         var exampleSecret = new Secret("exampleSecret", SecretArgs.builder()
  *             .metadata(ObjectMetaArgs.builder()
  *                 .name("docker-cfg")
  *                 .build())

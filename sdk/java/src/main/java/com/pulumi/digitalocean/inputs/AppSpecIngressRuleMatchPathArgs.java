@@ -15,9 +15,17 @@ public final class AppSpecIngressRuleMatchPathArgs extends com.pulumi.resources.
 
     public static final AppSpecIngressRuleMatchPathArgs Empty = new AppSpecIngressRuleMatchPathArgs();
 
+    /**
+     * Prefix-based match.
+     * 
+     */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
+    /**
+     * @return Prefix-based match.
+     * 
+     */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -46,11 +54,23 @@ public final class AppSpecIngressRuleMatchPathArgs extends com.pulumi.resources.
             $ = new AppSpecIngressRuleMatchPathArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prefix Prefix-based match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
 
+        /**
+         * @param prefix Prefix-based match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }

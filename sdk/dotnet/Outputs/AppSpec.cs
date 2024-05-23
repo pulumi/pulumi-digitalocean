@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpec
     {
         /// <summary>
-        /// Describes an alert policy for the component.
+        /// Describes an alert policy for the app.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecAlert> Alerts;
         public readonly ImmutableArray<Outputs.AppSpecDatabase> Databases;
@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly ImmutableArray<Outputs.AppSpecDomainName> DomainNames;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
-        /// Describes an environment variable made available to an app competent.
+        /// Describes an app-wide environment variable made available to all components.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecEnv> Envs;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly Outputs.AppSpecIngress? Ingress;
         public readonly ImmutableArray<Outputs.AppSpecJob> Jobs;
         /// <summary>
-        /// The name of the component.
+        /// The name of the app. Must be unique across all apps in the same account.
         /// </summary>
         public readonly string Name;
         /// <summary>

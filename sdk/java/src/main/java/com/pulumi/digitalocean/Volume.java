@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()
  *             .region("nyc1")
  *             .name("baz")
  *             .size(100)
@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  *             .description("an example volume")
  *             .build());
  * 
- *         var foobarDroplet = new Droplet("foobarDroplet", DropletArgs.builder()        
+ *         var foobarDroplet = new Droplet("foobarDroplet", DropletArgs.builder()
  *             .name("baz")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")
  *             .region("nyc1")
  *             .build());
  * 
- *         var foobarVolumeAttachment = new VolumeAttachment("foobarVolumeAttachment", VolumeAttachmentArgs.builder()        
+ *         var foobarVolumeAttachment = new VolumeAttachment("foobarVolumeAttachment", VolumeAttachmentArgs.builder()
  *             .dropletId(foobarDroplet.id())
  *             .volumeId(foobar.id())
  *             .build());
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .name("baz")
  *             .build());
  * 
- *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()        
+ *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()
  *             .region("lon1")
  *             .name("foo")
  *             .size(foobar.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.minDiskSize()))

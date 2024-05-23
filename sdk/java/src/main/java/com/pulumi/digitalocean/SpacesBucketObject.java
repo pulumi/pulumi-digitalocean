@@ -94,12 +94,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()
  *             .name("foobar")
  *             .region("nyc3")
  *             .build());
  * 
- *         var index = new SpacesBucketObject("index", SpacesBucketObjectArgs.builder()        
+ *         var index = new SpacesBucketObject("index", SpacesBucketObjectArgs.builder()
  *             .region(foobar.region())
  *             .bucket(foobar.name())
  *             .key("index.html")
