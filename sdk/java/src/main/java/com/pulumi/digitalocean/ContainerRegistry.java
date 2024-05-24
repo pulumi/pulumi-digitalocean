@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new container registry
- *         var foobar = new ContainerRegistry("foobar", ContainerRegistryArgs.builder()        
+ *         var foobar = new ContainerRegistry("foobar", ContainerRegistryArgs.builder()
  *             .name("foobar")
  *             .subscriptionTierSlug("starter")
  *             .build());

@@ -15,9 +15,17 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
 
     public static final AppSpecIngressRuleMatchArgs Empty = new AppSpecIngressRuleMatchArgs();
 
+    /**
+     * The path to match on.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<AppSpecIngressRuleMatchPathArgs> path;
 
+    /**
+     * @return The path to match on.
+     * 
+     */
     public Optional<Output<AppSpecIngressRuleMatchPathArgs>> path() {
         return Optional.ofNullable(this.path);
     }
@@ -46,11 +54,23 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
             $ = new AppSpecIngressRuleMatchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param path The path to match on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<AppSpecIngressRuleMatchPathArgs> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The path to match on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(AppSpecIngressRuleMatchPathArgs path) {
             return path(Output.of(path));
         }

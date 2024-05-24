@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var golang_sample = new App("golang-sample", AppArgs.builder()        
+ *         var golang_sample = new App("golang-sample", AppArgs.builder()
  *             .spec(AppSpecArgs.builder()
  *                 .name("golang-sample")
  *                 .region("ams")
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_site_example = new App("static-site-example", AppArgs.builder()        
+ *         var static_site_example = new App("static-site-example", AppArgs.builder()
  *             .spec(AppSpecArgs.builder()
  *                 .name("static-site-example")
  *                 .region("ams")
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mono_repo_example = new App("mono-repo-example", AppArgs.builder()        
+ *         var mono_repo_example = new App("mono-repo-example", AppArgs.builder()
  *             .spec(AppSpecArgs.builder()
  *                 .name("mono-repo-example")
  *                 .region("ams")

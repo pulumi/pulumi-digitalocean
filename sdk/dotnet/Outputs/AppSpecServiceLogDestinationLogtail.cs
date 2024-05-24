@@ -15,6 +15,8 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         /// <summary>
         /// Logtail token.
+        /// 
+        /// A `database` can contain:
         /// </summary>
         public readonly string Token;
 

@@ -14,14 +14,14 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AppSpec struct {
-	// Describes an alert policy for the component.
+	// Describes an alert policy for the app.
 	Alerts    []AppSpecAlert    `pulumi:"alerts"`
 	Databases []AppSpecDatabase `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
 	DomainNames []AppSpecDomainName `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
-	// Describes an environment variable made available to an app competent.
+	// Describes an app-wide environment variable made available to all components.
 	Envs []AppSpecEnv `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
 	Features  []string          `pulumi:"features"`
@@ -29,7 +29,7 @@ type AppSpec struct {
 	// Specification for component routing, rewrites, and redirects.
 	Ingress *AppSpecIngress `pulumi:"ingress"`
 	Jobs    []AppSpecJob    `pulumi:"jobs"`
-	// The name of the component.
+	// The name of the app. Must be unique across all apps in the same account.
 	Name string `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      *string             `pulumi:"region"`
@@ -50,14 +50,14 @@ type AppSpecInput interface {
 }
 
 type AppSpecArgs struct {
-	// Describes an alert policy for the component.
+	// Describes an alert policy for the app.
 	Alerts    AppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
 	DomainNames AppSpecDomainNameArrayInput `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// Describes an environment variable made available to an app competent.
+	// Describes an app-wide environment variable made available to all components.
 	Envs AppSpecEnvArrayInput `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
 	Features  pulumi.StringArrayInput   `pulumi:"features"`
@@ -65,7 +65,7 @@ type AppSpecArgs struct {
 	// Specification for component routing, rewrites, and redirects.
 	Ingress AppSpecIngressPtrInput `pulumi:"ingress"`
 	Jobs    AppSpecJobArrayInput   `pulumi:"jobs"`
-	// The name of the component.
+	// The name of the app. Must be unique across all apps in the same account.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      pulumi.StringPtrInput       `pulumi:"region"`
@@ -151,7 +151,7 @@ func (o AppSpecOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpe
 	}).(AppSpecPtrOutput)
 }
 
-// Describes an alert policy for the component.
+// Describes an alert policy for the app.
 func (o AppSpecOutput) Alerts() AppSpecAlertArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecAlert { return v.Alerts }).(AppSpecAlertArrayOutput)
 }
@@ -170,7 +170,7 @@ func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Describes an environment variable made available to an app competent.
+// Describes an app-wide environment variable made available to all components.
 func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
 }
@@ -193,7 +193,7 @@ func (o AppSpecOutput) Jobs() AppSpecJobArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecJob { return v.Jobs }).(AppSpecJobArrayOutput)
 }
 
-// The name of the component.
+// The name of the app. Must be unique across all apps in the same account.
 func (o AppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpec) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -239,7 +239,7 @@ func (o AppSpecPtrOutput) Elem() AppSpecOutput {
 	}).(AppSpecOutput)
 }
 
-// Describes an alert policy for the component.
+// Describes an alert policy for the app.
 func (o AppSpecPtrOutput) Alerts() AppSpecAlertArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecAlert {
 		if v == nil {
@@ -278,7 +278,7 @@ func (o AppSpecPtrOutput) Domains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Describes an environment variable made available to an app competent.
+// Describes an app-wide environment variable made available to all components.
 func (o AppSpecPtrOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecEnv {
 		if v == nil {
@@ -326,7 +326,7 @@ func (o AppSpecPtrOutput) Jobs() AppSpecJobArrayOutput {
 	}).(AppSpecJobArrayOutput)
 }
 
-// The name of the component.
+// The name of the app. Must be unique across all apps in the same account.
 func (o AppSpecPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpec) *string {
 		if v == nil {
@@ -376,7 +376,7 @@ func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
 type AppSpecAlert struct {
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
 	Rule string `pulumi:"rule"`
 }
 
@@ -394,7 +394,7 @@ type AppSpecAlertInput interface {
 type AppSpecAlertArgs struct {
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -454,7 +454,7 @@ func (o AppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
 func (o AppSpecAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -640,6 +640,9 @@ type AppSpecDomainName struct {
 	// The hostname for the domain.
 	Name string `pulumi:"name"`
 	// The domain type, which can be one of the following:
+	// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+	// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+	// - `ALIAS`: A non-primary domain.
 	Type *string `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard *bool `pulumi:"wildcard"`
@@ -662,6 +665,9 @@ type AppSpecDomainNameArgs struct {
 	// The hostname for the domain.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The domain type, which can be one of the following:
+	// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+	// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+	// - `ALIAS`: A non-primary domain.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
@@ -726,6 +732,9 @@ func (o AppSpecDomainNameOutput) Name() pulumi.StringOutput {
 }
 
 // The domain type, which can be one of the following:
+// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+// - `ALIAS`: A non-primary domain.
 func (o AppSpecDomainNameOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDomainName) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2526,6 +2535,8 @@ func (o AppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringP
 
 type AppSpecFunctionLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -2542,6 +2553,8 @@ type AppSpecFunctionLogDestinationLogtailInput interface {
 
 type AppSpecFunctionLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -2623,6 +2636,8 @@ func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinat
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -2652,6 +2667,8 @@ func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Elem() AppSpecFunctionLog
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionLogDestinationLogtail) *string {
 		if v == nil {
@@ -3042,10 +3059,13 @@ func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 }
 
 type AppSpecIngressRule struct {
+	// The component to route to. Only one of `component` or `redirect` may be set.
 	Component *AppSpecIngressRuleComponent `pulumi:"component"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	Cors     *AppSpecIngressRuleCors     `pulumi:"cors"`
-	Match    *AppSpecIngressRuleMatch    `pulumi:"match"`
+	Cors *AppSpecIngressRuleCors `pulumi:"cors"`
+	// The match configuration for the rule
+	Match *AppSpecIngressRuleMatch `pulumi:"match"`
+	// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
 	Redirect *AppSpecIngressRuleRedirect `pulumi:"redirect"`
 }
 
@@ -3061,10 +3081,13 @@ type AppSpecIngressRuleInput interface {
 }
 
 type AppSpecIngressRuleArgs struct {
+	// The component to route to. Only one of `component` or `redirect` may be set.
 	Component AppSpecIngressRuleComponentPtrInput `pulumi:"component"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	Cors     AppSpecIngressRuleCorsPtrInput     `pulumi:"cors"`
-	Match    AppSpecIngressRuleMatchPtrInput    `pulumi:"match"`
+	Cors AppSpecIngressRuleCorsPtrInput `pulumi:"cors"`
+	// The match configuration for the rule
+	Match AppSpecIngressRuleMatchPtrInput `pulumi:"match"`
+	// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
 	Redirect AppSpecIngressRuleRedirectPtrInput `pulumi:"redirect"`
 }
 
@@ -3119,6 +3142,7 @@ func (o AppSpecIngressRuleOutput) ToAppSpecIngressRuleOutputWithContext(ctx cont
 	return o
 }
 
+// The component to route to. Only one of `component` or `redirect` may be set.
 func (o AppSpecIngressRuleOutput) Component() AppSpecIngressRuleComponentPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleComponent { return v.Component }).(AppSpecIngressRuleComponentPtrOutput)
 }
@@ -3128,10 +3152,12 @@ func (o AppSpecIngressRuleOutput) Cors() AppSpecIngressRuleCorsPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleCors { return v.Cors }).(AppSpecIngressRuleCorsPtrOutput)
 }
 
+// The match configuration for the rule
 func (o AppSpecIngressRuleOutput) Match() AppSpecIngressRuleMatchPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleMatch { return v.Match }).(AppSpecIngressRuleMatchPtrOutput)
 }
 
+// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
 func (o AppSpecIngressRuleOutput) Redirect() AppSpecIngressRuleRedirectPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRule) *AppSpecIngressRuleRedirect { return v.Redirect }).(AppSpecIngressRuleRedirectPtrOutput)
 }
@@ -3157,10 +3183,12 @@ func (o AppSpecIngressRuleArrayOutput) Index(i pulumi.IntInput) AppSpecIngressRu
 }
 
 type AppSpecIngressRuleComponent struct {
-	// The name of the component.
-	Name               *string `pulumi:"name"`
-	PreservePathPrefix *bool   `pulumi:"preservePathPrefix"`
-	Rewrite            *string `pulumi:"rewrite"`
+	// The name of the component to route to.
+	Name *string `pulumi:"name"`
+	// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
+	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
+	Rewrite *string `pulumi:"rewrite"`
 }
 
 // AppSpecIngressRuleComponentInput is an input type that accepts AppSpecIngressRuleComponentArgs and AppSpecIngressRuleComponentOutput values.
@@ -3175,10 +3203,12 @@ type AppSpecIngressRuleComponentInput interface {
 }
 
 type AppSpecIngressRuleComponentArgs struct {
-	// The name of the component.
-	Name               pulumi.StringPtrInput `pulumi:"name"`
-	PreservePathPrefix pulumi.BoolPtrInput   `pulumi:"preservePathPrefix"`
-	Rewrite            pulumi.StringPtrInput `pulumi:"rewrite"`
+	// The name of the component to route to.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
+	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
+	Rewrite pulumi.StringPtrInput `pulumi:"rewrite"`
 }
 
 func (AppSpecIngressRuleComponentArgs) ElementType() reflect.Type {
@@ -3258,15 +3288,17 @@ func (o AppSpecIngressRuleComponentOutput) ToAppSpecIngressRuleComponentPtrOutpu
 	}).(AppSpecIngressRuleComponentPtrOutput)
 }
 
-// The name of the component.
+// The name of the component to route to.
 func (o AppSpecIngressRuleComponentOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 func (o AppSpecIngressRuleComponentOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
+// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 func (o AppSpecIngressRuleComponentOutput) Rewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *string { return v.Rewrite }).(pulumi.StringPtrOutput)
 }
@@ -3295,7 +3327,7 @@ func (o AppSpecIngressRuleComponentPtrOutput) Elem() AppSpecIngressRuleComponent
 	}).(AppSpecIngressRuleComponentOutput)
 }
 
-// The name of the component.
+// The name of the component to route to.
 func (o AppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *string {
 		if v == nil {
@@ -3305,6 +3337,7 @@ func (o AppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 func (o AppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *bool {
 		if v == nil {
@@ -3314,6 +3347,7 @@ func (o AppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 func (o AppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *string {
 		if v == nil {
@@ -3330,7 +3364,7 @@ type AppSpecIngressRuleCors struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+	// The `Access-Control-Allow-Origin` can be
 	AllowOrigins *AppSpecIngressRuleCorsAllowOrigins `pulumi:"allowOrigins"`
 	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
@@ -3356,7 +3390,7 @@ type AppSpecIngressRuleCorsArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+	// The `Access-Control-Allow-Origin` can be
 	AllowOrigins AppSpecIngressRuleCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
 	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
@@ -3456,7 +3490,7 @@ func (o AppSpecIngressRuleCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+// The `Access-Control-Allow-Origin` can be
 func (o AppSpecIngressRuleCorsOutput) AllowOrigins() AppSpecIngressRuleCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *AppSpecIngressRuleCorsAllowOrigins { return v.AllowOrigins }).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
@@ -3525,7 +3559,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+// The `Access-Control-Allow-Origin` can be
 func (o AppSpecIngressRuleCorsPtrOutput) AllowOrigins() AppSpecIngressRuleCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) *AppSpecIngressRuleCorsAllowOrigins {
 		if v == nil {
@@ -3556,11 +3590,11 @@ func (o AppSpecIngressRuleCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleCorsAllowOrigins struct {
-	// Exact string match.
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
-	// Prefix-based match.
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix *string `pulumi:"prefix"`
-	// RE2 style regex-based match.
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex *string `pulumi:"regex"`
 }
 
@@ -3576,11 +3610,11 @@ type AppSpecIngressRuleCorsAllowOriginsInput interface {
 }
 
 type AppSpecIngressRuleCorsAllowOriginsArgs struct {
-	// Exact string match.
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// Prefix-based match.
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// RE2 style regex-based match.
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -3661,17 +3695,17 @@ func (o AppSpecIngressRuleCorsAllowOriginsOutput) ToAppSpecIngressRuleCorsAllowO
 	}).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// Exact string match.
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// Prefix-based match.
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// RE2 style regex-based match.
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -3700,7 +3734,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Elem() AppSpecIngressRuleCo
 	}).(AppSpecIngressRuleCorsAllowOriginsOutput)
 }
 
-// Exact string match.
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -3710,7 +3744,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Prefix-based match.
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -3720,7 +3754,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// RE2 style regex-based match.
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -3731,6 +3765,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOut
 }
 
 type AppSpecIngressRuleMatch struct {
+	// The path to match on.
 	Path *AppSpecIngressRuleMatchPath `pulumi:"path"`
 }
 
@@ -3746,6 +3781,7 @@ type AppSpecIngressRuleMatchInput interface {
 }
 
 type AppSpecIngressRuleMatchArgs struct {
+	// The path to match on.
 	Path AppSpecIngressRuleMatchPathPtrInput `pulumi:"path"`
 }
 
@@ -3826,6 +3862,7 @@ func (o AppSpecIngressRuleMatchOutput) ToAppSpecIngressRuleMatchPtrOutputWithCon
 	}).(AppSpecIngressRuleMatchPtrOutput)
 }
 
+// The path to match on.
 func (o AppSpecIngressRuleMatchOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath { return v.Path }).(AppSpecIngressRuleMatchPathPtrOutput)
 }
@@ -3854,6 +3891,7 @@ func (o AppSpecIngressRuleMatchPtrOutput) Elem() AppSpecIngressRuleMatchOutput {
 	}).(AppSpecIngressRuleMatchOutput)
 }
 
+// The path to match on.
 func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath {
 		if v == nil {
@@ -3864,6 +3902,7 @@ func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrO
 }
 
 type AppSpecIngressRuleMatchPath struct {
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
 }
 
@@ -3879,6 +3918,7 @@ type AppSpecIngressRuleMatchPathInput interface {
 }
 
 type AppSpecIngressRuleMatchPathArgs struct {
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 }
 
@@ -3959,6 +3999,7 @@ func (o AppSpecIngressRuleMatchPathOutput) ToAppSpecIngressRuleMatchPathPtrOutpu
 	}).(AppSpecIngressRuleMatchPathPtrOutput)
 }
 
+// Prefix-based match.
 func (o AppSpecIngressRuleMatchPathOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatchPath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -3987,6 +4028,7 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Elem() AppSpecIngressRuleMatchPath
 	}).(AppSpecIngressRuleMatchPathOutput)
 }
 
+// Prefix-based match.
 func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatchPath) *string {
 		if v == nil {
@@ -3997,11 +4039,16 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleRedirect struct {
-	Authority    *string `pulumi:"authority"`
-	Port         *int    `pulumi:"port"`
-	RedirectCode *int    `pulumi:"redirectCode"`
-	Scheme       *string `pulumi:"scheme"`
-	Uri          *string `pulumi:"uri"`
+	// The authority/host to redirect to. This can be a hostname or IP address.
+	Authority *string `pulumi:"authority"`
+	// The port to redirect to.
+	Port *int `pulumi:"port"`
+	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+	RedirectCode *int `pulumi:"redirectCode"`
+	// The scheme to redirect to. Supported values are `http` or `https`
+	Scheme *string `pulumi:"scheme"`
+	// An optional URI path to redirect to.
+	Uri *string `pulumi:"uri"`
 }
 
 // AppSpecIngressRuleRedirectInput is an input type that accepts AppSpecIngressRuleRedirectArgs and AppSpecIngressRuleRedirectOutput values.
@@ -4016,11 +4063,16 @@ type AppSpecIngressRuleRedirectInput interface {
 }
 
 type AppSpecIngressRuleRedirectArgs struct {
-	Authority    pulumi.StringPtrInput `pulumi:"authority"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	RedirectCode pulumi.IntPtrInput    `pulumi:"redirectCode"`
-	Scheme       pulumi.StringPtrInput `pulumi:"scheme"`
-	Uri          pulumi.StringPtrInput `pulumi:"uri"`
+	// The authority/host to redirect to. This can be a hostname or IP address.
+	Authority pulumi.StringPtrInput `pulumi:"authority"`
+	// The port to redirect to.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+	RedirectCode pulumi.IntPtrInput `pulumi:"redirectCode"`
+	// The scheme to redirect to. Supported values are `http` or `https`
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	// An optional URI path to redirect to.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
 func (AppSpecIngressRuleRedirectArgs) ElementType() reflect.Type {
@@ -4100,22 +4152,27 @@ func (o AppSpecIngressRuleRedirectOutput) ToAppSpecIngressRuleRedirectPtrOutputW
 	}).(AppSpecIngressRuleRedirectPtrOutput)
 }
 
+// The authority/host to redirect to. This can be a hostname or IP address.
 func (o AppSpecIngressRuleRedirectOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
+// The port to redirect to.
 func (o AppSpecIngressRuleRedirectOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 func (o AppSpecIngressRuleRedirectOutput) RedirectCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *int { return v.RedirectCode }).(pulumi.IntPtrOutput)
 }
 
+// The scheme to redirect to. Supported values are `http` or `https`
 func (o AppSpecIngressRuleRedirectOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
+// An optional URI path to redirect to.
 func (o AppSpecIngressRuleRedirectOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -4144,6 +4201,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Elem() AppSpecIngressRuleRedirectOu
 	}).(AppSpecIngressRuleRedirectOutput)
 }
 
+// The authority/host to redirect to. This can be a hostname or IP address.
 func (o AppSpecIngressRuleRedirectPtrOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *string {
 		if v == nil {
@@ -4153,6 +4211,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Authority() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The port to redirect to.
 func (o AppSpecIngressRuleRedirectPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *int {
 		if v == nil {
@@ -4162,6 +4221,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 func (o AppSpecIngressRuleRedirectPtrOutput) RedirectCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *int {
 		if v == nil {
@@ -4171,6 +4231,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) RedirectCode() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// The scheme to redirect to. Supported values are `http` or `https`
 func (o AppSpecIngressRuleRedirectPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *string {
 		if v == nil {
@@ -4180,6 +4241,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Scheme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An optional URI path to redirect to.
 func (o AppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *string {
 		if v == nil {
@@ -4213,6 +4275,10 @@ type AppSpecJob struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -4259,6 +4325,10 @@ type AppSpecJobArgs struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -4377,6 +4447,10 @@ func (o AppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
+// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o AppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -5795,6 +5869,8 @@ func (o AppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOut
 
 type AppSpecJobLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -5811,6 +5887,8 @@ type AppSpecJobLogDestinationLogtailInput interface {
 
 type AppSpecJobLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -5892,6 +5970,8 @@ func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtail
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -5921,6 +6001,8 @@ func (o AppSpecJobLogDestinationLogtailPtrOutput) Elem() AppSpecJobLogDestinatio
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobLogDestinationLogtail) *string {
 		if v == nil {
@@ -8379,6 +8461,8 @@ func (o AppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPt
 
 type AppSpecServiceLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -8395,6 +8479,8 @@ type AppSpecServiceLogDestinationLogtailInput interface {
 
 type AppSpecServiceLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -8476,6 +8562,8 @@ func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinatio
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -8505,6 +8593,8 @@ func (o AppSpecServiceLogDestinationLogtailPtrOutput) Elem() AppSpecServiceLogDe
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceLogDestinationLogtail) *string {
 		if v == nil {
@@ -11732,6 +11822,8 @@ func (o AppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtr
 
 type AppSpecWorkerLogDestinationLogtail struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -11748,6 +11840,8 @@ type AppSpecWorkerLogDestinationLogtailInput interface {
 
 type AppSpecWorkerLogDestinationLogtailArgs struct {
 	// Logtail token.
+	//
+	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -11829,6 +11923,8 @@ func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationL
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -11858,6 +11954,8 @@ func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Elem() AppSpecWorkerLogDest
 }
 
 // Logtail token.
+//
+// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerLogDestinationLogtail) *string {
 		if v == nil {
@@ -20886,6 +20984,10 @@ type GetAppSpecJob struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -20932,6 +21034,10 @@ type GetAppSpecJobArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -21050,6 +21156,10 @@ func (o GetAppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
+// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o GetAppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

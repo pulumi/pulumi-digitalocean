@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
  *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var pool_01 = new DatabaseConnectionPool("pool-01", DatabaseConnectionPoolArgs.builder()        
+ *         var pool_01 = new DatabaseConnectionPool("pool-01", DatabaseConnectionPoolArgs.builder()
  *             .clusterId(postgres_example.id())
  *             .name("pool-01")
  *             .mode("transaction")

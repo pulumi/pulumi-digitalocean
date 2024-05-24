@@ -14,16 +14,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecIngressRule {
+    /**
+     * @return The component to route to. Only one of `component` or `redirect` may be set.
+     * 
+     */
     private @Nullable AppSpecIngressRuleComponent component;
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
     private @Nullable AppSpecIngressRuleCors cors;
+    /**
+     * @return The match configuration for the rule
+     * 
+     */
     private @Nullable AppSpecIngressRuleMatch match;
+    /**
+     * @return The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     * 
+     */
     private @Nullable AppSpecIngressRuleRedirect redirect;
 
     private AppSpecIngressRule() {}
+    /**
+     * @return The component to route to. Only one of `component` or `redirect` may be set.
+     * 
+     */
     public Optional<AppSpecIngressRuleComponent> component() {
         return Optional.ofNullable(this.component);
     }
@@ -34,9 +50,17 @@ public final class AppSpecIngressRule {
     public Optional<AppSpecIngressRuleCors> cors() {
         return Optional.ofNullable(this.cors);
     }
+    /**
+     * @return The match configuration for the rule
+     * 
+     */
     public Optional<AppSpecIngressRuleMatch> match() {
         return Optional.ofNullable(this.match);
     }
+    /**
+     * @return The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+     * 
+     */
     public Optional<AppSpecIngressRuleRedirect> redirect() {
         return Optional.ofNullable(this.redirect);
     }

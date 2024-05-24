@@ -14,6 +14,8 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         /// <summary>
         /// Logtail token.
+        /// 
+        /// A `database` can contain:
         /// </summary>
         [Input("token", required: true)]
         public Input<string> Token { get; set; } = null!;

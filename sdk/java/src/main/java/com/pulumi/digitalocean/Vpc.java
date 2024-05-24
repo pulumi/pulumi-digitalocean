@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Vpc("example", VpcArgs.builder()        
+ *         var example = new Vpc("example", VpcArgs.builder()
  *             .name("example-project-network")
  *             .region("nyc3")
  *             .ipRange("10.10.10.0/24")
@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Vpc("example", VpcArgs.builder()        
+ *         var example = new Vpc("example", VpcArgs.builder()
  *             .name("example-project-network")
  *             .region("nyc3")
  *             .build());
  * 
- *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+ *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
  *             .name("example-01")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")

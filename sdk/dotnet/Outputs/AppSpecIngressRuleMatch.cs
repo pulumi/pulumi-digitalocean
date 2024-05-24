@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class AppSpecIngressRuleMatch
     {
+        /// <summary>
+        /// The path to match on.
+        /// </summary>
         public readonly Outputs.AppSpecIngressRuleMatchPath? Path;
 
         [OutputConstructor]

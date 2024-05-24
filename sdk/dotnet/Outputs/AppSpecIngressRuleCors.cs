@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
         /// <summary>
-        /// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        /// The `Access-Control-Allow-Origin` can be
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleCorsAllowOrigins? AllowOrigins;
         /// <summary>

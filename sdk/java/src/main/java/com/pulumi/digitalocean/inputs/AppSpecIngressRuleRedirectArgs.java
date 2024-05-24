@@ -16,37 +16,77 @@ public final class AppSpecIngressRuleRedirectArgs extends com.pulumi.resources.R
 
     public static final AppSpecIngressRuleRedirectArgs Empty = new AppSpecIngressRuleRedirectArgs();
 
+    /**
+     * The authority/host to redirect to. This can be a hostname or IP address.
+     * 
+     */
     @Import(name="authority")
     private @Nullable Output<String> authority;
 
+    /**
+     * @return The authority/host to redirect to. This can be a hostname or IP address.
+     * 
+     */
     public Optional<Output<String>> authority() {
         return Optional.ofNullable(this.authority);
     }
 
+    /**
+     * The port to redirect to.
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return The port to redirect to.
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+     * 
+     */
     @Import(name="redirectCode")
     private @Nullable Output<Integer> redirectCode;
 
+    /**
+     * @return The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+     * 
+     */
     public Optional<Output<Integer>> redirectCode() {
         return Optional.ofNullable(this.redirectCode);
     }
 
+    /**
+     * The scheme to redirect to. Supported values are `http` or `https`
+     * 
+     */
     @Import(name="scheme")
     private @Nullable Output<String> scheme;
 
+    /**
+     * @return The scheme to redirect to. Supported values are `http` or `https`
+     * 
+     */
     public Optional<Output<String>> scheme() {
         return Optional.ofNullable(this.scheme);
     }
 
+    /**
+     * An optional URI path to redirect to.
+     * 
+     */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
+    /**
+     * @return An optional URI path to redirect to.
+     * 
+     */
     public Optional<Output<String>> uri() {
         return Optional.ofNullable(this.uri);
     }
@@ -79,47 +119,107 @@ public final class AppSpecIngressRuleRedirectArgs extends com.pulumi.resources.R
             $ = new AppSpecIngressRuleRedirectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authority The authority/host to redirect to. This can be a hostname or IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authority(@Nullable Output<String> authority) {
             $.authority = authority;
             return this;
         }
 
+        /**
+         * @param authority The authority/host to redirect to. This can be a hostname or IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authority(String authority) {
             return authority(Output.of(authority));
         }
 
+        /**
+         * @param port The port to redirect to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port to redirect to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param redirectCode The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redirectCode(@Nullable Output<Integer> redirectCode) {
             $.redirectCode = redirectCode;
             return this;
         }
 
+        /**
+         * @param redirectCode The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redirectCode(Integer redirectCode) {
             return redirectCode(Output.of(redirectCode));
         }
 
+        /**
+         * @param scheme The scheme to redirect to. Supported values are `http` or `https`
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheme(@Nullable Output<String> scheme) {
             $.scheme = scheme;
             return this;
         }
 
+        /**
+         * @param scheme The scheme to redirect to. Supported values are `http` or `https`
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheme(String scheme) {
             return scheme(Output.of(scheme));
         }
 
+        /**
+         * @param uri An optional URI path to redirect to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(@Nullable Output<String> uri) {
             $.uri = uri;
             return this;
         }
 
+        /**
+         * @param uri An optional URI path to redirect to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(String uri) {
             return uri(Output.of(uri));
         }

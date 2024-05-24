@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecIngressRuleMatch {
+    /**
+     * @return The path to match on.
+     * 
+     */
     private @Nullable AppSpecIngressRuleMatchPath path;
 
     private AppSpecIngressRuleMatch() {}
+    /**
+     * @return The path to match on.
+     * 
+     */
     public Optional<AppSpecIngressRuleMatchPath> path() {
         return Optional.ofNullable(this.path);
     }

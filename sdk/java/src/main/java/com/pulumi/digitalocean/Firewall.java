@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet("web", DropletArgs.builder()        
+ *         var web = new Droplet("web", DropletArgs.builder()
  *             .name("web-1")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-18-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
- *         var webFirewall = new Firewall("webFirewall", FirewallArgs.builder()        
+ *         var webFirewall = new Firewall("webFirewall", FirewallArgs.builder()
  *             .name("only-22-80-and-443")
  *             .dropletIds(web.id())
  *             .inboundRules(            
