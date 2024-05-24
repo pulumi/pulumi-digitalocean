@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        /// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
         /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;

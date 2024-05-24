@@ -43,7 +43,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        /// The `Access-Control-Allow-Origin` can be
         /// </summary>
         [Input("allowOrigins")]
         public Input<Inputs.AppSpecIngressRuleCorsAllowOriginsArgs>? AllowOrigins { get; set; }

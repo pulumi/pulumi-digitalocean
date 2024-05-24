@@ -30,7 +30,7 @@ public final class AppSpecIngressRuleCors {
      */
     private @Nullable List<String> allowMethods;
     /**
-     * @return The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+     * @return The `Access-Control-Allow-Origin` can be
      * 
      */
     private @Nullable AppSpecIngressRuleCorsAllowOrigins allowOrigins;
@@ -68,7 +68,7 @@ public final class AppSpecIngressRuleCors {
         return this.allowMethods == null ? List.of() : this.allowMethods;
     }
     /**
-     * @return The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+     * @return The `Access-Control-Allow-Origin` can be
      * 
      */
     public Optional<AppSpecIngressRuleCorsAllowOrigins> allowOrigins() {

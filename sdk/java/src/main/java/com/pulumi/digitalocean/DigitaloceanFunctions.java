@@ -3231,7 +3231,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
      *             .image(web_snapshot.id())
      *             .name("web-02")
      *             .region("nyc3")
@@ -3325,7 +3325,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
      *             .image(web_snapshot.id())
      *             .name("web-02")
      *             .region("nyc3")
@@ -3419,7 +3419,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
      *             .image(web_snapshot.id())
      *             .name("web-02")
      *             .region("nyc3")
@@ -3513,7 +3513,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
      *             .image(web_snapshot.id())
      *             .name("web-02")
      *             .region("nyc3")
@@ -3607,7 +3607,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
      *             .image(web_snapshot.id())
      *             .name("web-02")
      *             .region("nyc3")
@@ -3701,7 +3701,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
      *             .image(web_snapshot.id())
      *             .name("web-02")
      *             .region("nyc3")
@@ -4808,7 +4808,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image(example.applyValue(getImageResult -> getImageResult.id()))
      *             .name("example-1")
      *             .region("nyc2")
@@ -4936,7 +4936,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image(example.applyValue(getImageResult -> getImageResult.id()))
      *             .name("example-1")
      *             .region("nyc2")
@@ -5064,7 +5064,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image(example.applyValue(getImageResult -> getImageResult.id()))
      *             .name("example-1")
      *             .region("nyc2")
@@ -5192,7 +5192,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image(example.applyValue(getImageResult -> getImageResult.id()))
      *             .name("example-1")
      *             .region("nyc2")
@@ -5320,7 +5320,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image(example.applyValue(getImageResult -> getImageResult.id()))
      *             .name("example-1")
      *             .region("nyc2")
@@ -5448,7 +5448,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1.0.0")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image(example.applyValue(getImageResult -> getImageResult.id()))
      *             .name("example-1")
      *             .region("nyc2")
@@ -6361,7 +6361,7 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6410,7 +6410,7 @@ public final class DigitaloceanFunctions {
      *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6500,7 +6500,7 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6549,7 +6549,7 @@ public final class DigitaloceanFunctions {
      *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6639,7 +6639,7 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6688,7 +6688,7 @@ public final class DigitaloceanFunctions {
      *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6778,7 +6778,7 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6827,7 +6827,7 @@ public final class DigitaloceanFunctions {
      *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6917,7 +6917,7 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -6966,7 +6966,7 @@ public final class DigitaloceanFunctions {
      *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -7056,7 +7056,7 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getKubernetesVersions();
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -7105,7 +7105,7 @@ public final class DigitaloceanFunctions {
      *             .versionPrefix("1.22.")
      *             .build());
      * 
-     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()        
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
      *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
@@ -10180,7 +10180,7 @@ public final class DigitaloceanFunctions {
      *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet("web", DropletArgs.builder()        
+     *         var web = new Droplet("web", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("nyc2")
@@ -10242,7 +10242,7 @@ public final class DigitaloceanFunctions {
      *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet("web", DropletArgs.builder()        
+     *         var web = new Droplet("web", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("nyc2")
@@ -10304,7 +10304,7 @@ public final class DigitaloceanFunctions {
      *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet("web", DropletArgs.builder()        
+     *         var web = new Droplet("web", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("nyc2")
@@ -10366,7 +10366,7 @@ public final class DigitaloceanFunctions {
      *             .key("droplet-bootstrap-script.sh")
      *             .build());
      * 
-     *         var web = new Droplet("web", DropletArgs.builder()        
+     *         var web = new Droplet("web", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("nyc2")
@@ -11025,7 +11025,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11084,7 +11084,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11143,7 +11143,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11202,7 +11202,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11818,7 +11818,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11876,7 +11876,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11934,7 +11934,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -11992,7 +11992,7 @@ public final class DigitaloceanFunctions {
      *             .name("example")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .image("ubuntu-18-04-x64")
      *             .name("example-1")
      *             .region("nyc2")
@@ -12378,14 +12378,14 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
      *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
@@ -12480,14 +12480,14 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
      *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
@@ -12582,14 +12582,14 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
      *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
@@ -12684,14 +12684,14 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("foo")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
      *             .build());
      * 
-     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()        
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
      *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
      *             .build());
@@ -12783,7 +12783,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
@@ -12877,7 +12877,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
@@ -12971,7 +12971,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
@@ -13065,7 +13065,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
@@ -13159,7 +13159,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
@@ -13253,7 +13253,7 @@ public final class DigitaloceanFunctions {
      *             .mostRecent(true)
      *             .build());
      * 
-     *         var foobar = new Volume("foobar", VolumeArgs.builder()        
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
@@ -13348,7 +13348,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
@@ -13444,7 +13444,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
@@ -13540,7 +13540,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
@@ -13636,7 +13636,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
@@ -13732,7 +13732,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
@@ -13828,7 +13828,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-network")
      *             .build());
      * 
-     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()        
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
      *             .name("example-01")
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")

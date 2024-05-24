@@ -46,19 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet("web", DropletArgs.builder()        
+ *         var web = new Droplet("web", DropletArgs.builder()
  *             .name("web-01")
  *             .size("s-1vcpu-1gb")
  *             .image("ubuntu-22-04-x64")
  *             .region("nyc3")
  *             .build());
  * 
- *         var web_snapshot = new DropletSnapshot("web-snapshot", DropletSnapshotArgs.builder()        
+ *         var web_snapshot = new DropletSnapshot("web-snapshot", DropletSnapshotArgs.builder()
  *             .dropletId(web.id())
  *             .name("web-snapshot-01")
  *             .build());
  * 
- *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()        
+ *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
  *             .image(web_snapshot.id())
  *             .name("web-02")
  *             .region("nyc3")

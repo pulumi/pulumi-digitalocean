@@ -48,14 +48,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Spaces Bucket
- *         var mybucket = new SpacesBucket("mybucket", SpacesBucketArgs.builder()        
+ *         var mybucket = new SpacesBucket("mybucket", SpacesBucketArgs.builder()
  *             .name("example")
  *             .region("sfo2")
  *             .acl("public-read")
  *             .build());
  * 
  *         // Add a CDN endpoint to the Spaces Bucket
- *         var mycdn = new Cdn("mycdn", CdnArgs.builder()        
+ *         var mycdn = new Cdn("mycdn", CdnArgs.builder()
  *             .origin(mybucket.bucketDomainName())
  *             .build());
  * 
@@ -96,21 +96,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Spaces Bucket
- *         var mybucket = new SpacesBucket("mybucket", SpacesBucketArgs.builder()        
+ *         var mybucket = new SpacesBucket("mybucket", SpacesBucketArgs.builder()
  *             .name("example")
  *             .region("sfo2")
  *             .acl("public-read")
  *             .build());
  * 
  *         // Create a DigitalOcean managed Let's Encrypt Certificate
- *         var cert = new Certificate("cert", CertificateArgs.builder()        
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
  *             .name("cdn-cert")
  *             .type("lets_encrypt")
  *             .domains("static.example.com")
  *             .build());
  * 
  *         // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
- *         var mycdn = new Cdn("mycdn", CdnArgs.builder()        
+ *         var mycdn = new Cdn("mycdn", CdnArgs.builder()
  *             .origin(mybucket.bucketDomainName())
  *             .customDomain("static.example.com")
  *             .certificateName(cert.name())

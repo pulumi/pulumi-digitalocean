@@ -12,6 +12,9 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecIngressRuleMatchPathArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Prefix-based match.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 

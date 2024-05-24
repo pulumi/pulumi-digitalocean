@@ -13,6 +13,9 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class AppSpecIngressRuleMatchPath
     {
+        /// <summary>
+        /// Prefix-based match.
+        /// </summary>
         public readonly string? Prefix;
 
         [OutputConstructor]

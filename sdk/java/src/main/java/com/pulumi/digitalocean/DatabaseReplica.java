@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
  *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .nodeCount(1)
  *             .build());
  * 
- *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()        
+ *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()
  *             .clusterId(postgres_example.id())
  *             .name("replica-example")
  *             .size("db-s-1vcpu-1gb")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         ctx.export("UUID", replica_example.uuid());
  *         // Create firewall rule for database replica
- *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()        
+ *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()
  *             .clusterId(replica_example.uuid())
  *             .rules(DatabaseFirewallRuleArgs.builder()
  *                 .type("ip_addr")

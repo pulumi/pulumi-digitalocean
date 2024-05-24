@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Domain("default", DomainArgs.builder()        
+ *         var default_ = new Domain("default", DomainArgs.builder()
  *             .name("example.com")
  *             .build());
  * 
  *         // Add an A record to the domain for www.example.com.
- *         var www = new DnsRecord("www", DnsRecordArgs.builder()        
+ *         var www = new DnsRecord("www", DnsRecordArgs.builder()
  *             .domain(default_.id())
  *             .type("A")
  *             .name("www")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Add a MX record for the example.com domain itself.
- *         var mx = new DnsRecord("mx", DnsRecordArgs.builder()        
+ *         var mx = new DnsRecord("mx", DnsRecordArgs.builder()
  *             .domain(default_.id())
  *             .type("MX")
  *             .name("{@literal @}")

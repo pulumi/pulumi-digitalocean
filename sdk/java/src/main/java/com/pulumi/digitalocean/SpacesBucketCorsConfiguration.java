@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()        
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()
  *             .name("foobar")
  *             .region("nyc3")
  *             .build());
  * 
- *         var test = new SpacesBucketCorsConfiguration("test", SpacesBucketCorsConfigurationArgs.builder()        
+ *         var test = new SpacesBucketCorsConfiguration("test", SpacesBucketCorsConfigurationArgs.builder()
  *             .bucket(foobar.id())
  *             .region("nyc3")
  *             .corsRules(SpacesBucketCorsConfigurationCorsRuleArgs.builder()

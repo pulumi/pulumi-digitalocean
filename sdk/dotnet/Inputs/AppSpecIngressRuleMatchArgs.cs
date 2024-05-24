@@ -12,6 +12,9 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class AppSpecIngressRuleMatchArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The path to match on.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.AppSpecIngressRuleMatchPathArgs>? Path { get; set; }
 

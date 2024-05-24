@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()        
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
  *             .name("example-postgres-cluster")
  *             .engine("pg")
  *             .version("15")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql_example = new DatabaseCluster("mysql-example", DatabaseClusterArgs.builder()        
+ *         var mysql_example = new DatabaseCluster("mysql-example", DatabaseClusterArgs.builder()
  *             .name("example-mysql-cluster")
  *             .engine("mysql")
  *             .version("8")
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redis_example = new DatabaseCluster("redis-example", DatabaseClusterArgs.builder()        
+ *         var redis_example = new DatabaseCluster("redis-example", DatabaseClusterArgs.builder()
  *             .name("example-redis-cluster")
  *             .engine("redis")
  *             .version("7")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()        
+ *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()
  *             .name("example-kafka-cluster")
  *             .engine("kafka")
  *             .version("3.5")
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mongodb_example = new DatabaseCluster("mongodb-example", DatabaseClusterArgs.builder()        
+ *         var mongodb_example = new DatabaseCluster("mongodb-example", DatabaseClusterArgs.builder()
  *             .name("example-mongo-cluster")
  *             .engine("mongodb")
  *             .version("6")
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var doby = new DatabaseCluster("doby", DatabaseClusterArgs.builder()        
+ *         var doby = new DatabaseCluster("doby", DatabaseClusterArgs.builder()
  *             .name("dobydb")
  *             .engine("pg")
  *             .version("15")
@@ -255,7 +255,7 @@ import javax.annotation.Nullable;
  *             .tags("production")
  *             .build());
  * 
- *         var dobyBackup = new DatabaseCluster("dobyBackup", DatabaseClusterArgs.builder()        
+ *         var dobyBackup = new DatabaseCluster("dobyBackup", DatabaseClusterArgs.builder()
  *             .name("dobydupe")
  *             .engine("pg")
  *             .version("15")

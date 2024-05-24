@@ -17,30 +17,46 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
     public static final AppSpecIngressRuleComponentArgs Empty = new AppSpecIngressRuleComponentArgs();
 
     /**
-     * The name of the component.
+     * The name of the component to route to.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the component.
+     * @return The name of the component to route to.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+     * 
+     */
     @Import(name="preservePathPrefix")
     private @Nullable Output<Boolean> preservePathPrefix;
 
+    /**
+     * @return An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+     * 
+     */
     public Optional<Output<Boolean>> preservePathPrefix() {
         return Optional.ofNullable(this.preservePathPrefix);
     }
 
+    /**
+     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+     * 
+     */
     @Import(name="rewrite")
     private @Nullable Output<String> rewrite;
 
+    /**
+     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+     * 
+     */
     public Optional<Output<String>> rewrite() {
         return Optional.ofNullable(this.rewrite);
     }
@@ -72,7 +88,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The name of the component to route to.
          * 
          * @return builder
          * 
@@ -83,7 +99,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The name of the component to route to.
          * 
          * @return builder
          * 
@@ -92,20 +108,44 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
             return name(Output.of(name));
         }
 
+        /**
+         * @param preservePathPrefix An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preservePathPrefix(@Nullable Output<Boolean> preservePathPrefix) {
             $.preservePathPrefix = preservePathPrefix;
             return this;
         }
 
+        /**
+         * @param preservePathPrefix An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preservePathPrefix(Boolean preservePathPrefix) {
             return preservePathPrefix(Output.of(preservePathPrefix));
         }
 
+        /**
+         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rewrite(@Nullable Output<String> rewrite) {
             $.rewrite = rewrite;
             return this;
         }
 
+        /**
+         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rewrite(String rewrite) {
             return rewrite(Output.of(rewrite));
         }
