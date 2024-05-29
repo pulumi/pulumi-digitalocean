@@ -112,6 +112,32 @@
         ]
     },
     "types": {
+        "digitalocean:index/AppDedicatedIp:AppDedicatedIp": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the app.\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "The IP address of the dedicated egress IP.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "ip",
+                        "status"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/AppSpec:AppSpec": {
             "properties": {
                 "alerts": {
@@ -140,6 +166,13 @@
                         "type": "string"
                     },
                     "deprecationMessage": "This attribute has been replaced by `domain` which supports additional functionality."
+                },
+                "egresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppSpecEgress:AppSpecEgress"
+                    },
+                    "description": "Specification for app egress configurations.\n"
                 },
                 "envs": {
                     "type": "array",
@@ -294,6 +327,15 @@
                     ]
                 }
             }
+        },
+        "digitalocean:index/AppSpecEgress:AppSpecEgress": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The app egress type: `AUTOASSIGN`, `DEDICATED_IP`\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecEnv:AppSpecEnv": {
             "properties": {
@@ -1235,6 +1277,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "httpPort",
+                        "internalPorts",
                         "name",
                         "routes",
                         "runCommand"
@@ -2908,6 +2951,17 @@
                     "$ref": "#/types/digitalocean:index/LoadBalancerGlbSettingsCdn:LoadBalancerGlbSettingsCdn",
                     "description": "CDN configuration supporting the following:\n"
                 },
+                "failoverThreshold": {
+                    "type": "integer",
+                    "description": "fail-over threshold\n"
+                },
+                "regionPriorities": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "region priority map\n"
+                },
                 "targetPort": {
                     "type": "integer",
                     "description": "An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.\n"
@@ -3210,6 +3264,33 @@
                 "url"
             ]
         },
+        "digitalocean:index/getAppDedicatedIp:getAppDedicatedIp": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the dedicated egress IP.\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "The IP address of the dedicated egress IP.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the dedicated egress IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "ip",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getAppSpec:getAppSpec": {
             "properties": {
                 "alerts": {
@@ -3237,6 +3318,12 @@
                         "type": "string"
                     },
                     "deprecationMessage": "This attribute has been replaced by `domain` which supports additional functionality."
+                },
+                "egresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getAppSpecEgress:getAppSpecEgress"
+                    }
                 },
                 "envs": {
                     "type": "array",
@@ -3391,6 +3478,15 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecEgress:getAppSpecEgress": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of the environment variable, `GENERAL` or `SECRET`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecEnv:getAppSpecEnv": {
             "properties": {
@@ -4374,6 +4470,7 @@
             "type": "object",
             "required": [
                 "httpPort",
+                "internalPorts",
                 "name",
                 "routes",
                 "runCommand"
@@ -6216,6 +6313,17 @@
                     },
                     "description": "CDN specific configurations\n"
                 },
+                "failoverThreshold": {
+                    "type": "integer",
+                    "description": "fail-over threshold\n"
+                },
+                "regionPriorities": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "region priority map\n"
+                },
                 "targetPort": {
                     "type": "integer",
                     "description": "target port rules\n"
@@ -6228,6 +6336,8 @@
             "type": "object",
             "required": [
                 "cdns",
+                "failoverThreshold",
+                "regionPriorities",
                 "targetPort",
                 "targetProtocol"
             ],
@@ -7648,6 +7758,13 @@
                     "type": "string",
                     "description": "The date and time of when the app was created.\n"
                 },
+                "dedicatedIps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppDedicatedIp:AppDedicatedIp"
+                    },
+                    "description": "The dedicated egress IP addresses associated with the app.\n"
+                },
                 "defaultIngress": {
                     "type": "string",
                     "description": "The default URL to access the app.\n"
@@ -7672,6 +7789,7 @@
             "required": [
                 "activeDeploymentId",
                 "createdAt",
+                "dedicatedIps",
                 "defaultIngress",
                 "liveUrl",
                 "projectId",
@@ -7679,6 +7797,13 @@
                 "appUrn"
             ],
             "inputProperties": {
+                "dedicatedIps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/AppDedicatedIp:AppDedicatedIp"
+                    },
+                    "description": "The dedicated egress IP addresses associated with the app.\n"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "The ID of the project that the app is assigned to.\n\nA spec can contain multiple components.\n\nA `service` can contain:\n",
@@ -7703,6 +7828,13 @@
                     "createdAt": {
                         "type": "string",
                         "description": "The date and time of when the app was created.\n"
+                    },
+                    "dedicatedIps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/AppDedicatedIp:AppDedicatedIp"
+                        },
+                        "description": "The dedicated egress IP addresses associated with the app.\n"
                     },
                     "defaultIngress": {
                         "type": "string",
@@ -14519,6 +14651,79 @@
                 },
                 "type": "object"
             }
+        },
+        "digitalocean:index/vpcPeering:VpcPeering": {
+            "description": "Provides a DigitalOcean VPC Peering resource.\n\nVPC Peerings are used to connect two VPC networks allowing resources in each \nVPC to communicate with each other privately.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.VpcPeering(\"example\", {\n    name: \"example-peering\",\n    vpcIds: [\n        vpc1.id,\n        vpc2.id,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.VpcPeering(\"example\",\n    name=\"example-peering\",\n    vpc_ids=[\n        vpc1[\"id\"],\n        vpc2[\"id\"],\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.VpcPeering(\"example\", new()\n    {\n        Name = \"example-peering\",\n        VpcIds = new[]\n        {\n            vpc1.Id,\n            vpc2.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVpcPeering(ctx, \"example\", \u0026digitalocean.VpcPeeringArgs{\n\t\t\tName: pulumi.String(\"example-peering\"),\n\t\t\tVpcIds: pulumi.StringArray{\n\t\t\t\tvpc1.Id,\n\t\t\t\tvpc2.Id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.VpcPeering;\nimport com.pulumi.digitalocean.VpcPeeringArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new VpcPeering(\"example\", VpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .vpcIds(            \n                vpc1.id(),\n                vpc2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:VpcPeering\n    properties:\n      name: example-peering\n      vpcIds:\n        - ${vpc1.id}\n        - ${vpc2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Resource Assignement\n\nYou can use the VPC Peering resource to allow communication between resources\nin different VPCs. For example:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst vpc1 = new digitalocean.Vpc(\"vpc1\", {\n    name: \"vpc1\",\n    region: \"nyc3\",\n});\nconst vpc2 = new digitalocean.Vpc(\"vpc2\", {\n    name: \"vpc2\",\n    region: \"nyc3\",\n});\nconst example = new digitalocean.VpcPeering(\"example\", {\n    name: \"example-peering\",\n    vpcIds: [\n        vpc1.id,\n        vpc2.id,\n    ],\n});\nconst example1 = new digitalocean.Droplet(\"example1\", {\n    name: \"example1\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: vpc1.id,\n});\nconst example2 = new digitalocean.Droplet(\"example2\", {\n    name: \"example2\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: vpc2.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nvpc1 = digitalocean.Vpc(\"vpc1\",\n    name=\"vpc1\",\n    region=\"nyc3\")\nvpc2 = digitalocean.Vpc(\"vpc2\",\n    name=\"vpc2\",\n    region=\"nyc3\")\nexample = digitalocean.VpcPeering(\"example\",\n    name=\"example-peering\",\n    vpc_ids=[\n        vpc1.id,\n        vpc2.id,\n    ])\nexample1 = digitalocean.Droplet(\"example1\",\n    name=\"example1\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=vpc1.id)\nexample2 = digitalocean.Droplet(\"example2\",\n    name=\"example2\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=vpc2.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vpc1 = new DigitalOcean.Vpc(\"vpc1\", new()\n    {\n        Name = \"vpc1\",\n        Region = \"nyc3\",\n    });\n\n    var vpc2 = new DigitalOcean.Vpc(\"vpc2\", new()\n    {\n        Name = \"vpc2\",\n        Region = \"nyc3\",\n    });\n\n    var example = new DigitalOcean.VpcPeering(\"example\", new()\n    {\n        Name = \"example-peering\",\n        VpcIds = new[]\n        {\n            vpc1.Id,\n            vpc2.Id,\n        },\n    });\n\n    var example1 = new DigitalOcean.Droplet(\"example1\", new()\n    {\n        Name = \"example1\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = vpc1.Id,\n    });\n\n    var example2 = new DigitalOcean.Droplet(\"example2\", new()\n    {\n        Name = \"example2\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = vpc2.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tvpc1, err := digitalocean.NewVpc(ctx, \"vpc1\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"vpc1\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvpc2, err := digitalocean.NewVpc(ctx, \"vpc2\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"vpc2\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewVpcPeering(ctx, \"example\", \u0026digitalocean.VpcPeeringArgs{\n\t\t\tName: pulumi.String(\"example-peering\"),\n\t\t\tVpcIds: pulumi.StringArray{\n\t\t\t\tvpc1.ID(),\n\t\t\t\tvpc2.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example1\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example1\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: vpc1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example2\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example2\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: vpc2.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.VpcPeering;\nimport com.pulumi.digitalocean.VpcPeeringArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vpc1 = new Vpc(\"vpc1\", VpcArgs.builder()\n            .name(\"vpc1\")\n            .region(\"nyc3\")\n            .build());\n\n        var vpc2 = new Vpc(\"vpc2\", VpcArgs.builder()\n            .name(\"vpc2\")\n            .region(\"nyc3\")\n            .build());\n\n        var example = new VpcPeering(\"example\", VpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .vpcIds(            \n                vpc1.id(),\n                vpc2.id())\n            .build());\n\n        var example1 = new Droplet(\"example1\", DropletArgs.builder()\n            .name(\"example1\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(vpc1.id())\n            .build());\n\n        var example2 = new Droplet(\"example2\", DropletArgs.builder()\n            .name(\"example2\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(vpc2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vpc1:\n    type: digitalocean:Vpc\n    properties:\n      name: vpc1\n      region: nyc3\n  vpc2:\n    type: digitalocean:Vpc\n    properties:\n      name: vpc2\n      region: nyc3\n  example:\n    type: digitalocean:VpcPeering\n    properties:\n      name: example-peering\n      vpcIds:\n        - ${vpc1.id}\n        - ${vpc2.id}\n  example1:\n    type: digitalocean:Droplet\n    properties:\n      name: example1\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${vpc1.id}\n  example2:\n    type: digitalocean:Droplet\n    properties:\n      name: example2\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${vpc2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA VPC Peering can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vpcPeering:VpcPeering example 771ad360-c017-4b4e-a34e-73934f5f0190\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time of when the VPC Peering was created.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the VPC Peering.\n"
+                },
+                "vpcIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of two VPC IDs to be peered.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "status",
+                "vpcIds"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.\n"
+                },
+                "vpcIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of two VPC IDs to be peered.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "vpcIds"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcPeering resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time of when the VPC Peering was created.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the VPC Peering.\n"
+                    },
+                    "vpcIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of two VPC IDs to be peered.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
         }
     },
     "functions": {
@@ -14581,6 +14786,13 @@
                     "appId": {
                         "type": "string",
                         "description": "The ID of the app to retrieve information about.\n"
+                    },
+                    "dedicatedIps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getAppDedicatedIp:getAppDedicatedIp"
+                        },
+                        "description": "A list of dedicated egress IP addresses associated with the app.\n"
                     }
                 },
                 "type": "object",
@@ -14601,6 +14813,13 @@
                     "createdAt": {
                         "description": "The date and time of when the app was created.\n",
                         "type": "string"
+                    },
+                    "dedicatedIps": {
+                        "description": "A list of dedicated egress IP addresses associated with the app.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getAppDedicatedIp:getAppDedicatedIp"
+                        },
+                        "type": "array"
                     },
                     "defaultIngress": {
                         "description": "The default URL to access the app.\n",
@@ -14638,6 +14857,7 @@
                     "activeDeploymentId",
                     "appId",
                     "createdAt",
+                    "dedicatedIps",
                     "defaultIngress",
                     "liveUrl",
                     "projectId",
@@ -17645,6 +17865,66 @@
                     "name",
                     "region",
                     "urn"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getVpcPeering:getVpcPeering": {
+            "description": "## Example Usage\n\n### VPC Peering By Id\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getVpcPeering({\n    id: \"example-id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vpc_peering(id=\"example-id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetVpcPeering.Invoke(new()\n    {\n        Id = \"example-id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupVpcPeering(ctx, \u0026digitalocean.LookupVpcPeeringArgs{\n\t\t\tId: pulumi.StringRef(\"example-id\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()\n            .id(\"example-id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: digitalocean:getVpcPeering\n      Arguments:\n        id: example-id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nReuse the data about a VPC Peering in other resources:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getVpcPeering({\n    id: \"example-id\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"example\", {\n    name: \"example-01\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: example.then(example =\u003e example.vpcIds?.[0]),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vpc_peering(id=\"example-id\")\nexample_droplet = digitalocean.Droplet(\"example\",\n    name=\"example-01\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=example.vpc_ids[0])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetVpcPeering.Invoke(new()\n    {\n        Id = \"example-id\",\n    });\n\n    var exampleDroplet = new DigitalOcean.Droplet(\"example\", new()\n    {\n        Name = \"example-01\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = example.Apply(getVpcPeeringResult =\u003e getVpcPeeringResult.VpcIds[0]),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupVpcPeering(ctx, \u0026digitalocean.LookupVpcPeeringArgs{\n\t\t\tId: pulumi.StringRef(\"example-id\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example-01\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: pulumi.String(example.VpcIds[0]),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()\n            .id(\"example-id\")\n            .build());\n\n        var exampleDroplet = new Droplet(\"exampleDroplet\", DropletArgs.builder()\n            .name(\"example-01\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(example.applyValue(getVpcPeeringResult -\u003e getVpcPeeringResult.vpcIds()[0]))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleDroplet:\n    type: digitalocean:Droplet\n    name: example\n    properties:\n      name: example-01\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${example.vpcIds[0]}\nvariables:\n  example:\n    fn::invoke:\n      Function: digitalocean:getVpcPeering\n      Arguments:\n        id: example-id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### VPC Peering By Name\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getVpcPeering({\n    name: \"example-peering\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vpc_peering(name=\"example-peering\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetVpcPeering.Invoke(new()\n    {\n        Name = \"example-peering\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupVpcPeering(ctx, \u0026digitalocean.LookupVpcPeeringArgs{\n\t\t\tName: pulumi.StringRef(\"example-peering\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: digitalocean:getVpcPeering\n      Arguments:\n        name: example-peering\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nReuse the data about a VPC Peering in other resources:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getVpcPeering({\n    name: \"example-peering\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"example\", {\n    name: \"example-01\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: example.then(example =\u003e example.vpcIds?.[0]),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vpc_peering(name=\"example-peering\")\nexample_droplet = digitalocean.Droplet(\"example\",\n    name=\"example-01\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=example.vpc_ids[0])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetVpcPeering.Invoke(new()\n    {\n        Name = \"example-peering\",\n    });\n\n    var exampleDroplet = new DigitalOcean.Droplet(\"example\", new()\n    {\n        Name = \"example-01\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = example.Apply(getVpcPeeringResult =\u003e getVpcPeeringResult.VpcIds[0]),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupVpcPeering(ctx, \u0026digitalocean.LookupVpcPeeringArgs{\n\t\t\tName: pulumi.StringRef(\"example-peering\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example-01\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: pulumi.String(example.VpcIds[0]),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .build());\n\n        var exampleDroplet = new Droplet(\"exampleDroplet\", DropletArgs.builder()\n            .name(\"example-01\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(example.applyValue(getVpcPeeringResult -\u003e getVpcPeeringResult.vpcIds()[0]))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleDroplet:\n    type: digitalocean:Droplet\n    name: example\n    properties:\n      name: example-01\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${example.vpcIds[0]}\nvariables:\n  example:\n    fn::invoke:\n      Function: digitalocean:getVpcPeering\n      Arguments:\n        name: example-peering\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcPeering.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of an existing VPC Peering.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of an existing VPC Peering.\n"
+                    },
+                    "vpcIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of VPC IDs involved in the peering.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcPeering.\n",
+                "properties": {
+                    "createdAt": {
+                        "description": "The date and time of when the VPC Peering was created.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique identifier for the VPC Peering.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the VPC Peering.\n",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The status of the VPC Peering.\n",
+                        "type": "string"
+                    },
+                    "vpcIds": {
+                        "description": "The list of VPC IDs involved in the peering.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "id",
+                    "name",
+                    "status",
+                    "vpcIds"
                 ],
                 "type": "object"
             }

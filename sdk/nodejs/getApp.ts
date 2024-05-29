@@ -29,6 +29,7 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getApp:getApp", {
         "appId": args.appId,
+        "dedicatedIps": args.dedicatedIps,
     }, opts);
 }
 
@@ -40,6 +41,10 @@ export interface GetAppArgs {
      * The ID of the app to retrieve information about.
      */
     appId: string;
+    /**
+     * A list of dedicated egress IP addresses associated with the app.
+     */
+    dedicatedIps?: inputs.GetAppDedicatedIp[];
 }
 
 /**
@@ -55,6 +60,10 @@ export interface GetAppResult {
      * The date and time of when the app was created.
      */
     readonly createdAt: string;
+    /**
+     * A list of dedicated egress IP addresses associated with the app.
+     */
+    readonly dedicatedIps: outputs.GetAppDedicatedIp[];
     /**
      * The default URL to access the app.
      */
@@ -113,4 +122,8 @@ export interface GetAppOutputArgs {
      * The ID of the app to retrieve information about.
      */
     appId: pulumi.Input<string>;
+    /**
+     * A list of dedicated egress IP addresses associated with the app.
+     */
+    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.GetAppDedicatedIpArgs>[]>;
 }

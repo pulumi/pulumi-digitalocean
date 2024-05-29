@@ -85,6 +85,8 @@ import com.pulumi.digitalocean.inputs.GetVolumePlainArgs;
 import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
 import com.pulumi.digitalocean.inputs.GetVolumeSnapshotPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcArgs;
+import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+import com.pulumi.digitalocean.inputs.GetVpcPeeringPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPlainArgs;
 import com.pulumi.digitalocean.outputs.GetAccountResult;
 import com.pulumi.digitalocean.outputs.GetAppResult;
@@ -125,6 +127,7 @@ import com.pulumi.digitalocean.outputs.GetTagResult;
 import com.pulumi.digitalocean.outputs.GetTagsResult;
 import com.pulumi.digitalocean.outputs.GetVolumeResult;
 import com.pulumi.digitalocean.outputs.GetVolumeSnapshotResult;
+import com.pulumi.digitalocean.outputs.GetVpcPeeringResult;
 import com.pulumi.digitalocean.outputs.GetVpcResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
@@ -13845,5 +13848,1007 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcPeeringResult> getVpcPeering() {
+        return getVpcPeering(GetVpcPeeringArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcPeeringResult> getVpcPeeringPlain() {
+        return getVpcPeeringPlain(GetVpcPeeringPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcPeeringResult> getVpcPeering(GetVpcPeeringArgs args) {
+        return getVpcPeering(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcPeeringResult> getVpcPeeringPlain(GetVpcPeeringPlainArgs args) {
+        return getVpcPeeringPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcPeeringResult> getVpcPeering(GetVpcPeeringArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVpcPeering:getVpcPeering", TypeShape.of(GetVpcPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcPeeringResult> getVpcPeeringPlain(GetVpcPeeringPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getVpcPeering:getVpcPeering", TypeShape.of(GetVpcPeeringResult.class), args, Utilities.withVersion(options));
     }
 }

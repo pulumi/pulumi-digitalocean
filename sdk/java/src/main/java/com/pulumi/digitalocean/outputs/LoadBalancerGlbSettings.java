@@ -8,6 +8,7 @@ import com.pulumi.digitalocean.outputs.LoadBalancerGlbSettingsCdn;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +20,16 @@ public final class LoadBalancerGlbSettings {
      * 
      */
     private @Nullable LoadBalancerGlbSettingsCdn cdn;
+    /**
+     * @return fail-over threshold
+     * 
+     */
+    private @Nullable Integer failoverThreshold;
+    /**
+     * @return region priority map
+     * 
+     */
+    private @Nullable Map<String,Integer> regionPriorities;
     /**
      * @return An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
      * 
@@ -37,6 +48,20 @@ public final class LoadBalancerGlbSettings {
      */
     public Optional<LoadBalancerGlbSettingsCdn> cdn() {
         return Optional.ofNullable(this.cdn);
+    }
+    /**
+     * @return fail-over threshold
+     * 
+     */
+    public Optional<Integer> failoverThreshold() {
+        return Optional.ofNullable(this.failoverThreshold);
+    }
+    /**
+     * @return region priority map
+     * 
+     */
+    public Map<String,Integer> regionPriorities() {
+        return this.regionPriorities == null ? Map.of() : this.regionPriorities;
     }
     /**
      * @return An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
@@ -63,12 +88,16 @@ public final class LoadBalancerGlbSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable LoadBalancerGlbSettingsCdn cdn;
+        private @Nullable Integer failoverThreshold;
+        private @Nullable Map<String,Integer> regionPriorities;
         private Integer targetPort;
         private String targetProtocol;
         public Builder() {}
         public Builder(LoadBalancerGlbSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cdn = defaults.cdn;
+    	      this.failoverThreshold = defaults.failoverThreshold;
+    	      this.regionPriorities = defaults.regionPriorities;
     	      this.targetPort = defaults.targetPort;
     	      this.targetProtocol = defaults.targetProtocol;
         }
@@ -77,6 +106,18 @@ public final class LoadBalancerGlbSettings {
         public Builder cdn(@Nullable LoadBalancerGlbSettingsCdn cdn) {
 
             this.cdn = cdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder failoverThreshold(@Nullable Integer failoverThreshold) {
+
+            this.failoverThreshold = failoverThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regionPriorities(@Nullable Map<String,Integer> regionPriorities) {
+
+            this.regionPriorities = regionPriorities;
             return this;
         }
         @CustomType.Setter
@@ -98,6 +139,8 @@ public final class LoadBalancerGlbSettings {
         public LoadBalancerGlbSettings build() {
             final var _resultValue = new LoadBalancerGlbSettings();
             _resultValue.cdn = cdn;
+            _resultValue.failoverThreshold = failoverThreshold;
+            _resultValue.regionPriorities = regionPriorities;
             _resultValue.targetPort = targetPort;
             _resultValue.targetProtocol = targetProtocol;
             return _resultValue;

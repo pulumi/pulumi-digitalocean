@@ -12,10 +12,12 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AppDedicatedIp',
     'AppSpec',
     'AppSpecAlert',
     'AppSpecDatabase',
     'AppSpecDomainName',
+    'AppSpecEgress',
     'AppSpecEnv',
     'AppSpecFunction',
     'AppSpecFunctionAlert',
@@ -121,10 +123,12 @@ __all__ = [
     'SpacesBucketVersioning',
     'UptimeAlertNotification',
     'UptimeAlertNotificationSlack',
+    'GetAppDedicatedIpResult',
     'GetAppSpecResult',
     'GetAppSpecAlertResult',
     'GetAppSpecDatabaseResult',
     'GetAppSpecDomainResult',
+    'GetAppSpecEgressResult',
     'GetAppSpecEnvResult',
     'GetAppSpecFunctionResult',
     'GetAppSpecFunctionAlertResult',
@@ -246,6 +250,49 @@ __all__ = [
 ]
 
 @pulumi.output_type
+class AppDedicatedIp(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 ip: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str id: The ID of the app.
+        :param str ip: The IP address of the dedicated egress IP.
+        :param str status: The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of the app.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        The IP address of the dedicated egress IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class AppSpec(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -272,6 +319,7 @@ class AppSpec(dict):
                  databases: Optional[Sequence['outputs.AppSpecDatabase']] = None,
                  domain_names: Optional[Sequence['outputs.AppSpecDomainName']] = None,
                  domains: Optional[Sequence[str]] = None,
+                 egresses: Optional[Sequence['outputs.AppSpecEgress']] = None,
                  envs: Optional[Sequence['outputs.AppSpecEnv']] = None,
                  features: Optional[Sequence[str]] = None,
                  functions: Optional[Sequence['outputs.AppSpecFunction']] = None,
@@ -285,6 +333,7 @@ class AppSpec(dict):
         :param str name: The name of the app. Must be unique across all apps in the same account.
         :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the app.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
+        :param Sequence['AppSpecEgressArgs'] egresses: Specification for app egress configurations.
         :param Sequence['AppSpecEnvArgs'] envs: Describes an app-wide environment variable made available to all components.
         :param Sequence[str] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
@@ -299,6 +348,8 @@ class AppSpec(dict):
             pulumi.set(__self__, "domain_names", domain_names)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if egresses is not None:
+            pulumi.set(__self__, "egresses", egresses)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if features is not None:
@@ -354,6 +405,14 @@ class AppSpec(dict):
         pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
 
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def egresses(self) -> Optional[Sequence['outputs.AppSpecEgress']]:
+        """
+        Specification for app egress configurations.
+        """
+        return pulumi.get(self, "egresses")
 
     @property
     @pulumi.getter
@@ -617,6 +676,25 @@ class AppSpecDomainName(dict):
         If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class AppSpecEgress(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None):
+        """
+        :param str type: The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -7078,6 +7156,10 @@ class LoadBalancerGlbSettings(dict):
             suggest = "target_port"
         elif key == "targetProtocol":
             suggest = "target_protocol"
+        elif key == "failoverThreshold":
+            suggest = "failover_threshold"
+        elif key == "regionPriorities":
+            suggest = "region_priorities"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LoadBalancerGlbSettings. Access the value via the '{suggest}' property getter instead.")
@@ -7093,16 +7175,24 @@ class LoadBalancerGlbSettings(dict):
     def __init__(__self__, *,
                  target_port: int,
                  target_protocol: str,
-                 cdn: Optional['outputs.LoadBalancerGlbSettingsCdn'] = None):
+                 cdn: Optional['outputs.LoadBalancerGlbSettingsCdn'] = None,
+                 failover_threshold: Optional[int] = None,
+                 region_priorities: Optional[Mapping[str, int]] = None):
         """
         :param int target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
         :param str target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
         :param 'LoadBalancerGlbSettingsCdnArgs' cdn: CDN configuration supporting the following:
+        :param int failover_threshold: fail-over threshold
+        :param Mapping[str, int] region_priorities: region priority map
         """
         pulumi.set(__self__, "target_port", target_port)
         pulumi.set(__self__, "target_protocol", target_protocol)
         if cdn is not None:
             pulumi.set(__self__, "cdn", cdn)
+        if failover_threshold is not None:
+            pulumi.set(__self__, "failover_threshold", failover_threshold)
+        if region_priorities is not None:
+            pulumi.set(__self__, "region_priorities", region_priorities)
 
     @property
     @pulumi.getter(name="targetPort")
@@ -7127,6 +7217,22 @@ class LoadBalancerGlbSettings(dict):
         CDN configuration supporting the following:
         """
         return pulumi.get(self, "cdn")
+
+    @property
+    @pulumi.getter(name="failoverThreshold")
+    def failover_threshold(self) -> Optional[int]:
+        """
+        fail-over threshold
+        """
+        return pulumi.get(self, "failover_threshold")
+
+    @property
+    @pulumi.getter(name="regionPriorities")
+    def region_priorities(self) -> Optional[Mapping[str, int]]:
+        """
+        region priority map
+        """
+        return pulumi.get(self, "region_priorities")
 
 
 @pulumi.output_type
@@ -7837,6 +7943,46 @@ class UptimeAlertNotificationSlack(dict):
 
 
 @pulumi.output_type
+class GetAppDedicatedIpResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 ip: str,
+                 status: str):
+        """
+        :param str id: The ID of the dedicated egress IP.
+        :param str ip: The IP address of the dedicated egress IP.
+        :param str status: The status of the dedicated egress IP.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the dedicated egress IP.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP address of the dedicated egress IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the dedicated egress IP.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetAppSpecResult(dict):
     def __init__(__self__, *,
                  domain: Sequence['outputs.GetAppSpecDomainResult'],
@@ -7845,6 +7991,7 @@ class GetAppSpecResult(dict):
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
+                 egresses: Optional[Sequence['outputs.GetAppSpecEgressResult']] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
                  features: Optional[Sequence[str]] = None,
                  functions: Optional[Sequence['outputs.GetAppSpecFunctionResult']] = None,
@@ -7868,6 +8015,8 @@ class GetAppSpecResult(dict):
             pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if egresses is not None:
+            pulumi.set(__self__, "egresses", egresses)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if features is not None:
@@ -7923,6 +8072,11 @@ class GetAppSpecResult(dict):
     @pulumi.getter
     def databases(self) -> Optional[Sequence['outputs.GetAppSpecDatabaseResult']]:
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter
+    def egresses(self) -> Optional[Sequence['outputs.GetAppSpecEgressResult']]:
+        return pulumi.get(self, "egresses")
 
     @property
     @pulumi.getter
@@ -8145,6 +8299,25 @@ class GetAppSpecDomainResult(dict):
         If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetAppSpecEgressResult(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None):
+        """
+        :param str type: The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -9791,6 +9964,7 @@ class GetAppSpecJobLogDestinationPapertrailResult(dict):
 class GetAppSpecServiceResult(dict):
     def __init__(__self__, *,
                  http_port: int,
+                 internal_ports: Sequence[int],
                  name: str,
                  routes: Sequence['outputs.GetAppSpecServiceRouteResult'],
                  run_command: str,
@@ -9807,11 +9981,11 @@ class GetAppSpecServiceResult(dict):
                  image: Optional['outputs.GetAppSpecServiceImageResult'] = None,
                  instance_count: Optional[int] = None,
                  instance_size_slug: Optional[str] = None,
-                 internal_ports: Optional[Sequence[int]] = None,
                  log_destinations: Optional[Sequence['outputs.GetAppSpecServiceLogDestinationResult']] = None,
                  source_dir: Optional[str] = None):
         """
         :param int http_port: The internal port on which this service's run command will listen.
+        :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param str name: The name of the component.
         :param str run_command: An optional run command to override the component's default.
         :param Sequence['GetAppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
@@ -9827,11 +10001,11 @@ class GetAppSpecServiceResult(dict):
         :param 'GetAppSpecServiceImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
-        :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param Sequence['GetAppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "http_port", http_port)
+        pulumi.set(__self__, "internal_ports", internal_ports)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "routes", routes)
         pulumi.set(__self__, "run_command", run_command)
@@ -9861,8 +10035,6 @@ class GetAppSpecServiceResult(dict):
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
-        if internal_ports is not None:
-            pulumi.set(__self__, "internal_ports", internal_ports)
         if log_destinations is not None:
             pulumi.set(__self__, "log_destinations", log_destinations)
         if source_dir is not None:
@@ -9875,6 +10047,14 @@ class GetAppSpecServiceResult(dict):
         The internal port on which this service's run command will listen.
         """
         return pulumi.get(self, "http_port")
+
+    @property
+    @pulumi.getter(name="internalPorts")
+    def internal_ports(self) -> Sequence[int]:
+        """
+        A list of ports on which this service will listen for internal traffic.
+        """
+        return pulumi.get(self, "internal_ports")
 
     @property
     @pulumi.getter
@@ -10006,14 +10186,6 @@ class GetAppSpecServiceResult(dict):
         The instance size to use for this component.
         """
         return pulumi.get(self, "instance_size_slug")
-
-    @property
-    @pulumi.getter(name="internalPorts")
-    def internal_ports(self) -> Optional[Sequence[int]]:
-        """
-        A list of ports on which this service will listen for internal traffic.
-        """
-        return pulumi.get(self, "internal_ports")
 
     @property
     @pulumi.getter(name="logDestinations")
@@ -13545,14 +13717,20 @@ class GetLoadBalancerForwardingRuleResult(dict):
 class GetLoadBalancerGlbSettingResult(dict):
     def __init__(__self__, *,
                  cdns: Sequence['outputs.GetLoadBalancerGlbSettingCdnResult'],
+                 failover_threshold: int,
+                 region_priorities: Mapping[str, int],
                  target_port: int,
                  target_protocol: str):
         """
         :param Sequence['GetLoadBalancerGlbSettingCdnArgs'] cdns: CDN specific configurations
+        :param int failover_threshold: fail-over threshold
+        :param Mapping[str, int] region_priorities: region priority map
         :param int target_port: target port rules
         :param str target_protocol: target protocol rules
         """
         pulumi.set(__self__, "cdns", cdns)
+        pulumi.set(__self__, "failover_threshold", failover_threshold)
+        pulumi.set(__self__, "region_priorities", region_priorities)
         pulumi.set(__self__, "target_port", target_port)
         pulumi.set(__self__, "target_protocol", target_protocol)
 
@@ -13563,6 +13741,22 @@ class GetLoadBalancerGlbSettingResult(dict):
         CDN specific configurations
         """
         return pulumi.get(self, "cdns")
+
+    @property
+    @pulumi.getter(name="failoverThreshold")
+    def failover_threshold(self) -> int:
+        """
+        fail-over threshold
+        """
+        return pulumi.get(self, "failover_threshold")
+
+    @property
+    @pulumi.getter(name="regionPriorities")
+    def region_priorities(self) -> Mapping[str, int]:
+        """
+        region priority map
+        """
+        return pulumi.get(self, "region_priorities")
 
     @property
     @pulumi.getter(name="targetPort")

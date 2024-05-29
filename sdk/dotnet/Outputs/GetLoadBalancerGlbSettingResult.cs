@@ -18,6 +18,14 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancerGlbSettingCdnResult> Cdns;
         /// <summary>
+        /// fail-over threshold
+        /// </summary>
+        public readonly int FailoverThreshold;
+        /// <summary>
+        /// region priority map
+        /// </summary>
+        public readonly ImmutableDictionary<string, int> RegionPriorities;
+        /// <summary>
         /// target port rules
         /// </summary>
         public readonly int TargetPort;
@@ -30,11 +38,17 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetLoadBalancerGlbSettingResult(
             ImmutableArray<Outputs.GetLoadBalancerGlbSettingCdnResult> cdns,
 
+            int failoverThreshold,
+
+            ImmutableDictionary<string, int> regionPriorities,
+
             int targetPort,
 
             string targetProtocol)
         {
             Cdns = cdns;
+            FailoverThreshold = failoverThreshold;
+            RegionPriorities = regionPriorities;
             TargetPort = targetPort;
             TargetProtocol = targetProtocol;
         }

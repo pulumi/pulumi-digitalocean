@@ -55,6 +55,8 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 type LookupAppArgs struct {
 	// The ID of the app to retrieve information about.
 	AppId string `pulumi:"appId"`
+	// A list of dedicated egress IP addresses associated with the app.
+	DedicatedIps []GetAppDedicatedIp `pulumi:"dedicatedIps"`
 }
 
 // A collection of values returned by getApp.
@@ -64,6 +66,8 @@ type LookupAppResult struct {
 	AppId              string `pulumi:"appId"`
 	// The date and time of when the app was created.
 	CreatedAt string `pulumi:"createdAt"`
+	// A list of dedicated egress IP addresses associated with the app.
+	DedicatedIps []GetAppDedicatedIp `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress string `pulumi:"defaultIngress"`
 	// The provider-assigned unique ID for this managed resource.
@@ -97,6 +101,8 @@ func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulu
 type LookupAppOutputArgs struct {
 	// The ID of the app to retrieve information about.
 	AppId pulumi.StringInput `pulumi:"appId"`
+	// A list of dedicated egress IP addresses associated with the app.
+	DedicatedIps GetAppDedicatedIpArrayInput `pulumi:"dedicatedIps"`
 }
 
 func (LookupAppOutputArgs) ElementType() reflect.Type {
@@ -130,6 +136,11 @@ func (o LookupAppResultOutput) AppId() pulumi.StringOutput {
 // The date and time of when the app was created.
 func (o LookupAppResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A list of dedicated egress IP addresses associated with the app.
+func (o LookupAppResultOutput) DedicatedIps() GetAppDedicatedIpArrayOutput {
+	return o.ApplyT(func(v LookupAppResult) []GetAppDedicatedIp { return v.DedicatedIps }).(GetAppDedicatedIpArrayOutput)
 }
 
 // The default URL to access the app.

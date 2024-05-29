@@ -53,6 +53,18 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _domains = value;
         }
 
+        [Input("egresses")]
+        private InputList<Inputs.AppSpecEgressGetArgs>? _egresses;
+
+        /// <summary>
+        /// Specification for app egress configurations.
+        /// </summary>
+        public InputList<Inputs.AppSpecEgressGetArgs> Egresses
+        {
+            get => _egresses ?? (_egresses = new InputList<Inputs.AppSpecEgressGetArgs>());
+            set => _egresses = value;
+        }
+
         [Input("envs")]
         private InputList<Inputs.AppSpecEnvGetArgs>? _envs;
 

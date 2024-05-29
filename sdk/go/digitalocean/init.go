@@ -107,6 +107,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VolumeSnapshot{}
 	case "digitalocean:index/vpc:Vpc":
 		r = &Vpc{}
+	case "digitalocean:index/vpcPeering:VpcPeering":
+		r = &VpcPeering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -351,6 +353,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/vpc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/vpcPeering",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

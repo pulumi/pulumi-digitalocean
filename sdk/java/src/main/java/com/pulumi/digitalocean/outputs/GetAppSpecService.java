@@ -102,7 +102,7 @@ public final class GetAppSpecService {
      * @return A list of ports on which this service will listen for internal traffic.
      * 
      */
-    private @Nullable List<Integer> internalPorts;
+    private List<Integer> internalPorts;
     /**
      * @return Describes a log forwarding destination.
      * 
@@ -239,7 +239,7 @@ public final class GetAppSpecService {
      * 
      */
     public List<Integer> internalPorts() {
-        return this.internalPorts == null ? List.of() : this.internalPorts;
+        return this.internalPorts;
     }
     /**
      * @return Describes a log forwarding destination.
@@ -302,7 +302,7 @@ public final class GetAppSpecService {
         private @Nullable GetAppSpecServiceImage image;
         private @Nullable Integer instanceCount;
         private @Nullable String instanceSizeSlug;
-        private @Nullable List<Integer> internalPorts;
+        private List<Integer> internalPorts;
         private @Nullable List<GetAppSpecServiceLogDestination> logDestinations;
         private String name;
         private List<GetAppSpecServiceRoute> routes;
@@ -426,8 +426,10 @@ public final class GetAppSpecService {
             return this;
         }
         @CustomType.Setter
-        public Builder internalPorts(@Nullable List<Integer> internalPorts) {
-
+        public Builder internalPorts(List<Integer> internalPorts) {
+            if (internalPorts == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecService", "internalPorts");
+            }
             this.internalPorts = internalPorts;
             return this;
         }
