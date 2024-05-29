@@ -5,6 +5,9 @@
                 "current": "digitalocean:index/app:App",
                 "majorVersion": 4,
                 "fields": {
+                    "dedicated_ips": {
+                        "maxItemsOne": false
+                    },
                     "spec": {
                         "maxItemsOne": true,
                         "elem": {
@@ -19,6 +22,9 @@
                                     "maxItemsOne": false
                                 },
                                 "domains": {
+                                    "maxItemsOne": false
+                                },
+                                "egress": {
                                     "maxItemsOne": false
                                 },
                                 "env": {
@@ -871,6 +877,15 @@
             "digitalocean_vpc": {
                 "current": "digitalocean:index/vpc:Vpc",
                 "majorVersion": 4
+            },
+            "digitalocean_vpc_peering": {
+                "current": "digitalocean:index/vpcPeering:VpcPeering",
+                "majorVersion": 4,
+                "fields": {
+                    "vpc_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -882,6 +897,9 @@
                 "current": "digitalocean:index/getApp:getApp",
                 "majorVersion": 4,
                 "fields": {
+                    "dedicated_ips": {
+                        "maxItemsOne": false
+                    },
                     "spec": {
                         "maxItemsOne": false,
                         "elem": {
@@ -896,6 +914,9 @@
                                     "maxItemsOne": false
                                 },
                                 "domains": {
+                                    "maxItemsOne": false
+                                },
+                                "egress": {
                                     "maxItemsOne": false
                                 },
                                 "env": {
@@ -1837,6 +1858,15 @@
             "digitalocean_vpc": {
                 "current": "digitalocean:index/getVpc:getVpc",
                 "majorVersion": 4
+            },
+            "digitalocean_vpc_peering": {
+                "current": "digitalocean:index/getVpcPeering:getVpcPeering",
+                "majorVersion": 4,
+                "fields": {
+                    "vpc_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },

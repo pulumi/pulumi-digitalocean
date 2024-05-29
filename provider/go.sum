@@ -1671,8 +1671,8 @@ github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8
 github.com/dgryski/go-sip13 v0.0.0-20200911182023-62edffca9245/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
 github.com/digitalocean/godo v1.78.0/go.mod h1:GBmu8MkjZmNARE7IXRPmkbbnocNN8+uBm0xbEVw2LCs=
 github.com/digitalocean/godo v1.81.0/go.mod h1:BPCqvwbjbGqxuUnIKB4EvS/AX7IDnNmt5fwvIkWo+ew=
-github.com/digitalocean/godo v1.113.0 h1:CLtCxlP4wDAjKIQ+Hshht/UNbgAp8/J/XBH1ZtDCF9Y=
-github.com/digitalocean/godo v1.113.0/go.mod h1:Z2mTP848Vi3IXXl5YbPekUgr4j4tOePomA+OE1Ag98w=
+github.com/digitalocean/godo v1.116.0 h1:SuF/Imd1/dE/nYrUFVkJ2itesQNnJQE1a/vmtHknxeE=
+github.com/digitalocean/godo v1.116.0/go.mod h1:Vk0vpCot2HOAJwc5WE8wljZGtJ3ZtWIc8MQ8rF38sdo=
 github.com/dimchansky/utfbom v1.1.1/go.mod h1:SxdoEBH5qIqFocHMyGOXVAybYJdr71b1Q/j0mACtrfE=
 github.com/djherbis/times v1.5.0 h1:79myA211VwPhFTqUk8xehWrsEO+zcIZj0zT8mXPVARU=
 github.com/djherbis/times v1.5.0/go.mod h1:5q7FDLvbNg1L/KaBmPcWlVR9NmoKo3+ucqUA3ijQhA0=
