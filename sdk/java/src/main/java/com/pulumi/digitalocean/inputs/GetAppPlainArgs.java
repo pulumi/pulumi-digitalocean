@@ -4,9 +4,13 @@
 package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.GetAppDedicatedIp;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +32,26 @@ public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.appId;
     }
 
+    /**
+     * A list of dedicated egress IP addresses associated with the app.
+     * 
+     */
+    @Import(name="dedicatedIps")
+    private @Nullable List<GetAppDedicatedIp> dedicatedIps;
+
+    /**
+     * @return A list of dedicated egress IP addresses associated with the app.
+     * 
+     */
+    public Optional<List<GetAppDedicatedIp>> dedicatedIps() {
+        return Optional.ofNullable(this.dedicatedIps);
+    }
+
     private GetAppPlainArgs() {}
 
     private GetAppPlainArgs(GetAppPlainArgs $) {
         this.appId = $.appId;
+        this.dedicatedIps = $.dedicatedIps;
     }
 
     public static Builder builder() {
@@ -61,6 +81,27 @@ public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder appId(String appId) {
             $.appId = appId;
             return this;
+        }
+
+        /**
+         * @param dedicatedIps A list of dedicated egress IP addresses associated with the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIps(@Nullable List<GetAppDedicatedIp> dedicatedIps) {
+            $.dedicatedIps = dedicatedIps;
+            return this;
+        }
+
+        /**
+         * @param dedicatedIps A list of dedicated egress IP addresses associated with the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIps(GetAppDedicatedIp... dedicatedIps) {
+            return dedicatedIps(List.of(dedicatedIps));
         }
 
         public GetAppPlainArgs build() {

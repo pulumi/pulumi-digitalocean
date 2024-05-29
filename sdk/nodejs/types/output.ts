@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface AppDedicatedIp {
+    /**
+     * The ID of the app.
+     */
+    id: string;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip: string;
+    /**
+     * The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+     */
+    status: string;
+}
+
 export interface AppSpec {
     /**
      * Describes an alert policy for the app.
@@ -20,6 +35,10 @@ export interface AppSpec {
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains: string[];
+    /**
+     * Specification for app egress configurations.
+     */
+    egresses?: outputs.AppSpecEgress[];
     /**
      * Describes an app-wide environment variable made available to all components.
      */
@@ -111,6 +130,13 @@ export interface AppSpecDomainName {
      * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      */
     zone?: string;
+}
+
+export interface AppSpecEgress {
+    /**
+     * The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+     */
+    type?: string;
 }
 
 export interface AppSpecEnv {
@@ -777,7 +803,7 @@ export interface AppSpecService {
     /**
      * A list of ports on which this service will listen for internal traffic.
      */
-    internalPorts?: number[];
+    internalPorts: number[];
     /**
      * Describes a log forwarding destination.
      */
@@ -1723,6 +1749,21 @@ export interface FirewallPendingChange {
     status?: string;
 }
 
+export interface GetAppDedicatedIp {
+    /**
+     * The ID of the dedicated egress IP.
+     */
+    id: string;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip: string;
+    /**
+     * The status of the dedicated egress IP.
+     */
+    status: string;
+}
+
 export interface GetAppSpec {
     /**
      * Describes an alert policy for the component.
@@ -1734,6 +1775,7 @@ export interface GetAppSpec {
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains: string[];
+    egresses?: outputs.GetAppSpecEgress[];
     /**
      * Describes an environment variable made available to an app competent.
      */
@@ -1817,6 +1859,13 @@ export interface GetAppSpecDomain {
      * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      */
     zone?: string;
+}
+
+export interface GetAppSpecEgress {
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type?: string;
 }
 
 export interface GetAppSpecEnv {
@@ -2450,7 +2499,7 @@ export interface GetAppSpecService {
     /**
      * A list of ports on which this service will listen for internal traffic.
      */
-    internalPorts?: number[];
+    internalPorts: number[];
     /**
      * Describes a log forwarding destination.
      */
@@ -3735,6 +3784,14 @@ export interface GetLoadBalancerGlbSetting {
      */
     cdns: outputs.GetLoadBalancerGlbSettingCdn[];
     /**
+     * fail-over threshold
+     */
+    failoverThreshold: number;
+    /**
+     * region priority map
+     */
+    regionPriorities: {[key: string]: number};
+    /**
      * target port rules
      */
     targetPort: number;
@@ -4520,6 +4577,14 @@ export interface LoadBalancerGlbSettings {
      * CDN configuration supporting the following:
      */
     cdn?: outputs.LoadBalancerGlbSettingsCdn;
+    /**
+     * fail-over threshold
+     */
+    failoverThreshold?: number;
+    /**
+     * region priority map
+     */
+    regionPriorities?: {[key: string]: number};
     /**
      * An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
      */

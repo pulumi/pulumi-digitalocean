@@ -320,6 +320,11 @@ export const getVpc: typeof import("./getVpc").getVpc = null as any;
 export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
 utilities.lazyLoad(exports, ["getVpc","getVpcOutput"], () => require("./getVpc"));
 
+export { GetVpcPeeringArgs, GetVpcPeeringResult, GetVpcPeeringOutputArgs } from "./getVpcPeering";
+export const getVpcPeering: typeof import("./getVpcPeering").getVpcPeering = null as any;
+export const getVpcPeeringOutput: typeof import("./getVpcPeering").getVpcPeeringOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcPeering","getVpcPeeringOutput"], () => require("./getVpcPeering"));
+
 export { KubernetesClusterArgs, KubernetesClusterState } from "./kubernetesCluster";
 export type KubernetesCluster = import("./kubernetesCluster").KubernetesCluster;
 export const KubernetesCluster: typeof import("./kubernetesCluster").KubernetesCluster = null as any;
@@ -425,6 +430,11 @@ export type Vpc = import("./vpc").Vpc;
 export const Vpc: typeof import("./vpc").Vpc = null as any;
 utilities.lazyLoad(exports, ["Vpc"], () => require("./vpc"));
 
+export { VpcPeeringArgs, VpcPeeringState } from "./vpcPeering";
+export type VpcPeering = import("./vpcPeering").VpcPeering;
+export const VpcPeering: typeof import("./vpcPeering").VpcPeering = null as any;
+utilities.lazyLoad(exports, ["VpcPeering"], () => require("./vpcPeering"));
+
 
 // Export enums:
 export * from "./types/enums";
@@ -528,6 +538,8 @@ const _module = {
                 return new VolumeSnapshot(name, <any>undefined, { urn })
             case "digitalocean:index/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
+            case "digitalocean:index/vpcPeering:VpcPeering":
+                return new VpcPeering(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -576,6 +588,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/volume", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeSnapshot", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/vpc", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/vpcPeering", _module)
 pulumi.runtime.registerResourcePackage("digitalocean", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

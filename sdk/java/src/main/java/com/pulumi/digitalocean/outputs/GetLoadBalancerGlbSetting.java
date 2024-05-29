@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -18,6 +19,16 @@ public final class GetLoadBalancerGlbSetting {
      * 
      */
     private List<GetLoadBalancerGlbSettingCdn> cdns;
+    /**
+     * @return fail-over threshold
+     * 
+     */
+    private Integer failoverThreshold;
+    /**
+     * @return region priority map
+     * 
+     */
+    private Map<String,Integer> regionPriorities;
     /**
      * @return target port rules
      * 
@@ -36,6 +47,20 @@ public final class GetLoadBalancerGlbSetting {
      */
     public List<GetLoadBalancerGlbSettingCdn> cdns() {
         return this.cdns;
+    }
+    /**
+     * @return fail-over threshold
+     * 
+     */
+    public Integer failoverThreshold() {
+        return this.failoverThreshold;
+    }
+    /**
+     * @return region priority map
+     * 
+     */
+    public Map<String,Integer> regionPriorities() {
+        return this.regionPriorities;
     }
     /**
      * @return target port rules
@@ -62,12 +87,16 @@ public final class GetLoadBalancerGlbSetting {
     @CustomType.Builder
     public static final class Builder {
         private List<GetLoadBalancerGlbSettingCdn> cdns;
+        private Integer failoverThreshold;
+        private Map<String,Integer> regionPriorities;
         private Integer targetPort;
         private String targetProtocol;
         public Builder() {}
         public Builder(GetLoadBalancerGlbSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cdns = defaults.cdns;
+    	      this.failoverThreshold = defaults.failoverThreshold;
+    	      this.regionPriorities = defaults.regionPriorities;
     	      this.targetPort = defaults.targetPort;
     	      this.targetProtocol = defaults.targetProtocol;
         }
@@ -82,6 +111,22 @@ public final class GetLoadBalancerGlbSetting {
         }
         public Builder cdns(GetLoadBalancerGlbSettingCdn... cdns) {
             return cdns(List.of(cdns));
+        }
+        @CustomType.Setter
+        public Builder failoverThreshold(Integer failoverThreshold) {
+            if (failoverThreshold == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerGlbSetting", "failoverThreshold");
+            }
+            this.failoverThreshold = failoverThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regionPriorities(Map<String,Integer> regionPriorities) {
+            if (regionPriorities == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerGlbSetting", "regionPriorities");
+            }
+            this.regionPriorities = regionPriorities;
+            return this;
         }
         @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
@@ -102,6 +147,8 @@ public final class GetLoadBalancerGlbSetting {
         public GetLoadBalancerGlbSetting build() {
             final var _resultValue = new GetLoadBalancerGlbSetting();
             _resultValue.cdns = cdns;
+            _resultValue.failoverThreshold = failoverThreshold;
+            _resultValue.regionPriorities = regionPriorities;
             _resultValue.targetPort = targetPort;
             _resultValue.targetProtocol = targetProtocol;
             return _resultValue;

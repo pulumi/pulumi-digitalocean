@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecAlert;
 import com.pulumi.digitalocean.outputs.AppSpecDatabase;
 import com.pulumi.digitalocean.outputs.AppSpecDomainName;
+import com.pulumi.digitalocean.outputs.AppSpecEgress;
 import com.pulumi.digitalocean.outputs.AppSpecEnv;
 import com.pulumi.digitalocean.outputs.AppSpecFunction;
 import com.pulumi.digitalocean.outputs.AppSpecIngress;
@@ -41,6 +42,11 @@ public final class AppSpec {
      */
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
     private @Nullable List<String> domains;
+    /**
+     * @return Specification for app egress configurations.
+     * 
+     */
+    private @Nullable List<AppSpecEgress> egresses;
     /**
      * @return Describes an app-wide environment variable made available to all components.
      * 
@@ -98,6 +104,13 @@ public final class AppSpec {
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
     public List<String> domains() {
         return this.domains == null ? List.of() : this.domains;
+    }
+    /**
+     * @return Specification for app egress configurations.
+     * 
+     */
+    public List<AppSpecEgress> egresses() {
+        return this.egresses == null ? List.of() : this.egresses;
     }
     /**
      * @return Describes an app-wide environment variable made available to all components.
@@ -163,6 +176,7 @@ public final class AppSpec {
         private @Nullable List<AppSpecDatabase> databases;
         private @Nullable List<AppSpecDomainName> domainNames;
         private @Nullable List<String> domains;
+        private @Nullable List<AppSpecEgress> egresses;
         private @Nullable List<AppSpecEnv> envs;
         private @Nullable List<String> features;
         private @Nullable List<AppSpecFunction> functions;
@@ -180,6 +194,7 @@ public final class AppSpec {
     	      this.databases = defaults.databases;
     	      this.domainNames = defaults.domainNames;
     	      this.domains = defaults.domains;
+    	      this.egresses = defaults.egresses;
     	      this.envs = defaults.envs;
     	      this.features = defaults.features;
     	      this.functions = defaults.functions;
@@ -227,6 +242,15 @@ public final class AppSpec {
         }
         public Builder domains(String... domains) {
             return domains(List.of(domains));
+        }
+        @CustomType.Setter
+        public Builder egresses(@Nullable List<AppSpecEgress> egresses) {
+
+            this.egresses = egresses;
+            return this;
+        }
+        public Builder egresses(AppSpecEgress... egresses) {
+            return egresses(List.of(egresses));
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<AppSpecEnv> envs) {
@@ -317,6 +341,7 @@ public final class AppSpec {
             _resultValue.databases = databases;
             _resultValue.domainNames = domainNames;
             _resultValue.domains = domains;
+            _resultValue.egresses = egresses;
             _resultValue.envs = envs;
             _resultValue.features = features;
             _resultValue.functions = functions;

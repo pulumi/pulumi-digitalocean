@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.AppArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.AppState;
+import com.pulumi.digitalocean.outputs.AppDedicatedIp;
 import com.pulumi.digitalocean.outputs.AppSpec;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -278,6 +280,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * The dedicated egress IP addresses associated with the app.
+     * 
+     */
+    @Export(name="dedicatedIps", refs={List.class,AppDedicatedIp.class}, tree="[0,1]")
+    private Output<List<AppDedicatedIp>> dedicatedIps;
+
+    /**
+     * @return The dedicated egress IP addresses associated with the app.
+     * 
+     */
+    public Output<List<AppDedicatedIp>> dedicatedIps() {
+        return this.dedicatedIps;
     }
     /**
      * The default URL to access the app.

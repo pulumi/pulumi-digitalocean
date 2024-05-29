@@ -11,10 +11,12 @@ from . import _utilities
 from ._enums import *
 
 __all__ = [
+    'AppDedicatedIpArgs',
     'AppSpecArgs',
     'AppSpecAlertArgs',
     'AppSpecDatabaseArgs',
     'AppSpecDomainNameArgs',
+    'AppSpecEgressArgs',
     'AppSpecEnvArgs',
     'AppSpecFunctionArgs',
     'AppSpecFunctionAlertArgs',
@@ -120,6 +122,7 @@ __all__ = [
     'SpacesBucketVersioningArgs',
     'UptimeAlertNotificationArgs',
     'UptimeAlertNotificationSlackArgs',
+    'GetAppDedicatedIpArgs',
     'GetDomainsFilterArgs',
     'GetDomainsSortArgs',
     'GetDropletsFilterArgs',
@@ -145,6 +148,61 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class AppDedicatedIpArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 ip: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of the app.
+        :param pulumi.Input[str] ip: The IP address of the dedicated egress IP.
+        :param pulumi.Input[str] status: The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the app.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the dedicated egress IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class AppSpecArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -152,6 +210,7 @@ class AppSpecArgs:
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
                  features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  functions: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]] = None,
@@ -165,6 +224,7 @@ class AppSpecArgs:
         :param pulumi.Input[str] name: The name of the app. Must be unique across all apps in the same account.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]] egresses: Specification for app egress configurations.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an app-wide environment variable made available to all components.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param pulumi.Input['AppSpecIngressArgs'] ingress: Specification for component routing, rewrites, and redirects.
@@ -182,6 +242,8 @@ class AppSpecArgs:
             pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if egresses is not None:
+            pulumi.set(__self__, "egresses", egresses)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if features is not None:
@@ -257,6 +319,18 @@ class AppSpecArgs:
     @domains.setter
     def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter
+    def egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]]:
+        """
+        Specification for app egress configurations.
+        """
+        return pulumi.get(self, "egresses")
+
+    @egresses.setter
+    def egresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]]):
+        pulumi.set(self, "egresses", value)
 
     @property
     @pulumi.getter
@@ -587,6 +661,29 @@ class AppSpecDomainNameArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class AppSpecEgressArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -7522,16 +7619,24 @@ class LoadBalancerGlbSettingsArgs:
     def __init__(__self__, *,
                  target_port: pulumi.Input[int],
                  target_protocol: pulumi.Input[str],
-                 cdn: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']] = None):
+                 cdn: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']] = None,
+                 failover_threshold: Optional[pulumi.Input[int]] = None,
+                 region_priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[int] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
         :param pulumi.Input[str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
         :param pulumi.Input['LoadBalancerGlbSettingsCdnArgs'] cdn: CDN configuration supporting the following:
+        :param pulumi.Input[int] failover_threshold: fail-over threshold
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] region_priorities: region priority map
         """
         pulumi.set(__self__, "target_port", target_port)
         pulumi.set(__self__, "target_protocol", target_protocol)
         if cdn is not None:
             pulumi.set(__self__, "cdn", cdn)
+        if failover_threshold is not None:
+            pulumi.set(__self__, "failover_threshold", failover_threshold)
+        if region_priorities is not None:
+            pulumi.set(__self__, "region_priorities", region_priorities)
 
     @property
     @pulumi.getter(name="targetPort")
@@ -7568,6 +7673,30 @@ class LoadBalancerGlbSettingsArgs:
     @cdn.setter
     def cdn(self, value: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']]):
         pulumi.set(self, "cdn", value)
+
+    @property
+    @pulumi.getter(name="failoverThreshold")
+    def failover_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        fail-over threshold
+        """
+        return pulumi.get(self, "failover_threshold")
+
+    @failover_threshold.setter
+    def failover_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failover_threshold", value)
+
+    @property
+    @pulumi.getter(name="regionPriorities")
+    def region_priorities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]:
+        """
+        region priority map
+        """
+        return pulumi.get(self, "region_priorities")
+
+    @region_priorities.setter
+    def region_priorities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]):
+        pulumi.set(self, "region_priorities", value)
 
 
 @pulumi.input_type
@@ -8292,6 +8421,58 @@ class UptimeAlertNotificationSlackArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class GetAppDedicatedIpArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 ip: str,
+                 status: str):
+        """
+        :param str id: The ID of the dedicated egress IP.
+        :param str ip: The IP address of the dedicated egress IP.
+        :param str status: The status of the dedicated egress IP.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the dedicated egress IP.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP address of the dedicated egress IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: str):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the dedicated egress IP.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

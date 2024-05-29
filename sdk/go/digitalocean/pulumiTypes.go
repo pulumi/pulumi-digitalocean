@@ -13,6 +13,121 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AppDedicatedIp struct {
+	// The ID of the app.
+	Id *string `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip *string `pulumi:"ip"`
+	// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+	Status *string `pulumi:"status"`
+}
+
+// AppDedicatedIpInput is an input type that accepts AppDedicatedIpArgs and AppDedicatedIpOutput values.
+// You can construct a concrete instance of `AppDedicatedIpInput` via:
+//
+//	AppDedicatedIpArgs{...}
+type AppDedicatedIpInput interface {
+	pulumi.Input
+
+	ToAppDedicatedIpOutput() AppDedicatedIpOutput
+	ToAppDedicatedIpOutputWithContext(context.Context) AppDedicatedIpOutput
+}
+
+type AppDedicatedIpArgs struct {
+	// The ID of the app.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (AppDedicatedIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDedicatedIp)(nil)).Elem()
+}
+
+func (i AppDedicatedIpArgs) ToAppDedicatedIpOutput() AppDedicatedIpOutput {
+	return i.ToAppDedicatedIpOutputWithContext(context.Background())
+}
+
+func (i AppDedicatedIpArgs) ToAppDedicatedIpOutputWithContext(ctx context.Context) AppDedicatedIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDedicatedIpOutput)
+}
+
+// AppDedicatedIpArrayInput is an input type that accepts AppDedicatedIpArray and AppDedicatedIpArrayOutput values.
+// You can construct a concrete instance of `AppDedicatedIpArrayInput` via:
+//
+//	AppDedicatedIpArray{ AppDedicatedIpArgs{...} }
+type AppDedicatedIpArrayInput interface {
+	pulumi.Input
+
+	ToAppDedicatedIpArrayOutput() AppDedicatedIpArrayOutput
+	ToAppDedicatedIpArrayOutputWithContext(context.Context) AppDedicatedIpArrayOutput
+}
+
+type AppDedicatedIpArray []AppDedicatedIpInput
+
+func (AppDedicatedIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppDedicatedIp)(nil)).Elem()
+}
+
+func (i AppDedicatedIpArray) ToAppDedicatedIpArrayOutput() AppDedicatedIpArrayOutput {
+	return i.ToAppDedicatedIpArrayOutputWithContext(context.Background())
+}
+
+func (i AppDedicatedIpArray) ToAppDedicatedIpArrayOutputWithContext(ctx context.Context) AppDedicatedIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDedicatedIpArrayOutput)
+}
+
+type AppDedicatedIpOutput struct{ *pulumi.OutputState }
+
+func (AppDedicatedIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDedicatedIp)(nil)).Elem()
+}
+
+func (o AppDedicatedIpOutput) ToAppDedicatedIpOutput() AppDedicatedIpOutput {
+	return o
+}
+
+func (o AppDedicatedIpOutput) ToAppDedicatedIpOutputWithContext(ctx context.Context) AppDedicatedIpOutput {
+	return o
+}
+
+// The ID of the app.
+func (o AppDedicatedIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDedicatedIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the dedicated egress IP.
+func (o AppDedicatedIpOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDedicatedIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+func (o AppDedicatedIpOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDedicatedIp) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AppDedicatedIpArrayOutput struct{ *pulumi.OutputState }
+
+func (AppDedicatedIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppDedicatedIp)(nil)).Elem()
+}
+
+func (o AppDedicatedIpArrayOutput) ToAppDedicatedIpArrayOutput() AppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o AppDedicatedIpArrayOutput) ToAppDedicatedIpArrayOutputWithContext(ctx context.Context) AppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o AppDedicatedIpArrayOutput) Index(i pulumi.IntInput) AppDedicatedIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppDedicatedIp {
+		return vs[0].([]AppDedicatedIp)[vs[1].(int)]
+	}).(AppDedicatedIpOutput)
+}
+
 type AppSpec struct {
 	// Describes an alert policy for the app.
 	Alerts    []AppSpecAlert    `pulumi:"alerts"`
@@ -21,6 +136,8 @@ type AppSpec struct {
 	DomainNames []AppSpecDomainName `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
+	// Specification for app egress configurations.
+	Egresses []AppSpecEgress `pulumi:"egresses"`
 	// Describes an app-wide environment variable made available to all components.
 	Envs []AppSpecEnv `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
@@ -57,6 +174,8 @@ type AppSpecArgs struct {
 	DomainNames AppSpecDomainNameArrayInput `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Specification for app egress configurations.
+	Egresses AppSpecEgressArrayInput `pulumi:"egresses"`
 	// Describes an app-wide environment variable made available to all components.
 	Envs AppSpecEnvArrayInput `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
@@ -170,6 +289,11 @@ func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
+// Specification for app egress configurations.
+func (o AppSpecOutput) Egresses() AppSpecEgressArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecEgress { return v.Egresses }).(AppSpecEgressArrayOutput)
+}
+
 // Describes an app-wide environment variable made available to all components.
 func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
@@ -276,6 +400,16 @@ func (o AppSpecPtrOutput) Domains() pulumi.StringArrayOutput {
 		}
 		return v.Domains
 	}).(pulumi.StringArrayOutput)
+}
+
+// Specification for app egress configurations.
+func (o AppSpecPtrOutput) Egresses() AppSpecEgressArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecEgress {
+		if v == nil {
+			return nil
+		}
+		return v.Egresses
+	}).(AppSpecEgressArrayOutput)
 }
 
 // Describes an app-wide environment variable made available to all components.
@@ -767,6 +901,103 @@ func (o AppSpecDomainNameArrayOutput) Index(i pulumi.IntInput) AppSpecDomainName
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecDomainName {
 		return vs[0].([]AppSpecDomainName)[vs[1].(int)]
 	}).(AppSpecDomainNameOutput)
+}
+
+type AppSpecEgress struct {
+	// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+	Type *string `pulumi:"type"`
+}
+
+// AppSpecEgressInput is an input type that accepts AppSpecEgressArgs and AppSpecEgressOutput values.
+// You can construct a concrete instance of `AppSpecEgressInput` via:
+//
+//	AppSpecEgressArgs{...}
+type AppSpecEgressInput interface {
+	pulumi.Input
+
+	ToAppSpecEgressOutput() AppSpecEgressOutput
+	ToAppSpecEgressOutputWithContext(context.Context) AppSpecEgressOutput
+}
+
+type AppSpecEgressArgs struct {
+	// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AppSpecEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecEgress)(nil)).Elem()
+}
+
+func (i AppSpecEgressArgs) ToAppSpecEgressOutput() AppSpecEgressOutput {
+	return i.ToAppSpecEgressOutputWithContext(context.Background())
+}
+
+func (i AppSpecEgressArgs) ToAppSpecEgressOutputWithContext(ctx context.Context) AppSpecEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecEgressOutput)
+}
+
+// AppSpecEgressArrayInput is an input type that accepts AppSpecEgressArray and AppSpecEgressArrayOutput values.
+// You can construct a concrete instance of `AppSpecEgressArrayInput` via:
+//
+//	AppSpecEgressArray{ AppSpecEgressArgs{...} }
+type AppSpecEgressArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecEgressArrayOutput() AppSpecEgressArrayOutput
+	ToAppSpecEgressArrayOutputWithContext(context.Context) AppSpecEgressArrayOutput
+}
+
+type AppSpecEgressArray []AppSpecEgressInput
+
+func (AppSpecEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecEgress)(nil)).Elem()
+}
+
+func (i AppSpecEgressArray) ToAppSpecEgressArrayOutput() AppSpecEgressArrayOutput {
+	return i.ToAppSpecEgressArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecEgressArray) ToAppSpecEgressArrayOutputWithContext(ctx context.Context) AppSpecEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecEgressArrayOutput)
+}
+
+type AppSpecEgressOutput struct{ *pulumi.OutputState }
+
+func (AppSpecEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecEgress)(nil)).Elem()
+}
+
+func (o AppSpecEgressOutput) ToAppSpecEgressOutput() AppSpecEgressOutput {
+	return o
+}
+
+func (o AppSpecEgressOutput) ToAppSpecEgressOutputWithContext(ctx context.Context) AppSpecEgressOutput {
+	return o
+}
+
+// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+func (o AppSpecEgressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecEgress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecEgress)(nil)).Elem()
+}
+
+func (o AppSpecEgressArrayOutput) ToAppSpecEgressArrayOutput() AppSpecEgressArrayOutput {
+	return o
+}
+
+func (o AppSpecEgressArrayOutput) ToAppSpecEgressArrayOutputWithContext(ctx context.Context) AppSpecEgressArrayOutput {
+	return o
+}
+
+func (o AppSpecEgressArrayOutput) Index(i pulumi.IntInput) AppSpecEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecEgress {
+		return vs[0].([]AppSpecEgress)[vs[1].(int)]
+	}).(AppSpecEgressOutput)
 }
 
 type AppSpecEnv struct {
@@ -15364,6 +15595,10 @@ func (o LoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) LoadBala
 type LoadBalancerGlbSettings struct {
 	// CDN configuration supporting the following:
 	Cdn *LoadBalancerGlbSettingsCdn `pulumi:"cdn"`
+	// fail-over threshold
+	FailoverThreshold *int `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities map[string]int `pulumi:"regionPriorities"`
 	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
 	TargetPort int `pulumi:"targetPort"`
 	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
@@ -15384,6 +15619,10 @@ type LoadBalancerGlbSettingsInput interface {
 type LoadBalancerGlbSettingsArgs struct {
 	// CDN configuration supporting the following:
 	Cdn LoadBalancerGlbSettingsCdnPtrInput `pulumi:"cdn"`
+	// fail-over threshold
+	FailoverThreshold pulumi.IntPtrInput `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities pulumi.IntMapInput `pulumi:"regionPriorities"`
 	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
 	TargetPort pulumi.IntInput `pulumi:"targetPort"`
 	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
@@ -15472,6 +15711,16 @@ func (o LoadBalancerGlbSettingsOutput) Cdn() LoadBalancerGlbSettingsCdnPtrOutput
 	return o.ApplyT(func(v LoadBalancerGlbSettings) *LoadBalancerGlbSettingsCdn { return v.Cdn }).(LoadBalancerGlbSettingsCdnPtrOutput)
 }
 
+// fail-over threshold
+func (o LoadBalancerGlbSettingsOutput) FailoverThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) *int { return v.FailoverThreshold }).(pulumi.IntPtrOutput)
+}
+
+// region priority map
+func (o LoadBalancerGlbSettingsOutput) RegionPriorities() pulumi.IntMapOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) map[string]int { return v.RegionPriorities }).(pulumi.IntMapOutput)
+}
+
 // An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
 func (o LoadBalancerGlbSettingsOutput) TargetPort() pulumi.IntOutput {
 	return o.ApplyT(func(v LoadBalancerGlbSettings) int { return v.TargetPort }).(pulumi.IntOutput)
@@ -15514,6 +15763,26 @@ func (o LoadBalancerGlbSettingsPtrOutput) Cdn() LoadBalancerGlbSettingsCdnPtrOut
 		}
 		return v.Cdn
 	}).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// fail-over threshold
+func (o LoadBalancerGlbSettingsPtrOutput) FailoverThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// region priority map
+func (o LoadBalancerGlbSettingsPtrOutput) RegionPriorities() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) map[string]int {
+		if v == nil {
+			return nil
+		}
+		return v.RegionPriorities
+	}).(pulumi.IntMapOutput)
 }
 
 // An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
@@ -17446,13 +17715,129 @@ func (o UptimeAlertNotificationSlackArrayOutput) Index(i pulumi.IntInput) Uptime
 	}).(UptimeAlertNotificationSlackOutput)
 }
 
+type GetAppDedicatedIp struct {
+	// The ID of the dedicated egress IP.
+	Id string `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip string `pulumi:"ip"`
+	// The status of the dedicated egress IP.
+	Status string `pulumi:"status"`
+}
+
+// GetAppDedicatedIpInput is an input type that accepts GetAppDedicatedIpArgs and GetAppDedicatedIpOutput values.
+// You can construct a concrete instance of `GetAppDedicatedIpInput` via:
+//
+//	GetAppDedicatedIpArgs{...}
+type GetAppDedicatedIpInput interface {
+	pulumi.Input
+
+	ToGetAppDedicatedIpOutput() GetAppDedicatedIpOutput
+	ToGetAppDedicatedIpOutputWithContext(context.Context) GetAppDedicatedIpOutput
+}
+
+type GetAppDedicatedIpArgs struct {
+	// The ID of the dedicated egress IP.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The status of the dedicated egress IP.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAppDedicatedIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (i GetAppDedicatedIpArgs) ToGetAppDedicatedIpOutput() GetAppDedicatedIpOutput {
+	return i.ToGetAppDedicatedIpOutputWithContext(context.Background())
+}
+
+func (i GetAppDedicatedIpArgs) ToGetAppDedicatedIpOutputWithContext(ctx context.Context) GetAppDedicatedIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDedicatedIpOutput)
+}
+
+// GetAppDedicatedIpArrayInput is an input type that accepts GetAppDedicatedIpArray and GetAppDedicatedIpArrayOutput values.
+// You can construct a concrete instance of `GetAppDedicatedIpArrayInput` via:
+//
+//	GetAppDedicatedIpArray{ GetAppDedicatedIpArgs{...} }
+type GetAppDedicatedIpArrayInput interface {
+	pulumi.Input
+
+	ToGetAppDedicatedIpArrayOutput() GetAppDedicatedIpArrayOutput
+	ToGetAppDedicatedIpArrayOutputWithContext(context.Context) GetAppDedicatedIpArrayOutput
+}
+
+type GetAppDedicatedIpArray []GetAppDedicatedIpInput
+
+func (GetAppDedicatedIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (i GetAppDedicatedIpArray) ToGetAppDedicatedIpArrayOutput() GetAppDedicatedIpArrayOutput {
+	return i.ToGetAppDedicatedIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppDedicatedIpArray) ToGetAppDedicatedIpArrayOutputWithContext(ctx context.Context) GetAppDedicatedIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDedicatedIpArrayOutput)
+}
+
+type GetAppDedicatedIpOutput struct{ *pulumi.OutputState }
+
+func (GetAppDedicatedIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (o GetAppDedicatedIpOutput) ToGetAppDedicatedIpOutput() GetAppDedicatedIpOutput {
+	return o
+}
+
+func (o GetAppDedicatedIpOutput) ToGetAppDedicatedIpOutputWithContext(ctx context.Context) GetAppDedicatedIpOutput {
+	return o
+}
+
+// The ID of the dedicated egress IP.
+func (o GetAppDedicatedIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDedicatedIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP address of the dedicated egress IP.
+func (o GetAppDedicatedIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDedicatedIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The status of the dedicated egress IP.
+func (o GetAppDedicatedIpOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDedicatedIp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAppDedicatedIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppDedicatedIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (o GetAppDedicatedIpArrayOutput) ToGetAppDedicatedIpArrayOutput() GetAppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o GetAppDedicatedIpArrayOutput) ToGetAppDedicatedIpArrayOutputWithContext(ctx context.Context) GetAppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o GetAppDedicatedIpArrayOutput) Index(i pulumi.IntInput) GetAppDedicatedIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppDedicatedIp {
+		return vs[0].([]GetAppDedicatedIp)[vs[1].(int)]
+	}).(GetAppDedicatedIpOutput)
+}
+
 type GetAppSpec struct {
 	// Describes an alert policy for the component.
 	Alerts    []GetAppSpecAlert    `pulumi:"alerts"`
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
 	Domain    []GetAppSpecDomain   `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
-	Domains []string `pulumi:"domains"`
+	Domains  []string           `pulumi:"domains"`
+	Egresses []GetAppSpecEgress `pulumi:"egresses"`
 	// Describes an environment variable made available to an app competent.
 	Envs []GetAppSpecEnv `pulumi:"envs"`
 	// List of features which is applied to the app
@@ -17486,7 +17871,8 @@ type GetAppSpecArgs struct {
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
 	Domain    GetAppSpecDomainArrayInput   `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
-	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	Domains  pulumi.StringArrayInput    `pulumi:"domains"`
+	Egresses GetAppSpecEgressArrayInput `pulumi:"egresses"`
 	// Describes an environment variable made available to an app competent.
 	Envs GetAppSpecEnvArrayInput `pulumi:"envs"`
 	// List of features which is applied to the app
@@ -17570,6 +17956,10 @@ func (o GetAppSpecOutput) Domain() GetAppSpecDomainArrayOutput {
 // Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecOutput) Egresses() GetAppSpecEgressArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEgress { return v.Egresses }).(GetAppSpecEgressArrayOutput)
 }
 
 // Describes an environment variable made available to an app competent.
@@ -18015,6 +18405,103 @@ func (o GetAppSpecDomainArrayOutput) Index(i pulumi.IntInput) GetAppSpecDomainOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecDomain {
 		return vs[0].([]GetAppSpecDomain)[vs[1].(int)]
 	}).(GetAppSpecDomainOutput)
+}
+
+type GetAppSpecEgress struct {
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+}
+
+// GetAppSpecEgressInput is an input type that accepts GetAppSpecEgressArgs and GetAppSpecEgressOutput values.
+// You can construct a concrete instance of `GetAppSpecEgressInput` via:
+//
+//	GetAppSpecEgressArgs{...}
+type GetAppSpecEgressInput interface {
+	pulumi.Input
+
+	ToGetAppSpecEgressOutput() GetAppSpecEgressOutput
+	ToGetAppSpecEgressOutputWithContext(context.Context) GetAppSpecEgressOutput
+}
+
+type GetAppSpecEgressArgs struct {
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetAppSpecEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecEgress)(nil)).Elem()
+}
+
+func (i GetAppSpecEgressArgs) ToGetAppSpecEgressOutput() GetAppSpecEgressOutput {
+	return i.ToGetAppSpecEgressOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecEgressArgs) ToGetAppSpecEgressOutputWithContext(ctx context.Context) GetAppSpecEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecEgressOutput)
+}
+
+// GetAppSpecEgressArrayInput is an input type that accepts GetAppSpecEgressArray and GetAppSpecEgressArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecEgressArrayInput` via:
+//
+//	GetAppSpecEgressArray{ GetAppSpecEgressArgs{...} }
+type GetAppSpecEgressArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecEgressArrayOutput() GetAppSpecEgressArrayOutput
+	ToGetAppSpecEgressArrayOutputWithContext(context.Context) GetAppSpecEgressArrayOutput
+}
+
+type GetAppSpecEgressArray []GetAppSpecEgressInput
+
+func (GetAppSpecEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecEgress)(nil)).Elem()
+}
+
+func (i GetAppSpecEgressArray) ToGetAppSpecEgressArrayOutput() GetAppSpecEgressArrayOutput {
+	return i.ToGetAppSpecEgressArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecEgressArray) ToGetAppSpecEgressArrayOutputWithContext(ctx context.Context) GetAppSpecEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecEgressArrayOutput)
+}
+
+type GetAppSpecEgressOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecEgress)(nil)).Elem()
+}
+
+func (o GetAppSpecEgressOutput) ToGetAppSpecEgressOutput() GetAppSpecEgressOutput {
+	return o
+}
+
+func (o GetAppSpecEgressOutput) ToGetAppSpecEgressOutputWithContext(ctx context.Context) GetAppSpecEgressOutput {
+	return o
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecEgressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecEgress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecEgress)(nil)).Elem()
+}
+
+func (o GetAppSpecEgressArrayOutput) ToGetAppSpecEgressArrayOutput() GetAppSpecEgressArrayOutput {
+	return o
+}
+
+func (o GetAppSpecEgressArrayOutput) ToGetAppSpecEgressArrayOutputWithContext(ctx context.Context) GetAppSpecEgressArrayOutput {
+	return o
+}
+
+func (o GetAppSpecEgressArrayOutput) Index(i pulumi.IntInput) GetAppSpecEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecEgress {
+		return vs[0].([]GetAppSpecEgress)[vs[1].(int)]
+	}).(GetAppSpecEgressOutput)
 }
 
 type GetAppSpecEnv struct {
@@ -32088,6 +32575,10 @@ func (o GetLoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) GetLo
 type GetLoadBalancerGlbSetting struct {
 	// CDN specific configurations
 	Cdns []GetLoadBalancerGlbSettingCdn `pulumi:"cdns"`
+	// fail-over threshold
+	FailoverThreshold int `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities map[string]int `pulumi:"regionPriorities"`
 	// target port rules
 	TargetPort int `pulumi:"targetPort"`
 	// target protocol rules
@@ -32108,6 +32599,10 @@ type GetLoadBalancerGlbSettingInput interface {
 type GetLoadBalancerGlbSettingArgs struct {
 	// CDN specific configurations
 	Cdns GetLoadBalancerGlbSettingCdnArrayInput `pulumi:"cdns"`
+	// fail-over threshold
+	FailoverThreshold pulumi.IntInput `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities pulumi.IntMapInput `pulumi:"regionPriorities"`
 	// target port rules
 	TargetPort pulumi.IntInput `pulumi:"targetPort"`
 	// target protocol rules
@@ -32168,6 +32663,16 @@ func (o GetLoadBalancerGlbSettingOutput) ToGetLoadBalancerGlbSettingOutputWithCo
 // CDN specific configurations
 func (o GetLoadBalancerGlbSettingOutput) Cdns() GetLoadBalancerGlbSettingCdnArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancerGlbSetting) []GetLoadBalancerGlbSettingCdn { return v.Cdns }).(GetLoadBalancerGlbSettingCdnArrayOutput)
+}
+
+// fail-over threshold
+func (o GetLoadBalancerGlbSettingOutput) FailoverThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) int { return v.FailoverThreshold }).(pulumi.IntOutput)
+}
+
+// region priority map
+func (o GetLoadBalancerGlbSettingOutput) RegionPriorities() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) map[string]int { return v.RegionPriorities }).(pulumi.IntMapOutput)
 }
 
 // target port rules
@@ -35366,6 +35871,8 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecInput)(nil)).Elem(), AppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecPtrInput)(nil)).Elem(), AppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertInput)(nil)).Elem(), AppSpecAlertArgs{})
@@ -35374,6 +35881,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseArrayInput)(nil)).Elem(), AppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameInput)(nil)).Elem(), AppSpecDomainNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameArrayInput)(nil)).Elem(), AppSpecDomainNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEgressInput)(nil)).Elem(), AppSpecEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEgressArrayInput)(nil)).Elem(), AppSpecEgressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvInput)(nil)).Elem(), AppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvArrayInput)(nil)).Elem(), AppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionInput)(nil)).Elem(), AppSpecFunctionArgs{})
@@ -35584,6 +36093,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationArrayInput)(nil)).Elem(), UptimeAlertNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackInput)(nil)).Elem(), UptimeAlertNotificationSlackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackArrayInput)(nil)).Elem(), UptimeAlertNotificationSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDedicatedIpInput)(nil)).Elem(), GetAppDedicatedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDedicatedIpArrayInput)(nil)).Elem(), GetAppDedicatedIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecInput)(nil)).Elem(), GetAppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecArrayInput)(nil)).Elem(), GetAppSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertInput)(nil)).Elem(), GetAppSpecAlertArgs{})
@@ -35592,6 +36103,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseArrayInput)(nil)).Elem(), GetAppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainArrayInput)(nil)).Elem(), GetAppSpecDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEgressInput)(nil)).Elem(), GetAppSpecEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEgressArrayInput)(nil)).Elem(), GetAppSpecEgressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvInput)(nil)).Elem(), GetAppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvArrayInput)(nil)).Elem(), GetAppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionInput)(nil)).Elem(), GetAppSpecFunctionArgs{})
@@ -35823,6 +36336,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
+	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
+	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecAlertOutput{})
@@ -35831,6 +36346,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecDomainNameOutput{})
 	pulumi.RegisterOutputType(AppSpecDomainNameArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecEgressOutput{})
+	pulumi.RegisterOutputType(AppSpecEgressArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionOutput{})
@@ -36041,6 +36558,8 @@ func init() {
 	pulumi.RegisterOutputType(UptimeAlertNotificationArrayOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackArrayOutput{})
+	pulumi.RegisterOutputType(GetAppDedicatedIpOutput{})
+	pulumi.RegisterOutputType(GetAppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecOutput{})
 	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecAlertOutput{})
@@ -36049,6 +36568,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecEgressOutput{})
+	pulumi.RegisterOutputType(GetAppSpecEgressArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionOutput{})

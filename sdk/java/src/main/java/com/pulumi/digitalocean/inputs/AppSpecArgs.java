@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecAlertArgs;
 import com.pulumi.digitalocean.inputs.AppSpecDatabaseArgs;
 import com.pulumi.digitalocean.inputs.AppSpecDomainNameArgs;
+import com.pulumi.digitalocean.inputs.AppSpecEgressArgs;
 import com.pulumi.digitalocean.inputs.AppSpecEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecFunctionArgs;
 import com.pulumi.digitalocean.inputs.AppSpecIngressArgs;
@@ -81,6 +82,21 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
     public Optional<Output<List<String>>> domains() {
         return Optional.ofNullable(this.domains);
+    }
+
+    /**
+     * Specification for app egress configurations.
+     * 
+     */
+    @Import(name="egresses")
+    private @Nullable Output<List<AppSpecEgressArgs>> egresses;
+
+    /**
+     * @return Specification for app egress configurations.
+     * 
+     */
+    public Optional<Output<List<AppSpecEgressArgs>>> egresses() {
+        return Optional.ofNullable(this.egresses);
     }
 
     /**
@@ -200,6 +216,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         this.databases = $.databases;
         this.domainNames = $.domainNames;
         this.domains = $.domains;
+        this.egresses = $.egresses;
         this.envs = $.envs;
         this.features = $.features;
         this.functions = $.functions;
@@ -340,6 +357,37 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
         public Builder domains(String... domains) {
             return domains(List.of(domains));
+        }
+
+        /**
+         * @param egresses Specification for app egress configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egresses(@Nullable Output<List<AppSpecEgressArgs>> egresses) {
+            $.egresses = egresses;
+            return this;
+        }
+
+        /**
+         * @param egresses Specification for app egress configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egresses(List<AppSpecEgressArgs> egresses) {
+            return egresses(Output.of(egresses));
+        }
+
+        /**
+         * @param egresses Specification for app egress configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egresses(AppSpecEgressArgs... egresses) {
+            return egresses(List.of(egresses));
         }
 
         /**

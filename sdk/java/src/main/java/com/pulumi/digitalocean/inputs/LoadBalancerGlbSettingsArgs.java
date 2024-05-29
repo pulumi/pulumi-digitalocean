@@ -9,6 +9,7 @@ import com.pulumi.digitalocean.inputs.LoadBalancerGlbSettingsCdnArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,36 @@ public final class LoadBalancerGlbSettingsArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<LoadBalancerGlbSettingsCdnArgs>> cdn() {
         return Optional.ofNullable(this.cdn);
+    }
+
+    /**
+     * fail-over threshold
+     * 
+     */
+    @Import(name="failoverThreshold")
+    private @Nullable Output<Integer> failoverThreshold;
+
+    /**
+     * @return fail-over threshold
+     * 
+     */
+    public Optional<Output<Integer>> failoverThreshold() {
+        return Optional.ofNullable(this.failoverThreshold);
+    }
+
+    /**
+     * region priority map
+     * 
+     */
+    @Import(name="regionPriorities")
+    private @Nullable Output<Map<String,Integer>> regionPriorities;
+
+    /**
+     * @return region priority map
+     * 
+     */
+    public Optional<Output<Map<String,Integer>>> regionPriorities() {
+        return Optional.ofNullable(this.regionPriorities);
     }
 
     /**
@@ -67,6 +98,8 @@ public final class LoadBalancerGlbSettingsArgs extends com.pulumi.resources.Reso
 
     private LoadBalancerGlbSettingsArgs(LoadBalancerGlbSettingsArgs $) {
         this.cdn = $.cdn;
+        this.failoverThreshold = $.failoverThreshold;
+        this.regionPriorities = $.regionPriorities;
         this.targetPort = $.targetPort;
         this.targetProtocol = $.targetProtocol;
     }
@@ -108,6 +141,48 @@ public final class LoadBalancerGlbSettingsArgs extends com.pulumi.resources.Reso
          */
         public Builder cdn(LoadBalancerGlbSettingsCdnArgs cdn) {
             return cdn(Output.of(cdn));
+        }
+
+        /**
+         * @param failoverThreshold fail-over threshold
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failoverThreshold(@Nullable Output<Integer> failoverThreshold) {
+            $.failoverThreshold = failoverThreshold;
+            return this;
+        }
+
+        /**
+         * @param failoverThreshold fail-over threshold
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failoverThreshold(Integer failoverThreshold) {
+            return failoverThreshold(Output.of(failoverThreshold));
+        }
+
+        /**
+         * @param regionPriorities region priority map
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionPriorities(@Nullable Output<Map<String,Integer>> regionPriorities) {
+            $.regionPriorities = regionPriorities;
+            return this;
+        }
+
+        /**
+         * @param regionPriorities region priority map
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionPriorities(Map<String,Integer> regionPriorities) {
+            return regionPriorities(Output.of(regionPriorities));
         }
 
         /**

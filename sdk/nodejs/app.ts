@@ -106,6 +106,10 @@ export class App extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * The dedicated egress IP addresses associated with the app.
+     */
+    public readonly dedicatedIps!: pulumi.Output<outputs.AppDedicatedIp[]>;
+    /**
      * The default URL to access the app.
      */
     public /*out*/ readonly defaultIngress!: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["activeDeploymentId"] = state ? state.activeDeploymentId : undefined;
             resourceInputs["appUrn"] = state ? state.appUrn : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["dedicatedIps"] = state ? state.dedicatedIps : undefined;
             resourceInputs["defaultIngress"] = state ? state.defaultIngress : undefined;
             resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -153,6 +158,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
+            resourceInputs["dedicatedIps"] = args ? args.dedicatedIps : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["activeDeploymentId"] = undefined /*out*/;
@@ -184,6 +190,10 @@ export interface AppState {
      */
     createdAt?: pulumi.Input<string>;
     /**
+     * The dedicated egress IP addresses associated with the app.
+     */
+    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[]>;
+    /**
      * The default URL to access the app.
      */
     defaultIngress?: pulumi.Input<string>;
@@ -213,6 +223,10 @@ export interface AppState {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
+    /**
+     * The dedicated egress IP addresses associated with the app.
+     */
+    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[]>;
     /**
      * The ID of the project that the app is assigned to.
      *

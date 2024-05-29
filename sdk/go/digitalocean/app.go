@@ -114,6 +114,8 @@ type App struct {
 	AppUrn pulumi.StringOutput `pulumi:"appUrn"`
 	// The date and time of when the app was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps AppDedicatedIpArrayOutput `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringOutput `pulumi:"defaultIngress"`
 	// The live URL of the app.
@@ -166,6 +168,8 @@ type appState struct {
 	AppUrn *string `pulumi:"appUrn"`
 	// The date and time of when the app was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress *string `pulumi:"defaultIngress"`
 	// The live URL of the app.
@@ -189,6 +193,8 @@ type AppState struct {
 	AppUrn pulumi.StringPtrInput
 	// The date and time of when the app was created.
 	CreatedAt pulumi.StringPtrInput
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps AppDedicatedIpArrayInput
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringPtrInput
 	// The live URL of the app.
@@ -210,6 +216,8 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
 	// The ID of the project that the app is assigned to.
 	//
 	// A spec can contain multiple components.
@@ -222,6 +230,8 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps AppDedicatedIpArrayInput
 	// The ID of the project that the app is assigned to.
 	//
 	// A spec can contain multiple components.
@@ -332,6 +342,11 @@ func (o AppOutput) AppUrn() pulumi.StringOutput {
 // The date and time of when the app was created.
 func (o AppOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The dedicated egress IP addresses associated with the app.
+func (o AppOutput) DedicatedIps() AppDedicatedIpArrayOutput {
+	return o.ApplyT(func(v *App) AppDedicatedIpArrayOutput { return v.DedicatedIps }).(AppDedicatedIpArrayOutput)
 }
 
 // The default URL to access the app.

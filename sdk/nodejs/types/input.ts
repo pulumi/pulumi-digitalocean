@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface AppDedicatedIp {
+    /**
+     * The ID of the app.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface AppSpec {
     /**
      * Describes an alert policy for the app.
@@ -20,6 +35,10 @@ export interface AppSpec {
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specification for app egress configurations.
+     */
+    egresses?: pulumi.Input<pulumi.Input<inputs.AppSpecEgress>[]>;
     /**
      * Describes an app-wide environment variable made available to all components.
      */
@@ -111,6 +130,13 @@ export interface AppSpecDomainName {
      * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      */
     zone?: pulumi.Input<string>;
+}
+
+export interface AppSpecEgress {
+    /**
+     * The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface AppSpecEnv {
@@ -1723,6 +1749,36 @@ export interface FirewallPendingChange {
     status?: pulumi.Input<string>;
 }
 
+export interface GetAppDedicatedIp {
+    /**
+     * The ID of the dedicated egress IP.
+     */
+    id?: string;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip?: string;
+    /**
+     * The status of the dedicated egress IP.
+     */
+    status?: string;
+}
+
+export interface GetAppDedicatedIpArgs {
+    /**
+     * The ID of the dedicated egress IP.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * The status of the dedicated egress IP.
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface GetDomainsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -2843,6 +2899,14 @@ export interface LoadBalancerGlbSettings {
      * CDN configuration supporting the following:
      */
     cdn?: pulumi.Input<inputs.LoadBalancerGlbSettingsCdn>;
+    /**
+     * fail-over threshold
+     */
+    failoverThreshold?: pulumi.Input<number>;
+    /**
+     * region priority map
+     */
+    regionPriorities?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     /**
      * An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
      */

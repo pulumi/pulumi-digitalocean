@@ -19,6 +19,24 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<Inputs.LoadBalancerGlbSettingsCdnArgs>? Cdn { get; set; }
 
         /// <summary>
+        /// fail-over threshold
+        /// </summary>
+        [Input("failoverThreshold")]
+        public Input<int>? FailoverThreshold { get; set; }
+
+        [Input("regionPriorities")]
+        private InputMap<int>? _regionPriorities;
+
+        /// <summary>
+        /// region priority map
+        /// </summary>
+        public InputMap<int> RegionPriorities
+        {
+            get => _regionPriorities ?? (_regionPriorities = new InputMap<int>());
+            set => _regionPriorities = value;
+        }
+
+        /// <summary>
         /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
         /// </summary>
         [Input("targetPort", required: true)]
