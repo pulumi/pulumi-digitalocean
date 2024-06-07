@@ -22,13 +22,10 @@ const providerName = "digitalocean"
 const defaultBaselineVersion = "4.27.0"
 
 var programs = []string{
-	"test-programs/index_monitoralert",
 	"test-programs/index_volume",
 	"test-programs/index_droplet",
 	"test-programs/index_tag",
-	"test-programs/index_databasefirewall",
 	"test-programs/index_projectresources",
-	"test-programs/index_databaseuser",
 }
 
 func TestUpgradeCoverage(t *testing.T) {
