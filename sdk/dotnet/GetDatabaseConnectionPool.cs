@@ -16,7 +16,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseConnectionPoolResult> InvokeAsync(GetDatabaseConnectionPoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseConnectionPoolResult>("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args ?? new GetDatabaseConnectionPoolArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseConnectionPoolResult> Invoke(GetDatabaseConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseConnectionPoolResult>("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args ?? new GetDatabaseConnectionPoolInvokeArgs(), options.WithDefaults());

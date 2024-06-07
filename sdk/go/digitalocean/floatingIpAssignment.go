@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,13 +32,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarFloatingIp, err := digitalocean.NewFloatingIp(ctx, "foobarFloatingIp", &digitalocean.FloatingIpArgs{
+//			foobar, err := digitalocean.NewFloatingIp(ctx, "foobar", &digitalocean.FloatingIpArgs{
 //				Region: pulumi.String("sgp1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Name:              pulumi.String("baz"),
 //				Size:              pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:             pulumi.String("ubuntu-18-04-x64"),
 //				Region:            pulumi.String(digitalocean.RegionSGP1),
@@ -49,8 +49,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobarFloatingIpAssignment", &digitalocean.FloatingIpAssignmentArgs{
-//				IpAddress: foobarFloatingIp.IpAddress,
+//			_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobar", &digitalocean.FloatingIpAssignmentArgs{
+//				IpAddress: foobar.IpAddress,
 //				DropletId: foobarDroplet.ID(),
 //			})
 //			if err != nil {
@@ -61,7 +61,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

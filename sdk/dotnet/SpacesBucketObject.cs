@@ -26,7 +26,6 @@ namespace Pulumi.DigitalOcean
     /// access ID and secret you generate via the DigitalOcean control panel. For
     /// example:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,10 +36,8 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
     /// 
-    ///     // ...
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
     /// 
@@ -48,7 +45,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Create a Key in a Spaces Bucket
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,6 +55,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
@@ -73,7 +70,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

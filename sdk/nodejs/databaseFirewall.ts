@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  *
  * ### Create a new database firewall allowing multiple IP addresses
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
@@ -42,23 +42,23 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new database firewall allowing a Droplet
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
+ *     name: "web-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
@@ -71,24 +71,24 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new database firewall for a database replica
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const replica_example = new digitalocean.DatabaseReplica("replica-example", {
  *     clusterId: postgres_example.id,
+ *     name: "replica-example",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  * });
@@ -101,7 +101,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

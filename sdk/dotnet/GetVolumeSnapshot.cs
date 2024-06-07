@@ -20,7 +20,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the volume snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,18 +30,16 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a volume snapshot to create a new volume based on it:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,13 +58,13 @@ namespace Pulumi.DigitalOcean
         ///     var foobar = new DigitalOcean.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
+        ///         Name = "baz",
         ///         Size = 100,
         ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVolumeSnapshotResult> InvokeAsync(GetVolumeSnapshotArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotArgs(), options.WithDefaults());
@@ -81,7 +78,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the volume snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,18 +88,16 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a volume snapshot to create a new volume based on it:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -122,13 +116,13 @@ namespace Pulumi.DigitalOcean
         ///     var foobar = new DigitalOcean.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
+        ///         Name = "baz",
         ///         Size = 100,
         ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());

@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ### Create a new PostgreSQL database replica
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,8 +25,9 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
@@ -36,6 +36,7 @@ namespace Pulumi.DigitalOcean
     ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "replica-example",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });
@@ -56,11 +57,10 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["uUID"] = replica_example.Uuid,
+    ///         ["UUID"] = replica_example.Uuid,
     ///     };
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

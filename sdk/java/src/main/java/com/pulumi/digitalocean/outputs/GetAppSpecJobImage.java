@@ -25,6 +25,11 @@ public final class GetAppSpecJobImage {
      */
     private @Nullable String registry;
     /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    private @Nullable String registryCredentials;
+    /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
      */
@@ -54,6 +59,13 @@ public final class GetAppSpecJobImage {
      */
     public Optional<String> registry() {
         return Optional.ofNullable(this.registry);
+    }
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    public Optional<String> registryCredentials() {
+        return Optional.ofNullable(this.registryCredentials);
     }
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -88,6 +100,7 @@ public final class GetAppSpecJobImage {
     public static final class Builder {
         private List<GetAppSpecJobImageDeployOnPush> deployOnPushes;
         private @Nullable String registry;
+        private @Nullable String registryCredentials;
         private String registryType;
         private String repository;
         private @Nullable String tag;
@@ -96,6 +109,7 @@ public final class GetAppSpecJobImage {
     	      Objects.requireNonNull(defaults);
     	      this.deployOnPushes = defaults.deployOnPushes;
     	      this.registry = defaults.registry;
+    	      this.registryCredentials = defaults.registryCredentials;
     	      this.registryType = defaults.registryType;
     	      this.repository = defaults.repository;
     	      this.tag = defaults.tag;
@@ -116,6 +130,12 @@ public final class GetAppSpecJobImage {
         public Builder registry(@Nullable String registry) {
 
             this.registry = registry;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder registryCredentials(@Nullable String registryCredentials) {
+
+            this.registryCredentials = registryCredentials;
             return this;
         }
         @CustomType.Setter
@@ -144,6 +164,7 @@ public final class GetAppSpecJobImage {
             final var _resultValue = new GetAppSpecJobImage();
             _resultValue.deployOnPushes = deployOnPushes;
             _resultValue.registry = registry;
+            _resultValue.registryCredentials = registryCredentials;
             _resultValue.registryType = registryType;
             _resultValue.repository = repository;
             _resultValue.tag = tag;

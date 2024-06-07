@@ -13,18 +13,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const webDroplet = new digitalocean.Droplet("webDroplet", {
+ * const web = new digitalocean.Droplet("web", {
+ *     name: "web-1",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
- * const webFirewall = new digitalocean.Firewall("webFirewall", {
- *     dropletIds: [webDroplet.id],
+ * const webFirewall = new digitalocean.Firewall("web", {
+ *     name: "only-22-80-and-443",
+ *     dropletIds: [web.id],
  *     inboundRules: [
  *         {
  *             protocol: "tcp",
@@ -85,7 +86,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

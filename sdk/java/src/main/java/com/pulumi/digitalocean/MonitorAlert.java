@@ -182,7 +182,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
         return this.uuid;
     }
     /**
-     * The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+     * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      * 
      */
@@ -190,7 +190,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
     private Output<Double> value;
 
     /**
-     * @return The value to start alerting at, e.g., 90%!o(MISSING)r 85Mbps. This is a floating-point number.
+     * @return The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      * 
      */

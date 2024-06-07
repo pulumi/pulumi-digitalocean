@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,21 +58,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var flatcar = new CustomImage(&#34;flatcar&#34;, CustomImageArgs.builder()        
- *             .url(&#34;https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2&#34;)
- *             .regions(&#34;nyc3&#34;)
+ *         var flatcar = new CustomImage("flatcar", CustomImageArgs.builder()
+ *             .name("flatcar")
+ *             .url("https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2")
+ *             .regions("nyc3")
  *             .build());
  * 
- *         var example = new Droplet(&#34;example&#34;, DropletArgs.builder()        
+ *         var example = new Droplet("example", DropletArgs.builder()
  *             .image(flatcar.id())
- *             .region(&#34;nyc3&#34;)
- *             .size(&#34;s-1vcpu-1gb&#34;)
+ *             .name("example-01")
+ *             .region("nyc3")
+ *             .size("s-1vcpu-1gb")
  *             .sshKeys(12345)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

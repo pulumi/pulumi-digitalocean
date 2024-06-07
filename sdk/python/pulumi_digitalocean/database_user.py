@@ -242,56 +242,62 @@ class DatabaseUser(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database user
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
+        user_example = digitalocean.DatabaseUser("user-example",
+            cluster_id=postgres_example.id,
+            name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a PostgreSQL database replica
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
+            name="replica-example",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1)
-        user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
+        user_example = digitalocean.DatabaseUser("user-example",
+            cluster_id=replica_example.uuid,
+            name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
             region=digitalocean.Region.NYC1,
             node_count=3)
-        foobar_topic = digitalocean.DatabaseKafkaTopic("foobarTopic", cluster_id=digitalocean_database_cluster["foobar"]["id"])
-        foobar_user = digitalocean.DatabaseUser("foobarUser",
-            cluster_id=digitalocean_database_cluster["foobar"]["id"],
+        foobar_topic = digitalocean.DatabaseKafkaTopic("foobar_topic",
+            cluster_id=foobar["id"],
+            name="topic-1")
+        foobar_user = digitalocean.DatabaseUser("foobar_user",
+            cluster_id=foobar["id"],
+            name="example-user",
             settings=[digitalocean.DatabaseUserSettingArgs(
                 acls=[
                     digitalocean.DatabaseUserSettingAclArgs(
@@ -309,7 +315,6 @@ class DatabaseUser(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -343,56 +348,62 @@ class DatabaseUser(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database user
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        user_example = digitalocean.DatabaseUser("user-example", cluster_id=postgres_example.id)
+        user_example = digitalocean.DatabaseUser("user-example",
+            cluster_id=postgres_example.id,
+            name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a PostgreSQL database replica
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
+            name="replica-example",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1)
-        user_example = digitalocean.DatabaseUser("user-example", cluster_id=replica_example.uuid)
+        user_example = digitalocean.DatabaseUser("user-example",
+            cluster_id=replica_example.uuid,
+            name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new user for a Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
             region=digitalocean.Region.NYC1,
             node_count=3)
-        foobar_topic = digitalocean.DatabaseKafkaTopic("foobarTopic", cluster_id=digitalocean_database_cluster["foobar"]["id"])
-        foobar_user = digitalocean.DatabaseUser("foobarUser",
-            cluster_id=digitalocean_database_cluster["foobar"]["id"],
+        foobar_topic = digitalocean.DatabaseKafkaTopic("foobar_topic",
+            cluster_id=foobar["id"],
+            name="topic-1")
+        foobar_user = digitalocean.DatabaseUser("foobar_user",
+            cluster_id=foobar["id"],
+            name="example-user",
             settings=[digitalocean.DatabaseUserSettingArgs(
                 acls=[
                     digitalocean.DatabaseUserSettingAclArgs(
@@ -410,7 +421,6 @@ class DatabaseUser(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

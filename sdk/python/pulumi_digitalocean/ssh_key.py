@@ -126,21 +126,23 @@ class SshKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
+        import pulumi_std as std
 
         # Create a new SSH key
-        default = digitalocean.SshKey("default", public_key=(lambda path: open(path).read())("/Users/myuser/.ssh/id_rsa.pub"))
+        default = digitalocean.SshKey("default",
+            name="Example",
+            public_key=std.file(input="/Users/myuser/.ssh/id_rsa.pub").result)
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
+            name="web-1",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=[default.fingerprint])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,21 +172,23 @@ class SshKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
+        import pulumi_std as std
 
         # Create a new SSH key
-        default = digitalocean.SshKey("default", public_key=(lambda path: open(path).read())("/Users/myuser/.ssh/id_rsa.pub"))
+        default = digitalocean.SshKey("default",
+            name="Example",
+            public_key=std.file(input="/Users/myuser/.ssh/id_rsa.pub").result)
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
+            name="web-1",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=[default.fingerprint])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

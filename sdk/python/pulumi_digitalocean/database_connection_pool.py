@@ -329,25 +329,25 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database connection pool
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
         pool_01 = digitalocean.DatabaseConnectionPool("pool-01",
             cluster_id=postgres_example.id,
+            name="pool-01",
             mode="transaction",
             size=20,
             db_name="defaultdb",
             user="doadmin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -380,25 +380,25 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database connection pool
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
         pool_01 = digitalocean.DatabaseConnectionPool("pool-01",
             cluster_id=postgres_example.id,
+            name="pool-01",
             mode="transaction",
             size=20,
             db_name="defaultdb",
             user="doadmin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

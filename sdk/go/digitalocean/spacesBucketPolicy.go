@@ -16,7 +16,6 @@ import (
 //
 // ### Limiting access to specific IP addresses
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -32,18 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarSpacesBucket, err := digitalocean.NewSpacesBucket(ctx, "foobarSpacesBucket", &digitalocean.SpacesBucketArgs{
+//			foobar, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("foobar"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewSpacesBucketPolicy(ctx, "foobarSpacesBucketPolicy", &digitalocean.SpacesBucketPolicyArgs{
-//				Region: foobarSpacesBucket.Region,
-//				Bucket: foobarSpacesBucket.Name,
-//				Policy: pulumi.All(foobarSpacesBucket.Name, foobarSpacesBucket.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					foobarSpacesBucketName := _args[0].(string)
-//					foobarSpacesBucketName1 := _args[1].(string)
+//			_, err = digitalocean.NewSpacesBucketPolicy(ctx, "foobar", &digitalocean.SpacesBucketPolicyArgs{
+//				Region: foobar.Region,
+//				Bucket: foobar.Name,
+//				Policy: pulumi.All(foobar.Name, foobar.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					foobarName := _args[0].(string)
+//					foobarName1 := _args[1].(string)
 //					var _zero string
 //					tmpJSON0, err := json.Marshal(map[string]interface{}{
 //						"Version": "2012-10-17",
@@ -54,8 +54,8 @@ import (
 //								"Principal": "*",
 //								"Action":    "s3:*",
 //								"Resource": []string{
-//									fmt.Sprintf("arn:aws:s3:::%v", foobarSpacesBucketName),
-//									fmt.Sprintf("arn:aws:s3:::%v/*", foobarSpacesBucketName1),
+//									fmt.Sprintf("arn:aws:s3:::%v", foobarName),
+//									fmt.Sprintf("arn:aws:s3:::%v/*", foobarName1),
 //								},
 //								"Condition": map[string]interface{}{
 //									"NotIpAddress": map[string]interface{}{
@@ -80,7 +80,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 //

@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * Get the load balancer by name:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -29,11 +28,9 @@ import * as utilities from "./utilities";
  * });
  * export const lbOutput = example.then(example => example.ip);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get the load balancer by ID:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -42,7 +39,6 @@ import * as utilities from "./utilities";
  *     id: "loadbalancer_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     args = args || {};
@@ -51,7 +47,6 @@ export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", {
         "id": args.id,
         "name": args.name,
-        "type": args.type,
     }, opts);
 }
 
@@ -67,21 +62,25 @@ export interface GetLoadBalancerArgs {
      * The name of load balancer.
      */
     name?: string;
-    type?: string;
 }
 
 /**
  * A collection of values returned by getLoadBalancer.
  */
 export interface GetLoadBalancerResult {
+    /**
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     */
     readonly algorithm: string;
     readonly disableLetsEncryptDnsRecords: boolean;
+    readonly domains: outputs.GetLoadBalancerDomain[];
     readonly dropletIds: number[];
     readonly dropletTag: string;
     readonly enableBackendKeepalive: boolean;
     readonly enableProxyProtocol: boolean;
     readonly firewalls: outputs.GetLoadBalancerFirewall[];
     readonly forwardingRules: outputs.GetLoadBalancerForwardingRule[];
+    readonly glbSettings: outputs.GetLoadBalancerGlbSetting[];
     readonly healthchecks: outputs.GetLoadBalancerHealthcheck[];
     readonly httpIdleTimeoutSeconds: number;
     readonly id?: string;
@@ -95,6 +94,7 @@ export interface GetLoadBalancerResult {
     readonly sizeUnit: number;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
+    readonly targetLoadBalancerIds: string[];
     readonly type: string;
     readonly vpcUuid: string;
 }
@@ -110,7 +110,6 @@ export interface GetLoadBalancerResult {
  *
  * Get the load balancer by name:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -120,11 +119,9 @@ export interface GetLoadBalancerResult {
  * });
  * export const lbOutput = example.then(example => example.ip);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Get the load balancer by ID:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -133,7 +130,6 @@ export interface GetLoadBalancerResult {
  *     id: "loadbalancer_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancerOutput(args?: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancer(a, opts))
@@ -151,5 +147,4 @@ export interface GetLoadBalancerOutputArgs {
      * The name of load balancer.
      */
     name?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
 }

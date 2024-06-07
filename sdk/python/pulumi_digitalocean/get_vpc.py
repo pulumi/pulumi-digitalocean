@@ -146,30 +146,27 @@ def get_vpc(id: Optional[str] = None,
 
     ### VPC By Name
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_vpc(name="example-network")
     ```
-    <!--End PulumiCodeChooser -->
 
     Reuse the data about a VPC to assign a Droplet to it:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example_vpc = digitalocean.get_vpc(name="example-network")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
+    example = digitalocean.get_vpc(name="example-network")
+    example_droplet = digitalocean.Droplet("example",
+        name="example-01",
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         image="ubuntu-18-04-x64",
         region=digitalocean.Region.NYC3,
-        vpc_uuid=example_vpc.id)
+        vpc_uuid=example.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier of an existing VPC.
@@ -213,30 +210,27 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ### VPC By Name
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_vpc(name="example-network")
     ```
-    <!--End PulumiCodeChooser -->
 
     Reuse the data about a VPC to assign a Droplet to it:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example_vpc = digitalocean.get_vpc(name="example-network")
-    example_droplet = digitalocean.Droplet("exampleDroplet",
+    example = digitalocean.get_vpc(name="example-network")
+    example_droplet = digitalocean.Droplet("example",
+        name="example-01",
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
         image="ubuntu-18-04-x64",
         region=digitalocean.Region.NYC3,
-        vpc_uuid=example_vpc.id)
+        vpc_uuid=example.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The unique identifier of an existing VPC.

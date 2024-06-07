@@ -23,7 +23,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get data from a DNS record:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,18 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ```
+        /// 
+        /// data.digitalocean_record.example: Refreshing state...
+        /// 
+        /// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+        /// 
+        /// Outputs:
+        /// 
+        /// record_ttl = 3600
+        /// record_type = A
+        /// ```
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
@@ -62,7 +72,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get data from a DNS record:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +93,18 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ```
+        /// 
+        /// data.digitalocean_record.example: Refreshing state...
+        /// 
+        /// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+        /// 
+        /// Outputs:
+        /// 
+        /// record_ttl = 3600
+        /// record_type = A
+        /// ```
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());

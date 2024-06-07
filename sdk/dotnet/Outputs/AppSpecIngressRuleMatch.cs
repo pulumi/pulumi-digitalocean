@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecIngressRuleMatch
     {
         /// <summary>
-        /// Paths must start with `/` and must be unique within the app.
+        /// The path to match on.
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleMatchPath? Path;
 

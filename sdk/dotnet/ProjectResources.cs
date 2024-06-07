@@ -29,7 +29,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// The following example assigns a droplet to a Project managed outside of the provider:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,6 +44,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var foobar = new DigitalOcean.Droplet("foobar", new()
     ///     {
+    ///         Name = "example",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -61,7 +61,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

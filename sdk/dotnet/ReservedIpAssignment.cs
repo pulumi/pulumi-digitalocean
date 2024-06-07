@@ -16,7 +16,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,13 +24,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("exampleReservedIp", new()
+    ///     var example = new DigitalOcean.ReservedIp("example", new()
     ///     {
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+    ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
     ///     {
+    ///         Name = "baz",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -39,15 +39,14 @@ namespace Pulumi.DigitalOcean
     ///         PrivateNetworking = true,
     ///     });
     /// 
-    ///     var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("exampleReservedIpAssignment", new()
+    ///     var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("example", new()
     ///     {
-    ///         IpAddress = exampleReservedIp.IpAddress,
+    ///         IpAddress = example.IpAddress,
     ///         DropletId = exampleDroplet.Id,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

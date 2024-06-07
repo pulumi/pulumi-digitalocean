@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  *
  * For example to find all staging environment projects:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -34,11 +33,9 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can filter on multiple fields and sort the results as well:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -55,12 +52,11 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "asc",
  *         key: "name",
+ *         direction: "asc",
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -119,7 +115,6 @@ export interface GetProjectsResult {
  *
  * For example to find all staging environment projects:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -131,11 +126,9 @@ export interface GetProjectsResult {
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can filter on multiple fields and sort the results as well:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -152,12 +145,11 @@ export interface GetProjectsResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "asc",
  *         key: "name",
+ *         direction: "asc",
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))

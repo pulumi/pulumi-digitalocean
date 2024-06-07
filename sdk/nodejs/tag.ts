@@ -12,22 +12,21 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new tag
- * const foobar = new digitalocean.Tag("foobar", {});
+ * const foobar = new digitalocean.Tag("foobar", {name: "foobar"});
  * // Create a new Droplet in nyc3 with the foobar tag
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     tags: [foobar.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

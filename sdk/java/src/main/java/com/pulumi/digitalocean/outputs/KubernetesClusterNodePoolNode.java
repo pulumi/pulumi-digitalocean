@@ -27,7 +27,7 @@ public final class KubernetesClusterNodePoolNode {
      */
     private @Nullable String id;
     /**
-     * @return A name for the node pool.
+     * @return A name for the Kubernetes cluster.
      * 
      */
     private @Nullable String name;
@@ -65,7 +65,7 @@ public final class KubernetesClusterNodePoolNode {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return A name for the node pool.
+     * @return A name for the Kubernetes cluster.
      * 
      */
     public Optional<String> name() {

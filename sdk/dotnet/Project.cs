@@ -34,7 +34,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// The following example demonstrates the creation of an empty project:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,18 +44,17 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var playground = new DigitalOcean.Project("playground", new()
     ///     {
+    ///         Name = "playground",
     ///         Description = "A project to represent development resources.",
-    ///         Environment = "Development",
     ///         Purpose = "Web Application",
+    ///         Environment = "Development",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// The following example demonstrates the creation of a project with a Droplet resource:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,6 +65,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.Droplet("foobar", new()
     ///     {
+    ///         Name = "example",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-22-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -74,6 +73,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var playground = new DigitalOcean.Project("playground", new()
     ///     {
+    ///         Name = "playground",
     ///         Description = "A project to represent development resources.",
     ///         Purpose = "Web Application",
     ///         Environment = "Development",
@@ -85,7 +85,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

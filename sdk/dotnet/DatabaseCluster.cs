@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ### Create a new PostgreSQL database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,19 +25,18 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
-    ///         NodeCount = 1,
-    ///         Region = DigitalOcean.Region.NYC1,
-    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "15",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         NodeCount = 1,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new MySQL database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,19 +47,18 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var mysql_example = new DigitalOcean.DatabaseCluster("mysql-example", new()
     ///     {
+    ///         Name = "example-mysql-cluster",
     ///         Engine = "mysql",
-    ///         NodeCount = 1,
-    ///         Region = DigitalOcean.Region.NYC1,
-    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "8",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         NodeCount = 1,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new Redis database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -72,19 +69,18 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var redis_example = new DigitalOcean.DatabaseCluster("redis-example", new()
     ///     {
+    ///         Name = "example-redis-cluster",
     ///         Engine = "redis",
-    ///         NodeCount = 1,
-    ///         Region = DigitalOcean.Region.NYC1,
-    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "7",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         NodeCount = 1,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new Kafka database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,19 +91,18 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
     ///     {
+    ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
-    ///         NodeCount = 3,
-    ///         Region = DigitalOcean.Region.NYC1,
-    ///         Size = "db-s-2vcpu-2gb",
     ///         Version = "3.5",
+    ///         Size = "db-s-2vcpu-2gb",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         NodeCount = 3,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a new MongoDB database cluster
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -118,20 +113,19 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var mongodb_example = new DigitalOcean.DatabaseCluster("mongodb-example", new()
     ///     {
+    ///         Name = "example-mongo-cluster",
     ///         Engine = "mongodb",
-    ///         NodeCount = 1,
-    ///         Region = DigitalOcean.Region.NYC3,
-    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Version = "6",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
+    ///         Region = DigitalOcean.Region.NYC3,
+    ///         NodeCount = 1,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Create a new database cluster based on a backup of an existing cluster.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -142,8 +136,9 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var doby = new DigitalOcean.DatabaseCluster("doby", new()
     ///     {
+    ///         Name = "dobydb",
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
@@ -153,10 +148,11 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var dobyBackup = new DigitalOcean.DatabaseCluster("dobyBackup", new()
+    ///     var dobyBackup = new DigitalOcean.DatabaseCluster("doby_backup", new()
     ///     {
+    ///         Name = "dobydupe",
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
@@ -172,13 +168,12 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         DependsOn =
     ///         {
-    ///             doby, 
+    ///             doby,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -191,9 +186,6 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/databaseCluster:DatabaseCluster")]
     public partial class DatabaseCluster : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Create a new database cluster based on a backup of an existing cluster.
-        /// </summary>
         [Output("backupRestore")]
         public Output<Outputs.DatabaseClusterBackupRestore?> BackupRestore { get; private set; } = null!;
 
@@ -312,6 +304,42 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the OpenSearch dashboard db.
+        /// </summary>
+        [Output("uiDatabase")]
+        public Output<string> UiDatabase { get; private set; } = null!;
+
+        /// <summary>
+        /// Hostname for the OpenSearch dashboard.
+        /// </summary>
+        [Output("uiHost")]
+        public Output<string> UiHost { get; private set; } = null!;
+
+        /// <summary>
+        /// Password for the OpenSearch dashboard's default user.
+        /// </summary>
+        [Output("uiPassword")]
+        public Output<string> UiPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// Network port that the OpenSearch dashboard is listening on.
+        /// </summary>
+        [Output("uiPort")]
+        public Output<int> UiPort { get; private set; } = null!;
+
+        /// <summary>
+        /// The full URI for connecting to the OpenSearch dashboard.
+        /// </summary>
+        [Output("uiUri")]
+        public Output<string> UiUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Username for OpenSearch dashboard's default user.
+        /// </summary>
+        [Output("uiUser")]
+        public Output<string> UiUser { get; private set; } = null!;
+
+        /// <summary>
         /// The full URI for connecting to the database cluster.
         /// </summary>
         [Output("uri")]
@@ -357,6 +385,8 @@ namespace Pulumi.DigitalOcean
                 {
                     "password",
                     "privateUri",
+                    "uiPassword",
+                    "uiUri",
                     "uri",
                 },
             };
@@ -382,9 +412,6 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DatabaseClusterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Create a new database cluster based on a backup of an existing cluster.
-        /// </summary>
         [Input("backupRestore")]
         public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
 
@@ -487,9 +514,6 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DatabaseClusterState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Create a new database cluster based on a backup of an existing cluster.
-        /// </summary>
         [Input("backupRestore")]
         public Input<Inputs.DatabaseClusterBackupRestoreGetArgs>? BackupRestore { get; set; }
 
@@ -638,6 +662,62 @@ namespace Pulumi.DigitalOcean
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Name of the OpenSearch dashboard db.
+        /// </summary>
+        [Input("uiDatabase")]
+        public Input<string>? UiDatabase { get; set; }
+
+        /// <summary>
+        /// Hostname for the OpenSearch dashboard.
+        /// </summary>
+        [Input("uiHost")]
+        public Input<string>? UiHost { get; set; }
+
+        [Input("uiPassword")]
+        private Input<string>? _uiPassword;
+
+        /// <summary>
+        /// Password for the OpenSearch dashboard's default user.
+        /// </summary>
+        public Input<string>? UiPassword
+        {
+            get => _uiPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uiPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Network port that the OpenSearch dashboard is listening on.
+        /// </summary>
+        [Input("uiPort")]
+        public Input<int>? UiPort { get; set; }
+
+        [Input("uiUri")]
+        private Input<string>? _uiUri;
+
+        /// <summary>
+        /// The full URI for connecting to the OpenSearch dashboard.
+        /// </summary>
+        public Input<string>? UiUri
+        {
+            get => _uiUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uiUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Username for OpenSearch dashboard's default user.
+        /// </summary>
+        [Input("uiUser")]
+        public Input<string>? UiUser { get; set; }
 
         [Input("uri")]
         private Input<string>? _uri;

@@ -26,7 +26,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			flatcar, err := digitalocean.NewCustomImage(ctx, "flatcar", &digitalocean.CustomImageArgs{
-//				Url: pulumi.String("https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2"),
+//				Name: pulumi.String("flatcar"),
+//				Url:  pulumi.String("https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2"),
 //				Regions: pulumi.StringArray{
 //					pulumi.String("nyc3"),
 //				},
@@ -50,6 +50,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
 //				Image:  flatcar.ID(),
+//				Name:   pulumi.String("example-01"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				SshKeys: pulumi.StringArray{
@@ -64,7 +65,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type CustomImage struct {
 	pulumi.CustomResourceState
 

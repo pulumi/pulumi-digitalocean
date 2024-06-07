@@ -25,7 +25,6 @@ import (
 // Use the `filter` block with a `key` string and `values` list to filter domains. (This example
 // also uses the regular expression `matchBy` mode in order to match domains by suffix.)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,11 +40,11 @@ import (
 //			_, err := digitalocean.GetDomains(ctx, &digitalocean.GetDomainsArgs{
 //				Filters: []digitalocean.GetDomainsFilter{
 //					{
-//						Key:     "name",
-//						MatchBy: pulumi.StringRef("re"),
+//						Key: "name",
 //						Values: []string{
 //							"example\\.com$",
 //						},
+//						MatchBy: pulumi.StringRef("re"),
 //					},
 //				},
 //			}, nil)
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

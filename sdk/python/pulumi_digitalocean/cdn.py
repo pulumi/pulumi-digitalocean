@@ -248,34 +248,34 @@ class Cdn(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
+            name="example",
             region=digitalocean.Region.SFO2,
             acl="public-read")
         # Add a CDN endpoint to the Spaces Bucket
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Custom Sub-Domain Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
+            name="example",
             region=digitalocean.Region.SFO2,
             acl="public-read")
         # Create a DigitalOcean managed Let's Encrypt Certificate
         cert = digitalocean.Certificate("cert",
+            name="cdn-cert",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["static.example.com"])
         # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
@@ -284,7 +284,6 @@ class Cdn(pulumi.CustomResource):
             custom_domain="static.example.com",
             certificate_name=cert.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -315,34 +314,34 @@ class Cdn(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
+            name="example",
             region=digitalocean.Region.SFO2,
             acl="public-read")
         # Add a CDN endpoint to the Spaces Bucket
         mycdn = digitalocean.Cdn("mycdn", origin=mybucket.bucket_domain_name)
         pulumi.export("fqdn", mycdn.endpoint)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Custom Sub-Domain Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         # Create a new Spaces Bucket
         mybucket = digitalocean.SpacesBucket("mybucket",
+            name="example",
             region=digitalocean.Region.SFO2,
             acl="public-read")
         # Create a DigitalOcean managed Let's Encrypt Certificate
         cert = digitalocean.Certificate("cert",
+            name="cdn-cert",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["static.example.com"])
         # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
@@ -351,7 +350,6 @@ class Cdn(pulumi.CustomResource):
             custom_domain="static.example.com",
             certificate_name=cert.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

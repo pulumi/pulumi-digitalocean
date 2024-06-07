@@ -11,25 +11,24 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleReservedIp = new digitalocean.ReservedIp("exampleReservedIp", {region: "nyc3"});
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const example = new digitalocean.ReservedIp("example", {region: "nyc3"});
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "baz",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
  *     region: digitalocean.Region.NYC3,
  *     ipv6: true,
  *     privateNetworking: true,
  * });
- * const exampleReservedIpAssignment = new digitalocean.ReservedIpAssignment("exampleReservedIpAssignment", {
- *     ipAddress: exampleReservedIp.ipAddress,
+ * const exampleReservedIpAssignment = new digitalocean.ReservedIpAssignment("example", {
+ *     ipAddress: example.ipAddress,
  *     dropletId: exampleDroplet.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -23,7 +23,6 @@ import (
 // The following example retrieves a text object (which must have a `Content-Type`
 // value starting with `text/`) and uses it as the `userData` for a Droplet:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +45,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:    pulumi.String("ubuntu-18-04-x64"),
+//				Name:     pulumi.String("web-1"),
 //				Region:   pulumi.String(digitalocean.RegionNYC2),
 //				Size:     pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				UserData: pulumi.String(bootstrapScript.Body),
@@ -58,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupSpacesBucketObject(ctx *pulumi.Context, args *LookupSpacesBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupSpacesBucketObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacesBucketObjectResult

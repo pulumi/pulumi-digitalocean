@@ -13,25 +13,24 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobarFloatingIp = new digitalocean.FloatingIp("foobarFloatingIp", {region: "sgp1"});
- * const foobarDroplet = new digitalocean.Droplet("foobarDroplet", {
+ * const foobar = new digitalocean.FloatingIp("foobar", {region: "sgp1"});
+ * const foobarDroplet = new digitalocean.Droplet("foobar", {
+ *     name: "baz",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.SGP1,
  *     ipv6: true,
  *     privateNetworking: true,
  * });
- * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment", {
- *     ipAddress: foobarFloatingIp.ipAddress,
+ * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
+ *     ipAddress: foobar.ipAddress,
  *     dropletId: foobarDroplet.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

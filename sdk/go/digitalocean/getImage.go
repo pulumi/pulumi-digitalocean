@@ -22,7 +22,6 @@ import (
 //
 // Get the data about a snapshot:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,11 +45,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Reuse the data about a snapshot to create a Droplet:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,14 +60,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleImage, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
+//			example, err := digitalocean.GetImage(ctx, &digitalocean.GetImageArgs{
 //				Name: pulumi.StringRef("example-1.0.0"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
-//				Image:  pulumi.Int(exampleImage.Id),
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Image:  pulumi.Int(example.Id),
+//				Name:   pulumi.String("example-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //			})
@@ -82,11 +80,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Get the data about an official image:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -110,7 +106,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetImage(ctx *pulumi.Context, args *GetImageArgs, opts ...pulumi.InvokeOption) (*GetImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImageResult

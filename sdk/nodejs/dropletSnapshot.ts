@@ -9,24 +9,27 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web = new digitalocean.Droplet("web", {
+ *     name: "web-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
- * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {dropletId: web.id});
+ * const web_snapshot = new digitalocean.DropletSnapshot("web-snapshot", {
+ *     dropletId: web.id,
+ *     name: "web-snapshot-01",
+ * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.id,
+ *     name: "web-02",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

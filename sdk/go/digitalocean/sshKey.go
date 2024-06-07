@@ -19,32 +19,29 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "/Users/myuser/.ssh/id_rsa.pub",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			// Create a new SSH key
-//			_, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
-//				PublicKey: readFileOrPanic("/Users/myuser/.ssh/id_rsa.pub"),
+//			_, err = digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
+//				Name:      pulumi.String("Example"),
+//				PublicKey: invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
@@ -52,6 +49,7 @@ import (
 //			// Create a new Droplet using the SSH key
 //			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Name:   pulumi.String("web-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				SshKeys: pulumi.StringArray{
@@ -66,7 +64,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

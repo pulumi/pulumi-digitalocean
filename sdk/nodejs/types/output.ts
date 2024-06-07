@@ -6,9 +6,24 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface AppDedicatedIp {
+    /**
+     * The ID of the app.
+     */
+    id: string;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip: string;
+    /**
+     * The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+     */
+    status: string;
+}
+
 export interface AppSpec {
     /**
-     * Describes an alert policy for the component.
+     * Describes an alert policy for the app.
      */
     alerts?: outputs.AppSpecAlert[];
     databases?: outputs.AppSpecDatabase[];
@@ -21,7 +36,11 @@ export interface AppSpec {
      */
     domains: string[];
     /**
-     * Describes an environment variable made available to an app competent.
+     * Specification for app egress configurations.
+     */
+    egresses?: outputs.AppSpecEgress[];
+    /**
+     * Describes an app-wide environment variable made available to all components.
      */
     envs?: outputs.AppSpecEnv[];
     /**
@@ -35,7 +54,7 @@ export interface AppSpec {
     ingress: outputs.AppSpecIngress;
     jobs?: outputs.AppSpecJob[];
     /**
-     * The name of the component.
+     * The name of the app. Must be unique across all apps in the same account.
      */
     name: string;
     /**
@@ -53,7 +72,7 @@ export interface AppSpecAlert {
      */
     disabled?: boolean;
     /**
-     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
      */
     rule: string;
 }
@@ -93,11 +112,14 @@ export interface AppSpecDatabase {
 
 export interface AppSpecDomainName {
     /**
-     * The name of the component.
+     * The hostname for the domain.
      */
     name: string;
     /**
-     * The type of the environment variable, `GENERAL` or `SECRET`.
+     * The domain type, which can be one of the following:
+     * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+     * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+     * - `ALIAS`: A non-primary domain.
      */
     type: string;
     /**
@@ -108,6 +130,13 @@ export interface AppSpecDomainName {
      * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      */
     zone?: string;
+}
+
+export interface AppSpecEgress {
+    /**
+     * The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+     */
+    type?: string;
 }
 
 export interface AppSpecEnv {
@@ -124,7 +153,7 @@ export interface AppSpecEnv {
      */
     type: string;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: string;
 }
@@ -201,23 +230,23 @@ export interface AppSpecFunctionAlert {
 
 export interface AppSpecFunctionCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: boolean;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: string[];
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: string[];
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: outputs.AppSpecFunctionCorsAllowOrigins;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: string[];
     /**
@@ -228,15 +257,15 @@ export interface AppSpecFunctionCors {
 
 export interface AppSpecFunctionCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: string;
 }
@@ -255,7 +284,7 @@ export interface AppSpecFunctionEnv {
      */
     type: string;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: string;
 }
@@ -311,7 +340,7 @@ export interface AppSpecFunctionLogDestination {
      */
     logtail?: outputs.AppSpecFunctionLogDestinationLogtail;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: string;
     /**
@@ -342,7 +371,7 @@ export interface AppSpecFunctionLogDestinationLogtail {
 
 export interface AppSpecFunctionLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: string;
 }
@@ -360,7 +389,7 @@ export interface AppSpecFunctionRoute {
 
 export interface AppSpecIngress {
     /**
-     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+     * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
     rules: outputs.AppSpecIngressRule[];
 }
@@ -386,11 +415,11 @@ export interface AppSpecIngressRule {
 
 export interface AppSpecIngressRuleComponent {
     /**
-     * The name of the component.
+     * The name of the component to route to.
      */
     name: string;
     /**
-     * An optional flag to preserve the path that is forwarded to the backend service.
+     * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      */
     preservePathPrefix: boolean;
     /**
@@ -401,15 +430,15 @@ export interface AppSpecIngressRuleComponent {
 
 export interface AppSpecIngressRuleCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: boolean;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: string[];
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: string[];
     /**
@@ -417,7 +446,7 @@ export interface AppSpecIngressRuleCors {
      */
     allowOrigins?: outputs.AppSpecIngressRuleCorsAllowOrigins;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: string[];
     /**
@@ -443,14 +472,14 @@ export interface AppSpecIngressRuleCorsAllowOrigins {
 
 export interface AppSpecIngressRuleMatch {
     /**
-     * Paths must start with `/` and must be unique within the app.
+     * The path to match on.
      */
     path: outputs.AppSpecIngressRuleMatchPath;
 }
 
 export interface AppSpecIngressRuleMatchPath {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix: string;
 }
@@ -461,7 +490,7 @@ export interface AppSpecIngressRuleRedirect {
      */
     authority?: string;
     /**
-     * The health check will be performed on this port instead of component's HTTP port.
+     * The port to redirect to.
      */
     port?: number;
     /**
@@ -525,6 +554,10 @@ export interface AppSpecJob {
     instanceSizeSlug?: string;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
+     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: string;
     /**
@@ -582,7 +615,7 @@ export interface AppSpecJobEnv {
      */
     type: string;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: string;
 }
@@ -630,13 +663,17 @@ export interface AppSpecJobGitlab {
 
 export interface AppSpecJobImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes: outputs.AppSpecJobImageDeployOnPush[];
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials?: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -668,7 +705,7 @@ export interface AppSpecJobLogDestination {
      */
     logtail?: outputs.AppSpecJobLogDestinationLogtail;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: string;
     /**
@@ -699,7 +736,7 @@ export interface AppSpecJobLogDestinationLogtail {
 
 export interface AppSpecJobLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: string;
 }
@@ -766,7 +803,7 @@ export interface AppSpecService {
     /**
      * A list of ports on which this service will listen for internal traffic.
      */
-    internalPorts?: number[];
+    internalPorts: number[];
     /**
      * Describes a log forwarding destination.
      */
@@ -816,23 +853,23 @@ export interface AppSpecServiceAlert {
 
 export interface AppSpecServiceCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: boolean;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: string[];
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: string[];
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: outputs.AppSpecServiceCorsAllowOrigins;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: string[];
     /**
@@ -843,15 +880,15 @@ export interface AppSpecServiceCors {
 
 export interface AppSpecServiceCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: string;
 }
@@ -870,7 +907,7 @@ export interface AppSpecServiceEnv {
      */
     type: string;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: string;
 }
@@ -949,13 +986,17 @@ export interface AppSpecServiceHealthCheck {
 
 export interface AppSpecServiceImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes: outputs.AppSpecServiceImageDeployOnPush[];
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials?: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -987,7 +1028,7 @@ export interface AppSpecServiceLogDestination {
      */
     logtail?: outputs.AppSpecServiceLogDestinationLogtail;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: string;
     /**
@@ -1018,7 +1059,7 @@ export interface AppSpecServiceLogDestinationLogtail {
 
 export interface AppSpecServiceLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: string;
 }
@@ -1103,23 +1144,23 @@ export interface AppSpecStaticSite {
 
 export interface AppSpecStaticSiteCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
     allowCredentials?: boolean;
     /**
-     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
     allowHeaders?: string[];
     /**
-     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
     allowMethods?: string[];
     /**
-     * The `Access-Control-Allow-Origin` can be
+     * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
     allowOrigins?: outputs.AppSpecStaticSiteCorsAllowOrigins;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
     exposeHeaders?: string[];
     /**
@@ -1130,15 +1171,15 @@ export interface AppSpecStaticSiteCors {
 
 export interface AppSpecStaticSiteCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      */
     prefix?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: string;
 }
@@ -1157,7 +1198,7 @@ export interface AppSpecStaticSiteEnv {
      */
     type: string;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: string;
 }
@@ -1314,7 +1355,7 @@ export interface AppSpecWorkerEnv {
      */
     type: string;
     /**
-     * The threshold for the type of the warning.
+     * The value of the environment variable.
      */
     value?: string;
 }
@@ -1362,13 +1403,17 @@ export interface AppSpecWorkerGitlab {
 
 export interface AppSpecWorkerImage {
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes: outputs.AppSpecWorkerImageDeployOnPush[];
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials?: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -1400,7 +1445,7 @@ export interface AppSpecWorkerLogDestination {
      */
     logtail?: outputs.AppSpecWorkerLogDestinationLogtail;
     /**
-     * The name of the component.
+     * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
     name: string;
     /**
@@ -1431,7 +1476,7 @@ export interface AppSpecWorkerLogDestinationLogtail {
 
 export interface AppSpecWorkerLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * Papertrail syslog endpoint.
      */
     endpoint: string;
 }
@@ -1573,6 +1618,25 @@ export interface DatabaseKafkaTopicConfig {
     segmentMs: string;
 }
 
+export interface DatabasePostgresqlConfigPgbouncer {
+    autodbIdleTimeout: number;
+    autodbMaxDbConnections: number;
+    autodbPoolMode: string;
+    autodbPoolSize: number;
+    ignoreStartupParameters: string[];
+    minPoolSize: number;
+    serverIdleTimeout: number;
+    serverLifetime: number;
+    serverResetQueryAlways: boolean;
+}
+
+export interface DatabasePostgresqlConfigTimescaledb {
+    /**
+     * TimescaleDB extension configuration values
+     */
+    timescaledb?: number;
+}
+
 export interface DatabaseUserSetting {
     /**
      * A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
@@ -1587,13 +1651,7 @@ export interface DatabaseUserSettingAcl {
      * An identifier for the ACL, this will be automatically assigned when you create an ACL entry
      */
     id: string;
-    /**
-     * The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-     */
     permission: string;
-    /**
-     * A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-     */
     topic: string;
 }
 
@@ -1691,6 +1749,21 @@ export interface FirewallPendingChange {
     status?: string;
 }
 
+export interface GetAppDedicatedIp {
+    /**
+     * The ID of the dedicated egress IP.
+     */
+    id: string;
+    /**
+     * The IP address of the dedicated egress IP.
+     */
+    ip: string;
+    /**
+     * The status of the dedicated egress IP.
+     */
+    status: string;
+}
+
 export interface GetAppSpec {
     /**
      * Describes an alert policy for the component.
@@ -1702,6 +1775,7 @@ export interface GetAppSpec {
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains: string[];
+    egresses?: outputs.GetAppSpecEgress[];
     /**
      * Describes an environment variable made available to an app competent.
      */
@@ -1785,6 +1859,13 @@ export interface GetAppSpecDomain {
      * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      */
     zone?: string;
+}
+
+export interface GetAppSpecEgress {
+    /**
+     * The type of the environment variable, `GENERAL` or `SECRET`.
+     */
+    type?: string;
 }
 
 export interface GetAppSpecEnv {
@@ -2171,6 +2252,10 @@ export interface GetAppSpecJob {
     instanceSizeSlug?: string;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
+     * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+     * - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+     * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+     * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
     kind?: string;
     /**
@@ -2283,6 +2368,10 @@ export interface GetAppSpecJobImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials?: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -2410,7 +2499,7 @@ export interface GetAppSpecService {
     /**
      * A list of ports on which this service will listen for internal traffic.
      */
-    internalPorts?: number[];
+    internalPorts: number[];
     /**
      * Describes a log forwarding destination.
      */
@@ -2598,6 +2687,10 @@ export interface GetAppSpecServiceImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials?: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -3007,6 +3100,10 @@ export interface GetAppSpecWorkerImage {
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
+    /**
+     * Access credentials for third-party registries
+     */
+    registryCredentials?: string;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -3612,6 +3709,33 @@ export interface GetKubernetesClusterNodePoolTaint {
     value: string;
 }
 
+export interface GetLoadBalancerDomain {
+    /**
+     * certificate ID for TLS handshaking
+     */
+    certificateId: string;
+    /**
+     * name of certificate required for TLS handshaking
+     */
+    certificateName: string;
+    /**
+     * flag indicating if domain is managed by DigitalOcean
+     */
+    isManaged: boolean;
+    /**
+     * The name of load balancer.
+     */
+    name: string;
+    /**
+     * list of domain SSL validation errors
+     */
+    sslValidationErrorReasons: string[];
+    /**
+     * list of domain verification errors
+     */
+    verificationErrorReasons: string[];
+}
+
 export interface GetLoadBalancerFirewall {
     /**
      * the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
@@ -3652,6 +3776,36 @@ export interface GetLoadBalancerForwardingRule {
      * whether ssl encrypted traffic will be passed through to the backend droplets
      */
     tlsPassthrough: boolean;
+}
+
+export interface GetLoadBalancerGlbSetting {
+    /**
+     * CDN specific configurations
+     */
+    cdns: outputs.GetLoadBalancerGlbSettingCdn[];
+    /**
+     * fail-over threshold
+     */
+    failoverThreshold: number;
+    /**
+     * region priority map
+     */
+    regionPriorities: {[key: string]: number};
+    /**
+     * target port rules
+     */
+    targetPort: number;
+    /**
+     * target protocol rules
+     */
+    targetProtocol: string;
+}
+
+export interface GetLoadBalancerGlbSettingCdn {
+    /**
+     * cache enable flag
+     */
+    isEnabled: boolean;
 }
 
 export interface GetLoadBalancerHealthcheck {
@@ -4257,7 +4411,7 @@ export interface KubernetesClusterNodePool {
      */
     size: string;
     /**
-     * A list of tag names to be applied to the Kubernetes cluster.
+     * A list of tag names applied to the node pool.
      */
     tags?: string[];
     /**
@@ -4280,7 +4434,7 @@ export interface KubernetesClusterNodePoolNode {
      */
     id: string;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name: string;
     /**
@@ -4350,6 +4504,29 @@ export interface KubernetesNodePoolTaint {
     value: string;
 }
 
+export interface LoadBalancerDomain {
+    /**
+     * name of certificate required for TLS handshaking
+     */
+    certificateName: string;
+    /**
+     * Control flag to specify whether the domain is managed by DigitalOcean.
+     */
+    isManaged?: boolean;
+    /**
+     * The domain name to be used for ingressing traffic to a Global Load Balancer.
+     */
+    name: string;
+    /**
+     * list of domain SSL validation errors
+     */
+    sslValidationErrorReasons: string[];
+    /**
+     * list of domain verification errors
+     */
+    verificationErrorReasons: string[];
+}
+
 export interface LoadBalancerFirewall {
     /**
      * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
@@ -4393,6 +4570,36 @@ export interface LoadBalancerForwardingRule {
      * A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
      */
     tlsPassthrough?: boolean;
+}
+
+export interface LoadBalancerGlbSettings {
+    /**
+     * CDN configuration supporting the following:
+     */
+    cdn?: outputs.LoadBalancerGlbSettingsCdn;
+    /**
+     * fail-over threshold
+     */
+    failoverThreshold?: number;
+    /**
+     * region priority map
+     */
+    regionPriorities?: {[key: string]: number};
+    /**
+     * An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+     */
+    targetPort: number;
+    /**
+     * The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+     */
+    targetProtocol: string;
+}
+
+export interface LoadBalancerGlbSettingsCdn {
+    /**
+     * Control flag to specify if caching is enabled.
+     */
+    isEnabled?: boolean;
 }
 
 export interface LoadBalancerHealthcheck {

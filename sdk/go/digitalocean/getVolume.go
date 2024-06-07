@@ -22,7 +22,6 @@ import (
 //
 // Get the volume:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,11 +46,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Reuse the data about a volume to attach it to a Droplet:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,14 +61,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVolume, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+//			example, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
 //				Name:   "app-data",
 //				Region: pulumi.StringRef("nyc3"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("foo"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -81,7 +79,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
 //				DropletId: exampleDroplet.ID(),
-//				VolumeId:  pulumi.String(exampleVolume.Id),
+//				VolumeId:  pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -91,7 +89,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult

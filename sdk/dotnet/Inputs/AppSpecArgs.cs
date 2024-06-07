@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecAlertArgs>? _alerts;
 
         /// <summary>
-        /// Describes an alert policy for the component.
+        /// Describes an alert policy for the app.
         /// </summary>
         public InputList<Inputs.AppSpecAlertArgs> Alerts
         {
@@ -53,11 +53,23 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _domains = value;
         }
 
+        [Input("egresses")]
+        private InputList<Inputs.AppSpecEgressArgs>? _egresses;
+
+        /// <summary>
+        /// Specification for app egress configurations.
+        /// </summary>
+        public InputList<Inputs.AppSpecEgressArgs> Egresses
+        {
+            get => _egresses ?? (_egresses = new InputList<Inputs.AppSpecEgressArgs>());
+            set => _egresses = value;
+        }
+
         [Input("envs")]
         private InputList<Inputs.AppSpecEnvArgs>? _envs;
 
         /// <summary>
-        /// Describes an environment variable made available to an app competent.
+        /// Describes an app-wide environment variable made available to all components.
         /// </summary>
         public InputList<Inputs.AppSpecEnvArgs> Envs
         {
@@ -100,7 +112,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// The name of the component.
+        /// The name of the app. Must be unique across all apps in the same account.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseKafkaTopic{}
 	case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
 		r = &DatabaseMysqlConfig{}
+	case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
+		r = &DatabasePostgresqlConfig{}
 	case "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig":
 		r = &DatabaseRedisConfig{}
 	case "digitalocean:index/databaseReplica:DatabaseReplica":
@@ -105,6 +107,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VolumeSnapshot{}
 	case "digitalocean:index/vpc:Vpc":
 		r = &Vpc{}
+	case "digitalocean:index/vpcPeering:VpcPeering":
+		r = &VpcPeering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -194,6 +198,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseMysqlConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databasePostgresqlConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -344,6 +353,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/vpc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/vpcPeering",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -16,7 +16,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseCaResult> InvokeAsync(GetDatabaseCaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseCaResult> Invoke(GetDatabaseCaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaInvokeArgs(), options.WithDefaults());

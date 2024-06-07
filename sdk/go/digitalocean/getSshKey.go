@@ -22,7 +22,6 @@ import (
 //
 // Get the ssh key:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,18 +34,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleSshKey, err := digitalocean.LookupSshKey(ctx, &digitalocean.LookupSshKeyArgs{
+//			example, err := digitalocean.LookupSshKey(ctx, &digitalocean.LookupSshKeyArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Name:   pulumi.String("example-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				SshKeys: pulumi.StringArray{
-//					pulumi.Int(exampleSshKey.Id),
+//					pulumi.Int(example.Id),
 //				},
 //			})
 //			if err != nil {
@@ -57,7 +57,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSshKeyResult

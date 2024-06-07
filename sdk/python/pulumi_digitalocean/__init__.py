@@ -18,6 +18,7 @@ from .database_db import *
 from .database_firewall import *
 from .database_kafka_topic import *
 from .database_mysql_config import *
+from .database_postgresql_config import *
 from .database_redis_config import *
 from .database_replica import *
 from .database_user import *
@@ -68,6 +69,7 @@ from .get_tags import *
 from .get_volume import *
 from .get_volume_snapshot import *
 from .get_vpc import *
+from .get_vpc_peering import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
@@ -89,6 +91,7 @@ from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
 from .vpc import *
+from .vpc_peering import *
 from ._inputs import *
 from . import outputs
 
@@ -196,6 +199,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig": "DatabaseMysqlConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databasePostgresqlConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig": "DatabasePostgresqlConfig"
   }
  },
  {
@@ -436,6 +447,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/vpc:Vpc": "Vpc"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/vpcPeering",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/vpcPeering:VpcPeering": "VpcPeering"
   }
  }
 ]

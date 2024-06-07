@@ -14,12 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecDomainName {
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     private String name;
     /**
-     * @return The type of the environment variable, `GENERAL` or `SECRET`.
+     * @return The domain type, which can be one of the following:
+     * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+     * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app&#39;s live URL. Only one domain may be set as primary.
+     * - `ALIAS`: A non-primary domain.
      * 
      */
     private @Nullable String type;
@@ -36,14 +39,17 @@ public final class AppSpecDomainName {
 
     private AppSpecDomainName() {}
     /**
-     * @return The name of the component.
+     * @return The hostname for the domain.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The type of the environment variable, `GENERAL` or `SECRET`.
+     * @return The domain type, which can be one of the following:
+     * - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+     * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app&#39;s live URL. Only one domain may be set as primary.
+     * - `ALIAS`: A non-primary domain.
      * 
      */
     public Optional<String> type() {

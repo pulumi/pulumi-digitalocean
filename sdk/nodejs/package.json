@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/digitalocean",
-    "version": "${VERSION}",
+    "version": "4.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing DigitalOcean cloud resources.",
     "keywords": [
         "pulumi",
@@ -24,6 +24,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "digitalocean"
+        "name": "digitalocean",
+        "version": "4.0.0-alpha.0+dev"
     }
 }

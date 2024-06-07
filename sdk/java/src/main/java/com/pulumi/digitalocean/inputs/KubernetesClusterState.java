@@ -146,9 +146,17 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.ipv4Address);
     }
 
+    /**
+     * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * 
+     */
     @Import(name="kubeConfigs")
     private @Nullable Output<List<KubernetesClusterKubeConfigArgs>> kubeConfigs;
 
+    /**
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * 
+     */
     public Optional<Output<List<KubernetesClusterKubeConfigArgs>>> kubeConfigs() {
         return Optional.ofNullable(this.kubeConfigs);
     }
@@ -169,14 +177,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A name for the node pool.
+     * @return A name for the Kubernetes cluster.
      * 
      */
     public Optional<Output<String>> name() {
@@ -549,15 +557,33 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
             return ipv4Address(Output.of(ipv4Address));
         }
 
+        /**
+         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubeConfigs(@Nullable Output<List<KubernetesClusterKubeConfigArgs>> kubeConfigs) {
             $.kubeConfigs = kubeConfigs;
             return this;
         }
 
+        /**
+         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubeConfigs(List<KubernetesClusterKubeConfigArgs> kubeConfigs) {
             return kubeConfigs(Output.of(kubeConfigs));
         }
 
+        /**
+         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubeConfigs(KubernetesClusterKubeConfigArgs... kubeConfigs) {
             return kubeConfigs(List.of(kubeConfigs));
         }
@@ -584,7 +610,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A name for the node pool.
+         * @param name A name for the Kubernetes cluster.
          * 
          * @return builder
          * 
@@ -595,7 +621,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A name for the node pool.
+         * @param name A name for the Kubernetes cluster.
          * 
          * @return builder
          * 

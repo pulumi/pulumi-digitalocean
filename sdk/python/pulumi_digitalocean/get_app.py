@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAppResult',
@@ -22,7 +23,7 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, default_ingress=None, id=None, live_url=None, project_id=None, specs=None, updated_at=None, urn=None):
+    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, dedicated_ips=None, default_ingress=None, id=None, live_url=None, project_id=None, specs=None, updated_at=None, urn=None):
         if active_deployment_id and not isinstance(active_deployment_id, str):
             raise TypeError("Expected argument 'active_deployment_id' to be a str")
         pulumi.set(__self__, "active_deployment_id", active_deployment_id)
@@ -32,6 +33,9 @@ class GetAppResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if dedicated_ips and not isinstance(dedicated_ips, list):
+            raise TypeError("Expected argument 'dedicated_ips' to be a list")
+        pulumi.set(__self__, "dedicated_ips", dedicated_ips)
         if default_ingress and not isinstance(default_ingress, str):
             raise TypeError("Expected argument 'default_ingress' to be a str")
         pulumi.set(__self__, "default_ingress", default_ingress)
@@ -74,6 +78,14 @@ class GetAppResult:
         The date and time of when the app was created.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="dedicatedIps")
+    def dedicated_ips(self) -> Sequence['outputs.GetAppDedicatedIpResult']:
+        """
+        A list of dedicated egress IP addresses associated with the app.
+        """
+        return pulumi.get(self, "dedicated_ips")
 
     @property
     @pulumi.getter(name="defaultIngress")
@@ -141,6 +153,7 @@ class AwaitableGetAppResult(GetAppResult):
             active_deployment_id=self.active_deployment_id,
             app_id=self.app_id,
             created_at=self.created_at,
+            dedicated_ips=self.dedicated_ips,
             default_ingress=self.default_ingress,
             id=self.id,
             live_url=self.live_url,
@@ -151,6 +164,7 @@ class AwaitableGetAppResult(GetAppResult):
 
 
 def get_app(app_id: Optional[str] = None,
+            dedicated_ips: Optional[Sequence[pulumi.InputType['GetAppDedicatedIpArgs']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
     Get information on a DigitalOcean App.
@@ -159,7 +173,6 @@ def get_app(app_id: Optional[str] = None,
 
     Get the account:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -167,13 +180,14 @@ def get_app(app_id: Optional[str] = None,
     example = digitalocean.get_app(app_id="e665d18d-7b56-44a9-92ce-31979174d544")
     pulumi.export("defaultIngress", example.default_ingress)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: The ID of the app to retrieve information about.
+    :param Sequence[pulumi.InputType['GetAppDedicatedIpArgs']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
     __args__ = dict()
     __args__['appId'] = app_id
+    __args__['dedicatedIps'] = dedicated_ips
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult).value
 
@@ -181,6 +195,7 @@ def get_app(app_id: Optional[str] = None,
         active_deployment_id=pulumi.get(__ret__, 'active_deployment_id'),
         app_id=pulumi.get(__ret__, 'app_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        dedicated_ips=pulumi.get(__ret__, 'dedicated_ips'),
         default_ingress=pulumi.get(__ret__, 'default_ingress'),
         id=pulumi.get(__ret__, 'id'),
         live_url=pulumi.get(__ret__, 'live_url'),
@@ -192,6 +207,7 @@ def get_app(app_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_app)
 def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
+                   dedicated_ips: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAppDedicatedIpArgs']]]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
     """
     Get information on a DigitalOcean App.
@@ -200,7 +216,6 @@ def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
 
     Get the account:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -208,9 +223,9 @@ def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
     example = digitalocean.get_app(app_id="e665d18d-7b56-44a9-92ce-31979174d544")
     pulumi.export("defaultIngress", example.default_ingress)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: The ID of the app to retrieve information about.
+    :param Sequence[pulumi.InputType['GetAppDedicatedIpArgs']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
     ...

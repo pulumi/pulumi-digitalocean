@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -17,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("web-1"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -39,6 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
+//				Name:   pulumi.String("loadbalancer-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
 //					&digitalocean.LoadBalancerForwardingRuleArgs{
@@ -64,70 +64,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
 // lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
 // operations will then be: `Create new certificate` > `Update loadbalancer with new certificate` ->
 // `Delete old certificate`. When doing so, you must also change the name of the certificate,
 // as there cannot be multiple certificates with the same name in an account.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
-//				PrivateKey:      pulumi.String("file('key.pem')"),
-//				LeafCertificate: pulumi.String("file('cert.pem')"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
-//				Image:  pulumi.String("ubuntu-18-04-x64"),
-//				Region: pulumi.String(digitalocean.RegionNYC3),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = digitalocean.NewLoadBalancer(ctx, "public", &digitalocean.LoadBalancerArgs{
-//				Region: pulumi.String(digitalocean.RegionNYC3),
-//				ForwardingRules: digitalocean.LoadBalancerForwardingRuleArray{
-//					&digitalocean.LoadBalancerForwardingRuleArgs{
-//						EntryPort:       pulumi.Int(443),
-//						EntryProtocol:   pulumi.String("https"),
-//						TargetPort:      pulumi.Int(80),
-//						TargetProtocol:  pulumi.String("http"),
-//						CertificateName: cert.Name,
-//					},
-//				},
-//				Healthcheck: &digitalocean.LoadBalancerHealthcheckArgs{
-//					Port:     pulumi.Int(22),
-//					Protocol: pulumi.String("tcp"),
-//				},
-//				DropletIds: pulumi.IntArray{
-//					web.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -139,12 +81,16 @@ import (
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
-	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	// or `leastConnections`. The default value is `roundRobin`.
+	//
+	// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	Algorithm pulumi.StringPtrOutput `pulumi:"algorithm"`
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords pulumi.BoolPtrOutput `pulumi:"disableLetsEncryptDnsRecords"`
+	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	Domains LoadBalancerDomainArrayOutput `pulumi:"domains"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayOutput `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -160,6 +106,9 @@ type LoadBalancer struct {
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayOutput `pulumi:"forwardingRules"`
+	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	GlbSettings LoadBalancerGlbSettingsOutput `pulumi:"glbSettings"`
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckOutput `pulumi:"healthcheck"`
@@ -187,7 +136,10 @@ type LoadBalancer struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -197,12 +149,9 @@ type LoadBalancer struct {
 func NewLoadBalancer(ctx *pulumi.Context,
 	name string, args *LoadBalancerArgs, opts ...pulumi.ResourceOption) (*LoadBalancer, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &LoadBalancerArgs{}
 	}
 
-	if args.ForwardingRules == nil {
-		return nil, errors.New("invalid value for required argument 'ForwardingRules'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancer
 	err := ctx.RegisterResource("digitalocean:index/loadBalancer:LoadBalancer", name, args, &resource, opts...)
@@ -226,12 +175,16 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
-	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	// or `leastConnections`. The default value is `roundRobin`.
+	//
+	// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	Algorithm *string `pulumi:"algorithm"`
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords *bool `pulumi:"disableLetsEncryptDnsRecords"`
+	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	Domains []LoadBalancerDomain `pulumi:"domains"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds []int `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -247,6 +200,9 @@ type loadBalancerState struct {
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules []LoadBalancerForwardingRule `pulumi:"forwardingRules"`
+	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	GlbSettings *LoadBalancerGlbSettings `pulumi:"glbSettings"`
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
@@ -274,19 +230,26 @@ type loadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
 }
 
 type LoadBalancerState struct {
-	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	// or `leastConnections`. The default value is `roundRobin`.
+	//
+	// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	Algorithm pulumi.StringPtrInput
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords pulumi.BoolPtrInput
+	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	Domains LoadBalancerDomainArrayInput
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayInput
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -302,6 +265,9 @@ type LoadBalancerState struct {
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayInput
+	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	GlbSettings LoadBalancerGlbSettingsPtrInput
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckPtrInput
@@ -329,7 +295,10 @@ type LoadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	TargetLoadBalancerIds pulumi.StringArrayInput
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -340,12 +309,16 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
-	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	// or `leastConnections`. The default value is `roundRobin`.
+	//
+	// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	Algorithm *string `pulumi:"algorithm"`
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords *bool `pulumi:"disableLetsEncryptDnsRecords"`
+	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	Domains []LoadBalancerDomain `pulumi:"domains"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds []int `pulumi:"dropletIds"`
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -361,6 +334,9 @@ type loadBalancerArgs struct {
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules []LoadBalancerForwardingRule `pulumi:"forwardingRules"`
+	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	GlbSettings *LoadBalancerGlbSettings `pulumi:"glbSettings"`
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
@@ -383,7 +359,10 @@ type loadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -391,12 +370,16 @@ type loadBalancerArgs struct {
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
-	// The load balancing algorithm used to determine
-	// which backend Droplet will be selected by a client. It must be either `roundRobin`
+	// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	// or `leastConnections`. The default value is `roundRobin`.
+	//
+	// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	Algorithm pulumi.StringPtrInput
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords pulumi.BoolPtrInput
+	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	Domains LoadBalancerDomainArrayInput
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayInput
 	// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -412,6 +395,9 @@ type LoadBalancerArgs struct {
 	// A list of `forwardingRule` to be assigned to the
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayInput
+	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	GlbSettings LoadBalancerGlbSettingsPtrInput
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
 	Healthcheck LoadBalancerHealthcheckPtrInput
@@ -434,7 +420,10 @@ type LoadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
-	// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+	// **NOTE**: this is a closed beta feature and not available for public use.
+	TargetLoadBalancerIds pulumi.StringArrayInput
+	// the type of the load balancer (GLOBAL or REGIONAL)
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -527,9 +516,10 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The load balancing algorithm used to determine
-// which backend Droplet will be selected by a client. It must be either `roundRobin`
+// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 // or `leastConnections`. The default value is `roundRobin`.
+//
+// Deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.
 func (o LoadBalancerOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -537,6 +527,12 @@ func (o LoadBalancerOutput) Algorithm() pulumi.StringPtrOutput {
 // A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 func (o LoadBalancerOutput) DisableLetsEncryptDnsRecords() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DisableLetsEncryptDnsRecords }).(pulumi.BoolPtrOutput)
+}
+
+// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+// **NOTE**: this is a closed beta feature and not available for public use.
+func (o LoadBalancerOutput) Domains() LoadBalancerDomainArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerDomainArrayOutput { return v.Domains }).(LoadBalancerDomainArrayOutput)
 }
 
 // A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -570,6 +566,12 @@ func (o LoadBalancerOutput) Firewall() LoadBalancerFirewallOutput {
 // Load Balancer. The `forwardingRule` block is documented below.
 func (o LoadBalancerOutput) ForwardingRules() LoadBalancerForwardingRuleArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerForwardingRuleArrayOutput { return v.ForwardingRules }).(LoadBalancerForwardingRuleArrayOutput)
+}
+
+// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
+// **NOTE**: this is a closed beta feature and not available for public use.
+func (o LoadBalancerOutput) GlbSettings() LoadBalancerGlbSettingsOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerGlbSettingsOutput { return v.GlbSettings }).(LoadBalancerGlbSettingsOutput)
 }
 
 // A `healthcheck` block to be assigned to the
@@ -635,7 +637,13 @@ func (o LoadBalancerOutput) StickySessions() LoadBalancerStickySessionsOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerStickySessionsOutput { return v.StickySessions }).(LoadBalancerStickySessionsOutput)
 }
 
-// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+// **NOTE**: this is a closed beta feature and not available for public use.
+func (o LoadBalancerOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.TargetLoadBalancerIds }).(pulumi.StringArrayOutput)
+}
+
+// the type of the load balancer (GLOBAL or REGIONAL)
 func (o LoadBalancerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

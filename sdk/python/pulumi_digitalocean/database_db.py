@@ -104,20 +104,21 @@ class DatabaseDb(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
+        database_example = digitalocean.DatabaseDb("database-example",
+            cluster_id=postgres_example.id,
+            name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -146,20 +147,21 @@ class DatabaseDb(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
-        database_example = digitalocean.DatabaseDb("database-example", cluster_id=postgres_example.id)
+        database_example = digitalocean.DatabaseDb("database-example",
+            cluster_id=postgres_example.id,
+            name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

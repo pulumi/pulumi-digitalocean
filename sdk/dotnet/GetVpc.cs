@@ -25,7 +25,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ### VPC By Name
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,11 +40,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a VPC to assign a Droplet to it:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,22 +51,22 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
+        ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Image = "ubuntu-18-04-x64",
         ///         Region = DigitalOcean.Region.NYC3,
-        ///         VpcUuid = exampleVpc.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///         VpcUuid = example.Apply(getVpcResult =&gt; getVpcResult.Id),
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcResult> InvokeAsync(GetVpcArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithDefaults());
@@ -88,7 +85,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ### VPC By Name
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,11 +100,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a VPC to assign a Droplet to it:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -117,22 +111,22 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
+        ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Image = "ubuntu-18-04-x64",
         ///         Region = DigitalOcean.Region.NYC3,
-        ///         VpcUuid = exampleVpc.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///         VpcUuid = example.Apply(getVpcResult =&gt; getVpcResult.Id),
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());

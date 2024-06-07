@@ -31,7 +31,6 @@ import (
 //
 // The following example assigns a droplet to a Project managed outside of the provider:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,6 +50,7 @@ import (
 //				return err
 //			}
 //			foobar, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("example"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-22-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -72,7 +72,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

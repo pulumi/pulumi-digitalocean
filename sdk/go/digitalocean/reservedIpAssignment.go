@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,13 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleReservedIp, err := digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
+//			example, err := digitalocean.NewReservedIp(ctx, "example", &digitalocean.ReservedIpArgs{
 //				Region: pulumi.String("nyc3"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Name:              pulumi.String("baz"),
 //				Size:              pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:             pulumi.String("ubuntu-22-04-x64"),
 //				Region:            pulumi.String(digitalocean.RegionNYC3),
@@ -47,8 +47,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewReservedIpAssignment(ctx, "exampleReservedIpAssignment", &digitalocean.ReservedIpAssignmentArgs{
-//				IpAddress: exampleReservedIp.IpAddress,
+//			_, err = digitalocean.NewReservedIpAssignment(ctx, "example", &digitalocean.ReservedIpAssignmentArgs{
+//				IpAddress: example.IpAddress,
 //				DropletId: exampleDroplet.ID(),
 //			})
 //			if err != nil {
@@ -59,7 +59,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

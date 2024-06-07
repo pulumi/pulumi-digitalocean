@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,8 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewVpc(ctx, "example", &digitalocean.VpcArgs{
-//				IpRange: pulumi.String("10.10.10.0/24"),
+//				Name:    pulumi.String("example-project-network"),
 //				Region:  pulumi.String("nyc3"),
+//				IpRange: pulumi.String("10.10.10.0/24"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Resource Assignment
 //
@@ -52,7 +51,6 @@ import (
 // `digitaloceanLoadBalancer`, and `DatabaseCluster` resources
 // may be assigned to a VPC by referencing its `id`. For example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,17 +63,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := digitalocean.NewVpc(ctx, "exampleVpc", &digitalocean.VpcArgs{
+//			example, err := digitalocean.NewVpc(ctx, "example", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("example-project-network"),
 //				Region: pulumi.String("nyc3"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Name:    pulumi.String("example-01"),
 //				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String(digitalocean.RegionNYC3),
-//				VpcUuid: exampleVpc.ID(),
+//				VpcUuid: example.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -85,7 +85,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

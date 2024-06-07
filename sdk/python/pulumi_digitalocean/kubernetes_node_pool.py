@@ -411,12 +411,12 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
             region=digitalocean.Region.NYC1,
             version="1.22.8-do.1",
             node_pool=digitalocean.KubernetesClusterNodePoolArgs(
@@ -426,6 +426,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             ))
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,
+            name="backend-pool",
             size=digitalocean.DropletSlug.DROPLET_C2,
             node_count=2,
             tags=["backend"],
@@ -439,26 +440,24 @@ class KubernetesNodePool(pulumi.CustomResource):
                 effect="NoSchedule",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Autoscaling Example
 
         Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
         For example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
-            cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
+            cluster_id=foo["id"],
+            name="autoscale-pool-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU2_GB,
             auto_scale=True,
             min_nodes=1,
             max_nodes=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -506,12 +505,12 @@ class KubernetesNodePool(pulumi.CustomResource):
 
         ### Basic Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
             region=digitalocean.Region.NYC1,
             version="1.22.8-do.1",
             node_pool=digitalocean.KubernetesClusterNodePoolArgs(
@@ -521,6 +520,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             ))
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,
+            name="backend-pool",
             size=digitalocean.DropletSlug.DROPLET_C2,
             node_count=2,
             tags=["backend"],
@@ -534,26 +534,24 @@ class KubernetesNodePool(pulumi.CustomResource):
                 effect="NoSchedule",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Autoscaling Example
 
         Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
         For example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         autoscale_pool_01 = digitalocean.KubernetesNodePool("autoscale-pool-01",
-            cluster_id=digitalocean_kubernetes_cluster["foo"]["id"],
+            cluster_id=foo["id"],
+            name="autoscale-pool-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU2_GB,
             auto_scale=True,
             min_nodes=1,
             max_nodes=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * The following example assigns a droplet to a Project managed outside of the provider:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,23 +62,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var playground = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
- *             .name(&#34;playground&#34;)
+ *             .name("playground")
  *             .build());
  * 
- *         var foobar = new Droplet(&#34;foobar&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-22-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var foobar = new Droplet("foobar", DropletArgs.builder()
+ *             .name("example")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var barfoo = new ProjectResources(&#34;barfoo&#34;, ProjectResourcesArgs.builder()        
- *             .project(playground.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *         var barfoo = new ProjectResources("barfoo", ProjectResourcesArgs.builder()
+ *             .project(playground.applyValue(getProjectResult -> getProjectResult.id()))
  *             .resources(foobar.dropletUrn())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

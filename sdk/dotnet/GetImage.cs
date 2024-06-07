@@ -23,7 +23,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the data about a snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,11 +38,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a snapshot to create a Droplet:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,25 +49,24 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = DigitalOcean.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the data about an official image:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -86,7 +82,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
@@ -103,7 +98,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the data about a snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -119,11 +113,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Reuse the data about a snapshot to create a Droplet:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,25 +124,24 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = DigitalOcean.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = exampleImage.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the data about an official image:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -166,7 +157,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());

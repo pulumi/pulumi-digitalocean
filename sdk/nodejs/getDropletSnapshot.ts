@@ -13,22 +13,19 @@ import * as utilities from "./utilities";
  *
  * Get the Droplet snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web-snapshot = digitalocean.getDropletSnapshot({
- *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
+ *     mostRecent: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create image from snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -40,11 +37,11 @@ import * as utilities from "./utilities";
  * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     name: "web-02",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
@@ -126,22 +123,19 @@ export interface GetDropletSnapshotResult {
  *
  * Get the Droplet snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const web-snapshot = digitalocean.getDropletSnapshot({
- *     mostRecent: true,
  *     nameRegex: "^web",
  *     region: "nyc3",
+ *     mostRecent: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create image from snapshot:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -153,11 +147,11 @@ export interface GetDropletSnapshotResult {
  * });
  * const from_snapshot = new digitalocean.Droplet("from-snapshot", {
  *     image: web_snapshot.then(web_snapshot => web_snapshot.id),
+ *     name: "web-02",
  *     region: digitalocean.Region.NYC3,
  *     size: digitalocean.DropletSlug.DropletS2VCPU4GB,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getDropletSnapshot(a, opts))

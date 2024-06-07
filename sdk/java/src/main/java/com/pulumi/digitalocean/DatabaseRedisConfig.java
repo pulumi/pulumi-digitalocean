@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,24 +48,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDatabaseCluster = new DatabaseCluster(&#34;exampleDatabaseCluster&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;redis&#34;)
- *             .version(&#34;7&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()
+ *             .name("example-redis-cluster")
+ *             .engine("redis")
+ *             .version("7")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var exampleDatabaseRedisConfig = new DatabaseRedisConfig(&#34;exampleDatabaseRedisConfig&#34;, DatabaseRedisConfigArgs.builder()        
+ *         var example = new DatabaseRedisConfig("example", DatabaseRedisConfigArgs.builder()
  *             .clusterId(exampleDatabaseCluster.id())
- *             .maxmemoryPolicy(&#34;allkeys-lru&#34;)
- *             .notifyKeyspaceEvents(&#34;KEA&#34;)
+ *             .maxmemoryPolicy("allkeys-lru")
+ *             .notifyKeyspaceEvents("KEA")
  *             .timeout(90)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

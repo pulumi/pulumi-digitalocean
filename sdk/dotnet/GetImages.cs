@@ -28,7 +28,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// For example to find all Ubuntu images:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,11 +53,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,15 +89,14 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetImagesSortInputArgs
         ///             {
-        ///                 Direction = "desc",
         ///                 Key = "created",
+        ///                 Direction = "desc",
         ///             },
         ///         },
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
@@ -122,7 +118,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// For example to find all Ubuntu images:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -148,11 +143,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -186,15 +179,14 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetImagesSortInputArgs
         ///             {
-        ///                 Direction = "desc",
         ///                 Key = "created",
+        ///                 Direction = "desc",
         ///             },
         ///         },
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());

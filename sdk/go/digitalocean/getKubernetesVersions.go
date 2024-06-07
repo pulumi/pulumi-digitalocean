@@ -17,7 +17,6 @@ import (
 //
 // ### Output a list of all available versions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,11 +39,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a Kubernetes cluster using the most recent version available
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,6 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("example-cluster"),
 //				Region:  pulumi.String(digitalocean.RegionLON1),
 //				Version: pulumi.String(example.LatestVersion),
 //				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
@@ -78,11 +76,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Pin a Kubernetes cluster to a specific minor version
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,6 +98,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewKubernetesCluster(ctx, "example-cluster", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("example-cluster"),
 //				Region:  pulumi.String(digitalocean.RegionLON1),
 //				Version: pulumi.String(example.LatestVersion),
 //				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
@@ -118,7 +115,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetKubernetesVersions(ctx *pulumi.Context, args *GetKubernetesVersionsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesVersionsResult

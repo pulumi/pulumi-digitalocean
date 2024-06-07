@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// ## Example Usage
     /// 
     /// ### Create a new PostgreSQL database connection pool
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,8 +25,9 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
+    ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
-    ///         Version = "11",
+    ///         Version = "15",
     ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,
     ///         Region = DigitalOcean.Region.NYC1,
     ///         NodeCount = 1,
@@ -36,6 +36,7 @@ namespace Pulumi.DigitalOcean
     ///     var pool_01 = new DigitalOcean.DatabaseConnectionPool("pool-01", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
+    ///         Name = "pool-01",
     ///         Mode = "transaction",
     ///         Size = 20,
     ///         DbName = "defaultdb",
@@ -44,7 +45,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

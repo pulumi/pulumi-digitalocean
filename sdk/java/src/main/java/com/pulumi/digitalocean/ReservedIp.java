@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-22-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var example = new Droplet("example", DropletArgs.builder()
+ *             .name("example")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
  *             .ipv6(true)
  *             .privateNetworking(true)
  *             .build());
  * 
- *         var exampleReservedIp = new ReservedIp(&#34;exampleReservedIp&#34;, ReservedIpArgs.builder()        
- *             .dropletId(exampleDroplet.id())
- *             .region(exampleDroplet.region())
+ *         var exampleReservedIp = new ReservedIp("exampleReservedIp", ReservedIpArgs.builder()
+ *             .dropletId(example.id())
+ *             .region(example.region())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

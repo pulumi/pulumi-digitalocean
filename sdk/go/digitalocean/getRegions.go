@@ -23,7 +23,6 @@ import (
 //
 // For example to find all available regions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,11 +53,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // You can filter on multiple fields and sort the results as well:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,8 +85,8 @@ import (
 //				},
 //				Sorts: []digitalocean.GetRegionsSort{
 //					{
-//						Direction: pulumi.StringRef("desc"),
 //						Key:       "name",
+//						Direction: pulumi.StringRef("desc"),
 //					},
 //				},
 //			}, nil)
@@ -101,7 +98,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult

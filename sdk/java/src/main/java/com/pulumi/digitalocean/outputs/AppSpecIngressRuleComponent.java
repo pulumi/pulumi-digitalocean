@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecIngressRuleComponent {
     /**
-     * @return The name of the component.
+     * @return The name of the component to route to.
      * 
      */
     private @Nullable String name;
     /**
-     * @return An optional flag to preserve the path that is forwarded to the backend service.
+     * @return An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      * 
      */
     private @Nullable Boolean preservePathPrefix;
@@ -30,14 +30,14 @@ public final class AppSpecIngressRuleComponent {
 
     private AppSpecIngressRuleComponent() {}
     /**
-     * @return The name of the component.
+     * @return The name of the component to route to.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return An optional flag to preserve the path that is forwarded to the backend service.
+     * @return An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      * 
      */
     public Optional<Boolean> preservePathPrefix() {

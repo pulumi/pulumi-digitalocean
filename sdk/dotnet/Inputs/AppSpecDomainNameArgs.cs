@@ -13,13 +13,16 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecDomainNameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the component.
+        /// The hostname for the domain.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of the environment variable, `GENERAL` or `SECRET`.
+        /// The domain type, which can be one of the following:
+        /// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+        /// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+        /// - `ALIAS`: A non-primary domain.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -37,7 +37,6 @@ class DatabaseClusterArgs:
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[Union[str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
-        :param pulumi.Input['DatabaseClusterBackupRestoreArgs'] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
@@ -125,9 +124,6 @@ class DatabaseClusterArgs:
     @property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]:
-        """
-        Create a new database cluster based on a backup of an existing cluster.
-        """
         return pulumi.get(self, "backup_restore")
 
     @backup_restore.setter
@@ -267,12 +263,17 @@ class _DatabaseClusterState:
                  sql_mode: Optional[pulumi.Input[str]] = None,
                  storage_size_mib: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ui_database: Optional[pulumi.Input[str]] = None,
+                 ui_host: Optional[pulumi.Input[str]] = None,
+                 ui_password: Optional[pulumi.Input[str]] = None,
+                 ui_port: Optional[pulumi.Input[int]] = None,
+                 ui_uri: Optional[pulumi.Input[str]] = None,
+                 ui_user: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DatabaseCluster resources.
-        :param pulumi.Input['DatabaseClusterBackupRestoreArgs'] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
@@ -292,6 +293,12 @@ class _DatabaseClusterState:
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[str] ui_database: Name of the OpenSearch dashboard db.
+        :param pulumi.Input[str] ui_host: Hostname for the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_password: Password for the OpenSearch dashboard's default user.
+        :param pulumi.Input[int] ui_port: Network port that the OpenSearch dashboard is listening on.
+        :param pulumi.Input[str] ui_uri: The full URI for connecting to the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_user: Username for OpenSearch dashboard's default user.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -337,6 +344,18 @@ class _DatabaseClusterState:
             pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if ui_database is not None:
+            pulumi.set(__self__, "ui_database", ui_database)
+        if ui_host is not None:
+            pulumi.set(__self__, "ui_host", ui_host)
+        if ui_password is not None:
+            pulumi.set(__self__, "ui_password", ui_password)
+        if ui_port is not None:
+            pulumi.set(__self__, "ui_port", ui_port)
+        if ui_uri is not None:
+            pulumi.set(__self__, "ui_uri", ui_uri)
+        if ui_user is not None:
+            pulumi.set(__self__, "ui_user", ui_user)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
         if user is not None:
@@ -347,9 +366,6 @@ class _DatabaseClusterState:
     @property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]:
-        """
-        Create a new database cluster based on a backup of an existing cluster.
-        """
         return pulumi.get(self, "backup_restore")
 
     @backup_restore.setter
@@ -585,6 +601,78 @@ class _DatabaseClusterState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="uiDatabase")
+    def ui_database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the OpenSearch dashboard db.
+        """
+        return pulumi.get(self, "ui_database")
+
+    @ui_database.setter
+    def ui_database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_database", value)
+
+    @property
+    @pulumi.getter(name="uiHost")
+    def ui_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname for the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_host")
+
+    @ui_host.setter
+    def ui_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_host", value)
+
+    @property
+    @pulumi.getter(name="uiPassword")
+    def ui_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_password")
+
+    @ui_password.setter
+    def ui_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_password", value)
+
+    @property
+    @pulumi.getter(name="uiPort")
+    def ui_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Network port that the OpenSearch dashboard is listening on.
+        """
+        return pulumi.get(self, "ui_port")
+
+    @ui_port.setter
+    def ui_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ui_port", value)
+
+    @property
+    @pulumi.getter(name="uiUri")
+    def ui_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full URI for connecting to the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_uri")
+
+    @ui_uri.setter
+    def ui_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_uri", value)
+
+    @property
+    @pulumi.getter(name="uiUser")
+    def ui_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_user")
+
+    @ui_user.setter
+    def ui_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_user", value)
+
+    @property
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -648,97 +736,93 @@ class DatabaseCluster(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="15")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MySQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         mysql_example = digitalocean.DatabaseCluster("mysql-example",
+            name="example-mysql-cluster",
             engine="mysql",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="8")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Redis database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         redis_example = digitalocean.DatabaseCluster("redis-example",
+            name="example-redis-cluster",
             engine="redis",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="7",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="7")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
-            node_count=3,
-            region=digitalocean.Region.NYC1,
+            version="3.5",
             size="db-s-2vcpu-2gb",
-            version="3.5")
+            region=digitalocean.Region.NYC1,
+            node_count=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MongoDB database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
+            name="example-mongo-cluster",
             engine="mongodb",
-            node_count=1,
-            region=digitalocean.Region.NYC3,
+            version="6",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="6")
+            region=digitalocean.Region.NYC3,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Create a new database cluster based on a backup of an existing cluster.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         doby = digitalocean.DatabaseCluster("doby",
+            name="dobydb",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
-        doby_backup = digitalocean.DatabaseCluster("dobyBackup",
+        doby_backup = digitalocean.DatabaseCluster("doby_backup",
+            name="dobydupe",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
@@ -748,7 +832,6 @@ class DatabaseCluster(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[doby]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -760,7 +843,6 @@ class DatabaseCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
@@ -788,97 +870,93 @@ class DatabaseCluster(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new PostgreSQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="15")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MySQL database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         mysql_example = digitalocean.DatabaseCluster("mysql-example",
+            name="example-mysql-cluster",
             engine="mysql",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="8")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Redis database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         redis_example = digitalocean.DatabaseCluster("redis-example",
+            name="example-redis-cluster",
             engine="redis",
-            node_count=1,
-            region=digitalocean.Region.NYC1,
+            version="7",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="7")
+            region=digitalocean.Region.NYC1,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new Kafka database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
-            node_count=3,
-            region=digitalocean.Region.NYC1,
+            version="3.5",
             size="db-s-2vcpu-2gb",
-            version="3.5")
+            region=digitalocean.Region.NYC1,
+            node_count=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new MongoDB database cluster
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         mongodb_example = digitalocean.DatabaseCluster("mongodb-example",
+            name="example-mongo-cluster",
             engine="mongodb",
-            node_count=1,
-            region=digitalocean.Region.NYC3,
+            version="6",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
-            version="6")
+            region=digitalocean.Region.NYC3,
+            node_count=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Create a new database cluster based on a backup of an existing cluster.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         doby = digitalocean.DatabaseCluster("doby",
+            name="dobydb",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"])
-        doby_backup = digitalocean.DatabaseCluster("dobyBackup",
+        doby_backup = digitalocean.DatabaseCluster("doby_backup",
+            name="dobydupe",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC1,
             node_count=1,
@@ -888,7 +966,6 @@ class DatabaseCluster(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[doby]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -965,9 +1042,15 @@ class DatabaseCluster(pulumi.CustomResource):
             __props__.__dict__["port"] = None
             __props__.__dict__["private_host"] = None
             __props__.__dict__["private_uri"] = None
+            __props__.__dict__["ui_database"] = None
+            __props__.__dict__["ui_host"] = None
+            __props__.__dict__["ui_password"] = None
+            __props__.__dict__["ui_port"] = None
+            __props__.__dict__["ui_uri"] = None
+            __props__.__dict__["ui_user"] = None
             __props__.__dict__["uri"] = None
             __props__.__dict__["user"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateUri", "uri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateUri", "uiPassword", "uiUri", "uri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseCluster, __self__).__init__(
             'digitalocean:index/databaseCluster:DatabaseCluster',
@@ -999,6 +1082,12 @@ class DatabaseCluster(pulumi.CustomResource):
             sql_mode: Optional[pulumi.Input[str]] = None,
             storage_size_mib: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ui_database: Optional[pulumi.Input[str]] = None,
+            ui_host: Optional[pulumi.Input[str]] = None,
+            ui_password: Optional[pulumi.Input[str]] = None,
+            ui_port: Optional[pulumi.Input[int]] = None,
+            ui_uri: Optional[pulumi.Input[str]] = None,
+            ui_user: Optional[pulumi.Input[str]] = None,
             uri: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'DatabaseCluster':
@@ -1009,7 +1098,6 @@ class DatabaseCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']] backup_restore: Create a new database cluster based on a backup of an existing cluster.
         :param pulumi.Input[str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[str] database: Name of the cluster's default database.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
@@ -1029,6 +1117,12 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
         :param pulumi.Input[str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the database cluster.
+        :param pulumi.Input[str] ui_database: Name of the OpenSearch dashboard db.
+        :param pulumi.Input[str] ui_host: Hostname for the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_password: Password for the OpenSearch dashboard's default user.
+        :param pulumi.Input[int] ui_port: Network port that the OpenSearch dashboard is listening on.
+        :param pulumi.Input[str] ui_uri: The full URI for connecting to the OpenSearch dashboard.
+        :param pulumi.Input[str] ui_user: Username for OpenSearch dashboard's default user.
         :param pulumi.Input[str] uri: The full URI for connecting to the database cluster.
         :param pulumi.Input[str] user: Username for the cluster's default user.
         :param pulumi.Input[str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -1058,6 +1152,12 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__.__dict__["sql_mode"] = sql_mode
         __props__.__dict__["storage_size_mib"] = storage_size_mib
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["ui_database"] = ui_database
+        __props__.__dict__["ui_host"] = ui_host
+        __props__.__dict__["ui_password"] = ui_password
+        __props__.__dict__["ui_port"] = ui_port
+        __props__.__dict__["ui_uri"] = ui_uri
+        __props__.__dict__["ui_user"] = ui_user
         __props__.__dict__["uri"] = uri
         __props__.__dict__["user"] = user
         __props__.__dict__["version"] = version
@@ -1066,9 +1166,6 @@ class DatabaseCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> pulumi.Output[Optional['outputs.DatabaseClusterBackupRestore']]:
-        """
-        Create a new database cluster based on a backup of an existing cluster.
-        """
         return pulumi.get(self, "backup_restore")
 
     @property
@@ -1222,6 +1319,54 @@ class DatabaseCluster(pulumi.CustomResource):
         A list of tag names to be applied to the database cluster.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="uiDatabase")
+    def ui_database(self) -> pulumi.Output[str]:
+        """
+        Name of the OpenSearch dashboard db.
+        """
+        return pulumi.get(self, "ui_database")
+
+    @property
+    @pulumi.getter(name="uiHost")
+    def ui_host(self) -> pulumi.Output[str]:
+        """
+        Hostname for the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_host")
+
+    @property
+    @pulumi.getter(name="uiPassword")
+    def ui_password(self) -> pulumi.Output[str]:
+        """
+        Password for the OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_password")
+
+    @property
+    @pulumi.getter(name="uiPort")
+    def ui_port(self) -> pulumi.Output[int]:
+        """
+        Network port that the OpenSearch dashboard is listening on.
+        """
+        return pulumi.get(self, "ui_port")
+
+    @property
+    @pulumi.getter(name="uiUri")
+    def ui_uri(self) -> pulumi.Output[str]:
+        """
+        The full URI for connecting to the OpenSearch dashboard.
+        """
+        return pulumi.get(self, "ui_uri")
+
+    @property
+    @pulumi.getter(name="uiUser")
+    def ui_user(self) -> pulumi.Output[str]:
+        """
+        Username for OpenSearch dashboard's default user.
+        """
+        return pulumi.get(self, "ui_user")
 
     @property
     @pulumi.getter

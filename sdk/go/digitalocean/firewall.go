@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			webDroplet, err := digitalocean.NewDroplet(ctx, "webDroplet", &digitalocean.DropletArgs{
+//			web, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("web-1"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
@@ -37,9 +37,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewFirewall(ctx, "webFirewall", &digitalocean.FirewallArgs{
+//			_, err = digitalocean.NewFirewall(ctx, "web", &digitalocean.FirewallArgs{
+//				Name: pulumi.String("only-22-80-and-443"),
 //				DropletIds: pulumi.IntArray{
-//					webDroplet.ID(),
+//					web.ID(),
 //				},
 //				InboundRules: digitalocean.FirewallInboundRuleArray{
 //					&digitalocean.FirewallInboundRuleArgs{
@@ -108,7 +109,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

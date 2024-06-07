@@ -22,7 +22,6 @@ import (
 //
 // Get data from a DNS record:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRecord(ctx *pulumi.Context, args *GetRecordArgs, opts ...pulumi.InvokeOption) (*GetRecordResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecordResult

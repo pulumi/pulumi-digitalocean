@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,26 +50,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarFloatingIp = new FloatingIp(&#34;foobarFloatingIp&#34;, FloatingIpArgs.builder()        
- *             .region(&#34;sgp1&#34;)
+ *         var foobar = new FloatingIp("foobar", FloatingIpArgs.builder()
+ *             .region("sgp1")
  *             .build());
  * 
- *         var foobarDroplet = new Droplet(&#34;foobarDroplet&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;sgp1&#34;)
+ *         var foobarDroplet = new Droplet("foobarDroplet", DropletArgs.builder()
+ *             .name("baz")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("sgp1")
  *             .ipv6(true)
  *             .privateNetworking(true)
  *             .build());
  * 
- *         var foobarFloatingIpAssignment = new FloatingIpAssignment(&#34;foobarFloatingIpAssignment&#34;, FloatingIpAssignmentArgs.builder()        
- *             .ipAddress(foobarFloatingIp.ipAddress())
+ *         var foobarFloatingIpAssignment = new FloatingIpAssignment("foobarFloatingIpAssignment", FloatingIpAssignmentArgs.builder()
+ *             .ipAddress(foobar.ipAddress())
  *             .dropletId(foobarDroplet.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

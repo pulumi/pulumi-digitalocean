@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Create a Key in a Spaces Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,27 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket(&#34;foobar&#34;, SpacesBucketArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()
+ *             .name("foobar")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var test = new SpacesBucketCorsConfiguration(&#34;test&#34;, SpacesBucketCorsConfigurationArgs.builder()        
+ *         var test = new SpacesBucketCorsConfiguration("test", SpacesBucketCorsConfigurationArgs.builder()
  *             .bucket(foobar.id())
- *             .region(&#34;nyc3&#34;)
+ *             .region("nyc3")
  *             .corsRules(SpacesBucketCorsConfigurationCorsRuleArgs.builder()
- *                 .allowedHeaders(&#34;*&#34;)
+ *                 .allowedHeaders("*")
  *                 .allowedMethods(                
- *                     &#34;PUT&#34;,
- *                     &#34;POST&#34;)
- *                 .allowedOrigins(&#34;https://s3-website-test.hashicorp.com&#34;)
- *                 .exposeHeaders(&#34;ETag&#34;)
+ *                     "PUT",
+ *                     "POST")
+ *                 .allowedOrigins("https://s3-website-test.hashicorp.com")
+ *                 .exposeHeaders("ETag")
  *                 .maxAgeSeconds(3000)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,6 +25,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
+    ///         Name = "web-1",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
@@ -33,6 +33,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var @public = new DigitalOcean.LoadBalancer("public", new()
     ///     {
+    ///         Name = "loadbalancer-1",
     ///         Region = DigitalOcean.Region.NYC3,
     ///         ForwardingRules = new[]
     ///         {
@@ -57,64 +58,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
     /// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
     /// operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
     /// `Delete old certificate`. When doing so, you must also change the name of the certificate,
     /// as there cannot be multiple certificates with the same name in an account.
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var cert = new DigitalOcean.Certificate("cert", new()
-    ///     {
-    ///         PrivateKey = "file('key.pem')",
-    ///         LeafCertificate = "file('cert.pem')",
-    ///     });
-    /// 
-    ///     var web = new DigitalOcean.Droplet("web", new()
-    ///     {
-    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
-    ///         Image = "ubuntu-18-04-x64",
-    ///         Region = DigitalOcean.Region.NYC3,
-    ///     });
-    /// 
-    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
-    ///     {
-    ///         Region = DigitalOcean.Region.NYC3,
-    ///         ForwardingRules = new[]
-    ///         {
-    ///             new DigitalOcean.Inputs.LoadBalancerForwardingRuleArgs
-    ///             {
-    ///                 EntryPort = 443,
-    ///                 EntryProtocol = "https",
-    ///                 TargetPort = 80,
-    ///                 TargetProtocol = "http",
-    ///                 CertificateName = cert.Name,
-    ///             },
-    ///         },
-    ///         Healthcheck = new DigitalOcean.Inputs.LoadBalancerHealthcheckArgs
-    ///         {
-    ///             Port = 22,
-    ///             Protocol = "tcp",
-    ///         },
-    ///         DropletIds = new[]
-    ///         {
-    ///             web.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -128,8 +77,7 @@ namespace Pulumi.DigitalOcean
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The load balancing algorithm used to determine
-        /// which backend Droplet will be selected by a client. It must be either `round_robin`
+        /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         /// or `least_connections`. The default value is `round_robin`.
         /// </summary>
         [Output("algorithm")]
@@ -140,6 +88,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("disableLetsEncryptDnsRecords")]
         public Output<bool?> DisableLetsEncryptDnsRecords { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        [Output("domains")]
+        public Output<ImmutableArray<Outputs.LoadBalancerDomain>> Domains { get; private set; } = null!;
 
         /// <summary>
         /// A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -179,6 +134,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("forwardingRules")]
         public Output<ImmutableArray<Outputs.LoadBalancerForwardingRule>> ForwardingRules { get; private set; } = null!;
+
+        /// <summary>
+        /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        [Output("glbSettings")]
+        public Output<Outputs.LoadBalancerGlbSettings> GlbSettings { get; private set; } = null!;
 
         /// <summary>
         /// A `healthcheck` block to be assigned to the
@@ -254,7 +216,14 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.LoadBalancerStickySessions> StickySessions { get; private set; } = null!;
 
         /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        [Output("targetLoadBalancerIds")]
+        public Output<ImmutableArray<string>> TargetLoadBalancerIds { get; private set; } = null!;
+
+        /// <summary>
+        /// the type of the load balancer (GLOBAL or REGIONAL)
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -273,7 +242,7 @@ namespace Pulumi.DigitalOcean
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public LoadBalancer(string name, LoadBalancerArgs args, CustomResourceOptions? options = null)
+        public LoadBalancer(string name, LoadBalancerArgs? args = null, CustomResourceOptions? options = null)
             : base("digitalocean:index/loadBalancer:LoadBalancer", name, args ?? new LoadBalancerArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -312,8 +281,7 @@ namespace Pulumi.DigitalOcean
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The load balancing algorithm used to determine
-        /// which backend Droplet will be selected by a client. It must be either `round_robin`
+        /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         /// or `least_connections`. The default value is `round_robin`.
         /// </summary>
         [Input("algorithm")]
@@ -324,6 +292,19 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("disableLetsEncryptDnsRecords")]
         public Input<bool>? DisableLetsEncryptDnsRecords { get; set; }
+
+        [Input("domains")]
+        private InputList<Inputs.LoadBalancerDomainArgs>? _domains;
+
+        /// <summary>
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerDomainArgs> Domains
+        {
+            get => _domains ?? (_domains = new InputList<Inputs.LoadBalancerDomainArgs>());
+            set => _domains = value;
+        }
 
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -363,7 +344,7 @@ namespace Pulumi.DigitalOcean
         [Input("firewall")]
         public Input<Inputs.LoadBalancerFirewallArgs>? Firewall { get; set; }
 
-        [Input("forwardingRules", required: true)]
+        [Input("forwardingRules")]
         private InputList<Inputs.LoadBalancerForwardingRuleArgs>? _forwardingRules;
 
         /// <summary>
@@ -375,6 +356,13 @@ namespace Pulumi.DigitalOcean
             get => _forwardingRules ?? (_forwardingRules = new InputList<Inputs.LoadBalancerForwardingRuleArgs>());
             set => _forwardingRules = value;
         }
+
+        /// <summary>
+        /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        [Input("glbSettings")]
+        public Input<Inputs.LoadBalancerGlbSettingsArgs>? GlbSettings { get; set; }
 
         /// <summary>
         /// A `healthcheck` block to be assigned to the
@@ -434,8 +422,21 @@ namespace Pulumi.DigitalOcean
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsArgs>? StickySessions { get; set; }
 
+        [Input("targetLoadBalancerIds")]
+        private InputList<string>? _targetLoadBalancerIds;
+
         /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        public InputList<string> TargetLoadBalancerIds
+        {
+            get => _targetLoadBalancerIds ?? (_targetLoadBalancerIds = new InputList<string>());
+            set => _targetLoadBalancerIds = value;
+        }
+
+        /// <summary>
+        /// the type of the load balancer (GLOBAL or REGIONAL)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -455,8 +456,7 @@ namespace Pulumi.DigitalOcean
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The load balancing algorithm used to determine
-        /// which backend Droplet will be selected by a client. It must be either `round_robin`
+        /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         /// or `least_connections`. The default value is `round_robin`.
         /// </summary>
         [Input("algorithm")]
@@ -467,6 +467,19 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("disableLetsEncryptDnsRecords")]
         public Input<bool>? DisableLetsEncryptDnsRecords { get; set; }
+
+        [Input("domains")]
+        private InputList<Inputs.LoadBalancerDomainGetArgs>? _domains;
+
+        /// <summary>
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerDomainGetArgs> Domains
+        {
+            get => _domains ?? (_domains = new InputList<Inputs.LoadBalancerDomainGetArgs>());
+            set => _domains = value;
+        }
 
         [Input("dropletIds")]
         private InputList<int>? _dropletIds;
@@ -518,6 +531,13 @@ namespace Pulumi.DigitalOcean
             get => _forwardingRules ?? (_forwardingRules = new InputList<Inputs.LoadBalancerForwardingRuleGetArgs>());
             set => _forwardingRules = value;
         }
+
+        /// <summary>
+        /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        [Input("glbSettings")]
+        public Input<Inputs.LoadBalancerGlbSettingsGetArgs>? GlbSettings { get; set; }
 
         /// <summary>
         /// A `healthcheck` block to be assigned to the
@@ -592,8 +612,21 @@ namespace Pulumi.DigitalOcean
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsGetArgs>? StickySessions { get; set; }
 
+        [Input("targetLoadBalancerIds")]
+        private InputList<string>? _targetLoadBalancerIds;
+
         /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// </summary>
+        public InputList<string> TargetLoadBalancerIds
+        {
+            get => _targetLoadBalancerIds ?? (_targetLoadBalancerIds = new InputList<string>());
+            set => _targetLoadBalancerIds = value;
+        }
+
+        /// <summary>
+        /// the type of the load balancer (GLOBAL or REGIONAL)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

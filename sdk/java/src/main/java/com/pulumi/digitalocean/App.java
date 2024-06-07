@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.AppArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.AppState;
+import com.pulumi.digitalocean.outputs.AppDedicatedIp;
 import com.pulumi.digitalocean.outputs.AppSpec;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -25,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Basic Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,32 +50,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var golang_sample = new App(&#34;golang-sample&#34;, AppArgs.builder()        
+ *         var golang_sample = new App("golang-sample", AppArgs.builder()
  *             .spec(AppSpecArgs.builder()
- *                 .name(&#34;golang-sample&#34;)
- *                 .region(&#34;ams&#34;)
+ *                 .name("golang-sample")
+ *                 .region("ams")
  *                 .services(AppSpecServiceArgs.builder()
- *                     .environmentSlug(&#34;go&#34;)
- *                     .git(AppSpecServiceGitArgs.builder()
- *                         .branch(&#34;main&#34;)
- *                         .repoCloneUrl(&#34;https://github.com/digitalocean/sample-golang.git&#34;)
- *                         .build())
+ *                     .name("go-service")
+ *                     .environmentSlug("go")
  *                     .instanceCount(1)
- *                     .instanceSizeSlug(&#34;professional-xs&#34;)
- *                     .name(&#34;go-service&#34;)
+ *                     .instanceSizeSlug("professional-xs")
+ *                     .git(AppSpecServiceGitArgs.builder()
+ *                         .repoCloneUrl("https://github.com/digitalocean/sample-golang.git")
+ *                         .branch("main")
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Static Site Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,31 +99,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_site_example = new App(&#34;static-site-example&#34;, AppArgs.builder()        
+ *         var static_site_example = new App("static-site-example", AppArgs.builder()
  *             .spec(AppSpecArgs.builder()
- *                 .name(&#34;static-site-example&#34;)
- *                 .region(&#34;ams&#34;)
+ *                 .name("static-site-example")
+ *                 .region("ams")
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
- *                     .buildCommand(&#34;bundle exec jekyll build -d ./public&#34;)
+ *                     .name("sample-jekyll")
+ *                     .buildCommand("bundle exec jekyll build -d ./public")
+ *                     .outputDir("/public")
  *                     .git(AppSpecStaticSiteGitArgs.builder()
- *                         .branch(&#34;main&#34;)
- *                         .repoCloneUrl(&#34;https://github.com/digitalocean/sample-jekyll.git&#34;)
+ *                         .repoCloneUrl("https://github.com/digitalocean/sample-jekyll.git")
+ *                         .branch("main")
  *                         .build())
- *                     .name(&#34;sample-jekyll&#34;)
- *                     .outputDir(&#34;/public&#34;)
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Multiple Components Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -141,55 +148,84 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mono_repo_example = new App(&#34;mono-repo-example&#34;, AppArgs.builder()        
+ *         var mono_repo_example = new App("mono-repo-example", AppArgs.builder()
  *             .spec(AppSpecArgs.builder()
+ *                 .name("mono-repo-example")
+ *                 .region("ams")
+ *                 .domains(Map.of("name", "foo.example.com"))
  *                 .alerts(AppSpecAlertArgs.builder()
- *                     .rule(&#34;DEPLOYMENT_FAILED&#34;)
+ *                     .rule("DEPLOYMENT_FAILED")
  *                     .build())
- *                 .databases(AppSpecDatabaseArgs.builder()
- *                     .engine(&#34;PG&#34;)
- *                     .name(&#34;starter-db&#34;)
- *                     .production(false)
- *                     .build())
- *                 .domains(Map.of(&#34;name&#34;, &#34;foo.example.com&#34;))
- *                 .ingress(AppSpecIngressArgs.builder()
- *                     .rule(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
- *                 .name(&#34;mono-repo-example&#34;)
- *                 .region(&#34;ams&#34;)
  *                 .services(AppSpecServiceArgs.builder()
- *                     .alert(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .environmentSlug(&#34;go&#34;)
- *                     .github(AppSpecServiceGithubArgs.builder()
- *                         .branch(&#34;main&#34;)
- *                         .deployOnPush(true)
- *                         .repo(&#34;username/repo&#34;)
- *                         .build())
- *                     .httpPort(3000)
+ *                     .name("api")
+ *                     .environmentSlug("go")
  *                     .instanceCount(2)
- *                     .instanceSizeSlug(&#34;professional-xs&#34;)
- *                     .logDestination(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .name(&#34;api&#34;)
- *                     .runCommand(&#34;bin/api&#34;)
- *                     .sourceDir(&#34;api/&#34;)
+ *                     .instanceSizeSlug("professional-xs")
+ *                     .github(AppSpecServiceGithubArgs.builder()
+ *                         .branch("main")
+ *                         .deployOnPush(true)
+ *                         .repo("username/repo")
+ *                         .build())
+ *                     .sourceDir("api/")
+ *                     .httpPort(3000)
+ *                     .alerts(AppSpecServiceAlertArgs.builder()
+ *                         .value(75)
+ *                         .operator("GREATER_THAN")
+ *                         .window("TEN_MINUTES")
+ *                         .rule("CPU_UTILIZATION")
+ *                         .build())
+ *                     .logDestinations(AppSpecServiceLogDestinationArgs.builder()
+ *                         .name("MyLogs")
+ *                         .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()
+ *                             .endpoint("syslog+tls://example.com:12345")
+ *                             .build())
+ *                         .build())
+ *                     .runCommand("bin/api")
  *                     .build())
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
- *                     .buildCommand(&#34;npm run build&#34;)
+ *                     .name("web")
+ *                     .buildCommand("npm run build")
  *                     .github(AppSpecStaticSiteGithubArgs.builder()
- *                         .branch(&#34;main&#34;)
+ *                         .branch("main")
  *                         .deployOnPush(true)
- *                         .repo(&#34;username/repo&#34;)
+ *                         .repo("username/repo")
  *                         .build())
- *                     .name(&#34;web&#34;)
+ *                     .build())
+ *                 .databases(AppSpecDatabaseArgs.builder()
+ *                     .name("starter-db")
+ *                     .engine("PG")
+ *                     .production(false)
+ *                     .build())
+ *                 .ingress(AppSpecIngressArgs.builder()
+ *                     .rules(                    
+ *                         AppSpecIngressRuleArgs.builder()
+ *                             .component(AppSpecIngressRuleComponentArgs.builder()
+ *                                 .name("api")
+ *                                 .build())
+ *                             .match(AppSpecIngressRuleMatchArgs.builder()
+ *                                 .path(AppSpecIngressRuleMatchPathArgs.builder()
+ *                                     .prefix("/api")
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         AppSpecIngressRuleArgs.builder()
+ *                             .component(AppSpecIngressRuleComponentArgs.builder()
+ *                                 .name("web")
+ *                                 .build())
+ *                             .match(AppSpecIngressRuleMatchArgs.builder()
+ *                                 .path(AppSpecIngressRuleMatchPathArgs.builder()
+ *                                     .prefix("/")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -244,6 +280,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * The dedicated egress IP addresses associated with the app.
+     * 
+     */
+    @Export(name="dedicatedIps", refs={List.class,AppDedicatedIp.class}, tree="[0,1]")
+    private Output<List<AppDedicatedIp>> dedicatedIps;
+
+    /**
+     * @return The dedicated egress IP addresses associated with the app.
+     * 
+     */
+    public Output<List<AppDedicatedIp>> dedicatedIps() {
+        return this.dedicatedIps;
     }
     /**
      * The default URL to access the app.

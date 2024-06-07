@@ -32,14 +32,14 @@ public final class AppSpecIngressRuleRedirectArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The health check will be performed on this port instead of component&#39;s HTTP port.
+     * The port to redirect to.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
+     * @return The port to redirect to.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -141,7 +141,7 @@ public final class AppSpecIngressRuleRedirectArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param port The health check will be performed on this port instead of component&#39;s HTTP port.
+         * @param port The port to redirect to.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AppSpecIngressRuleRedirectArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param port The health check will be performed on this port instead of component&#39;s HTTP port.
+         * @param port The port to redirect to.
          * 
          * @return builder
          * 

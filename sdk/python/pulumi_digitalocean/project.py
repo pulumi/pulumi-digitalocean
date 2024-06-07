@@ -320,36 +320,35 @@ class Project(pulumi.CustomResource):
 
         The following example demonstrates the creation of an empty project:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
+            purpose="Web Application",
+            environment="Development")
         ```
-        <!--End PulumiCodeChooser -->
 
         The following example demonstrates the creation of a project with a Droplet resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.Droplet("foobar",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
             purpose="Web Application",
             environment="Development",
             resources=[foobar.droplet_urn])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -399,36 +398,35 @@ class Project(pulumi.CustomResource):
 
         The following example demonstrates the creation of an empty project:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
-            environment="Development",
-            purpose="Web Application")
+            purpose="Web Application",
+            environment="Development")
         ```
-        <!--End PulumiCodeChooser -->
 
         The following example demonstrates the creation of a project with a Droplet resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         foobar = digitalocean.Droplet("foobar",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
         playground = digitalocean.Project("playground",
+            name="playground",
             description="A project to represent development resources.",
             purpose="Web Application",
             environment="Development",
             resources=[foobar.droplet_urn])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

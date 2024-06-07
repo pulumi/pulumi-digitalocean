@@ -11,10 +11,12 @@ from . import _utilities
 from ._enums import *
 
 __all__ = [
+    'AppDedicatedIpArgs',
     'AppSpecArgs',
     'AppSpecAlertArgs',
     'AppSpecDatabaseArgs',
     'AppSpecDomainNameArgs',
+    'AppSpecEgressArgs',
     'AppSpecEnvArgs',
     'AppSpecFunctionArgs',
     'AppSpecFunctionAlertArgs',
@@ -89,6 +91,8 @@ __all__ = [
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseFirewallRuleArgs',
     'DatabaseKafkaTopicConfigArgs',
+    'DatabasePostgresqlConfigPgbouncerArgs',
+    'DatabasePostgresqlConfigTimescaledbArgs',
     'DatabaseUserSettingArgs',
     'DatabaseUserSettingAclArgs',
     'FirewallInboundRuleArgs',
@@ -101,8 +105,11 @@ __all__ = [
     'KubernetesClusterNodePoolTaintArgs',
     'KubernetesNodePoolNodeArgs',
     'KubernetesNodePoolTaintArgs',
+    'LoadBalancerDomainArgs',
     'LoadBalancerFirewallArgs',
     'LoadBalancerForwardingRuleArgs',
+    'LoadBalancerGlbSettingsArgs',
+    'LoadBalancerGlbSettingsCdnArgs',
     'LoadBalancerHealthcheckArgs',
     'LoadBalancerStickySessionsArgs',
     'MonitorAlertAlertsArgs',
@@ -115,6 +122,7 @@ __all__ = [
     'SpacesBucketVersioningArgs',
     'UptimeAlertNotificationArgs',
     'UptimeAlertNotificationSlackArgs',
+    'GetAppDedicatedIpArgs',
     'GetDomainsFilterArgs',
     'GetDomainsSortArgs',
     'GetDropletsFilterArgs',
@@ -140,6 +148,61 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class AppDedicatedIpArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 ip: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of the app.
+        :param pulumi.Input[str] ip: The IP address of the dedicated egress IP.
+        :param pulumi.Input[str] status: The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the app.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the dedicated egress IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class AppSpecArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -147,6 +210,7 @@ class AppSpecArgs:
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
                  features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  functions: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]] = None,
@@ -157,10 +221,11 @@ class AppSpecArgs:
                  static_sites: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the component.
+        :param pulumi.Input[str] name: The name of the app. Must be unique across all apps in the same account.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]] egresses: Specification for app egress configurations.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an app-wide environment variable made available to all components.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param pulumi.Input['AppSpecIngressArgs'] ingress: Specification for component routing, rewrites, and redirects.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
@@ -177,6 +242,8 @@ class AppSpecArgs:
             pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if egresses is not None:
+            pulumi.set(__self__, "egresses", egresses)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if features is not None:
@@ -200,7 +267,7 @@ class AppSpecArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        The name of the app. Must be unique across all apps in the same account.
         """
         return pulumi.get(self, "name")
 
@@ -212,7 +279,7 @@ class AppSpecArgs:
     @pulumi.getter
     def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]]]:
         """
-        Describes an alert policy for the component.
+        Describes an alert policy for the app.
         """
         return pulumi.get(self, "alerts")
 
@@ -255,9 +322,21 @@ class AppSpecArgs:
 
     @property
     @pulumi.getter
+    def egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]]:
+        """
+        Specification for app egress configurations.
+        """
+        return pulumi.get(self, "egresses")
+
+    @egresses.setter
+    def egresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]]):
+        pulumi.set(self, "egresses", value)
+
+    @property
+    @pulumi.getter
     def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]]:
         """
-        Describes an environment variable made available to an app competent.
+        Describes an app-wide environment variable made available to all components.
         """
         return pulumi.get(self, "envs")
 
@@ -353,7 +432,7 @@ class AppSpecAlertArgs:
                  rule: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[str] rule: The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
         :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "rule", rule)
@@ -364,7 +443,7 @@ class AppSpecAlertArgs:
     @pulumi.getter
     def rule(self) -> pulumi.Input[str]:
         """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
         """
         return pulumi.get(self, "rule")
 
@@ -516,8 +595,11 @@ class AppSpecDomainNameArgs:
                  wildcard: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
-        :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
+        :param pulumi.Input[str] name: The hostname for the domain.
+        :param pulumi.Input[str] type: The domain type, which can be one of the following:
+               - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+               - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+               - `ALIAS`: A non-primary domain.
         :param pulumi.Input[bool] wildcard: A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
         :param pulumi.Input[str] zone: If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
         """
@@ -533,7 +615,7 @@ class AppSpecDomainNameArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        The hostname for the domain.
         """
         return pulumi.get(self, "name")
 
@@ -545,7 +627,10 @@ class AppSpecDomainNameArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the environment variable, `GENERAL` or `SECRET`.
+        The domain type, which can be one of the following:
+        - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+        - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+        - `ALIAS`: A non-primary domain.
         """
         return pulumi.get(self, "type")
 
@@ -579,6 +664,29 @@ class AppSpecDomainNameArgs:
 
 
 @pulumi.input_type
+class AppSpecEgressArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class AppSpecEnvArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -589,7 +697,7 @@ class AppSpecEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -640,7 +748,7 @@ class AppSpecEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -920,11 +1028,11 @@ class AppSpecFunctionCorsArgs:
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs'] allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -944,7 +1052,7 @@ class AppSpecFunctionCorsArgs:
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -956,7 +1064,7 @@ class AppSpecFunctionCorsArgs:
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -968,7 +1076,7 @@ class AppSpecFunctionCorsArgs:
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -980,7 +1088,7 @@ class AppSpecFunctionCorsArgs:
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgs']]:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -992,7 +1100,7 @@ class AppSpecFunctionCorsArgs:
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -1020,9 +1128,9 @@ class AppSpecFunctionCorsAllowOriginsArgs:
                  prefix: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param pulumi.Input[str] regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param pulumi.Input[str] exact: Exact string match.
+        :param pulumi.Input[str] prefix: Prefix-based match.
+        :param pulumi.Input[str] regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -1035,7 +1143,7 @@ class AppSpecFunctionCorsAllowOriginsArgs:
     @pulumi.getter
     def exact(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -1047,7 +1155,7 @@ class AppSpecFunctionCorsAllowOriginsArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -1059,7 +1167,7 @@ class AppSpecFunctionCorsAllowOriginsArgs:
     @pulumi.getter
     def regex(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -1079,7 +1187,7 @@ class AppSpecFunctionEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1130,7 +1238,7 @@ class AppSpecFunctionEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -1296,7 +1404,7 @@ class AppSpecFunctionLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -1313,7 +1421,7 @@ class AppSpecFunctionLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -1427,7 +1535,7 @@ class AppSpecFunctionLogDestinationPapertrailArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        :param pulumi.Input[str] endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -1435,7 +1543,7 @@ class AppSpecFunctionLogDestinationPapertrailArgs:
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -1488,7 +1596,7 @@ class AppSpecIngressArgs:
     def __init__(__self__, *,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]] rules: Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
@@ -1497,7 +1605,7 @@ class AppSpecIngressArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]]:
         """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         return pulumi.get(self, "rules")
 
@@ -1584,8 +1692,8 @@ class AppSpecIngressRuleComponentArgs:
                  preserve_path_prefix: Optional[pulumi.Input[bool]] = None,
                  rewrite: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
-        :param pulumi.Input[bool] preserve_path_prefix: An optional flag to preserve the path that is forwarded to the backend service.
+        :param pulumi.Input[str] name: The name of the component to route to.
+        :param pulumi.Input[bool] preserve_path_prefix: An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
         :param pulumi.Input[str] rewrite: An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
         """
         if name is not None:
@@ -1599,7 +1707,7 @@ class AppSpecIngressRuleComponentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the component.
+        The name of the component to route to.
         """
         return pulumi.get(self, "name")
 
@@ -1611,7 +1719,7 @@ class AppSpecIngressRuleComponentArgs:
     @pulumi.getter(name="preservePathPrefix")
     def preserve_path_prefix(self) -> Optional[pulumi.Input[bool]]:
         """
-        An optional flag to preserve the path that is forwarded to the backend service.
+        An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
         """
         return pulumi.get(self, "preserve_path_prefix")
 
@@ -1642,11 +1750,11 @@ class AppSpecIngressRuleCorsArgs:
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         :param pulumi.Input['AppSpecIngressRuleCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -1666,7 +1774,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1678,7 +1786,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -1690,7 +1798,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -1714,7 +1822,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -1795,7 +1903,7 @@ class AppSpecIngressRuleMatchArgs:
     def __init__(__self__, *,
                  path: Optional[pulumi.Input['AppSpecIngressRuleMatchPathArgs']] = None):
         """
-        :param pulumi.Input['AppSpecIngressRuleMatchPathArgs'] path: Paths must start with `/` and must be unique within the app.
+        :param pulumi.Input['AppSpecIngressRuleMatchPathArgs'] path: The path to match on.
         """
         if path is not None:
             pulumi.set(__self__, "path", path)
@@ -1804,7 +1912,7 @@ class AppSpecIngressRuleMatchArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['AppSpecIngressRuleMatchPathArgs']]:
         """
-        Paths must start with `/` and must be unique within the app.
+        The path to match on.
         """
         return pulumi.get(self, "path")
 
@@ -1818,7 +1926,7 @@ class AppSpecIngressRuleMatchPathArgs:
     def __init__(__self__, *,
                  prefix: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        :param pulumi.Input[str] prefix: Prefix-based match.
         """
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
@@ -1827,7 +1935,7 @@ class AppSpecIngressRuleMatchPathArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -1846,7 +1954,7 @@ class AppSpecIngressRuleRedirectArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] authority: The authority/host to redirect to. This can be a hostname or IP address.
-        :param pulumi.Input[int] port: The health check will be performed on this port instead of component's HTTP port.
+        :param pulumi.Input[int] port: The port to redirect to.
         :param pulumi.Input[int] redirect_code: The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
         :param pulumi.Input[str] scheme: The scheme to redirect to. Supported values are `http` or `https`
         :param pulumi.Input[str] uri: An optional URI path to redirect to.
@@ -1878,7 +1986,7 @@ class AppSpecIngressRuleRedirectArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The health check will be performed on this port instead of component's HTTP port.
+        The port to redirect to.
         """
         return pulumi.get(self, "port")
 
@@ -1956,6 +2064,10 @@ class AppSpecJobArgs:
         :param pulumi.Input[int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[str] kind: The type of job and when it will be run during the deployment process. It may be one of:
+               - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+               - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+               - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+               - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
@@ -2141,6 +2253,10 @@ class AppSpecJobArgs:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
         """
         return pulumi.get(self, "kind")
 
@@ -2279,7 +2395,7 @@ class AppSpecJobEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2330,7 +2446,7 @@ class AppSpecJobEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -2495,12 +2611,14 @@ class AppSpecJobImageArgs:
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
+                 registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -2509,6 +2627,8 @@ class AppSpecJobImageArgs:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
+        if registry_credentials is not None:
+            pulumi.set(__self__, "registry_credentials", registry_credentials)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
 
@@ -2540,7 +2660,7 @@ class AppSpecJobImageArgs:
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -2559,6 +2679,18 @@ class AppSpecJobImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter
@@ -2604,7 +2736,7 @@ class AppSpecJobLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecJobLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecJobLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecJobLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecJobLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -2621,7 +2753,7 @@ class AppSpecJobLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -2735,7 +2867,7 @@ class AppSpecJobLogDestinationPapertrailArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        :param pulumi.Input[str] endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -2743,7 +2875,7 @@ class AppSpecJobLogDestinationPapertrailArgs:
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -3183,11 +3315,11 @@ class AppSpecServiceCorsArgs:
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param pulumi.Input['AppSpecServiceCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param pulumi.Input['AppSpecServiceCorsAllowOriginsArgs'] allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -3207,7 +3339,7 @@ class AppSpecServiceCorsArgs:
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -3219,7 +3351,7 @@ class AppSpecServiceCorsArgs:
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -3231,7 +3363,7 @@ class AppSpecServiceCorsArgs:
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -3243,7 +3375,7 @@ class AppSpecServiceCorsArgs:
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional[pulumi.Input['AppSpecServiceCorsAllowOriginsArgs']]:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -3255,7 +3387,7 @@ class AppSpecServiceCorsArgs:
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -3283,9 +3415,9 @@ class AppSpecServiceCorsAllowOriginsArgs:
                  prefix: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param pulumi.Input[str] regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param pulumi.Input[str] exact: Exact string match.
+        :param pulumi.Input[str] prefix: Prefix-based match.
+        :param pulumi.Input[str] regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -3298,7 +3430,7 @@ class AppSpecServiceCorsAllowOriginsArgs:
     @pulumi.getter
     def exact(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -3310,7 +3442,7 @@ class AppSpecServiceCorsAllowOriginsArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -3322,7 +3454,7 @@ class AppSpecServiceCorsAllowOriginsArgs:
     @pulumi.getter
     def regex(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -3342,7 +3474,7 @@ class AppSpecServiceEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -3393,7 +3525,7 @@ class AppSpecServiceEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -3677,12 +3809,14 @@ class AppSpecServiceImageArgs:
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
+                 registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -3691,6 +3825,8 @@ class AppSpecServiceImageArgs:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
+        if registry_credentials is not None:
+            pulumi.set(__self__, "registry_credentials", registry_credentials)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
 
@@ -3722,7 +3858,7 @@ class AppSpecServiceImageArgs:
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -3741,6 +3877,18 @@ class AppSpecServiceImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter
@@ -3786,7 +3934,7 @@ class AppSpecServiceLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecServiceLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecServiceLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -3803,7 +3951,7 @@ class AppSpecServiceLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -3917,7 +4065,7 @@ class AppSpecServiceLogDestinationPapertrailArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        :param pulumi.Input[str] endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -3925,7 +4073,7 @@ class AppSpecServiceLogDestinationPapertrailArgs:
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -4241,11 +4389,11 @@ class AppSpecStaticSiteCorsArgs:
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        :param pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs'] allow_origins: The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -4265,7 +4413,7 @@ class AppSpecStaticSiteCorsArgs:
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -4277,7 +4425,7 @@ class AppSpecStaticSiteCorsArgs:
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -4289,7 +4437,7 @@ class AppSpecStaticSiteCorsArgs:
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -4301,7 +4449,7 @@ class AppSpecStaticSiteCorsArgs:
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgs']]:
         """
-        The `Access-Control-Allow-Origin` can be
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -4313,7 +4461,7 @@ class AppSpecStaticSiteCorsArgs:
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -4341,9 +4489,9 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
                  prefix: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        :param pulumi.Input[str] prefix: The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        :param pulumi.Input[str] regex: The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        :param pulumi.Input[str] exact: Exact string match.
+        :param pulumi.Input[str] prefix: Prefix-based match.
+        :param pulumi.Input[str] regex: RE2 style regex-based match.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -4356,7 +4504,7 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
     @pulumi.getter
     def exact(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        Exact string match.
         """
         return pulumi.get(self, "exact")
 
@@ -4368,7 +4516,7 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        Prefix-based match.
         """
         return pulumi.get(self, "prefix")
 
@@ -4380,7 +4528,7 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
     @pulumi.getter
     def regex(self) -> Optional[pulumi.Input[str]]:
         """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        RE2 style regex-based match.
         """
         return pulumi.get(self, "regex")
 
@@ -4400,7 +4548,7 @@ class AppSpecStaticSiteEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -4451,7 +4599,7 @@ class AppSpecStaticSiteEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -4988,7 +5136,7 @@ class AppSpecWorkerEnvArgs:
         :param pulumi.Input[str] key: The name of the environment variable.
         :param pulumi.Input[str] scope: The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
         :param pulumi.Input[str] type: The type of the environment variable, `GENERAL` or `SECRET`.
-        :param pulumi.Input[str] value: The threshold for the type of the warning.
+        :param pulumi.Input[str] value: The value of the environment variable.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -5039,7 +5187,7 @@ class AppSpecWorkerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for the type of the warning.
+        The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
@@ -5204,12 +5352,14 @@ class AppSpecWorkerImageArgs:
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
+                 registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Whether to automatically deploy new commits made to the repo.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -5218,6 +5368,8 @@ class AppSpecWorkerImageArgs:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
+        if registry_credentials is not None:
+            pulumi.set(__self__, "registry_credentials", registry_credentials)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
 
@@ -5249,7 +5401,7 @@ class AppSpecWorkerImageArgs:
     @pulumi.getter(name="deployOnPushes")
     def deploy_on_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]]:
         """
-        Whether to automatically deploy new commits made to the repo.
+        Configures automatically deploying images pushed to DOCR.
         """
         return pulumi.get(self, "deploy_on_pushes")
 
@@ -5268,6 +5420,18 @@ class AppSpecWorkerImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryCredentials")
+    def registry_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access credentials for third-party registries
+        """
+        return pulumi.get(self, "registry_credentials")
+
+    @registry_credentials.setter
+    def registry_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_credentials", value)
 
     @property
     @pulumi.getter
@@ -5313,7 +5477,7 @@ class AppSpecWorkerLogDestinationArgs:
                  logtail: Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs']] = None):
         """
-        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs'] logtail: Logtail configuration.
         :param pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
@@ -5330,7 +5494,7 @@ class AppSpecWorkerLogDestinationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the component.
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
         """
         return pulumi.get(self, "name")
 
@@ -5444,7 +5608,7 @@ class AppSpecWorkerLogDestinationPapertrailArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] endpoint: Datadog HTTP log intake endpoint.
+        :param pulumi.Input[str] endpoint: Papertrail syslog endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -5452,7 +5616,7 @@ class AppSpecWorkerLogDestinationPapertrailArgs:
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
         """
-        Datadog HTTP log intake endpoint.
+        Papertrail syslog endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -5985,6 +6149,142 @@ class DatabaseKafkaTopicConfigArgs:
 
 
 @pulumi.input_type
+class DatabasePostgresqlConfigPgbouncerArgs:
+    def __init__(__self__, *,
+                 autodb_idle_timeout: Optional[pulumi.Input[int]] = None,
+                 autodb_max_db_connections: Optional[pulumi.Input[int]] = None,
+                 autodb_pool_mode: Optional[pulumi.Input[str]] = None,
+                 autodb_pool_size: Optional[pulumi.Input[int]] = None,
+                 ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 min_pool_size: Optional[pulumi.Input[int]] = None,
+                 server_idle_timeout: Optional[pulumi.Input[int]] = None,
+                 server_lifetime: Optional[pulumi.Input[int]] = None,
+                 server_reset_query_always: Optional[pulumi.Input[bool]] = None):
+        if autodb_idle_timeout is not None:
+            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
+        if autodb_max_db_connections is not None:
+            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
+        if autodb_pool_mode is not None:
+            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
+        if autodb_pool_size is not None:
+            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
+        if ignore_startup_parameters is not None:
+            pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if min_pool_size is not None:
+            pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_idle_timeout is not None:
+            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
+        if server_lifetime is not None:
+            pulumi.set(__self__, "server_lifetime", server_lifetime)
+        if server_reset_query_always is not None:
+            pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
+
+    @property
+    @pulumi.getter(name="autodbIdleTimeout")
+    def autodb_idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "autodb_idle_timeout")
+
+    @autodb_idle_timeout.setter
+    def autodb_idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autodb_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="autodbMaxDbConnections")
+    def autodb_max_db_connections(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "autodb_max_db_connections")
+
+    @autodb_max_db_connections.setter
+    def autodb_max_db_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autodb_max_db_connections", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolMode")
+    def autodb_pool_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "autodb_pool_mode")
+
+    @autodb_pool_mode.setter
+    def autodb_pool_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "autodb_pool_mode", value)
+
+    @property
+    @pulumi.getter(name="autodbPoolSize")
+    def autodb_pool_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "autodb_pool_size")
+
+    @autodb_pool_size.setter
+    def autodb_pool_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "autodb_pool_size", value)
+
+    @property
+    @pulumi.getter(name="ignoreStartupParameters")
+    def ignore_startup_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ignore_startup_parameters")
+
+    @ignore_startup_parameters.setter
+    def ignore_startup_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="minPoolSize")
+    def min_pool_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_pool_size")
+
+    @min_pool_size.setter
+    def min_pool_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_pool_size", value)
+
+    @property
+    @pulumi.getter(name="serverIdleTimeout")
+    def server_idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "server_idle_timeout")
+
+    @server_idle_timeout.setter
+    def server_idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "server_idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="serverLifetime")
+    def server_lifetime(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "server_lifetime")
+
+    @server_lifetime.setter
+    def server_lifetime(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "server_lifetime", value)
+
+    @property
+    @pulumi.getter(name="serverResetQueryAlways")
+    def server_reset_query_always(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "server_reset_query_always")
+
+    @server_reset_query_always.setter
+    def server_reset_query_always(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "server_reset_query_always", value)
+
+
+@pulumi.input_type
+class DatabasePostgresqlConfigTimescaledbArgs:
+    def __init__(__self__, *,
+                 timescaledb: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] timescaledb: TimescaleDB extension configuration values
+        """
+        if timescaledb is not None:
+            pulumi.set(__self__, "timescaledb", timescaledb)
+
+    @property
+    @pulumi.getter
+    def timescaledb(self) -> Optional[pulumi.Input[int]]:
+        """
+        TimescaleDB extension configuration values
+        """
+        return pulumi.get(self, "timescaledb")
+
+    @timescaledb.setter
+    def timescaledb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timescaledb", value)
+
+
+@pulumi.input_type
 class DatabaseUserSettingArgs:
     def __init__(__self__, *,
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgs']]]] = None):
@@ -6018,8 +6318,6 @@ class DatabaseUserSettingAclArgs:
                  topic: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        :param pulumi.Input[str] topic: A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
         :param pulumi.Input[str] id: An identifier for the ACL, this will be automatically assigned when you create an ACL entry
         """
         pulumi.set(__self__, "permission", permission)
@@ -6030,9 +6328,6 @@ class DatabaseUserSettingAclArgs:
     @property
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
-        """
-        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -6042,9 +6337,6 @@ class DatabaseUserSettingAclArgs:
     @property
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
-        """
-        A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -6593,7 +6885,7 @@ class KubernetesClusterNodePoolArgs:
         :param pulumi.Input[int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]] nodes: A list of nodes in the pool. Each node exports the following attributes:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names applied to the node pool.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]] taints: A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
         """
         pulumi.set(__self__, "name", name)
@@ -6743,7 +7035,7 @@ class KubernetesClusterNodePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tag names to be applied to the Kubernetes cluster.
+        A list of tag names applied to the node pool.
         """
         return pulumi.get(self, "tags")
 
@@ -6777,7 +7069,7 @@ class KubernetesClusterNodePoolNodeArgs:
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[str] droplet_id: The id of the node's droplet
         :param pulumi.Input[str] id: A unique ID that can be used to identify and reference the node.
-        :param pulumi.Input[str] name: A name for the node pool.
+        :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         """
@@ -6834,7 +7126,7 @@ class KubernetesClusterNodePoolNodeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A name for the node pool.
+        A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 
@@ -7075,6 +7367,92 @@ class KubernetesNodePoolTaintArgs:
 
 
 @pulumi.input_type
+class LoadBalancerDomainArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 certificate_name: Optional[pulumi.Input[str]] = None,
+                 is_managed: Optional[pulumi.Input[bool]] = None,
+                 ssl_validation_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verification_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: The domain name to be used for ingressing traffic to a Global Load Balancer.
+        :param pulumi.Input[str] certificate_name: name of certificate required for TLS handshaking
+        :param pulumi.Input[bool] is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_validation_error_reasons: list of domain SSL validation errors
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] verification_error_reasons: list of domain verification errors
+        """
+        pulumi.set(__self__, "name", name)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if is_managed is not None:
+            pulumi.set(__self__, "is_managed", is_managed)
+        if ssl_validation_error_reasons is not None:
+            pulumi.set(__self__, "ssl_validation_error_reasons", ssl_validation_error_reasons)
+        if verification_error_reasons is not None:
+            pulumi.set(__self__, "verification_error_reasons", verification_error_reasons)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The domain name to be used for ingressing traffic to a Global Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of certificate required for TLS handshaking
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @property
+    @pulumi.getter(name="isManaged")
+    def is_managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Control flag to specify whether the domain is managed by DigitalOcean.
+        """
+        return pulumi.get(self, "is_managed")
+
+    @is_managed.setter
+    def is_managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_managed", value)
+
+    @property
+    @pulumi.getter(name="sslValidationErrorReasons")
+    def ssl_validation_error_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of domain SSL validation errors
+        """
+        return pulumi.get(self, "ssl_validation_error_reasons")
+
+    @ssl_validation_error_reasons.setter
+    def ssl_validation_error_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ssl_validation_error_reasons", value)
+
+    @property
+    @pulumi.getter(name="verificationErrorReasons")
+    def verification_error_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of domain verification errors
+        """
+        return pulumi.get(self, "verification_error_reasons")
+
+    @verification_error_reasons.setter
+    def verification_error_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "verification_error_reasons", value)
+
+
+@pulumi.input_type
 class LoadBalancerFirewallArgs:
     def __init__(__self__, *,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7234,6 +7612,114 @@ class LoadBalancerForwardingRuleArgs:
     @tls_passthrough.setter
     def tls_passthrough(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls_passthrough", value)
+
+
+@pulumi.input_type
+class LoadBalancerGlbSettingsArgs:
+    def __init__(__self__, *,
+                 target_port: pulumi.Input[int],
+                 target_protocol: pulumi.Input[str],
+                 cdn: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']] = None,
+                 failover_threshold: Optional[pulumi.Input[int]] = None,
+                 region_priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[int] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        :param pulumi.Input[str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        :param pulumi.Input['LoadBalancerGlbSettingsCdnArgs'] cdn: CDN configuration supporting the following:
+        :param pulumi.Input[int] failover_threshold: fail-over threshold
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] region_priorities: region priority map
+        """
+        pulumi.set(__self__, "target_port", target_port)
+        pulumi.set(__self__, "target_protocol", target_protocol)
+        if cdn is not None:
+            pulumi.set(__self__, "cdn", cdn)
+        if failover_threshold is not None:
+            pulumi.set(__self__, "failover_threshold", failover_threshold)
+        if region_priorities is not None:
+            pulumi.set(__self__, "region_priorities", region_priorities)
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> pulumi.Input[int]:
+        """
+        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        """
+        return pulumi.get(self, "target_port")
+
+    @target_port.setter
+    def target_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "target_port", value)
+
+    @property
+    @pulumi.getter(name="targetProtocol")
+    def target_protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        """
+        return pulumi.get(self, "target_protocol")
+
+    @target_protocol.setter
+    def target_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_protocol", value)
+
+    @property
+    @pulumi.getter
+    def cdn(self) -> Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']]:
+        """
+        CDN configuration supporting the following:
+        """
+        return pulumi.get(self, "cdn")
+
+    @cdn.setter
+    def cdn(self, value: Optional[pulumi.Input['LoadBalancerGlbSettingsCdnArgs']]):
+        pulumi.set(self, "cdn", value)
+
+    @property
+    @pulumi.getter(name="failoverThreshold")
+    def failover_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        fail-over threshold
+        """
+        return pulumi.get(self, "failover_threshold")
+
+    @failover_threshold.setter
+    def failover_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failover_threshold", value)
+
+    @property
+    @pulumi.getter(name="regionPriorities")
+    def region_priorities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]:
+        """
+        region priority map
+        """
+        return pulumi.get(self, "region_priorities")
+
+    @region_priorities.setter
+    def region_priorities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]):
+        pulumi.set(self, "region_priorities", value)
+
+
+@pulumi.input_type
+class LoadBalancerGlbSettingsCdnArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Control flag to specify if caching is enabled.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Control flag to specify if caching is enabled.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
 
 
 @pulumi.input_type
@@ -7935,6 +8421,58 @@ class UptimeAlertNotificationSlackArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class GetAppDedicatedIpArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 ip: str,
+                 status: str):
+        """
+        :param str id: The ID of the dedicated egress IP.
+        :param str ip: The IP address of the dedicated egress IP.
+        :param str status: The status of the dedicated egress IP.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the dedicated egress IP.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP address of the dedicated egress IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: str):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the dedicated egress IP.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

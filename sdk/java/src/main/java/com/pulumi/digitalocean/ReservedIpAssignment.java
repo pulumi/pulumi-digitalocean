@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,26 +48,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleReservedIp = new ReservedIp(&#34;exampleReservedIp&#34;, ReservedIpArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var example = new ReservedIp("example", ReservedIpArgs.builder()
+ *             .region("nyc3")
  *             .build());
  * 
- *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-22-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+ *             .name("baz")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
  *             .ipv6(true)
  *             .privateNetworking(true)
  *             .build());
  * 
- *         var exampleReservedIpAssignment = new ReservedIpAssignment(&#34;exampleReservedIpAssignment&#34;, ReservedIpAssignmentArgs.builder()        
- *             .ipAddress(exampleReservedIp.ipAddress())
+ *         var exampleReservedIpAssignment = new ReservedIpAssignment("exampleReservedIpAssignment", ReservedIpAssignmentArgs.builder()
+ *             .ipAddress(example.ipAddress())
  *             .dropletId(exampleDroplet.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

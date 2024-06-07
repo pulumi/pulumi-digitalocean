@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecIngressRuleMatchPath {
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+     * @return Prefix-based match.
      * 
      */
     private @Nullable String prefix;
 
     private AppSpecIngressRuleMatchPath() {}
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+     * @return Prefix-based match.
      * 
      */
     public Optional<String> prefix() {

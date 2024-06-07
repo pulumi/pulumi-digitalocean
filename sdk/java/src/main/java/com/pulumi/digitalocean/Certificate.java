@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Custom Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,22 +50,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
- *             .type(&#34;custom&#34;)
- *             .privateKey(Files.readString(Paths.get(&#34;/Users/myuser/certs/privkey.pem&#34;)))
- *             .leafCertificate(Files.readString(Paths.get(&#34;/Users/myuser/certs/cert.pem&#34;)))
- *             .certificateChain(Files.readString(Paths.get(&#34;/Users/myuser/certs/fullchain.pem&#34;)))
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
+ *             .name("custom-example")
+ *             .type("custom")
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/certs/privkey.pem")
+ *                 .build()).result())
+ *             .leafCertificate(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/certs/cert.pem")
+ *                 .build()).result())
+ *             .certificateChain(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/myuser/certs/fullchain.pem")
+ *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Let&#39;s Encrypt Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -85,14 +95,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
- *             .domains(&#34;example.com&#34;)
- *             .type(&#34;lets_encrypt&#34;)
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
+ *             .name("le-example")
+ *             .type("lets_encrypt")
+ *             .domains("example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Use with Other Resources
@@ -101,7 +113,8 @@ import javax.annotation.Nullable;
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,27 +138,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
- *             .type(&#34;lets_encrypt&#34;)
- *             .domains(&#34;example.com&#34;)
+ *         var cert = new Certificate("cert", CertificateArgs.builder()
+ *             .name("le-example")
+ *             .type("lets_encrypt")
+ *             .domains("example.com")
  *             .build());
  * 
  *         // Create a new Load Balancer with TLS termination
- *         var public_ = new LoadBalancer(&#34;public&#34;, LoadBalancerArgs.builder()        
- *             .region(&#34;nyc3&#34;)
- *             .dropletTag(&#34;backend&#34;)
+ *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()
+ *             .name("secure-loadbalancer-1")
+ *             .region("nyc3")
+ *             .dropletTag("backend")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
  *                 .entryPort(443)
- *                 .entryProtocol(&#34;https&#34;)
+ *                 .entryProtocol("https")
  *                 .targetPort(80)
- *                 .targetProtocol(&#34;http&#34;)
+ *                 .targetProtocol("http")
  *                 .certificateName(cert.name())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,8 +30,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarVolume, err := digitalocean.NewVolume(ctx, "foobarVolume", &digitalocean.VolumeArgs{
+//			foobar, err := digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
 //				Region:                pulumi.String(digitalocean.RegionNYC1),
+//				Name:                  pulumi.String("baz"),
 //				Size:                  pulumi.Int(100),
 //				InitialFilesystemType: pulumi.String(digitalocean.FileSystemTypeEXT4),
 //				Description:           pulumi.String("an example volume"),
@@ -40,7 +40,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobarDroplet", &digitalocean.DropletArgs{
+//			foobarDroplet, err := digitalocean.NewDroplet(ctx, "foobar", &digitalocean.DropletArgs{
+//				Name:   pulumi.String("baz"),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Region: pulumi.String(digitalocean.RegionNYC1),
@@ -48,9 +49,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewVolumeAttachment(ctx, "foobarVolumeAttachment", &digitalocean.VolumeAttachmentArgs{
+//			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
 //				DropletId: foobarDroplet.ID(),
-//				VolumeId:  foobarVolume.ID(),
+//				VolumeId:  foobar.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -60,7 +61,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type VolumeAttachment struct {
 	pulumi.CustomResourceState
 

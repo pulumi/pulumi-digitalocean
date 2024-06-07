@@ -106,23 +106,22 @@ class FloatingIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+        foobar = digitalocean.FloatingIp("foobar", region="sgp1")
+        foobar_droplet = digitalocean.Droplet("foobar",
+            name="baz",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.SGP1,
             ipv6=True,
             private_networking=True)
-        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
-            ip_address=foobar_floating_ip.ip_address,
+        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
+            ip_address=foobar.ip_address,
             droplet_id=foobar_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -154,23 +153,22 @@ class FloatingIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar_floating_ip = digitalocean.FloatingIp("foobarFloatingIp", region="sgp1")
-        foobar_droplet = digitalocean.Droplet("foobarDroplet",
+        foobar = digitalocean.FloatingIp("foobar", region="sgp1")
+        foobar_droplet = digitalocean.Droplet("foobar",
+            name="baz",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.SGP1,
             ipv6=True,
             private_networking=True)
-        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobarFloatingIpAssignment",
-            ip_address=foobar_floating_ip.ip_address,
+        foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
+            ip_address=foobar.ip_address,
             droplet_id=foobar_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

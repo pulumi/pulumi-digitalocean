@@ -89,7 +89,6 @@ class GetKubernetesClusterResult:
     def auto_upgrade(self) -> bool:
         """
         A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -141,6 +140,9 @@ class GetKubernetesClusterResult:
     @property
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> Sequence['outputs.GetKubernetesClusterKubeConfigResult']:
+        """
+        A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        """
         return pulumi.get(self, "kube_configs")
 
     @property
@@ -271,6 +273,15 @@ def get_kubernetes_cluster(name: Optional[str] = None,
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+    ```
+
 
     :param str name: The name of Kubernetes cluster.
     :param Sequence[str] tags: A list of tag names applied to the node pool.
@@ -310,6 +321,15 @@ def get_kubernetes_cluster_output(name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesClusterResult]:
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+    ```
 
 
     :param str name: The name of Kubernetes cluster.

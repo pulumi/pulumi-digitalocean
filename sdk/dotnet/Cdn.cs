@@ -16,7 +16,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Basic Example
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,6 +27,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Spaces Bucket
     ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
+    ///         Name = "example",
     ///         Region = DigitalOcean.Region.SFO2,
     ///         Acl = "public-read",
     ///     });
@@ -44,11 +44,9 @@ namespace Pulumi.DigitalOcean
     ///     };
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Custom Sub-Domain Example
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,6 +58,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new Spaces Bucket
     ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
+    ///         Name = "example",
     ///         Region = DigitalOcean.Region.SFO2,
     ///         Acl = "public-read",
     ///     });
@@ -67,6 +66,7 @@ namespace Pulumi.DigitalOcean
     ///     // Create a DigitalOcean managed Let's Encrypt Certificate
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
+    ///         Name = "cdn-cert",
     ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
     ///         Domains = new[]
     ///         {
@@ -84,7 +84,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -17,10 +16,9 @@ import * as utilities from "./utilities";
  * // Create a new domain
  * const _default = new digitalocean.Domain("default", {
  *     name: "example.com",
- *     ipAddress: digitalocean_droplet.foo.ipv4_address,
+ *     ipAddress: foo.ipv4Address,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

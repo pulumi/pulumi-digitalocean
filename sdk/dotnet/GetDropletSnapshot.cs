@@ -20,7 +20,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the Droplet snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,18 +30,16 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Create image from snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,13 +58,13 @@ namespace Pulumi.DigitalOcean
         ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
         ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Name = "web-02",
         ///         Region = DigitalOcean.Region.NYC3,
         ///         Size = DigitalOcean.DropletSlug.DropletS2VCPU4GB,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDropletSnapshotResult> InvokeAsync(GetDropletSnapshotArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotArgs(), options.WithDefaults());
@@ -81,7 +78,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the Droplet snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,18 +88,16 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Create image from snapshot:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -122,13 +116,13 @@ namespace Pulumi.DigitalOcean
         ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
         ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
+        ///         Name = "web-02",
         ///         Region = DigitalOcean.Region.NYC3,
         ///         Size = DigitalOcean.DropletSlug.DropletS2VCPU4GB,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDropletSnapshotResult> Invoke(GetDropletSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletSnapshotResult>("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args ?? new GetDropletSnapshotInvokeArgs(), options.WithDefaults());

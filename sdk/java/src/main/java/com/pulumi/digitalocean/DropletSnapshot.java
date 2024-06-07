@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,25 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-22-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()
+ *             .name("web-01")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var web_snapshot = new DropletSnapshot(&#34;web-snapshot&#34;, DropletSnapshotArgs.builder()        
+ *         var web_snapshot = new DropletSnapshot("web-snapshot", DropletSnapshotArgs.builder()
  *             .dropletId(web.id())
+ *             .name("web-snapshot-01")
  *             .build());
  * 
- *         var from_snapshot = new Droplet(&#34;from-snapshot&#34;, DropletArgs.builder()        
+ *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
  *             .image(web_snapshot.id())
- *             .region(&#34;nyc3&#34;)
- *             .size(&#34;s-2vcpu-4gb&#34;)
+ *             .name("web-02")
+ *             .region("nyc3")
+ *             .size("s-2vcpu-4gb")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

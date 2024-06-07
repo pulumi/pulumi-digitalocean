@@ -108,14 +108,14 @@ class DatabaseFirewall(pulumi.CustomResource):
 
         ### Create a new database firewall allowing multiple IP addresses
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -132,22 +132,22 @@ class DatabaseFirewall(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall allowing a Droplet
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
+            name="web-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -158,23 +158,23 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall for a database replica
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
+            name="replica-example",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1)
         # Create firewall rule for database replica
@@ -185,7 +185,6 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,14 +216,14 @@ class DatabaseFirewall(pulumi.CustomResource):
 
         ### Create a new database firewall allowing multiple IP addresses
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -241,22 +240,22 @@ class DatabaseFirewall(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall allowing a Droplet
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
+            name="web-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -267,23 +266,23 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value=web.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a new database firewall for a database replica
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         postgres_example = digitalocean.DatabaseCluster("postgres-example",
+            name="example-postgres-cluster",
             engine="pg",
-            version="11",
+            version="15",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
         replica_example = digitalocean.DatabaseReplica("replica-example",
             cluster_id=postgres_example.id,
+            name="replica-example",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1)
         # Create firewall rule for database replica
@@ -294,7 +293,6 @@ class DatabaseFirewall(pulumi.CustomResource):
                 value="192.168.1.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Basic Example
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,15 +36,15 @@ namespace Pulumi.DigitalOcean
     ///             {
     ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
     ///                 {
+    ///                     Name = "go-service",
     ///                     EnvironmentSlug = "go",
-    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
-    ///                     {
-    ///                         Branch = "main",
-    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
-    ///                     },
     ///                     InstanceCount = 1,
     ///                     InstanceSizeSlug = "professional-xs",
-    ///                     Name = "go-service",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
+    ///                     {
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
+    ///                         Branch = "main",
+    ///                     },
     ///                 },
     ///             },
     ///         },
@@ -53,11 +52,9 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Static Site Example
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,14 +73,14 @@ namespace Pulumi.DigitalOcean
     ///             {
     ///                 new DigitalOcean.Inputs.AppSpecStaticSiteArgs
     ///                 {
+    ///                     Name = "sample-jekyll",
     ///                     BuildCommand = "bundle exec jekyll build -d ./public",
+    ///                     OutputDir = "/public",
     ///                     Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs
     ///                     {
-    ///                         Branch = "main",
     ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-jekyll.git",
+    ///                         Branch = "main",
     ///                     },
-    ///                     Name = "sample-jekyll",
-    ///                     OutputDir = "/public",
     ///                 },
     ///             },
     ///         },
@@ -91,7 +88,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -121,6 +117,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The dedicated egress IP addresses associated with the app.
+        /// </summary>
+        [Output("dedicatedIps")]
+        public Output<ImmutableArray<Outputs.AppDedicatedIp>> DedicatedIps { get; private set; } = null!;
 
         /// <summary>
         /// The default URL to access the app.
@@ -202,6 +204,18 @@ namespace Pulumi.DigitalOcean
 
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dedicatedIps")]
+        private InputList<Inputs.AppDedicatedIpArgs>? _dedicatedIps;
+
+        /// <summary>
+        /// The dedicated egress IP addresses associated with the app.
+        /// </summary>
+        public InputList<Inputs.AppDedicatedIpArgs> DedicatedIps
+        {
+            get => _dedicatedIps ?? (_dedicatedIps = new InputList<Inputs.AppDedicatedIpArgs>());
+            set => _dedicatedIps = value;
+        }
+
         /// <summary>
         /// The ID of the project that the app is assigned to.
         /// 
@@ -243,6 +257,18 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        [Input("dedicatedIps")]
+        private InputList<Inputs.AppDedicatedIpGetArgs>? _dedicatedIps;
+
+        /// <summary>
+        /// The dedicated egress IP addresses associated with the app.
+        /// </summary>
+        public InputList<Inputs.AppDedicatedIpGetArgs> DedicatedIps
+        {
+            get => _dedicatedIps ?? (_dedicatedIps = new InputList<Inputs.AppDedicatedIpGetArgs>());
+            set => _dedicatedIps = value;
+        }
 
         /// <summary>
         /// The default URL to access the app.

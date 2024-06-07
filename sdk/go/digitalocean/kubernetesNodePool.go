@@ -18,7 +18,6 @@ import (
 //
 // ### Basic Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -32,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("foo"),
 //				Region:  pulumi.String(digitalocean.RegionNYC1),
 //				Version: pulumi.String("1.22.8-do.1"),
 //				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
@@ -45,6 +45,7 @@ import (
 //			}
 //			_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
 //				ClusterId: foo.ID(),
+//				Name:      pulumi.String("backend-pool"),
 //				Size:      pulumi.String(digitalocean.DropletSlugDropletC2),
 //				NodeCount: pulumi.Int(2),
 //				Tags: pulumi.StringArray{
@@ -70,14 +71,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Autoscaling Example
 //
 // Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
 // For example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,7 +90,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewKubernetesNodePool(ctx, "autoscale-pool-01", &digitalocean.KubernetesNodePoolArgs{
-//				ClusterId: pulumi.Any(digitalocean_kubernetes_cluster.Foo.Id),
+//				ClusterId: pulumi.Any(foo.Id),
+//				Name:      pulumi.String("autoscale-pool-01"),
 //				Size:      pulumi.String(digitalocean.DropletSlugDropletS1VCPU2GB),
 //				AutoScale: pulumi.Bool(true),
 //				MinNodes:  pulumi.Int(1),
@@ -105,7 +105,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

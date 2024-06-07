@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,14 +46,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Vpc(&#34;example&#34;, VpcArgs.builder()        
- *             .ipRange(&#34;10.10.10.0/24&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var example = new Vpc("example", VpcArgs.builder()
+ *             .name("example-project-network")
+ *             .region("nyc3")
+ *             .ipRange("10.10.10.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Resource Assignment
@@ -62,7 +65,8 @@ import javax.annotation.Nullable;
  * may be assigned to a VPC by referencing its `id`. For example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -85,20 +89,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new Vpc(&#34;exampleVpc&#34;, VpcArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var example = new Vpc("example", VpcArgs.builder()
+ *             .name("example-project-network")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var exampleDroplet = new Droplet(&#34;exampleDroplet&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
- *             .vpcUuid(exampleVpc.id())
+ *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+ *             .name("example-01")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
+ *             .vpcUuid(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

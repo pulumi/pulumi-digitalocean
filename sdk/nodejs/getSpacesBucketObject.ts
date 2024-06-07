@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for a Droplet:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -29,12 +28,12 @@ import * as utilities from "./utilities";
  * });
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucketObject(args: GetSpacesBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectResult> {
 
@@ -153,7 +152,6 @@ export interface GetSpacesBucketObjectResult {
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for a Droplet:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -165,12 +163,12 @@ export interface GetSpacesBucketObjectResult {
  * });
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     userData: bootstrapScript.then(bootstrapScript => bootstrapScript.body),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSpacesBucketObjectOutput(args: GetSpacesBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectResult> {
     return pulumi.output(args).apply((a: any) => getSpacesBucketObject(a, opts))

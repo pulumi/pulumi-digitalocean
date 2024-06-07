@@ -11,13 +11,13 @@ import * as utilities from "./utilities";
  *
  * ### Basic Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
+ *     name: "example",
  *     region: digitalocean.Region.SFO2,
  *     acl: "public-read",
  * });
@@ -25,22 +25,22 @@ import * as utilities from "./utilities";
  * const mycdn = new digitalocean.Cdn("mycdn", {origin: mybucket.bucketDomainName});
  * export const fqdn = mycdn.endpoint;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Custom Sub-Domain Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new Spaces Bucket
  * const mybucket = new digitalocean.SpacesBucket("mybucket", {
+ *     name: "example",
  *     region: digitalocean.Region.SFO2,
  *     acl: "public-read",
  * });
  * // Create a DigitalOcean managed Let's Encrypt Certificate
  * const cert = new digitalocean.Certificate("cert", {
+ *     name: "cdn-cert",
  *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["static.example.com"],
  * });
@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  *     certificateName: cert.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

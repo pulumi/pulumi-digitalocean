@@ -14,7 +14,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Create a Key in a Spaces Bucket
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,6 +24,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
@@ -60,7 +60,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

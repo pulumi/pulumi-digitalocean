@@ -18,7 +18,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the account:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the account:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
@@ -85,6 +81,18 @@ namespace Pulumi.DigitalOcean
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        [Input("dedicatedIps")]
+        private List<Inputs.GetAppDedicatedIpArgs>? _dedicatedIps;
+
+        /// <summary>
+        /// A list of dedicated egress IP addresses associated with the app.
+        /// </summary>
+        public List<Inputs.GetAppDedicatedIpArgs> DedicatedIps
+        {
+            get => _dedicatedIps ?? (_dedicatedIps = new List<Inputs.GetAppDedicatedIpArgs>());
+            set => _dedicatedIps = value;
+        }
+
         public GetAppArgs()
         {
         }
@@ -98,6 +106,18 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        [Input("dedicatedIps")]
+        private InputList<Inputs.GetAppDedicatedIpInputArgs>? _dedicatedIps;
+
+        /// <summary>
+        /// A list of dedicated egress IP addresses associated with the app.
+        /// </summary>
+        public InputList<Inputs.GetAppDedicatedIpInputArgs> DedicatedIps
+        {
+            get => _dedicatedIps ?? (_dedicatedIps = new InputList<Inputs.GetAppDedicatedIpInputArgs>());
+            set => _dedicatedIps = value;
+        }
 
         public GetAppInvokeArgs()
         {
@@ -118,6 +138,10 @@ namespace Pulumi.DigitalOcean
         /// The date and time of when the app was created.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// A list of dedicated egress IP addresses associated with the app.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAppDedicatedIpResult> DedicatedIps;
         /// <summary>
         /// The default URL to access the app.
         /// </summary>
@@ -155,6 +179,8 @@ namespace Pulumi.DigitalOcean
 
             string createdAt,
 
+            ImmutableArray<Outputs.GetAppDedicatedIpResult> dedicatedIps,
+
             string defaultIngress,
 
             string id,
@@ -172,6 +198,7 @@ namespace Pulumi.DigitalOcean
             ActiveDeploymentId = activeDeploymentId;
             AppId = appId;
             CreatedAt = createdAt;
+            DedicatedIps = dedicatedIps;
             DefaultIngress = defaultIngress;
             Id = id;
             LiveUrl = liveUrl;

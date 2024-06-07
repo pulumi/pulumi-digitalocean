@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<Inputs.AppSpecServiceLogDestinationLogtailGetArgs>? Logtail { get; set; }
 
         /// <summary>
-        /// The name of the component.
+        /// Name of the log destination. Minimum length: 2. Maximum length: 42.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

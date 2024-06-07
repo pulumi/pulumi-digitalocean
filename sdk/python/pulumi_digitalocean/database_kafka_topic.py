@@ -225,12 +225,12 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new Kafka topic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
@@ -239,6 +239,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             tags=["production"])
         topic_01 = digitalocean.DatabaseKafkaTopic("topic-01",
             cluster_id=kafka_example.id,
+            name="topic-01",
             partition_count=3,
             replication_factor=2,
             configs=[digitalocean.DatabaseKafkaTopicConfigArgs(
@@ -267,7 +268,6 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                 segment_ms="604800000",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -298,12 +298,12 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         ## Example Usage
 
         ### Create a new Kafka topic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         kafka_example = digitalocean.DatabaseCluster("kafka-example",
+            name="example-kafka-cluster",
             engine="kafka",
             version="3.5",
             size="db-s-2vcpu-2gb",
@@ -312,6 +312,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             tags=["production"])
         topic_01 = digitalocean.DatabaseKafkaTopic("topic-01",
             cluster_id=kafka_example.id,
+            name="topic-01",
             partition_count=3,
             replication_factor=2,
             configs=[digitalocean.DatabaseKafkaTopicConfigArgs(
@@ -340,7 +341,6 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                 segment_ms="604800000",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

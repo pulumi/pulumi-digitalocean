@@ -12,17 +12,16 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = new digitalocean.Vpc("example", {
- *     ipRange: "10.10.10.0/24",
+ *     name: "example-project-network",
  *     region: "nyc3",
+ *     ipRange: "10.10.10.0/24",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Resource Assignment
  *
@@ -30,20 +29,22 @@ import * as utilities from "./utilities";
  * `digitaloceanLoadBalancer`, and `digitalocean.DatabaseCluster` resources
  * may be assigned to a VPC by referencing its `id`. For example:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVpc = new digitalocean.Vpc("exampleVpc", {region: "nyc3"});
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const example = new digitalocean.Vpc("example", {
+ *     name: "example-project-network",
+ *     region: "nyc3",
+ * });
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "example-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
- *     vpcUuid: exampleVpc.id,
+ *     vpcUuid: example.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

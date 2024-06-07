@@ -17,14 +17,14 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
     public static final AppSpecIngressRuleComponentArgs Empty = new AppSpecIngressRuleComponentArgs();
 
     /**
-     * The name of the component.
+     * The name of the component to route to.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the component.
+     * @return The name of the component to route to.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,14 +32,14 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
     }
 
     /**
-     * An optional flag to preserve the path that is forwarded to the backend service.
+     * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      * 
      */
     @Import(name="preservePathPrefix")
     private @Nullable Output<Boolean> preservePathPrefix;
 
     /**
-     * @return An optional flag to preserve the path that is forwarded to the backend service.
+     * @return An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      * 
      */
     public Optional<Output<Boolean>> preservePathPrefix() {
@@ -88,7 +88,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The name of the component to route to.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the component.
+         * @param name The name of the component to route to.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param preservePathPrefix An optional flag to preserve the path that is forwarded to the backend service.
+         * @param preservePathPrefix An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param preservePathPrefix An optional flag to preserve the path that is forwarded to the backend service.
+         * @param preservePathPrefix An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
          * 
          * @return builder
          * 

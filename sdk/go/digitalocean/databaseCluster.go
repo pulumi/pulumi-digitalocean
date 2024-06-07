@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,11 +30,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgres-cluster"),
 //				Engine:    pulumi.String("pg"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("15"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -45,10 +45,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new MySQL database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,11 +60,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "mysql-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-mysql-cluster"),
 //				Engine:    pulumi.String("mysql"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("8"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -76,10 +75,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new Redis database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,11 +90,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-redis-cluster"),
 //				Engine:    pulumi.String("redis"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("7"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -107,10 +105,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new Kafka database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,11 +120,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-kafka-cluster"),
 //				Engine:    pulumi.String("kafka"),
-//				NodeCount: pulumi.Int(3),
-//				Region:    pulumi.String(digitalocean.RegionNYC1),
-//				Size:      pulumi.String("db-s-2vcpu-2gb"),
 //				Version:   pulumi.String("3.5"),
+//				Size:      pulumi.String("db-s-2vcpu-2gb"),
+//				Region:    pulumi.String(digitalocean.RegionNYC1),
+//				NodeCount: pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err
@@ -138,10 +135,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a new MongoDB database cluster
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -155,11 +150,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "mongodb-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-mongo-cluster"),
 //				Engine:    pulumi.String("mongodb"),
-//				NodeCount: pulumi.Int(1),
-//				Region:    pulumi.String(digitalocean.RegionNYC3),
-//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Version:   pulumi.String("6"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC3),
+//				NodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -169,11 +165,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Create a new database cluster based on a backup of an existing cluster.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -187,8 +181,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			doby, err := digitalocean.NewDatabaseCluster(ctx, "doby", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("dobydb"),
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -199,9 +194,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseCluster(ctx, "dobyBackup", &digitalocean.DatabaseClusterArgs{
+//			_, err = digitalocean.NewDatabaseCluster(ctx, "doby_backup", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("dobydupe"),
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -222,7 +218,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -234,7 +229,6 @@ import (
 type DatabaseCluster struct {
 	pulumi.CustomResourceState
 
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrOutput `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
@@ -274,6 +268,18 @@ type DatabaseCluster struct {
 	StorageSizeMib pulumi.StringOutput `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Name of the OpenSearch dashboard db.
+	UiDatabase pulumi.StringOutput `pulumi:"uiDatabase"`
+	// Hostname for the OpenSearch dashboard.
+	UiHost pulumi.StringOutput `pulumi:"uiHost"`
+	// Password for the OpenSearch dashboard's default user.
+	UiPassword pulumi.StringOutput `pulumi:"uiPassword"`
+	// Network port that the OpenSearch dashboard is listening on.
+	UiPort pulumi.IntOutput `pulumi:"uiPort"`
+	// The full URI for connecting to the OpenSearch dashboard.
+	UiUri pulumi.StringOutput `pulumi:"uiUri"`
+	// Username for OpenSearch dashboard's default user.
+	UiUser pulumi.StringOutput `pulumi:"uiUser"`
 	// The full URI for connecting to the database cluster.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Username for the cluster's default user.
@@ -305,6 +311,8 @@ func NewDatabaseCluster(ctx *pulumi.Context,
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
 		"privateUri",
+		"uiPassword",
+		"uiUri",
 		"uri",
 	})
 	opts = append(opts, secrets)
@@ -331,7 +339,6 @@ func GetDatabaseCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseCluster resources.
 type databaseClusterState struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// The uniform resource name of the database cluster.
 	ClusterUrn *string `pulumi:"clusterUrn"`
@@ -371,6 +378,18 @@ type databaseClusterState struct {
 	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
+	// Name of the OpenSearch dashboard db.
+	UiDatabase *string `pulumi:"uiDatabase"`
+	// Hostname for the OpenSearch dashboard.
+	UiHost *string `pulumi:"uiHost"`
+	// Password for the OpenSearch dashboard's default user.
+	UiPassword *string `pulumi:"uiPassword"`
+	// Network port that the OpenSearch dashboard is listening on.
+	UiPort *int `pulumi:"uiPort"`
+	// The full URI for connecting to the OpenSearch dashboard.
+	UiUri *string `pulumi:"uiUri"`
+	// Username for OpenSearch dashboard's default user.
+	UiUser *string `pulumi:"uiUser"`
 	// The full URI for connecting to the database cluster.
 	Uri *string `pulumi:"uri"`
 	// Username for the cluster's default user.
@@ -381,7 +400,6 @@ type databaseClusterState struct {
 }
 
 type DatabaseClusterState struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// The uniform resource name of the database cluster.
 	ClusterUrn pulumi.StringPtrInput
@@ -421,6 +439,18 @@ type DatabaseClusterState struct {
 	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
+	// Name of the OpenSearch dashboard db.
+	UiDatabase pulumi.StringPtrInput
+	// Hostname for the OpenSearch dashboard.
+	UiHost pulumi.StringPtrInput
+	// Password for the OpenSearch dashboard's default user.
+	UiPassword pulumi.StringPtrInput
+	// Network port that the OpenSearch dashboard is listening on.
+	UiPort pulumi.IntPtrInput
+	// The full URI for connecting to the OpenSearch dashboard.
+	UiUri pulumi.StringPtrInput
+	// Username for OpenSearch dashboard's default user.
+	UiUser pulumi.StringPtrInput
 	// The full URI for connecting to the database cluster.
 	Uri pulumi.StringPtrInput
 	// Username for the cluster's default user.
@@ -435,7 +465,6 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 }
 
 type databaseClusterArgs struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine string `pulumi:"engine"`
@@ -468,7 +497,6 @@ type databaseClusterArgs struct {
 
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
-	// Create a new database cluster based on a backup of an existing cluster.
 	BackupRestore DatabaseClusterBackupRestorePtrInput
 	// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringInput
@@ -586,7 +614,6 @@ func (o DatabaseClusterOutput) ToDatabaseClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-// Create a new database cluster based on a backup of an existing cluster.
 func (o DatabaseClusterOutput) BackupRestore() DatabaseClusterBackupRestorePtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterBackupRestorePtrOutput { return v.BackupRestore }).(DatabaseClusterBackupRestorePtrOutput)
 }
@@ -684,6 +711,36 @@ func (o DatabaseClusterOutput) StorageSizeMib() pulumi.StringOutput {
 // A list of tag names to be applied to the database cluster.
 func (o DatabaseClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Name of the OpenSearch dashboard db.
+func (o DatabaseClusterOutput) UiDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.UiDatabase }).(pulumi.StringOutput)
+}
+
+// Hostname for the OpenSearch dashboard.
+func (o DatabaseClusterOutput) UiHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.UiHost }).(pulumi.StringOutput)
+}
+
+// Password for the OpenSearch dashboard's default user.
+func (o DatabaseClusterOutput) UiPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.UiPassword }).(pulumi.StringOutput)
+}
+
+// Network port that the OpenSearch dashboard is listening on.
+func (o DatabaseClusterOutput) UiPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.IntOutput { return v.UiPort }).(pulumi.IntOutput)
+}
+
+// The full URI for connecting to the OpenSearch dashboard.
+func (o DatabaseClusterOutput) UiUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.UiUri }).(pulumi.StringOutput)
+}
+
+// Username for OpenSearch dashboard's default user.
+func (o DatabaseClusterOutput) UiUser() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.UiUser }).(pulumi.StringOutput)
 }
 
 // The full URI for connecting to the database cluster.

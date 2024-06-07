@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * Get the volume:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -26,30 +25,28 @@ import * as utilities from "./utilities";
  *     region: "nyc3",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a volume to attach it to a Droplet:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVolume = digitalocean.getVolume({
+ * const example = digitalocean.getVolume({
  *     name: "app-data",
  *     region: "nyc3",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "foo",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
+ *     volumeId: example.then(example => example.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
 
@@ -130,7 +127,6 @@ export interface GetVolumeResult {
  *
  * Get the volume:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -140,30 +136,28 @@ export interface GetVolumeResult {
  *     region: "nyc3",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Reuse the data about a volume to attach it to a Droplet:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleVolume = digitalocean.getVolume({
+ * const example = digitalocean.getVolume({
  *     name: "app-data",
  *     region: "nyc3",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
+ *     name: "foo",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-18-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
  *     dropletId: exampleDroplet.id,
- *     volumeId: exampleVolume.then(exampleVolume => exampleVolume.id),
+ *     volumeId: example.then(example => example.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
     return pulumi.output(args).apply((a: any) => getVolume(a, opts))

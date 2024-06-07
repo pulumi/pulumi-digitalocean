@@ -18,7 +18,6 @@ import (
 //
 // ### Basic Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Spaces Bucket
 //			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("example"),
 //				Region: pulumi.String(digitalocean.RegionSFO2),
 //				Acl:    pulumi.String("public-read"),
 //			})
@@ -52,11 +52,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Custom Sub-Domain Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,6 +69,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Spaces Bucket
 //			mybucket, err := digitalocean.NewSpacesBucket(ctx, "mybucket", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("example"),
 //				Region: pulumi.String(digitalocean.RegionSFO2),
 //				Acl:    pulumi.String("public-read"),
 //			})
@@ -79,6 +78,7 @@ import (
 //			}
 //			// Create a DigitalOcean managed Let's Encrypt Certificate
 //			cert, err := digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
+//				Name: pulumi.String("cdn-cert"),
 //				Type: pulumi.String(digitalocean.CertificateTypeLetsEncrypt),
 //				Domains: pulumi.StringArray{
 //					pulumi.String("static.example.com"),
@@ -101,7 +101,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

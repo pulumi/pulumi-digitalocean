@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,18 +23,20 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var webDroplet = new DigitalOcean.Droplet("webDroplet", new()
+    ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
+    ///         Name = "web-1",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
-    ///     var webFirewall = new DigitalOcean.Firewall("webFirewall", new()
+    ///     var webFirewall = new DigitalOcean.Firewall("web", new()
     ///     {
+    ///         Name = "only-22-80-and-443",
     ///         DropletIds = new[]
     ///         {
-    ///             webDroplet.Id,
+    ///             web.Id,
     ///         },
     ///         InboundRules = new[]
     ///         {
@@ -115,7 +116,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -22,15 +22,12 @@ import * as utilities from "./utilities";
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
- * // ...
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
  *
@@ -38,23 +35,25 @@ import * as utilities from "./utilities";
  *
  * ### Create a New Bucket
  *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const foobar = new digitalocean.SpacesBucket("foobar", {region: digitalocean.Region.NYC3});
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### Create a New Bucket With CORS Rules
- *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     name: "foobar",
+ *     region: digitalocean.Region.NYC3,
+ * });
+ * ```
+ *
+ * ### Create a New Bucket With CORS Rules
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     name: "foobar",
+ *     region: digitalocean.Region.NYC3,
  *     corsRules: [
  *         {
  *             allowedHeaders: ["*"],
@@ -73,10 +72,8 @@ import * as utilities from "./utilities";
  *             maxAgeSeconds: 3000,
  *         },
  *     ],
- *     region: digitalocean.Region.NYC3,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

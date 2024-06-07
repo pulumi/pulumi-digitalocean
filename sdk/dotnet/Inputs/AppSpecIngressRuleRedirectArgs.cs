@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? Authority { get; set; }
 
         /// <summary>
-        /// The health check will be performed on this port instead of component's HTTP port.
+        /// The port to redirect to.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

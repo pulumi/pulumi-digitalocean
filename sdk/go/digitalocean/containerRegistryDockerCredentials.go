@@ -22,7 +22,6 @@ import (
 //
 // Get the container registry:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,13 +45,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Docker Provider Example
 //
 // Use the `endpoint` and `dockerCredentials` with the Docker provider:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,7 +68,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewContainerRegistryDockerCredentials(ctx, "exampleContainerRegistryDockerCredentials", &digitalocean.ContainerRegistryDockerCredentialsArgs{
+//			_, err = digitalocean.NewContainerRegistryDockerCredentials(ctx, "example", &digitalocean.ContainerRegistryDockerCredentialsArgs{
 //				RegistryName: pulumi.String("example"),
 //			})
 //			if err != nil {
@@ -82,7 +79,55 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
+//
+// ### Kubernetes Example
+//
+// Combined with the Kubernetes Provider's `kubernetesSecret` resource, you can
+// access the registry from inside your cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/core/v1"
+//	metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/meta/v1"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleContainerRegistryDockerCredentials, err := digitalocean.NewContainerRegistryDockerCredentials(ctx, "example", &digitalocean.ContainerRegistryDockerCredentialsArgs{
+//				RegistryName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.LookupKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
+//				Name: "prod-cluster-01",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = corev1.NewSecret(ctx, "example", &corev1.SecretArgs{
+//				Metadata: &metav1.ObjectMetaArgs{
+//					Name: pulumi.String("docker-cfg"),
+//				},
+//				Data: pulumi.StringMap{
+//					".dockerconfigjson": exampleContainerRegistryDockerCredentials.DockerCredentials,
+//				},
+//				Type: pulumi.String("kubernetes.io/dockerconfigjson"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ContainerRegistryDockerCredentials struct {
 	pulumi.CustomResourceState
 

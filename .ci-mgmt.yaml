@@ -4,10 +4,15 @@ env:
   DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
 makeTemplate: bridged
 plugins:
-  - name: kubernetes 
-    version: "3.10.0"
+  - name: kubernetes
+    version: "4.11.0"
+  - name: std
+    version: "1.6.2"
+  - name: terraform
+    version: "1.0.17"
+    kind: converter
 team: ecosystem
-
+pulumiConvert: 1
 actions:
   preTest:
     - name: make upstream

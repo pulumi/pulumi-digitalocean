@@ -88,6 +88,36 @@ public final class GetDatabaseClusterResult {
     private String storageSizeMib;
     private @Nullable List<String> tags;
     /**
+     * @return Name of the OpenSearch dashboard db.
+     * 
+     */
+    private String uiDatabase;
+    /**
+     * @return Hostname for the OpenSearch dashboard.
+     * 
+     */
+    private String uiHost;
+    /**
+     * @return Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    private String uiPassword;
+    /**
+     * @return Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    private Integer uiPort;
+    /**
+     * @return The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    private String uiUri;
+    /**
+     * @return Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    private String uiUser;
+    /**
      * @return The full URI for connecting to the database cluster.
      * 
      */
@@ -217,6 +247,48 @@ public final class GetDatabaseClusterResult {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
+     * @return Name of the OpenSearch dashboard db.
+     * 
+     */
+    public String uiDatabase() {
+        return this.uiDatabase;
+    }
+    /**
+     * @return Hostname for the OpenSearch dashboard.
+     * 
+     */
+    public String uiHost() {
+        return this.uiHost;
+    }
+    /**
+     * @return Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public String uiPassword() {
+        return this.uiPassword;
+    }
+    /**
+     * @return Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    public Integer uiPort() {
+        return this.uiPort;
+    }
+    /**
+     * @return The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    public String uiUri() {
+        return this.uiUri;
+    }
+    /**
+     * @return Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public String uiUser() {
+        return this.uiUser;
+    }
+    /**
      * @return The full URI for connecting to the database cluster.
      * 
      */
@@ -271,6 +343,12 @@ public final class GetDatabaseClusterResult {
         private String size;
         private String storageSizeMib;
         private @Nullable List<String> tags;
+        private String uiDatabase;
+        private String uiHost;
+        private String uiPassword;
+        private Integer uiPort;
+        private String uiUri;
+        private String uiUser;
         private String uri;
         private String urn;
         private String user;
@@ -295,6 +373,12 @@ public final class GetDatabaseClusterResult {
     	      this.size = defaults.size;
     	      this.storageSizeMib = defaults.storageSizeMib;
     	      this.tags = defaults.tags;
+    	      this.uiDatabase = defaults.uiDatabase;
+    	      this.uiHost = defaults.uiHost;
+    	      this.uiPassword = defaults.uiPassword;
+    	      this.uiPort = defaults.uiPort;
+    	      this.uiUri = defaults.uiUri;
+    	      this.uiUser = defaults.uiUser;
     	      this.uri = defaults.uri;
     	      this.urn = defaults.urn;
     	      this.user = defaults.user;
@@ -442,6 +526,54 @@ public final class GetDatabaseClusterResult {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder uiDatabase(String uiDatabase) {
+            if (uiDatabase == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uiDatabase");
+            }
+            this.uiDatabase = uiDatabase;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uiHost(String uiHost) {
+            if (uiHost == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uiHost");
+            }
+            this.uiHost = uiHost;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uiPassword(String uiPassword) {
+            if (uiPassword == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uiPassword");
+            }
+            this.uiPassword = uiPassword;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uiPort(Integer uiPort) {
+            if (uiPort == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uiPort");
+            }
+            this.uiPort = uiPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uiUri(String uiUri) {
+            if (uiUri == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uiUri");
+            }
+            this.uiUri = uiUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uiUser(String uiUser) {
+            if (uiUser == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uiUser");
+            }
+            this.uiUser = uiUser;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uri(String uri) {
             if (uri == null) {
               throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "uri");
@@ -492,6 +624,12 @@ public final class GetDatabaseClusterResult {
             _resultValue.size = size;
             _resultValue.storageSizeMib = storageSizeMib;
             _resultValue.tags = tags;
+            _resultValue.uiDatabase = uiDatabase;
+            _resultValue.uiHost = uiHost;
+            _resultValue.uiPassword = uiPassword;
+            _resultValue.uiPort = uiPort;
+            _resultValue.uiUri = uiUri;
+            _resultValue.uiUser = uiUser;
             _resultValue.uri = uri;
             _resultValue.urn = urn;
             _resultValue.user = user;

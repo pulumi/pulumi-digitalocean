@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecJobImage {
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     private @Nullable List<AppSpecJobImageDeployOnPush> deployOnPushes;
@@ -24,6 +24,11 @@ public final class AppSpecJobImage {
      * 
      */
     private @Nullable String registry;
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    private @Nullable String registryCredentials;
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      * 
@@ -42,7 +47,7 @@ public final class AppSpecJobImage {
 
     private AppSpecJobImage() {}
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     public List<AppSpecJobImageDeployOnPush> deployOnPushes() {
@@ -54,6 +59,13 @@ public final class AppSpecJobImage {
      */
     public Optional<String> registry() {
         return Optional.ofNullable(this.registry);
+    }
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    public Optional<String> registryCredentials() {
+        return Optional.ofNullable(this.registryCredentials);
     }
     /**
      * @return The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -88,6 +100,7 @@ public final class AppSpecJobImage {
     public static final class Builder {
         private @Nullable List<AppSpecJobImageDeployOnPush> deployOnPushes;
         private @Nullable String registry;
+        private @Nullable String registryCredentials;
         private String registryType;
         private String repository;
         private @Nullable String tag;
@@ -96,6 +109,7 @@ public final class AppSpecJobImage {
     	      Objects.requireNonNull(defaults);
     	      this.deployOnPushes = defaults.deployOnPushes;
     	      this.registry = defaults.registry;
+    	      this.registryCredentials = defaults.registryCredentials;
     	      this.registryType = defaults.registryType;
     	      this.repository = defaults.repository;
     	      this.tag = defaults.tag;
@@ -114,6 +128,12 @@ public final class AppSpecJobImage {
         public Builder registry(@Nullable String registry) {
 
             this.registry = registry;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder registryCredentials(@Nullable String registryCredentials) {
+
+            this.registryCredentials = registryCredentials;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +162,7 @@ public final class AppSpecJobImage {
             final var _resultValue = new AppSpecJobImage();
             _resultValue.deployOnPushes = deployOnPushes;
             _resultValue.registry = registry;
+            _resultValue.registryCredentials = registryCredentials;
             _resultValue.registryType = registryType;
             _resultValue.repository = repository;
             _resultValue.tag = tag;

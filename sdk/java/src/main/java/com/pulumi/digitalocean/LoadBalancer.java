@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.LoadBalancerArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.LoadBalancerState;
+import com.pulumi.digitalocean.outputs.LoadBalancerDomain;
 import com.pulumi.digitalocean.outputs.LoadBalancerFirewall;
 import com.pulumi.digitalocean.outputs.LoadBalancerForwardingRule;
+import com.pulumi.digitalocean.outputs.LoadBalancerGlbSettings;
 import com.pulumi.digitalocean.outputs.LoadBalancerHealthcheck;
 import com.pulumi.digitalocean.outputs.LoadBalancerStickySessions;
 import java.lang.Boolean;
@@ -28,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,30 +56,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()
+ *             .name("web-1")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var public_ = new LoadBalancer(&#34;public&#34;, LoadBalancerArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var public_ = new LoadBalancer("public", LoadBalancerArgs.builder()
+ *             .name("loadbalancer-1")
+ *             .region("nyc3")
  *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
  *                 .entryPort(80)
- *                 .entryProtocol(&#34;http&#34;)
+ *                 .entryProtocol("http")
  *                 .targetPort(80)
- *                 .targetProtocol(&#34;http&#34;)
+ *                 .targetProtocol("http")
  *                 .build())
  *             .healthcheck(LoadBalancerHealthcheckArgs.builder()
  *                 .port(22)
- *                 .protocol(&#34;tcp&#34;)
+ *                 .protocol("tcp")
  *                 .build())
  *             .dropletIds(web.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
@@ -84,66 +90,6 @@ import javax.annotation.Nullable;
  * operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
  * as there cannot be multiple certificates with the same name in an account.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.digitalocean.Certificate;
- * import com.pulumi.digitalocean.CertificateArgs;
- * import com.pulumi.digitalocean.Droplet;
- * import com.pulumi.digitalocean.DropletArgs;
- * import com.pulumi.digitalocean.LoadBalancer;
- * import com.pulumi.digitalocean.LoadBalancerArgs;
- * import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
- * import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
- *             .privateKey(&#34;file(&#39;key.pem&#39;)&#34;)
- *             .leafCertificate(&#34;file(&#39;cert.pem&#39;)&#34;)
- *             .build());
- * 
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
- *             .build());
- * 
- *         var public_ = new LoadBalancer(&#34;public&#34;, LoadBalancerArgs.builder()        
- *             .region(&#34;nyc3&#34;)
- *             .forwardingRules(LoadBalancerForwardingRuleArgs.builder()
- *                 .entryPort(443)
- *                 .entryProtocol(&#34;https&#34;)
- *                 .targetPort(80)
- *                 .targetProtocol(&#34;http&#34;)
- *                 .certificateName(cert.name())
- *                 .build())
- *             .healthcheck(LoadBalancerHealthcheckArgs.builder()
- *                 .port(22)
- *                 .protocol(&#34;tcp&#34;)
- *                 .build())
- *             .dropletIds(web.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -157,17 +103,19 @@ import javax.annotation.Nullable;
 @ResourceType(type="digitalocean:index/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
+     * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `least_connections`. The default value is `round_robin`.
      * 
+     * @deprecated
+     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * 
      */
+    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
     @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> algorithm;
 
     /**
-     * @return The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
+     * @return **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `least_connections`. The default value is `round_robin`.
      * 
      */
@@ -187,6 +135,22 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> disableLetsEncryptDnsRecords() {
         return Codegen.optional(this.disableLetsEncryptDnsRecords);
+    }
+    /**
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="domains", refs={List.class,LoadBalancerDomain.class}, tree="[0,1]")
+    private Output<List<LoadBalancerDomain>> domains;
+
+    /**
+     * @return A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Output<List<LoadBalancerDomain>> domains() {
+        return this.domains;
     }
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
@@ -268,15 +232,31 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="forwardingRules", refs={List.class,LoadBalancerForwardingRule.class}, tree="[0,1]")
-    private Output<List<LoadBalancerForwardingRule>> forwardingRules;
+    private Output</* @Nullable */ List<LoadBalancerForwardingRule>> forwardingRules;
 
     /**
      * @return A list of `forwarding_rule` to be assigned to the
      * Load Balancer. The `forwarding_rule` block is documented below.
      * 
      */
-    public Output<List<LoadBalancerForwardingRule>> forwardingRules() {
-        return this.forwardingRules;
+    public Output<Optional<List<LoadBalancerForwardingRule>>> forwardingRules() {
+        return Codegen.optional(this.forwardingRules);
+    }
+    /**
+     * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="glbSettings", refs={LoadBalancerGlbSettings.class}, tree="[0]")
+    private Output<LoadBalancerGlbSettings> glbSettings;
+
+    /**
+     * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Output<LoadBalancerGlbSettings> glbSettings() {
+        return this.glbSettings;
     }
     /**
      * A `healthcheck` block to be assigned to the
@@ -447,14 +427,30 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.stickySessions;
     }
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="targetLoadBalancerIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> targetLoadBalancerIds;
+
+    /**
+     * @return A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Output<List<String>> targetLoadBalancerIds() {
+        return this.targetLoadBalancerIds;
+    }
+    /**
+     * the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * @return the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     public Output<Optional<String>> type() {
@@ -487,7 +483,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancer(String name, LoadBalancerArgs args) {
+    public LoadBalancer(String name, @Nullable LoadBalancerArgs args) {
         this(name, args, null);
     }
     /**
@@ -496,7 +492,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancer(String name, LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LoadBalancer(String name, @Nullable LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/loadBalancer:LoadBalancer", name, args == null ? LoadBalancerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

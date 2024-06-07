@@ -12,25 +12,24 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("exampleDatabaseCluster", {
+ * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("example", {
+ *     name: "example-mysql-cluster",
  *     engine: "mysql",
  *     version: "8",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
- * const exampleDatabaseMysqlConfig = new digitalocean.DatabaseMysqlConfig("exampleDatabaseMysqlConfig", {
+ * const example = new digitalocean.DatabaseMysqlConfig("example", {
  *     clusterId: exampleDatabaseCluster.id,
  *     connectTimeout: 10,
  *     defaultTimeZone: "UTC",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

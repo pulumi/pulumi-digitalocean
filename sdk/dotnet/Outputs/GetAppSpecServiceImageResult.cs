@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Registry;
         /// <summary>
+        /// Access credentials for third-party registries
+        /// </summary>
+        public readonly string? RegistryCredentials;
+        /// <summary>
         /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         /// </summary>
         public readonly string RegistryType;
@@ -40,6 +44,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? registry,
 
+            string? registryCredentials,
+
             string registryType,
 
             string repository,
@@ -48,6 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             DeployOnPushes = deployOnPushes;
             Registry = registry;
+            RegistryCredentials = registryCredentials;
             RegistryType = registryType;
             Repository = repository;
             Tag = tag;

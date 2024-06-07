@@ -24,7 +24,6 @@ namespace Pulumi.DigitalOcean
         /// The following example retrieves a text object (which must have a `Content-Type`
         /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,6 +42,7 @@ namespace Pulumi.DigitalOcean
         ///     var web = new DigitalOcean.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),
@@ -50,7 +50,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSpacesBucketObjectResult> InvokeAsync(GetSpacesBucketObjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectArgs(), options.WithDefaults());
@@ -68,7 +67,6 @@ namespace Pulumi.DigitalOcean
         /// The following example retrieves a text object (which must have a `Content-Type`
         /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,6 +85,7 @@ namespace Pulumi.DigitalOcean
         ///     var web = new DigitalOcean.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),
@@ -94,7 +93,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSpacesBucketObjectResult> Invoke(GetSpacesBucketObjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectInvokeArgs(), options.WithDefaults());

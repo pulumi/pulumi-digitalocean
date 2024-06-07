@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  *
  * For example to find all Droplets with size `s-1vcpu-1gb`:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -35,11 +34,9 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can filter on multiple fields and sort the results as well:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -56,12 +53,11 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "created_at",
+ *         direction: "desc",
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletsResult> {
     args = args || {};
@@ -120,7 +116,6 @@ export interface GetDropletsResult {
  *
  * For example to find all Droplets with size `s-1vcpu-1gb`:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -132,11 +127,9 @@ export interface GetDropletsResult {
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can filter on multiple fields and sort the results as well:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -153,12 +146,11 @@ export interface GetDropletsResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "created_at",
+ *         direction: "desc",
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletsResult> {
     return pulumi.output(args).apply((a: any) => getDroplets(a, opts))

@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * example:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_assets = new SpacesBucket(&#34;static-assets&#34;);
+ *         var static_assets = new SpacesBucket("static-assets");
  * 
- *         // ...
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
@@ -69,7 +70,8 @@ import javax.annotation.Nullable;
  * ### Create a Key in a Spaces Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,21 +94,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new SpacesBucket(&#34;foobar&#34;, SpacesBucketArgs.builder()        
- *             .region(&#34;nyc3&#34;)
+ *         var foobar = new SpacesBucket("foobar", SpacesBucketArgs.builder()
+ *             .name("foobar")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var index = new SpacesBucketObject(&#34;index&#34;, SpacesBucketObjectArgs.builder()        
+ *         var index = new SpacesBucketObject("index", SpacesBucketObjectArgs.builder()
  *             .region(foobar.region())
  *             .bucket(foobar.name())
- *             .key(&#34;index.html&#34;)
- *             .content(&#34;&lt;html&gt;&lt;body&gt;&lt;p&gt;This page is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#34;)
- *             .contentType(&#34;text/html&#34;)
+ *             .key("index.html")
+ *             .content("<html><body><p>This page is empty.</p></body></html>")
+ *             .contentType("text/html")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

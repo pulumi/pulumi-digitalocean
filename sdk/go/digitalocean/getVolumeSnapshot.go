@@ -19,7 +19,6 @@ import (
 //
 // Get the volume snapshot:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
-//				MostRecent: pulumi.BoolRef(true),
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
+//				MostRecent: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -45,11 +44,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Reuse the data about a volume snapshot to create a new volume based on it:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,6 +69,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
 //				Region:     pulumi.String(digitalocean.RegionNYC3),
+//				Name:       pulumi.String("baz"),
 //				Size:       pulumi.Int(100),
 //				SnapshotId: pulumi.String(snapshot.Id),
 //			})
@@ -83,7 +81,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeSnapshotResult

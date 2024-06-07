@@ -10,27 +10,27 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new PostgreSQL database connection pool
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
  * const pool_01 = new digitalocean.DatabaseConnectionPool("pool-01", {
  *     clusterId: postgres_example.id,
+ *     name: "pool-01",
  *     mode: "transaction",
  *     size: 20,
  *     dbName: "defaultdb",
  *     user: "doadmin",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

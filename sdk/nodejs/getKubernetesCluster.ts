@@ -9,6 +9,17 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getKubernetesCluster({
+ *     name: "prod-cluster-01",
+ * });
+ * ```
  */
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
 
@@ -39,7 +50,6 @@ export interface GetKubernetesClusterArgs {
 export interface GetKubernetesClusterResult {
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-     * * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     readonly autoUpgrade: boolean;
     /**
@@ -63,6 +73,9 @@ export interface GetKubernetesClusterResult {
      * The public IPv4 address of the Kubernetes master node.
      */
     readonly ipv4Address: string;
+    /**
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     */
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
     /**
      * The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
@@ -112,6 +125,17 @@ export interface GetKubernetesClusterResult {
 }
 /**
  * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getKubernetesCluster({
+ *     name: "prod-cluster-01",
+ * });
+ * ```
  */
 export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClusterResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesCluster(a, opts))

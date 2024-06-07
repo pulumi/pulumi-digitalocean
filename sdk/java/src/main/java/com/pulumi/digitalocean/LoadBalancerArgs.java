@@ -8,11 +8,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Algorithm;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.LoadBalancerDomainArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerFirewallArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
+import com.pulumi.digitalocean.inputs.LoadBalancerGlbSettingsArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
 import com.pulumi.digitalocean.inputs.LoadBalancerStickySessionsArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -27,20 +28,26 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerArgs Empty = new LoadBalancerArgs();
 
     /**
-     * The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
+     * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `least_connections`. The default value is `round_robin`.
      * 
+     * @deprecated
+     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * 
      */
+    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
     @Import(name="algorithm")
     private @Nullable Output<Either<String,Algorithm>> algorithm;
 
     /**
-     * @return The load balancing algorithm used to determine
-     * which backend Droplet will be selected by a client. It must be either `round_robin`
+     * @return **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `least_connections`. The default value is `round_robin`.
      * 
+     * @deprecated
+     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * 
      */
+    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
     public Optional<Output<Either<String,Algorithm>>> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
@@ -58,6 +65,23 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> disableLetsEncryptDnsRecords() {
         return Optional.ofNullable(this.disableLetsEncryptDnsRecords);
+    }
+
+    /**
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Import(name="domains")
+    private @Nullable Output<List<LoadBalancerDomainArgs>> domains;
+
+    /**
+     * @return A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Optional<Output<List<LoadBalancerDomainArgs>>> domains() {
+        return Optional.ofNullable(this.domains);
     }
 
     /**
@@ -144,16 +168,33 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      * Load Balancer. The `forwarding_rule` block is documented below.
      * 
      */
-    @Import(name="forwardingRules", required=true)
-    private Output<List<LoadBalancerForwardingRuleArgs>> forwardingRules;
+    @Import(name="forwardingRules")
+    private @Nullable Output<List<LoadBalancerForwardingRuleArgs>> forwardingRules;
 
     /**
      * @return A list of `forwarding_rule` to be assigned to the
      * Load Balancer. The `forwarding_rule` block is documented below.
      * 
      */
-    public Output<List<LoadBalancerForwardingRuleArgs>> forwardingRules() {
-        return this.forwardingRules;
+    public Optional<Output<List<LoadBalancerForwardingRuleArgs>>> forwardingRules() {
+        return Optional.ofNullable(this.forwardingRules);
+    }
+
+    /**
+     * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Import(name="glbSettings")
+    private @Nullable Output<LoadBalancerGlbSettingsArgs> glbSettings;
+
+    /**
+     * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Optional<Output<LoadBalancerGlbSettingsArgs>> glbSettings() {
+        return Optional.ofNullable(this.glbSettings);
     }
 
     /**
@@ -300,14 +341,31 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    @Import(name="targetLoadBalancerIds")
+    private @Nullable Output<List<String>> targetLoadBalancerIds;
+
+    /**
+     * @return A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+     * **NOTE**: this is a closed beta feature and not available for public use.
+     * 
+     */
+    public Optional<Output<List<String>>> targetLoadBalancerIds() {
+        return Optional.ofNullable(this.targetLoadBalancerIds);
+    }
+
+    /**
+     * the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+     * @return the type of the load balancer (GLOBAL or REGIONAL)
      * 
      */
     public Optional<Output<String>> type() {
@@ -334,12 +392,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     private LoadBalancerArgs(LoadBalancerArgs $) {
         this.algorithm = $.algorithm;
         this.disableLetsEncryptDnsRecords = $.disableLetsEncryptDnsRecords;
+        this.domains = $.domains;
         this.dropletIds = $.dropletIds;
         this.dropletTag = $.dropletTag;
         this.enableBackendKeepalive = $.enableBackendKeepalive;
         this.enableProxyProtocol = $.enableProxyProtocol;
         this.firewall = $.firewall;
         this.forwardingRules = $.forwardingRules;
+        this.glbSettings = $.glbSettings;
         this.healthcheck = $.healthcheck;
         this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
         this.name = $.name;
@@ -349,6 +409,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.size = $.size;
         this.sizeUnit = $.sizeUnit;
         this.stickySessions = $.stickySessions;
+        this.targetLoadBalancerIds = $.targetLoadBalancerIds;
         this.type = $.type;
         this.vpcUuid = $.vpcUuid;
     }
@@ -372,50 +433,62 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param algorithm The load balancing algorithm used to determine
-         * which backend Droplet will be selected by a client. It must be either `round_robin`
+         * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * or `least_connections`. The default value is `round_robin`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * 
          */
+        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
         public Builder algorithm(@Nullable Output<Either<String,Algorithm>> algorithm) {
             $.algorithm = algorithm;
             return this;
         }
 
         /**
-         * @param algorithm The load balancing algorithm used to determine
-         * which backend Droplet will be selected by a client. It must be either `round_robin`
+         * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * or `least_connections`. The default value is `round_robin`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * 
          */
+        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
         public Builder algorithm(Either<String,Algorithm> algorithm) {
             return algorithm(Output.of(algorithm));
         }
 
         /**
-         * @param algorithm The load balancing algorithm used to determine
-         * which backend Droplet will be selected by a client. It must be either `round_robin`
+         * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * or `least_connections`. The default value is `round_robin`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * 
          */
+        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
         public Builder algorithm(String algorithm) {
             return algorithm(Either.ofLeft(algorithm));
         }
 
         /**
-         * @param algorithm The load balancing algorithm used to determine
-         * which backend Droplet will be selected by a client. It must be either `round_robin`
+         * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * or `least_connections`. The default value is `round_robin`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * 
          */
+        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
         public Builder algorithm(Algorithm algorithm) {
             return algorithm(Either.ofRight(algorithm));
         }
@@ -439,6 +512,40 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableLetsEncryptDnsRecords(Boolean disableLetsEncryptDnsRecords) {
             return disableLetsEncryptDnsRecords(Output.of(disableLetsEncryptDnsRecords));
+        }
+
+        /**
+         * @param domains A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domains(@Nullable Output<List<LoadBalancerDomainArgs>> domains) {
+            $.domains = domains;
+            return this;
+        }
+
+        /**
+         * @param domains A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domains(List<LoadBalancerDomainArgs> domains) {
+            return domains(Output.of(domains));
+        }
+
+        /**
+         * @param domains A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domains(LoadBalancerDomainArgs... domains) {
+            return domains(List.of(domains));
         }
 
         /**
@@ -567,7 +674,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder forwardingRules(Output<List<LoadBalancerForwardingRuleArgs>> forwardingRules) {
+        public Builder forwardingRules(@Nullable Output<List<LoadBalancerForwardingRuleArgs>> forwardingRules) {
             $.forwardingRules = forwardingRules;
             return this;
         }
@@ -592,6 +699,29 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forwardingRules(LoadBalancerForwardingRuleArgs... forwardingRules) {
             return forwardingRules(List.of(forwardingRules));
+        }
+
+        /**
+         * @param glbSettings A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder glbSettings(@Nullable Output<LoadBalancerGlbSettingsArgs> glbSettings) {
+            $.glbSettings = glbSettings;
+            return this;
+        }
+
+        /**
+         * @param glbSettings A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder glbSettings(LoadBalancerGlbSettingsArgs glbSettings) {
+            return glbSettings(Output.of(glbSettings));
         }
 
         /**
@@ -812,7 +942,41 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * @param targetLoadBalancerIds A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetLoadBalancerIds(@Nullable Output<List<String>> targetLoadBalancerIds) {
+            $.targetLoadBalancerIds = targetLoadBalancerIds;
+            return this;
+        }
+
+        /**
+         * @param targetLoadBalancerIds A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetLoadBalancerIds(List<String> targetLoadBalancerIds) {
+            return targetLoadBalancerIds(Output.of(targetLoadBalancerIds));
+        }
+
+        /**
+         * @param targetLoadBalancerIds A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+         * **NOTE**: this is a closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetLoadBalancerIds(String... targetLoadBalancerIds) {
+            return targetLoadBalancerIds(List.of(targetLoadBalancerIds));
+        }
+
+        /**
+         * @param type the type of the load balancer (GLOBAL or REGIONAL)
          * 
          * @return builder
          * 
@@ -823,7 +987,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+         * @param type the type of the load balancer (GLOBAL or REGIONAL)
          * 
          * @return builder
          * 
@@ -854,9 +1018,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoadBalancerArgs build() {
-            if ($.forwardingRules == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerArgs", "forwardingRules");
-            }
             return $;
         }
     }

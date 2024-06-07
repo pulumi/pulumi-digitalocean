@@ -139,7 +139,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -147,9 +146,8 @@ class Domain(pulumi.CustomResource):
         # Create a new domain
         default = digitalocean.Domain("default",
             name="example.com",
-            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
+            ip_address=foo["ipv4Address"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,7 +174,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -184,9 +181,8 @@ class Domain(pulumi.CustomResource):
         # Create a new domain
         default = digitalocean.Domain("default",
             name="example.com",
-            ip_address=digitalocean_droplet["foo"]["ipv4_address"])
+            ip_address=foo["ipv4Address"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

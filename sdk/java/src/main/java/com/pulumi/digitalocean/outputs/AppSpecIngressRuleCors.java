@@ -15,17 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecIngressRuleCors {
     /**
-     * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * @return Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      * 
      */
     private @Nullable Boolean allowCredentials;
     /**
-     * @return The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * @return The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      * 
      */
     private @Nullable List<String> allowHeaders;
     /**
-     * @return The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * @return The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      * 
      */
     private @Nullable List<String> allowMethods;
@@ -35,7 +35,7 @@ public final class AppSpecIngressRuleCors {
      */
     private @Nullable AppSpecIngressRuleCorsAllowOrigins allowOrigins;
     /**
-     * @return The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * @return The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      * 
      */
     private @Nullable List<String> exposeHeaders;
@@ -47,21 +47,21 @@ public final class AppSpecIngressRuleCors {
 
     private AppSpecIngressRuleCors() {}
     /**
-     * @return Whether browsers should expose the response to the client-side JavaScript code when the request&#39;s credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+     * @return Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      * 
      */
     public Optional<Boolean> allowCredentials() {
         return Optional.ofNullable(this.allowCredentials);
     }
     /**
-     * @return The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+     * @return The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      * 
      */
     public List<String> allowHeaders() {
         return this.allowHeaders == null ? List.of() : this.allowHeaders;
     }
     /**
-     * @return The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+     * @return The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      * 
      */
     public List<String> allowMethods() {
@@ -75,7 +75,7 @@ public final class AppSpecIngressRuleCors {
         return Optional.ofNullable(this.allowOrigins);
     }
     /**
-     * @return The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+     * @return The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      * 
      */
     public List<String> exposeHeaders() {

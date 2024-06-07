@@ -136,12 +136,13 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
 
         ### Create a Key in a Spaces Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         test = digitalocean.SpacesBucketCorsConfiguration("test",
             bucket=foobar.id,
             region="nyc3",
@@ -156,7 +157,6 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                 max_age_seconds=3000,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,12 +183,13 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
 
         ### Create a Key in a Spaces Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         test = digitalocean.SpacesBucketCorsConfiguration("test",
             bucket=foobar.id,
             region="nyc3",
@@ -203,7 +204,6 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                 max_age_seconds=3000,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

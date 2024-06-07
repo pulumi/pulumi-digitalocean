@@ -276,17 +276,18 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        web_droplet = digitalocean.Droplet("webDroplet",
+        web = digitalocean.Droplet("web",
+            name="web-1",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3)
-        web_firewall = digitalocean.Firewall("webFirewall",
-            droplet_ids=[web_droplet.id],
+        web_firewall = digitalocean.Firewall("web",
+            name="only-22-80-and-443",
+            droplet_ids=[web.id],
             inbound_rules=[
                 digitalocean.FirewallInboundRuleArgs(
                     protocol="tcp",
@@ -346,7 +347,6 @@ class Firewall(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -379,17 +379,18 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        web_droplet = digitalocean.Droplet("webDroplet",
+        web = digitalocean.Droplet("web",
+            name="web-1",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3)
-        web_firewall = digitalocean.Firewall("webFirewall",
-            droplet_ids=[web_droplet.id],
+        web_firewall = digitalocean.Firewall("web",
+            name="only-22-80-and-443",
+            droplet_ids=[web.id],
             inbound_rules=[
                 digitalocean.FirewallInboundRuleArgs(
                     protocol="tcp",
@@ -449,7 +450,6 @@ class Firewall(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

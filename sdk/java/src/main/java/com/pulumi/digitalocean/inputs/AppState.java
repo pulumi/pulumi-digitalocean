@@ -5,8 +5,10 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppDedicatedIpArgs;
 import com.pulumi.digitalocean.inputs.AppSpecArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +61,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The dedicated egress IP addresses associated with the app.
+     * 
+     */
+    @Import(name="dedicatedIps")
+    private @Nullable Output<List<AppDedicatedIpArgs>> dedicatedIps;
+
+    /**
+     * @return The dedicated egress IP addresses associated with the app.
+     * 
+     */
+    public Optional<Output<List<AppDedicatedIpArgs>>> dedicatedIps() {
+        return Optional.ofNullable(this.dedicatedIps);
     }
 
     /**
@@ -150,6 +167,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.activeDeploymentId = $.activeDeploymentId;
         this.appUrn = $.appUrn;
         this.createdAt = $.createdAt;
+        this.dedicatedIps = $.dedicatedIps;
         this.defaultIngress = $.defaultIngress;
         this.liveUrl = $.liveUrl;
         this.projectId = $.projectId;
@@ -236,6 +254,37 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param dedicatedIps The dedicated egress IP addresses associated with the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIps(@Nullable Output<List<AppDedicatedIpArgs>> dedicatedIps) {
+            $.dedicatedIps = dedicatedIps;
+            return this;
+        }
+
+        /**
+         * @param dedicatedIps The dedicated egress IP addresses associated with the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIps(List<AppDedicatedIpArgs> dedicatedIps) {
+            return dedicatedIps(Output.of(dedicatedIps));
+        }
+
+        /**
+         * @param dedicatedIps The dedicated egress IP addresses associated with the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIps(AppDedicatedIpArgs... dedicatedIps) {
+            return dedicatedIps(List.of(dedicatedIps));
         }
 
         /**

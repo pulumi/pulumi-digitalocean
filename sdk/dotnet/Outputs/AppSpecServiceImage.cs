@@ -14,13 +14,17 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecServiceImage
     {
         /// <summary>
-        /// Whether to automatically deploy new commits made to the repo.
+        /// Configures automatically deploying images pushed to DOCR.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecServiceImageDeployOnPush> DeployOnPushes;
         /// <summary>
         /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         /// </summary>
         public readonly string? Registry;
+        /// <summary>
+        /// Access credentials for third-party registries
+        /// </summary>
+        public readonly string? RegistryCredentials;
         /// <summary>
         /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         /// </summary>
@@ -40,6 +44,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? registry,
 
+            string? registryCredentials,
+
             string registryType,
 
             string repository,
@@ -48,6 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             DeployOnPushes = deployOnPushes;
             Registry = registry;
+            RegistryCredentials = registryCredentials;
             RegistryType = registryType;
             Repository = repository;
             Tag = tag;

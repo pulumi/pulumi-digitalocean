@@ -10,15 +10,16 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * // Create a new container registry
- * const foobar = new digitalocean.ContainerRegistry("foobar", {subscriptionTierSlug: "starter"});
+ * const foobar = new digitalocean.ContainerRegistry("foobar", {
+ *     name: "foobar",
+ *     subscriptionTierSlug: "starter",
+ * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

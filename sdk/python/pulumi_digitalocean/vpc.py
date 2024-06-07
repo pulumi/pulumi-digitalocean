@@ -220,16 +220,15 @@ class Vpc(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.Vpc("example",
-            ip_range="10.10.10.0/24",
-            region="nyc3")
+            name="example-project-network",
+            region="nyc3",
+            ip_range="10.10.10.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Resource Assignment
 
@@ -237,19 +236,20 @@ class Vpc(pulumi.CustomResource):
         `digitalocean_load_balancer`, and `DatabaseCluster` resources
         may be assigned to a VPC by referencing its `id`. For example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.Vpc("example",
+            name="example-project-network",
+            region="nyc3")
+        example_droplet = digitalocean.Droplet("example",
+            name="example-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3,
-            vpc_uuid=example_vpc.id)
+            vpc_uuid=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,16 +280,15 @@ class Vpc(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.Vpc("example",
-            ip_range="10.10.10.0/24",
-            region="nyc3")
+            name="example-project-network",
+            region="nyc3",
+            ip_range="10.10.10.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Resource Assignment
 
@@ -297,19 +296,20 @@ class Vpc(pulumi.CustomResource):
         `digitalocean_load_balancer`, and `DatabaseCluster` resources
         may be assigned to a VPC by referencing its `id`. For example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_vpc = digitalocean.Vpc("exampleVpc", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.Vpc("example",
+            name="example-project-network",
+            region="nyc3")
+        example_droplet = digitalocean.Droplet("example",
+            name="example-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC3,
-            vpc_uuid=example_vpc.id)
+            vpc_uuid=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

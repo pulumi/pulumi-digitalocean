@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,68 +52,71 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var webDroplet = new Droplet(&#34;webDroplet&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-18-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()
+ *             .name("web-1")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-18-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var webFirewall = new Firewall(&#34;webFirewall&#34;, FirewallArgs.builder()        
- *             .dropletIds(webDroplet.id())
+ *         var webFirewall = new Firewall("webFirewall", FirewallArgs.builder()
+ *             .name("only-22-80-and-443")
+ *             .dropletIds(web.id())
  *             .inboundRules(            
  *                 FirewallInboundRuleArgs.builder()
- *                     .protocol(&#34;tcp&#34;)
- *                     .portRange(&#34;22&#34;)
+ *                     .protocol("tcp")
+ *                     .portRange("22")
  *                     .sourceAddresses(                    
- *                         &#34;192.168.1.0/24&#34;,
- *                         &#34;2002:1:2::/48&#34;)
+ *                         "192.168.1.0/24",
+ *                         "2002:1:2::/48")
  *                     .build(),
  *                 FirewallInboundRuleArgs.builder()
- *                     .protocol(&#34;tcp&#34;)
- *                     .portRange(&#34;80&#34;)
+ *                     .protocol("tcp")
+ *                     .portRange("80")
  *                     .sourceAddresses(                    
- *                         &#34;0.0.0.0/0&#34;,
- *                         &#34;::/0&#34;)
+ *                         "0.0.0.0/0",
+ *                         "::/0")
  *                     .build(),
  *                 FirewallInboundRuleArgs.builder()
- *                     .protocol(&#34;tcp&#34;)
- *                     .portRange(&#34;443&#34;)
+ *                     .protocol("tcp")
+ *                     .portRange("443")
  *                     .sourceAddresses(                    
- *                         &#34;0.0.0.0/0&#34;,
- *                         &#34;::/0&#34;)
+ *                         "0.0.0.0/0",
+ *                         "::/0")
  *                     .build(),
  *                 FirewallInboundRuleArgs.builder()
- *                     .protocol(&#34;icmp&#34;)
+ *                     .protocol("icmp")
  *                     .sourceAddresses(                    
- *                         &#34;0.0.0.0/0&#34;,
- *                         &#34;::/0&#34;)
+ *                         "0.0.0.0/0",
+ *                         "::/0")
  *                     .build())
  *             .outboundRules(            
  *                 FirewallOutboundRuleArgs.builder()
- *                     .protocol(&#34;tcp&#34;)
- *                     .portRange(&#34;53&#34;)
+ *                     .protocol("tcp")
+ *                     .portRange("53")
  *                     .destinationAddresses(                    
- *                         &#34;0.0.0.0/0&#34;,
- *                         &#34;::/0&#34;)
+ *                         "0.0.0.0/0",
+ *                         "::/0")
  *                     .build(),
  *                 FirewallOutboundRuleArgs.builder()
- *                     .protocol(&#34;udp&#34;)
- *                     .portRange(&#34;53&#34;)
+ *                     .protocol("udp")
+ *                     .portRange("53")
  *                     .destinationAddresses(                    
- *                         &#34;0.0.0.0/0&#34;,
- *                         &#34;::/0&#34;)
+ *                         "0.0.0.0/0",
+ *                         "::/0")
  *                     .build(),
  *                 FirewallOutboundRuleArgs.builder()
- *                     .protocol(&#34;icmp&#34;)
+ *                     .protocol("icmp")
  *                     .destinationAddresses(                    
- *                         &#34;0.0.0.0/0&#34;,
- *                         &#34;::/0&#34;)
+ *                         "0.0.0.0/0",
+ *                         "::/0")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

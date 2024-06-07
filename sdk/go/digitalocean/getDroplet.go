@@ -23,7 +23,6 @@ import (
 //
 // Get the Droplet by name:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,11 +47,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Get the Droplet by tag:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,11 +73,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Get the Droplet by ID:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +89,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
-//				Id: pulumi.IntRef(digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id),
+//				Id: pulumi.IntRef(exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -104,7 +99,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.InvokeOption) (*LookupDropletResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDropletResult

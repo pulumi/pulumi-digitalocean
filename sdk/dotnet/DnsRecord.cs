@@ -14,7 +14,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +32,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Domain = @default.Id,
     ///         Type = DigitalOcean.RecordType.A,
+    ///         Name = "www",
     ///         Value = "192.168.0.11",
     ///     });
     /// 
@@ -41,6 +41,7 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         Domain = @default.Id,
     ///         Type = DigitalOcean.RecordType.MX,
+    ///         Name = "@",
     ///         Priority = 10,
     ///         Value = "mail.example.com.",
     ///     });
@@ -52,7 +53,6 @@ namespace Pulumi.DigitalOcean
     ///     };
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

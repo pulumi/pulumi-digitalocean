@@ -13,103 +13,99 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new PostgreSQL database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const postgres_example = new digitalocean.DatabaseCluster("postgres-example", {
+ *     name: "example-postgres-cluster",
  *     engine: "pg",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC1,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "15",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new MySQL database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const mysql_example = new digitalocean.DatabaseCluster("mysql-example", {
+ *     name: "example-mysql-cluster",
  *     engine: "mysql",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC1,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "8",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new Redis database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const redis_example = new digitalocean.DatabaseCluster("redis-example", {
+ *     name: "example-redis-cluster",
  *     engine: "redis",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC1,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "7",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new Kafka database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     name: "example-kafka-cluster",
  *     engine: "kafka",
- *     nodeCount: 3,
- *     region: digitalocean.Region.NYC1,
- *     size: "db-s-2vcpu-2gb",
  *     version: "3.5",
+ *     size: "db-s-2vcpu-2gb",
+ *     region: digitalocean.Region.NYC1,
+ *     nodeCount: 3,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a new MongoDB database cluster
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const mongodb_example = new digitalocean.DatabaseCluster("mongodb-example", {
+ *     name: "example-mongo-cluster",
  *     engine: "mongodb",
- *     nodeCount: 1,
- *     region: digitalocean.Region.NYC3,
- *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     version: "6",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
+ *     region: digitalocean.Region.NYC3,
+ *     nodeCount: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Create a new database cluster based on a backup of an existing cluster.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const doby = new digitalocean.DatabaseCluster("doby", {
+ *     name: "dobydb",
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  *     tags: ["production"],
  * });
- * const dobyBackup = new digitalocean.DatabaseCluster("dobyBackup", {
+ * const dobyBackup = new digitalocean.DatabaseCluster("doby_backup", {
+ *     name: "dobydupe",
  *     engine: "pg",
- *     version: "11",
+ *     version: "15",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
@@ -121,7 +117,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [doby],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -159,9 +154,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseCluster.__pulumiType;
     }
 
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     */
     public readonly backupRestore!: pulumi.Output<outputs.DatabaseClusterBackupRestore | undefined>;
     /**
      * The uniform resource name of the database cluster.
@@ -240,6 +232,30 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
+     * Name of the OpenSearch dashboard db.
+     */
+    public /*out*/ readonly uiDatabase!: pulumi.Output<string>;
+    /**
+     * Hostname for the OpenSearch dashboard.
+     */
+    public /*out*/ readonly uiHost!: pulumi.Output<string>;
+    /**
+     * Password for the OpenSearch dashboard's default user.
+     */
+    public /*out*/ readonly uiPassword!: pulumi.Output<string>;
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     */
+    public /*out*/ readonly uiPort!: pulumi.Output<number>;
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     */
+    public /*out*/ readonly uiUri!: pulumi.Output<string>;
+    /**
+     * Username for OpenSearch dashboard's default user.
+     */
+    public /*out*/ readonly uiUser!: pulumi.Output<string>;
+    /**
      * The full URI for connecting to the database cluster.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
@@ -286,6 +302,12 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
             resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uiDatabase"] = state ? state.uiDatabase : undefined;
+            resourceInputs["uiHost"] = state ? state.uiHost : undefined;
+            resourceInputs["uiPassword"] = state ? state.uiPassword : undefined;
+            resourceInputs["uiPort"] = state ? state.uiPort : undefined;
+            resourceInputs["uiUri"] = state ? state.uiUri : undefined;
+            resourceInputs["uiUser"] = state ? state.uiUser : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -324,11 +346,17 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["privateHost"] = undefined /*out*/;
             resourceInputs["privateUri"] = undefined /*out*/;
+            resourceInputs["uiDatabase"] = undefined /*out*/;
+            resourceInputs["uiHost"] = undefined /*out*/;
+            resourceInputs["uiPassword"] = undefined /*out*/;
+            resourceInputs["uiPort"] = undefined /*out*/;
+            resourceInputs["uiUri"] = undefined /*out*/;
+            resourceInputs["uiUser"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uri"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "privateUri", "uiPassword", "uiUri", "uri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -338,9 +366,6 @@ export class DatabaseCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseCluster resources.
  */
 export interface DatabaseClusterState {
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     */
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
      * The uniform resource name of the database cluster.
@@ -419,6 +444,30 @@ export interface DatabaseClusterState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Name of the OpenSearch dashboard db.
+     */
+    uiDatabase?: pulumi.Input<string>;
+    /**
+     * Hostname for the OpenSearch dashboard.
+     */
+    uiHost?: pulumi.Input<string>;
+    /**
+     * Password for the OpenSearch dashboard's default user.
+     */
+    uiPassword?: pulumi.Input<string>;
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     */
+    uiPort?: pulumi.Input<number>;
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     */
+    uiUri?: pulumi.Input<string>;
+    /**
+     * Username for OpenSearch dashboard's default user.
+     */
+    uiUser?: pulumi.Input<string>;
+    /**
      * The full URI for connecting to the database cluster.
      */
     uri?: pulumi.Input<string>;
@@ -437,9 +486,6 @@ export interface DatabaseClusterState {
  * The set of arguments for constructing a DatabaseCluster resource.
  */
 export interface DatabaseClusterArgs {
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     */
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).

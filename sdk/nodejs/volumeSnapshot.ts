@@ -9,19 +9,21 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobarVolume = new digitalocean.Volume("foobarVolume", {
+ * const foobar = new digitalocean.Volume("foobar", {
  *     region: digitalocean.Region.NYC1,
+ *     name: "baz",
  *     size: 100,
  *     description: "an example volume",
  * });
- * const foobarVolumeSnapshot = new digitalocean.VolumeSnapshot("foobarVolumeSnapshot", {volumeId: foobarVolume.id});
+ * const foobarVolumeSnapshot = new digitalocean.VolumeSnapshot("foobar", {
+ *     name: "foo",
+ *     volumeId: foobar.id,
+ * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

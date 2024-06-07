@@ -14,11 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecIngressRuleComponent
     {
         /// <summary>
-        /// The name of the component.
+        /// The name of the component to route to.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// An optional flag to preserve the path that is forwarded to the backend service.
+        /// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
         /// </summary>
         public readonly bool? PreservePathPrefix;
         /// <summary>

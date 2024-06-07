@@ -83,7 +83,6 @@ def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -94,7 +93,6 @@ def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] 
     )])
     pulumi.export("sortedTags", list.tags)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
@@ -126,7 +124,6 @@ def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -137,7 +134,6 @@ def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
     )])
     pulumi.export("sortedTags", list.tags)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.

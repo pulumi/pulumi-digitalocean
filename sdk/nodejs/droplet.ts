@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -21,11 +20,11 @@ import * as utilities from "./utilities";
  * // Create a new Web Droplet in the nyc2 region
  * const web = new digitalocean.Droplet("web", {
  *     image: "ubuntu-20-04-x64",
+ *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

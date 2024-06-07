@@ -14,12 +14,12 @@ import * as utilities from "./utilities";
  *
  * ### Basic Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foo = new digitalocean.KubernetesCluster("foo", {
+ *     name: "foo",
  *     region: digitalocean.Region.NYC1,
  *     version: "1.22.8-do.1",
  *     nodePool: {
@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  * });
  * const bar = new digitalocean.KubernetesNodePool("bar", {
  *     clusterId: foo.id,
+ *     name: "backend-pool",
  *     size: digitalocean.DropletSlug.DropletC2,
  *     nodeCount: 2,
  *     tags: ["backend"],
@@ -44,27 +45,25 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Autoscaling Example
  *
  * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
  * For example:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const autoscale_pool_01 = new digitalocean.KubernetesNodePool("autoscale-pool-01", {
- *     clusterId: digitalocean_kubernetes_cluster.foo.id,
+ *     clusterId: foo.id,
+ *     name: "autoscale-pool-01",
  *     size: digitalocean.DropletSlug.DropletS1VCPU2GB,
  *     autoScale: true,
  *     minNodes: 1,
  *     maxNodes: 5,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

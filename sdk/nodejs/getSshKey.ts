@@ -16,22 +16,21 @@ import * as utilities from "./utilities";
  *
  * Get the ssh key:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleSshKey = digitalocean.getSshKey({
+ * const example = digitalocean.getSshKey({
  *     name: "example",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
+ *     sshKeys: [example.then(example => example.id)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
 
@@ -81,22 +80,21 @@ export interface GetSshKeyResult {
  *
  * Get the ssh key:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleSshKey = digitalocean.getSshKey({
+ * const example = digitalocean.getSshKey({
  *     name: "example",
  * });
- * const exampleDroplet = new digitalocean.Droplet("exampleDroplet", {
+ * const exampleDroplet = new digitalocean.Droplet("example", {
  *     image: "ubuntu-18-04-x64",
+ *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     sshKeys: [exampleSshKey.then(exampleSshKey => exampleSshKey.id)],
+ *     sshKeys: [example.then(example => example.id)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeyResult> {
     return pulumi.output(args).apply((a: any) => getSshKey(a, opts))

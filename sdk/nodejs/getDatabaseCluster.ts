@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  * });
  * export const databaseOutput = example.then(example => example.uri);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
 
@@ -108,6 +106,30 @@ export interface GetDatabaseClusterResult {
     readonly storageSizeMib: string;
     readonly tags?: string[];
     /**
+     * Name of the OpenSearch dashboard db.
+     */
+    readonly uiDatabase: string;
+    /**
+     * Hostname for the OpenSearch dashboard.
+     */
+    readonly uiHost: string;
+    /**
+     * Password for the OpenSearch dashboard's default user.
+     */
+    readonly uiPassword: string;
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     */
+    readonly uiPort: number;
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     */
+    readonly uiUri: string;
+    /**
+     * Username for OpenSearch dashboard's default user.
+     */
+    readonly uiUser: string;
+    /**
      * The full URI for connecting to the database cluster.
      */
     readonly uri: string;
@@ -129,7 +151,6 @@ export interface GetDatabaseClusterResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -139,7 +160,6 @@ export interface GetDatabaseClusterResult {
  * });
  * export const databaseOutput = example.then(example => example.uri);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseClusterResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseCluster(a, opts))

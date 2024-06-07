@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -32,7 +31,7 @@ import (
 //			// Create a new domain
 //			_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
 //				Name:      pulumi.String("example.com"),
-//				IpAddress: pulumi.Any(digitalocean_droplet.Foo.Ipv4_address),
+//				IpAddress: pulumi.Any(foo.Ipv4Address),
 //			})
 //			if err != nil {
 //				return err
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

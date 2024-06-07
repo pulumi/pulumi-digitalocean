@@ -611,15 +611,12 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
         ```
-        <!--End PulumiCodeChooser -->
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
@@ -627,12 +624,13 @@ class SpacesBucketObject(pulumi.CustomResource):
 
         ### Create a Key in a Spaces Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         index = digitalocean.SpacesBucketObject("index",
             region=foobar.region,
             bucket=foobar.name,
@@ -640,7 +638,6 @@ class SpacesBucketObject(pulumi.CustomResource):
             content="<html><body><p>This page is empty.</p></body></html>",
             content_type="text/html")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -693,15 +690,12 @@ class SpacesBucketObject(pulumi.CustomResource):
         access ID and secret you generate via the DigitalOcean control panel. For
         example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         static_assets = digitalocean.SpacesBucket("static-assets")
-        # ...
         ```
-        <!--End PulumiCodeChooser -->
 
         For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 
@@ -709,12 +703,13 @@ class SpacesBucketObject(pulumi.CustomResource):
 
         ### Create a Key in a Spaces Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        foobar = digitalocean.SpacesBucket("foobar", region=digitalocean.Region.NYC3)
+        foobar = digitalocean.SpacesBucket("foobar",
+            name="foobar",
+            region=digitalocean.Region.NYC3)
         index = digitalocean.SpacesBucketObject("index",
             region=foobar.region,
             bucket=foobar.name,
@@ -722,7 +717,6 @@ class SpacesBucketObject(pulumi.CustomResource):
             content="<html><body><p>This page is empty.</p></body></html>",
             content_type="text/html")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

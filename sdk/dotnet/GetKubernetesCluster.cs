@@ -13,12 +13,48 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+        ///     {
+        ///         Name = "prod-cluster-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetKubernetesClusterResult> InvokeAsync(GetKubernetesClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterResult>("digitalocean:index/getKubernetesCluster:getKubernetesCluster", args ?? new GetKubernetesClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+        ///     {
+        ///         Name = "prod-cluster-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKubernetesClusterResult> Invoke(GetKubernetesClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesClusterResult>("digitalocean:index/getKubernetesCluster:getKubernetesCluster", args ?? new GetKubernetesClusterInvokeArgs(), options.WithDefaults());
@@ -83,7 +119,6 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        /// * `kube_config.0` - A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         /// </summary>
         public readonly bool AutoUpgrade;
         /// <summary>
@@ -107,6 +142,9 @@ namespace Pulumi.DigitalOcean
         /// The public IPv4 address of the Kubernetes master node.
         /// </summary>
         public readonly string Ipv4Address;
+        /// <summary>
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
         /// <summary>
         /// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.

@@ -18,7 +18,7 @@ public final class AppSpecIngressRuleRedirect {
      */
     private @Nullable String authority;
     /**
-     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
+     * @return The port to redirect to.
      * 
      */
     private @Nullable Integer port;
@@ -47,7 +47,7 @@ public final class AppSpecIngressRuleRedirect {
         return Optional.ofNullable(this.authority);
     }
     /**
-     * @return The health check will be performed on this port instead of component&#39;s HTTP port.
+     * @return The port to redirect to.
      * 
      */
     public Optional<Integer> port() {

@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecServiceImageDeployOnPushArgs>? _deployOnPushes;
 
         /// <summary>
-        /// Whether to automatically deploy new commits made to the repo.
+        /// Configures automatically deploying images pushed to DOCR.
         /// </summary>
         public InputList<Inputs.AppSpecServiceImageDeployOnPushArgs> DeployOnPushes
         {
@@ -29,6 +29,22 @@ namespace Pulumi.DigitalOcean.Inputs
         /// </summary>
         [Input("registry")]
         public Input<string>? Registry { get; set; }
+
+        [Input("registryCredentials")]
+        private Input<string>? _registryCredentials;
+
+        /// <summary>
+        /// Access credentials for third-party registries
+        /// </summary>
+        public Input<string>? RegistryCredentials
+        {
+            get => _registryCredentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _registryCredentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.

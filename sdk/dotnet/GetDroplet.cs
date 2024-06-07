@@ -24,7 +24,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the Droplet by name:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,11 +43,9 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the Droplet by tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,11 +61,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the Droplet by ID:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,12 +74,11 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDropletResult> InvokeAsync(GetDropletArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletArgs(), options.WithDefaults());
@@ -102,7 +96,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the Droplet by name:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -122,11 +115,9 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the Droplet by tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -142,11 +133,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the Droplet by ID:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -157,12 +146,11 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var example = DigitalOcean.GetDroplet.Invoke(new()
         ///     {
-        ///         Id = digitalocean_kubernetes_cluster.Example.Node_pool[0].Nodes[0].Droplet_id,
+        ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDropletResult> Invoke(GetDropletInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletInvokeArgs(), options.WithDefaults());

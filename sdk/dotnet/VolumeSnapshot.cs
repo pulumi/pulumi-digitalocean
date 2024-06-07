@@ -14,7 +14,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,21 +22,22 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarVolume = new DigitalOcean.Volume("foobarVolume", new()
+    ///     var foobar = new DigitalOcean.Volume("foobar", new()
     ///     {
     ///         Region = DigitalOcean.Region.NYC1,
+    ///         Name = "baz",
     ///         Size = 100,
     ///         Description = "an example volume",
     ///     });
     /// 
-    ///     var foobarVolumeSnapshot = new DigitalOcean.VolumeSnapshot("foobarVolumeSnapshot", new()
+    ///     var foobarVolumeSnapshot = new DigitalOcean.VolumeSnapshot("foobar", new()
     ///     {
-    ///         VolumeId = foobarVolume.Id,
+    ///         Name = "foo",
+    ///         VolumeId = foobar.Id,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

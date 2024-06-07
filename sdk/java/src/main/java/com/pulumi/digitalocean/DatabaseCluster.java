@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * 
  * ### Create a new PostgreSQL database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
+ *             .name("example-postgres-cluster")
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
- *             .region(&#34;nyc1&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;15&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new MySQL database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,22 +86,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql_example = new DatabaseCluster(&#34;mysql-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;mysql&#34;)
+ *         var mysql_example = new DatabaseCluster("mysql-example", DatabaseClusterArgs.builder()
+ *             .name("example-mysql-cluster")
+ *             .engine("mysql")
+ *             .version("8")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
- *             .region(&#34;nyc1&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;8&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new Redis database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -118,22 +125,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redis_example = new DatabaseCluster(&#34;redis-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;redis&#34;)
+ *         var redis_example = new DatabaseCluster("redis-example", DatabaseClusterArgs.builder()
+ *             .name("example-redis-cluster")
+ *             .engine("redis")
+ *             .version("7")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
- *             .region(&#34;nyc1&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;7&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new Kafka database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -154,22 +164,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_example = new DatabaseCluster(&#34;kafka-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;kafka&#34;)
+ *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()
+ *             .name("example-kafka-cluster")
+ *             .engine("kafka")
+ *             .version("3.5")
+ *             .size("db-s-2vcpu-2gb")
+ *             .region("nyc1")
  *             .nodeCount(3)
- *             .region(&#34;nyc1&#34;)
- *             .size(&#34;db-s-2vcpu-2gb&#34;)
- *             .version(&#34;3.5&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new MongoDB database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -190,23 +203,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mongodb_example = new DatabaseCluster(&#34;mongodb-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;mongodb&#34;)
+ *         var mongodb_example = new DatabaseCluster("mongodb-example", DatabaseClusterArgs.builder()
+ *             .name("example-mongo-cluster")
+ *             .engine("mongodb")
+ *             .version("6")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc3")
  *             .nodeCount(1)
- *             .region(&#34;nyc3&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .version(&#34;6&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Create a new database cluster based on a backup of an existing cluster.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -229,24 +245,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var doby = new DatabaseCluster(&#34;doby&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
- *             .size(&#34;db-s-1vcpu-2gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var doby = new DatabaseCluster("doby", DatabaseClusterArgs.builder()
+ *             .name("dobydb")
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-2gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
- *             .tags(&#34;production&#34;)
+ *             .tags("production")
  *             .build());
  * 
- *         var dobyBackup = new DatabaseCluster(&#34;dobyBackup&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
- *             .size(&#34;db-s-1vcpu-2gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var dobyBackup = new DatabaseCluster("dobyBackup", DatabaseClusterArgs.builder()
+ *             .name("dobydupe")
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-2gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
- *             .tags(&#34;production&#34;)
+ *             .tags("production")
  *             .backupRestore(DatabaseClusterBackupRestoreArgs.builder()
- *                 .databaseName(&#34;dobydb&#34;)
+ *                 .databaseName("dobydb")
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(doby)
@@ -254,7 +272,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -268,17 +287,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/databaseCluster:DatabaseCluster")
 public class DatabaseCluster extends com.pulumi.resources.CustomResource {
-    /**
-     * Create a new database cluster based on a backup of an existing cluster.
-     * 
-     */
     @Export(name="backupRestore", refs={DatabaseClusterBackupRestore.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseClusterBackupRestore> backupRestore;
 
-    /**
-     * @return Create a new database cluster based on a backup of an existing cluster.
-     * 
-     */
     public Output<Optional<DatabaseClusterBackupRestore>> backupRestore() {
         return Codegen.optional(this.backupRestore);
     }
@@ -549,6 +560,90 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
+     * Name of the OpenSearch dashboard db.
+     * 
+     */
+    @Export(name="uiDatabase", refs={String.class}, tree="[0]")
+    private Output<String> uiDatabase;
+
+    /**
+     * @return Name of the OpenSearch dashboard db.
+     * 
+     */
+    public Output<String> uiDatabase() {
+        return this.uiDatabase;
+    }
+    /**
+     * Hostname for the OpenSearch dashboard.
+     * 
+     */
+    @Export(name="uiHost", refs={String.class}, tree="[0]")
+    private Output<String> uiHost;
+
+    /**
+     * @return Hostname for the OpenSearch dashboard.
+     * 
+     */
+    public Output<String> uiHost() {
+        return this.uiHost;
+    }
+    /**
+     * Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    @Export(name="uiPassword", refs={String.class}, tree="[0]")
+    private Output<String> uiPassword;
+
+    /**
+     * @return Password for the OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public Output<String> uiPassword() {
+        return this.uiPassword;
+    }
+    /**
+     * Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    @Export(name="uiPort", refs={Integer.class}, tree="[0]")
+    private Output<Integer> uiPort;
+
+    /**
+     * @return Network port that the OpenSearch dashboard is listening on.
+     * 
+     */
+    public Output<Integer> uiPort() {
+        return this.uiPort;
+    }
+    /**
+     * The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    @Export(name="uiUri", refs={String.class}, tree="[0]")
+    private Output<String> uiUri;
+
+    /**
+     * @return The full URI for connecting to the OpenSearch dashboard.
+     * 
+     */
+    public Output<String> uiUri() {
+        return this.uiUri;
+    }
+    /**
+     * Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    @Export(name="uiUser", refs={String.class}, tree="[0]")
+    private Output<String> uiUser;
+
+    /**
+     * @return Username for OpenSearch dashboard&#39;s default user.
+     * 
+     */
+    public Output<String> uiUser() {
+        return this.uiUser;
+    }
+    /**
      * The full URI for connecting to the database cluster.
      * 
      */
@@ -628,6 +723,8 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "password",
                 "privateUri",
+                "uiPassword",
+                "uiUri",
                 "uri"
             ))
             .build();

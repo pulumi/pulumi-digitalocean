@@ -12,26 +12,25 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("exampleDatabaseCluster", {
+ * const exampleDatabaseCluster = new digitalocean.DatabaseCluster("example", {
+ *     name: "example-redis-cluster",
  *     engine: "redis",
  *     version: "7",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
  * });
- * const exampleDatabaseRedisConfig = new digitalocean.DatabaseRedisConfig("exampleDatabaseRedisConfig", {
+ * const example = new digitalocean.DatabaseRedisConfig("example", {
  *     clusterId: exampleDatabaseCluster.id,
  *     maxmemoryPolicy: "allkeys-lru",
  *     notifyKeyspaceEvents: "KEA",
  *     timeout: 90,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -104,23 +104,22 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.ReservedIp("example", region="nyc3")
+        example_droplet = digitalocean.Droplet("example",
+            name="baz",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3,
             ipv6=True,
             private_networking=True)
-        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
-            ip_address=example_reserved_ip.ip_address,
+        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("example",
+            ip_address=example.ip_address,
             droplet_id=example_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -150,23 +149,22 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_reserved_ip = digitalocean.ReservedIp("exampleReservedIp", region="nyc3")
-        example_droplet = digitalocean.Droplet("exampleDroplet",
+        example = digitalocean.ReservedIp("example", region="nyc3")
+        example_droplet = digitalocean.Droplet("example",
+            name="baz",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3,
             ipv6=True,
             private_networking=True)
-        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("exampleReservedIpAssignment",
-            ip_address=example_reserved_ip.ip_address,
+        example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("example",
+            ip_address=example.ip_address,
             droplet_id=example_droplet.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

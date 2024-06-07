@@ -19,51 +19,56 @@ import * as utilities from "./utilities";
  *
  * ### Custom Certificate
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
  * const cert = new digitalocean.Certificate("cert", {
+ *     name: "custom-example",
  *     type: digitalocean.CertificateType.Custom,
- *     privateKey: fs.readFileSync("/Users/myuser/certs/privkey.pem", "utf8"),
- *     leafCertificate: fs.readFileSync("/Users/myuser/certs/cert.pem", "utf8"),
- *     certificateChain: fs.readFileSync("/Users/myuser/certs/fullchain.pem", "utf8"),
+ *     privateKey: std.file({
+ *         input: "/Users/myuser/certs/privkey.pem",
+ *     }).then(invoke => invoke.result),
+ *     leafCertificate: std.file({
+ *         input: "/Users/myuser/certs/cert.pem",
+ *     }).then(invoke => invoke.result),
+ *     certificateChain: std.file({
+ *         input: "/Users/myuser/certs/fullchain.pem",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Let's Encrypt Certificate
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     domains: ["example.com"],
+ *     name: "le-example",
  *     type: digitalocean.CertificateType.LetsEncrypt,
+ *     domains: ["example.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Use with Other Resources
  *
  * Both custom and Let's Encrypt certificates can be used with other resources
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
+ *     name: "le-example",
  *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["example.com"],
  * });
  * // Create a new Load Balancer with TLS termination
  * const _public = new digitalocean.LoadBalancer("public", {
+ *     name: "secure-loadbalancer-1",
  *     region: digitalocean.Region.NYC3,
  *     dropletTag: "backend",
  *     forwardingRules: [{
@@ -75,7 +80,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

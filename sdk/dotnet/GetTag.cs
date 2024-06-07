@@ -22,7 +22,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,25 +30,25 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTag = DigitalOcean.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Tags = new[]
         ///         {
-        ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
+        ///             example.Apply(getTagResult =&gt; getTagResult.Name),
         ///         },
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
@@ -65,7 +64,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the tag:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,25 +72,25 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTag = DigitalOcean.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         Tags = new[]
         ///         {
-        ///             exampleTag.Apply(getTagResult =&gt; getTagResult.Name),
+        ///             example.Apply(getTagResult =&gt; getTagResult.Name),
         ///         },
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());

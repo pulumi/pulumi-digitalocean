@@ -19,7 +19,6 @@ import (
 //
 // Get the Droplet snapshot:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
-//				MostRecent: pulumi.BoolRef(true),
 //				NameRegex:  pulumi.StringRef("^web"),
 //				Region:     pulumi.StringRef("nyc3"),
+//				MostRecent: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -45,11 +44,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Create image from snapshot:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,6 +69,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "from-snapshot", &digitalocean.DropletArgs{
 //				Image:  pulumi.String(web_snapshot.Id),
+//				Name:   pulumi.String("web-02"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS2VCPU4GB),
 //			})
@@ -83,7 +81,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupDropletSnapshot(ctx *pulumi.Context, args *LookupDropletSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupDropletSnapshotResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDropletSnapshotResult

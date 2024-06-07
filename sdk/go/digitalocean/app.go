@@ -19,7 +19,6 @@ import (
 //
 // ### Basic Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,14 +37,14 @@ import (
 //					Region: pulumi.String("ams"),
 //					Services: digitalocean.AppSpecServiceArray{
 //						&digitalocean.AppSpecServiceArgs{
-//							EnvironmentSlug: pulumi.String("go"),
-//							Git: &digitalocean.AppSpecServiceGitArgs{
-//								Branch:       pulumi.String("main"),
-//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
-//							},
+//							Name:             pulumi.String("go-service"),
+//							EnvironmentSlug:  pulumi.String("go"),
 //							InstanceCount:    pulumi.Int(1),
 //							InstanceSizeSlug: pulumi.String("professional-xs"),
-//							Name:             pulumi.String("go-service"),
+//							Git: &digitalocean.AppSpecServiceGitArgs{
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
+//								Branch:       pulumi.String("main"),
+//							},
 //						},
 //					},
 //				},
@@ -58,11 +57,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Static Site Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,13 +78,13 @@ import (
 //					Region: pulumi.String("ams"),
 //					StaticSites: digitalocean.AppSpecStaticSiteArray{
 //						&digitalocean.AppSpecStaticSiteArgs{
+//							Name:         pulumi.String("sample-jekyll"),
 //							BuildCommand: pulumi.String("bundle exec jekyll build -d ./public"),
+//							OutputDir:    pulumi.String("/public"),
 //							Git: &digitalocean.AppSpecStaticSiteGitArgs{
-//								Branch:       pulumi.String("main"),
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-jekyll.git"),
+//								Branch:       pulumi.String("main"),
 //							},
-//							Name:      pulumi.String("sample-jekyll"),
-//							OutputDir: pulumi.String("/public"),
 //						},
 //					},
 //				},
@@ -100,7 +97,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -118,6 +114,8 @@ type App struct {
 	AppUrn pulumi.StringOutput `pulumi:"appUrn"`
 	// The date and time of when the app was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps AppDedicatedIpArrayOutput `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringOutput `pulumi:"defaultIngress"`
 	// The live URL of the app.
@@ -170,6 +168,8 @@ type appState struct {
 	AppUrn *string `pulumi:"appUrn"`
 	// The date and time of when the app was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress *string `pulumi:"defaultIngress"`
 	// The live URL of the app.
@@ -193,6 +193,8 @@ type AppState struct {
 	AppUrn pulumi.StringPtrInput
 	// The date and time of when the app was created.
 	CreatedAt pulumi.StringPtrInput
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps AppDedicatedIpArrayInput
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringPtrInput
 	// The live URL of the app.
@@ -214,6 +216,8 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
 	// The ID of the project that the app is assigned to.
 	//
 	// A spec can contain multiple components.
@@ -226,6 +230,8 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	// The dedicated egress IP addresses associated with the app.
+	DedicatedIps AppDedicatedIpArrayInput
 	// The ID of the project that the app is assigned to.
 	//
 	// A spec can contain multiple components.
@@ -336,6 +342,11 @@ func (o AppOutput) AppUrn() pulumi.StringOutput {
 // The date and time of when the app was created.
 func (o AppOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The dedicated egress IP addresses associated with the app.
+func (o AppOutput) DedicatedIps() AppDedicatedIpArrayOutput {
+	return o.ApplyT(func(v *App) AppDedicatedIpArrayOutput { return v.DedicatedIps }).(AppDedicatedIpArrayOutput)
 }
 
 // The default URL to access the app.

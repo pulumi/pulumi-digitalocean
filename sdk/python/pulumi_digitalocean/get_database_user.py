@@ -140,7 +140,6 @@ def get_database_user(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -150,7 +149,6 @@ def get_database_user(cluster_id: Optional[str] = None,
         name="example-user")
     pulumi.export("databaseUserPassword", example.password)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the database cluster.
@@ -183,7 +181,6 @@ def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -193,7 +190,6 @@ def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
         name="example-user")
     pulumi.export("databaseUserPassword", example.password)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the database cluster.

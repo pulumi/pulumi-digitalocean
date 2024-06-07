@@ -26,7 +26,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// For example to find all staging environment projects:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,11 +51,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,15 +87,14 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
         ///             {
-        ///                 Direction = "asc",
         ///                 Key = "name",
+        ///                 Direction = "asc",
         ///             },
         ///         },
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
@@ -118,7 +114,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// For example to find all staging environment projects:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -144,11 +139,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// You can filter on multiple fields and sort the results as well:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -182,15 +175,14 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
         ///             {
-        ///                 Direction = "asc",
         ///                 Key = "name",
+        ///                 Direction = "asc",
         ///             },
         ///         },
         ///     });
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());

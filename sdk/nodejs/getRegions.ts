@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  *
  * For example to find all available regions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -32,11 +31,9 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can filter on multiple fields and sort the results as well:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -53,12 +50,11 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "name",
+ *         direction: "desc",
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -114,7 +110,6 @@ export interface GetRegionsResult {
  *
  * For example to find all available regions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -126,11 +121,9 @@ export interface GetRegionsResult {
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * You can filter on multiple fields and sort the results as well:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -147,12 +140,11 @@ export interface GetRegionsResult {
  *         },
  *     ],
  *     sorts: [{
- *         direction: "desc",
  *         key: "name",
+ *         direction: "desc",
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

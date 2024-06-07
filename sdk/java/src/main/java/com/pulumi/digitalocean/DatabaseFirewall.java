@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Create a new database firewall allowing multiple IP addresses
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,36 +50,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
+ *             .name("example-postgres-cluster")
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()
  *             .clusterId(postgres_example.id())
  *             .rules(            
  *                 DatabaseFirewallRuleArgs.builder()
- *                     .type(&#34;ip_addr&#34;)
- *                     .value(&#34;192.168.1.1&#34;)
+ *                     .type("ip_addr")
+ *                     .value("192.168.1.1")
  *                     .build(),
  *                 DatabaseFirewallRuleArgs.builder()
- *                     .type(&#34;ip_addr&#34;)
- *                     .value(&#34;192.0.2.0&#34;)
+ *                     .type("ip_addr")
+ *                     .value("192.0.2.0")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new database firewall allowing a Droplet
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,37 +108,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new Droplet(&#34;web&#34;, DropletArgs.builder()        
- *             .size(&#34;s-1vcpu-1gb&#34;)
- *             .image(&#34;ubuntu-22-04-x64&#34;)
- *             .region(&#34;nyc3&#34;)
+ *         var web = new Droplet("web", DropletArgs.builder()
+ *             .name("web-01")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
  *             .build());
  * 
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
+ *             .name("example-postgres-cluster")
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()
  *             .clusterId(postgres_example.id())
  *             .rules(DatabaseFirewallRuleArgs.builder()
- *                 .type(&#34;droplet&#34;)
+ *                 .type("droplet")
  *                 .value(web.id())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a new database firewall for a database replica
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -160,32 +168,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var postgres_example = new DatabaseCluster(&#34;postgres-example&#34;, DatabaseClusterArgs.builder()        
- *             .engine(&#34;pg&#34;)
- *             .version(&#34;11&#34;)
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *         var postgres_example = new DatabaseCluster("postgres-example", DatabaseClusterArgs.builder()
+ *             .name("example-postgres-cluster")
+ *             .engine("pg")
+ *             .version("15")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .nodeCount(1)
  *             .build());
  * 
- *         var replica_example = new DatabaseReplica(&#34;replica-example&#34;, DatabaseReplicaArgs.builder()        
+ *         var replica_example = new DatabaseReplica("replica-example", DatabaseReplicaArgs.builder()
  *             .clusterId(postgres_example.id())
- *             .size(&#34;db-s-1vcpu-1gb&#34;)
- *             .region(&#34;nyc1&#34;)
+ *             .name("replica-example")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc1")
  *             .build());
  * 
  *         // Create firewall rule for database replica
- *         var example_fw = new DatabaseFirewall(&#34;example-fw&#34;, DatabaseFirewallArgs.builder()        
+ *         var example_fw = new DatabaseFirewall("example-fw", DatabaseFirewallArgs.builder()
  *             .clusterId(replica_example.uuid())
  *             .rules(DatabaseFirewallRuleArgs.builder()
- *                 .type(&#34;ip_addr&#34;)
- *                 .value(&#34;192.168.1.1&#34;)
+ *                 .type("ip_addr")
+ *                 .value("192.168.1.1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

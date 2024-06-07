@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetAppDedicatedIp;
 import com.pulumi.digitalocean.outputs.GetAppSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -23,6 +24,11 @@ public final class GetAppResult {
      * 
      */
     private String createdAt;
+    /**
+     * @return A list of dedicated egress IP addresses associated with the app.
+     * 
+     */
+    private List<GetAppDedicatedIp> dedicatedIps;
     /**
      * @return The default URL to access the app.
      * 
@@ -76,6 +82,13 @@ public final class GetAppResult {
      */
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return A list of dedicated egress IP addresses associated with the app.
+     * 
+     */
+    public List<GetAppDedicatedIp> dedicatedIps() {
+        return this.dedicatedIps;
     }
     /**
      * @return The default URL to access the app.
@@ -139,6 +152,7 @@ public final class GetAppResult {
         private String activeDeploymentId;
         private String appId;
         private String createdAt;
+        private List<GetAppDedicatedIp> dedicatedIps;
         private String defaultIngress;
         private String id;
         private String liveUrl;
@@ -152,6 +166,7 @@ public final class GetAppResult {
     	      this.activeDeploymentId = defaults.activeDeploymentId;
     	      this.appId = defaults.appId;
     	      this.createdAt = defaults.createdAt;
+    	      this.dedicatedIps = defaults.dedicatedIps;
     	      this.defaultIngress = defaults.defaultIngress;
     	      this.id = defaults.id;
     	      this.liveUrl = defaults.liveUrl;
@@ -184,6 +199,17 @@ public final class GetAppResult {
             }
             this.createdAt = createdAt;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dedicatedIps(List<GetAppDedicatedIp> dedicatedIps) {
+            if (dedicatedIps == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "dedicatedIps");
+            }
+            this.dedicatedIps = dedicatedIps;
+            return this;
+        }
+        public Builder dedicatedIps(GetAppDedicatedIp... dedicatedIps) {
+            return dedicatedIps(List.of(dedicatedIps));
         }
         @CustomType.Setter
         public Builder defaultIngress(String defaultIngress) {
@@ -249,6 +275,7 @@ public final class GetAppResult {
             _resultValue.activeDeploymentId = activeDeploymentId;
             _resultValue.appId = appId;
             _resultValue.createdAt = createdAt;
+            _resultValue.dedicatedIps = dedicatedIps;
             _resultValue.defaultIngress = defaultIngress;
             _resultValue.id = id;
             _resultValue.liveUrl = liveUrl;

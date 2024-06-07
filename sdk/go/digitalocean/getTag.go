@@ -21,7 +21,6 @@ import (
 //
 // Get the tag:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -34,18 +33,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTag, err := digitalocean.LookupTag(ctx, &digitalocean.LookupTagArgs{
+//			example, err := digitalocean.LookupTag(ctx, &digitalocean.LookupTagArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Name:   pulumi.String("example-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Tags: pulumi.StringArray{
-//					pulumi.String(exampleTag.Name),
+//					pulumi.String(example.Name),
 //				},
 //			})
 //			if err != nil {
@@ -56,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagResult

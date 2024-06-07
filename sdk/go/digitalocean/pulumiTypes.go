@@ -13,15 +13,132 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AppDedicatedIp struct {
+	// The ID of the app.
+	Id *string `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip *string `pulumi:"ip"`
+	// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+	Status *string `pulumi:"status"`
+}
+
+// AppDedicatedIpInput is an input type that accepts AppDedicatedIpArgs and AppDedicatedIpOutput values.
+// You can construct a concrete instance of `AppDedicatedIpInput` via:
+//
+//	AppDedicatedIpArgs{...}
+type AppDedicatedIpInput interface {
+	pulumi.Input
+
+	ToAppDedicatedIpOutput() AppDedicatedIpOutput
+	ToAppDedicatedIpOutputWithContext(context.Context) AppDedicatedIpOutput
+}
+
+type AppDedicatedIpArgs struct {
+	// The ID of the app.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (AppDedicatedIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDedicatedIp)(nil)).Elem()
+}
+
+func (i AppDedicatedIpArgs) ToAppDedicatedIpOutput() AppDedicatedIpOutput {
+	return i.ToAppDedicatedIpOutputWithContext(context.Background())
+}
+
+func (i AppDedicatedIpArgs) ToAppDedicatedIpOutputWithContext(ctx context.Context) AppDedicatedIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDedicatedIpOutput)
+}
+
+// AppDedicatedIpArrayInput is an input type that accepts AppDedicatedIpArray and AppDedicatedIpArrayOutput values.
+// You can construct a concrete instance of `AppDedicatedIpArrayInput` via:
+//
+//	AppDedicatedIpArray{ AppDedicatedIpArgs{...} }
+type AppDedicatedIpArrayInput interface {
+	pulumi.Input
+
+	ToAppDedicatedIpArrayOutput() AppDedicatedIpArrayOutput
+	ToAppDedicatedIpArrayOutputWithContext(context.Context) AppDedicatedIpArrayOutput
+}
+
+type AppDedicatedIpArray []AppDedicatedIpInput
+
+func (AppDedicatedIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppDedicatedIp)(nil)).Elem()
+}
+
+func (i AppDedicatedIpArray) ToAppDedicatedIpArrayOutput() AppDedicatedIpArrayOutput {
+	return i.ToAppDedicatedIpArrayOutputWithContext(context.Background())
+}
+
+func (i AppDedicatedIpArray) ToAppDedicatedIpArrayOutputWithContext(ctx context.Context) AppDedicatedIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDedicatedIpArrayOutput)
+}
+
+type AppDedicatedIpOutput struct{ *pulumi.OutputState }
+
+func (AppDedicatedIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDedicatedIp)(nil)).Elem()
+}
+
+func (o AppDedicatedIpOutput) ToAppDedicatedIpOutput() AppDedicatedIpOutput {
+	return o
+}
+
+func (o AppDedicatedIpOutput) ToAppDedicatedIpOutputWithContext(ctx context.Context) AppDedicatedIpOutput {
+	return o
+}
+
+// The ID of the app.
+func (o AppDedicatedIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDedicatedIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the dedicated egress IP.
+func (o AppDedicatedIpOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDedicatedIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+func (o AppDedicatedIpOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppDedicatedIp) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AppDedicatedIpArrayOutput struct{ *pulumi.OutputState }
+
+func (AppDedicatedIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppDedicatedIp)(nil)).Elem()
+}
+
+func (o AppDedicatedIpArrayOutput) ToAppDedicatedIpArrayOutput() AppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o AppDedicatedIpArrayOutput) ToAppDedicatedIpArrayOutputWithContext(ctx context.Context) AppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o AppDedicatedIpArrayOutput) Index(i pulumi.IntInput) AppDedicatedIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppDedicatedIp {
+		return vs[0].([]AppDedicatedIp)[vs[1].(int)]
+	}).(AppDedicatedIpOutput)
+}
+
 type AppSpec struct {
-	// Describes an alert policy for the component.
+	// Describes an alert policy for the app.
 	Alerts    []AppSpecAlert    `pulumi:"alerts"`
 	Databases []AppSpecDatabase `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
 	DomainNames []AppSpecDomainName `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
-	// Describes an environment variable made available to an app competent.
+	// Specification for app egress configurations.
+	Egresses []AppSpecEgress `pulumi:"egresses"`
+	// Describes an app-wide environment variable made available to all components.
 	Envs []AppSpecEnv `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
 	Features  []string          `pulumi:"features"`
@@ -29,7 +146,7 @@ type AppSpec struct {
 	// Specification for component routing, rewrites, and redirects.
 	Ingress *AppSpecIngress `pulumi:"ingress"`
 	Jobs    []AppSpecJob    `pulumi:"jobs"`
-	// The name of the component.
+	// The name of the app. Must be unique across all apps in the same account.
 	Name string `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      *string             `pulumi:"region"`
@@ -50,14 +167,16 @@ type AppSpecInput interface {
 }
 
 type AppSpecArgs struct {
-	// Describes an alert policy for the component.
+	// Describes an alert policy for the app.
 	Alerts    AppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
 	DomainNames AppSpecDomainNameArrayInput `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// Describes an environment variable made available to an app competent.
+	// Specification for app egress configurations.
+	Egresses AppSpecEgressArrayInput `pulumi:"egresses"`
+	// Describes an app-wide environment variable made available to all components.
 	Envs AppSpecEnvArrayInput `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
 	Features  pulumi.StringArrayInput   `pulumi:"features"`
@@ -65,7 +184,7 @@ type AppSpecArgs struct {
 	// Specification for component routing, rewrites, and redirects.
 	Ingress AppSpecIngressPtrInput `pulumi:"ingress"`
 	Jobs    AppSpecJobArrayInput   `pulumi:"jobs"`
-	// The name of the component.
+	// The name of the app. Must be unique across all apps in the same account.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      pulumi.StringPtrInput       `pulumi:"region"`
@@ -151,7 +270,7 @@ func (o AppSpecOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpe
 	}).(AppSpecPtrOutput)
 }
 
-// Describes an alert policy for the component.
+// Describes an alert policy for the app.
 func (o AppSpecOutput) Alerts() AppSpecAlertArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecAlert { return v.Alerts }).(AppSpecAlertArrayOutput)
 }
@@ -170,7 +289,12 @@ func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Describes an environment variable made available to an app competent.
+// Specification for app egress configurations.
+func (o AppSpecOutput) Egresses() AppSpecEgressArrayOutput {
+	return o.ApplyT(func(v AppSpec) []AppSpecEgress { return v.Egresses }).(AppSpecEgressArrayOutput)
+}
+
+// Describes an app-wide environment variable made available to all components.
 func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
 }
@@ -193,7 +317,7 @@ func (o AppSpecOutput) Jobs() AppSpecJobArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecJob { return v.Jobs }).(AppSpecJobArrayOutput)
 }
 
-// The name of the component.
+// The name of the app. Must be unique across all apps in the same account.
 func (o AppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpec) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -239,7 +363,7 @@ func (o AppSpecPtrOutput) Elem() AppSpecOutput {
 	}).(AppSpecOutput)
 }
 
-// Describes an alert policy for the component.
+// Describes an alert policy for the app.
 func (o AppSpecPtrOutput) Alerts() AppSpecAlertArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecAlert {
 		if v == nil {
@@ -278,7 +402,17 @@ func (o AppSpecPtrOutput) Domains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Describes an environment variable made available to an app competent.
+// Specification for app egress configurations.
+func (o AppSpecPtrOutput) Egresses() AppSpecEgressArrayOutput {
+	return o.ApplyT(func(v *AppSpec) []AppSpecEgress {
+		if v == nil {
+			return nil
+		}
+		return v.Egresses
+	}).(AppSpecEgressArrayOutput)
+}
+
+// Describes an app-wide environment variable made available to all components.
 func (o AppSpecPtrOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecEnv {
 		if v == nil {
@@ -326,7 +460,7 @@ func (o AppSpecPtrOutput) Jobs() AppSpecJobArrayOutput {
 	}).(AppSpecJobArrayOutput)
 }
 
-// The name of the component.
+// The name of the app. Must be unique across all apps in the same account.
 func (o AppSpecPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpec) *string {
 		if v == nil {
@@ -376,7 +510,7 @@ func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
 type AppSpecAlert struct {
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
 	Rule string `pulumi:"rule"`
 }
 
@@ -394,7 +528,7 @@ type AppSpecAlertInput interface {
 type AppSpecAlertArgs struct {
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -454,7 +588,7 @@ func (o AppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
 func (o AppSpecAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -637,9 +771,12 @@ func (o AppSpecDatabaseArrayOutput) Index(i pulumi.IntInput) AppSpecDatabaseOutp
 }
 
 type AppSpecDomainName struct {
-	// The name of the component.
+	// The hostname for the domain.
 	Name string `pulumi:"name"`
-	// The type of the environment variable, `GENERAL` or `SECRET`.
+	// The domain type, which can be one of the following:
+	// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+	// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+	// - `ALIAS`: A non-primary domain.
 	Type *string `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard *bool `pulumi:"wildcard"`
@@ -659,9 +796,12 @@ type AppSpecDomainNameInput interface {
 }
 
 type AppSpecDomainNameArgs struct {
-	// The name of the component.
+	// The hostname for the domain.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The type of the environment variable, `GENERAL` or `SECRET`.
+	// The domain type, which can be one of the following:
+	// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+	// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+	// - `ALIAS`: A non-primary domain.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
 	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
@@ -720,12 +860,15 @@ func (o AppSpecDomainNameOutput) ToAppSpecDomainNameOutputWithContext(ctx contex
 	return o
 }
 
-// The name of the component.
+// The hostname for the domain.
 func (o AppSpecDomainNameOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecDomainName) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the environment variable, `GENERAL` or `SECRET`.
+// The domain type, which can be one of the following:
+// - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+// - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+// - `ALIAS`: A non-primary domain.
 func (o AppSpecDomainNameOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDomainName) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -760,6 +903,103 @@ func (o AppSpecDomainNameArrayOutput) Index(i pulumi.IntInput) AppSpecDomainName
 	}).(AppSpecDomainNameOutput)
 }
 
+type AppSpecEgress struct {
+	// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+	Type *string `pulumi:"type"`
+}
+
+// AppSpecEgressInput is an input type that accepts AppSpecEgressArgs and AppSpecEgressOutput values.
+// You can construct a concrete instance of `AppSpecEgressInput` via:
+//
+//	AppSpecEgressArgs{...}
+type AppSpecEgressInput interface {
+	pulumi.Input
+
+	ToAppSpecEgressOutput() AppSpecEgressOutput
+	ToAppSpecEgressOutputWithContext(context.Context) AppSpecEgressOutput
+}
+
+type AppSpecEgressArgs struct {
+	// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AppSpecEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecEgress)(nil)).Elem()
+}
+
+func (i AppSpecEgressArgs) ToAppSpecEgressOutput() AppSpecEgressOutput {
+	return i.ToAppSpecEgressOutputWithContext(context.Background())
+}
+
+func (i AppSpecEgressArgs) ToAppSpecEgressOutputWithContext(ctx context.Context) AppSpecEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecEgressOutput)
+}
+
+// AppSpecEgressArrayInput is an input type that accepts AppSpecEgressArray and AppSpecEgressArrayOutput values.
+// You can construct a concrete instance of `AppSpecEgressArrayInput` via:
+//
+//	AppSpecEgressArray{ AppSpecEgressArgs{...} }
+type AppSpecEgressArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecEgressArrayOutput() AppSpecEgressArrayOutput
+	ToAppSpecEgressArrayOutputWithContext(context.Context) AppSpecEgressArrayOutput
+}
+
+type AppSpecEgressArray []AppSpecEgressInput
+
+func (AppSpecEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecEgress)(nil)).Elem()
+}
+
+func (i AppSpecEgressArray) ToAppSpecEgressArrayOutput() AppSpecEgressArrayOutput {
+	return i.ToAppSpecEgressArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecEgressArray) ToAppSpecEgressArrayOutputWithContext(ctx context.Context) AppSpecEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecEgressArrayOutput)
+}
+
+type AppSpecEgressOutput struct{ *pulumi.OutputState }
+
+func (AppSpecEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecEgress)(nil)).Elem()
+}
+
+func (o AppSpecEgressOutput) ToAppSpecEgressOutput() AppSpecEgressOutput {
+	return o
+}
+
+func (o AppSpecEgressOutput) ToAppSpecEgressOutputWithContext(ctx context.Context) AppSpecEgressOutput {
+	return o
+}
+
+// The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+func (o AppSpecEgressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecEgress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecEgress)(nil)).Elem()
+}
+
+func (o AppSpecEgressArrayOutput) ToAppSpecEgressArrayOutput() AppSpecEgressArrayOutput {
+	return o
+}
+
+func (o AppSpecEgressArrayOutput) ToAppSpecEgressArrayOutputWithContext(ctx context.Context) AppSpecEgressArrayOutput {
+	return o
+}
+
+func (o AppSpecEgressArrayOutput) Index(i pulumi.IntInput) AppSpecEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecEgress {
+		return vs[0].([]AppSpecEgress)[vs[1].(int)]
+	}).(AppSpecEgressOutput)
+}
+
 type AppSpecEnv struct {
 	// The name of the environment variable.
 	Key *string `pulumi:"key"`
@@ -767,7 +1007,7 @@ type AppSpecEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -789,7 +1029,7 @@ type AppSpecEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -859,7 +1099,7 @@ func (o AppSpecEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1208,15 +1448,15 @@ func (o AppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 }
 
 type AppSpecFunctionCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecFunctionCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -1234,15 +1474,15 @@ type AppSpecFunctionCorsInput interface {
 }
 
 type AppSpecFunctionCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecFunctionCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -1325,27 +1565,27 @@ func (o AppSpecFunctionCorsOutput) ToAppSpecFunctionCorsPtrOutputWithContext(ctx
 	}).(AppSpecFunctionCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecFunctionCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecFunctionCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecFunctionCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecFunctionCorsOutput) AllowOrigins() AppSpecFunctionCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) *AppSpecFunctionCorsAllowOrigins { return v.AllowOrigins }).(AppSpecFunctionCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecFunctionCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecFunctionCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -1379,7 +1619,7 @@ func (o AppSpecFunctionCorsPtrOutput) Elem() AppSpecFunctionCorsOutput {
 	}).(AppSpecFunctionCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) *bool {
 		if v == nil {
@@ -1389,7 +1629,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecFunctionCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
 		if v == nil {
@@ -1399,7 +1639,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecFunctionCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
 		if v == nil {
@@ -1409,7 +1649,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecFunctionCorsPtrOutput) AllowOrigins() AppSpecFunctionCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) *AppSpecFunctionCorsAllowOrigins {
 		if v == nil {
@@ -1419,7 +1659,7 @@ func (o AppSpecFunctionCorsPtrOutput) AllowOrigins() AppSpecFunctionCorsAllowOri
 	}).(AppSpecFunctionCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecFunctionCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCors) []string {
 		if v == nil {
@@ -1440,11 +1680,11 @@ func (o AppSpecFunctionCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecFunctionCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -1460,11 +1700,11 @@ type AppSpecFunctionCorsAllowOriginsInput interface {
 }
 
 type AppSpecFunctionCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -1545,17 +1785,17 @@ func (o AppSpecFunctionCorsAllowOriginsOutput) ToAppSpecFunctionCorsAllowOrigins
 	}).(AppSpecFunctionCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -1584,7 +1824,7 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Elem() AppSpecFunctionCorsAllo
 	}).(AppSpecFunctionCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -1594,7 +1834,7 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -1604,7 +1844,7 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -1621,7 +1861,7 @@ type AppSpecFunctionEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -1643,7 +1883,7 @@ type AppSpecFunctionEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1713,7 +1953,7 @@ func (o AppSpecFunctionEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecFunctionEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2249,7 +2489,7 @@ type AppSpecFunctionLogDestination struct {
 	Datadog *AppSpecFunctionLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
@@ -2271,7 +2511,7 @@ type AppSpecFunctionLogDestinationArgs struct {
 	Datadog AppSpecFunctionLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -2338,7 +2578,7 @@ func (o AppSpecFunctionLogDestinationOutput) Logtail() AppSpecFunctionLogDestina
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationLogtail { return v.Logtail }).(AppSpecFunctionLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2670,7 +2910,7 @@ func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrO
 }
 
 type AppSpecFunctionLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -2686,7 +2926,7 @@ type AppSpecFunctionLogDestinationPapertrailInput interface {
 }
 
 type AppSpecFunctionLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -2767,7 +3007,7 @@ func (o AppSpecFunctionLogDestinationPapertrailOutput) ToAppSpecFunctionLogDesti
 	}).(AppSpecFunctionLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecFunctionLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -2796,7 +3036,7 @@ func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) Elem() AppSpecFunction
 	}).(AppSpecFunctionLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecFunctionLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionLogDestinationPapertrail) *string {
 		if v == nil {
@@ -2913,7 +3153,7 @@ func (o AppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 }
 
 type AppSpecIngress struct {
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 	Rules []AppSpecIngressRule `pulumi:"rules"`
 }
 
@@ -2929,7 +3169,7 @@ type AppSpecIngressInput interface {
 }
 
 type AppSpecIngressArgs struct {
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 	Rules AppSpecIngressRuleArrayInput `pulumi:"rules"`
 }
 
@@ -3010,7 +3250,7 @@ func (o AppSpecIngressOutput) ToAppSpecIngressPtrOutputWithContext(ctx context.C
 	}).(AppSpecIngressPtrOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 func (o AppSpecIngressOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v AppSpecIngress) []AppSpecIngressRule { return v.Rules }).(AppSpecIngressRuleArrayOutput)
 }
@@ -3039,7 +3279,7 @@ func (o AppSpecIngressPtrOutput) Elem() AppSpecIngressOutput {
 	}).(AppSpecIngressOutput)
 }
 
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
 func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngress) []AppSpecIngressRule {
 		if v == nil {
@@ -3174,9 +3414,9 @@ func (o AppSpecIngressRuleArrayOutput) Index(i pulumi.IntInput) AppSpecIngressRu
 }
 
 type AppSpecIngressRuleComponent struct {
-	// The name of the component.
+	// The name of the component to route to.
 	Name *string `pulumi:"name"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
+	// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
 	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 	Rewrite *string `pulumi:"rewrite"`
@@ -3194,9 +3434,9 @@ type AppSpecIngressRuleComponentInput interface {
 }
 
 type AppSpecIngressRuleComponentArgs struct {
-	// The name of the component.
+	// The name of the component to route to.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
+	// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
 	// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
 	Rewrite pulumi.StringPtrInput `pulumi:"rewrite"`
@@ -3279,12 +3519,12 @@ func (o AppSpecIngressRuleComponentOutput) ToAppSpecIngressRuleComponentPtrOutpu
 	}).(AppSpecIngressRuleComponentPtrOutput)
 }
 
-// The name of the component.
+// The name of the component to route to.
 func (o AppSpecIngressRuleComponentOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// An optional flag to preserve the path that is forwarded to the backend service.
+// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 func (o AppSpecIngressRuleComponentOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleComponent) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
@@ -3318,7 +3558,7 @@ func (o AppSpecIngressRuleComponentPtrOutput) Elem() AppSpecIngressRuleComponent
 	}).(AppSpecIngressRuleComponentOutput)
 }
 
-// The name of the component.
+// The name of the component to route to.
 func (o AppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *string {
 		if v == nil {
@@ -3328,7 +3568,7 @@ func (o AppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An optional flag to preserve the path that is forwarded to the backend service.
+// An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
 func (o AppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleComponent) *bool {
 		if v == nil {
@@ -3349,15 +3589,15 @@ func (o AppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
 	// The `Access-Control-Allow-Origin` can be
 	AllowOrigins *AppSpecIngressRuleCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -3375,15 +3615,15 @@ type AppSpecIngressRuleCorsInput interface {
 }
 
 type AppSpecIngressRuleCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
 	// The `Access-Control-Allow-Origin` can be
 	AllowOrigins AppSpecIngressRuleCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -3466,17 +3706,17 @@ func (o AppSpecIngressRuleCorsOutput) ToAppSpecIngressRuleCorsPtrOutputWithConte
 	}).(AppSpecIngressRuleCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecIngressRuleCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecIngressRuleCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecIngressRuleCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
@@ -3486,7 +3726,7 @@ func (o AppSpecIngressRuleCorsOutput) AllowOrigins() AppSpecIngressRuleCorsAllow
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *AppSpecIngressRuleCorsAllowOrigins { return v.AllowOrigins }).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecIngressRuleCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -3520,7 +3760,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) Elem() AppSpecIngressRuleCorsOutput {
 	}).(AppSpecIngressRuleCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) *bool {
 		if v == nil {
@@ -3530,7 +3770,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3540,7 +3780,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3560,7 +3800,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowOrigins() AppSpecIngressRuleCorsAl
 	}).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecIngressRuleCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3756,7 +3996,7 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOut
 }
 
 type AppSpecIngressRuleMatch struct {
-	// Paths must start with `/` and must be unique within the app.
+	// The path to match on.
 	Path *AppSpecIngressRuleMatchPath `pulumi:"path"`
 }
 
@@ -3772,7 +4012,7 @@ type AppSpecIngressRuleMatchInput interface {
 }
 
 type AppSpecIngressRuleMatchArgs struct {
-	// Paths must start with `/` and must be unique within the app.
+	// The path to match on.
 	Path AppSpecIngressRuleMatchPathPtrInput `pulumi:"path"`
 }
 
@@ -3853,7 +4093,7 @@ func (o AppSpecIngressRuleMatchOutput) ToAppSpecIngressRuleMatchPtrOutputWithCon
 	}).(AppSpecIngressRuleMatchPtrOutput)
 }
 
-// Paths must start with `/` and must be unique within the app.
+// The path to match on.
 func (o AppSpecIngressRuleMatchOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath { return v.Path }).(AppSpecIngressRuleMatchPathPtrOutput)
 }
@@ -3882,7 +4122,7 @@ func (o AppSpecIngressRuleMatchPtrOutput) Elem() AppSpecIngressRuleMatchOutput {
 	}).(AppSpecIngressRuleMatchOutput)
 }
 
-// Paths must start with `/` and must be unique within the app.
+// The path to match on.
 func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath {
 		if v == nil {
@@ -3893,7 +4133,7 @@ func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrO
 }
 
 type AppSpecIngressRuleMatchPath struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
 }
 
@@ -3909,7 +4149,7 @@ type AppSpecIngressRuleMatchPathInput interface {
 }
 
 type AppSpecIngressRuleMatchPathArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 }
 
@@ -3990,7 +4230,7 @@ func (o AppSpecIngressRuleMatchPathOutput) ToAppSpecIngressRuleMatchPathPtrOutpu
 	}).(AppSpecIngressRuleMatchPathPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecIngressRuleMatchPathOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatchPath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -4019,7 +4259,7 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Elem() AppSpecIngressRuleMatchPath
 	}).(AppSpecIngressRuleMatchPathOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatchPath) *string {
 		if v == nil {
@@ -4032,7 +4272,7 @@ func (o AppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
 type AppSpecIngressRuleRedirect struct {
 	// The authority/host to redirect to. This can be a hostname or IP address.
 	Authority *string `pulumi:"authority"`
-	// The health check will be performed on this port instead of component's HTTP port.
+	// The port to redirect to.
 	Port *int `pulumi:"port"`
 	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 	RedirectCode *int `pulumi:"redirectCode"`
@@ -4056,7 +4296,7 @@ type AppSpecIngressRuleRedirectInput interface {
 type AppSpecIngressRuleRedirectArgs struct {
 	// The authority/host to redirect to. This can be a hostname or IP address.
 	Authority pulumi.StringPtrInput `pulumi:"authority"`
-	// The health check will be performed on this port instead of component's HTTP port.
+	// The port to redirect to.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
 	RedirectCode pulumi.IntPtrInput `pulumi:"redirectCode"`
@@ -4148,7 +4388,7 @@ func (o AppSpecIngressRuleRedirectOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *string { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
-// The health check will be performed on this port instead of component's HTTP port.
+// The port to redirect to.
 func (o AppSpecIngressRuleRedirectOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleRedirect) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -4202,7 +4442,7 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Authority() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The health check will be performed on this port instead of component's HTTP port.
+// The port to redirect to.
 func (o AppSpecIngressRuleRedirectPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleRedirect) *int {
 		if v == nil {
@@ -4266,6 +4506,10 @@ type AppSpecJob struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -4312,6 +4556,10 @@ type AppSpecJobArgs struct {
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -4430,6 +4678,10 @@ func (o AppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
+// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o AppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -4614,7 +4866,7 @@ type AppSpecJobEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -4636,7 +4888,7 @@ type AppSpecJobEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4706,7 +4958,7 @@ func (o AppSpecJobEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecJobEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5238,10 +5490,12 @@ func (o AppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecJobImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -5262,10 +5516,12 @@ type AppSpecJobImageInput interface {
 }
 
 type AppSpecJobImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -5351,7 +5607,7 @@ func (o AppSpecJobImageOutput) ToAppSpecJobImagePtrOutputWithContext(ctx context
 	}).(AppSpecJobImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecJobImageOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecJobImage) []AppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(AppSpecJobImageDeployOnPushArrayOutput)
 }
@@ -5359,6 +5615,11 @@ func (o AppSpecJobImageOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArray
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecJobImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -5400,7 +5661,7 @@ func (o AppSpecJobImagePtrOutput) Elem() AppSpecJobImageOutput {
 	}).(AppSpecJobImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecJobImagePtrOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecJobImage) []AppSpecJobImageDeployOnPush {
 		if v == nil {
@@ -5417,6 +5678,16 @@ func (o AppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5552,7 +5823,7 @@ type AppSpecJobLogDestination struct {
 	Datadog *AppSpecJobLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecJobLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
@@ -5574,7 +5845,7 @@ type AppSpecJobLogDestinationArgs struct {
 	Datadog AppSpecJobLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -5641,7 +5912,7 @@ func (o AppSpecJobLogDestinationOutput) Logtail() AppSpecJobLogDestinationLogtai
 	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationLogtail { return v.Logtail }).(AppSpecJobLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5973,7 +6244,7 @@ func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput
 }
 
 type AppSpecJobLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -5989,7 +6260,7 @@ type AppSpecJobLogDestinationPapertrailInput interface {
 }
 
 type AppSpecJobLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -6070,7 +6341,7 @@ func (o AppSpecJobLogDestinationPapertrailOutput) ToAppSpecJobLogDestinationPape
 	}).(AppSpecJobLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecJobLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -6099,7 +6370,7 @@ func (o AppSpecJobLogDestinationPapertrailPtrOutput) Elem() AppSpecJobLogDestina
 	}).(AppSpecJobLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobLogDestinationPapertrail) *string {
 		if v == nil {
@@ -6523,15 +6794,15 @@ func (o AppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) AppSpecServiceA
 }
 
 type AppSpecServiceCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -6549,15 +6820,15 @@ type AppSpecServiceCorsInput interface {
 }
 
 type AppSpecServiceCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -6640,27 +6911,27 @@ func (o AppSpecServiceCorsOutput) ToAppSpecServiceCorsPtrOutputWithContext(ctx c
 	}).(AppSpecServiceCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecServiceCorsOutput) AllowOrigins() AppSpecServiceCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) *AppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -6694,7 +6965,7 @@ func (o AppSpecServiceCorsPtrOutput) Elem() AppSpecServiceCorsOutput {
 	}).(AppSpecServiceCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) *bool {
 		if v == nil {
@@ -6704,7 +6975,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) []string {
 		if v == nil {
@@ -6714,7 +6985,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) []string {
 		if v == nil {
@@ -6724,7 +6995,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecServiceCorsPtrOutput) AllowOrigins() AppSpecServiceCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) *AppSpecServiceCorsAllowOrigins {
 		if v == nil {
@@ -6734,7 +7005,7 @@ func (o AppSpecServiceCorsPtrOutput) AllowOrigins() AppSpecServiceCorsAllowOrigi
 	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceCors) []string {
 		if v == nil {
@@ -6755,11 +7026,11 @@ func (o AppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecServiceCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -6775,11 +7046,11 @@ type AppSpecServiceCorsAllowOriginsInput interface {
 }
 
 type AppSpecServiceCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -6860,17 +7131,17 @@ func (o AppSpecServiceCorsAllowOriginsOutput) ToAppSpecServiceCorsAllowOriginsPt
 	}).(AppSpecServiceCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecServiceCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -6899,7 +7170,7 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Elem() AppSpecServiceCorsAllowO
 	}).(AppSpecServiceCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -6909,7 +7180,7 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -6919,7 +7190,7 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -6936,7 +7207,7 @@ type AppSpecServiceEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -6958,7 +7229,7 @@ type AppSpecServiceEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -7028,7 +7299,7 @@ func (o AppSpecServiceEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -7811,10 +8082,12 @@ func (o AppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput
 }
 
 type AppSpecServiceImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -7835,10 +8108,12 @@ type AppSpecServiceImageInput interface {
 }
 
 type AppSpecServiceImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -7924,7 +8199,7 @@ func (o AppSpecServiceImageOutput) ToAppSpecServiceImagePtrOutputWithContext(ctx
 	}).(AppSpecServiceImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecServiceImageOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) []AppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(AppSpecServiceImageDeployOnPushArrayOutput)
 }
@@ -7932,6 +8207,11 @@ func (o AppSpecServiceImageOutput) DeployOnPushes() AppSpecServiceImageDeployOnP
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecServiceImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -7973,7 +8253,7 @@ func (o AppSpecServiceImagePtrOutput) Elem() AppSpecServiceImageOutput {
 	}).(AppSpecServiceImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecServiceImagePtrOutput) DeployOnPushes() AppSpecServiceImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecServiceImage) []AppSpecServiceImageDeployOnPush {
 		if v == nil {
@@ -7990,6 +8270,16 @@ func (o AppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8125,7 +8415,7 @@ type AppSpecServiceLogDestination struct {
 	Datadog *AppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
@@ -8147,7 +8437,7 @@ type AppSpecServiceLogDestinationArgs struct {
 	Datadog AppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -8214,7 +8504,7 @@ func (o AppSpecServiceLogDestinationOutput) Logtail() AppSpecServiceLogDestinati
 	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationLogtail { return v.Logtail }).(AppSpecServiceLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8546,7 +8836,7 @@ func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOu
 }
 
 type AppSpecServiceLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -8562,7 +8852,7 @@ type AppSpecServiceLogDestinationPapertrailInput interface {
 }
 
 type AppSpecServiceLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -8643,7 +8933,7 @@ func (o AppSpecServiceLogDestinationPapertrailOutput) ToAppSpecServiceLogDestina
 	}).(AppSpecServiceLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -8672,7 +8962,7 @@ func (o AppSpecServiceLogDestinationPapertrailPtrOutput) Elem() AppSpecServiceLo
 	}).(AppSpecServiceLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceLogDestinationPapertrail) *string {
 		if v == nil {
@@ -9024,15 +9314,15 @@ func (o AppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSite
 }
 
 type AppSpecStaticSiteCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins *AppSpecStaticSiteCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -9050,15 +9340,15 @@ type AppSpecStaticSiteCorsInput interface {
 }
 
 type AppSpecStaticSiteCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 	AllowOrigins AppSpecStaticSiteCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -9141,27 +9431,27 @@ func (o AppSpecStaticSiteCorsOutput) ToAppSpecStaticSiteCorsPtrOutputWithContext
 	}).(AppSpecStaticSiteCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecStaticSiteCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecStaticSiteCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecStaticSiteCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecStaticSiteCorsOutput) AllowOrigins() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) *AppSpecStaticSiteCorsAllowOrigins { return v.AllowOrigins }).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecStaticSiteCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -9195,7 +9485,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) Elem() AppSpecStaticSiteCorsOutput {
 	}).(AppSpecStaticSiteCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) *bool {
 		if v == nil {
@@ -9205,7 +9495,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -9215,7 +9505,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -9225,7 +9515,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The `Access-Control-Allow-Origin` can be
+// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
 func (o AppSpecStaticSiteCorsPtrOutput) AllowOrigins() AppSpecStaticSiteCorsAllowOriginsPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) *AppSpecStaticSiteCorsAllowOrigins {
 		if v == nil {
@@ -9235,7 +9525,7 @@ func (o AppSpecStaticSiteCorsPtrOutput) AllowOrigins() AppSpecStaticSiteCorsAllo
 	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
 func (o AppSpecStaticSiteCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCors) []string {
 		if v == nil {
@@ -9256,11 +9546,11 @@ func (o AppSpecStaticSiteCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
 }
 
 type AppSpecStaticSiteCorsAllowOrigins struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact *string `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix *string `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -9276,11 +9566,11 @@ type AppSpecStaticSiteCorsAllowOriginsInput interface {
 }
 
 type AppSpecStaticSiteCorsAllowOriginsArgs struct {
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	// Prefix-based match.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -9361,17 +9651,17 @@ func (o AppSpecStaticSiteCorsAllowOriginsOutput) ToAppSpecStaticSiteCorsAllowOri
 	}).(AppSpecStaticSiteCorsAllowOriginsPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -9400,7 +9690,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Elem() AppSpecStaticSiteCors
 	}).(AppSpecStaticSiteCorsAllowOriginsOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+// Exact string match.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -9410,7 +9700,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+// Prefix-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -9420,7 +9710,7 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+// RE2 style regex-based match.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -9437,7 +9727,7 @@ type AppSpecStaticSiteEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -9459,7 +9749,7 @@ type AppSpecStaticSiteEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -9529,7 +9819,7 @@ func (o AppSpecStaticSiteEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecStaticSiteEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -10529,7 +10819,7 @@ type AppSpecWorkerEnv struct {
 	Scope *string `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type *string `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -10551,7 +10841,7 @@ type AppSpecWorkerEnvArgs struct {
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// The type of the environment variable, `GENERAL` or `SECRET`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The threshold for the type of the warning.
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -10621,7 +10911,7 @@ func (o AppSpecWorkerEnvOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for the type of the warning.
+// The value of the environment variable.
 func (o AppSpecWorkerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -11153,10 +11443,12 @@ func (o AppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type AppSpecWorkerImage struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -11177,10 +11469,12 @@ type AppSpecWorkerImageInput interface {
 }
 
 type AppSpecWorkerImageArgs struct {
-	// Whether to automatically deploy new commits made to the repo.
+	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -11266,7 +11560,7 @@ func (o AppSpecWorkerImageOutput) ToAppSpecWorkerImagePtrOutputWithContext(ctx c
 	}).(AppSpecWorkerImagePtrOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecWorkerImageOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(AppSpecWorkerImageDeployOnPushArrayOutput)
 }
@@ -11274,6 +11568,11 @@ func (o AppSpecWorkerImageOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPus
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
 
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
@@ -11315,7 +11614,7 @@ func (o AppSpecWorkerImagePtrOutput) Elem() AppSpecWorkerImageOutput {
 	}).(AppSpecWorkerImageOutput)
 }
 
-// Whether to automatically deploy new commits made to the repo.
+// Configures automatically deploying images pushed to DOCR.
 func (o AppSpecWorkerImagePtrOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPushArrayOutput {
 	return o.ApplyT(func(v *AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush {
 		if v == nil {
@@ -11332,6 +11631,16 @@ func (o AppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o AppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11467,7 +11776,7 @@ type AppSpecWorkerLogDestination struct {
 	Datadog *AppSpecWorkerLogDestinationDatadog `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail *AppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail *AppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
@@ -11489,7 +11798,7 @@ type AppSpecWorkerLogDestinationArgs struct {
 	Datadog AppSpecWorkerLogDestinationDatadogPtrInput `pulumi:"datadog"`
 	// Logtail configuration.
 	Logtail AppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
-	// The name of the component.
+	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Papertrail configuration.
 	Papertrail AppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
@@ -11556,7 +11865,7 @@ func (o AppSpecWorkerLogDestinationOutput) Logtail() AppSpecWorkerLogDestination
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationLogtail { return v.Logtail }).(AppSpecWorkerLogDestinationLogtailPtrOutput)
 }
 
-// The name of the component.
+// Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11888,7 +12197,7 @@ func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOut
 }
 
 type AppSpecWorkerLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -11904,7 +12213,7 @@ type AppSpecWorkerLogDestinationPapertrailInput interface {
 }
 
 type AppSpecWorkerLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// Papertrail syslog endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -11985,7 +12294,7 @@ func (o AppSpecWorkerLogDestinationPapertrailOutput) ToAppSpecWorkerLogDestinati
 	}).(AppSpecWorkerLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecWorkerLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -12014,7 +12323,7 @@ func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Elem() AppSpecWorkerLogD
 	}).(AppSpecWorkerLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// Papertrail syslog endpoint.
 func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerLogDestinationPapertrail) *string {
 		if v == nil {
@@ -12716,6 +13025,245 @@ func (o DatabaseKafkaTopicConfigArrayOutput) Index(i pulumi.IntInput) DatabaseKa
 	}).(DatabaseKafkaTopicConfigOutput)
 }
 
+type DatabasePostgresqlConfigPgbouncer struct {
+	AutodbIdleTimeout       *int     `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  *int     `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          *string  `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          *int     `pulumi:"autodbPoolSize"`
+	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             *int     `pulumi:"minPoolSize"`
+	ServerIdleTimeout       *int     `pulumi:"serverIdleTimeout"`
+	ServerLifetime          *int     `pulumi:"serverLifetime"`
+	ServerResetQueryAlways  *bool    `pulumi:"serverResetQueryAlways"`
+}
+
+// DatabasePostgresqlConfigPgbouncerInput is an input type that accepts DatabasePostgresqlConfigPgbouncerArgs and DatabasePostgresqlConfigPgbouncerOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigPgbouncerInput` via:
+//
+//	DatabasePostgresqlConfigPgbouncerArgs{...}
+type DatabasePostgresqlConfigPgbouncerInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigPgbouncerOutput() DatabasePostgresqlConfigPgbouncerOutput
+	ToDatabasePostgresqlConfigPgbouncerOutputWithContext(context.Context) DatabasePostgresqlConfigPgbouncerOutput
+}
+
+type DatabasePostgresqlConfigPgbouncerArgs struct {
+	AutodbIdleTimeout       pulumi.IntPtrInput      `pulumi:"autodbIdleTimeout"`
+	AutodbMaxDbConnections  pulumi.IntPtrInput      `pulumi:"autodbMaxDbConnections"`
+	AutodbPoolMode          pulumi.StringPtrInput   `pulumi:"autodbPoolMode"`
+	AutodbPoolSize          pulumi.IntPtrInput      `pulumi:"autodbPoolSize"`
+	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	MinPoolSize             pulumi.IntPtrInput      `pulumi:"minPoolSize"`
+	ServerIdleTimeout       pulumi.IntPtrInput      `pulumi:"serverIdleTimeout"`
+	ServerLifetime          pulumi.IntPtrInput      `pulumi:"serverLifetime"`
+	ServerResetQueryAlways  pulumi.BoolPtrInput     `pulumi:"serverResetQueryAlways"`
+}
+
+func (DatabasePostgresqlConfigPgbouncerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArgs) ToDatabasePostgresqlConfigPgbouncerOutput() DatabasePostgresqlConfigPgbouncerOutput {
+	return i.ToDatabasePostgresqlConfigPgbouncerOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArgs) ToDatabasePostgresqlConfigPgbouncerOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigPgbouncerOutput)
+}
+
+// DatabasePostgresqlConfigPgbouncerArrayInput is an input type that accepts DatabasePostgresqlConfigPgbouncerArray and DatabasePostgresqlConfigPgbouncerArrayOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigPgbouncerArrayInput` via:
+//
+//	DatabasePostgresqlConfigPgbouncerArray{ DatabasePostgresqlConfigPgbouncerArgs{...} }
+type DatabasePostgresqlConfigPgbouncerArrayInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigPgbouncerArrayOutput() DatabasePostgresqlConfigPgbouncerArrayOutput
+	ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(context.Context) DatabasePostgresqlConfigPgbouncerArrayOutput
+}
+
+type DatabasePostgresqlConfigPgbouncerArray []DatabasePostgresqlConfigPgbouncerInput
+
+func (DatabasePostgresqlConfigPgbouncerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArray) ToDatabasePostgresqlConfigPgbouncerArrayOutput() DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return i.ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigPgbouncerArray) ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigPgbouncerArrayOutput)
+}
+
+type DatabasePostgresqlConfigPgbouncerOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigPgbouncerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ToDatabasePostgresqlConfigPgbouncerOutput() DatabasePostgresqlConfigPgbouncerOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ToDatabasePostgresqlConfigPgbouncerOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.AutodbIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.AutodbMaxDbConnections }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) AutodbPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.AutodbPoolSize }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) MinPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.MinPoolSize }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ServerIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.ServerIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ServerLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *int { return v.ServerLifetime }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabasePostgresqlConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+}
+
+type DatabasePostgresqlConfigPgbouncerArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigPgbouncerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigPgbouncer)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigPgbouncerArrayOutput) ToDatabasePostgresqlConfigPgbouncerArrayOutput() DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerArrayOutput) ToDatabasePostgresqlConfigPgbouncerArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigPgbouncerArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigPgbouncerArrayOutput) Index(i pulumi.IntInput) DatabasePostgresqlConfigPgbouncerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabasePostgresqlConfigPgbouncer {
+		return vs[0].([]DatabasePostgresqlConfigPgbouncer)[vs[1].(int)]
+	}).(DatabasePostgresqlConfigPgbouncerOutput)
+}
+
+type DatabasePostgresqlConfigTimescaledb struct {
+	// TimescaleDB extension configuration values
+	Timescaledb *int `pulumi:"timescaledb"`
+}
+
+// DatabasePostgresqlConfigTimescaledbInput is an input type that accepts DatabasePostgresqlConfigTimescaledbArgs and DatabasePostgresqlConfigTimescaledbOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigTimescaledbInput` via:
+//
+//	DatabasePostgresqlConfigTimescaledbArgs{...}
+type DatabasePostgresqlConfigTimescaledbInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigTimescaledbOutput() DatabasePostgresqlConfigTimescaledbOutput
+	ToDatabasePostgresqlConfigTimescaledbOutputWithContext(context.Context) DatabasePostgresqlConfigTimescaledbOutput
+}
+
+type DatabasePostgresqlConfigTimescaledbArgs struct {
+	// TimescaleDB extension configuration values
+	Timescaledb pulumi.IntPtrInput `pulumi:"timescaledb"`
+}
+
+func (DatabasePostgresqlConfigTimescaledbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArgs) ToDatabasePostgresqlConfigTimescaledbOutput() DatabasePostgresqlConfigTimescaledbOutput {
+	return i.ToDatabasePostgresqlConfigTimescaledbOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArgs) ToDatabasePostgresqlConfigTimescaledbOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigTimescaledbOutput)
+}
+
+// DatabasePostgresqlConfigTimescaledbArrayInput is an input type that accepts DatabasePostgresqlConfigTimescaledbArray and DatabasePostgresqlConfigTimescaledbArrayOutput values.
+// You can construct a concrete instance of `DatabasePostgresqlConfigTimescaledbArrayInput` via:
+//
+//	DatabasePostgresqlConfigTimescaledbArray{ DatabasePostgresqlConfigTimescaledbArgs{...} }
+type DatabasePostgresqlConfigTimescaledbArrayInput interface {
+	pulumi.Input
+
+	ToDatabasePostgresqlConfigTimescaledbArrayOutput() DatabasePostgresqlConfigTimescaledbArrayOutput
+	ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(context.Context) DatabasePostgresqlConfigTimescaledbArrayOutput
+}
+
+type DatabasePostgresqlConfigTimescaledbArray []DatabasePostgresqlConfigTimescaledbInput
+
+func (DatabasePostgresqlConfigTimescaledbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArray) ToDatabasePostgresqlConfigTimescaledbArrayOutput() DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return i.ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(context.Background())
+}
+
+func (i DatabasePostgresqlConfigTimescaledbArray) ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlConfigTimescaledbArrayOutput)
+}
+
+type DatabasePostgresqlConfigTimescaledbOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigTimescaledbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigTimescaledbOutput) ToDatabasePostgresqlConfigTimescaledbOutput() DatabasePostgresqlConfigTimescaledbOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigTimescaledbOutput) ToDatabasePostgresqlConfigTimescaledbOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbOutput {
+	return o
+}
+
+// TimescaleDB extension configuration values
+func (o DatabasePostgresqlConfigTimescaledbOutput) Timescaledb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigTimescaledb) *int { return v.Timescaledb }).(pulumi.IntPtrOutput)
+}
+
+type DatabasePostgresqlConfigTimescaledbArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabasePostgresqlConfigTimescaledbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabasePostgresqlConfigTimescaledb)(nil)).Elem()
+}
+
+func (o DatabasePostgresqlConfigTimescaledbArrayOutput) ToDatabasePostgresqlConfigTimescaledbArrayOutput() DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigTimescaledbArrayOutput) ToDatabasePostgresqlConfigTimescaledbArrayOutputWithContext(ctx context.Context) DatabasePostgresqlConfigTimescaledbArrayOutput {
+	return o
+}
+
+func (o DatabasePostgresqlConfigTimescaledbArrayOutput) Index(i pulumi.IntInput) DatabasePostgresqlConfigTimescaledbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabasePostgresqlConfigTimescaledb {
+		return vs[0].([]DatabasePostgresqlConfigTimescaledb)[vs[1].(int)]
+	}).(DatabasePostgresqlConfigTimescaledbOutput)
+}
+
 type DatabaseUserSetting struct {
 	// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
 	//
@@ -12821,11 +13369,9 @@ func (o DatabaseUserSettingArrayOutput) Index(i pulumi.IntInput) DatabaseUserSet
 
 type DatabaseUserSettingAcl struct {
 	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-	Id *string `pulumi:"id"`
-	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-	Permission string `pulumi:"permission"`
-	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-	Topic string `pulumi:"topic"`
+	Id         *string `pulumi:"id"`
+	Permission string  `pulumi:"permission"`
+	Topic      string  `pulumi:"topic"`
 }
 
 // DatabaseUserSettingAclInput is an input type that accepts DatabaseUserSettingAclArgs and DatabaseUserSettingAclOutput values.
@@ -12841,11 +13387,9 @@ type DatabaseUserSettingAclInput interface {
 
 type DatabaseUserSettingAclArgs struct {
 	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-	Permission pulumi.StringInput `pulumi:"permission"`
-	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-	Topic pulumi.StringInput `pulumi:"topic"`
+	Id         pulumi.StringPtrInput `pulumi:"id"`
+	Permission pulumi.StringInput    `pulumi:"permission"`
+	Topic      pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (DatabaseUserSettingAclArgs) ElementType() reflect.Type {
@@ -12904,12 +13448,10 @@ func (o DatabaseUserSettingAclOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
 func (o DatabaseUserSettingAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
 func (o DatabaseUserSettingAclOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -13761,7 +14303,7 @@ type KubernetesClusterNodePool struct {
 	Nodes []KubernetesClusterNodePoolNode `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size string `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
 	Taints []KubernetesClusterNodePoolTaint `pulumi:"taints"`
@@ -13799,7 +14341,7 @@ type KubernetesClusterNodePoolArgs struct {
 	Nodes KubernetesClusterNodePoolNodeArrayInput `pulumi:"nodes"`
 	// The slug identifier for the type of Droplet to be used as workers in the node pool.
 	Size pulumi.StringInput `pulumi:"size"`
-	// A list of tag names to be applied to the Kubernetes cluster.
+	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
 	Taints KubernetesClusterNodePoolTaintArrayInput `pulumi:"taints"`
@@ -13932,7 +14474,7 @@ func (o KubernetesClusterNodePoolOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) string { return v.Size }).(pulumi.StringOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o KubernetesClusterNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -14066,7 +14608,7 @@ func (o KubernetesClusterNodePoolPtrOutput) Size() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of tag names to be applied to the Kubernetes cluster.
+// A list of tag names applied to the node pool.
 func (o KubernetesClusterNodePoolPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubernetesClusterNodePool) []string {
 		if v == nil {
@@ -14093,7 +14635,7 @@ type KubernetesClusterNodePoolNode struct {
 	DropletId *string `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node.
 	Id *string `pulumi:"id"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
@@ -14119,7 +14661,7 @@ type KubernetesClusterNodePoolNodeArgs struct {
 	DropletId pulumi.StringPtrInput `pulumi:"dropletId"`
 	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A name for the node pool.
+	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -14193,7 +14735,7 @@ func (o KubernetesClusterNodePoolNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// A name for the node pool.
+// A name for the Kubernetes cluster.
 func (o KubernetesClusterNodePoolNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePoolNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -14600,6 +15142,139 @@ func (o KubernetesNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesN
 	}).(KubernetesNodePoolTaintOutput)
 }
 
+type LoadBalancerDomain struct {
+	// name of certificate required for TLS handshaking
+	CertificateName *string `pulumi:"certificateName"`
+	// Control flag to specify whether the domain is managed by DigitalOcean.
+	IsManaged *bool `pulumi:"isManaged"`
+	// The domain name to be used for ingressing traffic to a Global Load Balancer.
+	Name string `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons []string `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons []string `pulumi:"verificationErrorReasons"`
+}
+
+// LoadBalancerDomainInput is an input type that accepts LoadBalancerDomainArgs and LoadBalancerDomainOutput values.
+// You can construct a concrete instance of `LoadBalancerDomainInput` via:
+//
+//	LoadBalancerDomainArgs{...}
+type LoadBalancerDomainInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDomainOutput() LoadBalancerDomainOutput
+	ToLoadBalancerDomainOutputWithContext(context.Context) LoadBalancerDomainOutput
+}
+
+type LoadBalancerDomainArgs struct {
+	// name of certificate required for TLS handshaking
+	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
+	// Control flag to specify whether the domain is managed by DigitalOcean.
+	IsManaged pulumi.BoolPtrInput `pulumi:"isManaged"`
+	// The domain name to be used for ingressing traffic to a Global Load Balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons pulumi.StringArrayInput `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons pulumi.StringArrayInput `pulumi:"verificationErrorReasons"`
+}
+
+func (LoadBalancerDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDomain)(nil)).Elem()
+}
+
+func (i LoadBalancerDomainArgs) ToLoadBalancerDomainOutput() LoadBalancerDomainOutput {
+	return i.ToLoadBalancerDomainOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDomainArgs) ToLoadBalancerDomainOutputWithContext(ctx context.Context) LoadBalancerDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDomainOutput)
+}
+
+// LoadBalancerDomainArrayInput is an input type that accepts LoadBalancerDomainArray and LoadBalancerDomainArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerDomainArrayInput` via:
+//
+//	LoadBalancerDomainArray{ LoadBalancerDomainArgs{...} }
+type LoadBalancerDomainArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDomainArrayOutput() LoadBalancerDomainArrayOutput
+	ToLoadBalancerDomainArrayOutputWithContext(context.Context) LoadBalancerDomainArrayOutput
+}
+
+type LoadBalancerDomainArray []LoadBalancerDomainInput
+
+func (LoadBalancerDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerDomain)(nil)).Elem()
+}
+
+func (i LoadBalancerDomainArray) ToLoadBalancerDomainArrayOutput() LoadBalancerDomainArrayOutput {
+	return i.ToLoadBalancerDomainArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDomainArray) ToLoadBalancerDomainArrayOutputWithContext(ctx context.Context) LoadBalancerDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDomainArrayOutput)
+}
+
+type LoadBalancerDomainOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDomain)(nil)).Elem()
+}
+
+func (o LoadBalancerDomainOutput) ToLoadBalancerDomainOutput() LoadBalancerDomainOutput {
+	return o
+}
+
+func (o LoadBalancerDomainOutput) ToLoadBalancerDomainOutputWithContext(ctx context.Context) LoadBalancerDomainOutput {
+	return o
+}
+
+// name of certificate required for TLS handshaking
+func (o LoadBalancerDomainOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
+}
+
+// Control flag to specify whether the domain is managed by DigitalOcean.
+func (o LoadBalancerDomainOutput) IsManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) *bool { return v.IsManaged }).(pulumi.BoolPtrOutput)
+}
+
+// The domain name to be used for ingressing traffic to a Global Load Balancer.
+func (o LoadBalancerDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// list of domain SSL validation errors
+func (o LoadBalancerDomainOutput) SslValidationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) []string { return v.SslValidationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+// list of domain verification errors
+func (o LoadBalancerDomainOutput) VerificationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) []string { return v.VerificationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+type LoadBalancerDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerDomain)(nil)).Elem()
+}
+
+func (o LoadBalancerDomainArrayOutput) ToLoadBalancerDomainArrayOutput() LoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o LoadBalancerDomainArrayOutput) ToLoadBalancerDomainArrayOutputWithContext(ctx context.Context) LoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o LoadBalancerDomainArrayOutput) Index(i pulumi.IntInput) LoadBalancerDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerDomain {
+		return vs[0].([]LoadBalancerDomain)[vs[1].(int)]
+	}).(LoadBalancerDomainOutput)
+}
+
 type LoadBalancerFirewall struct {
 	// A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
 	// * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
@@ -14915,6 +15590,356 @@ func (o LoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) LoadBala
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerForwardingRule {
 		return vs[0].([]LoadBalancerForwardingRule)[vs[1].(int)]
 	}).(LoadBalancerForwardingRuleOutput)
+}
+
+type LoadBalancerGlbSettings struct {
+	// CDN configuration supporting the following:
+	Cdn *LoadBalancerGlbSettingsCdn `pulumi:"cdn"`
+	// fail-over threshold
+	FailoverThreshold *int `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities map[string]int `pulumi:"regionPriorities"`
+	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+	TargetPort int `pulumi:"targetPort"`
+	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+	TargetProtocol string `pulumi:"targetProtocol"`
+}
+
+// LoadBalancerGlbSettingsInput is an input type that accepts LoadBalancerGlbSettingsArgs and LoadBalancerGlbSettingsOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsInput` via:
+//
+//	LoadBalancerGlbSettingsArgs{...}
+type LoadBalancerGlbSettingsInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsOutput() LoadBalancerGlbSettingsOutput
+	ToLoadBalancerGlbSettingsOutputWithContext(context.Context) LoadBalancerGlbSettingsOutput
+}
+
+type LoadBalancerGlbSettingsArgs struct {
+	// CDN configuration supporting the following:
+	Cdn LoadBalancerGlbSettingsCdnPtrInput `pulumi:"cdn"`
+	// fail-over threshold
+	FailoverThreshold pulumi.IntPtrInput `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities pulumi.IntMapInput `pulumi:"regionPriorities"`
+	// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+}
+
+func (LoadBalancerGlbSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsOutput() LoadBalancerGlbSettingsOutput {
+	return i.ToLoadBalancerGlbSettingsOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsOutput)
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return i.ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsArgs) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsOutput).ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerGlbSettingsPtrInput is an input type that accepts LoadBalancerGlbSettingsArgs, LoadBalancerGlbSettingsPtr and LoadBalancerGlbSettingsPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsPtrInput` via:
+//
+//	        LoadBalancerGlbSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerGlbSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput
+	ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Context) LoadBalancerGlbSettingsPtrOutput
+}
+
+type loadBalancerGlbSettingsPtrType LoadBalancerGlbSettingsArgs
+
+func LoadBalancerGlbSettingsPtr(v *LoadBalancerGlbSettingsArgs) LoadBalancerGlbSettingsPtrInput {
+	return (*loadBalancerGlbSettingsPtrType)(v)
+}
+
+func (*loadBalancerGlbSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (i *loadBalancerGlbSettingsPtrType) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return i.ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerGlbSettingsPtrType) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsPtrOutput)
+}
+
+type LoadBalancerGlbSettingsOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsOutput() LoadBalancerGlbSettingsOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return o.ToLoadBalancerGlbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerGlbSettingsOutput) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerGlbSettings) *LoadBalancerGlbSettings {
+		return &v
+	}).(LoadBalancerGlbSettingsPtrOutput)
+}
+
+// CDN configuration supporting the following:
+func (o LoadBalancerGlbSettingsOutput) Cdn() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) *LoadBalancerGlbSettingsCdn { return v.Cdn }).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// fail-over threshold
+func (o LoadBalancerGlbSettingsOutput) FailoverThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) *int { return v.FailoverThreshold }).(pulumi.IntPtrOutput)
+}
+
+// region priority map
+func (o LoadBalancerGlbSettingsOutput) RegionPriorities() pulumi.IntMapOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) map[string]int { return v.RegionPriorities }).(pulumi.IntMapOutput)
+}
+
+// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+func (o LoadBalancerGlbSettingsOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+func (o LoadBalancerGlbSettingsOutput) TargetProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettings) string { return v.TargetProtocol }).(pulumi.StringOutput)
+}
+
+type LoadBalancerGlbSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettings)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsPtrOutput) ToLoadBalancerGlbSettingsPtrOutput() LoadBalancerGlbSettingsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsPtrOutput) ToLoadBalancerGlbSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsPtrOutput) Elem() LoadBalancerGlbSettingsOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) LoadBalancerGlbSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerGlbSettings
+		return ret
+	}).(LoadBalancerGlbSettingsOutput)
+}
+
+// CDN configuration supporting the following:
+func (o LoadBalancerGlbSettingsPtrOutput) Cdn() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *LoadBalancerGlbSettingsCdn {
+		if v == nil {
+			return nil
+		}
+		return v.Cdn
+	}).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// fail-over threshold
+func (o LoadBalancerGlbSettingsPtrOutput) FailoverThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// region priority map
+func (o LoadBalancerGlbSettingsPtrOutput) RegionPriorities() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) map[string]int {
+		if v == nil {
+			return nil
+		}
+		return v.RegionPriorities
+	}).(pulumi.IntMapOutput)
+}
+
+// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+func (o LoadBalancerGlbSettingsPtrOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+func (o LoadBalancerGlbSettingsPtrOutput) TargetProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerGlbSettingsCdn struct {
+	// Control flag to specify if caching is enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
+}
+
+// LoadBalancerGlbSettingsCdnInput is an input type that accepts LoadBalancerGlbSettingsCdnArgs and LoadBalancerGlbSettingsCdnOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsCdnInput` via:
+//
+//	LoadBalancerGlbSettingsCdnArgs{...}
+type LoadBalancerGlbSettingsCdnInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsCdnOutput() LoadBalancerGlbSettingsCdnOutput
+	ToLoadBalancerGlbSettingsCdnOutputWithContext(context.Context) LoadBalancerGlbSettingsCdnOutput
+}
+
+type LoadBalancerGlbSettingsCdnArgs struct {
+	// Control flag to specify if caching is enabled.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+}
+
+func (LoadBalancerGlbSettingsCdnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnOutput() LoadBalancerGlbSettingsCdnOutput {
+	return i.ToLoadBalancerGlbSettingsCdnOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsCdnOutput)
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return i.ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerGlbSettingsCdnArgs) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsCdnOutput).ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerGlbSettingsCdnPtrInput is an input type that accepts LoadBalancerGlbSettingsCdnArgs, LoadBalancerGlbSettingsCdnPtr and LoadBalancerGlbSettingsCdnPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerGlbSettingsCdnPtrInput` via:
+//
+//	        LoadBalancerGlbSettingsCdnArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerGlbSettingsCdnPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput
+	ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Context) LoadBalancerGlbSettingsCdnPtrOutput
+}
+
+type loadBalancerGlbSettingsCdnPtrType LoadBalancerGlbSettingsCdnArgs
+
+func LoadBalancerGlbSettingsCdnPtr(v *LoadBalancerGlbSettingsCdnArgs) LoadBalancerGlbSettingsCdnPtrInput {
+	return (*loadBalancerGlbSettingsCdnPtrType)(v)
+}
+
+func (*loadBalancerGlbSettingsCdnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (i *loadBalancerGlbSettingsCdnPtrType) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return i.ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerGlbSettingsCdnPtrType) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+type LoadBalancerGlbSettingsCdnOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsCdnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnOutput() LoadBalancerGlbSettingsCdnOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerGlbSettingsCdnOutput) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerGlbSettingsCdn) *LoadBalancerGlbSettingsCdn {
+		return &v
+	}).(LoadBalancerGlbSettingsCdnPtrOutput)
+}
+
+// Control flag to specify if caching is enabled.
+func (o LoadBalancerGlbSettingsCdnOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerGlbSettingsCdn) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type LoadBalancerGlbSettingsCdnPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerGlbSettingsCdnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerGlbSettingsCdn)(nil)).Elem()
+}
+
+func (o LoadBalancerGlbSettingsCdnPtrOutput) ToLoadBalancerGlbSettingsCdnPtrOutput() LoadBalancerGlbSettingsCdnPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnPtrOutput) ToLoadBalancerGlbSettingsCdnPtrOutputWithContext(ctx context.Context) LoadBalancerGlbSettingsCdnPtrOutput {
+	return o
+}
+
+func (o LoadBalancerGlbSettingsCdnPtrOutput) Elem() LoadBalancerGlbSettingsCdnOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettingsCdn) LoadBalancerGlbSettingsCdn {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerGlbSettingsCdn
+		return ret
+	}).(LoadBalancerGlbSettingsCdnOutput)
+}
+
+// Control flag to specify if caching is enabled.
+func (o LoadBalancerGlbSettingsCdnPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerGlbSettingsCdn) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type LoadBalancerHealthcheck struct {
@@ -16690,13 +17715,129 @@ func (o UptimeAlertNotificationSlackArrayOutput) Index(i pulumi.IntInput) Uptime
 	}).(UptimeAlertNotificationSlackOutput)
 }
 
+type GetAppDedicatedIp struct {
+	// The ID of the dedicated egress IP.
+	Id string `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip string `pulumi:"ip"`
+	// The status of the dedicated egress IP.
+	Status string `pulumi:"status"`
+}
+
+// GetAppDedicatedIpInput is an input type that accepts GetAppDedicatedIpArgs and GetAppDedicatedIpOutput values.
+// You can construct a concrete instance of `GetAppDedicatedIpInput` via:
+//
+//	GetAppDedicatedIpArgs{...}
+type GetAppDedicatedIpInput interface {
+	pulumi.Input
+
+	ToGetAppDedicatedIpOutput() GetAppDedicatedIpOutput
+	ToGetAppDedicatedIpOutputWithContext(context.Context) GetAppDedicatedIpOutput
+}
+
+type GetAppDedicatedIpArgs struct {
+	// The ID of the dedicated egress IP.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP address of the dedicated egress IP.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The status of the dedicated egress IP.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAppDedicatedIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (i GetAppDedicatedIpArgs) ToGetAppDedicatedIpOutput() GetAppDedicatedIpOutput {
+	return i.ToGetAppDedicatedIpOutputWithContext(context.Background())
+}
+
+func (i GetAppDedicatedIpArgs) ToGetAppDedicatedIpOutputWithContext(ctx context.Context) GetAppDedicatedIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDedicatedIpOutput)
+}
+
+// GetAppDedicatedIpArrayInput is an input type that accepts GetAppDedicatedIpArray and GetAppDedicatedIpArrayOutput values.
+// You can construct a concrete instance of `GetAppDedicatedIpArrayInput` via:
+//
+//	GetAppDedicatedIpArray{ GetAppDedicatedIpArgs{...} }
+type GetAppDedicatedIpArrayInput interface {
+	pulumi.Input
+
+	ToGetAppDedicatedIpArrayOutput() GetAppDedicatedIpArrayOutput
+	ToGetAppDedicatedIpArrayOutputWithContext(context.Context) GetAppDedicatedIpArrayOutput
+}
+
+type GetAppDedicatedIpArray []GetAppDedicatedIpInput
+
+func (GetAppDedicatedIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (i GetAppDedicatedIpArray) ToGetAppDedicatedIpArrayOutput() GetAppDedicatedIpArrayOutput {
+	return i.ToGetAppDedicatedIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppDedicatedIpArray) ToGetAppDedicatedIpArrayOutputWithContext(ctx context.Context) GetAppDedicatedIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDedicatedIpArrayOutput)
+}
+
+type GetAppDedicatedIpOutput struct{ *pulumi.OutputState }
+
+func (GetAppDedicatedIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (o GetAppDedicatedIpOutput) ToGetAppDedicatedIpOutput() GetAppDedicatedIpOutput {
+	return o
+}
+
+func (o GetAppDedicatedIpOutput) ToGetAppDedicatedIpOutputWithContext(ctx context.Context) GetAppDedicatedIpOutput {
+	return o
+}
+
+// The ID of the dedicated egress IP.
+func (o GetAppDedicatedIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDedicatedIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP address of the dedicated egress IP.
+func (o GetAppDedicatedIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDedicatedIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The status of the dedicated egress IP.
+func (o GetAppDedicatedIpOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDedicatedIp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAppDedicatedIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppDedicatedIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDedicatedIp)(nil)).Elem()
+}
+
+func (o GetAppDedicatedIpArrayOutput) ToGetAppDedicatedIpArrayOutput() GetAppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o GetAppDedicatedIpArrayOutput) ToGetAppDedicatedIpArrayOutputWithContext(ctx context.Context) GetAppDedicatedIpArrayOutput {
+	return o
+}
+
+func (o GetAppDedicatedIpArrayOutput) Index(i pulumi.IntInput) GetAppDedicatedIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppDedicatedIp {
+		return vs[0].([]GetAppDedicatedIp)[vs[1].(int)]
+	}).(GetAppDedicatedIpOutput)
+}
+
 type GetAppSpec struct {
 	// Describes an alert policy for the component.
 	Alerts    []GetAppSpecAlert    `pulumi:"alerts"`
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
 	Domain    []GetAppSpecDomain   `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
-	Domains []string `pulumi:"domains"`
+	Domains  []string           `pulumi:"domains"`
+	Egresses []GetAppSpecEgress `pulumi:"egresses"`
 	// Describes an environment variable made available to an app competent.
 	Envs []GetAppSpecEnv `pulumi:"envs"`
 	// List of features which is applied to the app
@@ -16730,7 +17871,8 @@ type GetAppSpecArgs struct {
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
 	Domain    GetAppSpecDomainArrayInput   `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
-	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	Domains  pulumi.StringArrayInput    `pulumi:"domains"`
+	Egresses GetAppSpecEgressArrayInput `pulumi:"egresses"`
 	// Describes an environment variable made available to an app competent.
 	Envs GetAppSpecEnvArrayInput `pulumi:"envs"`
 	// List of features which is applied to the app
@@ -16814,6 +17956,10 @@ func (o GetAppSpecOutput) Domain() GetAppSpecDomainArrayOutput {
 // Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecOutput) Egresses() GetAppSpecEgressArrayOutput {
+	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEgress { return v.Egresses }).(GetAppSpecEgressArrayOutput)
 }
 
 // Describes an environment variable made available to an app competent.
@@ -17259,6 +18405,103 @@ func (o GetAppSpecDomainArrayOutput) Index(i pulumi.IntInput) GetAppSpecDomainOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecDomain {
 		return vs[0].([]GetAppSpecDomain)[vs[1].(int)]
 	}).(GetAppSpecDomainOutput)
+}
+
+type GetAppSpecEgress struct {
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type *string `pulumi:"type"`
+}
+
+// GetAppSpecEgressInput is an input type that accepts GetAppSpecEgressArgs and GetAppSpecEgressOutput values.
+// You can construct a concrete instance of `GetAppSpecEgressInput` via:
+//
+//	GetAppSpecEgressArgs{...}
+type GetAppSpecEgressInput interface {
+	pulumi.Input
+
+	ToGetAppSpecEgressOutput() GetAppSpecEgressOutput
+	ToGetAppSpecEgressOutputWithContext(context.Context) GetAppSpecEgressOutput
+}
+
+type GetAppSpecEgressArgs struct {
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetAppSpecEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecEgress)(nil)).Elem()
+}
+
+func (i GetAppSpecEgressArgs) ToGetAppSpecEgressOutput() GetAppSpecEgressOutput {
+	return i.ToGetAppSpecEgressOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecEgressArgs) ToGetAppSpecEgressOutputWithContext(ctx context.Context) GetAppSpecEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecEgressOutput)
+}
+
+// GetAppSpecEgressArrayInput is an input type that accepts GetAppSpecEgressArray and GetAppSpecEgressArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecEgressArrayInput` via:
+//
+//	GetAppSpecEgressArray{ GetAppSpecEgressArgs{...} }
+type GetAppSpecEgressArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecEgressArrayOutput() GetAppSpecEgressArrayOutput
+	ToGetAppSpecEgressArrayOutputWithContext(context.Context) GetAppSpecEgressArrayOutput
+}
+
+type GetAppSpecEgressArray []GetAppSpecEgressInput
+
+func (GetAppSpecEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecEgress)(nil)).Elem()
+}
+
+func (i GetAppSpecEgressArray) ToGetAppSpecEgressArrayOutput() GetAppSpecEgressArrayOutput {
+	return i.ToGetAppSpecEgressArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecEgressArray) ToGetAppSpecEgressArrayOutputWithContext(ctx context.Context) GetAppSpecEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecEgressArrayOutput)
+}
+
+type GetAppSpecEgressOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecEgress)(nil)).Elem()
+}
+
+func (o GetAppSpecEgressOutput) ToGetAppSpecEgressOutput() GetAppSpecEgressOutput {
+	return o
+}
+
+func (o GetAppSpecEgressOutput) ToGetAppSpecEgressOutputWithContext(ctx context.Context) GetAppSpecEgressOutput {
+	return o
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecEgressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecEgress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecEgress)(nil)).Elem()
+}
+
+func (o GetAppSpecEgressArrayOutput) ToGetAppSpecEgressArrayOutput() GetAppSpecEgressArrayOutput {
+	return o
+}
+
+func (o GetAppSpecEgressArrayOutput) ToGetAppSpecEgressArrayOutputWithContext(ctx context.Context) GetAppSpecEgressArrayOutput {
+	return o
+}
+
+func (o GetAppSpecEgressArrayOutput) Index(i pulumi.IntInput) GetAppSpecEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecEgress {
+		return vs[0].([]GetAppSpecEgress)[vs[1].(int)]
+	}).(GetAppSpecEgressOutput)
 }
 
 type GetAppSpecEnv struct {
@@ -20228,6 +21471,10 @@ type GetAppSpecJob struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind *string `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecJobLogDestination `pulumi:"logDestinations"`
@@ -20274,6 +21521,10 @@ type GetAppSpecJobArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// The type of job and when it will be run during the deployment process. It may be one of:
+	// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+	// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+	// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+	// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecJobLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -20392,6 +21643,10 @@ func (o GetAppSpecJobOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 }
 
 // The type of job and when it will be run during the deployment process. It may be one of:
+// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
 func (o GetAppSpecJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -21204,6 +22459,8 @@ type GetAppSpecJobImage struct {
 	DeployOnPushes []GetAppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -21228,6 +22485,8 @@ type GetAppSpecJobImageArgs struct {
 	DeployOnPushes GetAppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -21323,6 +22582,11 @@ func (o GetAppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o GetAppSpecJobImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o GetAppSpecJobImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -21379,6 +22643,16 @@ func (o GetAppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23763,6 +25037,8 @@ type GetAppSpecServiceImage struct {
 	DeployOnPushes []GetAppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -23787,6 +25063,8 @@ type GetAppSpecServiceImageArgs struct {
 	DeployOnPushes GetAppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -23882,6 +25160,11 @@ func (o GetAppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o GetAppSpecServiceImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o GetAppSpecServiceImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -23938,6 +25221,16 @@ func (o GetAppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27093,6 +28386,8 @@ type GetAppSpecWorkerImage struct {
 	DeployOnPushes []GetAppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
 	// The repository name.
@@ -27117,6 +28412,8 @@ type GetAppSpecWorkerImageArgs struct {
 	DeployOnPushes GetAppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
 	// The repository name.
@@ -27212,6 +28509,11 @@ func (o GetAppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Access credentials for third-party registries
+func (o GetAppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
+}
+
 // The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 func (o GetAppSpecWorkerImageOutput) RegistryType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerImage) string { return v.RegistryType }).(pulumi.StringOutput)
@@ -27268,6 +28570,16 @@ func (o GetAppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30861,6 +32173,148 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetKubernetesClusterNodePoolTaintOutput)
 }
 
+type GetLoadBalancerDomain struct {
+	// certificate ID for TLS handshaking
+	CertificateId string `pulumi:"certificateId"`
+	// name of certificate required for TLS handshaking
+	CertificateName string `pulumi:"certificateName"`
+	// flag indicating if domain is managed by DigitalOcean
+	IsManaged bool `pulumi:"isManaged"`
+	// The name of load balancer.
+	Name string `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons []string `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons []string `pulumi:"verificationErrorReasons"`
+}
+
+// GetLoadBalancerDomainInput is an input type that accepts GetLoadBalancerDomainArgs and GetLoadBalancerDomainOutput values.
+// You can construct a concrete instance of `GetLoadBalancerDomainInput` via:
+//
+//	GetLoadBalancerDomainArgs{...}
+type GetLoadBalancerDomainInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerDomainOutput() GetLoadBalancerDomainOutput
+	ToGetLoadBalancerDomainOutputWithContext(context.Context) GetLoadBalancerDomainOutput
+}
+
+type GetLoadBalancerDomainArgs struct {
+	// certificate ID for TLS handshaking
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// name of certificate required for TLS handshaking
+	CertificateName pulumi.StringInput `pulumi:"certificateName"`
+	// flag indicating if domain is managed by DigitalOcean
+	IsManaged pulumi.BoolInput `pulumi:"isManaged"`
+	// The name of load balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+	// list of domain SSL validation errors
+	SslValidationErrorReasons pulumi.StringArrayInput `pulumi:"sslValidationErrorReasons"`
+	// list of domain verification errors
+	VerificationErrorReasons pulumi.StringArrayInput `pulumi:"verificationErrorReasons"`
+}
+
+func (GetLoadBalancerDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (i GetLoadBalancerDomainArgs) ToGetLoadBalancerDomainOutput() GetLoadBalancerDomainOutput {
+	return i.ToGetLoadBalancerDomainOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerDomainArgs) ToGetLoadBalancerDomainOutputWithContext(ctx context.Context) GetLoadBalancerDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerDomainOutput)
+}
+
+// GetLoadBalancerDomainArrayInput is an input type that accepts GetLoadBalancerDomainArray and GetLoadBalancerDomainArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerDomainArrayInput` via:
+//
+//	GetLoadBalancerDomainArray{ GetLoadBalancerDomainArgs{...} }
+type GetLoadBalancerDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerDomainArrayOutput() GetLoadBalancerDomainArrayOutput
+	ToGetLoadBalancerDomainArrayOutputWithContext(context.Context) GetLoadBalancerDomainArrayOutput
+}
+
+type GetLoadBalancerDomainArray []GetLoadBalancerDomainInput
+
+func (GetLoadBalancerDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (i GetLoadBalancerDomainArray) ToGetLoadBalancerDomainArrayOutput() GetLoadBalancerDomainArrayOutput {
+	return i.ToGetLoadBalancerDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerDomainArray) ToGetLoadBalancerDomainArrayOutputWithContext(ctx context.Context) GetLoadBalancerDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerDomainArrayOutput)
+}
+
+type GetLoadBalancerDomainOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (o GetLoadBalancerDomainOutput) ToGetLoadBalancerDomainOutput() GetLoadBalancerDomainOutput {
+	return o
+}
+
+func (o GetLoadBalancerDomainOutput) ToGetLoadBalancerDomainOutputWithContext(ctx context.Context) GetLoadBalancerDomainOutput {
+	return o
+}
+
+// certificate ID for TLS handshaking
+func (o GetLoadBalancerDomainOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// name of certificate required for TLS handshaking
+func (o GetLoadBalancerDomainOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// flag indicating if domain is managed by DigitalOcean
+func (o GetLoadBalancerDomainOutput) IsManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) bool { return v.IsManaged }).(pulumi.BoolOutput)
+}
+
+// The name of load balancer.
+func (o GetLoadBalancerDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// list of domain SSL validation errors
+func (o GetLoadBalancerDomainOutput) SslValidationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) []string { return v.SslValidationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+// list of domain verification errors
+func (o GetLoadBalancerDomainOutput) VerificationErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerDomain) []string { return v.VerificationErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+type GetLoadBalancerDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerDomain)(nil)).Elem()
+}
+
+func (o GetLoadBalancerDomainArrayOutput) ToGetLoadBalancerDomainArrayOutput() GetLoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerDomainArrayOutput) ToGetLoadBalancerDomainArrayOutputWithContext(ctx context.Context) GetLoadBalancerDomainArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerDomainArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerDomain {
+		return vs[0].([]GetLoadBalancerDomain)[vs[1].(int)]
+	}).(GetLoadBalancerDomainOutput)
+}
+
 type GetLoadBalancerFirewall struct {
 	// the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
 	Allows []string `pulumi:"allows"`
@@ -31116,6 +32570,236 @@ func (o GetLoadBalancerForwardingRuleArrayOutput) Index(i pulumi.IntInput) GetLo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerForwardingRule {
 		return vs[0].([]GetLoadBalancerForwardingRule)[vs[1].(int)]
 	}).(GetLoadBalancerForwardingRuleOutput)
+}
+
+type GetLoadBalancerGlbSetting struct {
+	// CDN specific configurations
+	Cdns []GetLoadBalancerGlbSettingCdn `pulumi:"cdns"`
+	// fail-over threshold
+	FailoverThreshold int `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities map[string]int `pulumi:"regionPriorities"`
+	// target port rules
+	TargetPort int `pulumi:"targetPort"`
+	// target protocol rules
+	TargetProtocol string `pulumi:"targetProtocol"`
+}
+
+// GetLoadBalancerGlbSettingInput is an input type that accepts GetLoadBalancerGlbSettingArgs and GetLoadBalancerGlbSettingOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingInput` via:
+//
+//	GetLoadBalancerGlbSettingArgs{...}
+type GetLoadBalancerGlbSettingInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingOutput() GetLoadBalancerGlbSettingOutput
+	ToGetLoadBalancerGlbSettingOutputWithContext(context.Context) GetLoadBalancerGlbSettingOutput
+}
+
+type GetLoadBalancerGlbSettingArgs struct {
+	// CDN specific configurations
+	Cdns GetLoadBalancerGlbSettingCdnArrayInput `pulumi:"cdns"`
+	// fail-over threshold
+	FailoverThreshold pulumi.IntInput `pulumi:"failoverThreshold"`
+	// region priority map
+	RegionPriorities pulumi.IntMapInput `pulumi:"regionPriorities"`
+	// target port rules
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// target protocol rules
+	TargetProtocol pulumi.StringInput `pulumi:"targetProtocol"`
+}
+
+func (GetLoadBalancerGlbSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingArgs) ToGetLoadBalancerGlbSettingOutput() GetLoadBalancerGlbSettingOutput {
+	return i.ToGetLoadBalancerGlbSettingOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingArgs) ToGetLoadBalancerGlbSettingOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingOutput)
+}
+
+// GetLoadBalancerGlbSettingArrayInput is an input type that accepts GetLoadBalancerGlbSettingArray and GetLoadBalancerGlbSettingArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingArrayInput` via:
+//
+//	GetLoadBalancerGlbSettingArray{ GetLoadBalancerGlbSettingArgs{...} }
+type GetLoadBalancerGlbSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingArrayOutput() GetLoadBalancerGlbSettingArrayOutput
+	ToGetLoadBalancerGlbSettingArrayOutputWithContext(context.Context) GetLoadBalancerGlbSettingArrayOutput
+}
+
+type GetLoadBalancerGlbSettingArray []GetLoadBalancerGlbSettingInput
+
+func (GetLoadBalancerGlbSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingArray) ToGetLoadBalancerGlbSettingArrayOutput() GetLoadBalancerGlbSettingArrayOutput {
+	return i.ToGetLoadBalancerGlbSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingArray) ToGetLoadBalancerGlbSettingArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingArrayOutput)
+}
+
+type GetLoadBalancerGlbSettingOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingOutput) ToGetLoadBalancerGlbSettingOutput() GetLoadBalancerGlbSettingOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingOutput) ToGetLoadBalancerGlbSettingOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingOutput {
+	return o
+}
+
+// CDN specific configurations
+func (o GetLoadBalancerGlbSettingOutput) Cdns() GetLoadBalancerGlbSettingCdnArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) []GetLoadBalancerGlbSettingCdn { return v.Cdns }).(GetLoadBalancerGlbSettingCdnArrayOutput)
+}
+
+// fail-over threshold
+func (o GetLoadBalancerGlbSettingOutput) FailoverThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) int { return v.FailoverThreshold }).(pulumi.IntOutput)
+}
+
+// region priority map
+func (o GetLoadBalancerGlbSettingOutput) RegionPriorities() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) map[string]int { return v.RegionPriorities }).(pulumi.IntMapOutput)
+}
+
+// target port rules
+func (o GetLoadBalancerGlbSettingOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+// target protocol rules
+func (o GetLoadBalancerGlbSettingOutput) TargetProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSetting) string { return v.TargetProtocol }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancerGlbSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSetting)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingArrayOutput) ToGetLoadBalancerGlbSettingArrayOutput() GetLoadBalancerGlbSettingArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingArrayOutput) ToGetLoadBalancerGlbSettingArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerGlbSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerGlbSetting {
+		return vs[0].([]GetLoadBalancerGlbSetting)[vs[1].(int)]
+	}).(GetLoadBalancerGlbSettingOutput)
+}
+
+type GetLoadBalancerGlbSettingCdn struct {
+	// cache enable flag
+	IsEnabled bool `pulumi:"isEnabled"`
+}
+
+// GetLoadBalancerGlbSettingCdnInput is an input type that accepts GetLoadBalancerGlbSettingCdnArgs and GetLoadBalancerGlbSettingCdnOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingCdnInput` via:
+//
+//	GetLoadBalancerGlbSettingCdnArgs{...}
+type GetLoadBalancerGlbSettingCdnInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingCdnOutput() GetLoadBalancerGlbSettingCdnOutput
+	ToGetLoadBalancerGlbSettingCdnOutputWithContext(context.Context) GetLoadBalancerGlbSettingCdnOutput
+}
+
+type GetLoadBalancerGlbSettingCdnArgs struct {
+	// cache enable flag
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+}
+
+func (GetLoadBalancerGlbSettingCdnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingCdnArgs) ToGetLoadBalancerGlbSettingCdnOutput() GetLoadBalancerGlbSettingCdnOutput {
+	return i.ToGetLoadBalancerGlbSettingCdnOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingCdnArgs) ToGetLoadBalancerGlbSettingCdnOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingCdnOutput)
+}
+
+// GetLoadBalancerGlbSettingCdnArrayInput is an input type that accepts GetLoadBalancerGlbSettingCdnArray and GetLoadBalancerGlbSettingCdnArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerGlbSettingCdnArrayInput` via:
+//
+//	GetLoadBalancerGlbSettingCdnArray{ GetLoadBalancerGlbSettingCdnArgs{...} }
+type GetLoadBalancerGlbSettingCdnArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerGlbSettingCdnArrayOutput() GetLoadBalancerGlbSettingCdnArrayOutput
+	ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(context.Context) GetLoadBalancerGlbSettingCdnArrayOutput
+}
+
+type GetLoadBalancerGlbSettingCdnArray []GetLoadBalancerGlbSettingCdnInput
+
+func (GetLoadBalancerGlbSettingCdnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (i GetLoadBalancerGlbSettingCdnArray) ToGetLoadBalancerGlbSettingCdnArrayOutput() GetLoadBalancerGlbSettingCdnArrayOutput {
+	return i.ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerGlbSettingCdnArray) ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerGlbSettingCdnArrayOutput)
+}
+
+type GetLoadBalancerGlbSettingCdnOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingCdnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingCdnOutput) ToGetLoadBalancerGlbSettingCdnOutput() GetLoadBalancerGlbSettingCdnOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingCdnOutput) ToGetLoadBalancerGlbSettingCdnOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnOutput {
+	return o
+}
+
+// cache enable flag
+func (o GetLoadBalancerGlbSettingCdnOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLoadBalancerGlbSettingCdn) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+type GetLoadBalancerGlbSettingCdnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerGlbSettingCdnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerGlbSettingCdn)(nil)).Elem()
+}
+
+func (o GetLoadBalancerGlbSettingCdnArrayOutput) ToGetLoadBalancerGlbSettingCdnArrayOutput() GetLoadBalancerGlbSettingCdnArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingCdnArrayOutput) ToGetLoadBalancerGlbSettingCdnArrayOutputWithContext(ctx context.Context) GetLoadBalancerGlbSettingCdnArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerGlbSettingCdnArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerGlbSettingCdnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerGlbSettingCdn {
+		return vs[0].([]GetLoadBalancerGlbSettingCdn)[vs[1].(int)]
+	}).(GetLoadBalancerGlbSettingCdnOutput)
 }
 
 type GetLoadBalancerHealthcheck struct {
@@ -34187,6 +35871,8 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecInput)(nil)).Elem(), AppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecPtrInput)(nil)).Elem(), AppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertInput)(nil)).Elem(), AppSpecAlertArgs{})
@@ -34195,6 +35881,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseArrayInput)(nil)).Elem(), AppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameInput)(nil)).Elem(), AppSpecDomainNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameArrayInput)(nil)).Elem(), AppSpecDomainNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEgressInput)(nil)).Elem(), AppSpecEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEgressArrayInput)(nil)).Elem(), AppSpecEgressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvInput)(nil)).Elem(), AppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecEnvArrayInput)(nil)).Elem(), AppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionInput)(nil)).Elem(), AppSpecFunctionArgs{})
@@ -34343,6 +36031,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFirewallRuleArrayInput)(nil)).Elem(), DatabaseFirewallRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaTopicConfigInput)(nil)).Elem(), DatabaseKafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaTopicConfigArrayInput)(nil)).Elem(), DatabaseKafkaTopicConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigPgbouncerInput)(nil)).Elem(), DatabasePostgresqlConfigPgbouncerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigPgbouncerArrayInput)(nil)).Elem(), DatabasePostgresqlConfigPgbouncerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigTimescaledbInput)(nil)).Elem(), DatabasePostgresqlConfigTimescaledbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlConfigTimescaledbArrayInput)(nil)).Elem(), DatabasePostgresqlConfigTimescaledbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingInput)(nil)).Elem(), DatabaseUserSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingArrayInput)(nil)).Elem(), DatabaseUserSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclInput)(nil)).Elem(), DatabaseUserSettingAclArgs{})
@@ -34367,10 +36059,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeArrayInput)(nil)).Elem(), KubernetesNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintInput)(nil)).Elem(), KubernetesNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintArrayInput)(nil)).Elem(), KubernetesNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDomainInput)(nil)).Elem(), LoadBalancerDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDomainArrayInput)(nil)).Elem(), LoadBalancerDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFirewallInput)(nil)).Elem(), LoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFirewallPtrInput)(nil)).Elem(), LoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleInput)(nil)).Elem(), LoadBalancerForwardingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerForwardingRuleArrayInput)(nil)).Elem(), LoadBalancerForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsInput)(nil)).Elem(), LoadBalancerGlbSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsPtrInput)(nil)).Elem(), LoadBalancerGlbSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsCdnInput)(nil)).Elem(), LoadBalancerGlbSettingsCdnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerGlbSettingsCdnPtrInput)(nil)).Elem(), LoadBalancerGlbSettingsCdnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckPtrInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
@@ -34395,6 +36093,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationArrayInput)(nil)).Elem(), UptimeAlertNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackInput)(nil)).Elem(), UptimeAlertNotificationSlackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackArrayInput)(nil)).Elem(), UptimeAlertNotificationSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDedicatedIpInput)(nil)).Elem(), GetAppDedicatedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDedicatedIpArrayInput)(nil)).Elem(), GetAppDedicatedIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecInput)(nil)).Elem(), GetAppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecArrayInput)(nil)).Elem(), GetAppSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertInput)(nil)).Elem(), GetAppSpecAlertArgs{})
@@ -34403,6 +36103,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseArrayInput)(nil)).Elem(), GetAppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainArrayInput)(nil)).Elem(), GetAppSpecDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEgressInput)(nil)).Elem(), GetAppSpecEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEgressArrayInput)(nil)).Elem(), GetAppSpecEgressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvInput)(nil)).Elem(), GetAppSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecEnvArrayInput)(nil)).Elem(), GetAppSpecEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionInput)(nil)).Elem(), GetAppSpecFunctionArgs{})
@@ -34578,10 +36280,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainInput)(nil)).Elem(), GetLoadBalancerDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainArrayInput)(nil)).Elem(), GetLoadBalancerDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallInput)(nil)).Elem(), GetLoadBalancerFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallArrayInput)(nil)).Elem(), GetLoadBalancerFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerForwardingRuleArrayInput)(nil)).Elem(), GetLoadBalancerForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingInput)(nil)).Elem(), GetLoadBalancerGlbSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingArrayInput)(nil)).Elem(), GetLoadBalancerGlbSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingCdnInput)(nil)).Elem(), GetLoadBalancerGlbSettingCdnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerGlbSettingCdnArrayInput)(nil)).Elem(), GetLoadBalancerGlbSettingCdnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckInput)(nil)).Elem(), GetLoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
@@ -34628,6 +36336,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
+	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
+	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecAlertOutput{})
@@ -34636,6 +36346,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecDomainNameOutput{})
 	pulumi.RegisterOutputType(AppSpecDomainNameArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecEgressOutput{})
+	pulumi.RegisterOutputType(AppSpecEgressArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionOutput{})
@@ -34784,6 +36496,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseFirewallRuleArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaTopicConfigArrayOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigPgbouncerOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigPgbouncerArrayOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigTimescaledbOutput{})
+	pulumi.RegisterOutputType(DatabasePostgresqlConfigTimescaledbArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingAclOutput{})
@@ -34808,10 +36524,16 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDomainOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDomainArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerFirewallOutput{})
 	pulumi.RegisterOutputType(LoadBalancerFirewallPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(LoadBalancerForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsCdnOutput{})
+	pulumi.RegisterOutputType(LoadBalancerGlbSettingsCdnPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckOutput{})
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsOutput{})
@@ -34836,6 +36558,8 @@ func init() {
 	pulumi.RegisterOutputType(UptimeAlertNotificationArrayOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackArrayOutput{})
+	pulumi.RegisterOutputType(GetAppDedicatedIpOutput{})
+	pulumi.RegisterOutputType(GetAppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecOutput{})
 	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecAlertOutput{})
@@ -34844,6 +36568,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecEgressOutput{})
+	pulumi.RegisterOutputType(GetAppSpecEgressArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionOutput{})
@@ -35019,10 +36745,16 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerDomainOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFirewallOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingCdnOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerGlbSettingCdnArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})

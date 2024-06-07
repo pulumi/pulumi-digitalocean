@@ -174,28 +174,46 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         Get the container registry:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Docker Provider Example
 
         Use the `endpoint` and `docker_credentials` with the Docker provider:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_container_registry = digitalocean.get_container_registry(name="example")
-        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", registry_name="example")
+        example = digitalocean.get_container_registry(name="example")
+        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### Kubernetes Example
+
+        Combined with the Kubernetes Provider's `kubernetes_secret` resource, you can
+        access the registry from inside your cluster:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+        import pulumi_kubernetes as kubernetes
+
+        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
+        example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+        example_secret = kubernetes.core.v1.Secret("example",
+            metadata=kubernetes.meta.v1.ObjectMetaArgs(
+                name="docker-cfg",
+            ),
+            data={
+                ".dockerconfigjson": example_container_registry_docker_credentials.docker_credentials,
+            },
+            type="kubernetes.io/dockerconfigjson")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -220,28 +238,46 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         Get the container registry:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         example = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Docker Provider Example
 
         Use the `endpoint` and `docker_credentials` with the Docker provider:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        example_container_registry = digitalocean.get_container_registry(name="example")
-        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", registry_name="example")
+        example = digitalocean.get_container_registry(name="example")
+        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### Kubernetes Example
+
+        Combined with the Kubernetes Provider's `kubernetes_secret` resource, you can
+        access the registry from inside your cluster:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+        import pulumi_kubernetes as kubernetes
+
+        example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
+        example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+        example_secret = kubernetes.core.v1.Secret("example",
+            metadata=kubernetes.meta.v1.ObjectMetaArgs(
+                name="docker-cfg",
+            ),
+            data={
+                ".dockerconfigjson": example_container_registry_docker_credentials.docker_credentials,
+            },
+            type="kubernetes.io/dockerconfigjson")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryDockerCredentialsArgs args: The arguments to use to populate this resource's properties.

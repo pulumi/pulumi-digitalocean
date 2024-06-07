@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new Kafka topic
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-kafka-cluster"),
 //				Engine:    pulumi.String("kafka"),
 //				Version:   pulumi.String("3.5"),
 //				Size:      pulumi.String("db-s-2vcpu-2gb"),
@@ -45,6 +45,7 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseKafkaTopic(ctx, "topic-01", &digitalocean.DatabaseKafkaTopicArgs{
 //				ClusterId:         kafka_example.ID(),
+//				Name:              pulumi.String("topic-01"),
 //				PartitionCount:    pulumi.Int(3),
 //				ReplicationFactor: pulumi.Int(2),
 //				Configs: digitalocean.DatabaseKafkaTopicConfigArray{
@@ -83,7 +84,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

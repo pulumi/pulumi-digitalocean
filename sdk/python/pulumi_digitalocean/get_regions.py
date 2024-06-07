@@ -92,7 +92,6 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
 
     For example to find all available regions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -102,11 +101,9 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
         values=["true"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
 
     You can filter on multiple fields and sort the results as well:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -122,11 +119,10 @@ def get_regions(filters: Optional[Sequence[pulumi.InputType['GetRegionsFilterArg
             ),
         ],
         sorts=[digitalocean.GetRegionsSortArgs(
-            direction="desc",
             key="name",
+            direction="desc",
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: Filter the results.
@@ -164,7 +160,6 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     For example to find all available regions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -174,11 +169,9 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
         values=["true"],
     )])
     ```
-    <!--End PulumiCodeChooser -->
 
     You can filter on multiple fields and sort the results as well:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -194,11 +187,10 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
             ),
         ],
         sorts=[digitalocean.GetRegionsSortArgs(
-            direction="desc",
             key="name",
+            direction="desc",
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetRegionsFilterArgs']] filters: Filter the results.

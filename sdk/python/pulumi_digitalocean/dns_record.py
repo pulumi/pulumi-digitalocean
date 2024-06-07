@@ -382,7 +382,6 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -392,17 +391,18 @@ class DnsRecord(pulumi.CustomResource):
         www = digitalocean.DnsRecord("www",
             domain=default.id,
             type=digitalocean.RecordType.A,
+            name="www",
             value="192.168.0.11")
         # Add a MX record for the example.com domain itself.
         mx = digitalocean.DnsRecord("mx",
             domain=default.id,
             type=digitalocean.RecordType.MX,
+            name="@",
             priority=10,
             value="mail.example.com.")
         pulumi.export("wwwFqdn", www.fqdn)
         pulumi.export("mxFqdn", mx.fqdn)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -438,7 +438,6 @@ class DnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -448,17 +447,18 @@ class DnsRecord(pulumi.CustomResource):
         www = digitalocean.DnsRecord("www",
             domain=default.id,
             type=digitalocean.RecordType.A,
+            name="www",
             value="192.168.0.11")
         # Add a MX record for the example.com domain itself.
         mx = digitalocean.DnsRecord("mx",
             domain=default.id,
             type=digitalocean.RecordType.MX,
+            name="@",
             priority=10,
             value="mail.example.com.")
         pulumi.export("wwwFqdn", www.fqdn)
         pulumi.export("mxFqdn", mx.fqdn)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

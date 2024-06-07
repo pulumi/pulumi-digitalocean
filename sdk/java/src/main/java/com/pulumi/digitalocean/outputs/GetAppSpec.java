@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecAlert;
 import com.pulumi.digitalocean.outputs.GetAppSpecDatabase;
 import com.pulumi.digitalocean.outputs.GetAppSpecDomain;
+import com.pulumi.digitalocean.outputs.GetAppSpecEgress;
 import com.pulumi.digitalocean.outputs.GetAppSpecEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunction;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngress;
@@ -37,6 +38,7 @@ public final class GetAppSpec {
      */
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
     private List<String> domains;
+    private @Nullable List<GetAppSpecEgress> egresses;
     /**
      * @return Describes an environment variable made available to an app competent.
      * 
@@ -86,6 +88,9 @@ public final class GetAppSpec {
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
     public List<String> domains() {
         return this.domains;
+    }
+    public List<GetAppSpecEgress> egresses() {
+        return this.egresses == null ? List.of() : this.egresses;
     }
     /**
      * @return Describes an environment variable made available to an app competent.
@@ -147,6 +152,7 @@ public final class GetAppSpec {
         private @Nullable List<GetAppSpecDatabase> databases;
         private List<GetAppSpecDomain> domain;
         private List<String> domains;
+        private @Nullable List<GetAppSpecEgress> egresses;
         private @Nullable List<GetAppSpecEnv> envs;
         private @Nullable List<String> features;
         private @Nullable List<GetAppSpecFunction> functions;
@@ -164,6 +170,7 @@ public final class GetAppSpec {
     	      this.databases = defaults.databases;
     	      this.domain = defaults.domain;
     	      this.domains = defaults.domains;
+    	      this.egresses = defaults.egresses;
     	      this.envs = defaults.envs;
     	      this.features = defaults.features;
     	      this.functions = defaults.functions;
@@ -215,6 +222,15 @@ public final class GetAppSpec {
         }
         public Builder domains(String... domains) {
             return domains(List.of(domains));
+        }
+        @CustomType.Setter
+        public Builder egresses(@Nullable List<GetAppSpecEgress> egresses) {
+
+            this.egresses = egresses;
+            return this;
+        }
+        public Builder egresses(GetAppSpecEgress... egresses) {
+            return egresses(List.of(egresses));
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecEnv> envs) {
@@ -307,6 +323,7 @@ public final class GetAppSpec {
             _resultValue.databases = databases;
             _resultValue.domain = domain;
             _resultValue.domains = domains;
+            _resultValue.egresses = egresses;
             _resultValue.envs = envs;
             _resultValue.features = features;
             _resultValue.functions = functions;

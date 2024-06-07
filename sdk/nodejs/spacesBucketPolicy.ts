@@ -9,15 +9,17 @@ import * as utilities from "./utilities";
  *
  * ### Limiting access to specific IP addresses
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const foobarSpacesBucket = new digitalocean.SpacesBucket("foobarSpacesBucket", {region: digitalocean.Region.NYC3});
- * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobarSpacesBucketPolicy", {
- *     region: foobarSpacesBucket.region,
- *     bucket: foobarSpacesBucket.name,
+ * const foobar = new digitalocean.SpacesBucket("foobar", {
+ *     name: "foobar",
+ *     region: digitalocean.Region.NYC3,
+ * });
+ * const foobarSpacesBucketPolicy = new digitalocean.SpacesBucketPolicy("foobar", {
+ *     region: foobar.region,
+ *     bucket: foobar.name,
  *     policy: pulumi.jsonStringify({
  *         Version: "2012-10-17",
  *         Statement: [{
@@ -26,8 +28,8 @@ import * as utilities from "./utilities";
  *             Principal: "*",
  *             Action: "s3:*",
  *             Resource: [
- *                 pulumi.interpolate`arn:aws:s3:::${foobarSpacesBucket.name}`,
- *                 pulumi.interpolate`arn:aws:s3:::${foobarSpacesBucket.name}/*`,
+ *                 pulumi.interpolate`arn:aws:s3:::${foobar.name}`,
+ *                 pulumi.interpolate`arn:aws:s3:::${foobar.name}/*`,
  *             ],
  *             Condition: {
  *                 NotIpAddress: {
@@ -38,7 +40,6 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
  *

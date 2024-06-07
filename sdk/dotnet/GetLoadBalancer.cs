@@ -23,7 +23,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the load balancer by name:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,11 +42,9 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the load balancer by ID:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,7 +60,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
@@ -80,7 +76,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// Get the load balancer by name:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,11 +95,9 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Get the load balancer by ID:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,7 +113,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
@@ -140,9 +132,6 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
-
-        [Input("type")]
-        public string? Type { get; set; }
 
         public GetLoadBalancerArgs()
         {
@@ -164,9 +153,6 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
         public GetLoadBalancerInvokeArgs()
         {
         }
@@ -179,12 +165,14 @@ namespace Pulumi.DigitalOcean
     {
         public readonly string Algorithm;
         public readonly bool DisableLetsEncryptDnsRecords;
+        public readonly ImmutableArray<Outputs.GetLoadBalancerDomainResult> Domains;
         public readonly ImmutableArray<int> DropletIds;
         public readonly string DropletTag;
         public readonly bool EnableBackendKeepalive;
         public readonly bool EnableProxyProtocol;
         public readonly ImmutableArray<Outputs.GetLoadBalancerFirewallResult> Firewalls;
         public readonly ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> ForwardingRules;
+        public readonly ImmutableArray<Outputs.GetLoadBalancerGlbSettingResult> GlbSettings;
         public readonly ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> Healthchecks;
         public readonly int HttpIdleTimeoutSeconds;
         public readonly string? Id;
@@ -198,6 +186,7 @@ namespace Pulumi.DigitalOcean
         public readonly int SizeUnit;
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> StickySessions;
+        public readonly ImmutableArray<string> TargetLoadBalancerIds;
         public readonly string Type;
         public readonly string VpcUuid;
 
@@ -206,6 +195,8 @@ namespace Pulumi.DigitalOcean
             string algorithm,
 
             bool disableLetsEncryptDnsRecords,
+
+            ImmutableArray<Outputs.GetLoadBalancerDomainResult> domains,
 
             ImmutableArray<int> dropletIds,
 
@@ -218,6 +209,8 @@ namespace Pulumi.DigitalOcean
             ImmutableArray<Outputs.GetLoadBalancerFirewallResult> firewalls,
 
             ImmutableArray<Outputs.GetLoadBalancerForwardingRuleResult> forwardingRules,
+
+            ImmutableArray<Outputs.GetLoadBalancerGlbSettingResult> glbSettings,
 
             ImmutableArray<Outputs.GetLoadBalancerHealthcheckResult> healthchecks,
 
@@ -245,18 +238,22 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> stickySessions,
 
+            ImmutableArray<string> targetLoadBalancerIds,
+
             string type,
 
             string vpcUuid)
         {
             Algorithm = algorithm;
             DisableLetsEncryptDnsRecords = disableLetsEncryptDnsRecords;
+            Domains = domains;
             DropletIds = dropletIds;
             DropletTag = dropletTag;
             EnableBackendKeepalive = enableBackendKeepalive;
             EnableProxyProtocol = enableProxyProtocol;
             Firewalls = firewalls;
             ForwardingRules = forwardingRules;
+            GlbSettings = glbSettings;
             Healthchecks = healthchecks;
             HttpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             Id = id;
@@ -270,6 +267,7 @@ namespace Pulumi.DigitalOcean
             SizeUnit = sizeUnit;
             Status = status;
             StickySessions = stickySessions;
+            TargetLoadBalancerIds = targetLoadBalancerIds;
             Type = type;
             VpcUuid = vpcUuid;
         }

@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * Get the zone file for a domain:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  * });
  * export const domainOutput = example.then(example => example.zoneFile);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
 
@@ -82,7 +80,6 @@ export interface GetDomainResult {
  *
  * Get the zone file for a domain:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -92,7 +89,6 @@ export interface GetDomainResult {
  * });
  * export const domainOutput = example.then(example => example.zoneFile);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
     return pulumi.output(args).apply((a: any) => getDomain(a, opts))

@@ -86,7 +86,6 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
 
     ### Output a list of all available versions
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -94,17 +93,16 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
     example = digitalocean.get_kubernetes_versions()
     pulumi.export("k8s-versions", example.valid_versions)
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Create a Kubernetes cluster using the most recent version available
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_kubernetes_versions()
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
@@ -113,17 +111,16 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
             node_count=3,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Pin a Kubernetes cluster to a specific minor version
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
@@ -132,7 +129,6 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
             node_count=3,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str version_prefix: If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
@@ -159,7 +155,6 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
 
     ### Output a list of all available versions
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
@@ -167,17 +162,16 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
     example = digitalocean.get_kubernetes_versions()
     pulumi.export("k8s-versions", example.valid_versions)
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Create a Kubernetes cluster using the most recent version available
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_kubernetes_versions()
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
@@ -186,17 +180,16 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
             node_count=3,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Pin a Kubernetes cluster to a specific minor version
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_digitalocean as digitalocean
 
     example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
     example_cluster = digitalocean.KubernetesCluster("example-cluster",
+        name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
         node_pool=digitalocean.KubernetesClusterNodePoolArgs(
@@ -205,7 +198,6 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
             node_count=3,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str version_prefix: If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.

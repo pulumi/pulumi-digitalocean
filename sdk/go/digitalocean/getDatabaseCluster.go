@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupDatabaseCluster(ctx *pulumi.Context, args *LookupDatabaseClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseClusterResult
@@ -91,6 +89,18 @@ type LookupDatabaseClusterResult struct {
 	Size           string   `pulumi:"size"`
 	StorageSizeMib string   `pulumi:"storageSizeMib"`
 	Tags           []string `pulumi:"tags"`
+	// Name of the OpenSearch dashboard db.
+	UiDatabase string `pulumi:"uiDatabase"`
+	// Hostname for the OpenSearch dashboard.
+	UiHost string `pulumi:"uiHost"`
+	// Password for the OpenSearch dashboard's default user.
+	UiPassword string `pulumi:"uiPassword"`
+	// Network port that the OpenSearch dashboard is listening on.
+	UiPort int `pulumi:"uiPort"`
+	// The full URI for connecting to the OpenSearch dashboard.
+	UiUri string `pulumi:"uiUri"`
+	// Username for OpenSearch dashboard's default user.
+	UiUser string `pulumi:"uiUser"`
 	// The full URI for connecting to the database cluster.
 	Uri string `pulumi:"uri"`
 	// The uniform resource name of the database cluster.
@@ -220,6 +230,36 @@ func (o LookupDatabaseClusterResultOutput) StorageSizeMib() pulumi.StringOutput 
 
 func (o LookupDatabaseClusterResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Name of the OpenSearch dashboard db.
+func (o LookupDatabaseClusterResultOutput) UiDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.UiDatabase }).(pulumi.StringOutput)
+}
+
+// Hostname for the OpenSearch dashboard.
+func (o LookupDatabaseClusterResultOutput) UiHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.UiHost }).(pulumi.StringOutput)
+}
+
+// Password for the OpenSearch dashboard's default user.
+func (o LookupDatabaseClusterResultOutput) UiPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.UiPassword }).(pulumi.StringOutput)
+}
+
+// Network port that the OpenSearch dashboard is listening on.
+func (o LookupDatabaseClusterResultOutput) UiPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) int { return v.UiPort }).(pulumi.IntOutput)
+}
+
+// The full URI for connecting to the OpenSearch dashboard.
+func (o LookupDatabaseClusterResultOutput) UiUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.UiUri }).(pulumi.StringOutput)
+}
+
+// Username for OpenSearch dashboard's default user.
+func (o LookupDatabaseClusterResultOutput) UiUser() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.UiUser }).(pulumi.StringOutput)
 }
 
 // The full URI for connecting to the database cluster.

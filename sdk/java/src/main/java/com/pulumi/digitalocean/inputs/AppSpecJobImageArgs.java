@@ -19,14 +19,14 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
     public static final AppSpecJobImageArgs Empty = new AppSpecJobImageArgs();
 
     /**
-     * Whether to automatically deploy new commits made to the repo.
+     * Configures automatically deploying images pushed to DOCR.
      * 
      */
     @Import(name="deployOnPushes")
     private @Nullable Output<List<AppSpecJobImageDeployOnPushArgs>> deployOnPushes;
 
     /**
-     * @return Whether to automatically deploy new commits made to the repo.
+     * @return Configures automatically deploying images pushed to DOCR.
      * 
      */
     public Optional<Output<List<AppSpecJobImageDeployOnPushArgs>>> deployOnPushes() {
@@ -46,6 +46,21 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> registry() {
         return Optional.ofNullable(this.registry);
+    }
+
+    /**
+     * Access credentials for third-party registries
+     * 
+     */
+    @Import(name="registryCredentials")
+    private @Nullable Output<String> registryCredentials;
+
+    /**
+     * @return Access credentials for third-party registries
+     * 
+     */
+    public Optional<Output<String>> registryCredentials() {
+        return Optional.ofNullable(this.registryCredentials);
     }
 
     /**
@@ -98,6 +113,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
     private AppSpecJobImageArgs(AppSpecJobImageArgs $) {
         this.deployOnPushes = $.deployOnPushes;
         this.registry = $.registry;
+        this.registryCredentials = $.registryCredentials;
         this.registryType = $.registryType;
         this.repository = $.repository;
         this.tag = $.tag;
@@ -122,7 +138,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * @param deployOnPushes Configures automatically deploying images pushed to DOCR.
          * 
          * @return builder
          * 
@@ -133,7 +149,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * @param deployOnPushes Configures automatically deploying images pushed to DOCR.
          * 
          * @return builder
          * 
@@ -143,7 +159,7 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deployOnPushes Whether to automatically deploy new commits made to the repo.
+         * @param deployOnPushes Configures automatically deploying images pushed to DOCR.
          * 
          * @return builder
          * 
@@ -171,6 +187,27 @@ public final class AppSpecJobImageArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder registry(String registry) {
             return registry(Output.of(registry));
+        }
+
+        /**
+         * @param registryCredentials Access credentials for third-party registries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryCredentials(@Nullable Output<String> registryCredentials) {
+            $.registryCredentials = registryCredentials;
+            return this;
+        }
+
+        /**
+         * @param registryCredentials Access credentials for third-party registries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryCredentials(String registryCredentials) {
+            return registryCredentials(Output.of(registryCredentials));
         }
 
         /**

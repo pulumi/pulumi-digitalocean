@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Create a new PostgreSQL database replica
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,8 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewDatabaseCluster(ctx, "postgres-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-postgres-cluster"),
 //				Engine:    pulumi.String("pg"),
-//				Version:   pulumi.String("11"),
+//				Version:   pulumi.String("15"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -42,13 +42,14 @@ import (
 //			}
 //			_, err = digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
 //				ClusterId: postgres_example.ID(),
+//				Name:      pulumi.String("replica-example"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("uUID", replica_example.Uuid)
+//			ctx.Export("UUID", replica_example.Uuid)
 //			// Create firewall rule for database replica
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
 //				ClusterId: replica_example.Uuid,
@@ -67,7 +68,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

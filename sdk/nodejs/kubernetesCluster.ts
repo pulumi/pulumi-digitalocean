@@ -96,13 +96,16 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
+    /**
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     */
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */
     public readonly maintenancePolicy!: pulumi.Output<outputs.KubernetesClusterMaintenancePolicy>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -258,13 +261,16 @@ export interface KubernetesClusterState {
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     ipv4Address?: pulumi.Input<string>;
+    /**
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     */
     kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */
     maintenancePolicy?: pulumi.Input<inputs.KubernetesClusterMaintenancePolicy>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string>;
     /**
@@ -332,7 +338,7 @@ export interface KubernetesClusterArgs {
      */
     maintenancePolicy?: pulumi.Input<inputs.KubernetesClusterMaintenancePolicy>;
     /**
-     * A name for the node pool.
+     * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string>;
     /**

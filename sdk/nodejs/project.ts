@@ -29,39 +29,38 @@ import * as utilities from "./utilities";
  *
  * The following example demonstrates the creation of an empty project:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const playground = new digitalocean.Project("playground", {
+ *     name: "playground",
  *     description: "A project to represent development resources.",
- *     environment: "Development",
  *     purpose: "Web Application",
+ *     environment: "Development",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The following example demonstrates the creation of a project with a Droplet resource:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const foobar = new digitalocean.Droplet("foobar", {
+ *     name: "example",
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
  *     image: "ubuntu-22-04-x64",
  *     region: digitalocean.Region.NYC3,
  * });
  * const playground = new digitalocean.Project("playground", {
+ *     name: "playground",
  *     description: "A project to represent development resources.",
  *     purpose: "Web Application",
  *     environment: "Development",
  *     resources: [foobar.dropletUrn],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

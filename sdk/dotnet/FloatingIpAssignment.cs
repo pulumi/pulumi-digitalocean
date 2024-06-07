@@ -18,7 +18,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,13 +26,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarFloatingIp = new DigitalOcean.FloatingIp("foobarFloatingIp", new()
+    ///     var foobar = new DigitalOcean.FloatingIp("foobar", new()
     ///     {
     ///         Region = "sgp1",
     ///     });
     /// 
-    ///     var foobarDroplet = new DigitalOcean.Droplet("foobarDroplet", new()
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobar", new()
     ///     {
+    ///         Name = "baz",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
     ///         Region = DigitalOcean.Region.SGP1,
@@ -41,15 +41,14 @@ namespace Pulumi.DigitalOcean
     ///         PrivateNetworking = true,
     ///     });
     /// 
-    ///     var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobarFloatingIpAssignment", new()
+    ///     var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobar", new()
     ///     {
-    ///         IpAddress = foobarFloatingIp.IpAddress,
+    ///         IpAddress = foobar.IpAddress,
     ///         DropletId = foobarDroplet.Id,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

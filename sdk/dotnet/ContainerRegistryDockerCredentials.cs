@@ -20,7 +20,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// Get the container registry:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,13 +35,11 @@ namespace Pulumi.DigitalOcean
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Docker Provider Example
     /// 
     /// Use the `endpoint` and `docker_credentials` with the Docker provider:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,19 +48,58 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContainerRegistry = DigitalOcean.GetContainerRegistry.Invoke(new()
+    ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
     ///     {
     ///         Name = "example",
     ///     });
     /// 
-    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("exampleContainerRegistryDockerCredentials", new()
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
     ///     {
     ///         RegistryName = "example",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Kubernetes Example
+    /// 
+    /// Combined with the Kubernetes Provider's `kubernetes_secret` resource, you can
+    /// access the registry from inside your cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// using Kubernetes = Pulumi.Kubernetes;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
+    ///     {
+    ///         RegistryName = "example",
+    ///     });
+    /// 
+    ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+    ///     {
+    ///         Name = "prod-cluster-01",
+    ///     });
+    /// 
+    ///     var exampleSecret = new Kubernetes.Core.V1.Secret("example", new()
+    ///     {
+    ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
+    ///         {
+    ///             Name = "docker-cfg",
+    ///         },
+    ///         Data = 
+    ///         {
+    ///             { ".dockerconfigjson", exampleContainerRegistryDockerCredentials.DockerCredentials },
+    ///         },
+    ///         Type = "kubernetes.io/dockerconfigjson",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DigitalOceanResourceType("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")]
     public partial class ContainerRegistryDockerCredentials : global::Pulumi.CustomResource

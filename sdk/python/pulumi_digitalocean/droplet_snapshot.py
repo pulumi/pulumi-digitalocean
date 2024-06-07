@@ -167,22 +167,24 @@ class DropletSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
+            name="web-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
-        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
+        web_snapshot = digitalocean.DropletSnapshot("web-snapshot",
+            droplet_id=web.id,
+            name="web-snapshot-01")
         from_snapshot = digitalocean.Droplet("from-snapshot",
             image=web_snapshot.id,
+            name="web-02",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -208,22 +210,24 @@ class DropletSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         web = digitalocean.Droplet("web",
+            name="web-01",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
-        web_snapshot = digitalocean.DropletSnapshot("web-snapshot", droplet_id=web.id)
+        web_snapshot = digitalocean.DropletSnapshot("web-snapshot",
+            droplet_id=web.id,
+            name="web-snapshot-01")
         from_snapshot = digitalocean.Droplet("from-snapshot",
             image=web_snapshot.id,
+            name="web-02",
             region=digitalocean.Region.NYC3,
             size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

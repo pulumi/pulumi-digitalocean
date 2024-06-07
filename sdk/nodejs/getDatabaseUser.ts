@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  * }));
  * export const databaseUserPassword = example.then(example => example.password);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseUser(args: GetDatabaseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseUserResult> {
 
@@ -88,7 +86,6 @@ export interface GetDatabaseUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
@@ -102,7 +99,6 @@ export interface GetDatabaseUserResult {
  * }));
  * export const databaseUserPassword = example.then(example => example.password);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseUserOutput(args: GetDatabaseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUserResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseUser(a, opts))

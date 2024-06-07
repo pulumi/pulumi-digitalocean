@@ -17,7 +17,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,13 +27,13 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var example = new DigitalOcean.Vpc("example", new()
     ///     {
-    ///         IpRange = "10.10.10.0/24",
+    ///         Name = "example-project-network",
     ///         Region = "nyc3",
+    ///         IpRange = "10.10.10.0/24",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Resource Assignment
     /// 
@@ -42,7 +41,6 @@ namespace Pulumi.DigitalOcean
     /// `digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources
     /// may be assigned to a VPC by referencing its `id`. For example:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,22 +49,23 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new DigitalOcean.Vpc("exampleVpc", new()
+    ///     var example = new DigitalOcean.Vpc("example", new()
     ///     {
+    ///         Name = "example-project-network",
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var exampleDroplet = new DigitalOcean.Droplet("exampleDroplet", new()
+    ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
     ///     {
+    ///         Name = "example-01",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
     ///         Image = "ubuntu-18-04-x64",
     ///         Region = DigitalOcean.Region.NYC3,
-    ///         VpcUuid = exampleVpc.Id,
+    ///         VpcUuid = example.Id,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

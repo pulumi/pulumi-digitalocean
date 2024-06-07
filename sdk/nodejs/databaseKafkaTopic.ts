@@ -13,12 +13,12 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * ### Create a new Kafka topic
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const kafka_example = new digitalocean.DatabaseCluster("kafka-example", {
+ *     name: "example-kafka-cluster",
  *     engine: "kafka",
  *     version: "3.5",
  *     size: "db-s-2vcpu-2gb",
@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  * });
  * const topic_01 = new digitalocean.DatabaseKafkaTopic("topic-01", {
  *     clusterId: kafka_example.id,
+ *     name: "topic-01",
  *     partitionCount: 3,
  *     replicationFactor: 2,
  *     configs: [{
@@ -57,7 +58,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

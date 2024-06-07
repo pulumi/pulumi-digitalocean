@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDroplet, err := digitalocean.NewDroplet(ctx, "exampleDroplet", &digitalocean.DropletArgs{
+//			example, err := digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
+//				Name:              pulumi.String("example"),
 //				Size:              pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:             pulumi.String("ubuntu-22-04-x64"),
 //				Region:            pulumi.String(digitalocean.RegionNYC3),
@@ -41,9 +41,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewReservedIp(ctx, "exampleReservedIp", &digitalocean.ReservedIpArgs{
-//				DropletId: exampleDroplet.ID(),
-//				Region:    exampleDroplet.Region,
+//			_, err = digitalocean.NewReservedIp(ctx, "example", &digitalocean.ReservedIpArgs{
+//				DropletId: example.ID(),
+//				Region:    example.Region,
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +53,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

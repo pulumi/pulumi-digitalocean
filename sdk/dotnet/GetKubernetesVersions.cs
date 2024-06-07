@@ -18,7 +18,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ### Output a list of all available versions
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,11 +34,9 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Create a Kubernetes cluster using the most recent version available
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,6 +49,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
+        ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
@@ -64,11 +62,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Pin a Kubernetes cluster to a specific minor version
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,6 +80,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
+        ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
@@ -96,7 +93,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKubernetesVersionsResult> InvokeAsync(GetKubernetesVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsArgs(), options.WithDefaults());
@@ -108,7 +104,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// ### Output a list of all available versions
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -125,11 +120,9 @@ namespace Pulumi.DigitalOcean
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Create a Kubernetes cluster using the most recent version available
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -142,6 +135,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
+        ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
@@ -154,11 +148,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Pin a Kubernetes cluster to a specific minor version
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -174,6 +166,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
+        ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
         ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
         ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
@@ -186,7 +179,6 @@ namespace Pulumi.DigitalOcean
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKubernetesVersionsResult> Invoke(GetKubernetesVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionsResult>("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args ?? new GetKubernetesVersionsInvokeArgs(), options.WithDefaults());

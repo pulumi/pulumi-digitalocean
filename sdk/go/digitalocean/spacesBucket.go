@@ -25,7 +25,6 @@ import (
 // access ID and secret you generate via the DigitalOcean control panel. For
 // example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
 //
@@ -55,7 +53,6 @@ import (
 //
 // ### Create a New Bucket
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,6 +66,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("foobar"),
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
@@ -79,11 +77,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a New Bucket With CORS Rules
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,6 +93,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := digitalocean.NewSpacesBucket(ctx, "foobar", &digitalocean.SpacesBucketArgs{
+//				Name:   pulumi.String("foobar"),
+//				Region: pulumi.String(digitalocean.RegionNYC3),
 //				CorsRules: digitalocean.SpacesBucketCorsRuleArray{
 //					&digitalocean.SpacesBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
@@ -125,7 +123,6 @@ import (
 //						MaxAgeSeconds: pulumi.Int(3000),
 //					},
 //				},
-//				Region: pulumi.String(digitalocean.RegionNYC3),
 //			})
 //			if err != nil {
 //				return err
@@ -135,7 +132,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -201,15 +201,15 @@ class ContainerRegistry(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         # Create a new container registry
-        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
+        foobar = digitalocean.ContainerRegistry("foobar",
+            name="foobar",
+            subscription_tier_slug="starter")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,15 +237,15 @@ class ContainerRegistry(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         # Create a new container registry
-        foobar = digitalocean.ContainerRegistry("foobar", subscription_tier_slug="starter")
+        foobar = digitalocean.ContainerRegistry("foobar",
+            name="foobar",
+            subscription_tier_slug="starter")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

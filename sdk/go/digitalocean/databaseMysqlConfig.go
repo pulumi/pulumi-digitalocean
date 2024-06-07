@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -32,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "exampleDatabaseCluster", &digitalocean.DatabaseClusterArgs{
+//			exampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, "example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-mysql-cluster"),
 //				Engine:    pulumi.String("mysql"),
 //				Version:   pulumi.String("8"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDatabaseMysqlConfig(ctx, "exampleDatabaseMysqlConfig", &digitalocean.DatabaseMysqlConfigArgs{
+//			_, err = digitalocean.NewDatabaseMysqlConfig(ctx, "example", &digitalocean.DatabaseMysqlConfigArgs{
 //				ClusterId:       exampleDatabaseCluster.ID(),
 //				ConnectTimeout:  pulumi.Int(10),
 //				DefaultTimeZone: pulumi.String("UTC"),
@@ -55,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

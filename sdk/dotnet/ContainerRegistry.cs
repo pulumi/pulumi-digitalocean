@@ -15,7 +15,6 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,12 +26,12 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new container registry
     ///     var foobar = new DigitalOcean.ContainerRegistry("foobar", new()
     ///     {
+    ///         Name = "foobar",
     ///         SubscriptionTierSlug = "starter",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

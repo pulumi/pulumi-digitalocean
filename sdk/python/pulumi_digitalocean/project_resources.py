@@ -117,13 +117,13 @@ class ProjectResources(pulumi.CustomResource):
 
         The following example assigns a droplet to a Project managed outside of the provider:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         playground = digitalocean.get_project(name="playground")
         foobar = digitalocean.Droplet("foobar",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
@@ -131,7 +131,6 @@ class ProjectResources(pulumi.CustomResource):
             project=playground.id,
             resources=[foobar.droplet_urn])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -168,13 +167,13 @@ class ProjectResources(pulumi.CustomResource):
 
         The following example assigns a droplet to a Project managed outside of the provider:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
         playground = digitalocean.get_project(name="playground")
         foobar = digitalocean.Droplet("foobar",
+            name="example",
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             image="ubuntu-22-04-x64",
             region=digitalocean.Region.NYC3)
@@ -182,7 +181,6 @@ class ProjectResources(pulumi.CustomResource):
             project=playground.id,
             resources=[foobar.droplet_urn])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
