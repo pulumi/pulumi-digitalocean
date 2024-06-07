@@ -1,0 +1,15 @@
+name: index_volumeLQgNONpDdMfI
+runtime: yaml
+description: A minimal DigitalOcean volume setup
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/376be1ab-ac8d-424c-8817-241263068b66.zip
+resources:
+  my-volume:
+    properties:
+      description: My DigitalOcean volume
+      filesystemType: ext4
+      region: nyc3
+      size: 5
+    type: digitalocean:Volume

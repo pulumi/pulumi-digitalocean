@@ -1,0 +1,26 @@
+name: index_dropletlfjSjjnhVI1a
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/04ffe1e3-edd6-40a1-b7d2-f26d20360b75.zip
+resources:
+  myDroplet:
+    properties:
+      image: ubuntu-20-04-x64
+      monitoring: true
+      region: nyc3
+      size: s-1vcpu-1gb
+      sshKeys:
+        - ${sshKey.fingerprint}
+      vpcUuid: ${vpc.id}
+    type: digitalocean:Droplet
+  sshKey:
+    properties:
+      publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF4B8a9iPk3d/sSZxBEIjLodGn5f0JTFKzKXX0cvpPN+zeQ8nADzmdezD0KtlS2kz+Ju/IvkBVB2xDF9+3WSuKiEzbn2VTpaqx5KsEjaF7bYid8ovoj84taj6Cymg8aBuU93xcpti5afxkDooqwuKzGZ2OMhpVpRchC+x3iTBwW7Bjzq1NNaztHuEHoxI9kFFQQr9L3lybBaZR/KqakHWNC4+XKrbkaWDpTLpRYNJ4BRpGub+iuoLEKh4BXlnBtA3C0LKt9qWEDcwgfbFkunEbOd7Twv78tadhw8VmuvOvTWoP4KEIy8mpNjSGE3FGPm9RxWyfGWHHCUoRIMX+rICatGM+ChtWH+uigr0nyfw6XDXN/M3pRVtYHdYN/2aSGBpEF6aKZUHfw04gOSLGWqsipRow1Dy81MtRgV8Iv/gvh9QvtuIRyg4EUqbnsKjYTe95jonWKk6K/94L5p4fq7Keknb8UhBB4X6HbZBNWyvNsLuTBI2xHak6I47I7N0d39t7QtrQ+Lxwr2CjMRJ/U/Z1mCZlnoNreR59w61P3sB3Ij5q+uZXAt9KZLztEftQZA8vgVW065aGbySvMxiG2IcQ7kU8HDxHAzCBl9oIP8JXJKcj5nsT00xjOAXq5J8soMHOT62HFJvOQdGox4hdKfYOPudtNRlqtbFKzvFMQCWk8Q== user@example.com
+    type: digitalocean:SshKey
+  vpc:
+    properties:
+      region: nyc3
+    type: digitalocean:Vpc
