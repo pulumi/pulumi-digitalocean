@@ -1,0 +1,102 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-06-14T11:31:51.960951+01:00",
+      "magic": "26455f4e783faab27da6c6ee2e252716b1c84e7f67777a274faa7d2452f68cf7",
+      "version": "v3.120.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:4hnZh1xUgfQ=:v1:iTr6U/5doyWYJjMe:jD6P5adRUAiQNwy5wY6EdVJJyTSSFg=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::pulumi:pulumi:Stack::index_projectresourcesCw2V4oH4GyFL-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-06-14T10:31:50.097474Z",
+        "modified": "2024-06-14T10:31:50.097474Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::pulumi:providers:digitalocean::default",
+        "custom": true,
+        "id": "db248083-d587-4e1c-9371-79fd30a82694",
+        "type": "pulumi:providers:digitalocean",
+        "created": "2024-06-14T10:31:50.172755Z",
+        "modified": "2024-06-14T10:31:50.172755Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::digitalocean:index/project:Project::my_project",
+        "custom": true,
+        "id": "07a3ba25-9a78-4712-bdb2-ad65e18ff519",
+        "type": "digitalocean:index/project:Project",
+        "inputs": {
+          "__defaults": [
+            "isDefault",
+            "name",
+            "purpose"
+          ],
+          "description": "A sample DigitalOcean project created with Pulumi",
+          "environment": "Development",
+          "isDefault": false,
+          "name": "my_project-ede21ae",
+          "purpose": "Web Application"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"delete\":180000000000}}",
+          "createdAt": "2024-06-14T10:31:50Z",
+          "description": "A sample DigitalOcean project created with Pulumi",
+          "environment": "Development",
+          "id": "07a3ba25-9a78-4712-bdb2-ad65e18ff519",
+          "isDefault": false,
+          "name": "my_project-ede21ae",
+          "ownerId": 13463203,
+          "ownerUuid": "1faa7fb3-d49e-4f43-8441-2fec818f06c5",
+          "purpose": "Web Application",
+          "resources": [],
+          "updatedAt": "2024-06-14T10:31:50Z"
+        },
+        "parent": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::pulumi:pulumi:Stack::index_projectresourcesCw2V4oH4GyFL-test",
+        "provider": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::pulumi:providers:digitalocean::default::db248083-d587-4e1c-9371-79fd30a82694",
+        "propertyDependencies": {
+          "description": [],
+          "environment": []
+        },
+        "created": "2024-06-14T10:31:51.070524Z",
+        "modified": "2024-06-14T10:31:51.070524Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::digitalocean:index/projectResources:ProjectResources::my_project_resources",
+        "custom": true,
+        "id": "07a3ba25-9a78-4712-bdb2-ad65e18ff519",
+        "type": "digitalocean:index/projectResources:ProjectResources",
+        "inputs": {
+          "__defaults": [],
+          "project": "07a3ba25-9a78-4712-bdb2-ad65e18ff519",
+          "resources": []
+        },
+        "outputs": {
+          "id": "07a3ba25-9a78-4712-bdb2-ad65e18ff519",
+          "project": "07a3ba25-9a78-4712-bdb2-ad65e18ff519",
+          "resources": []
+        },
+        "parent": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::pulumi:pulumi:Stack::index_projectresourcesCw2V4oH4GyFL-test",
+        "dependencies": [
+          "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::digitalocean:index/project:Project::my_project"
+        ],
+        "provider": "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::pulumi:providers:digitalocean::default::db248083-d587-4e1c-9371-79fd30a82694",
+        "propertyDependencies": {
+          "project": [
+            "urn:pulumi:test::index_projectresourcesCw2V4oH4GyFL::digitalocean:index/project:Project::my_project"
+          ],
+          "resources": []
+        },
+        "created": "2024-06-14T10:31:51.953555Z",
+        "modified": "2024-06-14T10:31:51.953555Z"
+      }
+    ]
+  }
+}
