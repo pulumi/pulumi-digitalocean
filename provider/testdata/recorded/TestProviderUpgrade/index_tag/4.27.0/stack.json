@@ -1,0 +1,59 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-06-14T11:31:45.945452+01:00",
+      "magic": "26455f4e783faab27da6c6ee2e252716b1c84e7f67777a274faa7d2452f68cf7",
+      "version": "v3.120.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:F+ibhNL/H54=:v1:wHH/x85HDyk1iAR7:nD06D4UuZftUJxelaYOUUc9EjXf5EQ=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_tagVq1xXrarp9S3::pulumi:pulumi:Stack::index_tagVq1xXrarp9S3-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-06-14T10:31:45.521396Z",
+        "modified": "2024-06-14T10:31:45.521396Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_tagVq1xXrarp9S3::pulumi:providers:digitalocean::default",
+        "custom": true,
+        "id": "ff4760ca-f8a4-4978-ba39-35c1e3392a25",
+        "type": "pulumi:providers:digitalocean",
+        "created": "2024-06-14T10:31:45.598344Z",
+        "modified": "2024-06-14T10:31:45.598344Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_tagVq1xXrarp9S3::digitalocean:index/tag:Tag::myTag",
+        "custom": true,
+        "id": "myTag-f448a3d",
+        "type": "digitalocean:index/tag:Tag",
+        "inputs": {
+          "__defaults": [
+            "name"
+          ],
+          "name": "myTag-f448a3d"
+        },
+        "outputs": {
+          "databasesCount": 0,
+          "dropletsCount": 0,
+          "id": "myTag-f448a3d",
+          "imagesCount": 0,
+          "name": "myTag-f448a3d",
+          "totalResourceCount": 0,
+          "volumeSnapshotsCount": 0,
+          "volumesCount": 0
+        },
+        "parent": "urn:pulumi:test::index_tagVq1xXrarp9S3::pulumi:pulumi:Stack::index_tagVq1xXrarp9S3-test",
+        "provider": "urn:pulumi:test::index_tagVq1xXrarp9S3::pulumi:providers:digitalocean::default::ff4760ca-f8a4-4978-ba39-35c1e3392a25",
+        "created": "2024-06-14T10:31:45.937123Z",
+        "modified": "2024-06-14T10:31:45.937123Z"
+      }
+    ]
+  }
+}

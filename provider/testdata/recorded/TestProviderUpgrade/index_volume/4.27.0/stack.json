@@ -1,0 +1,70 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-06-14T11:30:43.83679+01:00",
+      "magic": "26455f4e783faab27da6c6ee2e252716b1c84e7f67777a274faa7d2452f68cf7",
+      "version": "v3.120.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:5eiorDf6gD0=:v1:x8BxtprB2Ht04LXj:f3TWbGV/IgY8p6sWoEoJ6KJcqgWagw=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_volumeLQgNONpDdMfI::pulumi:pulumi:Stack::index_volumeLQgNONpDdMfI-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-06-14T10:30:40.856092Z",
+        "modified": "2024-06-14T10:30:40.856092Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_volumeLQgNONpDdMfI::pulumi:providers:digitalocean::default",
+        "custom": true,
+        "id": "8ac54f26-bde1-4d25-afca-d80ed2a194f1",
+        "type": "pulumi:providers:digitalocean",
+        "created": "2024-06-14T10:30:41.541927Z",
+        "modified": "2024-06-14T10:30:41.541927Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_volumeLQgNONpDdMfI::digitalocean:index/volume:Volume::my-volume",
+        "custom": true,
+        "id": "26a3ee9d-2a39-11ef-9cf8-0a58ac146f98",
+        "type": "digitalocean:index/volume:Volume",
+        "inputs": {
+          "__defaults": [
+            "name"
+          ],
+          "description": "My DigitalOcean volume",
+          "filesystemType": "ext4",
+          "name": "my-volume-2ba2433",
+          "region": "nyc3",
+          "size": 5
+        },
+        "outputs": {
+          "description": "My DigitalOcean volume",
+          "dropletIds": [],
+          "filesystemType": "ext4",
+          "id": "26a3ee9d-2a39-11ef-9cf8-0a58ac146f98",
+          "name": "my-volume-2ba2433",
+          "region": "nyc3",
+          "size": 5,
+          "tags": [],
+          "volumeUrn": "do:volume:26a3ee9d-2a39-11ef-9cf8-0a58ac146f98"
+        },
+        "parent": "urn:pulumi:test::index_volumeLQgNONpDdMfI::pulumi:pulumi:Stack::index_volumeLQgNONpDdMfI-test",
+        "provider": "urn:pulumi:test::index_volumeLQgNONpDdMfI::pulumi:providers:digitalocean::default::8ac54f26-bde1-4d25-afca-d80ed2a194f1",
+        "propertyDependencies": {
+          "description": [],
+          "filesystemType": [],
+          "region": [],
+          "size": []
+        },
+        "created": "2024-06-14T10:30:43.827849Z",
+        "modified": "2024-06-14T10:30:43.827849Z"
+      }
+    ]
+  }
+}

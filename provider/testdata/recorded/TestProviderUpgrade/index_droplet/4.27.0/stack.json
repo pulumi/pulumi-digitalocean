@@ -1,0 +1,227 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-06-14T11:31:19.860736+01:00",
+      "magic": "26455f4e783faab27da6c6ee2e252716b1c84e7f67777a274faa7d2452f68cf7",
+      "version": "v3.120.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:UGFMFnpuXR8=:v1:cZYr3Dlgv6Mjgvk+:09DgGDP+NMaWjTrY4VYAdExWJ0aZZQ=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:pulumi:Stack::index_dropletlfjSjjnhVI1a-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-06-14T10:30:48.249729Z",
+        "modified": "2024-06-14T10:30:48.249729Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:providers:tls::default",
+        "custom": true,
+        "id": "1bd54ade-bc4f-41a1-b94a-9a56091825c8",
+        "type": "pulumi:providers:tls",
+        "created": "2024-06-14T10:30:48.427929Z",
+        "modified": "2024-06-14T10:30:48.427929Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::tls:index/privateKey:PrivateKey::private_key",
+        "custom": true,
+        "id": "3b2800538d0a7f0bd35a995801efd06e6da004eb",
+        "type": "tls:index/privateKey:PrivateKey",
+        "inputs": {
+          "algorithm": "ED25519"
+        },
+        "outputs": {
+          "__meta": "{\"schema_version\":\"1\"}",
+          "algorithm": "ED25519",
+          "ecdsaCurve": "P224",
+          "id": "3b2800538d0a7f0bd35a995801efd06e6da004eb",
+          "privateKeyOpenssh": {
+            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+            "plaintext": "\"-----BEGIN OPENSSH PRIVATE KEY-----\\nb3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtz\\nc2gtZWQyNTUxOQAAACBIkfAi6kKsfiN80hiqF5nzcDLOSdMJPUWsP4S406Q9KwAA\\nAIj5M2Ni+TNjYgAAAAtzc2gtZWQyNTUxOQAAACBIkfAi6kKsfiN80hiqF5nzcDLO\\nSdMJPUWsP4S406Q9KwAAAEA9T/7/8lLUglBxe2c64fLOTvUOPx00igp6sJ665fEh\\nvkiR8CLqQqx+I3zSGKoXmfNwMs5J0wk9Raw/hLjTpD0rAAAAAAECAwQF\\n-----END OPENSSH PRIVATE KEY-----\\n\""
+          },
+          "privateKeyPem": {
+            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+            "plaintext": "\"-----BEGIN PRIVATE KEY-----\\nMC4CAQAwBQYDK2VwBCIEID1P/v/yUtSCUHF7Zzrh8s5O9Q4/HTSKCnqwnrrl8SG+\\n-----END PRIVATE KEY-----\\n\""
+          },
+          "privateKeyPemPkcs8": {
+            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+            "plaintext": "\"-----BEGIN PRIVATE KEY-----\\nMC4CAQAwBQYDK2VwBCIEID1P/v/yUtSCUHF7Zzrh8s5O9Q4/HTSKCnqwnrrl8SG+\\n-----END PRIVATE KEY-----\\n\""
+          },
+          "publicKeyFingerprintMd5": "54:e7:cc:2e:99:e1:f8:fd:ce:a1:fa:64:e0:ed:80:9b",
+          "publicKeyFingerprintSha256": "SHA256:h7rjzGWgM3PukaEf5xWG2/y2Rn1ERruG+9kWdhJ5XQo",
+          "publicKeyOpenssh": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEiR8CLqQqx+I3zSGKoXmfNwMs5J0wk9Raw/hLjTpD0r\n",
+          "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEASJHwIupCrH4jfNIYqheZ83AyzknTCT1FrD+EuNOkPSs=\n-----END PUBLIC KEY-----\n",
+          "rsaBits": 2048
+        },
+        "parent": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:pulumi:Stack::index_dropletlfjSjjnhVI1a-test",
+        "provider": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:providers:tls::default::1bd54ade-bc4f-41a1-b94a-9a56091825c8",
+        "propertyDependencies": {
+          "algorithm": []
+        },
+        "additionalSecretOutputs": [
+          "privateKeyOpenssh",
+          "privateKeyPem",
+          "privateKeyPemPkcs8"
+        ],
+        "created": "2024-06-14T10:30:48.436763Z",
+        "modified": "2024-06-14T10:30:48.436763Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:providers:digitalocean::default",
+        "custom": true,
+        "id": "9c02c7d1-e6d2-4cc7-a1c9-e677c87c3cb8",
+        "type": "pulumi:providers:digitalocean",
+        "created": "2024-06-14T10:30:48.462752Z",
+        "modified": "2024-06-14T10:30:48.462752Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/vpc:Vpc::vpc",
+        "custom": true,
+        "id": "11c6374e-990b-4214-beb7-ce5acb47253a",
+        "type": "digitalocean:index/vpc:Vpc",
+        "inputs": {
+          "__defaults": [
+            "name"
+          ],
+          "name": "vpc-7146427",
+          "region": "nyc3"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"delete\":120000000000}}",
+          "createdAt": "2024-06-14 10:30:49 +0000 UTC",
+          "default": false,
+          "description": "",
+          "id": "11c6374e-990b-4214-beb7-ce5acb47253a",
+          "ipRange": "10.108.16.0/20",
+          "name": "vpc-7146427",
+          "region": "nyc3",
+          "vpcUrn": "do:vpc:11c6374e-990b-4214-beb7-ce5acb47253a"
+        },
+        "parent": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:pulumi:Stack::index_dropletlfjSjjnhVI1a-test",
+        "provider": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:providers:digitalocean::default::9c02c7d1-e6d2-4cc7-a1c9-e677c87c3cb8",
+        "propertyDependencies": {
+          "region": []
+        },
+        "created": "2024-06-14T10:30:49.065646Z",
+        "modified": "2024-06-14T10:30:49.065646Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/sshKey:SshKey::sshKey",
+        "custom": true,
+        "id": "42426143",
+        "type": "digitalocean:index/sshKey:SshKey",
+        "inputs": {
+          "__defaults": [
+            "name"
+          ],
+          "name": "sshKey-fa02fa0",
+          "publicKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEiR8CLqQqx+I3zSGKoXmfNwMs5J0wk9Raw/hLjTpD0r\n"
+        },
+        "outputs": {
+          "fingerprint": "54:e7:cc:2e:99:e1:f8:fd:ce:a1:fa:64:e0:ed:80:9b",
+          "id": "42426143",
+          "name": "sshKey-fa02fa0",
+          "publicKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEiR8CLqQqx+I3zSGKoXmfNwMs5J0wk9Raw/hLjTpD0r\n"
+        },
+        "parent": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:pulumi:Stack::index_dropletlfjSjjnhVI1a-test",
+        "dependencies": [
+          "urn:pulumi:test::index_dropletlfjSjjnhVI1a::tls:index/privateKey:PrivateKey::private_key"
+        ],
+        "provider": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:providers:digitalocean::default::9c02c7d1-e6d2-4cc7-a1c9-e677c87c3cb8",
+        "propertyDependencies": {
+          "publicKey": [
+            "urn:pulumi:test::index_dropletlfjSjjnhVI1a::tls:index/privateKey:PrivateKey::private_key"
+          ]
+        },
+        "created": "2024-06-14T10:30:49.089356Z",
+        "modified": "2024-06-14T10:30:49.089356Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/droplet:Droplet::myDroplet",
+        "custom": true,
+        "id": "425728444",
+        "type": "digitalocean:index/droplet:Droplet",
+        "inputs": {
+          "__defaults": [
+            "backups",
+            "gracefulShutdown",
+            "ipv6",
+            "name",
+            "resizeDisk"
+          ],
+          "backups": false,
+          "gracefulShutdown": false,
+          "image": "ubuntu-20-04-x64",
+          "ipv6": false,
+          "monitoring": true,
+          "name": "myDroplet-22ad87f",
+          "region": "nyc3",
+          "resizeDisk": true,
+          "size": "s-1vcpu-1gb",
+          "sshKeys": [
+            "54:e7:cc:2e:99:e1:f8:fd:ce:a1:fa:64:e0:ed:80:9b"
+          ],
+          "vpcUuid": "11c6374e-990b-4214-beb7-ce5acb47253a"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":3600000000000,\"delete\":60000000000,\"update\":3600000000000},\"schema_version\":\"1\"}",
+          "backups": false,
+          "createdAt": "2024-06-14T10:30:49Z",
+          "disk": 25,
+          "dropletUrn": "do:droplet:425728444",
+          "gracefulShutdown": false,
+          "id": "425728444",
+          "image": "ubuntu-20-04-x64",
+          "ipv4Address": "138.197.28.143",
+          "ipv4AddressPrivate": "10.108.16.2",
+          "ipv6": false,
+          "ipv6Address": "",
+          "locked": false,
+          "memory": 1024,
+          "monitoring": true,
+          "name": "myDroplet-22ad87f",
+          "priceHourly": 0.00893,
+          "priceMonthly": 6,
+          "privateNetworking": true,
+          "region": "nyc3",
+          "resizeDisk": true,
+          "size": "s-1vcpu-1gb",
+          "sshKeys": [
+            "54:e7:cc:2e:99:e1:f8:fd:ce:a1:fa:64:e0:ed:80:9b"
+          ],
+          "status": "active",
+          "tags": [],
+          "vcpus": 1,
+          "volumeIds": [],
+          "vpcUuid": "11c6374e-990b-4214-beb7-ce5acb47253a"
+        },
+        "parent": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:pulumi:Stack::index_dropletlfjSjjnhVI1a-test",
+        "dependencies": [
+          "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/sshKey:SshKey::sshKey",
+          "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/vpc:Vpc::vpc"
+        ],
+        "provider": "urn:pulumi:test::index_dropletlfjSjjnhVI1a::pulumi:providers:digitalocean::default::9c02c7d1-e6d2-4cc7-a1c9-e677c87c3cb8",
+        "propertyDependencies": {
+          "image": [],
+          "monitoring": [],
+          "region": [],
+          "size": [],
+          "sshKeys": [
+            "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/sshKey:SshKey::sshKey"
+          ],
+          "vpcUuid": [
+            "urn:pulumi:test::index_dropletlfjSjjnhVI1a::digitalocean:index/vpc:Vpc::vpc"
+          ]
+        },
+        "created": "2024-06-14T10:31:19.848303Z",
+        "modified": "2024-06-14T10:31:19.848303Z"
+      }
+    ]
+  }
+}
