@@ -3,6 +3,26 @@ name: "Build SDK"
 on:
   workflow_call: {}
 
+env:
+  DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+  PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_API: https://api.pulumi-staging.io
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  PYPI_USERNAME: __token__
+  SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
+  SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+  SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  TF_APPEND_USER_AGENT: pulumi
+
 jobs:
   build_sdk:
     name: build_sdk
@@ -28,34 +48,10 @@ jobs:
           path: |
             .pulumi/examples-cache
           key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
-      - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.11.0
+      - name: Setup tools
+        uses: ./.github/actions/setup-tools
         with:
-          tag: v0.0.46
-          repo: pulumi/pulumictl
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          registry-url: https://registry.npmjs.org
-      - name: Setup DotNet
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 6.0.x
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.11.8
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          cache: gradle
-          distribution: temurin
-          java-version: 11
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          gradle-version: 7.6
+          tools: pulumictl, pulumicli, go, node, dotnet, python, java
       - name: Download provider + tfgen binaries
         uses: actions/download-artifact@v4
         with:
