@@ -13,6 +13,26 @@ on:
         type: string
         required: true
 
+env:
+  DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+  PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_API: https://api.pulumi-staging.io
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  PYPI_USERNAME: __token__
+  SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
+  SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+  SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  TF_APPEND_USER_AGENT: pulumi
+
 jobs:
   prerequisites:
     name: prerequisites
@@ -31,27 +51,10 @@ jobs:
         key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
     - name: Prepare upstream code
       run: make upstream
-    - name: Install Go
-      uses: actions/setup-go@v5
+    - name: Setup tools
+      uses: ./.github/actions/setup-tools
       with:
-        go-version: "1.21.x"
-        cache-dependency-path: |
-          provider/*.sum
-          upstream/*.sum
-    - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.11.0
-      with:
-        tag: v0.0.46
-        repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/actions@v5
-      with:
-        pulumi-version: "^3"
-    - if: inputs.is_pr
-      name: Install Schema Tools
-      uses: jaxxstorm/action-install-gh-release@v1.11.0
-      with:
-        repo: pulumi/schema-tools
+        tools: go, pulumictl, pulumicli, schema-tools
     - name: Build schema generator binary
       run: make tfgen_build_only
     - name: Install plugins
