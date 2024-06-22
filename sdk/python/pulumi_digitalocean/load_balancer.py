@@ -125,14 +125,12 @@ class LoadBalancerArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
     def algorithm(self) -> Optional[pulumi.Input[Union[str, 'Algorithm']]]:
         """
         **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         or `least_connections`. The default value is `round_robin`.
         """
-        warnings.warn("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""", DeprecationWarning)
-        pulumi.log.warn("""algorithm is deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
-
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
@@ -524,14 +522,12 @@ class _LoadBalancerState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
     def algorithm(self) -> Optional[pulumi.Input[Union[str, 'Algorithm']]]:
         """
         **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         or `least_connections`. The default value is `round_robin`.
         """
-        warnings.warn("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""", DeprecationWarning)
-        pulumi.log.warn("""algorithm is deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
-
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
@@ -1176,14 +1172,12 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
     def algorithm(self) -> pulumi.Output[Optional[str]]:
         """
         **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         or `least_connections`. The default value is `round_robin`.
         """
-        warnings.warn("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""", DeprecationWarning)
-        pulumi.log.warn("""algorithm is deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
-
         return pulumi.get(self, "algorithm")
 
     @property

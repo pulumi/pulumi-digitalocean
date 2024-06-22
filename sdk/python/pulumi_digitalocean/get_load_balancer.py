@@ -104,10 +104,8 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
     def algorithm(self) -> str:
-        warnings.warn("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""", DeprecationWarning)
-        pulumi.log.warn("""algorithm is deprecated: This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
-
         return pulumi.get(self, "algorithm")
 
     @property

@@ -830,7 +830,7 @@ class DatabaseCluster(pulumi.CustomResource):
             backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
                 database_name="dobydb",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[doby]))
+            opts = pulumi.ResourceOptions(depends_on=[doby]))
         ```
 
         ## Import
@@ -964,7 +964,7 @@ class DatabaseCluster(pulumi.CustomResource):
             backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
                 database_name="dobydb",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[doby]))
+            opts = pulumi.ResourceOptions(depends_on=[doby]))
         ```
 
         ## Import
