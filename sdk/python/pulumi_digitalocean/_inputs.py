@@ -310,10 +310,8 @@ class AppSpecArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute has been replaced by `domain` which supports additional functionality.""")
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        warnings.warn("""This attribute has been replaced by `domain` which supports additional functionality.""", DeprecationWarning)
-        pulumi.log.warn("""domains is deprecated: This attribute has been replaced by `domain` which supports additional functionality.""")
-
         return pulumi.get(self, "domains")
 
     @domains.setter
@@ -834,13 +832,11 @@ class AppSpecFunctionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Service level CORS rules are deprecated in favor of ingresses""")
     def cors(self) -> Optional[pulumi.Input['AppSpecFunctionCorsArgs']]:
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
-        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
-        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
-
         return pulumi.get(self, "cors")
 
     @cors.setter
@@ -909,13 +905,11 @@ class AppSpecFunctionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Service level routes are deprecated in favor of ingresses""")
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]]]:
         """
         An HTTP paths that should be routed to this component.
         """
-        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
-        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
-
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -3013,13 +3007,11 @@ class AppSpecServiceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Service level CORS rules are deprecated in favor of ingresses""")
     def cors(self) -> Optional[pulumi.Input['AppSpecServiceCorsArgs']]:
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
-        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
-        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
-
         return pulumi.get(self, "cors")
 
     @cors.setter
@@ -3184,13 +3176,11 @@ class AppSpecServiceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Service level routes are deprecated in favor of ingresses""")
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]]:
         """
         An HTTP paths that should be routed to this component.
         """
-        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
-        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
-
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -4230,13 +4220,11 @@ class AppSpecStaticSiteArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Service level CORS rules are deprecated in favor of ingresses""")
     def cors(self) -> Optional[pulumi.Input['AppSpecStaticSiteCorsArgs']]:
         """
         The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         """
-        warnings.warn("""Service level CORS rules are deprecated in favor of ingresses""", DeprecationWarning)
-        pulumi.log.warn("""cors is deprecated: Service level CORS rules are deprecated in favor of ingresses""")
-
         return pulumi.get(self, "cors")
 
     @cors.setter
@@ -4353,13 +4341,11 @@ class AppSpecStaticSiteArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Service level routes are deprecated in favor of ingresses""")
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]]]:
         """
         An HTTP paths that should be routed to this component.
         """
-        warnings.warn("""Service level routes are deprecated in favor of ingresses""", DeprecationWarning)
-        pulumi.log.warn("""routes is deprecated: Service level routes are deprecated in favor of ingresses""")
-
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -7576,13 +7562,11 @@ class LoadBalancerForwardingRuleArgs:
 
     @property
     @pulumi.getter(name="certificateId")
+    @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
     def certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
         **Deprecated** The ID of the TLS certificate to be used for SSL termination.
         """
-        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
-
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
