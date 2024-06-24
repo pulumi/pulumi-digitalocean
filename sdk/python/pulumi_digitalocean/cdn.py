@@ -54,13 +54,11 @@ class CdnArgs:
 
     @property
     @pulumi.getter(name="certificateId")
+    @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
     def certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
-        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
-
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -144,13 +142,11 @@ class _CdnState:
 
     @property
     @pulumi.getter(name="certificateId")
+    @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
     def certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
-        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
-
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -444,13 +440,11 @@ class Cdn(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
+    @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
     def certificate_id(self) -> pulumi.Output[str]:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
-        warnings.warn("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""certificate_id is deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
-
         return pulumi.get(self, "certificate_id")
 
     @property

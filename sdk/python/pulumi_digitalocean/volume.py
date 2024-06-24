@@ -94,13 +94,11 @@ class VolumeArgs:
 
     @property
     @pulumi.getter(name="filesystemType")
+    @_utilities.deprecated("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
     def filesystem_type(self) -> Optional[pulumi.Input[str]]:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
-        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
-        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
-
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
@@ -264,13 +262,11 @@ class _VolumeState:
 
     @property
     @pulumi.getter(name="filesystemType")
+    @_utilities.deprecated("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
     def filesystem_type(self) -> Optional[pulumi.Input[str]]:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
-        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
-        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
-
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
@@ -636,13 +632,11 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filesystemType")
+    @_utilities.deprecated("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
     def filesystem_type(self) -> pulumi.Output[str]:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
-        warnings.warn("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""", DeprecationWarning)
-        pulumi.log.warn("""filesystem_type is deprecated: This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
-
         return pulumi.get(self, "filesystem_type")
 
     @property
