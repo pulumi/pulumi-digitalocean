@@ -44,13 +44,9 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("mailServers", std.Join(ctx, var splat0 []*string
-// for _, val0 := range example.Records {
-// splat0 = append(splat0, val0.Value)
-// }
-// &std.JoinArgs{
+// ctx.Export("mailServers", std.Join(ctx, &std.JoinArgs{
 // Separator: ",",
-// Input: splat0,
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:11,17-41),
 // }, nil).Result)
 // return nil
 // })
