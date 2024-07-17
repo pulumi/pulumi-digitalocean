@@ -13369,9 +13369,11 @@ func (o DatabaseUserSettingArrayOutput) Index(i pulumi.IntInput) DatabaseUserSet
 
 type DatabaseUserSettingAcl struct {
 	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-	Id         *string `pulumi:"id"`
-	Permission string  `pulumi:"permission"`
-	Topic      string  `pulumi:"topic"`
+	Id *string `pulumi:"id"`
+	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+	Permission string `pulumi:"permission"`
+	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+	Topic string `pulumi:"topic"`
 }
 
 // DatabaseUserSettingAclInput is an input type that accepts DatabaseUserSettingAclArgs and DatabaseUserSettingAclOutput values.
@@ -13387,9 +13389,11 @@ type DatabaseUserSettingAclInput interface {
 
 type DatabaseUserSettingAclArgs struct {
 	// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	Permission pulumi.StringInput    `pulumi:"permission"`
-	Topic      pulumi.StringInput    `pulumi:"topic"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
 func (DatabaseUserSettingAclArgs) ElementType() reflect.Type {
@@ -13448,10 +13452,12 @@ func (o DatabaseUserSettingAclOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
 func (o DatabaseUserSettingAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
 func (o DatabaseUserSettingAclOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseUserSettingAcl) string { return v.Topic }).(pulumi.StringOutput)
 }
