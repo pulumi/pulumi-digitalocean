@@ -31,16 +31,32 @@ public final class DatabaseUserSettingAclArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * The permission level applied to the ACL. This includes &#34;admin&#34;, &#34;consume&#34;, &#34;produce&#34;, and &#34;produceconsume&#34;. &#34;admin&#34; allows for producing and consuming as well as add/delete/update permission for topics. &#34;consume&#34; allows only for reading topic messages. &#34;produce&#34; allows only for writing topic messages. &#34;produceconsume&#34; allows for both reading and writing topic messages.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return The permission level applied to the ACL. This includes &#34;admin&#34;, &#34;consume&#34;, &#34;produce&#34;, and &#34;produceconsume&#34;. &#34;admin&#34; allows for producing and consuming as well as add/delete/update permission for topics. &#34;consume&#34; allows only for reading topic messages. &#34;produce&#34; allows only for writing topic messages. &#34;produceconsume&#34; allows for both reading and writing topic messages.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
 
+    /**
+     * A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
+     * 
+     */
     @Import(name="topic", required=true)
     private Output<String> topic;
 
+    /**
+     * @return A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
+     * 
+     */
     public Output<String> topic() {
         return this.topic;
     }
@@ -92,20 +108,44 @@ public final class DatabaseUserSettingAclArgs extends com.pulumi.resources.Resou
             return id(Output.of(id));
         }
 
+        /**
+         * @param permission The permission level applied to the ACL. This includes &#34;admin&#34;, &#34;consume&#34;, &#34;produce&#34;, and &#34;produceconsume&#34;. &#34;admin&#34; allows for producing and consuming as well as add/delete/update permission for topics. &#34;consume&#34; allows only for reading topic messages. &#34;produce&#34; allows only for writing topic messages. &#34;produceconsume&#34; allows for both reading and writing topic messages.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission The permission level applied to the ACL. This includes &#34;admin&#34;, &#34;consume&#34;, &#34;produce&#34;, and &#34;produceconsume&#34;. &#34;admin&#34; allows for producing and consuming as well as add/delete/update permission for topics. &#34;consume&#34; allows only for reading topic messages. &#34;produce&#34; allows only for writing topic messages. &#34;produceconsume&#34; allows for both reading and writing topic messages.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param topic A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(Output<String> topic) {
             $.topic = topic;
             return this;
         }
 
+        /**
+         * @param topic A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: &#34;*&#34;, &#34;&lt;prefix&gt;*&#34;, or &#34;&lt;literal&gt;&#34;. &#34;*&#34; is a special value indicating a wildcard that matches on all topics. &#34;&lt;prefix&gt;*&#34; defines a regex that matches all topics with the prefix. &#34;&lt;literal&gt;&#34; performs an exact match on a topic name and only applies to that topic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(String topic) {
             return topic(Output.of(topic));
         }

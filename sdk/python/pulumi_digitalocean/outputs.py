@@ -5904,6 +5904,8 @@ class DatabaseUserSettingAcl(dict):
                  topic: str,
                  id: Optional[str] = None):
         """
+        :param str permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        :param str topic: A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
         :param str id: An identifier for the ACL, this will be automatically assigned when you create an ACL entry
         """
         pulumi.set(__self__, "permission", permission)
@@ -5914,11 +5916,17 @@ class DatabaseUserSettingAcl(dict):
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def topic(self) -> str:
+        """
+        A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+        """
         return pulumi.get(self, "topic")
 
     @property
