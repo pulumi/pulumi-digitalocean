@@ -56,9 +56,9 @@ import (
 //			_, err = digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
 //				Name:             pulumi.String("custom-example"),
 //				Type:             pulumi.String(digitalocean.CertificateTypeCustom),
-//				PrivateKey:       invokeFile.Result,
-//				LeafCertificate:  invokeFile1.Result,
-//				CertificateChain: invokeFile2.Result,
+//				PrivateKey:       pulumi.String(invokeFile.Result),
+//				LeafCertificate:  pulumi.String(invokeFile1.Result),
+//				CertificateChain: pulumi.String(invokeFile2.Result),
 //			})
 //			if err != nil {
 //				return err
