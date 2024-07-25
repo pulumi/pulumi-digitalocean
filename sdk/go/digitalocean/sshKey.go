@@ -41,7 +41,7 @@ import (
 //			// Create a new SSH key
 //			_, err = digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
 //				Name:      pulumi.String("Example"),
-//				PublicKey: invokeFile.Result,
+//				PublicKey: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err

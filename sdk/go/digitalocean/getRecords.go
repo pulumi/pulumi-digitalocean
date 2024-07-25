@@ -44,10 +44,10 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("mailServers", std.Join(ctx, &std.JoinArgs{
+// ctx.Export("mailServers", pulumi.String(std.Join(ctx, &std.JoinArgs{
 // Separator: ",",
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:11,17-41),
-// }, nil).Result)
+// }, nil).Result))
 // return nil
 // })
 // }
