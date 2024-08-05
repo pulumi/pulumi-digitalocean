@@ -87,6 +87,7 @@ export interface GetLoadBalancerResult {
     readonly ip: string;
     readonly loadBalancerUrn: string;
     readonly name?: string;
+    readonly network: string;
     readonly projectId: string;
     readonly redirectHttpToHttps: boolean;
     readonly region: string;

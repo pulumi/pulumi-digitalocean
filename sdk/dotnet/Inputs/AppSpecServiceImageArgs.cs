@@ -34,7 +34,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private Input<string>? _registryCredentials;
 
         /// <summary>
-        /// Access credentials for third-party registries
+        /// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
         /// </summary>
         public Input<string>? RegistryCredentials
         {

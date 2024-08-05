@@ -49,14 +49,14 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
      * 
      */
     @Import(name="registryCredentials")
     private @Nullable Output<String> registryCredentials;
 
     /**
-     * @return Access credentials for third-party registries
+     * @return The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
      * 
      */
     public Optional<Output<String>> registryCredentials() {
@@ -190,7 +190,7 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param registryCredentials Access credentials for third-party registries
+         * @param registryCredentials The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param registryCredentials Access credentials for third-party registries
+         * @param registryCredentials The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
          * 
          * @return builder
          * 

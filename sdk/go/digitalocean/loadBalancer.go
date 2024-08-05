@@ -120,6 +120,9 @@ type LoadBalancer struct {
 	LoadBalancerUrn pulumi.StringOutput `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// A boolean value indicating whether
@@ -139,7 +142,8 @@ type LoadBalancer struct {
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
-	// the type of the load balancer (GLOBAL or REGIONAL)
+	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -214,6 +218,9 @@ type loadBalancerState struct {
 	LoadBalancerUrn *string `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
+	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+	Network *string `pulumi:"network"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
 	// A boolean value indicating whether
@@ -233,7 +240,8 @@ type loadBalancerState struct {
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
-	// the type of the load balancer (GLOBAL or REGIONAL)
+	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -279,6 +287,9 @@ type LoadBalancerState struct {
 	LoadBalancerUrn pulumi.StringPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
+	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+	Network pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
 	// A boolean value indicating whether
@@ -298,7 +309,8 @@ type LoadBalancerState struct {
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds pulumi.StringArrayInput
-	// the type of the load balancer (GLOBAL or REGIONAL)
+	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -344,6 +356,9 @@ type loadBalancerArgs struct {
 	HttpIdleTimeoutSeconds *int `pulumi:"httpIdleTimeoutSeconds"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
+	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+	Network *string `pulumi:"network"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
 	// A boolean value indicating whether
@@ -362,7 +377,8 @@ type loadBalancerArgs struct {
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
-	// the type of the load balancer (GLOBAL or REGIONAL)
+	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -405,6 +421,9 @@ type LoadBalancerArgs struct {
 	HttpIdleTimeoutSeconds pulumi.IntPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
+	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+	Network pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
 	// A boolean value indicating whether
@@ -423,7 +442,8 @@ type LoadBalancerArgs struct {
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds pulumi.StringArrayInput
-	// the type of the load balancer (GLOBAL or REGIONAL)
+	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -600,6 +620,12 @@ func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+func (o LoadBalancerOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 func (o LoadBalancerOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
@@ -643,7 +669,8 @@ func (o LoadBalancerOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.TargetLoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
-// the type of the load balancer (GLOBAL or REGIONAL)
+// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
 func (o LoadBalancerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

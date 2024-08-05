@@ -152,6 +152,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
     public readonly projectId!: pulumi.Output<string>;
@@ -185,7 +190,8 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly targetLoadBalancerIds!: pulumi.Output<string[]>;
     /**
-     * the type of the load balancer (GLOBAL or REGIONAL)
+     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -221,6 +227,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -246,6 +253,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
             resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -338,6 +346,11 @@ export interface LoadBalancerState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     */
+    network?: pulumi.Input<string>;
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
     projectId?: pulumi.Input<string>;
@@ -371,7 +384,8 @@ export interface LoadBalancerState {
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the type of the load balancer (GLOBAL or REGIONAL)
+     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
     /**
@@ -446,6 +460,11 @@ export interface LoadBalancerArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     */
+    network?: pulumi.Input<string>;
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
     projectId?: pulumi.Input<string>;
@@ -478,7 +497,8 @@ export interface LoadBalancerArgs {
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the type of the load balancer (GLOBAL or REGIONAL)
+     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
     /**

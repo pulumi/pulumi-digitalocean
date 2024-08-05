@@ -149,7 +149,7 @@ export interface GetDropletResult {
      */
     readonly region: string;
     /**
-     * The unique slug that indentifies the type of Droplet.
+     * The unique slug that identifies the type of Droplet.
      */
     readonly size: string;
     /**

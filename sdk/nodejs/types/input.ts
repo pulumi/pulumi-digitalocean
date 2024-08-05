@@ -93,7 +93,7 @@ export interface AppSpecDatabase {
      */
     dbUser?: pulumi.Input<string>;
     /**
-     * The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+     * The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -262,6 +262,8 @@ export interface AppSpecFunctionCorsAllowOrigins {
     exact?: pulumi.Input<string>;
     /**
      * Prefix-based match.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: pulumi.Input<string>;
     /**
@@ -462,6 +464,8 @@ export interface AppSpecIngressRuleCorsAllowOrigins {
     exact?: pulumi.Input<string>;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: pulumi.Input<string>;
     /**
@@ -671,7 +675,7 @@ export interface AppSpecJobImage {
      */
     registry?: pulumi.Input<string>;
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
     registryCredentials?: pulumi.Input<string>;
     /**
@@ -746,6 +750,10 @@ export interface AppSpecService {
      * Describes an alert policy for the component.
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlert>[]>;
+    /**
+     * Configuration for automatically scaling this component based on metrics.
+     */
+    autoscaling?: pulumi.Input<inputs.AppSpecServiceAutoscaling>;
     /**
      * An optional build command to run while building this component from source.
      */
@@ -851,6 +859,37 @@ export interface AppSpecServiceAlert {
     window: pulumi.Input<string>;
 }
 
+export interface AppSpecServiceAutoscaling {
+    /**
+     * The maximum amount of instances for this component. Must be more than min_instance_count.
+     */
+    maxInstanceCount: pulumi.Input<number>;
+    /**
+     * The metrics that the component is scaled on.
+     */
+    metrics: pulumi.Input<inputs.AppSpecServiceAutoscalingMetrics>;
+    /**
+     * The minimum amount of instances for this component. Must be less than max_instance_count.
+     */
+    minInstanceCount: pulumi.Input<number>;
+}
+
+export interface AppSpecServiceAutoscalingMetrics {
+    /**
+     * Settings for scaling the component based on CPU utilization.
+     */
+    cpu?: pulumi.Input<inputs.AppSpecServiceAutoscalingMetricsCpu>;
+}
+
+export interface AppSpecServiceAutoscalingMetricsCpu {
+    /**
+     * The average target CPU utilization for the component.
+     *
+     * A `staticSite` can contain:
+     */
+    percent: pulumi.Input<number>;
+}
+
 export interface AppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
@@ -885,6 +924,8 @@ export interface AppSpecServiceCorsAllowOrigins {
     exact?: pulumi.Input<string>;
     /**
      * Prefix-based match.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: pulumi.Input<string>;
     /**
@@ -994,7 +1035,7 @@ export interface AppSpecServiceImage {
      */
     registry?: pulumi.Input<string>;
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
     registryCredentials?: pulumi.Input<string>;
     /**
@@ -1176,6 +1217,8 @@ export interface AppSpecStaticSiteCorsAllowOrigins {
     exact?: pulumi.Input<string>;
     /**
      * Prefix-based match.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: pulumi.Input<string>;
     /**
@@ -1411,7 +1454,7 @@ export interface AppSpecWorkerImage {
      */
     registry?: pulumi.Input<string>;
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
     registryCredentials?: pulumi.Input<string>;
     /**
@@ -1526,7 +1569,7 @@ export interface DatabaseFirewallRule {
 
 export interface DatabaseKafkaTopicConfig {
     /**
-     * The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of "delete", "compact", or "compactDelete".
      */
     cleanupPolicy?: pulumi.Input<string>;

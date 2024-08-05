@@ -343,11 +343,18 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseUser(String name, DatabaseUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseUser:DatabaseUser", name, args == null ? DatabaseUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/databaseUser:DatabaseUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseUser(String name, Output<String> id, @Nullable DatabaseUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/databaseUser:DatabaseUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseUserArgs makeArgs(DatabaseUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

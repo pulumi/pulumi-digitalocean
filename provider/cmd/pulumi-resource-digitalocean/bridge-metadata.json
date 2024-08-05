@@ -197,6 +197,23 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "autoscaling": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "metrics": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "cpu": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "cors": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -1088,6 +1105,23 @@
                                         "fields": {
                                             "alert": {
                                                 "maxItemsOne": false
+                                            },
+                                            "autoscaling": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "metrics": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "cpu": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "cors": {
                                                 "maxItemsOne": true,

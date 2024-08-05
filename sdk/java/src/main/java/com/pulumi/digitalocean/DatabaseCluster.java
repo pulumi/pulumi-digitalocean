@@ -710,11 +710,18 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseCluster(String name, DatabaseClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseCluster:DatabaseCluster", name, args == null ? DatabaseClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/databaseCluster:DatabaseCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseCluster(String name, Output<String> id, @Nullable DatabaseClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/databaseCluster:DatabaseCluster", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseClusterArgs makeArgs(DatabaseClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseClusterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecServiceAlert> Alerts;
         /// <summary>
+        /// Configuration for automatically scaling this component based on metrics.
+        /// </summary>
+        public readonly Outputs.AppSpecServiceAutoscaling? Autoscaling;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -98,6 +102,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private AppSpecService(
             ImmutableArray<Outputs.AppSpecServiceAlert> alerts,
 
+            Outputs.AppSpecServiceAutoscaling? autoscaling,
+
             string? buildCommand,
 
             Outputs.AppSpecServiceCors? cors,
@@ -137,6 +143,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string? sourceDir)
         {
             Alerts = alerts;
+            Autoscaling = autoscaling;
             BuildCommand = buildCommand;
             Cors = cors;
             DockerfilePath = dockerfilePath;

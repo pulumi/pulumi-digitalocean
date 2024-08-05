@@ -19,7 +19,11 @@ public final class GetAppSpecFunctionCorsAllowOrigins {
     /**
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
      * 
+     * @deprecated
+     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * 
      */
+    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     private @Nullable String prefix;
     /**
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
@@ -38,7 +42,11 @@ public final class GetAppSpecFunctionCorsAllowOrigins {
     /**
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
      * 
+     * @deprecated
+     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * 
      */
+    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }

@@ -30,6 +30,7 @@ class LoadBalancerArgs:
                  healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -61,6 +62,8 @@ class LoadBalancerArgs:
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -72,7 +75,8 @@ class LoadBalancerArgs:
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
                **NOTE**: this is a closed beta feature and not available for public use.
-        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -104,6 +108,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https is not None:
@@ -288,6 +294,19 @@ class LoadBalancerArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -379,7 +398,8 @@ class LoadBalancerArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        the type of the load balancer (GLOBAL or REGIONAL)
+        The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 
@@ -418,6 +438,7 @@ class _LoadBalancerState:
                  ip: Optional[pulumi.Input[str]] = None,
                  load_balancer_urn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -452,6 +473,8 @@ class _LoadBalancerState:
         :param pulumi.Input[str] ip: The ip of the Load Balancer
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -463,7 +486,8 @@ class _LoadBalancerState:
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
                **NOTE**: this is a closed beta feature and not available for public use.
-        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -499,6 +523,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https is not None:
@@ -709,6 +735,19 @@ class _LoadBalancerState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -809,7 +848,8 @@ class _LoadBalancerState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        the type of the load balancer (GLOBAL or REGIONAL)
+        The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 
@@ -848,6 +888,7 @@ class LoadBalancer(pulumi.CustomResource):
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -925,6 +966,8 @@ class LoadBalancer(pulumi.CustomResource):
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -936,7 +979,8 @@ class LoadBalancer(pulumi.CustomResource):
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
                **NOTE**: this is a closed beta feature and not available for public use.
-        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         ...
@@ -1018,6 +1062,7 @@ class LoadBalancer(pulumi.CustomResource):
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -1049,6 +1094,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["healthcheck"] = healthcheck
             __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
             __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
             __props__.__dict__["region"] = region
@@ -1086,6 +1132,7 @@ class LoadBalancer(pulumi.CustomResource):
             ip: Optional[pulumi.Input[str]] = None,
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -1125,6 +1172,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] ip: The ip of the Load Balancer
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
+        :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -1136,7 +1185,8 @@ class LoadBalancer(pulumi.CustomResource):
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
                **NOTE**: this is a closed beta feature and not available for public use.
-        :param pulumi.Input[str] type: the type of the load balancer (GLOBAL or REGIONAL)
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1158,6 +1208,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["ip"] = ip
         __props__.__dict__["load_balancer_urn"] = load_balancer_urn
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
         __props__.__dict__["region"] = region
@@ -1299,6 +1350,15 @@ class LoadBalancer(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+        """
+        return pulumi.get(self, "network")
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
@@ -1367,7 +1427,8 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        the type of the load balancer (GLOBAL or REGIONAL)
+        The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 

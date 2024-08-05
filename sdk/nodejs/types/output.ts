@@ -46,7 +46,7 @@ export interface AppSpec {
     /**
      * A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
      */
-    features?: string[];
+    features: string[];
     functions?: outputs.AppSpecFunction[];
     /**
      * Specification for component routing, rewrites, and redirects.
@@ -93,7 +93,7 @@ export interface AppSpecDatabase {
      */
     dbUser?: string;
     /**
-     * The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+     * The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      */
     engine?: string;
     /**
@@ -262,6 +262,8 @@ export interface AppSpecFunctionCorsAllowOrigins {
     exact?: string;
     /**
      * Prefix-based match.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -462,6 +464,8 @@ export interface AppSpecIngressRuleCorsAllowOrigins {
     exact?: string;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -671,7 +675,7 @@ export interface AppSpecJobImage {
      */
     registry?: string;
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
     registryCredentials?: string;
     /**
@@ -746,6 +750,10 @@ export interface AppSpecService {
      * Describes an alert policy for the component.
      */
     alerts?: outputs.AppSpecServiceAlert[];
+    /**
+     * Configuration for automatically scaling this component based on metrics.
+     */
+    autoscaling?: outputs.AppSpecServiceAutoscaling;
     /**
      * An optional build command to run while building this component from source.
      */
@@ -851,6 +859,37 @@ export interface AppSpecServiceAlert {
     window: string;
 }
 
+export interface AppSpecServiceAutoscaling {
+    /**
+     * The maximum amount of instances for this component. Must be more than min_instance_count.
+     */
+    maxInstanceCount: number;
+    /**
+     * The metrics that the component is scaled on.
+     */
+    metrics: outputs.AppSpecServiceAutoscalingMetrics;
+    /**
+     * The minimum amount of instances for this component. Must be less than max_instance_count.
+     */
+    minInstanceCount: number;
+}
+
+export interface AppSpecServiceAutoscalingMetrics {
+    /**
+     * Settings for scaling the component based on CPU utilization.
+     */
+    cpu?: outputs.AppSpecServiceAutoscalingMetricsCpu;
+}
+
+export interface AppSpecServiceAutoscalingMetricsCpu {
+    /**
+     * The average target CPU utilization for the component.
+     *
+     * A `staticSite` can contain:
+     */
+    percent: number;
+}
+
 export interface AppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
@@ -885,6 +924,8 @@ export interface AppSpecServiceCorsAllowOrigins {
     exact?: string;
     /**
      * Prefix-based match.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -994,7 +1035,7 @@ export interface AppSpecServiceImage {
      */
     registry?: string;
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
     registryCredentials?: string;
     /**
@@ -1176,6 +1217,8 @@ export interface AppSpecStaticSiteCorsAllowOrigins {
     exact?: string;
     /**
      * Prefix-based match.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -1411,7 +1454,7 @@ export interface AppSpecWorkerImage {
      */
     registry?: string;
     /**
-     * Access credentials for third-party registries
+     * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
     registryCredentials?: string;
     /**
@@ -1526,7 +1569,7 @@ export interface DatabaseFirewallRule {
 
 export interface DatabaseKafkaTopicConfig {
     /**
-     * The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of "delete", "compact", or "compactDelete".
      */
     cleanupPolicy: string;
@@ -1789,7 +1832,7 @@ export interface GetAppSpec {
     /**
      * List of features which is applied to the app
      */
-    features?: string[];
+    features: string[];
     functions?: outputs.GetAppSpecFunction[];
     ingress: outputs.GetAppSpecIngress;
     jobs?: outputs.GetAppSpecJob[];
@@ -1995,6 +2038,8 @@ export interface GetAppSpecFunctionCorsAllowOrigins {
     exact?: string;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -2181,6 +2226,8 @@ export interface GetAppSpecIngressRuleCorsAllowOrigins {
     exact?: string;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -2449,6 +2496,10 @@ export interface GetAppSpecService {
      */
     alerts?: outputs.GetAppSpecServiceAlert[];
     /**
+     * Configuration for automatically scaling this component based on metrics.
+     */
+    autoscaling?: outputs.GetAppSpecServiceAutoscaling;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -2551,6 +2602,35 @@ export interface GetAppSpecServiceAlert {
     window: string;
 }
 
+export interface GetAppSpecServiceAutoscaling {
+    /**
+     * The maximum amount of instances for this component. Must be more than min_instance_count.
+     */
+    maxInstanceCount: number;
+    /**
+     * The metrics that the component is scaled on.
+     */
+    metrics: outputs.GetAppSpecServiceAutoscalingMetrics;
+    /**
+     * The minimum amount of instances for this component. Must be less than max_instance_count.
+     */
+    minInstanceCount: number;
+}
+
+export interface GetAppSpecServiceAutoscalingMetrics {
+    /**
+     * Settings for scaling the component based on CPU utilization.
+     */
+    cpu?: outputs.GetAppSpecServiceAutoscalingMetricsCpu;
+}
+
+export interface GetAppSpecServiceAutoscalingMetricsCpu {
+    /**
+     * The average target CPU utilization for the component.
+     */
+    percent: number;
+}
+
 export interface GetAppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
@@ -2585,6 +2665,8 @@ export interface GetAppSpecServiceCorsAllowOrigins {
     exact?: string;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
@@ -2872,6 +2954,8 @@ export interface GetAppSpecStaticSiteCorsAllowOrigins {
     exact?: string;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     *
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**

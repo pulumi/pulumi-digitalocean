@@ -300,11 +300,18 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CustomImage(String name, CustomImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/customImage:CustomImage", name, args == null ? CustomImageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/customImage:CustomImage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CustomImage(String name, Output<String> id, @Nullable CustomImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/customImage:CustomImage", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CustomImageArgs makeArgs(CustomImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomImageArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

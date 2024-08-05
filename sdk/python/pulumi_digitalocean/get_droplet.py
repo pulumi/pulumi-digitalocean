@@ -243,7 +243,7 @@ class GetDropletResult:
     @pulumi.getter
     def size(self) -> str:
         """
-        The unique slug that indentifies the type of Droplet.
+        The unique slug that identifies the type of Droplet.
         """
         return pulumi.get(self, "size")
 

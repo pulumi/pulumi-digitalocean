@@ -157,7 +157,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      */
     public readonly size!: pulumi.Output<string>;
     /**
@@ -376,7 +376,7 @@ export interface DropletState {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      */
     size?: pulumi.Input<string | enums.DropletSlug>;
     /**
@@ -483,7 +483,7 @@ export interface DropletArgs {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      */
     size: pulumi.Input<string | enums.DropletSlug>;
     /**

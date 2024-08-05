@@ -99,7 +99,7 @@ public final class GetDropletResult {
      */
     private String region;
     /**
-     * @return The unique slug that indentifies the type of Droplet.
+     * @return The unique slug that identifies the type of Droplet.
      * 
      */
     private String size;
@@ -255,7 +255,7 @@ public final class GetDropletResult {
         return this.region;
     }
     /**
-     * @return The unique slug that indentifies the type of Droplet.
+     * @return The unique slug that identifies the type of Droplet.
      * 
      */
     public String size() {

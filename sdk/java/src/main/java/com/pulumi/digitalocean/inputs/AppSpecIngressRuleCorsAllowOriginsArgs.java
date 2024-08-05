@@ -33,14 +33,22 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
      * 
+     * @deprecated
+     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * 
      */
+    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
      * 
+     * @deprecated
+     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * 
      */
+    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -112,7 +120,11 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
          * 
          * @return builder
          * 
+         * @deprecated
+         * Prefix-based matching has been deprecated in favor of regex-based matching.
+         * 
          */
+        @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
@@ -123,7 +135,11 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
          * 
          * @return builder
          * 
+         * @deprecated
+         * Prefix-based matching has been deprecated in favor of regex-based matching.
+         * 
          */
+        @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }

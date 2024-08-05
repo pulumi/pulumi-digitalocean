@@ -43,6 +43,7 @@ public final class GetLoadBalancerResult {
     private String ip;
     private String loadBalancerUrn;
     private @Nullable String name;
+    private String network;
     private String projectId;
     private Boolean redirectHttpToHttps;
     private String region;
@@ -109,6 +110,9 @@ public final class GetLoadBalancerResult {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    public String network() {
+        return this.network;
+    }
     public String projectId() {
         return this.projectId;
     }
@@ -165,6 +169,7 @@ public final class GetLoadBalancerResult {
         private String ip;
         private String loadBalancerUrn;
         private @Nullable String name;
+        private String network;
         private String projectId;
         private Boolean redirectHttpToHttps;
         private String region;
@@ -194,6 +199,7 @@ public final class GetLoadBalancerResult {
     	      this.ip = defaults.ip;
     	      this.loadBalancerUrn = defaults.loadBalancerUrn;
     	      this.name = defaults.name;
+    	      this.network = defaults.network;
     	      this.projectId = defaults.projectId;
     	      this.redirectHttpToHttps = defaults.redirectHttpToHttps;
     	      this.region = defaults.region;
@@ -349,6 +355,14 @@ public final class GetLoadBalancerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder network(String network) {
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "network");
+            }
+            this.network = network;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             if (projectId == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancerResult", "projectId");
@@ -452,6 +466,7 @@ public final class GetLoadBalancerResult {
             _resultValue.ip = ip;
             _resultValue.loadBalancerUrn = loadBalancerUrn;
             _resultValue.name = name;
+            _resultValue.network = network;
             _resultValue.projectId = projectId;
             _resultValue.redirectHttpToHttps = redirectHttpToHttps;
             _resultValue.region = region;

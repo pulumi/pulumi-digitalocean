@@ -255,11 +255,18 @@ public class ContainerRegistryDockerCredentials extends com.pulumi.resources.Cus
      * @param options A bag of options that control this resource's behavior.
      */
     public ContainerRegistryDockerCredentials(String name, ContainerRegistryDockerCredentialsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials", name, args == null ? ContainerRegistryDockerCredentialsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContainerRegistryDockerCredentials(String name, Output<String> id, @Nullable ContainerRegistryDockerCredentialsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerRegistryDockerCredentialsArgs makeArgs(ContainerRegistryDockerCredentialsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerRegistryDockerCredentialsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

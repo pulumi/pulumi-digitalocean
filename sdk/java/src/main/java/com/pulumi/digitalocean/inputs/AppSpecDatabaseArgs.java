@@ -66,14 +66,14 @@ public final class AppSpecDatabaseArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+     * The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+     * @return The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      * 
      */
     public Optional<Output<String>> engine() {
@@ -223,7 +223,7 @@ public final class AppSpecDatabaseArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param engine The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+         * @param engine The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class AppSpecDatabaseArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param engine The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+         * @param engine The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
          * 
          * @return builder
          * 

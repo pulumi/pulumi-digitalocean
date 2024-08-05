@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecServiceAlertArgs;
+import com.pulumi.digitalocean.inputs.AppSpecServiceAutoscalingArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceCorsArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceGitArgs;
@@ -41,6 +42,21 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<AppSpecServiceAlertArgs>>> alerts() {
         return Optional.ofNullable(this.alerts);
+    }
+
+    /**
+     * Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    @Import(name="autoscaling")
+    private @Nullable Output<AppSpecServiceAutoscalingArgs> autoscaling;
+
+    /**
+     * @return Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    public Optional<Output<AppSpecServiceAutoscalingArgs>> autoscaling() {
+        return Optional.ofNullable(this.autoscaling);
     }
 
     /**
@@ -348,6 +364,7 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
 
     private AppSpecServiceArgs(AppSpecServiceArgs $) {
         this.alerts = $.alerts;
+        this.autoscaling = $.autoscaling;
         this.buildCommand = $.buildCommand;
         this.cors = $.cors;
         this.dockerfilePath = $.dockerfilePath;
@@ -416,6 +433,27 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder alerts(AppSpecServiceAlertArgs... alerts) {
             return alerts(List.of(alerts));
+        }
+
+        /**
+         * @param autoscaling Configuration for automatically scaling this component based on metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaling(@Nullable Output<AppSpecServiceAutoscalingArgs> autoscaling) {
+            $.autoscaling = autoscaling;
+            return this;
+        }
+
+        /**
+         * @param autoscaling Configuration for automatically scaling this component based on metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaling(AppSpecServiceAutoscalingArgs autoscaling) {
+            return autoscaling(Output.of(autoscaling));
         }
 
         /**

@@ -25,7 +25,7 @@ public final class AppSpecWorkerImage {
      */
     private @Nullable String registry;
     /**
-     * @return Access credentials for third-party registries
+     * @return The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
      * 
      */
     private @Nullable String registryCredentials;
@@ -61,7 +61,7 @@ public final class AppSpecWorkerImage {
         return Optional.ofNullable(this.registry);
     }
     /**
-     * @return Access credentials for third-party registries
+     * @return The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
      * 
      */
     public Optional<String> registryCredentials() {

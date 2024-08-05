@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class DatabaseKafkaTopicConfig
     {
         /// <summary>
-        /// The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        /// The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
         /// This may be one of "delete", "compact", or "compact_delete".
         /// </summary>
         public readonly string? CleanupPolicy;

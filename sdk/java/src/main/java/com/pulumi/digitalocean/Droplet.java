@@ -377,14 +377,14 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resizeDisk);
     }
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      * 
      */
     @Export(name="size", refs={String.class}, tree="[0]")
     private Output<String> size;
 
     /**
-     * @return The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * @return The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      * 
      */
     public Output<String> size() {
@@ -521,11 +521,18 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Droplet(String name, DropletArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/droplet:Droplet", name, args == null ? DropletArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/droplet:Droplet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Droplet(String name, Output<String> id, @Nullable DropletState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/droplet:Droplet", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DropletArgs makeArgs(DropletArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DropletArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

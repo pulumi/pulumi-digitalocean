@@ -48,7 +48,7 @@ public final class GetAppSpec {
      * @return List of features which is applied to the app
      * 
      */
-    private @Nullable List<String> features;
+    private List<String> features;
     private @Nullable List<GetAppSpecFunction> functions;
     private GetAppSpecIngress ingress;
     private @Nullable List<GetAppSpecJob> jobs;
@@ -104,7 +104,7 @@ public final class GetAppSpec {
      * 
      */
     public List<String> features() {
-        return this.features == null ? List.of() : this.features;
+        return this.features;
     }
     public List<GetAppSpecFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
@@ -154,7 +154,7 @@ public final class GetAppSpec {
         private List<String> domains;
         private @Nullable List<GetAppSpecEgress> egresses;
         private @Nullable List<GetAppSpecEnv> envs;
-        private @Nullable List<String> features;
+        private List<String> features;
         private @Nullable List<GetAppSpecFunction> functions;
         private GetAppSpecIngress ingress;
         private @Nullable List<GetAppSpecJob> jobs;
@@ -242,8 +242,10 @@ public final class GetAppSpec {
             return envs(List.of(envs));
         }
         @CustomType.Setter
-        public Builder features(@Nullable List<String> features) {
-
+        public Builder features(List<String> features) {
+            if (features == null) {
+              throw new MissingRequiredPropertyException("GetAppSpec", "features");
+            }
             this.features = features;
             return this;
         }

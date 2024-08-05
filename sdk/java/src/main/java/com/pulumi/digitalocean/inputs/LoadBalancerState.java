@@ -275,6 +275,23 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
      * 
      */
@@ -395,14 +412,16 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the type of the load balancer (GLOBAL or REGIONAL)
+     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return the type of the load balancer (GLOBAL or REGIONAL)
+     * @return The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<String>> type() {
@@ -442,6 +461,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.ip = $.ip;
         this.loadBalancerUrn = $.loadBalancerUrn;
         this.name = $.name;
+        this.network = $.network;
         this.projectId = $.projectId;
         this.redirectHttpToHttps = $.redirectHttpToHttps;
         this.region = $.region;
@@ -872,6 +892,29 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param network The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+         * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+         * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
+        }
+
+        /**
          * @param projectId The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
          * 
          * @return builder
@@ -1067,7 +1110,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type the type of the load balancer (GLOBAL or REGIONAL)
+         * @param type The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+         * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1078,7 +1122,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type the type of the load balancer (GLOBAL or REGIONAL)
+         * @param type The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+         * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 

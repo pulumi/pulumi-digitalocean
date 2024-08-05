@@ -42,7 +42,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
@@ -182,7 +182,7 @@ class KubernetesClusterArgs:
     @pulumi.getter(name="surgeUpgrade")
     def surge_upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable/disable surge upgrades for a cluster. Default: false
+        Enable/disable surge upgrades for a cluster. Default: true
         """
         return pulumi.get(self, "surge_upgrade")
 
@@ -259,7 +259,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
-        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -506,7 +506,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="surgeUpgrade")
     def surge_upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable/disable surge upgrades for a cluster. Default: false
+        Enable/disable surge upgrades for a cluster. Default: true
         """
         return pulumi.get(self, "surge_upgrade")
 
@@ -620,7 +620,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNodePoolArgs']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
@@ -779,7 +779,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
-        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: false
+        :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -946,7 +946,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="surgeUpgrade")
     def surge_upgrade(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable/disable surge upgrades for a cluster. Default: false
+        Enable/disable surge upgrades for a cluster. Default: true
         """
         return pulumi.get(self, "surge_upgrade")
 

@@ -49,7 +49,7 @@ import (
 //
 // ```
 //
-// ### Resource Assignement
+// ### Resource Assignment
 //
 // You can use the VPC Peering resource to allow communication between resources
 // in different VPCs. For example:

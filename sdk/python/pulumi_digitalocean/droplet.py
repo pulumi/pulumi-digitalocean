@@ -35,7 +35,7 @@ class DropletArgs:
         """
         The set of arguments for constructing a Droplet resource.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
@@ -127,7 +127,7 @@ class DropletArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[Union[str, 'DropletSlug']]:
         """
-        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -409,7 +409,7 @@ class _DropletState:
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
                [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
@@ -740,7 +740,7 @@ class _DropletState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[Union[str, 'DropletSlug']]]:
         """
-        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -918,7 +918,7 @@ class Droplet(pulumi.CustomResource):
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
                [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
@@ -1116,7 +1116,7 @@ class Droplet(pulumi.CustomResource):
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
                [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
@@ -1341,7 +1341,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[str]:
         """
-        The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 

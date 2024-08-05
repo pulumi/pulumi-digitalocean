@@ -33,14 +33,22 @@ public final class AppSpecFunctionCorsAllowOriginsArgs extends com.pulumi.resour
     /**
      * Prefix-based match.
      * 
+     * @deprecated
+     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * 
      */
+    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
      * @return Prefix-based match.
      * 
+     * @deprecated
+     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * 
      */
+    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -112,7 +120,11 @@ public final class AppSpecFunctionCorsAllowOriginsArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * Prefix-based matching has been deprecated in favor of regex-based matching.
+         * 
          */
+        @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
@@ -123,7 +135,11 @@ public final class AppSpecFunctionCorsAllowOriginsArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * Prefix-based matching has been deprecated in favor of regex-based matching.
+         * 
          */
+        @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }

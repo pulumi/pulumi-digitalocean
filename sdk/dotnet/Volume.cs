@@ -140,7 +140,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.DigitalOcean
         public Input<int> Size { get; set; } = null!;
 
         /// <summary>
-        /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -332,7 +332,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+        /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

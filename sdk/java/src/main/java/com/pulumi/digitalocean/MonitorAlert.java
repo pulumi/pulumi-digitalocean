@@ -234,11 +234,18 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MonitorAlert(String name, MonitorAlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/monitorAlert:MonitorAlert", name, args == null ? MonitorAlertArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/monitorAlert:MonitorAlert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MonitorAlert(String name, Output<String> id, @Nullable MonitorAlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/monitorAlert:MonitorAlert", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MonitorAlertArgs makeArgs(MonitorAlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MonitorAlertArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

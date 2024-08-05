@@ -129,7 +129,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Enable/disable surge upgrades for a cluster. Default: false
+     * Enable/disable surge upgrades for a cluster. Default: true
      */
     public readonly surgeUpgrade!: pulumi.Output<boolean | undefined>;
     /**
@@ -294,7 +294,7 @@ export interface KubernetesClusterState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Enable/disable surge upgrades for a cluster. Default: false
+     * Enable/disable surge upgrades for a cluster. Default: true
      */
     surgeUpgrade?: pulumi.Input<boolean>;
     /**
@@ -354,7 +354,7 @@ export interface KubernetesClusterArgs {
      */
     registryIntegration?: pulumi.Input<boolean>;
     /**
-     * Enable/disable surge upgrades for a cluster. Default: false
+     * Enable/disable surge upgrades for a cluster. Default: true
      */
     surgeUpgrade?: pulumi.Input<boolean>;
     /**
