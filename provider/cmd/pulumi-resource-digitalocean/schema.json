@@ -240,6 +240,7 @@
                     "requiredOutputs": [
                         "domainNames",
                         "domains",
+                        "features",
                         "ingress",
                         "name"
                     ]
@@ -278,7 +279,7 @@
                 },
                 "engine": {
                     "type": "string",
-                    "description": "The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).\n"
+                    "description": "The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).\n"
                 },
                 "name": {
                     "type": "string",
@@ -513,7 +514,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "Prefix-based match.\n"
+                    "description": "Prefix-based match.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -796,7 +798,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n"
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -1065,7 +1068,7 @@
                 },
                 "registryCredentials": {
                     "type": "string",
-                    "description": "Access credentials for third-party registries\n",
+                    "description": "The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `\u003cusername\u003e:\u003ctoken\u003e`.\n",
                     "secret": true
                 },
                 "registryType": {
@@ -1177,6 +1180,10 @@
                         "$ref": "#/types/digitalocean:index/AppSpecServiceAlert:AppSpecServiceAlert"
                     },
                     "description": "Describes an alert policy for the component.\n"
+                },
+                "autoscaling": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceAutoscaling:AppSpecServiceAutoscaling",
+                    "description": "Configuration for automatically scaling this component based on metrics.\n"
                 },
                 "buildCommand": {
                     "type": "string",
@@ -1316,6 +1323,49 @@
                 "window"
             ]
         },
+        "digitalocean:index/AppSpecServiceAutoscaling:AppSpecServiceAutoscaling": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "The maximum amount of instances for this component. Must be more than min_instance_count.\n"
+                },
+                "metrics": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceAutoscalingMetrics:AppSpecServiceAutoscalingMetrics",
+                    "description": "The metrics that the component is scaled on.\n"
+                },
+                "minInstanceCount": {
+                    "type": "integer",
+                    "description": "The minimum amount of instances for this component. Must be less than max_instance_count.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxInstanceCount",
+                "metrics",
+                "minInstanceCount"
+            ]
+        },
+        "digitalocean:index/AppSpecServiceAutoscalingMetrics:AppSpecServiceAutoscalingMetrics": {
+            "properties": {
+                "cpu": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceAutoscalingMetricsCpu:AppSpecServiceAutoscalingMetricsCpu",
+                    "description": "Settings for scaling the component based on CPU utilization.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecServiceAutoscalingMetricsCpu:AppSpecServiceAutoscalingMetricsCpu": {
+            "properties": {
+                "percent": {
+                    "type": "integer",
+                    "description": "The average target CPU utilization for the component.\n\nA `static_site` can contain:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "percent"
+            ]
+        },
         "digitalocean:index/AppSpecServiceCors:AppSpecServiceCors": {
             "properties": {
                 "allowCredentials": {
@@ -1362,7 +1412,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "Prefix-based match.\n"
+                    "description": "Prefix-based match.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -1495,7 +1546,7 @@
                 },
                 "registryCredentials": {
                     "type": "string",
-                    "description": "Access credentials for third-party registries\n",
+                    "description": "The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `\u003cusername\u003e:\u003ctoken\u003e`.\n",
                     "secret": true
                 },
                 "registryType": {
@@ -1742,7 +1793,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "Prefix-based match.\n"
+                    "description": "Prefix-based match.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -2039,7 +2091,7 @@
                 },
                 "registryCredentials": {
                     "type": "string",
-                    "description": "Access credentials for third-party registries\n",
+                    "description": "The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `\u003cusername\u003e:\u003ctoken\u003e`.\n",
                     "secret": true
                 },
                 "registryType": {
@@ -2215,7 +2267,7 @@
             "properties": {
                 "cleanupPolicy": {
                     "type": "string",
-                    "description": "The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.\nThis may be one of \"delete\", \"compact\", or \"compact_delete\".\n"
+                    "description": "The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.\nThis may be one of \"delete\", \"compact\", or \"compact_delete\".\n"
                 },
                 "compressionType": {
                     "type": "string",
@@ -3387,6 +3439,7 @@
             "required": [
                 "domain",
                 "domains",
+                "features",
                 "ingress",
                 "name"
             ],
@@ -3669,7 +3722,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n"
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -3972,7 +4026,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n"
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -4379,6 +4434,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "autoscaling": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceAutoscaling:getAppSpecServiceAutoscaling",
+                    "description": "Configuration for automatically scaling this component based on metrics.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -4519,6 +4578,59 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecServiceAutoscaling:getAppSpecServiceAutoscaling": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "The maximum amount of instances for this component. Must be more than min_instance_count.\n"
+                },
+                "metrics": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceAutoscalingMetrics:getAppSpecServiceAutoscalingMetrics",
+                    "description": "The metrics that the component is scaled on.\n"
+                },
+                "minInstanceCount": {
+                    "type": "integer",
+                    "description": "The minimum amount of instances for this component. Must be less than max_instance_count.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxInstanceCount",
+                "metrics",
+                "minInstanceCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceAutoscalingMetrics:getAppSpecServiceAutoscalingMetrics": {
+            "properties": {
+                "cpu": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceAutoscalingMetricsCpu:getAppSpecServiceAutoscalingMetricsCpu",
+                    "description": "Settings for scaling the component based on CPU utilization.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecServiceAutoscalingMetricsCpu:getAppSpecServiceAutoscalingMetricsCpu": {
+            "properties": {
+                "percent": {
+                    "type": "integer",
+                    "description": "The average target CPU utilization for the component.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "percent"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getAppSpecServiceCors:getAppSpecServiceCors": {
             "properties": {
                 "allowCredentials": {
@@ -4565,7 +4677,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n"
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -4960,7 +5073,8 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n"
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n",
+                    "deprecationMessage": "Prefix-based matching has been deprecated in favor of regex-based matching."
                 },
                 "regex": {
                     "type": "string",
@@ -11238,7 +11352,7 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
+                    "description": "The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
                 },
                 "sshKeys": {
                     "type": "array",
@@ -11369,7 +11483,7 @@
                             "$ref": "#/types/digitalocean:index:DropletSlug"
                         }
                     ],
-                    "description": "The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
+                    "description": "The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
                 },
                 "sshKeys": {
                     "type": "array",
@@ -11514,7 +11628,7 @@
                                 "$ref": "#/types/digitalocean:index:DropletSlug"
                             }
                         ],
-                        "description": "The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
+                        "description": "The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
                     },
                     "sshKeys": {
                         "type": "array",
@@ -11984,7 +12098,7 @@
                 },
                 "surgeUpgrade": {
                     "type": "boolean",
-                    "description": "Enable/disable surge upgrades for a cluster. Default: false\n"
+                    "description": "Enable/disable surge upgrades for a cluster. Default: true\n"
                 },
                 "tags": {
                     "type": "array",
@@ -12068,7 +12182,7 @@
                 },
                 "surgeUpgrade": {
                     "type": "boolean",
-                    "description": "Enable/disable surge upgrades for a cluster. Default: false\n"
+                    "description": "Enable/disable surge upgrades for a cluster. Default: true\n"
                 },
                 "tags": {
                     "type": "array",
@@ -12175,7 +12289,7 @@
                     },
                     "surgeUpgrade": {
                         "type": "boolean",
-                        "description": "Enable/disable surge upgrades for a cluster. Default: false\n"
+                        "description": "Enable/disable surge upgrades for a cluster. Default: true\n"
                     },
                     "tags": {
                         "type": "array",
@@ -12489,6 +12603,10 @@
                     "type": "string",
                     "description": "The Load Balancer name\n"
                 },
+                "network": {
+                    "type": "string",
+                    "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n**NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.\n"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.\n"
@@ -12525,7 +12643,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "the type of the load balancer (GLOBAL or REGIONAL)\n"
+                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.\n"
                 },
                 "vpcUuid": {
                     "type": "string",
@@ -12621,6 +12739,11 @@
                     "type": "string",
                     "description": "The Load Balancer name\n"
                 },
+                "network": {
+                    "type": "string",
+                    "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n**NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.\n",
+                    "willReplaceOnChanges": true
+                },
                 "projectId": {
                     "type": "string",
                     "description": "The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.\n"
@@ -12664,7 +12787,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "the type of the load balancer (GLOBAL or REGIONAL)\n",
+                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.\n",
                     "willReplaceOnChanges": true
                 },
                 "vpcUuid": {
@@ -12755,6 +12878,11 @@
                         "type": "string",
                         "description": "The Load Balancer name\n"
                     },
+                    "network": {
+                        "type": "string",
+                        "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n**NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "projectId": {
                         "type": "string",
                         "description": "The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.\n"
@@ -12801,7 +12929,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "the type of the load balancer (GLOBAL or REGIONAL)\n",
+                        "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.\n",
                         "willReplaceOnChanges": true
                     },
                     "vpcUuid": {
@@ -14215,7 +14343,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot\n"
+                    "description": "The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot\n"
                 },
                 "tags": {
                     "type": "array",
@@ -14293,7 +14421,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot\n",
+                    "description": "The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot\n",
                     "willReplaceOnChanges": true
                 },
                 "tags": {
@@ -14376,7 +14504,7 @@
                     },
                     "snapshotId": {
                         "type": "string",
-                        "description": "The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot\n",
+                        "description": "The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot\n",
                         "willReplaceOnChanges": true
                     },
                     "tags": {
@@ -14655,7 +14783,7 @@
             }
         },
         "digitalocean:index/vpcPeering:VpcPeering": {
-            "description": "\u003e VPC peering is currently in alpha. If you are not a member of the alpha group for this feature, you will not be able to use it until it has been more widely released. Please follow the official [DigitalOcean changelog](https://docs.digitalocean.com/release-notes/) for updates.\n\nProvides a DigitalOcean VPC Peering resource.\n\nVPC Peerings are used to connect two VPC networks allowing resources in each \nVPC to communicate with each other privately.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.VpcPeering(\"example\", {\n    name: \"example-peering\",\n    vpcIds: [\n        vpc1.id,\n        vpc2.id,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.VpcPeering(\"example\",\n    name=\"example-peering\",\n    vpc_ids=[\n        vpc1[\"id\"],\n        vpc2[\"id\"],\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.VpcPeering(\"example\", new()\n    {\n        Name = \"example-peering\",\n        VpcIds = new[]\n        {\n            vpc1.Id,\n            vpc2.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVpcPeering(ctx, \"example\", \u0026digitalocean.VpcPeeringArgs{\n\t\t\tName: pulumi.String(\"example-peering\"),\n\t\t\tVpcIds: pulumi.StringArray{\n\t\t\t\tvpc1.Id,\n\t\t\t\tvpc2.Id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.VpcPeering;\nimport com.pulumi.digitalocean.VpcPeeringArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new VpcPeering(\"example\", VpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .vpcIds(            \n                vpc1.id(),\n                vpc2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:VpcPeering\n    properties:\n      name: example-peering\n      vpcIds:\n        - ${vpc1.id}\n        - ${vpc2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Resource Assignement\n\nYou can use the VPC Peering resource to allow communication between resources\nin different VPCs. For example:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst vpc1 = new digitalocean.Vpc(\"vpc1\", {\n    name: \"vpc1\",\n    region: \"nyc3\",\n});\nconst vpc2 = new digitalocean.Vpc(\"vpc2\", {\n    name: \"vpc2\",\n    region: \"nyc3\",\n});\nconst example = new digitalocean.VpcPeering(\"example\", {\n    name: \"example-peering\",\n    vpcIds: [\n        vpc1.id,\n        vpc2.id,\n    ],\n});\nconst example1 = new digitalocean.Droplet(\"example1\", {\n    name: \"example1\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: vpc1.id,\n});\nconst example2 = new digitalocean.Droplet(\"example2\", {\n    name: \"example2\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: vpc2.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nvpc1 = digitalocean.Vpc(\"vpc1\",\n    name=\"vpc1\",\n    region=\"nyc3\")\nvpc2 = digitalocean.Vpc(\"vpc2\",\n    name=\"vpc2\",\n    region=\"nyc3\")\nexample = digitalocean.VpcPeering(\"example\",\n    name=\"example-peering\",\n    vpc_ids=[\n        vpc1.id,\n        vpc2.id,\n    ])\nexample1 = digitalocean.Droplet(\"example1\",\n    name=\"example1\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=vpc1.id)\nexample2 = digitalocean.Droplet(\"example2\",\n    name=\"example2\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=vpc2.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vpc1 = new DigitalOcean.Vpc(\"vpc1\", new()\n    {\n        Name = \"vpc1\",\n        Region = \"nyc3\",\n    });\n\n    var vpc2 = new DigitalOcean.Vpc(\"vpc2\", new()\n    {\n        Name = \"vpc2\",\n        Region = \"nyc3\",\n    });\n\n    var example = new DigitalOcean.VpcPeering(\"example\", new()\n    {\n        Name = \"example-peering\",\n        VpcIds = new[]\n        {\n            vpc1.Id,\n            vpc2.Id,\n        },\n    });\n\n    var example1 = new DigitalOcean.Droplet(\"example1\", new()\n    {\n        Name = \"example1\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = vpc1.Id,\n    });\n\n    var example2 = new DigitalOcean.Droplet(\"example2\", new()\n    {\n        Name = \"example2\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = vpc2.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tvpc1, err := digitalocean.NewVpc(ctx, \"vpc1\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"vpc1\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvpc2, err := digitalocean.NewVpc(ctx, \"vpc2\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"vpc2\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewVpcPeering(ctx, \"example\", \u0026digitalocean.VpcPeeringArgs{\n\t\t\tName: pulumi.String(\"example-peering\"),\n\t\t\tVpcIds: pulumi.StringArray{\n\t\t\t\tvpc1.ID(),\n\t\t\t\tvpc2.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example1\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example1\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: vpc1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example2\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example2\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: vpc2.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.VpcPeering;\nimport com.pulumi.digitalocean.VpcPeeringArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vpc1 = new Vpc(\"vpc1\", VpcArgs.builder()\n            .name(\"vpc1\")\n            .region(\"nyc3\")\n            .build());\n\n        var vpc2 = new Vpc(\"vpc2\", VpcArgs.builder()\n            .name(\"vpc2\")\n            .region(\"nyc3\")\n            .build());\n\n        var example = new VpcPeering(\"example\", VpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .vpcIds(            \n                vpc1.id(),\n                vpc2.id())\n            .build());\n\n        var example1 = new Droplet(\"example1\", DropletArgs.builder()\n            .name(\"example1\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(vpc1.id())\n            .build());\n\n        var example2 = new Droplet(\"example2\", DropletArgs.builder()\n            .name(\"example2\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(vpc2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vpc1:\n    type: digitalocean:Vpc\n    properties:\n      name: vpc1\n      region: nyc3\n  vpc2:\n    type: digitalocean:Vpc\n    properties:\n      name: vpc2\n      region: nyc3\n  example:\n    type: digitalocean:VpcPeering\n    properties:\n      name: example-peering\n      vpcIds:\n        - ${vpc1.id}\n        - ${vpc2.id}\n  example1:\n    type: digitalocean:Droplet\n    properties:\n      name: example1\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${vpc1.id}\n  example2:\n    type: digitalocean:Droplet\n    properties:\n      name: example2\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${vpc2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA VPC Peering can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vpcPeering:VpcPeering example 771ad360-c017-4b4e-a34e-73934f5f0190\n```\n\n",
+            "description": "\u003e VPC peering is currently in alpha. If you are not a member of the alpha group for this feature, you will not be able to use it until it has been more widely released. Please follow the official [DigitalOcean changelog](https://docs.digitalocean.com/release-notes/) for updates.\n\nProvides a DigitalOcean VPC Peering resource.\n\nVPC Peerings are used to connect two VPC networks allowing resources in each \nVPC to communicate with each other privately.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.VpcPeering(\"example\", {\n    name: \"example-peering\",\n    vpcIds: [\n        vpc1.id,\n        vpc2.id,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.VpcPeering(\"example\",\n    name=\"example-peering\",\n    vpc_ids=[\n        vpc1[\"id\"],\n        vpc2[\"id\"],\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.VpcPeering(\"example\", new()\n    {\n        Name = \"example-peering\",\n        VpcIds = new[]\n        {\n            vpc1.Id,\n            vpc2.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVpcPeering(ctx, \"example\", \u0026digitalocean.VpcPeeringArgs{\n\t\t\tName: pulumi.String(\"example-peering\"),\n\t\t\tVpcIds: pulumi.StringArray{\n\t\t\t\tvpc1.Id,\n\t\t\t\tvpc2.Id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.VpcPeering;\nimport com.pulumi.digitalocean.VpcPeeringArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new VpcPeering(\"example\", VpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .vpcIds(            \n                vpc1.id(),\n                vpc2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:VpcPeering\n    properties:\n      name: example-peering\n      vpcIds:\n        - ${vpc1.id}\n        - ${vpc2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Resource Assignment\n\nYou can use the VPC Peering resource to allow communication between resources\nin different VPCs. For example:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst vpc1 = new digitalocean.Vpc(\"vpc1\", {\n    name: \"vpc1\",\n    region: \"nyc3\",\n});\nconst vpc2 = new digitalocean.Vpc(\"vpc2\", {\n    name: \"vpc2\",\n    region: \"nyc3\",\n});\nconst example = new digitalocean.VpcPeering(\"example\", {\n    name: \"example-peering\",\n    vpcIds: [\n        vpc1.id,\n        vpc2.id,\n    ],\n});\nconst example1 = new digitalocean.Droplet(\"example1\", {\n    name: \"example1\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: vpc1.id,\n});\nconst example2 = new digitalocean.Droplet(\"example2\", {\n    name: \"example2\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: vpc2.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nvpc1 = digitalocean.Vpc(\"vpc1\",\n    name=\"vpc1\",\n    region=\"nyc3\")\nvpc2 = digitalocean.Vpc(\"vpc2\",\n    name=\"vpc2\",\n    region=\"nyc3\")\nexample = digitalocean.VpcPeering(\"example\",\n    name=\"example-peering\",\n    vpc_ids=[\n        vpc1.id,\n        vpc2.id,\n    ])\nexample1 = digitalocean.Droplet(\"example1\",\n    name=\"example1\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=vpc1.id)\nexample2 = digitalocean.Droplet(\"example2\",\n    name=\"example2\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=vpc2.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vpc1 = new DigitalOcean.Vpc(\"vpc1\", new()\n    {\n        Name = \"vpc1\",\n        Region = \"nyc3\",\n    });\n\n    var vpc2 = new DigitalOcean.Vpc(\"vpc2\", new()\n    {\n        Name = \"vpc2\",\n        Region = \"nyc3\",\n    });\n\n    var example = new DigitalOcean.VpcPeering(\"example\", new()\n    {\n        Name = \"example-peering\",\n        VpcIds = new[]\n        {\n            vpc1.Id,\n            vpc2.Id,\n        },\n    });\n\n    var example1 = new DigitalOcean.Droplet(\"example1\", new()\n    {\n        Name = \"example1\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = vpc1.Id,\n    });\n\n    var example2 = new DigitalOcean.Droplet(\"example2\", new()\n    {\n        Name = \"example2\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = vpc2.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tvpc1, err := digitalocean.NewVpc(ctx, \"vpc1\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"vpc1\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvpc2, err := digitalocean.NewVpc(ctx, \"vpc2\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"vpc2\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewVpcPeering(ctx, \"example\", \u0026digitalocean.VpcPeeringArgs{\n\t\t\tName: pulumi.String(\"example-peering\"),\n\t\t\tVpcIds: pulumi.StringArray{\n\t\t\t\tvpc1.ID(),\n\t\t\t\tvpc2.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example1\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example1\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: vpc1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example2\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example2\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: vpc2.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.VpcPeering;\nimport com.pulumi.digitalocean.VpcPeeringArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vpc1 = new Vpc(\"vpc1\", VpcArgs.builder()\n            .name(\"vpc1\")\n            .region(\"nyc3\")\n            .build());\n\n        var vpc2 = new Vpc(\"vpc2\", VpcArgs.builder()\n            .name(\"vpc2\")\n            .region(\"nyc3\")\n            .build());\n\n        var example = new VpcPeering(\"example\", VpcPeeringArgs.builder()\n            .name(\"example-peering\")\n            .vpcIds(            \n                vpc1.id(),\n                vpc2.id())\n            .build());\n\n        var example1 = new Droplet(\"example1\", DropletArgs.builder()\n            .name(\"example1\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(vpc1.id())\n            .build());\n\n        var example2 = new Droplet(\"example2\", DropletArgs.builder()\n            .name(\"example2\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(vpc2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vpc1:\n    type: digitalocean:Vpc\n    properties:\n      name: vpc1\n      region: nyc3\n  vpc2:\n    type: digitalocean:Vpc\n    properties:\n      name: vpc2\n      region: nyc3\n  example:\n    type: digitalocean:VpcPeering\n    properties:\n      name: example-peering\n      vpcIds:\n        - ${vpc1.id}\n        - ${vpc2.id}\n  example1:\n    type: digitalocean:Droplet\n    properties:\n      name: example1\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${vpc1.id}\n  example2:\n    type: digitalocean:Droplet\n    properties:\n      name: example2\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${vpc2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA VPC Peering can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vpcPeering:VpcPeering example 771ad360-c017-4b4e-a34e-73934f5f0190\n```\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -15700,7 +15828,7 @@
                         "type": "string"
                     },
                     "size": {
-                        "description": "The unique slug that indentifies the type of Droplet.\n",
+                        "description": "The unique slug that identifies the type of Droplet.\n",
                         "type": "string"
                     },
                     "status": {
@@ -16502,6 +16630,9 @@
                     "name": {
                         "type": "string"
                     },
+                    "network": {
+                        "type": "string"
+                    },
                     "projectId": {
                         "type": "string"
                     },
@@ -16553,6 +16684,7 @@
                     "healthchecks",
                     "httpIdleTimeoutSeconds",
                     "ip",
+                    "network",
                     "projectId",
                     "redirectHttpToHttps",
                     "region",
