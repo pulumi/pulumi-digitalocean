@@ -174,6 +174,13 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        /// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         /// </summary>
         [Output("projectId")]
@@ -223,7 +230,8 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> TargetLoadBalancerIds { get; private set; } = null!;
 
         /// <summary>
-        /// the type of the load balancer (GLOBAL or REGIONAL)
+        /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        /// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -384,6 +392,13 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        /// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         /// </summary>
         [Input("projectId")]
@@ -436,7 +451,8 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// the type of the load balancer (GLOBAL or REGIONAL)
+        /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        /// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -571,6 +587,13 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        /// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         /// </summary>
         [Input("projectId")]
@@ -626,7 +649,8 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// the type of the load balancer (GLOBAL or REGIONAL)
+        /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        /// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

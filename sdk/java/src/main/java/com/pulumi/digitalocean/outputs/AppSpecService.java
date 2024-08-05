@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecServiceAlert;
+import com.pulumi.digitalocean.outputs.AppSpecServiceAutoscaling;
 import com.pulumi.digitalocean.outputs.AppSpecServiceCors;
 import com.pulumi.digitalocean.outputs.AppSpecServiceEnv;
 import com.pulumi.digitalocean.outputs.AppSpecServiceGit;
@@ -29,6 +30,11 @@ public final class AppSpecService {
      * 
      */
     private @Nullable List<AppSpecServiceAlert> alerts;
+    /**
+     * @return Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    private @Nullable AppSpecServiceAutoscaling autoscaling;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -140,6 +146,13 @@ public final class AppSpecService {
      */
     public List<AppSpecServiceAlert> alerts() {
         return this.alerts == null ? List.of() : this.alerts;
+    }
+    /**
+     * @return Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    public Optional<AppSpecServiceAutoscaling> autoscaling() {
+        return Optional.ofNullable(this.autoscaling);
     }
     /**
      * @return An optional build command to run while building this component from source.
@@ -293,6 +306,7 @@ public final class AppSpecService {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppSpecServiceAlert> alerts;
+        private @Nullable AppSpecServiceAutoscaling autoscaling;
         private @Nullable String buildCommand;
         private @Nullable AppSpecServiceCors cors;
         private @Nullable String dockerfilePath;
@@ -316,6 +330,7 @@ public final class AppSpecService {
         public Builder(AppSpecService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
+    	      this.autoscaling = defaults.autoscaling;
     	      this.buildCommand = defaults.buildCommand;
     	      this.cors = defaults.cors;
     	      this.dockerfilePath = defaults.dockerfilePath;
@@ -345,6 +360,12 @@ public final class AppSpecService {
         }
         public Builder alerts(AppSpecServiceAlert... alerts) {
             return alerts(List.of(alerts));
+        }
+        @CustomType.Setter
+        public Builder autoscaling(@Nullable AppSpecServiceAutoscaling autoscaling) {
+
+            this.autoscaling = autoscaling;
+            return this;
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
@@ -477,6 +498,7 @@ public final class AppSpecService {
         public AppSpecService build() {
             final var _resultValue = new AppSpecService();
             _resultValue.alerts = alerts;
+            _resultValue.autoscaling = autoscaling;
             _resultValue.buildCommand = buildCommand;
             _resultValue.cors = cors;
             _resultValue.dockerfilePath = dockerfilePath;

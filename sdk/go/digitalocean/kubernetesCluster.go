@@ -74,7 +74,7 @@ type KubernetesCluster struct {
 	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Enable/disable surge upgrades for a cluster. Default: false
+	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade pulumi.BoolPtrOutput `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -163,7 +163,7 @@ type kubernetesClusterState struct {
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
-	// Enable/disable surge upgrades for a cluster. Default: false
+	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
@@ -210,7 +210,7 @@ type KubernetesClusterState struct {
 	ServiceSubnet pulumi.StringPtrInput
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput
-	// Enable/disable surge upgrades for a cluster. Default: false
+	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
@@ -245,7 +245,7 @@ type kubernetesClusterArgs struct {
 	Region string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration *bool `pulumi:"registryIntegration"`
-	// Enable/disable surge upgrades for a cluster. Default: false
+	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags []string `pulumi:"tags"`
@@ -275,7 +275,7 @@ type KubernetesClusterArgs struct {
 	Region pulumi.StringInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrInput
-	// Enable/disable surge upgrades for a cluster. Default: false
+	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
 	Tags pulumi.StringArrayInput
@@ -454,7 +454,7 @@ func (o KubernetesClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Enable/disable surge upgrades for a cluster. Default: false
+// Enable/disable surge upgrades for a cluster. Default: true
 func (o KubernetesClusterOutput) SurgeUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.SurgeUpgrade }).(pulumi.BoolPtrOutput)
 }

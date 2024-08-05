@@ -155,7 +155,7 @@ type LookupDropletResult struct {
 	PrivateNetworking bool `pulumi:"privateNetworking"`
 	// The region the Droplet is running in.
 	Region string `pulumi:"region"`
-	// The unique slug that indentifies the type of Droplet.
+	// The unique slug that identifies the type of Droplet.
 	Size string `pulumi:"size"`
 	// The status of the Droplet.
 	Status string  `pulumi:"status"`
@@ -302,7 +302,7 @@ func (o LookupDropletResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDropletResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The unique slug that indentifies the type of Droplet.
+// The unique slug that identifies the type of Droplet.
 func (o LookupDropletResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDropletResult) string { return v.Size }).(pulumi.StringOutput)
 }

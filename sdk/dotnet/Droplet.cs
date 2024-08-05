@@ -179,7 +179,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> ResizeDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        /// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         /// </summary>
         [Output("size")]
         public Output<string> Size { get; private set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? ResizeDisk { get; set; }
 
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        /// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         /// </summary>
         [Input("size", required: true)]
         public InputUnion<string, Pulumi.DigitalOcean.DropletSlug> Size { get; set; } = null!;
@@ -561,7 +561,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? ResizeDisk { get; set; }
 
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        /// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
         /// </summary>
         [Input("size")]
         public InputUnion<string, Pulumi.DigitalOcean.DropletSlug>? Size { get; set; }

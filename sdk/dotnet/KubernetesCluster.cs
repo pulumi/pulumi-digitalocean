@@ -138,7 +138,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Enable/disable surge upgrades for a cluster. Default: false
+        /// Enable/disable surge upgrades for a cluster. Default: true
         /// </summary>
         [Output("surgeUpgrade")]
         public Output<bool?> SurgeUpgrade { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? RegistryIntegration { get; set; }
 
         /// <summary>
-        /// Enable/disable surge upgrades for a cluster. Default: false
+        /// Enable/disable surge upgrades for a cluster. Default: true
         /// </summary>
         [Input("surgeUpgrade")]
         public Input<bool>? SurgeUpgrade { get; set; }
@@ -414,7 +414,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Enable/disable surge upgrades for a cluster. Default: false
+        /// Enable/disable surge upgrades for a cluster. Default: true
         /// </summary>
         [Input("surgeUpgrade")]
         public Input<bool>? SurgeUpgrade { get; set; }

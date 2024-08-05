@@ -125,7 +125,7 @@ type Volume struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The size of the block storage volume in GiB. If updated, can only be expanded.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -189,7 +189,7 @@ type volumeState struct {
 	Region *string `pulumi:"region"`
 	// The size of the block storage volume in GiB. If updated, can only be expanded.
 	Size *int `pulumi:"size"`
-	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A list of the tags to be applied to this Volume.
 	Tags []string `pulumi:"tags"`
@@ -218,7 +218,7 @@ type VolumeState struct {
 	Region pulumi.StringPtrInput
 	// The size of the block storage volume in GiB. If updated, can only be expanded.
 	Size pulumi.IntPtrInput
-	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
 	SnapshotId pulumi.StringPtrInput
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayInput
@@ -247,7 +247,7 @@ type volumeArgs struct {
 	Region string `pulumi:"region"`
 	// The size of the block storage volume in GiB. If updated, can only be expanded.
 	Size int `pulumi:"size"`
-	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A list of the tags to be applied to this Volume.
 	Tags []string `pulumi:"tags"`
@@ -271,7 +271,7 @@ type VolumeArgs struct {
 	Region pulumi.StringInput
 	// The size of the block storage volume in GiB. If updated, can only be expanded.
 	Size pulumi.IntInput
-	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+	// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
 	SnapshotId pulumi.StringPtrInput
 	// A list of the tags to be applied to this Volume.
 	Tags pulumi.StringArrayInput
@@ -411,7 +411,7 @@ func (o VolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
 func (o VolumeOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }

@@ -264,11 +264,18 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DnsRecord(String name, DnsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/dnsRecord:DnsRecord", name, args == null ? DnsRecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/dnsRecord:DnsRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DnsRecord(String name, Output<String> id, @Nullable DnsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/dnsRecord:DnsRecord", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DnsRecordArgs makeArgs(DnsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DnsRecordArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

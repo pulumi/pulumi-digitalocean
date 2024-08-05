@@ -53,6 +53,9 @@ __all__ = [
     'AppSpecJobLogDestinationPapertrailArgs',
     'AppSpecServiceArgs',
     'AppSpecServiceAlertArgs',
+    'AppSpecServiceAutoscalingArgs',
+    'AppSpecServiceAutoscalingMetricsArgs',
+    'AppSpecServiceAutoscalingMetricsCpuArgs',
     'AppSpecServiceCorsArgs',
     'AppSpecServiceCorsAllowOriginsArgs',
     'AppSpecServiceEnvArgs',
@@ -478,7 +481,7 @@ class AppSpecDatabaseArgs:
         :param pulumi.Input[str] db_user: The name of the MySQL or PostgreSQL user to configure.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
-        :param pulumi.Input[str] engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+        :param pulumi.Input[str] engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[bool] production: Whether this is a production or dev database.
         :param pulumi.Input[str] version: The version of the database engine.
@@ -540,7 +543,7 @@ class AppSpecDatabaseArgs:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+        The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
         """
         return pulumi.get(self, "engine")
 
@@ -1129,6 +1132,9 @@ class AppSpecFunctionCorsAllowOriginsArgs:
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
+            warnings.warn("""Prefix-based matching has been deprecated in favor of regex-based matching.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.""")
+        if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -1147,6 +1153,7 @@ class AppSpecFunctionCorsAllowOriginsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Prefix-based match.
@@ -1851,6 +1858,9 @@ class AppSpecIngressRuleCorsAllowOriginsArgs:
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
+            warnings.warn("""Prefix-based matching has been deprecated in favor of regex-based matching.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.""")
+        if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -1869,6 +1879,7 @@ class AppSpecIngressRuleCorsAllowOriginsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
         The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
@@ -2612,7 +2623,7 @@ class AppSpecJobImageArgs:
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
+        :param pulumi.Input[str] registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -2678,7 +2689,7 @@ class AppSpecJobImageArgs:
     @pulumi.getter(name="registryCredentials")
     def registry_credentials(self) -> Optional[pulumi.Input[str]]:
         """
-        Access credentials for third-party registries
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         """
         return pulumi.get(self, "registry_credentials")
 
@@ -2883,6 +2894,7 @@ class AppSpecServiceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]]] = None,
+                 autoscaling: Optional[pulumi.Input['AppSpecServiceAutoscalingArgs']] = None,
                  build_command: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input['AppSpecServiceCorsArgs']] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
@@ -2904,6 +2916,7 @@ class AppSpecServiceArgs:
         """
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]] alerts: Describes an alert policy for the component.
+        :param pulumi.Input['AppSpecServiceAutoscalingArgs'] autoscaling: Configuration for automatically scaling this component based on metrics.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input['AppSpecServiceCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -2926,6 +2939,8 @@ class AppSpecServiceArgs:
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -2992,6 +3007,18 @@ class AppSpecServiceArgs:
     @alerts.setter
     def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]]]):
         pulumi.set(self, "alerts", value)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional[pulumi.Input['AppSpecServiceAutoscalingArgs']]:
+        """
+        Configuration for automatically scaling this component based on metrics.
+        """
+        return pulumi.get(self, "autoscaling")
+
+    @autoscaling.setter
+    def autoscaling(self, value: Optional[pulumi.Input['AppSpecServiceAutoscalingArgs']]):
+        pulumi.set(self, "autoscaling", value)
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -3296,6 +3323,107 @@ class AppSpecServiceAlertArgs:
 
 
 @pulumi.input_type
+class AppSpecServiceAutoscalingArgs:
+    def __init__(__self__, *,
+                 max_instance_count: pulumi.Input[int],
+                 metrics: pulumi.Input['AppSpecServiceAutoscalingMetricsArgs'],
+                 min_instance_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_instance_count: The maximum amount of instances for this component. Must be more than min_instance_count.
+        :param pulumi.Input['AppSpecServiceAutoscalingMetricsArgs'] metrics: The metrics that the component is scaled on.
+        :param pulumi.Input[int] min_instance_count: The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> pulumi.Input[int]:
+        """
+        The maximum amount of instances for this component. Must be more than min_instance_count.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @max_instance_count.setter
+    def max_instance_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_instance_count", value)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> pulumi.Input['AppSpecServiceAutoscalingMetricsArgs']:
+        """
+        The metrics that the component is scaled on.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: pulumi.Input['AppSpecServiceAutoscalingMetricsArgs']):
+        pulumi.set(self, "metrics", value)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> pulumi.Input[int]:
+        """
+        The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+    @min_instance_count.setter
+    def min_instance_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_instance_count", value)
+
+
+@pulumi.input_type
+class AppSpecServiceAutoscalingMetricsArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgs']] = None):
+        """
+        :param pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgs'] cpu: Settings for scaling the component based on CPU utilization.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgs']]:
+        """
+        Settings for scaling the component based on CPU utilization.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgs']]):
+        pulumi.set(self, "cpu", value)
+
+
+@pulumi.input_type
+class AppSpecServiceAutoscalingMetricsCpuArgs:
+    def __init__(__self__, *,
+                 percent: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] percent: The average target CPU utilization for the component.
+               
+               A `static_site` can contain:
+        """
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> pulumi.Input[int]:
+        """
+        The average target CPU utilization for the component.
+
+        A `static_site` can contain:
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: pulumi.Input[int]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
 class AppSpecServiceCorsArgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
@@ -3412,6 +3540,9 @@ class AppSpecServiceCorsAllowOriginsArgs:
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
+            warnings.warn("""Prefix-based matching has been deprecated in favor of regex-based matching.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.""")
+        if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -3430,6 +3561,7 @@ class AppSpecServiceCorsAllowOriginsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Prefix-based match.
@@ -3806,7 +3938,7 @@ class AppSpecServiceImageArgs:
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
+        :param pulumi.Input[str] registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -3872,7 +4004,7 @@ class AppSpecServiceImageArgs:
     @pulumi.getter(name="registryCredentials")
     def registry_credentials(self) -> Optional[pulumi.Input[str]]:
         """
-        Access credentials for third-party registries
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         """
         return pulumi.get(self, "registry_credentials")
 
@@ -4482,6 +4614,9 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
+            warnings.warn("""Prefix-based matching has been deprecated in favor of regex-based matching.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.""")
+        if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -4500,6 +4635,7 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Prefix-based match.
@@ -5345,7 +5481,7 @@ class AppSpecWorkerImageArgs:
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        :param pulumi.Input[str] registry_credentials: Access credentials for third-party registries
+        :param pulumi.Input[str] registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -5411,7 +5547,7 @@ class AppSpecWorkerImageArgs:
     @pulumi.getter(name="registryCredentials")
     def registry_credentials(self) -> Optional[pulumi.Input[str]]:
         """
-        Access credentials for third-party registries
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         """
         return pulumi.get(self, "registry_credentials")
 
@@ -5786,7 +5922,7 @@ class DatabaseKafkaTopicConfigArgs:
                  segment_jitter_ms: Optional[pulumi.Input[str]] = None,
                  segment_ms: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cleanup_policy: The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        :param pulumi.Input[str] cleanup_policy: The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
                This may be one of "delete", "compact", or "compact_delete".
         :param pulumi.Input[str] compression_type: The topic compression codecs used for a given topic.
                This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
@@ -5862,7 +5998,7 @@ class DatabaseKafkaTopicConfigArgs:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
         This may be one of "delete", "compact", or "compact_delete".
         """
         return pulumi.get(self, "cleanup_policy")

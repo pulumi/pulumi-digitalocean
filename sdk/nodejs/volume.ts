@@ -127,7 +127,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+     * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
@@ -233,7 +233,7 @@ export interface VolumeState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+     * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface VolumeArgs {
      */
     size: pulumi.Input<number>;
     /**
-     * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limitied on creation to that of the referenced snapshot
+     * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
      */
     snapshotId?: pulumi.Input<string>;
     /**

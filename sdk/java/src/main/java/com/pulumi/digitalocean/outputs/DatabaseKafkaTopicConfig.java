@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseKafkaTopicConfig {
     /**
-     * @return The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * @return The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
      * 
      */
@@ -130,7 +130,7 @@ public final class DatabaseKafkaTopicConfig {
 
     private DatabaseKafkaTopicConfig() {}
     /**
-     * @return The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * @return The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
      * 
      */

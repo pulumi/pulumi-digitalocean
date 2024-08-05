@@ -272,11 +272,18 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseRedisConfig(String name, DatabaseRedisConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, args == null ? DatabaseRedisConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseRedisConfig(String name, Output<String> id, @Nullable DatabaseRedisConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseRedisConfigArgs makeArgs(DatabaseRedisConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseRedisConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

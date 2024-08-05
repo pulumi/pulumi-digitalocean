@@ -280,7 +280,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The unique slug that indentifies the type of Droplet.
+        /// The unique slug that identifies the type of Droplet.
         /// </summary>
         public readonly string Size;
         /// <summary>

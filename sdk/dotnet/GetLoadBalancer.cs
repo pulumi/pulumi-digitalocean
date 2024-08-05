@@ -179,6 +179,7 @@ namespace Pulumi.DigitalOcean
         public readonly string Ip;
         public readonly string LoadBalancerUrn;
         public readonly string? Name;
+        public readonly string Network;
         public readonly string ProjectId;
         public readonly bool RedirectHttpToHttps;
         public readonly string Region;
@@ -224,6 +225,8 @@ namespace Pulumi.DigitalOcean
 
             string? name,
 
+            string network,
+
             string projectId,
 
             bool redirectHttpToHttps,
@@ -260,6 +263,7 @@ namespace Pulumi.DigitalOcean
             Ip = ip;
             LoadBalancerUrn = loadBalancerUrn;
             Name = name;
+            Network = network;
             ProjectId = projectId;
             RedirectHttpToHttps = redirectHttpToHttps;
             Region = region;

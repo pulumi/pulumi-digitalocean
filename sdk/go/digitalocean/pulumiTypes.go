@@ -622,7 +622,7 @@ type AppSpecDatabase struct {
 	//
 	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DbUser *string `pulumi:"dbUser"`
-	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+	// The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
 	Engine *string `pulumi:"engine"`
 	// The name of the component.
 	Name *string `pulumi:"name"`
@@ -652,7 +652,7 @@ type AppSpecDatabaseArgs struct {
 	//
 	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DbUser pulumi.StringPtrInput `pulumi:"dbUser"`
-	// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+	// The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// The name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -730,7 +730,7 @@ func (o AppSpecDatabaseOutput) DbUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.DbUser }).(pulumi.StringPtrOutput)
 }
 
-// The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+// The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
 func (o AppSpecDatabaseOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecDatabase) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
@@ -1683,6 +1683,8 @@ type AppSpecFunctionCorsAllowOrigins struct {
 	// Exact string match.
 	Exact *string `pulumi:"exact"`
 	// Prefix-based match.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
@@ -1703,6 +1705,8 @@ type AppSpecFunctionCorsAllowOriginsArgs struct {
 	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// Prefix-based match.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -1791,6 +1795,8 @@ func (o AppSpecFunctionCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 }
 
 // Prefix-based match.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecFunctionCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -1835,6 +1841,8 @@ func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput
 }
 
 // Prefix-based match.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -3824,6 +3832,8 @@ type AppSpecIngressRuleCorsAllowOrigins struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex *string `pulumi:"regex"`
@@ -3844,6 +3854,8 @@ type AppSpecIngressRuleCorsAllowOriginsArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -3932,6 +3944,8 @@ func (o AppSpecIngressRuleCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecIngressRuleCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -3976,6 +3990,8 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOut
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -5494,7 +5510,7 @@ type AppSpecJobImage struct {
 	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
-	// Access credentials for third-party registries
+	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
@@ -5520,7 +5536,7 @@ type AppSpecJobImageArgs struct {
 	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
-	// Access credentials for third-party registries
+	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
@@ -5617,7 +5633,7 @@ func (o AppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
-// Access credentials for third-party registries
+// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 func (o AppSpecJobImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
@@ -5681,7 +5697,7 @@ func (o AppSpecJobImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access credentials for third-party registries
+// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 func (o AppSpecJobImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobImage) *string {
 		if v == nil {
@@ -6383,6 +6399,8 @@ func (o AppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtr
 type AppSpecService struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecServiceAlert `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling *AppSpecServiceAutoscaling `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -6441,6 +6459,8 @@ type AppSpecServiceInput interface {
 type AppSpecServiceArgs struct {
 	// Describes an alert policy for the component.
 	Alerts AppSpecServiceAlertArrayInput `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling AppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -6539,6 +6559,11 @@ func (o AppSpecServiceOutput) ToAppSpecServiceOutputWithContext(ctx context.Cont
 // Describes an alert policy for the component.
 func (o AppSpecServiceOutput) Alerts() AppSpecServiceAlertArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []AppSpecServiceAlert { return v.Alerts }).(AppSpecServiceAlertArrayOutput)
+}
+
+// Configuration for automatically scaling this component based on metrics.
+func (o AppSpecServiceOutput) Autoscaling() AppSpecServiceAutoscalingPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceAutoscaling { return v.Autoscaling }).(AppSpecServiceAutoscalingPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -6793,6 +6818,463 @@ func (o AppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) AppSpecServiceA
 	}).(AppSpecServiceAlertOutput)
 }
 
+type AppSpecServiceAutoscaling struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics AppSpecServiceAutoscalingMetrics `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// AppSpecServiceAutoscalingInput is an input type that accepts AppSpecServiceAutoscalingArgs and AppSpecServiceAutoscalingOutput values.
+// You can construct a concrete instance of `AppSpecServiceAutoscalingInput` via:
+//
+//	AppSpecServiceAutoscalingArgs{...}
+type AppSpecServiceAutoscalingInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAutoscalingOutput() AppSpecServiceAutoscalingOutput
+	ToAppSpecServiceAutoscalingOutputWithContext(context.Context) AppSpecServiceAutoscalingOutput
+}
+
+type AppSpecServiceAutoscalingArgs struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics AppSpecServiceAutoscalingMetricsInput `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (AppSpecServiceAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (i AppSpecServiceAutoscalingArgs) ToAppSpecServiceAutoscalingOutput() AppSpecServiceAutoscalingOutput {
+	return i.ToAppSpecServiceAutoscalingOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAutoscalingArgs) ToAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingOutput)
+}
+
+func (i AppSpecServiceAutoscalingArgs) ToAppSpecServiceAutoscalingPtrOutput() AppSpecServiceAutoscalingPtrOutput {
+	return i.ToAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAutoscalingArgs) ToAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingOutput).ToAppSpecServiceAutoscalingPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceAutoscalingPtrInput is an input type that accepts AppSpecServiceAutoscalingArgs, AppSpecServiceAutoscalingPtr and AppSpecServiceAutoscalingPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceAutoscalingPtrInput` via:
+//
+//	        AppSpecServiceAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAutoscalingPtrOutput() AppSpecServiceAutoscalingPtrOutput
+	ToAppSpecServiceAutoscalingPtrOutputWithContext(context.Context) AppSpecServiceAutoscalingPtrOutput
+}
+
+type appSpecServiceAutoscalingPtrType AppSpecServiceAutoscalingArgs
+
+func AppSpecServiceAutoscalingPtr(v *AppSpecServiceAutoscalingArgs) AppSpecServiceAutoscalingPtrInput {
+	return (*appSpecServiceAutoscalingPtrType)(v)
+}
+
+func (*appSpecServiceAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (i *appSpecServiceAutoscalingPtrType) ToAppSpecServiceAutoscalingPtrOutput() AppSpecServiceAutoscalingPtrOutput {
+	return i.ToAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceAutoscalingPtrType) ToAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingPtrOutput)
+}
+
+type AppSpecServiceAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (o AppSpecServiceAutoscalingOutput) ToAppSpecServiceAutoscalingOutput() AppSpecServiceAutoscalingOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingOutput) ToAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingOutput) ToAppSpecServiceAutoscalingPtrOutput() AppSpecServiceAutoscalingPtrOutput {
+	return o.ToAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceAutoscalingOutput) ToAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceAutoscaling) *AppSpecServiceAutoscaling {
+		return &v
+	}).(AppSpecServiceAutoscalingPtrOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o AppSpecServiceAutoscalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AppSpecServiceAutoscaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o AppSpecServiceAutoscalingOutput) Metrics() AppSpecServiceAutoscalingMetricsOutput {
+	return o.ApplyT(func(v AppSpecServiceAutoscaling) AppSpecServiceAutoscalingMetrics { return v.Metrics }).(AppSpecServiceAutoscalingMetricsOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o AppSpecServiceAutoscalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AppSpecServiceAutoscaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type AppSpecServiceAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (o AppSpecServiceAutoscalingPtrOutput) ToAppSpecServiceAutoscalingPtrOutput() AppSpecServiceAutoscalingPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingPtrOutput) ToAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingPtrOutput) Elem() AppSpecServiceAutoscalingOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscaling) AppSpecServiceAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceAutoscaling
+		return ret
+	}).(AppSpecServiceAutoscalingOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o AppSpecServiceAutoscalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o AppSpecServiceAutoscalingPtrOutput) Metrics() AppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscaling) *AppSpecServiceAutoscalingMetrics {
+		if v == nil {
+			return nil
+		}
+		return &v.Metrics
+	}).(AppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o AppSpecServiceAutoscalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AppSpecServiceAutoscalingMetrics struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu *AppSpecServiceAutoscalingMetricsCpu `pulumi:"cpu"`
+}
+
+// AppSpecServiceAutoscalingMetricsInput is an input type that accepts AppSpecServiceAutoscalingMetricsArgs and AppSpecServiceAutoscalingMetricsOutput values.
+// You can construct a concrete instance of `AppSpecServiceAutoscalingMetricsInput` via:
+//
+//	AppSpecServiceAutoscalingMetricsArgs{...}
+type AppSpecServiceAutoscalingMetricsInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAutoscalingMetricsOutput() AppSpecServiceAutoscalingMetricsOutput
+	ToAppSpecServiceAutoscalingMetricsOutputWithContext(context.Context) AppSpecServiceAutoscalingMetricsOutput
+}
+
+type AppSpecServiceAutoscalingMetricsArgs struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu AppSpecServiceAutoscalingMetricsCpuPtrInput `pulumi:"cpu"`
+}
+
+func (AppSpecServiceAutoscalingMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i AppSpecServiceAutoscalingMetricsArgs) ToAppSpecServiceAutoscalingMetricsOutput() AppSpecServiceAutoscalingMetricsOutput {
+	return i.ToAppSpecServiceAutoscalingMetricsOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAutoscalingMetricsArgs) ToAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingMetricsOutput)
+}
+
+func (i AppSpecServiceAutoscalingMetricsArgs) ToAppSpecServiceAutoscalingMetricsPtrOutput() AppSpecServiceAutoscalingMetricsPtrOutput {
+	return i.ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAutoscalingMetricsArgs) ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingMetricsOutput).ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceAutoscalingMetricsPtrInput is an input type that accepts AppSpecServiceAutoscalingMetricsArgs, AppSpecServiceAutoscalingMetricsPtr and AppSpecServiceAutoscalingMetricsPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceAutoscalingMetricsPtrInput` via:
+//
+//	        AppSpecServiceAutoscalingMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceAutoscalingMetricsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAutoscalingMetricsPtrOutput() AppSpecServiceAutoscalingMetricsPtrOutput
+	ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Context) AppSpecServiceAutoscalingMetricsPtrOutput
+}
+
+type appSpecServiceAutoscalingMetricsPtrType AppSpecServiceAutoscalingMetricsArgs
+
+func AppSpecServiceAutoscalingMetricsPtr(v *AppSpecServiceAutoscalingMetricsArgs) AppSpecServiceAutoscalingMetricsPtrInput {
+	return (*appSpecServiceAutoscalingMetricsPtrType)(v)
+}
+
+func (*appSpecServiceAutoscalingMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i *appSpecServiceAutoscalingMetricsPtrType) ToAppSpecServiceAutoscalingMetricsPtrOutput() AppSpecServiceAutoscalingMetricsPtrOutput {
+	return i.ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceAutoscalingMetricsPtrType) ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+type AppSpecServiceAutoscalingMetricsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAutoscalingMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o AppSpecServiceAutoscalingMetricsOutput) ToAppSpecServiceAutoscalingMetricsOutput() AppSpecServiceAutoscalingMetricsOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsOutput) ToAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsOutput) ToAppSpecServiceAutoscalingMetricsPtrOutput() AppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceAutoscalingMetricsOutput) ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceAutoscalingMetrics) *AppSpecServiceAutoscalingMetrics {
+		return &v
+	}).(AppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o AppSpecServiceAutoscalingMetricsOutput) Cpu() AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceAutoscalingMetrics) *AppSpecServiceAutoscalingMetricsCpu { return v.Cpu }).(AppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type AppSpecServiceAutoscalingMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAutoscalingMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o AppSpecServiceAutoscalingMetricsPtrOutput) ToAppSpecServiceAutoscalingMetricsPtrOutput() AppSpecServiceAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsPtrOutput) ToAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsPtrOutput) Elem() AppSpecServiceAutoscalingMetricsOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscalingMetrics) AppSpecServiceAutoscalingMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceAutoscalingMetrics
+		return ret
+	}).(AppSpecServiceAutoscalingMetricsOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o AppSpecServiceAutoscalingMetricsPtrOutput) Cpu() AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscalingMetrics) *AppSpecServiceAutoscalingMetricsCpu {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(AppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type AppSpecServiceAutoscalingMetricsCpu struct {
+	// The average target CPU utilization for the component.
+	//
+	// A `staticSite` can contain:
+	Percent int `pulumi:"percent"`
+}
+
+// AppSpecServiceAutoscalingMetricsCpuInput is an input type that accepts AppSpecServiceAutoscalingMetricsCpuArgs and AppSpecServiceAutoscalingMetricsCpuOutput values.
+// You can construct a concrete instance of `AppSpecServiceAutoscalingMetricsCpuInput` via:
+//
+//	AppSpecServiceAutoscalingMetricsCpuArgs{...}
+type AppSpecServiceAutoscalingMetricsCpuInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAutoscalingMetricsCpuOutput() AppSpecServiceAutoscalingMetricsCpuOutput
+	ToAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Context) AppSpecServiceAutoscalingMetricsCpuOutput
+}
+
+type AppSpecServiceAutoscalingMetricsCpuArgs struct {
+	// The average target CPU utilization for the component.
+	//
+	// A `staticSite` can contain:
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (AppSpecServiceAutoscalingMetricsCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i AppSpecServiceAutoscalingMetricsCpuArgs) ToAppSpecServiceAutoscalingMetricsCpuOutput() AppSpecServiceAutoscalingMetricsCpuOutput {
+	return i.ToAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAutoscalingMetricsCpuArgs) ToAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingMetricsCpuOutput)
+}
+
+func (i AppSpecServiceAutoscalingMetricsCpuArgs) ToAppSpecServiceAutoscalingMetricsCpuPtrOutput() AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return i.ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAutoscalingMetricsCpuArgs) ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingMetricsCpuOutput).ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceAutoscalingMetricsCpuPtrInput is an input type that accepts AppSpecServiceAutoscalingMetricsCpuArgs, AppSpecServiceAutoscalingMetricsCpuPtr and AppSpecServiceAutoscalingMetricsCpuPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceAutoscalingMetricsCpuPtrInput` via:
+//
+//	        AppSpecServiceAutoscalingMetricsCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceAutoscalingMetricsCpuPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAutoscalingMetricsCpuPtrOutput() AppSpecServiceAutoscalingMetricsCpuPtrOutput
+	ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Context) AppSpecServiceAutoscalingMetricsCpuPtrOutput
+}
+
+type appSpecServiceAutoscalingMetricsCpuPtrType AppSpecServiceAutoscalingMetricsCpuArgs
+
+func AppSpecServiceAutoscalingMetricsCpuPtr(v *AppSpecServiceAutoscalingMetricsCpuArgs) AppSpecServiceAutoscalingMetricsCpuPtrInput {
+	return (*appSpecServiceAutoscalingMetricsCpuPtrType)(v)
+}
+
+func (*appSpecServiceAutoscalingMetricsCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i *appSpecServiceAutoscalingMetricsCpuPtrType) ToAppSpecServiceAutoscalingMetricsCpuPtrOutput() AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return i.ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceAutoscalingMetricsCpuPtrType) ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type AppSpecServiceAutoscalingMetricsCpuOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAutoscalingMetricsCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuOutput) ToAppSpecServiceAutoscalingMetricsCpuOutput() AppSpecServiceAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuOutput) ToAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuOutput) ToAppSpecServiceAutoscalingMetricsCpuPtrOutput() AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuOutput) ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceAutoscalingMetricsCpu) *AppSpecServiceAutoscalingMetricsCpu {
+		return &v
+	}).(AppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+// The average target CPU utilization for the component.
+//
+// A `staticSite` can contain:
+func (o AppSpecServiceAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v AppSpecServiceAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type AppSpecServiceAutoscalingMetricsCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAutoscalingMetricsCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) ToAppSpecServiceAutoscalingMetricsCpuPtrOutput() AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) ToAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) Elem() AppSpecServiceAutoscalingMetricsCpuOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscalingMetricsCpu) AppSpecServiceAutoscalingMetricsCpu {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceAutoscalingMetricsCpu
+		return ret
+	}).(AppSpecServiceAutoscalingMetricsCpuOutput)
+}
+
+// The average target CPU utilization for the component.
+//
+// A `staticSite` can contain:
+func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceAutoscalingMetricsCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
 type AppSpecServiceCors struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
@@ -7029,6 +7511,8 @@ type AppSpecServiceCorsAllowOrigins struct {
 	// Exact string match.
 	Exact *string `pulumi:"exact"`
 	// Prefix-based match.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
@@ -7049,6 +7533,8 @@ type AppSpecServiceCorsAllowOriginsArgs struct {
 	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// Prefix-based match.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -7137,6 +7623,8 @@ func (o AppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
 }
 
 // Prefix-based match.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -7181,6 +7669,8 @@ func (o AppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput 
 }
 
 // Prefix-based match.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -8086,7 +8576,7 @@ type AppSpecServiceImage struct {
 	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
-	// Access credentials for third-party registries
+	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
@@ -8112,7 +8602,7 @@ type AppSpecServiceImageArgs struct {
 	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
-	// Access credentials for third-party registries
+	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
@@ -8209,7 +8699,7 @@ func (o AppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
-// Access credentials for third-party registries
+// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 func (o AppSpecServiceImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
@@ -8273,7 +8763,7 @@ func (o AppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access credentials for third-party registries
+// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 func (o AppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceImage) *string {
 		if v == nil {
@@ -9549,6 +10039,8 @@ type AppSpecStaticSiteCorsAllowOrigins struct {
 	// Exact string match.
 	Exact *string `pulumi:"exact"`
 	// Prefix-based match.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// RE2 style regex-based match.
 	Regex *string `pulumi:"regex"`
@@ -9569,6 +10061,8 @@ type AppSpecStaticSiteCorsAllowOriginsArgs struct {
 	// Exact string match.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// Prefix-based match.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// RE2 style regex-based match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -9657,6 +10151,8 @@ func (o AppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput 
 }
 
 // Prefix-based match.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -9701,6 +10197,8 @@ func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutp
 }
 
 // Prefix-based match.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o AppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -11447,7 +11945,7 @@ type AppSpecWorkerImage struct {
 	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
-	// Access credentials for third-party registries
+	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 	RegistryCredentials *string `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType string `pulumi:"registryType"`
@@ -11473,7 +11971,7 @@ type AppSpecWorkerImageArgs struct {
 	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
-	// Access credentials for third-party registries
+	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
 	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
 	RegistryType pulumi.StringInput `pulumi:"registryType"`
@@ -11570,7 +12068,7 @@ func (o AppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
-// Access credentials for third-party registries
+// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 func (o AppSpecWorkerImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
 }
@@ -11634,7 +12132,7 @@ func (o AppSpecWorkerImagePtrOutput) Registry() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Access credentials for third-party registries
+// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
 func (o AppSpecWorkerImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerImage) *string {
 		if v == nil {
@@ -12728,7 +13226,7 @@ func (o DatabaseFirewallRuleArrayOutput) Index(i pulumi.IntInput) DatabaseFirewa
 }
 
 type DatabaseKafkaTopicConfig struct {
-	// The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+	// The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
 	// This may be one of "delete", "compact", or "compactDelete".
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
 	// The topic compression codecs used for a given topic.
@@ -12789,7 +13287,7 @@ type DatabaseKafkaTopicConfigInput interface {
 }
 
 type DatabaseKafkaTopicConfigArgs struct {
-	// The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+	// The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
 	// This may be one of "delete", "compact", or "compactDelete".
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	// The topic compression codecs used for a given topic.
@@ -12889,7 +13387,7 @@ func (o DatabaseKafkaTopicConfigOutput) ToDatabaseKafkaTopicConfigOutputWithCont
 	return o
 }
 
-// The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+// The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
 // This may be one of "delete", "compact", or "compactDelete".
 func (o DatabaseKafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
@@ -19187,6 +19685,8 @@ type GetAppSpecFunctionCorsAllowOrigins struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex *string `pulumi:"regex"`
@@ -19207,6 +19707,8 @@ type GetAppSpecFunctionCorsAllowOriginsArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -19295,6 +19797,8 @@ func (o GetAppSpecFunctionCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecFunctionCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -19339,6 +19843,8 @@ func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOut
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecFunctionCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecFunctionCorsAllowOrigins) *string {
 		if v == nil {
@@ -20985,6 +21491,8 @@ type GetAppSpecIngressRuleCorsAllowOrigins struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex *string `pulumi:"regex"`
@@ -21005,6 +21513,8 @@ type GetAppSpecIngressRuleCorsAllowOriginsArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -21093,6 +21603,8 @@ func (o GetAppSpecIngressRuleCorsAllowOriginsOutput) Exact() pulumi.StringPtrOut
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecIngressRuleCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecIngressRuleCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -21137,6 +21649,8 @@ func (o GetAppSpecIngressRuleCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtr
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecIngressRuleCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecIngressRuleCorsAllowOrigins) *string {
 		if v == nil {
@@ -23346,6 +23860,8 @@ func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.String
 type GetAppSpecService struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling *GetAppSpecServiceAutoscaling `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -23402,6 +23918,8 @@ type GetAppSpecServiceInput interface {
 type GetAppSpecServiceArgs struct {
 	// Describes an alert policy for the component.
 	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling GetAppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -23498,6 +24016,11 @@ func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx contex
 // Describes an alert policy for the component.
 func (o GetAppSpecServiceOutput) Alerts() GetAppSpecServiceAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceAlert { return v.Alerts }).(GetAppSpecServiceAlertArrayOutput)
+}
+
+// Configuration for automatically scaling this component based on metrics.
+func (o GetAppSpecServiceOutput) Autoscaling() GetAppSpecServiceAutoscalingPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceAutoscaling { return v.Autoscaling }).(GetAppSpecServiceAutoscalingPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -23750,6 +24273,455 @@ func (o GetAppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecSe
 	}).(GetAppSpecServiceAlertOutput)
 }
 
+type GetAppSpecServiceAutoscaling struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics GetAppSpecServiceAutoscalingMetrics `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// GetAppSpecServiceAutoscalingInput is an input type that accepts GetAppSpecServiceAutoscalingArgs and GetAppSpecServiceAutoscalingOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingInput` via:
+//
+//	GetAppSpecServiceAutoscalingArgs{...}
+type GetAppSpecServiceAutoscalingInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput
+	ToGetAppSpecServiceAutoscalingOutputWithContext(context.Context) GetAppSpecServiceAutoscalingOutput
+}
+
+type GetAppSpecServiceAutoscalingArgs struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics GetAppSpecServiceAutoscalingMetricsInput `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (GetAppSpecServiceAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput {
+	return i.ToGetAppSpecServiceAutoscalingOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingOutput)
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingOutput).ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAutoscalingPtrInput is an input type that accepts GetAppSpecServiceAutoscalingArgs, GetAppSpecServiceAutoscalingPtr and GetAppSpecServiceAutoscalingPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingPtrInput` via:
+//
+//	        GetAppSpecServiceAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput
+	ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingPtrOutput
+}
+
+type getAppSpecServiceAutoscalingPtrType GetAppSpecServiceAutoscalingArgs
+
+func GetAppSpecServiceAutoscalingPtr(v *GetAppSpecServiceAutoscalingArgs) GetAppSpecServiceAutoscalingPtrInput {
+	return (*getAppSpecServiceAutoscalingPtrType)(v)
+}
+
+func (*getAppSpecServiceAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAutoscalingPtrType) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAutoscalingPtrType) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return o.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscaling) *GetAppSpecServiceAutoscaling {
+		return &v
+	}).(GetAppSpecServiceAutoscalingPtrOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o GetAppSpecServiceAutoscalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o GetAppSpecServiceAutoscalingOutput) Metrics() GetAppSpecServiceAutoscalingMetricsOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) GetAppSpecServiceAutoscalingMetrics { return v.Metrics }).(GetAppSpecServiceAutoscalingMetricsOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o GetAppSpecServiceAutoscalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type GetAppSpecServiceAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingPtrOutput) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingPtrOutput) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingPtrOutput) Elem() GetAppSpecServiceAutoscalingOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) GetAppSpecServiceAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAutoscaling
+		return ret
+	}).(GetAppSpecServiceAutoscalingOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o GetAppSpecServiceAutoscalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o GetAppSpecServiceAutoscalingPtrOutput) Metrics() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *GetAppSpecServiceAutoscalingMetrics {
+		if v == nil {
+			return nil
+		}
+		return &v.Metrics
+	}).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o GetAppSpecServiceAutoscalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetrics struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu *GetAppSpecServiceAutoscalingMetricsCpu `pulumi:"cpu"`
+}
+
+// GetAppSpecServiceAutoscalingMetricsInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsArgs and GetAppSpecServiceAutoscalingMetricsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsInput` via:
+//
+//	GetAppSpecServiceAutoscalingMetricsArgs{...}
+type GetAppSpecServiceAutoscalingMetricsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput
+	ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsOutput
+}
+
+type GetAppSpecServiceAutoscalingMetricsArgs struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu GetAppSpecServiceAutoscalingMetricsCpuPtrInput `pulumi:"cpu"`
+}
+
+func (GetAppSpecServiceAutoscalingMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsOutput)
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsOutput).ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAutoscalingMetricsPtrInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsArgs, GetAppSpecServiceAutoscalingMetricsPtr and GetAppSpecServiceAutoscalingMetricsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsPtrInput` via:
+//
+//	        GetAppSpecServiceAutoscalingMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAutoscalingMetricsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput
+	ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput
+}
+
+type getAppSpecServiceAutoscalingMetricsPtrType GetAppSpecServiceAutoscalingMetricsArgs
+
+func GetAppSpecServiceAutoscalingMetricsPtr(v *GetAppSpecServiceAutoscalingMetricsArgs) GetAppSpecServiceAutoscalingMetricsPtrInput {
+	return (*getAppSpecServiceAutoscalingMetricsPtrType)(v)
+}
+
+func (*getAppSpecServiceAutoscalingMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsPtrType) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsPtrType) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetrics {
+		return &v
+	}).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o GetAppSpecServiceAutoscalingMetricsOutput) Cpu() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetricsCpu { return v.Cpu }).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) Elem() GetAppSpecServiceAutoscalingMetricsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetrics) GetAppSpecServiceAutoscalingMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAutoscalingMetrics
+		return ret
+	}).(GetAppSpecServiceAutoscalingMetricsOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) Cpu() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetricsCpu {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpu struct {
+	// The average target CPU utilization for the component.
+	Percent int `pulumi:"percent"`
+}
+
+// GetAppSpecServiceAutoscalingMetricsCpuInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsCpuArgs and GetAppSpecServiceAutoscalingMetricsCpuOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsCpuInput` via:
+//
+//	GetAppSpecServiceAutoscalingMetricsCpuArgs{...}
+type GetAppSpecServiceAutoscalingMetricsCpuInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput
+	ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpuArgs struct {
+	// The average target CPU utilization for the component.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (GetAppSpecServiceAutoscalingMetricsCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuOutput)
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuOutput).ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAutoscalingMetricsCpuPtrInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsCpuArgs, GetAppSpecServiceAutoscalingMetricsCpuPtr and GetAppSpecServiceAutoscalingMetricsCpuPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsCpuPtrInput` via:
+//
+//	        GetAppSpecServiceAutoscalingMetricsCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAutoscalingMetricsCpuPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput
+	ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput
+}
+
+type getAppSpecServiceAutoscalingMetricsCpuPtrType GetAppSpecServiceAutoscalingMetricsCpuArgs
+
+func GetAppSpecServiceAutoscalingMetricsCpuPtr(v *GetAppSpecServiceAutoscalingMetricsCpuArgs) GetAppSpecServiceAutoscalingMetricsCpuPtrInput {
+	return (*getAppSpecServiceAutoscalingMetricsCpuPtrType)(v)
+}
+
+func (*getAppSpecServiceAutoscalingMetricsCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsCpuPtrType) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsCpuPtrType) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpuOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscalingMetricsCpu) *GetAppSpecServiceAutoscalingMetricsCpu {
+		return &v
+	}).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Elem() GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetricsCpu) GetAppSpecServiceAutoscalingMetricsCpu {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAutoscalingMetricsCpu
+		return ret
+	}).(GetAppSpecServiceAutoscalingMetricsCpuOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetricsCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetAppSpecServiceCors struct {
 	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
@@ -23986,6 +24958,8 @@ type GetAppSpecServiceCorsAllowOrigins struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex *string `pulumi:"regex"`
@@ -24006,6 +24980,8 @@ type GetAppSpecServiceCorsAllowOriginsArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -24094,6 +25070,8 @@ func (o GetAppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput 
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -24138,6 +25116,8 @@ func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutp
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
 		if v == nil {
@@ -26494,6 +27474,8 @@ type GetAppSpecStaticSiteCorsAllowOrigins struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix *string `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex *string `pulumi:"regex"`
@@ -26514,6 +27496,8 @@ type GetAppSpecStaticSiteCorsAllowOriginsArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -26602,6 +27586,8 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutp
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecStaticSiteCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSiteCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -26646,6 +27632,8 @@ func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrO
 }
 
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
 func (o GetAppSpecStaticSiteCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecStaticSiteCorsAllowOrigins) *string {
 		if v == nil {
@@ -35961,6 +36949,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceArrayInput)(nil)).Elem(), AppSpecServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertInput)(nil)).Elem(), AppSpecServiceAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertArrayInput)(nil)).Elem(), AppSpecServiceAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingInput)(nil)).Elem(), AppSpecServiceAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingPtrInput)(nil)).Elem(), AppSpecServiceAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsPtrInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsCpuInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsCpuPtrInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsPtrInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), AppSpecServiceCorsAllowOriginsArgs{})
@@ -36178,6 +37172,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertInput)(nil)).Elem(), GetAppSpecServiceAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertArrayInput)(nil)).Elem(), GetAppSpecServiceAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
@@ -36426,6 +37426,12 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAutoscalingOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsCpuOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsCpuPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsAllowOriginsOutput{})
@@ -36643,6 +37649,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsOutput{})

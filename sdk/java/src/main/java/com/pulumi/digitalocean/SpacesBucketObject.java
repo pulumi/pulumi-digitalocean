@@ -391,11 +391,18 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SpacesBucketObject(String name, SpacesBucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, args == null ? SpacesBucketObjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SpacesBucketObject(String name, Output<String> id, @Nullable SpacesBucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SpacesBucketObjectArgs makeArgs(SpacesBucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SpacesBucketObjectArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

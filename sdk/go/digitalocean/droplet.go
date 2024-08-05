@@ -113,7 +113,7 @@ type Droplet struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -230,7 +230,7 @@ type dropletState struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size *string `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -312,7 +312,7 @@ type DropletState struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrInput
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size pulumi.StringPtrInput
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -382,7 +382,7 @@ type dropletArgs struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size string `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -445,7 +445,7 @@ type DropletArgs struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrInput
-	// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 	Size pulumi.StringInput
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
@@ -669,7 +669,7 @@ func (o DropletOutput) ResizeDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.ResizeDisk }).(pulumi.BoolPtrOutput)
 }
 
-// The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
 func (o DropletOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }

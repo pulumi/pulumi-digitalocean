@@ -231,14 +231,14 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      * 
      */
     @Import(name="size", required=true)
     private Output<Either<String,DropletSlug>> size;
 
     /**
-     * @return The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * @return The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
      * 
      */
     public Output<Either<String,DropletSlug>> size() {
@@ -666,7 +666,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+         * @param size The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
          * 
          * @return builder
          * 
@@ -677,7 +677,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+         * @param size The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+         * @param size The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The unique slug that indentifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+         * @param size The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
          * 
          * @return builder
          * 

@@ -199,11 +199,18 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Tag(String name, @Nullable TagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/tag:Tag", name, args == null ? TagArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/tag:Tag", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Tag(String name, Output<String> id, @Nullable TagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/tag:Tag", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TagArgs makeArgs(@Nullable TagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TagArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

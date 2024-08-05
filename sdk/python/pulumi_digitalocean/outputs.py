@@ -54,6 +54,9 @@ __all__ = [
     'AppSpecJobLogDestinationPapertrail',
     'AppSpecService',
     'AppSpecServiceAlert',
+    'AppSpecServiceAutoscaling',
+    'AppSpecServiceAutoscalingMetrics',
+    'AppSpecServiceAutoscalingMetricsCpu',
     'AppSpecServiceCors',
     'AppSpecServiceCorsAllowOrigins',
     'AppSpecServiceEnv',
@@ -165,6 +168,9 @@ __all__ = [
     'GetAppSpecJobLogDestinationPapertrailResult',
     'GetAppSpecServiceResult',
     'GetAppSpecServiceAlertResult',
+    'GetAppSpecServiceAutoscalingResult',
+    'GetAppSpecServiceAutoscalingMetricsResult',
+    'GetAppSpecServiceAutoscalingMetricsCpuResult',
     'GetAppSpecServiceCorsResult',
     'GetAppSpecServiceCorsAllowOriginsResult',
     'GetAppSpecServiceEnvResult',
@@ -537,7 +543,7 @@ class AppSpecDatabase(dict):
         :param str db_user: The name of the MySQL or PostgreSQL user to configure.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
-        :param str engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+        :param str engine: The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
         :param str name: The name of the component.
         :param bool production: Whether this is a production or dev database.
         :param str version: The version of the database engine.
@@ -587,7 +593,7 @@ class AppSpecDatabase(dict):
     @pulumi.getter
     def engine(self) -> Optional[str]:
         """
-        The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+        The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
         """
         return pulumi.get(self, "engine")
 
@@ -1094,6 +1100,7 @@ class AppSpecFunctionCorsAllowOrigins(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         Prefix-based match.
@@ -1789,6 +1796,7 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
@@ -2484,7 +2492,7 @@ class AppSpecJobImage(dict):
         :param str repository: The repository name.
         :param Sequence['AppSpecJobImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        :param str registry_credentials: Access credentials for third-party registries
+        :param str registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -2534,7 +2542,7 @@ class AppSpecJobImage(dict):
     @pulumi.getter(name="registryCredentials")
     def registry_credentials(self) -> Optional[str]:
         """
-        Access credentials for third-party registries
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         """
         return pulumi.get(self, "registry_credentials")
 
@@ -2749,6 +2757,7 @@ class AppSpecService(dict):
     def __init__(__self__, *,
                  name: str,
                  alerts: Optional[Sequence['outputs.AppSpecServiceAlert']] = None,
+                 autoscaling: Optional['outputs.AppSpecServiceAutoscaling'] = None,
                  build_command: Optional[str] = None,
                  cors: Optional['outputs.AppSpecServiceCors'] = None,
                  dockerfile_path: Optional[str] = None,
@@ -2770,6 +2779,7 @@ class AppSpecService(dict):
         """
         :param str name: The name of the component.
         :param Sequence['AppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'AppSpecServiceAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
         :param str build_command: An optional build command to run while building this component from source.
         :param 'AppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -2792,6 +2802,8 @@ class AppSpecService(dict):
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -2844,6 +2856,14 @@ class AppSpecService(dict):
         Describes an alert policy for the component.
         """
         return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional['outputs.AppSpecServiceAutoscaling']:
+        """
+        Configuration for automatically scaling this component based on metrics.
+        """
+        return pulumi.get(self, "autoscaling")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -3056,6 +3076,106 @@ class AppSpecServiceAlert(dict):
 
 
 @pulumi.output_type
+class AppSpecServiceAutoscaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstanceCount":
+            suggest = "max_instance_count"
+        elif key == "minInstanceCount":
+            suggest = "min_instance_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceAutoscaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceAutoscaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceAutoscaling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_instance_count: int,
+                 metrics: 'outputs.AppSpecServiceAutoscalingMetrics',
+                 min_instance_count: int):
+        """
+        :param int max_instance_count: The maximum amount of instances for this component. Must be more than min_instance_count.
+        :param 'AppSpecServiceAutoscalingMetricsArgs' metrics: The metrics that the component is scaled on.
+        :param int min_instance_count: The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> int:
+        """
+        The maximum amount of instances for this component. Must be more than min_instance_count.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> 'outputs.AppSpecServiceAutoscalingMetrics':
+        """
+        The metrics that the component is scaled on.
+        """
+        return pulumi.get(self, "metrics")
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> int:
+        """
+        The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+
+@pulumi.output_type
+class AppSpecServiceAutoscalingMetrics(dict):
+    def __init__(__self__, *,
+                 cpu: Optional['outputs.AppSpecServiceAutoscalingMetricsCpu'] = None):
+        """
+        :param 'AppSpecServiceAutoscalingMetricsCpuArgs' cpu: Settings for scaling the component based on CPU utilization.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional['outputs.AppSpecServiceAutoscalingMetricsCpu']:
+        """
+        Settings for scaling the component based on CPU utilization.
+        """
+        return pulumi.get(self, "cpu")
+
+
+@pulumi.output_type
+class AppSpecServiceAutoscalingMetricsCpu(dict):
+    def __init__(__self__, *,
+                 percent: int):
+        """
+        :param int percent: The average target CPU utilization for the component.
+               
+               A `static_site` can contain:
+        """
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        """
+        The average target CPU utilization for the component.
+
+        A `static_site` can contain:
+        """
+        return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
 class AppSpecServiceCors(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3189,6 +3309,7 @@ class AppSpecServiceCorsAllowOrigins(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         Prefix-based match.
@@ -3580,7 +3701,7 @@ class AppSpecServiceImage(dict):
         :param str repository: The repository name.
         :param Sequence['AppSpecServiceImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        :param str registry_credentials: Access credentials for third-party registries
+        :param str registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -3630,7 +3751,7 @@ class AppSpecServiceImage(dict):
     @pulumi.getter(name="registryCredentials")
     def registry_credentials(self) -> Optional[str]:
         """
-        Access credentials for third-party registries
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         """
         return pulumi.get(self, "registry_credentials")
 
@@ -4204,6 +4325,7 @@ class AppSpecStaticSiteCorsAllowOrigins(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         Prefix-based match.
@@ -5028,7 +5150,7 @@ class AppSpecWorkerImage(dict):
         :param str repository: The repository name.
         :param Sequence['AppSpecWorkerImageDeployOnPushArgs'] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
         :param str registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        :param str registry_credentials: Access credentials for third-party registries
+        :param str registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param str tag: The repository tag. Defaults to `latest` if not provided.
         """
         pulumi.set(__self__, "registry_type", registry_type)
@@ -5078,7 +5200,7 @@ class AppSpecWorkerImage(dict):
     @pulumi.getter(name="registryCredentials")
     def registry_credentials(self) -> Optional[str]:
         """
-        Access credentials for third-party registries
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         """
         return pulumi.get(self, "registry_credentials")
 
@@ -5489,7 +5611,7 @@ class DatabaseKafkaTopicConfig(dict):
                  segment_jitter_ms: Optional[str] = None,
                  segment_ms: Optional[str] = None):
         """
-        :param str cleanup_policy: The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        :param str cleanup_policy: The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
                This may be one of "delete", "compact", or "compact_delete".
         :param str compression_type: The topic compression codecs used for a given topic.
                This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
@@ -5565,7 +5687,7 @@ class DatabaseKafkaTopicConfig(dict):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
         """
-        The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+        The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
         This may be one of "delete", "compact", or "compact_delete".
         """
         return pulumi.get(self, "cleanup_policy")
@@ -7979,13 +8101,13 @@ class GetAppSpecResult(dict):
     def __init__(__self__, *,
                  domain: Sequence['outputs.GetAppSpecDomainResult'],
                  domains: Sequence[str],
+                 features: Sequence[str],
                  ingress: 'outputs.GetAppSpecIngressResult',
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
                  egresses: Optional[Sequence['outputs.GetAppSpecEgressResult']] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
-                 features: Optional[Sequence[str]] = None,
                  functions: Optional[Sequence['outputs.GetAppSpecFunctionResult']] = None,
                  jobs: Optional[Sequence['outputs.GetAppSpecJobResult']] = None,
                  region: Optional[str] = None,
@@ -7993,14 +8115,15 @@ class GetAppSpecResult(dict):
                  static_sites: Optional[Sequence['outputs.GetAppSpecStaticSiteResult']] = None,
                  workers: Optional[Sequence['outputs.GetAppSpecWorkerResult']] = None):
         """
+        :param Sequence[str] features: List of features which is applied to the app
         :param str name: The name of the component.
         :param Sequence['GetAppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['GetAppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param Sequence[str] features: List of features which is applied to the app
         :param str region: The slug for the DigitalOcean data center region hosting the app
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "features", features)
         pulumi.set(__self__, "ingress", ingress)
         pulumi.set(__self__, "name", name)
         if alerts is not None:
@@ -8011,8 +8134,6 @@ class GetAppSpecResult(dict):
             pulumi.set(__self__, "egresses", egresses)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
-        if features is not None:
-            pulumi.set(__self__, "features", features)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if jobs is not None:
@@ -8036,6 +8157,14 @@ class GetAppSpecResult(dict):
     @_utilities.deprecated("""This attribute has been replaced by `domain` which supports additional functionality.""")
     def domains(self) -> Sequence[str]:
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def features(self) -> Sequence[str]:
+        """
+        List of features which is applied to the app
+        """
+        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter
@@ -8075,14 +8204,6 @@ class GetAppSpecResult(dict):
         Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
-
-    @property
-    @pulumi.getter
-    def features(self) -> Optional[Sequence[str]]:
-        """
-        List of features which is applied to the app
-        """
-        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter
@@ -8657,6 +8778,7 @@ class GetAppSpecFunctionCorsAllowOriginsResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
@@ -9195,6 +9317,7 @@ class GetAppSpecIngressRuleCorsAllowOriginsResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
@@ -9955,6 +10078,7 @@ class GetAppSpecServiceResult(dict):
                  routes: Sequence['outputs.GetAppSpecServiceRouteResult'],
                  run_command: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecServiceAlertResult']] = None,
+                 autoscaling: Optional['outputs.GetAppSpecServiceAutoscalingResult'] = None,
                  build_command: Optional[str] = None,
                  cors: Optional['outputs.GetAppSpecServiceCorsResult'] = None,
                  dockerfile_path: Optional[str] = None,
@@ -9975,6 +10099,7 @@ class GetAppSpecServiceResult(dict):
         :param str name: The name of the component.
         :param str run_command: An optional run command to override the component's default.
         :param Sequence['GetAppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'GetAppSpecServiceAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
         :param str build_command: An optional build command to run while building this component from source.
         :param 'GetAppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -9997,6 +10122,8 @@ class GetAppSpecServiceResult(dict):
         pulumi.set(__self__, "run_command", run_command)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -10071,6 +10198,14 @@ class GetAppSpecServiceResult(dict):
         Describes an alert policy for the component.
         """
         return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional['outputs.GetAppSpecServiceAutoscalingResult']:
+        """
+        Configuration for automatically scaling this component based on metrics.
+        """
+        return pulumi.get(self, "autoscaling")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -10250,6 +10385,83 @@ class GetAppSpecServiceAlertResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecServiceAutoscalingResult(dict):
+    def __init__(__self__, *,
+                 max_instance_count: int,
+                 metrics: 'outputs.GetAppSpecServiceAutoscalingMetricsResult',
+                 min_instance_count: int):
+        """
+        :param int max_instance_count: The maximum amount of instances for this component. Must be more than min_instance_count.
+        :param 'GetAppSpecServiceAutoscalingMetricsArgs' metrics: The metrics that the component is scaled on.
+        :param int min_instance_count: The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> int:
+        """
+        The maximum amount of instances for this component. Must be more than min_instance_count.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> 'outputs.GetAppSpecServiceAutoscalingMetricsResult':
+        """
+        The metrics that the component is scaled on.
+        """
+        return pulumi.get(self, "metrics")
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> int:
+        """
+        The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+
+@pulumi.output_type
+class GetAppSpecServiceAutoscalingMetricsResult(dict):
+    def __init__(__self__, *,
+                 cpu: Optional['outputs.GetAppSpecServiceAutoscalingMetricsCpuResult'] = None):
+        """
+        :param 'GetAppSpecServiceAutoscalingMetricsCpuArgs' cpu: Settings for scaling the component based on CPU utilization.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional['outputs.GetAppSpecServiceAutoscalingMetricsCpuResult']:
+        """
+        Settings for scaling the component based on CPU utilization.
+        """
+        return pulumi.get(self, "cpu")
+
+
+@pulumi.output_type
+class GetAppSpecServiceAutoscalingMetricsCpuResult(dict):
+    def __init__(__self__, *,
+                 percent: int):
+        """
+        :param int percent: The average target CPU utilization for the component.
+        """
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        """
+        The average target CPU utilization for the component.
+        """
+        return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
 class GetAppSpecServiceCorsResult(dict):
     def __init__(__self__, *,
                  allow_credentials: Optional[bool] = None,
@@ -10356,6 +10568,7 @@ class GetAppSpecServiceCorsAllowOriginsResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
@@ -11169,6 +11382,7 @@ class GetAppSpecStaticSiteCorsAllowOriginsResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Prefix-based matching has been deprecated in favor of regex-based matching.""")
     def prefix(self) -> Optional[str]:
         """
         The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.

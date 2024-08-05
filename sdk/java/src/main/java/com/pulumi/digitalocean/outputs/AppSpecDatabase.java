@@ -30,7 +30,7 @@ public final class AppSpecDatabase {
      */
     private @Nullable String dbUser;
     /**
-     * @return The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+     * @return The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      * 
      */
     private @Nullable String engine;
@@ -75,7 +75,7 @@ public final class AppSpecDatabase {
         return Optional.ofNullable(this.dbUser);
     }
     /**
-     * @return The database engine to use (`MYSQL`, `PG`, `REDIS`, or `MONGODB`).
+     * @return The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      * 
      */
     public Optional<String> engine() {

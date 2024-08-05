@@ -19,7 +19,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
     public static final DatabaseKafkaTopicConfigArgs Empty = new DatabaseKafkaTopicConfigArgs();
 
     /**
-     * The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
      * 
      */
@@ -27,7 +27,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> cleanupPolicy;
 
     /**
-     * @return The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+     * @return The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
      * 
      */
@@ -406,7 +406,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cleanupPolicy The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+         * @param cleanupPolicy The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
          * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
          * 
          * @return builder
@@ -418,7 +418,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cleanupPolicy The topic cleanup policy that decribes whether messages should be deleted, compacted, or both when retention policies are violated.
+         * @param cleanupPolicy The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
          * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
          * 
          * @return builder

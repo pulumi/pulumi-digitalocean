@@ -22,7 +22,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, network=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -71,6 +71,9 @@ class GetLoadBalancerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -184,6 +187,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def network(self) -> str:
+        return pulumi.get(self, "network")
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         return pulumi.get(self, "project_id")
@@ -256,6 +264,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             ip=self.ip,
             load_balancer_urn=self.load_balancer_urn,
             name=self.name,
+            network=self.network,
             project_id=self.project_id,
             redirect_http_to_https=self.redirect_http_to_https,
             region=self.region,
@@ -327,6 +336,7 @@ def get_load_balancer(id: Optional[str] = None,
         ip=pulumi.get(__ret__, 'ip'),
         load_balancer_urn=pulumi.get(__ret__, 'load_balancer_urn'),
         name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
         project_id=pulumi.get(__ret__, 'project_id'),
         redirect_http_to_https=pulumi.get(__ret__, 'redirect_http_to_https'),
         region=pulumi.get(__ret__, 'region'),

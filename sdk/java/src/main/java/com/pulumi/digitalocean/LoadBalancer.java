@@ -331,6 +331,22 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     * 
+     */
+    @Export(name="network", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> network;
+
+    /**
+     * @return The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
+     * 
+     */
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
+    }
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
      * 
      */
@@ -443,14 +459,16 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.targetLoadBalancerIds;
     }
     /**
-     * the type of the load balancer (GLOBAL or REGIONAL)
+     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return the type of the load balancer (GLOBAL or REGIONAL)
+     * @return The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Output<Optional<String>> type() {
@@ -493,11 +511,18 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LoadBalancer(String name, @Nullable LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/loadBalancer:LoadBalancer", name, args == null ? LoadBalancerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/loadBalancer:LoadBalancer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LoadBalancer(String name, Output<String> id, @Nullable LoadBalancerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/loadBalancer:LoadBalancer", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LoadBalancerArgs makeArgs(@Nullable LoadBalancerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LoadBalancerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

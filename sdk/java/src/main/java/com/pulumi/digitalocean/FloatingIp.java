@@ -159,11 +159,18 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FloatingIp(String name, FloatingIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/floatingIp:FloatingIp", name, args == null ? FloatingIpArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/floatingIp:FloatingIp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FloatingIp(String name, Output<String> id, @Nullable FloatingIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/floatingIp:FloatingIp", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FloatingIpArgs makeArgs(FloatingIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FloatingIpArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

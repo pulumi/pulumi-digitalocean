@@ -267,14 +267,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable/disable surge upgrades for a cluster. Default: false
+     * Enable/disable surge upgrades for a cluster. Default: true
      * 
      */
     @Import(name="surgeUpgrade")
     private @Nullable Output<Boolean> surgeUpgrade;
 
     /**
-     * @return Enable/disable surge upgrades for a cluster. Default: false
+     * @return Enable/disable surge upgrades for a cluster. Default: true
      * 
      */
     public Optional<Output<Boolean>> surgeUpgrade() {
@@ -756,7 +756,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param surgeUpgrade Enable/disable surge upgrades for a cluster. Default: false
+         * @param surgeUpgrade Enable/disable surge upgrades for a cluster. Default: true
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param surgeUpgrade Enable/disable surge upgrades for a cluster. Default: false
+         * @param surgeUpgrade Enable/disable surge upgrades for a cluster. Default: true
          * 
          * @return builder
          * 

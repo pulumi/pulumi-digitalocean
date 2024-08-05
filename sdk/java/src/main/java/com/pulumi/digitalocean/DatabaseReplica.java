@@ -334,11 +334,18 @@ public class DatabaseReplica extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseReplica(String name, DatabaseReplicaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseReplica:DatabaseReplica", name, args == null ? DatabaseReplicaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("digitalocean:index/databaseReplica:DatabaseReplica", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseReplica(String name, Output<String> id, @Nullable DatabaseReplicaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("digitalocean:index/databaseReplica:DatabaseReplica", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseReplicaArgs makeArgs(DatabaseReplicaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseReplicaArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

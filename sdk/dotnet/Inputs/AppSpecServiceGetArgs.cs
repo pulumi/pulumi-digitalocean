@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
+        /// Configuration for automatically scaling this component based on metrics.
+        /// </summary>
+        [Input("autoscaling")]
+        public Input<Inputs.AppSpecServiceAutoscalingGetArgs>? Autoscaling { get; set; }
+
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         [Input("buildCommand")]

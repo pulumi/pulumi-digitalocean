@@ -109,6 +109,7 @@ type LookupLoadBalancerResult struct {
 	Ip                           string                          `pulumi:"ip"`
 	LoadBalancerUrn              string                          `pulumi:"loadBalancerUrn"`
 	Name                         *string                         `pulumi:"name"`
+	Network                      string                          `pulumi:"network"`
 	ProjectId                    string                          `pulumi:"projectId"`
 	RedirectHttpToHttps          bool                            `pulumi:"redirectHttpToHttps"`
 	Region                       string                          `pulumi:"region"`
@@ -224,6 +225,10 @@ func (o LookupLoadBalancerResultOutput) LoadBalancerUrn() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) ProjectId() pulumi.StringOutput {
