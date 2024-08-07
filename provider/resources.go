@@ -596,6 +596,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Version:      version.Version,
+		EnableZeroDefaultSchemaVersion: true,
 	}
 
 	defaults := tfbridgetokens.SingleModule("digitalocean_", digitalOceanMod, tfbridgetokens.MakeStandard(digitalOceanPkg))
