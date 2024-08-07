@@ -594,8 +594,8 @@ func Provider() tfbridge.ProviderInfo {
 				"digitalocean": "DigitalOcean",
 			},
 		},
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Version:      version.Version,
+		MetadataInfo:                   tfbridge.NewProviderMetadata(metadata),
+		Version:                        version.Version,
 		EnableZeroDefaultSchemaVersion: true,
 	}
 
