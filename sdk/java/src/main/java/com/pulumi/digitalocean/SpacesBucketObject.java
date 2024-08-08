@@ -373,7 +373,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SpacesBucketObject(String name) {
+    public SpacesBucketObject(java.lang.String name) {
         this(name, SpacesBucketObjectArgs.Empty);
     }
     /**
@@ -381,7 +381,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SpacesBucketObject(String name, SpacesBucketObjectArgs args) {
+    public SpacesBucketObject(java.lang.String name, SpacesBucketObjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -390,12 +390,12 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SpacesBucketObject(String name, SpacesBucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SpacesBucketObject(java.lang.String name, SpacesBucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SpacesBucketObject(String name, Output<String> id, @Nullable SpacesBucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, state, makeResourceOptions(options, id));
+    private SpacesBucketObject(java.lang.String name, Output<java.lang.String> id, @Nullable SpacesBucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/spacesBucketObject:SpacesBucketObject", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SpacesBucketObjectArgs makeArgs(SpacesBucketObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -405,7 +405,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
         return args == null ? SpacesBucketObjectArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -421,7 +421,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SpacesBucketObject get(String name, Output<String> id, @Nullable SpacesBucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SpacesBucketObject get(java.lang.String name, Output<java.lang.String> id, @Nullable SpacesBucketObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SpacesBucketObject(name, id, state, options);
     }
 }

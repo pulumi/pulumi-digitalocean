@@ -97,7 +97,7 @@ class DatabaseFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database firewall resource allowing you to restrict
@@ -122,14 +122,14 @@ class DatabaseFirewall(pulumi.CustomResource):
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
             rules=[
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.168.1.1",
-                ),
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.0.2.0",
-                ),
+                {
+                    "type": "ip_addr",
+                    "value": "192.168.1.1",
+                },
+                {
+                    "type": "ip_addr",
+                    "value": "192.0.2.0",
+                },
             ])
         ```
 
@@ -153,10 +153,10 @@ class DatabaseFirewall(pulumi.CustomResource):
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="droplet",
-                value=web.id,
-            )])
+            rules=[{
+                "type": "droplet",
+                "value": web.id,
+            }])
         ```
 
         ### Create a new database firewall for a database replica
@@ -180,10 +180,10 @@ class DatabaseFirewall(pulumi.CustomResource):
         # Create firewall rule for database replica
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=replica_example.uuid,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="ip_addr",
-                value="192.168.1.1",
-            )])
+            rules=[{
+                "type": "ip_addr",
+                "value": "192.168.1.1",
+            }])
         ```
 
         ## Import
@@ -199,7 +199,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         ...
     @overload
@@ -230,14 +230,14 @@ class DatabaseFirewall(pulumi.CustomResource):
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
             rules=[
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.168.1.1",
-                ),
-                digitalocean.DatabaseFirewallRuleArgs(
-                    type="ip_addr",
-                    value="192.0.2.0",
-                ),
+                {
+                    "type": "ip_addr",
+                    "value": "192.168.1.1",
+                },
+                {
+                    "type": "ip_addr",
+                    "value": "192.0.2.0",
+                },
             ])
         ```
 
@@ -261,10 +261,10 @@ class DatabaseFirewall(pulumi.CustomResource):
             node_count=1)
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=postgres_example.id,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="droplet",
-                value=web.id,
-            )])
+            rules=[{
+                "type": "droplet",
+                "value": web.id,
+            }])
         ```
 
         ### Create a new database firewall for a database replica
@@ -288,10 +288,10 @@ class DatabaseFirewall(pulumi.CustomResource):
         # Create firewall rule for database replica
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=replica_example.uuid,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="ip_addr",
-                value="192.168.1.1",
-            )])
+            rules=[{
+                "type": "ip_addr",
+                "value": "192.168.1.1",
+            }])
         ```
 
         ## Import
@@ -320,7 +320,7 @@ class DatabaseFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,7 +347,7 @@ class DatabaseFirewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]]] = None) -> 'DatabaseFirewall':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None) -> 'DatabaseFirewall':
         """
         Get an existing DatabaseFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -356,7 +356,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the target database cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseFirewallRuleArgs']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

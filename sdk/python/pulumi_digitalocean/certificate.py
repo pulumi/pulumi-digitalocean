@@ -375,13 +375,13 @@ class Certificate(pulumi.CustomResource):
             name="secure-loadbalancer-1",
             region=digitalocean.Region.NYC3,
             droplet_tag="backend",
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=443,
-                entry_protocol="https",
-                target_port=80,
-                target_protocol="http",
-                certificate_name=cert.name,
-            )])
+            forwarding_rules=[{
+                "entry_port": 443,
+                "entry_protocol": "https",
+                "target_port": 80,
+                "target_protocol": "http",
+                "certificate_name": cert.name,
+            }])
         ```
 
         ## Import
@@ -469,13 +469,13 @@ class Certificate(pulumi.CustomResource):
             name="secure-loadbalancer-1",
             region=digitalocean.Region.NYC3,
             droplet_tag="backend",
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=443,
-                entry_protocol="https",
-                target_port=80,
-                target_protocol="http",
-                certificate_name=cert.name,
-            )])
+            forwarding_rules=[{
+                "entry_port": 443,
+                "entry_protocol": "https",
+                "target_port": 80,
+                "target_protocol": "http",
+                "certificate_name": cert.name,
+            }])
         ```
 
         ## Import

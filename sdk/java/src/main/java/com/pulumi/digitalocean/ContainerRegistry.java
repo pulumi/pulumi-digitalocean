@@ -169,7 +169,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ContainerRegistry(String name) {
+    public ContainerRegistry(java.lang.String name) {
         this(name, ContainerRegistryArgs.Empty);
     }
     /**
@@ -177,7 +177,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ContainerRegistry(String name, ContainerRegistryArgs args) {
+    public ContainerRegistry(java.lang.String name, ContainerRegistryArgs args) {
         this(name, args, null);
     }
     /**
@@ -186,12 +186,12 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ContainerRegistry(String name, ContainerRegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/containerRegistry:ContainerRegistry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ContainerRegistry(java.lang.String name, ContainerRegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/containerRegistry:ContainerRegistry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ContainerRegistry(String name, Output<String> id, @Nullable ContainerRegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/containerRegistry:ContainerRegistry", name, state, makeResourceOptions(options, id));
+    private ContainerRegistry(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerRegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/containerRegistry:ContainerRegistry", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ContainerRegistryArgs makeArgs(ContainerRegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -201,7 +201,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
         return args == null ? ContainerRegistryArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -217,7 +217,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ContainerRegistry get(String name, Output<String> id, @Nullable ContainerRegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ContainerRegistry get(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerRegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ContainerRegistry(name, id, state, options);
     }
 }

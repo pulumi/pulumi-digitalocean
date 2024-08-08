@@ -402,7 +402,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
@@ -419,11 +419,11 @@ class KubernetesNodePool(pulumi.CustomResource):
             name="foo",
             region=digitalocean.Region.NYC1,
             version="1.22.8-do.1",
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                name="front-end-pool",
-                size="s-2vcpu-2gb",
-                node_count=3,
-            ))
+            node_pool={
+                "name": "front-end-pool",
+                "size": "s-2vcpu-2gb",
+                "node_count": 3,
+            })
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,
             name="backend-pool",
@@ -434,11 +434,11 @@ class KubernetesNodePool(pulumi.CustomResource):
                 "service": "backend",
                 "priority": "high",
             },
-            taints=[digitalocean.KubernetesNodePoolTaintArgs(
-                key="workloadKind",
-                value="database",
-                effect="NoSchedule",
-            )])
+            taints=[{
+                "key": "workloadKind",
+                "value": "database",
+                "effect": "NoSchedule",
+            }])
         ```
 
         ### Autoscaling Example
@@ -488,7 +488,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]] taints: A list of taints applied to all nodes in the pool.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
@@ -513,11 +513,11 @@ class KubernetesNodePool(pulumi.CustomResource):
             name="foo",
             region=digitalocean.Region.NYC1,
             version="1.22.8-do.1",
-            node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-                name="front-end-pool",
-                size="s-2vcpu-2gb",
-                node_count=3,
-            ))
+            node_pool={
+                "name": "front-end-pool",
+                "size": "s-2vcpu-2gb",
+                "node_count": 3,
+            })
         bar = digitalocean.KubernetesNodePool("bar",
             cluster_id=foo.id,
             name="backend-pool",
@@ -528,11 +528,11 @@ class KubernetesNodePool(pulumi.CustomResource):
                 "service": "backend",
                 "priority": "high",
             },
-            taints=[digitalocean.KubernetesNodePoolTaintArgs(
-                key="workloadKind",
-                value="database",
-                effect="NoSchedule",
-            )])
+            taints=[{
+                "key": "workloadKind",
+                "value": "database",
+                "effect": "NoSchedule",
+            }])
         ```
 
         ### Autoscaling Example
@@ -595,7 +595,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -639,10 +639,10 @@ class KubernetesNodePool(pulumi.CustomResource):
             min_nodes: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolNodeArgs']]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict']]]]] = None,
             size: Optional[pulumi.Input[Union[str, 'DropletSlug']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]]] = None) -> 'KubernetesNodePool':
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]]] = None) -> 'KubernetesNodePool':
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -658,10 +658,10 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[str] name: A name for the node pool.
         :param pulumi.Input[int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolNodeArgs']]]] nodes: A list of nodes in the pool. Each node exports the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict']]]] nodes: A list of nodes in the pool. Each node exports the following attributes:
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodePoolTaintArgs']]]] taints: A list of taints applied to all nodes in the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]] taints: A list of taints applied to all nodes in the pool.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         """

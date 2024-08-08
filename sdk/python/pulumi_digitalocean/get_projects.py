@@ -77,8 +77,8 @@ class AwaitableGetProjectsResult(GetProjectsResult):
             sorts=self.sorts)
 
 
-def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterArgs']]] = None,
-                 sorts: Optional[Sequence[pulumi.InputType['GetProjectsSortArgs']]] = None,
+def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]] = None,
+                 sorts: Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with
@@ -99,10 +99,10 @@ def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterA
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    staging = digitalocean.get_projects(filters=[digitalocean.GetProjectsFilterArgs(
-        key="environment",
-        values=["Staging"],
-    )])
+    staging = digitalocean.get_projects(filters=[{
+        "key": "environment",
+        "values": ["Staging"],
+    }])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -112,25 +112,25 @@ def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterA
     import pulumi_digitalocean as digitalocean
 
     non_default_production = digitalocean.get_projects(filters=[
-            digitalocean.GetProjectsFilterArgs(
-                key="environment",
-                values=["Production"],
-            ),
-            digitalocean.GetProjectsFilterArgs(
-                key="is_default",
-                values=["false"],
-            ),
+            {
+                "key": "environment",
+                "values": ["Production"],
+            },
+            {
+                "key": "is_default",
+                "values": ["false"],
+            },
         ],
-        sorts=[digitalocean.GetProjectsSortArgs(
-            key="name",
-            direction="asc",
-        )])
+        sorts=[{
+            "key": "name",
+            "direction": "asc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetProjectsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetProjectsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -147,8 +147,8 @@ def get_projects(filters: Optional[Sequence[pulumi.InputType['GetProjectsFilterA
 
 
 @_utilities.lift_output_func(get_projects)
-def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProjectsFilterArgs']]]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProjectsSortArgs']]]]] = None,
+def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]]]] = None,
+                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with
@@ -169,10 +169,10 @@ def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    staging = digitalocean.get_projects(filters=[digitalocean.GetProjectsFilterArgs(
-        key="environment",
-        values=["Staging"],
-    )])
+    staging = digitalocean.get_projects(filters=[{
+        "key": "environment",
+        "values": ["Staging"],
+    }])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -182,25 +182,25 @@ def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi_digitalocean as digitalocean
 
     non_default_production = digitalocean.get_projects(filters=[
-            digitalocean.GetProjectsFilterArgs(
-                key="environment",
-                values=["Production"],
-            ),
-            digitalocean.GetProjectsFilterArgs(
-                key="is_default",
-                values=["false"],
-            ),
+            {
+                "key": "environment",
+                "values": ["Production"],
+            },
+            {
+                "key": "is_default",
+                "values": ["false"],
+            },
         ],
-        sorts=[digitalocean.GetProjectsSortArgs(
-            key="name",
-            direction="asc",
-        )])
+        sorts=[{
+            "key": "name",
+            "direction": "asc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetProjectsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetProjectsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...
