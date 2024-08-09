@@ -1737,10 +1737,10 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
                  pg_partman_bgw_interval: Optional[pulumi.Input[int]] = None,
                  pg_partman_bgw_role: Optional[pulumi.Input[str]] = None,
                  pg_stat_statements_track: Optional[pulumi.Input[str]] = None,
-                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigPgbouncerArgs']]]]] = None,
+                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
                  shared_buffers_percentage: Optional[pulumi.Input[float]] = None,
                  temp_file_limit: Optional[pulumi.Input[int]] = None,
-                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigTimescaledbArgs']]]]] = None,
+                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  track_activity_query_size: Optional[pulumi.Input[int]] = None,
                  track_commit_timestamp: Optional[pulumi.Input[str]] = None,
@@ -1827,10 +1827,10 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
         :param pulumi.Input[int] pg_partman_bgw_interval: Sets the time interval to run pg_partman's scheduled tasks.
         :param pulumi.Input[str] pg_partman_bgw_role: Controls which role to use for pg_partman's scheduled background tasks. Must consist of alpha-numeric characters, dots, underscores, or dashes. May not start with dash or dot. Maximum of 64 characters.
         :param pulumi.Input[str] pg_stat_statements_track: Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigPgbouncerArgs']]]] pgbouncers: PGBouncer connection pooling settings
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]] pgbouncers: PGBouncer connection pooling settings
         :param pulumi.Input[float] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         :param pulumi.Input[int] temp_file_limit: PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigTimescaledbArgs']]]] timescaledbs: TimescaleDB extension configuration values
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]] timescaledbs: TimescaleDB extension configuration values
         :param pulumi.Input[str] timezone: PostgreSQL service timezone
         :param pulumi.Input[int] track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
         :param pulumi.Input[str] track_commit_timestamp: Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
@@ -1936,10 +1936,10 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
                  pg_partman_bgw_interval: Optional[pulumi.Input[int]] = None,
                  pg_partman_bgw_role: Optional[pulumi.Input[str]] = None,
                  pg_stat_statements_track: Optional[pulumi.Input[str]] = None,
-                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigPgbouncerArgs']]]]] = None,
+                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
                  shared_buffers_percentage: Optional[pulumi.Input[float]] = None,
                  temp_file_limit: Optional[pulumi.Input[int]] = None,
-                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigTimescaledbArgs']]]]] = None,
+                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  track_activity_query_size: Optional[pulumi.Input[int]] = None,
                  track_commit_timestamp: Optional[pulumi.Input[str]] = None,
@@ -2061,10 +2061,10 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
             pg_partman_bgw_interval: Optional[pulumi.Input[int]] = None,
             pg_partman_bgw_role: Optional[pulumi.Input[str]] = None,
             pg_stat_statements_track: Optional[pulumi.Input[str]] = None,
-            pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigPgbouncerArgs']]]]] = None,
+            pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
             shared_buffers_percentage: Optional[pulumi.Input[float]] = None,
             temp_file_limit: Optional[pulumi.Input[int]] = None,
-            timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigTimescaledbArgs']]]]] = None,
+            timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             track_activity_query_size: Optional[pulumi.Input[int]] = None,
             track_commit_timestamp: Optional[pulumi.Input[str]] = None,
@@ -2120,10 +2120,10 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
         :param pulumi.Input[int] pg_partman_bgw_interval: Sets the time interval to run pg_partman's scheduled tasks.
         :param pulumi.Input[str] pg_partman_bgw_role: Controls which role to use for pg_partman's scheduled background tasks. Must consist of alpha-numeric characters, dots, underscores, or dashes. May not start with dash or dot. Maximum of 64 characters.
         :param pulumi.Input[str] pg_stat_statements_track: Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigPgbouncerArgs']]]] pgbouncers: PGBouncer connection pooling settings
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]] pgbouncers: PGBouncer connection pooling settings
         :param pulumi.Input[float] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         :param pulumi.Input[int] temp_file_limit: PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabasePostgresqlConfigTimescaledbArgs']]]] timescaledbs: TimescaleDB extension configuration values
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]] timescaledbs: TimescaleDB extension configuration values
         :param pulumi.Input[str] timezone: PostgreSQL service timezone
         :param pulumi.Input[int] track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
         :param pulumi.Input[str] track_commit_timestamp: Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.

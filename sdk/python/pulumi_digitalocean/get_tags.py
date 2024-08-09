@@ -73,8 +73,8 @@ class AwaitableGetTagsResult(GetTagsResult):
             tags=self.tags)
 
 
-def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] = None,
-             sorts: Optional[Sequence[pulumi.InputType['GetTagsSortArgs']]] = None,
+def get_tags(filters: Optional[Sequence[Union['GetTagsFilterArgs', 'GetTagsFilterArgsDict']]] = None,
+             sorts: Optional[Sequence[Union['GetTagsSortArgs', 'GetTagsSortArgsDict']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsResult:
     """
     Returns a list of tags in your DigitalOcean account, with the ability to
@@ -87,17 +87,17 @@ def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] 
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    list = digitalocean.get_tags(sorts=[digitalocean.GetTagsSortArgs(
-        key="total_resource_count",
-        direction="asc",
-    )])
+    list = digitalocean.get_tags(sorts=[{
+        "key": "total_resource_count",
+        "direction": "asc",
+    }])
     pulumi.export("sortedTags", list.tags)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetTagsFilterArgs', 'GetTagsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetTagsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetTagsSortArgs', 'GetTagsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -114,8 +114,8 @@ def get_tags(filters: Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]] 
 
 
 @_utilities.lift_output_func(get_tags)
-def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTagsFilterArgs']]]]] = None,
-                    sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTagsSortArgs']]]]] = None,
+def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetTagsFilterArgs', 'GetTagsFilterArgsDict']]]]] = None,
+                    sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetTagsSortArgs', 'GetTagsSortArgsDict']]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagsResult]:
     """
     Returns a list of tags in your DigitalOcean account, with the ability to
@@ -128,17 +128,17 @@ def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    list = digitalocean.get_tags(sorts=[digitalocean.GetTagsSortArgs(
-        key="total_resource_count",
-        direction="asc",
-    )])
+    list = digitalocean.get_tags(sorts=[{
+        "key": "total_resource_count",
+        "direction": "asc",
+    }])
     pulumi.export("sortedTags", list.tags)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetTagsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetTagsFilterArgs', 'GetTagsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetTagsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetTagsSortArgs', 'GetTagsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...

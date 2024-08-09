@@ -214,7 +214,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseKafkaTopicConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partition_count: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -242,31 +242,31 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             name="topic-01",
             partition_count=3,
             replication_factor=2,
-            configs=[digitalocean.DatabaseKafkaTopicConfigArgs(
-                cleanup_policy="compact",
-                compression_type="uncompressed",
-                delete_retention_ms="14000",
-                file_delete_delay_ms="170000",
-                flush_messages="92233",
-                flush_ms="92233720368",
-                index_interval_bytes="40962",
-                max_compaction_lag_ms="9223372036854775807",
-                max_message_bytes="1048588",
-                message_down_conversion_enable=True,
-                message_format_version="3.0-IV1",
-                message_timestamp_difference_max_ms="9223372036854775807",
-                message_timestamp_type="log_append_time",
-                min_cleanable_dirty_ratio=0.5,
-                min_compaction_lag_ms="20000",
-                min_insync_replicas=2,
-                preallocate=False,
-                retention_bytes="-1",
-                retention_ms="-1",
-                segment_bytes="209715200",
-                segment_index_bytes="10485760",
-                segment_jitter_ms="0",
-                segment_ms="604800000",
-            )])
+            configs=[{
+                "cleanup_policy": "compact",
+                "compression_type": "uncompressed",
+                "delete_retention_ms": "14000",
+                "file_delete_delay_ms": "170000",
+                "flush_messages": "92233",
+                "flush_ms": "92233720368",
+                "index_interval_bytes": "40962",
+                "max_compaction_lag_ms": "9223372036854775807",
+                "max_message_bytes": "1048588",
+                "message_down_conversion_enable": True,
+                "message_format_version": "3.0-IV1",
+                "message_timestamp_difference_max_ms": "9223372036854775807",
+                "message_timestamp_type": "log_append_time",
+                "min_cleanable_dirty_ratio": 0.5,
+                "min_compaction_lag_ms": "20000",
+                "min_insync_replicas": 2,
+                "preallocate": False,
+                "retention_bytes": "-1",
+                "retention_ms": "-1",
+                "segment_bytes": "209715200",
+                "segment_index_bytes": "10485760",
+                "segment_jitter_ms": "0",
+                "segment_ms": "604800000",
+            }])
         ```
 
         ## Import
@@ -280,7 +280,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseKafkaTopicConfigArgs']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
                The `config` block is documented below.
         :param pulumi.Input[str] name: The name for the topic.
         :param pulumi.Input[int] partition_count: The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
@@ -315,31 +315,31 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             name="topic-01",
             partition_count=3,
             replication_factor=2,
-            configs=[digitalocean.DatabaseKafkaTopicConfigArgs(
-                cleanup_policy="compact",
-                compression_type="uncompressed",
-                delete_retention_ms="14000",
-                file_delete_delay_ms="170000",
-                flush_messages="92233",
-                flush_ms="92233720368",
-                index_interval_bytes="40962",
-                max_compaction_lag_ms="9223372036854775807",
-                max_message_bytes="1048588",
-                message_down_conversion_enable=True,
-                message_format_version="3.0-IV1",
-                message_timestamp_difference_max_ms="9223372036854775807",
-                message_timestamp_type="log_append_time",
-                min_cleanable_dirty_ratio=0.5,
-                min_compaction_lag_ms="20000",
-                min_insync_replicas=2,
-                preallocate=False,
-                retention_bytes="-1",
-                retention_ms="-1",
-                segment_bytes="209715200",
-                segment_index_bytes="10485760",
-                segment_jitter_ms="0",
-                segment_ms="604800000",
-            )])
+            configs=[{
+                "cleanup_policy": "compact",
+                "compression_type": "uncompressed",
+                "delete_retention_ms": "14000",
+                "file_delete_delay_ms": "170000",
+                "flush_messages": "92233",
+                "flush_ms": "92233720368",
+                "index_interval_bytes": "40962",
+                "max_compaction_lag_ms": "9223372036854775807",
+                "max_message_bytes": "1048588",
+                "message_down_conversion_enable": True,
+                "message_format_version": "3.0-IV1",
+                "message_timestamp_difference_max_ms": "9223372036854775807",
+                "message_timestamp_type": "log_append_time",
+                "min_cleanable_dirty_ratio": 0.5,
+                "min_compaction_lag_ms": "20000",
+                "min_insync_replicas": 2,
+                "preallocate": False,
+                "retention_bytes": "-1",
+                "retention_ms": "-1",
+                "segment_bytes": "209715200",
+                "segment_index_bytes": "10485760",
+                "segment_jitter_ms": "0",
+                "segment_ms": "604800000",
+            }])
         ```
 
         ## Import
@@ -366,7 +366,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseKafkaTopicConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partition_count: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -398,7 +398,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseKafkaTopicConfigArgs']]]]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             partition_count: Optional[pulumi.Input[int]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
@@ -411,7 +411,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseKafkaTopicConfigArgs']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
                The `config` block is documented below.
         :param pulumi.Input[str] name: The name for the topic.
         :param pulumi.Input[int] partition_count: The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.

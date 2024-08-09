@@ -171,7 +171,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DropletSnapshot(String name) {
+    public DropletSnapshot(java.lang.String name) {
         this(name, DropletSnapshotArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DropletSnapshot(String name, DropletSnapshotArgs args) {
+    public DropletSnapshot(java.lang.String name, DropletSnapshotArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,12 +188,12 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DropletSnapshot(String name, DropletSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/dropletSnapshot:DropletSnapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DropletSnapshot(java.lang.String name, DropletSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/dropletSnapshot:DropletSnapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DropletSnapshot(String name, Output<String> id, @Nullable DropletSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/dropletSnapshot:DropletSnapshot", name, state, makeResourceOptions(options, id));
+    private DropletSnapshot(java.lang.String name, Output<java.lang.String> id, @Nullable DropletSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/dropletSnapshot:DropletSnapshot", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DropletSnapshotArgs makeArgs(DropletSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -203,7 +203,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
         return args == null ? DropletSnapshotArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +219,7 @@ public class DropletSnapshot extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DropletSnapshot get(String name, Output<String> id, @Nullable DropletSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DropletSnapshot get(java.lang.String name, Output<java.lang.String> id, @Nullable DropletSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DropletSnapshot(name, id, state, options);
     }
 }

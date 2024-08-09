@@ -206,9 +206,9 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
         example_secret = kubernetes.core.v1.Secret("example",
-            metadata=kubernetes.meta.v1.ObjectMetaArgs(
-                name="docker-cfg",
-            ),
+            metadata={
+                "name": "docker-cfg",
+            },
             data={
                 ".dockerconfigjson": example_container_registry_docker_credentials.docker_credentials,
             },
@@ -270,9 +270,9 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
         example_secret = kubernetes.core.v1.Secret("example",
-            metadata=kubernetes.meta.v1.ObjectMetaArgs(
-                name="docker-cfg",
-            ),
+            metadata={
+                "name": "docker-cfg",
+            },
             data={
                 ".dockerconfigjson": example_container_registry_docker_credentials.docker_credentials,
             },

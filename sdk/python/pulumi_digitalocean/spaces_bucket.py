@@ -316,12 +316,12 @@ class SpacesBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
-                 versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None,
+                 versioning: Optional[pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None,
                  __props__=None):
         """
         Provides a bucket resource for Spaces, DigitalOcean's object storage product.
@@ -370,22 +370,22 @@ class SpacesBucket(pulumi.CustomResource):
             name="foobar",
             region=digitalocean.Region.NYC3,
             cors_rules=[
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=["GET"],
-                    allowed_origins=["*"],
-                    max_age_seconds=3000,
-                ),
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=[
+                {
+                    "allowed_headers": ["*"],
+                    "allowed_methods": ["GET"],
+                    "allowed_origins": ["*"],
+                    "max_age_seconds": 3000,
+                },
+                {
+                    "allowed_headers": ["*"],
+                    "allowed_methods": [
                         "PUT",
                         "POST",
                         "DELETE",
                     ],
-                    allowed_origins=["https://www.example.com"],
-                    max_age_seconds=3000,
-                ),
+                    "allowed_origins": ["https://www.example.com"],
+                    "max_age_seconds": 3000,
+                },
             ])
         ```
 
@@ -400,12 +400,12 @@ class SpacesBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
-        :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
+        :param pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']] versioning: A state of versioning (documented below)
         """
         ...
     @overload
@@ -460,22 +460,22 @@ class SpacesBucket(pulumi.CustomResource):
             name="foobar",
             region=digitalocean.Region.NYC3,
             cors_rules=[
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=["GET"],
-                    allowed_origins=["*"],
-                    max_age_seconds=3000,
-                ),
-                digitalocean.SpacesBucketCorsRuleArgs(
-                    allowed_headers=["*"],
-                    allowed_methods=[
+                {
+                    "allowed_headers": ["*"],
+                    "allowed_methods": ["GET"],
+                    "allowed_origins": ["*"],
+                    "max_age_seconds": 3000,
+                },
+                {
+                    "allowed_headers": ["*"],
+                    "allowed_methods": [
                         "PUT",
                         "POST",
                         "DELETE",
                     ],
-                    allowed_origins=["https://www.example.com"],
-                    max_age_seconds=3000,
-                ),
+                    "allowed_origins": ["https://www.example.com"],
+                    "max_age_seconds": 3000,
+                },
             ])
         ```
 
@@ -503,12 +503,12 @@ class SpacesBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
-                 versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None,
+                 versioning: Optional[pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -541,13 +541,13 @@ class SpacesBucket(pulumi.CustomResource):
             acl: Optional[pulumi.Input[str]] = None,
             bucket_domain_name: Optional[pulumi.Input[str]] = None,
             bucket_urn: Optional[pulumi.Input[str]] = None,
-            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]]] = None,
+            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
-            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]]] = None,
+            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
-            versioning: Optional[pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']]] = None) -> 'SpacesBucket':
+            versioning: Optional[pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None) -> 'SpacesBucket':
         """
         Get an existing SpacesBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -558,13 +558,13 @@ class SpacesBucket(pulumi.CustomResource):
         :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketCorsRuleArgs']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[str] endpoint: The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpacesBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
         :param pulumi.Input[str] name: The name of the bucket
         :param pulumi.Input[Union[str, 'Region']] region: The region where the bucket resides (Defaults to `nyc3`)
-        :param pulumi.Input[pulumi.InputType['SpacesBucketVersioningArgs']] versioning: A state of versioning (documented below)
+        :param pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']] versioning: A state of versioning (documented below)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

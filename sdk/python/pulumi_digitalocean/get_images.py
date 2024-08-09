@@ -76,8 +76,8 @@ class AwaitableGetImagesResult(GetImagesResult):
             sorts=self.sorts)
 
 
-def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]] = None,
-               sorts: Optional[Sequence[pulumi.InputType['GetImagesSortArgs']]] = None,
+def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]] = None,
+               sorts: Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
@@ -100,10 +100,10 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    ubuntu = digitalocean.get_images(filters=[digitalocean.GetImagesFilterArgs(
-        key="distribution",
-        values=["Ubuntu"],
-    )])
+    ubuntu = digitalocean.get_images(filters=[{
+        "key": "distribution",
+        "values": ["Ubuntu"],
+    }])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -113,25 +113,25 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
     import pulumi_digitalocean as digitalocean
 
     available = digitalocean.get_images(filters=[
-            digitalocean.GetImagesFilterArgs(
-                key="distribution",
-                values=["Ubuntu"],
-            ),
-            digitalocean.GetImagesFilterArgs(
-                key="regions",
-                values=["nyc3"],
-            ),
+            {
+                "key": "distribution",
+                "values": ["Ubuntu"],
+            },
+            {
+                "key": "regions",
+                "values": ["nyc3"],
+            },
         ],
-        sorts=[digitalocean.GetImagesSortArgs(
-            key="created",
-            direction="desc",
-        )])
+        sorts=[{
+            "key": "created",
+            "direction": "desc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetImagesSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -148,8 +148,8 @@ def get_images(filters: Optional[Sequence[pulumi.InputType['GetImagesFilterArgs'
 
 
 @_utilities.lift_output_func(get_images)
-def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImagesFilterArgs']]]]] = None,
-                      sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImagesSortArgs']]]]] = None,
+def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
+                      sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
@@ -172,10 +172,10 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    ubuntu = digitalocean.get_images(filters=[digitalocean.GetImagesFilterArgs(
-        key="distribution",
-        values=["Ubuntu"],
-    )])
+    ubuntu = digitalocean.get_images(filters=[{
+        "key": "distribution",
+        "values": ["Ubuntu"],
+    }])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -185,25 +185,25 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
     import pulumi_digitalocean as digitalocean
 
     available = digitalocean.get_images(filters=[
-            digitalocean.GetImagesFilterArgs(
-                key="distribution",
-                values=["Ubuntu"],
-            ),
-            digitalocean.GetImagesFilterArgs(
-                key="regions",
-                values=["nyc3"],
-            ),
+            {
+                "key": "distribution",
+                "values": ["Ubuntu"],
+            },
+            {
+                "key": "regions",
+                "values": ["nyc3"],
+            },
         ],
-        sorts=[digitalocean.GetImagesSortArgs(
-            key="created",
-            direction="desc",
-        )])
+        sorts=[{
+            "key": "created",
+            "direction": "desc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetImagesSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...

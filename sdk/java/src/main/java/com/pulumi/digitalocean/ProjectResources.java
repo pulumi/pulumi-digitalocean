@@ -123,7 +123,7 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectResources(String name) {
+    public ProjectResources(java.lang.String name) {
         this(name, ProjectResourcesArgs.Empty);
     }
     /**
@@ -131,7 +131,7 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectResources(String name, ProjectResourcesArgs args) {
+    public ProjectResources(java.lang.String name, ProjectResourcesArgs args) {
         this(name, args, null);
     }
     /**
@@ -140,12 +140,12 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectResources(String name, ProjectResourcesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/projectResources:ProjectResources", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ProjectResources(java.lang.String name, ProjectResourcesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/projectResources:ProjectResources", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectResources(String name, Output<String> id, @Nullable ProjectResourcesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/projectResources:ProjectResources", name, state, makeResourceOptions(options, id));
+    private ProjectResources(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectResourcesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/projectResources:ProjectResources", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ProjectResourcesArgs makeArgs(ProjectResourcesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -155,7 +155,7 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
         return args == null ? ProjectResourcesArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -171,7 +171,7 @@ public class ProjectResources extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectResources get(String name, Output<String> id, @Nullable ProjectResourcesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectResources get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectResourcesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectResources(name, id, state, options);
     }
 }

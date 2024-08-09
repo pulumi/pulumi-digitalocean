@@ -76,8 +76,8 @@ class AwaitableGetDropletsResult(GetDropletsResult):
             sorts=self.sorts)
 
 
-def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterArgs']]] = None,
-                 sorts: Optional[Sequence[pulumi.InputType['GetDropletsSortArgs']]] = None,
+def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]] = None,
+                 sorts: Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletsResult:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -99,10 +99,10 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    small = digitalocean.get_droplets(filters=[digitalocean.GetDropletsFilterArgs(
-        key="size",
-        values=["s-1vcpu-1gb"],
-    )])
+    small = digitalocean.get_droplets(filters=[{
+        "key": "size",
+        "values": ["s-1vcpu-1gb"],
+    }])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -112,25 +112,25 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
     import pulumi_digitalocean as digitalocean
 
     small_with_backups = digitalocean.get_droplets(filters=[
-            digitalocean.GetDropletsFilterArgs(
-                key="size",
-                values=["s-1vcpu-1gb"],
-            ),
-            digitalocean.GetDropletsFilterArgs(
-                key="backups",
-                values=["true"],
-            ),
+            {
+                "key": "size",
+                "values": ["s-1vcpu-1gb"],
+            },
+            {
+                "key": "backups",
+                "values": ["true"],
+            },
         ],
-        sorts=[digitalocean.GetDropletsSortArgs(
-            key="created_at",
-            direction="desc",
-        )])
+        sorts=[{
+            "key": "created_at",
+            "direction": "desc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetDropletsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -147,8 +147,8 @@ def get_droplets(filters: Optional[Sequence[pulumi.InputType['GetDropletsFilterA
 
 
 @_utilities.lift_output_func(get_droplets)
-def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDropletsFilterArgs']]]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDropletsSortArgs']]]]] = None,
+def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
+                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletsResult]:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -170,10 +170,10 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    small = digitalocean.get_droplets(filters=[digitalocean.GetDropletsFilterArgs(
-        key="size",
-        values=["s-1vcpu-1gb"],
-    )])
+    small = digitalocean.get_droplets(filters=[{
+        "key": "size",
+        "values": ["s-1vcpu-1gb"],
+    }])
     ```
 
     You can filter on multiple fields and sort the results as well:
@@ -183,25 +183,25 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi_digitalocean as digitalocean
 
     small_with_backups = digitalocean.get_droplets(filters=[
-            digitalocean.GetDropletsFilterArgs(
-                key="size",
-                values=["s-1vcpu-1gb"],
-            ),
-            digitalocean.GetDropletsFilterArgs(
-                key="backups",
-                values=["true"],
-            ),
+            {
+                "key": "size",
+                "values": ["s-1vcpu-1gb"],
+            },
+            {
+                "key": "backups",
+                "values": ["true"],
+            },
         ],
-        sorts=[digitalocean.GetDropletsSortArgs(
-            key="created_at",
-            direction="desc",
-        )])
+        sorts=[{
+            "key": "created_at",
+            "direction": "desc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetDropletsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetDropletsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...

@@ -216,7 +216,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MonitorAlert(String name) {
+    public MonitorAlert(java.lang.String name) {
         this(name, MonitorAlertArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MonitorAlert(String name, MonitorAlertArgs args) {
+    public MonitorAlert(java.lang.String name, MonitorAlertArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,12 +233,12 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MonitorAlert(String name, MonitorAlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/monitorAlert:MonitorAlert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MonitorAlert(java.lang.String name, MonitorAlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/monitorAlert:MonitorAlert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MonitorAlert(String name, Output<String> id, @Nullable MonitorAlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/monitorAlert:MonitorAlert", name, state, makeResourceOptions(options, id));
+    private MonitorAlert(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorAlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/monitorAlert:MonitorAlert", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MonitorAlertArgs makeArgs(MonitorAlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -248,7 +248,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
         return args == null ? MonitorAlertArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -264,7 +264,7 @@ public class MonitorAlert extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MonitorAlert get(String name, Output<String> id, @Nullable MonitorAlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MonitorAlert get(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorAlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MonitorAlert(name, id, state, options);
     }
 }

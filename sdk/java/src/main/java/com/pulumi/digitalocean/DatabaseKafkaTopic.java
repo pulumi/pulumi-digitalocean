@@ -128,7 +128,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseKafkaTopic(String name) {
+    public DatabaseKafkaTopic(java.lang.String name) {
         this(name, DatabaseKafkaTopicArgs.Empty);
     }
     /**
@@ -136,7 +136,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseKafkaTopic(String name, DatabaseKafkaTopicArgs args) {
+    public DatabaseKafkaTopic(java.lang.String name, DatabaseKafkaTopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -145,12 +145,12 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseKafkaTopic(String name, DatabaseKafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabaseKafkaTopic(java.lang.String name, DatabaseKafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabaseKafkaTopic(String name, Output<String> id, @Nullable DatabaseKafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic", name, state, makeResourceOptions(options, id));
+    private DatabaseKafkaTopic(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseKafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabaseKafkaTopicArgs makeArgs(DatabaseKafkaTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -160,7 +160,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
         return args == null ? DatabaseKafkaTopicArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -176,7 +176,7 @@ public class DatabaseKafkaTopic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseKafkaTopic get(String name, Output<String> id, @Nullable DatabaseKafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabaseKafkaTopic get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseKafkaTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabaseKafkaTopic(name, id, state, options);
     }
 }

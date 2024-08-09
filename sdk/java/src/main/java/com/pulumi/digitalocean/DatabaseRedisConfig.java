@@ -254,7 +254,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseRedisConfig(String name) {
+    public DatabaseRedisConfig(java.lang.String name) {
         this(name, DatabaseRedisConfigArgs.Empty);
     }
     /**
@@ -262,7 +262,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseRedisConfig(String name, DatabaseRedisConfigArgs args) {
+    public DatabaseRedisConfig(java.lang.String name, DatabaseRedisConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -271,12 +271,12 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseRedisConfig(String name, DatabaseRedisConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabaseRedisConfig(java.lang.String name, DatabaseRedisConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabaseRedisConfig(String name, Output<String> id, @Nullable DatabaseRedisConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, state, makeResourceOptions(options, id));
+    private DatabaseRedisConfig(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseRedisConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabaseRedisConfigArgs makeArgs(DatabaseRedisConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -286,7 +286,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
         return args == null ? DatabaseRedisConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -302,7 +302,7 @@ public class DatabaseRedisConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseRedisConfig get(String name, Output<String> id, @Nullable DatabaseRedisConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabaseRedisConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseRedisConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabaseRedisConfig(name, id, state, options);
     }
 }

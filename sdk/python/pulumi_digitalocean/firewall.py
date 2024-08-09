@@ -265,9 +265,9 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
+                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -289,62 +289,62 @@ class Firewall(pulumi.CustomResource):
             name="only-22-80-and-443",
             droplet_ids=[web.id],
             inbound_rules=[
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="tcp",
-                    port_range="22",
-                    source_addresses=[
+                {
+                    "protocol": "tcp",
+                    "port_range": "22",
+                    "source_addresses": [
                         "192.168.1.0/24",
                         "2002:1:2::/48",
                     ],
-                ),
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="tcp",
-                    port_range="80",
-                    source_addresses=[
+                },
+                {
+                    "protocol": "tcp",
+                    "port_range": "80",
+                    "source_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="tcp",
-                    port_range="443",
-                    source_addresses=[
+                },
+                {
+                    "protocol": "tcp",
+                    "port_range": "443",
+                    "source_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="icmp",
-                    source_addresses=[
+                },
+                {
+                    "protocol": "icmp",
+                    "source_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
+                },
             ],
             outbound_rules=[
-                digitalocean.FirewallOutboundRuleArgs(
-                    protocol="tcp",
-                    port_range="53",
-                    destination_addresses=[
+                {
+                    "protocol": "tcp",
+                    "port_range": "53",
+                    "destination_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallOutboundRuleArgs(
-                    protocol="udp",
-                    port_range="53",
-                    destination_addresses=[
+                },
+                {
+                    "protocol": "udp",
+                    "port_range": "53",
+                    "destination_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallOutboundRuleArgs(
-                    protocol="icmp",
-                    destination_addresses=[
+                },
+                {
+                    "protocol": "icmp",
+                    "destination_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -360,10 +360,10 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]] inbound_rules: The inbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]] outbound_rules: The outbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
         """
@@ -392,62 +392,62 @@ class Firewall(pulumi.CustomResource):
             name="only-22-80-and-443",
             droplet_ids=[web.id],
             inbound_rules=[
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="tcp",
-                    port_range="22",
-                    source_addresses=[
+                {
+                    "protocol": "tcp",
+                    "port_range": "22",
+                    "source_addresses": [
                         "192.168.1.0/24",
                         "2002:1:2::/48",
                     ],
-                ),
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="tcp",
-                    port_range="80",
-                    source_addresses=[
+                },
+                {
+                    "protocol": "tcp",
+                    "port_range": "80",
+                    "source_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="tcp",
-                    port_range="443",
-                    source_addresses=[
+                },
+                {
+                    "protocol": "tcp",
+                    "port_range": "443",
+                    "source_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallInboundRuleArgs(
-                    protocol="icmp",
-                    source_addresses=[
+                },
+                {
+                    "protocol": "icmp",
+                    "source_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
+                },
             ],
             outbound_rules=[
-                digitalocean.FirewallOutboundRuleArgs(
-                    protocol="tcp",
-                    port_range="53",
-                    destination_addresses=[
+                {
+                    "protocol": "tcp",
+                    "port_range": "53",
+                    "destination_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallOutboundRuleArgs(
-                    protocol="udp",
-                    port_range="53",
-                    destination_addresses=[
+                },
+                {
+                    "protocol": "udp",
+                    "port_range": "53",
+                    "destination_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
-                digitalocean.FirewallOutboundRuleArgs(
-                    protocol="icmp",
-                    destination_addresses=[
+                },
+                {
+                    "protocol": "icmp",
+                    "destination_addresses": [
                         "0.0.0.0/0",
                         "::/0",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -475,9 +475,9 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
+                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
+                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -508,10 +508,10 @@ class Firewall(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-            inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]]] = None,
+            inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]]] = None,
-            pending_changes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPendingChangeArgs']]]]] = None,
+            outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
+            pending_changes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Firewall':
         """
@@ -525,12 +525,12 @@ class Firewall(pulumi.CustomResource):
                that represents when the Firewall was created.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallInboundRuleArgs']]]] inbound_rules: The inbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallOutboundRuleArgs']]]] outbound_rules: The outbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPendingChangeArgs']]]] pending_changes: An list of object containing the fields, "droplet_id",
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict']]]] pending_changes: An list of object containing the fields, "droplet_id",
                "removing", and "status".  It is provided to detail exactly which Droplets
                are having their security policies updated.  When empty, all changes
                have been successfully applied.

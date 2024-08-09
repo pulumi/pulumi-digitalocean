@@ -25,7 +25,7 @@ import java.util.StringJoiner;
         }
 
         @Override
-        public String toString() {
+        public java.lang.String toString() {
             return new StringJoiner(", ", "Algorithm[", "]")
                 .add("value='" + this.value + "'")
                 .toString();

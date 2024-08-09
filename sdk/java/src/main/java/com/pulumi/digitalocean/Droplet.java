@@ -503,7 +503,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Droplet(String name) {
+    public Droplet(java.lang.String name) {
         this(name, DropletArgs.Empty);
     }
     /**
@@ -511,7 +511,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Droplet(String name, DropletArgs args) {
+    public Droplet(java.lang.String name, DropletArgs args) {
         this(name, args, null);
     }
     /**
@@ -520,12 +520,12 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Droplet(String name, DropletArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/droplet:Droplet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Droplet(java.lang.String name, DropletArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/droplet:Droplet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Droplet(String name, Output<String> id, @Nullable DropletState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/droplet:Droplet", name, state, makeResourceOptions(options, id));
+    private Droplet(java.lang.String name, Output<java.lang.String> id, @Nullable DropletState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/droplet:Droplet", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DropletArgs makeArgs(DropletArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -535,7 +535,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return args == null ? DropletArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -551,7 +551,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Droplet get(String name, Output<String> id, @Nullable DropletState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Droplet get(java.lang.String name, Output<java.lang.String> id, @Nullable DropletState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Droplet(name, id, state, options);
     }
 }

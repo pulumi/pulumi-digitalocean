@@ -258,7 +258,7 @@ class UptimeAlert(pulumi.CustomResource):
                  check_id: Optional[pulumi.Input[str]] = None,
                  comparison: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -282,7 +282,7 @@ class UptimeAlert(pulumi.CustomResource):
         :param pulumi.Input[str] check_id: A unique identifier for a check
         :param pulumi.Input[str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[str] name: A human-friendly display name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]] notifications: The notification settings for a trigger alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]] notifications: The notification settings for a trigger alert.
         :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
@@ -325,7 +325,7 @@ class UptimeAlert(pulumi.CustomResource):
                  check_id: Optional[pulumi.Input[str]] = None,
                  comparison: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -364,7 +364,7 @@ class UptimeAlert(pulumi.CustomResource):
             check_id: Optional[pulumi.Input[str]] = None,
             comparison: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
             period: Optional[pulumi.Input[str]] = None,
             threshold: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'UptimeAlert':
@@ -378,7 +378,7 @@ class UptimeAlert(pulumi.CustomResource):
         :param pulumi.Input[str] check_id: A unique identifier for a check
         :param pulumi.Input[str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[str] name: A human-friendly display name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeAlertNotificationArgs']]]] notifications: The notification settings for a trigger alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]] notifications: The notification settings for a trigger alert.
         :param pulumi.Input[str] period: Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         :param pulumi.Input[int] threshold: The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         :param pulumi.Input[str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.

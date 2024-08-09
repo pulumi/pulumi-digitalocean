@@ -110,7 +110,7 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseDb(String name) {
+    public DatabaseDb(java.lang.String name) {
         this(name, DatabaseDbArgs.Empty);
     }
     /**
@@ -118,7 +118,7 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseDb(String name, DatabaseDbArgs args) {
+    public DatabaseDb(java.lang.String name, DatabaseDbArgs args) {
         this(name, args, null);
     }
     /**
@@ -127,12 +127,12 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseDb(String name, DatabaseDbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseDb:DatabaseDb", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabaseDb(java.lang.String name, DatabaseDbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseDb:DatabaseDb", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabaseDb(String name, Output<String> id, @Nullable DatabaseDbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseDb:DatabaseDb", name, state, makeResourceOptions(options, id));
+    private DatabaseDb(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseDbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseDb:DatabaseDb", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabaseDbArgs makeArgs(DatabaseDbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -142,7 +142,7 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
         return args == null ? DatabaseDbArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -158,7 +158,7 @@ public class DatabaseDb extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseDb get(String name, Output<String> id, @Nullable DatabaseDbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabaseDb get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseDbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabaseDb(name, id, state, options);
     }
 }
