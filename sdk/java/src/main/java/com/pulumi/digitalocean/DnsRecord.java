@@ -39,12 +39,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Domain("default", DomainArgs.builder()
  *             .name("example.com")
  *             .build());
@@ -61,15 +61,15 @@ import javax.annotation.Nullable;
  *         var mx = new DnsRecord("mx", DnsRecordArgs.builder()
  *             .domain(default_.id())
  *             .type("MX")
- *             .name("{@literal @}")
+ *             .name("}{@literal @}{@code ")
  *             .priority(10)
  *             .value("mail.example.com.")
  *             .build());
  * 
  *         ctx.export("wwwFqdn", www.fqdn());
  *         ctx.export("mxFqdn", mx.fqdn());
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -246,7 +246,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DnsRecord(String name) {
+    public DnsRecord(java.lang.String name) {
         this(name, DnsRecordArgs.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DnsRecord(String name, DnsRecordArgs args) {
+    public DnsRecord(java.lang.String name, DnsRecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,12 +263,12 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DnsRecord(String name, DnsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/dnsRecord:DnsRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DnsRecord(java.lang.String name, DnsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/dnsRecord:DnsRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DnsRecord(String name, Output<String> id, @Nullable DnsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/dnsRecord:DnsRecord", name, state, makeResourceOptions(options, id));
+    private DnsRecord(java.lang.String name, Output<java.lang.String> id, @Nullable DnsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/dnsRecord:DnsRecord", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DnsRecordArgs makeArgs(DnsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -278,7 +278,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
         return args == null ? DnsRecordArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -294,7 +294,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DnsRecord get(String name, Output<String> id, @Nullable DnsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DnsRecord get(java.lang.String name, Output<java.lang.String> id, @Nullable DnsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DnsRecord(name, id, state, options);
     }
 }

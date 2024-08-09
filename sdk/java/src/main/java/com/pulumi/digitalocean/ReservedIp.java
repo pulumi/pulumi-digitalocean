@@ -139,7 +139,7 @@ public class ReservedIp extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReservedIp(String name) {
+    public ReservedIp(java.lang.String name) {
         this(name, ReservedIpArgs.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class ReservedIp extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReservedIp(String name, ReservedIpArgs args) {
+    public ReservedIp(java.lang.String name, ReservedIpArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,12 +156,12 @@ public class ReservedIp extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReservedIp(String name, ReservedIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/reservedIp:ReservedIp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ReservedIp(java.lang.String name, ReservedIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/reservedIp:ReservedIp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReservedIp(String name, Output<String> id, @Nullable ReservedIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/reservedIp:ReservedIp", name, state, makeResourceOptions(options, id));
+    private ReservedIp(java.lang.String name, Output<java.lang.String> id, @Nullable ReservedIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/reservedIp:ReservedIp", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ReservedIpArgs makeArgs(ReservedIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -171,7 +171,7 @@ public class ReservedIp extends com.pulumi.resources.CustomResource {
         return args == null ? ReservedIpArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -187,7 +187,7 @@ public class ReservedIp extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReservedIp get(String name, Output<String> id, @Nullable ReservedIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReservedIp get(java.lang.String name, Output<java.lang.String> id, @Nullable ReservedIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReservedIp(name, id, state, options);
     }
 }

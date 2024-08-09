@@ -28,7 +28,7 @@ import java.util.StringJoiner;
         }
 
         @Override
-        public String toString() {
+        public java.lang.String toString() {
             return new StringJoiner(", ", "Protocol[", "]")
                 .add("value='" + this.value + "'")
                 .toString();

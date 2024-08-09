@@ -877,15 +877,15 @@ class LoadBalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
                  disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerDomainArgs']]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-                 firewall: Optional[pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']]] = None,
-                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
-                 glb_settings: Optional[pulumi.Input[pulumi.InputType['LoadBalancerGlbSettingsArgs']]] = None,
-                 healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
+                 firewall: Optional[pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
+                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
+                 glb_settings: Optional[pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
+                 healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -894,7 +894,7 @@ class LoadBalancer(pulumi.CustomResource):
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  size_unit: Optional[pulumi.Input[int]] = None,
-                 sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
+                 sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
                  target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
@@ -917,16 +917,16 @@ class LoadBalancer(pulumi.CustomResource):
         public = digitalocean.LoadBalancer("public",
             name="loadbalancer-1",
             region=digitalocean.Region.NYC3,
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=80,
-                entry_protocol="http",
-                target_port=80,
-                target_protocol="http",
-            )],
-            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
-                port=22,
-                protocol="tcp",
-            ),
+            forwarding_rules=[{
+                "entry_port": 80,
+                "entry_protocol": "http",
+                "target_port": 80,
+                "target_protocol": "http",
+            }],
+            healthcheck={
+                "port": 22,
+                "protocol": "tcp",
+            },
             droplet_ids=[web.id])
         ```
 
@@ -949,7 +949,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerDomainArgs']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
                **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -957,12 +957,12 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
+        :param pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerGlbSettingsArgs']] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        :param pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
                **NOTE**: this is a closed beta feature and not available for public use.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
+        :param pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
@@ -975,7 +975,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
+        :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
                **NOTE**: this is a closed beta feature and not available for public use.
@@ -1007,16 +1007,16 @@ class LoadBalancer(pulumi.CustomResource):
         public = digitalocean.LoadBalancer("public",
             name="loadbalancer-1",
             region=digitalocean.Region.NYC3,
-            forwarding_rules=[digitalocean.LoadBalancerForwardingRuleArgs(
-                entry_port=80,
-                entry_protocol="http",
-                target_port=80,
-                target_protocol="http",
-            )],
-            healthcheck=digitalocean.LoadBalancerHealthcheckArgs(
-                port=22,
-                protocol="tcp",
-            ),
+            forwarding_rules=[{
+                "entry_port": 80,
+                "entry_protocol": "http",
+                "target_port": 80,
+                "target_protocol": "http",
+            }],
+            healthcheck={
+                "port": 22,
+                "protocol": "tcp",
+            },
             droplet_ids=[web.id])
         ```
 
@@ -1051,15 +1051,15 @@ class LoadBalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
                  disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerDomainArgs']]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
                  droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  droplet_tag: Optional[pulumi.Input[str]] = None,
                  enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-                 firewall: Optional[pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']]] = None,
-                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
-                 glb_settings: Optional[pulumi.Input[pulumi.InputType['LoadBalancerGlbSettingsArgs']]] = None,
-                 healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
+                 firewall: Optional[pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
+                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
+                 glb_settings: Optional[pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
+                 healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -1068,7 +1068,7 @@ class LoadBalancer(pulumi.CustomResource):
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  size_unit: Optional[pulumi.Input[int]] = None,
-                 sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
+                 sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
                  target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None,
@@ -1119,15 +1119,15 @@ class LoadBalancer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[Union[str, 'Algorithm']]] = None,
             disable_lets_encrypt_dns_records: Optional[pulumi.Input[bool]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerDomainArgs']]]]] = None,
+            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
             droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             droplet_tag: Optional[pulumi.Input[str]] = None,
             enable_backend_keepalive: Optional[pulumi.Input[bool]] = None,
             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-            firewall: Optional[pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']]] = None,
-            forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]]] = None,
-            glb_settings: Optional[pulumi.Input[pulumi.InputType['LoadBalancerGlbSettingsArgs']]] = None,
-            healthcheck: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']]] = None,
+            firewall: Optional[pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
+            forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
+            glb_settings: Optional[pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
+            healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
             http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
@@ -1139,7 +1139,7 @@ class LoadBalancer(pulumi.CustomResource):
             size: Optional[pulumi.Input[str]] = None,
             size_unit: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            sticky_sessions: Optional[pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']]] = None,
+            sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
             target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vpc_uuid: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
@@ -1153,7 +1153,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerDomainArgs']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
                **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -1161,12 +1161,12 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: A boolean value indicating whether PROXY
                Protocol should be used to pass information from connecting client requests to
                the backend service. Default value is `false`.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerFirewallArgs']] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerForwardingRuleArgs']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
+        :param pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']] firewall: A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerGlbSettingsArgs']] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        :param pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
                **NOTE**: this is a closed beta feature and not available for public use.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerHealthcheckArgs']] healthcheck: A `healthcheck` block to be assigned to the
+        :param pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] ip: The ip of the Load Balancer
@@ -1181,7 +1181,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerStickySessionsArgs']] sticky_sessions: A `sticky_sessions` block to be assigned to the
+        :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
                **NOTE**: this is a closed beta feature and not available for public use.
