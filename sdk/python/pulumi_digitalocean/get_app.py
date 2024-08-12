@@ -164,7 +164,7 @@ class AwaitableGetAppResult(GetAppResult):
 
 
 def get_app(app_id: Optional[str] = None,
-            dedicated_ips: Optional[Sequence[pulumi.InputType['GetAppDedicatedIpArgs']]] = None,
+            dedicated_ips: Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
     Get information on a DigitalOcean App.
@@ -183,7 +183,7 @@ def get_app(app_id: Optional[str] = None,
 
 
     :param str app_id: The ID of the app to retrieve information about.
-    :param Sequence[pulumi.InputType['GetAppDedicatedIpArgs']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
+    :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -207,7 +207,7 @@ def get_app(app_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_app)
 def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
-                   dedicated_ips: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAppDedicatedIpArgs']]]]] = None,
+                   dedicated_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
     """
     Get information on a DigitalOcean App.
@@ -226,6 +226,6 @@ def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str app_id: The ID of the app to retrieve information about.
-    :param Sequence[pulumi.InputType['GetAppDedicatedIpArgs']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
+    :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
     ...

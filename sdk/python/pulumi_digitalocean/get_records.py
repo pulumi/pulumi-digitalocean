@@ -86,8 +86,8 @@ class AwaitableGetRecordsResult(GetRecordsResult):
 
 
 def get_records(domain: Optional[str] = None,
-                filters: Optional[Sequence[pulumi.InputType['GetRecordsFilterArgs']]] = None,
-                sorts: Optional[Sequence[pulumi.InputType['GetRecordsSortArgs']]] = None,
+                filters: Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]] = None,
+                sorts: Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecordsResult:
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
@@ -103,19 +103,19 @@ def get_records(domain: Optional[str] = None,
     import pulumi_std as std
 
     example = digitalocean.get_records(domain="example.com",
-        filters=[digitalocean.GetRecordsFilterArgs(
-            key="type",
-            values=["MX"],
-        )])
+        filters=[{
+            "key": "type",
+            "values": ["MX"],
+        }])
     pulumi.export("mailServers", std.join(separator=",",
         input=[__item.value for __item in example.records]).result)
     ```
 
 
     :param str domain: The domain name to search for DNS records
-    :param Sequence[pulumi.InputType['GetRecordsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetRecordsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -135,8 +135,8 @@ def get_records(domain: Optional[str] = None,
 
 @_utilities.lift_output_func(get_records)
 def get_records_output(domain: Optional[pulumi.Input[str]] = None,
-                       filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRecordsFilterArgs']]]]] = None,
-                       sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRecordsSortArgs']]]]] = None,
+                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]]]] = None,
+                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordsResult]:
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
@@ -152,19 +152,19 @@ def get_records_output(domain: Optional[pulumi.Input[str]] = None,
     import pulumi_std as std
 
     example = digitalocean.get_records(domain="example.com",
-        filters=[digitalocean.GetRecordsFilterArgs(
-            key="type",
-            values=["MX"],
-        )])
+        filters=[{
+            "key": "type",
+            "values": ["MX"],
+        }])
     pulumi.export("mailServers", std.join(separator=",",
         input=[__item.value for __item in example.records]).result)
     ```
 
 
     :param str domain: The domain name to search for DNS records
-    :param Sequence[pulumi.InputType['GetRecordsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetRecordsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...

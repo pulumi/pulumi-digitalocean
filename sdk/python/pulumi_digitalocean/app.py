@@ -242,9 +242,9 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppDedicatedIpArgs']]]]] = None,
+                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean App resource.
@@ -259,20 +259,20 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
-            name="golang-sample",
-            region="ams",
-            services=[digitalocean.AppSpecServiceArgs(
-                name="go-service",
-                environment_slug="go",
-                instance_count=1,
-                instance_size_slug="professional-xs",
-                git=digitalocean.AppSpecServiceGitArgs(
-                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
-                    branch="main",
-                ),
-            )],
-        ))
+        golang_sample = digitalocean.App("golang-sample", spec={
+            "name": "golang-sample",
+            "region": "ams",
+            "services": [{
+                "name": "go-service",
+                "environment_slug": "go",
+                "instance_count": 1,
+                "instance_size_slug": "professional-xs",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+            }],
+        })
         ```
 
         ### Static Site Example
@@ -281,19 +281,19 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
-            name="static-site-example",
-            region="ams",
-            static_sites=[digitalocean.AppSpecStaticSiteArgs(
-                name="sample-jekyll",
-                build_command="bundle exec jekyll build -d ./public",
-                output_dir="/public",
-                git=digitalocean.AppSpecStaticSiteGitArgs(
-                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
-                    branch="main",
-                ),
-            )],
-        ))
+        static_site_example = digitalocean.App("static-site-example", spec={
+            "name": "static-site-example",
+            "region": "ams",
+            "static_sites": [{
+                "name": "sample-jekyll",
+                "build_command": "bundle exec jekyll build -d ./public",
+                "output_dir": "/public",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-jekyll.git",
+                    "branch": "main",
+                },
+            }],
+        })
         ```
 
         ## Import
@@ -306,13 +306,13 @@ class App(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppDedicatedIpArgs']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
                
                A spec can contain multiple components.
                
                A `service` can contain:
-        :param pulumi.Input[pulumi.InputType['AppSpecArgs']] spec: A DigitalOcean App spec describing the app.
+        :param pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']] spec: A DigitalOcean App spec describing the app.
         """
         ...
     @overload
@@ -333,20 +333,20 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        golang_sample = digitalocean.App("golang-sample", spec=digitalocean.AppSpecArgs(
-            name="golang-sample",
-            region="ams",
-            services=[digitalocean.AppSpecServiceArgs(
-                name="go-service",
-                environment_slug="go",
-                instance_count=1,
-                instance_size_slug="professional-xs",
-                git=digitalocean.AppSpecServiceGitArgs(
-                    repo_clone_url="https://github.com/digitalocean/sample-golang.git",
-                    branch="main",
-                ),
-            )],
-        ))
+        golang_sample = digitalocean.App("golang-sample", spec={
+            "name": "golang-sample",
+            "region": "ams",
+            "services": [{
+                "name": "go-service",
+                "environment_slug": "go",
+                "instance_count": 1,
+                "instance_size_slug": "professional-xs",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+            }],
+        })
         ```
 
         ### Static Site Example
@@ -355,19 +355,19 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        static_site_example = digitalocean.App("static-site-example", spec=digitalocean.AppSpecArgs(
-            name="static-site-example",
-            region="ams",
-            static_sites=[digitalocean.AppSpecStaticSiteArgs(
-                name="sample-jekyll",
-                build_command="bundle exec jekyll build -d ./public",
-                output_dir="/public",
-                git=digitalocean.AppSpecStaticSiteGitArgs(
-                    repo_clone_url="https://github.com/digitalocean/sample-jekyll.git",
-                    branch="main",
-                ),
-            )],
-        ))
+        static_site_example = digitalocean.App("static-site-example", spec={
+            "name": "static-site-example",
+            "region": "ams",
+            "static_sites": [{
+                "name": "sample-jekyll",
+                "build_command": "bundle exec jekyll build -d ./public",
+                "output_dir": "/public",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-jekyll.git",
+                    "branch": "main",
+                },
+            }],
+        })
         ```
 
         ## Import
@@ -393,9 +393,9 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppDedicatedIpArgs']]]]] = None,
+                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -427,11 +427,11 @@ class App(pulumi.CustomResource):
             active_deployment_id: Optional[pulumi.Input[str]] = None,
             app_urn: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
-            dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppDedicatedIpArgs']]]]] = None,
+            dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
             default_ingress: Optional[pulumi.Input[str]] = None,
             live_url: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['AppSpecArgs']]] = None,
+            spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
@@ -443,7 +443,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] active_deployment_id: The ID the app's currently active deployment.
         :param pulumi.Input[str] app_urn: The uniform resource identifier for the app.
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppDedicatedIpArgs']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
         :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
@@ -451,7 +451,7 @@ class App(pulumi.CustomResource):
                A spec can contain multiple components.
                
                A `service` can contain:
-        :param pulumi.Input[pulumi.InputType['AppSpecArgs']] spec: A DigitalOcean App spec describing the app.
+        :param pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[str] updated_at: The date and time of when the app was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

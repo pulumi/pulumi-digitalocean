@@ -106,7 +106,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UptimeCheck(String name) {
+    public UptimeCheck(java.lang.String name) {
         this(name, UptimeCheckArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UptimeCheck(String name, UptimeCheckArgs args) {
+    public UptimeCheck(java.lang.String name, UptimeCheckArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,12 +123,12 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UptimeCheck(String name, UptimeCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/uptimeCheck:UptimeCheck", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public UptimeCheck(java.lang.String name, UptimeCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/uptimeCheck:UptimeCheck", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UptimeCheck(String name, Output<String> id, @Nullable UptimeCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/uptimeCheck:UptimeCheck", name, state, makeResourceOptions(options, id));
+    private UptimeCheck(java.lang.String name, Output<java.lang.String> id, @Nullable UptimeCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/uptimeCheck:UptimeCheck", name, state, makeResourceOptions(options, id), false);
     }
 
     private static UptimeCheckArgs makeArgs(UptimeCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -138,7 +138,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
         return args == null ? UptimeCheckArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -154,7 +154,7 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UptimeCheck get(String name, Output<String> id, @Nullable UptimeCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UptimeCheck get(java.lang.String name, Output<java.lang.String> id, @Nullable UptimeCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UptimeCheck(name, id, state, options);
     }
 }

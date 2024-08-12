@@ -715,10 +715,10 @@ class DatabaseCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_restore: Optional[pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']]] = None,
+                 backup_restore: Optional[pulumi.Input[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  eviction_policy: Optional[pulumi.Input[str]] = None,
-                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]]] = None,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
@@ -827,9 +827,9 @@ class DatabaseCluster(pulumi.CustomResource):
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"],
-            backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
-                database_name="dobydb",
-            ),
+            backup_restore={
+                "database_name": "dobydb",
+            },
             opts = pulumi.ResourceOptions(depends_on=[doby]))
         ```
 
@@ -845,7 +845,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[str] private_network_uuid: The ID of the VPC where the database cluster will be located.
@@ -961,9 +961,9 @@ class DatabaseCluster(pulumi.CustomResource):
             region=digitalocean.Region.NYC1,
             node_count=1,
             tags=["production"],
-            backup_restore=digitalocean.DatabaseClusterBackupRestoreArgs(
-                database_name="dobydb",
-            ),
+            backup_restore={
+                "database_name": "dobydb",
+            },
             opts = pulumi.ResourceOptions(depends_on=[doby]))
         ```
 
@@ -990,10 +990,10 @@ class DatabaseCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_restore: Optional[pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']]] = None,
+                 backup_restore: Optional[pulumi.Input[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  eviction_policy: Optional[pulumi.Input[str]] = None,
-                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]]] = None,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_network_uuid: Optional[pulumi.Input[str]] = None,
@@ -1062,13 +1062,13 @@ class DatabaseCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_restore: Optional[pulumi.Input[pulumi.InputType['DatabaseClusterBackupRestoreArgs']]] = None,
+            backup_restore: Optional[pulumi.Input[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
             cluster_urn: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             eviction_policy: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
-            maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]]] = None,
+            maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             password: Optional[pulumi.Input[str]] = None,
@@ -1103,7 +1103,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[str] host: Database cluster's hostname.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseClusterMaintenanceWindowArgs']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[str] name: The name of the database cluster.
         :param pulumi.Input[int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[str] password: Password for the cluster's default user.
