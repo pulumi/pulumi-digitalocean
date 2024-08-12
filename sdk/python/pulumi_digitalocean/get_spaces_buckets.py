@@ -76,8 +76,8 @@ class AwaitableGetSpacesBucketsResult(GetSpacesBucketsResult):
             sorts=self.sorts)
 
 
-def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']]] = None,
-                       sorts: Optional[Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']]] = None,
+def get_spaces_buckets(filters: Optional[Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']]] = None,
+                       sorts: Optional[Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketsResult:
     """
     Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -96,10 +96,10 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
-        key="region",
-        values=["nyc3"],
-    )])
+    nyc3 = digitalocean.get_spaces_buckets(filters=[{
+        "key": "region",
+        "values": ["nyc3"],
+    }])
     ```
     You can sort the results as well:
 
@@ -107,20 +107,20 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
-            key="region",
-            values=["nyc3"],
-        )],
-        sorts=[digitalocean.GetSpacesBucketsSortArgs(
-            key="name",
-            direction="desc",
-        )])
+    nyc3 = digitalocean.get_spaces_buckets(filters=[{
+            "key": "region",
+            "values": ["nyc3"],
+        }],
+        sorts=[{
+            "key": "name",
+            "direction": "desc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -137,8 +137,8 @@ def get_spaces_buckets(filters: Optional[Sequence[pulumi.InputType['GetSpacesBuc
 
 
 @_utilities.lift_output_func(get_spaces_buckets)
-def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']]]]] = None,
-                              sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']]]]] = None,
+def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']]]]] = None,
+                              sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketsResult]:
     """
     Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -157,10 +157,10 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
-        key="region",
-        values=["nyc3"],
-    )])
+    nyc3 = digitalocean.get_spaces_buckets(filters=[{
+        "key": "region",
+        "values": ["nyc3"],
+    }])
     ```
     You can sort the results as well:
 
@@ -168,20 +168,20 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[p
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    nyc3 = digitalocean.get_spaces_buckets(filters=[digitalocean.GetSpacesBucketsFilterArgs(
-            key="region",
-            values=["nyc3"],
-        )],
-        sorts=[digitalocean.GetSpacesBucketsSortArgs(
-            key="name",
-            direction="desc",
-        )])
+    nyc3 = digitalocean.get_spaces_buckets(filters=[{
+            "key": "region",
+            "values": ["nyc3"],
+        }],
+        sorts=[{
+            "key": "name",
+            "direction": "desc",
+        }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetSpacesBucketsFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetSpacesBucketsSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...

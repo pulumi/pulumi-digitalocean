@@ -153,8 +153,8 @@ class AwaitableGetFirewallResult(GetFirewallResult):
 
 def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
                  firewall_id: Optional[str] = None,
-                 inbound_rules: Optional[Sequence[pulumi.InputType['GetFirewallInboundRuleArgs']]] = None,
-                 outbound_rules: Optional[Sequence[pulumi.InputType['GetFirewallOutboundRuleArgs']]] = None,
+                 inbound_rules: Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]] = None,
+                 outbound_rules: Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]] = None,
                  tags: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallResult:
     """
@@ -204,8 +204,8 @@ def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
 @_utilities.lift_output_func(get_firewall)
 def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                         firewall_id: Optional[pulumi.Input[str]] = None,
-                        inbound_rules: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFirewallInboundRuleArgs']]]]] = None,
-                        outbound_rules: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFirewallOutboundRuleArgs']]]]] = None,
+                        inbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]]]] = None,
+                        outbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]]]] = None,
                         tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
     """

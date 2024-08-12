@@ -819,7 +819,7 @@ public class DatabasePostgresqlConfig extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabasePostgresqlConfig(String name) {
+    public DatabasePostgresqlConfig(java.lang.String name) {
         this(name, DatabasePostgresqlConfigArgs.Empty);
     }
     /**
@@ -827,7 +827,7 @@ public class DatabasePostgresqlConfig extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabasePostgresqlConfig(String name, DatabasePostgresqlConfigArgs args) {
+    public DatabasePostgresqlConfig(java.lang.String name, DatabasePostgresqlConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -836,12 +836,12 @@ public class DatabasePostgresqlConfig extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabasePostgresqlConfig(String name, DatabasePostgresqlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabasePostgresqlConfig(java.lang.String name, DatabasePostgresqlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabasePostgresqlConfig(String name, Output<String> id, @Nullable DatabasePostgresqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig", name, state, makeResourceOptions(options, id));
+    private DatabasePostgresqlConfig(java.lang.String name, Output<java.lang.String> id, @Nullable DatabasePostgresqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabasePostgresqlConfigArgs makeArgs(DatabasePostgresqlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -851,7 +851,7 @@ public class DatabasePostgresqlConfig extends com.pulumi.resources.CustomResourc
         return args == null ? DatabasePostgresqlConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -867,7 +867,7 @@ public class DatabasePostgresqlConfig extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabasePostgresqlConfig get(String name, Output<String> id, @Nullable DatabasePostgresqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabasePostgresqlConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabasePostgresqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabasePostgresqlConfig(name, id, state, options);
     }
 }

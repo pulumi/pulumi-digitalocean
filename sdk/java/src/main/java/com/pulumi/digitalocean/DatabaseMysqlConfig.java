@@ -478,7 +478,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseMysqlConfig(String name) {
+    public DatabaseMysqlConfig(java.lang.String name) {
         this(name, DatabaseMysqlConfigArgs.Empty);
     }
     /**
@@ -486,7 +486,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseMysqlConfig(String name, DatabaseMysqlConfigArgs args) {
+    public DatabaseMysqlConfig(java.lang.String name, DatabaseMysqlConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -495,12 +495,12 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseMysqlConfig(String name, DatabaseMysqlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DatabaseMysqlConfig(java.lang.String name, DatabaseMysqlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatabaseMysqlConfig(String name, Output<String> id, @Nullable DatabaseMysqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig", name, state, makeResourceOptions(options, id));
+    private DatabaseMysqlConfig(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseMysqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DatabaseMysqlConfigArgs makeArgs(DatabaseMysqlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -510,7 +510,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
         return args == null ? DatabaseMysqlConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -526,7 +526,7 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseMysqlConfig get(String name, Output<String> id, @Nullable DatabaseMysqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatabaseMysqlConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable DatabaseMysqlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatabaseMysqlConfig(name, id, state, options);
     }
 }

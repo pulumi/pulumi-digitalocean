@@ -76,8 +76,8 @@ class AwaitableGetSshKeysResult(GetSshKeysResult):
             ssh_keys=self.ssh_keys)
 
 
-def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterArgs']]] = None,
-                 sorts: Optional[Sequence[pulumi.InputType['GetSshKeysSortArgs']]] = None,
+def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]] = None,
+                 sorts: Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeysResult:
     """
     Get information on SSH Keys for use in other resources.
@@ -96,10 +96,10 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
-        key="name",
-        direction="asc",
-    )])
+    keys = digitalocean.get_ssh_keys(sorts=[{
+        "key": "name",
+        "direction": "asc",
+    }])
     ```
 
     Or to find ones matching specific values:
@@ -108,19 +108,19 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    keys = digitalocean.get_ssh_keys(filters=[digitalocean.GetSshKeysFilterArgs(
-        key="name",
-        values=[
+    keys = digitalocean.get_ssh_keys(filters=[{
+        "key": "name",
+        "values": [
             "laptop",
             "desktop",
         ],
-    )])
+    }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetSshKeysFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetSshKeysSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -137,8 +137,8 @@ def get_ssh_keys(filters: Optional[Sequence[pulumi.InputType['GetSshKeysFilterAr
 
 
 @_utilities.lift_output_func(get_ssh_keys)
-def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSshKeysFilterArgs']]]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSshKeysSortArgs']]]]] = None,
+def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]]]] = None,
+                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeysResult]:
     """
     Get information on SSH Keys for use in other resources.
@@ -157,10 +157,10 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    keys = digitalocean.get_ssh_keys(sorts=[digitalocean.GetSshKeysSortArgs(
-        key="name",
-        direction="asc",
-    )])
+    keys = digitalocean.get_ssh_keys(sorts=[{
+        "key": "name",
+        "direction": "asc",
+    }])
     ```
 
     Or to find ones matching specific values:
@@ -169,19 +169,19 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    keys = digitalocean.get_ssh_keys(filters=[digitalocean.GetSshKeysFilterArgs(
-        key="name",
-        values=[
+    keys = digitalocean.get_ssh_keys(filters=[{
+        "key": "name",
+        "values": [
             "laptop",
             "desktop",
         ],
-    )])
+    }])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetSshKeysFilterArgs']] filters: Filter the results.
+    :param Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[pulumi.InputType['GetSshKeysSortArgs']] sorts: Sort the results.
+    :param Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     ...

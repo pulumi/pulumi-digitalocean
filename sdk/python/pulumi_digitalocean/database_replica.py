@@ -426,10 +426,10 @@ class DatabaseReplica(pulumi.CustomResource):
         # Create firewall rule for database replica
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=replica_example.uuid,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="ip_addr",
-                value="192.168.1.1",
-            )])
+            rules=[{
+                "type": "ip_addr",
+                "value": "192.168.1.1",
+            }])
         ```
 
         ## Import
@@ -483,10 +483,10 @@ class DatabaseReplica(pulumi.CustomResource):
         # Create firewall rule for database replica
         example_fw = digitalocean.DatabaseFirewall("example-fw",
             cluster_id=replica_example.uuid,
-            rules=[digitalocean.DatabaseFirewallRuleArgs(
-                type="ip_addr",
-                value="192.168.1.1",
-            )])
+            rules=[{
+                "type": "ip_addr",
+                "value": "192.168.1.1",
+            }])
         ```
 
         ## Import

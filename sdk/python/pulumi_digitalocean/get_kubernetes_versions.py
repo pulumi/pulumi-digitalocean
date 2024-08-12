@@ -105,11 +105,11 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
         name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
-        node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-            name="default",
-            size="s-1vcpu-2gb",
-            node_count=3,
-        ))
+        node_pool={
+            "name": "default",
+            "size": "s-1vcpu-2gb",
+            "node_count": 3,
+        })
     ```
 
     ### Pin a Kubernetes cluster to a specific minor version
@@ -123,11 +123,11 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
         name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
-        node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-            name="default",
-            size="s-1vcpu-2gb",
-            node_count=3,
-        ))
+        node_pool={
+            "name": "default",
+            "size": "s-1vcpu-2gb",
+            "node_count": 3,
+        })
     ```
 
 
@@ -174,11 +174,11 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
         name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
-        node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-            name="default",
-            size="s-1vcpu-2gb",
-            node_count=3,
-        ))
+        node_pool={
+            "name": "default",
+            "size": "s-1vcpu-2gb",
+            "node_count": 3,
+        })
     ```
 
     ### Pin a Kubernetes cluster to a specific minor version
@@ -192,11 +192,11 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
         name="example-cluster",
         region=digitalocean.Region.LON1,
         version=example.latest_version,
-        node_pool=digitalocean.KubernetesClusterNodePoolArgs(
-            name="default",
-            size="s-1vcpu-2gb",
-            node_count=3,
-        ))
+        node_pool={
+            "name": "default",
+            "size": "s-1vcpu-2gb",
+            "node_count": 3,
+        })
     ```
 
 
