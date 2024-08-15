@@ -127,7 +127,7 @@ export interface GetSpacesBucketObjectResult {
     /**
      * A map of metadata stored with the object in Spaces
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     readonly range?: string;
     readonly region: string;
     /**

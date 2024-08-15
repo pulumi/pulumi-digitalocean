@@ -6,7 +6,6 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -81,7 +80,7 @@ public final class GetSpacesBucketObjectResult {
      * @return A map of metadata stored with the object in Spaces
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     private @Nullable String range;
     private String region;
     /**
@@ -190,7 +189,7 @@ public final class GetSpacesBucketObjectResult {
      * @return A map of metadata stored with the object in Spaces
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     public Optional<String> range() {
@@ -237,7 +236,7 @@ public final class GetSpacesBucketObjectResult {
         private String id;
         private String key;
         private String lastModified;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private @Nullable String range;
         private String region;
         private String versionId;
@@ -379,7 +378,7 @@ public final class GetSpacesBucketObjectResult {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetSpacesBucketObjectResult", "metadata");
             }
