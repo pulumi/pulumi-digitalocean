@@ -17354,7 +17354,7 @@
                     },
                     "metadata": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A map of metadata stored with the object in Spaces\n",
                         "type": "object"

@@ -226,7 +226,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A map of metadata stored with the object in Spaces
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         public readonly string? Range;
         public readonly string Region;
         /// <summary>
@@ -268,7 +268,7 @@ namespace Pulumi.DigitalOcean
 
             string lastModified,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             string? range,
 
