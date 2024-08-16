@@ -188,7 +188,7 @@ class GetSpacesBucketObjectResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         A map of metadata stored with the object in Spaces
         """

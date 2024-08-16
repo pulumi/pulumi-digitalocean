@@ -110,9 +110,9 @@ type LookupSpacesBucketObjectResult struct {
 	// Last modified date of the object in RFC1123 format (e.g. `Mon, 02 Jan 2006 15:04:05 MST`)
 	LastModified string `pulumi:"lastModified"`
 	// A map of metadata stored with the object in Spaces
-	Metadata map[string]interface{} `pulumi:"metadata"`
-	Range    *string                `pulumi:"range"`
-	Region   string                 `pulumi:"region"`
+	Metadata map[string]string `pulumi:"metadata"`
+	Range    *string           `pulumi:"range"`
+	Region   string            `pulumi:"region"`
 	// The latest version ID of the object returned.
 	VersionId string `pulumi:"versionId"`
 	// If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
@@ -233,8 +233,8 @@ func (o LookupSpacesBucketObjectResultOutput) LastModified() pulumi.StringOutput
 }
 
 // A map of metadata stored with the object in Spaces
-func (o LookupSpacesBucketObjectResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSpacesBucketObjectResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupSpacesBucketObjectResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSpacesBucketObjectResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSpacesBucketObjectResultOutput) Range() pulumi.StringPtrOutput {
