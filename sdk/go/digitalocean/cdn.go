@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic Example
+// #### Basic Example
 //
 // ```go
 // package main
@@ -53,7 +53,7 @@ import (
 //
 // ```
 //
-// ### Custom Sub-Domain Example
+// #### Custom Sub-Domain Example
 //
 // ```go
 // package main

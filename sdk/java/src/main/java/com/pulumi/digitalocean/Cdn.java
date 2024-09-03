@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic Example
+ * #### Basic Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Custom Sub-Domain Example
+ * #### Custom Sub-Domain Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

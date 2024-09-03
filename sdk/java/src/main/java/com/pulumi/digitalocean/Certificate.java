@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Custom Certificate
+ * #### Custom Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Let&#39;s Encrypt Certificate
+ * #### Let&#39;s Encrypt Certificate
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Use with Other Resources
+ * #### Use with Other Resources
  * 
  * Both custom and Let&#39;s Encrypt certificates can be used with other resources
  * including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.

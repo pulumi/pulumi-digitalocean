@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecAlertGetArgs>? _alerts;
 
         /// <summary>
-        /// Describes an alert policy for the app.
+        /// Describes an alert policy for the component.
         /// </summary>
         public InputList<Inputs.AppSpecAlertGetArgs> Alerts
         {
@@ -69,7 +69,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.AppSpecEnvGetArgs>? _envs;
 
         /// <summary>
-        /// Describes an app-wide environment variable made available to all components.
+        /// Describes an environment variable made available to an app competent.
         /// </summary>
         public InputList<Inputs.AppSpecEnvGetArgs> Envs
         {
@@ -112,7 +112,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// The name of the app. Must be unique across all apps in the same account.
+        /// The name of the component.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

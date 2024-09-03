@@ -242,7 +242,7 @@ class Cdn(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic Example
+        #### Basic Example
 
         ```python
         import pulumi
@@ -258,7 +258,7 @@ class Cdn(pulumi.CustomResource):
         pulumi.export("fqdn", mycdn.endpoint)
         ```
 
-        ### Custom Sub-Domain Example
+        #### Custom Sub-Domain Example
 
         ```python
         import pulumi
@@ -308,7 +308,7 @@ class Cdn(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic Example
+        #### Basic Example
 
         ```python
         import pulumi
@@ -324,7 +324,7 @@ class Cdn(pulumi.CustomResource):
         pulumi.export("fqdn", mycdn.endpoint)
         ```
 
-        ### Custom Sub-Domain Example
+        #### Custom Sub-Domain Example
 
         ```python
         import pulumi

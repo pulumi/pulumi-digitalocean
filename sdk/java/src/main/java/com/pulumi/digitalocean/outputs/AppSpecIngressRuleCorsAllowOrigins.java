@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecIngressRuleCorsAllowOrigins {
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
+     * @return Exact string match.
      * 
      */
     private @Nullable String exact;
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+     * @return Prefix-based match.
      * 
      * @deprecated
      * Prefix-based matching has been deprecated in favor of regex-based matching.
@@ -26,21 +26,21 @@ public final class AppSpecIngressRuleCorsAllowOrigins {
     @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
     private @Nullable String prefix;
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * @return RE2 style regex-based match.
      * 
      */
     private @Nullable String regex;
 
     private AppSpecIngressRuleCorsAllowOrigins() {}
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
+     * @return Exact string match.
      * 
      */
     public Optional<String> exact() {
         return Optional.ofNullable(this.exact);
     }
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+     * @return Prefix-based match.
      * 
      * @deprecated
      * Prefix-based matching has been deprecated in favor of regex-based matching.
@@ -51,7 +51,7 @@ public final class AppSpecIngressRuleCorsAllowOrigins {
         return Optional.ofNullable(this.prefix);
     }
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * @return RE2 style regex-based match.
      * 
      */
     public Optional<String> regex() {

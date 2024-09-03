@@ -16,14 +16,14 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
     public static final AppSpecIngressRuleCorsAllowOriginsArgs Empty = new AppSpecIngressRuleCorsAllowOriginsArgs();
 
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
+     * Exact string match.
      * 
      */
     @Import(name="exact")
     private @Nullable Output<String> exact;
 
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
+     * @return Exact string match.
      * 
      */
     public Optional<Output<String>> exact() {
@@ -31,7 +31,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
     }
 
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+     * Prefix-based match.
      * 
      * @deprecated
      * Prefix-based matching has been deprecated in favor of regex-based matching.
@@ -42,7 +42,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
     private @Nullable Output<String> prefix;
 
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+     * @return Prefix-based match.
      * 
      * @deprecated
      * Prefix-based matching has been deprecated in favor of regex-based matching.
@@ -54,14 +54,14 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
     }
 
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      * 
      */
     @Import(name="regex")
     private @Nullable Output<String> regex;
 
     /**
-     * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * @return RE2 style regex-based match.
      * 
      */
     public Optional<Output<String>> regex() {
@@ -95,7 +95,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
         }
 
         /**
-         * @param exact The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
+         * @param exact Exact string match.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
         }
 
         /**
-         * @param exact The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
+         * @param exact Exact string match.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
         }
 
         /**
-         * @param prefix The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+         * @param prefix Prefix-based match.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
         }
 
         /**
-         * @param prefix The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
+         * @param prefix Prefix-based match.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
         }
 
         /**
-         * @param regex The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+         * @param regex RE2 style regex-based match.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class AppSpecIngressRuleCorsAllowOriginsArgs extends com.pulumi.res
         }
 
         /**
-         * @param regex The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+         * @param regex RE2 style regex-based match.
          * 
          * @return builder
          * 

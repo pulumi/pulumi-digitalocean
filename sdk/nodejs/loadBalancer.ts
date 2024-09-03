@@ -94,7 +94,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly disableLetsEncryptDnsRecords!: pulumi.Output<boolean | undefined>;
     /**
-     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      * **NOTE**: this is a closed beta feature and not available for public use.
      */
     public readonly domains!: pulumi.Output<outputs.LoadBalancerDomain[]>;
@@ -288,7 +288,7 @@ export interface LoadBalancerState {
      */
     disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
     /**
-     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      * **NOTE**: this is a closed beta feature and not available for public use.
      */
     domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
@@ -410,7 +410,7 @@ export interface LoadBalancerArgs {
      */
     disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
     /**
-     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      * **NOTE**: this is a closed beta feature and not available for public use.
      */
     domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;

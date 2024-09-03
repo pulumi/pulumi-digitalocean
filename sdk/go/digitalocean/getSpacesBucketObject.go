@@ -12,7 +12,7 @@ import (
 )
 
 // The Spaces object data source allows access to the metadata and
-// _optionally_ (see below) content of an object stored inside a Spaces bucket.
+// *optionally* (see below) content of an object stored inside a Spaces bucket.
 //
 // > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
 // `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially

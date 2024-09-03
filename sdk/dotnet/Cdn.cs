@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic Example
+    /// #### Basic Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
-    /// ### Custom Sub-Domain Example
+    /// #### Custom Sub-Domain Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

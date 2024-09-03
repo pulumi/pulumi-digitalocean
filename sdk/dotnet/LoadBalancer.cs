@@ -90,7 +90,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> DisableLetsEncryptDnsRecords { get; private set; } = null!;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         [Output("domains")]
@@ -305,7 +305,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerDomainArgs>? _domains;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         public InputList<Inputs.LoadBalancerDomainArgs> Domains
@@ -488,7 +488,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerDomainGetArgs>? _domains;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         public InputList<Inputs.LoadBalancerDomainGetArgs> Domains
