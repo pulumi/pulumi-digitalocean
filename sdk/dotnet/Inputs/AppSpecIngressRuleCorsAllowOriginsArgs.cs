@@ -13,19 +13,19 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecIngressRuleCorsAllowOriginsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        /// Exact string match.
         /// </summary>
         [Input("exact")]
         public Input<string>? Exact { get; set; }
 
         /// <summary>
-        /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        /// Prefix-based match.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        /// RE2 style regex-based match.
         /// </summary>
         [Input("regex")]
         public Input<string>? Regex { get; set; }

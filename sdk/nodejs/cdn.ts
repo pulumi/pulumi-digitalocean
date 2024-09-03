@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Basic Example
+ * #### Basic Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * export const fqdn = mycdn.endpoint;
  * ```
  *
- * ### Custom Sub-Domain Example
+ * #### Custom Sub-Domain Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

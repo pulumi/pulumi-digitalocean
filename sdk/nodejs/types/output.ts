@@ -23,7 +23,7 @@ export interface AppDedicatedIp {
 
 export interface AppSpec {
     /**
-     * Describes an alert policy for the app.
+     * Describes an alert policy for the component.
      */
     alerts?: outputs.AppSpecAlert[];
     databases?: outputs.AppSpecDatabase[];
@@ -40,7 +40,7 @@ export interface AppSpec {
      */
     egresses?: outputs.AppSpecEgress[];
     /**
-     * Describes an app-wide environment variable made available to all components.
+     * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.AppSpecEnv[];
     /**
@@ -54,7 +54,7 @@ export interface AppSpec {
     ingress: outputs.AppSpecIngress;
     jobs?: outputs.AppSpecJob[];
     /**
-     * The name of the app. Must be unique across all apps in the same account.
+     * The name of the component.
      */
     name: string;
     /**
@@ -72,7 +72,7 @@ export interface AppSpecAlert {
      */
     disabled?: boolean;
     /**
-     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rule: string;
 }
@@ -432,15 +432,15 @@ export interface AppSpecIngressRuleComponent {
 
 export interface AppSpecIngressRuleCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      */
     allowCredentials?: boolean;
     /**
-     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
      */
     allowHeaders?: string[];
     /**
-     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
      */
     allowMethods?: string[];
     /**
@@ -448,7 +448,7 @@ export interface AppSpecIngressRuleCors {
      */
     allowOrigins?: outputs.AppSpecIngressRuleCorsAllowOrigins;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
      */
     exposeHeaders?: string[];
     /**
@@ -459,17 +459,17 @@ export interface AppSpecIngressRuleCors {
 
 export interface AppSpecIngressRuleCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      *
      * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: string;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: string;
 }

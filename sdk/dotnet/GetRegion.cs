@@ -12,7 +12,7 @@ namespace Pulumi.DigitalOcean
     public static class GetRegion
     {
         /// <summary>
-        /// Get information on a single DigitalOcean region. This is useful to find out 
+        /// Get information on a single DigitalOcean region. This is useful to find out
         /// what Droplet sizes and features are supported within a region.
         /// 
         /// ## Example Usage
@@ -41,7 +41,7 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a single DigitalOcean region. This is useful to find out 
+        /// Get information on a single DigitalOcean region. This is useful to find out
         /// what Droplet sizes and features are supported within a region.
         /// 
         /// ## Example Usage

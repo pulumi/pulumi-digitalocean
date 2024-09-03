@@ -23,7 +23,7 @@ export interface AppDedicatedIp {
 
 export interface AppSpec {
     /**
-     * Describes an alert policy for the app.
+     * Describes an alert policy for the component.
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[]>;
     databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
@@ -40,7 +40,7 @@ export interface AppSpec {
      */
     egresses?: pulumi.Input<pulumi.Input<inputs.AppSpecEgress>[]>;
     /**
-     * Describes an app-wide environment variable made available to all components.
+     * Describes an environment variable made available to an app competent.
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
     /**
@@ -54,7 +54,7 @@ export interface AppSpec {
     ingress?: pulumi.Input<inputs.AppSpecIngress>;
     jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
     /**
-     * The name of the app. Must be unique across all apps in the same account.
+     * The name of the component.
      */
     name: pulumi.Input<string>;
     /**
@@ -72,7 +72,7 @@ export interface AppSpecAlert {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rule: pulumi.Input<string>;
 }
@@ -432,15 +432,15 @@ export interface AppSpecIngressRuleComponent {
 
 export interface AppSpecIngressRuleCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
      */
     allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -448,7 +448,7 @@ export interface AppSpecIngressRuleCors {
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins>;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -459,17 +459,17 @@ export interface AppSpecIngressRuleCors {
 
 export interface AppSpecIngressRuleCorsAllowOrigins {
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     * Exact string match.
      */
     exact?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+     * Prefix-based match.
      *
      * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+     * RE2 style regex-based match.
      */
     regex?: pulumi.Input<string>;
 }

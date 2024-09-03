@@ -45,7 +45,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
                **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -159,7 +159,7 @@ class LoadBalancerArgs:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
         """
-        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "domains")
@@ -454,7 +454,7 @@ class _LoadBalancerState:
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
                **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -576,7 +576,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
         """
-        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "domains")
@@ -949,7 +949,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
                **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -1153,7 +1153,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
                **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -1243,7 +1243,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def domains(self) -> pulumi.Output[Sequence['outputs.LoadBalancerDomain']]:
         """
-        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
+        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "domains")

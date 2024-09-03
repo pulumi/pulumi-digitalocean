@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Example Usage
     /// 
-    /// ### Custom Certificate
+    /// #### Custom Certificate
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -51,7 +51,7 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
-    /// ### Let's Encrypt Certificate
+    /// #### Let's Encrypt Certificate
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -74,7 +74,7 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
-    /// ### Use with Other Resources
+    /// #### Use with Other Resources
     /// 
     /// Both custom and Let's Encrypt certificates can be used with other resources
     /// including the `digitalocean.LoadBalancer` and `digitalocean.Cdn` resources.
