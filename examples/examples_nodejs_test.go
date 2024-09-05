@@ -9,6 +9,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//go:build nodejs || all
 // +build nodejs all
 
 package examples
@@ -50,7 +51,6 @@ func TestAccDomain(t *testing.T) {
 }
 
 func TestAccDroplet(t *testing.T) {
-	t.Skip("temp skipping")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "droplet"),
@@ -69,7 +69,6 @@ func TestAccFloatingIp(t *testing.T) {
 }
 
 func TestAccLoadbalancer(t *testing.T) {
-	t.Skip("temp skipping")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "loadbalancer"),
