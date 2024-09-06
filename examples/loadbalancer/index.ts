@@ -25,8 +25,8 @@ const sshKey = new digitalocean.SshKey("my-ssh-key", {
 
 const foobar = new digitalocean.Tag("foobar");
 
-const web = new digitalocean.Droplet("web", {
-    image: "ubuntu-18-04-x64",
+new digitalocean.Droplet("web", {
+    image: "ubuntu-20-04-x64",
     region: digitalocean.Region.NYC3,
     size: "s-1vcpu-1gb",
     tags: [foobar.id],
@@ -45,7 +45,7 @@ const lb = new digitalocean.LoadBalancer("public", {
         port: 22,
         protocol: "tcp",
     },
-    region: digitalocean.Regions.NYC3,
+    region: digitalocean.Region.NYC3,
 });
 
 export let status = lb.status;

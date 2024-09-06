@@ -1,4 +1,4 @@
-// Copyright 2016-2018, Pulumi Corporation.
+// Copyright 2016-2024, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ const sshKey = new digitalocean.SshKey("my-ssh-key", {
 });
 
  const web = new digitalocean.Droplet("web", {
-     image: "ubuntu-18-04-x64",
+     image: "ubuntu-20-04-x64",
      region: digitalocean.Region.NYC3,
      size: digitalocean.DropletSlug.DropletS1VCPU1GB,
      sshKeys: [sshKey.id],
