@@ -81,6 +81,16 @@
                                                         "logtail": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "papertrail": {
                                                             "maxItemsOne": true
                                                         }
@@ -181,6 +191,16 @@
                                                         "logtail": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "papertrail": {
                                                             "maxItemsOne": true
                                                         }
@@ -270,6 +290,16 @@
                                                         },
                                                         "logtail": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "papertrail": {
                                                             "maxItemsOne": true
@@ -362,6 +392,16 @@
                                                         },
                                                         "logtail": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "papertrail": {
                                                             "maxItemsOne": true
@@ -990,6 +1030,16 @@
                                                         "logtail": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "papertrail": {
                                                             "maxItemsOne": true
                                                         }
@@ -1090,6 +1140,16 @@
                                                         "logtail": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "papertrail": {
                                                             "maxItemsOne": true
                                                         }
@@ -1179,6 +1239,16 @@
                                                         },
                                                         "logtail": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "papertrail": {
                                                             "maxItemsOne": true
@@ -1271,6 +1341,16 @@
                                                         },
                                                         "logtail": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "open_search": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "basic_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "papertrail": {
                                                             "maxItemsOne": true
@@ -1904,7 +1984,15 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "digitalocean_database_postgresql_config": {
+                "maxItemsOneOverrides": {
+                    "timescaledb": false
+                }
+            }
+        }
+    },
     "renames": {
         "resources": {
             "digitalocean:index/app:App": "digitalocean_app",

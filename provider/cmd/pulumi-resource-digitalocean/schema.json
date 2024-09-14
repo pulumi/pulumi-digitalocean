@@ -145,7 +145,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecAlert:AppSpecAlert"
                     },
-                    "description": "Describes an alert policy for the app.\n"
+                    "description": "Describes an alert policy for the component.\n"
                 },
                 "databases": {
                     "type": "array",
@@ -179,7 +179,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppSpecEnv:AppSpecEnv"
                     },
-                    "description": "Describes an app-wide environment variable made available to all components.\n"
+                    "description": "Describes an environment variable made available to an app competent.\n"
                 },
                 "features": {
                     "type": "array",
@@ -206,7 +206,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the app. Must be unique across all apps in the same account.\n"
+                    "description": "The name of the component.\n"
                 },
                 "region": {
                     "type": "string",
@@ -255,7 +255,7 @@
                 },
                 "rule": {
                     "type": "string",
-                    "description": "The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.\n"
+                    "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n"
                 }
             },
             "type": "object",
@@ -390,7 +390,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecFunctionGit:AppSpecFunctionGit",
-                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.\n"
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.\n"
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecFunctionGithub:AppSpecFunctionGithub",
@@ -614,6 +614,10 @@
                     "type": "string",
                     "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/AppSpecFunctionLogDestinationOpenSearch:AppSpecFunctionLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecFunctionLogDestinationPapertrail:AppSpecFunctionLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -644,13 +648,51 @@
             "properties": {
                 "token": {
                     "type": "string",
-                    "description": "Logtail token.\n\nA `database` can contain:\n"
+                    "description": "Logtail token.\n"
                 }
             },
             "type": "object",
             "required": [
                 "token"
             ]
+        },
+        "digitalocean:index/AppSpecFunctionLogDestinationOpenSearch:AppSpecFunctionLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/AppSpecFunctionLogDestinationOpenSearchBasicAuth:AppSpecFunctionLogDestinationOpenSearchBasicAuth",
+                    "description": "Basic authentication details.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch endpoint.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "OpenSearch index name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ]
+        },
+        "digitalocean:index/AppSpecFunctionLogDestinationOpenSearchBasicAuth:AppSpecFunctionLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for basic authentication.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "user for basic authentication.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecFunctionLogDestinationPapertrail:AppSpecFunctionLogDestinationPapertrail": {
             "properties": {
@@ -756,21 +798,21 @@
             "properties": {
                 "allowCredentials": {
                     "type": "boolean",
-                    "description": "Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.\n"
+                    "description": "Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.\n"
                 },
                 "allowHeaders": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.\n"
+                    "description": "The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.\n"
                 },
                 "allowMethods": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.\n"
+                    "description": "The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.\n"
                 },
                 "allowOrigins": {
                     "$ref": "#/types/digitalocean:index/AppSpecIngressRuleCorsAllowOrigins:AppSpecIngressRuleCorsAllowOrigins",
@@ -781,7 +823,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.\n"
+                    "description": "The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.\n"
                 },
                 "maxAge": {
                     "type": "string",
@@ -895,7 +937,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecJobGit:AppSpecJobGit",
-                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.\n"
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.\n"
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecJobGithub:AppSpecJobGithub",
@@ -1122,6 +1164,10 @@
                     "type": "string",
                     "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationOpenSearch:AppSpecJobLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationPapertrail:AppSpecJobLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -1152,13 +1198,51 @@
             "properties": {
                 "token": {
                     "type": "string",
-                    "description": "Logtail token.\n\nA `database` can contain:\n"
+                    "description": "Logtail token.\n"
                 }
             },
             "type": "object",
             "required": [
                 "token"
             ]
+        },
+        "digitalocean:index/AppSpecJobLogDestinationOpenSearch:AppSpecJobLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobLogDestinationOpenSearchBasicAuth:AppSpecJobLogDestinationOpenSearchBasicAuth",
+                    "description": "Basic authentication details.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch endpoint.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "OpenSearch index name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ]
+        },
+        "digitalocean:index/AppSpecJobLogDestinationOpenSearchBasicAuth:AppSpecJobLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for basic authentication.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "user for basic authentication.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecJobLogDestinationPapertrail:AppSpecJobLogDestinationPapertrail": {
             "properties": {
@@ -1211,7 +1295,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceGit:AppSpecServiceGit",
-                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.\n"
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.\n"
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceGithub:AppSpecServiceGithub",
@@ -1600,6 +1684,10 @@
                     "type": "string",
                     "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationOpenSearch:AppSpecServiceLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationPapertrail:AppSpecServiceLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -1630,13 +1718,51 @@
             "properties": {
                 "token": {
                     "type": "string",
-                    "description": "Logtail token.\n\nA `database` can contain:\n"
+                    "description": "Logtail token.\n"
                 }
             },
             "type": "object",
             "required": [
                 "token"
             ]
+        },
+        "digitalocean:index/AppSpecServiceLogDestinationOpenSearch:AppSpecServiceLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceLogDestinationOpenSearchBasicAuth:AppSpecServiceLogDestinationOpenSearchBasicAuth",
+                    "description": "Basic authentication details.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch endpoint.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "OpenSearch index name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ]
+        },
+        "digitalocean:index/AppSpecServiceLogDestinationOpenSearchBasicAuth:AppSpecServiceLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for basic authentication.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "user for basic authentication.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecServiceLogDestinationPapertrail:AppSpecServiceLogDestinationPapertrail": {
             "properties": {
@@ -1699,7 +1825,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGit:AppSpecStaticSiteGit",
-                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.\n"
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.\n"
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecStaticSiteGithub:AppSpecStaticSiteGithub",
@@ -1922,7 +2048,7 @@
                 },
                 "git": {
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerGit:AppSpecWorkerGit",
-                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.\n"
+                    "description": "A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.\n"
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerGithub:AppSpecWorkerGithub",
@@ -2145,6 +2271,10 @@
                     "type": "string",
                     "description": "Name of the log destination. Minimum length: 2. Maximum length: 42.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationOpenSearch:AppSpecWorkerLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationPapertrail:AppSpecWorkerLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -2175,13 +2305,51 @@
             "properties": {
                 "token": {
                     "type": "string",
-                    "description": "Logtail token.\n\nA `database` can contain:\n"
+                    "description": "Logtail token.\n"
                 }
             },
             "type": "object",
             "required": [
                 "token"
             ]
+        },
+        "digitalocean:index/AppSpecWorkerLogDestinationOpenSearch:AppSpecWorkerLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerLogDestinationOpenSearchBasicAuth:AppSpecWorkerLogDestinationOpenSearchBasicAuth",
+                    "description": "Basic authentication details.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch endpoint.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "OpenSearch index name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerLogDestinationOpenSearchBasicAuth:AppSpecWorkerLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for basic authentication.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "user for basic authentication.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecWorkerLogDestinationPapertrail:AppSpecWorkerLogDestinationPapertrail": {
             "properties": {
@@ -2439,9 +2607,8 @@
         },
         "digitalocean:index/DatabasePostgresqlConfigTimescaledb:DatabasePostgresqlConfigTimescaledb": {
             "properties": {
-                "timescaledb": {
-                    "type": "integer",
-                    "description": "TimescaleDB extension configuration values\n"
+                "maxBackgroundWorkers": {
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3823,6 +3990,10 @@
                     "type": "string",
                     "description": "The name of the component.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecFunctionLogDestinationOpenSearch:getAppSpecFunctionLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/getAppSpecFunctionLogDestinationPapertrail:getAppSpecFunctionLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -3846,7 +4017,7 @@
                 },
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -3876,11 +4047,54 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecFunctionLogDestinationOpenSearch:getAppSpecFunctionLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecFunctionLogDestinationOpenSearchBasicAuth:getAppSpecFunctionLogDestinationOpenSearchBasicAuth",
+                    "description": "OpenSearch basic auth\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecFunctionLogDestinationOpenSearchBasicAuth:getAppSpecFunctionLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecFunctionLogDestinationPapertrail:getAppSpecFunctionLogDestinationPapertrail": {
             "properties": {
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -4355,6 +4569,10 @@
                     "type": "string",
                     "description": "The name of the component.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestinationOpenSearch:getAppSpecJobLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestinationPapertrail:getAppSpecJobLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -4378,7 +4596,7 @@
                 },
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -4408,11 +4626,54 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecJobLogDestinationOpenSearch:getAppSpecJobLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobLogDestinationOpenSearchBasicAuth:getAppSpecJobLogDestinationOpenSearchBasicAuth",
+                    "description": "OpenSearch basic auth\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecJobLogDestinationOpenSearchBasicAuth:getAppSpecJobLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecJobLogDestinationPapertrail:getAppSpecJobLogDestinationPapertrail": {
             "properties": {
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -4863,6 +5124,10 @@
                     "type": "string",
                     "description": "The name of the component.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestinationOpenSearch:getAppSpecServiceLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestinationPapertrail:getAppSpecServiceLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -4886,7 +5151,7 @@
                 },
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -4916,11 +5181,54 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecServiceLogDestinationOpenSearch:getAppSpecServiceLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceLogDestinationOpenSearchBasicAuth:getAppSpecServiceLogDestinationOpenSearchBasicAuth",
+                    "description": "OpenSearch basic auth\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecServiceLogDestinationOpenSearchBasicAuth:getAppSpecServiceLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecServiceLogDestinationPapertrail:getAppSpecServiceLogDestinationPapertrail": {
             "properties": {
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -5434,6 +5742,10 @@
                     "type": "string",
                     "description": "The name of the component.\n"
                 },
+                "openSearch": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestinationOpenSearch:getAppSpecWorkerLogDestinationOpenSearch",
+                    "description": "OpenSearch configuration.\n"
+                },
                 "papertrail": {
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestinationPapertrail:getAppSpecWorkerLogDestinationPapertrail",
                     "description": "Papertrail configuration.\n"
@@ -5457,7 +5769,7 @@
                 },
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -5487,11 +5799,54 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecWorkerLogDestinationOpenSearch:getAppSpecWorkerLogDestinationOpenSearch": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerLogDestinationOpenSearchBasicAuth:getAppSpecWorkerLogDestinationOpenSearchBasicAuth",
+                    "description": "OpenSearch basic auth\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
+                },
+                "indexName": {
+                    "type": "string",
+                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basicAuth"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerLogDestinationOpenSearchBasicAuth:getAppSpecWorkerLogDestinationOpenSearchBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.\n",
+                    "secret": true
+                },
+                "user": {
+                    "type": "string",
+                    "description": "Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecWorkerLogDestinationPapertrail:getAppSpecWorkerLogDestinationPapertrail": {
             "properties": {
                 "endpoint": {
                     "type": "string",
-                    "description": "Datadog HTTP log intake endpoint.\n"
+                    "description": "OpenSearch API Endpoint. Only HTTPS is supported. Format: https://\u003chost\u003e:\u003cport\u003e.\n"
                 }
             },
             "type": "object",
@@ -7860,7 +8215,7 @@
     },
     "resources": {
         "digitalocean:index/app:App": {
-            "description": "Provides a DigitalOcean App resource.\n\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.\n\n### Basic Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        environmentSlug: \"go\",\n        instanceCount: 1,\n        instanceSizeSlug: \"professional-xs\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"environment_slug\": \"go\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"professional-xs\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    EnvironmentSlug = \"go\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"professional-xs\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tEnvironmentSlug:  pulumi.String(\"go\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"professional-xs\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .environmentSlug(\"go\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"professional-xs\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            environmentSlug: go\n            instanceCount: 1\n            instanceSizeSlug: professional-xs\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Static Site Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_site_example = new digitalocean.App(\"static-site-example\", {spec: {\n    name: \"static-site-example\",\n    region: \"ams\",\n    staticSites: [{\n        name: \"sample-jekyll\",\n        buildCommand: \"bundle exec jekyll build -d ./public\",\n        outputDir: \"/public\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_site_example = digitalocean.App(\"static-site-example\", spec={\n    \"name\": \"static-site-example\",\n    \"region\": \"ams\",\n    \"static_sites\": [{\n        \"name\": \"sample-jekyll\",\n        \"build_command\": \"bundle exec jekyll build -d ./public\",\n        \"output_dir\": \"/public\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-jekyll.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var static_site_example = new DigitalOcean.App(\"static-site-example\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"static-site-example\",\n            Region = \"ams\",\n            StaticSites = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                {\n                    Name = \"sample-jekyll\",\n                    BuildCommand = \"bundle exec jekyll build -d ./public\",\n                    OutputDir = \"/public\",\n                    Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-site-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-site-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tOutputDir:    pulumi.String(\"/public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var static_site_example = new App(\"static-site-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"static-site-example\")\n                .region(\"ams\")\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"sample-jekyll\")\n                    .buildCommand(\"bundle exec jekyll build -d ./public\")\n                    .outputDir(\"/public\")\n                    .git(AppSpecStaticSiteGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-jekyll.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  static-site-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: static-site-example\n        region: ams\n        staticSites:\n          - name: sample-jekyll\n            buildCommand: bundle exec jekyll build -d ./public\n            outputDir: /public\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-jekyll.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple Components Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecIngressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mono_repo_example = new App(\"mono-repo-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"mono-repo-example\")\n                .region(\"ams\")\n                .domains(Map.of(\"name\", \"foo.example.com\"))\n                .alerts(AppSpecAlertArgs.builder()\n                    .rule(\"DEPLOYMENT_FAILED\")\n                    .build())\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"api\")\n                    .environmentSlug(\"go\")\n                    .instanceCount(2)\n                    .instanceSizeSlug(\"professional-xs\")\n                    .github(AppSpecServiceGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .sourceDir(\"api/\")\n                    .httpPort(3000)\n                    .alerts(AppSpecServiceAlertArgs.builder()\n                        .value(75)\n                        .operator(\"GREATER_THAN\")\n                        .window(\"TEN_MINUTES\")\n                        .rule(\"CPU_UTILIZATION\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()\n                            .endpoint(\"syslog+tls://example.com:12345\")\n                            .build())\n                        .build())\n                    .runCommand(\"bin/api\")\n                    .build())\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"web\")\n                    .buildCommand(\"npm run build\")\n                    .github(AppSpecStaticSiteGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .build())\n                .databases(AppSpecDatabaseArgs.builder()\n                    .name(\"starter-db\")\n                    .engine(\"PG\")\n                    .production(false)\n                    .build())\n                .ingress(AppSpecIngressArgs.builder()\n                    .rules(                    \n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"api\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/api\")\n                                    .build())\n                                .build())\n                            .build(),\n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"web\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/\")\n                                    .build())\n                                .build())\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mono-repo-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: mono-repo-example\n        region: ams\n        domains:\n          - name: foo.example.com\n        alerts:\n          - rule: DEPLOYMENT_FAILED\n        services:\n          - name: api\n            environmentSlug: go\n            instanceCount: 2\n            instanceSizeSlug: professional-xs\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n            sourceDir: api/\n            httpPort: 3000\n            alerts:\n              - value: 75\n                operator: GREATER_THAN\n                window: TEN_MINUTES\n                rule: CPU_UTILIZATION\n            logDestinations:\n              - name: MyLogs\n                papertrail:\n                  endpoint: syslog+tls://example.com:12345\n            runCommand: bin/api\n        staticSites:\n          - name: web\n            buildCommand: npm run build\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n        databases:\n          - name: starter-db\n            engine: PG\n            production: false\n        ingress:\n          rules:\n            - component:\n                name: api\n              match:\n                path:\n                  prefix: /api\n            - component:\n                name: web\n              match:\n                path:\n                  prefix: /\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n",
+            "description": "Provides a DigitalOcean App resource.\n\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.\n\n### Basic Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Static Site Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_site_example = new digitalocean.App(\"static-site-example\", {spec: {\n    name: \"static-site-example\",\n    region: \"ams\",\n    staticSites: [{\n        name: \"sample-jekyll\",\n        buildCommand: \"bundle exec jekyll build -d ./public\",\n        outputDir: \"/public\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_site_example = digitalocean.App(\"static-site-example\", spec={\n    \"name\": \"static-site-example\",\n    \"region\": \"ams\",\n    \"static_sites\": [{\n        \"name\": \"sample-jekyll\",\n        \"build_command\": \"bundle exec jekyll build -d ./public\",\n        \"output_dir\": \"/public\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-jekyll.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var static_site_example = new DigitalOcean.App(\"static-site-example\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"static-site-example\",\n            Region = \"ams\",\n            StaticSites = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                {\n                    Name = \"sample-jekyll\",\n                    BuildCommand = \"bundle exec jekyll build -d ./public\",\n                    OutputDir = \"/public\",\n                    Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-site-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-site-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tOutputDir:    pulumi.String(\"/public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var static_site_example = new App(\"static-site-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"static-site-example\")\n                .region(\"ams\")\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"sample-jekyll\")\n                    .buildCommand(\"bundle exec jekyll build -d ./public\")\n                    .outputDir(\"/public\")\n                    .git(AppSpecStaticSiteGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-jekyll.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  static-site-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: static-site-example\n        region: ams\n        staticSites:\n          - name: sample-jekyll\n            buildCommand: bundle exec jekyll build -d ./public\n            outputDir: /public\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-jekyll.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple Components Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecIngressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mono_repo_example = new App(\"mono-repo-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"mono-repo-example\")\n                .region(\"ams\")\n                .domains(Map.of(\"name\", \"foo.example.com\"))\n                .alerts(AppSpecAlertArgs.builder()\n                    .rule(\"DEPLOYMENT_FAILED\")\n                    .build())\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-api\")\n                    .instanceCount(2)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .github(AppSpecServiceGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .sourceDir(\"api/\")\n                    .httpPort(3000)\n                    .alerts(AppSpecServiceAlertArgs.builder()\n                        .value(75)\n                        .operator(\"GREATER_THAN\")\n                        .window(\"TEN_MINUTES\")\n                        .rule(\"CPU_UTILIZATION\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()\n                            .endpoint(\"syslog+tls://example.com:12345\")\n                            .build())\n                        .build())\n                    .runCommand(\"bin/api\")\n                    .build())\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"web\")\n                    .buildCommand(\"npm run build\")\n                    .github(AppSpecStaticSiteGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .build())\n                .databases(AppSpecDatabaseArgs.builder()\n                    .name(\"starter-db\")\n                    .engine(\"PG\")\n                    .production(false)\n                    .build())\n                .ingress(AppSpecIngressArgs.builder()\n                    .rules(                    \n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"api\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/api\")\n                                    .build())\n                                .build())\n                            .build(),\n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"web\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/\")\n                                    .build())\n                                .build())\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mono-repo-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: mono-repo-example\n        region: ams\n        domains:\n          - name: foo.example.com\n        alerts:\n          - rule: DEPLOYMENT_FAILED\n        services:\n          - name: go-api\n            instanceCount: 2\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n            sourceDir: api/\n            httpPort: 3000\n            alerts:\n              - value: 75\n                operator: GREATER_THAN\n                window: TEN_MINUTES\n                rule: CPU_UTILIZATION\n            logDestinations:\n              - name: MyLogs\n                papertrail:\n                  endpoint: syslog+tls://example.com:12345\n            runCommand: bin/api\n        staticSites:\n          - name: web\n            buildCommand: npm run build\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n        databases:\n          - name: starter-db\n            engine: PG\n            production: false\n        ingress:\n          rules:\n            - component:\n                name: api\n              match:\n                path:\n                  prefix: /api\n            - component:\n                name: web\n              match:\n                path:\n                  prefix: /\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Log Destination Example with Opensearch\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n        logDestinations: [{\n            name: \"MyLogs\",\n            openSearch: {\n                endpoint: \"https://something:1234\",\n                basicAuth: {\n                    user: \"user\",\n                    password: \"hi\",\n                },\n            },\n        }],\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n        \"log_destinations\": [{\n            \"name\": \"MyLogs\",\n            \"open_search\": {\n                \"endpoint\": \"https://something:1234\",\n                \"basic_auth\": {\n                    \"user\": \"user\",\n                    \"password\": \"hi\",\n                },\n            },\n        }],\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                    LogDestinations = new[]\n                    {\n                        new DigitalOcean.Inputs.AppSpecServiceLogDestinationArgs\n                        {\n                            Name = \"MyLogs\",\n                            OpenSearch = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchArgs\n                            {\n                                Endpoint = \"https://something:1234\",\n                                BasicAuth = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs\n                                {\n                                    User = \"user\",\n                                    Password = \"hi\",\n                                },\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tLogDestinations: digitalocean.AppSpecServiceLogDestinationArray{\n\t\t\t\t\t\t\t\u0026digitalocean.AppSpecServiceLogDestinationArgs{\n\t\t\t\t\t\t\t\tName: pulumi.String(\"MyLogs\"),\n\t\t\t\t\t\t\t\tOpenSearch: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchArgs{\n\t\t\t\t\t\t\t\t\tEndpoint: pulumi.String(\"https://something:1234\"),\n\t\t\t\t\t\t\t\t\tBasicAuth: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{\n\t\t\t\t\t\t\t\t\t\tUser:     pulumi.String(\"user\"),\n\t\t\t\t\t\t\t\t\t\tPassword: pulumi.String(\"hi\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .openSearch(AppSpecServiceLogDestinationOpenSearchArgs.builder()\n                            .endpoint(\"https://something:1234\")\n                            .basicAuth(AppSpecServiceLogDestinationOpenSearchBasicAuthArgs.builder()\n                                .user(\"user\")\n                                .password(\"hi\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n            logDestinations:\n              - name: MyLogs\n                openSearch:\n                  endpoint: https://something:1234\n                  basicAuth:\n                    user: user\n                    password: hi\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n",
             "properties": {
                 "activeDeploymentId": {
                     "type": "string",
@@ -7885,6 +8240,10 @@
                     "type": "string",
                     "description": "The default URL to access the app.\n"
                 },
+                "liveDomain": {
+                    "type": "string",
+                    "description": "The live domain of the app.\n"
+                },
                 "liveUrl": {
                     "type": "string",
                     "description": "The live URL of the app.\n"
@@ -7907,6 +8266,7 @@
                 "createdAt",
                 "dedicatedIps",
                 "defaultIngress",
+                "liveDomain",
                 "liveUrl",
                 "projectId",
                 "updatedAt",
@@ -7955,6 +8315,10 @@
                     "defaultIngress": {
                         "type": "string",
                         "description": "The default URL to access the app.\n"
+                    },
+                    "liveDomain": {
+                        "type": "string",
+                        "description": "The live domain of the app.\n"
                     },
                     "liveUrl": {
                         "type": "string",
@@ -8607,7 +8971,7 @@
             }
         },
         "digitalocean:index/databaseCluster:DatabaseCluster": {
-            "description": "Provides a DigitalOcean database cluster resource.\n\n## Example Usage\n\n### Create a new PostgreSQL database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    name: \"example-postgres-cluster\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    name=\"example-postgres-cluster\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Name = \"example-postgres-cluster\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-postgres-cluster\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()\n            .name(\"example-postgres-cluster\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-postgres-cluster\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new MySQL database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mysql_example = new digitalocean.DatabaseCluster(\"mysql-example\", {\n    name: \"example-mysql-cluster\",\n    engine: \"mysql\",\n    version: \"8\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmysql_example = digitalocean.DatabaseCluster(\"mysql-example\",\n    name=\"example-mysql-cluster\",\n    engine=\"mysql\",\n    version=\"8\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mysql_example = new DigitalOcean.DatabaseCluster(\"mysql-example\", new()\n    {\n        Name = \"example-mysql-cluster\",\n        Engine = \"mysql\",\n        Version = \"8\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mysql-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-mysql-cluster\"),\n\t\t\tEngine:    pulumi.String(\"mysql\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mysql_example = new DatabaseCluster(\"mysql-example\", DatabaseClusterArgs.builder()\n            .name(\"example-mysql-cluster\")\n            .engine(\"mysql\")\n            .version(\"8\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mysql-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-mysql-cluster\n      engine: mysql\n      version: '8'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new Redis database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst redis_example = new digitalocean.DatabaseCluster(\"redis-example\", {\n    name: \"example-redis-cluster\",\n    engine: \"redis\",\n    version: \"7\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nredis_example = digitalocean.DatabaseCluster(\"redis-example\",\n    name=\"example-redis-cluster\",\n    engine=\"redis\",\n    version=\"7\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var redis_example = new DigitalOcean.DatabaseCluster(\"redis-example\", new()\n    {\n        Name = \"example-redis-cluster\",\n        Engine = \"redis\",\n        Version = \"7\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"redis-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-redis-cluster\"),\n\t\t\tEngine:    pulumi.String(\"redis\"),\n\t\t\tVersion:   pulumi.String(\"7\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var redis_example = new DatabaseCluster(\"redis-example\", DatabaseClusterArgs.builder()\n            .name(\"example-redis-cluster\")\n            .engine(\"redis\")\n            .version(\"7\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  redis-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-redis-cluster\n      engine: redis\n      version: '7'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new Kafka database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst kafka_example = new digitalocean.DatabaseCluster(\"kafka-example\", {\n    name: \"example-kafka-cluster\",\n    engine: \"kafka\",\n    version: \"3.5\",\n    size: \"db-s-2vcpu-2gb\",\n    region: digitalocean.Region.NYC1,\n    nodeCount: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nkafka_example = digitalocean.DatabaseCluster(\"kafka-example\",\n    name=\"example-kafka-cluster\",\n    engine=\"kafka\",\n    version=\"3.5\",\n    size=\"db-s-2vcpu-2gb\",\n    region=digitalocean.Region.NYC1,\n    node_count=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kafka_example = new DigitalOcean.DatabaseCluster(\"kafka-example\", new()\n    {\n        Name = \"example-kafka-cluster\",\n        Engine = \"kafka\",\n        Version = \"3.5\",\n        Size = \"db-s-2vcpu-2gb\",\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"kafka-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-kafka-cluster\"),\n\t\t\tEngine:    pulumi.String(\"kafka\"),\n\t\t\tVersion:   pulumi.String(\"3.5\"),\n\t\t\tSize:      pulumi.String(\"db-s-2vcpu-2gb\"),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var kafka_example = new DatabaseCluster(\"kafka-example\", DatabaseClusterArgs.builder()\n            .name(\"example-kafka-cluster\")\n            .engine(\"kafka\")\n            .version(\"3.5\")\n            .size(\"db-s-2vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  kafka-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-kafka-cluster\n      engine: kafka\n      version: '3.5'\n      size: db-s-2vcpu-2gb\n      region: nyc1\n      nodeCount: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new MongoDB database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mongodb_example = new digitalocean.DatabaseCluster(\"mongodb-example\", {\n    name: \"example-mongo-cluster\",\n    engine: \"mongodb\",\n    version: \"6\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC3,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmongodb_example = digitalocean.DatabaseCluster(\"mongodb-example\",\n    name=\"example-mongo-cluster\",\n    engine=\"mongodb\",\n    version=\"6\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC3,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mongodb_example = new DigitalOcean.DatabaseCluster(\"mongodb-example\", new()\n    {\n        Name = \"example-mongo-cluster\",\n        Engine = \"mongodb\",\n        Version = \"6\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC3,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mongodb-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-mongo-cluster\"),\n\t\t\tEngine:    pulumi.String(\"mongodb\"),\n\t\t\tVersion:   pulumi.String(\"6\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC3),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mongodb_example = new DatabaseCluster(\"mongodb-example\", DatabaseClusterArgs.builder()\n            .name(\"example-mongo-cluster\")\n            .engine(\"mongodb\")\n            .version(\"6\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc3\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mongodb-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-mongo-cluster\n      engine: mongodb\n      version: '6'\n      size: db-s-1vcpu-1gb\n      region: nyc3\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Create a new database cluster based on a backup of an existing cluster.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst doby = new digitalocean.DatabaseCluster(\"doby\", {\n    name: \"dobydb\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU2GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n    tags: [\"production\"],\n});\nconst dobyBackup = new digitalocean.DatabaseCluster(\"doby_backup\", {\n    name: \"dobydupe\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU2GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n    tags: [\"production\"],\n    backupRestore: {\n        databaseName: \"dobydb\",\n    },\n}, {\n    dependsOn: [doby],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ndoby = digitalocean.DatabaseCluster(\"doby\",\n    name=\"dobydb\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1,\n    tags=[\"production\"])\ndoby_backup = digitalocean.DatabaseCluster(\"doby_backup\",\n    name=\"dobydupe\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1,\n    tags=[\"production\"],\n    backup_restore={\n        \"database_name\": \"dobydb\",\n    },\n    opts = pulumi.ResourceOptions(depends_on=[doby]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var doby = new DigitalOcean.DatabaseCluster(\"doby\", new()\n    {\n        Name = \"dobydb\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n        Tags = new[]\n        {\n            \"production\",\n        },\n    });\n\n    var dobyBackup = new DigitalOcean.DatabaseCluster(\"doby_backup\", new()\n    {\n        Name = \"dobydupe\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n        Tags = new[]\n        {\n            \"production\",\n        },\n        BackupRestore = new DigitalOcean.Inputs.DatabaseClusterBackupRestoreArgs\n        {\n            DatabaseName = \"dobydb\",\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            doby,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdoby, err := digitalocean.NewDatabaseCluster(ctx, \"doby\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"dobydb\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"production\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseCluster(ctx, \"doby_backup\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"dobydupe\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"production\"),\n\t\t\t},\n\t\t\tBackupRestore: \u0026digitalocean.DatabaseClusterBackupRestoreArgs{\n\t\t\t\tDatabaseName: pulumi.String(\"dobydb\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tdoby,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var doby = new DatabaseCluster(\"doby\", DatabaseClusterArgs.builder()\n            .name(\"dobydb\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .tags(\"production\")\n            .build());\n\n        var dobyBackup = new DatabaseCluster(\"dobyBackup\", DatabaseClusterArgs.builder()\n            .name(\"dobydupe\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .tags(\"production\")\n            .backupRestore(DatabaseClusterBackupRestoreArgs.builder()\n                .databaseName(\"dobydb\")\n                .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(doby)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  doby:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: dobydb\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-2gb\n      region: nyc1\n      nodeCount: 1\n      tags:\n        - production\n  dobyBackup:\n    type: digitalocean:DatabaseCluster\n    name: doby_backup\n    properties:\n      name: dobydupe\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-2gb\n      region: nyc1\n      nodeCount: 1\n      tags:\n        - production\n      backupRestore:\n        databaseName: dobydb\n    options:\n      dependson:\n        - ${doby}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDatabase clusters can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n$ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n",
+            "description": "Provides a DigitalOcean database cluster resource.\n\n## Example Usage\n\n### Create a new PostgreSQL database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    name: \"example-postgres-cluster\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    name=\"example-postgres-cluster\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Name = \"example-postgres-cluster\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-postgres-cluster\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()\n            .name(\"example-postgres-cluster\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-postgres-cluster\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new MySQL database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mysql_example = new digitalocean.DatabaseCluster(\"mysql-example\", {\n    name: \"example-mysql-cluster\",\n    engine: \"mysql\",\n    version: \"8\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmysql_example = digitalocean.DatabaseCluster(\"mysql-example\",\n    name=\"example-mysql-cluster\",\n    engine=\"mysql\",\n    version=\"8\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mysql_example = new DigitalOcean.DatabaseCluster(\"mysql-example\", new()\n    {\n        Name = \"example-mysql-cluster\",\n        Engine = \"mysql\",\n        Version = \"8\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mysql-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-mysql-cluster\"),\n\t\t\tEngine:    pulumi.String(\"mysql\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mysql_example = new DatabaseCluster(\"mysql-example\", DatabaseClusterArgs.builder()\n            .name(\"example-mysql-cluster\")\n            .engine(\"mysql\")\n            .version(\"8\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mysql-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-mysql-cluster\n      engine: mysql\n      version: '8'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new Redis database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst redis_example = new digitalocean.DatabaseCluster(\"redis-example\", {\n    name: \"example-redis-cluster\",\n    engine: \"redis\",\n    version: \"7\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nredis_example = digitalocean.DatabaseCluster(\"redis-example\",\n    name=\"example-redis-cluster\",\n    engine=\"redis\",\n    version=\"7\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var redis_example = new DigitalOcean.DatabaseCluster(\"redis-example\", new()\n    {\n        Name = \"example-redis-cluster\",\n        Engine = \"redis\",\n        Version = \"7\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"redis-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-redis-cluster\"),\n\t\t\tEngine:    pulumi.String(\"redis\"),\n\t\t\tVersion:   pulumi.String(\"7\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var redis_example = new DatabaseCluster(\"redis-example\", DatabaseClusterArgs.builder()\n            .name(\"example-redis-cluster\")\n            .engine(\"redis\")\n            .version(\"7\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  redis-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-redis-cluster\n      engine: redis\n      version: '7'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new Kafka database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst kafka_example = new digitalocean.DatabaseCluster(\"kafka-example\", {\n    name: \"example-kafka-cluster\",\n    engine: \"kafka\",\n    version: \"3.5\",\n    size: \"db-s-2vcpu-2gb\",\n    region: digitalocean.Region.NYC1,\n    nodeCount: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nkafka_example = digitalocean.DatabaseCluster(\"kafka-example\",\n    name=\"example-kafka-cluster\",\n    engine=\"kafka\",\n    version=\"3.5\",\n    size=\"db-s-2vcpu-2gb\",\n    region=digitalocean.Region.NYC1,\n    node_count=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kafka_example = new DigitalOcean.DatabaseCluster(\"kafka-example\", new()\n    {\n        Name = \"example-kafka-cluster\",\n        Engine = \"kafka\",\n        Version = \"3.5\",\n        Size = \"db-s-2vcpu-2gb\",\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"kafka-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-kafka-cluster\"),\n\t\t\tEngine:    pulumi.String(\"kafka\"),\n\t\t\tVersion:   pulumi.String(\"3.5\"),\n\t\t\tSize:      pulumi.String(\"db-s-2vcpu-2gb\"),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var kafka_example = new DatabaseCluster(\"kafka-example\", DatabaseClusterArgs.builder()\n            .name(\"example-kafka-cluster\")\n            .engine(\"kafka\")\n            .version(\"3.5\")\n            .size(\"db-s-2vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  kafka-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-kafka-cluster\n      engine: kafka\n      version: '3.5'\n      size: db-s-2vcpu-2gb\n      region: nyc1\n      nodeCount: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new MongoDB database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mongodb_example = new digitalocean.DatabaseCluster(\"mongodb-example\", {\n    name: \"example-mongo-cluster\",\n    engine: \"mongodb\",\n    version: \"6\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC3,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmongodb_example = digitalocean.DatabaseCluster(\"mongodb-example\",\n    name=\"example-mongo-cluster\",\n    engine=\"mongodb\",\n    version=\"6\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC3,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mongodb_example = new DigitalOcean.DatabaseCluster(\"mongodb-example\", new()\n    {\n        Name = \"example-mongo-cluster\",\n        Engine = \"mongodb\",\n        Version = \"6\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC3,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"mongodb-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-mongo-cluster\"),\n\t\t\tEngine:    pulumi.String(\"mongodb\"),\n\t\t\tVersion:   pulumi.String(\"6\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC3),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mongodb_example = new DatabaseCluster(\"mongodb-example\", DatabaseClusterArgs.builder()\n            .name(\"example-mongo-cluster\")\n            .engine(\"mongodb\")\n            .version(\"6\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc3\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mongodb-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-mongo-cluster\n      engine: mongodb\n      version: '6'\n      size: db-s-1vcpu-1gb\n      region: nyc3\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a new OpenSearch database cluster\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst opensearch_example = new digitalocean.DatabaseCluster(\"opensearch-example\", {\n    name: \"example-opensearch-cluster\",\n    engine: \"opensearch\",\n    version: \"2\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU2GB,\n    region: digitalocean.Region.NYC3,\n    nodeCount: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nopensearch_example = digitalocean.DatabaseCluster(\"opensearch-example\",\n    name=\"example-opensearch-cluster\",\n    engine=\"opensearch\",\n    version=\"2\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,\n    region=digitalocean.Region.NYC3,\n    node_count=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var opensearch_example = new DigitalOcean.DatabaseCluster(\"opensearch-example\", new()\n    {\n        Name = \"example-opensearch-cluster\",\n        Engine = \"opensearch\",\n        Version = \"2\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,\n        Region = DigitalOcean.Region.NYC3,\n        NodeCount = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseCluster(ctx, \"opensearch-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-opensearch-cluster\"),\n\t\t\tEngine:    pulumi.String(\"opensearch\"),\n\t\t\tVersion:   pulumi.String(\"2\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC3),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var opensearch_example = new DatabaseCluster(\"opensearch-example\", DatabaseClusterArgs.builder()\n            .name(\"example-opensearch-cluster\")\n            .engine(\"opensearch\")\n            .version(\"2\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc3\")\n            .nodeCount(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  opensearch-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-opensearch-cluster\n      engine: opensearch\n      version: '2'\n      size: db-s-1vcpu-2gb\n      region: nyc3\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Create a new database cluster based on a backup of an existing cluster.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst doby = new digitalocean.DatabaseCluster(\"doby\", {\n    name: \"dobydb\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU2GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n    tags: [\"production\"],\n});\nconst dobyBackup = new digitalocean.DatabaseCluster(\"doby_backup\", {\n    name: \"dobydupe\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU2GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n    tags: [\"production\"],\n    backupRestore: {\n        databaseName: \"dobydb\",\n    },\n}, {\n    dependsOn: [doby],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ndoby = digitalocean.DatabaseCluster(\"doby\",\n    name=\"dobydb\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1,\n    tags=[\"production\"])\ndoby_backup = digitalocean.DatabaseCluster(\"doby_backup\",\n    name=\"dobydupe\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1,\n    tags=[\"production\"],\n    backup_restore={\n        \"database_name\": \"dobydb\",\n    },\n    opts = pulumi.ResourceOptions(depends_on=[doby]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var doby = new DigitalOcean.DatabaseCluster(\"doby\", new()\n    {\n        Name = \"dobydb\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n        Tags = new[]\n        {\n            \"production\",\n        },\n    });\n\n    var dobyBackup = new DigitalOcean.DatabaseCluster(\"doby_backup\", new()\n    {\n        Name = \"dobydupe\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n        Tags = new[]\n        {\n            \"production\",\n        },\n        BackupRestore = new DigitalOcean.Inputs.DatabaseClusterBackupRestoreArgs\n        {\n            DatabaseName = \"dobydb\",\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            doby,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdoby, err := digitalocean.NewDatabaseCluster(ctx, \"doby\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"dobydb\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"production\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseCluster(ctx, \"doby_backup\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"dobydupe\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"production\"),\n\t\t\t},\n\t\t\tBackupRestore: \u0026digitalocean.DatabaseClusterBackupRestoreArgs{\n\t\t\t\tDatabaseName: pulumi.String(\"dobydb\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tdoby,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var doby = new DatabaseCluster(\"doby\", DatabaseClusterArgs.builder()\n            .name(\"dobydb\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .tags(\"production\")\n            .build());\n\n        var dobyBackup = new DatabaseCluster(\"dobyBackup\", DatabaseClusterArgs.builder()\n            .name(\"dobydupe\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .tags(\"production\")\n            .backupRestore(DatabaseClusterBackupRestoreArgs.builder()\n                .databaseName(\"dobydb\")\n                .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(doby)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  doby:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: dobydb\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-2gb\n      region: nyc1\n      nodeCount: 1\n      tags:\n        - production\n  dobyBackup:\n    type: digitalocean:DatabaseCluster\n    name: doby_backup\n    properties:\n      name: dobydupe\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-2gb\n      region: nyc1\n      nodeCount: 1\n      tags:\n        - production\n      backupRestore:\n        databaseName: dobydb\n    options:\n      dependson:\n        - ${doby}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDatabase clusters can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n$ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n",
             "properties": {
                 "backupRestore": {
                     "$ref": "#/types/digitalocean:index/DatabaseClusterBackupRestore:DatabaseClusterBackupRestore"
@@ -14959,6 +15323,10 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
                     },
+                    "liveDomain": {
+                        "description": "The live domain of the app.\n",
+                        "type": "string"
+                    },
                     "liveUrl": {
                         "description": "The live URL of the app.\n",
                         "type": "string"
@@ -14989,6 +15357,7 @@
                     "createdAt",
                     "dedicatedIps",
                     "defaultIngress",
+                    "liveDomain",
                     "liveUrl",
                     "projectId",
                     "specs",
