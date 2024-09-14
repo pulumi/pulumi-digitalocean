@@ -38,9 +38,8 @@ import (
 //					Services: digitalocean.AppSpecServiceArray{
 //						&digitalocean.AppSpecServiceArgs{
 //							Name:             pulumi.String("go-service"),
-//							EnvironmentSlug:  pulumi.String("go"),
 //							InstanceCount:    pulumi.Int(1),
-//							InstanceSizeSlug: pulumi.String("professional-xs"),
+//							InstanceSizeSlug: pulumi.String("apps-s-1vcpu-1gb"),
 //							Git: &digitalocean.AppSpecServiceGitArgs{
 //								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
 //								Branch:       pulumi.String("main"),
@@ -98,6 +97,57 @@ import (
 //
 // ```
 //
+// ### Log Destination Example with Opensearch
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewApp(ctx, "golang-sample", &digitalocean.AppArgs{
+//				Spec: &digitalocean.AppSpecArgs{
+//					Name:   pulumi.String("golang-sample"),
+//					Region: pulumi.String("ams"),
+//					Services: digitalocean.AppSpecServiceArray{
+//						&digitalocean.AppSpecServiceArgs{
+//							Name:             pulumi.String("go-service"),
+//							InstanceCount:    pulumi.Int(1),
+//							InstanceSizeSlug: pulumi.String("apps-s-1vcpu-1gb"),
+//							Git: &digitalocean.AppSpecServiceGitArgs{
+//								RepoCloneUrl: pulumi.String("https://github.com/digitalocean/sample-golang.git"),
+//								Branch:       pulumi.String("main"),
+//							},
+//							LogDestinations: digitalocean.AppSpecServiceLogDestinationArray{
+//								&digitalocean.AppSpecServiceLogDestinationArgs{
+//									Name: pulumi.String("MyLogs"),
+//									OpenSearch: &digitalocean.AppSpecServiceLogDestinationOpenSearchArgs{
+//										Endpoint: pulumi.String("https://something:1234"),
+//										BasicAuth: &digitalocean.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{
+//											User:     pulumi.String("user"),
+//											Password: pulumi.String("hi"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // An app can be imported using its `id`, e.g.
@@ -118,6 +168,8 @@ type App struct {
 	DedicatedIps AppDedicatedIpArrayOutput `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringOutput `pulumi:"defaultIngress"`
+	// The live domain of the app.
+	LiveDomain pulumi.StringOutput `pulumi:"liveDomain"`
 	// The live URL of the app.
 	LiveUrl pulumi.StringOutput `pulumi:"liveUrl"`
 	// The ID of the project that the app is assigned to.
@@ -172,6 +224,8 @@ type appState struct {
 	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress *string `pulumi:"defaultIngress"`
+	// The live domain of the app.
+	LiveDomain *string `pulumi:"liveDomain"`
 	// The live URL of the app.
 	LiveUrl *string `pulumi:"liveUrl"`
 	// The ID of the project that the app is assigned to.
@@ -197,6 +251,8 @@ type AppState struct {
 	DedicatedIps AppDedicatedIpArrayInput
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringPtrInput
+	// The live domain of the app.
+	LiveDomain pulumi.StringPtrInput
 	// The live URL of the app.
 	LiveUrl pulumi.StringPtrInput
 	// The ID of the project that the app is assigned to.
@@ -352,6 +408,11 @@ func (o AppOutput) DedicatedIps() AppDedicatedIpArrayOutput {
 // The default URL to access the app.
 func (o AppOutput) DefaultIngress() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultIngress }).(pulumi.StringOutput)
+}
+
+// The live domain of the app.
+func (o AppOutput) LiveDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.LiveDomain }).(pulumi.StringOutput)
 }
 
 // The live URL of the app.

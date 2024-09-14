@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationDatadogArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationLogtailArgs;
+import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationOpenSearchArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationPapertrailArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -65,6 +66,21 @@ public final class AppSpecServiceLogDestinationArgs extends com.pulumi.resources
     }
 
     /**
+     * OpenSearch configuration.
+     * 
+     */
+    @Import(name="openSearch")
+    private @Nullable Output<AppSpecServiceLogDestinationOpenSearchArgs> openSearch;
+
+    /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    public Optional<Output<AppSpecServiceLogDestinationOpenSearchArgs>> openSearch() {
+        return Optional.ofNullable(this.openSearch);
+    }
+
+    /**
      * Papertrail configuration.
      * 
      */
@@ -85,6 +101,7 @@ public final class AppSpecServiceLogDestinationArgs extends com.pulumi.resources
         this.datadog = $.datadog;
         this.logtail = $.logtail;
         this.name = $.name;
+        this.openSearch = $.openSearch;
         this.papertrail = $.papertrail;
     }
 
@@ -167,6 +184,27 @@ public final class AppSpecServiceLogDestinationArgs extends com.pulumi.resources
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param openSearch OpenSearch configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openSearch(@Nullable Output<AppSpecServiceLogDestinationOpenSearchArgs> openSearch) {
+            $.openSearch = openSearch;
+            return this;
+        }
+
+        /**
+         * @param openSearch OpenSearch configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openSearch(AppSpecServiceLogDestinationOpenSearchArgs openSearch) {
+            return openSearch(Output.of(openSearch));
         }
 
         /**

@@ -40,6 +40,11 @@ public final class GetAppResult {
      */
     private String id;
     /**
+     * @return The live domain of the app.
+     * 
+     */
+    private String liveDomain;
+    /**
      * @return The live URL of the app.
      * 
      */
@@ -105,6 +110,13 @@ public final class GetAppResult {
         return this.id;
     }
     /**
+     * @return The live domain of the app.
+     * 
+     */
+    public String liveDomain() {
+        return this.liveDomain;
+    }
+    /**
      * @return The live URL of the app.
      * 
      */
@@ -155,6 +167,7 @@ public final class GetAppResult {
         private List<GetAppDedicatedIp> dedicatedIps;
         private String defaultIngress;
         private String id;
+        private String liveDomain;
         private String liveUrl;
         private String projectId;
         private List<GetAppSpec> specs;
@@ -169,6 +182,7 @@ public final class GetAppResult {
     	      this.dedicatedIps = defaults.dedicatedIps;
     	      this.defaultIngress = defaults.defaultIngress;
     	      this.id = defaults.id;
+    	      this.liveDomain = defaults.liveDomain;
     	      this.liveUrl = defaults.liveUrl;
     	      this.projectId = defaults.projectId;
     	      this.specs = defaults.specs;
@@ -228,6 +242,14 @@ public final class GetAppResult {
             return this;
         }
         @CustomType.Setter
+        public Builder liveDomain(String liveDomain) {
+            if (liveDomain == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "liveDomain");
+            }
+            this.liveDomain = liveDomain;
+            return this;
+        }
+        @CustomType.Setter
         public Builder liveUrl(String liveUrl) {
             if (liveUrl == null) {
               throw new MissingRequiredPropertyException("GetAppResult", "liveUrl");
@@ -278,6 +300,7 @@ public final class GetAppResult {
             _resultValue.dedicatedIps = dedicatedIps;
             _resultValue.defaultIngress = defaultIngress;
             _resultValue.id = id;
+            _resultValue.liveDomain = liveDomain;
             _resultValue.liveUrl = liveUrl;
             _resultValue.projectId = projectId;
             _resultValue.specs = specs;

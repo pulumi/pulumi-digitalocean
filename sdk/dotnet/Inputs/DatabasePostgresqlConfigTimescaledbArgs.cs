@@ -12,11 +12,8 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class DatabasePostgresqlConfigTimescaledbArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// TimescaleDB extension configuration values
-        /// </summary>
-        [Input("timescaledb")]
-        public Input<int>? Timescaledb { get; set; }
+        [Input("maxBackgroundWorkers")]
+        public Input<int>? MaxBackgroundWorkers { get; set; }
 
         public DatabasePostgresqlConfigTimescaledbArgs()
         {

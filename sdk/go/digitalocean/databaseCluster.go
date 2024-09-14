@@ -166,6 +166,36 @@ import (
 //
 // ```
 //
+// ### Create a new OpenSearch database cluster
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "opensearch-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-opensearch-cluster"),
+//				Engine:    pulumi.String("opensearch"),
+//				Version:   pulumi.String("2"),
+//				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),
+//				Region:    pulumi.String(digitalocean.RegionNYC3),
+//				NodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Create a new database cluster based on a backup of an existing cluster.
 //
 // ```go

@@ -218,6 +218,45 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Create a new OpenSearch database cluster
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var opensearch_example = new DatabaseCluster("opensearch-example", DatabaseClusterArgs.builder()
+ *             .name("example-opensearch-cluster")
+ *             .engine("opensearch")
+ *             .version("2")
+ *             .size("db-s-1vcpu-2gb")
+ *             .region("nyc3")
+ *             .nodeCount(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Create a new database cluster based on a backup of an existing cluster.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

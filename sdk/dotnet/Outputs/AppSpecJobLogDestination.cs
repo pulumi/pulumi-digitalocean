@@ -26,6 +26,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// OpenSearch configuration.
+        /// </summary>
+        public readonly Outputs.AppSpecJobLogDestinationOpenSearch? OpenSearch;
+        /// <summary>
         /// Papertrail configuration.
         /// </summary>
         public readonly Outputs.AppSpecJobLogDestinationPapertrail? Papertrail;
@@ -38,11 +42,14 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string name,
 
+            Outputs.AppSpecJobLogDestinationOpenSearch? openSearch,
+
             Outputs.AppSpecJobLogDestinationPapertrail? papertrail)
         {
             Datadog = datadog;
             Logtail = logtail;
             Name = name;
+            OpenSearch = openSearch;
             Papertrail = papertrail;
         }
     }

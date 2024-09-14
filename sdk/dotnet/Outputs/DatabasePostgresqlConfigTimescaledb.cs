@@ -13,15 +13,12 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class DatabasePostgresqlConfigTimescaledb
     {
-        /// <summary>
-        /// TimescaleDB extension configuration values
-        /// </summary>
-        public readonly int? Timescaledb;
+        public readonly int? MaxBackgroundWorkers;
 
         [OutputConstructor]
-        private DatabasePostgresqlConfigTimescaledb(int? timescaledb)
+        private DatabasePostgresqlConfigTimescaledb(int? maxBackgroundWorkers)
         {
-            Timescaledb = timescaledb;
+            MaxBackgroundWorkers = maxBackgroundWorkers;
         }
     }
 }

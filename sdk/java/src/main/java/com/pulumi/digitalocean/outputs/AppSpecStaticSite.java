@@ -59,7 +59,7 @@ public final class AppSpecStaticSite {
      */
     private @Nullable String errorDocument;
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     private @Nullable AppSpecStaticSiteGit git;
@@ -158,7 +158,7 @@ public final class AppSpecStaticSite {
         return Optional.ofNullable(this.errorDocument);
     }
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     public Optional<AppSpecStaticSiteGit> git() {

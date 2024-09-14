@@ -805,6 +805,20 @@ class DatabaseCluster(pulumi.CustomResource):
             node_count=1)
         ```
 
+        ### Create a new OpenSearch database cluster
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        opensearch_example = digitalocean.DatabaseCluster("opensearch-example",
+            name="example-opensearch-cluster",
+            engine="opensearch",
+            version="2",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
+            region=digitalocean.Region.NYC3,
+            node_count=1)
+        ```
+
         ## Create a new database cluster based on a backup of an existing cluster.
 
         ```python
@@ -935,6 +949,20 @@ class DatabaseCluster(pulumi.CustomResource):
             engine="mongodb",
             version="6",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
+            region=digitalocean.Region.NYC3,
+            node_count=1)
+        ```
+
+        ### Create a new OpenSearch database cluster
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        opensearch_example = digitalocean.DatabaseCluster("opensearch-example",
+            name="example-opensearch-cluster",
+            engine="opensearch",
+            version="2",
+            size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,
             region=digitalocean.Region.NYC3,
             node_count=1)
         ```

@@ -29,6 +29,8 @@ __all__ = [
     'AppSpecFunctionLogDestinationArgs',
     'AppSpecFunctionLogDestinationDatadogArgs',
     'AppSpecFunctionLogDestinationLogtailArgs',
+    'AppSpecFunctionLogDestinationOpenSearchArgs',
+    'AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs',
     'AppSpecFunctionLogDestinationPapertrailArgs',
     'AppSpecFunctionRouteArgs',
     'AppSpecIngressArgs',
@@ -50,6 +52,8 @@ __all__ = [
     'AppSpecJobLogDestinationArgs',
     'AppSpecJobLogDestinationDatadogArgs',
     'AppSpecJobLogDestinationLogtailArgs',
+    'AppSpecJobLogDestinationOpenSearchArgs',
+    'AppSpecJobLogDestinationOpenSearchBasicAuthArgs',
     'AppSpecJobLogDestinationPapertrailArgs',
     'AppSpecServiceArgs',
     'AppSpecServiceAlertArgs',
@@ -68,6 +72,8 @@ __all__ = [
     'AppSpecServiceLogDestinationArgs',
     'AppSpecServiceLogDestinationDatadogArgs',
     'AppSpecServiceLogDestinationLogtailArgs',
+    'AppSpecServiceLogDestinationOpenSearchArgs',
+    'AppSpecServiceLogDestinationOpenSearchBasicAuthArgs',
     'AppSpecServiceLogDestinationPapertrailArgs',
     'AppSpecServiceRouteArgs',
     'AppSpecStaticSiteArgs',
@@ -89,6 +95,8 @@ __all__ = [
     'AppSpecWorkerLogDestinationArgs',
     'AppSpecWorkerLogDestinationDatadogArgs',
     'AppSpecWorkerLogDestinationLogtailArgs',
+    'AppSpecWorkerLogDestinationOpenSearchArgs',
+    'AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs',
     'AppSpecWorkerLogDestinationPapertrailArgs',
     'DatabaseClusterBackupRestoreArgs',
     'DatabaseClusterMaintenanceWindowArgs',
@@ -224,11 +232,11 @@ class AppSpecArgs:
                  static_sites: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
-        :param pulumi.Input[str] name: The name of the app. Must be unique across all apps in the same account.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the app.
+        :param pulumi.Input[str] name: The name of the component.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]] egresses: Specification for app egress configurations.
-        :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an app-wide environment variable made available to all components.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param pulumi.Input['AppSpecIngressArgs'] ingress: Specification for component routing, rewrites, and redirects.
         :param pulumi.Input[str] region: The slug for the DigitalOcean data center region hosting the app.
@@ -270,7 +278,7 @@ class AppSpecArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the app. Must be unique across all apps in the same account.
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -282,7 +290,7 @@ class AppSpecArgs:
     @pulumi.getter
     def alerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]]]:
         """
-        Describes an alert policy for the app.
+        Describes an alert policy for the component.
         """
         return pulumi.get(self, "alerts")
 
@@ -337,7 +345,7 @@ class AppSpecArgs:
     @pulumi.getter
     def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]]:
         """
-        Describes an app-wide environment variable made available to all components.
+        Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
 
@@ -433,7 +441,7 @@ class AppSpecAlertArgs:
                  rule: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] rule: The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+        :param pulumi.Input[str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         :param pulumi.Input[bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "rule", rule)
@@ -444,7 +452,7 @@ class AppSpecAlertArgs:
     @pulumi.getter
     def rule(self) -> pulumi.Input[str]:
         """
-        The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         """
         return pulumi.get(self, "rule")
 
@@ -776,7 +784,7 @@ class AppSpecFunctionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]] alerts: Describes an alert policy for the component.
         :param pulumi.Input['AppSpecFunctionCorsArgs'] cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecFunctionGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param pulumi.Input['AppSpecFunctionGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param pulumi.Input['AppSpecFunctionGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecFunctionGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
@@ -862,7 +870,7 @@ class AppSpecFunctionArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecFunctionGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -1403,11 +1411,13 @@ class AppSpecFunctionLogDestinationArgs:
                  name: pulumi.Input[str],
                  datadog: Optional[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs']] = None,
                  logtail: Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']] = None,
+                 open_search: Optional[pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecFunctionLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgs'] open_search: OpenSearch configuration.
         :param pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -1415,6 +1425,8 @@ class AppSpecFunctionLogDestinationArgs:
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -1453,6 +1465,18 @@ class AppSpecFunctionLogDestinationArgs:
     @logtail.setter
     def logtail(self, value: Optional[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgs']]):
         pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional[pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgs']]:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @open_search.setter
+    def open_search(self, value: Optional[pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgs']]):
+        pulumi.set(self, "open_search", value)
 
     @property
     @pulumi.getter
@@ -1511,8 +1535,6 @@ class AppSpecFunctionLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -1521,14 +1543,121 @@ class AppSpecFunctionLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
     @token.setter
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionLogDestinationOpenSearchArgs:
+    def __init__(__self__, *,
+                 basic_auth: pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs'],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 index_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs'] basic_auth: Basic authentication details.
+        :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param pulumi.Input[str] endpoint: OpenSearch endpoint.
+        :param pulumi.Input[str] index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs']:
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @basic_auth.setter
+    def basic_auth(self, value: pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs']):
+        pulumi.set(self, "basic_auth", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+    @index_name.setter
+    def index_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_name", value)
+
+
+@pulumi.input_type
+class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password: Password for basic authentication.
+        :param pulumi.Input[str] user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
@@ -1751,11 +1880,11 @@ class AppSpecIngressRuleCorsArgs:
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param pulumi.Input[bool] allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param pulumi.Input['AppSpecIngressRuleCorsAllowOriginsArgs'] allow_origins: The `Access-Control-Allow-Origin` can be
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
         :param pulumi.Input[str] max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -1775,7 +1904,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1787,7 +1916,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -1799,7 +1928,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -1823,7 +1952,7 @@ class AppSpecIngressRuleCorsArgs:
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -2062,7 +2191,7 @@ class AppSpecJobArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecJobGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param pulumi.Input['AppSpecJobGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param pulumi.Input['AppSpecJobGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecJobGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecJobImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -2185,7 +2314,7 @@ class AppSpecJobArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecJobGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -2739,11 +2868,13 @@ class AppSpecJobLogDestinationArgs:
                  name: pulumi.Input[str],
                  datadog: Optional[pulumi.Input['AppSpecJobLogDestinationDatadogArgs']] = None,
                  logtail: Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']] = None,
+                 open_search: Optional[pulumi.Input['AppSpecJobLogDestinationOpenSearchArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecJobLogDestinationPapertrailArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecJobLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecJobLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecJobLogDestinationOpenSearchArgs'] open_search: OpenSearch configuration.
         :param pulumi.Input['AppSpecJobLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -2751,6 +2882,8 @@ class AppSpecJobLogDestinationArgs:
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -2789,6 +2922,18 @@ class AppSpecJobLogDestinationArgs:
     @logtail.setter
     def logtail(self, value: Optional[pulumi.Input['AppSpecJobLogDestinationLogtailArgs']]):
         pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional[pulumi.Input['AppSpecJobLogDestinationOpenSearchArgs']]:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @open_search.setter
+    def open_search(self, value: Optional[pulumi.Input['AppSpecJobLogDestinationOpenSearchArgs']]):
+        pulumi.set(self, "open_search", value)
 
     @property
     @pulumi.getter
@@ -2847,8 +2992,6 @@ class AppSpecJobLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -2857,14 +3000,121 @@ class AppSpecJobLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
     @token.setter
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecJobLogDestinationOpenSearchArgs:
+    def __init__(__self__, *,
+                 basic_auth: pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgs'],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 index_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgs'] basic_auth: Basic authentication details.
+        :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param pulumi.Input[str] endpoint: OpenSearch endpoint.
+        :param pulumi.Input[str] index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgs']:
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @basic_auth.setter
+    def basic_auth(self, value: pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgs']):
+        pulumi.set(self, "basic_auth", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+    @index_name.setter
+    def index_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_name", value)
+
+
+@pulumi.input_type
+class AppSpecJobLogDestinationOpenSearchBasicAuthArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password: Password for basic authentication.
+        :param pulumi.Input[str] user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
@@ -2922,7 +3172,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param pulumi.Input['AppSpecServiceGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param pulumi.Input['AppSpecServiceGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecServiceGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecServiceHealthCheckArgs'] health_check: A health check to determine the availability of this component.
@@ -3085,7 +3335,7 @@ class AppSpecServiceArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecServiceGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -4054,11 +4304,13 @@ class AppSpecServiceLogDestinationArgs:
                  name: pulumi.Input[str],
                  datadog: Optional[pulumi.Input['AppSpecServiceLogDestinationDatadogArgs']] = None,
                  logtail: Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']] = None,
+                 open_search: Optional[pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecServiceLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecServiceLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgs'] open_search: OpenSearch configuration.
         :param pulumi.Input['AppSpecServiceLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -4066,6 +4318,8 @@ class AppSpecServiceLogDestinationArgs:
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -4104,6 +4358,18 @@ class AppSpecServiceLogDestinationArgs:
     @logtail.setter
     def logtail(self, value: Optional[pulumi.Input['AppSpecServiceLogDestinationLogtailArgs']]):
         pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional[pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgs']]:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @open_search.setter
+    def open_search(self, value: Optional[pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgs']]):
+        pulumi.set(self, "open_search", value)
 
     @property
     @pulumi.getter
@@ -4162,8 +4428,6 @@ class AppSpecServiceLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -4172,14 +4436,121 @@ class AppSpecServiceLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
     @token.setter
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecServiceLogDestinationOpenSearchArgs:
+    def __init__(__self__, *,
+                 basic_auth: pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgs'],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 index_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgs'] basic_auth: Basic authentication details.
+        :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param pulumi.Input[str] endpoint: OpenSearch endpoint.
+        :param pulumi.Input[str] index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgs']:
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @basic_auth.setter
+    def basic_auth(self, value: pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgs']):
+        pulumi.set(self, "basic_auth", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+    @index_name.setter
+    def index_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_name", value)
+
+
+@pulumi.input_type
+class AppSpecServiceLogDestinationOpenSearchBasicAuthArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password: Password for basic authentication.
+        :param pulumi.Input[str] user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
@@ -4270,7 +4641,7 @@ class AppSpecStaticSiteArgs:
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[str] error_document: The name of the error document to use when serving this static site.
-        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param pulumi.Input['AppSpecStaticSiteGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param pulumi.Input['AppSpecStaticSiteGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecStaticSiteGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[str] index_document: The name of the index document to use when serving this static site.
@@ -4415,7 +4786,7 @@ class AppSpecStaticSiteArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecStaticSiteGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -4943,7 +5314,7 @@ class AppSpecWorkerArgs:
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]] envs: Describes an environment variable made available to an app competent.
-        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param pulumi.Input['AppSpecWorkerGitArgs'] git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param pulumi.Input['AppSpecWorkerGithubArgs'] github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecWorkerGitlabArgs'] gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input['AppSpecWorkerImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -5059,7 +5430,7 @@ class AppSpecWorkerArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['AppSpecWorkerGitArgs']]:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -5597,11 +5968,13 @@ class AppSpecWorkerLogDestinationArgs:
                  name: pulumi.Input[str],
                  datadog: Optional[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs']] = None,
                  logtail: Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']] = None,
+                 open_search: Optional[pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgs']] = None,
                  papertrail: Optional[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param pulumi.Input['AppSpecWorkerLogDestinationDatadogArgs'] datadog: Datadog configuration.
         :param pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs'] logtail: Logtail configuration.
+        :param pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgs'] open_search: OpenSearch configuration.
         :param pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgs'] papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -5609,6 +5982,8 @@ class AppSpecWorkerLogDestinationArgs:
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -5647,6 +6022,18 @@ class AppSpecWorkerLogDestinationArgs:
     @logtail.setter
     def logtail(self, value: Optional[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgs']]):
         pulumi.set(self, "logtail", value)
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional[pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgs']]:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @open_search.setter
+    def open_search(self, value: Optional[pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgs']]):
+        pulumi.set(self, "open_search", value)
 
     @property
     @pulumi.getter
@@ -5705,8 +6092,6 @@ class AppSpecWorkerLogDestinationLogtailArgs:
                  token: pulumi.Input[str]):
         """
         :param pulumi.Input[str] token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -5715,14 +6100,121 @@ class AppSpecWorkerLogDestinationLogtailArgs:
     def token(self) -> pulumi.Input[str]:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
 
     @token.setter
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerLogDestinationOpenSearchArgs:
+    def __init__(__self__, *,
+                 basic_auth: pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs'],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 index_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs'] basic_auth: Basic authentication details.
+        :param pulumi.Input[str] cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param pulumi.Input[str] endpoint: OpenSearch endpoint.
+        :param pulumi.Input[str] index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs']:
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @basic_auth.setter
+    def basic_auth(self, value: pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs']):
+        pulumi.set(self, "basic_auth", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+    @index_name.setter
+    def index_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_name", value)
+
+
+@pulumi.input_type
+class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password: Password for basic authentication.
+        :param pulumi.Input[str] user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
@@ -6386,24 +6878,18 @@ class DatabasePostgresqlConfigPgbouncerArgs:
 @pulumi.input_type
 class DatabasePostgresqlConfigTimescaledbArgs:
     def __init__(__self__, *,
-                 timescaledb: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] timescaledb: TimescaleDB extension configuration values
-        """
-        if timescaledb is not None:
-            pulumi.set(__self__, "timescaledb", timescaledb)
+                 max_background_workers: Optional[pulumi.Input[int]] = None):
+        if max_background_workers is not None:
+            pulumi.set(__self__, "max_background_workers", max_background_workers)
 
     @property
-    @pulumi.getter
-    def timescaledb(self) -> Optional[pulumi.Input[int]]:
-        """
-        TimescaleDB extension configuration values
-        """
-        return pulumi.get(self, "timescaledb")
+    @pulumi.getter(name="maxBackgroundWorkers")
+    def max_background_workers(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_background_workers")
 
-    @timescaledb.setter
-    def timescaledb(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "timescaledb", value)
+    @max_background_workers.setter
+    def max_background_workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_background_workers", value)
 
 
 @pulumi.input_type

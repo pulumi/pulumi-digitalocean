@@ -87,6 +87,21 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Create a new OpenSearch database cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const opensearch_example = new digitalocean.DatabaseCluster("opensearch-example", {
+ *     name: "example-opensearch-cluster",
+ *     engine: "opensearch",
+ *     version: "2",
+ *     size: digitalocean.DatabaseSlug.DB_1VPCU2GB,
+ *     region: digitalocean.Region.NYC3,
+ *     nodeCount: 1,
+ * });
+ * ```
+ *
  * ## Create a new database cluster based on a backup of an existing cluster.
  *
  * ```typescript

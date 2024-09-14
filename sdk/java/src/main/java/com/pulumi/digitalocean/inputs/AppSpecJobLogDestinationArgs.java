@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecJobLogDestinationDatadogArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobLogDestinationLogtailArgs;
+import com.pulumi.digitalocean.inputs.AppSpecJobLogDestinationOpenSearchArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobLogDestinationPapertrailArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -65,6 +66,21 @@ public final class AppSpecJobLogDestinationArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * OpenSearch configuration.
+     * 
+     */
+    @Import(name="openSearch")
+    private @Nullable Output<AppSpecJobLogDestinationOpenSearchArgs> openSearch;
+
+    /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    public Optional<Output<AppSpecJobLogDestinationOpenSearchArgs>> openSearch() {
+        return Optional.ofNullable(this.openSearch);
+    }
+
+    /**
      * Papertrail configuration.
      * 
      */
@@ -85,6 +101,7 @@ public final class AppSpecJobLogDestinationArgs extends com.pulumi.resources.Res
         this.datadog = $.datadog;
         this.logtail = $.logtail;
         this.name = $.name;
+        this.openSearch = $.openSearch;
         this.papertrail = $.papertrail;
     }
 
@@ -167,6 +184,27 @@ public final class AppSpecJobLogDestinationArgs extends com.pulumi.resources.Res
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param openSearch OpenSearch configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openSearch(@Nullable Output<AppSpecJobLogDestinationOpenSearchArgs> openSearch) {
+            $.openSearch = openSearch;
+            return this;
+        }
+
+        /**
+         * @param openSearch OpenSearch configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openSearch(AppSpecJobLogDestinationOpenSearchArgs openSearch) {
+            return openSearch(Output.of(openSearch));
         }
 
         /**

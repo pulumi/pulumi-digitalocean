@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecFunctionEnv> Envs;
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         /// </summary>
         public readonly Outputs.AppSpecFunctionGit? Git;
         /// <summary>

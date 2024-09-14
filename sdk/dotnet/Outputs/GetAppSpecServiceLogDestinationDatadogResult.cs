@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string ApiKey;
         /// <summary>
-        /// Datadog HTTP log intake endpoint.
+        /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
         /// </summary>
         public readonly string? Endpoint;
 

@@ -29,14 +29,14 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppSpecArgs Empty = new AppSpecArgs();
 
     /**
-     * Describes an alert policy for the app.
+     * Describes an alert policy for the component.
      * 
      */
     @Import(name="alerts")
     private @Nullable Output<List<AppSpecAlertArgs>> alerts;
 
     /**
-     * @return Describes an alert policy for the app.
+     * @return Describes an alert policy for the component.
      * 
      */
     public Optional<Output<List<AppSpecAlertArgs>>> alerts() {
@@ -100,14 +100,14 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Describes an app-wide environment variable made available to all components.
+     * Describes an environment variable made available to an app competent.
      * 
      */
     @Import(name="envs")
     private @Nullable Output<List<AppSpecEnvArgs>> envs;
 
     /**
-     * @return Describes an app-wide environment variable made available to all components.
+     * @return Describes an environment variable made available to an app competent.
      * 
      */
     public Optional<Output<List<AppSpecEnvArgs>>> envs() {
@@ -159,14 +159,14 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the app. Must be unique across all apps in the same account.
+     * The name of the component.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the app. Must be unique across all apps in the same account.
+     * @return The name of the component.
      * 
      */
     public Output<String> name() {
@@ -248,7 +248,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alerts Describes an alert policy for the app.
+         * @param alerts Describes an alert policy for the component.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alerts Describes an alert policy for the app.
+         * @param alerts Describes an alert policy for the component.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alerts Describes an alert policy for the app.
+         * @param alerts Describes an alert policy for the component.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envs Describes an app-wide environment variable made available to all components.
+         * @param envs Describes an environment variable made available to an app competent.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envs Describes an app-wide environment variable made available to all components.
+         * @param envs Describes an environment variable made available to an app competent.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envs Describes an app-wide environment variable made available to all components.
+         * @param envs Describes an environment variable made available to an app competent.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the app. Must be unique across all apps in the same account.
+         * @param name The name of the component.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the app. Must be unique across all apps in the same account.
+         * @param name The name of the component.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecIngressRuleCorsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<string>? _allowHeaders;
 
         /// <summary>
-        /// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        /// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         /// </summary>
         public InputList<string> AllowHeaders
         {
@@ -34,7 +34,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<string>? _allowMethods;
 
         /// <summary>
-        /// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        /// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         /// </summary>
         public InputList<string> AllowMethods
         {
@@ -52,7 +52,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<string>? _exposeHeaders;
 
         /// <summary>
-        /// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        /// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
         /// </summary>
         public InputList<string> ExposeHeaders
         {

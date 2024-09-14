@@ -137,14 +137,14 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     @Import(name="git")
     private @Nullable Output<AppSpecStaticSiteGitArgs> git;
 
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     public Optional<Output<AppSpecStaticSiteGitArgs>> git() {
@@ -468,7 +468,7 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
          * 
          * @return builder
          * 

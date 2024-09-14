@@ -18,7 +18,7 @@ public final class GetAppSpecWorkerLogDestinationDatadog {
      */
     private String apiKey;
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
      * 
      */
     private @Nullable String endpoint;
@@ -32,7 +32,7 @@ public final class GetAppSpecWorkerLogDestinationDatadog {
         return this.apiKey;
     }
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
      * 
      */
     public Optional<String> endpoint() {

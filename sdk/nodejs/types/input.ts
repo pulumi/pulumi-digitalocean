@@ -23,7 +23,7 @@ export interface AppDedicatedIp {
 
 export interface AppSpec {
     /**
-     * Describes an alert policy for the app.
+     * Describes an alert policy for the component.
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[]>;
     databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
@@ -40,7 +40,7 @@ export interface AppSpec {
      */
     egresses?: pulumi.Input<pulumi.Input<inputs.AppSpecEgress>[]>;
     /**
-     * Describes an app-wide environment variable made available to all components.
+     * Describes an environment variable made available to an app competent.
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
     /**
@@ -54,7 +54,7 @@ export interface AppSpec {
     ingress?: pulumi.Input<inputs.AppSpecIngress>;
     jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
     /**
-     * The name of the app. Must be unique across all apps in the same account.
+     * The name of the component.
      */
     name: pulumi.Input<string>;
     /**
@@ -72,7 +72,7 @@ export interface AppSpecAlert {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rule: pulumi.Input<string>;
 }
@@ -174,7 +174,7 @@ export interface AppSpecFunction {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionEnv>[]>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: pulumi.Input<inputs.AppSpecFunctionGit>;
     /**
@@ -346,6 +346,10 @@ export interface AppSpecFunctionLogDestination {
      */
     name: pulumi.Input<string>;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: pulumi.Input<inputs.AppSpecFunctionLogDestinationOpenSearch>;
+    /**
      * Papertrail configuration.
      */
     papertrail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationPapertrail>;
@@ -365,10 +369,38 @@ export interface AppSpecFunctionLogDestinationDatadog {
 export interface AppSpecFunctionLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
+}
+
+export interface AppSpecFunctionLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: pulumi.Input<inputs.AppSpecFunctionLogDestinationOpenSearchBasicAuth>;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: pulumi.Input<string>;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: pulumi.Input<string>;
+}
+
+export interface AppSpecFunctionLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * user for basic authentication.
+     */
+    user?: pulumi.Input<string>;
 }
 
 export interface AppSpecFunctionLogDestinationPapertrail {
@@ -432,15 +464,15 @@ export interface AppSpecIngressRuleComponent {
 
 export interface AppSpecIngressRuleCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
      */
     allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
      */
     allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -448,7 +480,7 @@ export interface AppSpecIngressRuleCors {
      */
     allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins>;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -533,7 +565,7 @@ export interface AppSpecJob {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecJobEnv>[]>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: pulumi.Input<inputs.AppSpecJobGit>;
     /**
@@ -713,6 +745,10 @@ export interface AppSpecJobLogDestination {
      */
     name: pulumi.Input<string>;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: pulumi.Input<inputs.AppSpecJobLogDestinationOpenSearch>;
+    /**
      * Papertrail configuration.
      */
     papertrail?: pulumi.Input<inputs.AppSpecJobLogDestinationPapertrail>;
@@ -732,10 +768,38 @@ export interface AppSpecJobLogDestinationDatadog {
 export interface AppSpecJobLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
+}
+
+export interface AppSpecJobLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: pulumi.Input<inputs.AppSpecJobLogDestinationOpenSearchBasicAuth>;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: pulumi.Input<string>;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: pulumi.Input<string>;
+}
+
+export interface AppSpecJobLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * user for basic authentication.
+     */
+    user?: pulumi.Input<string>;
 }
 
 export interface AppSpecJobLogDestinationPapertrail {
@@ -777,7 +841,7 @@ export interface AppSpecService {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceEnv>[]>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: pulumi.Input<inputs.AppSpecServiceGit>;
     /**
@@ -1073,6 +1137,10 @@ export interface AppSpecServiceLogDestination {
      */
     name: pulumi.Input<string>;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: pulumi.Input<inputs.AppSpecServiceLogDestinationOpenSearch>;
+    /**
      * Papertrail configuration.
      */
     papertrail?: pulumi.Input<inputs.AppSpecServiceLogDestinationPapertrail>;
@@ -1092,10 +1160,38 @@ export interface AppSpecServiceLogDestinationDatadog {
 export interface AppSpecServiceLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: pulumi.Input<inputs.AppSpecServiceLogDestinationOpenSearchBasicAuth>;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: pulumi.Input<string>;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * user for basic authentication.
+     */
+    user?: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceLogDestinationPapertrail {
@@ -1148,7 +1244,7 @@ export interface AppSpecStaticSite {
      */
     errorDocument?: pulumi.Input<string>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: pulumi.Input<inputs.AppSpecStaticSiteGit>;
     /**
@@ -1320,7 +1416,7 @@ export interface AppSpecWorker {
      */
     envs?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerEnv>[]>;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: pulumi.Input<inputs.AppSpecWorkerGit>;
     /**
@@ -1492,6 +1588,10 @@ export interface AppSpecWorkerLogDestination {
      */
     name: pulumi.Input<string>;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: pulumi.Input<inputs.AppSpecWorkerLogDestinationOpenSearch>;
+    /**
      * Papertrail configuration.
      */
     papertrail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationPapertrail>;
@@ -1511,10 +1611,38 @@ export interface AppSpecWorkerLogDestinationDatadog {
 export interface AppSpecWorkerLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: pulumi.Input<inputs.AppSpecWorkerLogDestinationOpenSearchBasicAuth>;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: pulumi.Input<string>;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * user for basic authentication.
+     */
+    user?: pulumi.Input<string>;
 }
 
 export interface AppSpecWorkerLogDestinationPapertrail {
@@ -1674,10 +1802,7 @@ export interface DatabasePostgresqlConfigPgbouncer {
 }
 
 export interface DatabasePostgresqlConfigTimescaledb {
-    /**
-     * TimescaleDB extension configuration values
-     */
-    timescaledb?: pulumi.Input<number>;
+    maxBackgroundWorkers?: pulumi.Input<number>;
 }
 
 export interface DatabaseUserSetting {

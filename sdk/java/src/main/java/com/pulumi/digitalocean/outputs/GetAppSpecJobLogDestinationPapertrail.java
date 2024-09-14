@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAppSpecJobLogDestinationPapertrail {
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
      * 
      */
     private String endpoint;
 
     private GetAppSpecJobLogDestinationPapertrail() {}
     /**
-     * @return Datadog HTTP log intake endpoint.
+     * @return OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
      * 
      */
     public String endpoint() {
