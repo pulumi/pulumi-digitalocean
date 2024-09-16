@@ -11,19 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabasePostgresqlConfigTimescaledb {
-    /**
-     * @return TimescaleDB extension configuration values
-     * 
-     */
-    private @Nullable Integer timescaledb;
+    private @Nullable Integer maxBackgroundWorkers;
 
     private DatabasePostgresqlConfigTimescaledb() {}
-    /**
-     * @return TimescaleDB extension configuration values
-     * 
-     */
-    public Optional<Integer> timescaledb() {
-        return Optional.ofNullable(this.timescaledb);
+    public Optional<Integer> maxBackgroundWorkers() {
+        return Optional.ofNullable(this.maxBackgroundWorkers);
     }
 
     public static Builder builder() {
@@ -35,22 +27,22 @@ public final class DatabasePostgresqlConfigTimescaledb {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer timescaledb;
+        private @Nullable Integer maxBackgroundWorkers;
         public Builder() {}
         public Builder(DatabasePostgresqlConfigTimescaledb defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.timescaledb = defaults.timescaledb;
+    	      this.maxBackgroundWorkers = defaults.maxBackgroundWorkers;
         }
 
         @CustomType.Setter
-        public Builder timescaledb(@Nullable Integer timescaledb) {
+        public Builder maxBackgroundWorkers(@Nullable Integer maxBackgroundWorkers) {
 
-            this.timescaledb = timescaledb;
+            this.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
         }
         public DatabasePostgresqlConfigTimescaledb build() {
             final var _resultValue = new DatabasePostgresqlConfigTimescaledb();
-            _resultValue.timescaledb = timescaledb;
+            _resultValue.maxBackgroundWorkers = maxBackgroundWorkers;
             return _resultValue;
         }
     }

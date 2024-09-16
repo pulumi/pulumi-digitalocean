@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionLogDestinationDatadog;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionLogDestinationLogtail;
+import com.pulumi.digitalocean.outputs.GetAppSpecFunctionLogDestinationOpenSearch;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionLogDestinationPapertrail;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -30,6 +31,11 @@ public final class GetAppSpecFunctionLogDestination {
      * 
      */
     private String name;
+    /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    private @Nullable GetAppSpecFunctionLogDestinationOpenSearch openSearch;
     /**
      * @return Papertrail configuration.
      * 
@@ -59,6 +65,13 @@ public final class GetAppSpecFunctionLogDestination {
         return this.name;
     }
     /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    public Optional<GetAppSpecFunctionLogDestinationOpenSearch> openSearch() {
+        return Optional.ofNullable(this.openSearch);
+    }
+    /**
      * @return Papertrail configuration.
      * 
      */
@@ -78,6 +91,7 @@ public final class GetAppSpecFunctionLogDestination {
         private @Nullable GetAppSpecFunctionLogDestinationDatadog datadog;
         private @Nullable GetAppSpecFunctionLogDestinationLogtail logtail;
         private String name;
+        private @Nullable GetAppSpecFunctionLogDestinationOpenSearch openSearch;
         private @Nullable GetAppSpecFunctionLogDestinationPapertrail papertrail;
         public Builder() {}
         public Builder(GetAppSpecFunctionLogDestination defaults) {
@@ -85,6 +99,7 @@ public final class GetAppSpecFunctionLogDestination {
     	      this.datadog = defaults.datadog;
     	      this.logtail = defaults.logtail;
     	      this.name = defaults.name;
+    	      this.openSearch = defaults.openSearch;
     	      this.papertrail = defaults.papertrail;
         }
 
@@ -109,6 +124,12 @@ public final class GetAppSpecFunctionLogDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder openSearch(@Nullable GetAppSpecFunctionLogDestinationOpenSearch openSearch) {
+
+            this.openSearch = openSearch;
+            return this;
+        }
+        @CustomType.Setter
         public Builder papertrail(@Nullable GetAppSpecFunctionLogDestinationPapertrail papertrail) {
 
             this.papertrail = papertrail;
@@ -119,6 +140,7 @@ public final class GetAppSpecFunctionLogDestination {
             _resultValue.datadog = datadog;
             _resultValue.logtail = logtail;
             _resultValue.name = name;
+            _resultValue.openSearch = openSearch;
             _resultValue.papertrail = papertrail;
             return _resultValue;
         }

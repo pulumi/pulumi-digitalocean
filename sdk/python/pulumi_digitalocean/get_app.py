@@ -23,7 +23,7 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, dedicated_ips=None, default_ingress=None, id=None, live_url=None, project_id=None, specs=None, updated_at=None, urn=None):
+    def __init__(__self__, active_deployment_id=None, app_id=None, created_at=None, dedicated_ips=None, default_ingress=None, id=None, live_domain=None, live_url=None, project_id=None, specs=None, updated_at=None, urn=None):
         if active_deployment_id and not isinstance(active_deployment_id, str):
             raise TypeError("Expected argument 'active_deployment_id' to be a str")
         pulumi.set(__self__, "active_deployment_id", active_deployment_id)
@@ -42,6 +42,9 @@ class GetAppResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if live_domain and not isinstance(live_domain, str):
+            raise TypeError("Expected argument 'live_domain' to be a str")
+        pulumi.set(__self__, "live_domain", live_domain)
         if live_url and not isinstance(live_url, str):
             raise TypeError("Expected argument 'live_url' to be a str")
         pulumi.set(__self__, "live_url", live_url)
@@ -104,6 +107,14 @@ class GetAppResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="liveDomain")
+    def live_domain(self) -> str:
+        """
+        The live domain of the app.
+        """
+        return pulumi.get(self, "live_domain")
+
+    @property
     @pulumi.getter(name="liveUrl")
     def live_url(self) -> str:
         """
@@ -156,6 +167,7 @@ class AwaitableGetAppResult(GetAppResult):
             dedicated_ips=self.dedicated_ips,
             default_ingress=self.default_ingress,
             id=self.id,
+            live_domain=self.live_domain,
             live_url=self.live_url,
             project_id=self.project_id,
             specs=self.specs,
@@ -198,6 +210,7 @@ def get_app(app_id: Optional[str] = None,
         dedicated_ips=pulumi.get(__ret__, 'dedicated_ips'),
         default_ingress=pulumi.get(__ret__, 'default_ingress'),
         id=pulumi.get(__ret__, 'id'),
+        live_domain=pulumi.get(__ret__, 'live_domain'),
         live_url=pulumi.get(__ret__, 'live_url'),
         project_id=pulumi.get(__ret__, 'project_id'),
         specs=pulumi.get(__ret__, 'specs'),

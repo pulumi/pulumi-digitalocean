@@ -37,9 +37,8 @@ namespace Pulumi.DigitalOcean
     ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
     ///                 {
     ///                     Name = "go-service",
-    ///                     EnvironmentSlug = "go",
     ///                     InstanceCount = 1,
-    ///                     InstanceSizeSlug = "professional-xs",
+    ///                     InstanceSizeSlug = "apps-s-1vcpu-1gb",
     ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
     ///                     {
     ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
@@ -89,6 +88,57 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
+    /// ### Log Destination Example with Opensearch
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var golang_sample = new DigitalOcean.App("golang-sample", new()
+    ///     {
+    ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
+    ///         {
+    ///             Name = "golang-sample",
+    ///             Region = "ams",
+    ///             Services = new[]
+    ///             {
+    ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
+    ///                 {
+    ///                     Name = "go-service",
+    ///                     InstanceCount = 1,
+    ///                     InstanceSizeSlug = "apps-s-1vcpu-1gb",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
+    ///                     {
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
+    ///                         Branch = "main",
+    ///                     },
+    ///                     LogDestinations = new[]
+    ///                     {
+    ///                         new DigitalOcean.Inputs.AppSpecServiceLogDestinationArgs
+    ///                         {
+    ///                             Name = "MyLogs",
+    ///                             OpenSearch = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchArgs
+    ///                             {
+    ///                                 Endpoint = "https://something:1234",
+    ///                                 BasicAuth = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs
+    ///                                 {
+    ///                                     User = "user",
+    ///                                     Password = "hi",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An app can be imported using its `id`, e.g.
@@ -129,6 +179,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("defaultIngress")]
         public Output<string> DefaultIngress { get; private set; } = null!;
+
+        /// <summary>
+        /// The live domain of the app.
+        /// </summary>
+        [Output("liveDomain")]
+        public Output<string> LiveDomain { get; private set; } = null!;
 
         /// <summary>
         /// The live URL of the app.
@@ -275,6 +331,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("defaultIngress")]
         public Input<string>? DefaultIngress { get; set; }
+
+        /// <summary>
+        /// The live domain of the app.
+        /// </summary>
+        [Input("liveDomain")]
+        public Input<string>? LiveDomain { get; set; }
 
         /// <summary>
         /// The live URL of the app.

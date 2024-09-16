@@ -25,9 +25,8 @@ import * as utilities from "./utilities";
  *     region: "ams",
  *     services: [{
  *         name: "go-service",
- *         environmentSlug: "go",
  *         instanceCount: 1,
- *         instanceSizeSlug: "professional-xs",
+ *         instanceSizeSlug: "apps-s-1vcpu-1gb",
  *         git: {
  *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
  *             branch: "main",
@@ -53,6 +52,36 @@ import * as utilities from "./utilities";
  *             repoCloneUrl: "https://github.com/digitalocean/sample-jekyll.git",
  *             branch: "main",
  *         },
+ *     }],
+ * }});
+ * ```
+ *
+ * ### Log Destination Example with Opensearch
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const golang_sample = new digitalocean.App("golang-sample", {spec: {
+ *     name: "golang-sample",
+ *     region: "ams",
+ *     services: [{
+ *         name: "go-service",
+ *         instanceCount: 1,
+ *         instanceSizeSlug: "apps-s-1vcpu-1gb",
+ *         git: {
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
+ *             branch: "main",
+ *         },
+ *         logDestinations: [{
+ *             name: "MyLogs",
+ *             openSearch: {
+ *                 endpoint: "https://something:1234",
+ *                 basicAuth: {
+ *                     user: "user",
+ *                     password: "hi",
+ *                 },
+ *             },
+ *         }],
  *     }],
  * }});
  * ```
@@ -114,6 +143,10 @@ export class App extends pulumi.CustomResource {
      */
     public /*out*/ readonly defaultIngress!: pulumi.Output<string>;
     /**
+     * The live domain of the app.
+     */
+    public /*out*/ readonly liveDomain!: pulumi.Output<string>;
+    /**
      * The live URL of the app.
      */
     public /*out*/ readonly liveUrl!: pulumi.Output<string>;
@@ -152,6 +185,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["dedicatedIps"] = state ? state.dedicatedIps : undefined;
             resourceInputs["defaultIngress"] = state ? state.defaultIngress : undefined;
+            resourceInputs["liveDomain"] = state ? state.liveDomain : undefined;
             resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
@@ -165,6 +199,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["appUrn"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["defaultIngress"] = undefined /*out*/;
+            resourceInputs["liveDomain"] = undefined /*out*/;
             resourceInputs["liveUrl"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -197,6 +232,10 @@ export interface AppState {
      * The default URL to access the app.
      */
     defaultIngress?: pulumi.Input<string>;
+    /**
+     * The live domain of the app.
+     */
+    liveDomain?: pulumi.Input<string>;
     /**
      * The live URL of the app.
      */

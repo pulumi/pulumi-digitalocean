@@ -15,25 +15,17 @@ public final class DatabasePostgresqlConfigTimescaledbArgs extends com.pulumi.re
 
     public static final DatabasePostgresqlConfigTimescaledbArgs Empty = new DatabasePostgresqlConfigTimescaledbArgs();
 
-    /**
-     * TimescaleDB extension configuration values
-     * 
-     */
-    @Import(name="timescaledb")
-    private @Nullable Output<Integer> timescaledb;
+    @Import(name="maxBackgroundWorkers")
+    private @Nullable Output<Integer> maxBackgroundWorkers;
 
-    /**
-     * @return TimescaleDB extension configuration values
-     * 
-     */
-    public Optional<Output<Integer>> timescaledb() {
-        return Optional.ofNullable(this.timescaledb);
+    public Optional<Output<Integer>> maxBackgroundWorkers() {
+        return Optional.ofNullable(this.maxBackgroundWorkers);
     }
 
     private DatabasePostgresqlConfigTimescaledbArgs() {}
 
     private DatabasePostgresqlConfigTimescaledbArgs(DatabasePostgresqlConfigTimescaledbArgs $) {
-        this.timescaledb = $.timescaledb;
+        this.maxBackgroundWorkers = $.maxBackgroundWorkers;
     }
 
     public static Builder builder() {
@@ -54,25 +46,13 @@ public final class DatabasePostgresqlConfigTimescaledbArgs extends com.pulumi.re
             $ = new DatabasePostgresqlConfigTimescaledbArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param timescaledb TimescaleDB extension configuration values
-         * 
-         * @return builder
-         * 
-         */
-        public Builder timescaledb(@Nullable Output<Integer> timescaledb) {
-            $.timescaledb = timescaledb;
+        public Builder maxBackgroundWorkers(@Nullable Output<Integer> maxBackgroundWorkers) {
+            $.maxBackgroundWorkers = maxBackgroundWorkers;
             return this;
         }
 
-        /**
-         * @param timescaledb TimescaleDB extension configuration values
-         * 
-         * @return builder
-         * 
-         */
-        public Builder timescaledb(Integer timescaledb) {
-            return timescaledb(Output.of(timescaledb));
+        public Builder maxBackgroundWorkers(Integer maxBackgroundWorkers) {
+            return maxBackgroundWorkers(Output.of(maxBackgroundWorkers));
         }
 
         public DatabasePostgresqlConfigTimescaledbArgs build() {

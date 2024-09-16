@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationDatadog;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationLogtail;
+import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationOpenSearch;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestinationPapertrail;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -30,6 +31,11 @@ public final class AppSpecWorkerLogDestination {
      * 
      */
     private String name;
+    /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    private @Nullable AppSpecWorkerLogDestinationOpenSearch openSearch;
     /**
      * @return Papertrail configuration.
      * 
@@ -59,6 +65,13 @@ public final class AppSpecWorkerLogDestination {
         return this.name;
     }
     /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    public Optional<AppSpecWorkerLogDestinationOpenSearch> openSearch() {
+        return Optional.ofNullable(this.openSearch);
+    }
+    /**
      * @return Papertrail configuration.
      * 
      */
@@ -78,6 +91,7 @@ public final class AppSpecWorkerLogDestination {
         private @Nullable AppSpecWorkerLogDestinationDatadog datadog;
         private @Nullable AppSpecWorkerLogDestinationLogtail logtail;
         private String name;
+        private @Nullable AppSpecWorkerLogDestinationOpenSearch openSearch;
         private @Nullable AppSpecWorkerLogDestinationPapertrail papertrail;
         public Builder() {}
         public Builder(AppSpecWorkerLogDestination defaults) {
@@ -85,6 +99,7 @@ public final class AppSpecWorkerLogDestination {
     	      this.datadog = defaults.datadog;
     	      this.logtail = defaults.logtail;
     	      this.name = defaults.name;
+    	      this.openSearch = defaults.openSearch;
     	      this.papertrail = defaults.papertrail;
         }
 
@@ -109,6 +124,12 @@ public final class AppSpecWorkerLogDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder openSearch(@Nullable AppSpecWorkerLogDestinationOpenSearch openSearch) {
+
+            this.openSearch = openSearch;
+            return this;
+        }
+        @CustomType.Setter
         public Builder papertrail(@Nullable AppSpecWorkerLogDestinationPapertrail papertrail) {
 
             this.papertrail = papertrail;
@@ -119,6 +140,7 @@ public final class AppSpecWorkerLogDestination {
             _resultValue.datadog = datadog;
             _resultValue.logtail = logtail;
             _resultValue.name = name;
+            _resultValue.openSearch = openSearch;
             _resultValue.papertrail = papertrail;
             return _resultValue;
         }

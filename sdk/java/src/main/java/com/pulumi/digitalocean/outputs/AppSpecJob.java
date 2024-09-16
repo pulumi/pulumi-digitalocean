@@ -47,7 +47,7 @@ public final class AppSpecJob {
      */
     private @Nullable List<AppSpecJobEnv> envs;
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     private @Nullable AppSpecJobGit git;
@@ -143,7 +143,7 @@ public final class AppSpecJob {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     public Optional<AppSpecJobGit> git() {

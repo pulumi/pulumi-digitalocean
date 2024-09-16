@@ -101,14 +101,14 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     @Import(name="git")
     private @Nullable Output<AppSpecWorkerGitArgs> git;
 
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     public Optional<Output<AppSpecWorkerGitArgs>> git() {
@@ -414,7 +414,7 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+         * @param git A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
          * 
          * @return builder
          * 

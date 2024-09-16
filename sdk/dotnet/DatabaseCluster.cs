@@ -124,6 +124,28 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
+    /// ### Create a new OpenSearch database cluster
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var opensearch_example = new DigitalOcean.DatabaseCluster("opensearch-example", new()
+    ///     {
+    ///         Name = "example-opensearch-cluster",
+    ///         Engine = "opensearch",
+    ///         Version = "2",
+    ///         Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,
+    ///         Region = DigitalOcean.Region.NYC3,
+    ///         NodeCount = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Create a new database cluster based on a backup of an existing cluster.
     /// 
     /// ```csharp

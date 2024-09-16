@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerLogDestinationDatadogArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerLogDestinationLogtailArgs;
+import com.pulumi.digitalocean.inputs.AppSpecWorkerLogDestinationOpenSearchArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerLogDestinationPapertrailArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -65,6 +66,21 @@ public final class AppSpecWorkerLogDestinationArgs extends com.pulumi.resources.
     }
 
     /**
+     * OpenSearch configuration.
+     * 
+     */
+    @Import(name="openSearch")
+    private @Nullable Output<AppSpecWorkerLogDestinationOpenSearchArgs> openSearch;
+
+    /**
+     * @return OpenSearch configuration.
+     * 
+     */
+    public Optional<Output<AppSpecWorkerLogDestinationOpenSearchArgs>> openSearch() {
+        return Optional.ofNullable(this.openSearch);
+    }
+
+    /**
      * Papertrail configuration.
      * 
      */
@@ -85,6 +101,7 @@ public final class AppSpecWorkerLogDestinationArgs extends com.pulumi.resources.
         this.datadog = $.datadog;
         this.logtail = $.logtail;
         this.name = $.name;
+        this.openSearch = $.openSearch;
         this.papertrail = $.papertrail;
     }
 
@@ -167,6 +184,27 @@ public final class AppSpecWorkerLogDestinationArgs extends com.pulumi.resources.
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param openSearch OpenSearch configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openSearch(@Nullable Output<AppSpecWorkerLogDestinationOpenSearchArgs> openSearch) {
+            $.openSearch = openSearch;
+            return this;
+        }
+
+        /**
+         * @param openSearch OpenSearch configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openSearch(AppSpecWorkerLogDestinationOpenSearchArgs openSearch) {
+            return openSearch(Output.of(openSearch));
         }
 
         /**

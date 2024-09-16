@@ -30,6 +30,8 @@ __all__ = [
     'AppSpecFunctionLogDestination',
     'AppSpecFunctionLogDestinationDatadog',
     'AppSpecFunctionLogDestinationLogtail',
+    'AppSpecFunctionLogDestinationOpenSearch',
+    'AppSpecFunctionLogDestinationOpenSearchBasicAuth',
     'AppSpecFunctionLogDestinationPapertrail',
     'AppSpecFunctionRoute',
     'AppSpecIngress',
@@ -51,6 +53,8 @@ __all__ = [
     'AppSpecJobLogDestination',
     'AppSpecJobLogDestinationDatadog',
     'AppSpecJobLogDestinationLogtail',
+    'AppSpecJobLogDestinationOpenSearch',
+    'AppSpecJobLogDestinationOpenSearchBasicAuth',
     'AppSpecJobLogDestinationPapertrail',
     'AppSpecService',
     'AppSpecServiceAlert',
@@ -69,6 +73,8 @@ __all__ = [
     'AppSpecServiceLogDestination',
     'AppSpecServiceLogDestinationDatadog',
     'AppSpecServiceLogDestinationLogtail',
+    'AppSpecServiceLogDestinationOpenSearch',
+    'AppSpecServiceLogDestinationOpenSearchBasicAuth',
     'AppSpecServiceLogDestinationPapertrail',
     'AppSpecServiceRoute',
     'AppSpecStaticSite',
@@ -90,6 +96,8 @@ __all__ = [
     'AppSpecWorkerLogDestination',
     'AppSpecWorkerLogDestinationDatadog',
     'AppSpecWorkerLogDestinationLogtail',
+    'AppSpecWorkerLogDestinationOpenSearch',
+    'AppSpecWorkerLogDestinationOpenSearchBasicAuth',
     'AppSpecWorkerLogDestinationPapertrail',
     'DatabaseClusterBackupRestore',
     'DatabaseClusterMaintenanceWindow',
@@ -144,6 +152,8 @@ __all__ = [
     'GetAppSpecFunctionLogDestinationResult',
     'GetAppSpecFunctionLogDestinationDatadogResult',
     'GetAppSpecFunctionLogDestinationLogtailResult',
+    'GetAppSpecFunctionLogDestinationOpenSearchResult',
+    'GetAppSpecFunctionLogDestinationOpenSearchBasicAuthResult',
     'GetAppSpecFunctionLogDestinationPapertrailResult',
     'GetAppSpecFunctionRouteResult',
     'GetAppSpecIngressResult',
@@ -165,6 +175,8 @@ __all__ = [
     'GetAppSpecJobLogDestinationResult',
     'GetAppSpecJobLogDestinationDatadogResult',
     'GetAppSpecJobLogDestinationLogtailResult',
+    'GetAppSpecJobLogDestinationOpenSearchResult',
+    'GetAppSpecJobLogDestinationOpenSearchBasicAuthResult',
     'GetAppSpecJobLogDestinationPapertrailResult',
     'GetAppSpecServiceResult',
     'GetAppSpecServiceAlertResult',
@@ -183,6 +195,8 @@ __all__ = [
     'GetAppSpecServiceLogDestinationResult',
     'GetAppSpecServiceLogDestinationDatadogResult',
     'GetAppSpecServiceLogDestinationLogtailResult',
+    'GetAppSpecServiceLogDestinationOpenSearchResult',
+    'GetAppSpecServiceLogDestinationOpenSearchBasicAuthResult',
     'GetAppSpecServiceLogDestinationPapertrailResult',
     'GetAppSpecServiceRouteResult',
     'GetAppSpecStaticSiteResult',
@@ -204,6 +218,8 @@ __all__ = [
     'GetAppSpecWorkerLogDestinationResult',
     'GetAppSpecWorkerLogDestinationDatadogResult',
     'GetAppSpecWorkerLogDestinationLogtailResult',
+    'GetAppSpecWorkerLogDestinationOpenSearchResult',
+    'GetAppSpecWorkerLogDestinationOpenSearchBasicAuthResult',
     'GetAppSpecWorkerLogDestinationPapertrailResult',
     'GetDatabaseClusterMaintenanceWindowResult',
     'GetDatabaseUserSettingResult',
@@ -336,11 +352,11 @@ class AppSpec(dict):
                  static_sites: Optional[Sequence['outputs.AppSpecStaticSite']] = None,
                  workers: Optional[Sequence['outputs.AppSpecWorker']] = None):
         """
-        :param str name: The name of the app. Must be unique across all apps in the same account.
-        :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the app.
+        :param str name: The name of the component.
+        :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
         :param Sequence['AppSpecEgressArgs'] egresses: Specification for app egress configurations.
-        :param Sequence['AppSpecEnvArgs'] envs: Describes an app-wide environment variable made available to all components.
+        :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param Sequence[str] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
         :param str region: The slug for the DigitalOcean data center region hosting the app.
@@ -379,7 +395,7 @@ class AppSpec(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the app. Must be unique across all apps in the same account.
+        The name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -387,7 +403,7 @@ class AppSpec(dict):
     @pulumi.getter
     def alerts(self) -> Optional[Sequence['outputs.AppSpecAlert']]:
         """
-        Describes an alert policy for the app.
+        Describes an alert policy for the component.
         """
         return pulumi.get(self, "alerts")
 
@@ -422,7 +438,7 @@ class AppSpec(dict):
     @pulumi.getter
     def envs(self) -> Optional[Sequence['outputs.AppSpecEnv']]:
         """
-        Describes an app-wide environment variable made available to all components.
+        Describes an environment variable made available to an app competent.
         """
         return pulumi.get(self, "envs")
 
@@ -482,7 +498,7 @@ class AppSpecAlert(dict):
                  rule: str,
                  disabled: Optional[bool] = None):
         """
-        :param str rule: The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+        :param str rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         :param bool disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "rule", rule)
@@ -493,7 +509,7 @@ class AppSpecAlert(dict):
     @pulumi.getter
     def rule(self) -> str:
         """
-        The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         """
         return pulumi.get(self, "rule")
 
@@ -793,7 +809,7 @@ class AppSpecFunction(dict):
         :param Sequence['AppSpecFunctionAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'AppSpecFunctionCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param Sequence['AppSpecFunctionEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'AppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param 'AppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param Sequence['AppSpecFunctionLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
@@ -857,7 +873,7 @@ class AppSpecFunction(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecFunctionGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -1341,15 +1357,34 @@ class AppSpecFunctionGitlab(dict):
 
 @pulumi.output_type
 class AppSpecFunctionLogDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openSearch":
+            suggest = "open_search"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionLogDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionLogDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionLogDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  datadog: Optional['outputs.AppSpecFunctionLogDestinationDatadog'] = None,
                  logtail: Optional['outputs.AppSpecFunctionLogDestinationLogtail'] = None,
+                 open_search: Optional['outputs.AppSpecFunctionLogDestinationOpenSearch'] = None,
                  papertrail: Optional['outputs.AppSpecFunctionLogDestinationPapertrail'] = None):
         """
         :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecFunctionLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecFunctionLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecFunctionLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'AppSpecFunctionLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -1357,6 +1392,8 @@ class AppSpecFunctionLogDestination(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -1383,6 +1420,14 @@ class AppSpecFunctionLogDestination(dict):
         Logtail configuration.
         """
         return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.AppSpecFunctionLogDestinationOpenSearch']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
 
     @property
     @pulumi.getter
@@ -1446,8 +1491,6 @@ class AppSpecFunctionLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -1456,10 +1499,114 @@ class AppSpecFunctionLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecFunctionLogDestinationOpenSearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuth":
+            suggest = "basic_auth"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "indexName":
+            suggest = "index_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionLogDestinationOpenSearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionLogDestinationOpenSearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionLogDestinationOpenSearch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.AppSpecFunctionLogDestinationOpenSearchBasicAuth',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs' basic_auth: Basic authentication details.
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch endpoint.
+        :param str index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.AppSpecFunctionLogDestinationOpenSearchBasicAuth':
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class AppSpecFunctionLogDestinationOpenSearchBasicAuth(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for basic authentication.
+        :param str user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -1699,11 +1846,11 @@ class AppSpecIngressRuleCors(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[str] = None):
         """
-        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
-        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
-        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        :param bool allow_credentials: Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        :param Sequence[str] allow_headers: The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         :param 'AppSpecIngressRuleCorsAllowOriginsArgs' allow_origins: The `Access-Control-Allow-Origin` can be
-        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        :param Sequence[str] expose_headers: The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
         :param str max_age: An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
         """
         if allow_credentials is not None:
@@ -1723,7 +1870,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -1731,7 +1878,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
         """
         return pulumi.get(self, "allow_headers")
 
@@ -1739,7 +1886,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[Sequence[str]]:
         """
-        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
         """
         return pulumi.get(self, "allow_methods")
 
@@ -1755,7 +1902,7 @@ class AppSpecIngressRuleCors(dict):
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[Sequence[str]]:
         """
-        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
         """
         return pulumi.get(self, "expose_headers")
 
@@ -1991,7 +2138,7 @@ class AppSpecJob(dict):
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecJobEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecJobGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'AppSpecJobGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param 'AppSpecJobGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecJobGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecJobImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -2090,7 +2237,7 @@ class AppSpecJob(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecJobGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -2576,15 +2723,34 @@ class AppSpecJobImageDeployOnPush(dict):
 
 @pulumi.output_type
 class AppSpecJobLogDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openSearch":
+            suggest = "open_search"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobLogDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobLogDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobLogDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  datadog: Optional['outputs.AppSpecJobLogDestinationDatadog'] = None,
                  logtail: Optional['outputs.AppSpecJobLogDestinationLogtail'] = None,
+                 open_search: Optional['outputs.AppSpecJobLogDestinationOpenSearch'] = None,
                  papertrail: Optional['outputs.AppSpecJobLogDestinationPapertrail'] = None):
         """
         :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecJobLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecJobLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecJobLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'AppSpecJobLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -2592,6 +2758,8 @@ class AppSpecJobLogDestination(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -2618,6 +2786,14 @@ class AppSpecJobLogDestination(dict):
         Logtail configuration.
         """
         return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.AppSpecJobLogDestinationOpenSearch']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
 
     @property
     @pulumi.getter
@@ -2681,8 +2857,6 @@ class AppSpecJobLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -2691,10 +2865,114 @@ class AppSpecJobLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecJobLogDestinationOpenSearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuth":
+            suggest = "basic_auth"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "indexName":
+            suggest = "index_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobLogDestinationOpenSearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobLogDestinationOpenSearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobLogDestinationOpenSearch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.AppSpecJobLogDestinationOpenSearchBasicAuth',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'AppSpecJobLogDestinationOpenSearchBasicAuthArgs' basic_auth: Basic authentication details.
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch endpoint.
+        :param str index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.AppSpecJobLogDestinationOpenSearchBasicAuth':
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class AppSpecJobLogDestinationOpenSearchBasicAuth(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for basic authentication.
+        :param str user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -2785,7 +3063,7 @@ class AppSpecService(dict):
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecServiceGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'AppSpecServiceGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param 'AppSpecServiceGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecServiceGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecServiceHealthCheckArgs' health_check: A health check to determine the availability of this component.
@@ -2910,7 +3188,7 @@ class AppSpecService(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecServiceGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -3785,15 +4063,34 @@ class AppSpecServiceImageDeployOnPush(dict):
 
 @pulumi.output_type
 class AppSpecServiceLogDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openSearch":
+            suggest = "open_search"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceLogDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceLogDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceLogDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  datadog: Optional['outputs.AppSpecServiceLogDestinationDatadog'] = None,
                  logtail: Optional['outputs.AppSpecServiceLogDestinationLogtail'] = None,
+                 open_search: Optional['outputs.AppSpecServiceLogDestinationOpenSearch'] = None,
                  papertrail: Optional['outputs.AppSpecServiceLogDestinationPapertrail'] = None):
         """
         :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecServiceLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecServiceLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecServiceLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'AppSpecServiceLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -3801,6 +4098,8 @@ class AppSpecServiceLogDestination(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -3827,6 +4126,14 @@ class AppSpecServiceLogDestination(dict):
         Logtail configuration.
         """
         return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.AppSpecServiceLogDestinationOpenSearch']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
 
     @property
     @pulumi.getter
@@ -3890,8 +4197,6 @@ class AppSpecServiceLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -3900,10 +4205,114 @@ class AppSpecServiceLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecServiceLogDestinationOpenSearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuth":
+            suggest = "basic_auth"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "indexName":
+            suggest = "index_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceLogDestinationOpenSearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceLogDestinationOpenSearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceLogDestinationOpenSearch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.AppSpecServiceLogDestinationOpenSearchBasicAuth',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'AppSpecServiceLogDestinationOpenSearchBasicAuthArgs' basic_auth: Basic authentication details.
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch endpoint.
+        :param str index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.AppSpecServiceLogDestinationOpenSearchBasicAuth':
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class AppSpecServiceLogDestinationOpenSearchBasicAuth(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for basic authentication.
+        :param str user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -4030,7 +4439,7 @@ class AppSpecStaticSite(dict):
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param str error_document: The name of the error document to use when serving this static site.
-        :param 'AppSpecStaticSiteGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'AppSpecStaticSiteGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param 'AppSpecStaticSiteGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecStaticSiteGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param str index_document: The name of the index document to use when serving this static site.
@@ -4137,7 +4546,7 @@ class AppSpecStaticSite(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecStaticSiteGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -4668,7 +5077,7 @@ class AppSpecWorker(dict):
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['AppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
-        :param 'AppSpecWorkerGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        :param 'AppSpecWorkerGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         :param 'AppSpecWorkerGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecWorkerGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
@@ -4760,7 +5169,7 @@ class AppSpecWorker(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.AppSpecWorkerGit']:
         """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
         """
         return pulumi.get(self, "git")
 
@@ -5234,15 +5643,34 @@ class AppSpecWorkerImageDeployOnPush(dict):
 
 @pulumi.output_type
 class AppSpecWorkerLogDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openSearch":
+            suggest = "open_search"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerLogDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerLogDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerLogDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  datadog: Optional['outputs.AppSpecWorkerLogDestinationDatadog'] = None,
                  logtail: Optional['outputs.AppSpecWorkerLogDestinationLogtail'] = None,
+                 open_search: Optional['outputs.AppSpecWorkerLogDestinationOpenSearch'] = None,
                  papertrail: Optional['outputs.AppSpecWorkerLogDestinationPapertrail'] = None):
         """
         :param str name: Name of the log destination. Minimum length: 2. Maximum length: 42.
         :param 'AppSpecWorkerLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'AppSpecWorkerLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'AppSpecWorkerLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'AppSpecWorkerLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -5250,6 +5678,8 @@ class AppSpecWorkerLogDestination(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -5276,6 +5706,14 @@ class AppSpecWorkerLogDestination(dict):
         Logtail configuration.
         """
         return pulumi.get(self, "logtail")
+
+    @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.AppSpecWorkerLogDestinationOpenSearch']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
 
     @property
     @pulumi.getter
@@ -5339,8 +5777,6 @@ class AppSpecWorkerLogDestinationLogtail(dict):
                  token: str):
         """
         :param str token: Logtail token.
-               
-               A `database` can contain:
         """
         pulumi.set(__self__, "token", token)
 
@@ -5349,10 +5785,114 @@ class AppSpecWorkerLogDestinationLogtail(dict):
     def token(self) -> str:
         """
         Logtail token.
-
-        A `database` can contain:
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class AppSpecWorkerLogDestinationOpenSearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuth":
+            suggest = "basic_auth"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "indexName":
+            suggest = "index_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerLogDestinationOpenSearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerLogDestinationOpenSearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerLogDestinationOpenSearch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.AppSpecWorkerLogDestinationOpenSearchBasicAuth',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs' basic_auth: Basic authentication details.
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch endpoint.
+        :param str index_name: OpenSearch index name.
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.AppSpecWorkerLogDestinationOpenSearchBasicAuth':
+        """
+        Basic authentication details.
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        OpenSearch index name.
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class AppSpecWorkerLogDestinationOpenSearchBasicAuth(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for basic authentication.
+        :param str user: user for basic authentication.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        user for basic authentication.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -5979,21 +6519,32 @@ class DatabasePostgresqlConfigPgbouncer(dict):
 
 @pulumi.output_type
 class DatabasePostgresqlConfigTimescaledb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBackgroundWorkers":
+            suggest = "max_background_workers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlConfigTimescaledb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabasePostgresqlConfigTimescaledb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabasePostgresqlConfigTimescaledb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 timescaledb: Optional[int] = None):
-        """
-        :param int timescaledb: TimescaleDB extension configuration values
-        """
-        if timescaledb is not None:
-            pulumi.set(__self__, "timescaledb", timescaledb)
+                 max_background_workers: Optional[int] = None):
+        if max_background_workers is not None:
+            pulumi.set(__self__, "max_background_workers", max_background_workers)
 
     @property
-    @pulumi.getter
-    def timescaledb(self) -> Optional[int]:
-        """
-        TimescaleDB extension configuration values
-        """
-        return pulumi.get(self, "timescaledb")
+    @pulumi.getter(name="maxBackgroundWorkers")
+    def max_background_workers(self) -> Optional[int]:
+        return pulumi.get(self, "max_background_workers")
 
 
 @pulumi.output_type
@@ -8971,11 +9522,13 @@ class GetAppSpecFunctionLogDestinationResult(dict):
                  name: str,
                  datadog: Optional['outputs.GetAppSpecFunctionLogDestinationDatadogResult'] = None,
                  logtail: Optional['outputs.GetAppSpecFunctionLogDestinationLogtailResult'] = None,
+                 open_search: Optional['outputs.GetAppSpecFunctionLogDestinationOpenSearchResult'] = None,
                  papertrail: Optional['outputs.GetAppSpecFunctionLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
         :param 'GetAppSpecFunctionLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'GetAppSpecFunctionLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecFunctionLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'GetAppSpecFunctionLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -8983,6 +9536,8 @@ class GetAppSpecFunctionLogDestinationResult(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -9011,6 +9566,14 @@ class GetAppSpecFunctionLogDestinationResult(dict):
         return pulumi.get(self, "logtail")
 
     @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.GetAppSpecFunctionLogDestinationOpenSearchResult']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecFunctionLogDestinationPapertrailResult']:
         """
@@ -9026,7 +9589,7 @@ class GetAppSpecFunctionLogDestinationDatadogResult(dict):
                  endpoint: Optional[str] = None):
         """
         :param str api_key: Datadog API key.
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
@@ -9044,7 +9607,7 @@ class GetAppSpecFunctionLogDestinationDatadogResult(dict):
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -9068,11 +9631,96 @@ class GetAppSpecFunctionLogDestinationLogtailResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecFunctionLogDestinationOpenSearchResult(dict):
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.GetAppSpecFunctionLogDestinationOpenSearchBasicAuthResult',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.GetAppSpecFunctionLogDestinationOpenSearchBasicAuthResult':
+        """
+        OpenSearch basic auth
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionLogDestinationOpenSearchBasicAuthResult(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        :param str user: Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
 class GetAppSpecFunctionLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -9080,7 +9728,7 @@ class GetAppSpecFunctionLogDestinationPapertrailResult(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -9955,11 +10603,13 @@ class GetAppSpecJobLogDestinationResult(dict):
                  name: str,
                  datadog: Optional['outputs.GetAppSpecJobLogDestinationDatadogResult'] = None,
                  logtail: Optional['outputs.GetAppSpecJobLogDestinationLogtailResult'] = None,
+                 open_search: Optional['outputs.GetAppSpecJobLogDestinationOpenSearchResult'] = None,
                  papertrail: Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
         :param 'GetAppSpecJobLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'GetAppSpecJobLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecJobLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'GetAppSpecJobLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -9967,6 +10617,8 @@ class GetAppSpecJobLogDestinationResult(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -9995,6 +10647,14 @@ class GetAppSpecJobLogDestinationResult(dict):
         return pulumi.get(self, "logtail")
 
     @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.GetAppSpecJobLogDestinationOpenSearchResult']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecJobLogDestinationPapertrailResult']:
         """
@@ -10010,7 +10670,7 @@ class GetAppSpecJobLogDestinationDatadogResult(dict):
                  endpoint: Optional[str] = None):
         """
         :param str api_key: Datadog API key.
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
@@ -10028,7 +10688,7 @@ class GetAppSpecJobLogDestinationDatadogResult(dict):
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -10052,11 +10712,96 @@ class GetAppSpecJobLogDestinationLogtailResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecJobLogDestinationOpenSearchResult(dict):
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.GetAppSpecJobLogDestinationOpenSearchBasicAuthResult',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.GetAppSpecJobLogDestinationOpenSearchBasicAuthResult':
+        """
+        OpenSearch basic auth
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class GetAppSpecJobLogDestinationOpenSearchBasicAuthResult(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        :param str user: Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
 class GetAppSpecJobLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -10064,7 +10809,7 @@ class GetAppSpecJobLogDestinationPapertrailResult(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -10947,11 +11692,13 @@ class GetAppSpecServiceLogDestinationResult(dict):
                  name: str,
                  datadog: Optional['outputs.GetAppSpecServiceLogDestinationDatadogResult'] = None,
                  logtail: Optional['outputs.GetAppSpecServiceLogDestinationLogtailResult'] = None,
+                 open_search: Optional['outputs.GetAppSpecServiceLogDestinationOpenSearchResult'] = None,
                  papertrail: Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
         :param 'GetAppSpecServiceLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'GetAppSpecServiceLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecServiceLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'GetAppSpecServiceLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -10959,6 +11706,8 @@ class GetAppSpecServiceLogDestinationResult(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -10987,6 +11736,14 @@ class GetAppSpecServiceLogDestinationResult(dict):
         return pulumi.get(self, "logtail")
 
     @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.GetAppSpecServiceLogDestinationOpenSearchResult']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecServiceLogDestinationPapertrailResult']:
         """
@@ -11002,7 +11759,7 @@ class GetAppSpecServiceLogDestinationDatadogResult(dict):
                  endpoint: Optional[str] = None):
         """
         :param str api_key: Datadog API key.
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
@@ -11020,7 +11777,7 @@ class GetAppSpecServiceLogDestinationDatadogResult(dict):
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -11044,11 +11801,96 @@ class GetAppSpecServiceLogDestinationLogtailResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecServiceLogDestinationOpenSearchResult(dict):
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.GetAppSpecServiceLogDestinationOpenSearchBasicAuthResult',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.GetAppSpecServiceLogDestinationOpenSearchBasicAuthResult':
+        """
+        OpenSearch basic auth
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class GetAppSpecServiceLogDestinationOpenSearchBasicAuthResult(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        :param str user: Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
 class GetAppSpecServiceLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -11056,7 +11898,7 @@ class GetAppSpecServiceLogDestinationPapertrailResult(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -12121,11 +12963,13 @@ class GetAppSpecWorkerLogDestinationResult(dict):
                  name: str,
                  datadog: Optional['outputs.GetAppSpecWorkerLogDestinationDatadogResult'] = None,
                  logtail: Optional['outputs.GetAppSpecWorkerLogDestinationLogtailResult'] = None,
+                 open_search: Optional['outputs.GetAppSpecWorkerLogDestinationOpenSearchResult'] = None,
                  papertrail: Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult'] = None):
         """
         :param str name: The name of the component.
         :param 'GetAppSpecWorkerLogDestinationDatadogArgs' datadog: Datadog configuration.
         :param 'GetAppSpecWorkerLogDestinationLogtailArgs' logtail: Logtail configuration.
+        :param 'GetAppSpecWorkerLogDestinationOpenSearchArgs' open_search: OpenSearch configuration.
         :param 'GetAppSpecWorkerLogDestinationPapertrailArgs' papertrail: Papertrail configuration.
         """
         pulumi.set(__self__, "name", name)
@@ -12133,6 +12977,8 @@ class GetAppSpecWorkerLogDestinationResult(dict):
             pulumi.set(__self__, "datadog", datadog)
         if logtail is not None:
             pulumi.set(__self__, "logtail", logtail)
+        if open_search is not None:
+            pulumi.set(__self__, "open_search", open_search)
         if papertrail is not None:
             pulumi.set(__self__, "papertrail", papertrail)
 
@@ -12161,6 +13007,14 @@ class GetAppSpecWorkerLogDestinationResult(dict):
         return pulumi.get(self, "logtail")
 
     @property
+    @pulumi.getter(name="openSearch")
+    def open_search(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationOpenSearchResult']:
+        """
+        OpenSearch configuration.
+        """
+        return pulumi.get(self, "open_search")
+
+    @property
     @pulumi.getter
     def papertrail(self) -> Optional['outputs.GetAppSpecWorkerLogDestinationPapertrailResult']:
         """
@@ -12176,7 +13030,7 @@ class GetAppSpecWorkerLogDestinationDatadogResult(dict):
                  endpoint: Optional[str] = None):
         """
         :param str api_key: Datadog API key.
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
@@ -12194,7 +13048,7 @@ class GetAppSpecWorkerLogDestinationDatadogResult(dict):
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 
@@ -12218,11 +13072,96 @@ class GetAppSpecWorkerLogDestinationLogtailResult(dict):
 
 
 @pulumi.output_type
+class GetAppSpecWorkerLogDestinationOpenSearchResult(dict):
+    def __init__(__self__, *,
+                 basic_auth: 'outputs.GetAppSpecWorkerLogDestinationOpenSearchBasicAuthResult',
+                 cluster_name: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 index_name: Optional[str] = None):
+        """
+        :param 'GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
+        :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        pulumi.set(__self__, "basic_auth", basic_auth)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> 'outputs.GetAppSpecWorkerLogDestinationOpenSearchBasicAuthResult':
+        """
+        OpenSearch basic auth
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[str]:
+        """
+        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        """
+        return pulumi.get(self, "index_name")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerLogDestinationOpenSearchBasicAuthResult(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str password: Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        :param str user: Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
 class GetAppSpecWorkerLogDestinationPapertrailResult(dict):
     def __init__(__self__, *,
                  endpoint: str):
         """
-        :param str endpoint: Datadog HTTP log intake endpoint.
+        :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         pulumi.set(__self__, "endpoint", endpoint)
 
@@ -12230,7 +13169,7 @@ class GetAppSpecWorkerLogDestinationPapertrailResult(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        Datadog HTTP log intake endpoint.
+        OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
         """
         return pulumi.get(self, "endpoint")
 

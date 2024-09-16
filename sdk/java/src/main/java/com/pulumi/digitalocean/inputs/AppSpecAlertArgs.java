@@ -33,14 +33,14 @@ public final class AppSpecAlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
-     * @return The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+     * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      * 
      */
     public Output<String> rule() {
@@ -94,7 +94,7 @@ public final class AppSpecAlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rule The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+         * @param rule The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class AppSpecAlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rule The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+         * @param rule The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
          * 
          * @return builder
          * 

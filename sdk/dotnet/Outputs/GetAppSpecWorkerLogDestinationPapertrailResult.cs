@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetAppSpecWorkerLogDestinationPapertrailResult
     {
         /// <summary>
-        /// Datadog HTTP log intake endpoint.
+        /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
         /// </summary>
         public readonly string Endpoint;
 

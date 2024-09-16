@@ -56,9 +56,8 @@ import javax.annotation.Nullable;
  *                 .region("ams")
  *                 .services(AppSpecServiceArgs.builder()
  *                     .name("go-service")
- *                     .environmentSlug("go")
  *                     .instanceCount(1)
- *                     .instanceSizeSlug("professional-xs")
+ *                     .instanceSizeSlug("apps-s-1vcpu-1gb")
  *                     .git(AppSpecServiceGitArgs.builder()
  *                         .repoCloneUrl("https://github.com/digitalocean/sample-golang.git")
  *                         .branch("main")
@@ -157,10 +156,9 @@ import javax.annotation.Nullable;
  *                     .rule("DEPLOYMENT_FAILED")
  *                     .build())
  *                 .services(AppSpecServiceArgs.builder()
- *                     .name("api")
- *                     .environmentSlug("go")
+ *                     .name("go-api")
  *                     .instanceCount(2)
- *                     .instanceSizeSlug("professional-xs")
+ *                     .instanceSizeSlug("apps-s-1vcpu-1gb")
  *                     .github(AppSpecServiceGithubArgs.builder()
  *                         .branch("main")
  *                         .deployOnPush(true)
@@ -218,6 +216,63 @@ import javax.annotation.Nullable;
  *                                     .build())
  *                                 .build())
  *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Log Destination Example with Opensearch
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.App;
+ * import com.pulumi.digitalocean.AppArgs;
+ * import com.pulumi.digitalocean.inputs.AppSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var golang_sample = new App("golang-sample", AppArgs.builder()
+ *             .spec(AppSpecArgs.builder()
+ *                 .name("golang-sample")
+ *                 .region("ams")
+ *                 .services(AppSpecServiceArgs.builder()
+ *                     .name("go-service")
+ *                     .instanceCount(1)
+ *                     .instanceSizeSlug("apps-s-1vcpu-1gb")
+ *                     .git(AppSpecServiceGitArgs.builder()
+ *                         .repoCloneUrl("https://github.com/digitalocean/sample-golang.git")
+ *                         .branch("main")
+ *                         .build())
+ *                     .logDestinations(AppSpecServiceLogDestinationArgs.builder()
+ *                         .name("MyLogs")
+ *                         .openSearch(AppSpecServiceLogDestinationOpenSearchArgs.builder()
+ *                             .endpoint("https://something:1234")
+ *                             .basicAuth(AppSpecServiceLogDestinationOpenSearchBasicAuthArgs.builder()
+ *                                 .user("user")
+ *                                 .password("hi")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
@@ -308,6 +363,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> defaultIngress() {
         return this.defaultIngress;
+    }
+    /**
+     * The live domain of the app.
+     * 
+     */
+    @Export(name="liveDomain", refs={String.class}, tree="[0]")
+    private Output<String> liveDomain;
+
+    /**
+     * @return The live domain of the app.
+     * 
+     */
+    public Output<String> liveDomain() {
+        return this.liveDomain;
     }
     /**
      * The live URL of the app.

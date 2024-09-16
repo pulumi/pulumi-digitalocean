@@ -85,6 +85,7 @@ class _AppState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
                  default_ingress: Optional[pulumi.Input[str]] = None,
+                 live_domain: Optional[pulumi.Input[str]] = None,
                  live_url: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['AppSpecArgs']] = None,
@@ -96,6 +97,7 @@ class _AppState:
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
         :param pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
+        :param pulumi.Input[str] live_domain: The live domain of the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
         :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
                
@@ -115,6 +117,8 @@ class _AppState:
             pulumi.set(__self__, "dedicated_ips", dedicated_ips)
         if default_ingress is not None:
             pulumi.set(__self__, "default_ingress", default_ingress)
+        if live_domain is not None:
+            pulumi.set(__self__, "live_domain", live_domain)
         if live_url is not None:
             pulumi.set(__self__, "live_url", live_url)
         if project_id is not None:
@@ -183,6 +187,18 @@ class _AppState:
     @default_ingress.setter
     def default_ingress(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_ingress", value)
+
+    @property
+    @pulumi.getter(name="liveDomain")
+    def live_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The live domain of the app.
+        """
+        return pulumi.get(self, "live_domain")
+
+    @live_domain.setter
+    def live_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "live_domain", value)
 
     @property
     @pulumi.getter(name="liveUrl")
@@ -264,9 +280,8 @@ class App(pulumi.CustomResource):
             "region": "ams",
             "services": [{
                 "name": "go-service",
-                "environment_slug": "go",
                 "instance_count": 1,
-                "instance_size_slug": "professional-xs",
+                "instance_size_slug": "apps-s-1vcpu-1gb",
                 "git": {
                     "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
                     "branch": "main",
@@ -292,6 +307,36 @@ class App(pulumi.CustomResource):
                     "repo_clone_url": "https://github.com/digitalocean/sample-jekyll.git",
                     "branch": "main",
                 },
+            }],
+        })
+        ```
+
+        ### Log Destination Example with Opensearch
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec={
+            "name": "golang-sample",
+            "region": "ams",
+            "services": [{
+                "name": "go-service",
+                "instance_count": 1,
+                "instance_size_slug": "apps-s-1vcpu-1gb",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+                "log_destinations": [{
+                    "name": "MyLogs",
+                    "open_search": {
+                        "endpoint": "https://something:1234",
+                        "basic_auth": {
+                            "user": "user",
+                            "password": "hi",
+                        },
+                    },
+                }],
             }],
         })
         ```
@@ -338,9 +383,8 @@ class App(pulumi.CustomResource):
             "region": "ams",
             "services": [{
                 "name": "go-service",
-                "environment_slug": "go",
                 "instance_count": 1,
-                "instance_size_slug": "professional-xs",
+                "instance_size_slug": "apps-s-1vcpu-1gb",
                 "git": {
                     "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
                     "branch": "main",
@@ -366,6 +410,36 @@ class App(pulumi.CustomResource):
                     "repo_clone_url": "https://github.com/digitalocean/sample-jekyll.git",
                     "branch": "main",
                 },
+            }],
+        })
+        ```
+
+        ### Log Destination Example with Opensearch
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec={
+            "name": "golang-sample",
+            "region": "ams",
+            "services": [{
+                "name": "go-service",
+                "instance_count": 1,
+                "instance_size_slug": "apps-s-1vcpu-1gb",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+                "log_destinations": [{
+                    "name": "MyLogs",
+                    "open_search": {
+                        "endpoint": "https://something:1234",
+                        "basic_auth": {
+                            "user": "user",
+                            "password": "hi",
+                        },
+                    },
+                }],
             }],
         })
         ```
@@ -412,6 +486,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["app_urn"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["default_ingress"] = None
+            __props__.__dict__["live_domain"] = None
             __props__.__dict__["live_url"] = None
             __props__.__dict__["updated_at"] = None
         super(App, __self__).__init__(
@@ -429,6 +504,7 @@ class App(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
             default_ingress: Optional[pulumi.Input[str]] = None,
+            live_domain: Optional[pulumi.Input[str]] = None,
             live_url: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
@@ -445,6 +521,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The date and time of when the app was created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[str] default_ingress: The default URL to access the app.
+        :param pulumi.Input[str] live_domain: The live domain of the app.
         :param pulumi.Input[str] live_url: The live URL of the app.
         :param pulumi.Input[str] project_id: The ID of the project that the app is assigned to.
                
@@ -463,6 +540,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["dedicated_ips"] = dedicated_ips
         __props__.__dict__["default_ingress"] = default_ingress
+        __props__.__dict__["live_domain"] = live_domain
         __props__.__dict__["live_url"] = live_url
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["spec"] = spec
@@ -508,6 +586,14 @@ class App(pulumi.CustomResource):
         The default URL to access the app.
         """
         return pulumi.get(self, "default_ingress")
+
+    @property
+    @pulumi.getter(name="liveDomain")
+    def live_domain(self) -> pulumi.Output[str]:
+        """
+        The live domain of the app.
+        """
+        return pulumi.get(self, "live_domain")
 
     @property
     @pulumi.getter(name="liveUrl")

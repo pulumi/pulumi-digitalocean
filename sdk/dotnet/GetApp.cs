@@ -151,6 +151,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The live domain of the app.
+        /// </summary>
+        public readonly string LiveDomain;
+        /// <summary>
         /// The live URL of the app.
         /// </summary>
         public readonly string LiveUrl;
@@ -185,6 +189,8 @@ namespace Pulumi.DigitalOcean
 
             string id,
 
+            string liveDomain,
+
             string liveUrl,
 
             string projectId,
@@ -201,6 +207,7 @@ namespace Pulumi.DigitalOcean
             DedicatedIps = dedicatedIps;
             DefaultIngress = defaultIngress;
             Id = id;
+            LiveDomain = liveDomain;
             LiveUrl = liveUrl;
             ProjectId = projectId;
             Specs = specs;

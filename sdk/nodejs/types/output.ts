@@ -23,7 +23,7 @@ export interface AppDedicatedIp {
 
 export interface AppSpec {
     /**
-     * Describes an alert policy for the app.
+     * Describes an alert policy for the component.
      */
     alerts?: outputs.AppSpecAlert[];
     databases?: outputs.AppSpecDatabase[];
@@ -40,7 +40,7 @@ export interface AppSpec {
      */
     egresses?: outputs.AppSpecEgress[];
     /**
-     * Describes an app-wide environment variable made available to all components.
+     * Describes an environment variable made available to an app competent.
      */
     envs?: outputs.AppSpecEnv[];
     /**
@@ -54,7 +54,7 @@ export interface AppSpec {
     ingress: outputs.AppSpecIngress;
     jobs?: outputs.AppSpecJob[];
     /**
-     * The name of the app. Must be unique across all apps in the same account.
+     * The name of the component.
      */
     name: string;
     /**
@@ -72,7 +72,7 @@ export interface AppSpecAlert {
      */
     disabled?: boolean;
     /**
-     * The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+     * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rule: string;
 }
@@ -174,7 +174,7 @@ export interface AppSpecFunction {
      */
     envs?: outputs.AppSpecFunctionEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: outputs.AppSpecFunctionGit;
     /**
@@ -346,6 +346,10 @@ export interface AppSpecFunctionLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.AppSpecFunctionLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.AppSpecFunctionLogDestinationPapertrail;
@@ -365,10 +369,38 @@ export interface AppSpecFunctionLogDestinationDatadog {
 export interface AppSpecFunctionLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: string;
+}
+
+export interface AppSpecFunctionLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: outputs.AppSpecFunctionLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: string;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: string;
+}
+
+export interface AppSpecFunctionLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: string;
+    /**
+     * user for basic authentication.
+     */
+    user?: string;
 }
 
 export interface AppSpecFunctionLogDestinationPapertrail {
@@ -432,15 +464,15 @@ export interface AppSpecIngressRuleComponent {
 
 export interface AppSpecIngressRuleCors {
     /**
-     * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+     * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      */
     allowCredentials?: boolean;
     /**
-     * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+     * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
      */
     allowHeaders?: string[];
     /**
-     * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+     * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
      */
     allowMethods?: string[];
     /**
@@ -448,7 +480,7 @@ export interface AppSpecIngressRuleCors {
      */
     allowOrigins?: outputs.AppSpecIngressRuleCorsAllowOrigins;
     /**
-     * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+     * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
      */
     exposeHeaders?: string[];
     /**
@@ -533,7 +565,7 @@ export interface AppSpecJob {
      */
     envs?: outputs.AppSpecJobEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: outputs.AppSpecJobGit;
     /**
@@ -713,6 +745,10 @@ export interface AppSpecJobLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.AppSpecJobLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.AppSpecJobLogDestinationPapertrail;
@@ -732,10 +768,38 @@ export interface AppSpecJobLogDestinationDatadog {
 export interface AppSpecJobLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: string;
+}
+
+export interface AppSpecJobLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: outputs.AppSpecJobLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: string;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: string;
+}
+
+export interface AppSpecJobLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: string;
+    /**
+     * user for basic authentication.
+     */
+    user?: string;
 }
 
 export interface AppSpecJobLogDestinationPapertrail {
@@ -777,7 +841,7 @@ export interface AppSpecService {
      */
     envs?: outputs.AppSpecServiceEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: outputs.AppSpecServiceGit;
     /**
@@ -1073,6 +1137,10 @@ export interface AppSpecServiceLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.AppSpecServiceLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.AppSpecServiceLogDestinationPapertrail;
@@ -1092,10 +1160,38 @@ export interface AppSpecServiceLogDestinationDatadog {
 export interface AppSpecServiceLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: string;
+}
+
+export interface AppSpecServiceLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: outputs.AppSpecServiceLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: string;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: string;
+}
+
+export interface AppSpecServiceLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: string;
+    /**
+     * user for basic authentication.
+     */
+    user?: string;
 }
 
 export interface AppSpecServiceLogDestinationPapertrail {
@@ -1148,7 +1244,7 @@ export interface AppSpecStaticSite {
      */
     errorDocument?: string;
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: outputs.AppSpecStaticSiteGit;
     /**
@@ -1320,7 +1416,7 @@ export interface AppSpecWorker {
      */
     envs?: outputs.AppSpecWorkerEnv[];
     /**
-     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
     git?: outputs.AppSpecWorkerGit;
     /**
@@ -1492,6 +1588,10 @@ export interface AppSpecWorkerLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.AppSpecWorkerLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.AppSpecWorkerLogDestinationPapertrail;
@@ -1511,10 +1611,38 @@ export interface AppSpecWorkerLogDestinationDatadog {
 export interface AppSpecWorkerLogDestinationLogtail {
     /**
      * Logtail token.
-     *
-     * A `database` can contain:
      */
     token: string;
+}
+
+export interface AppSpecWorkerLogDestinationOpenSearch {
+    /**
+     * Basic authentication details.
+     */
+    basicAuth: outputs.AppSpecWorkerLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch endpoint.
+     */
+    endpoint?: string;
+    /**
+     * OpenSearch index name.
+     */
+    indexName?: string;
+}
+
+export interface AppSpecWorkerLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for basic authentication.
+     */
+    password?: string;
+    /**
+     * user for basic authentication.
+     */
+    user?: string;
 }
 
 export interface AppSpecWorkerLogDestinationPapertrail {
@@ -1674,10 +1802,7 @@ export interface DatabasePostgresqlConfigPgbouncer {
 }
 
 export interface DatabasePostgresqlConfigTimescaledb {
-    /**
-     * TimescaleDB extension configuration values
-     */
-    timescaledb?: number;
+    maxBackgroundWorkers?: number;
 }
 
 export interface DatabaseUserSetting {
@@ -2122,6 +2247,10 @@ export interface GetAppSpecFunctionLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.GetAppSpecFunctionLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.GetAppSpecFunctionLogDestinationPapertrail;
@@ -2133,7 +2262,7 @@ export interface GetAppSpecFunctionLogDestinationDatadog {
      */
     apiKey: string;
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint?: string;
 }
@@ -2145,9 +2274,39 @@ export interface GetAppSpecFunctionLogDestinationLogtail {
     token: string;
 }
 
+export interface GetAppSpecFunctionLogDestinationOpenSearch {
+    /**
+     * OpenSearch basic auth
+     */
+    basicAuth: outputs.GetAppSpecFunctionLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+     */
+    endpoint?: string;
+    /**
+     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     */
+    indexName?: string;
+}
+
+export interface GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+     */
+    password?: string;
+    /**
+     * Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+     */
+    user?: string;
+}
+
 export interface GetAppSpecFunctionLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint: string;
 }
@@ -2460,6 +2619,10 @@ export interface GetAppSpecJobLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.GetAppSpecJobLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.GetAppSpecJobLogDestinationPapertrail;
@@ -2471,7 +2634,7 @@ export interface GetAppSpecJobLogDestinationDatadog {
      */
     apiKey: string;
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint?: string;
 }
@@ -2483,9 +2646,39 @@ export interface GetAppSpecJobLogDestinationLogtail {
     token: string;
 }
 
+export interface GetAppSpecJobLogDestinationOpenSearch {
+    /**
+     * OpenSearch basic auth
+     */
+    basicAuth: outputs.GetAppSpecJobLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+     */
+    endpoint?: string;
+    /**
+     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     */
+    indexName?: string;
+}
+
+export interface GetAppSpecJobLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+     */
+    password?: string;
+    /**
+     * Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+     */
+    user?: string;
+}
+
 export interface GetAppSpecJobLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint: string;
 }
@@ -2814,6 +3007,10 @@ export interface GetAppSpecServiceLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.GetAppSpecServiceLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.GetAppSpecServiceLogDestinationPapertrail;
@@ -2825,7 +3022,7 @@ export interface GetAppSpecServiceLogDestinationDatadog {
      */
     apiKey: string;
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint?: string;
 }
@@ -2837,9 +3034,39 @@ export interface GetAppSpecServiceLogDestinationLogtail {
     token: string;
 }
 
+export interface GetAppSpecServiceLogDestinationOpenSearch {
+    /**
+     * OpenSearch basic auth
+     */
+    basicAuth: outputs.GetAppSpecServiceLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+     */
+    endpoint?: string;
+    /**
+     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     */
+    indexName?: string;
+}
+
+export interface GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+     */
+    password?: string;
+    /**
+     * Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+     */
+    user?: string;
+}
+
 export interface GetAppSpecServiceLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint: string;
 }
@@ -3229,6 +3456,10 @@ export interface GetAppSpecWorkerLogDestination {
      */
     name: string;
     /**
+     * OpenSearch configuration.
+     */
+    openSearch?: outputs.GetAppSpecWorkerLogDestinationOpenSearch;
+    /**
      * Papertrail configuration.
      */
     papertrail?: outputs.GetAppSpecWorkerLogDestinationPapertrail;
@@ -3240,7 +3471,7 @@ export interface GetAppSpecWorkerLogDestinationDatadog {
      */
     apiKey: string;
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint?: string;
 }
@@ -3252,9 +3483,39 @@ export interface GetAppSpecWorkerLogDestinationLogtail {
     token: string;
 }
 
+export interface GetAppSpecWorkerLogDestinationOpenSearch {
+    /**
+     * OpenSearch basic auth
+     */
+    basicAuth: outputs.GetAppSpecWorkerLogDestinationOpenSearchBasicAuth;
+    /**
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+     */
+    clusterName?: string;
+    /**
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+     */
+    endpoint?: string;
+    /**
+     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     */
+    indexName?: string;
+}
+
+export interface GetAppSpecWorkerLogDestinationOpenSearchBasicAuth {
+    /**
+     * Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+     */
+    password?: string;
+    /**
+     * Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+     */
+    user?: string;
+}
+
 export interface GetAppSpecWorkerLogDestinationPapertrail {
     /**
-     * Datadog HTTP log intake endpoint.
+     * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint: string;
 }

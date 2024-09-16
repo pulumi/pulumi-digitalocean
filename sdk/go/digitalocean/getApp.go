@@ -72,6 +72,8 @@ type LookupAppResult struct {
 	DefaultIngress string `pulumi:"defaultIngress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The live domain of the app.
+	LiveDomain string `pulumi:"liveDomain"`
 	// The live URL of the app.
 	LiveUrl string `pulumi:"liveUrl"`
 	// The ID of the project that the app is assigned to.
@@ -151,6 +153,11 @@ func (o LookupAppResultOutput) DefaultIngress() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The live domain of the app.
+func (o LookupAppResultOutput) LiveDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.LiveDomain }).(pulumi.StringOutput)
 }
 
 // The live URL of the app.

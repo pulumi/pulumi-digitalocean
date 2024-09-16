@@ -41,7 +41,7 @@ public final class AppSpecFunction {
      */
     private @Nullable List<AppSpecFunctionEnv> envs;
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     private @Nullable AppSpecFunctionGit git;
@@ -107,7 +107,7 @@ public final class AppSpecFunction {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+     * @return A Git repo to use as the component&#39;s source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      * 
      */
     public Optional<AppSpecFunctionGit> git() {

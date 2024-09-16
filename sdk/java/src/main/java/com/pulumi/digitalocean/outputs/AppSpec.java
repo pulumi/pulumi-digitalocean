@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpec {
     /**
-     * @return Describes an alert policy for the app.
+     * @return Describes an alert policy for the component.
      * 
      */
     private @Nullable List<AppSpecAlert> alerts;
@@ -48,7 +48,7 @@ public final class AppSpec {
      */
     private @Nullable List<AppSpecEgress> egresses;
     /**
-     * @return Describes an app-wide environment variable made available to all components.
+     * @return Describes an environment variable made available to an app competent.
      * 
      */
     private @Nullable List<AppSpecEnv> envs;
@@ -65,7 +65,7 @@ public final class AppSpec {
     private @Nullable AppSpecIngress ingress;
     private @Nullable List<AppSpecJob> jobs;
     /**
-     * @return The name of the app. Must be unique across all apps in the same account.
+     * @return The name of the component.
      * 
      */
     private String name;
@@ -80,7 +80,7 @@ public final class AppSpec {
 
     private AppSpec() {}
     /**
-     * @return Describes an alert policy for the app.
+     * @return Describes an alert policy for the component.
      * 
      */
     public List<AppSpecAlert> alerts() {
@@ -113,7 +113,7 @@ public final class AppSpec {
         return this.egresses == null ? List.of() : this.egresses;
     }
     /**
-     * @return Describes an app-wide environment variable made available to all components.
+     * @return Describes an environment variable made available to an app competent.
      * 
      */
     public List<AppSpecEnv> envs() {
@@ -140,7 +140,7 @@ public final class AppSpec {
         return this.jobs == null ? List.of() : this.jobs;
     }
     /**
-     * @return The name of the app. Must be unique across all apps in the same account.
+     * @return The name of the component.
      * 
      */
     public String name() {

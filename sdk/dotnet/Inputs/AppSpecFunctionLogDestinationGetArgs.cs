@@ -31,6 +31,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// OpenSearch configuration.
+        /// </summary>
+        [Input("openSearch")]
+        public Input<Inputs.AppSpecFunctionLogDestinationOpenSearchGetArgs>? OpenSearch { get; set; }
+
+        /// <summary>
         /// Papertrail configuration.
         /// </summary>
         [Input("papertrail")]

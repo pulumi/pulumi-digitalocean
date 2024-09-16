@@ -129,7 +129,7 @@ func (o AppDedicatedIpArrayOutput) Index(i pulumi.IntInput) AppDedicatedIpOutput
 }
 
 type AppSpec struct {
-	// Describes an alert policy for the app.
+	// Describes an alert policy for the component.
 	Alerts    []AppSpecAlert    `pulumi:"alerts"`
 	Databases []AppSpecDatabase `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
@@ -138,7 +138,7 @@ type AppSpec struct {
 	Domains []string `pulumi:"domains"`
 	// Specification for app egress configurations.
 	Egresses []AppSpecEgress `pulumi:"egresses"`
-	// Describes an app-wide environment variable made available to all components.
+	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecEnv `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
 	Features  []string          `pulumi:"features"`
@@ -146,7 +146,7 @@ type AppSpec struct {
 	// Specification for component routing, rewrites, and redirects.
 	Ingress *AppSpecIngress `pulumi:"ingress"`
 	Jobs    []AppSpecJob    `pulumi:"jobs"`
-	// The name of the app. Must be unique across all apps in the same account.
+	// The name of the component.
 	Name string `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      *string             `pulumi:"region"`
@@ -167,7 +167,7 @@ type AppSpecInput interface {
 }
 
 type AppSpecArgs struct {
-	// Describes an alert policy for the app.
+	// Describes an alert policy for the component.
 	Alerts    AppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
 	// Describes a domain where the application will be made available.
@@ -176,7 +176,7 @@ type AppSpecArgs struct {
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Specification for app egress configurations.
 	Egresses AppSpecEgressArrayInput `pulumi:"egresses"`
-	// Describes an app-wide environment variable made available to all components.
+	// Describes an environment variable made available to an app competent.
 	Envs AppSpecEnvArrayInput `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
 	Features  pulumi.StringArrayInput   `pulumi:"features"`
@@ -184,7 +184,7 @@ type AppSpecArgs struct {
 	// Specification for component routing, rewrites, and redirects.
 	Ingress AppSpecIngressPtrInput `pulumi:"ingress"`
 	Jobs    AppSpecJobArrayInput   `pulumi:"jobs"`
-	// The name of the app. Must be unique across all apps in the same account.
+	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The slug for the DigitalOcean data center region hosting the app.
 	Region      pulumi.StringPtrInput       `pulumi:"region"`
@@ -270,7 +270,7 @@ func (o AppSpecOutput) ToAppSpecPtrOutputWithContext(ctx context.Context) AppSpe
 	}).(AppSpecPtrOutput)
 }
 
-// Describes an alert policy for the app.
+// Describes an alert policy for the component.
 func (o AppSpecOutput) Alerts() AppSpecAlertArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecAlert { return v.Alerts }).(AppSpecAlertArrayOutput)
 }
@@ -294,7 +294,7 @@ func (o AppSpecOutput) Egresses() AppSpecEgressArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEgress { return v.Egresses }).(AppSpecEgressArrayOutput)
 }
 
-// Describes an app-wide environment variable made available to all components.
+// Describes an environment variable made available to an app competent.
 func (o AppSpecOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEnv { return v.Envs }).(AppSpecEnvArrayOutput)
 }
@@ -317,7 +317,7 @@ func (o AppSpecOutput) Jobs() AppSpecJobArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecJob { return v.Jobs }).(AppSpecJobArrayOutput)
 }
 
-// The name of the app. Must be unique across all apps in the same account.
+// The name of the component.
 func (o AppSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpec) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -363,7 +363,7 @@ func (o AppSpecPtrOutput) Elem() AppSpecOutput {
 	}).(AppSpecOutput)
 }
 
-// Describes an alert policy for the app.
+// Describes an alert policy for the component.
 func (o AppSpecPtrOutput) Alerts() AppSpecAlertArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecAlert {
 		if v == nil {
@@ -412,7 +412,7 @@ func (o AppSpecPtrOutput) Egresses() AppSpecEgressArrayOutput {
 	}).(AppSpecEgressArrayOutput)
 }
 
-// Describes an app-wide environment variable made available to all components.
+// Describes an environment variable made available to an app competent.
 func (o AppSpecPtrOutput) Envs() AppSpecEnvArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecEnv {
 		if v == nil {
@@ -460,7 +460,7 @@ func (o AppSpecPtrOutput) Jobs() AppSpecJobArrayOutput {
 	}).(AppSpecJobArrayOutput)
 }
 
-// The name of the app. Must be unique across all apps in the same account.
+// The name of the component.
 func (o AppSpecPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpec) *string {
 		if v == nil {
@@ -510,7 +510,7 @@ func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
 type AppSpecAlert struct {
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
-	// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 	Rule string `pulumi:"rule"`
 }
 
@@ -528,7 +528,7 @@ type AppSpecAlertInput interface {
 type AppSpecAlertArgs struct {
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -588,7 +588,7 @@ func (o AppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the alert to configure. Top-level app alert policies can be: `DEPLOYMENT_FAILED`, `DEPLOYMENT_LIVE`, `DOMAIN_FAILED`, or `DOMAIN_LIVE`.
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 func (o AppSpecAlertOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecAlert) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -1133,7 +1133,7 @@ type AppSpecFunction struct {
 	Cors *AppSpecFunctionCors `pulumi:"cors"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecFunctionEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git *AppSpecFunctionGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecFunctionGithub `pulumi:"github"`
@@ -1171,7 +1171,7 @@ type AppSpecFunctionArgs struct {
 	Cors AppSpecFunctionCorsPtrInput `pulumi:"cors"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecFunctionEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git AppSpecFunctionGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecFunctionGithubPtrInput `pulumi:"github"`
@@ -1257,7 +1257,7 @@ func (o AppSpecFunctionOutput) Envs() AppSpecFunctionEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionEnv { return v.Envs }).(AppSpecFunctionEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 func (o AppSpecFunctionOutput) Git() AppSpecFunctionGitPtrOutput {
 	return o.ApplyT(func(v AppSpecFunction) *AppSpecFunctionGit { return v.Git }).(AppSpecFunctionGitPtrOutput)
 }
@@ -2499,6 +2499,8 @@ type AppSpecFunctionLogDestination struct {
 	Logtail *AppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *AppSpecFunctionLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *AppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -2521,6 +2523,8 @@ type AppSpecFunctionLogDestinationArgs struct {
 	Logtail AppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch AppSpecFunctionLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail AppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -2589,6 +2593,11 @@ func (o AppSpecFunctionLogDestinationOutput) Logtail() AppSpecFunctionLogDestina
 // Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenSearch configuration.
+func (o AppSpecFunctionLogDestinationOutput) OpenSearch() AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestination) *AppSpecFunctionLogDestinationOpenSearch { return v.OpenSearch }).(AppSpecFunctionLogDestinationOpenSearchPtrOutput)
 }
 
 // Papertrail configuration.
@@ -2774,8 +2783,6 @@ func (o AppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringP
 
 type AppSpecFunctionLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -2792,8 +2799,6 @@ type AppSpecFunctionLogDestinationLogtailInput interface {
 
 type AppSpecFunctionLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -2875,8 +2880,6 @@ func (o AppSpecFunctionLogDestinationLogtailOutput) ToAppSpecFunctionLogDestinat
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecFunctionLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -2906,14 +2909,364 @@ func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Elem() AppSpecFunctionLog
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecFunctionLogDestinationLogtail) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationOpenSearch struct {
+	// Basic authentication details.
+	BasicAuth AppSpecFunctionLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName *string `pulumi:"indexName"`
+}
+
+// AppSpecFunctionLogDestinationOpenSearchInput is an input type that accepts AppSpecFunctionLogDestinationOpenSearchArgs and AppSpecFunctionLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationOpenSearchInput` via:
+//
+//	AppSpecFunctionLogDestinationOpenSearchArgs{...}
+type AppSpecFunctionLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationOpenSearchOutput() AppSpecFunctionLogDestinationOpenSearchOutput
+	ToAppSpecFunctionLogDestinationOpenSearchOutputWithContext(context.Context) AppSpecFunctionLogDestinationOpenSearchOutput
+}
+
+type AppSpecFunctionLogDestinationOpenSearchArgs struct {
+	// Basic authentication details.
+	BasicAuth AppSpecFunctionLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (AppSpecFunctionLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchArgs) ToAppSpecFunctionLogDestinationOpenSearchOutput() AppSpecFunctionLogDestinationOpenSearchOutput {
+	return i.ToAppSpecFunctionLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchArgs) ToAppSpecFunctionLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOpenSearchOutput)
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchArgs) ToAppSpecFunctionLogDestinationOpenSearchPtrOutput() AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchArgs) ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOpenSearchOutput).ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionLogDestinationOpenSearchPtrInput is an input type that accepts AppSpecFunctionLogDestinationOpenSearchArgs, AppSpecFunctionLogDestinationOpenSearchPtr and AppSpecFunctionLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationOpenSearchPtrInput` via:
+//
+//	        AppSpecFunctionLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecFunctionLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationOpenSearchPtrOutput() AppSpecFunctionLogDestinationOpenSearchPtrOutput
+	ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Context) AppSpecFunctionLogDestinationOpenSearchPtrOutput
+}
+
+type appSpecFunctionLogDestinationOpenSearchPtrType AppSpecFunctionLogDestinationOpenSearchArgs
+
+func AppSpecFunctionLogDestinationOpenSearchPtr(v *AppSpecFunctionLogDestinationOpenSearchArgs) AppSpecFunctionLogDestinationOpenSearchPtrInput {
+	return (*appSpecFunctionLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*appSpecFunctionLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *appSpecFunctionLogDestinationOpenSearchPtrType) ToAppSpecFunctionLogDestinationOpenSearchPtrOutput() AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionLogDestinationOpenSearchPtrType) ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOpenSearchPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) ToAppSpecFunctionLogDestinationOpenSearchOutput() AppSpecFunctionLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) ToAppSpecFunctionLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) ToAppSpecFunctionLogDestinationOpenSearchPtrOutput() AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o.ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionLogDestinationOpenSearch) *AppSpecFunctionLogDestinationOpenSearch {
+		return &v
+	}).(AppSpecFunctionLogDestinationOpenSearchPtrOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) BasicAuth() AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationOpenSearch) AppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecFunctionLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) ToAppSpecFunctionLogDestinationOpenSearchPtrOutput() AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) ToAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) Elem() AppSpecFunctionLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearch) AppSpecFunctionLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionLogDestinationOpenSearch
+		return ret
+	}).(AppSpecFunctionLogDestinationOpenSearchOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) BasicAuth() AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearch) *AppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecFunctionLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationOpenSearchBasicAuth struct {
+	// Password for basic authentication.
+	Password *string `pulumi:"password"`
+	// user for basic authentication.
+	User *string `pulumi:"user"`
+}
+
+// AppSpecFunctionLogDestinationOpenSearchBasicAuthInput is an input type that accepts AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs and AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{...}
+type AppSpecFunctionLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput
+	ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput
+}
+
+type AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// user for basic authentication.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput).ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs, AppSpecFunctionLogDestinationOpenSearchBasicAuthPtr and AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput
+	ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type appSpecFunctionLogDestinationOpenSearchBasicAuthPtrType AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs
+
+func AppSpecFunctionLogDestinationOpenSearchBasicAuthPtr(v *AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*appSpecFunctionLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*appSpecFunctionLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *appSpecFunctionLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionLogDestinationOpenSearchBasicAuth) *AppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) Elem() AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearchBasicAuth) AppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3597,15 +3950,15 @@ func (o AppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
 }
 
 type AppSpecIngressRuleCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 	AllowMethods []string `pulumi:"allowMethods"`
 	// The `Access-Control-Allow-Origin` can be
 	AllowOrigins *AppSpecIngressRuleCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge *string `pulumi:"maxAge"`
@@ -3623,15 +3976,15 @@ type AppSpecIngressRuleCorsInput interface {
 }
 
 type AppSpecIngressRuleCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
 	// The `Access-Control-Allow-Origin` can be
 	AllowOrigins AppSpecIngressRuleCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
 	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
@@ -3714,17 +4067,17 @@ func (o AppSpecIngressRuleCorsOutput) ToAppSpecIngressRuleCorsPtrOutputWithConte
 	}).(AppSpecIngressRuleCorsPtrOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 func (o AppSpecIngressRuleCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 func (o AppSpecIngressRuleCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 func (o AppSpecIngressRuleCorsOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
@@ -3734,7 +4087,7 @@ func (o AppSpecIngressRuleCorsOutput) AllowOrigins() AppSpecIngressRuleCorsAllow
 	return o.ApplyT(func(v AppSpecIngressRuleCors) *AppSpecIngressRuleCorsAllowOrigins { return v.AllowOrigins }).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 func (o AppSpecIngressRuleCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
@@ -3768,7 +4121,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) Elem() AppSpecIngressRuleCorsOutput {
 	}).(AppSpecIngressRuleCorsOutput)
 }
 
-// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) *bool {
 		if v == nil {
@@ -3778,7 +4131,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3788,7 +4141,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
 func (o AppSpecIngressRuleCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -3808,7 +4161,7 @@ func (o AppSpecIngressRuleCorsPtrOutput) AllowOrigins() AppSpecIngressRuleCorsAl
 	}).(AppSpecIngressRuleCorsAllowOriginsPtrOutput)
 }
 
-// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
 func (o AppSpecIngressRuleCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleCors) []string {
 		if v == nil {
@@ -4509,7 +4862,7 @@ type AppSpecJob struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecJobEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git *AppSpecJobGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecJobGithub `pulumi:"github"`
@@ -4559,7 +4912,7 @@ type AppSpecJobArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecJobEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git AppSpecJobGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecJobGithubPtrInput `pulumi:"github"`
@@ -4663,7 +5016,7 @@ func (o AppSpecJobOutput) Envs() AppSpecJobEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecJob) []AppSpecJobEnv { return v.Envs }).(AppSpecJobEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 func (o AppSpecJobOutput) Git() AppSpecJobGitPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *AppSpecJobGit { return v.Git }).(AppSpecJobGitPtrOutput)
 }
@@ -5841,6 +6194,8 @@ type AppSpecJobLogDestination struct {
 	Logtail *AppSpecJobLogDestinationLogtail `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *AppSpecJobLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *AppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -5863,6 +6218,8 @@ type AppSpecJobLogDestinationArgs struct {
 	Logtail AppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch AppSpecJobLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail AppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -5931,6 +6288,11 @@ func (o AppSpecJobLogDestinationOutput) Logtail() AppSpecJobLogDestinationLogtai
 // Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenSearch configuration.
+func (o AppSpecJobLogDestinationOutput) OpenSearch() AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestination) *AppSpecJobLogDestinationOpenSearch { return v.OpenSearch }).(AppSpecJobLogDestinationOpenSearchPtrOutput)
 }
 
 // Papertrail configuration.
@@ -6116,8 +6478,6 @@ func (o AppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOut
 
 type AppSpecJobLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -6134,8 +6494,6 @@ type AppSpecJobLogDestinationLogtailInput interface {
 
 type AppSpecJobLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -6217,8 +6575,6 @@ func (o AppSpecJobLogDestinationLogtailOutput) ToAppSpecJobLogDestinationLogtail
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecJobLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -6248,14 +6604,364 @@ func (o AppSpecJobLogDestinationLogtailPtrOutput) Elem() AppSpecJobLogDestinatio
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecJobLogDestinationLogtail) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationOpenSearch struct {
+	// Basic authentication details.
+	BasicAuth AppSpecJobLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName *string `pulumi:"indexName"`
+}
+
+// AppSpecJobLogDestinationOpenSearchInput is an input type that accepts AppSpecJobLogDestinationOpenSearchArgs and AppSpecJobLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationOpenSearchInput` via:
+//
+//	AppSpecJobLogDestinationOpenSearchArgs{...}
+type AppSpecJobLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationOpenSearchOutput() AppSpecJobLogDestinationOpenSearchOutput
+	ToAppSpecJobLogDestinationOpenSearchOutputWithContext(context.Context) AppSpecJobLogDestinationOpenSearchOutput
+}
+
+type AppSpecJobLogDestinationOpenSearchArgs struct {
+	// Basic authentication details.
+	BasicAuth AppSpecJobLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (AppSpecJobLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationOpenSearchArgs) ToAppSpecJobLogDestinationOpenSearchOutput() AppSpecJobLogDestinationOpenSearchOutput {
+	return i.ToAppSpecJobLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationOpenSearchArgs) ToAppSpecJobLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOpenSearchOutput)
+}
+
+func (i AppSpecJobLogDestinationOpenSearchArgs) ToAppSpecJobLogDestinationOpenSearchPtrOutput() AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationOpenSearchArgs) ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOpenSearchOutput).ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobLogDestinationOpenSearchPtrInput is an input type that accepts AppSpecJobLogDestinationOpenSearchArgs, AppSpecJobLogDestinationOpenSearchPtr and AppSpecJobLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationOpenSearchPtrInput` via:
+//
+//	        AppSpecJobLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecJobLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationOpenSearchPtrOutput() AppSpecJobLogDestinationOpenSearchPtrOutput
+	ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Context) AppSpecJobLogDestinationOpenSearchPtrOutput
+}
+
+type appSpecJobLogDestinationOpenSearchPtrType AppSpecJobLogDestinationOpenSearchArgs
+
+func AppSpecJobLogDestinationOpenSearchPtr(v *AppSpecJobLogDestinationOpenSearchArgs) AppSpecJobLogDestinationOpenSearchPtrInput {
+	return (*appSpecJobLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*appSpecJobLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *appSpecJobLogDestinationOpenSearchPtrType) ToAppSpecJobLogDestinationOpenSearchPtrOutput() AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobLogDestinationOpenSearchPtrType) ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOpenSearchPtrOutput)
+}
+
+type AppSpecJobLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationOpenSearchOutput) ToAppSpecJobLogDestinationOpenSearchOutput() AppSpecJobLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchOutput) ToAppSpecJobLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchOutput) ToAppSpecJobLogDestinationOpenSearchPtrOutput() AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o.ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobLogDestinationOpenSearchOutput) ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobLogDestinationOpenSearch) *AppSpecJobLogDestinationOpenSearch {
+		return &v
+	}).(AppSpecJobLogDestinationOpenSearchPtrOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecJobLogDestinationOpenSearchOutput) BasicAuth() AppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationOpenSearch) AppSpecJobLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(AppSpecJobLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecJobLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecJobLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecJobLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) ToAppSpecJobLogDestinationOpenSearchPtrOutput() AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) ToAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) Elem() AppSpecJobLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearch) AppSpecJobLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobLogDestinationOpenSearch
+		return ret
+	}).(AppSpecJobLogDestinationOpenSearchOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) BasicAuth() AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearch) *AppSpecJobLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecJobLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationOpenSearchBasicAuth struct {
+	// Password for basic authentication.
+	Password *string `pulumi:"password"`
+	// user for basic authentication.
+	User *string `pulumi:"user"`
+}
+
+// AppSpecJobLogDestinationOpenSearchBasicAuthInput is an input type that accepts AppSpecJobLogDestinationOpenSearchBasicAuthArgs and AppSpecJobLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	AppSpecJobLogDestinationOpenSearchBasicAuthArgs{...}
+type AppSpecJobLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationOpenSearchBasicAuthOutput() AppSpecJobLogDestinationOpenSearchBasicAuthOutput
+	ToAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthOutput
+}
+
+type AppSpecJobLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// user for basic authentication.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (AppSpecJobLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i AppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToAppSpecJobLogDestinationOpenSearchBasicAuthOutput() AppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i AppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOpenSearchBasicAuthOutput).ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts AppSpecJobLogDestinationOpenSearchBasicAuthArgs, AppSpecJobLogDestinationOpenSearchBasicAuthPtr and AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        AppSpecJobLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecJobLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput
+	ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type appSpecJobLogDestinationOpenSearchBasicAuthPtrType AppSpecJobLogDestinationOpenSearchBasicAuthArgs
+
+func AppSpecJobLogDestinationOpenSearchBasicAuthPtr(v *AppSpecJobLogDestinationOpenSearchBasicAuthArgs) AppSpecJobLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*appSpecJobLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*appSpecJobLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *appSpecJobLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type AppSpecJobLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToAppSpecJobLogDestinationOpenSearchBasicAuthOutput() AppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobLogDestinationOpenSearchBasicAuth) *AppSpecJobLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) Elem() AppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearchBasicAuth) AppSpecJobLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(AppSpecJobLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6413,7 +7119,7 @@ type AppSpecService struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecServiceEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git *AppSpecServiceGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecServiceGithub `pulumi:"github"`
@@ -6473,7 +7179,7 @@ type AppSpecServiceArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecServiceEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git AppSpecServiceGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecServiceGithubPtrInput `pulumi:"github"`
@@ -6593,7 +7299,7 @@ func (o AppSpecServiceOutput) Envs() AppSpecServiceEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []AppSpecServiceEnv { return v.Envs }).(AppSpecServiceEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 func (o AppSpecServiceOutput) Git() AppSpecServiceGitPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *AppSpecServiceGit { return v.Git }).(AppSpecServiceGitPtrOutput)
 }
@@ -8907,6 +9613,8 @@ type AppSpecServiceLogDestination struct {
 	Logtail *AppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *AppSpecServiceLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *AppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -8929,6 +9637,8 @@ type AppSpecServiceLogDestinationArgs struct {
 	Logtail AppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch AppSpecServiceLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail AppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -8997,6 +9707,11 @@ func (o AppSpecServiceLogDestinationOutput) Logtail() AppSpecServiceLogDestinati
 // Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenSearch configuration.
+func (o AppSpecServiceLogDestinationOutput) OpenSearch() AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestination) *AppSpecServiceLogDestinationOpenSearch { return v.OpenSearch }).(AppSpecServiceLogDestinationOpenSearchPtrOutput)
 }
 
 // Papertrail configuration.
@@ -9182,8 +9897,6 @@ func (o AppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPt
 
 type AppSpecServiceLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -9200,8 +9913,6 @@ type AppSpecServiceLogDestinationLogtailInput interface {
 
 type AppSpecServiceLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -9283,8 +9994,6 @@ func (o AppSpecServiceLogDestinationLogtailOutput) ToAppSpecServiceLogDestinatio
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -9314,14 +10023,364 @@ func (o AppSpecServiceLogDestinationLogtailPtrOutput) Elem() AppSpecServiceLogDe
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceLogDestinationLogtail) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationOpenSearch struct {
+	// Basic authentication details.
+	BasicAuth AppSpecServiceLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName *string `pulumi:"indexName"`
+}
+
+// AppSpecServiceLogDestinationOpenSearchInput is an input type that accepts AppSpecServiceLogDestinationOpenSearchArgs and AppSpecServiceLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationOpenSearchInput` via:
+//
+//	AppSpecServiceLogDestinationOpenSearchArgs{...}
+type AppSpecServiceLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationOpenSearchOutput() AppSpecServiceLogDestinationOpenSearchOutput
+	ToAppSpecServiceLogDestinationOpenSearchOutputWithContext(context.Context) AppSpecServiceLogDestinationOpenSearchOutput
+}
+
+type AppSpecServiceLogDestinationOpenSearchArgs struct {
+	// Basic authentication details.
+	BasicAuth AppSpecServiceLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (AppSpecServiceLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchArgs) ToAppSpecServiceLogDestinationOpenSearchOutput() AppSpecServiceLogDestinationOpenSearchOutput {
+	return i.ToAppSpecServiceLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchArgs) ToAppSpecServiceLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOpenSearchOutput)
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchArgs) ToAppSpecServiceLogDestinationOpenSearchPtrOutput() AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchArgs) ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOpenSearchOutput).ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceLogDestinationOpenSearchPtrInput is an input type that accepts AppSpecServiceLogDestinationOpenSearchArgs, AppSpecServiceLogDestinationOpenSearchPtr and AppSpecServiceLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationOpenSearchPtrInput` via:
+//
+//	        AppSpecServiceLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationOpenSearchPtrOutput() AppSpecServiceLogDestinationOpenSearchPtrOutput
+	ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Context) AppSpecServiceLogDestinationOpenSearchPtrOutput
+}
+
+type appSpecServiceLogDestinationOpenSearchPtrType AppSpecServiceLogDestinationOpenSearchArgs
+
+func AppSpecServiceLogDestinationOpenSearchPtr(v *AppSpecServiceLogDestinationOpenSearchArgs) AppSpecServiceLogDestinationOpenSearchPtrInput {
+	return (*appSpecServiceLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*appSpecServiceLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *appSpecServiceLogDestinationOpenSearchPtrType) ToAppSpecServiceLogDestinationOpenSearchPtrOutput() AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceLogDestinationOpenSearchPtrType) ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+type AppSpecServiceLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchOutput) ToAppSpecServiceLogDestinationOpenSearchOutput() AppSpecServiceLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchOutput) ToAppSpecServiceLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchOutput) ToAppSpecServiceLogDestinationOpenSearchPtrOutput() AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchOutput) ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceLogDestinationOpenSearch) *AppSpecServiceLogDestinationOpenSearch {
+		return &v
+	}).(AppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecServiceLogDestinationOpenSearchOutput) BasicAuth() AppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationOpenSearch) AppSpecServiceLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(AppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecServiceLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecServiceLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecServiceLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) ToAppSpecServiceLogDestinationOpenSearchPtrOutput() AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) ToAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) Elem() AppSpecServiceLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearch) AppSpecServiceLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceLogDestinationOpenSearch
+		return ret
+	}).(AppSpecServiceLogDestinationOpenSearchOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) BasicAuth() AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearch) *AppSpecServiceLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecServiceLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationOpenSearchBasicAuth struct {
+	// Password for basic authentication.
+	Password *string `pulumi:"password"`
+	// user for basic authentication.
+	User *string `pulumi:"user"`
+}
+
+// AppSpecServiceLogDestinationOpenSearchBasicAuthInput is an input type that accepts AppSpecServiceLogDestinationOpenSearchBasicAuthArgs and AppSpecServiceLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
+type AppSpecServiceLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthOutput
+	ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthOutput
+}
+
+type AppSpecServiceLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// user for basic authentication.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (AppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOpenSearchBasicAuthOutput).ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts AppSpecServiceLogDestinationOpenSearchBasicAuthArgs, AppSpecServiceLogDestinationOpenSearchBasicAuthPtr and AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
+	ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type appSpecServiceLogDestinationOpenSearchBasicAuthPtrType AppSpecServiceLogDestinationOpenSearchBasicAuthArgs
+
+func AppSpecServiceLogDestinationOpenSearchBasicAuthPtr(v *AppSpecServiceLogDestinationOpenSearchBasicAuthArgs) AppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*appSpecServiceLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*appSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *appSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type AppSpecServiceLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceLogDestinationOpenSearchBasicAuth) *AppSpecServiceLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Elem() AppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearchBasicAuth) AppSpecServiceLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(AppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9585,7 +10644,7 @@ type AppSpecStaticSite struct {
 	Envs []AppSpecStaticSiteEnv `pulumi:"envs"`
 	// The name of the error document to use when serving this static site.
 	ErrorDocument *string `pulumi:"errorDocument"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git *AppSpecStaticSiteGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecStaticSiteGithub `pulumi:"github"`
@@ -9633,7 +10692,7 @@ type AppSpecStaticSiteArgs struct {
 	Envs AppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
 	// The name of the error document to use when serving this static site.
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git AppSpecStaticSiteGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecStaticSiteGithubPtrInput `pulumi:"github"`
@@ -9741,7 +10800,7 @@ func (o AppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 func (o AppSpecStaticSiteOutput) Git() AppSpecStaticSiteGitPtrOutput {
 	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteGit { return v.Git }).(AppSpecStaticSiteGitPtrOutput)
 }
@@ -10965,7 +12024,7 @@ type AppSpecWorker struct {
 	EnvironmentSlug *string `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecWorkerEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git *AppSpecWorkerGit `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github *AppSpecWorkerGithub `pulumi:"github"`
@@ -11009,7 +12068,7 @@ type AppSpecWorkerArgs struct {
 	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecWorkerEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 	Git AppSpecWorkerGitPtrInput `pulumi:"git"`
 	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
 	Github AppSpecWorkerGithubPtrInput `pulumi:"github"`
@@ -11107,7 +12166,7 @@ func (o AppSpecWorkerOutput) Envs() AppSpecWorkerEnvArrayOutput {
 	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerEnv { return v.Envs }).(AppSpecWorkerEnvArrayOutput)
 }
 
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
 func (o AppSpecWorkerOutput) Git() AppSpecWorkerGitPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerGit { return v.Git }).(AppSpecWorkerGitPtrOutput)
 }
@@ -12276,6 +13335,8 @@ type AppSpecWorkerLogDestination struct {
 	Logtail *AppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *AppSpecWorkerLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *AppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -12298,6 +13359,8 @@ type AppSpecWorkerLogDestinationArgs struct {
 	Logtail AppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// Name of the log destination. Minimum length: 2. Maximum length: 42.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch AppSpecWorkerLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail AppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -12366,6 +13429,11 @@ func (o AppSpecWorkerLogDestinationOutput) Logtail() AppSpecWorkerLogDestination
 // Name of the log destination. Minimum length: 2. Maximum length: 42.
 func (o AppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenSearch configuration.
+func (o AppSpecWorkerLogDestinationOutput) OpenSearch() AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestination) *AppSpecWorkerLogDestinationOpenSearch { return v.OpenSearch }).(AppSpecWorkerLogDestinationOpenSearchPtrOutput)
 }
 
 // Papertrail configuration.
@@ -12551,8 +13619,6 @@ func (o AppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtr
 
 type AppSpecWorkerLogDestinationLogtail struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token string `pulumi:"token"`
 }
 
@@ -12569,8 +13635,6 @@ type AppSpecWorkerLogDestinationLogtailInput interface {
 
 type AppSpecWorkerLogDestinationLogtailArgs struct {
 	// Logtail token.
-	//
-	// A `database` can contain:
 	Token pulumi.StringInput `pulumi:"token"`
 }
 
@@ -12652,8 +13716,6 @@ func (o AppSpecWorkerLogDestinationLogtailOutput) ToAppSpecWorkerLogDestinationL
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSpecWorkerLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -12683,14 +13745,364 @@ func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Elem() AppSpecWorkerLogDest
 }
 
 // Logtail token.
-//
-// A `database` can contain:
 func (o AppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSpecWorkerLogDestinationLogtail) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationOpenSearch struct {
+	// Basic authentication details.
+	BasicAuth AppSpecWorkerLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName *string `pulumi:"indexName"`
+}
+
+// AppSpecWorkerLogDestinationOpenSearchInput is an input type that accepts AppSpecWorkerLogDestinationOpenSearchArgs and AppSpecWorkerLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationOpenSearchInput` via:
+//
+//	AppSpecWorkerLogDestinationOpenSearchArgs{...}
+type AppSpecWorkerLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationOpenSearchOutput() AppSpecWorkerLogDestinationOpenSearchOutput
+	ToAppSpecWorkerLogDestinationOpenSearchOutputWithContext(context.Context) AppSpecWorkerLogDestinationOpenSearchOutput
+}
+
+type AppSpecWorkerLogDestinationOpenSearchArgs struct {
+	// Basic authentication details.
+	BasicAuth AppSpecWorkerLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// OpenSearch index name.
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (AppSpecWorkerLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchArgs) ToAppSpecWorkerLogDestinationOpenSearchOutput() AppSpecWorkerLogDestinationOpenSearchOutput {
+	return i.ToAppSpecWorkerLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchArgs) ToAppSpecWorkerLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOpenSearchOutput)
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchArgs) ToAppSpecWorkerLogDestinationOpenSearchPtrOutput() AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchArgs) ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOpenSearchOutput).ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerLogDestinationOpenSearchPtrInput is an input type that accepts AppSpecWorkerLogDestinationOpenSearchArgs, AppSpecWorkerLogDestinationOpenSearchPtr and AppSpecWorkerLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationOpenSearchPtrInput` via:
+//
+//	        AppSpecWorkerLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationOpenSearchPtrOutput() AppSpecWorkerLogDestinationOpenSearchPtrOutput
+	ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Context) AppSpecWorkerLogDestinationOpenSearchPtrOutput
+}
+
+type appSpecWorkerLogDestinationOpenSearchPtrType AppSpecWorkerLogDestinationOpenSearchArgs
+
+func AppSpecWorkerLogDestinationOpenSearchPtr(v *AppSpecWorkerLogDestinationOpenSearchArgs) AppSpecWorkerLogDestinationOpenSearchPtrInput {
+	return (*appSpecWorkerLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*appSpecWorkerLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *appSpecWorkerLogDestinationOpenSearchPtrType) ToAppSpecWorkerLogDestinationOpenSearchPtrOutput() AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerLogDestinationOpenSearchPtrType) ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOpenSearchPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) ToAppSpecWorkerLogDestinationOpenSearchOutput() AppSpecWorkerLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) ToAppSpecWorkerLogDestinationOpenSearchOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) ToAppSpecWorkerLogDestinationOpenSearchPtrOutput() AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o.ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerLogDestinationOpenSearch) *AppSpecWorkerLogDestinationOpenSearch {
+		return &v
+	}).(AppSpecWorkerLogDestinationOpenSearchPtrOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) BasicAuth() AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationOpenSearch) AppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecWorkerLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) ToAppSpecWorkerLogDestinationOpenSearchPtrOutput() AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) ToAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) Elem() AppSpecWorkerLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearch) AppSpecWorkerLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerLogDestinationOpenSearch
+		return ret
+	}).(AppSpecWorkerLogDestinationOpenSearchOutput)
+}
+
+// Basic authentication details.
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) BasicAuth() AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearch) *AppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch endpoint.
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch index name.
+func (o AppSpecWorkerLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationOpenSearchBasicAuth struct {
+	// Password for basic authentication.
+	Password *string `pulumi:"password"`
+	// user for basic authentication.
+	User *string `pulumi:"user"`
+}
+
+// AppSpecWorkerLogDestinationOpenSearchBasicAuthInput is an input type that accepts AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs and AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{...}
+type AppSpecWorkerLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput
+	ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput
+}
+
+type AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// user for basic authentication.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput).ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs, AppSpecWorkerLogDestinationOpenSearchBasicAuthPtr and AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput
+	ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type appSpecWorkerLogDestinationOpenSearchBasicAuthPtrType AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs
+
+func AppSpecWorkerLogDestinationOpenSearchBasicAuthPtr(v *AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*appSpecWorkerLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*appSpecWorkerLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *appSpecWorkerLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerLogDestinationOpenSearchBasicAuthPtrType) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerLogDestinationOpenSearchBasicAuth) *AppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) ToAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) Elem() AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearchBasicAuth) AppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for basic authentication.
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// user for basic authentication.
+func (o AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13666,8 +15078,7 @@ func (o DatabasePostgresqlConfigPgbouncerArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type DatabasePostgresqlConfigTimescaledb struct {
-	// TimescaleDB extension configuration values
-	Timescaledb *int `pulumi:"timescaledb"`
+	MaxBackgroundWorkers *int `pulumi:"maxBackgroundWorkers"`
 }
 
 // DatabasePostgresqlConfigTimescaledbInput is an input type that accepts DatabasePostgresqlConfigTimescaledbArgs and DatabasePostgresqlConfigTimescaledbOutput values.
@@ -13682,8 +15093,7 @@ type DatabasePostgresqlConfigTimescaledbInput interface {
 }
 
 type DatabasePostgresqlConfigTimescaledbArgs struct {
-	// TimescaleDB extension configuration values
-	Timescaledb pulumi.IntPtrInput `pulumi:"timescaledb"`
+	MaxBackgroundWorkers pulumi.IntPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
 func (DatabasePostgresqlConfigTimescaledbArgs) ElementType() reflect.Type {
@@ -13737,9 +15147,8 @@ func (o DatabasePostgresqlConfigTimescaledbOutput) ToDatabasePostgresqlConfigTim
 	return o
 }
 
-// TimescaleDB extension configuration values
-func (o DatabasePostgresqlConfigTimescaledbOutput) Timescaledb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabasePostgresqlConfigTimescaledb) *int { return v.Timescaledb }).(pulumi.IntPtrOutput)
+func (o DatabasePostgresqlConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
 }
 
 type DatabasePostgresqlConfigTimescaledbArrayOutput struct{ *pulumi.OutputState }
@@ -20501,6 +21910,8 @@ type GetAppSpecFunctionLogDestination struct {
 	Logtail *GetAppSpecFunctionLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *GetAppSpecFunctionLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *GetAppSpecFunctionLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -20523,6 +21934,8 @@ type GetAppSpecFunctionLogDestinationArgs struct {
 	Logtail GetAppSpecFunctionLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch GetAppSpecFunctionLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail GetAppSpecFunctionLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -20593,6 +22006,13 @@ func (o GetAppSpecFunctionLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// OpenSearch configuration.
+func (o GetAppSpecFunctionLogDestinationOutput) OpenSearch() GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) *GetAppSpecFunctionLogDestinationOpenSearch {
+		return v.OpenSearch
+	}).(GetAppSpecFunctionLogDestinationOpenSearchPtrOutput)
+}
+
 // Papertrail configuration.
 func (o GetAppSpecFunctionLogDestinationOutput) Papertrail() GetAppSpecFunctionLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestination) *GetAppSpecFunctionLogDestinationPapertrail {
@@ -20623,7 +22043,7 @@ func (o GetAppSpecFunctionLogDestinationArrayOutput) Index(i pulumi.IntInput) Ge
 type GetAppSpecFunctionLogDestinationDatadog struct {
 	// Datadog API key.
 	ApiKey string `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -20641,7 +22061,7 @@ type GetAppSpecFunctionLogDestinationDatadogInput interface {
 type GetAppSpecFunctionLogDestinationDatadogArgs struct {
 	// Datadog API key.
 	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -20727,7 +22147,7 @@ func (o GetAppSpecFunctionLogDestinationDatadogOutput) ApiKey() pulumi.StringOut
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecFunctionLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -20766,7 +22186,7 @@ func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) ApiKey() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecFunctionLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationDatadog) *string {
 		if v == nil {
@@ -20913,8 +22333,360 @@ func (o GetAppSpecFunctionLogDestinationLogtailPtrOutput) Token() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecFunctionLogDestinationOpenSearch struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecFunctionLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint *string `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName *string `pulumi:"indexName"`
+}
+
+// GetAppSpecFunctionLogDestinationOpenSearchInput is an input type that accepts GetAppSpecFunctionLogDestinationOpenSearchArgs and GetAppSpecFunctionLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationOpenSearchInput` via:
+//
+//	GetAppSpecFunctionLogDestinationOpenSearchArgs{...}
+type GetAppSpecFunctionLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationOpenSearchOutput() GetAppSpecFunctionLogDestinationOpenSearchOutput
+	ToGetAppSpecFunctionLogDestinationOpenSearchOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationOpenSearchOutput
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchArgs struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecFunctionLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (GetAppSpecFunctionLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchArgs) ToGetAppSpecFunctionLogDestinationOpenSearchOutput() GetAppSpecFunctionLogDestinationOpenSearchOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchArgs) ToGetAppSpecFunctionLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOpenSearchOutput)
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchArgs) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchArgs) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOpenSearchOutput).ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionLogDestinationOpenSearchPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationOpenSearchArgs, GetAppSpecFunctionLogDestinationOpenSearchPtr and GetAppSpecFunctionLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationOpenSearchPtrInput` via:
+//
+//	        GetAppSpecFunctionLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecFunctionLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchPtrOutput
+	ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationOpenSearchPtrOutput
+}
+
+type getAppSpecFunctionLogDestinationOpenSearchPtrType GetAppSpecFunctionLogDestinationOpenSearchArgs
+
+func GetAppSpecFunctionLogDestinationOpenSearchPtr(v *GetAppSpecFunctionLogDestinationOpenSearchArgs) GetAppSpecFunctionLogDestinationOpenSearchPtrInput {
+	return (*getAppSpecFunctionLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*getAppSpecFunctionLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionLogDestinationOpenSearchPtrType) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionLogDestinationOpenSearchPtrType) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOpenSearchPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) ToGetAppSpecFunctionLogDestinationOpenSearchOutput() GetAppSpecFunctionLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) ToGetAppSpecFunctionLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o.ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionLogDestinationOpenSearch) *GetAppSpecFunctionLogDestinationOpenSearch {
+		return &v
+	}).(GetAppSpecFunctionLogDestinationOpenSearchPtrOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) BasicAuth() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearch) GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) ToGetAppSpecFunctionLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) Elem() GetAppSpecFunctionLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearch) GetAppSpecFunctionLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionLogDestinationOpenSearch
+		return ret
+	}).(GetAppSpecFunctionLogDestinationOpenSearchOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) BasicAuth() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearch) *GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchBasicAuth struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password *string `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User *string `pulumi:"user"`
+}
+
+// GetAppSpecFunctionLogDestinationOpenSearchBasicAuthInput is an input type that accepts GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs and GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{...}
+type GetAppSpecFunctionLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput
+	ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput).ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs, GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtr and GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput
+	ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type getAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrType GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs
+
+func GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtr(v *GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*getAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*getAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionLogDestinationOpenSearchBasicAuth) *GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) Elem() GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearchBasicAuth) GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecFunctionLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -20930,7 +22702,7 @@ type GetAppSpecFunctionLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecFunctionLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -21011,7 +22783,7 @@ func (o GetAppSpecFunctionLogDestinationPapertrailOutput) ToGetAppSpecFunctionLo
 	}).(GetAppSpecFunctionLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecFunctionLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -21040,7 +22812,7 @@ func (o GetAppSpecFunctionLogDestinationPapertrailPtrOutput) Elem() GetAppSpecFu
 	}).(GetAppSpecFunctionLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecFunctionLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationPapertrail) *string {
 		if v == nil {
@@ -23310,6 +25082,8 @@ type GetAppSpecJobLogDestination struct {
 	Logtail *GetAppSpecJobLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *GetAppSpecJobLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *GetAppSpecJobLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -23332,6 +25106,8 @@ type GetAppSpecJobLogDestinationArgs struct {
 	Logtail GetAppSpecJobLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch GetAppSpecJobLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail GetAppSpecJobLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -23402,6 +25178,11 @@ func (o GetAppSpecJobLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// OpenSearch configuration.
+func (o GetAppSpecJobLogDestinationOutput) OpenSearch() GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationOpenSearch { return v.OpenSearch }).(GetAppSpecJobLogDestinationOpenSearchPtrOutput)
+}
+
 // Papertrail configuration.
 func (o GetAppSpecJobLogDestinationOutput) Papertrail() GetAppSpecJobLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestination) *GetAppSpecJobLogDestinationPapertrail { return v.Papertrail }).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
@@ -23430,7 +25211,7 @@ func (o GetAppSpecJobLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppS
 type GetAppSpecJobLogDestinationDatadog struct {
 	// Datadog API key.
 	ApiKey string `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -23448,7 +25229,7 @@ type GetAppSpecJobLogDestinationDatadogInput interface {
 type GetAppSpecJobLogDestinationDatadogArgs struct {
 	// Datadog API key.
 	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -23534,7 +25315,7 @@ func (o GetAppSpecJobLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecJobLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -23573,7 +25354,7 @@ func (o GetAppSpecJobLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecJobLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationDatadog) *string {
 		if v == nil {
@@ -23720,8 +25501,360 @@ func (o GetAppSpecJobLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecJobLogDestinationOpenSearch struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecJobLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint *string `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName *string `pulumi:"indexName"`
+}
+
+// GetAppSpecJobLogDestinationOpenSearchInput is an input type that accepts GetAppSpecJobLogDestinationOpenSearchArgs and GetAppSpecJobLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationOpenSearchInput` via:
+//
+//	GetAppSpecJobLogDestinationOpenSearchArgs{...}
+type GetAppSpecJobLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationOpenSearchOutput() GetAppSpecJobLogDestinationOpenSearchOutput
+	ToGetAppSpecJobLogDestinationOpenSearchOutputWithContext(context.Context) GetAppSpecJobLogDestinationOpenSearchOutput
+}
+
+type GetAppSpecJobLogDestinationOpenSearchArgs struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecJobLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (GetAppSpecJobLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchArgs) ToGetAppSpecJobLogDestinationOpenSearchOutput() GetAppSpecJobLogDestinationOpenSearchOutput {
+	return i.ToGetAppSpecJobLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchArgs) ToGetAppSpecJobLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOpenSearchOutput)
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchArgs) ToGetAppSpecJobLogDestinationOpenSearchPtrOutput() GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchArgs) ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOpenSearchOutput).ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobLogDestinationOpenSearchPtrInput is an input type that accepts GetAppSpecJobLogDestinationOpenSearchArgs, GetAppSpecJobLogDestinationOpenSearchPtr and GetAppSpecJobLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationOpenSearchPtrInput` via:
+//
+//	        GetAppSpecJobLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecJobLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationOpenSearchPtrOutput() GetAppSpecJobLogDestinationOpenSearchPtrOutput
+	ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Context) GetAppSpecJobLogDestinationOpenSearchPtrOutput
+}
+
+type getAppSpecJobLogDestinationOpenSearchPtrType GetAppSpecJobLogDestinationOpenSearchArgs
+
+func GetAppSpecJobLogDestinationOpenSearchPtr(v *GetAppSpecJobLogDestinationOpenSearchArgs) GetAppSpecJobLogDestinationOpenSearchPtrInput {
+	return (*getAppSpecJobLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*getAppSpecJobLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *getAppSpecJobLogDestinationOpenSearchPtrType) ToGetAppSpecJobLogDestinationOpenSearchPtrOutput() GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobLogDestinationOpenSearchPtrType) ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOpenSearchPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) ToGetAppSpecJobLogDestinationOpenSearchOutput() GetAppSpecJobLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) ToGetAppSpecJobLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) ToGetAppSpecJobLogDestinationOpenSearchPtrOutput() GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o.ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobLogDestinationOpenSearch) *GetAppSpecJobLogDestinationOpenSearch {
+		return &v
+	}).(GetAppSpecJobLogDestinationOpenSearchPtrOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) BasicAuth() GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearch) GetAppSpecJobLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecJobLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) ToGetAppSpecJobLogDestinationOpenSearchPtrOutput() GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) ToGetAppSpecJobLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) Elem() GetAppSpecJobLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearch) GetAppSpecJobLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobLogDestinationOpenSearch
+		return ret
+	}).(GetAppSpecJobLogDestinationOpenSearchOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) BasicAuth() GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearch) *GetAppSpecJobLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationOpenSearchBasicAuth struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password *string `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User *string `pulumi:"user"`
+}
+
+// GetAppSpecJobLogDestinationOpenSearchBasicAuthInput is an input type that accepts GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs and GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs{...}
+type GetAppSpecJobLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput
+	ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput
+}
+
+type GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput).ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs, GetAppSpecJobLogDestinationOpenSearchBasicAuthPtr and GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput
+	ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type getAppSpecJobLogDestinationOpenSearchBasicAuthPtrType GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs
+
+func GetAppSpecJobLogDestinationOpenSearchBasicAuthPtr(v *GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs) GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*getAppSpecJobLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*getAppSpecJobLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *getAppSpecJobLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobLogDestinationOpenSearchBasicAuth) *GetAppSpecJobLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) Elem() GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearchBasicAuth) GetAppSpecJobLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecJobLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -23737,7 +25870,7 @@ type GetAppSpecJobLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecJobLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -23818,7 +25951,7 @@ func (o GetAppSpecJobLogDestinationPapertrailOutput) ToGetAppSpecJobLogDestinati
 	}).(GetAppSpecJobLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecJobLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -23847,7 +25980,7 @@ func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Elem() GetAppSpecJobLogD
 	}).(GetAppSpecJobLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationPapertrail) *string {
 		if v == nil {
@@ -26354,6 +28487,8 @@ type GetAppSpecServiceLogDestination struct {
 	Logtail *GetAppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *GetAppSpecServiceLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *GetAppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -26376,6 +28511,8 @@ type GetAppSpecServiceLogDestinationArgs struct {
 	Logtail GetAppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch GetAppSpecServiceLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail GetAppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -26446,6 +28583,13 @@ func (o GetAppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// OpenSearch configuration.
+func (o GetAppSpecServiceLogDestinationOutput) OpenSearch() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationOpenSearch {
+		return v.OpenSearch
+	}).(GetAppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
 // Papertrail configuration.
 func (o GetAppSpecServiceLogDestinationOutput) Papertrail() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationPapertrail {
@@ -26476,7 +28620,7 @@ func (o GetAppSpecServiceLogDestinationArrayOutput) Index(i pulumi.IntInput) Get
 type GetAppSpecServiceLogDestinationDatadog struct {
 	// Datadog API key.
 	ApiKey string `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -26494,7 +28638,7 @@ type GetAppSpecServiceLogDestinationDatadogInput interface {
 type GetAppSpecServiceLogDestinationDatadogArgs struct {
 	// Datadog API key.
 	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -26580,7 +28724,7 @@ func (o GetAppSpecServiceLogDestinationDatadogOutput) ApiKey() pulumi.StringOutp
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecServiceLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -26619,7 +28763,7 @@ func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
 		if v == nil {
@@ -26766,8 +28910,360 @@ func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecServiceLogDestinationOpenSearch struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecServiceLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint *string `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName *string `pulumi:"indexName"`
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchArgs and GetAppSpecServiceLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchInput` via:
+//
+//	GetAppSpecServiceLogDestinationOpenSearchArgs{...}
+type GetAppSpecServiceLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchOutput() GetAppSpecServiceLogDestinationOpenSearchOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchOutput
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchArgs struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (GetAppSpecServiceLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchOutput() GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchOutput).ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchPtrInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchArgs, GetAppSpecServiceLogDestinationOpenSearchPtr and GetAppSpecServiceLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput
+}
+
+type getAppSpecServiceLogDestinationOpenSearchPtrType GetAppSpecServiceLogDestinationOpenSearchArgs
+
+func GetAppSpecServiceLogDestinationOpenSearchPtr(v *GetAppSpecServiceLogDestinationOpenSearchArgs) GetAppSpecServiceLogDestinationOpenSearchPtrInput {
+	return (*getAppSpecServiceLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchPtrType) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchPtrType) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchOutput() GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationOpenSearch) *GetAppSpecServiceLogDestinationOpenSearch {
+		return &v
+	}).(GetAppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) BasicAuth() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) Elem() GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) GetAppSpecServiceLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationOpenSearch
+		return ret
+	}).(GetAppSpecServiceLogDestinationOpenSearchOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) BasicAuth() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuth struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password *string `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User *string `pulumi:"user"`
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs and GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput).ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs, GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtr and GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs
+
+func GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtr(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Elem() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecServiceLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -26783,7 +29279,7 @@ type GetAppSpecServiceLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecServiceLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -26864,7 +29360,7 @@ func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogD
 	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -26893,7 +29389,7 @@ func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Elem() GetAppSpecSer
 	}).(GetAppSpecServiceLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) *string {
 		if v == nil {
@@ -29711,6 +32207,8 @@ type GetAppSpecWorkerLogDestination struct {
 	Logtail *GetAppSpecWorkerLogDestinationLogtail `pulumi:"logtail"`
 	// The name of the component.
 	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *GetAppSpecWorkerLogDestinationOpenSearch `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail *GetAppSpecWorkerLogDestinationPapertrail `pulumi:"papertrail"`
 }
@@ -29733,6 +32231,8 @@ type GetAppSpecWorkerLogDestinationArgs struct {
 	Logtail GetAppSpecWorkerLogDestinationLogtailPtrInput `pulumi:"logtail"`
 	// The name of the component.
 	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch GetAppSpecWorkerLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
 	// Papertrail configuration.
 	Papertrail GetAppSpecWorkerLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
 }
@@ -29803,6 +32303,11 @@ func (o GetAppSpecWorkerLogDestinationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// OpenSearch configuration.
+func (o GetAppSpecWorkerLogDestinationOutput) OpenSearch() GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationOpenSearch { return v.OpenSearch }).(GetAppSpecWorkerLogDestinationOpenSearchPtrOutput)
+}
+
 // Papertrail configuration.
 func (o GetAppSpecWorkerLogDestinationOutput) Papertrail() GetAppSpecWorkerLogDestinationPapertrailPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestination) *GetAppSpecWorkerLogDestinationPapertrail { return v.Papertrail }).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
@@ -29831,7 +32336,7 @@ func (o GetAppSpecWorkerLogDestinationArrayOutput) Index(i pulumi.IntInput) GetA
 type GetAppSpecWorkerLogDestinationDatadog struct {
 	// Datadog API key.
 	ApiKey string `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
 }
 
@@ -29849,7 +32354,7 @@ type GetAppSpecWorkerLogDestinationDatadogInput interface {
 type GetAppSpecWorkerLogDestinationDatadogArgs struct {
 	// Datadog API key.
 	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 }
 
@@ -29935,7 +32440,7 @@ func (o GetAppSpecWorkerLogDestinationDatadogOutput) ApiKey() pulumi.StringOutpu
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecWorkerLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -29974,7 +32479,7 @@ func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecWorkerLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationDatadog) *string {
 		if v == nil {
@@ -30121,8 +32626,360 @@ func (o GetAppSpecWorkerLogDestinationLogtailPtrOutput) Token() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecWorkerLogDestinationOpenSearch struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecWorkerLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint *string `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName *string `pulumi:"indexName"`
+}
+
+// GetAppSpecWorkerLogDestinationOpenSearchInput is an input type that accepts GetAppSpecWorkerLogDestinationOpenSearchArgs and GetAppSpecWorkerLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationOpenSearchInput` via:
+//
+//	GetAppSpecWorkerLogDestinationOpenSearchArgs{...}
+type GetAppSpecWorkerLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationOpenSearchOutput() GetAppSpecWorkerLogDestinationOpenSearchOutput
+	ToGetAppSpecWorkerLogDestinationOpenSearchOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationOpenSearchOutput
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchArgs struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecWorkerLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (GetAppSpecWorkerLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchArgs) ToGetAppSpecWorkerLogDestinationOpenSearchOutput() GetAppSpecWorkerLogDestinationOpenSearchOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchArgs) ToGetAppSpecWorkerLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOpenSearchOutput)
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchArgs) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchArgs) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOpenSearchOutput).ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerLogDestinationOpenSearchPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationOpenSearchArgs, GetAppSpecWorkerLogDestinationOpenSearchPtr and GetAppSpecWorkerLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationOpenSearchPtrInput` via:
+//
+//	        GetAppSpecWorkerLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchPtrOutput
+	ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationOpenSearchPtrOutput
+}
+
+type getAppSpecWorkerLogDestinationOpenSearchPtrType GetAppSpecWorkerLogDestinationOpenSearchArgs
+
+func GetAppSpecWorkerLogDestinationOpenSearchPtr(v *GetAppSpecWorkerLogDestinationOpenSearchArgs) GetAppSpecWorkerLogDestinationOpenSearchPtrInput {
+	return (*getAppSpecWorkerLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*getAppSpecWorkerLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerLogDestinationOpenSearchPtrType) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerLogDestinationOpenSearchPtrType) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOpenSearchPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) ToGetAppSpecWorkerLogDestinationOpenSearchOutput() GetAppSpecWorkerLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) ToGetAppSpecWorkerLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o.ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerLogDestinationOpenSearch) *GetAppSpecWorkerLogDestinationOpenSearch {
+		return &v
+	}).(GetAppSpecWorkerLogDestinationOpenSearchPtrOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) BasicAuth() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearch) GetAppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) ToGetAppSpecWorkerLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) Elem() GetAppSpecWorkerLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearch) GetAppSpecWorkerLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerLogDestinationOpenSearch
+		return ret
+	}).(GetAppSpecWorkerLogDestinationOpenSearchOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) BasicAuth() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearch) *GetAppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is \"logs\".
+func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchBasicAuth struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password *string `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User *string `pulumi:"user"`
+}
+
+// GetAppSpecWorkerLogDestinationOpenSearchBasicAuthInput is an input type that accepts GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs and GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{...}
+type GetAppSpecWorkerLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput
+	ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput).ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs, GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtr and GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput
+	ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type getAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrType GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs
+
+func GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtr(v *GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*getAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*getAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerLogDestinationOpenSearchBasicAuth) *GetAppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) Elem() GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearchBasicAuth) GetAppSpecWorkerLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecWorkerLogDestinationPapertrail struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -30138,7 +32995,7 @@ type GetAppSpecWorkerLogDestinationPapertrailInput interface {
 }
 
 type GetAppSpecWorkerLogDestinationPapertrailArgs struct {
-	// Datadog HTTP log intake endpoint.
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -30219,7 +33076,7 @@ func (o GetAppSpecWorkerLogDestinationPapertrailOutput) ToGetAppSpecWorkerLogDes
 	}).(GetAppSpecWorkerLogDestinationPapertrailPtrOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecWorkerLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -30248,7 +33105,7 @@ func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Elem() GetAppSpecWork
 	}).(GetAppSpecWorkerLogDestinationPapertrailOutput)
 }
 
-// Datadog HTTP log intake endpoint.
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationPapertrail) *string {
 		if v == nil {
@@ -36901,6 +39758,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationLogtailInput)(nil)).Elem(), AppSpecFunctionLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearchInput)(nil)).Elem(), AppSpecFunctionLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearchPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationPapertrailInput)(nil)).Elem(), AppSpecFunctionLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecFunctionLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionRouteInput)(nil)).Elem(), AppSpecFunctionRouteArgs{})
@@ -36943,6 +39804,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecJobLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationLogtailInput)(nil)).Elem(), AppSpecJobLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecJobLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchInput)(nil)).Elem(), AppSpecJobLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchPtrInput)(nil)).Elem(), AppSpecJobLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), AppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), AppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), AppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceInput)(nil)).Elem(), AppSpecServiceArgs{})
@@ -36979,6 +39844,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationLogtailInput)(nil)).Elem(), AppSpecServiceLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearchInput)(nil)).Elem(), AppSpecServiceLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearchPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), AppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteInput)(nil)).Elem(), AppSpecServiceRouteArgs{})
@@ -37021,6 +39890,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationDatadogPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationLogtailInput)(nil)).Elem(), AppSpecWorkerLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationLogtailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchInput)(nil)).Elem(), AppSpecWorkerLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterBackupRestoreInput)(nil)).Elem(), DatabaseClusterBackupRestoreArgs{})
@@ -37129,6 +40002,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearchInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearchPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecFunctionLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionRouteInput)(nil)).Elem(), GetAppSpecFunctionRouteArgs{})
@@ -37166,6 +40043,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecJobLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchInput)(nil)).Elem(), GetAppSpecJobLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
@@ -37202,6 +40083,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteInput)(nil)).Elem(), GetAppSpecServiceRouteArgs{})
@@ -37244,6 +40129,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationDatadogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArgs{})
@@ -37378,6 +40267,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionRouteOutput{})
@@ -37420,6 +40313,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceOutput{})
@@ -37456,6 +40353,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceRouteOutput{})
@@ -37498,6 +40399,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterBackupRestoreOutput{})
@@ -37606,6 +40511,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionRouteOutput{})
@@ -37643,6 +40552,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
@@ -37679,6 +40592,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceRouteOutput{})
@@ -37721,6 +40638,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationDatadogPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationLogtailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOpenSearchPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})

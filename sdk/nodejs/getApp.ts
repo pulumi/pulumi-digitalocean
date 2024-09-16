@@ -73,6 +73,10 @@ export interface GetAppResult {
      */
     readonly id: string;
     /**
+     * The live domain of the app.
+     */
+    readonly liveDomain: string;
+    /**
      * The live URL of the app.
      */
     readonly liveUrl: string;

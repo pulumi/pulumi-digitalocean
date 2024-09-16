@@ -94,6 +94,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The live domain of the app.
+     * 
+     */
+    @Import(name="liveDomain")
+    private @Nullable Output<String> liveDomain;
+
+    /**
+     * @return The live domain of the app.
+     * 
+     */
+    public Optional<Output<String>> liveDomain() {
+        return Optional.ofNullable(this.liveDomain);
+    }
+
+    /**
      * The live URL of the app.
      * 
      */
@@ -169,6 +184,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.dedicatedIps = $.dedicatedIps;
         this.defaultIngress = $.defaultIngress;
+        this.liveDomain = $.liveDomain;
         this.liveUrl = $.liveUrl;
         this.projectId = $.projectId;
         this.spec = $.spec;
@@ -306,6 +322,27 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultIngress(String defaultIngress) {
             return defaultIngress(Output.of(defaultIngress));
+        }
+
+        /**
+         * @param liveDomain The live domain of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liveDomain(@Nullable Output<String> liveDomain) {
+            $.liveDomain = liveDomain;
+            return this;
+        }
+
+        /**
+         * @param liveDomain The live domain of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liveDomain(String liveDomain) {
+            return liveDomain(Output.of(liveDomain));
         }
 
         /**
