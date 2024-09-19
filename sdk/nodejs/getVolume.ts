@@ -49,7 +49,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getVolume:getVolume", {
         "description": args.description,
@@ -160,7 +159,12 @@ export interface GetVolumeResult {
  * ```
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
-    return pulumi.output(args).apply((a: any) => getVolume(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getVolume:getVolume", {
+        "description": args.description,
+        "name": args.name,
+        "region": args.region,
+    }, opts);
 }
 
 /**

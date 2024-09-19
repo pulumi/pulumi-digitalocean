@@ -133,14 +133,20 @@ type GetDropletsResult struct {
 
 func GetDropletsOutput(ctx *pulumi.Context, args GetDropletsOutputArgs, opts ...pulumi.InvokeOption) GetDropletsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDropletsResult, error) {
+		ApplyT(func(v interface{}) (GetDropletsResultOutput, error) {
 			args := v.(GetDropletsArgs)
-			r, err := GetDroplets(ctx, &args, opts...)
-			var s GetDropletsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDropletsResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getDroplets:getDroplets", args, &rv, "", opts...)
+			if err != nil {
+				return GetDropletsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDropletsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDropletsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDropletsResultOutput)
 }
 

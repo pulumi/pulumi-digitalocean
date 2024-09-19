@@ -172,14 +172,20 @@ type LookupVpcPeeringResult struct {
 
 func LookupVpcPeeringOutput(ctx *pulumi.Context, args LookupVpcPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupVpcPeeringResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVpcPeeringResult, error) {
+		ApplyT(func(v interface{}) (LookupVpcPeeringResultOutput, error) {
 			args := v.(LookupVpcPeeringArgs)
-			r, err := LookupVpcPeering(ctx, &args, opts...)
-			var s LookupVpcPeeringResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupVpcPeeringResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getVpcPeering:getVpcPeering", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVpcPeeringResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVpcPeeringResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVpcPeeringResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVpcPeeringResultOutput)
 }
 

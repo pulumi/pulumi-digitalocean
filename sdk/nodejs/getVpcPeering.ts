@@ -67,7 +67,6 @@ import * as utilities from "./utilities";
  */
 export function getVpcPeering(args?: GetVpcPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcPeeringResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getVpcPeering:getVpcPeering", {
         "id": args.id,
@@ -181,7 +180,13 @@ export interface GetVpcPeeringResult {
  * ```
  */
 export function getVpcPeeringOutput(args?: GetVpcPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcPeeringResult> {
-    return pulumi.output(args).apply((a: any) => getVpcPeering(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getVpcPeering:getVpcPeering", {
+        "id": args.id,
+        "name": args.name,
+        "vpcIds": args.vpcIds,
+    }, opts);
 }
 
 /**

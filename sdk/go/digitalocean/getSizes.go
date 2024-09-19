@@ -45,14 +45,20 @@ type GetSizesResult struct {
 
 func GetSizesOutput(ctx *pulumi.Context, args GetSizesOutputArgs, opts ...pulumi.InvokeOption) GetSizesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSizesResult, error) {
+		ApplyT(func(v interface{}) (GetSizesResultOutput, error) {
 			args := v.(GetSizesArgs)
-			r, err := GetSizes(ctx, &args, opts...)
-			var s GetSizesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSizesResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getSizes:getSizes", args, &rv, "", opts...)
+			if err != nil {
+				return GetSizesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSizesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSizesResultOutput), nil
+			}
+			return output, nil
 		}).(GetSizesResultOutput)
 }
 

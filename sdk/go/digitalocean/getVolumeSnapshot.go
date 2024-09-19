@@ -131,14 +131,20 @@ type LookupVolumeSnapshotResult struct {
 
 func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeSnapshotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVolumeSnapshotResult, error) {
+		ApplyT(func(v interface{}) (LookupVolumeSnapshotResultOutput, error) {
 			args := v.(LookupVolumeSnapshotArgs)
-			r, err := LookupVolumeSnapshot(ctx, &args, opts...)
-			var s LookupVolumeSnapshotResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupVolumeSnapshotResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVolumeSnapshotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVolumeSnapshotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVolumeSnapshotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVolumeSnapshotResultOutput)
 }
 

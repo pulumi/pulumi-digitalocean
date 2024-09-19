@@ -34,7 +34,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getRecords:getRecords", {
         "domain": args.domain,
@@ -106,7 +105,12 @@ export interface GetRecordsResult {
  * ```
  */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
-    return pulumi.output(args).apply((a: any) => getRecords(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getRecords:getRecords", {
+        "domain": args.domain,
+        "filters": args.filters,
+        "sorts": args.sorts,
+    }, opts);
 }
 
 /**
