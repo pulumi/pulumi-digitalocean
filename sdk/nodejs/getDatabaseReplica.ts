@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseReplica(args: GetDatabaseReplicaArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseReplicaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseReplica:getDatabaseReplica", {
         "clusterId": args.clusterId,
@@ -125,7 +124,12 @@ export interface GetDatabaseReplicaResult {
  * ```
  */
 export function getDatabaseReplicaOutput(args: GetDatabaseReplicaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseReplicaResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseReplica(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseReplica:getDatabaseReplica", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

@@ -66,14 +66,20 @@ type GetDatabaseCaResult struct {
 
 func GetDatabaseCaOutput(ctx *pulumi.Context, args GetDatabaseCaOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseCaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatabaseCaResult, error) {
+		ApplyT(func(v interface{}) (GetDatabaseCaResultOutput, error) {
 			args := v.(GetDatabaseCaArgs)
-			r, err := GetDatabaseCa(ctx, &args, opts...)
-			var s GetDatabaseCaResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDatabaseCaResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getDatabaseCa:getDatabaseCa", args, &rv, "", opts...)
+			if err != nil {
+				return GetDatabaseCaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDatabaseCaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDatabaseCaResultOutput), nil
+			}
+			return output, nil
 		}).(GetDatabaseCaResultOutput)
 }
 

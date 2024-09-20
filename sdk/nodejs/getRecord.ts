@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getRecord:getRecord", {
         "domain": args.domain,
@@ -119,7 +118,11 @@ export interface GetRecordResult {
  * ```
  */
 export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
-    return pulumi.output(args).apply((a: any) => getRecord(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getRecord:getRecord", {
+        "domain": args.domain,
+        "name": args.name,
+    }, opts);
 }
 
 /**

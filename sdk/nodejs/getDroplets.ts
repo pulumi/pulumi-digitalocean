@@ -61,7 +61,6 @@ import * as utilities from "./utilities";
  */
 export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDroplets:getDroplets", {
         "filters": args.filters,
@@ -153,7 +152,12 @@ export interface GetDropletsResult {
  * ```
  */
 export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletsResult> {
-    return pulumi.output(args).apply((a: any) => getDroplets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDroplets:getDroplets", {
+        "filters": args.filters,
+        "sorts": args.sorts,
+    }, opts);
 }
 
 /**

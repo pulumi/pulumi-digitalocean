@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSpacesBucketObject(args: GetSpacesBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", {
         "bucket": args.bucket,
@@ -171,7 +170,14 @@ export interface GetSpacesBucketObjectResult {
  * ```
  */
 export function getSpacesBucketObjectOutput(args: GetSpacesBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectResult> {
-    return pulumi.output(args).apply((a: any) => getSpacesBucketObject(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", {
+        "bucket": args.bucket,
+        "key": args.key,
+        "range": args.range,
+        "region": args.region,
+        "versionId": args.versionId,
+    }, opts);
 }
 
 /**

@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
  */
 export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetDropletSnapshotResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
         "mostRecent": args.mostRecent,
@@ -154,7 +153,14 @@ export interface GetDropletSnapshotResult {
  * ```
  */
 export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
-    return pulumi.output(args).apply((a: any) => getDropletSnapshot(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {
+        "mostRecent": args.mostRecent,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "region": args.region,
+    }, opts);
 }
 
 /**

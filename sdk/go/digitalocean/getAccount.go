@@ -69,13 +69,19 @@ type GetAccountResult struct {
 }
 
 func GetAccountOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountResult, error) {
-		r, err := GetAccount(ctx, opts...)
-		var s GetAccountResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetAccountResult
+		secret, err := ctx.InvokePackageRaw("digitalocean:index/getAccount:getAccount", nil, &rv, "", opts...)
+		if err != nil {
+			return GetAccountResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetAccountResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetAccountResultOutput), nil
+		}
+		return output, nil
 	}).(GetAccountResultOutput)
 }
 

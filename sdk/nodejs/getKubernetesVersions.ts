@@ -65,7 +65,6 @@ import * as utilities from "./utilities";
  */
 export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", {
         "versionPrefix": args.versionPrefix,
@@ -160,7 +159,11 @@ export interface GetKubernetesVersionsResult {
  * ```
  */
 export function getKubernetesVersionsOutput(args?: GetKubernetesVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesVersions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getKubernetesVersions:getKubernetesVersions", {
+        "versionPrefix": args.versionPrefix,
+    }, opts);
 }
 
 /**

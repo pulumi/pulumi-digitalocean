@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
  */
 export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
         "mostRecent": args.mostRecent,
@@ -158,7 +157,14 @@ export interface GetVolumeSnapshotResult {
  * ```
  */
 export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeSnapshotResult> {
-    return pulumi.output(args).apply((a: any) => getVolumeSnapshot(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
+        "mostRecent": args.mostRecent,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "region": args.region,
+    }, opts);
 }
 
 /**

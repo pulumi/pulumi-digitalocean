@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getReservedIp(args: GetReservedIpArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getReservedIp:getReservedIp", {
         "ipAddress": args.ipAddress,
@@ -79,7 +78,10 @@ export interface GetReservedIpResult {
  * ```
  */
 export function getReservedIpOutput(args: GetReservedIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpResult> {
-    return pulumi.output(args).apply((a: any) => getReservedIp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getReservedIp:getReservedIp", {
+        "ipAddress": args.ipAddress,
+    }, opts);
 }
 
 /**

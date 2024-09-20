@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getTags:getTags", {
         "filters": args.filters,
@@ -86,7 +85,12 @@ export interface GetTagsResult {
  * ```
  */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
-    return pulumi.output(args).apply((a: any) => getTags(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getTags:getTags", {
+        "filters": args.filters,
+        "sorts": args.sorts,
+    }, opts);
 }
 
 /**

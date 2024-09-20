@@ -94,14 +94,20 @@ type LookupDatabaseConnectionPoolResult struct {
 
 func LookupDatabaseConnectionPoolOutput(ctx *pulumi.Context, args LookupDatabaseConnectionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseConnectionPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseConnectionPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseConnectionPoolResultOutput, error) {
 			args := v.(LookupDatabaseConnectionPoolArgs)
-			r, err := LookupDatabaseConnectionPool(ctx, &args, opts...)
-			var s LookupDatabaseConnectionPoolResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseConnectionPoolResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseConnectionPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseConnectionPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseConnectionPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseConnectionPoolResultOutput)
 }
 
