@@ -79,14 +79,20 @@ type LookupSpacesBucketResult struct {
 
 func LookupSpacesBucketOutput(ctx *pulumi.Context, args LookupSpacesBucketOutputArgs, opts ...pulumi.InvokeOption) LookupSpacesBucketResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSpacesBucketResult, error) {
+		ApplyT(func(v interface{}) (LookupSpacesBucketResultOutput, error) {
 			args := v.(LookupSpacesBucketArgs)
-			r, err := LookupSpacesBucket(ctx, &args, opts...)
-			var s LookupSpacesBucketResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSpacesBucketResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getSpacesBucket:getSpacesBucket", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSpacesBucketResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSpacesBucketResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSpacesBucketResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSpacesBucketResultOutput)
 }
 

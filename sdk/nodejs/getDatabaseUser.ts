@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseUser(args: GetDatabaseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseUser:getDatabaseUser", {
         "clusterId": args.clusterId,
@@ -101,7 +100,11 @@ export interface GetDatabaseUserResult {
  * ```
  */
 export function getDatabaseUserOutput(args: GetDatabaseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUserResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseUser:getDatabaseUser", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

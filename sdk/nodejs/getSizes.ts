@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  */
 export function getSizes(args?: GetSizesArgs, opts?: pulumi.InvokeOptions): Promise<GetSizesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getSizes:getSizes", {
         "filters": args.filters,
@@ -56,7 +55,12 @@ export interface GetSizesResult {
  * will be returned.
  */
 export function getSizesOutput(args?: GetSizesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSizesResult> {
-    return pulumi.output(args).apply((a: any) => getSizes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getSizes:getSizes", {
+        "filters": args.filters,
+        "sorts": args.sorts,
+    }, opts);
 }
 
 /**

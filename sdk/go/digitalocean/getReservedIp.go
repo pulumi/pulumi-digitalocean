@@ -73,14 +73,20 @@ type LookupReservedIpResult struct {
 
 func LookupReservedIpOutput(ctx *pulumi.Context, args LookupReservedIpOutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReservedIpResult, error) {
+		ApplyT(func(v interface{}) (LookupReservedIpResultOutput, error) {
 			args := v.(LookupReservedIpArgs)
-			r, err := LookupReservedIp(ctx, &args, opts...)
-			var s LookupReservedIpResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupReservedIpResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getReservedIp:getReservedIp", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReservedIpResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReservedIpResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReservedIpResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReservedIpResultOutput)
 }
 

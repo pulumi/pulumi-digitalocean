@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseCa(args: GetDatabaseCaArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseCaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseCa:getDatabaseCa", {
         "clusterId": args.clusterId,
@@ -67,7 +66,10 @@ export interface GetDatabaseCaResult {
  * ```
  */
 export function getDatabaseCaOutput(args: GetDatabaseCaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseCaResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseCa(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseCa:getDatabaseCa", {
+        "clusterId": args.clusterId,
+    }, opts);
 }
 
 /**

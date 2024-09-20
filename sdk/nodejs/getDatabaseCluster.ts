@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseCluster(args: GetDatabaseClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
         "name": args.name,
@@ -162,7 +161,11 @@ export interface GetDatabaseClusterResult {
  * ```
  */
 export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseClusterResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
+        "name": args.name,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

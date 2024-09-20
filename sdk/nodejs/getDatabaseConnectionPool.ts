@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatabaseConnectionPool(args: GetDatabaseConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseConnectionPoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", {
         "clusterId": args.clusterId,
@@ -117,7 +116,11 @@ export interface GetDatabaseConnectionPoolResult {
  * ```
  */
 export function getDatabaseConnectionPoolOutput(args: GetDatabaseConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseConnectionPoolResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseConnectionPool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

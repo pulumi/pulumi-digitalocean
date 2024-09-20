@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
  */
 export function getSpacesBucketObjects(args: GetSpacesBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", {
         "bucket": args.bucket,
@@ -85,7 +84,15 @@ export interface GetSpacesBucketObjectsResult {
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
  */
 export function getSpacesBucketObjectsOutput(args: GetSpacesBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectsResult> {
-    return pulumi.output(args).apply((a: any) => getSpacesBucketObjects(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", {
+        "bucket": args.bucket,
+        "delimiter": args.delimiter,
+        "encodingType": args.encodingType,
+        "maxKeys": args.maxKeys,
+        "prefix": args.prefix,
+        "region": args.region,
+    }, opts);
 }
 
 /**

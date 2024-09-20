@@ -174,14 +174,20 @@ type LookupDropletResult struct {
 
 func LookupDropletOutput(ctx *pulumi.Context, args LookupDropletOutputArgs, opts ...pulumi.InvokeOption) LookupDropletResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDropletResult, error) {
+		ApplyT(func(v interface{}) (LookupDropletResultOutput, error) {
 			args := v.(LookupDropletArgs)
-			r, err := LookupDroplet(ctx, &args, opts...)
-			var s LookupDropletResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDropletResult
+			secret, err := ctx.InvokePackageRaw("digitalocean:index/getDroplet:getDroplet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDropletResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDropletResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDropletResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDropletResultOutput)
 }
 
