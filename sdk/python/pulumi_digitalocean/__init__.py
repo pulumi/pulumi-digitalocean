@@ -16,7 +16,9 @@ from .database_cluster import *
 from .database_connection_pool import *
 from .database_db import *
 from .database_firewall import *
+from .database_kafka_config import *
 from .database_kafka_topic import *
+from .database_mongodb_config import *
 from .database_mysql_config import *
 from .database_postgresql_config import *
 from .database_redis_config import *
@@ -187,10 +189,26 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
+  "mod": "index/databaseKafkaConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig": "DatabaseKafkaConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
   "mod": "index/databaseKafkaTopic",
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic": "DatabaseKafkaTopic"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseMongodbConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig": "DatabaseMongodbConfig"
   }
  },
  {

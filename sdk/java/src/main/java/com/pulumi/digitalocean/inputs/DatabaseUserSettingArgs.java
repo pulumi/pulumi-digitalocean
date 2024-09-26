@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.DatabaseUserSettingAclArgs;
+import com.pulumi.digitalocean.inputs.DatabaseUserSettingOpensearchAclArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,10 +36,18 @@ public final class DatabaseUserSettingArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.acls);
     }
 
+    @Import(name="opensearchAcls")
+    private @Nullable Output<List<DatabaseUserSettingOpensearchAclArgs>> opensearchAcls;
+
+    public Optional<Output<List<DatabaseUserSettingOpensearchAclArgs>>> opensearchAcls() {
+        return Optional.ofNullable(this.opensearchAcls);
+    }
+
     private DatabaseUserSettingArgs() {}
 
     private DatabaseUserSettingArgs(DatabaseUserSettingArgs $) {
         this.acls = $.acls;
+        this.opensearchAcls = $.opensearchAcls;
     }
 
     public static Builder builder() {
@@ -94,6 +103,19 @@ public final class DatabaseUserSettingArgs extends com.pulumi.resources.Resource
          */
         public Builder acls(DatabaseUserSettingAclArgs... acls) {
             return acls(List.of(acls));
+        }
+
+        public Builder opensearchAcls(@Nullable Output<List<DatabaseUserSettingOpensearchAclArgs>> opensearchAcls) {
+            $.opensearchAcls = opensearchAcls;
+            return this;
+        }
+
+        public Builder opensearchAcls(List<DatabaseUserSettingOpensearchAclArgs> opensearchAcls) {
+            return opensearchAcls(Output.of(opensearchAcls));
+        }
+
+        public Builder opensearchAcls(DatabaseUserSettingOpensearchAclArgs... opensearchAcls) {
+            return opensearchAcls(List.of(opensearchAcls));
         }
 
         public DatabaseUserSettingArgs build() {

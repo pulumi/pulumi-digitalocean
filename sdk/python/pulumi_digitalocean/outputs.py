@@ -107,6 +107,7 @@ __all__ = [
     'DatabasePostgresqlConfigTimescaledb',
     'DatabaseUserSetting',
     'DatabaseUserSettingAcl',
+    'DatabaseUserSettingOpensearchAcl',
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
@@ -6549,8 +6550,26 @@ class DatabasePostgresqlConfigTimescaledb(dict):
 
 @pulumi.output_type
 class DatabaseUserSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "opensearchAcls":
+            suggest = "opensearch_acls"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseUserSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseUserSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseUserSetting.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 acls: Optional[Sequence['outputs.DatabaseUserSettingAcl']] = None):
+                 acls: Optional[Sequence['outputs.DatabaseUserSettingAcl']] = None,
+                 opensearch_acls: Optional[Sequence['outputs.DatabaseUserSettingOpensearchAcl']] = None):
         """
         :param Sequence['DatabaseUserSettingAclArgs'] acls: A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
                
@@ -6558,6 +6577,8 @@ class DatabaseUserSetting(dict):
         """
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
+        if opensearch_acls is not None:
+            pulumi.set(__self__, "opensearch_acls", opensearch_acls)
 
     @property
     @pulumi.getter
@@ -6568,6 +6589,11 @@ class DatabaseUserSetting(dict):
         An individual ACL includes the following:
         """
         return pulumi.get(self, "acls")
+
+    @property
+    @pulumi.getter(name="opensearchAcls")
+    def opensearch_acls(self) -> Optional[Sequence['outputs.DatabaseUserSettingOpensearchAcl']]:
+        return pulumi.get(self, "opensearch_acls")
 
 
 @pulumi.output_type
@@ -6609,6 +6635,31 @@ class DatabaseUserSettingAcl(dict):
         An identifier for the ACL, this will be automatically assigned when you create an ACL entry
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class DatabaseUserSettingOpensearchAcl(dict):
+    def __init__(__self__, *,
+                 index: str,
+                 permission: str):
+        """
+        :param str permission: The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def index(self) -> str:
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type

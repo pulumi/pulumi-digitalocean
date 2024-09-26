@@ -26,6 +26,14 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _acls = value;
         }
 
+        [Input("opensearchAcls")]
+        private InputList<Inputs.DatabaseUserSettingOpensearchAclArgs>? _opensearchAcls;
+        public InputList<Inputs.DatabaseUserSettingOpensearchAclArgs> OpensearchAcls
+        {
+            get => _opensearchAcls ?? (_opensearchAcls = new InputList<Inputs.DatabaseUserSettingOpensearchAclArgs>());
+            set => _opensearchAcls = value;
+        }
+
         public DatabaseUserSettingArgs()
         {
         }

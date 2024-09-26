@@ -19,11 +19,16 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An individual ACL includes the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.DatabaseUserSettingAcl> Acls;
+        public readonly ImmutableArray<Outputs.DatabaseUserSettingOpensearchAcl> OpensearchAcls;
 
         [OutputConstructor]
-        private DatabaseUserSetting(ImmutableArray<Outputs.DatabaseUserSettingAcl> acls)
+        private DatabaseUserSetting(
+            ImmutableArray<Outputs.DatabaseUserSettingAcl> acls,
+
+            ImmutableArray<Outputs.DatabaseUserSettingOpensearchAcl> opensearchAcls)
         {
             Acls = acls;
+            OpensearchAcls = opensearchAcls;
         }
     }
 }
