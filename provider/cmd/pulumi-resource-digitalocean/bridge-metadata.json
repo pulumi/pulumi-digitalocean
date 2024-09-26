@@ -482,6 +482,10 @@
                     }
                 }
             },
+            "digitalocean_database_kafka_config": {
+                "current": "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig",
+                "majorVersion": 4
+            },
             "digitalocean_database_kafka_topic": {
                 "current": "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic",
                 "majorVersion": 4,
@@ -490,6 +494,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_database_mongodb_config": {
+                "current": "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig",
+                "majorVersion": 4
             },
             "digitalocean_database_mysql_config": {
                 "current": "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig",
@@ -536,6 +544,9 @@
                         "elem": {
                             "fields": {
                                 "acl": {
+                                    "maxItemsOne": false
+                                },
+                                "opensearch_acl": {
                                     "maxItemsOne": false
                                 }
                             }

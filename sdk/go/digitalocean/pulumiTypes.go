@@ -15175,7 +15175,8 @@ type DatabaseUserSetting struct {
 	// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
 	//
 	// An individual ACL includes the following:
-	Acls []DatabaseUserSettingAcl `pulumi:"acls"`
+	Acls           []DatabaseUserSettingAcl           `pulumi:"acls"`
+	OpensearchAcls []DatabaseUserSettingOpensearchAcl `pulumi:"opensearchAcls"`
 }
 
 // DatabaseUserSettingInput is an input type that accepts DatabaseUserSettingArgs and DatabaseUserSettingOutput values.
@@ -15193,7 +15194,8 @@ type DatabaseUserSettingArgs struct {
 	// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
 	//
 	// An individual ACL includes the following:
-	Acls DatabaseUserSettingAclArrayInput `pulumi:"acls"`
+	Acls           DatabaseUserSettingAclArrayInput           `pulumi:"acls"`
+	OpensearchAcls DatabaseUserSettingOpensearchAclArrayInput `pulumi:"opensearchAcls"`
 }
 
 func (DatabaseUserSettingArgs) ElementType() reflect.Type {
@@ -15252,6 +15254,10 @@ func (o DatabaseUserSettingOutput) ToDatabaseUserSettingOutputWithContext(ctx co
 // An individual ACL includes the following:
 func (o DatabaseUserSettingOutput) Acls() DatabaseUserSettingAclArrayOutput {
 	return o.ApplyT(func(v DatabaseUserSetting) []DatabaseUserSettingAcl { return v.Acls }).(DatabaseUserSettingAclArrayOutput)
+}
+
+func (o DatabaseUserSettingOutput) OpensearchAcls() DatabaseUserSettingOpensearchAclArrayOutput {
+	return o.ApplyT(func(v DatabaseUserSetting) []DatabaseUserSettingOpensearchAcl { return v.OpensearchAcls }).(DatabaseUserSettingOpensearchAclArrayOutput)
 }
 
 type DatabaseUserSettingArrayOutput struct{ *pulumi.OutputState }
@@ -15387,6 +15393,109 @@ func (o DatabaseUserSettingAclArrayOutput) Index(i pulumi.IntInput) DatabaseUser
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseUserSettingAcl {
 		return vs[0].([]DatabaseUserSettingAcl)[vs[1].(int)]
 	}).(DatabaseUserSettingAclOutput)
+}
+
+type DatabaseUserSettingOpensearchAcl struct {
+	Index string `pulumi:"index"`
+	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+	Permission string `pulumi:"permission"`
+}
+
+// DatabaseUserSettingOpensearchAclInput is an input type that accepts DatabaseUserSettingOpensearchAclArgs and DatabaseUserSettingOpensearchAclOutput values.
+// You can construct a concrete instance of `DatabaseUserSettingOpensearchAclInput` via:
+//
+//	DatabaseUserSettingOpensearchAclArgs{...}
+type DatabaseUserSettingOpensearchAclInput interface {
+	pulumi.Input
+
+	ToDatabaseUserSettingOpensearchAclOutput() DatabaseUserSettingOpensearchAclOutput
+	ToDatabaseUserSettingOpensearchAclOutputWithContext(context.Context) DatabaseUserSettingOpensearchAclOutput
+}
+
+type DatabaseUserSettingOpensearchAclArgs struct {
+	Index pulumi.StringInput `pulumi:"index"`
+	// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (DatabaseUserSettingOpensearchAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (i DatabaseUserSettingOpensearchAclArgs) ToDatabaseUserSettingOpensearchAclOutput() DatabaseUserSettingOpensearchAclOutput {
+	return i.ToDatabaseUserSettingOpensearchAclOutputWithContext(context.Background())
+}
+
+func (i DatabaseUserSettingOpensearchAclArgs) ToDatabaseUserSettingOpensearchAclOutputWithContext(ctx context.Context) DatabaseUserSettingOpensearchAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserSettingOpensearchAclOutput)
+}
+
+// DatabaseUserSettingOpensearchAclArrayInput is an input type that accepts DatabaseUserSettingOpensearchAclArray and DatabaseUserSettingOpensearchAclArrayOutput values.
+// You can construct a concrete instance of `DatabaseUserSettingOpensearchAclArrayInput` via:
+//
+//	DatabaseUserSettingOpensearchAclArray{ DatabaseUserSettingOpensearchAclArgs{...} }
+type DatabaseUserSettingOpensearchAclArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseUserSettingOpensearchAclArrayOutput() DatabaseUserSettingOpensearchAclArrayOutput
+	ToDatabaseUserSettingOpensearchAclArrayOutputWithContext(context.Context) DatabaseUserSettingOpensearchAclArrayOutput
+}
+
+type DatabaseUserSettingOpensearchAclArray []DatabaseUserSettingOpensearchAclInput
+
+func (DatabaseUserSettingOpensearchAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (i DatabaseUserSettingOpensearchAclArray) ToDatabaseUserSettingOpensearchAclArrayOutput() DatabaseUserSettingOpensearchAclArrayOutput {
+	return i.ToDatabaseUserSettingOpensearchAclArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseUserSettingOpensearchAclArray) ToDatabaseUserSettingOpensearchAclArrayOutputWithContext(ctx context.Context) DatabaseUserSettingOpensearchAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseUserSettingOpensearchAclArrayOutput)
+}
+
+type DatabaseUserSettingOpensearchAclOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserSettingOpensearchAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (o DatabaseUserSettingOpensearchAclOutput) ToDatabaseUserSettingOpensearchAclOutput() DatabaseUserSettingOpensearchAclOutput {
+	return o
+}
+
+func (o DatabaseUserSettingOpensearchAclOutput) ToDatabaseUserSettingOpensearchAclOutputWithContext(ctx context.Context) DatabaseUserSettingOpensearchAclOutput {
+	return o
+}
+
+func (o DatabaseUserSettingOpensearchAclOutput) Index() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseUserSettingOpensearchAcl) string { return v.Index }).(pulumi.StringOutput)
+}
+
+// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+func (o DatabaseUserSettingOpensearchAclOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseUserSettingOpensearchAcl) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type DatabaseUserSettingOpensearchAclArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseUserSettingOpensearchAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (o DatabaseUserSettingOpensearchAclArrayOutput) ToDatabaseUserSettingOpensearchAclArrayOutput() DatabaseUserSettingOpensearchAclArrayOutput {
+	return o
+}
+
+func (o DatabaseUserSettingOpensearchAclArrayOutput) ToDatabaseUserSettingOpensearchAclArrayOutputWithContext(ctx context.Context) DatabaseUserSettingOpensearchAclArrayOutput {
+	return o
+}
+
+func (o DatabaseUserSettingOpensearchAclArrayOutput) Index(i pulumi.IntInput) DatabaseUserSettingOpensearchAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseUserSettingOpensearchAcl {
+		return vs[0].([]DatabaseUserSettingOpensearchAcl)[vs[1].(int)]
+	}).(DatabaseUserSettingOpensearchAclOutput)
 }
 
 type FirewallInboundRule struct {
@@ -39912,6 +40021,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingArrayInput)(nil)).Elem(), DatabaseUserSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclInput)(nil)).Elem(), DatabaseUserSettingAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclArrayInput)(nil)).Elem(), DatabaseUserSettingAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingOpensearchAclInput)(nil)).Elem(), DatabaseUserSettingOpensearchAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingOpensearchAclArrayInput)(nil)).Elem(), DatabaseUserSettingOpensearchAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleInput)(nil)).Elem(), FirewallInboundRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleArrayInput)(nil)).Elem(), FirewallInboundRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleInput)(nil)).Elem(), FirewallOutboundRuleArgs{})
@@ -40421,6 +40532,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseUserSettingArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingAclOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingAclArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseUserSettingOpensearchAclOutput{})
+	pulumi.RegisterOutputType(DatabaseUserSettingOpensearchAclArrayOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleArrayOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundRuleOutput{})

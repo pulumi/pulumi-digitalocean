@@ -55,10 +55,20 @@ export type DatabaseFirewall = import("./databaseFirewall").DatabaseFirewall;
 export const DatabaseFirewall: typeof import("./databaseFirewall").DatabaseFirewall = null as any;
 utilities.lazyLoad(exports, ["DatabaseFirewall"], () => require("./databaseFirewall"));
 
+export { DatabaseKafkaConfigArgs, DatabaseKafkaConfigState } from "./databaseKafkaConfig";
+export type DatabaseKafkaConfig = import("./databaseKafkaConfig").DatabaseKafkaConfig;
+export const DatabaseKafkaConfig: typeof import("./databaseKafkaConfig").DatabaseKafkaConfig = null as any;
+utilities.lazyLoad(exports, ["DatabaseKafkaConfig"], () => require("./databaseKafkaConfig"));
+
 export { DatabaseKafkaTopicArgs, DatabaseKafkaTopicState } from "./databaseKafkaTopic";
 export type DatabaseKafkaTopic = import("./databaseKafkaTopic").DatabaseKafkaTopic;
 export const DatabaseKafkaTopic: typeof import("./databaseKafkaTopic").DatabaseKafkaTopic = null as any;
 utilities.lazyLoad(exports, ["DatabaseKafkaTopic"], () => require("./databaseKafkaTopic"));
+
+export { DatabaseMongodbConfigArgs, DatabaseMongodbConfigState } from "./databaseMongodbConfig";
+export type DatabaseMongodbConfig = import("./databaseMongodbConfig").DatabaseMongodbConfig;
+export const DatabaseMongodbConfig: typeof import("./databaseMongodbConfig").DatabaseMongodbConfig = null as any;
+utilities.lazyLoad(exports, ["DatabaseMongodbConfig"], () => require("./databaseMongodbConfig"));
 
 export { DatabaseMysqlConfigArgs, DatabaseMysqlConfigState } from "./databaseMysqlConfig";
 export type DatabaseMysqlConfig = import("./databaseMysqlConfig").DatabaseMysqlConfig;
@@ -472,8 +482,12 @@ const _module = {
                 return new DatabaseDb(name, <any>undefined, { urn })
             case "digitalocean:index/databaseFirewall:DatabaseFirewall":
                 return new DatabaseFirewall(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig":
+                return new DatabaseKafkaConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic":
                 return new DatabaseKafkaTopic(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig":
+                return new DatabaseMongodbConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
                 return new DatabaseMysqlConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
@@ -555,7 +569,9 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseCluster", _
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseConnectionPool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseDb", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseFirewall", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaTopic", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMongodbConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMysqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databasePostgresqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseRedisConfig", _module)
