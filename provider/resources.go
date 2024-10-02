@@ -554,7 +554,6 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^3.0.0",
 				"builtin-modules":   "3.0.0",
 				"read-package-tree": "^5.2.1",
 				"resolve":           "^1.7.1",
@@ -567,9 +566,6 @@ func Provider() tfbridge.ProviderInfo {
 		Python: (func() *tfbridge.PythonInfo {
 			i := &tfbridge.PythonInfo{
 				RespectSchemaVersion: true,
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				},
 			}
 			i.PyProject.Enabled = true
 			return i
