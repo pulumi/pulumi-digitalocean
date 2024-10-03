@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -165,9 +170,6 @@ def get_vpc_peering(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         status=pulumi.get(__ret__, 'status'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
-
-
-@_utilities.lift_output_func(get_vpc_peering)
 def get_vpc_peering_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            vpc_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -228,4 +230,15 @@ def get_vpc_peering_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The name of an existing VPC Peering.
     :param Sequence[str] vpc_ids: The list of VPC IDs involved in the peering.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['vpcIds'] = vpc_ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getVpcPeering:getVpcPeering', __args__, opts=opts, typ=GetVpcPeeringResult)
+    return __ret__.apply(lambda __response__: GetVpcPeeringResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_ids=pulumi.get(__response__, 'vpc_ids')))

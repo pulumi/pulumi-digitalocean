@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -199,9 +204,6 @@ def get_firewall(droplet_ids: Optional[Sequence[int]] = None,
         pending_changes=pulumi.get(__ret__, 'pending_changes'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_firewall)
 def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                         firewall_id: Optional[pulumi.Input[str]] = None,
                         inbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]]]] = None,
@@ -230,4 +232,22 @@ def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int
            about.
     :param Sequence[str] tags: The names of the Tags assigned to the Firewall.
     """
-    ...
+    __args__ = dict()
+    __args__['dropletIds'] = droplet_ids
+    __args__['firewallId'] = firewall_id
+    __args__['inboundRules'] = inbound_rules
+    __args__['outboundRules'] = outbound_rules
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult)
+    return __ret__.apply(lambda __response__: GetFirewallResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        droplet_ids=pulumi.get(__response__, 'droplet_ids'),
+        firewall_id=pulumi.get(__response__, 'firewall_id'),
+        id=pulumi.get(__response__, 'id'),
+        inbound_rules=pulumi.get(__response__, 'inbound_rules'),
+        name=pulumi.get(__response__, 'name'),
+        outbound_rules=pulumi.get(__response__, 'outbound_rules'),
+        pending_changes=pulumi.get(__response__, 'pending_changes'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

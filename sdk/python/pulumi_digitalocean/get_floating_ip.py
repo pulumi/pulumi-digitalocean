@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -129,9 +134,6 @@ def get_floating_ip(ip_address: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_floating_ip)
 def get_floating_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFloatingIpResult]:
     """
@@ -161,4 +163,13 @@ def get_floating_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
 
     :param str ip_address: The allocated IP address of the specific floating IP to retrieve.
     """
-    ...
+    __args__ = dict()
+    __args__['ipAddress'] = ip_address
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult)
+    return __ret__.apply(lambda __response__: GetFloatingIpResult(
+        droplet_id=pulumi.get(__response__, 'droplet_id'),
+        floating_ip_urn=pulumi.get(__response__, 'floating_ip_urn'),
+        id=pulumi.get(__response__, 'id'),
+        ip_address=pulumi.get(__response__, 'ip_address'),
+        region=pulumi.get(__response__, 'region')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -317,9 +322,6 @@ def get_spaces_bucket_object(bucket: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         version_id=pulumi.get(__ret__, 'version_id'),
         website_redirect_location=pulumi.get(__ret__, 'website_redirect_location'))
-
-
-@_utilities.lift_output_func(get_spaces_bucket_object)
 def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
                                     key: Optional[pulumi.Input[str]] = None,
                                     range: Optional[pulumi.Input[Optional[str]]] = None,
@@ -360,4 +362,31 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
     :param str region: The slug of the region where the bucket is stored.
     :param str version_id: Specific version ID of the object returned (defaults to latest version)
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['key'] = key
+    __args__['range'] = range
+    __args__['region'] = region
+    __args__['versionId'] = version_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSpacesBucketObject:getSpacesBucketObject', __args__, opts=opts, typ=GetSpacesBucketObjectResult)
+    return __ret__.apply(lambda __response__: GetSpacesBucketObjectResult(
+        body=pulumi.get(__response__, 'body'),
+        bucket=pulumi.get(__response__, 'bucket'),
+        cache_control=pulumi.get(__response__, 'cache_control'),
+        content_disposition=pulumi.get(__response__, 'content_disposition'),
+        content_encoding=pulumi.get(__response__, 'content_encoding'),
+        content_language=pulumi.get(__response__, 'content_language'),
+        content_length=pulumi.get(__response__, 'content_length'),
+        content_type=pulumi.get(__response__, 'content_type'),
+        etag=pulumi.get(__response__, 'etag'),
+        expiration=pulumi.get(__response__, 'expiration'),
+        expires=pulumi.get(__response__, 'expires'),
+        id=pulumi.get(__response__, 'id'),
+        key=pulumi.get(__response__, 'key'),
+        last_modified=pulumi.get(__response__, 'last_modified'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        range=pulumi.get(__response__, 'range'),
+        region=pulumi.get(__response__, 'region'),
+        version_id=pulumi.get(__response__, 'version_id'),
+        website_redirect_location=pulumi.get(__response__, 'website_redirect_location')))

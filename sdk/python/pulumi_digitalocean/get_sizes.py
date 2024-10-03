@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -98,9 +103,6 @@ def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFi
         id=pulumi.get(__ret__, 'id'),
         sizes=pulumi.get(__ret__, 'sizes'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_sizes)
 def get_sizes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']]]]] = None,
                      sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSizesResult]:
@@ -115,4 +117,13 @@ def get_sizes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     :param Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSizes:getSizes', __args__, opts=opts, typ=GetSizesResult)
+    return __ret__.apply(lambda __response__: GetSizesResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        sizes=pulumi.get(__response__, 'sizes'),
+        sorts=pulumi.get(__response__, 'sorts')))
