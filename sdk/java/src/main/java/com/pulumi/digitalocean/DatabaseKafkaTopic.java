@@ -24,6 +24,77 @@ import javax.annotation.Nullable;
  * 
  * ### Create a new Kafka topic
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import com.pulumi.digitalocean.DatabaseKafkaTopic;
+ * import com.pulumi.digitalocean.DatabaseKafkaTopicArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseKafkaTopicConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()
+ *             .name("example-kafka-cluster")
+ *             .engine("kafka")
+ *             .version("3.5")
+ *             .size("db-s-2vcpu-2gb")
+ *             .region("nyc1")
+ *             .nodeCount(3)
+ *             .tags("production")
+ *             .build());
+ * 
+ *         var topic_01 = new DatabaseKafkaTopic("topic-01", DatabaseKafkaTopicArgs.builder()
+ *             .clusterId(kafka_example.id())
+ *             .name("topic-01")
+ *             .partitionCount(3)
+ *             .replicationFactor(2)
+ *             .configs(DatabaseKafkaTopicConfigArgs.builder()
+ *                 .cleanupPolicy("compact")
+ *                 .compressionType("uncompressed")
+ *                 .deleteRetentionMs(14000)
+ *                 .fileDeleteDelayMs(170000)
+ *                 .flushMessages(92233)
+ *                 .flushMs(92233720368)
+ *                 .indexIntervalBytes(40962)
+ *                 .maxCompactionLagMs(9223372036854775807)
+ *                 .maxMessageBytes(1048588)
+ *                 .messageDownConversionEnable(true)
+ *                 .messageFormatVersion("3.0-IV1")
+ *                 .messageTimestampDifferenceMaxMs(9223372036854775807)
+ *                 .messageTimestampType("log_append_time")
+ *                 .minCleanableDirtyRatio(0.5)
+ *                 .minCompactionLagMs(20000)
+ *                 .minInsyncReplicas(2)
+ *                 .preallocate(false)
+ *                 .retentionBytes(-1)
+ *                 .retentionMs(-1)
+ *                 .segmentBytes(209715200)
+ *                 .segmentIndexBytes(10485760)
+ *                 .segmentJitterMs(0)
+ *                 .segmentMs(604800000)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

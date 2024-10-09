@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -144,9 +149,6 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_droplets)
 def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletsResult]:
@@ -204,4 +206,13 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts, typ=GetDropletsResult)
+    return __ret__.apply(lambda __response__: GetDropletsResult(
+        droplets=pulumi.get(__response__, 'droplets'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        sorts=pulumi.get(__response__, 'sorts')))

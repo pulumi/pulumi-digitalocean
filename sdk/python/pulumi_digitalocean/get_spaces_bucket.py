@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -141,9 +146,6 @@ def get_spaces_bucket(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         urn=pulumi.get(__ret__, 'urn'))
-
-
-@_utilities.lift_output_func(get_spaces_bucket)
 def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
                              region: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketResult]:
@@ -168,4 +170,15 @@ def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the Spaces bucket.
     :param str region: The slug of the region where the bucket is stored.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSpacesBucket:getSpacesBucket', __args__, opts=opts, typ=GetSpacesBucketResult)
+    return __ret__.apply(lambda __response__: GetSpacesBucketResult(
+        bucket_domain_name=pulumi.get(__response__, 'bucket_domain_name'),
+        endpoint=pulumi.get(__response__, 'endpoint'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        urn=pulumi.get(__response__, 'urn')))

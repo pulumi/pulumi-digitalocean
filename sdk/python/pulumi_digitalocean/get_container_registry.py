@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -168,9 +173,6 @@ def get_container_registry(name: Optional[str] = None,
         server_url=pulumi.get(__ret__, 'server_url'),
         storage_usage_bytes=pulumi.get(__ret__, 'storage_usage_bytes'),
         subscription_tier_slug=pulumi.get(__ret__, 'subscription_tier_slug'))
-
-
-@_utilities.lift_output_func(get_container_registry)
 def get_container_registry_output(name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryResult]:
     """
@@ -197,4 +199,16 @@ def get_container_registry_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the container registry.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getContainerRegistry:getContainerRegistry', __args__, opts=opts, typ=GetContainerRegistryResult)
+    return __ret__.apply(lambda __response__: GetContainerRegistryResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        endpoint=pulumi.get(__response__, 'endpoint'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        server_url=pulumi.get(__response__, 'server_url'),
+        storage_usage_bytes=pulumi.get(__response__, 'storage_usage_bytes'),
+        subscription_tier_slug=pulumi.get(__response__, 'subscription_tier_slug')))

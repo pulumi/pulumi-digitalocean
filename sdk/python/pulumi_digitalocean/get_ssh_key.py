@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -117,9 +122,6 @@ def get_ssh_key(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         public_key=pulumi.get(__ret__, 'public_key'))
-
-
-@_utilities.lift_output_func(get_ssh_key)
 def get_ssh_key_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeyResult]:
     """
@@ -150,4 +152,12 @@ def get_ssh_key_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the ssh key.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSshKey:getSshKey', __args__, opts=opts, typ=GetSshKeyResult)
+    return __ret__.apply(lambda __response__: GetSshKeyResult(
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        public_key=pulumi.get(__response__, 'public_key')))

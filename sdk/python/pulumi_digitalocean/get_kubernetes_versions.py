@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -143,9 +148,6 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
         latest_version=pulumi.get(__ret__, 'latest_version'),
         valid_versions=pulumi.get(__ret__, 'valid_versions'),
         version_prefix=pulumi.get(__ret__, 'version_prefix'))
-
-
-@_utilities.lift_output_func(get_kubernetes_versions)
 def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesVersionsResult]:
     """
@@ -202,4 +204,12 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
 
     :param str version_prefix: If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
     """
-    ...
+    __args__ = dict()
+    __args__['versionPrefix'] = version_prefix
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesVersions:getKubernetesVersions', __args__, opts=opts, typ=GetKubernetesVersionsResult)
+    return __ret__.apply(lambda __response__: GetKubernetesVersionsResult(
+        id=pulumi.get(__response__, 'id'),
+        latest_version=pulumi.get(__response__, 'latest_version'),
+        valid_versions=pulumi.get(__response__, 'valid_versions'),
+        version_prefix=pulumi.get(__response__, 'version_prefix')))

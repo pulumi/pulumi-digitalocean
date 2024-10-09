@@ -4,160 +4,330 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from ._enums import *
 
 __all__ = [
     'AppDedicatedIpArgs',
+    'AppDedicatedIpArgsDict',
     'AppSpecArgs',
+    'AppSpecArgsDict',
     'AppSpecAlertArgs',
+    'AppSpecAlertArgsDict',
     'AppSpecDatabaseArgs',
+    'AppSpecDatabaseArgsDict',
     'AppSpecDomainNameArgs',
+    'AppSpecDomainNameArgsDict',
     'AppSpecEgressArgs',
+    'AppSpecEgressArgsDict',
     'AppSpecEnvArgs',
+    'AppSpecEnvArgsDict',
     'AppSpecFunctionArgs',
+    'AppSpecFunctionArgsDict',
     'AppSpecFunctionAlertArgs',
+    'AppSpecFunctionAlertArgsDict',
     'AppSpecFunctionCorsArgs',
+    'AppSpecFunctionCorsArgsDict',
     'AppSpecFunctionCorsAllowOriginsArgs',
+    'AppSpecFunctionCorsAllowOriginsArgsDict',
     'AppSpecFunctionEnvArgs',
+    'AppSpecFunctionEnvArgsDict',
     'AppSpecFunctionGitArgs',
+    'AppSpecFunctionGitArgsDict',
     'AppSpecFunctionGithubArgs',
+    'AppSpecFunctionGithubArgsDict',
     'AppSpecFunctionGitlabArgs',
+    'AppSpecFunctionGitlabArgsDict',
     'AppSpecFunctionLogDestinationArgs',
+    'AppSpecFunctionLogDestinationArgsDict',
     'AppSpecFunctionLogDestinationDatadogArgs',
+    'AppSpecFunctionLogDestinationDatadogArgsDict',
     'AppSpecFunctionLogDestinationLogtailArgs',
+    'AppSpecFunctionLogDestinationLogtailArgsDict',
     'AppSpecFunctionLogDestinationOpenSearchArgs',
+    'AppSpecFunctionLogDestinationOpenSearchArgsDict',
     'AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs',
+    'AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict',
     'AppSpecFunctionLogDestinationPapertrailArgs',
+    'AppSpecFunctionLogDestinationPapertrailArgsDict',
     'AppSpecFunctionRouteArgs',
+    'AppSpecFunctionRouteArgsDict',
     'AppSpecIngressArgs',
+    'AppSpecIngressArgsDict',
     'AppSpecIngressRuleArgs',
+    'AppSpecIngressRuleArgsDict',
     'AppSpecIngressRuleComponentArgs',
+    'AppSpecIngressRuleComponentArgsDict',
     'AppSpecIngressRuleCorsArgs',
+    'AppSpecIngressRuleCorsArgsDict',
     'AppSpecIngressRuleCorsAllowOriginsArgs',
+    'AppSpecIngressRuleCorsAllowOriginsArgsDict',
     'AppSpecIngressRuleMatchArgs',
+    'AppSpecIngressRuleMatchArgsDict',
     'AppSpecIngressRuleMatchPathArgs',
+    'AppSpecIngressRuleMatchPathArgsDict',
     'AppSpecIngressRuleRedirectArgs',
+    'AppSpecIngressRuleRedirectArgsDict',
     'AppSpecJobArgs',
+    'AppSpecJobArgsDict',
     'AppSpecJobAlertArgs',
+    'AppSpecJobAlertArgsDict',
     'AppSpecJobEnvArgs',
+    'AppSpecJobEnvArgsDict',
     'AppSpecJobGitArgs',
+    'AppSpecJobGitArgsDict',
     'AppSpecJobGithubArgs',
+    'AppSpecJobGithubArgsDict',
     'AppSpecJobGitlabArgs',
+    'AppSpecJobGitlabArgsDict',
     'AppSpecJobImageArgs',
+    'AppSpecJobImageArgsDict',
     'AppSpecJobImageDeployOnPushArgs',
+    'AppSpecJobImageDeployOnPushArgsDict',
     'AppSpecJobLogDestinationArgs',
+    'AppSpecJobLogDestinationArgsDict',
     'AppSpecJobLogDestinationDatadogArgs',
+    'AppSpecJobLogDestinationDatadogArgsDict',
     'AppSpecJobLogDestinationLogtailArgs',
+    'AppSpecJobLogDestinationLogtailArgsDict',
     'AppSpecJobLogDestinationOpenSearchArgs',
+    'AppSpecJobLogDestinationOpenSearchArgsDict',
     'AppSpecJobLogDestinationOpenSearchBasicAuthArgs',
+    'AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict',
     'AppSpecJobLogDestinationPapertrailArgs',
+    'AppSpecJobLogDestinationPapertrailArgsDict',
     'AppSpecServiceArgs',
+    'AppSpecServiceArgsDict',
     'AppSpecServiceAlertArgs',
+    'AppSpecServiceAlertArgsDict',
     'AppSpecServiceAutoscalingArgs',
+    'AppSpecServiceAutoscalingArgsDict',
     'AppSpecServiceAutoscalingMetricsArgs',
+    'AppSpecServiceAutoscalingMetricsArgsDict',
     'AppSpecServiceAutoscalingMetricsCpuArgs',
+    'AppSpecServiceAutoscalingMetricsCpuArgsDict',
     'AppSpecServiceCorsArgs',
+    'AppSpecServiceCorsArgsDict',
     'AppSpecServiceCorsAllowOriginsArgs',
+    'AppSpecServiceCorsAllowOriginsArgsDict',
     'AppSpecServiceEnvArgs',
+    'AppSpecServiceEnvArgsDict',
     'AppSpecServiceGitArgs',
+    'AppSpecServiceGitArgsDict',
     'AppSpecServiceGithubArgs',
+    'AppSpecServiceGithubArgsDict',
     'AppSpecServiceGitlabArgs',
+    'AppSpecServiceGitlabArgsDict',
     'AppSpecServiceHealthCheckArgs',
+    'AppSpecServiceHealthCheckArgsDict',
     'AppSpecServiceImageArgs',
+    'AppSpecServiceImageArgsDict',
     'AppSpecServiceImageDeployOnPushArgs',
+    'AppSpecServiceImageDeployOnPushArgsDict',
     'AppSpecServiceLogDestinationArgs',
+    'AppSpecServiceLogDestinationArgsDict',
     'AppSpecServiceLogDestinationDatadogArgs',
+    'AppSpecServiceLogDestinationDatadogArgsDict',
     'AppSpecServiceLogDestinationLogtailArgs',
+    'AppSpecServiceLogDestinationLogtailArgsDict',
     'AppSpecServiceLogDestinationOpenSearchArgs',
+    'AppSpecServiceLogDestinationOpenSearchArgsDict',
     'AppSpecServiceLogDestinationOpenSearchBasicAuthArgs',
+    'AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict',
     'AppSpecServiceLogDestinationPapertrailArgs',
+    'AppSpecServiceLogDestinationPapertrailArgsDict',
     'AppSpecServiceRouteArgs',
+    'AppSpecServiceRouteArgsDict',
     'AppSpecStaticSiteArgs',
+    'AppSpecStaticSiteArgsDict',
     'AppSpecStaticSiteCorsArgs',
+    'AppSpecStaticSiteCorsArgsDict',
     'AppSpecStaticSiteCorsAllowOriginsArgs',
+    'AppSpecStaticSiteCorsAllowOriginsArgsDict',
     'AppSpecStaticSiteEnvArgs',
+    'AppSpecStaticSiteEnvArgsDict',
     'AppSpecStaticSiteGitArgs',
+    'AppSpecStaticSiteGitArgsDict',
     'AppSpecStaticSiteGithubArgs',
+    'AppSpecStaticSiteGithubArgsDict',
     'AppSpecStaticSiteGitlabArgs',
+    'AppSpecStaticSiteGitlabArgsDict',
     'AppSpecStaticSiteRouteArgs',
+    'AppSpecStaticSiteRouteArgsDict',
     'AppSpecWorkerArgs',
+    'AppSpecWorkerArgsDict',
     'AppSpecWorkerAlertArgs',
+    'AppSpecWorkerAlertArgsDict',
     'AppSpecWorkerEnvArgs',
+    'AppSpecWorkerEnvArgsDict',
     'AppSpecWorkerGitArgs',
+    'AppSpecWorkerGitArgsDict',
     'AppSpecWorkerGithubArgs',
+    'AppSpecWorkerGithubArgsDict',
     'AppSpecWorkerGitlabArgs',
+    'AppSpecWorkerGitlabArgsDict',
     'AppSpecWorkerImageArgs',
+    'AppSpecWorkerImageArgsDict',
     'AppSpecWorkerImageDeployOnPushArgs',
+    'AppSpecWorkerImageDeployOnPushArgsDict',
     'AppSpecWorkerLogDestinationArgs',
+    'AppSpecWorkerLogDestinationArgsDict',
     'AppSpecWorkerLogDestinationDatadogArgs',
+    'AppSpecWorkerLogDestinationDatadogArgsDict',
     'AppSpecWorkerLogDestinationLogtailArgs',
+    'AppSpecWorkerLogDestinationLogtailArgsDict',
     'AppSpecWorkerLogDestinationOpenSearchArgs',
+    'AppSpecWorkerLogDestinationOpenSearchArgsDict',
     'AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs',
+    'AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict',
     'AppSpecWorkerLogDestinationPapertrailArgs',
+    'AppSpecWorkerLogDestinationPapertrailArgsDict',
     'DatabaseClusterBackupRestoreArgs',
+    'DatabaseClusterBackupRestoreArgsDict',
     'DatabaseClusterMaintenanceWindowArgs',
+    'DatabaseClusterMaintenanceWindowArgsDict',
     'DatabaseFirewallRuleArgs',
+    'DatabaseFirewallRuleArgsDict',
     'DatabaseKafkaTopicConfigArgs',
+    'DatabaseKafkaTopicConfigArgsDict',
     'DatabasePostgresqlConfigPgbouncerArgs',
+    'DatabasePostgresqlConfigPgbouncerArgsDict',
     'DatabasePostgresqlConfigTimescaledbArgs',
+    'DatabasePostgresqlConfigTimescaledbArgsDict',
     'DatabaseUserSettingArgs',
+    'DatabaseUserSettingArgsDict',
     'DatabaseUserSettingAclArgs',
+    'DatabaseUserSettingAclArgsDict',
     'DatabaseUserSettingOpensearchAclArgs',
+    'DatabaseUserSettingOpensearchAclArgsDict',
     'FirewallInboundRuleArgs',
+    'FirewallInboundRuleArgsDict',
     'FirewallOutboundRuleArgs',
+    'FirewallOutboundRuleArgsDict',
     'FirewallPendingChangeArgs',
+    'FirewallPendingChangeArgsDict',
     'KubernetesClusterKubeConfigArgs',
+    'KubernetesClusterKubeConfigArgsDict',
     'KubernetesClusterMaintenancePolicyArgs',
+    'KubernetesClusterMaintenancePolicyArgsDict',
     'KubernetesClusterNodePoolArgs',
+    'KubernetesClusterNodePoolArgsDict',
     'KubernetesClusterNodePoolNodeArgs',
+    'KubernetesClusterNodePoolNodeArgsDict',
     'KubernetesClusterNodePoolTaintArgs',
+    'KubernetesClusterNodePoolTaintArgsDict',
     'KubernetesNodePoolNodeArgs',
+    'KubernetesNodePoolNodeArgsDict',
     'KubernetesNodePoolTaintArgs',
+    'KubernetesNodePoolTaintArgsDict',
     'LoadBalancerDomainArgs',
+    'LoadBalancerDomainArgsDict',
     'LoadBalancerFirewallArgs',
+    'LoadBalancerFirewallArgsDict',
     'LoadBalancerForwardingRuleArgs',
+    'LoadBalancerForwardingRuleArgsDict',
     'LoadBalancerGlbSettingsArgs',
+    'LoadBalancerGlbSettingsArgsDict',
     'LoadBalancerGlbSettingsCdnArgs',
+    'LoadBalancerGlbSettingsCdnArgsDict',
     'LoadBalancerHealthcheckArgs',
+    'LoadBalancerHealthcheckArgsDict',
     'LoadBalancerStickySessionsArgs',
+    'LoadBalancerStickySessionsArgsDict',
     'MonitorAlertAlertsArgs',
+    'MonitorAlertAlertsArgsDict',
     'MonitorAlertAlertsSlackArgs',
+    'MonitorAlertAlertsSlackArgsDict',
     'SpacesBucketCorsConfigurationCorsRuleArgs',
+    'SpacesBucketCorsConfigurationCorsRuleArgsDict',
     'SpacesBucketCorsRuleArgs',
+    'SpacesBucketCorsRuleArgsDict',
     'SpacesBucketLifecycleRuleArgs',
+    'SpacesBucketLifecycleRuleArgsDict',
     'SpacesBucketLifecycleRuleExpirationArgs',
+    'SpacesBucketLifecycleRuleExpirationArgsDict',
     'SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs',
+    'SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict',
     'SpacesBucketVersioningArgs',
+    'SpacesBucketVersioningArgsDict',
     'UptimeAlertNotificationArgs',
+    'UptimeAlertNotificationArgsDict',
     'UptimeAlertNotificationSlackArgs',
+    'UptimeAlertNotificationSlackArgsDict',
     'GetAppDedicatedIpArgs',
+    'GetAppDedicatedIpArgsDict',
     'GetDomainsFilterArgs',
+    'GetDomainsFilterArgsDict',
     'GetDomainsSortArgs',
+    'GetDomainsSortArgsDict',
     'GetDropletsFilterArgs',
+    'GetDropletsFilterArgsDict',
     'GetDropletsSortArgs',
+    'GetDropletsSortArgsDict',
     'GetFirewallInboundRuleArgs',
+    'GetFirewallInboundRuleArgsDict',
     'GetFirewallOutboundRuleArgs',
+    'GetFirewallOutboundRuleArgsDict',
     'GetImagesFilterArgs',
+    'GetImagesFilterArgsDict',
     'GetImagesSortArgs',
+    'GetImagesSortArgsDict',
     'GetProjectsFilterArgs',
+    'GetProjectsFilterArgsDict',
     'GetProjectsSortArgs',
+    'GetProjectsSortArgsDict',
     'GetRecordsFilterArgs',
+    'GetRecordsFilterArgsDict',
     'GetRecordsSortArgs',
+    'GetRecordsSortArgsDict',
     'GetRegionsFilterArgs',
+    'GetRegionsFilterArgsDict',
     'GetRegionsSortArgs',
+    'GetRegionsSortArgsDict',
     'GetSizesFilterArgs',
+    'GetSizesFilterArgsDict',
     'GetSizesSortArgs',
+    'GetSizesSortArgsDict',
     'GetSpacesBucketsFilterArgs',
+    'GetSpacesBucketsFilterArgsDict',
     'GetSpacesBucketsSortArgs',
+    'GetSpacesBucketsSortArgsDict',
     'GetSshKeysFilterArgs',
+    'GetSshKeysFilterArgsDict',
     'GetSshKeysSortArgs',
+    'GetSshKeysSortArgsDict',
     'GetTagsFilterArgs',
+    'GetTagsFilterArgsDict',
     'GetTagsSortArgs',
+    'GetTagsSortArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AppDedicatedIpArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the app.
+        """
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address of the dedicated egress IP.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+        """
+elif False:
+    AppDedicatedIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppDedicatedIpArgs:
@@ -213,6 +383,50 @@ class AppDedicatedIpArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class AppSpecArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the component.
+        """
+        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgsDict']]]]
+        """
+        Describes an alert policy for the component.
+        """
+        databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgsDict']]]]
+        domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgsDict']]]]
+        """
+        Describes a domain where the application will be made available.
+        """
+        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        egresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgsDict']]]]
+        """
+        Specification for app egress configurations.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgsDict']]]]
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        features: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+        """
+        functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgsDict']]]]
+        ingress: NotRequired[pulumi.Input['AppSpecIngressArgsDict']]
+        """
+        Specification for component routing, rewrites, and redirects.
+        """
+        jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgsDict']]]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The slug for the DigitalOcean data center region hosting the app.
+        """
+        services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgsDict']]]]
+        static_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgsDict']]]]
+        workers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgsDict']]]]
+elif False:
+    AppSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecArgs:
@@ -436,6 +650,19 @@ class AppSpecArgs:
         pulumi.set(self, "workers", value)
 
 
+if not MYPY:
+    class AppSpecAlertArgsDict(TypedDict):
+        rule: pulumi.Input[str]
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+elif False:
+    AppSpecAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecAlertArgs:
     def __init__(__self__, *,
@@ -473,6 +700,41 @@ class AppSpecAlertArgs:
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
 
+
+if not MYPY:
+    class AppSpecDatabaseArgsDict(TypedDict):
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        db_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the MySQL or PostgreSQL database to configure.
+        """
+        db_user: NotRequired[pulumi.Input[str]]
+        """
+        The name of the MySQL or PostgreSQL user to configure.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        engine: NotRequired[pulumi.Input[str]]
+        """
+        The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the component.
+        """
+        production: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this is a production or dev database.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the database engine.
+        """
+elif False:
+    AppSpecDatabaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecDatabaseArgs:
@@ -597,6 +859,30 @@ class AppSpecDatabaseArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class AppSpecDomainNameArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The hostname for the domain.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The domain type, which can be one of the following:
+        - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+        - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+        - `ALIAS`: A non-primary domain.
+        """
+        wildcard: NotRequired[pulumi.Input[bool]]
+        """
+        A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+        """
+elif False:
+    AppSpecDomainNameArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecDomainNameArgs:
     def __init__(__self__, *,
@@ -673,6 +959,15 @@ class AppSpecDomainNameArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class AppSpecEgressArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+        """
+elif False:
+    AppSpecEgressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecEgressArgs:
     def __init__(__self__, *,
@@ -695,6 +990,27 @@ class AppSpecEgressArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class AppSpecEnvArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the environment variable.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    AppSpecEnvArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecEnvArgs:
@@ -766,6 +1082,51 @@ class AppSpecEnvArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class AppSpecFunctionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the component.
+        """
+        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgsDict']]]]
+        """
+        Describes an alert policy for the component.
+        """
+        cors: NotRequired[pulumi.Input['AppSpecFunctionCorsArgsDict']]
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgsDict']]]]
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        git: NotRequired[pulumi.Input['AppSpecFunctionGitArgsDict']]
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        """
+        github: NotRequired[pulumi.Input['AppSpecFunctionGithubArgsDict']]
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        gitlab: NotRequired[pulumi.Input['AppSpecFunctionGitlabArgsDict']]
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgsDict']]]]
+        """
+        Describes a log forwarding destination.
+        """
+        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgsDict']]]]
+        """
+        An HTTP paths that should be routed to this component.
+        """
+        source_dir: NotRequired[pulumi.Input[str]]
+        """
+        An optional path to the working directory to use for the build.
+        """
+elif False:
+    AppSpecFunctionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionArgs:
@@ -941,6 +1302,31 @@ class AppSpecFunctionArgs:
         pulumi.set(self, "source_dir", value)
 
 
+if not MYPY:
+    class AppSpecFunctionAlertArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        rule: pulumi.Input[str]
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        value: pulumi.Input[float]
+        """
+        The threshold for the type of the warning.
+        """
+        window: pulumi.Input[str]
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+elif False:
+    AppSpecFunctionAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionAlertArgs:
     def __init__(__self__, *,
@@ -1023,6 +1409,35 @@ class AppSpecFunctionAlertArgs:
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
 
+
+if not MYPY:
+    class AppSpecFunctionCorsArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        """
+        allow_origins: NotRequired[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgsDict']]
+        """
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[str]]
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+elif False:
+    AppSpecFunctionCorsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionCorsArgs:
@@ -1127,6 +1542,23 @@ class AppSpecFunctionCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class AppSpecFunctionCorsAllowOriginsArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        Exact string match.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix-based match.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        RE2 style regex-based match.
+        """
+elif False:
+    AppSpecFunctionCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionCorsAllowOriginsArgs:
     def __init__(__self__, *,
@@ -1185,6 +1617,27 @@ class AppSpecFunctionCorsAllowOriginsArgs:
     def regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex", value)
 
+
+if not MYPY:
+    class AppSpecFunctionEnvArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the environment variable.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    AppSpecFunctionEnvArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionEnvArgs:
@@ -1257,6 +1710,19 @@ class AppSpecFunctionEnvArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AppSpecFunctionGitArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        repo_clone_url: NotRequired[pulumi.Input[str]]
+        """
+        The clone URL of the repo.
+        """
+elif False:
+    AppSpecFunctionGitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionGitArgs:
     def __init__(__self__, *,
@@ -1295,6 +1761,23 @@ class AppSpecFunctionGitArgs:
     def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_clone_url", value)
 
+
+if not MYPY:
+    class AppSpecFunctionGithubArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecFunctionGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionGithubArgs:
@@ -1351,6 +1834,23 @@ class AppSpecFunctionGithubArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class AppSpecFunctionGitlabArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecFunctionGitlabArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionGitlabArgs:
     def __init__(__self__, *,
@@ -1405,6 +1905,31 @@ class AppSpecFunctionGitlabArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class AppSpecFunctionLogDestinationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
+        """
+        datadog: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgsDict']]
+        """
+        Datadog configuration.
+        """
+        logtail: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgsDict']]
+        """
+        Logtail configuration.
+        """
+        open_search: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgsDict']]
+        """
+        OpenSearch configuration.
+        """
+        papertrail: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgsDict']]
+        """
+        Papertrail configuration.
+        """
+elif False:
+    AppSpecFunctionLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationArgs:
@@ -1492,6 +2017,19 @@ class AppSpecFunctionLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
+if not MYPY:
+    class AppSpecFunctionLogDestinationDatadogArgsDict(TypedDict):
+        api_key: pulumi.Input[str]
+        """
+        Datadog API key.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Datadog HTTP log intake endpoint.
+        """
+elif False:
+    AppSpecFunctionLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionLogDestinationDatadogArgs:
     def __init__(__self__, *,
@@ -1530,6 +2068,15 @@ class AppSpecFunctionLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
+if not MYPY:
+    class AppSpecFunctionLogDestinationLogtailArgsDict(TypedDict):
+        token: pulumi.Input[str]
+        """
+        Logtail token.
+        """
+elif False:
+    AppSpecFunctionLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionLogDestinationLogtailArgs:
     def __init__(__self__, *,
@@ -1551,6 +2098,27 @@ class AppSpecFunctionLogDestinationLogtailArgs:
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
 
+
+if not MYPY:
+    class AppSpecFunctionLogDestinationOpenSearchArgsDict(TypedDict):
+        basic_auth: pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict']
+        """
+        Basic authentication details.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch endpoint.
+        """
+        index_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch index name.
+        """
+elif False:
+    AppSpecFunctionLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationOpenSearchArgs:
@@ -1622,6 +2190,19 @@ class AppSpecFunctionLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
+if not MYPY:
+    class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for basic authentication.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        user for basic authentication.
+        """
+elif False:
+    AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs:
     def __init__(__self__, *,
@@ -1661,6 +2242,15 @@ class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class AppSpecFunctionLogDestinationPapertrailArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        Papertrail syslog endpoint.
+        """
+elif False:
+    AppSpecFunctionLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecFunctionLogDestinationPapertrailArgs:
     def __init__(__self__, *,
@@ -1682,6 +2272,19 @@ class AppSpecFunctionLogDestinationPapertrailArgs:
     def endpoint(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint", value)
 
+
+if not MYPY:
+    class AppSpecFunctionRouteArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        preserve_path_prefix: NotRequired[pulumi.Input[bool]]
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+elif False:
+    AppSpecFunctionRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecFunctionRouteArgs:
@@ -1722,6 +2325,15 @@ class AppSpecFunctionRouteArgs:
         pulumi.set(self, "preserve_path_prefix", value)
 
 
+if not MYPY:
+    class AppSpecIngressArgsDict(TypedDict):
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgsDict']]]]
+        """
+        Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
+        """
+elif False:
+    AppSpecIngressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecIngressArgs:
     def __init__(__self__, *,
@@ -1744,6 +2356,27 @@ class AppSpecIngressArgs:
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class AppSpecIngressRuleArgsDict(TypedDict):
+        component: NotRequired[pulumi.Input['AppSpecIngressRuleComponentArgsDict']]
+        """
+        The component to route to. Only one of `component` or `redirect` may be set.
+        """
+        cors: NotRequired[pulumi.Input['AppSpecIngressRuleCorsArgsDict']]
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        match: NotRequired[pulumi.Input['AppSpecIngressRuleMatchArgsDict']]
+        """
+        The match configuration for the rule
+        """
+        redirect: NotRequired[pulumi.Input['AppSpecIngressRuleRedirectArgsDict']]
+        """
+        The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        """
+elif False:
+    AppSpecIngressRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecIngressRuleArgs:
@@ -1816,6 +2449,23 @@ class AppSpecIngressRuleArgs:
         pulumi.set(self, "redirect", value)
 
 
+if not MYPY:
+    class AppSpecIngressRuleComponentArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the component to route to.
+        """
+        preserve_path_prefix: NotRequired[pulumi.Input[bool]]
+        """
+        An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+        """
+        rewrite: NotRequired[pulumi.Input[str]]
+        """
+        An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        """
+elif False:
+    AppSpecIngressRuleComponentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecIngressRuleComponentArgs:
     def __init__(__self__, *,
@@ -1870,6 +2520,35 @@ class AppSpecIngressRuleComponentArgs:
     def rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rewrite", value)
 
+
+if not MYPY:
+    class AppSpecIngressRuleCorsArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+        """
+        allow_origins: NotRequired[pulumi.Input['AppSpecIngressRuleCorsAllowOriginsArgsDict']]
+        """
+        The `Access-Control-Allow-Origin` can be
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+        """
+        max_age: NotRequired[pulumi.Input[str]]
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+elif False:
+    AppSpecIngressRuleCorsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecIngressRuleCorsArgs:
@@ -1974,6 +2653,23 @@ class AppSpecIngressRuleCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class AppSpecIngressRuleCorsAllowOriginsArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+        """
+elif False:
+    AppSpecIngressRuleCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecIngressRuleCorsAllowOriginsArgs:
     def __init__(__self__, *,
@@ -2033,6 +2729,15 @@ class AppSpecIngressRuleCorsAllowOriginsArgs:
         pulumi.set(self, "regex", value)
 
 
+if not MYPY:
+    class AppSpecIngressRuleMatchArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input['AppSpecIngressRuleMatchPathArgsDict']]
+        """
+        The path to match on.
+        """
+elif False:
+    AppSpecIngressRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecIngressRuleMatchArgs:
     def __init__(__self__, *,
@@ -2056,6 +2761,15 @@ class AppSpecIngressRuleMatchArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class AppSpecIngressRuleMatchPathArgsDict(TypedDict):
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix-based match.
+        """
+elif False:
+    AppSpecIngressRuleMatchPathArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecIngressRuleMatchPathArgs:
     def __init__(__self__, *,
@@ -2078,6 +2792,31 @@ class AppSpecIngressRuleMatchPathArgs:
     def prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "prefix", value)
 
+
+if not MYPY:
+    class AppSpecIngressRuleRedirectArgsDict(TypedDict):
+        authority: NotRequired[pulumi.Input[str]]
+        """
+        The authority/host to redirect to. This can be a hostname or IP address.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port to redirect to.
+        """
+        redirect_code: NotRequired[pulumi.Input[int]]
+        """
+        The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        The scheme to redirect to. Supported values are `http` or `https`
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        An optional URI path to redirect to.
+        """
+elif False:
+    AppSpecIngressRuleRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecIngressRuleRedirectArgs:
@@ -2165,6 +2904,79 @@ class AppSpecIngressRuleRedirectArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class AppSpecJobArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the component.
+        """
+        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgsDict']]]]
+        """
+        Describes an alert policy for the component.
+        """
+        build_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional build command to run while building this component from source.
+        """
+        dockerfile_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        environment_slug: NotRequired[pulumi.Input[str]]
+        """
+        An environment slug describing the type of this app.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgsDict']]]]
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        git: NotRequired[pulumi.Input['AppSpecJobGitArgsDict']]
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        """
+        github: NotRequired[pulumi.Input['AppSpecJobGithubArgsDict']]
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        gitlab: NotRequired[pulumi.Input['AppSpecJobGitlabArgsDict']]
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        image: NotRequired[pulumi.Input['AppSpecJobImageArgsDict']]
+        """
+        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        instance_count: NotRequired[pulumi.Input[int]]
+        """
+        The amount of instances that this component should be scaled to.
+        """
+        instance_size_slug: NotRequired[pulumi.Input[str]]
+        """
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        The type of job and when it will be run during the deployment process. It may be one of:
+        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+        """
+        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgsDict']]]]
+        """
+        Describes a log forwarding destination.
+        """
+        run_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional run command to override the component's default.
+        """
+        source_dir: NotRequired[pulumi.Input[str]]
+        """
+        An optional path to the working directory to use for the build.
+        """
+elif False:
+    AppSpecJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecJobArgs:
@@ -2436,6 +3248,31 @@ class AppSpecJobArgs:
         pulumi.set(self, "source_dir", value)
 
 
+if not MYPY:
+    class AppSpecJobAlertArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        rule: pulumi.Input[str]
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        value: pulumi.Input[float]
+        """
+        The threshold for the type of the warning.
+        """
+        window: pulumi.Input[str]
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+elif False:
+    AppSpecJobAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobAlertArgs:
     def __init__(__self__, *,
@@ -2519,6 +3356,27 @@ class AppSpecJobAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
+if not MYPY:
+    class AppSpecJobEnvArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the environment variable.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    AppSpecJobEnvArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobEnvArgs:
     def __init__(__self__, *,
@@ -2590,6 +3448,19 @@ class AppSpecJobEnvArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AppSpecJobGitArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        repo_clone_url: NotRequired[pulumi.Input[str]]
+        """
+        The clone URL of the repo.
+        """
+elif False:
+    AppSpecJobGitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobGitArgs:
     def __init__(__self__, *,
@@ -2628,6 +3499,23 @@ class AppSpecJobGitArgs:
     def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_clone_url", value)
 
+
+if not MYPY:
+    class AppSpecJobGithubArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecJobGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecJobGithubArgs:
@@ -2684,6 +3572,23 @@ class AppSpecJobGithubArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class AppSpecJobGitlabArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecJobGitlabArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobGitlabArgs:
     def __init__(__self__, *,
@@ -2738,6 +3643,35 @@ class AppSpecJobGitlabArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class AppSpecJobImageArgsDict(TypedDict):
+        registry_type: pulumi.Input[str]
+        """
+        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        """
+        repository: pulumi.Input[str]
+        """
+        The repository name.
+        """
+        deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgsDict']]]]
+        """
+        Configures automatically deploying images pushed to DOCR.
+        """
+        registry: NotRequired[pulumi.Input[str]]
+        """
+        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        """
+        registry_credentials: NotRequired[pulumi.Input[str]]
+        """
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The repository tag. Defaults to `latest` if not provided.
+        """
+elif False:
+    AppSpecJobImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecJobImageArgs:
@@ -2840,6 +3774,15 @@ class AppSpecJobImageArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class AppSpecJobImageDeployOnPushArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+elif False:
+    AppSpecJobImageDeployOnPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobImageDeployOnPushArgs:
     def __init__(__self__, *,
@@ -2862,6 +3805,31 @@ class AppSpecJobImageDeployOnPushArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class AppSpecJobLogDestinationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
+        """
+        datadog: NotRequired[pulumi.Input['AppSpecJobLogDestinationDatadogArgsDict']]
+        """
+        Datadog configuration.
+        """
+        logtail: NotRequired[pulumi.Input['AppSpecJobLogDestinationLogtailArgsDict']]
+        """
+        Logtail configuration.
+        """
+        open_search: NotRequired[pulumi.Input['AppSpecJobLogDestinationOpenSearchArgsDict']]
+        """
+        OpenSearch configuration.
+        """
+        papertrail: NotRequired[pulumi.Input['AppSpecJobLogDestinationPapertrailArgsDict']]
+        """
+        Papertrail configuration.
+        """
+elif False:
+    AppSpecJobLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecJobLogDestinationArgs:
@@ -2949,6 +3917,19 @@ class AppSpecJobLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
+if not MYPY:
+    class AppSpecJobLogDestinationDatadogArgsDict(TypedDict):
+        api_key: pulumi.Input[str]
+        """
+        Datadog API key.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Datadog HTTP log intake endpoint.
+        """
+elif False:
+    AppSpecJobLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobLogDestinationDatadogArgs:
     def __init__(__self__, *,
@@ -2987,6 +3968,15 @@ class AppSpecJobLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
+if not MYPY:
+    class AppSpecJobLogDestinationLogtailArgsDict(TypedDict):
+        token: pulumi.Input[str]
+        """
+        Logtail token.
+        """
+elif False:
+    AppSpecJobLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobLogDestinationLogtailArgs:
     def __init__(__self__, *,
@@ -3008,6 +3998,27 @@ class AppSpecJobLogDestinationLogtailArgs:
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
 
+
+if not MYPY:
+    class AppSpecJobLogDestinationOpenSearchArgsDict(TypedDict):
+        basic_auth: pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict']
+        """
+        Basic authentication details.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch endpoint.
+        """
+        index_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch index name.
+        """
+elif False:
+    AppSpecJobLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecJobLogDestinationOpenSearchArgs:
@@ -3079,6 +4090,19 @@ class AppSpecJobLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
+if not MYPY:
+    class AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for basic authentication.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        user for basic authentication.
+        """
+elif False:
+    AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobLogDestinationOpenSearchBasicAuthArgs:
     def __init__(__self__, *,
@@ -3118,6 +4142,15 @@ class AppSpecJobLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class AppSpecJobLogDestinationPapertrailArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        Papertrail syslog endpoint.
+        """
+elif False:
+    AppSpecJobLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecJobLogDestinationPapertrailArgs:
     def __init__(__self__, *,
@@ -3139,6 +4172,95 @@ class AppSpecJobLogDestinationPapertrailArgs:
     def endpoint(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint", value)
 
+
+if not MYPY:
+    class AppSpecServiceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the component.
+        """
+        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgsDict']]]]
+        """
+        Describes an alert policy for the component.
+        """
+        autoscaling: NotRequired[pulumi.Input['AppSpecServiceAutoscalingArgsDict']]
+        """
+        Configuration for automatically scaling this component based on metrics.
+        """
+        build_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional build command to run while building this component from source.
+        """
+        cors: NotRequired[pulumi.Input['AppSpecServiceCorsArgsDict']]
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        dockerfile_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        environment_slug: NotRequired[pulumi.Input[str]]
+        """
+        An environment slug describing the type of this app.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgsDict']]]]
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        git: NotRequired[pulumi.Input['AppSpecServiceGitArgsDict']]
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        """
+        github: NotRequired[pulumi.Input['AppSpecServiceGithubArgsDict']]
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        gitlab: NotRequired[pulumi.Input['AppSpecServiceGitlabArgsDict']]
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        health_check: NotRequired[pulumi.Input['AppSpecServiceHealthCheckArgsDict']]
+        """
+        A health check to determine the availability of this component.
+        """
+        http_port: NotRequired[pulumi.Input[int]]
+        """
+        The internal port on which this service's run command will listen.
+        """
+        image: NotRequired[pulumi.Input['AppSpecServiceImageArgsDict']]
+        """
+        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        instance_count: NotRequired[pulumi.Input[int]]
+        """
+        The amount of instances that this component should be scaled to.
+        """
+        instance_size_slug: NotRequired[pulumi.Input[str]]
+        """
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        """
+        internal_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        A list of ports on which this service will listen for internal traffic.
+        """
+        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgsDict']]]]
+        """
+        Describes a log forwarding destination.
+        """
+        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgsDict']]]]
+        """
+        An HTTP paths that should be routed to this component.
+        """
+        run_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional run command to override the component's default.
+        """
+        source_dir: NotRequired[pulumi.Input[str]]
+        """
+        An optional path to the working directory to use for the build.
+        """
+elif False:
+    AppSpecServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceArgs:
@@ -3490,6 +4612,31 @@ class AppSpecServiceArgs:
         pulumi.set(self, "source_dir", value)
 
 
+if not MYPY:
+    class AppSpecServiceAlertArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        rule: pulumi.Input[str]
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        value: pulumi.Input[float]
+        """
+        The threshold for the type of the warning.
+        """
+        window: pulumi.Input[str]
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+elif False:
+    AppSpecServiceAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceAlertArgs:
     def __init__(__self__, *,
@@ -3573,6 +4720,23 @@ class AppSpecServiceAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
+if not MYPY:
+    class AppSpecServiceAutoscalingArgsDict(TypedDict):
+        max_instance_count: pulumi.Input[int]
+        """
+        The maximum amount of instances for this component. Must be more than min_instance_count.
+        """
+        metrics: pulumi.Input['AppSpecServiceAutoscalingMetricsArgsDict']
+        """
+        The metrics that the component is scaled on.
+        """
+        min_instance_count: pulumi.Input[int]
+        """
+        The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+elif False:
+    AppSpecServiceAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceAutoscalingArgs:
     def __init__(__self__, *,
@@ -3625,6 +4789,15 @@ class AppSpecServiceAutoscalingArgs:
         pulumi.set(self, "min_instance_count", value)
 
 
+if not MYPY:
+    class AppSpecServiceAutoscalingMetricsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgsDict']]
+        """
+        Settings for scaling the component based on CPU utilization.
+        """
+elif False:
+    AppSpecServiceAutoscalingMetricsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceAutoscalingMetricsArgs:
     def __init__(__self__, *,
@@ -3647,6 +4820,17 @@ class AppSpecServiceAutoscalingMetricsArgs:
     def cpu(self, value: Optional[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgs']]):
         pulumi.set(self, "cpu", value)
 
+
+if not MYPY:
+    class AppSpecServiceAutoscalingMetricsCpuArgsDict(TypedDict):
+        percent: pulumi.Input[int]
+        """
+        The average target CPU utilization for the component.
+
+        A `static_site` can contain:
+        """
+elif False:
+    AppSpecServiceAutoscalingMetricsCpuArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceAutoscalingMetricsCpuArgs:
@@ -3673,6 +4857,35 @@ class AppSpecServiceAutoscalingMetricsCpuArgs:
     def percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "percent", value)
 
+
+if not MYPY:
+    class AppSpecServiceCorsArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        """
+        allow_origins: NotRequired[pulumi.Input['AppSpecServiceCorsAllowOriginsArgsDict']]
+        """
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[str]]
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+elif False:
+    AppSpecServiceCorsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceCorsArgs:
@@ -3777,6 +4990,23 @@ class AppSpecServiceCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class AppSpecServiceCorsAllowOriginsArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        Exact string match.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix-based match.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        RE2 style regex-based match.
+        """
+elif False:
+    AppSpecServiceCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceCorsAllowOriginsArgs:
     def __init__(__self__, *,
@@ -3835,6 +5065,27 @@ class AppSpecServiceCorsAllowOriginsArgs:
     def regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex", value)
 
+
+if not MYPY:
+    class AppSpecServiceEnvArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the environment variable.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    AppSpecServiceEnvArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceEnvArgs:
@@ -3907,6 +5158,19 @@ class AppSpecServiceEnvArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AppSpecServiceGitArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        repo_clone_url: NotRequired[pulumi.Input[str]]
+        """
+        The clone URL of the repo.
+        """
+elif False:
+    AppSpecServiceGitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceGitArgs:
     def __init__(__self__, *,
@@ -3945,6 +5209,23 @@ class AppSpecServiceGitArgs:
     def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_clone_url", value)
 
+
+if not MYPY:
+    class AppSpecServiceGithubArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecServiceGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceGithubArgs:
@@ -4001,6 +5282,23 @@ class AppSpecServiceGithubArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class AppSpecServiceGitlabArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecServiceGitlabArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceGitlabArgs:
     def __init__(__self__, *,
@@ -4055,6 +5353,39 @@ class AppSpecServiceGitlabArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class AppSpecServiceHealthCheckArgsDict(TypedDict):
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The number of failed health checks before considered unhealthy.
+        """
+        http_path: NotRequired[pulumi.Input[str]]
+        """
+        The route path used for the HTTP health check ping.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait before beginning health checks.
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait between health checks.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The health check will be performed on this port instead of component's HTTP port.
+        """
+        success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The number of successful health checks before considered healthy.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds after which the check times out.
+        """
+elif False:
+    AppSpecServiceHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceHealthCheckArgs:
@@ -4175,6 +5506,35 @@ class AppSpecServiceHealthCheckArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
+if not MYPY:
+    class AppSpecServiceImageArgsDict(TypedDict):
+        registry_type: pulumi.Input[str]
+        """
+        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        """
+        repository: pulumi.Input[str]
+        """
+        The repository name.
+        """
+        deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgsDict']]]]
+        """
+        Configures automatically deploying images pushed to DOCR.
+        """
+        registry: NotRequired[pulumi.Input[str]]
+        """
+        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        """
+        registry_credentials: NotRequired[pulumi.Input[str]]
+        """
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The repository tag. Defaults to `latest` if not provided.
+        """
+elif False:
+    AppSpecServiceImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceImageArgs:
     def __init__(__self__, *,
@@ -4276,6 +5636,15 @@ class AppSpecServiceImageArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class AppSpecServiceImageDeployOnPushArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+elif False:
+    AppSpecServiceImageDeployOnPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceImageDeployOnPushArgs:
     def __init__(__self__, *,
@@ -4298,6 +5667,31 @@ class AppSpecServiceImageDeployOnPushArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class AppSpecServiceLogDestinationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
+        """
+        datadog: NotRequired[pulumi.Input['AppSpecServiceLogDestinationDatadogArgsDict']]
+        """
+        Datadog configuration.
+        """
+        logtail: NotRequired[pulumi.Input['AppSpecServiceLogDestinationLogtailArgsDict']]
+        """
+        Logtail configuration.
+        """
+        open_search: NotRequired[pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgsDict']]
+        """
+        OpenSearch configuration.
+        """
+        papertrail: NotRequired[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgsDict']]
+        """
+        Papertrail configuration.
+        """
+elif False:
+    AppSpecServiceLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationArgs:
@@ -4385,6 +5779,19 @@ class AppSpecServiceLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
+if not MYPY:
+    class AppSpecServiceLogDestinationDatadogArgsDict(TypedDict):
+        api_key: pulumi.Input[str]
+        """
+        Datadog API key.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Datadog HTTP log intake endpoint.
+        """
+elif False:
+    AppSpecServiceLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceLogDestinationDatadogArgs:
     def __init__(__self__, *,
@@ -4423,6 +5830,15 @@ class AppSpecServiceLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
+if not MYPY:
+    class AppSpecServiceLogDestinationLogtailArgsDict(TypedDict):
+        token: pulumi.Input[str]
+        """
+        Logtail token.
+        """
+elif False:
+    AppSpecServiceLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceLogDestinationLogtailArgs:
     def __init__(__self__, *,
@@ -4444,6 +5860,27 @@ class AppSpecServiceLogDestinationLogtailArgs:
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
 
+
+if not MYPY:
+    class AppSpecServiceLogDestinationOpenSearchArgsDict(TypedDict):
+        basic_auth: pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict']
+        """
+        Basic authentication details.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch endpoint.
+        """
+        index_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch index name.
+        """
+elif False:
+    AppSpecServiceLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationOpenSearchArgs:
@@ -4515,6 +5952,19 @@ class AppSpecServiceLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
+if not MYPY:
+    class AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for basic authentication.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        user for basic authentication.
+        """
+elif False:
+    AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceLogDestinationOpenSearchBasicAuthArgs:
     def __init__(__self__, *,
@@ -4554,6 +6004,15 @@ class AppSpecServiceLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class AppSpecServiceLogDestinationPapertrailArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        Papertrail syslog endpoint.
+        """
+elif False:
+    AppSpecServiceLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecServiceLogDestinationPapertrailArgs:
     def __init__(__self__, *,
@@ -4575,6 +6034,19 @@ class AppSpecServiceLogDestinationPapertrailArgs:
     def endpoint(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint", value)
 
+
+if not MYPY:
+    class AppSpecServiceRouteArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        preserve_path_prefix: NotRequired[pulumi.Input[bool]]
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+elif False:
+    AppSpecServiceRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecServiceRouteArgs:
@@ -4614,6 +6086,71 @@ class AppSpecServiceRouteArgs:
     def preserve_path_prefix(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preserve_path_prefix", value)
 
+
+if not MYPY:
+    class AppSpecStaticSiteArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the component.
+        """
+        build_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional build command to run while building this component from source.
+        """
+        catchall_document: NotRequired[pulumi.Input[str]]
+        """
+        The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+        """
+        cors: NotRequired[pulumi.Input['AppSpecStaticSiteCorsArgsDict']]
+        """
+        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+        """
+        dockerfile_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        environment_slug: NotRequired[pulumi.Input[str]]
+        """
+        An environment slug describing the type of this app.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgsDict']]]]
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        error_document: NotRequired[pulumi.Input[str]]
+        """
+        The name of the error document to use when serving this static site.
+        """
+        git: NotRequired[pulumi.Input['AppSpecStaticSiteGitArgsDict']]
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        """
+        github: NotRequired[pulumi.Input['AppSpecStaticSiteGithubArgsDict']]
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        gitlab: NotRequired[pulumi.Input['AppSpecStaticSiteGitlabArgsDict']]
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        index_document: NotRequired[pulumi.Input[str]]
+        """
+        The name of the index document to use when serving this static site.
+        """
+        output_dir: NotRequired[pulumi.Input[str]]
+        """
+        An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+        """
+        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgsDict']]]]
+        """
+        An HTTP paths that should be routed to this component.
+        """
+        source_dir: NotRequired[pulumi.Input[str]]
+        """
+        An optional path to the working directory to use for the build.
+        """
+elif False:
+    AppSpecStaticSiteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecStaticSiteArgs:
@@ -4869,6 +6406,35 @@ class AppSpecStaticSiteArgs:
         pulumi.set(self, "source_dir", value)
 
 
+if not MYPY:
+    class AppSpecStaticSiteCorsArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+        """
+        allow_origins: NotRequired[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgsDict']]
+        """
+        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[str]]
+        """
+        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+        """
+elif False:
+    AppSpecStaticSiteCorsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecStaticSiteCorsArgs:
     def __init__(__self__, *,
@@ -4972,6 +6538,23 @@ class AppSpecStaticSiteCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class AppSpecStaticSiteCorsAllowOriginsArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        Exact string match.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix-based match.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        RE2 style regex-based match.
+        """
+elif False:
+    AppSpecStaticSiteCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecStaticSiteCorsAllowOriginsArgs:
     def __init__(__self__, *,
@@ -5030,6 +6613,27 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
     def regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex", value)
 
+
+if not MYPY:
+    class AppSpecStaticSiteEnvArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the environment variable.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    AppSpecStaticSiteEnvArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecStaticSiteEnvArgs:
@@ -5102,6 +6706,19 @@ class AppSpecStaticSiteEnvArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AppSpecStaticSiteGitArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        repo_clone_url: NotRequired[pulumi.Input[str]]
+        """
+        The clone URL of the repo.
+        """
+elif False:
+    AppSpecStaticSiteGitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecStaticSiteGitArgs:
     def __init__(__self__, *,
@@ -5140,6 +6757,23 @@ class AppSpecStaticSiteGitArgs:
     def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_clone_url", value)
 
+
+if not MYPY:
+    class AppSpecStaticSiteGithubArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecStaticSiteGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecStaticSiteGithubArgs:
@@ -5196,6 +6830,23 @@ class AppSpecStaticSiteGithubArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class AppSpecStaticSiteGitlabArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecStaticSiteGitlabArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecStaticSiteGitlabArgs:
     def __init__(__self__, *,
@@ -5251,6 +6902,19 @@ class AppSpecStaticSiteGitlabArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class AppSpecStaticSiteRouteArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Paths must start with `/` and must be unique within the app.
+        """
+        preserve_path_prefix: NotRequired[pulumi.Input[bool]]
+        """
+        An optional flag to preserve the path that is forwarded to the backend service.
+        """
+elif False:
+    AppSpecStaticSiteRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecStaticSiteRouteArgs:
     def __init__(__self__, *,
@@ -5289,6 +6953,71 @@ class AppSpecStaticSiteRouteArgs:
     def preserve_path_prefix(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preserve_path_prefix", value)
 
+
+if not MYPY:
+    class AppSpecWorkerArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the component.
+        """
+        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgsDict']]]]
+        """
+        Describes an alert policy for the component.
+        """
+        build_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional build command to run while building this component from source.
+        """
+        dockerfile_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+        """
+        environment_slug: NotRequired[pulumi.Input[str]]
+        """
+        An environment slug describing the type of this app.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgsDict']]]]
+        """
+        Describes an environment variable made available to an app competent.
+        """
+        git: NotRequired[pulumi.Input['AppSpecWorkerGitArgsDict']]
+        """
+        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        """
+        github: NotRequired[pulumi.Input['AppSpecWorkerGithubArgsDict']]
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        gitlab: NotRequired[pulumi.Input['AppSpecWorkerGitlabArgsDict']]
+        """
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        image: NotRequired[pulumi.Input['AppSpecWorkerImageArgsDict']]
+        """
+        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        """
+        instance_count: NotRequired[pulumi.Input[int]]
+        """
+        The amount of instances that this component should be scaled to.
+        """
+        instance_size_slug: NotRequired[pulumi.Input[str]]
+        """
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        """
+        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgsDict']]]]
+        """
+        Describes a log forwarding destination.
+        """
+        run_command: NotRequired[pulumi.Input[str]]
+        """
+        An optional run command to override the component's default.
+        """
+        source_dir: NotRequired[pulumi.Input[str]]
+        """
+        An optional path to the working directory to use for the build.
+        """
+elif False:
+    AppSpecWorkerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecWorkerArgs:
@@ -5536,6 +7265,31 @@ class AppSpecWorkerArgs:
         pulumi.set(self, "source_dir", value)
 
 
+if not MYPY:
+    class AppSpecWorkerAlertArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+        """
+        rule: pulumi.Input[str]
+        """
+        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        """
+        value: pulumi.Input[float]
+        """
+        The threshold for the type of the warning.
+        """
+        window: pulumi.Input[str]
+        """
+        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether or not the alert is disabled (default: `false`).
+        """
+elif False:
+    AppSpecWorkerAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerAlertArgs:
     def __init__(__self__, *,
@@ -5619,6 +7373,27 @@ class AppSpecWorkerAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
+if not MYPY:
+    class AppSpecWorkerEnvArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the environment variable.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the environment variable, `GENERAL` or `SECRET`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    AppSpecWorkerEnvArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerEnvArgs:
     def __init__(__self__, *,
@@ -5690,6 +7465,19 @@ class AppSpecWorkerEnvArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AppSpecWorkerGitArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        repo_clone_url: NotRequired[pulumi.Input[str]]
+        """
+        The clone URL of the repo.
+        """
+elif False:
+    AppSpecWorkerGitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerGitArgs:
     def __init__(__self__, *,
@@ -5728,6 +7516,23 @@ class AppSpecWorkerGitArgs:
     def repo_clone_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_clone_url", value)
 
+
+if not MYPY:
+    class AppSpecWorkerGithubArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecWorkerGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecWorkerGithubArgs:
@@ -5784,6 +7589,23 @@ class AppSpecWorkerGithubArgs:
         pulumi.set(self, "repo", value)
 
 
+if not MYPY:
+    class AppSpecWorkerGitlabArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        The name of the branch to use.
+        """
+        deploy_on_push: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+elif False:
+    AppSpecWorkerGitlabArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerGitlabArgs:
     def __init__(__self__, *,
@@ -5838,6 +7660,35 @@ class AppSpecWorkerGitlabArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class AppSpecWorkerImageArgsDict(TypedDict):
+        registry_type: pulumi.Input[str]
+        """
+        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+        """
+        repository: pulumi.Input[str]
+        """
+        The repository name.
+        """
+        deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgsDict']]]]
+        """
+        Configures automatically deploying images pushed to DOCR.
+        """
+        registry: NotRequired[pulumi.Input[str]]
+        """
+        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+        """
+        registry_credentials: NotRequired[pulumi.Input[str]]
+        """
+        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The repository tag. Defaults to `latest` if not provided.
+        """
+elif False:
+    AppSpecWorkerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecWorkerImageArgs:
@@ -5940,6 +7791,15 @@ class AppSpecWorkerImageArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class AppSpecWorkerImageDeployOnPushArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to automatically deploy images pushed to DOCR.
+        """
+elif False:
+    AppSpecWorkerImageDeployOnPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerImageDeployOnPushArgs:
     def __init__(__self__, *,
@@ -5962,6 +7822,31 @@ class AppSpecWorkerImageDeployOnPushArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class AppSpecWorkerLogDestinationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the log destination. Minimum length: 2. Maximum length: 42.
+        """
+        datadog: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgsDict']]
+        """
+        Datadog configuration.
+        """
+        logtail: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgsDict']]
+        """
+        Logtail configuration.
+        """
+        open_search: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgsDict']]
+        """
+        OpenSearch configuration.
+        """
+        papertrail: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgsDict']]
+        """
+        Papertrail configuration.
+        """
+elif False:
+    AppSpecWorkerLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationArgs:
@@ -6049,6 +7934,19 @@ class AppSpecWorkerLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
+if not MYPY:
+    class AppSpecWorkerLogDestinationDatadogArgsDict(TypedDict):
+        api_key: pulumi.Input[str]
+        """
+        Datadog API key.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Datadog HTTP log intake endpoint.
+        """
+elif False:
+    AppSpecWorkerLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerLogDestinationDatadogArgs:
     def __init__(__self__, *,
@@ -6087,6 +7985,15 @@ class AppSpecWorkerLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
+if not MYPY:
+    class AppSpecWorkerLogDestinationLogtailArgsDict(TypedDict):
+        token: pulumi.Input[str]
+        """
+        Logtail token.
+        """
+elif False:
+    AppSpecWorkerLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerLogDestinationLogtailArgs:
     def __init__(__self__, *,
@@ -6108,6 +8015,27 @@ class AppSpecWorkerLogDestinationLogtailArgs:
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
 
+
+if not MYPY:
+    class AppSpecWorkerLogDestinationOpenSearchArgsDict(TypedDict):
+        basic_auth: pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict']
+        """
+        Basic authentication details.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch endpoint.
+        """
+        index_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch index name.
+        """
+elif False:
+    AppSpecWorkerLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationOpenSearchArgs:
@@ -6179,6 +8107,19 @@ class AppSpecWorkerLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
+if not MYPY:
+    class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for basic authentication.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        user for basic authentication.
+        """
+elif False:
+    AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs:
     def __init__(__self__, *,
@@ -6218,6 +8159,15 @@ class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class AppSpecWorkerLogDestinationPapertrailArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        Papertrail syslog endpoint.
+        """
+elif False:
+    AppSpecWorkerLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSpecWorkerLogDestinationPapertrailArgs:
     def __init__(__self__, *,
@@ -6239,6 +8189,21 @@ class AppSpecWorkerLogDestinationPapertrailArgs:
     def endpoint(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint", value)
 
+
+if not MYPY:
+    class DatabaseClusterBackupRestoreArgsDict(TypedDict):
+        database_name: pulumi.Input[str]
+        """
+        The name of an existing database cluster from which the backup will be restored.
+        """
+        backup_created_at: NotRequired[pulumi.Input[str]]
+        """
+        The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+elif False:
+    DatabaseClusterBackupRestoreArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseClusterBackupRestoreArgs:
@@ -6282,6 +8247,19 @@ class DatabaseClusterBackupRestoreArgs:
         pulumi.set(self, "backup_created_at", value)
 
 
+if not MYPY:
+    class DatabaseClusterMaintenanceWindowArgsDict(TypedDict):
+        day: pulumi.Input[str]
+        """
+        The day of the week on which to apply maintenance updates.
+        """
+        hour: pulumi.Input[str]
+        """
+        The hour in UTC at which maintenance updates will be applied in 24 hour format.
+        """
+elif False:
+    DatabaseClusterMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseClusterMaintenanceWindowArgs:
     def __init__(__self__, *,
@@ -6318,6 +8296,27 @@ class DatabaseClusterMaintenanceWindowArgs:
     def hour(self, value: pulumi.Input[str]):
         pulumi.set(self, "hour", value)
 
+
+if not MYPY:
+    class DatabaseFirewallRuleArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+        """
+        value: pulumi.Input[str]
+        """
+        The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+        """
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time when the firewall rule was created.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        A unique identifier for the firewall rule.
+        """
+elif False:
+    DatabaseFirewallRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseFirewallRuleArgs:
@@ -6387,6 +8386,102 @@ class DatabaseFirewallRuleArgs:
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
 
+
+if not MYPY:
+    class DatabaseKafkaTopicConfigArgsDict(TypedDict):
+        cleanup_policy: NotRequired[pulumi.Input[str]]
+        """
+        The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
+        This may be one of "delete", "compact", or "compact_delete".
+        """
+        compression_type: NotRequired[pulumi.Input[str]]
+        """
+        The topic compression codecs used for a given topic.
+        This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+        """
+        delete_retention_ms: NotRequired[pulumi.Input[str]]
+        """
+        The amount of time, in ms, that deleted records are retained.
+        """
+        file_delete_delay_ms: NotRequired[pulumi.Input[str]]
+        """
+        The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+        """
+        flush_messages: NotRequired[pulumi.Input[str]]
+        """
+        The number of messages accumulated on a topic partition before they are flushed to disk.
+        """
+        flush_ms: NotRequired[pulumi.Input[str]]
+        """
+        The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+        """
+        index_interval_bytes: NotRequired[pulumi.Input[str]]
+        """
+        The interval, in bytes, in which entries are added to the offset index.
+        """
+        max_compaction_lag_ms: NotRequired[pulumi.Input[str]]
+        """
+        The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+        """
+        max_message_bytes: NotRequired[pulumi.Input[str]]
+        """
+        The maximum size, in bytes, of a message.
+        """
+        message_down_conversion_enable: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether down-conversion of message formats for consumers is enabled.
+        """
+        message_format_version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+        """
+        message_timestamp_difference_max_ms: NotRequired[pulumi.Input[str]]
+        """
+        The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+        """
+        message_timestamp_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+        """
+        min_cleanable_dirty_ratio: NotRequired[pulumi.Input[float]]
+        """
+        A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+        """
+        min_compaction_lag_ms: NotRequired[pulumi.Input[str]]
+        min_insync_replicas: NotRequired[pulumi.Input[int]]
+        """
+        The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
+        """
+        preallocate: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+        """
+        retention_bytes: NotRequired[pulumi.Input[str]]
+        """
+        The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+        """
+        retention_ms: NotRequired[pulumi.Input[str]]
+        """
+        The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+        """
+        segment_bytes: NotRequired[pulumi.Input[str]]
+        """
+        The maximum size, in bytes, of a single topic log file.
+        """
+        segment_index_bytes: NotRequired[pulumi.Input[str]]
+        """
+        The maximum size, in bytes, of the offset index.
+        """
+        segment_jitter_ms: NotRequired[pulumi.Input[str]]
+        """
+        The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+        """
+        segment_ms: NotRequired[pulumi.Input[str]]
+        """
+        The maximum time, in ms, before the topic log will flush to disk.
+        """
+elif False:
+    DatabaseKafkaTopicConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseKafkaTopicConfigArgs:
@@ -6763,6 +8858,20 @@ class DatabaseKafkaTopicConfigArgs:
         pulumi.set(self, "segment_ms", value)
 
 
+if not MYPY:
+    class DatabasePostgresqlConfigPgbouncerArgsDict(TypedDict):
+        autodb_idle_timeout: NotRequired[pulumi.Input[int]]
+        autodb_max_db_connections: NotRequired[pulumi.Input[int]]
+        autodb_pool_mode: NotRequired[pulumi.Input[str]]
+        autodb_pool_size: NotRequired[pulumi.Input[int]]
+        ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        min_pool_size: NotRequired[pulumi.Input[int]]
+        server_idle_timeout: NotRequired[pulumi.Input[int]]
+        server_lifetime: NotRequired[pulumi.Input[int]]
+        server_reset_query_always: NotRequired[pulumi.Input[bool]]
+elif False:
+    DatabasePostgresqlConfigPgbouncerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabasePostgresqlConfigPgbouncerArgs:
     def __init__(__self__, *,
@@ -6876,6 +8985,12 @@ class DatabasePostgresqlConfigPgbouncerArgs:
         pulumi.set(self, "server_reset_query_always", value)
 
 
+if not MYPY:
+    class DatabasePostgresqlConfigTimescaledbArgsDict(TypedDict):
+        max_background_workers: NotRequired[pulumi.Input[int]]
+elif False:
+    DatabasePostgresqlConfigTimescaledbArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabasePostgresqlConfigTimescaledbArgs:
     def __init__(__self__, *,
@@ -6892,6 +9007,18 @@ class DatabasePostgresqlConfigTimescaledbArgs:
     def max_background_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_background_workers", value)
 
+
+if not MYPY:
+    class DatabaseUserSettingArgsDict(TypedDict):
+        acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgsDict']]]]
+        """
+        A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+
+        An individual ACL includes the following:
+        """
+        opensearch_acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingOpensearchAclArgsDict']]]]
+elif False:
+    DatabaseUserSettingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseUserSettingArgs:
@@ -6931,6 +9058,23 @@ class DatabaseUserSettingArgs:
     def opensearch_acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingOpensearchAclArgs']]]]):
         pulumi.set(self, "opensearch_acls", value)
 
+
+if not MYPY:
+    class DatabaseUserSettingAclArgsDict(TypedDict):
+        permission: pulumi.Input[str]
+        """
+        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
+        topic: pulumi.Input[str]
+        """
+        A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+        """
+elif False:
+    DatabaseUserSettingAclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseUserSettingAclArgs:
@@ -6985,6 +9129,16 @@ class DatabaseUserSettingAclArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class DatabaseUserSettingOpensearchAclArgsDict(TypedDict):
+        index: pulumi.Input[str]
+        permission: pulumi.Input[str]
+        """
+        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+        """
+elif False:
+    DatabaseUserSettingOpensearchAclArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseUserSettingOpensearchAclArgs:
     def __init__(__self__, *,
@@ -7017,6 +9171,50 @@ class DatabaseUserSettingOpensearchAclArgs:
     def permission(self, value: pulumi.Input[str]):
         pulumi.set(self, "permission", value)
 
+
+if not MYPY:
+    class FirewallInboundRuleArgsDict(TypedDict):
+        protocol: pulumi.Input[str]
+        """
+        The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+        """
+        port_range: NotRequired[pulumi.Input[str]]
+        """
+        The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+        """
+        source_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+        inbound traffic will be accepted.
+        """
+        source_droplet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        An array containing the IDs of
+        the Droplets from which the inbound traffic will be accepted.
+        """
+        source_kubernetes_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array containing the IDs of
+        the Kubernetes clusters from which the inbound traffic will be accepted.
+        """
+        source_load_balancer_uids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array containing the IDs
+        of the Load Balancers from which the inbound traffic will be accepted.
+        """
+        source_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array containing the names of Tags
+        corresponding to groups of Droplets from which the inbound traffic
+        will be accepted.
+        """
+elif False:
+    FirewallInboundRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallInboundRuleArgs:
@@ -7158,6 +9356,50 @@ class FirewallInboundRuleArgs:
         pulumi.set(self, "source_tags", value)
 
 
+if not MYPY:
+    class FirewallOutboundRuleArgsDict(TypedDict):
+        protocol: pulumi.Input[str]
+        """
+        The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+        """
+        destination_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+        outbound traffic will be allowed.
+        """
+        destination_droplet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        An array containing the IDs of
+        the Droplets to which the outbound traffic will be allowed.
+        """
+        destination_kubernetes_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array containing the IDs of
+        the Kubernetes clusters to which the outbound traffic will be allowed.
+        """
+        destination_load_balancer_uids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array containing the IDs
+        of the Load Balancers to which the outbound traffic will be allowed.
+        """
+        destination_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An array containing the names of Tags
+        corresponding to groups of Droplets to which the outbound traffic will
+        be allowed.
+        """
+        port_range: NotRequired[pulumi.Input[str]]
+        """
+        The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+        """
+elif False:
+    FirewallOutboundRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallOutboundRuleArgs:
     def __init__(__self__, *,
@@ -7298,6 +9540,18 @@ class FirewallOutboundRuleArgs:
         pulumi.set(self, "port_range", value)
 
 
+if not MYPY:
+    class FirewallPendingChangeArgsDict(TypedDict):
+        droplet_id: NotRequired[pulumi.Input[int]]
+        removing: NotRequired[pulumi.Input[bool]]
+        status: NotRequired[pulumi.Input[str]]
+        """
+        A status string indicating the current state of the Firewall.
+        This can be "waiting", "succeeded", or "failed".
+        """
+elif False:
+    FirewallPendingChangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallPendingChangeArgs:
     def __init__(__self__, *,
@@ -7346,6 +9600,39 @@ class FirewallPendingChangeArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class KubernetesClusterKubeConfigArgsDict(TypedDict):
+        client_certificate: NotRequired[pulumi.Input[str]]
+        """
+        The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+        """
+        cluster_ca_certificate: NotRequired[pulumi.Input[str]]
+        """
+        The base64 encoded public certificate for the cluster's certificate authority.
+        """
+        expires_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time when the credentials will expire and need to be regenerated.
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the API server on the Kubernetes master node.
+        """
+        raw_config: NotRequired[pulumi.Input[str]]
+        """
+        The full contents of the Kubernetes cluster's kubeconfig file.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        The DigitalOcean API access token used by clients to access the cluster.
+        """
+elif False:
+    KubernetesClusterKubeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesClusterKubeConfigArgs:
@@ -7466,6 +9753,23 @@ class KubernetesClusterKubeConfigArgs:
         pulumi.set(self, "token", value)
 
 
+if not MYPY:
+    class KubernetesClusterMaintenancePolicyArgsDict(TypedDict):
+        day: NotRequired[pulumi.Input[str]]
+        """
+        The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        A string denoting the duration of the service window, e.g., "04:00".
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+        """
+elif False:
+    KubernetesClusterMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
@@ -7520,6 +9824,59 @@ class KubernetesClusterMaintenancePolicyArgs:
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class KubernetesClusterNodePoolArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        A name for the node pool.
+        """
+        size: pulumi.Input[str]
+        """
+        The slug identifier for the type of Droplet to be used as workers in the node pool.
+        """
+        actual_node_count: NotRequired[pulumi.Input[int]]
+        """
+        A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+        """
+        auto_scale: NotRequired[pulumi.Input[bool]]
+        """
+        Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        A unique ID that can be used to identify and reference the node.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+        """
+        max_nodes: NotRequired[pulumi.Input[int]]
+        """
+        If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+        """
+        min_nodes: NotRequired[pulumi.Input[int]]
+        """
+        If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+        """
+        node_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+        """
+        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgsDict']]]]
+        """
+        A list of nodes in the pool. Each node exports the following attributes:
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of tag names applied to the node pool.
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgsDict']]]]
+        """
+        A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+        """
+elif False:
+    KubernetesClusterNodePoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesClusterNodePoolArgs:
@@ -7718,6 +10075,35 @@ class KubernetesClusterNodePoolArgs:
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class KubernetesClusterNodePoolNodeArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time when the node was created.
+        """
+        droplet_id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the node's droplet
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        A unique ID that can be used to identify and reference the node.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A name for the Kubernetes cluster.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        A string indicating the current status of the individual node.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time when the node was last updated.
+        """
+elif False:
+    KubernetesClusterNodePoolNodeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesClusterNodePoolNodeArgs:
     def __init__(__self__, *,
@@ -7821,6 +10207,23 @@ class KubernetesClusterNodePoolNodeArgs:
         pulumi.set(self, "updated_at", value)
 
 
+if not MYPY:
+    class KubernetesClusterNodePoolTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+        """
+        key: pulumi.Input[str]
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        value: pulumi.Input[str]
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+elif False:
+    KubernetesClusterNodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesClusterNodePoolTaintArgs:
     def __init__(__self__, *,
@@ -7872,6 +10275,35 @@ class KubernetesClusterNodePoolTaintArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class KubernetesNodePoolNodeArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time when the node was created.
+        """
+        droplet_id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the node's droplet
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        A unique ID that can be used to identify and reference the node.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A name for the node pool.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        A string indicating the current status of the individual node.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time when the node was last updated.
+        """
+elif False:
+    KubernetesNodePoolNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesNodePoolNodeArgs:
@@ -7976,6 +10408,23 @@ class KubernetesNodePoolNodeArgs:
         pulumi.set(self, "updated_at", value)
 
 
+if not MYPY:
+    class KubernetesNodePoolTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+        """
+        key: pulumi.Input[str]
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+        value: pulumi.Input[str]
+        """
+        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+        """
+elif False:
+    KubernetesNodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesNodePoolTaintArgs:
     def __init__(__self__, *,
@@ -8027,6 +10476,31 @@ class KubernetesNodePoolTaintArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class LoadBalancerDomainArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The domain name to be used for ingressing traffic to a Global Load Balancer.
+        """
+        certificate_name: NotRequired[pulumi.Input[str]]
+        """
+        name of certificate required for TLS handshaking
+        """
+        is_managed: NotRequired[pulumi.Input[bool]]
+        """
+        Control flag to specify whether the domain is managed by DigitalOcean.
+        """
+        ssl_validation_error_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        list of domain SSL validation errors
+        """
+        verification_error_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        list of domain verification errors
+        """
+elif False:
+    LoadBalancerDomainArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerDomainArgs:
@@ -8114,6 +10588,20 @@ class LoadBalancerDomainArgs:
         pulumi.set(self, "verification_error_reasons", value)
 
 
+if not MYPY:
+    class LoadBalancerFirewallArgsDict(TypedDict):
+        allows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+        * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+        """
+        denies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+        """
+elif False:
+    LoadBalancerFirewallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerFirewallArgs:
     def __init__(__self__, *,
@@ -8154,6 +10642,39 @@ class LoadBalancerFirewallArgs:
     def denies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "denies", value)
 
+
+if not MYPY:
+    class LoadBalancerForwardingRuleArgsDict(TypedDict):
+        entry_port: pulumi.Input[int]
+        """
+        An integer representing the port on which the Load Balancer instance will listen.
+        """
+        entry_protocol: pulumi.Input[str]
+        """
+        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
+        """
+        target_port: pulumi.Input[int]
+        """
+        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+        """
+        target_protocol: pulumi.Input[str]
+        """
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
+        """
+        certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        """
+        certificate_name: NotRequired[pulumi.Input[str]]
+        """
+        The unique name of the TLS certificate to be used for SSL termination.
+        """
+        tls_passthrough: NotRequired[pulumi.Input[bool]]
+        """
+        A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
+        """
+elif False:
+    LoadBalancerForwardingRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerForwardingRuleArgs:
@@ -8274,6 +10795,31 @@ class LoadBalancerForwardingRuleArgs:
         pulumi.set(self, "tls_passthrough", value)
 
 
+if not MYPY:
+    class LoadBalancerGlbSettingsArgsDict(TypedDict):
+        target_port: pulumi.Input[int]
+        """
+        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        """
+        target_protocol: pulumi.Input[str]
+        """
+        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        """
+        cdn: NotRequired[pulumi.Input['LoadBalancerGlbSettingsCdnArgsDict']]
+        """
+        CDN configuration supporting the following:
+        """
+        failover_threshold: NotRequired[pulumi.Input[int]]
+        """
+        fail-over threshold
+        """
+        region_priorities: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[int]]]]
+        """
+        region priority map
+        """
+elif False:
+    LoadBalancerGlbSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerGlbSettingsArgs:
     def __init__(__self__, *,
@@ -8359,6 +10905,15 @@ class LoadBalancerGlbSettingsArgs:
         pulumi.set(self, "region_priorities", value)
 
 
+if not MYPY:
+    class LoadBalancerGlbSettingsCdnArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Control flag to specify if caching is enabled.
+        """
+elif False:
+    LoadBalancerGlbSettingsCdnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerGlbSettingsCdnArgs:
     def __init__(__self__, *,
@@ -8381,6 +10936,39 @@ class LoadBalancerGlbSettingsCdnArgs:
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
 
+
+if not MYPY:
+    class LoadBalancerHealthcheckArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
+        """
+        check_interval_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
+        """
+        healthy_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path on the backend Droplets to which the Load Balancer instance will send a request.
+        """
+        response_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+        """
+        unhealthy_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+        """
+elif False:
+    LoadBalancerHealthcheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerHealthcheckArgs:
@@ -8499,6 +11087,23 @@ class LoadBalancerHealthcheckArgs:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
+if not MYPY:
+    class LoadBalancerStickySessionsArgsDict(TypedDict):
+        cookie_name: NotRequired[pulumi.Input[str]]
+        """
+        The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
+        """
+        cookie_ttl_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        """
+elif False:
+    LoadBalancerStickySessionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerStickySessionsArgs:
     def __init__(__self__, *,
@@ -8554,6 +11159,16 @@ class LoadBalancerStickySessionsArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class MonitorAlertAlertsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of email addresses to sent notifications to
+        """
+        slacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgsDict']]]]
+elif False:
+    MonitorAlertAlertsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorAlertAlertsArgs:
     def __init__(__self__, *,
@@ -8588,6 +11203,19 @@ class MonitorAlertAlertsArgs:
     def slacks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgs']]]]):
         pulumi.set(self, "slacks", value)
 
+
+if not MYPY:
+    class MonitorAlertAlertsSlackArgsDict(TypedDict):
+        channel: pulumi.Input[str]
+        """
+        The Slack channel to send alerts to
+        """
+        url: pulumi.Input[str]
+        """
+        The webhook URL for Slack
+        """
+elif False:
+    MonitorAlertAlertsSlackArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorAlertAlertsSlackArgs:
@@ -8625,6 +11253,35 @@ class MonitorAlertAlertsSlackArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class SpacesBucketCorsConfigurationCorsRuleArgsDict(TypedDict):
+        allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+        """
+        allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Set of origins you want customers to be able to access the bucket from.
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Set of Headers that are specified in the Access-Control-Request-Headers header.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for the rule. The value cannot be longer than 255 characters.
+        """
+        max_age_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Time in seconds that your browser is to cache the preflight response for the specified resource.
+        """
+elif False:
+    SpacesBucketCorsConfigurationCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpacesBucketCorsConfigurationCorsRuleArgs:
@@ -8727,6 +11384,27 @@ class SpacesBucketCorsConfigurationCorsRuleArgs:
         pulumi.set(self, "max_age_seconds", value)
 
 
+if not MYPY:
+    class SpacesBucketCorsRuleArgsDict(TypedDict):
+        allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+        """
+        allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+        """
+        max_age_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The time in seconds that browser can cache the response for a preflight request.
+        """
+elif False:
+    SpacesBucketCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpacesBucketCorsRuleArgs:
     def __init__(__self__, *,
@@ -8795,6 +11473,38 @@ class SpacesBucketCorsRuleArgs:
     def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_seconds", value)
 
+
+if not MYPY:
+    class SpacesBucketLifecycleRuleArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Specifies lifecycle rule status.
+        """
+        abort_incomplete_multipart_upload_days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days after initiating a multipart
+        upload when the multipart upload must be completed or else Spaces will abort the upload.
+        """
+        expiration: NotRequired[pulumi.Input['SpacesBucketLifecycleRuleExpirationArgsDict']]
+        """
+        Specifies a time period after which applicable objects expire (documented below).
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for the rule.
+        """
+        noncurrent_version_expiration: NotRequired[pulumi.Input['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]
+        """
+        Specifies when non-current object versions expire (documented below).
+
+        At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Object key prefix identifying one or more objects to which the rule applies.
+        """
+elif False:
+    SpacesBucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpacesBucketLifecycleRuleArgs:
@@ -8904,6 +11614,25 @@ class SpacesBucketLifecycleRuleArgs:
         pulumi.set(self, "prefix", value)
 
 
+if not MYPY:
+    class SpacesBucketLifecycleRuleExpirationArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the date/time after which you want applicable objects to expire. The argument uses
+        RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+        """
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days after object creation when the applicable objects will expire.
+        """
+        expired_object_delete_marker: NotRequired[pulumi.Input[bool]]
+        """
+        On a versioned bucket (versioning-enabled or versioning-suspended
+        bucket), setting this to true directs Spaces to delete expired object delete markers.
+        """
+elif False:
+    SpacesBucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpacesBucketLifecycleRuleExpirationArgs:
     def __init__(__self__, *,
@@ -8963,6 +11692,15 @@ class SpacesBucketLifecycleRuleExpirationArgs:
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
+if not MYPY:
+    class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days after which an object's non-current versions expire.
+        """
+elif False:
+    SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
@@ -8985,6 +11723,16 @@ class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
+
+if not MYPY:
+    class SpacesBucketVersioningArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+        state. You can, however, suspend versioning on that bucket.
+        """
+elif False:
+    SpacesBucketVersioningArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpacesBucketVersioningArgs:
@@ -9010,6 +11758,16 @@ class SpacesBucketVersioningArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class UptimeAlertNotificationArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of email addresses to sent notifications to.
+        """
+        slacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgsDict']]]]
+elif False:
+    UptimeAlertNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UptimeAlertNotificationArgs:
@@ -9045,6 +11803,19 @@ class UptimeAlertNotificationArgs:
     def slacks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgs']]]]):
         pulumi.set(self, "slacks", value)
 
+
+if not MYPY:
+    class UptimeAlertNotificationSlackArgsDict(TypedDict):
+        channel: pulumi.Input[str]
+        """
+        The Slack channel to send alerts to.
+        """
+        url: pulumi.Input[str]
+        """
+        The webhook URL for Slack.
+        """
+elif False:
+    UptimeAlertNotificationSlackArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UptimeAlertNotificationSlackArgs:
@@ -9082,6 +11853,23 @@ class UptimeAlertNotificationSlackArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class GetAppDedicatedIpArgsDict(TypedDict):
+        id: str
+        """
+        The ID of the dedicated egress IP.
+        """
+        ip: str
+        """
+        The IP address of the dedicated egress IP.
+        """
+        status: str
+        """
+        The status of the dedicated egress IP.
+        """
+elif False:
+    GetAppDedicatedIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppDedicatedIpArgs:
@@ -9134,6 +11922,32 @@ class GetAppDedicatedIpArgs:
     def status(self, value: str):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class GetDomainsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves domains
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetDomainsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDomainsFilterArgs:
@@ -9214,6 +12028,19 @@ class GetDomainsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetDomainsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetDomainsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDomainsSortArgs:
     def __init__(__self__, *,
@@ -9251,6 +12078,35 @@ class GetDomainsSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetDropletsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
+        `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
+        `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
+        `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves Droplets
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetDropletsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDropletsFilterArgs:
@@ -9337,6 +12193,22 @@ class GetDropletsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetDropletsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
+        `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
+        `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
+        `status`, `urn`, `vcpus`, or `vpc_uuid`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetDropletsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDropletsSortArgs:
     def __init__(__self__, *,
@@ -9380,6 +12252,45 @@ class GetDropletsSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetFirewallInboundRuleArgsDict(TypedDict):
+        protocol: str
+        """
+        The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+        """
+        port_range: NotRequired[str]
+        """
+        The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+        """
+        source_addresses: NotRequired[Sequence[str]]
+        """
+        An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+        inbound traffic will be accepted.
+        """
+        source_droplet_ids: NotRequired[Sequence[int]]
+        """
+        An array containing the IDs of
+        the Droplets from which the inbound traffic will be accepted.
+        """
+        source_kubernetes_ids: NotRequired[Sequence[str]]
+        source_load_balancer_uids: NotRequired[Sequence[str]]
+        """
+        An array containing the IDs
+        of the Load Balancers from which the inbound traffic will be accepted.
+        """
+        source_tags: NotRequired[Sequence[str]]
+        """
+        A set of names of Tags corresponding to group of
+        Droplets from which the inbound traffic will be accepted.
+        """
+elif False:
+    GetFirewallInboundRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetFirewallInboundRuleArgs:
@@ -9512,6 +12423,47 @@ class GetFirewallInboundRuleArgs:
     def source_tags(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "source_tags", value)
 
+
+if not MYPY:
+    class GetFirewallOutboundRuleArgsDict(TypedDict):
+        protocol: str
+        """
+        The type of traffic to be allowed.
+        This may be one of "tcp", "udp", or "icmp".
+        """
+        destination_addresses: NotRequired[Sequence[str]]
+        """
+        An array of strings containing the IPv4
+        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+        outbound traffic will be allowed.
+        """
+        destination_droplet_ids: NotRequired[Sequence[int]]
+        """
+        An array containing the IDs of
+        the Droplets to which the outbound traffic will be allowed.
+        """
+        destination_kubernetes_ids: NotRequired[Sequence[str]]
+        destination_load_balancer_uids: NotRequired[Sequence[str]]
+        """
+        An array containing the IDs
+        of the Load Balancers to which the outbound traffic will be allowed.
+        """
+        destination_tags: NotRequired[Sequence[str]]
+        """
+        An array containing the names of Tags
+        corresponding to groups of Droplets to which the outbound traffic will
+        be allowed.
+        traffic.
+        """
+        port_range: NotRequired[str]
+        """
+        The ports on which traffic will be allowed
+        specified as a string containing a single port, a range (e.g. "8000-9000"),
+        or "1-65535" to open all ports for a protocol. Required for when protocol is
+        `tcp` or `udp`.
+        """
+elif False:
+    GetFirewallOutboundRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetFirewallOutboundRuleArgs:
@@ -9649,6 +12601,34 @@ class GetFirewallOutboundRuleArgs:
         pulumi.set(self, "port_range", value)
 
 
+if not MYPY:
+    class GetImagesFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the images by this key. This may be one of `distribution`, `error_message`,
+        `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+        `tags`, or `type`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves images
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetImagesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetImagesFilterArgs:
     def __init__(__self__, *,
@@ -9732,6 +12712,20 @@ class GetImagesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetImagesSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
+        `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetImagesSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetImagesSortArgs:
     def __init__(__self__, *,
@@ -9771,6 +12765,33 @@ class GetImagesSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetProjectsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the projects by this key. This may be one of `name`,
+        `purpose`, `description`, `environment`, or `is_default`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves projects
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetProjectsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetProjectsFilterArgs:
@@ -9853,6 +12874,20 @@ class GetProjectsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetProjectsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the projects by this key. This may be one of `name`,
+        `purpose`, `description`, or `environment`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetProjectsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetProjectsSortArgs:
     def __init__(__self__, *,
@@ -9892,6 +12927,33 @@ class GetProjectsSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetRecordsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves DNS records
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetRecordsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRecordsFilterArgs:
@@ -9974,6 +13036,20 @@ class GetRecordsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetRecordsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+        `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetRecordsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRecordsSortArgs:
     def __init__(__self__, *,
@@ -10013,6 +13089,33 @@ class GetRecordsSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetRegionsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the regions by this key. This may be one of `slug`,
+        `name`, `available`, `features`, or `sizes`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves regions
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRegionsFilterArgs:
@@ -10095,6 +13198,20 @@ class GetRegionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetRegionsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the regions by this key. This may be one of `slug`,
+        `name`, or `available`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRegionsSortArgs:
     def __init__(__self__, *,
@@ -10134,6 +13251,34 @@ class GetRegionsSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetSizesFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the sizes by this key. This may be one of `slug`,
+        `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
+        `price_hourly`, or `available`.
+        """
+        values: Sequence[str]
+        """
+        Only retrieves sizes which keys has value that matches
+        one of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetSizesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSizesFilterArgs:
@@ -10218,6 +13363,20 @@ class GetSizesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetSizesSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the sizes by this key. This may be one of `slug`,
+        `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetSizesSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSizesSortArgs:
     def __init__(__self__, *,
@@ -10257,6 +13416,32 @@ class GetSizesSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetSpacesBucketsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the `key` field. Only retrieves Spaces buckets
+        where the `key` field takes on one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetSpacesBucketsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSpacesBucketsFilterArgs:
@@ -10337,6 +13522,19 @@ class GetSpacesBucketsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetSpacesBucketsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetSpacesBucketsSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSpacesBucketsSortArgs:
     def __init__(__self__, *,
@@ -10374,6 +13572,21 @@ class GetSpacesBucketsSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetSshKeysFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        """
+        values: Sequence[str]
+        """
+        A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+        """
+        all: NotRequired[bool]
+        match_by: NotRequired[str]
+elif False:
+    GetSshKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSshKeysFilterArgs:
@@ -10436,6 +13649,19 @@ class GetSshKeysFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+if not MYPY:
+    class GetSshKeysSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetSshKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSshKeysSortArgs:
     def __init__(__self__, *,
@@ -10473,6 +13699,32 @@ class GetSshKeysSortArgs:
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
 
+
+if not MYPY:
+    class GetTagsFilterArgsDict(TypedDict):
+        key: str
+        """
+        Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+        """
+        values: Sequence[str]
+        """
+        Only retrieves tags which keys has value that matches
+        one of the values provided here.
+        """
+        all: NotRequired[bool]
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        match_by: NotRequired[str]
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+elif False:
+    GetTagsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTagsFilterArgs:
@@ -10552,6 +13804,19 @@ class GetTagsFilterArgs:
     def match_by(self, value: Optional[str]):
         pulumi.set(self, "match_by", value)
 
+
+if not MYPY:
+    class GetTagsSortArgsDict(TypedDict):
+        key: str
+        """
+        Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+        """
+        direction: NotRequired[str]
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+elif False:
+    GetTagsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTagsSortArgs:
