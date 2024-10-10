@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -221,9 +226,6 @@ def get_volume_snapshot(most_recent: Optional[bool] = None,
         size=pulumi.get(__ret__, 'size'),
         tags=pulumi.get(__ret__, 'tags'),
         volume_id=pulumi.get(__ret__, 'volume_id'))
-
-
-@_utilities.lift_output_func(get_volume_snapshot)
 def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -273,4 +275,22 @@ def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool]
     :param str name_regex: A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
     """
-    ...
+    __args__ = dict()
+    __args__['mostRecent'] = most_recent
+    __args__['name'] = name
+    __args__['nameRegex'] = name_regex
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getVolumeSnapshot:getVolumeSnapshot', __args__, opts=opts, typ=GetVolumeSnapshotResult)
+    return __ret__.apply(lambda __response__: GetVolumeSnapshotResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        min_disk_size=pulumi.get(__response__, 'min_disk_size'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        name=pulumi.get(__response__, 'name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        region=pulumi.get(__response__, 'region'),
+        regions=pulumi.get(__response__, 'regions'),
+        size=pulumi.get(__response__, 'size'),
+        tags=pulumi.get(__response__, 'tags'),
+        volume_id=pulumi.get(__response__, 'volume_id')))

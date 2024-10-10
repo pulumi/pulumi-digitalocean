@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -224,9 +229,6 @@ def get_database_connection_pool(cluster_id: Optional[str] = None,
         size=pulumi.get(__ret__, 'size'),
         uri=pulumi.get(__ret__, 'uri'),
         user=pulumi.get(__ret__, 'user'))
-
-
-@_utilities.lift_output_func(get_database_connection_pool)
 def get_database_connection_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                         name: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseConnectionPoolResult]:
@@ -249,4 +251,22 @@ def get_database_connection_pool_output(cluster_id: Optional[pulumi.Input[str]] 
     :param str cluster_id: The ID of the original source database cluster.
     :param str name: The name for the database connection pool.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool', __args__, opts=opts, typ=GetDatabaseConnectionPoolResult)
+    return __ret__.apply(lambda __response__: GetDatabaseConnectionPoolResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        db_name=pulumi.get(__response__, 'db_name'),
+        host=pulumi.get(__response__, 'host'),
+        id=pulumi.get(__response__, 'id'),
+        mode=pulumi.get(__response__, 'mode'),
+        name=pulumi.get(__response__, 'name'),
+        password=pulumi.get(__response__, 'password'),
+        port=pulumi.get(__response__, 'port'),
+        private_host=pulumi.get(__response__, 'private_host'),
+        private_uri=pulumi.get(__response__, 'private_uri'),
+        size=pulumi.get(__response__, 'size'),
+        uri=pulumi.get(__response__, 'uri'),
+        user=pulumi.get(__response__, 'user')))

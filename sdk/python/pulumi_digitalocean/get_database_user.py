@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -170,9 +175,6 @@ def get_database_user(cluster_id: Optional[str] = None,
         password=pulumi.get(__ret__, 'password'),
         role=pulumi.get(__ret__, 'role'),
         settings=pulumi.get(__ret__, 'settings'))
-
-
-@_utilities.lift_output_func(get_database_user)
 def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUserResult]:
@@ -195,4 +197,18 @@ def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str cluster_id: The ID of the database cluster.
     :param str name: The name of the database user.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseUser:getDatabaseUser', __args__, opts=opts, typ=GetDatabaseUserResult)
+    return __ret__.apply(lambda __response__: GetDatabaseUserResult(
+        access_cert=pulumi.get(__response__, 'access_cert'),
+        access_key=pulumi.get(__response__, 'access_key'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        mysql_auth_plugin=pulumi.get(__response__, 'mysql_auth_plugin'),
+        name=pulumi.get(__response__, 'name'),
+        password=pulumi.get(__response__, 'password'),
+        role=pulumi.get(__response__, 'role'),
+        settings=pulumi.get(__response__, 'settings')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -313,9 +318,6 @@ def get_kubernetes_cluster(name: Optional[str] = None,
         urn=pulumi.get(__ret__, 'urn'),
         version=pulumi.get(__ret__, 'version'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-
-
-@_utilities.lift_output_func(get_kubernetes_cluster)
 def get_kubernetes_cluster_output(name: Optional[pulumi.Input[str]] = None,
                                   tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesClusterResult]:
@@ -335,4 +337,29 @@ def get_kubernetes_cluster_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of Kubernetes cluster.
     :param Sequence[str] tags: A list of tag names applied to the node pool.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult)
+    return __ret__.apply(lambda __response__: GetKubernetesClusterResult(
+        auto_upgrade=pulumi.get(__response__, 'auto_upgrade'),
+        cluster_subnet=pulumi.get(__response__, 'cluster_subnet'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        endpoint=pulumi.get(__response__, 'endpoint'),
+        ha=pulumi.get(__response__, 'ha'),
+        id=pulumi.get(__response__, 'id'),
+        ipv4_address=pulumi.get(__response__, 'ipv4_address'),
+        kube_configs=pulumi.get(__response__, 'kube_configs'),
+        maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
+        name=pulumi.get(__response__, 'name'),
+        node_pools=pulumi.get(__response__, 'node_pools'),
+        region=pulumi.get(__response__, 'region'),
+        service_subnet=pulumi.get(__response__, 'service_subnet'),
+        status=pulumi.get(__response__, 'status'),
+        surge_upgrade=pulumi.get(__response__, 'surge_upgrade'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        urn=pulumi.get(__response__, 'urn'),
+        version=pulumi.get(__response__, 'version'),
+        vpc_uuid=pulumi.get(__response__, 'vpc_uuid')))

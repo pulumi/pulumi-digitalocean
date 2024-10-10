@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -211,9 +216,6 @@ def get_volume(description: Optional[str] = None,
         size=pulumi.get(__ret__, 'size'),
         tags=pulumi.get(__ret__, 'tags'),
         urn=pulumi.get(__ret__, 'urn'))
-
-
-@_utilities.lift_output_func(get_volume)
 def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[str]] = None,
                       region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -261,4 +263,20 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The name of block storage volume.
     :param str region: The region the block storage volume is provisioned in.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult)
+    return __ret__.apply(lambda __response__: GetVolumeResult(
+        description=pulumi.get(__response__, 'description'),
+        droplet_ids=pulumi.get(__response__, 'droplet_ids'),
+        filesystem_label=pulumi.get(__response__, 'filesystem_label'),
+        filesystem_type=pulumi.get(__response__, 'filesystem_type'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size'),
+        tags=pulumi.get(__response__, 'tags'),
+        urn=pulumi.get(__response__, 'urn')))

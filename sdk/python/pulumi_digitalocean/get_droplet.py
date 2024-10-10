@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -417,9 +422,6 @@ def get_droplet(id: Optional[int] = None,
         vcpus=pulumi.get(__ret__, 'vcpus'),
         volume_ids=pulumi.get(__ret__, 'volume_ids'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-
-
-@_utilities.lift_output_func(get_droplet)
 def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        tag: Optional[pulumi.Input[Optional[str]]] = None,
@@ -468,4 +470,36 @@ def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     :param str name: The name of the Droplet.
     :param str tag: A tag applied to the Droplet.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['tag'] = tag
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts, typ=GetDropletResult)
+    return __ret__.apply(lambda __response__: GetDropletResult(
+        backups=pulumi.get(__response__, 'backups'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        disk=pulumi.get(__response__, 'disk'),
+        id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
+        ipv4_address=pulumi.get(__response__, 'ipv4_address'),
+        ipv4_address_private=pulumi.get(__response__, 'ipv4_address_private'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        ipv6_address=pulumi.get(__response__, 'ipv6_address'),
+        ipv6_address_private=pulumi.get(__response__, 'ipv6_address_private'),
+        locked=pulumi.get(__response__, 'locked'),
+        memory=pulumi.get(__response__, 'memory'),
+        monitoring=pulumi.get(__response__, 'monitoring'),
+        name=pulumi.get(__response__, 'name'),
+        price_hourly=pulumi.get(__response__, 'price_hourly'),
+        price_monthly=pulumi.get(__response__, 'price_monthly'),
+        private_networking=pulumi.get(__response__, 'private_networking'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size'),
+        status=pulumi.get(__response__, 'status'),
+        tag=pulumi.get(__response__, 'tag'),
+        tags=pulumi.get(__response__, 'tags'),
+        urn=pulumi.get(__response__, 'urn'),
+        vcpus=pulumi.get(__response__, 'vcpus'),
+        volume_ids=pulumi.get(__response__, 'volume_ids'),
+        vpc_uuid=pulumi.get(__response__, 'vpc_uuid')))

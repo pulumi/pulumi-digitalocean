@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -216,9 +221,6 @@ def get_app(app_id: Optional[str] = None,
         specs=pulumi.get(__ret__, 'specs'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         urn=pulumi.get(__ret__, 'urn'))
-
-
-@_utilities.lift_output_func(get_app)
 def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
                    dedicated_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
@@ -241,4 +243,21 @@ def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str app_id: The ID of the app to retrieve information about.
     :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['dedicatedIps'] = dedicated_ips
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult)
+    return __ret__.apply(lambda __response__: GetAppResult(
+        active_deployment_id=pulumi.get(__response__, 'active_deployment_id'),
+        app_id=pulumi.get(__response__, 'app_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        dedicated_ips=pulumi.get(__response__, 'dedicated_ips'),
+        default_ingress=pulumi.get(__response__, 'default_ingress'),
+        id=pulumi.get(__response__, 'id'),
+        live_domain=pulumi.get(__response__, 'live_domain'),
+        live_url=pulumi.get(__response__, 'live_url'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        specs=pulumi.get(__response__, 'specs'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        urn=pulumi.get(__response__, 'urn')))

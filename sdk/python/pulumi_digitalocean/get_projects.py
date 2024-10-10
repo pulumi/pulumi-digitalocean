@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -144,9 +149,6 @@ def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetP
         id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'),
         sorts=pulumi.get(__ret__, 'sorts'))
-
-
-@_utilities.lift_output_func(get_projects)
 def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
@@ -203,4 +205,13 @@ def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['sorts'] = sorts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
+    return __ret__.apply(lambda __response__: GetProjectsResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        projects=pulumi.get(__response__, 'projects'),
+        sorts=pulumi.get(__response__, 'sorts')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -205,9 +210,6 @@ def get_record(domain: Optional[str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'),
         weight=pulumi.get(__ret__, 'weight'))
-
-
-@_utilities.lift_output_func(get_record)
 def get_record_output(domain: Optional[pulumi.Input[str]] = None,
                       name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordResult]:
@@ -237,4 +239,20 @@ def get_record_output(domain: Optional[pulumi.Input[str]] = None,
     :param str domain: The domain name of the record.
     :param str name: The name of the record.
     """
-    ...
+    __args__ = dict()
+    __args__['domain'] = domain
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult)
+    return __ret__.apply(lambda __response__: GetRecordResult(
+        data=pulumi.get(__response__, 'data'),
+        domain=pulumi.get(__response__, 'domain'),
+        flags=pulumi.get(__response__, 'flags'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        port=pulumi.get(__response__, 'port'),
+        priority=pulumi.get(__response__, 'priority'),
+        tag=pulumi.get(__response__, 'tag'),
+        ttl=pulumi.get(__response__, 'ttl'),
+        type=pulumi.get(__response__, 'type'),
+        weight=pulumi.get(__response__, 'weight')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -257,9 +262,6 @@ def get_database_replica(cluster_id: Optional[str] = None,
         uri=pulumi.get(__ret__, 'uri'),
         user=pulumi.get(__ret__, 'user'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_database_replica)
 def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
                                 tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -284,4 +286,26 @@ def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str name: The name for the database replica.
     :param Sequence[str] tags: A list of tag names to be applied to the database replica.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseReplica:getDatabaseReplica', __args__, opts=opts, typ=GetDatabaseReplicaResult)
+    return __ret__.apply(lambda __response__: GetDatabaseReplicaResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        database=pulumi.get(__response__, 'database'),
+        host=pulumi.get(__response__, 'host'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        password=pulumi.get(__response__, 'password'),
+        port=pulumi.get(__response__, 'port'),
+        private_host=pulumi.get(__response__, 'private_host'),
+        private_network_uuid=pulumi.get(__response__, 'private_network_uuid'),
+        private_uri=pulumi.get(__response__, 'private_uri'),
+        region=pulumi.get(__response__, 'region'),
+        storage_size_mib=pulumi.get(__response__, 'storage_size_mib'),
+        tags=pulumi.get(__response__, 'tags'),
+        uri=pulumi.get(__response__, 'uri'),
+        user=pulumi.get(__response__, 'user'),
+        uuid=pulumi.get(__response__, 'uuid')))

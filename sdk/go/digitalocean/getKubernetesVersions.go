@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.GetKubernetesVersions(ctx, nil, nil)
+//			example, err := digitalocean.GetKubernetesVersions(ctx, &digitalocean.GetKubernetesVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -54,7 +54,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.GetKubernetesVersions(ctx, nil, nil)
+//			example, err := digitalocean.GetKubernetesVersions(ctx, &digitalocean.GetKubernetesVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
