@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -347,9 +352,6 @@ def get_load_balancer(id: Optional[str] = None,
         target_load_balancer_ids=pulumi.get(__ret__, 'target_load_balancer_ids'),
         type=pulumi.get(__ret__, 'type'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-
-
-@_utilities.lift_output_func(get_load_balancer)
 def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerResult]:
@@ -386,4 +388,36 @@ def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The ID of load balancer.
     :param str name: The name of load balancer.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult)
+    return __ret__.apply(lambda __response__: GetLoadBalancerResult(
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        disable_lets_encrypt_dns_records=pulumi.get(__response__, 'disable_lets_encrypt_dns_records'),
+        domains=pulumi.get(__response__, 'domains'),
+        droplet_ids=pulumi.get(__response__, 'droplet_ids'),
+        droplet_tag=pulumi.get(__response__, 'droplet_tag'),
+        enable_backend_keepalive=pulumi.get(__response__, 'enable_backend_keepalive'),
+        enable_proxy_protocol=pulumi.get(__response__, 'enable_proxy_protocol'),
+        firewalls=pulumi.get(__response__, 'firewalls'),
+        forwarding_rules=pulumi.get(__response__, 'forwarding_rules'),
+        glb_settings=pulumi.get(__response__, 'glb_settings'),
+        healthchecks=pulumi.get(__response__, 'healthchecks'),
+        http_idle_timeout_seconds=pulumi.get(__response__, 'http_idle_timeout_seconds'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        load_balancer_urn=pulumi.get(__response__, 'load_balancer_urn'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        redirect_http_to_https=pulumi.get(__response__, 'redirect_http_to_https'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size'),
+        size_unit=pulumi.get(__response__, 'size_unit'),
+        status=pulumi.get(__response__, 'status'),
+        sticky_sessions=pulumi.get(__response__, 'sticky_sessions'),
+        target_load_balancer_ids=pulumi.get(__response__, 'target_load_balancer_ids'),
+        type=pulumi.get(__response__, 'type'),
+        vpc_uuid=pulumi.get(__response__, 'vpc_uuid')))

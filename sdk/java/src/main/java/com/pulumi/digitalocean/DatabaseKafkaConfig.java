@@ -24,6 +24,64 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DatabaseCluster;
+ * import com.pulumi.digitalocean.DatabaseClusterArgs;
+ * import com.pulumi.digitalocean.DatabaseKafkaConfig;
+ * import com.pulumi.digitalocean.DatabaseKafkaConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleDatabaseCluster = new DatabaseCluster("exampleDatabaseCluster", DatabaseClusterArgs.builder()
+ *             .name("example-kafka-cluster")
+ *             .engine("kafka")
+ *             .version("3.7")
+ *             .size("db-s-1vcpu-1gb")
+ *             .region("nyc3")
+ *             .nodeCount(3)
+ *             .build());
+ * 
+ *         var example = new DatabaseKafkaConfig("example", DatabaseKafkaConfigArgs.builder()
+ *             .clusterId(exampleDatabaseCluster.id())
+ *             .groupInitialRebalanceDelayMs(3000)
+ *             .groupMinSessionTimeoutMs(6000)
+ *             .groupMaxSessionTimeoutMs(1800000)
+ *             .messageMaxBytes(1048588)
+ *             .logCleanerDeleteRetentionMs(86400000)
+ *             .logCleanerMinCompactionLagMs(0)
+ *             .logFlushIntervalMs(9223372036854775807)
+ *             .logIndexIntervalBytes(4096)
+ *             .logMessageDownconversionEnable(true)
+ *             .logMessageTimestampDifferenceMaxMs(9223372036854775807)
+ *             .logPreallocate(false)
+ *             .logRetentionBytes(-1)
+ *             .logRetentionHours(168)
+ *             .logRetentionMs(604800000)
+ *             .logRollJitterMs(0)
+ *             .logSegmentDeleteDelayMs(60000)
+ *             .autoCreateTopicsEnable(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

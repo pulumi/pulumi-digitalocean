@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -92,9 +97,6 @@ def get_database_ca(cluster_id: Optional[str] = None,
         certificate=pulumi.get(__ret__, 'certificate'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_database_ca)
 def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseCaResult]:
     """
@@ -113,4 +115,11 @@ def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     :param str cluster_id: The ID of the source database cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseCa:getDatabaseCa', __args__, opts=opts, typ=GetDatabaseCaResult)
+    return __ret__.apply(lambda __response__: GetDatabaseCaResult(
+        certificate=pulumi.get(__response__, 'certificate'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id')))

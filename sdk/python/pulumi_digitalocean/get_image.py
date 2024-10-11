@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -300,9 +305,6 @@ def get_image(id: Optional[int] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_image)
 def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      slug: Optional[pulumi.Input[Optional[str]]] = None,
@@ -358,4 +360,27 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
            If `name` is specified, you may also specify:
     :param str source: Restrict the search to one of the following categories of images:
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['slug'] = slug
+    __args__['source'] = source
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
+    return __ret__.apply(lambda __response__: GetImageResult(
+        created=pulumi.get(__response__, 'created'),
+        description=pulumi.get(__response__, 'description'),
+        distribution=pulumi.get(__response__, 'distribution'),
+        error_message=pulumi.get(__response__, 'error_message'),
+        id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
+        min_disk_size=pulumi.get(__response__, 'min_disk_size'),
+        name=pulumi.get(__response__, 'name'),
+        private=pulumi.get(__response__, 'private'),
+        regions=pulumi.get(__response__, 'regions'),
+        size_gigabytes=pulumi.get(__response__, 'size_gigabytes'),
+        slug=pulumi.get(__response__, 'slug'),
+        source=pulumi.get(__response__, 'source'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

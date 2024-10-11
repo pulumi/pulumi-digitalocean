@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -195,9 +200,6 @@ def get_project(id: Optional[str] = None,
         purpose=pulumi.get(__ret__, 'purpose'),
         resources=pulumi.get(__ret__, 'resources'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
@@ -220,4 +222,20 @@ def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: the name of the project to retrieve. The data source will raise an error if more than
            one project has the provided name or if no project has that name.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        environment=pulumi.get(__response__, 'environment'),
+        id=pulumi.get(__response__, 'id'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        name=pulumi.get(__response__, 'name'),
+        owner_id=pulumi.get(__response__, 'owner_id'),
+        owner_uuid=pulumi.get(__response__, 'owner_uuid'),
+        purpose=pulumi.get(__response__, 'purpose'),
+        resources=pulumi.get(__response__, 'resources'),
+        updated_at=pulumi.get(__response__, 'updated_at')))
