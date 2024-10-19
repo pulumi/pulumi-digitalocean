@@ -26,11 +26,13 @@ class KubernetesClusterArgs:
                  region: pulumi.Input[Union[str, 'Region']],
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_subnet: Optional[pulumi.Input[str]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  registry_integration: Optional[pulumi.Input[bool]] = None,
+                 service_subnet: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
@@ -40,6 +42,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -47,6 +50,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
@@ -56,6 +60,8 @@ class KubernetesClusterArgs:
         pulumi.set(__self__, "version", version)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if cluster_subnet is not None:
+            pulumi.set(__self__, "cluster_subnet", cluster_subnet)
         if destroy_all_associated_resources is not None:
             pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
@@ -66,6 +72,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "name", name)
         if registry_integration is not None:
             pulumi.set(__self__, "registry_integration", registry_integration)
+        if service_subnet is not None:
+            pulumi.set(__self__, "service_subnet", service_subnet)
         if surge_upgrade is not None:
             pulumi.set(__self__, "surge_upgrade", surge_upgrade)
         if tags is not None:
@@ -120,6 +128,18 @@ class KubernetesClusterArgs:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter(name="clusterSubnet")
+    def cluster_subnet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        """
+        return pulumi.get(self, "cluster_subnet")
+
+    @cluster_subnet.setter
+    def cluster_subnet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_subnet", value)
 
     @property
     @pulumi.getter(name="destroyAllAssociatedResources")
@@ -182,6 +202,18 @@ class KubernetesClusterArgs:
     @registry_integration.setter
     def registry_integration(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "registry_integration", value)
+
+    @property
+    @pulumi.getter(name="serviceSubnet")
+    def service_subnet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        """
+        return pulumi.get(self, "service_subnet")
+
+    @service_subnet.setter
+    def service_subnet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_subnet", value)
 
     @property
     @pulumi.getter(name="surgeUpgrade")
@@ -247,7 +279,7 @@ class _KubernetesClusterState:
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
+        :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
@@ -262,7 +294,7 @@ class _KubernetesClusterState:
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-        :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
+        :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
@@ -329,7 +361,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="clusterSubnet")
     def cluster_subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        The range of IP addresses in the overlay network of the Kubernetes cluster.
+        The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "cluster_subnet")
 
@@ -487,7 +519,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="serviceSubnet")
     def service_subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        The range of assignable IP addresses for services running in the Kubernetes cluster.
+        The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "service_subnet")
 
@@ -574,6 +606,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_subnet: Optional[pulumi.Input[str]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
@@ -581,6 +614,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  registry_integration: Optional[pulumi.Input[bool]] = None,
+                 service_subnet: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -616,6 +650,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -625,6 +660,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
+        :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -679,6 +715,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_subnet: Optional[pulumi.Input[str]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
@@ -686,6 +723,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
                  registry_integration: Optional[pulumi.Input[bool]] = None,
+                 service_subnet: Optional[pulumi.Input[str]] = None,
                  surge_upgrade: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -700,6 +738,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__ = KubernetesClusterArgs.__new__(KubernetesClusterArgs)
 
             __props__.__dict__["auto_upgrade"] = auto_upgrade
+            __props__.__dict__["cluster_subnet"] = cluster_subnet
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
             __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -711,19 +750,18 @@ class KubernetesCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["registry_integration"] = registry_integration
+            __props__.__dict__["service_subnet"] = service_subnet
             __props__.__dict__["surge_upgrade"] = surge_upgrade
             __props__.__dict__["tags"] = tags
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
             __props__.__dict__["vpc_uuid"] = vpc_uuid
-            __props__.__dict__["cluster_subnet"] = None
             __props__.__dict__["cluster_urn"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["ipv4_address"] = None
             __props__.__dict__["kube_configs"] = None
-            __props__.__dict__["service_subnet"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeConfigs"])
@@ -767,7 +805,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster.
+        :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
@@ -782,7 +820,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-        :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster.
+        :param pulumi.Input[str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
@@ -829,7 +867,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterSubnet")
     def cluster_subnet(self) -> pulumi.Output[str]:
         """
-        The range of IP addresses in the overlay network of the Kubernetes cluster.
+        The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "cluster_subnet")
 
@@ -935,7 +973,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="serviceSubnet")
     def service_subnet(self) -> pulumi.Output[str]:
         """
-        The range of assignable IP addresses for services running in the Kubernetes cluster.
+        The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "service_subnet")
 

@@ -20,6 +20,7 @@ from .database_kafka_config import *
 from .database_kafka_topic import *
 from .database_mongodb_config import *
 from .database_mysql_config import *
+from .database_opensearch_config import *
 from .database_postgresql_config import *
 from .database_redis_config import *
 from .database_replica import *
@@ -217,6 +218,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig": "DatabaseMysqlConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseOpensearchConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig": "DatabaseOpensearchConfig"
   }
  },
  {

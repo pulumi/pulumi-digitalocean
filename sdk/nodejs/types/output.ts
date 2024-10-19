@@ -2297,7 +2297,7 @@ export interface GetAppSpecFunctionLogDestinationOpenSearch {
      */
     endpoint?: string;
     /**
-     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     * The index name to use for the logs. If not set, the default index name is `logs`.
      */
     indexName?: string;
 }
@@ -2669,7 +2669,7 @@ export interface GetAppSpecJobLogDestinationOpenSearch {
      */
     endpoint?: string;
     /**
-     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     * The index name to use for the logs. If not set, the default index name is `logs`.
      */
     indexName?: string;
 }
@@ -3057,7 +3057,7 @@ export interface GetAppSpecServiceLogDestinationOpenSearch {
      */
     endpoint?: string;
     /**
-     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     * The index name to use for the logs. If not set, the default index name is `logs`.
      */
     indexName?: string;
 }
@@ -3506,7 +3506,7 @@ export interface GetAppSpecWorkerLogDestinationOpenSearch {
      */
     endpoint?: string;
     /**
-     * The index name to use for the logs. If not set, the default index name is \"logs\".
+     * The index name to use for the logs. If not set, the default index name is `logs`.
      */
     indexName?: string;
 }

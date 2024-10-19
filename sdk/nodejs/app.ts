@@ -57,6 +57,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * ### Log Destination Example with Opensearch
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";

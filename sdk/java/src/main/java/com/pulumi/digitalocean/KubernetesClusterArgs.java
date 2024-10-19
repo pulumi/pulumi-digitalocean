@@ -38,6 +38,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+     * 
+     */
+    @Import(name="clusterSubnet")
+    private @Nullable Output<String> clusterSubnet;
+
+    /**
+     * @return The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+     * 
+     */
+    public Optional<Output<String>> clusterSubnet() {
+        return Optional.ofNullable(this.clusterSubnet);
+    }
+
+    /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      * 
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -147,6 +162,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+     * 
+     */
+    @Import(name="serviceSubnet")
+    private @Nullable Output<String> serviceSubnet;
+
+    /**
+     * @return The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+     * 
+     */
+    public Optional<Output<String>> serviceSubnet() {
+        return Optional.ofNullable(this.serviceSubnet);
+    }
+
+    /**
      * Enable/disable surge upgrades for a cluster. Default: true
      * 
      */
@@ -210,6 +240,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
 
     private KubernetesClusterArgs(KubernetesClusterArgs $) {
         this.autoUpgrade = $.autoUpgrade;
+        this.clusterSubnet = $.clusterSubnet;
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.ha = $.ha;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -217,6 +248,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.nodePool = $.nodePool;
         this.region = $.region;
         this.registryIntegration = $.registryIntegration;
+        this.serviceSubnet = $.serviceSubnet;
         this.surgeUpgrade = $.surgeUpgrade;
         this.tags = $.tags;
         this.version = $.version;
@@ -260,6 +292,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder autoUpgrade(Boolean autoUpgrade) {
             return autoUpgrade(Output.of(autoUpgrade));
+        }
+
+        /**
+         * @param clusterSubnet The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterSubnet(@Nullable Output<String> clusterSubnet) {
+            $.clusterSubnet = clusterSubnet;
+            return this;
+        }
+
+        /**
+         * @param clusterSubnet The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterSubnet(String clusterSubnet) {
+            return clusterSubnet(Output.of(clusterSubnet));
         }
 
         /**
@@ -431,6 +484,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder registryIntegration(Boolean registryIntegration) {
             return registryIntegration(Output.of(registryIntegration));
+        }
+
+        /**
+         * @param serviceSubnet The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceSubnet(@Nullable Output<String> serviceSubnet) {
+            $.serviceSubnet = serviceSubnet;
+            return this;
+        }
+
+        /**
+         * @param serviceSubnet The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceSubnet(String serviceSubnet) {
+            return serviceSubnet(Output.of(serviceSubnet));
         }
 
         /**

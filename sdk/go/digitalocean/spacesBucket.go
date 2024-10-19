@@ -143,7 +143,7 @@ import (
 type SpacesBucket struct {
 	pulumi.CustomResourceState
 
-	// Canned ACL applied on bucket creation (`private` or `public-read`)
+	// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringOutput `pulumi:"bucketDomainName"`
@@ -197,7 +197,7 @@ func GetSpacesBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SpacesBucket resources.
 type spacesBucketState struct {
-	// Canned ACL applied on bucket creation (`private` or `public-read`)
+	// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 	Acl *string `pulumi:"acl"`
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName *string `pulumi:"bucketDomainName"`
@@ -222,7 +222,7 @@ type spacesBucketState struct {
 }
 
 type SpacesBucketState struct {
-	// Canned ACL applied on bucket creation (`private` or `public-read`)
+	// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 	Acl pulumi.StringPtrInput
 	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
 	BucketDomainName pulumi.StringPtrInput
@@ -251,7 +251,7 @@ func (SpacesBucketState) ElementType() reflect.Type {
 }
 
 type spacesBucketArgs struct {
-	// Canned ACL applied on bucket creation (`private` or `public-read`)
+	// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 	Acl *string `pulumi:"acl"`
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
@@ -271,7 +271,7 @@ type spacesBucketArgs struct {
 
 // The set of arguments for constructing a SpacesBucket resource.
 type SpacesBucketArgs struct {
-	// Canned ACL applied on bucket creation (`private` or `public-read`)
+	// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 	Acl pulumi.StringPtrInput
 	// A rule of Cross-Origin Resource Sharing (documented below).
 	//
@@ -376,7 +376,7 @@ func (o SpacesBucketOutput) ToSpacesBucketOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Canned ACL applied on bucket creation (`private` or `public-read`)
+// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 func (o SpacesBucketOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SpacesBucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
 }

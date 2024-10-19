@@ -38,14 +38,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The range of IP addresses in the overlay network of the Kubernetes cluster.
+     * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     @Import(name="clusterSubnet")
     private @Nullable Output<String> clusterSubnet;
 
     /**
-     * @return The range of IP addresses in the overlay network of the Kubernetes cluster.
+     * @return The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     public Optional<Output<String>> clusterSubnet() {
@@ -237,14 +237,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The range of assignable IP addresses for services running in the Kubernetes cluster.
+     * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     @Import(name="serviceSubnet")
     private @Nullable Output<String> serviceSubnet;
 
     /**
-     * @return The range of assignable IP addresses for services running in the Kubernetes cluster.
+     * @return The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     public Optional<Output<String>> serviceSubnet() {
@@ -407,7 +407,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterSubnet The range of IP addresses in the overlay network of the Kubernetes cluster.
+         * @param clusterSubnet The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterSubnet The range of IP addresses in the overlay network of the Kubernetes cluster.
+         * @param clusterSubnet The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
          * 
          * @return builder
          * 
@@ -714,7 +714,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceSubnet The range of assignable IP addresses for services running in the Kubernetes cluster.
+         * @param serviceSubnet The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
          * 
          * @return builder
          * 
@@ -725,7 +725,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceSubnet The range of assignable IP addresses for services running in the Kubernetes cluster.
+         * @param serviceSubnet The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
          * 
          * @return builder
          * 

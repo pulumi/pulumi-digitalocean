@@ -227,6 +227,7 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Log Destination Example with Opensearch
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code

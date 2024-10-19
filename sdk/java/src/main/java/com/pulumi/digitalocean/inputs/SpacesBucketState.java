@@ -23,14 +23,14 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
     public static final SpacesBucketState Empty = new SpacesBucketState();
 
     /**
-     * Canned ACL applied on bucket creation (`private` or `public-read`)
+     * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      * 
      */
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
-     * @return Canned ACL applied on bucket creation (`private` or `public-read`)
+     * @return Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      * 
      */
     public Optional<Output<String>> acl() {
@@ -214,7 +214,7 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acl Canned ACL applied on bucket creation (`private` or `public-read`)
+         * @param acl Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class SpacesBucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acl Canned ACL applied on bucket creation (`private` or `public-read`)
+         * @param acl Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
          * 
          * @return builder
          * 

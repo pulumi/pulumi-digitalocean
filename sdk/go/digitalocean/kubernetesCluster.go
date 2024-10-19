@@ -42,7 +42,7 @@ type KubernetesCluster struct {
 
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
-	// The range of IP addresses in the overlay network of the Kubernetes cluster.
+	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringOutput `pulumi:"clusterSubnet"`
 	// The uniform resource name (URN) for the Kubernetes cluster.
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
@@ -70,7 +70,7 @@ type KubernetesCluster struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrOutput `pulumi:"registryIntegration"`
-	// The range of assignable IP addresses for services running in the Kubernetes cluster.
+	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -131,7 +131,7 @@ func GetKubernetesCluster(ctx *pulumi.Context,
 type kubernetesClusterState struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// The range of IP addresses in the overlay network of the Kubernetes cluster.
+	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet *string `pulumi:"clusterSubnet"`
 	// The uniform resource name (URN) for the Kubernetes cluster.
 	ClusterUrn *string `pulumi:"clusterUrn"`
@@ -159,7 +159,7 @@ type kubernetesClusterState struct {
 	Region *string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration *bool `pulumi:"registryIntegration"`
-	// The range of assignable IP addresses for services running in the Kubernetes cluster.
+	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
@@ -178,7 +178,7 @@ type kubernetesClusterState struct {
 type KubernetesClusterState struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
-	// The range of IP addresses in the overlay network of the Kubernetes cluster.
+	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringPtrInput
 	// The uniform resource name (URN) for the Kubernetes cluster.
 	ClusterUrn pulumi.StringPtrInput
@@ -206,7 +206,7 @@ type KubernetesClusterState struct {
 	Region pulumi.StringPtrInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrInput
-	// The range of assignable IP addresses for services running in the Kubernetes cluster.
+	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringPtrInput
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput
@@ -229,6 +229,8 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+	ClusterSubnet *string `pulumi:"clusterSubnet"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	//
 	// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -245,6 +247,8 @@ type kubernetesClusterArgs struct {
 	Region string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration *bool `pulumi:"registryIntegration"`
+	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -259,6 +263,8 @@ type kubernetesClusterArgs struct {
 type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
+	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+	ClusterSubnet pulumi.StringPtrInput
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	//
 	// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -275,6 +281,8 @@ type KubernetesClusterArgs struct {
 	Region pulumi.StringInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrInput
+	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+	ServiceSubnet pulumi.StringPtrInput
 	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -377,7 +385,7 @@ func (o KubernetesClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// The range of IP addresses in the overlay network of the Kubernetes cluster.
+// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 func (o KubernetesClusterOutput) ClusterSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ClusterSubnet }).(pulumi.StringOutput)
 }
@@ -444,7 +452,7 @@ func (o KubernetesClusterOutput) RegistryIntegration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.RegistryIntegration }).(pulumi.BoolPtrOutput)
 }
 
-// The range of assignable IP addresses for services running in the Kubernetes cluster.
+// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 func (o KubernetesClusterOutput) ServiceSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ServiceSubnet }).(pulumi.StringOutput)
 }

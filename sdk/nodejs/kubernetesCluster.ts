@@ -67,9 +67,9 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
     /**
-     * The range of IP addresses in the overlay network of the Kubernetes cluster.
+     * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
-    public /*out*/ readonly clusterSubnet!: pulumi.Output<string>;
+    public readonly clusterSubnet!: pulumi.Output<string>;
     /**
      * The uniform resource name (URN) for the Kubernetes cluster.
      */
@@ -121,9 +121,9 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly registryIntegration!: pulumi.Output<boolean | undefined>;
     /**
-     * The range of assignable IP addresses for services running in the Kubernetes cluster.
+     * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
-    public /*out*/ readonly serviceSubnet!: pulumi.Output<string>;
+    public readonly serviceSubnet!: pulumi.Output<string>;
     /**
      * A string indicating the current status of the individual node.
      */
@@ -195,6 +195,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            resourceInputs["clusterSubnet"] = args ? args.clusterSubnet : undefined;
             resourceInputs["destroyAllAssociatedResources"] = args ? args.destroyAllAssociatedResources : undefined;
             resourceInputs["ha"] = args ? args.ha : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
@@ -202,17 +203,16 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["nodePool"] = args ? args.nodePool : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["registryIntegration"] = args ? args.registryIntegration : undefined;
+            resourceInputs["serviceSubnet"] = args ? args.serviceSubnet : undefined;
             resourceInputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
-            resourceInputs["clusterSubnet"] = undefined /*out*/;
             resourceInputs["clusterUrn"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["ipv4Address"] = undefined /*out*/;
             resourceInputs["kubeConfigs"] = undefined /*out*/;
-            resourceInputs["serviceSubnet"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -232,7 +232,7 @@ export interface KubernetesClusterState {
      */
     autoUpgrade?: pulumi.Input<boolean>;
     /**
-     * The range of IP addresses in the overlay network of the Kubernetes cluster.
+     * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     clusterSubnet?: pulumi.Input<string>;
     /**
@@ -286,7 +286,7 @@ export interface KubernetesClusterState {
      */
     registryIntegration?: pulumi.Input<boolean>;
     /**
-     * The range of assignable IP addresses for services running in the Kubernetes cluster.
+     * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     serviceSubnet?: pulumi.Input<string>;
     /**
@@ -324,6 +324,10 @@ export interface KubernetesClusterArgs {
      */
     autoUpgrade?: pulumi.Input<boolean>;
     /**
+     * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+     */
+    clusterSubnet?: pulumi.Input<string>;
+    /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -353,6 +357,10 @@ export interface KubernetesClusterArgs {
      * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
      */
     registryIntegration?: pulumi.Input<boolean>;
+    /**
+     * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+     */
+    serviceSubnet?: pulumi.Input<string>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: true
      */
