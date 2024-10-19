@@ -4081,7 +4081,7 @@
                 },
                 "indexName": {
                     "type": "string",
-                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                    "description": "The index name to use for the logs. If not set, the default index name is `logs`.\n"
                 }
             },
             "type": "object",
@@ -4660,7 +4660,7 @@
                 },
                 "indexName": {
                     "type": "string",
-                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                    "description": "The index name to use for the logs. If not set, the default index name is `logs`.\n"
                 }
             },
             "type": "object",
@@ -5215,7 +5215,7 @@
                 },
                 "indexName": {
                     "type": "string",
-                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                    "description": "The index name to use for the logs. If not set, the default index name is `logs`.\n"
                 }
             },
             "type": "object",
@@ -5833,7 +5833,7 @@
                 },
                 "indexName": {
                     "type": "string",
-                    "description": "The index name to use for the logs. If not set, the default index name is \\\"logs\\\".\n"
+                    "description": "The index name to use for the logs. If not set, the default index name is `logs`.\n"
                 }
             },
             "type": "object",
@@ -8233,7 +8233,7 @@
     },
     "resources": {
         "digitalocean:index/app:App": {
-            "description": "Provides a DigitalOcean App resource.\n\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.\n\n### Basic Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Static Site Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_site_example = new digitalocean.App(\"static-site-example\", {spec: {\n    name: \"static-site-example\",\n    region: \"ams\",\n    staticSites: [{\n        name: \"sample-jekyll\",\n        buildCommand: \"bundle exec jekyll build -d ./public\",\n        outputDir: \"/public\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_site_example = digitalocean.App(\"static-site-example\", spec={\n    \"name\": \"static-site-example\",\n    \"region\": \"ams\",\n    \"static_sites\": [{\n        \"name\": \"sample-jekyll\",\n        \"build_command\": \"bundle exec jekyll build -d ./public\",\n        \"output_dir\": \"/public\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-jekyll.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var static_site_example = new DigitalOcean.App(\"static-site-example\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"static-site-example\",\n            Region = \"ams\",\n            StaticSites = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                {\n                    Name = \"sample-jekyll\",\n                    BuildCommand = \"bundle exec jekyll build -d ./public\",\n                    OutputDir = \"/public\",\n                    Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-site-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-site-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tOutputDir:    pulumi.String(\"/public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var static_site_example = new App(\"static-site-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"static-site-example\")\n                .region(\"ams\")\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"sample-jekyll\")\n                    .buildCommand(\"bundle exec jekyll build -d ./public\")\n                    .outputDir(\"/public\")\n                    .git(AppSpecStaticSiteGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-jekyll.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  static-site-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: static-site-example\n        region: ams\n        staticSites:\n          - name: sample-jekyll\n            buildCommand: bundle exec jekyll build -d ./public\n            outputDir: /public\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-jekyll.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple Components Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecIngressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mono_repo_example = new App(\"mono-repo-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"mono-repo-example\")\n                .region(\"ams\")\n                .domains(Map.of(\"name\", \"foo.example.com\"))\n                .alerts(AppSpecAlertArgs.builder()\n                    .rule(\"DEPLOYMENT_FAILED\")\n                    .build())\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-api\")\n                    .instanceCount(2)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .github(AppSpecServiceGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .sourceDir(\"api/\")\n                    .httpPort(3000)\n                    .alerts(AppSpecServiceAlertArgs.builder()\n                        .value(75)\n                        .operator(\"GREATER_THAN\")\n                        .window(\"TEN_MINUTES\")\n                        .rule(\"CPU_UTILIZATION\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()\n                            .endpoint(\"syslog+tls://example.com:12345\")\n                            .build())\n                        .build())\n                    .runCommand(\"bin/api\")\n                    .build())\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"web\")\n                    .buildCommand(\"npm run build\")\n                    .github(AppSpecStaticSiteGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .build())\n                .databases(AppSpecDatabaseArgs.builder()\n                    .name(\"starter-db\")\n                    .engine(\"PG\")\n                    .production(false)\n                    .build())\n                .ingress(AppSpecIngressArgs.builder()\n                    .rules(                    \n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"api\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/api\")\n                                    .build())\n                                .build())\n                            .build(),\n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"web\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/\")\n                                    .build())\n                                .build())\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mono-repo-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: mono-repo-example\n        region: ams\n        domains:\n          - name: foo.example.com\n        alerts:\n          - rule: DEPLOYMENT_FAILED\n        services:\n          - name: go-api\n            instanceCount: 2\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n            sourceDir: api/\n            httpPort: 3000\n            alerts:\n              - value: 75\n                operator: GREATER_THAN\n                window: TEN_MINUTES\n                rule: CPU_UTILIZATION\n            logDestinations:\n              - name: MyLogs\n                papertrail:\n                  endpoint: syslog+tls://example.com:12345\n            runCommand: bin/api\n        staticSites:\n          - name: web\n            buildCommand: npm run build\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n        databases:\n          - name: starter-db\n            engine: PG\n            production: false\n        ingress:\n          rules:\n            - component:\n                name: api\n              match:\n                path:\n                  prefix: /api\n            - component:\n                name: web\n              match:\n                path:\n                  prefix: /\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Log Destination Example with Opensearch\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n        logDestinations: [{\n            name: \"MyLogs\",\n            openSearch: {\n                endpoint: \"https://something:1234\",\n                basicAuth: {\n                    user: \"user\",\n                    password: \"hi\",\n                },\n            },\n        }],\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n        \"log_destinations\": [{\n            \"name\": \"MyLogs\",\n            \"open_search\": {\n                \"endpoint\": \"https://something:1234\",\n                \"basic_auth\": {\n                    \"user\": \"user\",\n                    \"password\": \"hi\",\n                },\n            },\n        }],\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                    LogDestinations = new[]\n                    {\n                        new DigitalOcean.Inputs.AppSpecServiceLogDestinationArgs\n                        {\n                            Name = \"MyLogs\",\n                            OpenSearch = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchArgs\n                            {\n                                Endpoint = \"https://something:1234\",\n                                BasicAuth = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs\n                                {\n                                    User = \"user\",\n                                    Password = \"hi\",\n                                },\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tLogDestinations: digitalocean.AppSpecServiceLogDestinationArray{\n\t\t\t\t\t\t\t\u0026digitalocean.AppSpecServiceLogDestinationArgs{\n\t\t\t\t\t\t\t\tName: pulumi.String(\"MyLogs\"),\n\t\t\t\t\t\t\t\tOpenSearch: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchArgs{\n\t\t\t\t\t\t\t\t\tEndpoint: pulumi.String(\"https://something:1234\"),\n\t\t\t\t\t\t\t\t\tBasicAuth: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{\n\t\t\t\t\t\t\t\t\t\tUser:     pulumi.String(\"user\"),\n\t\t\t\t\t\t\t\t\t\tPassword: pulumi.String(\"hi\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .openSearch(AppSpecServiceLogDestinationOpenSearchArgs.builder()\n                            .endpoint(\"https://something:1234\")\n                            .basicAuth(AppSpecServiceLogDestinationOpenSearchBasicAuthArgs.builder()\n                                .user(\"user\")\n                                .password(\"hi\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n            logDestinations:\n              - name: MyLogs\n                openSearch:\n                  endpoint: https://something:1234\n                  basicAuth:\n                    user: user\n                    password: hi\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n",
+            "description": "Provides a DigitalOcean App resource.\n\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.\n\n### Basic Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Static Site Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_site_example = new digitalocean.App(\"static-site-example\", {spec: {\n    name: \"static-site-example\",\n    region: \"ams\",\n    staticSites: [{\n        name: \"sample-jekyll\",\n        buildCommand: \"bundle exec jekyll build -d ./public\",\n        outputDir: \"/public\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_site_example = digitalocean.App(\"static-site-example\", spec={\n    \"name\": \"static-site-example\",\n    \"region\": \"ams\",\n    \"static_sites\": [{\n        \"name\": \"sample-jekyll\",\n        \"build_command\": \"bundle exec jekyll build -d ./public\",\n        \"output_dir\": \"/public\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-jekyll.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var static_site_example = new DigitalOcean.App(\"static-site-example\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"static-site-example\",\n            Region = \"ams\",\n            StaticSites = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                {\n                    Name = \"sample-jekyll\",\n                    BuildCommand = \"bundle exec jekyll build -d ./public\",\n                    OutputDir = \"/public\",\n                    Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-site-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-site-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tOutputDir:    pulumi.String(\"/public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var static_site_example = new App(\"static-site-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"static-site-example\")\n                .region(\"ams\")\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"sample-jekyll\")\n                    .buildCommand(\"bundle exec jekyll build -d ./public\")\n                    .outputDir(\"/public\")\n                    .git(AppSpecStaticSiteGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-jekyll.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  static-site-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: static-site-example\n        region: ams\n        staticSites:\n          - name: sample-jekyll\n            buildCommand: bundle exec jekyll build -d ./public\n            outputDir: /public\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-jekyll.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple Components Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecIngressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mono_repo_example = new App(\"mono-repo-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"mono-repo-example\")\n                .region(\"ams\")\n                .domains(Map.of(\"name\", \"foo.example.com\"))\n                .alerts(AppSpecAlertArgs.builder()\n                    .rule(\"DEPLOYMENT_FAILED\")\n                    .build())\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-api\")\n                    .instanceCount(2)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .github(AppSpecServiceGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .sourceDir(\"api/\")\n                    .httpPort(3000)\n                    .alerts(AppSpecServiceAlertArgs.builder()\n                        .value(75)\n                        .operator(\"GREATER_THAN\")\n                        .window(\"TEN_MINUTES\")\n                        .rule(\"CPU_UTILIZATION\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()\n                            .endpoint(\"syslog+tls://example.com:12345\")\n                            .build())\n                        .build())\n                    .runCommand(\"bin/api\")\n                    .build())\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"web\")\n                    .buildCommand(\"npm run build\")\n                    .github(AppSpecStaticSiteGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .build())\n                .databases(AppSpecDatabaseArgs.builder()\n                    .name(\"starter-db\")\n                    .engine(\"PG\")\n                    .production(false)\n                    .build())\n                .ingress(AppSpecIngressArgs.builder()\n                    .rules(                    \n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"api\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/api\")\n                                    .build())\n                                .build())\n                            .build(),\n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"web\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/\")\n                                    .build())\n                                .build())\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mono-repo-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: mono-repo-example\n        region: ams\n        domains:\n          - name: foo.example.com\n        alerts:\n          - rule: DEPLOYMENT_FAILED\n        services:\n          - name: go-api\n            instanceCount: 2\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n            sourceDir: api/\n            httpPort: 3000\n            alerts:\n              - value: 75\n                operator: GREATER_THAN\n                window: TEN_MINUTES\n                rule: CPU_UTILIZATION\n            logDestinations:\n              - name: MyLogs\n                papertrail:\n                  endpoint: syslog+tls://example.com:12345\n            runCommand: bin/api\n        staticSites:\n          - name: web\n            buildCommand: npm run build\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n        databases:\n          - name: starter-db\n            engine: PG\n            production: false\n        ingress:\n          rules:\n            - component:\n                name: api\n              match:\n                path:\n                  prefix: /api\n            - component:\n                name: web\n              match:\n                path:\n                  prefix: /\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Log Destination Example with Opensearch\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n        logDestinations: [{\n            name: \"MyLogs\",\n            openSearch: {\n                endpoint: \"https://something:1234\",\n                basicAuth: {\n                    user: \"user\",\n                    password: \"hi\",\n                },\n            },\n        }],\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n        \"log_destinations\": [{\n            \"name\": \"MyLogs\",\n            \"open_search\": {\n                \"endpoint\": \"https://something:1234\",\n                \"basic_auth\": {\n                    \"user\": \"user\",\n                    \"password\": \"hi\",\n                },\n            },\n        }],\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                    LogDestinations = new[]\n                    {\n                        new DigitalOcean.Inputs.AppSpecServiceLogDestinationArgs\n                        {\n                            Name = \"MyLogs\",\n                            OpenSearch = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchArgs\n                            {\n                                Endpoint = \"https://something:1234\",\n                                BasicAuth = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs\n                                {\n                                    User = \"user\",\n                                    Password = \"hi\",\n                                },\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tLogDestinations: digitalocean.AppSpecServiceLogDestinationArray{\n\t\t\t\t\t\t\t\u0026digitalocean.AppSpecServiceLogDestinationArgs{\n\t\t\t\t\t\t\t\tName: pulumi.String(\"MyLogs\"),\n\t\t\t\t\t\t\t\tOpenSearch: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchArgs{\n\t\t\t\t\t\t\t\t\tEndpoint: pulumi.String(\"https://something:1234\"),\n\t\t\t\t\t\t\t\t\tBasicAuth: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{\n\t\t\t\t\t\t\t\t\t\tUser:     pulumi.String(\"user\"),\n\t\t\t\t\t\t\t\t\t\tPassword: pulumi.String(\"hi\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .openSearch(AppSpecServiceLogDestinationOpenSearchArgs.builder()\n                            .endpoint(\"https://something:1234\")\n                            .basicAuth(AppSpecServiceLogDestinationOpenSearchBasicAuthArgs.builder()\n                                .user(\"user\")\n                                .password(\"hi\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n            logDestinations:\n              - name: MyLogs\n                openSearch:\n                  endpoint: https://something:1234\n                  basicAuth:\n                    user: user\n                    password: hi\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n",
             "properties": {
                 "activeDeploymentId": {
                     "type": "string",
@@ -10497,6 +10497,541 @@
                     "waitTimeout": {
                         "type": "integer",
                         "description": "The number of seconds the server waits for activity on a noninteractive connection before closing it.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig": {
+            "description": "Provides a virtual resource that can be used to change advanced configuration\noptions for a DigitalOcean managed Opensearch database cluster.\n\n\u003e **Note** Opensearch configurations are only removed from state when destroyed. The remote configuration is not unset.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleDatabaseCluster = new digitalocean.DatabaseCluster(\"example\", {\n    name: \"example-opensearch-cluster\",\n    engine: \"opensearch\",\n    version: \"2\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU2GB,\n    region: digitalocean.Region.NYC3,\n    nodeCount: 1,\n});\nconst example = new digitalocean.DatabaseOpensearchConfig(\"example\", {\n    clusterId: exampleDatabaseCluster.id,\n    ismEnabled: true,\n    ismHistoryEnabled: true,\n    ismHistoryMaxAgeHours: 24,\n    ismHistoryMaxDocs: 2500000,\n    ismHistoryRolloverCheckPeriodHours: 8,\n    ismHistoryRolloverRetentionPeriodDays: 30,\n    httpMaxContentLengthBytes: 100000000,\n    httpMaxHeaderSizeBytes: 8192,\n    httpMaxInitialLineLengthBytes: 4096,\n    indicesQueryBoolMaxClauseCount: 1024,\n    searchMaxBuckets: 10000,\n    indicesFielddataCacheSizePercentage: 3,\n    indicesMemoryIndexBufferSizePercentage: 10,\n    indicesMemoryMinIndexBufferSizeMb: 48,\n    indicesMemoryMaxIndexBufferSizeMb: 3,\n    indicesQueriesCacheSizePercentage: 10,\n    indicesRecoveryMaxMbPerSec: 40,\n    indicesRecoveryMaxConcurrentFileChunks: 2,\n    actionAutoCreateIndexEnabled: true,\n    actionDestructiveRequiresName: false,\n    enableSecurityAudit: false,\n    threadPoolSearchSize: 1,\n    threadPoolSearchThrottledSize: 1,\n    threadPoolSearchThrottledQueueSize: 10,\n    threadPoolSearchQueueSize: 10,\n    threadPoolGetSize: 1,\n    threadPoolGetQueueSize: 10,\n    threadPoolAnalyzeSize: 1,\n    threadPoolAnalyzeQueueSize: 10,\n    threadPoolWriteSize: 1,\n    threadPoolWriteQueueSize: 10,\n    threadPoolForceMergeSize: 1,\n    overrideMainResponseVersion: false,\n    scriptMaxCompilationsRate: \"use-context\",\n    clusterMaxShardsPerNode: 100,\n    clusterRoutingAllocationNodeConcurrentRecoveries: 2,\n    pluginsAlertingFilterByBackendRolesEnabled: false,\n    reindexRemoteWhitelists: [\"cloud.digitalocean.com:8080\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_database_cluster = digitalocean.DatabaseCluster(\"example\",\n    name=\"example-opensearch-cluster\",\n    engine=\"opensearch\",\n    version=\"2\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU2_GB,\n    region=digitalocean.Region.NYC3,\n    node_count=1)\nexample = digitalocean.DatabaseOpensearchConfig(\"example\",\n    cluster_id=example_database_cluster.id,\n    ism_enabled=True,\n    ism_history_enabled=True,\n    ism_history_max_age_hours=24,\n    ism_history_max_docs=2500000,\n    ism_history_rollover_check_period_hours=8,\n    ism_history_rollover_retention_period_days=30,\n    http_max_content_length_bytes=100000000,\n    http_max_header_size_bytes=8192,\n    http_max_initial_line_length_bytes=4096,\n    indices_query_bool_max_clause_count=1024,\n    search_max_buckets=10000,\n    indices_fielddata_cache_size_percentage=3,\n    indices_memory_index_buffer_size_percentage=10,\n    indices_memory_min_index_buffer_size_mb=48,\n    indices_memory_max_index_buffer_size_mb=3,\n    indices_queries_cache_size_percentage=10,\n    indices_recovery_max_mb_per_sec=40,\n    indices_recovery_max_concurrent_file_chunks=2,\n    action_auto_create_index_enabled=True,\n    action_destructive_requires_name=False,\n    enable_security_audit=False,\n    thread_pool_search_size=1,\n    thread_pool_search_throttled_size=1,\n    thread_pool_search_throttled_queue_size=10,\n    thread_pool_search_queue_size=10,\n    thread_pool_get_size=1,\n    thread_pool_get_queue_size=10,\n    thread_pool_analyze_size=1,\n    thread_pool_analyze_queue_size=10,\n    thread_pool_write_size=1,\n    thread_pool_write_queue_size=10,\n    thread_pool_force_merge_size=1,\n    override_main_response_version=False,\n    script_max_compilations_rate=\"use-context\",\n    cluster_max_shards_per_node=100,\n    cluster_routing_allocation_node_concurrent_recoveries=2,\n    plugins_alerting_filter_by_backend_roles_enabled=False,\n    reindex_remote_whitelists=[\"cloud.digitalocean.com:8080\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster(\"example\", new()\n    {\n        Name = \"example-opensearch-cluster\",\n        Engine = \"opensearch\",\n        Version = \"2\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU2GB,\n        Region = DigitalOcean.Region.NYC3,\n        NodeCount = 1,\n    });\n\n    var example = new DigitalOcean.DatabaseOpensearchConfig(\"example\", new()\n    {\n        ClusterId = exampleDatabaseCluster.Id,\n        IsmEnabled = true,\n        IsmHistoryEnabled = true,\n        IsmHistoryMaxAgeHours = 24,\n        IsmHistoryMaxDocs = 2500000,\n        IsmHistoryRolloverCheckPeriodHours = 8,\n        IsmHistoryRolloverRetentionPeriodDays = 30,\n        HttpMaxContentLengthBytes = 100000000,\n        HttpMaxHeaderSizeBytes = 8192,\n        HttpMaxInitialLineLengthBytes = 4096,\n        IndicesQueryBoolMaxClauseCount = 1024,\n        SearchMaxBuckets = 10000,\n        IndicesFielddataCacheSizePercentage = 3,\n        IndicesMemoryIndexBufferSizePercentage = 10,\n        IndicesMemoryMinIndexBufferSizeMb = 48,\n        IndicesMemoryMaxIndexBufferSizeMb = 3,\n        IndicesQueriesCacheSizePercentage = 10,\n        IndicesRecoveryMaxMbPerSec = 40,\n        IndicesRecoveryMaxConcurrentFileChunks = 2,\n        ActionAutoCreateIndexEnabled = true,\n        ActionDestructiveRequiresName = false,\n        EnableSecurityAudit = false,\n        ThreadPoolSearchSize = 1,\n        ThreadPoolSearchThrottledSize = 1,\n        ThreadPoolSearchThrottledQueueSize = 10,\n        ThreadPoolSearchQueueSize = 10,\n        ThreadPoolGetSize = 1,\n        ThreadPoolGetQueueSize = 10,\n        ThreadPoolAnalyzeSize = 1,\n        ThreadPoolAnalyzeQueueSize = 10,\n        ThreadPoolWriteSize = 1,\n        ThreadPoolWriteQueueSize = 10,\n        ThreadPoolForceMergeSize = 1,\n        OverrideMainResponseVersion = false,\n        ScriptMaxCompilationsRate = \"use-context\",\n        ClusterMaxShardsPerNode = 100,\n        ClusterRoutingAllocationNodeConcurrentRecoveries = 2,\n        PluginsAlertingFilterByBackendRolesEnabled = false,\n        ReindexRemoteWhitelists = new[]\n        {\n            \"cloud.digitalocean.com:8080\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, \"example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-opensearch-cluster\"),\n\t\t\tEngine:    pulumi.String(\"opensearch\"),\n\t\t\tVersion:   pulumi.String(\"2\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU2GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC3),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseOpensearchConfig(ctx, \"example\", \u0026digitalocean.DatabaseOpensearchConfigArgs{\n\t\t\tClusterId:                                        exampleDatabaseCluster.ID(),\n\t\t\tIsmEnabled:                                       pulumi.Bool(true),\n\t\t\tIsmHistoryEnabled:                                pulumi.Bool(true),\n\t\t\tIsmHistoryMaxAgeHours:                            pulumi.Int(24),\n\t\t\tIsmHistoryMaxDocs:                                pulumi.Int(2500000),\n\t\t\tIsmHistoryRolloverCheckPeriodHours:               pulumi.Int(8),\n\t\t\tIsmHistoryRolloverRetentionPeriodDays:            pulumi.Int(30),\n\t\t\tHttpMaxContentLengthBytes:                        pulumi.Int(100000000),\n\t\t\tHttpMaxHeaderSizeBytes:                           pulumi.Int(8192),\n\t\t\tHttpMaxInitialLineLengthBytes:                    pulumi.Int(4096),\n\t\t\tIndicesQueryBoolMaxClauseCount:                   pulumi.Int(1024),\n\t\t\tSearchMaxBuckets:                                 pulumi.Int(10000),\n\t\t\tIndicesFielddataCacheSizePercentage:              pulumi.Int(3),\n\t\t\tIndicesMemoryIndexBufferSizePercentage:           pulumi.Int(10),\n\t\t\tIndicesMemoryMinIndexBufferSizeMb:                pulumi.Int(48),\n\t\t\tIndicesMemoryMaxIndexBufferSizeMb:                pulumi.Int(3),\n\t\t\tIndicesQueriesCacheSizePercentage:                pulumi.Int(10),\n\t\t\tIndicesRecoveryMaxMbPerSec:                       pulumi.Int(40),\n\t\t\tIndicesRecoveryMaxConcurrentFileChunks:           pulumi.Int(2),\n\t\t\tActionAutoCreateIndexEnabled:                     pulumi.Bool(true),\n\t\t\tActionDestructiveRequiresName:                    pulumi.Bool(false),\n\t\t\tEnableSecurityAudit:                              pulumi.Bool(false),\n\t\t\tThreadPoolSearchSize:                             pulumi.Int(1),\n\t\t\tThreadPoolSearchThrottledSize:                    pulumi.Int(1),\n\t\t\tThreadPoolSearchThrottledQueueSize:               pulumi.Int(10),\n\t\t\tThreadPoolSearchQueueSize:                        pulumi.Int(10),\n\t\t\tThreadPoolGetSize:                                pulumi.Int(1),\n\t\t\tThreadPoolGetQueueSize:                           pulumi.Int(10),\n\t\t\tThreadPoolAnalyzeSize:                            pulumi.Int(1),\n\t\t\tThreadPoolAnalyzeQueueSize:                       pulumi.Int(10),\n\t\t\tThreadPoolWriteSize:                              pulumi.Int(1),\n\t\t\tThreadPoolWriteQueueSize:                         pulumi.Int(10),\n\t\t\tThreadPoolForceMergeSize:                         pulumi.Int(1),\n\t\t\tOverrideMainResponseVersion:                      pulumi.Bool(false),\n\t\t\tScriptMaxCompilationsRate:                        pulumi.String(\"use-context\"),\n\t\t\tClusterMaxShardsPerNode:                          pulumi.Int(100),\n\t\t\tClusterRoutingAllocationNodeConcurrentRecoveries: pulumi.Int(2),\n\t\t\tPluginsAlertingFilterByBackendRolesEnabled:       pulumi.Bool(false),\n\t\t\tReindexRemoteWhitelists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"cloud.digitalocean.com:8080\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseOpensearchConfig;\nimport com.pulumi.digitalocean.DatabaseOpensearchConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleDatabaseCluster = new DatabaseCluster(\"exampleDatabaseCluster\", DatabaseClusterArgs.builder()\n            .name(\"example-opensearch-cluster\")\n            .engine(\"opensearch\")\n            .version(\"2\")\n            .size(\"db-s-1vcpu-2gb\")\n            .region(\"nyc3\")\n            .nodeCount(1)\n            .build());\n\n        var example = new DatabaseOpensearchConfig(\"example\", DatabaseOpensearchConfigArgs.builder()\n            .clusterId(exampleDatabaseCluster.id())\n            .ismEnabled(true)\n            .ismHistoryEnabled(true)\n            .ismHistoryMaxAgeHours(24)\n            .ismHistoryMaxDocs(2500000)\n            .ismHistoryRolloverCheckPeriodHours(8)\n            .ismHistoryRolloverRetentionPeriodDays(30)\n            .httpMaxContentLengthBytes(100000000)\n            .httpMaxHeaderSizeBytes(8192)\n            .httpMaxInitialLineLengthBytes(4096)\n            .indicesQueryBoolMaxClauseCount(1024)\n            .searchMaxBuckets(10000)\n            .indicesFielddataCacheSizePercentage(3)\n            .indicesMemoryIndexBufferSizePercentage(10)\n            .indicesMemoryMinIndexBufferSizeMb(48)\n            .indicesMemoryMaxIndexBufferSizeMb(3)\n            .indicesQueriesCacheSizePercentage(10)\n            .indicesRecoveryMaxMbPerSec(40)\n            .indicesRecoveryMaxConcurrentFileChunks(2)\n            .actionAutoCreateIndexEnabled(true)\n            .actionDestructiveRequiresName(false)\n            .enableSecurityAudit(false)\n            .threadPoolSearchSize(1)\n            .threadPoolSearchThrottledSize(1)\n            .threadPoolSearchThrottledQueueSize(10)\n            .threadPoolSearchQueueSize(10)\n            .threadPoolGetSize(1)\n            .threadPoolGetQueueSize(10)\n            .threadPoolAnalyzeSize(1)\n            .threadPoolAnalyzeQueueSize(10)\n            .threadPoolWriteSize(1)\n            .threadPoolWriteQueueSize(10)\n            .threadPoolForceMergeSize(1)\n            .overrideMainResponseVersion(false)\n            .scriptMaxCompilationsRate(\"use-context\")\n            .clusterMaxShardsPerNode(100)\n            .clusterRoutingAllocationNodeConcurrentRecoveries(2)\n            .pluginsAlertingFilterByBackendRolesEnabled(false)\n            .reindexRemoteWhitelists(\"cloud.digitalocean.com:8080\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DatabaseOpensearchConfig\n    properties:\n      clusterId: ${exampleDatabaseCluster.id}\n      ismEnabled: true\n      ismHistoryEnabled: true\n      ismHistoryMaxAgeHours: 24\n      ismHistoryMaxDocs: 2.5e+06\n      ismHistoryRolloverCheckPeriodHours: 8\n      ismHistoryRolloverRetentionPeriodDays: 30\n      httpMaxContentLengthBytes: 1e+08\n      httpMaxHeaderSizeBytes: 8192\n      httpMaxInitialLineLengthBytes: 4096\n      indicesQueryBoolMaxClauseCount: 1024\n      searchMaxBuckets: 10000\n      indicesFielddataCacheSizePercentage: 3\n      indicesMemoryIndexBufferSizePercentage: 10\n      indicesMemoryMinIndexBufferSizeMb: 48\n      indicesMemoryMaxIndexBufferSizeMb: 3\n      indicesQueriesCacheSizePercentage: 10\n      indicesRecoveryMaxMbPerSec: 40\n      indicesRecoveryMaxConcurrentFileChunks: 2\n      actionAutoCreateIndexEnabled: true\n      actionDestructiveRequiresName: false\n      enableSecurityAudit: false\n      threadPoolSearchSize: 1\n      threadPoolSearchThrottledSize: 1\n      threadPoolSearchThrottledQueueSize: 10\n      threadPoolSearchQueueSize: 10\n      threadPoolGetSize: 1\n      threadPoolGetQueueSize: 10\n      threadPoolAnalyzeSize: 1\n      threadPoolAnalyzeQueueSize: 10\n      threadPoolWriteSize: 1\n      threadPoolWriteQueueSize: 10\n      threadPoolForceMergeSize: 1\n      overrideMainResponseVersion: false\n      scriptMaxCompilationsRate: use-context\n      clusterMaxShardsPerNode: 100\n      clusterRoutingAllocationNodeConcurrentRecoveries: 2\n      pluginsAlertingFilterByBackendRolesEnabled: false\n      reindexRemoteWhitelists:\n        - cloud.digitalocean.com:8080\n  exampleDatabaseCluster:\n    type: digitalocean:DatabaseCluster\n    name: example\n    properties:\n      name: example-opensearch-cluster\n      engine: opensearch\n      version: '2'\n      size: db-s-1vcpu-2gb\n      region: nyc3\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA Opensearch database cluster's configuration can be imported using the `id` the parent cluster, e.g.\n\n```sh\n$ pulumi import digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig example 4b62829a-9c42-465b-aaa3-84051048e712\n```\n\n",
+            "properties": {
+                "actionAutoCreateIndexEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                },
+                "actionDestructiveRequiresName": {
+                    "type": "boolean",
+                    "description": "Specifies whether to require explicit index names when deleting indices.\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the target Opensearch cluster.\n"
+                },
+                "clusterMaxShardsPerNode": {
+                    "type": "integer",
+                    "description": "Maximum number of shards allowed per data node.\n"
+                },
+                "clusterRoutingAllocationNodeConcurrentRecoveries": {
+                    "type": "integer",
+                    "description": "Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`\n"
+                },
+                "enableSecurityAudit": {
+                    "type": "boolean",
+                    "description": "Specifies whether to allow security audit logging. Default: `false`\n"
+                },
+                "httpMaxContentLengthBytes": {
+                    "type": "integer",
+                    "description": "Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`\n"
+                },
+                "httpMaxHeaderSizeBytes": {
+                    "type": "integer",
+                    "description": "Maximum size of allowed headers, in bytes. Default: `8192`\n"
+                },
+                "httpMaxInitialLineLengthBytes": {
+                    "type": "integer",
+                    "description": "Maximum length of an HTTP URL, in bytes. Default: `4096`\n"
+                },
+                "indicesFielddataCacheSizePercentage": {
+                    "type": "integer",
+                    "description": "Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.\n"
+                },
+                "indicesMemoryIndexBufferSizePercentage": {
+                    "type": "integer",
+                    "description": "Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`\n"
+                },
+                "indicesMemoryMaxIndexBufferSizeMb": {
+                    "type": "integer",
+                    "description": "Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.\n"
+                },
+                "indicesMemoryMinIndexBufferSizeMb": {
+                    "type": "integer",
+                    "description": "Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`\n"
+                },
+                "indicesQueriesCacheSizePercentage": {
+                    "type": "integer",
+                    "description": "Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`\n"
+                },
+                "indicesQueryBoolMaxClauseCount": {
+                    "type": "integer",
+                    "description": "Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`\n"
+                },
+                "indicesRecoveryMaxConcurrentFileChunks": {
+                    "type": "integer",
+                    "description": "Maximum number of file chunks sent in parallel for each recovery. Default: `2`\n"
+                },
+                "indicesRecoveryMaxMbPerSec": {
+                    "type": "integer",
+                    "description": "Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`\n"
+                },
+                "ismEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                },
+                "ismHistoryEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`\n"
+                },
+                "ismHistoryMaxAgeHours": {
+                    "type": "integer",
+                    "description": "Maximum age before rolling over the audit history index, in hours. Default: `24`\n"
+                },
+                "ismHistoryMaxDocs": {
+                    "type": "integer",
+                    "description": "Maximum number of documents before rolling over the audit history index. Default: `2500000`\n"
+                },
+                "ismHistoryRolloverCheckPeriodHours": {
+                    "type": "integer",
+                    "description": "The time between rollover checks for the audit history index, in hours. Default: `8`\n"
+                },
+                "ismHistoryRolloverRetentionPeriodDays": {
+                    "type": "integer",
+                    "description": "Length of time long audit history indices are kept, in days. Default: `30`\n"
+                },
+                "overrideMainResponseVersion": {
+                    "type": "boolean",
+                    "description": "Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`\n"
+                },
+                "pluginsAlertingFilterByBackendRolesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable filtering of alerting by backend roles. Default: `false`\n"
+                },
+                "reindexRemoteWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.\n"
+                },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "description": "Limits the number of inline script compilations within a period of time. Default is `use-context`\n"
+                },
+                "searchMaxBuckets": {
+                    "type": "integer",
+                    "description": "Maximum number of aggregation buckets allowed in a single response. Default: `10000`\n"
+                },
+                "threadPoolAnalyzeQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the analyze thread pool.\n"
+                },
+                "threadPoolAnalyzeSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolForceMergeSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolGetQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the get thread pool.\n"
+                },
+                "threadPoolGetSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolSearchQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the search thread pool.\n"
+                },
+                "threadPoolSearchSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolSearchThrottledQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the search throttled thread pool.\n"
+                },
+                "threadPoolSearchThrottledSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolWriteQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the write thread pool.\n"
+                },
+                "threadPoolWriteSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                }
+            },
+            "required": [
+                "actionAutoCreateIndexEnabled",
+                "actionDestructiveRequiresName",
+                "clusterId",
+                "clusterMaxShardsPerNode",
+                "clusterRoutingAllocationNodeConcurrentRecoveries",
+                "enableSecurityAudit",
+                "httpMaxContentLengthBytes",
+                "httpMaxHeaderSizeBytes",
+                "httpMaxInitialLineLengthBytes",
+                "indicesFielddataCacheSizePercentage",
+                "indicesMemoryIndexBufferSizePercentage",
+                "indicesMemoryMaxIndexBufferSizeMb",
+                "indicesMemoryMinIndexBufferSizeMb",
+                "indicesQueriesCacheSizePercentage",
+                "indicesQueryBoolMaxClauseCount",
+                "indicesRecoveryMaxConcurrentFileChunks",
+                "indicesRecoveryMaxMbPerSec",
+                "ismEnabled",
+                "ismHistoryEnabled",
+                "ismHistoryMaxAgeHours",
+                "ismHistoryMaxDocs",
+                "ismHistoryRolloverCheckPeriodHours",
+                "ismHistoryRolloverRetentionPeriodDays",
+                "overrideMainResponseVersion",
+                "pluginsAlertingFilterByBackendRolesEnabled",
+                "scriptMaxCompilationsRate",
+                "searchMaxBuckets",
+                "threadPoolAnalyzeQueueSize",
+                "threadPoolAnalyzeSize",
+                "threadPoolForceMergeSize",
+                "threadPoolGetQueueSize",
+                "threadPoolGetSize",
+                "threadPoolSearchQueueSize",
+                "threadPoolSearchSize",
+                "threadPoolSearchThrottledQueueSize",
+                "threadPoolSearchThrottledSize",
+                "threadPoolWriteQueueSize",
+                "threadPoolWriteSize"
+            ],
+            "inputProperties": {
+                "actionAutoCreateIndexEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                },
+                "actionDestructiveRequiresName": {
+                    "type": "boolean",
+                    "description": "Specifies whether to require explicit index names when deleting indices.\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the target Opensearch cluster.\n",
+                    "willReplaceOnChanges": true
+                },
+                "clusterMaxShardsPerNode": {
+                    "type": "integer",
+                    "description": "Maximum number of shards allowed per data node.\n"
+                },
+                "clusterRoutingAllocationNodeConcurrentRecoveries": {
+                    "type": "integer",
+                    "description": "Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`\n"
+                },
+                "enableSecurityAudit": {
+                    "type": "boolean",
+                    "description": "Specifies whether to allow security audit logging. Default: `false`\n"
+                },
+                "httpMaxContentLengthBytes": {
+                    "type": "integer",
+                    "description": "Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`\n"
+                },
+                "httpMaxHeaderSizeBytes": {
+                    "type": "integer",
+                    "description": "Maximum size of allowed headers, in bytes. Default: `8192`\n"
+                },
+                "httpMaxInitialLineLengthBytes": {
+                    "type": "integer",
+                    "description": "Maximum length of an HTTP URL, in bytes. Default: `4096`\n"
+                },
+                "indicesFielddataCacheSizePercentage": {
+                    "type": "integer",
+                    "description": "Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.\n"
+                },
+                "indicesMemoryIndexBufferSizePercentage": {
+                    "type": "integer",
+                    "description": "Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`\n"
+                },
+                "indicesMemoryMaxIndexBufferSizeMb": {
+                    "type": "integer",
+                    "description": "Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.\n"
+                },
+                "indicesMemoryMinIndexBufferSizeMb": {
+                    "type": "integer",
+                    "description": "Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`\n"
+                },
+                "indicesQueriesCacheSizePercentage": {
+                    "type": "integer",
+                    "description": "Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`\n"
+                },
+                "indicesQueryBoolMaxClauseCount": {
+                    "type": "integer",
+                    "description": "Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`\n"
+                },
+                "indicesRecoveryMaxConcurrentFileChunks": {
+                    "type": "integer",
+                    "description": "Maximum number of file chunks sent in parallel for each recovery. Default: `2`\n"
+                },
+                "indicesRecoveryMaxMbPerSec": {
+                    "type": "integer",
+                    "description": "Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`\n"
+                },
+                "ismEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                },
+                "ismHistoryEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`\n"
+                },
+                "ismHistoryMaxAgeHours": {
+                    "type": "integer",
+                    "description": "Maximum age before rolling over the audit history index, in hours. Default: `24`\n"
+                },
+                "ismHistoryMaxDocs": {
+                    "type": "integer",
+                    "description": "Maximum number of documents before rolling over the audit history index. Default: `2500000`\n"
+                },
+                "ismHistoryRolloverCheckPeriodHours": {
+                    "type": "integer",
+                    "description": "The time between rollover checks for the audit history index, in hours. Default: `8`\n"
+                },
+                "ismHistoryRolloverRetentionPeriodDays": {
+                    "type": "integer",
+                    "description": "Length of time long audit history indices are kept, in days. Default: `30`\n"
+                },
+                "overrideMainResponseVersion": {
+                    "type": "boolean",
+                    "description": "Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`\n"
+                },
+                "pluginsAlertingFilterByBackendRolesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable filtering of alerting by backend roles. Default: `false`\n"
+                },
+                "reindexRemoteWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.\n"
+                },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "description": "Limits the number of inline script compilations within a period of time. Default is `use-context`\n"
+                },
+                "searchMaxBuckets": {
+                    "type": "integer",
+                    "description": "Maximum number of aggregation buckets allowed in a single response. Default: `10000`\n"
+                },
+                "threadPoolAnalyzeQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the analyze thread pool.\n"
+                },
+                "threadPoolAnalyzeSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolForceMergeSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolGetQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the get thread pool.\n"
+                },
+                "threadPoolGetSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolSearchQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the search thread pool.\n"
+                },
+                "threadPoolSearchSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolSearchThrottledQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the search throttled thread pool.\n"
+                },
+                "threadPoolSearchThrottledSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                },
+                "threadPoolWriteQueueSize": {
+                    "type": "integer",
+                    "description": "Size of queue for operations in the write thread pool.\n"
+                },
+                "threadPoolWriteSize": {
+                    "type": "integer",
+                    "description": "Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatabaseOpensearchConfig resources.\n",
+                "properties": {
+                    "actionAutoCreateIndexEnabled": {
+                        "type": "boolean",
+                        "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                    },
+                    "actionDestructiveRequiresName": {
+                        "type": "boolean",
+                        "description": "Specifies whether to require explicit index names when deleting indices.\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the target Opensearch cluster.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clusterMaxShardsPerNode": {
+                        "type": "integer",
+                        "description": "Maximum number of shards allowed per data node.\n"
+                    },
+                    "clusterRoutingAllocationNodeConcurrentRecoveries": {
+                        "type": "integer",
+                        "description": "Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`\n"
+                    },
+                    "enableSecurityAudit": {
+                        "type": "boolean",
+                        "description": "Specifies whether to allow security audit logging. Default: `false`\n"
+                    },
+                    "httpMaxContentLengthBytes": {
+                        "type": "integer",
+                        "description": "Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`\n"
+                    },
+                    "httpMaxHeaderSizeBytes": {
+                        "type": "integer",
+                        "description": "Maximum size of allowed headers, in bytes. Default: `8192`\n"
+                    },
+                    "httpMaxInitialLineLengthBytes": {
+                        "type": "integer",
+                        "description": "Maximum length of an HTTP URL, in bytes. Default: `4096`\n"
+                    },
+                    "indicesFielddataCacheSizePercentage": {
+                        "type": "integer",
+                        "description": "Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.\n"
+                    },
+                    "indicesMemoryIndexBufferSizePercentage": {
+                        "type": "integer",
+                        "description": "Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`\n"
+                    },
+                    "indicesMemoryMaxIndexBufferSizeMb": {
+                        "type": "integer",
+                        "description": "Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.\n"
+                    },
+                    "indicesMemoryMinIndexBufferSizeMb": {
+                        "type": "integer",
+                        "description": "Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`\n"
+                    },
+                    "indicesQueriesCacheSizePercentage": {
+                        "type": "integer",
+                        "description": "Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`\n"
+                    },
+                    "indicesQueryBoolMaxClauseCount": {
+                        "type": "integer",
+                        "description": "Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`\n"
+                    },
+                    "indicesRecoveryMaxConcurrentFileChunks": {
+                        "type": "integer",
+                        "description": "Maximum number of file chunks sent in parallel for each recovery. Default: `2`\n"
+                    },
+                    "indicesRecoveryMaxMbPerSec": {
+                        "type": "integer",
+                        "description": "Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`\n"
+                    },
+                    "ismEnabled": {
+                        "type": "boolean",
+                        "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                    },
+                    "ismHistoryEnabled": {
+                        "type": "boolean",
+                        "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`\n"
+                    },
+                    "ismHistoryMaxAgeHours": {
+                        "type": "integer",
+                        "description": "Maximum age before rolling over the audit history index, in hours. Default: `24`\n"
+                    },
+                    "ismHistoryMaxDocs": {
+                        "type": "integer",
+                        "description": "Maximum number of documents before rolling over the audit history index. Default: `2500000`\n"
+                    },
+                    "ismHistoryRolloverCheckPeriodHours": {
+                        "type": "integer",
+                        "description": "The time between rollover checks for the audit history index, in hours. Default: `8`\n"
+                    },
+                    "ismHistoryRolloverRetentionPeriodDays": {
+                        "type": "integer",
+                        "description": "Length of time long audit history indices are kept, in days. Default: `30`\n"
+                    },
+                    "overrideMainResponseVersion": {
+                        "type": "boolean",
+                        "description": "Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`\n"
+                    },
+                    "pluginsAlertingFilterByBackendRolesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable or disable filtering of alerting by backend roles. Default: `false`\n"
+                    },
+                    "reindexRemoteWhitelists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.\n"
+                    },
+                    "scriptMaxCompilationsRate": {
+                        "type": "string",
+                        "description": "Limits the number of inline script compilations within a period of time. Default is `use-context`\n"
+                    },
+                    "searchMaxBuckets": {
+                        "type": "integer",
+                        "description": "Maximum number of aggregation buckets allowed in a single response. Default: `10000`\n"
+                    },
+                    "threadPoolAnalyzeQueueSize": {
+                        "type": "integer",
+                        "description": "Size of queue for operations in the analyze thread pool.\n"
+                    },
+                    "threadPoolAnalyzeSize": {
+                        "type": "integer",
+                        "description": "Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                    },
+                    "threadPoolForceMergeSize": {
+                        "type": "integer",
+                        "description": "Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                    },
+                    "threadPoolGetQueueSize": {
+                        "type": "integer",
+                        "description": "Size of queue for operations in the get thread pool.\n"
+                    },
+                    "threadPoolGetSize": {
+                        "type": "integer",
+                        "description": "Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                    },
+                    "threadPoolSearchQueueSize": {
+                        "type": "integer",
+                        "description": "Size of queue for operations in the search thread pool.\n"
+                    },
+                    "threadPoolSearchSize": {
+                        "type": "integer",
+                        "description": "Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                    },
+                    "threadPoolSearchThrottledQueueSize": {
+                        "type": "integer",
+                        "description": "Size of queue for operations in the search throttled thread pool.\n"
+                    },
+                    "threadPoolSearchThrottledSize": {
+                        "type": "integer",
+                        "description": "Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                    },
+                    "threadPoolWriteQueueSize": {
+                        "type": "integer",
+                        "description": "Size of queue for operations in the write thread pool.\n"
+                    },
+                    "threadPoolWriteSize": {
+                        "type": "integer",
+                        "description": "Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
                     }
                 },
                 "type": "object"
@@ -12768,7 +13303,7 @@
                 },
                 "clusterSubnet": {
                     "type": "string",
-                    "description": "The range of IP addresses in the overlay network of the Kubernetes cluster.\n"
+                    "description": "The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n"
                 },
                 "clusterUrn": {
                     "type": "string",
@@ -12824,7 +13359,7 @@
                 },
                 "serviceSubnet": {
                     "type": "string",
-                    "description": "The range of assignable IP addresses for services running in the Kubernetes cluster.\n"
+                    "description": "The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n"
                 },
                 "status": {
                     "type": "string",
@@ -12876,6 +13411,11 @@
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
                 },
+                "clusterSubnet": {
+                    "type": "string",
+                    "description": "The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
+                    "willReplaceOnChanges": true
+                },
                 "destroyAllAssociatedResources": {
                     "type": "boolean",
                     "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
@@ -12914,6 +13454,11 @@
                     "type": "boolean",
                     "description": "Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false\n"
                 },
+                "serviceSubnet": {
+                    "type": "string",
+                    "description": "The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
+                    "willReplaceOnChanges": true
+                },
                 "surgeUpgrade": {
                     "type": "boolean",
                     "description": "Enable/disable surge upgrades for a cluster. Default: true\n"
@@ -12949,7 +13494,8 @@
                     },
                     "clusterSubnet": {
                         "type": "string",
-                        "description": "The range of IP addresses in the overlay network of the Kubernetes cluster.\n"
+                        "description": "The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
+                        "willReplaceOnChanges": true
                     },
                     "clusterUrn": {
                         "type": "string",
@@ -13015,7 +13561,8 @@
                     },
                     "serviceSubnet": {
                         "type": "string",
-                        "description": "The range of assignable IP addresses for services running in the Kubernetes cluster.\n"
+                        "description": "The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
+                        "willReplaceOnChanges": true
                     },
                     "status": {
                         "type": "string",
@@ -14150,7 +14697,7 @@
             "properties": {
                 "acl": {
                     "type": "string",
-                    "description": "Canned ACL applied on bucket creation (`private` or `public-read`)\n"
+                    "description": "Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)\n"
                 },
                 "bucketDomainName": {
                     "type": "string",
@@ -14205,7 +14752,7 @@
             "inputProperties": {
                 "acl": {
                     "type": "string",
-                    "description": "Canned ACL applied on bucket creation (`private` or `public-read`)\n"
+                    "description": "Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)\n"
                 },
                 "corsRules": {
                     "type": "array",
@@ -14254,7 +14801,7 @@
                 "properties": {
                     "acl": {
                         "type": "string",
-                        "description": "Canned ACL applied on bucket creation (`private` or `public-read`)\n"
+                        "description": "Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)\n"
                     },
                     "bucketDomainName": {
                         "type": "string",
