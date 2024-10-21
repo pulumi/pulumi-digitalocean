@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseMongodbConfig{}
 	case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
 		r = &DatabaseMysqlConfig{}
+	case "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig":
+		r = &DatabaseOpensearchConfig{}
 	case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
 		r = &DatabasePostgresqlConfig{}
 	case "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig":
@@ -212,6 +214,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseMysqlConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseOpensearchConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

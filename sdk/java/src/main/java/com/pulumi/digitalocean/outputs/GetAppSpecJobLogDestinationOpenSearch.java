@@ -29,7 +29,7 @@ public final class GetAppSpecJobLogDestinationOpenSearch {
      */
     private @Nullable String endpoint;
     /**
-     * @return The index name to use for the logs. If not set, the default index name is \&#34;logs\&#34;.
+     * @return The index name to use for the logs. If not set, the default index name is `logs`.
      * 
      */
     private @Nullable String indexName;
@@ -57,7 +57,7 @@ public final class GetAppSpecJobLogDestinationOpenSearch {
         return Optional.ofNullable(this.endpoint);
     }
     /**
-     * @return The index name to use for the logs. If not set, the default index name is \&#34;logs\&#34;.
+     * @return The index name to use for the logs. If not set, the default index name is `logs`.
      * 
      */
     public Optional<String> indexName() {

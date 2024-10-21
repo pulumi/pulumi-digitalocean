@@ -503,6 +503,15 @@
                 "current": "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig",
                 "majorVersion": 4
             },
+            "digitalocean_database_opensearch_config": {
+                "current": "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig",
+                "majorVersion": 4,
+                "fields": {
+                    "reindex_remote_whitelist": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_database_postgresql_config": {
                 "current": "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig",
                 "majorVersion": 4,

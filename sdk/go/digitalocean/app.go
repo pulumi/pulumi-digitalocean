@@ -98,6 +98,7 @@ import (
 // ```
 //
 // ### Log Destination Example with Opensearch
+//
 // ```go
 // package main
 //

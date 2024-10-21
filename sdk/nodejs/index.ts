@@ -75,6 +75,11 @@ export type DatabaseMysqlConfig = import("./databaseMysqlConfig").DatabaseMysqlC
 export const DatabaseMysqlConfig: typeof import("./databaseMysqlConfig").DatabaseMysqlConfig = null as any;
 utilities.lazyLoad(exports, ["DatabaseMysqlConfig"], () => require("./databaseMysqlConfig"));
 
+export { DatabaseOpensearchConfigArgs, DatabaseOpensearchConfigState } from "./databaseOpensearchConfig";
+export type DatabaseOpensearchConfig = import("./databaseOpensearchConfig").DatabaseOpensearchConfig;
+export const DatabaseOpensearchConfig: typeof import("./databaseOpensearchConfig").DatabaseOpensearchConfig = null as any;
+utilities.lazyLoad(exports, ["DatabaseOpensearchConfig"], () => require("./databaseOpensearchConfig"));
+
 export { DatabasePostgresqlConfigArgs, DatabasePostgresqlConfigState } from "./databasePostgresqlConfig";
 export type DatabasePostgresqlConfig = import("./databasePostgresqlConfig").DatabasePostgresqlConfig;
 export const DatabasePostgresqlConfig: typeof import("./databasePostgresqlConfig").DatabasePostgresqlConfig = null as any;
@@ -490,6 +495,8 @@ const _module = {
                 return new DatabaseMongodbConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
                 return new DatabaseMysqlConfig(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig":
+                return new DatabaseOpensearchConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
                 return new DatabasePostgresqlConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig":
@@ -573,6 +580,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaConfig
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaTopic", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMongodbConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMysqlConfig", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseOpensearchConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databasePostgresqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseRedisConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseReplica", _module)

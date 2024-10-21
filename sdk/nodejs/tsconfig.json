@@ -29,6 +29,7 @@
         "databaseKafkaTopic.ts",
         "databaseMongodbConfig.ts",
         "databaseMysqlConfig.ts",
+        "databaseOpensearchConfig.ts",
         "databasePostgresqlConfig.ts",
         "databaseRedisConfig.ts",
         "databaseReplica.ts",

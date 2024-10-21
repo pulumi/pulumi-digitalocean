@@ -31,7 +31,7 @@ class SpacesBucketArgs:
                  versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
         """
         The set of arguments for constructing a SpacesBucket resource.
-        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
+        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of object lifecycle management (documented below).
@@ -61,7 +61,7 @@ class SpacesBucketArgs:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        Canned ACL applied on bucket creation (`private` or `public-read`)
+        Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         """
         return pulumi.get(self, "acl")
 
@@ -158,7 +158,7 @@ class _SpacesBucketState:
                  versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
         """
         Input properties used for looking up and filtering SpacesBucket resources.
-        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
+        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
@@ -197,7 +197,7 @@ class _SpacesBucketState:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        Canned ACL applied on bucket creation (`private` or `public-read`)
+        Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         """
         return pulumi.get(self, "acl")
 
@@ -404,7 +404,7 @@ class SpacesBucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
+        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
@@ -560,7 +560,7 @@ class SpacesBucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation (`private` or `public-read`)
+        :param pulumi.Input[str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         :param pulumi.Input[str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[str] bucket_urn: The uniform resource name for the bucket
         :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
@@ -591,7 +591,7 @@ class SpacesBucket(pulumi.CustomResource):
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[str]]:
         """
-        Canned ACL applied on bucket creation (`private` or `public-read`)
+        Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         """
         return pulumi.get(self, "acl")
 

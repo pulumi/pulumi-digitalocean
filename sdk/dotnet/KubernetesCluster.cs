@@ -46,7 +46,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// The range of IP addresses in the overlay network of the Kubernetes cluster.
+        /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         /// </summary>
         [Output("clusterSubnet")]
         public Output<string> ClusterSubnet { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> RegistryIntegration { get; private set; } = null!;
 
         /// <summary>
-        /// The range of assignable IP addresses for services running in the Kubernetes cluster.
+        /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         /// </summary>
         [Output("serviceSubnet")]
         public Output<string> ServiceSubnet { get; private set; } = null!;
@@ -224,6 +224,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
+        /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        /// </summary>
+        [Input("clusterSubnet")]
+        public Input<string>? ClusterSubnet { get; set; }
+
+        /// <summary>
         /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         /// 
         /// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -266,6 +272,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("registryIntegration")]
         public Input<bool>? RegistryIntegration { get; set; }
+
+        /// <summary>
+        /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        /// </summary>
+        [Input("serviceSubnet")]
+        public Input<string>? ServiceSubnet { get; set; }
 
         /// <summary>
         /// Enable/disable surge upgrades for a cluster. Default: true
@@ -312,7 +324,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
-        /// The range of IP addresses in the overlay network of the Kubernetes cluster.
+        /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         /// </summary>
         [Input("clusterSubnet")]
         public Input<string>? ClusterSubnet { get; set; }
@@ -402,7 +414,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? RegistryIntegration { get; set; }
 
         /// <summary>
-        /// The range of assignable IP addresses for services running in the Kubernetes cluster.
+        /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         /// </summary>
         [Input("serviceSubnet")]
         public Input<string>? ServiceSubnet { get; set; }

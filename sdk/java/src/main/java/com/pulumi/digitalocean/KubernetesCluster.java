@@ -64,14 +64,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoUpgrade);
     }
     /**
-     * The range of IP addresses in the overlay network of the Kubernetes cluster.
+     * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     @Export(name="clusterSubnet", refs={String.class}, tree="[0]")
     private Output<String> clusterSubnet;
 
     /**
-     * @return The range of IP addresses in the overlay network of the Kubernetes cluster.
+     * @return The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     public Output<String> clusterSubnet() {
@@ -250,14 +250,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.registryIntegration);
     }
     /**
-     * The range of assignable IP addresses for services running in the Kubernetes cluster.
+     * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     @Export(name="serviceSubnet", refs={String.class}, tree="[0]")
     private Output<String> serviceSubnet;
 
     /**
-     * @return The range of assignable IP addresses for services running in the Kubernetes cluster.
+     * @return The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      * 
      */
     public Output<String> serviceSubnet() {

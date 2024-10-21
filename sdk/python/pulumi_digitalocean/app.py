@@ -317,6 +317,7 @@ class App(pulumi.CustomResource):
         ```
 
         ### Log Destination Example with Opensearch
+
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
@@ -420,6 +421,7 @@ class App(pulumi.CustomResource):
         ```
 
         ### Log Destination Example with Opensearch
+
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean

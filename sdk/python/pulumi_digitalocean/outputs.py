@@ -9697,7 +9697,7 @@ class GetAppSpecFunctionLogDestinationOpenSearchResult(dict):
         :param 'GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        :param str index_name: The index name to use for the logs. If not set, the default index name is `logs`.
         """
         pulumi.set(__self__, "basic_auth", basic_auth)
         if cluster_name is not None:
@@ -9735,7 +9735,7 @@ class GetAppSpecFunctionLogDestinationOpenSearchResult(dict):
     @pulumi.getter(name="indexName")
     def index_name(self) -> Optional[str]:
         """
-        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        The index name to use for the logs. If not set, the default index name is `logs`.
         """
         return pulumi.get(self, "index_name")
 
@@ -10778,7 +10778,7 @@ class GetAppSpecJobLogDestinationOpenSearchResult(dict):
         :param 'GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        :param str index_name: The index name to use for the logs. If not set, the default index name is `logs`.
         """
         pulumi.set(__self__, "basic_auth", basic_auth)
         if cluster_name is not None:
@@ -10816,7 +10816,7 @@ class GetAppSpecJobLogDestinationOpenSearchResult(dict):
     @pulumi.getter(name="indexName")
     def index_name(self) -> Optional[str]:
         """
-        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        The index name to use for the logs. If not set, the default index name is `logs`.
         """
         return pulumi.get(self, "index_name")
 
@@ -11867,7 +11867,7 @@ class GetAppSpecServiceLogDestinationOpenSearchResult(dict):
         :param 'GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        :param str index_name: The index name to use for the logs. If not set, the default index name is `logs`.
         """
         pulumi.set(__self__, "basic_auth", basic_auth)
         if cluster_name is not None:
@@ -11905,7 +11905,7 @@ class GetAppSpecServiceLogDestinationOpenSearchResult(dict):
     @pulumi.getter(name="indexName")
     def index_name(self) -> Optional[str]:
         """
-        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        The index name to use for the logs. If not set, the default index name is `logs`.
         """
         return pulumi.get(self, "index_name")
 
@@ -13138,7 +13138,7 @@ class GetAppSpecWorkerLogDestinationOpenSearchResult(dict):
         :param 'GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs' basic_auth: OpenSearch basic auth
         :param str cluster_name: The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
         :param str endpoint: OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-        :param str index_name: The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        :param str index_name: The index name to use for the logs. If not set, the default index name is `logs`.
         """
         pulumi.set(__self__, "basic_auth", basic_auth)
         if cluster_name is not None:
@@ -13176,7 +13176,7 @@ class GetAppSpecWorkerLogDestinationOpenSearchResult(dict):
     @pulumi.getter(name="indexName")
     def index_name(self) -> Optional[str]:
         """
-        The index name to use for the logs. If not set, the default index name is \\"logs\\".
+        The index name to use for the logs. If not set, the default index name is `logs`.
         """
         return pulumi.get(self, "index_name")
 

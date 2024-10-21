@@ -22449,7 +22449,7 @@ type GetAppSpecFunctionLogDestinationOpenSearch struct {
 	ClusterName *string `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName *string `pulumi:"indexName"`
 }
 
@@ -22471,7 +22471,7 @@ type GetAppSpecFunctionLogDestinationOpenSearchArgs struct {
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
 }
 
@@ -22569,7 +22569,7 @@ func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) Endpoint() pulumi.Stri
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecFunctionLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
 }
@@ -22628,7 +22628,7 @@ func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecFunctionLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecFunctionLogDestinationOpenSearch) *string {
 		if v == nil {
@@ -25617,7 +25617,7 @@ type GetAppSpecJobLogDestinationOpenSearch struct {
 	ClusterName *string `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName *string `pulumi:"indexName"`
 }
 
@@ -25639,7 +25639,7 @@ type GetAppSpecJobLogDestinationOpenSearchArgs struct {
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
 }
 
@@ -25737,7 +25737,7 @@ func (o GetAppSpecJobLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtr
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecJobLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
 }
@@ -25796,7 +25796,7 @@ func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecJobLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecJobLogDestinationOpenSearch) *string {
 		if v == nil {
@@ -29026,7 +29026,7 @@ type GetAppSpecServiceLogDestinationOpenSearch struct {
 	ClusterName *string `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName *string `pulumi:"indexName"`
 }
 
@@ -29048,7 +29048,7 @@ type GetAppSpecServiceLogDestinationOpenSearchArgs struct {
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
 }
 
@@ -29146,7 +29146,7 @@ func (o GetAppSpecServiceLogDestinationOpenSearchOutput) Endpoint() pulumi.Strin
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecServiceLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
 }
@@ -29205,7 +29205,7 @@ func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
 		if v == nil {
@@ -32742,7 +32742,7 @@ type GetAppSpecWorkerLogDestinationOpenSearch struct {
 	ClusterName *string `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint *string `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName *string `pulumi:"indexName"`
 }
 
@@ -32764,7 +32764,7 @@ type GetAppSpecWorkerLogDestinationOpenSearchArgs struct {
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// The index name to use for the logs. If not set, the default index name is \"logs\".
+	// The index name to use for the logs. If not set, the default index name is `logs`.
 	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
 }
 
@@ -32862,7 +32862,7 @@ func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) Endpoint() pulumi.String
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecWorkerLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
 }
@@ -32921,7 +32921,7 @@ func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// The index name to use for the logs. If not set, the default index name is \"logs\".
+// The index name to use for the logs. If not set, the default index name is `logs`.
 func (o GetAppSpecWorkerLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppSpecWorkerLogDestinationOpenSearch) *string {
 		if v == nil {

@@ -169,14 +169,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="digitalocean:index/spacesBucket:SpacesBucket")
 public class SpacesBucket extends com.pulumi.resources.CustomResource {
     /**
-     * Canned ACL applied on bucket creation (`private` or `public-read`)
+     * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      * 
      */
     @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
-     * @return Canned ACL applied on bucket creation (`private` or `public-read`)
+     * @return Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      * 
      */
     public Output<Optional<String>> acl() {

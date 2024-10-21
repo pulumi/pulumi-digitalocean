@@ -128,7 +128,7 @@ namespace Pulumi.DigitalOcean
     public partial class SpacesBucket : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Canned ACL applied on bucket creation (`private` or `public-read`)
+        /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.DigitalOcean
     public sealed class SpacesBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Canned ACL applied on bucket creation (`private` or `public-read`)
+        /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.DigitalOcean
     public sealed class SpacesBucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Canned ACL applied on bucket creation (`private` or `public-read`)
+        /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }

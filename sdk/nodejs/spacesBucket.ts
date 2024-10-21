@@ -112,7 +112,7 @@ export class SpacesBucket extends pulumi.CustomResource {
     }
 
     /**
-     * Canned ACL applied on bucket creation (`private` or `public-read`)
+     * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      */
     public readonly acl!: pulumi.Output<string | undefined>;
     /**
@@ -200,7 +200,7 @@ export class SpacesBucket extends pulumi.CustomResource {
  */
 export interface SpacesBucketState {
     /**
-     * Canned ACL applied on bucket creation (`private` or `public-read`)
+     * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      */
     acl?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface SpacesBucketState {
  */
 export interface SpacesBucketArgs {
     /**
-     * Canned ACL applied on bucket creation (`private` or `public-read`)
+     * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      */
     acl?: pulumi.Input<string>;
     /**

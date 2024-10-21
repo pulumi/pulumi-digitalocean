@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
-        /// The index name to use for the logs. If not set, the default index name is \"logs\".
+        /// The index name to use for the logs. If not set, the default index name is `logs`.
         /// </summary>
         public readonly string? IndexName;
 

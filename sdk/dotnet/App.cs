@@ -89,6 +89,7 @@ namespace Pulumi.DigitalOcean
     /// ```
     /// 
     /// ### Log Destination Example with Opensearch
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
