@@ -13,6 +13,7 @@ plugins:
     kind: converter
 team: ecosystem
 pulumiConvert: 1
+registryDocs: true
 actions:
   preTest:
     - name: make upstream
