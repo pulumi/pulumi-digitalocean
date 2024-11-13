@@ -7651,6 +7651,10 @@
             "type": "string",
             "enum": [
                 {
+                    "name": "DropletS1VCPU512MB10GB",
+                    "value": "s-1vcpu-512mb-10gb"
+                },
+                {
                     "name": "DropletS1VCPU1GB",
                     "value": "s-1vcpu-1gb"
                 },
@@ -7661,6 +7665,10 @@
                 {
                     "name": "DropletS1VCPU1GB-INTEL",
                     "value": "s-1vcpu-1gb-intel"
+                },
+                {
+                    "name": "DropletS1VCPU1GB35GB-INTEL",
+                    "value": "s-1vcpu-1gb-35gb-intel"
                 },
                 {
                     "name": "DropletS1VCPU2GB",
@@ -7675,6 +7683,10 @@
                     "value": "s-1vcpu-2gb-intel"
                 },
                 {
+                    "name": "DropletS1VCPU2GB70GB-INTEL",
+                    "value": "s-1vcpu-2gb-70gb-intel"
+                },
+                {
                     "name": "DropletS2VCPU2GB",
                     "value": "s-2vcpu-2gb"
                 },
@@ -7685,6 +7697,10 @@
                 {
                     "name": "DropletS2VCPU2GB-INTEL",
                     "value": "s-2vcpu-2gb-intel"
+                },
+                {
+                    "name": "DropletS2VCPU2GB90GB-INTEL",
+                    "value": "s-2vcpu-2gb-90gb-intel"
                 },
                 {
                     "name": "DropletS2VCPU4GB",
@@ -7699,6 +7715,26 @@
                     "value": "s-2vcpu-4gb-intel"
                 },
                 {
+                    "name": "DropletS2VCPU4GB120GB-INTEL",
+                    "value": "s-2vcpu-4gb-120gb-intel"
+                },
+                {
+                    "name": "DropletS2VCPU8GB-AMD",
+                    "value": "s-2vcpu-8gb-amd"
+                },
+                {
+                    "name": "DropletC2",
+                    "value": "c-2"
+                },
+                {
+                    "name": "DropletC22VCPU4GB",
+                    "value": "c2-2vcpu-4gb"
+                },
+                {
+                    "name": "DropletS2VCPU8GB160GB-INTEL",
+                    "value": "s-2vcpu-8gb-160gb-intel"
+                },
+                {
                     "name": "DropletS4VCPU8GB",
                     "value": "s-4vcpu-8gb"
                 },
@@ -7711,6 +7747,66 @@
                     "value": "s-4vcpu-8gb-intel"
                 },
                 {
+                    "name": "DropletG2VCPU8GB",
+                    "value": "g-2vcpu-8gb"
+                },
+                {
+                    "name": "DropletS4VCPU8GB240GB-INTEL",
+                    "value": "s-4vcpu-8gb-240gb-intel"
+                },
+                {
+                    "name": "DropletGD2VCPU8GB",
+                    "value": "gd-2vcpu-8gb"
+                },
+                {
+                    "name": "DropletG2VCPU8GB-INTEL",
+                    "value": "g-2vcpu-8gb-intel"
+                },
+                {
+                    "name": "DropletGD2VCPU8GB-INTEL",
+                    "value": "gd-2vcpu-8gb-intel"
+                },
+                {
+                    "name": "DropletS4VCPU16GB-AMD",
+                    "value": "s-4vcpu-16gb-amd"
+                },
+                {
+                    "name": "DropletM2VCPU16GB",
+                    "value": "m-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletC4",
+                    "value": "c-4"
+                },
+                {
+                    "name": "DropletC24VCPU8GB",
+                    "value": "c2-4vcpu-8gb"
+                },
+                {
+                    "name": "DropletS4VCPU16GB320GB-INTEL",
+                    "value": "s-4vcpu-16gb-320gb-intel"
+                },
+                {
+                    "name": "DropletS8VCPU16GB",
+                    "value": "s-8vcpu-16gb"
+                },
+                {
+                    "name": "DropletM2VCPU16GB-INTEL",
+                    "value": "m-2vcpu-16gb-intel"
+                },
+                {
+                    "name": "DropletM32VCPU16GB",
+                    "value": "m3-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletC4-INTEL",
+                    "value": "c-4-intel"
+                },
+                {
+                    "name": "DropletM32VCPU16GB-INTEL",
+                    "value": "m3-2vcpu-16gb-intel"
+                },
+                {
                     "name": "DropletS8VCPU16GB-AMD",
                     "value": "s-8vcpu-16gb-amd"
                 },
@@ -7719,220 +7815,412 @@
                     "value": "s-8vcpu-16gb-intel"
                 },
                 {
-                    "name": "DropletC2",
-                    "value": "c-2"
-                },
-                {
-                    "name": "DropletC22VCPU4GB",
-                    "value": "c2-2vcpu-4gb"
-                },
-                {
-                    "name": "DropletC22VCPU8GB",
-                    "value": "c2-4vcpu-8gb"
-                },
-                {
-                    "name": "DropletC28VCPU16GB",
-                    "value": "c2-8vcpu-16gb"
-                },
-                {
-                    "name": "DropletC216VCPU32GB",
-                    "value": "c2-16vcpu-32gb"
-                },
-                {
-                    "name": "DropletC232VCPU64GB",
-                    "value": "c2-32vcpu-64gb"
-                },
-                {
-                    "name": "DropletC4",
-                    "value": "c-4"
-                },
-                {
-                    "name": "DropletC8",
-                    "value": "c-8"
-                },
-                {
-                    "name": "DropletC16",
-                    "value": "c-16"
-                },
-                {
-                    "name": "DropletC32",
-                    "value": "c-32"
-                },
-                {
-                    "name": "DropletG2VCPU8GB",
-                    "value": "g-2vcpu-8gb"
+                    "name": "DropletC24VCPU8GB-INTEL",
+                    "value": "c2-4vcpu-8gb-intel"
                 },
                 {
                     "name": "DropletG4VCPU16GB",
                     "value": "g-4vcpu-16gb"
                 },
                 {
-                    "name": "DropletG8VCPU32GB",
-                    "value": "g-8vcpu-32gb"
+                    "name": "DropletS8VCPU16GB480GB-INTEL",
+                    "value": "s-8vcpu-16gb-480gb-intel"
                 },
                 {
-                    "name": "DropletG16VCPU64GB",
-                    "value": "g-16vcpu-64gb"
-                },
-                {
-                    "name": "DropletG32VCPU128GB",
-                    "value": "g-32vcpu-128gb"
-                },
-                {
-                    "name": "DropletG40VCPU160GB",
-                    "value": "g-40vcpu-160gb"
-                },
-                {
-                    "name": "DropletGD2VCPU8GB",
-                    "value": "gd-2vcpu-8gb"
-                },
-                {
-                    "name": "DropletGD4VCPU16GB",
-                    "value": "gd-4vcpu-16gb"
-                },
-                {
-                    "name": "DropletGD8VCPU32GB",
-                    "value": "gd-8vcpu-32gb"
-                },
-                {
-                    "name": "DropletGD16VCPU64GB",
-                    "value": "gd-16vcpu-64gb"
-                },
-                {
-                    "name": "DropletGD32VCPU128GB",
-                    "value": "gd-32vcpu-128gb"
-                },
-                {
-                    "name": "DropletGD40VCPU160GB",
-                    "value": "gd-40vcpu-160gb"
-                },
-                {
-                    "name": "DropletS8VCPU16GB",
-                    "value": "s-8vcpu-16gb"
-                },
-                {
-                    "name": "DropletM2VCPU16GB",
-                    "value": "m-2vcpu-16gb"
-                },
-                {
-                    "name": "DropletM4VCPU32GB",
-                    "value": "m-4vcpu-32gb"
-                },
-                {
-                    "name": "DropletM8VCPU64GB",
-                    "value": "m-8vcpu-64gb"
-                },
-                {
-                    "name": "DropletM16VCPU128GB",
-                    "value": "m-16vcpu-128gb"
-                },
-                {
-                    "name": "DropletM24VCPU192GB",
-                    "value": "m-24vcpu-192gb"
-                },
-                {
-                    "name": "DropletM32VCPU256GB",
-                    "value": "m-32vcpu-256gb"
-                },
-                {
-                    "name": "DropletM32VCPU16GB",
-                    "value": "m3-2vcpu-16gb"
-                },
-                {
-                    "name": "DropletM34VCPU32GB",
-                    "value": "m3-4vcpu-32gb"
-                },
-                {
-                    "name": "DropletM38VCPU64GB",
-                    "value": "m3-8vcpu-64gb"
-                },
-                {
-                    "name": "DropletM316VCPU128GB",
-                    "value": "m3-16vcpu-128gb"
-                },
-                {
-                    "name": "DropletM324VCPU192GB",
-                    "value": "m3-24vcpu-192gb"
-                },
-                {
-                    "name": "DropletM332VCPU256GB",
-                    "value": "m3-32vcpu-256gb"
-                },
-                {
-                    "name": "DropletM62VCPU16GB",
-                    "value": "m6-2vcpu-16gb"
-                },
-                {
-                    "name": "DropletM64VCPU32GB",
-                    "value": "m6-4vcpu-32gb"
-                },
-                {
-                    "name": "DropletM68VCPU64GB",
-                    "value": "m6-8vcpu-64gb"
-                },
-                {
-                    "name": "DropletM616VCPU128GB",
-                    "value": "m6-16vcpu-128gb"
-                },
-                {
-                    "name": "DropletM624VCPU192GB",
-                    "value": "m6-24vcpu-192gb"
-                },
-                {
-                    "name": "DropletM632VCPU256GB",
-                    "value": "m6-32vcpu-256gb"
+                    "name": "DropletSO2VCPU16GB-INTEL",
+                    "value": "so-2vcpu-16gb-intel"
                 },
                 {
                     "name": "DropletSO2VCPU16GB",
                     "value": "so-2vcpu-16gb"
                 },
                 {
+                    "name": "DropletM62VCPU16GB",
+                    "value": "m6-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletGD4VCPU16GB",
+                    "value": "gd-4vcpu-16gb"
+                },
+                {
+                    "name": "DropletSO1_52VCPU16GB-INTEL",
+                    "value": "so1_5-2vcpu-16gb-intel"
+                },
+                {
+                    "name": "DropletG4VCPU16GB-INTEL",
+                    "value": "g-4vcpu-16gb-intel"
+                },
+                {
+                    "name": "DropletGD4VCPU16GB-INTEL",
+                    "value": "gd-4vcpu-16gb-intel"
+                },
+                {
+                    "name": "DropletSO1_52VCPU16GB",
+                    "value": "so1_5-2vcpu-16gb"
+                },
+                {
+                    "name": "DropletS8VCPU32GB-AMD",
+                    "value": "s-8vcpu-32gb-amd"
+                },
+                {
+                    "name": "DropletM4VCPU32GB",
+                    "value": "m-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletC8",
+                    "value": "c-8"
+                },
+                {
+                    "name": "DropletC28VCPU16GB",
+                    "value": "c2-8vcpu-16gb"
+                },
+                {
+                    "name": "DropletS8VCPU32GB640GB-INTEL",
+                    "value": "s-8vcpu-32gb-640gb-intel"
+                },
+                {
+                    "name": "DropletM4VCPU32GB-INTEL",
+                    "value": "m-4vcpu-32gb-intel"
+                },
+                {
+                    "name": "DropletM34VCPU32GB",
+                    "value": "m3-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletC8-INTEL",
+                    "value": "c-8-intel"
+                },
+                {
+                    "name": "DropletM34VCPU32GB-INTEL",
+                    "value": "m3-4vcpu-32gb-intel"
+                },
+                {
+                    "name": "DropletC28VCPU16GB-INTEL",
+                    "value": "c2-8vcpu-16gb-intel"
+                },
+                {
+                    "name": "DropletG8VCPU32GB",
+                    "value": "g-8vcpu-32gb"
+                },
+                {
+                    "name": "DropletSO4VCPU32GB-INTEL",
+                    "value": "so-4vcpu-32gb-intel"
+                },
+                {
                     "name": "DropletSO4VCPU32GB",
                     "value": "so-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletM64VCPU32GB",
+                    "value": "m6-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletGD8VCPU32GB",
+                    "value": "gd-8vcpu-32gb"
+                },
+                {
+                    "name": "DropletSO1_54VCPU32GB-INTEL",
+                    "value": "so1_5-4vcpu-32gb-intel"
+                },
+                {
+                    "name": "DropletG8VCPU32GB-INTEL",
+                    "value": "g-8vcpu-32gb-intel"
+                },
+                {
+                    "name": "DropletGD8VCPU32GB-INTEL",
+                    "value": "gd-8vcpu-32gb-intel"
+                },
+                {
+                    "name": "DropletSO1_54VCPU32GB",
+                    "value": "so1_5-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletM8VCPU64GB",
+                    "value": "m-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletC16",
+                    "value": "c-16"
+                },
+                {
+                    "name": "DropletC216VCPU32GB",
+                    "value": "c2-16vcpu-32gb"
+                },
+                {
+                    "name": "DropletM8VCPU64GB-INTEL",
+                    "value": "m-8vcpu-64gb-intel"
+                },
+                {
+                    "name": "DropletM38VCPU64GB",
+                    "value": "m3-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletC16-INTEL",
+                    "value": "c-16-intel"
+                },
+                {
+                    "name": "DropletM38VCPU64GB-INTEL",
+                    "value": "m3-8vcpu-64gb-intel"
+                },
+                {
+                    "name": "DropletC216VCPU32GB-INTEL",
+                    "value": "c2-16vcpu-32gb-intel"
+                },
+                {
+                    "name": "DropletG16VCPU64GB",
+                    "value": "g-16vcpu-64gb"
+                },
+                {
+                    "name": "DropletSO8VCPU64GB-INTEL",
+                    "value": "so-8vcpu-64gb-intel"
                 },
                 {
                     "name": "DropletSO8VCPU64GB",
                     "value": "so-8vcpu-64gb"
                 },
                 {
+                    "name": "DropletM68VCPU64GB",
+                    "value": "m6-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletGD16VCPU64GB",
+                    "value": "gd-16vcpu-64gb"
+                },
+                {
+                    "name": "DropletSO1_58VCPU64GB-INTEL",
+                    "value": "so1_5-8vcpu-64gb-intel"
+                },
+                {
+                    "name": "DropletG16VCPU64GB-INTEL",
+                    "value": "g-16vcpu-64gb-intel"
+                },
+                {
+                    "name": "DropletGD16VCPU64GB-INTEL",
+                    "value": "gd-16vcpu-64gb-intel"
+                },
+                {
+                    "name": "DropletSO1_58VCPU64GB",
+                    "value": "so1_5-8vcpu-64gb"
+                },
+                {
+                    "name": "DropletM16VCPU128GB",
+                    "value": "m-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletC32",
+                    "value": "c-32"
+                },
+                {
+                    "name": "DropletC232VCPU64GB",
+                    "value": "c2-32vcpu-64gb"
+                },
+                {
+                    "name": "DropletM16VCPU128GB-INTEL",
+                    "value": "m-16vcpu-128gb-intel"
+                },
+                {
+                    "name": "DropletM316VCPU128GB",
+                    "value": "m3-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletC32-INTEL",
+                    "value": "c-32-intel"
+                },
+                {
+                    "name": "DropletM316VCPU128GB-INTEL",
+                    "value": "m3-16vcpu-128gb-intel"
+                },
+                {
+                    "name": "DropletC232VCPU64GB-INTEL",
+                    "value": "c2-32vcpu-64gb-intel"
+                },
+                {
+                    "name": "DropletC48",
+                    "value": "c-48"
+                },
+                {
+                    "name": "DropletM24VCPU192GB",
+                    "value": "m-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletG32VCPU128GB",
+                    "value": "g-32vcpu-128gb"
+                },
+                {
+                    "name": "DropletSO16VCPU128GB-INTEL",
+                    "value": "so-16vcpu-128gb-intel"
+                },
+                {
                     "name": "DropletSO16VCPU128GB",
                     "value": "so-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletM616VCPU128GB",
+                    "value": "m6-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletGD32VCPU128GB",
+                    "value": "gd-32vcpu-128gb"
+                },
+                {
+                    "name": "DropletSO1_516VCPU128GB-INTEL",
+                    "value": "so1_5-16vcpu-128gb-intel"
+                },
+                {
+                    "name": "DropletC248VCPU96GB",
+                    "value": "c2-48vcpu-96gb"
+                },
+                {
+                    "name": "DropletM24VCPU192GB-INTEL",
+                    "value": "m-24vcpu-192gb-intel"
+                },
+                {
+                    "name": "DropletG32VCPU128GB-INTEL",
+                    "value": "g-32vcpu-128gb-intel"
+                },
+                {
+                    "name": "DropletM324VCPU192GB",
+                    "value": "m3-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletG40VCPU160GB",
+                    "value": "g-40vcpu-160gb"
+                },
+                {
+                    "name": "DropletGD32VCPU128GB-INTEL",
+                    "value": "gd-32vcpu-128gb-intel"
+                },
+                {
+                    "name": "DropletSO1_516VCPU128GB",
+                    "value": "so1_5-16vcpu-128gb"
+                },
+                {
+                    "name": "DropletC48-INTEL",
+                    "value": "c-48-intel"
+                },
+                {
+                    "name": "DropletM324VCPU192GB-INTEL",
+                    "value": "m3-24vcpu-192gb-intel"
+                },
+                {
+                    "name": "DropletM32VCPU256GB",
+                    "value": "m-32vcpu-256gb"
+                },
+                {
+                    "name": "DropletGD40VCPU160GB",
+                    "value": "gd-40vcpu-160gb"
+                },
+                {
+                    "name": "DropletC248VCPU96GB-INTEL",
+                    "value": "c2-48vcpu-96gb-intel"
+                },
+                {
+                    "name": "DropletSO24VCPU192GB-INTEL",
+                    "value": "so-24vcpu-192gb-intel"
                 },
                 {
                     "name": "DropletSO24VCPU192GB",
                     "value": "so-24vcpu-192gb"
                 },
                 {
+                    "name": "DropletM624VCPU192GB",
+                    "value": "m6-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletM32VCPU256GB-INTEL",
+                    "value": "m-32vcpu-256gb-intel"
+                },
+                {
+                    "name": "DropletC60-INTEL",
+                    "value": "c-60-intel"
+                },
+                {
+                    "name": "DropletM332VCPU256GB",
+                    "value": "m3-32vcpu-256gb"
+                },
+                {
+                    "name": "DropletSO1_524VCPU192GB-INTEL",
+                    "value": "so1_5-24vcpu-192gb-intel"
+                },
+                {
+                    "name": "DropletM332VCPU256GB-INTEL",
+                    "value": "m3-32vcpu-256gb-intel"
+                },
+                {
+                    "name": "DropletG48VCPU192GB-INTEL",
+                    "value": "g-48vcpu-192gb-intel"
+                },
+                {
+                    "name": "DropletC260VCPU120GB-INTEL",
+                    "value": "c2-60vcpu-120gb-intel"
+                },
+                {
+                    "name": "DropletGD48VCPU192GB-INTEL",
+                    "value": "gd-48vcpu-192gb-intel"
+                },
+                {
+                    "name": "DropletSO1_524VCPU192GB",
+                    "value": "so1_5-24vcpu-192gb"
+                },
+                {
+                    "name": "DropletSO32VCPU256GB-INTEL",
+                    "value": "so-32vcpu-256gb-intel"
+                },
+                {
                     "name": "DropletSO32VCPU256GB",
                     "value": "so-32vcpu-256gb"
                 },
                 {
-                    "name": "DropletSO152VCPU16GB",
-                    "value": "so1_5-2vcpu-16gb"
+                    "name": "DropletM632VCPU256GB",
+                    "value": "m6-32vcpu-256gb"
                 },
                 {
-                    "name": "DropletSO154VCPU32GB",
-                    "value": "so1_5-4vcpu-32gb"
+                    "name": "DropletSO1_532VCPU256GB-INTEL",
+                    "value": "so1_5-32vcpu-256gb-intel"
                 },
                 {
-                    "name": "DropletSO158VCPU64GB",
-                    "value": "so1_5-8vcpu-64gb"
+                    "name": "DropletG60VCPU240GB-INTEL",
+                    "value": "g-60vcpu-240gb-intel"
                 },
                 {
-                    "name": "DropletSO1516VCPU128GB",
-                    "value": "so1_5-16vcpu-128gb"
+                    "name": "DropletM48VCPU384GB-INTEL",
+                    "value": "m-48vcpu-384gb-intel"
                 },
                 {
-                    "name": "DropletSO1524VCPU192GB",
-                    "value": "so1_5-24vcpu-192gb"
+                    "name": "DropletGD60VCPU240GB-INTEL",
+                    "value": "gd-60vcpu-240gb-intel"
                 },
                 {
-                    "name": "DropletSO1532VCPU256GB",
+                    "name": "DropletGPUH100X180GB",
+                    "value": "gpu-h100x1-80gb"
+                },
+                {
+                    "name": "DropletSO1_532VCPU256GB",
                     "value": "so1_5-32vcpu-256gb"
                 },
                 {
-                    "name": "Droplet512mb",
-                    "value": "512mb"
+                    "name": "DropletM348VCPU384GB-INTEL",
+                    "value": "m3-48vcpu-384gb-intel"
+                },
+                {
+                    "name": "DropletSO48VCPU384GB-INTEL",
+                    "value": "so-48vcpu-384gb-intel"
+                },
+                {
+                    "name": "DropletGPUH100X180GB200",
+                    "value": "gpu-h100x1-80gb-200"
+                },
+                {
+                    "name": "DropletGPUH100X8640GB",
+                    "value": "gpu-h100x8-640gb"
+                },
+                {
+                    "name": "DropletGPUH100X8640GB200",
+                    "value": "gpu-h100x8-640gb-200"
+                },
+                {
+                    "name": "Droplet16GB",
+                    "value": "16gb"
                 },
                 {
                     "name": "Droplet1GB",
@@ -7943,18 +8231,6 @@
                     "value": "2gb"
                 },
                 {
-                    "name": "Droplet4GB",
-                    "value": "4gb"
-                },
-                {
-                    "name": "Droplet8GB",
-                    "value": "8gb"
-                },
-                {
-                    "name": "Droplet16GB",
-                    "value": "16gb"
-                },
-                {
                     "name": "Droplet32GB",
                     "value": "32gb"
                 },
@@ -7963,12 +8239,48 @@
                     "value": "48gb"
                 },
                 {
+                    "name": "Droplet4GB",
+                    "value": "4gb"
+                },
+                {
+                    "name": "Droplet512mb",
+                    "value": "512mb"
+                },
+                {
                     "name": "Droplet64GB",
                     "value": "64gb"
                 },
                 {
+                    "name": "Droplet8GB",
+                    "value": "8gb"
+                },
+                {
+                    "name": "DropletC22VCPU8GB",
+                    "value": "c2-4vcpu-8gb"
+                },
+                {
+                    "name": "DropletS12VCPU48GB",
+                    "value": "s-12vcpu-48gb"
+                },
+                {
+                    "name": "DropletS16VCPU64GB",
+                    "value": "s-16vcpu-64gb"
+                },
+                {
                     "name": "DropletS1VCPU3GB",
                     "value": "s-1vcpu-3gb"
+                },
+                {
+                    "name": "DropletS20VCPU96GB",
+                    "value": "s-20vcpu-96gb"
+                },
+                {
+                    "name": "DropletS24VCPU128GB",
+                    "value": "s-24vcpu-128gb"
+                },
+                {
+                    "name": "DropletS32VCPU192GB",
+                    "value": "s-32vcpu-192gb"
                 },
                 {
                     "name": "DropletS3VCPU1GB",
@@ -7983,24 +8295,28 @@
                     "value": "s-8vcpu-32gb"
                 },
                 {
-                    "name": "DropletS12VCPU48GB",
-                    "value": "s-12vcpu-48gb"
+                    "name": "DropletSO1516VCPU128GB",
+                    "value": "so1_5-16vcpu-128gb"
                 },
                 {
-                    "name": "DropletS16VCPU64GB",
-                    "value": "s-16vcpu-64gb"
+                    "name": "DropletSO1524VCPU192GB",
+                    "value": "so1_5-24vcpu-192gb"
                 },
                 {
-                    "name": "DropletS20VCPU96GB",
-                    "value": "s-20vcpu-96gb"
+                    "name": "DropletSO152VCPU16GB",
+                    "value": "so1_5-2vcpu-16gb"
                 },
                 {
-                    "name": "DropletS24VCPU128GB",
-                    "value": "s-24vcpu-128gb"
+                    "name": "DropletSO1532VCPU256GB",
+                    "value": "so1_5-32vcpu-256gb"
                 },
                 {
-                    "name": "DropletS32VCPU192GB",
-                    "value": "s-32vcpu-192gb"
+                    "name": "DropletSO154VCPU32GB",
+                    "value": "so1_5-4vcpu-32gb"
+                },
+                {
+                    "name": "DropletSO158VCPU64GB",
+                    "value": "so1_5-8vcpu-64gb"
                 }
             ]
         },
