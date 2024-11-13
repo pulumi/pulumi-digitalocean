@@ -151,7 +151,32 @@ import java.util.StringJoiner;
         DropletSO48VCPU384GBINTEL("so-48vcpu-384gb-intel"),
         DropletGPUH100X180GB200("gpu-h100x1-80gb-200"),
         DropletGPUH100X8640GB("gpu-h100x8-640gb"),
-        DropletGPUH100X8640GB200("gpu-h100x8-640gb-200");
+        DropletGPUH100X8640GB200("gpu-h100x8-640gb-200"),
+        Droplet16GB("16gb"),
+        Droplet1GB("1gb"),
+        Droplet2GB("2gb"),
+        Droplet32GB("32gb"),
+        Droplet48GB("48gb"),
+        Droplet4GB("4gb"),
+        Droplet512mb("512mb"),
+        Droplet64GB("64gb"),
+        Droplet8GB("8gb"),
+        DropletC22VCPU8GB("c2-4vcpu-8gb"),
+        DropletS12VCPU48GB("s-12vcpu-48gb"),
+        DropletS16VCPU64GB("s-16vcpu-64gb"),
+        DropletS1VCPU3GB("s-1vcpu-3gb"),
+        DropletS20VCPU96GB("s-20vcpu-96gb"),
+        DropletS24VCPU128GB("s-24vcpu-128gb"),
+        DropletS32VCPU192GB("s-32vcpu-192gb"),
+        DropletS3VCPU1GB("s-3vcpu-1gb"),
+        DropletS6VCPU16GB("s-6vcpu-16gb"),
+        DropletS8VCPU32GB("s-8vcpu-32gb"),
+        DropletSO1516VCPU128GB("so1_5-16vcpu-128gb"),
+        DropletSO1524VCPU192GB("so1_5-24vcpu-192gb"),
+        DropletSO152VCPU16GB("so1_5-2vcpu-16gb"),
+        DropletSO1532VCPU256GB("so1_5-32vcpu-256gb"),
+        DropletSO154VCPU32GB("so1_5-4vcpu-32gb"),
+        DropletSO158VCPU64GB("so1_5-8vcpu-64gb");
 
         private final String value;
 
