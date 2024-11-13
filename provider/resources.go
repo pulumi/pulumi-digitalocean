@@ -15,6 +15,7 @@
 package digitalocean
 
 import (
+	"bytes"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -26,6 +27,7 @@ import (
 	"github.com/digitalocean/terraform-provider-digitalocean/digitalocean"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
@@ -672,6 +674,16 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo:                   tfbridge.NewProviderMetadata(metadata),
 		Version:                        version.Version,
 		EnableZeroDefaultSchemaVersion: true,
+		DocRules: &info.DocRule{
+			EditRules: func(defaults []info.DocsEdit) []info.DocsEdit {
+				return append(defaults, info.DocsEdit{
+					Path: "database_cluster.md",
+					Edit: func(_ string, content []byte) ([]byte, error) {
+						return bytes.ReplaceAll(content, []byte("PostreSQL"), []byte("PostgreSQL")), nil
+					},
+				})
+			},
+		},
 	}
 
 	defaults := tfbridgetokens.SingleModule("digitalocean_", digitalOceanMod, tfbridgetokens.MakeStandard(digitalOceanPkg))

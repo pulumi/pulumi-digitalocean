@@ -179,7 +179,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly database!: pulumi.Output<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -239,7 +239,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly sqlMode!: pulumi.Output<string | undefined>;
     /**
-     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
     public readonly storageSizeMib!: pulumi.Output<string>;
     /**
@@ -391,7 +391,7 @@ export interface DatabaseClusterState {
      */
     database?: pulumi.Input<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -451,7 +451,7 @@ export interface DatabaseClusterState {
      */
     sqlMode?: pulumi.Input<string>;
     /**
-     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
     storageSizeMib?: pulumi.Input<string>;
     /**
@@ -503,7 +503,7 @@ export interface DatabaseClusterState {
 export interface DatabaseClusterArgs {
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine: pulumi.Input<string>;
     /**
@@ -543,7 +543,7 @@ export interface DatabaseClusterArgs {
      */
     sqlMode?: pulumi.Input<string>;
     /**
-     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
     storageSizeMib?: pulumi.Input<string>;
     /**

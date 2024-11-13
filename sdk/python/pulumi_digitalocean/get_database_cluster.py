@@ -122,7 +122,7 @@ class GetDatabaseClusterResult:
     @pulumi.getter
     def engine(self) -> str:
         """
-        Database engine used by the cluster (ex. `pg` for PostreSQL).
+        Database engine used by the cluster (ex. `pg` for PostgreSQL).
         """
         return pulumi.get(self, "engine")
 

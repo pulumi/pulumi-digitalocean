@@ -20,7 +20,7 @@ public final class GetDatabaseClusterResult {
      */
     private String database;
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostreSQL).
+     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL).
      * 
      */
     private String engine;
@@ -147,7 +147,7 @@ public final class GetDatabaseClusterResult {
         return this.database;
     }
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostreSQL).
+     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL).
      * 
      */
     public String engine() {

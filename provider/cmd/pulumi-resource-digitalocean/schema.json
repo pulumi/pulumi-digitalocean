@@ -9320,7 +9320,7 @@
                 },
                 "engine": {
                     "type": "string",
-                    "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).\n"
+                    "description": "Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).\n"
                 },
                 "evictionPolicy": {
                     "type": "string",
@@ -9385,7 +9385,7 @@
                 },
                 "storageSizeMib": {
                     "type": "string",
-                    "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.\n"
+                    "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9465,7 +9465,7 @@
                 },
                 "engine": {
                     "type": "string",
-                    "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).\n",
+                    "description": "Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).\n",
                     "willReplaceOnChanges": true
                 },
                 "evictionPolicy": {
@@ -9530,7 +9530,7 @@
                 },
                 "storageSizeMib": {
                     "type": "string",
-                    "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.\n"
+                    "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9566,7 +9566,7 @@
                     },
                     "engine": {
                         "type": "string",
-                        "description": "Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).\n",
+                        "description": "Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).\n",
                         "willReplaceOnChanges": true
                     },
                     "evictionPolicy": {
@@ -9653,7 +9653,7 @@
                     },
                     "storageSizeMib": {
                         "type": "string",
-                        "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.\n"
+                        "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -16799,7 +16799,7 @@
                         "type": "string"
                     },
                     "engine": {
-                        "description": "Database engine used by the cluster (ex. `pg` for PostreSQL).\n",
+                        "description": "Database engine used by the cluster (ex. `pg` for PostgreSQL).\n",
                         "type": "string"
                     },
                     "host": {

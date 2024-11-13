@@ -224,7 +224,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> SqlMode { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         /// </summary>
         [Output("storageSizeMib")]
         public Output<string> StorageSizeMib { get; private set; } = null!;
@@ -438,7 +438,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -504,7 +504,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? SqlMode { get; set; }
 
         /// <summary>
-        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         /// </summary>
         [Input("storageSizeMib")]
         public Input<string>? StorageSizeMib { get; set; }
@@ -552,7 +552,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -668,7 +668,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? SqlMode { get; set; }
 
         /// <summary>
-        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+        /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         /// </summary>
         [Input("storageSizeMib")]
         public Input<string>? StorageSizeMib { get; set; }
