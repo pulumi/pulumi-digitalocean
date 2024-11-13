@@ -60,14 +60,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     public Optional<Output<String>> engine() {
@@ -285,14 +285,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      * 
      */
     @Import(name="storageSizeMib")
     private @Nullable Output<String> storageSizeMib;
 
     /**
-     * @return Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+     * @return Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      * 
      */
     public Optional<Output<String>> storageSizeMib() {
@@ -555,7 +555,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -920,7 +920,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
          * 
          * @return builder
          * 
@@ -931,7 +931,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostreSQL clusters based on predefined ranges for each slug/droplet size.
+         * @param storageSizeMib Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
          * 
          * @return builder
          * 

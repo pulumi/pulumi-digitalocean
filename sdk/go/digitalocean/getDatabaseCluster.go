@@ -60,7 +60,7 @@ type LookupDatabaseClusterArgs struct {
 type LookupDatabaseClusterResult struct {
 	// Name of the cluster's default database.
 	Database string `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostreSQL).
+	// Database engine used by the cluster (ex. `pg` for PostgreSQL).
 	Engine string `pulumi:"engine"`
 	// Database cluster's hostname.
 	Host string `pulumi:"host"`
@@ -161,7 +161,7 @@ func (o LookupDatabaseClusterResultOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Database }).(pulumi.StringOutput)
 }
 
-// Database engine used by the cluster (ex. `pg` for PostreSQL).
+// Database engine used by the cluster (ex. `pg` for PostgreSQL).
 func (o LookupDatabaseClusterResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Engine }).(pulumi.StringOutput)
 }

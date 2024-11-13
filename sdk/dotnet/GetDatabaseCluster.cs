@@ -122,7 +122,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Database;
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostreSQL).
+        /// Database engine used by the cluster (ex. `pg` for PostgreSQL).
         /// </summary>
         public readonly string Engine;
         /// <summary>

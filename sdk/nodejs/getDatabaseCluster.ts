@@ -50,7 +50,7 @@ export interface GetDatabaseClusterResult {
      */
     readonly database: string;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostreSQL).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL).
      */
     readonly engine: string;
     /**
