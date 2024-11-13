@@ -518,94 +518,148 @@ func (in *databaseSlugPtr) ToDatabaseSlugPtrOutputWithContext(ctx context.Contex
 type DropletSlug string
 
 const (
-	DropletSlugDropletS1VCPU1GB         = DropletSlug("s-1vcpu-1gb")
-	DropletSlug_DropletS1VCPU1GB_AMD    = DropletSlug("s-1vcpu-1gb-amd")
-	DropletSlug_DropletS1VCPU1GB_INTEL  = DropletSlug("s-1vcpu-1gb-intel")
-	DropletSlugDropletS1VCPU2GB         = DropletSlug("s-1vcpu-2gb")
-	DropletSlug_DropletS1VCPU2GB_AMD    = DropletSlug("s-1vcpu-2gb-amd")
-	DropletSlug_DropletS1VCPU2GB_INTEL  = DropletSlug("s-1vcpu-2gb-intel")
-	DropletSlugDropletS2VCPU2GB         = DropletSlug("s-2vcpu-2gb")
-	DropletSlug_DropletS2VCPU2GB_AMD    = DropletSlug("s-2vcpu-2gb-amd")
-	DropletSlug_DropletS2VCPU2GB_INTEL  = DropletSlug("s-2vcpu-2gb-intel")
-	DropletSlugDropletS2VCPU4GB         = DropletSlug("s-2vcpu-4gb")
-	DropletSlug_DropletS2VCPU4GB_AMD    = DropletSlug("s-2vcpu-4gb-amd")
-	DropletSlug_DropletS2VCPU4GB_INTEL  = DropletSlug("s-2vcpu-4gb-intel")
-	DropletSlugDropletS4VCPU8GB         = DropletSlug("s-4vcpu-8gb")
-	DropletSlug_DropletS4VCPU8GB_AMD    = DropletSlug("s-4vcpu-8gb-amd")
-	DropletSlug_DropletS4VCPU8GB_INTEL  = DropletSlug("s-4vcpu-8gb-intel")
-	DropletSlug_DropletS8VCPU16GB_AMD   = DropletSlug("s-8vcpu-16gb-amd")
-	DropletSlug_DropletS8VCPU16GB_INTEL = DropletSlug("s-8vcpu-16gb-intel")
-	DropletSlugDropletC2                = DropletSlug("c-2")
-	DropletSlugDropletC22VCPU4GB        = DropletSlug("c2-2vcpu-4gb")
-	DropletSlugDropletC22VCPU8GB        = DropletSlug("c2-4vcpu-8gb")
-	DropletSlugDropletC28VCPU16GB       = DropletSlug("c2-8vcpu-16gb")
-	DropletSlugDropletC216VCPU32GB      = DropletSlug("c2-16vcpu-32gb")
-	DropletSlugDropletC232VCPU64GB      = DropletSlug("c2-32vcpu-64gb")
-	DropletSlugDropletC4                = DropletSlug("c-4")
-	DropletSlugDropletC8                = DropletSlug("c-8")
-	DropletSlugDropletC16               = DropletSlug("c-16")
-	DropletSlugDropletC32               = DropletSlug("c-32")
-	DropletSlugDropletG2VCPU8GB         = DropletSlug("g-2vcpu-8gb")
-	DropletSlugDropletG4VCPU16GB        = DropletSlug("g-4vcpu-16gb")
-	DropletSlugDropletG8VCPU32GB        = DropletSlug("g-8vcpu-32gb")
-	DropletSlugDropletG16VCPU64GB       = DropletSlug("g-16vcpu-64gb")
-	DropletSlugDropletG32VCPU128GB      = DropletSlug("g-32vcpu-128gb")
-	DropletSlugDropletG40VCPU160GB      = DropletSlug("g-40vcpu-160gb")
-	DropletSlugDropletGD2VCPU8GB        = DropletSlug("gd-2vcpu-8gb")
-	DropletSlugDropletGD4VCPU16GB       = DropletSlug("gd-4vcpu-16gb")
-	DropletSlugDropletGD8VCPU32GB       = DropletSlug("gd-8vcpu-32gb")
-	DropletSlugDropletGD16VCPU64GB      = DropletSlug("gd-16vcpu-64gb")
-	DropletSlugDropletGD32VCPU128GB     = DropletSlug("gd-32vcpu-128gb")
-	DropletSlugDropletGD40VCPU160GB     = DropletSlug("gd-40vcpu-160gb")
-	DropletSlugDropletS8VCPU16GB        = DropletSlug("s-8vcpu-16gb")
-	DropletSlugDropletM2VCPU16GB        = DropletSlug("m-2vcpu-16gb")
-	DropletSlugDropletM4VCPU32GB        = DropletSlug("m-4vcpu-32gb")
-	DropletSlugDropletM8VCPU64GB        = DropletSlug("m-8vcpu-64gb")
-	DropletSlugDropletM16VCPU128GB      = DropletSlug("m-16vcpu-128gb")
-	DropletSlugDropletM24VCPU192GB      = DropletSlug("m-24vcpu-192gb")
-	DropletSlugDropletM32VCPU256GB      = DropletSlug("m-32vcpu-256gb")
-	DropletSlugDropletM32VCPU16GB       = DropletSlug("m3-2vcpu-16gb")
-	DropletSlugDropletM34VCPU32GB       = DropletSlug("m3-4vcpu-32gb")
-	DropletSlugDropletM38VCPU64GB       = DropletSlug("m3-8vcpu-64gb")
-	DropletSlugDropletM316VCPU128GB     = DropletSlug("m3-16vcpu-128gb")
-	DropletSlugDropletM324VCPU192GB     = DropletSlug("m3-24vcpu-192gb")
-	DropletSlugDropletM332VCPU256GB     = DropletSlug("m3-32vcpu-256gb")
-	DropletSlugDropletM62VCPU16GB       = DropletSlug("m6-2vcpu-16gb")
-	DropletSlugDropletM64VCPU32GB       = DropletSlug("m6-4vcpu-32gb")
-	DropletSlugDropletM68VCPU64GB       = DropletSlug("m6-8vcpu-64gb")
-	DropletSlugDropletM616VCPU128GB     = DropletSlug("m6-16vcpu-128gb")
-	DropletSlugDropletM624VCPU192GB     = DropletSlug("m6-24vcpu-192gb")
-	DropletSlugDropletM632VCPU256GB     = DropletSlug("m6-32vcpu-256gb")
-	DropletSlugDropletSO2VCPU16GB       = DropletSlug("so-2vcpu-16gb")
-	DropletSlugDropletSO4VCPU32GB       = DropletSlug("so-4vcpu-32gb")
-	DropletSlugDropletSO8VCPU64GB       = DropletSlug("so-8vcpu-64gb")
-	DropletSlugDropletSO16VCPU128GB     = DropletSlug("so-16vcpu-128gb")
-	DropletSlugDropletSO24VCPU192GB     = DropletSlug("so-24vcpu-192gb")
-	DropletSlugDropletSO32VCPU256GB     = DropletSlug("so-32vcpu-256gb")
-	DropletSlugDropletSO152VCPU16GB     = DropletSlug("so1_5-2vcpu-16gb")
-	DropletSlugDropletSO154VCPU32GB     = DropletSlug("so1_5-4vcpu-32gb")
-	DropletSlugDropletSO158VCPU64GB     = DropletSlug("so1_5-8vcpu-64gb")
-	DropletSlugDropletSO1516VCPU128GB   = DropletSlug("so1_5-16vcpu-128gb")
-	DropletSlugDropletSO1524VCPU192GB   = DropletSlug("so1_5-24vcpu-192gb")
-	DropletSlugDropletSO1532VCPU256GB   = DropletSlug("so1_5-32vcpu-256gb")
-	DropletSlugDroplet512mb             = DropletSlug("512mb")
-	DropletSlugDroplet1GB               = DropletSlug("1gb")
-	DropletSlugDroplet2GB               = DropletSlug("2gb")
-	DropletSlugDroplet4GB               = DropletSlug("4gb")
-	DropletSlugDroplet8GB               = DropletSlug("8gb")
-	DropletSlugDroplet16GB              = DropletSlug("16gb")
-	DropletSlugDroplet32GB              = DropletSlug("32gb")
-	DropletSlugDroplet48GB              = DropletSlug("48gb")
-	DropletSlugDroplet64GB              = DropletSlug("64gb")
-	DropletSlugDropletS1VCPU3GB         = DropletSlug("s-1vcpu-3gb")
-	DropletSlugDropletS3VCPU1GB         = DropletSlug("s-3vcpu-1gb")
-	DropletSlugDropletS6VCPU16GB        = DropletSlug("s-6vcpu-16gb")
-	DropletSlugDropletS8VCPU32GB        = DropletSlug("s-8vcpu-32gb")
-	DropletSlugDropletS12VCPU48GB       = DropletSlug("s-12vcpu-48gb")
-	DropletSlugDropletS16VCPU64GB       = DropletSlug("s-16vcpu-64gb")
-	DropletSlugDropletS20VCPU96GB       = DropletSlug("s-20vcpu-96gb")
-	DropletSlugDropletS24VCPU128GB      = DropletSlug("s-24vcpu-128gb")
-	DropletSlugDropletS32VCPU192GB      = DropletSlug("s-32vcpu-192gb")
+	DropletSlugDropletS1VCPU512MB10GB        = DropletSlug("s-1vcpu-512mb-10gb")
+	DropletSlugDropletS1VCPU1GB              = DropletSlug("s-1vcpu-1gb")
+	DropletSlugDropletS1VCPU1GBAMD           = DropletSlug("s-1vcpu-1gb-amd")
+	DropletSlugDropletS1VCPU1GBINTEL         = DropletSlug("s-1vcpu-1gb-intel")
+	DropletSlugDropletS1VCPU1GB35GBINTEL     = DropletSlug("s-1vcpu-1gb-35gb-intel")
+	DropletSlugDropletS1VCPU2GB              = DropletSlug("s-1vcpu-2gb")
+	DropletSlugDropletS1VCPU2GBAMD           = DropletSlug("s-1vcpu-2gb-amd")
+	DropletSlugDropletS1VCPU2GBINTEL         = DropletSlug("s-1vcpu-2gb-intel")
+	DropletSlugDropletS1VCPU2GB70GBINTEL     = DropletSlug("s-1vcpu-2gb-70gb-intel")
+	DropletSlugDropletS2VCPU2GB              = DropletSlug("s-2vcpu-2gb")
+	DropletSlugDropletS2VCPU2GBAMD           = DropletSlug("s-2vcpu-2gb-amd")
+	DropletSlugDropletS2VCPU2GBINTEL         = DropletSlug("s-2vcpu-2gb-intel")
+	DropletSlugDropletS2VCPU2GB90GBINTEL     = DropletSlug("s-2vcpu-2gb-90gb-intel")
+	DropletSlugDropletS2VCPU4GB              = DropletSlug("s-2vcpu-4gb")
+	DropletSlugDropletS2VCPU4GBAMD           = DropletSlug("s-2vcpu-4gb-amd")
+	DropletSlugDropletS2VCPU4GBINTEL         = DropletSlug("s-2vcpu-4gb-intel")
+	DropletSlugDropletS2VCPU4GB120GBINTEL    = DropletSlug("s-2vcpu-4gb-120gb-intel")
+	DropletSlugDropletS2VCPU8GBAMD           = DropletSlug("s-2vcpu-8gb-amd")
+	DropletSlugDropletC2                     = DropletSlug("c-2")
+	DropletSlugDropletC22VCPU4GB             = DropletSlug("c2-2vcpu-4gb")
+	DropletSlugDropletS2VCPU8GB160GBINTEL    = DropletSlug("s-2vcpu-8gb-160gb-intel")
+	DropletSlugDropletS4VCPU8GB              = DropletSlug("s-4vcpu-8gb")
+	DropletSlugDropletS4VCPU8GBAMD           = DropletSlug("s-4vcpu-8gb-amd")
+	DropletSlugDropletS4VCPU8GBINTEL         = DropletSlug("s-4vcpu-8gb-intel")
+	DropletSlugDropletG2VCPU8GB              = DropletSlug("g-2vcpu-8gb")
+	DropletSlugDropletS4VCPU8GB240GBINTEL    = DropletSlug("s-4vcpu-8gb-240gb-intel")
+	DropletSlugDropletGD2VCPU8GB             = DropletSlug("gd-2vcpu-8gb")
+	DropletSlugDropletG2VCPU8GBINTEL         = DropletSlug("g-2vcpu-8gb-intel")
+	DropletSlugDropletGD2VCPU8GBINTEL        = DropletSlug("gd-2vcpu-8gb-intel")
+	DropletSlugDropletS4VCPU16GBAMD          = DropletSlug("s-4vcpu-16gb-amd")
+	DropletSlugDropletM2VCPU16GB             = DropletSlug("m-2vcpu-16gb")
+	DropletSlugDropletC4                     = DropletSlug("c-4")
+	DropletSlugDropletC24VCPU8GB             = DropletSlug("c2-4vcpu-8gb")
+	DropletSlugDropletS4VCPU16GB320GBINTEL   = DropletSlug("s-4vcpu-16gb-320gb-intel")
+	DropletSlugDropletS8VCPU16GB             = DropletSlug("s-8vcpu-16gb")
+	DropletSlugDropletM2VCPU16GBINTEL        = DropletSlug("m-2vcpu-16gb-intel")
+	DropletSlugDropletM32VCPU16GB            = DropletSlug("m3-2vcpu-16gb")
+	DropletSlugDropletC4INTEL                = DropletSlug("c-4-intel")
+	DropletSlugDropletM32VCPU16GBINTEL       = DropletSlug("m3-2vcpu-16gb-intel")
+	DropletSlugDropletS8VCPU16GBAMD          = DropletSlug("s-8vcpu-16gb-amd")
+	DropletSlugDropletS8VCPU16GBINTEL        = DropletSlug("s-8vcpu-16gb-intel")
+	DropletSlugDropletC24VCPU8GBINTEL        = DropletSlug("c2-4vcpu-8gb-intel")
+	DropletSlugDropletG4VCPU16GB             = DropletSlug("g-4vcpu-16gb")
+	DropletSlugDropletS8VCPU16GB480GBINTEL   = DropletSlug("s-8vcpu-16gb-480gb-intel")
+	DropletSlugDropletSO2VCPU16GBINTEL       = DropletSlug("so-2vcpu-16gb-intel")
+	DropletSlugDropletSO2VCPU16GB            = DropletSlug("so-2vcpu-16gb")
+	DropletSlugDropletM62VCPU16GB            = DropletSlug("m6-2vcpu-16gb")
+	DropletSlugDropletGD4VCPU16GB            = DropletSlug("gd-4vcpu-16gb")
+	DropletSlug_DropletSO1_52VCPU16GBINTEL   = DropletSlug("so1_5-2vcpu-16gb-intel")
+	DropletSlugDropletG4VCPU16GBINTEL        = DropletSlug("g-4vcpu-16gb-intel")
+	DropletSlugDropletGD4VCPU16GBINTEL       = DropletSlug("gd-4vcpu-16gb-intel")
+	DropletSlug_DropletSO1_52VCPU16GB        = DropletSlug("so1_5-2vcpu-16gb")
+	DropletSlugDropletS8VCPU32GBAMD          = DropletSlug("s-8vcpu-32gb-amd")
+	DropletSlugDropletM4VCPU32GB             = DropletSlug("m-4vcpu-32gb")
+	DropletSlugDropletC8                     = DropletSlug("c-8")
+	DropletSlugDropletC28VCPU16GB            = DropletSlug("c2-8vcpu-16gb")
+	DropletSlugDropletS8VCPU32GB640GBINTEL   = DropletSlug("s-8vcpu-32gb-640gb-intel")
+	DropletSlugDropletM4VCPU32GBINTEL        = DropletSlug("m-4vcpu-32gb-intel")
+	DropletSlugDropletM34VCPU32GB            = DropletSlug("m3-4vcpu-32gb")
+	DropletSlugDropletC8INTEL                = DropletSlug("c-8-intel")
+	DropletSlugDropletM34VCPU32GBINTEL       = DropletSlug("m3-4vcpu-32gb-intel")
+	DropletSlugDropletC28VCPU16GBINTEL       = DropletSlug("c2-8vcpu-16gb-intel")
+	DropletSlugDropletG8VCPU32GB             = DropletSlug("g-8vcpu-32gb")
+	DropletSlugDropletSO4VCPU32GBINTEL       = DropletSlug("so-4vcpu-32gb-intel")
+	DropletSlugDropletSO4VCPU32GB            = DropletSlug("so-4vcpu-32gb")
+	DropletSlugDropletM64VCPU32GB            = DropletSlug("m6-4vcpu-32gb")
+	DropletSlugDropletGD8VCPU32GB            = DropletSlug("gd-8vcpu-32gb")
+	DropletSlug_DropletSO1_54VCPU32GBINTEL   = DropletSlug("so1_5-4vcpu-32gb-intel")
+	DropletSlugDropletG8VCPU32GBINTEL        = DropletSlug("g-8vcpu-32gb-intel")
+	DropletSlugDropletGD8VCPU32GBINTEL       = DropletSlug("gd-8vcpu-32gb-intel")
+	DropletSlug_DropletSO1_54VCPU32GB        = DropletSlug("so1_5-4vcpu-32gb")
+	DropletSlugDropletM8VCPU64GB             = DropletSlug("m-8vcpu-64gb")
+	DropletSlugDropletC16                    = DropletSlug("c-16")
+	DropletSlugDropletC216VCPU32GB           = DropletSlug("c2-16vcpu-32gb")
+	DropletSlugDropletM8VCPU64GBINTEL        = DropletSlug("m-8vcpu-64gb-intel")
+	DropletSlugDropletM38VCPU64GB            = DropletSlug("m3-8vcpu-64gb")
+	DropletSlugDropletC16INTEL               = DropletSlug("c-16-intel")
+	DropletSlugDropletM38VCPU64GBINTEL       = DropletSlug("m3-8vcpu-64gb-intel")
+	DropletSlugDropletC216VCPU32GBINTEL      = DropletSlug("c2-16vcpu-32gb-intel")
+	DropletSlugDropletG16VCPU64GB            = DropletSlug("g-16vcpu-64gb")
+	DropletSlugDropletSO8VCPU64GBINTEL       = DropletSlug("so-8vcpu-64gb-intel")
+	DropletSlugDropletSO8VCPU64GB            = DropletSlug("so-8vcpu-64gb")
+	DropletSlugDropletM68VCPU64GB            = DropletSlug("m6-8vcpu-64gb")
+	DropletSlugDropletGD16VCPU64GB           = DropletSlug("gd-16vcpu-64gb")
+	DropletSlug_DropletSO1_58VCPU64GBINTEL   = DropletSlug("so1_5-8vcpu-64gb-intel")
+	DropletSlugDropletG16VCPU64GBINTEL       = DropletSlug("g-16vcpu-64gb-intel")
+	DropletSlugDropletGD16VCPU64GBINTEL      = DropletSlug("gd-16vcpu-64gb-intel")
+	DropletSlug_DropletSO1_58VCPU64GB        = DropletSlug("so1_5-8vcpu-64gb")
+	DropletSlugDropletM16VCPU128GB           = DropletSlug("m-16vcpu-128gb")
+	DropletSlugDropletC32                    = DropletSlug("c-32")
+	DropletSlugDropletC232VCPU64GB           = DropletSlug("c2-32vcpu-64gb")
+	DropletSlugDropletM16VCPU128GBINTEL      = DropletSlug("m-16vcpu-128gb-intel")
+	DropletSlugDropletM316VCPU128GB          = DropletSlug("m3-16vcpu-128gb")
+	DropletSlugDropletC32INTEL               = DropletSlug("c-32-intel")
+	DropletSlugDropletM316VCPU128GBINTEL     = DropletSlug("m3-16vcpu-128gb-intel")
+	DropletSlugDropletC232VCPU64GBINTEL      = DropletSlug("c2-32vcpu-64gb-intel")
+	DropletSlugDropletC48                    = DropletSlug("c-48")
+	DropletSlugDropletM24VCPU192GB           = DropletSlug("m-24vcpu-192gb")
+	DropletSlugDropletG32VCPU128GB           = DropletSlug("g-32vcpu-128gb")
+	DropletSlugDropletSO16VCPU128GBINTEL     = DropletSlug("so-16vcpu-128gb-intel")
+	DropletSlugDropletSO16VCPU128GB          = DropletSlug("so-16vcpu-128gb")
+	DropletSlugDropletM616VCPU128GB          = DropletSlug("m6-16vcpu-128gb")
+	DropletSlugDropletGD32VCPU128GB          = DropletSlug("gd-32vcpu-128gb")
+	DropletSlug_DropletSO1_516VCPU128GBINTEL = DropletSlug("so1_5-16vcpu-128gb-intel")
+	DropletSlugDropletC248VCPU96GB           = DropletSlug("c2-48vcpu-96gb")
+	DropletSlugDropletM24VCPU192GBINTEL      = DropletSlug("m-24vcpu-192gb-intel")
+	DropletSlugDropletG32VCPU128GBINTEL      = DropletSlug("g-32vcpu-128gb-intel")
+	DropletSlugDropletM324VCPU192GB          = DropletSlug("m3-24vcpu-192gb")
+	DropletSlugDropletG40VCPU160GB           = DropletSlug("g-40vcpu-160gb")
+	DropletSlugDropletGD32VCPU128GBINTEL     = DropletSlug("gd-32vcpu-128gb-intel")
+	DropletSlug_DropletSO1_516VCPU128GB      = DropletSlug("so1_5-16vcpu-128gb")
+	DropletSlugDropletC48INTEL               = DropletSlug("c-48-intel")
+	DropletSlugDropletM324VCPU192GBINTEL     = DropletSlug("m3-24vcpu-192gb-intel")
+	DropletSlugDropletM32VCPU256GB           = DropletSlug("m-32vcpu-256gb")
+	DropletSlugDropletGD40VCPU160GB          = DropletSlug("gd-40vcpu-160gb")
+	DropletSlugDropletC248VCPU96GBINTEL      = DropletSlug("c2-48vcpu-96gb-intel")
+	DropletSlugDropletSO24VCPU192GBINTEL     = DropletSlug("so-24vcpu-192gb-intel")
+	DropletSlugDropletSO24VCPU192GB          = DropletSlug("so-24vcpu-192gb")
+	DropletSlugDropletM624VCPU192GB          = DropletSlug("m6-24vcpu-192gb")
+	DropletSlugDropletM32VCPU256GBINTEL      = DropletSlug("m-32vcpu-256gb-intel")
+	DropletSlugDropletC60INTEL               = DropletSlug("c-60-intel")
+	DropletSlugDropletM332VCPU256GB          = DropletSlug("m3-32vcpu-256gb")
+	DropletSlug_DropletSO1_524VCPU192GBINTEL = DropletSlug("so1_5-24vcpu-192gb-intel")
+	DropletSlugDropletM332VCPU256GBINTEL     = DropletSlug("m3-32vcpu-256gb-intel")
+	DropletSlugDropletG48VCPU192GBINTEL      = DropletSlug("g-48vcpu-192gb-intel")
+	DropletSlugDropletC260VCPU120GBINTEL     = DropletSlug("c2-60vcpu-120gb-intel")
+	DropletSlugDropletGD48VCPU192GBINTEL     = DropletSlug("gd-48vcpu-192gb-intel")
+	DropletSlug_DropletSO1_524VCPU192GB      = DropletSlug("so1_5-24vcpu-192gb")
+	DropletSlugDropletSO32VCPU256GBINTEL     = DropletSlug("so-32vcpu-256gb-intel")
+	DropletSlugDropletSO32VCPU256GB          = DropletSlug("so-32vcpu-256gb")
+	DropletSlugDropletM632VCPU256GB          = DropletSlug("m6-32vcpu-256gb")
+	DropletSlug_DropletSO1_532VCPU256GBINTEL = DropletSlug("so1_5-32vcpu-256gb-intel")
+	DropletSlugDropletG60VCPU240GBINTEL      = DropletSlug("g-60vcpu-240gb-intel")
+	DropletSlugDropletM48VCPU384GBINTEL      = DropletSlug("m-48vcpu-384gb-intel")
+	DropletSlugDropletGD60VCPU240GBINTEL     = DropletSlug("gd-60vcpu-240gb-intel")
+	DropletSlugDropletGPUH100X180GB          = DropletSlug("gpu-h100x1-80gb")
+	DropletSlug_DropletSO1_532VCPU256GB      = DropletSlug("so1_5-32vcpu-256gb")
+	DropletSlugDropletM348VCPU384GBINTEL     = DropletSlug("m3-48vcpu-384gb-intel")
+	DropletSlugDropletSO48VCPU384GBINTEL     = DropletSlug("so-48vcpu-384gb-intel")
+	DropletSlugDropletGPUH100X180GB200       = DropletSlug("gpu-h100x1-80gb-200")
+	DropletSlugDropletGPUH100X8640GB         = DropletSlug("gpu-h100x8-640gb")
+	DropletSlugDropletGPUH100X8640GB200      = DropletSlug("gpu-h100x8-640gb-200")
 )
 
 func (DropletSlug) ElementType() reflect.Type {
@@ -730,94 +784,148 @@ func (o DropletSlugPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // DropletSlugInput is an input type that accepts values of the DropletSlug enum
 // A concrete instance of `DropletSlugInput` can be one of the following:
 //
+//	DropletSlugDropletS1VCPU512MB10GB
 //	DropletSlugDropletS1VCPU1GB
-//	DropletSlug_DropletS1VCPU1GB_AMD
-//	DropletSlug_DropletS1VCPU1GB_INTEL
+//	DropletSlugDropletS1VCPU1GBAMD
+//	DropletSlugDropletS1VCPU1GBINTEL
+//	DropletSlugDropletS1VCPU1GB35GBINTEL
 //	DropletSlugDropletS1VCPU2GB
-//	DropletSlug_DropletS1VCPU2GB_AMD
-//	DropletSlug_DropletS1VCPU2GB_INTEL
+//	DropletSlugDropletS1VCPU2GBAMD
+//	DropletSlugDropletS1VCPU2GBINTEL
+//	DropletSlugDropletS1VCPU2GB70GBINTEL
 //	DropletSlugDropletS2VCPU2GB
-//	DropletSlug_DropletS2VCPU2GB_AMD
-//	DropletSlug_DropletS2VCPU2GB_INTEL
+//	DropletSlugDropletS2VCPU2GBAMD
+//	DropletSlugDropletS2VCPU2GBINTEL
+//	DropletSlugDropletS2VCPU2GB90GBINTEL
 //	DropletSlugDropletS2VCPU4GB
-//	DropletSlug_DropletS2VCPU4GB_AMD
-//	DropletSlug_DropletS2VCPU4GB_INTEL
-//	DropletSlugDropletS4VCPU8GB
-//	DropletSlug_DropletS4VCPU8GB_AMD
-//	DropletSlug_DropletS4VCPU8GB_INTEL
-//	DropletSlug_DropletS8VCPU16GB_AMD
-//	DropletSlug_DropletS8VCPU16GB_INTEL
+//	DropletSlugDropletS2VCPU4GBAMD
+//	DropletSlugDropletS2VCPU4GBINTEL
+//	DropletSlugDropletS2VCPU4GB120GBINTEL
+//	DropletSlugDropletS2VCPU8GBAMD
 //	DropletSlugDropletC2
 //	DropletSlugDropletC22VCPU4GB
-//	DropletSlugDropletC22VCPU8GB
-//	DropletSlugDropletC28VCPU16GB
-//	DropletSlugDropletC216VCPU32GB
-//	DropletSlugDropletC232VCPU64GB
-//	DropletSlugDropletC4
-//	DropletSlugDropletC8
-//	DropletSlugDropletC16
-//	DropletSlugDropletC32
+//	DropletSlugDropletS2VCPU8GB160GBINTEL
+//	DropletSlugDropletS4VCPU8GB
+//	DropletSlugDropletS4VCPU8GBAMD
+//	DropletSlugDropletS4VCPU8GBINTEL
 //	DropletSlugDropletG2VCPU8GB
-//	DropletSlugDropletG4VCPU16GB
-//	DropletSlugDropletG8VCPU32GB
-//	DropletSlugDropletG16VCPU64GB
-//	DropletSlugDropletG32VCPU128GB
-//	DropletSlugDropletG40VCPU160GB
+//	DropletSlugDropletS4VCPU8GB240GBINTEL
 //	DropletSlugDropletGD2VCPU8GB
-//	DropletSlugDropletGD4VCPU16GB
-//	DropletSlugDropletGD8VCPU32GB
-//	DropletSlugDropletGD16VCPU64GB
-//	DropletSlugDropletGD32VCPU128GB
-//	DropletSlugDropletGD40VCPU160GB
-//	DropletSlugDropletS8VCPU16GB
+//	DropletSlugDropletG2VCPU8GBINTEL
+//	DropletSlugDropletGD2VCPU8GBINTEL
+//	DropletSlugDropletS4VCPU16GBAMD
 //	DropletSlugDropletM2VCPU16GB
-//	DropletSlugDropletM4VCPU32GB
-//	DropletSlugDropletM8VCPU64GB
-//	DropletSlugDropletM16VCPU128GB
-//	DropletSlugDropletM24VCPU192GB
-//	DropletSlugDropletM32VCPU256GB
+//	DropletSlugDropletC4
+//	DropletSlugDropletC24VCPU8GB
+//	DropletSlugDropletS4VCPU16GB320GBINTEL
+//	DropletSlugDropletS8VCPU16GB
+//	DropletSlugDropletM2VCPU16GBINTEL
 //	DropletSlugDropletM32VCPU16GB
-//	DropletSlugDropletM34VCPU32GB
-//	DropletSlugDropletM38VCPU64GB
-//	DropletSlugDropletM316VCPU128GB
-//	DropletSlugDropletM324VCPU192GB
-//	DropletSlugDropletM332VCPU256GB
-//	DropletSlugDropletM62VCPU16GB
-//	DropletSlugDropletM64VCPU32GB
-//	DropletSlugDropletM68VCPU64GB
-//	DropletSlugDropletM616VCPU128GB
-//	DropletSlugDropletM624VCPU192GB
-//	DropletSlugDropletM632VCPU256GB
+//	DropletSlugDropletC4INTEL
+//	DropletSlugDropletM32VCPU16GBINTEL
+//	DropletSlugDropletS8VCPU16GBAMD
+//	DropletSlugDropletS8VCPU16GBINTEL
+//	DropletSlugDropletC24VCPU8GBINTEL
+//	DropletSlugDropletG4VCPU16GB
+//	DropletSlugDropletS8VCPU16GB480GBINTEL
+//	DropletSlugDropletSO2VCPU16GBINTEL
 //	DropletSlugDropletSO2VCPU16GB
+//	DropletSlugDropletM62VCPU16GB
+//	DropletSlugDropletGD4VCPU16GB
+//	DropletSlug_DropletSO1_52VCPU16GBINTEL
+//	DropletSlugDropletG4VCPU16GBINTEL
+//	DropletSlugDropletGD4VCPU16GBINTEL
+//	DropletSlug_DropletSO1_52VCPU16GB
+//	DropletSlugDropletS8VCPU32GBAMD
+//	DropletSlugDropletM4VCPU32GB
+//	DropletSlugDropletC8
+//	DropletSlugDropletC28VCPU16GB
+//	DropletSlugDropletS8VCPU32GB640GBINTEL
+//	DropletSlugDropletM4VCPU32GBINTEL
+//	DropletSlugDropletM34VCPU32GB
+//	DropletSlugDropletC8INTEL
+//	DropletSlugDropletM34VCPU32GBINTEL
+//	DropletSlugDropletC28VCPU16GBINTEL
+//	DropletSlugDropletG8VCPU32GB
+//	DropletSlugDropletSO4VCPU32GBINTEL
 //	DropletSlugDropletSO4VCPU32GB
+//	DropletSlugDropletM64VCPU32GB
+//	DropletSlugDropletGD8VCPU32GB
+//	DropletSlug_DropletSO1_54VCPU32GBINTEL
+//	DropletSlugDropletG8VCPU32GBINTEL
+//	DropletSlugDropletGD8VCPU32GBINTEL
+//	DropletSlug_DropletSO1_54VCPU32GB
+//	DropletSlugDropletM8VCPU64GB
+//	DropletSlugDropletC16
+//	DropletSlugDropletC216VCPU32GB
+//	DropletSlugDropletM8VCPU64GBINTEL
+//	DropletSlugDropletM38VCPU64GB
+//	DropletSlugDropletC16INTEL
+//	DropletSlugDropletM38VCPU64GBINTEL
+//	DropletSlugDropletC216VCPU32GBINTEL
+//	DropletSlugDropletG16VCPU64GB
+//	DropletSlugDropletSO8VCPU64GBINTEL
 //	DropletSlugDropletSO8VCPU64GB
+//	DropletSlugDropletM68VCPU64GB
+//	DropletSlugDropletGD16VCPU64GB
+//	DropletSlug_DropletSO1_58VCPU64GBINTEL
+//	DropletSlugDropletG16VCPU64GBINTEL
+//	DropletSlugDropletGD16VCPU64GBINTEL
+//	DropletSlug_DropletSO1_58VCPU64GB
+//	DropletSlugDropletM16VCPU128GB
+//	DropletSlugDropletC32
+//	DropletSlugDropletC232VCPU64GB
+//	DropletSlugDropletM16VCPU128GBINTEL
+//	DropletSlugDropletM316VCPU128GB
+//	DropletSlugDropletC32INTEL
+//	DropletSlugDropletM316VCPU128GBINTEL
+//	DropletSlugDropletC232VCPU64GBINTEL
+//	DropletSlugDropletC48
+//	DropletSlugDropletM24VCPU192GB
+//	DropletSlugDropletG32VCPU128GB
+//	DropletSlugDropletSO16VCPU128GBINTEL
 //	DropletSlugDropletSO16VCPU128GB
+//	DropletSlugDropletM616VCPU128GB
+//	DropletSlugDropletGD32VCPU128GB
+//	DropletSlug_DropletSO1_516VCPU128GBINTEL
+//	DropletSlugDropletC248VCPU96GB
+//	DropletSlugDropletM24VCPU192GBINTEL
+//	DropletSlugDropletG32VCPU128GBINTEL
+//	DropletSlugDropletM324VCPU192GB
+//	DropletSlugDropletG40VCPU160GB
+//	DropletSlugDropletGD32VCPU128GBINTEL
+//	DropletSlug_DropletSO1_516VCPU128GB
+//	DropletSlugDropletC48INTEL
+//	DropletSlugDropletM324VCPU192GBINTEL
+//	DropletSlugDropletM32VCPU256GB
+//	DropletSlugDropletGD40VCPU160GB
+//	DropletSlugDropletC248VCPU96GBINTEL
+//	DropletSlugDropletSO24VCPU192GBINTEL
 //	DropletSlugDropletSO24VCPU192GB
+//	DropletSlugDropletM624VCPU192GB
+//	DropletSlugDropletM32VCPU256GBINTEL
+//	DropletSlugDropletC60INTEL
+//	DropletSlugDropletM332VCPU256GB
+//	DropletSlug_DropletSO1_524VCPU192GBINTEL
+//	DropletSlugDropletM332VCPU256GBINTEL
+//	DropletSlugDropletG48VCPU192GBINTEL
+//	DropletSlugDropletC260VCPU120GBINTEL
+//	DropletSlugDropletGD48VCPU192GBINTEL
+//	DropletSlug_DropletSO1_524VCPU192GB
+//	DropletSlugDropletSO32VCPU256GBINTEL
 //	DropletSlugDropletSO32VCPU256GB
-//	DropletSlugDropletSO152VCPU16GB
-//	DropletSlugDropletSO154VCPU32GB
-//	DropletSlugDropletSO158VCPU64GB
-//	DropletSlugDropletSO1516VCPU128GB
-//	DropletSlugDropletSO1524VCPU192GB
-//	DropletSlugDropletSO1532VCPU256GB
-//	DropletSlugDroplet512mb
-//	DropletSlugDroplet1GB
-//	DropletSlugDroplet2GB
-//	DropletSlugDroplet4GB
-//	DropletSlugDroplet8GB
-//	DropletSlugDroplet16GB
-//	DropletSlugDroplet32GB
-//	DropletSlugDroplet48GB
-//	DropletSlugDroplet64GB
-//	DropletSlugDropletS1VCPU3GB
-//	DropletSlugDropletS3VCPU1GB
-//	DropletSlugDropletS6VCPU16GB
-//	DropletSlugDropletS8VCPU32GB
-//	DropletSlugDropletS12VCPU48GB
-//	DropletSlugDropletS16VCPU64GB
-//	DropletSlugDropletS20VCPU96GB
-//	DropletSlugDropletS24VCPU128GB
-//	DropletSlugDropletS32VCPU192GB
+//	DropletSlugDropletM632VCPU256GB
+//	DropletSlug_DropletSO1_532VCPU256GBINTEL
+//	DropletSlugDropletG60VCPU240GBINTEL
+//	DropletSlugDropletM48VCPU384GBINTEL
+//	DropletSlugDropletGD60VCPU240GBINTEL
+//	DropletSlugDropletGPUH100X180GB
+//	DropletSlug_DropletSO1_532VCPU256GB
+//	DropletSlugDropletM348VCPU384GBINTEL
+//	DropletSlugDropletSO48VCPU384GBINTEL
+//	DropletSlugDropletGPUH100X180GB200
+//	DropletSlugDropletGPUH100X8640GB
+//	DropletSlugDropletGPUH100X8640GB200
 type DropletSlugInput interface {
 	pulumi.Input
 
@@ -1561,8 +1669,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTypePtrInput)(nil)).Elem(), CertificateType("lets_encrypt"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseSlugInput)(nil)).Elem(), DatabaseSlug("db-s-1vcpu-1gb"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseSlugPtrInput)(nil)).Elem(), DatabaseSlug("db-s-1vcpu-1gb"))
-	pulumi.RegisterInputType(reflect.TypeOf((*DropletSlugInput)(nil)).Elem(), DropletSlug("s-1vcpu-1gb"))
-	pulumi.RegisterInputType(reflect.TypeOf((*DropletSlugPtrInput)(nil)).Elem(), DropletSlug("s-1vcpu-1gb"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletSlugInput)(nil)).Elem(), DropletSlug("s-1vcpu-512mb-10gb"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletSlugPtrInput)(nil)).Elem(), DropletSlug("s-1vcpu-512mb-10gb"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemTypeInput)(nil)).Elem(), FileSystemType("ext4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemTypePtrInput)(nil)).Elem(), FileSystemType("ext4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProtocolInput)(nil)).Elem(), Protocol("tcp"))
