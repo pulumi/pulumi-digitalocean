@@ -1838,6 +1838,21 @@ export interface DatabaseUserSettingOpensearchAcl {
     permission: string;
 }
 
+export interface DropletBackupPolicy {
+    /**
+     * The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+     */
+    hour?: number;
+    /**
+     * The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+     */
+    plan?: string;
+    /**
+     * The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+     */
+    weekday?: string;
+}
+
 export interface FirewallInboundRule {
     /**
      * The ports on which traffic will be allowed

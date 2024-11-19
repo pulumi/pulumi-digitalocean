@@ -160,6 +160,12 @@ namespace Pulumi.DigitalOcean
     public sealed class GetDropletArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// A boolean value specifying whether or not to search GPU Droplets
+        /// </summary>
+        [Input("gpu")]
+        public bool? Gpu { get; set; }
+
+        /// <summary>
         /// The ID of the Droplet
         /// </summary>
         [Input("id")]
@@ -173,6 +179,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A tag applied to the Droplet.
+        /// 
+        /// To include GPU Droplets when searching by name, use:
         /// </summary>
         [Input("tag")]
         public string? Tag { get; set; }
@@ -185,6 +193,12 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetDropletInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A boolean value specifying whether or not to search GPU Droplets
+        /// </summary>
+        [Input("gpu")]
+        public Input<bool>? Gpu { get; set; }
+
         /// <summary>
         /// The ID of the Droplet
         /// </summary>
@@ -199,6 +213,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A tag applied to the Droplet.
+        /// 
+        /// To include GPU Droplets when searching by name, use:
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
@@ -222,6 +238,7 @@ namespace Pulumi.DigitalOcean
         /// The size of the Droplets disk in GB.
         /// </summary>
         public readonly int Disk;
+        public readonly bool? Gpu;
         /// <summary>
         /// The ID of the Droplet.
         /// </summary>
@@ -317,6 +334,8 @@ namespace Pulumi.DigitalOcean
 
             int disk,
 
+            bool? gpu,
+
             int id,
 
             string image,
@@ -366,6 +385,7 @@ namespace Pulumi.DigitalOcean
             Backups = backups;
             CreatedAt = createdAt;
             Disk = disk;
+            Gpu = gpu;
             Id = id;
             Image = image;
             Ipv4Address = ipv4Address;

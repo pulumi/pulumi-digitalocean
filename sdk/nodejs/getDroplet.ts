@@ -53,6 +53,7 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDroplet:getDroplet", {
+        "gpu": args.gpu,
         "id": args.id,
         "name": args.name,
         "tag": args.tag,
@@ -64,6 +65,10 @@ export function getDroplet(args?: GetDropletArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetDropletArgs {
     /**
+     * A boolean value specifying whether or not to search GPU Droplets
+     */
+    gpu?: boolean;
+    /**
      * The ID of the Droplet
      */
     id?: number;
@@ -73,6 +78,8 @@ export interface GetDropletArgs {
     name?: string;
     /**
      * A tag applied to the Droplet.
+     *
+     * To include GPU Droplets when searching by name, use:
      */
     tag?: string;
 }
@@ -90,6 +97,7 @@ export interface GetDropletResult {
      * The size of the Droplets disk in GB.
      */
     readonly disk: number;
+    readonly gpu?: boolean;
     /**
      * The ID of the Droplet.
      */
@@ -226,6 +234,7 @@ export function getDropletOutput(args?: GetDropletOutputArgs, opts?: pulumi.Invo
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDroplet:getDroplet", {
+        "gpu": args.gpu,
         "id": args.id,
         "name": args.name,
         "tag": args.tag,
@@ -237,6 +246,10 @@ export function getDropletOutput(args?: GetDropletOutputArgs, opts?: pulumi.Invo
  */
 export interface GetDropletOutputArgs {
     /**
+     * A boolean value specifying whether or not to search GPU Droplets
+     */
+    gpu?: pulumi.Input<boolean>;
+    /**
      * The ID of the Droplet
      */
     id?: pulumi.Input<number>;
@@ -246,6 +259,8 @@ export interface GetDropletOutputArgs {
     name?: pulumi.Input<string>;
     /**
      * A tag applied to the Droplet.
+     *
+     * To include GPU Droplets when searching by name, use:
      */
     tag?: pulumi.Input<string>;
 }

@@ -26,7 +26,7 @@ class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, created_at=None, disk=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, vpc_uuid=None):
+    def __init__(__self__, backups=None, created_at=None, disk=None, gpu=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, vpc_uuid=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         pulumi.set(__self__, "backups", backups)
@@ -36,6 +36,9 @@ class GetDropletResult:
         if disk and not isinstance(disk, int):
             raise TypeError("Expected argument 'disk' to be a int")
         pulumi.set(__self__, "disk", disk)
+        if gpu and not isinstance(gpu, bool):
+            raise TypeError("Expected argument 'gpu' to be a bool")
+        pulumi.set(__self__, "gpu", gpu)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -126,6 +129,11 @@ class GetDropletResult:
         The size of the Droplets disk in GB.
         """
         return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[bool]:
+        return pulumi.get(self, "gpu")
 
     @property
     @pulumi.getter
@@ -315,6 +323,7 @@ class AwaitableGetDropletResult(GetDropletResult):
             backups=self.backups,
             created_at=self.created_at,
             disk=self.disk,
+            gpu=self.gpu,
             id=self.id,
             image=self.image,
             ipv4_address=self.ipv4_address,
@@ -340,7 +349,8 @@ class AwaitableGetDropletResult(GetDropletResult):
             vpc_uuid=self.vpc_uuid)
 
 
-def get_droplet(id: Optional[int] = None,
+def get_droplet(gpu: Optional[bool] = None,
+                id: Optional[int] = None,
                 name: Optional[str] = None,
                 tag: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletResult:
@@ -384,11 +394,15 @@ def get_droplet(id: Optional[int] = None,
     ```
 
 
+    :param bool gpu: A boolean value specifying whether or not to search GPU Droplets
     :param int id: The ID of the Droplet
     :param str name: The name of the Droplet.
     :param str tag: A tag applied to the Droplet.
+           
+           To include GPU Droplets when searching by name, use:
     """
     __args__ = dict()
+    __args__['gpu'] = gpu
     __args__['id'] = id
     __args__['name'] = name
     __args__['tag'] = tag
@@ -399,6 +413,7 @@ def get_droplet(id: Optional[int] = None,
         backups=pulumi.get(__ret__, 'backups'),
         created_at=pulumi.get(__ret__, 'created_at'),
         disk=pulumi.get(__ret__, 'disk'),
+        gpu=pulumi.get(__ret__, 'gpu'),
         id=pulumi.get(__ret__, 'id'),
         image=pulumi.get(__ret__, 'image'),
         ipv4_address=pulumi.get(__ret__, 'ipv4_address'),
@@ -422,7 +437,8 @@ def get_droplet(id: Optional[int] = None,
         vcpus=pulumi.get(__ret__, 'vcpus'),
         volume_ids=pulumi.get(__ret__, 'volume_ids'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
+def get_droplet_output(gpu: Optional[pulumi.Input[Optional[bool]]] = None,
+                       id: Optional[pulumi.Input[Optional[int]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        tag: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletResult]:
@@ -466,11 +482,15 @@ def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     ```
 
 
+    :param bool gpu: A boolean value specifying whether or not to search GPU Droplets
     :param int id: The ID of the Droplet
     :param str name: The name of the Droplet.
     :param str tag: A tag applied to the Droplet.
+           
+           To include GPU Droplets when searching by name, use:
     """
     __args__ = dict()
+    __args__['gpu'] = gpu
     __args__['id'] = id
     __args__['name'] = name
     __args__['tag'] = tag
@@ -480,6 +500,7 @@ def get_droplet_output(id: Optional[pulumi.Input[Optional[int]]] = None,
         backups=pulumi.get(__response__, 'backups'),
         created_at=pulumi.get(__response__, 'created_at'),
         disk=pulumi.get(__response__, 'disk'),
+        gpu=pulumi.get(__response__, 'gpu'),
         id=pulumi.get(__response__, 'id'),
         image=pulumi.get(__response__, 'image'),
         ipv4_address=pulumi.get(__response__, 'ipv4_address'),

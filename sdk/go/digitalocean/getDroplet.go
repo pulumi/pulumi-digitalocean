@@ -111,11 +111,15 @@ func LookupDroplet(ctx *pulumi.Context, args *LookupDropletArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getDroplet.
 type LookupDropletArgs struct {
+	// A boolean value specifying whether or not to search GPU Droplets
+	Gpu *bool `pulumi:"gpu"`
 	// The ID of the Droplet
 	Id *int `pulumi:"id"`
 	// The name of the Droplet.
 	Name *string `pulumi:"name"`
 	// A tag applied to the Droplet.
+	//
+	// To include GPU Droplets when searching by name, use:
 	Tag *string `pulumi:"tag"`
 }
 
@@ -125,7 +129,8 @@ type LookupDropletResult struct {
 	Backups   bool   `pulumi:"backups"`
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplets disk in GB.
-	Disk int `pulumi:"disk"`
+	Disk int   `pulumi:"disk"`
+	Gpu  *bool `pulumi:"gpu"`
 	// The ID of the Droplet.
 	Id int `pulumi:"id"`
 	// The Droplet image ID or slug.
@@ -193,11 +198,15 @@ func LookupDropletOutput(ctx *pulumi.Context, args LookupDropletOutputArgs, opts
 
 // A collection of arguments for invoking getDroplet.
 type LookupDropletOutputArgs struct {
+	// A boolean value specifying whether or not to search GPU Droplets
+	Gpu pulumi.BoolPtrInput `pulumi:"gpu"`
 	// The ID of the Droplet
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The name of the Droplet.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A tag applied to the Droplet.
+	//
+	// To include GPU Droplets when searching by name, use:
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -232,6 +241,10 @@ func (o LookupDropletResultOutput) CreatedAt() pulumi.StringOutput {
 // The size of the Droplets disk in GB.
 func (o LookupDropletResultOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDropletResult) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+func (o LookupDropletResultOutput) Gpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDropletResult) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the Droplet.

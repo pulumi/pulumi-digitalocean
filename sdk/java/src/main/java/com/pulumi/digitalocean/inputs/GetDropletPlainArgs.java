@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GetDropletPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDropletPlainArgs Empty = new GetDropletPlainArgs();
+
+    /**
+     * A boolean value specifying whether or not to search GPU Droplets
+     * 
+     */
+    @Import(name="gpu")
+    private @Nullable Boolean gpu;
+
+    /**
+     * @return A boolean value specifying whether or not to search GPU Droplets
+     * 
+     */
+    public Optional<Boolean> gpu() {
+        return Optional.ofNullable(this.gpu);
+    }
 
     /**
      * The ID of the Droplet
@@ -48,12 +64,16 @@ public final class GetDropletPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A tag applied to the Droplet.
      * 
+     * To include GPU Droplets when searching by name, use:
+     * 
      */
     @Import(name="tag")
     private @Nullable String tag;
 
     /**
      * @return A tag applied to the Droplet.
+     * 
+     * To include GPU Droplets when searching by name, use:
      * 
      */
     public Optional<String> tag() {
@@ -63,6 +83,7 @@ public final class GetDropletPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetDropletPlainArgs() {}
 
     private GetDropletPlainArgs(GetDropletPlainArgs $) {
+        this.gpu = $.gpu;
         this.id = $.id;
         this.name = $.name;
         this.tag = $.tag;
@@ -84,6 +105,17 @@ public final class GetDropletPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetDropletPlainArgs defaults) {
             $ = new GetDropletPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gpu A boolean value specifying whether or not to search GPU Droplets
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpu(@Nullable Boolean gpu) {
+            $.gpu = gpu;
+            return this;
         }
 
         /**
@@ -110,6 +142,8 @@ public final class GetDropletPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tag A tag applied to the Droplet.
+         * 
+         * To include GPU Droplets when searching by name, use:
          * 
          * @return builder
          * 

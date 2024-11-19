@@ -44,6 +44,8 @@ class DatabaseRedisConfigArgs:
         :param pulumi.Input[str] persistence: When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param pulumi.Input[int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[bool] ssl: A boolean indicating whether to require SSL to access Redis.
+               - When enabled, Redis accepts only SSL connections on port `25061`.
+               - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         :param pulumi.Input[int] timeout: The Redis idle connection timeout in seconds.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -195,6 +197,8 @@ class DatabaseRedisConfigArgs:
     def ssl(self) -> Optional[pulumi.Input[bool]]:
         """
         A boolean indicating whether to require SSL to access Redis.
+        - When enabled, Redis accepts only SSL connections on port `25061`.
+        - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         """
         return pulumi.get(self, "ssl")
 
@@ -243,6 +247,8 @@ class _DatabaseRedisConfigState:
         :param pulumi.Input[str] persistence: When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param pulumi.Input[int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[bool] ssl: A boolean indicating whether to require SSL to access Redis.
+               - When enabled, Redis accepts only SSL connections on port `25061`.
+               - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         :param pulumi.Input[int] timeout: The Redis idle connection timeout in seconds.
         """
         if acl_channels_default is not None:
@@ -395,6 +401,8 @@ class _DatabaseRedisConfigState:
     def ssl(self) -> Optional[pulumi.Input[bool]]:
         """
         A boolean indicating whether to require SSL to access Redis.
+        - When enabled, Redis accepts only SSL connections on port `25061`.
+        - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         """
         return pulumi.get(self, "ssl")
 
@@ -480,6 +488,8 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         :param pulumi.Input[str] persistence: When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param pulumi.Input[int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[bool] ssl: A boolean indicating whether to require SSL to access Redis.
+               - When enabled, Redis accepts only SSL connections on port `25061`.
+               - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         :param pulumi.Input[int] timeout: The Redis idle connection timeout in seconds.
         """
         ...
@@ -612,6 +622,8 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         :param pulumi.Input[str] persistence: When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param pulumi.Input[int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[bool] ssl: A boolean indicating whether to require SSL to access Redis.
+               - When enabled, Redis accepts only SSL connections on port `25061`.
+               - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         :param pulumi.Input[int] timeout: The Redis idle connection timeout in seconds.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -717,6 +729,8 @@ class DatabaseRedisConfig(pulumi.CustomResource):
     def ssl(self) -> pulumi.Output[bool]:
         """
         A boolean indicating whether to require SSL to access Redis.
+        - When enabled, Redis accepts only SSL connections on port `25061`.
+        - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         """
         return pulumi.get(self, "ssl")
 

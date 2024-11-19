@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.DropletArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.DropletState;
+import com.pulumi.digitalocean.outputs.DropletBackupPolicy;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -34,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.digitalocean.Droplet;
  * import com.pulumi.digitalocean.DropletArgs;
+ * import com.pulumi.digitalocean.inputs.DropletBackupPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,6 +55,12 @@ import javax.annotation.Nullable;
  *             .name("web-1")
  *             .region("nyc2")
  *             .size("s-1vcpu-1gb")
+ *             .backups(true)
+ *             .backupPolicy(DropletBackupPolicyArgs.builder()
+ *                 .plan("weekly")
+ *                 .weekday("TUE")
+ *                 .hour(8)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -72,6 +80,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/droplet:Droplet")
 public class Droplet extends com.pulumi.resources.CustomResource {
+    /**
+     * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     * 
+     */
+    @Export(name="backupPolicy", refs={DropletBackupPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ DropletBackupPolicy> backupPolicy;
+
+    /**
+     * @return An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     * 
+     */
+    public Output<Optional<DropletBackupPolicy>> backupPolicy() {
+        return Codegen.optional(this.backupPolicy);
+    }
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.

@@ -113,6 +113,7 @@ __all__ = [
     'DatabaseUserSetting',
     'DatabaseUserSettingAcl',
     'DatabaseUserSettingOpensearchAcl',
+    'DropletBackupPolicy',
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
@@ -6665,6 +6666,49 @@ class DatabaseUserSettingOpensearchAcl(dict):
         The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
         """
         return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class DropletBackupPolicy(dict):
+    def __init__(__self__, *,
+                 hour: Optional[int] = None,
+                 plan: Optional[str] = None,
+                 weekday: Optional[str] = None):
+        """
+        :param int hour: The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+        :param str plan: The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        :param str weekday: The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+        """
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
+        if weekday is not None:
+            pulumi.set(__self__, "weekday", weekday)
+
+    @property
+    @pulumi.getter
+    def hour(self) -> Optional[int]:
+        """
+        The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+        """
+        return pulumi.get(self, "hour")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        """
+        The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def weekday(self) -> Optional[str]:
+        """
+        The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+        """
+        return pulumi.get(self, "weekday")
 
 
 @pulumi.output_type

@@ -3728,6 +3728,9 @@ public final class DigitaloceanFunctions {
      * This data source is useful if the Droplets in question are not managed by the provider or you need to
      * utilize any of the Droplets&#39; data.
      * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
+     * 
      * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
      * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
      * 
@@ -3830,6 +3833,9 @@ public final class DigitaloceanFunctions {
      * 
      * This data source is useful if the Droplets in question are not managed by the provider or you need to
      * utilize any of the Droplets&#39; data.
+     * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
      * 
      * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
      * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
@@ -3934,6 +3940,9 @@ public final class DigitaloceanFunctions {
      * This data source is useful if the Droplets in question are not managed by the provider or you need to
      * utilize any of the Droplets&#39; data.
      * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
+     * 
      * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
      * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
      * 
@@ -4036,6 +4045,9 @@ public final class DigitaloceanFunctions {
      * 
      * This data source is useful if the Droplets in question are not managed by the provider or you need to
      * utilize any of the Droplets&#39; data.
+     * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
      * 
      * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
      * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
@@ -4140,6 +4152,9 @@ public final class DigitaloceanFunctions {
      * This data source is useful if the Droplets in question are not managed by the provider or you need to
      * utilize any of the Droplets&#39; data.
      * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
+     * 
      * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
      * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
      * 
@@ -4242,6 +4257,9 @@ public final class DigitaloceanFunctions {
      * 
      * This data source is useful if the Droplets in question are not managed by the provider or you need to
      * utilize any of the Droplets&#39; data.
+     * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
      * 
      * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
      * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.

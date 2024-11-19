@@ -208,6 +208,8 @@ __all__ = [
     'DatabaseUserSettingAclArgsDict',
     'DatabaseUserSettingOpensearchAclArgs',
     'DatabaseUserSettingOpensearchAclArgsDict',
+    'DropletBackupPolicyArgs',
+    'DropletBackupPolicyArgsDict',
     'FirewallInboundRuleArgs',
     'FirewallInboundRuleArgsDict',
     'FirewallOutboundRuleArgs',
@@ -9170,6 +9172,78 @@ class DatabaseUserSettingOpensearchAclArgs:
     @permission.setter
     def permission(self, value: pulumi.Input[str]):
         pulumi.set(self, "permission", value)
+
+
+if not MYPY:
+    class DropletBackupPolicyArgsDict(TypedDict):
+        hour: NotRequired[pulumi.Input[int]]
+        """
+        The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+        """
+        plan: NotRequired[pulumi.Input[str]]
+        """
+        The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        """
+        weekday: NotRequired[pulumi.Input[str]]
+        """
+        The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+        """
+elif False:
+    DropletBackupPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DropletBackupPolicyArgs:
+    def __init__(__self__, *,
+                 hour: Optional[pulumi.Input[int]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 weekday: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] hour: The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+        :param pulumi.Input[str] plan: The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        :param pulumi.Input[str] weekday: The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+        """
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
+        if weekday is not None:
+            pulumi.set(__self__, "weekday", weekday)
+
+    @property
+    @pulumi.getter
+    def hour(self) -> Optional[pulumi.Input[int]]:
+        """
+        The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+        """
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hour", value)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter
+    def weekday(self) -> Optional[pulumi.Input[str]]:
+        """
+        The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+        """
+        return pulumi.get(self, "weekday")
+
+    @weekday.setter
+    def weekday(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "weekday", value)
 
 
 if not MYPY:

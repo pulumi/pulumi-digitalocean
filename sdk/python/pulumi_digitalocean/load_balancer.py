@@ -50,8 +50,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-               **NOTE**: this is a closed beta feature and not available for public use.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -62,7 +61,6 @@ class LoadBalancerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input['LoadBalancerGlbSettingsArgs'] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
@@ -79,9 +77,8 @@ class LoadBalancerArgs:
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -164,8 +161,7 @@ class LoadBalancerArgs:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
         """
-        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-        **NOTE**: this is a closed beta feature and not available for public use.
+        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         """
         return pulumi.get(self, "domains")
 
@@ -253,7 +249,6 @@ class LoadBalancerArgs:
     def glb_settings(self) -> Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']]:
         """
         A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-        **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "glb_settings")
 
@@ -391,7 +386,6 @@ class LoadBalancerArgs:
     def target_load_balancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "target_load_balancer_ids")
 
@@ -404,7 +398,7 @@ class LoadBalancerArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-        **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+        **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 
@@ -459,8 +453,7 @@ class _LoadBalancerState:
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-               **NOTE**: this is a closed beta feature and not available for public use.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -471,7 +464,6 @@ class _LoadBalancerState:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input['LoadBalancerGlbSettingsArgs'] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
@@ -490,9 +482,8 @@ class _LoadBalancerState:
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -581,8 +572,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
         """
-        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-        **NOTE**: this is a closed beta feature and not available for public use.
+        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         """
         return pulumi.get(self, "domains")
 
@@ -670,7 +660,6 @@ class _LoadBalancerState:
     def glb_settings(self) -> Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']]:
         """
         A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-        **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "glb_settings")
 
@@ -841,7 +830,6 @@ class _LoadBalancerState:
     def target_load_balancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "target_load_balancer_ids")
 
@@ -854,7 +842,7 @@ class _LoadBalancerState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-        **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+        **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 
@@ -954,8 +942,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-               **NOTE**: this is a closed beta feature and not available for public use.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -966,7 +953,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
@@ -983,9 +969,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         ...
@@ -1158,8 +1143,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-               **NOTE**: this is a closed beta feature and not available for public use.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]] domains: A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: A list of the IDs of each droplet to be attached to the Load Balancer.
         :param pulumi.Input[str] droplet_tag: The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         :param pulumi.Input[bool] enable_backend_keepalive: A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
@@ -1170,7 +1154,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]] forwarding_rules: A list of `forwarding_rule` to be assigned to the
                Load Balancer. The `forwarding_rule` block is documented below.
         :param pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']] glb_settings: A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
@@ -1189,9 +1172,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-               **NOTE**: this is a closed beta feature and not available for public use.
         :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1248,8 +1230,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def domains(self) -> pulumi.Output[Sequence['outputs.LoadBalancerDomain']]:
         """
-        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-        **NOTE**: this is a closed beta feature and not available for public use.
+        A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         """
         return pulumi.get(self, "domains")
 
@@ -1309,7 +1290,6 @@ class LoadBalancer(pulumi.CustomResource):
     def glb_settings(self) -> pulumi.Output['outputs.LoadBalancerGlbSettings']:
         """
         A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-        **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "glb_settings")
 
@@ -1424,7 +1404,6 @@ class LoadBalancer(pulumi.CustomResource):
     def target_load_balancer_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        **NOTE**: this is a closed beta feature and not available for public use.
         """
         return pulumi.get(self, "target_load_balancer_ids")
 
@@ -1433,7 +1412,7 @@ class LoadBalancer(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-        **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+        **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 

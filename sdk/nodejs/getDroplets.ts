@@ -14,6 +14,9 @@ import * as utilities from "./utilities";
  * This data source is useful if the Droplets in question are not managed by the provider or you need to
  * utilize any of the Droplets' data.
  *
+ * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+ * the `gpus` attribute to `true`.
+ *
  * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
  * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
  *
@@ -64,6 +67,7 @@ export function getDroplets(args?: GetDropletsArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getDroplets:getDroplets", {
         "filters": args.filters,
+        "gpus": args.gpus,
         "sorts": args.sorts,
     }, opts);
 }
@@ -77,6 +81,10 @@ export interface GetDropletsArgs {
      * The `filter` block is documented below.
      */
     filters?: inputs.GetDropletsFilter[];
+    /**
+     * A boolean value specifying whether or not to list GPU Droplets
+     */
+    gpus?: boolean;
     /**
      * Sort the results.
      * The `sort` block is documented below.
@@ -93,6 +101,7 @@ export interface GetDropletsResult {
      */
     readonly droplets: outputs.GetDropletsDroplet[];
     readonly filters?: outputs.GetDropletsFilter[];
+    readonly gpus?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -105,6 +114,9 @@ export interface GetDropletsResult {
  *
  * This data source is useful if the Droplets in question are not managed by the provider or you need to
  * utilize any of the Droplets' data.
+ *
+ * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+ * the `gpus` attribute to `true`.
  *
  * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
  * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
@@ -156,6 +168,7 @@ export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDroplets:getDroplets", {
         "filters": args.filters,
+        "gpus": args.gpus,
         "sorts": args.sorts,
     }, opts);
 }
@@ -169,6 +182,10 @@ export interface GetDropletsOutputArgs {
      * The `filter` block is documented below.
      */
     filters?: pulumi.Input<pulumi.Input<inputs.GetDropletsFilterArgs>[]>;
+    /**
+     * A boolean value specifying whether or not to list GPU Droplets
+     */
+    gpus?: pulumi.Input<boolean>;
     /**
      * Sort the results.
      * The `sort` block is documented below.

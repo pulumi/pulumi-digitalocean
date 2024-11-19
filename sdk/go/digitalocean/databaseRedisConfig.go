@@ -88,6 +88,8 @@ type DatabaseRedisConfig struct {
 	// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
 	PubsubClientOutputBufferLimit pulumi.IntOutput `pulumi:"pubsubClientOutputBufferLimit"`
 	// A boolean indicating whether to require SSL to access Redis.
+	// - When enabled, Redis accepts only SSL connections on port `25061`.
+	// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
 	Ssl pulumi.BoolOutput `pulumi:"ssl"`
 	// The Redis idle connection timeout in seconds.
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
@@ -147,6 +149,8 @@ type databaseRedisConfigState struct {
 	// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
 	PubsubClientOutputBufferLimit *int `pulumi:"pubsubClientOutputBufferLimit"`
 	// A boolean indicating whether to require SSL to access Redis.
+	// - When enabled, Redis accepts only SSL connections on port `25061`.
+	// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
 	Ssl *bool `pulumi:"ssl"`
 	// The Redis idle connection timeout in seconds.
 	Timeout *int `pulumi:"timeout"`
@@ -174,6 +178,8 @@ type DatabaseRedisConfigState struct {
 	// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
 	PubsubClientOutputBufferLimit pulumi.IntPtrInput
 	// A boolean indicating whether to require SSL to access Redis.
+	// - When enabled, Redis accepts only SSL connections on port `25061`.
+	// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
 	Ssl pulumi.BoolPtrInput
 	// The Redis idle connection timeout in seconds.
 	Timeout pulumi.IntPtrInput
@@ -205,6 +211,8 @@ type databaseRedisConfigArgs struct {
 	// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
 	PubsubClientOutputBufferLimit *int `pulumi:"pubsubClientOutputBufferLimit"`
 	// A boolean indicating whether to require SSL to access Redis.
+	// - When enabled, Redis accepts only SSL connections on port `25061`.
+	// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
 	Ssl *bool `pulumi:"ssl"`
 	// The Redis idle connection timeout in seconds.
 	Timeout *int `pulumi:"timeout"`
@@ -233,6 +241,8 @@ type DatabaseRedisConfigArgs struct {
 	// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
 	PubsubClientOutputBufferLimit pulumi.IntPtrInput
 	// A boolean indicating whether to require SSL to access Redis.
+	// - When enabled, Redis accepts only SSL connections on port `25061`.
+	// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
 	Ssl pulumi.BoolPtrInput
 	// The Redis idle connection timeout in seconds.
 	Timeout pulumi.IntPtrInput
@@ -376,6 +386,8 @@ func (o DatabaseRedisConfigOutput) PubsubClientOutputBufferLimit() pulumi.IntOut
 }
 
 // A boolean indicating whether to require SSL to access Redis.
+// - When enabled, Redis accepts only SSL connections on port `25061`.
+// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
 func (o DatabaseRedisConfigOutput) Ssl() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseRedisConfig) pulumi.BoolOutput { return v.Ssl }).(pulumi.BoolOutput)
 }

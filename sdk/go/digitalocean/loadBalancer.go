@@ -89,7 +89,6 @@ type LoadBalancer struct {
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords pulumi.BoolPtrOutput `pulumi:"disableLetsEncryptDnsRecords"`
 	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	Domains LoadBalancerDomainArrayOutput `pulumi:"domains"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayOutput `pulumi:"dropletIds"`
@@ -107,7 +106,6 @@ type LoadBalancer struct {
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayOutput `pulumi:"forwardingRules"`
 	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	GlbSettings LoadBalancerGlbSettingsOutput `pulumi:"glbSettings"`
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -140,10 +138,9 @@ type LoadBalancer struct {
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
 	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -187,7 +184,6 @@ type loadBalancerState struct {
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords *bool `pulumi:"disableLetsEncryptDnsRecords"`
 	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	Domains []LoadBalancerDomain `pulumi:"domains"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds []int `pulumi:"dropletIds"`
@@ -205,7 +201,6 @@ type loadBalancerState struct {
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules []LoadBalancerForwardingRule `pulumi:"forwardingRules"`
 	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	GlbSettings *LoadBalancerGlbSettings `pulumi:"glbSettings"`
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -238,10 +233,9 @@ type loadBalancerState struct {
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
 	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -256,7 +250,6 @@ type LoadBalancerState struct {
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords pulumi.BoolPtrInput
 	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	Domains LoadBalancerDomainArrayInput
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayInput
@@ -274,7 +267,6 @@ type LoadBalancerState struct {
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayInput
 	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	GlbSettings LoadBalancerGlbSettingsPtrInput
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -307,10 +299,9 @@ type LoadBalancerState struct {
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds pulumi.StringArrayInput
 	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -329,7 +320,6 @@ type loadBalancerArgs struct {
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords *bool `pulumi:"disableLetsEncryptDnsRecords"`
 	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	Domains []LoadBalancerDomain `pulumi:"domains"`
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds []int `pulumi:"dropletIds"`
@@ -347,7 +337,6 @@ type loadBalancerArgs struct {
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules []LoadBalancerForwardingRule `pulumi:"forwardingRules"`
 	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	GlbSettings *LoadBalancerGlbSettings `pulumi:"glbSettings"`
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -375,10 +364,9 @@ type loadBalancerArgs struct {
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
 	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -394,7 +382,6 @@ type LoadBalancerArgs struct {
 	// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
 	DisableLetsEncryptDnsRecords pulumi.BoolPtrInput
 	// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	Domains LoadBalancerDomainArrayInput
 	// A list of the IDs of each droplet to be attached to the Load Balancer.
 	DropletIds pulumi.IntArrayInput
@@ -412,7 +399,6 @@ type LoadBalancerArgs struct {
 	// Load Balancer. The `forwardingRule` block is documented below.
 	ForwardingRules LoadBalancerForwardingRuleArrayInput
 	// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	GlbSettings LoadBalancerGlbSettingsPtrInput
 	// A `healthcheck` block to be assigned to the
 	// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -440,10 +426,9 @@ type LoadBalancerArgs struct {
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-	// **NOTE**: this is a closed beta feature and not available for public use.
 	TargetLoadBalancerIds pulumi.StringArrayInput
 	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -550,7 +535,6 @@ func (o LoadBalancerOutput) DisableLetsEncryptDnsRecords() pulumi.BoolPtrOutput 
 }
 
 // A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-// **NOTE**: this is a closed beta feature and not available for public use.
 func (o LoadBalancerOutput) Domains() LoadBalancerDomainArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerDomainArrayOutput { return v.Domains }).(LoadBalancerDomainArrayOutput)
 }
@@ -589,7 +573,6 @@ func (o LoadBalancerOutput) ForwardingRules() LoadBalancerForwardingRuleArrayOut
 }
 
 // A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-// **NOTE**: this is a closed beta feature and not available for public use.
 func (o LoadBalancerOutput) GlbSettings() LoadBalancerGlbSettingsOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerGlbSettingsOutput { return v.GlbSettings }).(LoadBalancerGlbSettingsOutput)
 }
@@ -664,13 +647,12 @@ func (o LoadBalancerOutput) StickySessions() LoadBalancerStickySessionsOutput {
 }
 
 // A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-// **NOTE**: this is a closed beta feature and not available for public use.
 func (o LoadBalancerOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.TargetLoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
 // The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 func (o LoadBalancerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
