@@ -5,10 +5,10 @@ Subject: [PATCH] fork
 
 
 diff --git a/docs/data-sources/certificate.md b/docs/data-sources/certificate.md
-index 09a83ab8..7b8a362a 100644
+index 11c78547..34958a2d 100644
 --- a/docs/data-sources/certificate.md
 +++ b/docs/data-sources/certificate.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_certificate"
+@@ -7,7 +7,7 @@ subcategory: "Networking"
  
  Get information on a certificate. This data source provides the name, type, state,
  domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
@@ -18,10 +18,10 @@ index 09a83ab8..7b8a362a 100644
  
  An error is triggered if the provided certificate name does not exist.
 diff --git a/docs/data-sources/container_registry.md b/docs/data-sources/container_registry.md
-index de824efc..06955243 100644
+index 25114e3d..68a0ece1 100644
 --- a/docs/data-sources/container_registry.md
 +++ b/docs/data-sources/container_registry.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_container_registry"
+@@ -7,7 +7,7 @@ subcategory: "Container Registry"
  
  Get information on a container registry. This data source provides the name as
  configured on your DigitalOcean account. This is useful if the container
@@ -31,10 +31,10 @@ index de824efc..06955243 100644
  
  An error is triggered if the provided container registry name does not exist.
 diff --git a/docs/data-sources/domain.md b/docs/data-sources/domain.md
-index 4bd32c8e..994528e6 100644
+index 4961b50e..620a984a 100644
 --- a/docs/data-sources/domain.md
 +++ b/docs/data-sources/domain.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_domain"
+@@ -7,7 +7,7 @@ subcategory: "Networking"
  
  Get information on a domain. This data source provides the name, TTL, and zone
  file as configured on your DigitalOcean account. This is useful if the domain
@@ -43,7 +43,7 @@ index 4bd32c8e..994528e6 100644
  file data.
  
  An error is triggered if the provided domain name is not managed with your
-@@ -27,7 +27,6 @@ output "domain_output" {
+@@ -28,7 +28,6 @@ output "domain_output" {
  ```
  
  ```
@@ -52,10 +52,10 @@ index 4bd32c8e..994528e6 100644
  data.digitalocean_domain.example: Refreshing state...
  
 diff --git a/docs/data-sources/domains.md b/docs/data-sources/domains.md
-index 149ec20a..3b2fe80d 100644
+index 2708701f..0deae099 100644
 --- a/docs/data-sources/domains.md
 +++ b/docs/data-sources/domains.md
-@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_domains"
+@@ -8,7 +8,7 @@ subcategory: "Networking"
  Get information on domains for use in other resources, with the ability to filter and sort the results.
  If no filters are specified, all domains will be returned.
  
@@ -65,10 +65,10 @@ index 149ec20a..3b2fe80d 100644
  
  Note: You can use the [`digitalocean_domain`](domain) data source to obtain metadata
 diff --git a/docs/data-sources/droplet.md b/docs/data-sources/droplet.md
-index ebc0600c..fd772bbc 100644
+index 5db78465..2f62f896 100644
 --- a/docs/data-sources/droplet.md
 +++ b/docs/data-sources/droplet.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_droplet"
+@@ -7,7 +7,7 @@ subcategory: "Droplets"
  
  Get information on a Droplet for use in other resources. This data source provides
  all of the Droplet's properties as configured on your DigitalOcean account. This
@@ -78,10 +78,10 @@ index ebc0600c..fd772bbc 100644
  
  **Note:** This data source returns a single Droplet. When specifying a `tag`, an
 diff --git a/docs/data-sources/droplet_snapshot.md b/docs/data-sources/droplet_snapshot.md
-index 8e3a0f25..df24d72c 100644
+index 426d0f7d..c32178c1 100644
 --- a/docs/data-sources/droplet_snapshot.md
 +++ b/docs/data-sources/droplet_snapshot.md
-@@ -49,7 +49,7 @@ resource "digitalocean_droplet" "from-snapshot" {
+@@ -50,7 +50,7 @@ resource "digitalocean_droplet" "from-snapshot" {
  * `most_recent` - (Optional) If more than one result is returned, use the most recent Droplet snapshot.
  
  ~> **NOTE:** If more or less than a single match is returned by the search,
@@ -91,10 +91,10 @@ index 8e3a0f25..df24d72c 100644
  
  ## Attributes Reference
 diff --git a/docs/data-sources/droplets.md b/docs/data-sources/droplets.md
-index 65a44175..dbd6244f 100644
+index 2d233ae5..855d7154 100644
 --- a/docs/data-sources/droplets.md
 +++ b/docs/data-sources/droplets.md
-@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_droplets"
+@@ -8,7 +8,7 @@ subcategory: "Droplets"
  Get information on Droplets for use in other resources, with the ability to filter and sort the results.
  If no filters are specified, all Droplets will be returned.
  
@@ -102,12 +102,12 @@ index 65a44175..dbd6244f 100644
 +This data source is useful if the Droplets in question are not managed by the provider or you need to
  utilize any of the Droplets' data.
  
- Note: You can use the [`digitalocean_droplet`](droplet) data source to obtain metadata
+ By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
 diff --git a/docs/data-sources/floating_ip.md b/docs/data-sources/floating_ip.md
-index 30ed6369..63b5e2de 100644
+index 5521e209..7d3a556f 100644
 --- a/docs/data-sources/floating_ip.md
 +++ b/docs/data-sources/floating_ip.md
-@@ -8,7 +8,7 @@ page_title: "DigitalOcean: digitalocean_floating_ip"
+@@ -9,7 +9,7 @@ subcategory: "Networking"
  
  Get information on a floating ip. This data source provides the region and Droplet id
  as configured on your DigitalOcean account. This is useful if the floating IP
@@ -117,10 +117,10 @@ index 30ed6369..63b5e2de 100644
  
  An error is triggered if the provided floating IP does not exist.
 diff --git a/docs/data-sources/image.md b/docs/data-sources/image.md
-index 57a7f433..0c3fbd71 100644
+index 2491778d..809237fc 100644
 --- a/docs/data-sources/image.md
 +++ b/docs/data-sources/image.md
-@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_image"
+@@ -8,7 +8,7 @@ subcategory: "Droplets"
  Get information on an image for use in other resources (e.g. creating a Droplet
  based on snapshot). This data source provides all of the image properties as
  configured on your DigitalOcean account. This is useful if the image in question
@@ -130,10 +130,10 @@ index 57a7f433..0c3fbd71 100644
  An error is triggered if zero or more than one result is returned by the query.
  
 diff --git a/docs/data-sources/images.md b/docs/data-sources/images.md
-index 63bd5abd..4d5481c1 100644
+index effe5e13..b62c8539 100644
 --- a/docs/data-sources/images.md
 +++ b/docs/data-sources/images.md
-@@ -8,7 +8,7 @@ Get information on images for use in other resources (e.g. creating a Droplet
+@@ -9,7 +9,7 @@ Get information on images for use in other resources (e.g. creating a Droplet
  based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
  all images will be returned.
  
@@ -143,10 +143,10 @@ index 63bd5abd..4d5481c1 100644
  
  Note: You can use the [`digitalocean_image`](image) data source to obtain metadata
 diff --git a/docs/data-sources/kubernetes_cluster.md b/docs/data-sources/kubernetes_cluster.md
-index a12a89b7..a1483aab 100644
+index 050a02ce..44887e56 100644
 --- a/docs/data-sources/kubernetes_cluster.md
 +++ b/docs/data-sources/kubernetes_cluster.md
-@@ -4,7 +4,7 @@ page_title: "DigitalOcean: digitalocean_kubernetes_cluster"
+@@ -5,7 +5,7 @@ subcategory: "Kubernetes"
  
  # digitalocean\_kubernetes\_cluster
  
@@ -156,10 +156,10 @@ index a12a89b7..a1483aab 100644
  ## Example Usage
  
 diff --git a/docs/data-sources/kubernetes_versions.md b/docs/data-sources/kubernetes_versions.md
-index 63e6b65a..d789b561 100644
+index 4e95c192..926bc2b8 100644
 --- a/docs/data-sources/kubernetes_versions.md
 +++ b/docs/data-sources/kubernetes_versions.md
-@@ -60,7 +60,7 @@ resource "digitalocean_kubernetes_cluster" "example-cluster" {
+@@ -61,7 +61,7 @@ resource "digitalocean_kubernetes_cluster" "example-cluster" {
  
  The following arguments are supported:
  
@@ -169,10 +169,10 @@ index 63e6b65a..d789b561 100644
  ## Attributes Reference
  
 diff --git a/docs/data-sources/loadbalancer.md b/docs/data-sources/loadbalancer.md
-index 7f30f099..c11b083e 100644
+index fd52fc55..d7af94ca 100644
 --- a/docs/data-sources/loadbalancer.md
 +++ b/docs/data-sources/loadbalancer.md
-@@ -7,7 +7,7 @@ page_title: "DigitalOcean: digitalocean_loadbalancer"
+@@ -8,7 +8,7 @@ subcategory: "Networking"
  Get information on a load balancer for use in other resources. This data source
  provides all of the load balancers properties as configured on your DigitalOcean
  account. This is useful if the load balancer in question is not managed by
@@ -181,7 +181,7 @@ index 7f30f099..c11b083e 100644
  
  An error is triggered if the provided load balancer name does not exist.
  
-@@ -43,5 +43,5 @@ The following arguments are supported:
+@@ -44,5 +44,5 @@ The following arguments are supported:
  
  ## Attributes Reference
  
@@ -189,10 +189,10 @@ index 7f30f099..c11b083e 100644
 +See the Load Balancer Resource for details on the
  returned attributes - they are identical.
 diff --git a/docs/data-sources/record.md b/docs/data-sources/record.md
-index fd0a9b4f..219b4a8a 100644
+index 792e70d2..9faac72c 100644
 --- a/docs/data-sources/record.md
 +++ b/docs/data-sources/record.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_record"
+@@ -7,7 +7,7 @@ subcategory: "Networking"
  
  Get information on a DNS record. This data source provides the name, TTL, and zone
  file as configured on your DigitalOcean account. This is useful if the record
@@ -201,7 +201,7 @@ index fd0a9b4f..219b4a8a 100644
  
  An error is triggered if the provided domain name or record are not managed with
  your DigitalOcean account.
-@@ -31,7 +31,6 @@ output "record_ttl" {
+@@ -32,7 +32,6 @@ output "record_ttl" {
  ```
  
  ```
@@ -210,10 +210,10 @@ index fd0a9b4f..219b4a8a 100644
  data.digitalocean_record.example: Refreshing state...
  
 diff --git a/docs/data-sources/spaces_bucket.md b/docs/data-sources/spaces_bucket.md
-index ec36618c..19e877b2 100644
+index dcb275ee..1effc7d6 100644
 --- a/docs/data-sources/spaces_bucket.md
 +++ b/docs/data-sources/spaces_bucket.md
-@@ -5,7 +5,7 @@ page_title: "DigitalOcean: digitalocean_spaces_bucket"
+@@ -6,7 +6,7 @@ subcategory: "Spaces Object Storage"
  # digitalocean_spaces_bucket
  
  Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
@@ -223,10 +223,10 @@ index ec36618c..19e877b2 100644
  ## Example Usage
  
 diff --git a/docs/data-sources/spaces_bucket_object.md b/docs/data-sources/spaces_bucket_object.md
-index bfca3026..faec731e 100644
+index bddff85e..200db76e 100644
 --- a/docs/data-sources/spaces_bucket_object.md
 +++ b/docs/data-sources/spaces_bucket_object.md
-@@ -60,6 +60,6 @@ In addition to all arguments above, the following attributes are exported:
+@@ -61,6 +61,6 @@ In addition to all arguments above, the following attributes are exported:
  * `version_id` - The latest version ID of the object returned.
  * `website_redirect_location` - If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
  
@@ -235,10 +235,10 @@ index bfca3026..faec731e 100644
  object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same Spaces object
  as do `first//second///third//` and `first/second/third/`.
 diff --git a/docs/data-sources/spaces_bucket_objects.md b/docs/data-sources/spaces_bucket_objects.md
-index 096890f8..0a858967 100644
+index f30d8620..6a19fc31 100644
 --- a/docs/data-sources/spaces_bucket_objects.md
 +++ b/docs/data-sources/spaces_bucket_objects.md
-@@ -4,13 +4,13 @@ page_title: "DigitalOcean: digitalocean_spaces_bucket_objects"
+@@ -5,13 +5,13 @@ subcategory: "Spaces Object Storage"
  
  # digitalocean_spaces_bucket_objects
  
@@ -255,10 +255,10 @@ index 096890f8..0a858967 100644
  
  ```hcl
 diff --git a/docs/data-sources/ssh_key.md b/docs/data-sources/ssh_key.md
-index 8e5b80ee..54e8b3a7 100644
+index b5288630..ca8ebc7a 100644
 --- a/docs/data-sources/ssh_key.md
 +++ b/docs/data-sources/ssh_key.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_ssh_key"
+@@ -7,7 +7,7 @@ subcategory: "Account"
  
  Get information on a ssh key. This data source provides the name, public key,
  and fingerprint as configured on your DigitalOcean account. This is useful if
@@ -268,10 +268,10 @@ index 8e5b80ee..54e8b3a7 100644
  
  An error is triggered if the provided ssh key name does not exist.
 diff --git a/docs/data-sources/ssh_keys.md b/docs/data-sources/ssh_keys.md
-index 4e914ab1..35ded471 100644
+index 9f632583..d18d443e 100644
 --- a/docs/data-sources/ssh_keys.md
 +++ b/docs/data-sources/ssh_keys.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_ssh_keys"
+@@ -7,7 +7,7 @@ subcategory: "Account"
  
  Get information on SSH Keys for use in other resources.
  
@@ -281,10 +281,10 @@ index 4e914ab1..35ded471 100644
  
  Note: You can use the [`digitalocean_ssh_key`](droplet) data source to obtain metadata
 diff --git a/docs/data-sources/tag.md b/docs/data-sources/tag.md
-index c674e607..e38efca0 100644
+index 6952c9e3..0a460777 100644
 --- a/docs/data-sources/tag.md
 +++ b/docs/data-sources/tag.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_tag"
+@@ -7,7 +7,7 @@ subcategory: "Account"
  
  Get information on a tag. This data source provides the name as configured on
  your DigitalOcean account. This is useful if the tag name in question is not
@@ -294,10 +294,10 @@ index c674e607..e38efca0 100644
  An error is triggered if the provided tag name does not exist.
  
 diff --git a/docs/data-sources/volume.md b/docs/data-sources/volume.md
-index 1a8bb9a2..574371a7 100644
+index 7b5d60c3..cda8aaa8 100644
 --- a/docs/data-sources/volume.md
 +++ b/docs/data-sources/volume.md
-@@ -6,7 +6,7 @@ page_title: "DigitalOcean: digitalocean_volume"
+@@ -7,7 +7,7 @@ subcategory: "Volumes Block Storage"
  
  Get information on a volume for use in other resources. This data source provides
  all of the volumes properties as configured on your DigitalOcean account. This is
@@ -307,10 +307,10 @@ index 1a8bb9a2..574371a7 100644
  
  An error is triggered if the provided volume name does not exist.
 diff --git a/docs/data-sources/volume_snapshot.md b/docs/data-sources/volume_snapshot.md
-index 58e22260..1a6c31d0 100644
+index 286f093c..408a2681 100644
 --- a/docs/data-sources/volume_snapshot.md
 +++ b/docs/data-sources/volume_snapshot.md
-@@ -48,7 +48,7 @@ resource "digitalocean_volume" "foobar" {
+@@ -49,7 +49,7 @@ resource "digitalocean_volume" "foobar" {
  * `most_recent` - (Optional) If more than one result is returned, use the most recent volume snapshot.
  
  ~> **NOTE:** If more or less than a single match is returned by the search,
@@ -320,10 +320,10 @@ index 58e22260..1a6c31d0 100644
  
  ## Attributes Reference
 diff --git a/docs/data-sources/vpc.md b/docs/data-sources/vpc.md
-index d7f08e2e..99f0987b 100644
+index 18825cb5..64404934 100644
 --- a/docs/data-sources/vpc.md
 +++ b/docs/data-sources/vpc.md
-@@ -8,7 +8,7 @@ Retrieve information about a VPC for use in other resources.
+@@ -9,7 +9,7 @@ Retrieve information about a VPC for use in other resources.
  
  This data source provides all of the VPC's properties as configured on your
  DigitalOcean account. This is useful if the VPC in question is not managed by
@@ -333,10 +333,10 @@ index d7f08e2e..99f0987b 100644
  VPCs may be looked up by `id` or `name`. Specifying a `region` will
  return that that region's default VPC.
 diff --git a/docs/resources/certificate.md b/docs/resources/certificate.md
-index 12433598..6fb6f37b 100644
+index fb71cd6b..67df04e9 100644
 --- a/docs/resources/certificate.md
 +++ b/docs/resources/certificate.md
-@@ -17,11 +17,11 @@ Let's Encrypt.
+@@ -18,11 +18,11 @@ Let's Encrypt.
  
  ```hcl
  resource "digitalocean_certificate" "cert" {
@@ -352,7 +352,7 @@ index 12433598..6fb6f37b 100644
  }
  ```
  
-@@ -29,7 +29,7 @@ resource "digitalocean_certificate" "cert" {
+@@ -30,7 +30,7 @@ resource "digitalocean_certificate" "cert" {
  
  ```hcl
  resource "digitalocean_certificate" "cert" {
@@ -361,7 +361,7 @@ index 12433598..6fb6f37b 100644
    type    = "lets_encrypt"
    domains = ["example.com"]
  }
-@@ -42,7 +42,7 @@ including the `digitalocean_loadbalancer` and `digitalocean_cdn` resources.
+@@ -43,7 +43,7 @@ including the `digitalocean_loadbalancer` and `digitalocean_cdn` resources.
  
  ```hcl
  resource "digitalocean_certificate" "cert" {
@@ -371,10 +371,10 @@ index 12433598..6fb6f37b 100644
    domains = ["example.com"]
  }
 diff --git a/docs/resources/droplet.md b/docs/resources/droplet.md
-index 9086394f..cc6f8fcc 100644
+index 9d561198..08b7f3fa 100644
 --- a/docs/resources/droplet.md
 +++ b/docs/resources/droplet.md
-@@ -5,8 +5,7 @@ page_title: "DigitalOcean: digitalocean_droplet"
+@@ -6,8 +6,7 @@ subcategory: "Droplets"
  # digitalocean\_droplet
  
  Provides a DigitalOcean Droplet resource. This can be used to create,
@@ -384,7 +384,7 @@ index 9086394f..cc6f8fcc 100644
  
  ## Example Usage
  
-@@ -52,7 +51,7 @@ The following arguments are supported:
+@@ -63,7 +62,7 @@ The following arguments are supported:
     size is a permanent change**. Increasing only RAM and CPU is reversible.
  * `tags` - (Optional) A list of the tags to be applied to this Droplet.
  * `user_data` (Optional) - A string of the desired User Data for the Droplet.
@@ -393,7 +393,7 @@ index 9086394f..cc6f8fcc 100644
  * `droplet_agent` (Optional) - A boolean indicating whether to install the
     DigitalOcean agent used for providing access to the Droplet web console in
     the control panel. By default, the agent is installed on new Droplets but
-@@ -62,7 +61,7 @@ The following arguments are supported:
+@@ -73,7 +72,7 @@ The following arguments are supported:
  * `graceful_shutdown` (Optional) - A boolean indicating whether the droplet
     should be gracefully shut down before it is deleted.
  
@@ -403,10 +403,10 @@ index 9086394f..cc6f8fcc 100644
  ## Attributes Reference
  
 diff --git a/docs/resources/project.md b/docs/resources/project.md
-index 4038b143..798ff742 100644
+index 2cb9a7dc..1d948e3c 100644
 --- a/docs/resources/project.md
 +++ b/docs/resources/project.md
-@@ -22,7 +22,7 @@ The following resource types can be associated with a project:
+@@ -23,7 +23,7 @@ The following resource types can be associated with a project:
  * Spaces Buckets
  * Volumes
  
@@ -416,10 +416,10 @@ index 4038b143..798ff742 100644
  ## Example Usage
  
 diff --git a/docs/resources/project_resources.md b/docs/resources/project_resources.md
-index 40f87ec2..1056beb9 100644
+index 445db717..c244db31 100644
 --- a/docs/resources/project_resources.md
 +++ b/docs/resources/project_resources.md
-@@ -5,7 +5,7 @@ page_title: "DigitalOcean: digitalocean_project_resources"
+@@ -6,7 +6,7 @@ subcategory: "Account"
  # digitalocean\_project\_resources
  
  Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
@@ -428,7 +428,7 @@ index 40f87ec2..1056beb9 100644
  
  The following resource types can be associated with a project:
  
-@@ -21,7 +21,7 @@ The following resource types can be associated with a project:
+@@ -22,7 +22,7 @@ The following resource types can be associated with a project:
  
  ## Example Usage
  
@@ -438,10 +438,10 @@ index 40f87ec2..1056beb9 100644
  ```hcl
  data "digitalocean_project" "playground" {
 diff --git a/docs/resources/spaces_bucket_object.md b/docs/resources/spaces_bucket_object.md
-index 761bf105..0f383828 100644
+index 59efb2e3..7cede2c8 100644
 --- a/docs/resources/spaces_bucket_object.md
 +++ b/docs/resources/spaces_bucket_object.md
-@@ -5,7 +5,7 @@ page_title: "DigitalOcean: digitalocean_spaces_bucket_object"
+@@ -6,7 +6,7 @@ subcategory: "Spaces Object Storage"
  # digitalocean\_spaces\_bucket_object
  
  Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
@@ -450,7 +450,7 @@ index 761bf105..0f383828 100644
  to Spaces.
  
  The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
-@@ -73,14 +73,14 @@ The following arguments are supported:
+@@ -74,14 +74,14 @@ The following arguments are supported:
  * `content_language` - (Optional) The language the content is in e.g. en-US or en-GB.
  * `content_type` - (Optional) A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
  * `website_redirect` - (Optional) Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
@@ -468,10 +468,10 @@ index 761bf105..0f383828 100644
  ## Attributes Reference
  
 diff --git a/docs/resources/ssh_key.md b/docs/resources/ssh_key.md
-index 78fb4b2a..c923a0b9 100644
+index 36990f92..e81f193f 100644
 --- a/docs/resources/ssh_key.md
 +++ b/docs/resources/ssh_key.md
-@@ -14,8 +14,8 @@ fingerprint.
+@@ -15,8 +15,8 @@ fingerprint.
  ```hcl
  # Create a new SSH key
  resource "digitalocean_ssh_key" "default" {
