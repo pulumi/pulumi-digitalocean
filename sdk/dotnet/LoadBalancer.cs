@@ -90,8 +90,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> DisableLetsEncryptDnsRecords { get; private set; } = null!;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         /// </summary>
         [Output("domains")]
         public Output<ImmutableArray<Outputs.LoadBalancerDomain>> Domains { get; private set; } = null!;
@@ -137,7 +136,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-        /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         [Output("glbSettings")]
         public Output<Outputs.LoadBalancerGlbSettings> GlbSettings { get; private set; } = null!;
@@ -224,14 +222,13 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         [Output("targetLoadBalancerIds")]
         public Output<ImmutableArray<string>> TargetLoadBalancerIds { get; private set; } = null!;
 
         /// <summary>
         /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-        /// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+        /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -305,8 +302,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerDomainArgs>? _domains;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         /// </summary>
         public InputList<Inputs.LoadBalancerDomainArgs> Domains
         {
@@ -367,7 +363,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-        /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         [Input("glbSettings")]
         public Input<Inputs.LoadBalancerGlbSettingsArgs>? GlbSettings { get; set; }
@@ -442,7 +437,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         public InputList<string> TargetLoadBalancerIds
         {
@@ -452,7 +446,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-        /// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+        /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -488,8 +482,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerDomainGetArgs>? _domains;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-        /// **NOTE**: this is a closed beta feature and not available for public use.
+        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         /// </summary>
         public InputList<Inputs.LoadBalancerDomainGetArgs> Domains
         {
@@ -550,7 +543,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-        /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         [Input("glbSettings")]
         public Input<Inputs.LoadBalancerGlbSettingsGetArgs>? GlbSettings { get; set; }
@@ -640,7 +632,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        /// **NOTE**: this is a closed beta feature and not available for public use.
         /// </summary>
         public InputList<string> TargetLoadBalancerIds
         {
@@ -650,7 +641,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-        /// **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+        /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

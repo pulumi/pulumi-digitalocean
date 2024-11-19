@@ -169,6 +169,8 @@ public final class DatabaseRedisConfigState extends com.pulumi.resources.Resourc
 
     /**
      * A boolean indicating whether to require SSL to access Redis.
+     * - When enabled, Redis accepts only SSL connections on port `25061`.
+     * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      * 
      */
     @Import(name="ssl")
@@ -176,6 +178,8 @@ public final class DatabaseRedisConfigState extends com.pulumi.resources.Resourc
 
     /**
      * @return A boolean indicating whether to require SSL to access Redis.
+     * - When enabled, Redis accepts only SSL connections on port `25061`.
+     * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      * 
      */
     public Optional<Output<Boolean>> ssl() {
@@ -444,6 +448,8 @@ public final class DatabaseRedisConfigState extends com.pulumi.resources.Resourc
 
         /**
          * @param ssl A boolean indicating whether to require SSL to access Redis.
+         * - When enabled, Redis accepts only SSL connections on port `25061`.
+         * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
          * 
          * @return builder
          * 
@@ -455,6 +461,8 @@ public final class DatabaseRedisConfigState extends com.pulumi.resources.Resourc
 
         /**
          * @param ssl A boolean indicating whether to require SSL to access Redis.
+         * - When enabled, Redis accepts only SSL connections on port `25061`.
+         * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
          * 
          * @return builder
          * 

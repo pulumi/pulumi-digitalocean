@@ -13,7 +13,9 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['DropletArgs', 'Droplet']
 
@@ -22,6 +24,7 @@ class DropletArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str],
                  size: pulumi.Input[Union[str, 'DropletSlug']],
+                 backup_policy: Optional[pulumi.Input['DropletBackupPolicyArgs']] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
@@ -41,6 +44,7 @@ class DropletArgs:
         The set of arguments for constructing a Droplet resource.
         :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
         :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input['DropletBackupPolicyArgs'] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
@@ -82,6 +86,8 @@ class DropletArgs:
         """
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "size", size)
+        if backup_policy is not None:
+            pulumi.set(__self__, "backup_policy", backup_policy)
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
         if droplet_agent is not None:
@@ -139,6 +145,18 @@ class DropletArgs:
     @size.setter
     def size(self, value: pulumi.Input[Union[str, 'DropletSlug']]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="backupPolicy")
+    def backup_policy(self) -> Optional[pulumi.Input['DropletBackupPolicyArgs']]:
+        """
+        An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        """
+        return pulumi.get(self, "backup_policy")
+
+    @backup_policy.setter
+    def backup_policy(self, value: Optional[pulumi.Input['DropletBackupPolicyArgs']]):
+        pulumi.set(self, "backup_policy", value)
 
     @property
     @pulumi.getter
@@ -348,6 +366,7 @@ class DropletArgs:
 @pulumi.input_type
 class _DropletState:
     def __init__(__self__, *,
+                 backup_policy: Optional[pulumi.Input['DropletBackupPolicyArgs']] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
@@ -378,6 +397,7 @@ class _DropletState:
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Droplet resources.
+        :param pulumi.Input['DropletBackupPolicyArgs'] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[int] disk: The size of the instance's disk in GB
@@ -428,6 +448,8 @@ class _DropletState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
+        if backup_policy is not None:
+            pulumi.set(__self__, "backup_policy", backup_policy)
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
         if created_at is not None:
@@ -487,6 +509,18 @@ class _DropletState:
             pulumi.set(__self__, "volume_ids", volume_ids)
         if vpc_uuid is not None:
             pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @property
+    @pulumi.getter(name="backupPolicy")
+    def backup_policy(self) -> Optional[pulumi.Input['DropletBackupPolicyArgs']]:
+        """
+        An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        """
+        return pulumi.get(self, "backup_policy")
+
+    @backup_policy.setter
+    def backup_policy(self, value: Optional[pulumi.Input['DropletBackupPolicyArgs']]):
+        pulumi.set(self, "backup_policy", value)
 
     @property
     @pulumi.getter
@@ -848,6 +882,7 @@ class Droplet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_policy: Optional[pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
@@ -881,7 +916,13 @@ class Droplet(pulumi.CustomResource):
             image="ubuntu-20-04-x64",
             name="web-1",
             region=digitalocean.Region.NYC2,
-            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
+            backups=True,
+            backup_policy={
+                "plan": "weekly",
+                "weekday": "TUE",
+                "hour": 8,
+            })
         ```
 
         ## Import
@@ -894,6 +935,7 @@ class Droplet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[bool] droplet_agent: A boolean indicating whether to install the
@@ -956,7 +998,13 @@ class Droplet(pulumi.CustomResource):
             image="ubuntu-20-04-x64",
             name="web-1",
             region=digitalocean.Region.NYC2,
-            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
+            backups=True,
+            backup_policy={
+                "plan": "weekly",
+                "weekday": "TUE",
+                "hour": 8,
+            })
         ```
 
         ## Import
@@ -982,6 +1030,7 @@ class Droplet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_policy: Optional[pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
                  backups: Optional[pulumi.Input[bool]] = None,
                  droplet_agent: Optional[pulumi.Input[bool]] = None,
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
@@ -1008,6 +1057,7 @@ class Droplet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DropletArgs.__new__(DropletArgs)
 
+            __props__.__dict__["backup_policy"] = backup_policy
             __props__.__dict__["backups"] = backups
             __props__.__dict__["droplet_agent"] = droplet_agent
             __props__.__dict__["graceful_shutdown"] = graceful_shutdown
@@ -1050,6 +1100,7 @@ class Droplet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            backup_policy: Optional[pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
             backups: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[int]] = None,
@@ -1085,6 +1136,7 @@ class Droplet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[int] disk: The size of the instance's disk in GB
@@ -1139,6 +1191,7 @@ class Droplet(pulumi.CustomResource):
 
         __props__ = _DropletState.__new__(_DropletState)
 
+        __props__.__dict__["backup_policy"] = backup_policy
         __props__.__dict__["backups"] = backups
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["disk"] = disk
@@ -1168,6 +1221,14 @@ class Droplet(pulumi.CustomResource):
         __props__.__dict__["volume_ids"] = volume_ids
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return Droplet(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupPolicy")
+    def backup_policy(self) -> pulumi.Output[Optional['outputs.DropletBackupPolicy']]:
+        """
+        An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        """
+        return pulumi.get(self, "backup_policy")
 
     @property
     @pulumi.getter

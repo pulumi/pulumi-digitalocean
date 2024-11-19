@@ -110,6 +110,8 @@ export class DatabaseRedisConfig extends pulumi.CustomResource {
     public readonly pubsubClientOutputBufferLimit!: pulumi.Output<number>;
     /**
      * A boolean indicating whether to require SSL to access Redis.
+     * - When enabled, Redis accepts only SSL connections on port `25061`.
+     * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      */
     public readonly ssl!: pulumi.Output<boolean>;
     /**
@@ -211,6 +213,8 @@ export interface DatabaseRedisConfigState {
     pubsubClientOutputBufferLimit?: pulumi.Input<number>;
     /**
      * A boolean indicating whether to require SSL to access Redis.
+     * - When enabled, Redis accepts only SSL connections on port `25061`.
+     * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      */
     ssl?: pulumi.Input<boolean>;
     /**
@@ -265,6 +269,8 @@ export interface DatabaseRedisConfigArgs {
     pubsubClientOutputBufferLimit?: pulumi.Input<number>;
     /**
      * A boolean indicating whether to require SSL to access Redis.
+     * - When enabled, Redis accepts only SSL connections on port `25061`.
+     * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      */
     ssl?: pulumi.Input<boolean>;
     /**

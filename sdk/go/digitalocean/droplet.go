@@ -31,10 +31,16 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Web Droplet in the nyc2 region
 //			_, err := digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
-//				Image:  pulumi.String("ubuntu-20-04-x64"),
-//				Name:   pulumi.String("web-1"),
-//				Region: pulumi.String(digitalocean.RegionNYC2),
-//				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
+//				Image:   pulumi.String("ubuntu-20-04-x64"),
+//				Name:    pulumi.String("web-1"),
+//				Region:  pulumi.String(digitalocean.RegionNYC2),
+//				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
+//				Backups: pulumi.Bool(true),
+//				BackupPolicy: &digitalocean.DropletBackupPolicyArgs{
+//					Plan:    pulumi.String("weekly"),
+//					Weekday: pulumi.String("TUE"),
+//					Hour:    pulumi.Int(8),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -55,6 +61,8 @@ import (
 type Droplet struct {
 	pulumi.CustomResourceState
 
+	// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+	BackupPolicy DropletBackupPolicyPtrOutput `pulumi:"backupPolicy"`
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups   pulumi.BoolPtrOutput `pulumi:"backups"`
@@ -172,6 +180,8 @@ func GetDroplet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Droplet resources.
 type dropletState struct {
+	// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+	BackupPolicy *DropletBackupPolicy `pulumi:"backupPolicy"`
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups   *bool   `pulumi:"backups"`
@@ -254,6 +264,8 @@ type dropletState struct {
 }
 
 type DropletState struct {
+	// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+	BackupPolicy DropletBackupPolicyPtrInput
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups   pulumi.BoolPtrInput
@@ -340,6 +352,8 @@ func (DropletState) ElementType() reflect.Type {
 }
 
 type dropletArgs struct {
+	// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+	BackupPolicy *DropletBackupPolicy `pulumi:"backupPolicy"`
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups *bool `pulumi:"backups"`
@@ -403,6 +417,8 @@ type dropletArgs struct {
 
 // The set of arguments for constructing a Droplet resource.
 type DropletArgs struct {
+	// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+	BackupPolicy DropletBackupPolicyPtrInput
 	// Boolean controlling if backups are made. Defaults to
 	// false.
 	Backups pulumi.BoolPtrInput
@@ -549,6 +565,11 @@ func (o DropletOutput) ToDropletOutput() DropletOutput {
 
 func (o DropletOutput) ToDropletOutputWithContext(ctx context.Context) DropletOutput {
 	return o
+}
+
+// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+func (o DropletOutput) BackupPolicy() DropletBackupPolicyPtrOutput {
+	return o.ApplyT(func(v *Droplet) DropletBackupPolicyPtrOutput { return v.BackupPolicy }).(DropletBackupPolicyPtrOutput)
 }
 
 // Boolean controlling if backups are made. Defaults to

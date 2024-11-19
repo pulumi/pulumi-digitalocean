@@ -571,6 +571,9 @@
                 "current": "digitalocean:index/droplet:Droplet",
                 "majorVersion": 4,
                 "fields": {
+                    "backup_policy": {
+                        "maxItemsOne": true
+                    },
                     "ssh_keys": {
                         "maxItemsOne": false
                     },

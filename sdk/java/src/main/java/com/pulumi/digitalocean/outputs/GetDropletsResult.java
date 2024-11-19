@@ -8,9 +8,11 @@ import com.pulumi.digitalocean.outputs.GetDropletsDroplet;
 import com.pulumi.digitalocean.outputs.GetDropletsFilter;
 import com.pulumi.digitalocean.outputs.GetDropletsSort;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -21,6 +23,7 @@ public final class GetDropletsResult {
      */
     private List<GetDropletsDroplet> droplets;
     private @Nullable List<GetDropletsFilter> filters;
+    private @Nullable Boolean gpus;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -38,6 +41,9 @@ public final class GetDropletsResult {
     }
     public List<GetDropletsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
+    }
+    public Optional<Boolean> gpus() {
+        return Optional.ofNullable(this.gpus);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -61,6 +67,7 @@ public final class GetDropletsResult {
     public static final class Builder {
         private List<GetDropletsDroplet> droplets;
         private @Nullable List<GetDropletsFilter> filters;
+        private @Nullable Boolean gpus;
         private String id;
         private @Nullable List<GetDropletsSort> sorts;
         public Builder() {}
@@ -68,6 +75,7 @@ public final class GetDropletsResult {
     	      Objects.requireNonNull(defaults);
     	      this.droplets = defaults.droplets;
     	      this.filters = defaults.filters;
+    	      this.gpus = defaults.gpus;
     	      this.id = defaults.id;
     	      this.sorts = defaults.sorts;
         }
@@ -93,6 +101,12 @@ public final class GetDropletsResult {
             return filters(List.of(filters));
         }
         @CustomType.Setter
+        public Builder gpus(@Nullable Boolean gpus) {
+
+            this.gpus = gpus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetDropletsResult", "id");
@@ -113,6 +127,7 @@ public final class GetDropletsResult {
             final var _resultValue = new GetDropletsResult();
             _resultValue.droplets = droplets;
             _resultValue.filters = filters;
+            _resultValue.gpus = gpus;
             _resultValue.id = id;
             _resultValue.sorts = sorts;
             return _resultValue;

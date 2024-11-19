@@ -2673,6 +2673,23 @@
                 "permission"
             ]
         },
+        "digitalocean:index/DropletBackupPolicy:DropletBackupPolicy": {
+            "properties": {
+                "hour": {
+                    "type": "integer",
+                    "description": "The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.\n"
+                },
+                "weekday": {
+                    "type": "string",
+                    "description": "The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/FirewallInboundRule:FirewallInboundRule": {
             "properties": {
                 "portRange": {
@@ -12112,7 +12129,7 @@
                 },
                 "ssl": {
                     "type": "boolean",
-                    "description": "A boolean indicating whether to require SSL to access Redis.\n"
+                    "description": "A boolean indicating whether to require SSL to access Redis.\n- When enabled, Redis accepts only SSL connections on port `25061`.\n- When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.\n"
                 },
                 "timeout": {
                     "type": "integer",
@@ -12177,7 +12194,7 @@
                 },
                 "ssl": {
                     "type": "boolean",
-                    "description": "A boolean indicating whether to require SSL to access Redis.\n"
+                    "description": "A boolean indicating whether to require SSL to access Redis.\n- When enabled, Redis accepts only SSL connections on port `25061`.\n- When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.\n"
                 },
                 "timeout": {
                     "type": "integer",
@@ -12233,7 +12250,7 @@
                     },
                     "ssl": {
                         "type": "boolean",
-                        "description": "A boolean indicating whether to require SSL to access Redis.\n"
+                        "description": "A boolean indicating whether to require SSL to access Redis.\n- When enabled, Redis accepts only SSL connections on port `25061`.\n- When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.\n"
                     },
                     "timeout": {
                         "type": "integer",
@@ -12854,8 +12871,12 @@
             }
         },
         "digitalocean:index/droplet:Droplet": {
-            "description": "Provides a DigitalOcean Droplet resource. This can be used to create,\nmodify, and delete Droplets.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Web Droplet in the nyc2 region\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-20-04-x64\",\n    name: \"web-1\",\n    region: digitalocean.Region.NYC2,\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Web Droplet in the nyc2 region\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-20-04-x64\",\n    name=\"web-1\",\n    region=digitalocean.Region.NYC2,\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Web Droplet in the nyc2 region\n    var web = new DigitalOcean.Droplet(\"web\", new()\n    {\n        Image = \"ubuntu-20-04-x64\",\n        Name = \"web-1\",\n        Region = DigitalOcean.Region.NYC2,\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Web Droplet in the nyc2 region\n\t\t_, err := digitalocean.NewDroplet(ctx, \"web\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  pulumi.String(\"ubuntu-20-04-x64\"),\n\t\t\tName:   pulumi.String(\"web-1\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC2),\n\t\t\tSize:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Web Droplet in the nyc2 region\n        var web = new Droplet(\"web\", DropletArgs.builder()\n            .image(\"ubuntu-20-04-x64\")\n            .name(\"web-1\")\n            .region(\"nyc2\")\n            .size(\"s-1vcpu-1gb\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Web Droplet in the nyc2 region\n  web:\n    type: digitalocean:Droplet\n    properties:\n      image: ubuntu-20-04-x64\n      name: web-1\n      region: nyc2\n      size: s-1vcpu-1gb\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDroplets can be imported using the Droplet `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823\n```\n\n",
+            "description": "Provides a DigitalOcean Droplet resource. This can be used to create,\nmodify, and delete Droplets.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new Web Droplet in the nyc2 region\nconst web = new digitalocean.Droplet(\"web\", {\n    image: \"ubuntu-20-04-x64\",\n    name: \"web-1\",\n    region: digitalocean.Region.NYC2,\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    backups: true,\n    backupPolicy: {\n        plan: \"weekly\",\n        weekday: \"TUE\",\n        hour: 8,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new Web Droplet in the nyc2 region\nweb = digitalocean.Droplet(\"web\",\n    image=\"ubuntu-20-04-x64\",\n    name=\"web-1\",\n    region=digitalocean.Region.NYC2,\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    backups=True,\n    backup_policy={\n        \"plan\": \"weekly\",\n        \"weekday\": \"TUE\",\n        \"hour\": 8,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Web Droplet in the nyc2 region\n    var web = new DigitalOcean.Droplet(\"web\", new()\n    {\n        Image = \"ubuntu-20-04-x64\",\n        Name = \"web-1\",\n        Region = DigitalOcean.Region.NYC2,\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Backups = true,\n        BackupPolicy = new DigitalOcean.Inputs.DropletBackupPolicyArgs\n        {\n            Plan = \"weekly\",\n            Weekday = \"TUE\",\n            Hour = 8,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Web Droplet in the nyc2 region\n\t\t_, err := digitalocean.NewDroplet(ctx, \"web\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:   pulumi.String(\"ubuntu-20-04-x64\"),\n\t\t\tName:    pulumi.String(\"web-1\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC2),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tBackups: pulumi.Bool(true),\n\t\t\tBackupPolicy: \u0026digitalocean.DropletBackupPolicyArgs{\n\t\t\t\tPlan:    pulumi.String(\"weekly\"),\n\t\t\t\tWeekday: pulumi.String(\"TUE\"),\n\t\t\t\tHour:    pulumi.Int(8),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport com.pulumi.digitalocean.inputs.DropletBackupPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Web Droplet in the nyc2 region\n        var web = new Droplet(\"web\", DropletArgs.builder()\n            .image(\"ubuntu-20-04-x64\")\n            .name(\"web-1\")\n            .region(\"nyc2\")\n            .size(\"s-1vcpu-1gb\")\n            .backups(true)\n            .backupPolicy(DropletBackupPolicyArgs.builder()\n                .plan(\"weekly\")\n                .weekday(\"TUE\")\n                .hour(8)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Web Droplet in the nyc2 region\n  web:\n    type: digitalocean:Droplet\n    properties:\n      image: ubuntu-20-04-x64\n      name: web-1\n      region: nyc2\n      size: s-1vcpu-1gb\n      backups: true\n      backupPolicy:\n        plan: weekly\n        weekday: TUE\n        hour: 8\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDroplets can be imported using the Droplet `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823\n```\n\n",
             "properties": {
+                "backupPolicy": {
+                    "$ref": "#/types/digitalocean:index/DropletBackupPolicy:DropletBackupPolicy",
+                    "description": "An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.\n"
+                },
                 "backups": {
                     "type": "boolean",
                     "description": "Boolean controlling if backups are made. Defaults to\nfalse.\n"
@@ -12999,6 +13020,10 @@
                 "vpcUuid"
             ],
             "inputProperties": {
+                "backupPolicy": {
+                    "$ref": "#/types/digitalocean:index/DropletBackupPolicy:DropletBackupPolicy",
+                    "description": "An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.\n"
+                },
                 "backups": {
                     "type": "boolean",
                     "description": "Boolean controlling if backups are made. Defaults to\nfalse.\n"
@@ -13110,6 +13135,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Droplet resources.\n",
                 "properties": {
+                    "backupPolicy": {
+                        "$ref": "#/types/digitalocean:index/DropletBackupPolicy:DropletBackupPolicy",
+                        "description": "An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.\n"
+                    },
                     "backups": {
                         "type": "boolean",
                         "description": "Boolean controlling if backups are made. Defaults to\nfalse.\n"
@@ -14144,7 +14173,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/LoadBalancerDomain:LoadBalancerDomain"
                     },
-                    "description": "A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. \n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                    "description": "A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.\n"
                 },
                 "dropletIds": {
                     "type": "array",
@@ -14178,7 +14207,7 @@
                 },
                 "glbSettings": {
                     "$ref": "#/types/digitalocean:index/LoadBalancerGlbSettings:LoadBalancerGlbSettings",
-                    "description": "A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.\n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                    "description": "A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.\n"
                 },
                 "healthcheck": {
                     "$ref": "#/types/digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
@@ -14236,11 +14265,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Load Balancer IDs to be attached behind a Global Load Balancer.\n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                    "description": "A list of Load Balancer IDs to be attached behind a Global Load Balancer.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.\n"
+                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n"
                 },
                 "vpcUuid": {
                     "type": "string",
@@ -14288,7 +14317,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/LoadBalancerDomain:LoadBalancerDomain"
                     },
-                    "description": "A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. \n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                    "description": "A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.\n"
                 },
                 "dropletIds": {
                     "type": "array",
@@ -14322,7 +14351,7 @@
                 },
                 "glbSettings": {
                     "$ref": "#/types/digitalocean:index/LoadBalancerGlbSettings:LoadBalancerGlbSettings",
-                    "description": "A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.\n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                    "description": "A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.\n"
                 },
                 "healthcheck": {
                     "$ref": "#/types/digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
@@ -14380,11 +14409,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Load Balancer IDs to be attached behind a Global Load Balancer.\n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                    "description": "A list of Load Balancer IDs to be attached behind a Global Load Balancer.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.\n",
+                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n",
                     "willReplaceOnChanges": true
                 },
                 "vpcUuid": {
@@ -14419,7 +14448,7 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/LoadBalancerDomain:LoadBalancerDomain"
                         },
-                        "description": "A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. \n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                        "description": "A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.\n"
                     },
                     "dropletIds": {
                         "type": "array",
@@ -14453,7 +14482,7 @@
                     },
                     "glbSettings": {
                         "$ref": "#/types/digitalocean:index/LoadBalancerGlbSettings:LoadBalancerGlbSettings",
-                        "description": "A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.\n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                        "description": "A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.\n"
                     },
                     "healthcheck": {
                         "$ref": "#/types/digitalocean:index/LoadBalancerHealthcheck:LoadBalancerHealthcheck",
@@ -14522,11 +14551,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of Load Balancer IDs to be attached behind a Global Load Balancer.\n**NOTE**: this is a closed beta feature and not available for public use.\n"
+                        "description": "A list of Load Balancer IDs to be attached behind a Global Load Balancer.\n"
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.\n",
+                        "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n",
                         "willReplaceOnChanges": true
                     },
                     "vpcUuid": {
@@ -17341,6 +17370,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDroplet.\n",
                 "properties": {
+                    "gpu": {
+                        "type": "boolean",
+                        "description": "A boolean value specifying whether or not to search GPU Droplets\n"
+                    },
                     "id": {
                         "type": "integer",
                         "description": "The ID of the Droplet\n"
@@ -17351,7 +17384,7 @@
                     },
                     "tag": {
                         "type": "string",
-                        "description": "A tag applied to the Droplet.\n"
+                        "description": "A tag applied to the Droplet.\n\nTo include GPU Droplets when searching by name, use:\n"
                     }
                 },
                 "type": "object"
@@ -17369,6 +17402,9 @@
                     "disk": {
                         "description": "The size of the Droplets disk in GB.\n",
                         "type": "integer"
+                    },
+                    "gpu": {
+                        "type": "boolean"
                     },
                     "id": {
                         "description": "The ID of the Droplet.\n",
@@ -17576,7 +17612,7 @@
             }
         },
         "digitalocean:index/getDroplets:getDroplets": {
-            "description": "Get information on Droplets for use in other resources, with the ability to filter and sort the results.\nIf no filters are specified, all Droplets will be returned.\n\nThis data source is useful if the Droplets in question are not managed by the provider or you need to\nutilize any of the Droplets' data.\n\nNote: You can use the `digitalocean.Droplet` data source to obtain metadata\nabout a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.\n\n## Example Usage\n\nUse the `filter` block with a `key` string and `values` list to filter images.\n\nFor example to find all Droplets with size `s-1vcpu-1gb`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst small = digitalocean.getDroplets({\n    filters: [{\n        key: \"size\",\n        values: [\"s-1vcpu-1gb\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsmall = digitalocean.get_droplets(filters=[{\n    \"key\": \"size\",\n    \"values\": [\"s-1vcpu-1gb\"],\n}])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var small = DigitalOcean.GetDroplets.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDropletsFilterInputArgs\n            {\n                Key = \"size\",\n                Values = new[]\n                {\n                    \"s-1vcpu-1gb\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDroplets(ctx, \u0026digitalocean.GetDropletsArgs{\n\t\t\tFilters: []digitalocean.GetDropletsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"size\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"s-1vcpu-1gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()\n            .filters(GetDropletsFilterArgs.builder()\n                .key(\"size\")\n                .values(\"s-1vcpu-1gb\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  small:\n    fn::invoke:\n      Function: digitalocean:getDroplets\n      Arguments:\n        filters:\n          - key: size\n            values:\n              - s-1vcpu-1gb\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nYou can filter on multiple fields and sort the results as well:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst small-with-backups = digitalocean.getDroplets({\n    filters: [\n        {\n            key: \"size\",\n            values: [\"s-1vcpu-1gb\"],\n        },\n        {\n            key: \"backups\",\n            values: [\"true\"],\n        },\n    ],\n    sorts: [{\n        key: \"created_at\",\n        direction: \"desc\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsmall_with_backups = digitalocean.get_droplets(filters=[\n        {\n            \"key\": \"size\",\n            \"values\": [\"s-1vcpu-1gb\"],\n        },\n        {\n            \"key\": \"backups\",\n            \"values\": [\"true\"],\n        },\n    ],\n    sorts=[{\n        \"key\": \"created_at\",\n        \"direction\": \"desc\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDropletsFilterInputArgs\n            {\n                Key = \"size\",\n                Values = new[]\n                {\n                    \"s-1vcpu-1gb\",\n                },\n            },\n            new DigitalOcean.Inputs.GetDropletsFilterInputArgs\n            {\n                Key = \"backups\",\n                Values = new[]\n                {\n                    \"true\",\n                },\n            },\n        },\n        Sorts = new[]\n        {\n            new DigitalOcean.Inputs.GetDropletsSortInputArgs\n            {\n                Key = \"created_at\",\n                Direction = \"desc\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDroplets(ctx, \u0026digitalocean.GetDropletsArgs{\n\t\t\tFilters: []digitalocean.GetDropletsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"size\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"s-1vcpu-1gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tKey: \"backups\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetDropletsSort{\n\t\t\t\t{\n\t\t\t\t\tKey:       \"created_at\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"desc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()\n            .filters(            \n                GetDropletsFilterArgs.builder()\n                    .key(\"size\")\n                    .values(\"s-1vcpu-1gb\")\n                    .build(),\n                GetDropletsFilterArgs.builder()\n                    .key(\"backups\")\n                    .values(\"true\")\n                    .build())\n            .sorts(GetDropletsSortArgs.builder()\n                .key(\"created_at\")\n                .direction(\"desc\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  small-with-backups:\n    fn::invoke:\n      Function: digitalocean:getDroplets\n      Arguments:\n        filters:\n          - key: size\n            values:\n              - s-1vcpu-1gb\n          - key: backups\n            values:\n              - 'true'\n        sorts:\n          - key: created_at\n            direction: desc\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Get information on Droplets for use in other resources, with the ability to filter and sort the results.\nIf no filters are specified, all Droplets will be returned.\n\nThis data source is useful if the Droplets in question are not managed by the provider or you need to\nutilize any of the Droplets' data.\n\nBy default, only non-GPU Droplets are returned. To list only GPU Droplets, set\nthe `gpus` attribute to `true`.\n\nNote: You can use the `digitalocean.Droplet` data source to obtain metadata\nabout a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.\n\n## Example Usage\n\nUse the `filter` block with a `key` string and `values` list to filter images.\n\nFor example to find all Droplets with size `s-1vcpu-1gb`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst small = digitalocean.getDroplets({\n    filters: [{\n        key: \"size\",\n        values: [\"s-1vcpu-1gb\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsmall = digitalocean.get_droplets(filters=[{\n    \"key\": \"size\",\n    \"values\": [\"s-1vcpu-1gb\"],\n}])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var small = DigitalOcean.GetDroplets.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDropletsFilterInputArgs\n            {\n                Key = \"size\",\n                Values = new[]\n                {\n                    \"s-1vcpu-1gb\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDroplets(ctx, \u0026digitalocean.GetDropletsArgs{\n\t\t\tFilters: []digitalocean.GetDropletsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"size\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"s-1vcpu-1gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()\n            .filters(GetDropletsFilterArgs.builder()\n                .key(\"size\")\n                .values(\"s-1vcpu-1gb\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  small:\n    fn::invoke:\n      Function: digitalocean:getDroplets\n      Arguments:\n        filters:\n          - key: size\n            values:\n              - s-1vcpu-1gb\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nYou can filter on multiple fields and sort the results as well:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst small-with-backups = digitalocean.getDroplets({\n    filters: [\n        {\n            key: \"size\",\n            values: [\"s-1vcpu-1gb\"],\n        },\n        {\n            key: \"backups\",\n            values: [\"true\"],\n        },\n    ],\n    sorts: [{\n        key: \"created_at\",\n        direction: \"desc\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsmall_with_backups = digitalocean.get_droplets(filters=[\n        {\n            \"key\": \"size\",\n            \"values\": [\"s-1vcpu-1gb\"],\n        },\n        {\n            \"key\": \"backups\",\n            \"values\": [\"true\"],\n        },\n    ],\n    sorts=[{\n        \"key\": \"created_at\",\n        \"direction\": \"desc\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDropletsFilterInputArgs\n            {\n                Key = \"size\",\n                Values = new[]\n                {\n                    \"s-1vcpu-1gb\",\n                },\n            },\n            new DigitalOcean.Inputs.GetDropletsFilterInputArgs\n            {\n                Key = \"backups\",\n                Values = new[]\n                {\n                    \"true\",\n                },\n            },\n        },\n        Sorts = new[]\n        {\n            new DigitalOcean.Inputs.GetDropletsSortInputArgs\n            {\n                Key = \"created_at\",\n                Direction = \"desc\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDroplets(ctx, \u0026digitalocean.GetDropletsArgs{\n\t\t\tFilters: []digitalocean.GetDropletsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"size\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"s-1vcpu-1gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tKey: \"backups\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"true\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetDropletsSort{\n\t\t\t\t{\n\t\t\t\t\tKey:       \"created_at\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"desc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()\n            .filters(            \n                GetDropletsFilterArgs.builder()\n                    .key(\"size\")\n                    .values(\"s-1vcpu-1gb\")\n                    .build(),\n                GetDropletsFilterArgs.builder()\n                    .key(\"backups\")\n                    .values(\"true\")\n                    .build())\n            .sorts(GetDropletsSortArgs.builder()\n                .key(\"created_at\")\n                .direction(\"desc\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  small-with-backups:\n    fn::invoke:\n      Function: digitalocean:getDroplets\n      Arguments:\n        filters:\n          - key: size\n            values:\n              - s-1vcpu-1gb\n          - key: backups\n            values:\n              - 'true'\n        sorts:\n          - key: created_at\n            direction: desc\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDroplets.\n",
                 "properties": {
@@ -17586,6 +17622,10 @@
                             "$ref": "#/types/digitalocean:index/getDropletsFilter:getDropletsFilter"
                         },
                         "description": "Filter the results.\nThe `filter` block is documented below.\n"
+                    },
+                    "gpus": {
+                        "type": "boolean",
+                        "description": "A boolean value specifying whether or not to list GPU Droplets\n"
                     },
                     "sorts": {
                         "type": "array",
@@ -17612,6 +17652,9 @@
                             "$ref": "#/types/digitalocean:index/getDropletsFilter:getDropletsFilter"
                         },
                         "type": "array"
+                    },
+                    "gpus": {
+                        "type": "boolean"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",

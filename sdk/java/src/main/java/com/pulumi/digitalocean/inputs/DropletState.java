@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.DropletSlug;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.DropletBackupPolicyArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
     public static final DropletState Empty = new DropletState();
+
+    /**
+     * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     * 
+     */
+    @Import(name="backupPolicy")
+    private @Nullable Output<DropletBackupPolicyArgs> backupPolicy;
+
+    /**
+     * @return An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     * 
+     */
+    public Optional<Output<DropletBackupPolicyArgs>> backupPolicy() {
+        return Optional.ofNullable(this.backupPolicy);
+    }
 
     /**
      * Boolean controlling if backups are made. Defaults to
@@ -483,6 +499,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
     private DropletState() {}
 
     private DropletState(DropletState $) {
+        this.backupPolicy = $.backupPolicy;
         this.backups = $.backups;
         this.createdAt = $.createdAt;
         this.disk = $.disk;
@@ -529,6 +546,27 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DropletState defaults) {
             $ = new DropletState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupPolicy An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupPolicy(@Nullable Output<DropletBackupPolicyArgs> backupPolicy) {
+            $.backupPolicy = backupPolicy;
+            return this;
+        }
+
+        /**
+         * @param backupPolicy An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupPolicy(DropletBackupPolicyArgs backupPolicy) {
+            return backupPolicy(Output.of(backupPolicy));
         }
 
         /**

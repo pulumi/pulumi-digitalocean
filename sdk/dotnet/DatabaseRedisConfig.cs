@@ -119,6 +119,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A boolean indicating whether to require SSL to access Redis.
+        /// - When enabled, Redis accepts only SSL connections on port `25061`.
+        /// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         /// </summary>
         [Output("ssl")]
         public Output<bool> Ssl { get; private set; } = null!;
@@ -237,6 +239,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A boolean indicating whether to require SSL to access Redis.
+        /// - When enabled, Redis accepts only SSL connections on port `25061`.
+        /// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
@@ -317,6 +321,8 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A boolean indicating whether to require SSL to access Redis.
+        /// - When enabled, Redis accepts only SSL connections on port `25061`.
+        /// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
         /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }

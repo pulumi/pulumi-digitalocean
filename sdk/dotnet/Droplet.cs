@@ -30,6 +30,13 @@ namespace Pulumi.DigitalOcean
     ///         Name = "web-1",
     ///         Region = DigitalOcean.Region.NYC2,
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+    ///         Backups = true,
+    ///         BackupPolicy = new DigitalOcean.Inputs.DropletBackupPolicyArgs
+    ///         {
+    ///             Plan = "weekly",
+    ///             Weekday = "TUE",
+    ///             Hour = 8,
+    ///         },
     ///     });
     /// 
     /// });
@@ -46,6 +53,12 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/droplet:Droplet")]
     public partial class Droplet : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        /// </summary>
+        [Output("backupPolicy")]
+        public Output<Outputs.DropletBackupPolicy?> BackupPolicy { get; private set; } = null!;
+
         /// <summary>
         /// Boolean controlling if backups are made. Defaults to
         /// false.
@@ -278,6 +291,12 @@ namespace Pulumi.DigitalOcean
     public sealed class DropletArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        /// </summary>
+        [Input("backupPolicy")]
+        public Input<Inputs.DropletBackupPolicyArgs>? BackupPolicy { get; set; }
+
+        /// <summary>
         /// Boolean controlling if backups are made. Defaults to
         /// false.
         /// </summary>
@@ -428,6 +447,12 @@ namespace Pulumi.DigitalOcean
 
     public sealed class DropletState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        /// </summary>
+        [Input("backupPolicy")]
+        public Input<Inputs.DropletBackupPolicyGetArgs>? BackupPolicy { get; set; }
+
         /// <summary>
         /// Boolean controlling if backups are made. Defaults to
         /// false.

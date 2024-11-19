@@ -94,8 +94,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly disableLetsEncryptDnsRecords!: pulumi.Output<boolean | undefined>;
     /**
-     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-     * **NOTE**: this is a closed beta feature and not available for public use.
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      */
     public readonly domains!: pulumi.Output<outputs.LoadBalancerDomain[]>;
     /**
@@ -127,7 +126,6 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly forwardingRules!: pulumi.Output<outputs.LoadBalancerForwardingRule[] | undefined>;
     /**
      * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      */
     public readonly glbSettings!: pulumi.Output<outputs.LoadBalancerGlbSettings>;
     /**
@@ -186,12 +184,11 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      */
     public readonly targetLoadBalancerIds!: pulumi.Output<string[]>;
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -288,8 +285,7 @@ export interface LoadBalancerState {
      */
     disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
     /**
-     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-     * **NOTE**: this is a closed beta feature and not available for public use.
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      */
     domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
     /**
@@ -321,7 +317,6 @@ export interface LoadBalancerState {
     forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      */
     glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings>;
     /**
@@ -380,12 +375,11 @@ export interface LoadBalancerState {
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
     /**
@@ -410,8 +404,7 @@ export interface LoadBalancerArgs {
      */
     disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
     /**
-     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below. 
-     * **NOTE**: this is a closed beta feature and not available for public use.
+     * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      */
     domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
     /**
@@ -443,7 +436,6 @@ export interface LoadBalancerArgs {
     forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
     /**
      * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      */
     glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings>;
     /**
@@ -493,12 +485,11 @@ export interface LoadBalancerArgs {
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
     /**

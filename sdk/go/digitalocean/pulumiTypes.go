@@ -15498,6 +15498,181 @@ func (o DatabaseUserSettingOpensearchAclArrayOutput) Index(i pulumi.IntInput) Da
 	}).(DatabaseUserSettingOpensearchAclOutput)
 }
 
+type DropletBackupPolicy struct {
+	// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+	Hour *int `pulumi:"hour"`
+	// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+	Plan *string `pulumi:"plan"`
+	// The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+	Weekday *string `pulumi:"weekday"`
+}
+
+// DropletBackupPolicyInput is an input type that accepts DropletBackupPolicyArgs and DropletBackupPolicyOutput values.
+// You can construct a concrete instance of `DropletBackupPolicyInput` via:
+//
+//	DropletBackupPolicyArgs{...}
+type DropletBackupPolicyInput interface {
+	pulumi.Input
+
+	ToDropletBackupPolicyOutput() DropletBackupPolicyOutput
+	ToDropletBackupPolicyOutputWithContext(context.Context) DropletBackupPolicyOutput
+}
+
+type DropletBackupPolicyArgs struct {
+	// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
+	// The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+	Weekday pulumi.StringPtrInput `pulumi:"weekday"`
+}
+
+func (DropletBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletBackupPolicy)(nil)).Elem()
+}
+
+func (i DropletBackupPolicyArgs) ToDropletBackupPolicyOutput() DropletBackupPolicyOutput {
+	return i.ToDropletBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i DropletBackupPolicyArgs) ToDropletBackupPolicyOutputWithContext(ctx context.Context) DropletBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletBackupPolicyOutput)
+}
+
+func (i DropletBackupPolicyArgs) ToDropletBackupPolicyPtrOutput() DropletBackupPolicyPtrOutput {
+	return i.ToDropletBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i DropletBackupPolicyArgs) ToDropletBackupPolicyPtrOutputWithContext(ctx context.Context) DropletBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletBackupPolicyOutput).ToDropletBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// DropletBackupPolicyPtrInput is an input type that accepts DropletBackupPolicyArgs, DropletBackupPolicyPtr and DropletBackupPolicyPtrOutput values.
+// You can construct a concrete instance of `DropletBackupPolicyPtrInput` via:
+//
+//	        DropletBackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DropletBackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDropletBackupPolicyPtrOutput() DropletBackupPolicyPtrOutput
+	ToDropletBackupPolicyPtrOutputWithContext(context.Context) DropletBackupPolicyPtrOutput
+}
+
+type dropletBackupPolicyPtrType DropletBackupPolicyArgs
+
+func DropletBackupPolicyPtr(v *DropletBackupPolicyArgs) DropletBackupPolicyPtrInput {
+	return (*dropletBackupPolicyPtrType)(v)
+}
+
+func (*dropletBackupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletBackupPolicy)(nil)).Elem()
+}
+
+func (i *dropletBackupPolicyPtrType) ToDropletBackupPolicyPtrOutput() DropletBackupPolicyPtrOutput {
+	return i.ToDropletBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *dropletBackupPolicyPtrType) ToDropletBackupPolicyPtrOutputWithContext(ctx context.Context) DropletBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletBackupPolicyPtrOutput)
+}
+
+type DropletBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (DropletBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletBackupPolicy)(nil)).Elem()
+}
+
+func (o DropletBackupPolicyOutput) ToDropletBackupPolicyOutput() DropletBackupPolicyOutput {
+	return o
+}
+
+func (o DropletBackupPolicyOutput) ToDropletBackupPolicyOutputWithContext(ctx context.Context) DropletBackupPolicyOutput {
+	return o
+}
+
+func (o DropletBackupPolicyOutput) ToDropletBackupPolicyPtrOutput() DropletBackupPolicyPtrOutput {
+	return o.ToDropletBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DropletBackupPolicyOutput) ToDropletBackupPolicyPtrOutputWithContext(ctx context.Context) DropletBackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DropletBackupPolicy) *DropletBackupPolicy {
+		return &v
+	}).(DropletBackupPolicyPtrOutput)
+}
+
+// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+func (o DropletBackupPolicyOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DropletBackupPolicy) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+func (o DropletBackupPolicyOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DropletBackupPolicy) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+// The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+func (o DropletBackupPolicyOutput) Weekday() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DropletBackupPolicy) *string { return v.Weekday }).(pulumi.StringPtrOutput)
+}
+
+type DropletBackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (DropletBackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletBackupPolicy)(nil)).Elem()
+}
+
+func (o DropletBackupPolicyPtrOutput) ToDropletBackupPolicyPtrOutput() DropletBackupPolicyPtrOutput {
+	return o
+}
+
+func (o DropletBackupPolicyPtrOutput) ToDropletBackupPolicyPtrOutputWithContext(ctx context.Context) DropletBackupPolicyPtrOutput {
+	return o
+}
+
+func (o DropletBackupPolicyPtrOutput) Elem() DropletBackupPolicyOutput {
+	return o.ApplyT(func(v *DropletBackupPolicy) DropletBackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DropletBackupPolicy
+		return ret
+	}).(DropletBackupPolicyOutput)
+}
+
+// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+func (o DropletBackupPolicyPtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DropletBackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+func (o DropletBackupPolicyPtrOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Plan
+	}).(pulumi.StringPtrOutput)
+}
+
+// The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+func (o DropletBackupPolicyPtrOutput) Weekday() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Weekday
+	}).(pulumi.StringPtrOutput)
+}
+
 type FirewallInboundRule struct {
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
@@ -40023,6 +40198,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclArrayInput)(nil)).Elem(), DatabaseUserSettingAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingOpensearchAclInput)(nil)).Elem(), DatabaseUserSettingOpensearchAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingOpensearchAclArrayInput)(nil)).Elem(), DatabaseUserSettingOpensearchAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletBackupPolicyInput)(nil)).Elem(), DropletBackupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletBackupPolicyPtrInput)(nil)).Elem(), DropletBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleInput)(nil)).Elem(), FirewallInboundRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleArrayInput)(nil)).Elem(), FirewallInboundRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleInput)(nil)).Elem(), FirewallOutboundRuleArgs{})
@@ -40534,6 +40711,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseUserSettingAclArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingOpensearchAclOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingOpensearchAclArrayOutput{})
+	pulumi.RegisterOutputType(DropletBackupPolicyOutput{})
+	pulumi.RegisterOutputType(DropletBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleArrayOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundRuleOutput{})

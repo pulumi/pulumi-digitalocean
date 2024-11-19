@@ -23,6 +23,12 @@ import * as utilities from "./utilities";
  *     name: "web-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
+ *     backups: true,
+ *     backupPolicy: {
+ *         plan: "weekly",
+ *         weekday: "TUE",
+ *         hour: 8,
+ *     },
  * });
  * ```
  *
@@ -62,6 +68,10 @@ export class Droplet extends pulumi.CustomResource {
         return obj['__pulumiType'] === Droplet.__pulumiType;
     }
 
+    /**
+     * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     */
+    public readonly backupPolicy!: pulumi.Output<outputs.DropletBackupPolicy | undefined>;
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.
@@ -207,6 +217,7 @@ export class Droplet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DropletState | undefined;
+            resourceInputs["backupPolicy"] = state ? state.backupPolicy : undefined;
             resourceInputs["backups"] = state ? state.backups : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["disk"] = state ? state.disk : undefined;
@@ -243,6 +254,7 @@ export class Droplet extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
+            resourceInputs["backupPolicy"] = args ? args.backupPolicy : undefined;
             resourceInputs["backups"] = args ? args.backups : undefined;
             resourceInputs["dropletAgent"] = args ? args.dropletAgent : undefined;
             resourceInputs["gracefulShutdown"] = args ? args.gracefulShutdown : undefined;
@@ -281,6 +293,10 @@ export class Droplet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Droplet resources.
  */
 export interface DropletState {
+    /**
+     * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     */
+    backupPolicy?: pulumi.Input<inputs.DropletBackupPolicy>;
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.
@@ -418,6 +434,10 @@ export interface DropletState {
  * The set of arguments for constructing a Droplet resource.
  */
 export interface DropletArgs {
+    /**
+     * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+     */
+    backupPolicy?: pulumi.Input<inputs.DropletBackupPolicy>;
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.

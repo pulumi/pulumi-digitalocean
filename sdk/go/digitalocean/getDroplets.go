@@ -17,6 +17,9 @@ import (
 // This data source is useful if the Droplets in question are not managed by the provider or you need to
 // utilize any of the Droplets' data.
 //
+// By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+// the `gpus` attribute to `true`.
+//
 // Note: You can use the `Droplet` data source to obtain metadata
 // about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
 //
@@ -116,6 +119,8 @@ type GetDropletsArgs struct {
 	// Filter the results.
 	// The `filter` block is documented below.
 	Filters []GetDropletsFilter `pulumi:"filters"`
+	// A boolean value specifying whether or not to list GPU Droplets
+	Gpus *bool `pulumi:"gpus"`
 	// Sort the results.
 	// The `sort` block is documented below.
 	Sorts []GetDropletsSort `pulumi:"sorts"`
@@ -126,6 +131,7 @@ type GetDropletsResult struct {
 	// A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
 	Droplets []GetDropletsDroplet `pulumi:"droplets"`
 	Filters  []GetDropletsFilter  `pulumi:"filters"`
+	Gpus     *bool                `pulumi:"gpus"`
 	// The provider-assigned unique ID for this managed resource.
 	Id    string            `pulumi:"id"`
 	Sorts []GetDropletsSort `pulumi:"sorts"`
@@ -155,6 +161,8 @@ type GetDropletsOutputArgs struct {
 	// Filter the results.
 	// The `filter` block is documented below.
 	Filters GetDropletsFilterArrayInput `pulumi:"filters"`
+	// A boolean value specifying whether or not to list GPU Droplets
+	Gpus pulumi.BoolPtrInput `pulumi:"gpus"`
 	// Sort the results.
 	// The `sort` block is documented below.
 	Sorts GetDropletsSortArrayInput `pulumi:"sorts"`
@@ -186,6 +194,10 @@ func (o GetDropletsResultOutput) Droplets() GetDropletsDropletArrayOutput {
 
 func (o GetDropletsResultOutput) Filters() GetDropletsFilterArrayOutput {
 	return o.ApplyT(func(v GetDropletsResult) []GetDropletsFilter { return v.Filters }).(GetDropletsFilterArrayOutput)
+}
+
+func (o GetDropletsResultOutput) Gpus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDropletsResult) *bool { return v.Gpus }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -1838,6 +1838,21 @@ export interface DatabaseUserSettingOpensearchAcl {
     permission: pulumi.Input<string>;
 }
 
+export interface DropletBackupPolicy {
+    /**
+     * The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+     */
+    plan?: pulumi.Input<string>;
+    /**
+     * The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+     */
+    weekday?: pulumi.Input<string>;
+}
+
 export interface FirewallInboundRule {
     /**
      * The ports on which traffic will be allowed

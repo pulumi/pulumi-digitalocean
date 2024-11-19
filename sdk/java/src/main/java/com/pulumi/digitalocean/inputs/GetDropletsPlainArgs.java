@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetDropletsFilter;
 import com.pulumi.digitalocean.inputs.GetDropletsSort;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +35,21 @@ public final class GetDropletsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * A boolean value specifying whether or not to list GPU Droplets
+     * 
+     */
+    @Import(name="gpus")
+    private @Nullable Boolean gpus;
+
+    /**
+     * @return A boolean value specifying whether or not to list GPU Droplets
+     * 
+     */
+    public Optional<Boolean> gpus() {
+        return Optional.ofNullable(this.gpus);
+    }
+
+    /**
      * Sort the results.
      * The `sort` block is documented below.
      * 
@@ -54,6 +70,7 @@ public final class GetDropletsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetDropletsPlainArgs(GetDropletsPlainArgs $) {
         this.filters = $.filters;
+        this.gpus = $.gpus;
         this.sorts = $.sorts;
     }
 
@@ -96,6 +113,17 @@ public final class GetDropletsPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder filters(GetDropletsFilter... filters) {
             return filters(List.of(filters));
+        }
+
+        /**
+         * @param gpus A boolean value specifying whether or not to list GPU Droplets
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpus(@Nullable Boolean gpus) {
+            $.gpus = gpus;
+            return this;
         }
 
         /**

@@ -28,13 +28,16 @@ class GetDropletsResult:
     """
     A collection of values returned by getDroplets.
     """
-    def __init__(__self__, droplets=None, filters=None, id=None, sorts=None):
+    def __init__(__self__, droplets=None, filters=None, gpus=None, id=None, sorts=None):
         if droplets and not isinstance(droplets, list):
             raise TypeError("Expected argument 'droplets' to be a list")
         pulumi.set(__self__, "droplets", droplets)
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
+        if gpus and not isinstance(gpus, bool):
+            raise TypeError("Expected argument 'gpus' to be a bool")
+        pulumi.set(__self__, "gpus", gpus)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -54,6 +57,11 @@ class GetDropletsResult:
     @pulumi.getter
     def filters(self) -> Optional[Sequence['outputs.GetDropletsFilterResult']]:
         return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def gpus(self) -> Optional[bool]:
+        return pulumi.get(self, "gpus")
 
     @property
     @pulumi.getter
@@ -77,11 +85,13 @@ class AwaitableGetDropletsResult(GetDropletsResult):
         return GetDropletsResult(
             droplets=self.droplets,
             filters=self.filters,
+            gpus=self.gpus,
             id=self.id,
             sorts=self.sorts)
 
 
 def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]] = None,
+                 gpus: Optional[bool] = None,
                  sorts: Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletsResult:
     """
@@ -91,6 +101,9 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
     This data source is useful if the Droplets in question are not managed by the provider or you need to
     utilize any of the Droplets' data.
 
+    By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+    the `gpus` attribute to `true`.
+
     Note: You can use the `Droplet` data source to obtain metadata
     about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
 
@@ -135,11 +148,13 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
 
     :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
+    :param bool gpus: A boolean value specifying whether or not to list GPU Droplets
     :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['gpus'] = gpus
     __args__['sorts'] = sorts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts, typ=GetDropletsResult).value
@@ -147,9 +162,11 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
     return AwaitableGetDropletsResult(
         droplets=pulumi.get(__ret__, 'droplets'),
         filters=pulumi.get(__ret__, 'filters'),
+        gpus=pulumi.get(__ret__, 'gpus'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
+                        gpus: Optional[pulumi.Input[Optional[bool]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletsResult]:
     """
@@ -159,6 +176,9 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     This data source is useful if the Droplets in question are not managed by the provider or you need to
     utilize any of the Droplets' data.
 
+    By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+    the `gpus` attribute to `true`.
+
     Note: You can use the `Droplet` data source to obtain metadata
     about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
 
@@ -203,16 +223,19 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
 
     :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
+    :param bool gpus: A boolean value specifying whether or not to list GPU Droplets
     :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['gpus'] = gpus
     __args__['sorts'] = sorts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts, typ=GetDropletsResult)
     return __ret__.apply(lambda __response__: GetDropletsResult(
         droplets=pulumi.get(__response__, 'droplets'),
         filters=pulumi.get(__response__, 'filters'),
+        gpus=pulumi.get(__response__, 'gpus'),
         id=pulumi.get(__response__, 'id'),
         sorts=pulumi.get(__response__, 'sorts')))

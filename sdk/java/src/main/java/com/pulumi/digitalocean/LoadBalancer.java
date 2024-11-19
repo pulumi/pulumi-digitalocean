@@ -138,7 +138,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     @Export(name="domains", refs={List.class,LoadBalancerDomain.class}, tree="[0,1]")
@@ -146,7 +145,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     public Output<List<LoadBalancerDomain>> domains() {
@@ -244,7 +242,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     @Export(name="glbSettings", refs={LoadBalancerGlbSettings.class}, tree="[0]")
@@ -252,7 +249,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     public Output<LoadBalancerGlbSettings> glbSettings() {
@@ -444,7 +440,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     @Export(name="targetLoadBalancerIds", refs={List.class,String.class}, tree="[0,1]")
@@ -452,7 +447,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     public Output<List<String>> targetLoadBalancerIds() {
@@ -460,7 +454,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -468,7 +462,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Output<Optional<String>> type() {

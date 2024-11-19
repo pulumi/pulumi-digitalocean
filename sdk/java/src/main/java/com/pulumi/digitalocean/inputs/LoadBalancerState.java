@@ -69,7 +69,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     @Import(name="domains")
@@ -77,7 +76,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<List<LoadBalancerDomainArgs>>> domains() {
@@ -182,7 +180,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     @Import(name="glbSettings")
@@ -190,7 +187,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<LoadBalancerGlbSettingsArgs>> glbSettings() {
@@ -396,7 +392,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     @Import(name="targetLoadBalancerIds")
@@ -404,7 +399,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-     * **NOTE**: this is a closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<List<String>>> targetLoadBalancerIds() {
@@ -413,7 +407,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Import(name="type")
@@ -421,7 +415,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<String>> type() {
@@ -576,7 +570,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param domains A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -588,7 +581,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param domains A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -599,7 +591,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param domains A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -763,7 +754,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param glbSettings A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -775,7 +765,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param glbSettings A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1077,7 +1066,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param targetLoadBalancerIds A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1089,7 +1077,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param targetLoadBalancerIds A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1100,7 +1087,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param targetLoadBalancerIds A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-         * **NOTE**: this is a closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1111,7 +1097,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-         * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+         * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1123,7 +1109,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
-         * **NOTE**: non-`REGIONAL` type may be part of closed beta feature and not available for public use.
+         * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 
