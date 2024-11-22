@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The digitalocean provider is available as a package in all Pulumi languages:
+The Digitalocean provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/digitalocean`](https://www.npmjs.com/package/@pulumi/digitalocean)
 * Python: [`pulumi-digitalocean`](https://pypi.org/project/pulumi-digitalocean/)
