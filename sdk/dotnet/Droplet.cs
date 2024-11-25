@@ -221,7 +221,7 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A string of the desired User Data for the Droplet.
+        /// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -416,7 +416,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// A string of the desired User Data for the Droplet.
+        /// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -627,7 +627,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// A string of the desired User Data for the Droplet.
+        /// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

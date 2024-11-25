@@ -134,7 +134,7 @@ type Droplet struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of the tags to be applied to this Droplet.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// A string of the desired User Data for the Droplet.
+	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
 	Vcpus pulumi.IntOutput `pulumi:"vcpus"`
@@ -253,7 +253,7 @@ type dropletState struct {
 	Status *string `pulumi:"status"`
 	// A list of the tags to be applied to this Droplet.
 	Tags []string `pulumi:"tags"`
-	// A string of the desired User Data for the Droplet.
+	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData *string `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
 	Vcpus *int `pulumi:"vcpus"`
@@ -337,7 +337,7 @@ type DropletState struct {
 	Status pulumi.StringPtrInput
 	// A list of the tags to be applied to this Droplet.
 	Tags pulumi.StringArrayInput
-	// A string of the desired User Data for the Droplet.
+	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData pulumi.StringPtrInput
 	// The number of the instance's virtual CPUs
 	Vcpus pulumi.IntPtrInput
@@ -407,7 +407,7 @@ type dropletArgs struct {
 	SshKeys []string `pulumi:"sshKeys"`
 	// A list of the tags to be applied to this Droplet.
 	Tags []string `pulumi:"tags"`
-	// A string of the desired User Data for the Droplet.
+	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData *string `pulumi:"userData"`
 	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
@@ -472,7 +472,7 @@ type DropletArgs struct {
 	SshKeys pulumi.StringArrayInput
 	// A list of the tags to be applied to this Droplet.
 	Tags pulumi.StringArrayInput
-	// A string of the desired User Data for the Droplet.
+	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData pulumi.StringPtrInput
 	// A list of the IDs of each block storage volume to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
@@ -715,7 +715,7 @@ func (o DropletOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A string of the desired User Data for the Droplet.
+// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 func (o DropletOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }
