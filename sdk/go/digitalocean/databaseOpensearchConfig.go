@@ -104,7 +104,7 @@ import (
 type DatabaseOpensearchConfig struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether ISM is enabled or not. Default: `true`
+	// Specifices whether to allow automatic creation of indices. Default: `true`
 	ActionAutoCreateIndexEnabled pulumi.BoolOutput `pulumi:"actionAutoCreateIndexEnabled"`
 	// Specifies whether to require explicit index names when deleting indices.
 	ActionDestructiveRequiresName pulumi.BoolOutput `pulumi:"actionDestructiveRequiresName"`
@@ -217,7 +217,7 @@ func GetDatabaseOpensearchConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseOpensearchConfig resources.
 type databaseOpensearchConfigState struct {
-	// Specifies whether ISM is enabled or not. Default: `true`
+	// Specifices whether to allow automatic creation of indices. Default: `true`
 	ActionAutoCreateIndexEnabled *bool `pulumi:"actionAutoCreateIndexEnabled"`
 	// Specifies whether to require explicit index names when deleting indices.
 	ActionDestructiveRequiresName *bool `pulumi:"actionDestructiveRequiresName"`
@@ -298,7 +298,7 @@ type databaseOpensearchConfigState struct {
 }
 
 type DatabaseOpensearchConfigState struct {
-	// Specifies whether ISM is enabled or not. Default: `true`
+	// Specifices whether to allow automatic creation of indices. Default: `true`
 	ActionAutoCreateIndexEnabled pulumi.BoolPtrInput
 	// Specifies whether to require explicit index names when deleting indices.
 	ActionDestructiveRequiresName pulumi.BoolPtrInput
@@ -383,7 +383,7 @@ func (DatabaseOpensearchConfigState) ElementType() reflect.Type {
 }
 
 type databaseOpensearchConfigArgs struct {
-	// Specifies whether ISM is enabled or not. Default: `true`
+	// Specifices whether to allow automatic creation of indices. Default: `true`
 	ActionAutoCreateIndexEnabled *bool `pulumi:"actionAutoCreateIndexEnabled"`
 	// Specifies whether to require explicit index names when deleting indices.
 	ActionDestructiveRequiresName *bool `pulumi:"actionDestructiveRequiresName"`
@@ -465,7 +465,7 @@ type databaseOpensearchConfigArgs struct {
 
 // The set of arguments for constructing a DatabaseOpensearchConfig resource.
 type DatabaseOpensearchConfigArgs struct {
-	// Specifies whether ISM is enabled or not. Default: `true`
+	// Specifices whether to allow automatic creation of indices. Default: `true`
 	ActionAutoCreateIndexEnabled pulumi.BoolPtrInput
 	// Specifies whether to require explicit index names when deleting indices.
 	ActionDestructiveRequiresName pulumi.BoolPtrInput
@@ -632,7 +632,7 @@ func (o DatabaseOpensearchConfigOutput) ToDatabaseOpensearchConfigOutputWithCont
 	return o
 }
 
-// Specifies whether ISM is enabled or not. Default: `true`
+// Specifices whether to allow automatic creation of indices. Default: `true`
 func (o DatabaseOpensearchConfigOutput) ActionAutoCreateIndexEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchConfig) pulumi.BoolOutput { return v.ActionAutoCreateIndexEnabled }).(pulumi.BoolOutput)
 }

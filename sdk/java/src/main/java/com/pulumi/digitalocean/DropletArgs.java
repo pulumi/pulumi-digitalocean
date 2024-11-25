@@ -302,14 +302,14 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A string of the desired User Data for the Droplet.
+     * A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return A string of the desired User Data for the Droplet.
+     * @return A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> userData() {
@@ -822,7 +822,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userData A string of the desired User Data for the Droplet.
+         * @param userData A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -833,7 +833,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userData A string of the desired User Data for the Droplet.
+         * @param userData A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
          * 
          * @return builder
          * 

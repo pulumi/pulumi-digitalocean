@@ -371,7 +371,7 @@ index fb71cd6b..67df04e9 100644
    domains = ["example.com"]
  }
 diff --git a/docs/resources/droplet.md b/docs/resources/droplet.md
-index 9d561198..08b7f3fa 100644
+index f2eacafe..37ea3ab4 100644
 --- a/docs/resources/droplet.md
 +++ b/docs/resources/droplet.md
 @@ -6,8 +6,7 @@ subcategory: "Droplets"
@@ -387,7 +387,7 @@ index 9d561198..08b7f3fa 100644
 @@ -63,7 +62,7 @@ The following arguments are supported:
     size is a permanent change**. Increasing only RAM and CPU is reversible.
  * `tags` - (Optional) A list of the tags to be applied to this Droplet.
- * `user_data` (Optional) - A string of the desired User Data for the Droplet.
+ * `user_data` (Optional) - A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 -* `volume_ids` (Optional) - A list of the IDs of each [block storage volume](/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 +* `volume_ids` (Optional) - A list of the IDs of each block storage volume to be attached to the Droplet.
  * `droplet_agent` (Optional) - A boolean indicating whether to install the

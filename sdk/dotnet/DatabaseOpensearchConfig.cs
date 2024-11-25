@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseOpensearchConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`
+        /// Specifices whether to allow automatic creation of indices. Default: `true`
         /// </summary>
         [Output("actionAutoCreateIndexEnabled")]
         public Output<bool> ActionAutoCreateIndexEnabled { get; private set; } = null!;
@@ -376,7 +376,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseOpensearchConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`
+        /// Specifices whether to allow automatic creation of indices. Default: `true`
         /// </summary>
         [Input("actionAutoCreateIndexEnabled")]
         public Input<bool>? ActionAutoCreateIndexEnabled { get; set; }
@@ -624,7 +624,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseOpensearchConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`
+        /// Specifices whether to allow automatic creation of indices. Default: `true`
         /// </summary>
         [Input("actionAutoCreateIndexEnabled")]
         public Input<bool>? ActionAutoCreateIndexEnabled { get; set; }

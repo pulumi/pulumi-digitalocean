@@ -104,7 +104,7 @@ export class DatabaseOpensearchConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`
+     * Specifices whether to allow automatic creation of indices. Default: `true`
      */
     public readonly actionAutoCreateIndexEnabled!: pulumi.Output<boolean>;
     /**
@@ -367,7 +367,7 @@ export class DatabaseOpensearchConfig extends pulumi.CustomResource {
  */
 export interface DatabaseOpensearchConfigState {
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`
+     * Specifices whether to allow automatic creation of indices. Default: `true`
      */
     actionAutoCreateIndexEnabled?: pulumi.Input<boolean>;
     /**
@@ -529,7 +529,7 @@ export interface DatabaseOpensearchConfigState {
  */
 export interface DatabaseOpensearchConfigArgs {
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`
+     * Specifices whether to allow automatic creation of indices. Default: `true`
      */
     actionAutoCreateIndexEnabled?: pulumi.Input<boolean>;
     /**

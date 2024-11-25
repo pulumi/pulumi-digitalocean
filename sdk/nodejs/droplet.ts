@@ -188,7 +188,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * A string of the desired User Data for the Droplet.
+     * A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -413,7 +413,7 @@ export interface DropletState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A string of the desired User Data for the Droplet.
+     * A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      */
     userData?: pulumi.Input<string>;
     /**
@@ -520,7 +520,7 @@ export interface DropletArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A string of the desired User Data for the Droplet.
+     * A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      */
     userData?: pulumi.Input<string>;
     /**

@@ -61,7 +61,7 @@ class DatabaseOpensearchConfigArgs:
         """
         The set of arguments for constructing a DatabaseOpensearchConfig resource.
         :param pulumi.Input[str] cluster_id: The ID of the target Opensearch cluster.
-        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifies whether ISM is enabled or not. Default: `true`
+        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
         :param pulumi.Input[bool] action_destructive_requires_name: Specifies whether to require explicit index names when deleting indices.
         :param pulumi.Input[int] cluster_max_shards_per_node: Maximum number of shards allowed per data node.
         :param pulumi.Input[int] cluster_routing_allocation_node_concurrent_recoveries: Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`
@@ -194,7 +194,7 @@ class DatabaseOpensearchConfigArgs:
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
     def action_auto_create_index_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether ISM is enabled or not. Default: `true`
+        Specifices whether to allow automatic creation of indices. Default: `true`
         """
         return pulumi.get(self, "action_auto_create_index_enabled")
 
@@ -691,7 +691,7 @@ class _DatabaseOpensearchConfigState:
                  thread_pool_write_size: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering DatabaseOpensearchConfig resources.
-        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifies whether ISM is enabled or not. Default: `true`
+        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
         :param pulumi.Input[bool] action_destructive_requires_name: Specifies whether to require explicit index names when deleting indices.
         :param pulumi.Input[str] cluster_id: The ID of the target Opensearch cluster.
         :param pulumi.Input[int] cluster_max_shards_per_node: Maximum number of shards allowed per data node.
@@ -814,7 +814,7 @@ class _DatabaseOpensearchConfigState:
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
     def action_auto_create_index_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether ISM is enabled or not. Default: `true`
+        Specifices whether to allow automatic creation of indices. Default: `true`
         """
         return pulumi.get(self, "action_auto_create_index_enabled")
 
@@ -1395,7 +1395,7 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifies whether ISM is enabled or not. Default: `true`
+        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
         :param pulumi.Input[bool] action_destructive_requires_name: Specifies whether to require explicit index names when deleting indices.
         :param pulumi.Input[str] cluster_id: The ID of the target Opensearch cluster.
         :param pulumi.Input[int] cluster_max_shards_per_node: Maximum number of shards allowed per data node.
@@ -1670,7 +1670,7 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifies whether ISM is enabled or not. Default: `true`
+        :param pulumi.Input[bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
         :param pulumi.Input[bool] action_destructive_requires_name: Specifies whether to require explicit index names when deleting indices.
         :param pulumi.Input[str] cluster_id: The ID of the target Opensearch cluster.
         :param pulumi.Input[int] cluster_max_shards_per_node: Maximum number of shards allowed per data node.
@@ -1759,7 +1759,7 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
     def action_auto_create_index_enabled(self) -> pulumi.Output[bool]:
         """
-        Specifies whether ISM is enabled or not. Default: `true`
+        Specifices whether to allow automatic creation of indices. Default: `true`
         """
         return pulumi.get(self, "action_auto_create_index_enabled")
 

@@ -20,14 +20,14 @@ public final class DatabaseOpensearchConfigArgs extends com.pulumi.resources.Res
     public static final DatabaseOpensearchConfigArgs Empty = new DatabaseOpensearchConfigArgs();
 
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`
+     * Specifices whether to allow automatic creation of indices. Default: `true`
      * 
      */
     @Import(name="actionAutoCreateIndexEnabled")
     private @Nullable Output<Boolean> actionAutoCreateIndexEnabled;
 
     /**
-     * @return Specifies whether ISM is enabled or not. Default: `true`
+     * @return Specifices whether to allow automatic creation of indices. Default: `true`
      * 
      */
     public Optional<Output<Boolean>> actionAutoCreateIndexEnabled() {
@@ -667,7 +667,7 @@ public final class DatabaseOpensearchConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param actionAutoCreateIndexEnabled Specifies whether ISM is enabled or not. Default: `true`
+         * @param actionAutoCreateIndexEnabled Specifices whether to allow automatic creation of indices. Default: `true`
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class DatabaseOpensearchConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param actionAutoCreateIndexEnabled Specifies whether ISM is enabled or not. Default: `true`
+         * @param actionAutoCreateIndexEnabled Specifices whether to allow automatic creation of indices. Default: `true`
          * 
          * @return builder
          * 

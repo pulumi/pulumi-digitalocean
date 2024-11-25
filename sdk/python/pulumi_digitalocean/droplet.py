@@ -80,7 +80,7 @@ class DropletArgs:
                be added or removed via this provider. Modifying this field will prompt you
                to destroy and recreate the Droplet.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
+        :param pulumi.Input[str] user_data: A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
@@ -330,7 +330,7 @@ class DropletArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A string of the desired User Data for the Droplet.
+        A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_data")
 
@@ -443,7 +443,7 @@ class _DropletState:
                to destroy and recreate the Droplet.
         :param pulumi.Input[str] status: The status of the Droplet
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
+        :param pulumi.Input[str] user_data: A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         :param pulumi.Input[int] vcpus: The number of the instance's virtual CPUs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
@@ -832,7 +832,7 @@ class _DropletState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A string of the desired User Data for the Droplet.
+        A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_data")
 
@@ -973,7 +973,7 @@ class Droplet(pulumi.CustomResource):
                be added or removed via this provider. Modifying this field will prompt you
                to destroy and recreate the Droplet.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
+        :param pulumi.Input[str] user_data: A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
         """
@@ -1182,7 +1182,7 @@ class Droplet(pulumi.CustomResource):
                to destroy and recreate the Droplet.
         :param pulumi.Input[str] status: The status of the Droplet
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of the tags to be applied to this Droplet.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the Droplet.
+        :param pulumi.Input[str] user_data: A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         :param pulumi.Input[int] vcpus: The number of the instance's virtual CPUs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: A list of the IDs of each block storage volume to be attached to the Droplet.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the Droplet will be located.
@@ -1444,7 +1444,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        A string of the desired User Data for the Droplet.
+        A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_data")
 

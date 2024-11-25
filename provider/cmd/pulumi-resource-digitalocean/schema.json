@@ -10840,7 +10840,7 @@
             "properties": {
                 "actionAutoCreateIndexEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                    "description": "Specifices whether to allow automatic creation of indices. Default: `true`\n"
                 },
                 "actionDestructiveRequiresName": {
                     "type": "boolean",
@@ -11041,7 +11041,7 @@
             "inputProperties": {
                 "actionAutoCreateIndexEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                    "description": "Specifices whether to allow automatic creation of indices. Default: `true`\n"
                 },
                 "actionDestructiveRequiresName": {
                     "type": "boolean",
@@ -11208,7 +11208,7 @@
                 "properties": {
                     "actionAutoCreateIndexEnabled": {
                         "type": "boolean",
-                        "description": "Specifies whether ISM is enabled or not. Default: `true`\n"
+                        "description": "Specifices whether to allow automatic creation of indices. Default: `true`\n"
                     },
                     "actionDestructiveRequiresName": {
                         "type": "boolean",
@@ -12980,7 +12980,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "A string of the desired User Data for the Droplet.\n"
+                    "description": "A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.\n"
                 },
                 "vcpus": {
                     "type": "integer",
@@ -13112,7 +13112,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "A string of the desired User Data for the Droplet.\n",
+                    "description": "A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "volumeIds": {
@@ -13265,7 +13265,7 @@
                     },
                     "userData": {
                         "type": "string",
-                        "description": "A string of the desired User Data for the Droplet.\n",
+                        "description": "A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "vcpus": {

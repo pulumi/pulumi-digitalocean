@@ -119,14 +119,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig")
 public class DatabaseOpensearchConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`
+     * Specifices whether to allow automatic creation of indices. Default: `true`
      * 
      */
     @Export(name="actionAutoCreateIndexEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> actionAutoCreateIndexEnabled;
 
     /**
-     * @return Specifies whether ISM is enabled or not. Default: `true`
+     * @return Specifices whether to allow automatic creation of indices. Default: `true`
      * 
      */
     public Output<Boolean> actionAutoCreateIndexEnabled() {
