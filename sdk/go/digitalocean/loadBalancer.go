@@ -113,7 +113,8 @@ type LoadBalancer struct {
 	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
 	HttpIdleTimeoutSeconds pulumi.IntOutput `pulumi:"httpIdleTimeoutSeconds"`
 	// The ip of the Load Balancer
-	Ip pulumi.StringOutput `pulumi:"ip"`
+	Ip   pulumi.StringOutput `pulumi:"ip"`
+	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The uniform resource name for the Load Balancer
 	LoadBalancerUrn pulumi.StringOutput `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
@@ -208,7 +209,8 @@ type loadBalancerState struct {
 	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
 	HttpIdleTimeoutSeconds *int `pulumi:"httpIdleTimeoutSeconds"`
 	// The ip of the Load Balancer
-	Ip *string `pulumi:"ip"`
+	Ip   *string `pulumi:"ip"`
+	Ipv6 *string `pulumi:"ipv6"`
 	// The uniform resource name for the Load Balancer
 	LoadBalancerUrn *string `pulumi:"loadBalancerUrn"`
 	// The Load Balancer name
@@ -274,7 +276,8 @@ type LoadBalancerState struct {
 	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
 	HttpIdleTimeoutSeconds pulumi.IntPtrInput
 	// The ip of the Load Balancer
-	Ip pulumi.StringPtrInput
+	Ip   pulumi.StringPtrInput
+	Ipv6 pulumi.StringPtrInput
 	// The uniform resource name for the Load Balancer
 	LoadBalancerUrn pulumi.StringPtrInput
 	// The Load Balancer name
@@ -591,6 +594,10 @@ func (o LoadBalancerOutput) HttpIdleTimeoutSeconds() pulumi.IntOutput {
 // The ip of the Load Balancer
 func (o LoadBalancerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
 // The uniform resource name for the Load Balancer

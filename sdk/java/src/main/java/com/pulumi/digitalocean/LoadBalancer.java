@@ -298,6 +298,12 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<String> ip() {
         return this.ip;
     }
+    @Export(name="ipv6", refs={String.class}, tree="[0]")
+    private Output<String> ipv6;
+
+    public Output<String> ipv6() {
+        return this.ipv6;
+    }
     /**
      * The uniform resource name for the Load Balancer
      * 

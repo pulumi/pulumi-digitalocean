@@ -435,6 +435,7 @@ class _LoadBalancerState:
                  healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
+                 ipv6: Optional[pulumi.Input[str]] = None,
                  load_balancer_urn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -515,6 +516,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
         if load_balancer_urn is not None:
             pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
         if name is not None:
@@ -703,6 +706,15 @@ class _LoadBalancerState:
     @ip.setter
     def ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6", value)
 
     @property
     @pulumi.getter(name="loadBalancerUrn")
@@ -1095,6 +1107,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["vpc_uuid"] = vpc_uuid
             __props__.__dict__["ip"] = None
+            __props__.__dict__["ipv6"] = None
             __props__.__dict__["load_balancer_urn"] = None
             __props__.__dict__["status"] = None
         super(LoadBalancer, __self__).__init__(
@@ -1120,6 +1133,7 @@ class LoadBalancer(pulumi.CustomResource):
             healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
             http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
             ip: Optional[pulumi.Input[str]] = None,
+            ipv6: Optional[pulumi.Input[str]] = None,
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -1193,6 +1207,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["healthcheck"] = healthcheck
         __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
         __props__.__dict__["ip"] = ip
+        __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["load_balancer_urn"] = load_balancer_urn
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -1317,6 +1332,11 @@ class LoadBalancer(pulumi.CustomResource):
         The ip of the Load Balancer
         """
         return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter(name="loadBalancerUrn")

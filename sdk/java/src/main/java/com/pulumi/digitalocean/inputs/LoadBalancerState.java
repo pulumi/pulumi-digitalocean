@@ -240,6 +240,13 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ip);
     }
 
+    @Import(name="ipv6")
+    private @Nullable Output<String> ipv6;
+
+    public Optional<Output<String>> ipv6() {
+        return Optional.ofNullable(this.ipv6);
+    }
+
     /**
      * The uniform resource name for the Load Balancer
      * 
@@ -453,6 +460,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.healthcheck = $.healthcheck;
         this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
         this.ip = $.ip;
+        this.ipv6 = $.ipv6;
         this.loadBalancerUrn = $.loadBalancerUrn;
         this.name = $.name;
         this.network = $.network;
@@ -836,6 +844,15 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
+        }
+
+        public Builder ipv6(@Nullable Output<String> ipv6) {
+            $.ipv6 = ipv6;
+            return this;
+        }
+
+        public Builder ipv6(String ipv6) {
+            return ipv6(Output.of(ipv6));
         }
 
         /**
