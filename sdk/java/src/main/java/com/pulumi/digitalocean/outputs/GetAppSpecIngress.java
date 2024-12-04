@@ -5,9 +5,9 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRule;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngress {
@@ -15,7 +15,7 @@ public final class GetAppSpecIngress {
      * @return The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      * 
      */
-    private List<GetAppSpecIngressRule> rules;
+    private @Nullable List<GetAppSpecIngressRule> rules;
 
     private GetAppSpecIngress() {}
     /**
@@ -23,7 +23,7 @@ public final class GetAppSpecIngress {
      * 
      */
     public List<GetAppSpecIngressRule> rules() {
-        return this.rules;
+        return this.rules == null ? List.of() : this.rules;
     }
 
     public static Builder builder() {
@@ -35,7 +35,7 @@ public final class GetAppSpecIngress {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetAppSpecIngressRule> rules;
+        private @Nullable List<GetAppSpecIngressRule> rules;
         public Builder() {}
         public Builder(GetAppSpecIngress defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,10 +43,8 @@ public final class GetAppSpecIngress {
         }
 
         @CustomType.Setter
-        public Builder rules(List<GetAppSpecIngressRule> rules) {
-            if (rules == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngress", "rules");
-            }
+        public Builder rules(@Nullable List<GetAppSpecIngressRule> rules) {
+
             this.rules = rules;
             return this;
         }

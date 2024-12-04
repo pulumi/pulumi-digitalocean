@@ -159,6 +159,9 @@ namespace Pulumi.DigitalOcean
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
+        [Output("ipv6")]
+        public Output<string> Ipv6 { get; private set; } = null!;
+
         /// <summary>
         /// The uniform resource name for the Load Balancer
         /// </summary>
@@ -565,6 +568,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
+
+        [Input("ipv6")]
+        public Input<string>? Ipv6 { get; set; }
 
         /// <summary>
         /// The uniform resource name for the Load Balancer

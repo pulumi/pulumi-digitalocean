@@ -9867,15 +9867,16 @@ class GetAppSpecFunctionRouteResult(dict):
 @pulumi.output_type
 class GetAppSpecIngressResult(dict):
     def __init__(__self__, *,
-                 rules: Sequence['outputs.GetAppSpecIngressRuleResult']):
+                 rules: Optional[Sequence['outputs.GetAppSpecIngressRuleResult']] = None):
         """
         :param Sequence['GetAppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         """
-        pulumi.set(__self__, "rules", rules)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
-    def rules(self) -> Sequence['outputs.GetAppSpecIngressRuleResult']:
+    def rules(self) -> Optional[Sequence['outputs.GetAppSpecIngressRuleResult']]:
         """
         The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         """

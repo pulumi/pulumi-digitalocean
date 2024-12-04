@@ -725,14 +725,7 @@
                     "description": "Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "rules"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRule:AppSpecIngressRule": {
             "properties": {
@@ -4165,15 +4158,7 @@
                     "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "rules"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRule:getAppSpecIngressRule": {
             "properties": {
@@ -14221,6 +14206,9 @@
                     "type": "string",
                     "description": "The ip of the Load Balancer\n"
                 },
+                "ipv6": {
+                    "type": "string"
+                },
                 "loadBalancerUrn": {
                     "type": "string",
                     "description": "The uniform resource name for the Load Balancer\n"
@@ -14284,6 +14272,7 @@
                 "healthcheck",
                 "httpIdleTimeoutSeconds",
                 "ip",
+                "ipv6",
                 "name",
                 "projectId",
                 "sizeUnit",
@@ -14495,6 +14484,9 @@
                     "ip": {
                         "type": "string",
                         "description": "The ip of the Load Balancer\n"
+                    },
+                    "ipv6": {
+                        "type": "string"
                     },
                     "loadBalancerUrn": {
                         "type": "string",

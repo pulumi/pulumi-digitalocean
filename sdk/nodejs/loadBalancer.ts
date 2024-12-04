@@ -141,6 +141,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The ip of the Load Balancer
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
+    public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
      * The uniform resource name for the Load Balancer
      */
@@ -222,6 +223,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
             resourceInputs["httpIdleTimeoutSeconds"] = state ? state.httpIdleTimeoutSeconds : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
             resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -261,6 +263,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             resourceInputs["ip"] = undefined /*out*/;
+            resourceInputs["ipv6"] = undefined /*out*/;
             resourceInputs["loadBalancerUrn"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -332,6 +335,7 @@ export interface LoadBalancerState {
      * The ip of the Load Balancer
      */
     ip?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string>;
     /**
      * The uniform resource name for the Load Balancer
      */

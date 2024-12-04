@@ -425,7 +425,7 @@ export interface AppSpecIngress {
     /**
      * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
-    rules: outputs.AppSpecIngressRule[];
+    rules?: outputs.AppSpecIngressRule[];
 }
 
 export interface AppSpecIngressRule {
@@ -2350,7 +2350,7 @@ export interface GetAppSpecIngress {
     /**
      * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
-    rules: outputs.GetAppSpecIngressRule[];
+    rules?: outputs.GetAppSpecIngressRule[];
 }
 
 export interface GetAppSpecIngressRule {
