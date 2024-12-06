@@ -141,7 +141,7 @@ def get_spaces_buckets(filters: Optional[Sequence[Union['GetSpacesBucketsFilterA
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']]]]] = None,
                               sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketsResult]:
     """
     Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
     If no filters are specified, all Spaces buckets will be returned.
@@ -189,7 +189,7 @@ def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSpacesBuckets:getSpacesBuckets', __args__, opts=opts, typ=GetSpacesBucketsResult)
     return __ret__.apply(lambda __response__: GetSpacesBucketsResult(
         buckets=pulumi.get(__response__, 'buckets'),

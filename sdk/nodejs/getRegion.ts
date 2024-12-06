@@ -82,7 +82,7 @@ export interface GetRegionResult {
  * export const regionName = sfo2.then(sfo2 => sfo2.name);
  * ```
  */
-export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionResult> {
+export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getRegion:getRegion", {
         "slug": args.slug,

@@ -123,7 +123,7 @@ export interface GetDatabaseReplicaResult {
  * export const replicaOutput = read_only.then(read_only => read_only.uri);
  * ```
  */
-export function getDatabaseReplicaOutput(args: GetDatabaseReplicaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseReplicaResult> {
+export function getDatabaseReplicaOutput(args: GetDatabaseReplicaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseReplicaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseReplica:getDatabaseReplica", {
         "clusterId": args.clusterId,

@@ -230,7 +230,7 @@ export interface GetDropletResult {
  * });
  * ```
  */
-export function getDropletOutput(args?: GetDropletOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletResult> {
+export function getDropletOutput(args?: GetDropletOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDropletResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDroplet:getDroplet", {

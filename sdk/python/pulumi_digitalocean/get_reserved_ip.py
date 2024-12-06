@@ -126,7 +126,7 @@ def get_reserved_ip(ip_address: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         urn=pulumi.get(__ret__, 'urn'))
 def get_reserved_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReservedIpResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpResult]:
     """
     ## Example Usage
 
@@ -147,7 +147,7 @@ def get_reserved_ip_output(ip_address: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['ipAddress'] = ip_address
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getReservedIp:getReservedIp', __args__, opts=opts, typ=GetReservedIpResult)
     return __ret__.apply(lambda __response__: GetReservedIpResult(
         droplet_id=pulumi.get(__response__, 'droplet_id'),

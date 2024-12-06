@@ -197,7 +197,7 @@ def get_vpc(id: Optional[str] = None,
 def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
                    region: Optional[pulumi.Input[Optional[str]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcResult]:
     """
     Retrieve information about a VPC for use in other resources.
 
@@ -243,7 +243,7 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['id'] = id
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult)
     return __ret__.apply(lambda __response__: GetVpcResult(
         created_at=pulumi.get(__response__, 'created_at'),

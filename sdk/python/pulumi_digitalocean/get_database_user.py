@@ -177,7 +177,7 @@ def get_database_user(cluster_id: Optional[str] = None,
         settings=pulumi.get(__ret__, 'settings'))
 def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUserResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseUserResult]:
     """
     Provides information on a DigitalOcean database user resource.
 
@@ -200,7 +200,7 @@ def get_database_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseUser:getDatabaseUser', __args__, opts=opts, typ=GetDatabaseUserResult)
     return __ret__.apply(lambda __response__: GetDatabaseUserResult(
         access_cert=pulumi.get(__response__, 'access_cert'),

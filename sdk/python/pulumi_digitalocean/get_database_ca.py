@@ -98,7 +98,7 @@ def get_database_ca(cluster_id: Optional[str] = None,
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         id=pulumi.get(__ret__, 'id'))
 def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseCaResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseCaResult]:
     """
     Provides the CA certificate for a DigitalOcean database.
 
@@ -117,7 +117,7 @@ def get_database_ca_output(cluster_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseCa:getDatabaseCa', __args__, opts=opts, typ=GetDatabaseCaResult)
     return __ret__.apply(lambda __response__: GetDatabaseCaResult(
         certificate=pulumi.get(__response__, 'certificate'),

@@ -104,7 +104,7 @@ export interface GetRecordsResult {
  * })).then(invoke => invoke.result);
  * ```
  */
-export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
+export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getRecords:getRecords", {
         "domain": args.domain,

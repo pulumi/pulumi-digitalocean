@@ -131,7 +131,7 @@ export interface GetSpacesBucketsResult {
  * });
  * ```
  */
-export function getSpacesBucketsOutput(args?: GetSpacesBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketsResult> {
+export function getSpacesBucketsOutput(args?: GetSpacesBucketsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpacesBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getSpacesBuckets:getSpacesBuckets", {

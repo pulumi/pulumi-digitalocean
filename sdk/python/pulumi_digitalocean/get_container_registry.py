@@ -174,7 +174,7 @@ def get_container_registry(name: Optional[str] = None,
         storage_usage_bytes=pulumi.get(__ret__, 'storage_usage_bytes'),
         subscription_tier_slug=pulumi.get(__ret__, 'subscription_tier_slug'))
 def get_container_registry_output(name: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryResult]:
     """
     Get information on a container registry. This data source provides the name as
     configured on your DigitalOcean account. This is useful if the container
@@ -201,7 +201,7 @@ def get_container_registry_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getContainerRegistry:getContainerRegistry', __args__, opts=opts, typ=GetContainerRegistryResult)
     return __ret__.apply(lambda __response__: GetContainerRegistryResult(
         created_at=pulumi.get(__response__, 'created_at'),

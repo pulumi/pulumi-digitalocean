@@ -54,7 +54,7 @@ export interface GetSizesResult {
  * the ability to filter and sort the results. If no filters are specified, all sizes
  * will be returned.
  */
-export function getSizesOutput(args?: GetSizesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSizesResult> {
+export function getSizesOutput(args?: GetSizesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSizesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getSizes:getSizes", {
