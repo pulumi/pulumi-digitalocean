@@ -83,7 +83,7 @@ export interface GetSpacesBucketObjectsResult {
  *
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
  */
-export function getSpacesBucketObjectsOutput(args: GetSpacesBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketObjectsResult> {
+export function getSpacesBucketObjectsOutput(args: GetSpacesBucketObjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpacesBucketObjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", {
         "bucket": args.bucket,

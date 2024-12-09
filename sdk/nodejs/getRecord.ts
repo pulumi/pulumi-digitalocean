@@ -117,7 +117,7 @@ export interface GetRecordResult {
  * export const recordTtl = example.then(example => example.ttl);
  * ```
  */
-export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
+export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getRecord:getRecord", {
         "domain": args.domain,

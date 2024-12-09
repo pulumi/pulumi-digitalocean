@@ -212,7 +212,7 @@ def get_record(domain: Optional[str] = None,
         weight=pulumi.get(__ret__, 'weight'))
 def get_record_output(domain: Optional[pulumi.Input[str]] = None,
                       name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordResult]:
     """
     Get information on a DNS record. This data source provides the name, TTL, and zone
     file as configured on your DigitalOcean account. This is useful if the record
@@ -242,7 +242,7 @@ def get_record_output(domain: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['domain'] = domain
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult)
     return __ret__.apply(lambda __response__: GetRecordResult(
         data=pulumi.get(__response__, 'data'),

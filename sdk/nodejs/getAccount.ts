@@ -75,7 +75,7 @@ export interface GetAccountResult {
  * const example = digitalocean.getAccount({});
  * ```
  */
-export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+export function getAccountOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getAccount:getAccount", {
     }, opts);

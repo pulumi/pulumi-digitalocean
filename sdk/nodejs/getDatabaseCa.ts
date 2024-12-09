@@ -65,7 +65,7 @@ export interface GetDatabaseCaResult {
  * export const caOutput = ca.then(ca => ca.certificate);
  * ```
  */
-export function getDatabaseCaOutput(args: GetDatabaseCaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseCaResult> {
+export function getDatabaseCaOutput(args: GetDatabaseCaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseCaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseCa:getDatabaseCa", {
         "clusterId": args.clusterId,

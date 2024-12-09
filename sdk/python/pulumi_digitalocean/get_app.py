@@ -223,7 +223,7 @@ def get_app(app_id: Optional[str] = None,
         urn=pulumi.get(__ret__, 'urn'))
 def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
                    dedicated_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppResult]:
     """
     Get information on a DigitalOcean App.
 
@@ -246,7 +246,7 @@ def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['dedicatedIps'] = dedicated_ips
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult)
     return __ret__.apply(lambda __response__: GetAppResult(
         active_deployment_id=pulumi.get(__response__, 'active_deployment_id'),

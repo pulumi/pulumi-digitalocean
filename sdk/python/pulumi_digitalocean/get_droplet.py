@@ -441,7 +441,7 @@ def get_droplet_output(gpu: Optional[pulumi.Input[Optional[bool]]] = None,
                        id: Optional[pulumi.Input[Optional[int]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        tag: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletResult]:
     """
     Get information on a Droplet for use in other resources. This data source provides
     all of the Droplet's properties as configured on your DigitalOcean account. This
@@ -494,7 +494,7 @@ def get_droplet_output(gpu: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['id'] = id
     __args__['name'] = name
     __args__['tag'] = tag
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDroplet:getDroplet', __args__, opts=opts, typ=GetDropletResult)
     return __ret__.apply(lambda __response__: GetDropletResult(
         backups=pulumi.get(__response__, 'backups'),

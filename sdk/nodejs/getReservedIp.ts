@@ -77,7 +77,7 @@ export interface GetReservedIpResult {
  * export const fipOutput = example.then(example => example.dropletId);
  * ```
  */
-export function getReservedIpOutput(args: GetReservedIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservedIpResult> {
+export function getReservedIpOutput(args: GetReservedIpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReservedIpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getReservedIp:getReservedIp", {
         "ipAddress": args.ipAddress,
