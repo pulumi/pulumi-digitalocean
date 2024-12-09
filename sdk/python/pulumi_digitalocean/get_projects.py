@@ -151,7 +151,7 @@ def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetP
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with
     the ability to filter and sort the results. If no filters are specified, all projects
@@ -208,7 +208,7 @@ def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
     return __ret__.apply(lambda __response__: GetProjectsResult(
         filters=pulumi.get(__response__, 'filters'),

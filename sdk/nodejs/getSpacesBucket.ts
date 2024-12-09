@@ -93,7 +93,7 @@ export interface GetSpacesBucketResult {
  * export const bucketDomainName = example.then(example => example.bucketDomainName);
  * ```
  */
-export function getSpacesBucketOutput(args: GetSpacesBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesBucketResult> {
+export function getSpacesBucketOutput(args: GetSpacesBucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpacesBucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getSpacesBucket:getSpacesBucket", {
         "name": args.name,

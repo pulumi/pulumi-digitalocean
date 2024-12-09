@@ -99,7 +99,7 @@ export interface GetDatabaseUserResult {
  * export const databaseUserPassword = example.then(example => example.password);
  * ```
  */
-export function getDatabaseUserOutput(args: GetDatabaseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUserResult> {
+export function getDatabaseUserOutput(args: GetDatabaseUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseUser:getDatabaseUser", {
         "clusterId": args.clusterId,

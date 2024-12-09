@@ -131,7 +131,7 @@ export interface GetSshKeysResult {
  * });
  * ```
  */
-export function getSshKeysOutput(args?: GetSshKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshKeysResult> {
+export function getSshKeysOutput(args?: GetSshKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshKeysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getSshKeys:getSshKeys", {

@@ -129,7 +129,7 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Get information on domains for use in other resources, with the ability to filter and sort the results.
     If no filters are specified, all domains will be returned.
@@ -165,7 +165,7 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
     return __ret__.apply(lambda __response__: GetDomainsResult(
         domains=pulumi.get(__response__, 'domains'),

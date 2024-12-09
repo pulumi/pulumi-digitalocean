@@ -186,7 +186,7 @@ def get_spaces_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
                                      max_keys: Optional[pulumi.Input[Optional[int]]] = None,
                                      prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                      region: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketObjectsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketObjectsResult]:
     """
     > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
 
@@ -207,7 +207,7 @@ def get_spaces_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
     __args__['maxKeys'] = max_keys
     __args__['prefix'] = prefix
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects', __args__, opts=opts, typ=GetSpacesBucketObjectsResult)
     return __ret__.apply(lambda __response__: GetSpacesBucketObjectsResult(
         bucket=pulumi.get(__response__, 'bucket'),

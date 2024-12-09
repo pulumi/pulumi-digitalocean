@@ -115,7 +115,7 @@ export interface GetDatabaseConnectionPoolResult {
  * export const connectionPoolUriOutput = read_only.then(read_only => read_only.uri);
  * ```
  */
-export function getDatabaseConnectionPoolOutput(args: GetDatabaseConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseConnectionPoolResult> {
+export function getDatabaseConnectionPoolOutput(args: GetDatabaseConnectionPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseConnectionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", {
         "clusterId": args.clusterId,

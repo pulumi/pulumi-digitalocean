@@ -174,7 +174,7 @@ def get_tag(name: Optional[str] = None,
         volume_snapshots_count=pulumi.get(__ret__, 'volume_snapshots_count'),
         volumes_count=pulumi.get(__ret__, 'volumes_count'))
 def get_tag_output(name: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     Get information on a tag. This data source provides the name as configured on
     your DigitalOcean account. This is useful if the tag name in question is not
@@ -204,7 +204,7 @@ def get_tag_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult)
     return __ret__.apply(lambda __response__: GetTagResult(
         databases_count=pulumi.get(__response__, 'databases_count'),

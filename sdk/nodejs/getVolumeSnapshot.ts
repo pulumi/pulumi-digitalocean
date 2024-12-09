@@ -156,7 +156,7 @@ export interface GetVolumeSnapshotResult {
  * });
  * ```
  */
-export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeSnapshotResult> {
+export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumeSnapshotResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", {
