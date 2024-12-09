@@ -132,7 +132,7 @@ def get_domain(name: Optional[str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         zone_file=pulumi.get(__ret__, 'zone_file'))
 def get_domain_output(name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
     Get information on a domain. This data source provides the name, TTL, and zone
     file as configured on your DigitalOcean account. This is useful if the domain
@@ -159,7 +159,7 @@ def get_domain_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult)
     return __ret__.apply(lambda __response__: GetDomainResult(
         domain_urn=pulumi.get(__response__, 'domain_urn'),

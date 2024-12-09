@@ -265,7 +265,7 @@ def get_database_replica(cluster_id: Optional[str] = None,
 def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
                                 tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseReplicaResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseReplicaResult]:
     """
     Provides information on a DigitalOcean database replica.
 
@@ -290,7 +290,7 @@ def get_database_replica_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseReplica:getDatabaseReplica', __args__, opts=opts, typ=GetDatabaseReplicaResult)
     return __ret__.apply(lambda __response__: GetDatabaseReplicaResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

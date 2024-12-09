@@ -217,7 +217,7 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                 region: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletSnapshotResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletSnapshotResult]:
     """
     Droplet snapshots are saved instances of a Droplet. Use this data
     source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
@@ -267,7 +267,7 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[bool
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDropletSnapshot:getDropletSnapshot', __args__, opts=opts, typ=GetDropletSnapshotResult)
     return __ret__.apply(lambda __response__: GetDropletSnapshotResult(
         created_at=pulumi.get(__response__, 'created_at'),

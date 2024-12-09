@@ -179,7 +179,7 @@ export interface GetVpcPeeringResult {
  * });
  * ```
  */
-export function getVpcPeeringOutput(args?: GetVpcPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcPeeringResult> {
+export function getVpcPeeringOutput(args?: GetVpcPeeringOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcPeeringResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getVpcPeering:getVpcPeering", {

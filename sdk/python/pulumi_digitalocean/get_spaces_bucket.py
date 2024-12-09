@@ -148,7 +148,7 @@ def get_spaces_bucket(name: Optional[str] = None,
         urn=pulumi.get(__ret__, 'urn'))
 def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
                              region: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketResult]:
     """
     Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
     is not managed by the provider or you need to utilize any of the bucket's data.
@@ -173,7 +173,7 @@ def get_spaces_bucket_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSpacesBucket:getSpacesBucket', __args__, opts=opts, typ=GetSpacesBucketResult)
     return __ret__.apply(lambda __response__: GetSpacesBucketResult(
         bucket_domain_name=pulumi.get(__response__, 'bucket_domain_name'),

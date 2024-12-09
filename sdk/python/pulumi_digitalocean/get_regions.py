@@ -148,7 +148,7 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]]]] = None,
                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Retrieve information about all supported DigitalOcean regions, with the ability to
     filter and sort the results. If no filters are specified, all regions will be returned.
@@ -203,7 +203,7 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(
         filters=pulumi.get(__response__, 'filters'),

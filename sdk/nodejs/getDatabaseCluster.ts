@@ -160,7 +160,7 @@ export interface GetDatabaseClusterResult {
  * export const databaseOutput = example.then(example => example.uri);
  * ```
  */
-export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseClusterResult> {
+export function getDatabaseClusterOutput(args: GetDatabaseClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDatabaseCluster:getDatabaseCluster", {
         "name": args.name,
