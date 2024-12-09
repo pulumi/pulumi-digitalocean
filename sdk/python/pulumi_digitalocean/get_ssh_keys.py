@@ -141,7 +141,7 @@ def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSs
         ssh_keys=pulumi.get(__ret__, 'ssh_keys'))
 def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSshKeysResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeysResult]:
     """
     Get information on SSH Keys for use in other resources.
 
@@ -189,7 +189,7 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSshKeys:getSshKeys', __args__, opts=opts, typ=GetSshKeysResult)
     return __ret__.apply(lambda __response__: GetSshKeysResult(
         filters=pulumi.get(__response__, 'filters'),

@@ -149,7 +149,7 @@ def get_kubernetes_versions(version_prefix: Optional[str] = None,
         valid_versions=pulumi.get(__ret__, 'valid_versions'),
         version_prefix=pulumi.get(__ret__, 'version_prefix'))
 def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesVersionsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesVersionsResult]:
     """
     Provides access to the available DigitalOcean Kubernetes Service versions.
 
@@ -206,7 +206,7 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
     """
     __args__ = dict()
     __args__['versionPrefix'] = version_prefix
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesVersions:getKubernetesVersions', __args__, opts=opts, typ=GetKubernetesVersionsResult)
     return __ret__.apply(lambda __response__: GetKubernetesVersionsResult(
         id=pulumi.get(__response__, 'id'),

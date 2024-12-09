@@ -309,7 +309,7 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      slug: Optional[pulumi.Input[Optional[str]]] = None,
                      source: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Get information on an image for use in other resources (e.g. creating a Droplet
     based on snapshot). This data source provides all of the image properties as
@@ -365,7 +365,7 @@ def get_image_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     __args__['name'] = name
     __args__['slug'] = slug
     __args__['source'] = source
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
         created=pulumi.get(__response__, 'created'),

@@ -327,7 +327,7 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
                                     range: Optional[pulumi.Input[Optional[str]]] = None,
                                     region: Optional[pulumi.Input[str]] = None,
                                     version_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpacesBucketObjectResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketObjectResult]:
     """
     The Spaces object data source allows access to the metadata and
     _optionally_ (see below) content of an object stored inside a Spaces bucket.
@@ -368,7 +368,7 @@ def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
     __args__['range'] = range
     __args__['region'] = region
     __args__['versionId'] = version_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSpacesBucketObject:getSpacesBucketObject', __args__, opts=opts, typ=GetSpacesBucketObjectResult)
     return __ret__.apply(lambda __response__: GetSpacesBucketObjectResult(
         body=pulumi.get(__response__, 'body'),

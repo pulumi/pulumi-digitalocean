@@ -141,7 +141,7 @@ def get_region(slug: Optional[str] = None,
         sizes=pulumi.get(__ret__, 'sizes'),
         slug=pulumi.get(__ret__, 'slug'))
 def get_region_output(slug: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
     """
     Get information on a single DigitalOcean region. This is useful to find out
     what Droplet sizes and features are supported within a region.
@@ -161,7 +161,7 @@ def get_region_output(slug: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['slug'] = slug
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult)
     return __ret__.apply(lambda __response__: GetRegionResult(
         available=pulumi.get(__response__, 'available'),

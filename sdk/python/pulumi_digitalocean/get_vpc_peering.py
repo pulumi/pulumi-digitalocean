@@ -173,7 +173,7 @@ def get_vpc_peering(id: Optional[str] = None,
 def get_vpc_peering_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            vpc_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcPeeringResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcPeeringResult]:
     """
     ## Example Usage
 
@@ -234,7 +234,7 @@ def get_vpc_peering_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['id'] = id
     __args__['name'] = name
     __args__['vpcIds'] = vpc_ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getVpcPeering:getVpcPeering', __args__, opts=opts, typ=GetVpcPeeringResult)
     return __ret__.apply(lambda __response__: GetVpcPeeringResult(
         created_at=pulumi.get(__response__, 'created_at'),

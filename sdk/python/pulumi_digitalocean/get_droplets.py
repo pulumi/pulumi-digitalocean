@@ -168,7 +168,7 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
 def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
                         gpus: Optional[pulumi.Input[Optional[bool]]] = None,
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDropletsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletsResult]:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
     If no filters are specified, all Droplets will be returned.
@@ -231,7 +231,7 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     __args__['filters'] = filters
     __args__['gpus'] = gpus
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDroplets:getDroplets', __args__, opts=opts, typ=GetDropletsResult)
     return __ret__.apply(lambda __response__: GetDropletsResult(
         droplets=pulumi.get(__response__, 'droplets'),

@@ -152,7 +152,7 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
     based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
@@ -211,7 +211,7 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
     return __ret__.apply(lambda __response__: GetImagesResult(
         filters=pulumi.get(__response__, 'filters'),

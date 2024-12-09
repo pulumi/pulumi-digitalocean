@@ -163,7 +163,7 @@ export interface GetDropletsResult {
  * });
  * ```
  */
-export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletsResult> {
+export function getDropletsOutput(args?: GetDropletsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDropletsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDroplets:getDroplets", {

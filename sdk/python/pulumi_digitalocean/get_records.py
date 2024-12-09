@@ -139,7 +139,7 @@ def get_records(domain: Optional[str] = None,
 def get_records_output(domain: Optional[pulumi.Input[str]] = None,
                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]]]] = None,
                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordsResult]:
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
     If no filters are specified, all records will be returned.
@@ -173,7 +173,7 @@ def get_records_output(domain: Optional[pulumi.Input[str]] = None,
     __args__['domain'] = domain
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getRecords:getRecords', __args__, opts=opts, typ=GetRecordsResult)
     return __ret__.apply(lambda __response__: GetRecordsResult(
         domain=pulumi.get(__response__, 'domain'),

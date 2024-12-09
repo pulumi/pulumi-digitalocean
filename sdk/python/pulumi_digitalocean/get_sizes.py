@@ -105,7 +105,7 @@ def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFi
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_sizes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']]]]] = None,
                      sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSizesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSizesResult]:
     """
     Retrieves information about the Droplet sizes that DigitalOcean supports, with
     the ability to filter and sort the results. If no filters are specified, all sizes
@@ -120,7 +120,7 @@ def get_sizes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getSizes:getSizes', __args__, opts=opts, typ=GetSizesResult)
     return __ret__.apply(lambda __response__: GetSizesResult(
         filters=pulumi.get(__response__, 'filters'),

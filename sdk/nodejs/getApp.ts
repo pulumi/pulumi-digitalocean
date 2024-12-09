@@ -113,7 +113,7 @@ export interface GetAppResult {
  * export const defaultIngress = example.then(example => example.defaultIngress);
  * ```
  */
-export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
+export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getApp:getApp", {
         "appId": args.appId,
