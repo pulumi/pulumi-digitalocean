@@ -152,7 +152,7 @@ export interface GetDropletSnapshotResult {
  * });
  * ```
  */
-export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDropletSnapshotResult> {
+export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDropletSnapshotResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getDropletSnapshot:getDropletSnapshot", {

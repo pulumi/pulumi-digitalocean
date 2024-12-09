@@ -158,7 +158,7 @@ export interface GetKubernetesVersionsResult {
  * });
  * ```
  */
-export function getKubernetesVersionsOutput(args?: GetKubernetesVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionsResult> {
+export function getKubernetesVersionsOutput(args?: GetKubernetesVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getKubernetesVersions:getKubernetesVersions", {

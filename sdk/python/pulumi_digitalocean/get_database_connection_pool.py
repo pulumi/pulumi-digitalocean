@@ -231,7 +231,7 @@ def get_database_connection_pool(cluster_id: Optional[str] = None,
         user=pulumi.get(__ret__, 'user'))
 def get_database_connection_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                         name: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseConnectionPoolResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseConnectionPoolResult]:
     """
     Provides information on a DigitalOcean PostgreSQL database connection pool.
 
@@ -254,7 +254,7 @@ def get_database_connection_pool_output(cluster_id: Optional[pulumi.Input[str]] 
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool', __args__, opts=opts, typ=GetDatabaseConnectionPoolResult)
     return __ret__.apply(lambda __response__: GetDatabaseConnectionPoolResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

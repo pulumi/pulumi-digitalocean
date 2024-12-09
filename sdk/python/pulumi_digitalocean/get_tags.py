@@ -118,7 +118,7 @@ def get_tags(filters: Optional[Sequence[Union['GetTagsFilterArgs', 'GetTagsFilte
         tags=pulumi.get(__ret__, 'tags'))
 def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetTagsFilterArgs', 'GetTagsFilterArgsDict']]]]] = None,
                     sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetTagsSortArgs', 'GetTagsSortArgsDict']]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagsResult]:
     """
     Returns a list of tags in your DigitalOcean account, with the ability to
     filter and sort the results. If no filters are specified, all tags will be
@@ -146,7 +146,7 @@ def get_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetT
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getTags:getTags', __args__, opts=opts, typ=GetTagsResult)
     return __ret__.apply(lambda __response__: GetTagsResult(
         filters=pulumi.get(__response__, 'filters'),

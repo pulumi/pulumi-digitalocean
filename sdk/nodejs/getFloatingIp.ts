@@ -95,7 +95,7 @@ export interface GetFloatingIpResult {
  * export const fipOutput = example.then(example => example.dropletId);
  * ```
  */
-export function getFloatingIpOutput(args: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
+export function getFloatingIpOutput(args: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFloatingIpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getFloatingIp:getFloatingIp", {
         "ipAddress": args.ipAddress,

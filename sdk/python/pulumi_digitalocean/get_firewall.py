@@ -209,7 +209,7 @@ def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int
                         inbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]]]] = None,
                         outbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]]]] = None,
                         tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """
     Get information on a DigitalOcean Firewall.
 
@@ -238,7 +238,7 @@ def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[int
     __args__['inboundRules'] = inbound_rules
     __args__['outboundRules'] = outbound_rules
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getFirewall:getFirewall', __args__, opts=opts, typ=GetFirewallResult)
     return __ret__.apply(lambda __response__: GetFirewallResult(
         created_at=pulumi.get(__response__, 'created_at'),
