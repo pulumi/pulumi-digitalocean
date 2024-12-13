@@ -242,7 +242,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Import(name="network")
@@ -250,7 +249,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<String>> network() {
@@ -322,14 +320,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
      * 
      */
     @Import(name="sizeUnit")
     private @Nullable Output<Integer> sizeUnit;
 
     /**
-     * @return The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * @return The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
      * 
      */
     public Optional<Output<Integer>> sizeUnit() {
@@ -369,7 +367,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
@@ -377,7 +375,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * @return The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
@@ -800,7 +798,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-         * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -812,7 +809,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-         * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -930,7 +926,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
          * 
          * @return builder
          * 
@@ -941,7 +937,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
          * 
          * @return builder
          * 
@@ -1005,7 +1001,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+         * @param type The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
          * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
@@ -1017,7 +1013,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+         * @param type The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
          * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder

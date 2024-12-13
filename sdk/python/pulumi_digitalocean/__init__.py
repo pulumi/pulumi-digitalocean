@@ -28,6 +28,7 @@ from .database_user import *
 from .dns_record import *
 from .domain import *
 from .droplet import *
+from .droplet_autoscale import *
 from .droplet_snapshot import *
 from .firewall import *
 from .floating_ip import *
@@ -44,6 +45,7 @@ from .get_database_user import *
 from .get_domain import *
 from .get_domains import *
 from .get_droplet import *
+from .get_droplet_autoscale import *
 from .get_droplet_snapshot import *
 from .get_droplets import *
 from .get_firewall import *
@@ -60,6 +62,7 @@ from .get_records import *
 from .get_region import *
 from .get_regions import *
 from .get_reserved_ip import *
+from .get_reserved_ipv6 import *
 from .get_sizes import *
 from .get_spaces_bucket import *
 from .get_spaces_bucket_object import *
@@ -82,6 +85,8 @@ from .project_resources import *
 from .provider import *
 from .reserved_ip import *
 from .reserved_ip_assignment import *
+from .reserved_ipv6 import *
+from .reserved_ipv6_assignment import *
 from .spaces_bucket import *
 from .spaces_bucket_cors_configuration import *
 from .spaces_bucket_object import *
@@ -286,6 +291,14 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
+  "mod": "index/dropletAutoscale",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/dropletAutoscale:DropletAutoscale": "DropletAutoscale"
+  }
+ },
+ {
+  "pkg": "digitalocean",
   "mod": "index/dropletSnapshot",
   "fqn": "pulumi_digitalocean",
   "classes": {
@@ -378,6 +391,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/reservedIpAssignment:ReservedIpAssignment": "ReservedIpAssignment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/reservedIpv6",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/reservedIpv6:ReservedIpv6": "ReservedIpv6"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/reservedIpv6Assignment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment": "ReservedIpv6Assignment"
   }
  },
  {

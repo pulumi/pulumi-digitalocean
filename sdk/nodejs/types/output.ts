@@ -1838,6 +1838,92 @@ export interface DatabaseUserSettingOpensearchAcl {
     permission: string;
 }
 
+export interface DropletAutoscaleConfig {
+    /**
+     * The cooldown duration between scaling events for the Droplet Autoscale pool.
+     */
+    cooldownMinutes?: number;
+    /**
+     * The maximum number of instances to maintain in the Droplet Autoscale pool.
+     */
+    maxInstances?: number;
+    /**
+     * The minimum number of instances to maintain in the Droplet Autoscale pool.
+     */
+    minInstances?: number;
+    /**
+     * The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+     */
+    targetCpuUtilization?: number;
+    /**
+     * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+     * pool.
+     */
+    targetMemoryUtilization?: number;
+    /**
+     * The static number of instances to maintain in the pool Droplet Autoscale pool. This
+     * argument cannot be used with any other config options.
+     */
+    targetNumberInstances?: number;
+}
+
+export interface DropletAutoscaleCurrentUtilization {
+    /**
+     * Average CPU utilization
+     */
+    cpu: number;
+    /**
+     * Average Memory utilization
+     */
+    memory: number;
+}
+
+export interface DropletAutoscaleDropletTemplate {
+    /**
+     * Image slug of the Droplet Autoscale pool underlying resource(s).
+     */
+    image: string;
+    /**
+     * Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+     */
+    ipv6?: boolean;
+    /**
+     * Project UUID to create the Droplet Autoscale pool underlying resource(s).
+     */
+    projectId?: string;
+    /**
+     * Region slug of the Droplet Autoscale pool underlying resource(s).
+     */
+    region: string;
+    /**
+     * Size slug of the Droplet Autoscale pool underlying resource(s).
+     */
+    size: string;
+    /**
+     * SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+     */
+    sshKeys: string[];
+    /**
+     * List of tags to add to the Droplet Autoscale pool underlying resource(s).
+     */
+    tags?: string[];
+    /**
+     * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+     * cloud init script that user may configure to setup their application workload.
+     */
+    userData?: string;
+    /**
+     * VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+     * from the specified `region` (default VPC).
+     */
+    vpcUuid?: string;
+    /**
+     * Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+     * metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+     */
+    withDropletAgent?: boolean;
+}
+
 export interface DropletBackupPolicy {
     /**
      * The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
@@ -3613,6 +3699,87 @@ export interface GetDomainsSort {
      * Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
      */
     key: string;
+}
+
+export interface GetDropletAutoscaleConfig {
+    /**
+     * Cooldown duration
+     */
+    cooldownMinutes: number;
+    /**
+     * Max number of members
+     */
+    maxInstances: number;
+    /**
+     * Min number of members
+     */
+    minInstances: number;
+    /**
+     * CPU target threshold
+     */
+    targetCpuUtilization: number;
+    /**
+     * Memory target threshold
+     */
+    targetMemoryUtilization: number;
+    /**
+     * Target number of members
+     */
+    targetNumberInstances: number;
+}
+
+export interface GetDropletAutoscaleCurrentUtilization {
+    /**
+     * Average CPU utilization
+     */
+    cpu: number;
+    /**
+     * Average Memory utilization
+     */
+    memory: number;
+}
+
+export interface GetDropletAutoscaleDropletTemplate {
+    /**
+     * Droplet image
+     */
+    image: string;
+    /**
+     * Enable droplet IPv6
+     */
+    ipv6: boolean;
+    /**
+     * Droplet project ID
+     */
+    projectId: string;
+    /**
+     * Droplet region
+     */
+    region: string;
+    /**
+     * Droplet size
+     */
+    size: string;
+    /**
+     * Droplet SSH keys
+     */
+    sshKeys: string[];
+    /**
+     * Droplet tags
+     */
+    tags: string[];
+    /**
+     * Droplet user data
+     */
+    userData: string;
+    /**
+     * Droplet VPC UUID
+     */
+    vpcUuid: string;
+    /**
+     * Enable droplet agent
+     */
+    withDropletAgent: boolean;
 }
 
 export interface GetDropletsDroplet {

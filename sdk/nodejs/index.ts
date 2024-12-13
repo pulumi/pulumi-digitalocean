@@ -115,6 +115,11 @@ export type Droplet = import("./droplet").Droplet;
 export const Droplet: typeof import("./droplet").Droplet = null as any;
 utilities.lazyLoad(exports, ["Droplet"], () => require("./droplet"));
 
+export { DropletAutoscaleArgs, DropletAutoscaleState } from "./dropletAutoscale";
+export type DropletAutoscale = import("./dropletAutoscale").DropletAutoscale;
+export const DropletAutoscale: typeof import("./dropletAutoscale").DropletAutoscale = null as any;
+utilities.lazyLoad(exports, ["DropletAutoscale"], () => require("./dropletAutoscale"));
+
 export { DropletSnapshotArgs, DropletSnapshotState } from "./dropletSnapshot";
 export type DropletSnapshot = import("./dropletSnapshot").DropletSnapshot;
 export const DropletSnapshot: typeof import("./dropletSnapshot").DropletSnapshot = null as any;
@@ -195,6 +200,11 @@ export const getDroplet: typeof import("./getDroplet").getDroplet = null as any;
 export const getDropletOutput: typeof import("./getDroplet").getDropletOutput = null as any;
 utilities.lazyLoad(exports, ["getDroplet","getDropletOutput"], () => require("./getDroplet"));
 
+export { GetDropletAutoscaleArgs, GetDropletAutoscaleResult, GetDropletAutoscaleOutputArgs } from "./getDropletAutoscale";
+export const getDropletAutoscale: typeof import("./getDropletAutoscale").getDropletAutoscale = null as any;
+export const getDropletAutoscaleOutput: typeof import("./getDropletAutoscale").getDropletAutoscaleOutput = null as any;
+utilities.lazyLoad(exports, ["getDropletAutoscale","getDropletAutoscaleOutput"], () => require("./getDropletAutoscale"));
+
 export { GetDropletSnapshotArgs, GetDropletSnapshotResult, GetDropletSnapshotOutputArgs } from "./getDropletSnapshot";
 export const getDropletSnapshot: typeof import("./getDropletSnapshot").getDropletSnapshot = null as any;
 export const getDropletSnapshotOutput: typeof import("./getDropletSnapshot").getDropletSnapshotOutput = null as any;
@@ -274,6 +284,11 @@ export { GetReservedIpArgs, GetReservedIpResult, GetReservedIpOutputArgs } from 
 export const getReservedIp: typeof import("./getReservedIp").getReservedIp = null as any;
 export const getReservedIpOutput: typeof import("./getReservedIp").getReservedIpOutput = null as any;
 utilities.lazyLoad(exports, ["getReservedIp","getReservedIpOutput"], () => require("./getReservedIp"));
+
+export { GetReservedIpv6Args, GetReservedIpv6Result, GetReservedIpv6OutputArgs } from "./getReservedIpv6";
+export const getReservedIpv6: typeof import("./getReservedIpv6").getReservedIpv6 = null as any;
+export const getReservedIpv6Output: typeof import("./getReservedIpv6").getReservedIpv6Output = null as any;
+utilities.lazyLoad(exports, ["getReservedIpv6","getReservedIpv6Output"], () => require("./getReservedIpv6"));
 
 export { GetSizesArgs, GetSizesResult, GetSizesOutputArgs } from "./getSizes";
 export const getSizes: typeof import("./getSizes").getSizes = null as any;
@@ -384,6 +399,16 @@ export { ReservedIpAssignmentArgs, ReservedIpAssignmentState } from "./reservedI
 export type ReservedIpAssignment = import("./reservedIpAssignment").ReservedIpAssignment;
 export const ReservedIpAssignment: typeof import("./reservedIpAssignment").ReservedIpAssignment = null as any;
 utilities.lazyLoad(exports, ["ReservedIpAssignment"], () => require("./reservedIpAssignment"));
+
+export { ReservedIpv6Args, ReservedIpv6State } from "./reservedIpv6";
+export type ReservedIpv6 = import("./reservedIpv6").ReservedIpv6;
+export const ReservedIpv6: typeof import("./reservedIpv6").ReservedIpv6 = null as any;
+utilities.lazyLoad(exports, ["ReservedIpv6"], () => require("./reservedIpv6"));
+
+export { ReservedIpv6AssignmentArgs, ReservedIpv6AssignmentState } from "./reservedIpv6Assignment";
+export type ReservedIpv6Assignment = import("./reservedIpv6Assignment").ReservedIpv6Assignment;
+export const ReservedIpv6Assignment: typeof import("./reservedIpv6Assignment").ReservedIpv6Assignment = null as any;
+utilities.lazyLoad(exports, ["ReservedIpv6Assignment"], () => require("./reservedIpv6Assignment"));
 
 export { SpacesBucketArgs, SpacesBucketState } from "./spacesBucket";
 export type SpacesBucket = import("./spacesBucket").SpacesBucket;
@@ -511,6 +536,8 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "digitalocean:index/droplet:Droplet":
                 return new Droplet(name, <any>undefined, { urn })
+            case "digitalocean:index/dropletAutoscale:DropletAutoscale":
+                return new DropletAutoscale(name, <any>undefined, { urn })
             case "digitalocean:index/dropletSnapshot:DropletSnapshot":
                 return new DropletSnapshot(name, <any>undefined, { urn })
             case "digitalocean:index/firewall:Firewall":
@@ -535,6 +562,10 @@ const _module = {
                 return new ReservedIp(name, <any>undefined, { urn })
             case "digitalocean:index/reservedIpAssignment:ReservedIpAssignment":
                 return new ReservedIpAssignment(name, <any>undefined, { urn })
+            case "digitalocean:index/reservedIpv6:ReservedIpv6":
+                return new ReservedIpv6(name, <any>undefined, { urn })
+            case "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment":
+                return new ReservedIpv6Assignment(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucket:SpacesBucket":
                 return new SpacesBucket(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration":
@@ -588,6 +619,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseUser", _mod
 pulumi.runtime.registerResourceModule("digitalocean", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/domain", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/droplet", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/dropletAutoscale", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/dropletSnapshot", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIp", _module)
@@ -600,6 +632,8 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/project", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/projectResources", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIp", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIpAssignment", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIpv6", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIpv6Assignment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucket", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketCorsConfiguration", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketObject", _module)

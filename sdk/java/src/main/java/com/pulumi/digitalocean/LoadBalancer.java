@@ -334,7 +334,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
@@ -342,7 +341,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Output<Optional<String>> network() {
@@ -409,14 +407,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.size);
     }
     /**
-     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
      * 
      */
     @Export(name="sizeUnit", refs={Integer.class}, tree="[0]")
     private Output<Integer> sizeUnit;
 
     /**
-     * @return The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * @return The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
      * 
      */
     public Output<Integer> sizeUnit() {
@@ -459,7 +457,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.targetLoadBalancerIds;
     }
     /**
-     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
@@ -467,7 +465,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * @return The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */

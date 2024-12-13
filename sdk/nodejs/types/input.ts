@@ -1838,6 +1838,92 @@ export interface DatabaseUserSettingOpensearchAcl {
     permission: pulumi.Input<string>;
 }
 
+export interface DropletAutoscaleConfig {
+    /**
+     * The cooldown duration between scaling events for the Droplet Autoscale pool.
+     */
+    cooldownMinutes?: pulumi.Input<number>;
+    /**
+     * The maximum number of instances to maintain in the Droplet Autoscale pool.
+     */
+    maxInstances?: pulumi.Input<number>;
+    /**
+     * The minimum number of instances to maintain in the Droplet Autoscale pool.
+     */
+    minInstances?: pulumi.Input<number>;
+    /**
+     * The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+     */
+    targetCpuUtilization?: pulumi.Input<number>;
+    /**
+     * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+     * pool.
+     */
+    targetMemoryUtilization?: pulumi.Input<number>;
+    /**
+     * The static number of instances to maintain in the pool Droplet Autoscale pool. This
+     * argument cannot be used with any other config options.
+     */
+    targetNumberInstances?: pulumi.Input<number>;
+}
+
+export interface DropletAutoscaleCurrentUtilization {
+    /**
+     * Average CPU utilization
+     */
+    cpu?: pulumi.Input<number>;
+    /**
+     * Average Memory utilization
+     */
+    memory?: pulumi.Input<number>;
+}
+
+export interface DropletAutoscaleDropletTemplate {
+    /**
+     * Image slug of the Droplet Autoscale pool underlying resource(s).
+     */
+    image: pulumi.Input<string>;
+    /**
+     * Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+     */
+    ipv6?: pulumi.Input<boolean>;
+    /**
+     * Project UUID to create the Droplet Autoscale pool underlying resource(s).
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Region slug of the Droplet Autoscale pool underlying resource(s).
+     */
+    region: pulumi.Input<string>;
+    /**
+     * Size slug of the Droplet Autoscale pool underlying resource(s).
+     */
+    size: pulumi.Input<string>;
+    /**
+     * SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+     */
+    sshKeys: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of tags to add to the Droplet Autoscale pool underlying resource(s).
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+     * cloud init script that user may configure to setup their application workload.
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+     * from the specified `region` (default VPC).
+     */
+    vpcUuid?: pulumi.Input<string>;
+    /**
+     * Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+     * metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+     */
+    withDropletAgent?: pulumi.Input<boolean>;
+}
+
 export interface DropletBackupPolicy {
     /**
      * The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).

@@ -120,7 +120,6 @@ type LoadBalancer struct {
 	// The Load Balancer name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -132,7 +131,7 @@ type LoadBalancer struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size pulumi.StringPtrOutput `pulumi:"size"`
-	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
 	SizeUnit pulumi.IntOutput    `pulumi:"sizeUnit"`
 	Status   pulumi.StringOutput `pulumi:"status"`
 	// A `stickySessions` block to be assigned to the
@@ -140,7 +139,7 @@ type LoadBalancer struct {
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
-	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
@@ -216,7 +215,6 @@ type loadBalancerState struct {
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
 	Network *string `pulumi:"network"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
@@ -228,7 +226,7 @@ type loadBalancerState struct {
 	Region *string `pulumi:"region"`
 	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size *string `pulumi:"size"`
-	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
 	SizeUnit *int    `pulumi:"sizeUnit"`
 	Status   *string `pulumi:"status"`
 	// A `stickySessions` block to be assigned to the
@@ -236,7 +234,7 @@ type loadBalancerState struct {
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
-	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
@@ -283,7 +281,6 @@ type LoadBalancerState struct {
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
 	Network pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
@@ -295,7 +292,7 @@ type LoadBalancerState struct {
 	Region pulumi.StringPtrInput
 	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size pulumi.StringPtrInput
-	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
 	SizeUnit pulumi.IntPtrInput
 	Status   pulumi.StringPtrInput
 	// A `stickySessions` block to be assigned to the
@@ -303,7 +300,7 @@ type LoadBalancerState struct {
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayInput
-	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
@@ -349,7 +346,6 @@ type loadBalancerArgs struct {
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
 	Network *string `pulumi:"network"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
@@ -361,14 +357,14 @@ type loadBalancerArgs struct {
 	Region *string `pulumi:"region"`
 	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size *string `pulumi:"size"`
-	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
 	SizeUnit *int `pulumi:"sizeUnit"`
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
-	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
@@ -411,7 +407,6 @@ type LoadBalancerArgs struct {
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-	// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
 	Network pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
@@ -423,14 +418,14 @@ type LoadBalancerArgs struct {
 	Region pulumi.StringPtrInput
 	// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
 	Size pulumi.StringPtrInput
-	// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+	// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
 	SizeUnit pulumi.IntPtrInput
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayInput
-	// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
@@ -611,7 +606,6 @@ func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 }
 
 // The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
 func (o LoadBalancerOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -638,7 +632,7 @@ func (o LoadBalancerOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Size }).(pulumi.StringPtrOutput)
 }
 
-// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
 func (o LoadBalancerOutput) SizeUnit() pulumi.IntOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.SizeUnit }).(pulumi.IntOutput)
 }
@@ -658,7 +652,7 @@ func (o LoadBalancerOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.TargetLoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
-// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 // **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 func (o LoadBalancerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)

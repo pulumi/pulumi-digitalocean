@@ -176,7 +176,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-        /// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
@@ -208,7 +207,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         /// </summary>
         [Output("sizeUnit")]
         public Output<int> SizeUnit { get; private set; } = null!;
@@ -230,7 +229,7 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> TargetLoadBalancerIds { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Output("type")]
@@ -391,7 +390,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-        /// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -423,7 +421,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         /// </summary>
         [Input("sizeUnit")]
         public Input<int>? SizeUnit { get; set; }
@@ -448,7 +446,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
@@ -586,7 +584,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-        /// **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -618,7 +615,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         /// </summary>
         [Input("sizeUnit")]
         public Input<int>? SizeUnit { get; set; }
@@ -646,7 +643,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
