@@ -68,6 +68,35 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a single DigitalOcean region. This is useful to find out 
+        /// what Droplet sizes and features are supported within a region.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sfo2 = DigitalOcean.GetRegion.Invoke(new()
+        ///     {
+        ///         Slug = "sfo2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regionName"] = sfo2.Apply(getRegionResult =&gt; getRegionResult.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionResult>("digitalocean:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -37,21 +37,11 @@ type LookupReservedIpv6Result struct {
 }
 
 func LookupReservedIpv6Output(ctx *pulumi.Context, args LookupReservedIpv6OutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpv6ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReservedIpv6ResultOutput, error) {
 			args := v.(LookupReservedIpv6Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupReservedIpv6Result
-			secret, err := ctx.InvokePackageRaw("digitalocean:index/getReservedIpv6:getReservedIpv6", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReservedIpv6ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReservedIpv6ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReservedIpv6ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("digitalocean:index/getReservedIpv6:getReservedIpv6", args, LookupReservedIpv6ResultOutput{}, options).(LookupReservedIpv6ResultOutput), nil
 		}).(LookupReservedIpv6ResultOutput)
 }
 

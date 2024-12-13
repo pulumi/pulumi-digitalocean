@@ -202,6 +202,102 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetVpcPeeringResult> Invoke(GetVpcPeeringInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcPeeringResult>("digitalocean:index/getVpcPeering:getVpcPeering", args ?? new GetVpcPeeringInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ### VPC Peering By Id
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     {
+        ///         Id = "example-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Reuse the data about a VPC Peering in other resources:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     {
+        ///         Id = "example-id",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Name = "example-01",
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = DigitalOcean.Region.NYC3,
+        ///         VpcUuid = example.Apply(getVpcPeeringResult =&gt; getVpcPeeringResult.VpcIds[0]),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### VPC Peering By Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     {
+        ///         Name = "example-peering",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Reuse the data about a VPC Peering in other resources:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     {
+        ///         Name = "example-peering",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Name = "example-01",
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = DigitalOcean.Region.NYC3,
+        ///         VpcUuid = example.Apply(getVpcPeeringResult =&gt; getVpcPeeringResult.VpcIds[0]),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcPeeringResult> Invoke(GetVpcPeeringInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcPeeringResult>("digitalocean:index/getVpcPeering:getVpcPeering", args ?? new GetVpcPeeringInvokeArgs(), options.WithDefaults());
     }
 
 

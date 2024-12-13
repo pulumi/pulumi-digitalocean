@@ -160,6 +160,81 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on an image for use in other resources (e.g. creating a Droplet
+        /// based on snapshot). This data source provides all of the image properties as
+        /// configured on your DigitalOcean account. This is useful if the image in question
+        /// is not managed by the provider or you need to utilize any of the image's data.
+        /// 
+        /// An error is triggered if zero or more than one result is returned by the query.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the data about a snapshot:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example1 = DigitalOcean.GetImage.Invoke(new()
+        ///     {
+        ///         Name = "example-1.0.0",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Reuse the data about a snapshot to create a Droplet:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
+        ///     {
+        ///         Name = "example-1.0.0",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Name = "example-1",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get the data about an official image:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example2 = DigitalOcean.GetImage.Invoke(new()
+        ///     {
+        ///         Slug = "ubuntu-18-04-x64",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("digitalocean:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
     }
 
 

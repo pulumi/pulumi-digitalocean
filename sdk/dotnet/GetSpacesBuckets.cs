@@ -164,6 +164,83 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetSpacesBucketsResult> Invoke(GetSpacesBucketsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all Spaces buckets will be returned.
+        /// 
+        /// Note: You can use the `digitalocean.SpacesBucket` data source to
+        /// obtain metadata about a single bucket if you already know its `name` and `region`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter buckets.
+        /// 
+        /// Get all buckets in a region:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsFilterInputArgs
+        ///             {
+        ///                 Key = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "nyc3",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// You can sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsFilterInputArgs
+        ///             {
+        ///                 Key = "region",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "nyc3",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSpacesBucketsSortInputArgs
+        ///             {
+        ///                 Key = "name",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSpacesBucketsResult> Invoke(GetSpacesBucketsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketsResult>("digitalocean:index/getSpacesBuckets:getSpacesBuckets", args ?? new GetSpacesBucketsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -182,6 +182,92 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieve information about all supported DigitalOcean regions, with the ability to
+        /// filter and sort the results. If no filters are specified, all regions will be returned.
+        /// 
+        /// Note: You can use the `digitalocean.getRegion` data source
+        /// to obtain metadata about a single region if you already know the `slug` to retrieve.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter regions.
+        /// 
+        /// For example to find all available regions:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Key = "available",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Key = "available",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetRegionsFilterInputArgs
+        ///             {
+        ///                 Key = "features",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "private_networking",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetRegionsSortInputArgs
+        ///             {
+        ///                 Key = "name",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("digitalocean:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
     }
 
 

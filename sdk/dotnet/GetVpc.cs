@@ -130,6 +130,66 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieve information about a VPC for use in other resources.
+        /// 
+        /// This data source provides all of the VPC's properties as configured on your
+        /// DigitalOcean account. This is useful if the VPC in question is not managed by
+        /// the provider or you need to utilize any of the VPC's data.
+        /// 
+        /// VPCs may be looked up by `id` or `name`. Specifying a `region` will
+        /// return that that region's default VPC.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### VPC By Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     {
+        ///         Name = "example-network",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Reuse the data about a VPC to assign a Droplet to it:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     {
+        ///         Name = "example-network",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Name = "example-01",
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = DigitalOcean.Region.NYC3,
+        ///         VpcUuid = example.Apply(getVpcResult =&gt; getVpcResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
     }
 
 

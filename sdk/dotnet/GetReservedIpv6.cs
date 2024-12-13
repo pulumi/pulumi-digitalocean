@@ -16,6 +16,9 @@ namespace Pulumi.DigitalOcean
 
         public static Output<GetReservedIpv6Result> Invoke(GetReservedIpv6InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpv6Result>("digitalocean:index/getReservedIpv6:getReservedIpv6", args ?? new GetReservedIpv6InvokeArgs(), options.WithDefaults());
+
+        public static Output<GetReservedIpv6Result> Invoke(GetReservedIpv6InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpv6Result>("digitalocean:index/getReservedIpv6:getReservedIpv6", args ?? new GetReservedIpv6InvokeArgs(), options.WithDefaults());
     }
 
 

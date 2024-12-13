@@ -88,6 +88,45 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+        /// 
+        /// Get information on a floating ip. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the floating IP
+        /// in question is not managed by the provider or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided floating IP does not exist.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the floating IP:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
+        ///     var example = DigitalOcean.GetFloatingIp.Invoke(new()
+        ///     {
+        ///         IpAddress = publicIp,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fipOutput"] = example.Apply(getFloatingIpResult =&gt; getFloatingIpResult.DropletId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
     }
 
 

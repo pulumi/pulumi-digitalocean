@@ -59,21 +59,11 @@ type GetSpacesBucketObjectsResult struct {
 }
 
 func GetSpacesBucketObjectsOutput(ctx *pulumi.Context, args GetSpacesBucketObjectsOutputArgs, opts ...pulumi.InvokeOption) GetSpacesBucketObjectsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSpacesBucketObjectsResultOutput, error) {
 			args := v.(GetSpacesBucketObjectsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSpacesBucketObjectsResult
-			secret, err := ctx.InvokePackageRaw("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args, &rv, "", opts...)
-			if err != nil {
-				return GetSpacesBucketObjectsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSpacesBucketObjectsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSpacesBucketObjectsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args, GetSpacesBucketObjectsResultOutput{}, options).(GetSpacesBucketObjectsResultOutput), nil
 		}).(GetSpacesBucketObjectsResultOutput)
 }
 
