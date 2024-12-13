@@ -116,6 +116,59 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a load balancer for use in other resources. This data source
+        /// provides all of the load balancers properties as configured on your DigitalOcean
+        /// account. This is useful if the load balancer in question is not managed by
+        /// the provider or you need to utilize any of the load balancers data.
+        /// 
+        /// An error is triggered if the provided load balancer name does not exist.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the load balancer by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     {
+        ///         Name = "app",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["lbOutput"] = example.Apply(getLoadBalancerResult =&gt; getLoadBalancerResult.Ip),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Get the load balancer by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     {
+        ///         Id = "loadbalancer_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("digitalocean:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
     }
 
 

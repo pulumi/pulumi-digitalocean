@@ -86,21 +86,11 @@ type GetRecordsResult struct {
 }
 
 func GetRecordsOutput(ctx *pulumi.Context, args GetRecordsOutputArgs, opts ...pulumi.InvokeOption) GetRecordsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRecordsResultOutput, error) {
 			args := v.(GetRecordsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRecordsResult
-			secret, err := ctx.InvokePackageRaw("digitalocean:index/getRecords:getRecords", args, &rv, "", opts...)
-			if err != nil {
-				return GetRecordsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRecordsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRecordsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("digitalocean:index/getRecords:getRecords", args, GetRecordsResultOutput{}, options).(GetRecordsResultOutput), nil
 		}).(GetRecordsResultOutput)
 }
 

@@ -66,6 +66,34 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetDatabaseCaResult> Invoke(GetDatabaseCaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides the CA certificate for a DigitalOcean database.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ca = DigitalOcean.GetDatabaseCa.Invoke(new()
+        ///     {
+        ///         ClusterId = "aaa-bbb-ccc-ddd",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["caOutput"] = ca.Apply(getDatabaseCaResult =&gt; getDatabaseCaResult.Certificate),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseCaResult> Invoke(GetDatabaseCaInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseCaResult>("digitalocean:index/getDatabaseCa:getDatabaseCa", args ?? new GetDatabaseCaInvokeArgs(), options.WithDefaults());
     }
 
 

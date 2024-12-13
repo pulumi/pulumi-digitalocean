@@ -126,6 +126,64 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Volume snapshots are saved instances of a block storage volume. Use this data
+        /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
+        /// resources.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the volume snapshot:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     {
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Reuse the data about a volume snapshot to create a new volume based on it:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     {
+        ///         NameRegex = "^web",
+        ///         Region = "nyc3",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        ///     var foobar = new DigitalOcean.Volume("foobar", new()
+        ///     {
+        ///         Region = DigitalOcean.Region.NYC3,
+        ///         Name = "baz",
+        ///         Size = 100,
+        ///         SnapshotId = snapshot.Apply(getVolumeSnapshotResult =&gt; getVolumeSnapshotResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVolumeSnapshotResult> Invoke(GetVolumeSnapshotInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeSnapshotResult>("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args ?? new GetVolumeSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 

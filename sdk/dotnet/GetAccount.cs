@@ -56,6 +56,29 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetAccountResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Get information on your DigitalOcean account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetAccount.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("digitalocean:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

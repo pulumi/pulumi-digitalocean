@@ -94,6 +94,48 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetDropletAutoscaleResult> Invoke(GetDropletAutoscaleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletAutoscaleResult>("digitalocean:index/getDropletAutoscale:getDropletAutoscale", args ?? new GetDropletAutoscaleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// Get the Droplet Autoscale pool by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     {
+        ///         Name = my_existing_autoscale_pool.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Get the Droplet Autoscale pool by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     {
+        ///         Id = my_existing_autoscale_pool.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDropletAutoscaleResult> Invoke(GetDropletAutoscaleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDropletAutoscaleResult>("digitalocean:index/getDropletAutoscale:getDropletAutoscale", args ?? new GetDropletAutoscaleInvokeArgs(), options.WithDefaults());
     }
 
 

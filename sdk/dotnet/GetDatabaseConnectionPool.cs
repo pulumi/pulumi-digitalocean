@@ -78,6 +78,40 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetDatabaseConnectionPoolResult> Invoke(GetDatabaseConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseConnectionPoolResult>("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args ?? new GetDatabaseConnectionPoolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information on a DigitalOcean PostgreSQL database connection pool.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     {
+        ///         Name = "example-cluster",
+        ///     });
+        /// 
+        ///     var read_only = DigitalOcean.GetDatabaseConnectionPool.Invoke(new()
+        ///     {
+        ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
+        ///         Name = "pool-01",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["connectionPoolUriOutput"] = read_only.Apply(read_only =&gt; read_only.Apply(getDatabaseConnectionPoolResult =&gt; getDatabaseConnectionPoolResult.Uri)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseConnectionPoolResult> Invoke(GetDatabaseConnectionPoolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseConnectionPoolResult>("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", args ?? new GetDatabaseConnectionPoolInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -96,6 +96,49 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a ssh key. This data source provides the name, public key,
+        /// and fingerprint as configured on your DigitalOcean account. This is useful if
+        /// the ssh key in question is not managed by the provider or you need to utilize any
+        /// of the keys data.
+        /// 
+        /// An error is triggered if the provided ssh key name does not exist.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the ssh key:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetSshKey.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         SshKeys = new[]
+        ///         {
+        ///             example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("digitalocean:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());
     }
 
 

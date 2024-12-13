@@ -94,6 +94,48 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a tag. This data source provides the name as configured on
+        /// your DigitalOcean account. This is useful if the tag name in question is not
+        /// managed by the provider or you need validate if the tag exists in the account.
+        /// 
+        /// An error is triggered if the provided tag name does not exist.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the tag:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "example-1",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         Tags = new[]
+        ///         {
+        ///             example.Apply(getTagResult =&gt; getTagResult.Name),
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("digitalocean:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
     }
 
 
