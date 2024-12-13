@@ -194,6 +194,98 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetDropletsResult> Invoke(GetDropletsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all Droplets will be returned.
+        /// 
+        /// This data source is useful if the Droplets in question are not managed by the provider or you need to
+        /// utilize any of the Droplets' data.
+        /// 
+        /// By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+        /// the `gpus` attribute to `true`.
+        /// 
+        /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
+        /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// 
+        /// For example to find all Droplets with size `s-1vcpu-1gb`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "size",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "size",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetDropletsFilterInputArgs
+        ///             {
+        ///                 Key = "backups",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "true",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetDropletsSortInputArgs
+        ///             {
+        ///                 Key = "created_at",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDropletsResult> Invoke(GetDropletsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDropletsResult>("digitalocean:index/getDroplets:getDroplets", args ?? new GetDropletsInvokeArgs(), options.WithDefaults());
     }
 
 

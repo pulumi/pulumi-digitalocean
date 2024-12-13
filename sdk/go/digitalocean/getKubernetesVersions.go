@@ -143,21 +143,11 @@ type GetKubernetesVersionsResult struct {
 }
 
 func GetKubernetesVersionsOutput(ctx *pulumi.Context, args GetKubernetesVersionsOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKubernetesVersionsResultOutput, error) {
 			args := v.(GetKubernetesVersionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKubernetesVersionsResult
-			secret, err := ctx.InvokePackageRaw("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, &rv, "", opts...)
-			if err != nil {
-				return GetKubernetesVersionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKubernetesVersionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKubernetesVersionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, GetKubernetesVersionsResultOutput{}, options).(GetKubernetesVersionsResultOutput), nil
 		}).(GetKubernetesVersionsResultOutput)
 }
 

@@ -96,6 +96,49 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetSpacesBucketObjectResult> Invoke(GetSpacesBucketObjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Spaces object data source allows access to the metadata and
+        /// _optionally_ (see below) content of an object stored inside a Spaces bucket.
+        /// 
+        /// &gt; **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
+        /// `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
+        /// downloading large amount of data which would be thrown away in favor of metadata.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// The following example retrieves a text object (which must have a `Content-Type`
+        /// value starting with `text/`) and uses it as the `user_data` for a Droplet:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bootstrapScript = DigitalOcean.GetSpacesBucketObject.Invoke(new()
+        ///     {
+        ///         Bucket = "ourcorp-deploy-config",
+        ///         Region = "nyc3",
+        ///         Key = "droplet-bootstrap-script.sh",
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.NYC2,
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         UserData = bootstrapScript.Apply(getSpacesBucketObjectResult =&gt; getSpacesBucketObjectResult.Body),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSpacesBucketObjectResult> Invoke(GetSpacesBucketObjectInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectResult>("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args ?? new GetSpacesBucketObjectInvokeArgs(), options.WithDefaults());
     }
 
 

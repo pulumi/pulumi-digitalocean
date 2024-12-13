@@ -186,6 +186,94 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieve information about all DigitalOcean projects associated with an account, with
+        /// the ability to filter and sort the results. If no filters are specified, all projects
+        /// will be returned.
+        /// 
+        /// Note: You can use the `digitalocean.Project` data source to
+        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
+        /// `name` of the project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// 
+        /// For example to find all staging environment projects:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var staging = DigitalOcean.GetProjects.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
+        ///             {
+        ///                 Key = "environment",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Staging",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var non_default_production = DigitalOcean.GetProjects.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
+        ///             {
+        ///                 Key = "environment",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Production",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetProjectsFilterInputArgs
+        ///             {
+        ///                 Key = "is_default",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "false",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetProjectsSortInputArgs
+        ///             {
+        ///                 Key = "name",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("digitalocean:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
     }
 
 

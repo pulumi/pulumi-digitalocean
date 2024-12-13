@@ -140,6 +140,71 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a volume for use in other resources. This data source provides
+        /// all of the volumes properties as configured on your DigitalOcean account. This is
+        /// useful if the volume in question is not managed by the provider or you need to utilize
+        /// any of the volumes data.
+        /// 
+        /// An error is triggered if the provided volume name does not exist.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the volume:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVolume.Invoke(new()
+        ///     {
+        ///         Name = "app-data",
+        ///         Region = "nyc3",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Reuse the data about a volume to attach it to a Droplet:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetVolume.Invoke(new()
+        ///     {
+        ///         Name = "app-data",
+        ///         Region = "nyc3",
+        ///     });
+        /// 
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     {
+        ///         Name = "foo",
+        ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Region = DigitalOcean.Region.NYC3,
+        ///     });
+        /// 
+        ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
+        ///     {
+        ///         DropletId = exampleDroplet.Id,
+        ///         VolumeId = example.Apply(getVolumeResult =&gt; getVolumeResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVolumeResult> Invoke(GetVolumeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
     }
 
 

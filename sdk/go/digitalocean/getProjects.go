@@ -132,21 +132,11 @@ type GetProjectsResult struct {
 }
 
 func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectsResultOutput, error) {
 			args := v.(GetProjectsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectsResult
-			secret, err := ctx.InvokePackageRaw("digitalocean:index/getProjects:getProjects", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("digitalocean:index/getProjects:getProjects", args, GetProjectsResultOutput{}, options).(GetProjectsResultOutput), nil
 		}).(GetProjectsResultOutput)
 }
 

@@ -190,6 +190,96 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on images for use in other resources (e.g. creating a Droplet
+        /// based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+        /// all images will be returned.
+        /// 
+        /// This data source is useful if the image in question is not managed by the provider or you need to utilize any
+        /// of the image's data.
+        /// 
+        /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
+        /// about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// 
+        /// For example to find all Ubuntu images:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ubuntu = DigitalOcean.GetImages.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Key = "distribution",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Ubuntu",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// You can filter on multiple fields and sort the results as well:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = DigitalOcean.GetImages.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Key = "distribution",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Ubuntu",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetImagesFilterInputArgs
+        ///             {
+        ///                 Key = "regions",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "nyc3",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetImagesSortInputArgs
+        ///             {
+        ///                 Key = "created",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 

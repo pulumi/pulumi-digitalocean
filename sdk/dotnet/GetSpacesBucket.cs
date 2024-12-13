@@ -74,6 +74,38 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetSpacesBucketResult> Invoke(GetSpacesBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+        /// is not managed by the provider or you need to utilize any of the bucket's data.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the bucket by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetSpacesBucket.Invoke(new()
+        ///     {
+        ///         Name = "my-spaces-bucket",
+        ///         Region = "nyc3",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bucketDomainName"] = example.Apply(getSpacesBucketResult =&gt; getSpacesBucketResult.BucketDomainName),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSpacesBucketResult> Invoke(GetSpacesBucketInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithDefaults());
     }
 
 

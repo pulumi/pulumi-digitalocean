@@ -26,6 +26,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetSizesResult> Invoke(GetSizesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
+        /// the ability to filter and sort the results. If no filters are specified, all sizes
+        /// will be returned.
+        /// </summary>
+        public static Output<GetSizesResult> Invoke(GetSizesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -98,21 +98,11 @@ type LookupDatabaseReplicaResult struct {
 }
 
 func LookupDatabaseReplicaOutput(ctx *pulumi.Context, args LookupDatabaseReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseReplicaResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseReplicaResultOutput, error) {
 			args := v.(LookupDatabaseReplicaArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseReplicaResult
-			secret, err := ctx.InvokePackageRaw("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseReplicaResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseReplicaResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseReplicaResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args, LookupDatabaseReplicaResultOutput{}, options).(LookupDatabaseReplicaResultOutput), nil
 		}).(LookupDatabaseReplicaResultOutput)
 }
 

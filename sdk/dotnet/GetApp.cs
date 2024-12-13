@@ -70,6 +70,36 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on a DigitalOcean App.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get the account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetApp.Invoke(new()
+        ///     {
+        ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultIngress"] = example.Apply(getAppResult =&gt; getAppResult.DefaultIngress),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("digitalocean:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
     }
 
 
