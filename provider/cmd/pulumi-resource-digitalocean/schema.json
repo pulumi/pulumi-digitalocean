@@ -2666,6 +2666,113 @@
                 "permission"
             ]
         },
+        "digitalocean:index/DropletAutoscaleConfig:DropletAutoscaleConfig": {
+            "properties": {
+                "cooldownMinutes": {
+                    "type": "integer",
+                    "description": "The cooldown duration between scaling events for the Droplet Autoscale pool.\n"
+                },
+                "maxInstances": {
+                    "type": "integer",
+                    "description": "The maximum number of instances to maintain in the Droplet Autoscale pool.\n"
+                },
+                "minInstances": {
+                    "type": "integer",
+                    "description": "The minimum number of instances to maintain in the Droplet Autoscale pool.\n"
+                },
+                "targetCpuUtilization": {
+                    "type": "number",
+                    "description": "The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.\n"
+                },
+                "targetMemoryUtilization": {
+                    "type": "number",
+                    "description": "The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale \npool.\n"
+                },
+                "targetNumberInstances": {
+                    "type": "integer",
+                    "description": "The static number of instances to maintain in the pool Droplet Autoscale pool. This\nargument cannot be used with any other config options.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/DropletAutoscaleCurrentUtilization:DropletAutoscaleCurrentUtilization": {
+            "properties": {
+                "cpu": {
+                    "type": "number",
+                    "description": "Average CPU utilization\n"
+                },
+                "memory": {
+                    "type": "number",
+                    "description": "Average Memory utilization\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cpu",
+                        "memory"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/DropletAutoscaleDropletTemplate:DropletAutoscaleDropletTemplate": {
+            "properties": {
+                "image": {
+                    "type": "string",
+                    "description": "Image slug of the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "ipv6": {
+                    "type": "boolean",
+                    "description": "Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project UUID to create the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region slug of the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "size": {
+                    "type": "string",
+                    "description": "Size slug of the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "sshKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of tags to add to the Droplet Autoscale pool underlying resource(s).\n"
+                },
+                "userData": {
+                    "type": "string",
+                    "description": "Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a \ncloud init script that user may configure to setup their application workload.\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred\nfrom the specified `region` (default VPC).\n"
+                },
+                "withDropletAgent": {
+                    "type": "boolean",
+                    "description": "Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The\nmetric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "image",
+                "region",
+                "size",
+                "sshKeys"
+            ]
+        },
         "digitalocean:index/DropletBackupPolicy:DropletBackupPolicy": {
             "properties": {
                 "hour": {
@@ -6006,6 +6113,138 @@
             "required": [
                 "key"
             ]
+        },
+        "digitalocean:index/getDropletAutoscaleConfig:getDropletAutoscaleConfig": {
+            "properties": {
+                "cooldownMinutes": {
+                    "type": "integer",
+                    "description": "Cooldown duration\n"
+                },
+                "maxInstances": {
+                    "type": "integer",
+                    "description": "Max number of members\n"
+                },
+                "minInstances": {
+                    "type": "integer",
+                    "description": "Min number of members\n"
+                },
+                "targetCpuUtilization": {
+                    "type": "number",
+                    "description": "CPU target threshold\n"
+                },
+                "targetMemoryUtilization": {
+                    "type": "number",
+                    "description": "Memory target threshold\n"
+                },
+                "targetNumberInstances": {
+                    "type": "integer",
+                    "description": "Target number of members\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cooldownMinutes",
+                "maxInstances",
+                "minInstances",
+                "targetCpuUtilization",
+                "targetMemoryUtilization",
+                "targetNumberInstances"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDropletAutoscaleCurrentUtilization:getDropletAutoscaleCurrentUtilization": {
+            "properties": {
+                "cpu": {
+                    "type": "number",
+                    "description": "Average CPU utilization\n"
+                },
+                "memory": {
+                    "type": "number",
+                    "description": "Average Memory utilization\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "memory"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDropletAutoscaleDropletTemplate:getDropletAutoscaleDropletTemplate": {
+            "properties": {
+                "image": {
+                    "type": "string",
+                    "description": "Droplet image\n"
+                },
+                "ipv6": {
+                    "type": "boolean",
+                    "description": "Enable droplet IPv6\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Droplet project ID\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Droplet region\n"
+                },
+                "size": {
+                    "type": "string",
+                    "description": "Droplet size\n"
+                },
+                "sshKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Droplet SSH keys\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Droplet tags\n"
+                },
+                "userData": {
+                    "type": "string",
+                    "description": "Droplet user data\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "Droplet VPC UUID\n"
+                },
+                "withDropletAgent": {
+                    "type": "boolean",
+                    "description": "Enable droplet agent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "image",
+                "ipv6",
+                "projectId",
+                "region",
+                "size",
+                "sshKeys",
+                "tags",
+                "userData",
+                "vpcUuid",
+                "withDropletAgent"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getDropletsDroplet:getDropletsDroplet": {
             "properties": {
@@ -13273,6 +13512,106 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/dropletAutoscale:DropletAutoscale": {
+            "description": "Provides a DigitalOcean Droplet Autoscale resource. This can be used to create, modify, \nread and delete Droplet Autoscale pools.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * as std from \"@pulumi/std\";\n\nconst my_ssh_key = new digitalocean.SshKey(\"my-ssh-key\", {\n    name: \"terraform-example\",\n    publicKey: std.file({\n        input: \"/Users/terraform/.ssh/id_rsa.pub\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst my_tag = new digitalocean.Tag(\"my-tag\", {name: \"terraform-example\"});\nconst my_autoscale_pool = new digitalocean.DropletAutoscale(\"my-autoscale-pool\", {\n    name: \"terraform-example\",\n    config: {\n        minInstances: 10,\n        maxInstances: 50,\n        targetCpuUtilization: 0.5,\n        targetMemoryUtilization: 0.5,\n        cooldownMinutes: 5,\n    },\n    dropletTemplate: {\n        size: \"c-2\",\n        region: \"nyc3\",\n        image: \"ubuntu-24-04-x64\",\n        tags: [my_tag.id],\n        sshKeys: [my_ssh_key.id],\n        withDropletAgent: true,\n        ipv6: true,\n        userData: `\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n`,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\nimport pulumi_std as std\n\nmy_ssh_key = digitalocean.SshKey(\"my-ssh-key\",\n    name=\"terraform-example\",\n    public_key=std.file(input=\"/Users/terraform/.ssh/id_rsa.pub\").result)\nmy_tag = digitalocean.Tag(\"my-tag\", name=\"terraform-example\")\nmy_autoscale_pool = digitalocean.DropletAutoscale(\"my-autoscale-pool\",\n    name=\"terraform-example\",\n    config={\n        \"min_instances\": 10,\n        \"max_instances\": 50,\n        \"target_cpu_utilization\": 0.5,\n        \"target_memory_utilization\": 0.5,\n        \"cooldown_minutes\": 5,\n    },\n    droplet_template={\n        \"size\": \"c-2\",\n        \"region\": \"nyc3\",\n        \"image\": \"ubuntu-24-04-x64\",\n        \"tags\": [my_tag.id],\n        \"ssh_keys\": [my_ssh_key.id],\n        \"with_droplet_agent\": True,\n        \"ipv6\": True,\n        \"user_data\": \"\"\"\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n\"\"\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_ssh_key = new DigitalOcean.SshKey(\"my-ssh-key\", new()\n    {\n        Name = \"terraform-example\",\n        PublicKey = Std.File.Invoke(new()\n        {\n            Input = \"/Users/terraform/.ssh/id_rsa.pub\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var my_tag = new DigitalOcean.Tag(\"my-tag\", new()\n    {\n        Name = \"terraform-example\",\n    });\n\n    var my_autoscale_pool = new DigitalOcean.DropletAutoscale(\"my-autoscale-pool\", new()\n    {\n        Name = \"terraform-example\",\n        Config = new DigitalOcean.Inputs.DropletAutoscaleConfigArgs\n        {\n            MinInstances = 10,\n            MaxInstances = 50,\n            TargetCpuUtilization = 0.5,\n            TargetMemoryUtilization = 0.5,\n            CooldownMinutes = 5,\n        },\n        DropletTemplate = new DigitalOcean.Inputs.DropletAutoscaleDropletTemplateArgs\n        {\n            Size = \"c-2\",\n            Region = \"nyc3\",\n            Image = \"ubuntu-24-04-x64\",\n            Tags = new[]\n            {\n                my_tag.Id,\n            },\n            SshKeys = new[]\n            {\n                my_ssh_key.Id,\n            },\n            WithDropletAgent = true,\n            Ipv6 = true,\n            UserData = @\"\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/Users/terraform/.ssh/id_rsa.pub\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewSshKey(ctx, \"my-ssh-key\", \u0026digitalocean.SshKeyArgs{\n\t\t\tName:      pulumi.String(\"terraform-example\"),\n\t\t\tPublicKey: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewTag(ctx, \"my-tag\", \u0026digitalocean.TagArgs{\n\t\t\tName: pulumi.String(\"terraform-example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDropletAutoscale(ctx, \"my-autoscale-pool\", \u0026digitalocean.DropletAutoscaleArgs{\n\t\t\tName: pulumi.String(\"terraform-example\"),\n\t\t\tConfig: \u0026digitalocean.DropletAutoscaleConfigArgs{\n\t\t\t\tMinInstances:            pulumi.Int(10),\n\t\t\t\tMaxInstances:            pulumi.Int(50),\n\t\t\t\tTargetCpuUtilization:    pulumi.Float64(0.5),\n\t\t\t\tTargetMemoryUtilization: pulumi.Float64(0.5),\n\t\t\t\tCooldownMinutes:         pulumi.Int(5),\n\t\t\t},\n\t\t\tDropletTemplate: \u0026digitalocean.DropletAutoscaleDropletTemplateArgs{\n\t\t\t\tSize:   pulumi.String(\"c-2\"),\n\t\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\t\tImage:  pulumi.String(\"ubuntu-24-04-x64\"),\n\t\t\t\tTags: pulumi.StringArray{\n\t\t\t\t\tmy_tag.ID(),\n\t\t\t\t},\n\t\t\t\tSshKeys: pulumi.StringArray{\n\t\t\t\t\tmy_ssh_key.ID(),\n\t\t\t\t},\n\t\t\t\tWithDropletAgent: pulumi.Bool(true),\n\t\t\t\tIpv6:             pulumi.Bool(true),\n\t\t\t\tUserData: pulumi.String(`\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n`),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SshKey;\nimport com.pulumi.digitalocean.SshKeyArgs;\nimport com.pulumi.digitalocean.Tag;\nimport com.pulumi.digitalocean.TagArgs;\nimport com.pulumi.digitalocean.DropletAutoscale;\nimport com.pulumi.digitalocean.DropletAutoscaleArgs;\nimport com.pulumi.digitalocean.inputs.DropletAutoscaleConfigArgs;\nimport com.pulumi.digitalocean.inputs.DropletAutoscaleDropletTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_ssh_key = new SshKey(\"my-ssh-key\", SshKeyArgs.builder()\n            .name(\"terraform-example\")\n            .publicKey(StdFunctions.file(FileArgs.builder()\n                .input(\"/Users/terraform/.ssh/id_rsa.pub\")\n                .build()).result())\n            .build());\n\n        var my_tag = new Tag(\"my-tag\", TagArgs.builder()\n            .name(\"terraform-example\")\n            .build());\n\n        var my_autoscale_pool = new DropletAutoscale(\"my-autoscale-pool\", DropletAutoscaleArgs.builder()\n            .name(\"terraform-example\")\n            .config(DropletAutoscaleConfigArgs.builder()\n                .minInstances(10)\n                .maxInstances(50)\n                .targetCpuUtilization(0.5)\n                .targetMemoryUtilization(0.5)\n                .cooldownMinutes(5)\n                .build())\n            .dropletTemplate(DropletAutoscaleDropletTemplateArgs.builder()\n                .size(\"c-2\")\n                .region(\"nyc3\")\n                .image(\"ubuntu-24-04-x64\")\n                .tags(my_tag.id())\n                .sshKeys(my_ssh_key.id())\n                .withDropletAgent(true)\n                .ipv6(true)\n                .userData(\"\"\"\n\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n                \"\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-ssh-key:\n    type: digitalocean:SshKey\n    properties:\n      name: terraform-example\n      publicKey:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /Users/terraform/.ssh/id_rsa.pub\n          return: result\n  my-tag:\n    type: digitalocean:Tag\n    properties:\n      name: terraform-example\n  my-autoscale-pool:\n    type: digitalocean:DropletAutoscale\n    properties:\n      name: terraform-example\n      config:\n        minInstances: 10\n        maxInstances: 50\n        targetCpuUtilization: 0.5\n        targetMemoryUtilization: 0.5\n        cooldownMinutes: 5\n      dropletTemplate:\n        size: c-2\n        region: nyc3\n        image: ubuntu-24-04-x64\n        tags:\n          - ${[\"my-tag\"].id}\n        sshKeys:\n          - ${[\"my-ssh-key\"].id}\n        withDropletAgent: true\n        ipv6: true\n        userData: |2\n          #cloud-config\n          runcmd:\n          - apt-get update\n          - apt-get install -y stress-ng\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDroplet Autoscale pools can be imported using their `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/dropletAutoscale:DropletAutoscale my-autoscale-pool 38e66834-d741-47ec-88e7-c70cbdcz0445\n```\n\n",
+            "properties": {
+                "config": {
+                    "$ref": "#/types/digitalocean:index/DropletAutoscaleConfig:DropletAutoscaleConfig",
+                    "description": "The configuration parameters for Droplet Autoscale pool, the supported arguments are \ndocumented below.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created at timestamp for the Droplet Autoscale pool.\n"
+                },
+                "currentUtilizations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DropletAutoscaleCurrentUtilization:DropletAutoscaleCurrentUtilization"
+                    },
+                    "description": "The current average resource utilization of the Droplet Autoscale pool, this attribute further\nembeds `memory` and `cpu` attributes to respectively report utilization data.\n"
+                },
+                "dropletTemplate": {
+                    "$ref": "#/types/digitalocean:index/DropletAutoscaleDropletTemplate:DropletAutoscaleDropletTemplate",
+                    "description": "The droplet template parameters for Droplet Autoscale pool, the supported arguments \nare documented below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Droplet Autoscale pool.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept\ntraffic, or in an error state and needs user intervention.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Updated at timestamp for the Droplet Autoscale pool.\n"
+                }
+            },
+            "required": [
+                "config",
+                "createdAt",
+                "currentUtilizations",
+                "dropletTemplate",
+                "name",
+                "status",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "config": {
+                    "$ref": "#/types/digitalocean:index/DropletAutoscaleConfig:DropletAutoscaleConfig",
+                    "description": "The configuration parameters for Droplet Autoscale pool, the supported arguments are \ndocumented below.\n"
+                },
+                "dropletTemplate": {
+                    "$ref": "#/types/digitalocean:index/DropletAutoscaleDropletTemplate:DropletAutoscaleDropletTemplate",
+                    "description": "The droplet template parameters for Droplet Autoscale pool, the supported arguments \nare documented below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Droplet Autoscale pool.\n"
+                }
+            },
+            "requiredInputs": [
+                "config",
+                "dropletTemplate"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DropletAutoscale resources.\n",
+                "properties": {
+                    "config": {
+                        "$ref": "#/types/digitalocean:index/DropletAutoscaleConfig:DropletAutoscaleConfig",
+                        "description": "The configuration parameters for Droplet Autoscale pool, the supported arguments are \ndocumented below.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Created at timestamp for the Droplet Autoscale pool.\n"
+                    },
+                    "currentUtilizations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/DropletAutoscaleCurrentUtilization:DropletAutoscaleCurrentUtilization"
+                        },
+                        "description": "The current average resource utilization of the Droplet Autoscale pool, this attribute further\nembeds `memory` and `cpu` attributes to respectively report utilization data.\n"
+                    },
+                    "dropletTemplate": {
+                        "$ref": "#/types/digitalocean:index/DropletAutoscaleDropletTemplate:DropletAutoscaleDropletTemplate",
+                        "description": "The droplet template parameters for Droplet Autoscale pool, the supported arguments \nare documented below.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Droplet Autoscale pool.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept\ntraffic, or in an error state and needs user intervention.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Updated at timestamp for the Droplet Autoscale pool.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/dropletSnapshot:DropletSnapshot": {
             "description": "Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Droplet(\"web\", {\n    name: \"web-01\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-22-04-x64\",\n    region: digitalocean.Region.NYC3,\n});\nconst web_snapshot = new digitalocean.DropletSnapshot(\"web-snapshot\", {\n    dropletId: web.id,\n    name: \"web-snapshot-01\",\n});\nconst from_snapshot = new digitalocean.Droplet(\"from-snapshot\", {\n    image: web_snapshot.id,\n    name: \"web-02\",\n    region: digitalocean.Region.NYC3,\n    size: digitalocean.DropletSlug.DropletS2VCPU4GB,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Droplet(\"web\",\n    name=\"web-01\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-22-04-x64\",\n    region=digitalocean.Region.NYC3)\nweb_snapshot = digitalocean.DropletSnapshot(\"web-snapshot\",\n    droplet_id=web.id,\n    name=\"web-snapshot-01\")\nfrom_snapshot = digitalocean.Droplet(\"from-snapshot\",\n    image=web_snapshot.id,\n    name=\"web-02\",\n    region=digitalocean.Region.NYC3,\n    size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new DigitalOcean.Droplet(\"web\", new()\n    {\n        Name = \"web-01\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-22-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n    });\n\n    var web_snapshot = new DigitalOcean.DropletSnapshot(\"web-snapshot\", new()\n    {\n        DropletId = web.Id,\n        Name = \"web-snapshot-01\",\n    });\n\n    var from_snapshot = new DigitalOcean.Droplet(\"from-snapshot\", new()\n    {\n        Image = web_snapshot.Id,\n        Name = \"web-02\",\n        Region = DigitalOcean.Region.NYC3,\n        Size = DigitalOcean.DropletSlug.DropletS2VCPU4GB,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewDroplet(ctx, \"web\", \u0026digitalocean.DropletArgs{\n\t\t\tName:   pulumi.String(\"web-01\"),\n\t\t\tSize:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:  pulumi.String(\"ubuntu-22-04-x64\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDropletSnapshot(ctx, \"web-snapshot\", \u0026digitalocean.DropletSnapshotArgs{\n\t\t\tDropletId: web.ID(),\n\t\t\tName:      pulumi.String(\"web-snapshot-01\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"from-snapshot\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  web_snapshot.ID(),\n\t\t\tName:   pulumi.String(\"web-02\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC3),\n\t\t\tSize:   pulumi.String(digitalocean.DropletSlugDropletS2VCPU4GB),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport com.pulumi.digitalocean.DropletSnapshot;\nimport com.pulumi.digitalocean.DropletSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Droplet(\"web\", DropletArgs.builder()\n            .name(\"web-01\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-22-04-x64\")\n            .region(\"nyc3\")\n            .build());\n\n        var web_snapshot = new DropletSnapshot(\"web-snapshot\", DropletSnapshotArgs.builder()\n            .dropletId(web.id())\n            .name(\"web-snapshot-01\")\n            .build());\n\n        var from_snapshot = new Droplet(\"from-snapshot\", DropletArgs.builder()\n            .image(web_snapshot.id())\n            .name(\"web-02\")\n            .region(\"nyc3\")\n            .size(\"s-2vcpu-4gb\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: digitalocean:Droplet\n    properties:\n      name: web-01\n      size: s-1vcpu-1gb\n      image: ubuntu-22-04-x64\n      region: nyc3\n  web-snapshot:\n    type: digitalocean:DropletSnapshot\n    properties:\n      dropletId: ${web.id}\n      name: web-snapshot-01\n  from-snapshot:\n    type: digitalocean:Droplet\n    properties:\n      image: ${[\"web-snapshot\"].id}\n      name: web-02\n      region: nyc3\n      size: s-2vcpu-4gb\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDroplet Snapshots can be imported using the `snapshot id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456\n```\n\n",
             "properties": {
@@ -14219,7 +14558,7 @@
                 },
                 "network": {
                     "type": "string",
-                    "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n**NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.\n"
+                    "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -14239,7 +14578,7 @@
                 },
                 "sizeUnit": {
                     "type": "integer",
-                    "description": "The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
+                    "description": "The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
                 },
                 "status": {
                     "type": "string"
@@ -14257,7 +14596,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n"
+                    "description": "The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n"
                 },
                 "vpcUuid": {
                     "type": "string",
@@ -14356,7 +14695,7 @@
                 },
                 "network": {
                     "type": "string",
-                    "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n**NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.\n",
+                    "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
@@ -14387,7 +14726,7 @@
                 },
                 "sizeUnit": {
                     "type": "integer",
-                    "description": "The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
+                    "description": "The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
                 },
                 "stickySessions": {
                     "$ref": "#/types/digitalocean:index/LoadBalancerStickySessions:LoadBalancerStickySessions",
@@ -14402,7 +14741,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n",
+                    "description": "The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n",
                     "willReplaceOnChanges": true
                 },
                 "vpcUuid": {
@@ -14498,7 +14837,7 @@
                     },
                     "network": {
                         "type": "string",
-                        "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n**NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.\n",
+                        "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
@@ -14529,7 +14868,7 @@
                     },
                     "sizeUnit": {
                         "type": "integer",
-                        "description": "The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
+                        "description": "The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.\n"
                     },
                     "status": {
                         "type": "string"
@@ -14547,7 +14886,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n",
+                        "description": "The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.\n**NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.\n",
                         "willReplaceOnChanges": true
                     },
                     "vpcUuid": {
@@ -15023,6 +15362,106 @@
                     "ipAddress": {
                         "type": "string",
                         "description": "The reserved IP to assign to the Droplet.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/reservedIpv6:ReservedIpv6": {
+            "properties": {
+                "dropletId": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "regionSlug": {
+                    "type": "string"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "the uniform resource name for the reserved ipv6\n"
+                }
+            },
+            "required": [
+                "dropletId",
+                "ip",
+                "regionSlug",
+                "urn"
+            ],
+            "inputProperties": {
+                "dropletId": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "regionSlug": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "regionSlug"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ReservedIpv6 resources.\n",
+                "properties": {
+                    "dropletId": {
+                        "type": "integer"
+                    },
+                    "ip": {
+                        "type": "string"
+                    },
+                    "regionSlug": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "urn": {
+                        "type": "string",
+                        "description": "the uniform resource name for the reserved ipv6\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment": {
+            "properties": {
+                "dropletId": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "dropletId",
+                "ip"
+            ],
+            "inputProperties": {
+                "dropletId": {
+                    "type": "integer",
+                    "willReplaceOnChanges": true
+                },
+                "ip": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "dropletId",
+                "ip"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ReservedIpv6Assignment resources.\n",
+                "properties": {
+                    "dropletId": {
+                        "type": "integer",
+                        "willReplaceOnChanges": true
+                    },
+                    "ip": {
+                        "type": "string",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -17525,6 +17964,70 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getDropletAutoscale:getDropletAutoscale": {
+            "description": "## Example Usage\n\nGet the Droplet Autoscale pool by name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst my-imported-autoscale-pool = digitalocean.getDropletAutoscale({\n    name: my_existing_autoscale_pool.name,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmy_imported_autoscale_pool = digitalocean.get_droplet_autoscale(name=my_existing_autoscale_pool[\"name\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()\n    {\n        Name = my_existing_autoscale_pool.Name,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupDropletAutoscale(ctx, \u0026digitalocean.LookupDropletAutoscaleArgs{\n\t\t\tName: pulumi.StringRef(my_existing_autoscale_pool.Name),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()\n            .name(my_existing_autoscale_pool.name())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-imported-autoscale-pool:\n    fn::invoke:\n      function: digitalocean:getDropletAutoscale\n      arguments:\n        name: ${[\"my-existing-autoscale-pool\"].name}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet the Droplet Autoscale pool by ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst my-imported-autoscale-pool = digitalocean.getDropletAutoscale({\n    id: my_existing_autoscale_pool.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmy_imported_autoscale_pool = digitalocean.get_droplet_autoscale(id=my_existing_autoscale_pool[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()\n    {\n        Id = my_existing_autoscale_pool.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupDropletAutoscale(ctx, \u0026digitalocean.LookupDropletAutoscaleArgs{\n\t\t\tId: pulumi.StringRef(my_existing_autoscale_pool.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()\n            .id(my_existing_autoscale_pool.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-imported-autoscale-pool:\n    fn::invoke:\n      function: digitalocean:getDropletAutoscale\n      arguments:\n        id: ${[\"my-existing-autoscale-pool\"].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDropletAutoscale.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of Droplet Autoscale pool.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of Droplet Autoscale pool.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDropletAutoscale.\n",
+                "properties": {
+                    "configs": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDropletAutoscaleConfig:getDropletAutoscaleConfig"
+                        },
+                        "type": "array"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "currentUtilizations": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDropletAutoscaleCurrentUtilization:getDropletAutoscaleCurrentUtilization"
+                        },
+                        "type": "array"
+                    },
+                    "dropletTemplates": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDropletAutoscaleDropletTemplate:getDropletAutoscaleDropletTemplate"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "configs",
+                    "createdAt",
+                    "currentUtilizations",
+                    "dropletTemplates",
+                    "status",
+                    "updatedAt"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getDropletSnapshot:getDropletSnapshot": {
             "description": "Droplet snapshots are saved instances of a Droplet. Use this data\nsource to retrieve the ID of a DigitalOcean Droplet snapshot for use in other\nresources.\n\n## Example Usage\n\nGet the Droplet snapshot:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web-snapshot = digitalocean.getDropletSnapshot({\n    nameRegex: \"^web\",\n    region: \"nyc3\",\n    mostRecent: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb_snapshot = digitalocean.get_droplet_snapshot(name_regex=\"^web\",\n    region=\"nyc3\",\n    most_recent=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()\n    {\n        NameRegex = \"^web\",\n        Region = \"nyc3\",\n        MostRecent = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupDropletSnapshot(ctx, \u0026digitalocean.LookupDropletSnapshotArgs{\n\t\t\tNameRegex:  pulumi.StringRef(\"^web\"),\n\t\t\tRegion:     pulumi.StringRef(\"nyc3\"),\n\t\t\tMostRecent: pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()\n            .nameRegex(\"^web\")\n            .region(\"nyc3\")\n            .mostRecent(true)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  web-snapshot:\n    fn::invoke:\n      function: digitalocean:getDropletSnapshot\n      arguments:\n        nameRegex: ^web\n        region: nyc3\n        mostRecent: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate image from snapshot:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web-snapshot = digitalocean.getDropletSnapshot({\n    nameRegex: \"^web\",\n    region: \"nyc3\",\n    mostRecent: true,\n});\nconst from_snapshot = new digitalocean.Droplet(\"from-snapshot\", {\n    image: web_snapshot.then(web_snapshot =\u003e web_snapshot.id),\n    name: \"web-02\",\n    region: digitalocean.Region.NYC3,\n    size: digitalocean.DropletSlug.DropletS2VCPU4GB,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb_snapshot = digitalocean.get_droplet_snapshot(name_regex=\"^web\",\n    region=\"nyc3\",\n    most_recent=True)\nfrom_snapshot = digitalocean.Droplet(\"from-snapshot\",\n    image=web_snapshot.id,\n    name=\"web-02\",\n    region=digitalocean.Region.NYC3,\n    size=digitalocean.DropletSlug.DROPLET_S2_VCPU4_GB)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()\n    {\n        NameRegex = \"^web\",\n        Region = \"nyc3\",\n        MostRecent = true,\n    });\n\n    var from_snapshot = new DigitalOcean.Droplet(\"from-snapshot\", new()\n    {\n        Image = web_snapshot.Apply(web_snapshot =\u003e web_snapshot.Apply(getDropletSnapshotResult =\u003e getDropletSnapshotResult.Id)),\n        Name = \"web-02\",\n        Region = DigitalOcean.Region.NYC3,\n        Size = DigitalOcean.DropletSlug.DropletS2VCPU4GB,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb_snapshot, err := digitalocean.LookupDropletSnapshot(ctx, \u0026digitalocean.LookupDropletSnapshotArgs{\n\t\t\tNameRegex:  pulumi.StringRef(\"^web\"),\n\t\t\tRegion:     pulumi.StringRef(\"nyc3\"),\n\t\t\tMostRecent: pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"from-snapshot\", \u0026digitalocean.DropletArgs{\n\t\t\tImage:  pulumi.String(web_snapshot.Id),\n\t\t\tName:   pulumi.String(\"web-02\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC3),\n\t\t\tSize:   pulumi.String(digitalocean.DropletSlugDropletS2VCPU4GB),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()\n            .nameRegex(\"^web\")\n            .region(\"nyc3\")\n            .mostRecent(true)\n            .build());\n\n        var from_snapshot = new Droplet(\"from-snapshot\", DropletArgs.builder()\n            .image(web_snapshot.id())\n            .name(\"web-02\")\n            .region(\"nyc3\")\n            .size(\"s-2vcpu-4gb\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  from-snapshot:\n    type: digitalocean:Droplet\n    properties:\n      image: ${[\"web-snapshot\"].id}\n      name: web-02\n      region: nyc3\n      size: s-2vcpu-4gb\nvariables:\n  web-snapshot:\n    fn::invoke:\n      function: digitalocean:getDropletSnapshot\n      arguments:\n        nameRegex: ^web\n        region: nyc3\n        mostRecent: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -18780,6 +19283,49 @@
                     "dropletId",
                     "ipAddress",
                     "region",
+                    "urn",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getReservedIpv6:getReservedIpv6": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getReservedIpv6.\n",
+                "properties": {
+                    "ip": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ip"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getReservedIpv6.\n",
+                "properties": {
+                    "dropletId": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "ip": {
+                        "type": "string"
+                    },
+                    "regionSlug": {
+                        "type": "string"
+                    },
+                    "urn": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "dropletId",
+                    "ip",
+                    "regionSlug",
                     "urn",
                     "id"
                 ],
