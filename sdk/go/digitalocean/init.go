@@ -65,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "digitalocean:index/droplet:Droplet":
 		r = &Droplet{}
+	case "digitalocean:index/dropletAutoscale:DropletAutoscale":
+		r = &DropletAutoscale{}
 	case "digitalocean:index/dropletSnapshot:DropletSnapshot":
 		r = &DropletSnapshot{}
 	case "digitalocean:index/firewall:Firewall":
@@ -89,6 +91,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReservedIp{}
 	case "digitalocean:index/reservedIpAssignment:ReservedIpAssignment":
 		r = &ReservedIpAssignment{}
+	case "digitalocean:index/reservedIpv6:ReservedIpv6":
+		r = &ReservedIpv6{}
+	case "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment":
+		r = &ReservedIpv6Assignment{}
 	case "digitalocean:index/spacesBucket:SpacesBucket":
 		r = &SpacesBucket{}
 	case "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration":
@@ -258,6 +264,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
+		"index/dropletAutoscale",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
 		"index/dropletSnapshot",
 		&module{version},
 	)
@@ -314,6 +325,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/reservedIpAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/reservedIpv6",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/reservedIpv6Assignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

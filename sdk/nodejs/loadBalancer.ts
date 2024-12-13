@@ -152,7 +152,6 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
@@ -174,7 +173,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<string | undefined>;
     /**
-     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      */
     public readonly sizeUnit!: pulumi.Output<number>;
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -188,7 +187,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly targetLoadBalancerIds!: pulumi.Output<string[]>;
     /**
-     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     public readonly type!: pulumi.Output<string | undefined>;
@@ -346,7 +345,6 @@ export interface LoadBalancerState {
     name?: pulumi.Input<string>;
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      */
     network?: pulumi.Input<string>;
     /**
@@ -368,7 +366,7 @@ export interface LoadBalancerState {
      */
     size?: pulumi.Input<string>;
     /**
-     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      */
     sizeUnit?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
@@ -382,7 +380,7 @@ export interface LoadBalancerState {
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
@@ -457,7 +455,6 @@ export interface LoadBalancerArgs {
     name?: pulumi.Input<string>;
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-     * **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
      */
     network?: pulumi.Input<string>;
     /**
@@ -479,7 +476,7 @@ export interface LoadBalancerArgs {
      */
     size?: pulumi.Input<string>;
     /**
-     * The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      */
     sizeUnit?: pulumi.Input<number>;
     /**
@@ -492,7 +489,7 @@ export interface LoadBalancerArgs {
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+     * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;

@@ -208,6 +208,12 @@ __all__ = [
     'DatabaseUserSettingAclArgsDict',
     'DatabaseUserSettingOpensearchAclArgs',
     'DatabaseUserSettingOpensearchAclArgsDict',
+    'DropletAutoscaleConfigArgs',
+    'DropletAutoscaleConfigArgsDict',
+    'DropletAutoscaleCurrentUtilizationArgs',
+    'DropletAutoscaleCurrentUtilizationArgsDict',
+    'DropletAutoscaleDropletTemplateArgs',
+    'DropletAutoscaleDropletTemplateArgsDict',
     'DropletBackupPolicyArgs',
     'DropletBackupPolicyArgsDict',
     'FirewallInboundRuleArgs',
@@ -9172,6 +9178,413 @@ class DatabaseUserSettingOpensearchAclArgs:
     @permission.setter
     def permission(self, value: pulumi.Input[str]):
         pulumi.set(self, "permission", value)
+
+
+if not MYPY:
+    class DropletAutoscaleConfigArgsDict(TypedDict):
+        cooldown_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The cooldown duration between scaling events for the Droplet Autoscale pool.
+        """
+        max_instances: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of instances to maintain in the Droplet Autoscale pool.
+        """
+        min_instances: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of instances to maintain in the Droplet Autoscale pool.
+        """
+        target_cpu_utilization: NotRequired[pulumi.Input[float]]
+        """
+        The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+        """
+        target_memory_utilization: NotRequired[pulumi.Input[float]]
+        """
+        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        pool.
+        """
+        target_number_instances: NotRequired[pulumi.Input[int]]
+        """
+        The static number of instances to maintain in the pool Droplet Autoscale pool. This
+        argument cannot be used with any other config options.
+        """
+elif False:
+    DropletAutoscaleConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DropletAutoscaleConfigArgs:
+    def __init__(__self__, *,
+                 cooldown_minutes: Optional[pulumi.Input[int]] = None,
+                 max_instances: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
+                 target_cpu_utilization: Optional[pulumi.Input[float]] = None,
+                 target_memory_utilization: Optional[pulumi.Input[float]] = None,
+                 target_number_instances: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cooldown_minutes: The cooldown duration between scaling events for the Droplet Autoscale pool.
+        :param pulumi.Input[int] max_instances: The maximum number of instances to maintain in the Droplet Autoscale pool.
+        :param pulumi.Input[int] min_instances: The minimum number of instances to maintain in the Droplet Autoscale pool.
+        :param pulumi.Input[float] target_cpu_utilization: The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+        :param pulumi.Input[float] target_memory_utilization: The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+               pool.
+        :param pulumi.Input[int] target_number_instances: The static number of instances to maintain in the pool Droplet Autoscale pool. This
+               argument cannot be used with any other config options.
+        """
+        if cooldown_minutes is not None:
+            pulumi.set(__self__, "cooldown_minutes", cooldown_minutes)
+        if max_instances is not None:
+            pulumi.set(__self__, "max_instances", max_instances)
+        if min_instances is not None:
+            pulumi.set(__self__, "min_instances", min_instances)
+        if target_cpu_utilization is not None:
+            pulumi.set(__self__, "target_cpu_utilization", target_cpu_utilization)
+        if target_memory_utilization is not None:
+            pulumi.set(__self__, "target_memory_utilization", target_memory_utilization)
+        if target_number_instances is not None:
+            pulumi.set(__self__, "target_number_instances", target_number_instances)
+
+    @property
+    @pulumi.getter(name="cooldownMinutes")
+    def cooldown_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The cooldown duration between scaling events for the Droplet Autoscale pool.
+        """
+        return pulumi.get(self, "cooldown_minutes")
+
+    @cooldown_minutes.setter
+    def cooldown_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cooldown_minutes", value)
+
+    @property
+    @pulumi.getter(name="maxInstances")
+    def max_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of instances to maintain in the Droplet Autoscale pool.
+        """
+        return pulumi.get(self, "max_instances")
+
+    @max_instances.setter
+    def max_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instances", value)
+
+    @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of instances to maintain in the Droplet Autoscale pool.
+        """
+        return pulumi.get(self, "min_instances")
+
+    @min_instances.setter
+    def min_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instances", value)
+
+    @property
+    @pulumi.getter(name="targetCpuUtilization")
+    def target_cpu_utilization(self) -> Optional[pulumi.Input[float]]:
+        """
+        The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+        """
+        return pulumi.get(self, "target_cpu_utilization")
+
+    @target_cpu_utilization.setter
+    def target_cpu_utilization(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "target_cpu_utilization", value)
+
+    @property
+    @pulumi.getter(name="targetMemoryUtilization")
+    def target_memory_utilization(self) -> Optional[pulumi.Input[float]]:
+        """
+        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        pool.
+        """
+        return pulumi.get(self, "target_memory_utilization")
+
+    @target_memory_utilization.setter
+    def target_memory_utilization(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "target_memory_utilization", value)
+
+    @property
+    @pulumi.getter(name="targetNumberInstances")
+    def target_number_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        The static number of instances to maintain in the pool Droplet Autoscale pool. This
+        argument cannot be used with any other config options.
+        """
+        return pulumi.get(self, "target_number_instances")
+
+    @target_number_instances.setter
+    def target_number_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_number_instances", value)
+
+
+if not MYPY:
+    class DropletAutoscaleCurrentUtilizationArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[float]]
+        """
+        Average CPU utilization
+        """
+        memory: NotRequired[pulumi.Input[float]]
+        """
+        Average Memory utilization
+        """
+elif False:
+    DropletAutoscaleCurrentUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DropletAutoscaleCurrentUtilizationArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 memory: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] cpu: Average CPU utilization
+        :param pulumi.Input[float] memory: Average Memory utilization
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        """
+        Average CPU utilization
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[float]]:
+        """
+        Average Memory utilization
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DropletAutoscaleDropletTemplateArgsDict(TypedDict):
+        image: pulumi.Input[str]
+        """
+        Image slug of the Droplet Autoscale pool underlying resource(s).
+        """
+        region: pulumi.Input[str]
+        """
+        Region slug of the Droplet Autoscale pool underlying resource(s).
+        """
+        size: pulumi.Input[str]
+        """
+        Size slug of the Droplet Autoscale pool underlying resource(s).
+        """
+        ssh_keys: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+        """
+        ipv6: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project UUID to create the Droplet Autoscale pool underlying resource(s).
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of tags to add to the Droplet Autoscale pool underlying resource(s).
+        """
+        user_data: NotRequired[pulumi.Input[str]]
+        """
+        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        cloud init script that user may configure to setup their application workload.
+        """
+        vpc_uuid: NotRequired[pulumi.Input[str]]
+        """
+        VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+        from the specified `region` (default VPC).
+        """
+        with_droplet_agent: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+        metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+        """
+elif False:
+    DropletAutoscaleDropletTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DropletAutoscaleDropletTemplateArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 size: pulumi.Input[str],
+                 ssh_keys: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ipv6: Optional[pulumi.Input[bool]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vpc_uuid: Optional[pulumi.Input[str]] = None,
+                 with_droplet_agent: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] image: Image slug of the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[str] region: Region slug of the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[str] size: Size slug of the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[bool] ipv6: Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[str] project_id: Project UUID to create the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of tags to add to the Droplet Autoscale pool underlying resource(s).
+        :param pulumi.Input[str] user_data: Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+               cloud init script that user may configure to setup their application workload.
+        :param pulumi.Input[str] vpc_uuid: VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+               from the specified `region` (default VPC).
+        :param pulumi.Input[bool] with_droplet_agent: Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+               metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "ssh_keys", ssh_keys)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vpc_uuid is not None:
+            pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if with_droplet_agent is not None:
+            pulumi.set(__self__, "with_droplet_agent", with_droplet_agent)
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[str]:
+        """
+        Image slug of the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        Region slug of the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[str]:
+        """
+        Size slug of the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[str]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="sshKeys")
+    def ssh_keys(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "ssh_keys")
+
+    @ssh_keys.setter
+    def ssh_keys(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ssh_keys", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project UUID to create the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of tags to add to the Droplet Autoscale pool underlying resource(s).
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        cloud init script that user may configure to setup their application workload.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+        from the specified `region` (default VPC).
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @vpc_uuid.setter
+    def vpc_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_uuid", value)
+
+    @property
+    @pulumi.getter(name="withDropletAgent")
+    def with_droplet_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+        metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+        """
+        return pulumi.get(self, "with_droplet_agent")
+
+    @with_droplet_agent.setter
+    def with_droplet_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "with_droplet_agent", value)
 
 
 if not MYPY:

@@ -585,6 +585,31 @@
                     }
                 }
             },
+            "digitalocean_droplet_autoscale": {
+                "current": "digitalocean:index/dropletAutoscale:DropletAutoscale",
+                "majorVersion": 4,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true
+                    },
+                    "current_utilization": {
+                        "maxItemsOne": false
+                    },
+                    "droplet_template": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ssh_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_droplet_snapshot": {
                 "current": "digitalocean:index/dropletSnapshot:DropletSnapshot",
                 "majorVersion": 4,
@@ -817,6 +842,14 @@
             },
             "digitalocean_reserved_ip_assignment": {
                 "current": "digitalocean:index/reservedIpAssignment:ReservedIpAssignment",
+                "majorVersion": 4
+            },
+            "digitalocean_reserved_ipv6": {
+                "current": "digitalocean:index/reservedIpv6:ReservedIpv6",
+                "majorVersion": 4
+            },
+            "digitalocean_reserved_ipv6_assignment": {
+                "current": "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment",
                 "majorVersion": 4
             },
             "digitalocean_spaces_bucket": {
@@ -1485,6 +1518,31 @@
                     }
                 }
             },
+            "digitalocean_droplet_autoscale": {
+                "current": "digitalocean:index/getDropletAutoscale:getDropletAutoscale",
+                "majorVersion": 4,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false
+                    },
+                    "current_utilization": {
+                        "maxItemsOne": false
+                    },
+                    "droplet_template": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ssh_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_droplet_snapshot": {
                 "current": "digitalocean:index/getDropletSnapshot:getDropletSnapshot",
                 "majorVersion": 4,
@@ -1840,6 +1898,10 @@
             },
             "digitalocean_reserved_ip": {
                 "current": "digitalocean:index/getReservedIp:getReservedIp",
+                "majorVersion": 4
+            },
+            "digitalocean_reserved_ipv6": {
+                "current": "digitalocean:index/getReservedIpv6:getReservedIpv6",
                 "majorVersion": 4
             },
             "digitalocean_sizes": {

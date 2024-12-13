@@ -66,18 +66,17 @@ class LoadBalancerArgs:
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
-        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
                **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
@@ -298,7 +297,6 @@ class LoadBalancerArgs:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-        **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "network")
 
@@ -360,7 +358,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="sizeUnit")
     def size_unit(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size_unit")
 
@@ -397,7 +395,7 @@ class LoadBalancerArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
@@ -472,18 +470,17 @@ class _LoadBalancerState:
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
-        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
                **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
@@ -745,7 +742,6 @@ class _LoadBalancerState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-        **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "network")
 
@@ -807,7 +803,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="sizeUnit")
     def size_unit(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size_unit")
 
@@ -853,7 +849,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
@@ -970,18 +966,17 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
-        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
                **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
@@ -1175,18 +1170,17 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-               **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
                Default value is `false`.
         :param pulumi.Input[Union[str, 'Region']] region: The region to start in
         :param pulumi.Input[str] size: The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
-        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        :param pulumi.Input[int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
-        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        :param pulumi.Input[str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
                **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
@@ -1359,7 +1353,6 @@ class LoadBalancer(pulumi.CustomResource):
     def network(self) -> pulumi.Output[Optional[str]]:
         """
         The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
-        **NOTE**: non-`EXTERNAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "network")
 
@@ -1401,7 +1394,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="sizeUnit")
     def size_unit(self) -> pulumi.Output[int]:
         """
-        The size of the Load Balancer. It must be in the range (1, 100). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size_unit")
 
@@ -1431,7 +1424,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of the Load Balancer. It must be either of `REGIONAL` or `GLOBAL`. Defaults to `REGIONAL`.
+        The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")

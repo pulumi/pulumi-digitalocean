@@ -297,12 +297,13 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_reserved_ip": {
 				Tok: makeResource(digitalOceanMod, "ReservedIp"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "reservedIpUrn",
-					},
+					"urn": {Name: "reservedIpUrn"},
 				},
 			},
 			"digitalocean_reserved_ip_assignment": {Tok: makeResource(digitalOceanMod, "ReservedIpAssignment")},
+
+			"digitalocean_reserved_ipv6":            {Docs: &info.Doc{AllowMissing: true}},
+			"digitalocean_reserved_ipv6_assignment": {Docs: &info.Doc{AllowMissing: true}},
 		},
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
 			"digitalocean:index:Region": {
@@ -579,9 +580,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_domain": {
 				Tok: makeDataSource(digitalOceanMod, "getDomain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "domainUrn",
-					},
+					"urn": {Name: "domainUrn"},
 				},
 			},
 			"digitalocean_droplet":          {Tok: makeDataSource(digitalOceanMod, "getDroplet")},
@@ -589,9 +588,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_floating_ip": {
 				Tok: makeDataSource(digitalOceanMod, "getFloatingIp"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "floatingIpUrn",
-					},
+					"urn": {Name: "floatingIpUrn"},
 				},
 			},
 			"digitalocean_image":               {Tok: makeDataSource(digitalOceanMod, "getImage")},
@@ -600,9 +597,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_loadbalancer": {
 				Tok: makeDataSource(digitalOceanMod, "getLoadBalancer"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
-						Name: "loadBalancerUrn",
-					},
+					"urn": {Name: "loadBalancerUrn"},
 				},
 			},
 			"digitalocean_record":                {Tok: makeDataSource(digitalOceanMod, "getRecord")},
@@ -632,6 +627,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_firewall":              {Tok: makeDataSource(digitalOceanMod, "getFirewall")},
 			"digitalocean_database_ca":           {Tok: makeDataSource(digitalOceanMod, "getDatabaseCa")},
 			"digitalocean_reserved_ip":           {Tok: makeDataSource(digitalOceanMod, "getReservedIp")},
+			"digitalocean_reserved_ipv6":         {Docs: &info.Doc{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

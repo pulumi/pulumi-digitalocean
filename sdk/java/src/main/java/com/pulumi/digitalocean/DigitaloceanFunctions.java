@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GetAppArgs;
 import com.pulumi.digitalocean.inputs.GetAppPlainArgs;
@@ -29,6 +30,8 @@ import com.pulumi.digitalocean.inputs.GetDomainPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainsArgs;
 import com.pulumi.digitalocean.inputs.GetDomainsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDropletArgs;
+import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+import com.pulumi.digitalocean.inputs.GetDropletAutoscalePlainArgs;
 import com.pulumi.digitalocean.inputs.GetDropletPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
 import com.pulumi.digitalocean.inputs.GetDropletSnapshotPlainArgs;
@@ -62,6 +65,8 @@ import com.pulumi.digitalocean.inputs.GetRegionsArgs;
 import com.pulumi.digitalocean.inputs.GetRegionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
 import com.pulumi.digitalocean.inputs.GetReservedIpPlainArgs;
+import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
+import com.pulumi.digitalocean.inputs.GetReservedIpv6PlainArgs;
 import com.pulumi.digitalocean.inputs.GetSizesArgs;
 import com.pulumi.digitalocean.inputs.GetSizesPlainArgs;
 import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
@@ -99,6 +104,7 @@ import com.pulumi.digitalocean.outputs.GetDatabaseReplicaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseUserResult;
 import com.pulumi.digitalocean.outputs.GetDomainResult;
 import com.pulumi.digitalocean.outputs.GetDomainsResult;
+import com.pulumi.digitalocean.outputs.GetDropletAutoscaleResult;
 import com.pulumi.digitalocean.outputs.GetDropletResult;
 import com.pulumi.digitalocean.outputs.GetDropletSnapshotResult;
 import com.pulumi.digitalocean.outputs.GetDropletsResult;
@@ -116,6 +122,7 @@ import com.pulumi.digitalocean.outputs.GetRecordsResult;
 import com.pulumi.digitalocean.outputs.GetRegionResult;
 import com.pulumi.digitalocean.outputs.GetRegionsResult;
 import com.pulumi.digitalocean.outputs.GetReservedIpResult;
+import com.pulumi.digitalocean.outputs.GetReservedIpv6Result;
 import com.pulumi.digitalocean.outputs.GetSizesResult;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketObjectResult;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketObjectsResult;
@@ -376,6 +383,47 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on your DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getAccount();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -512,6 +560,51 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a DigitalOcean App.
+     * 
+     * ## Example Usage
+     * 
+     * Get the account:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getApp(GetAppArgs.builder()
+     *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
+     *             .build());
+     * 
+     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -704,6 +797,55 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a certificate. This data source provides the name, type, state,
+     * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
+     * This is useful if the certificate in question is not managed by this provider or you need to utilize
+     * any of the certificates data.
+     * 
+     * An error is triggered if the provided certificate name does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * Get the certificate:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -956,6 +1098,57 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetContainerRegistryResult> getContainerRegistry(GetContainerRegistryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getContainerRegistry:getContainerRegistry", TypeShape.of(GetContainerRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a container registry. This data source provides the name as
+     * configured on your DigitalOcean account. This is useful if the container
+     * registry name in question is not managed by this provider or you need validate if
+     * the container registry exists in the account.
+     * 
+     * An error is triggered if the provided container registry name does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * 
+     * Get the container registry:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetContainerRegistryResult> getContainerRegistryPlain(GetContainerRegistryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getContainerRegistry:getContainerRegistry", TypeShape.of(GetContainerRegistryResult.class), args, Utilities.withVersion(options));
     }
@@ -1086,6 +1279,49 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetDatabaseCaResult> getDatabaseCa(GetDatabaseCaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseCa:getDatabaseCa", TypeShape.of(GetDatabaseCaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides the CA certificate for a DigitalOcean database.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ca = DigitaloceanFunctions.getDatabaseCa(GetDatabaseCaArgs.builder()
+     *             .clusterId("aaa-bbb-ccc-ddd")
+     *             .build());
+     * 
+     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseCaResult> getDatabaseCa(GetDatabaseCaArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDatabaseCa:getDatabaseCa", TypeShape.of(GetDatabaseCaResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1300,6 +1536,49 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabaseClusterResult> getDatabaseCluster(GetDatabaseClusterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseCluster:getDatabaseCluster", TypeShape.of(GetDatabaseClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean database cluster resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name("example-cluster")
+     *             .build());
+     * 
+     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseClusterResult> getDatabaseClusterPlain(GetDatabaseClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseCluster:getDatabaseCluster", TypeShape.of(GetDatabaseClusterResult.class), args, Utilities.withVersion(options));
     }
@@ -1448,6 +1727,55 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", TypeShape.of(GetDatabaseConnectionPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean PostgreSQL database connection pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name("example-cluster")
+     *             .build());
+     * 
+     *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("pool-01")
+     *             .build());
+     * 
+     *         ctx.export("connectionPoolUriOutput", read_only.uri());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", TypeShape.of(GetDatabaseConnectionPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1692,6 +2020,55 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabaseReplicaResult> getDatabaseReplica(GetDatabaseReplicaArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseReplica:getDatabaseReplica", TypeShape.of(GetDatabaseReplicaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean database replica.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name("example-cluster")
+     *             .build());
+     * 
+     *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
+     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("terra-test-ro")
+     *             .build());
+     * 
+     *         ctx.export("replicaOutput", read_only.uri());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseReplicaResult> getDatabaseReplicaPlain(GetDatabaseReplicaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseReplica:getDatabaseReplica", TypeShape.of(GetDatabaseReplicaResult.class), args, Utilities.withVersion(options));
     }
@@ -1840,6 +2217,55 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetDatabaseUserResult> getDatabaseUser(GetDatabaseUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseUser:getDatabaseUser", TypeShape.of(GetDatabaseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean database user resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getDatabaseCluster(GetDatabaseClusterArgs.builder()
+     *             .name("main-cluster")
+     *             .build());
+     * 
+     *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
+     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .name("example-user")
+     *             .build());
+     * 
+     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseUserResult> getDatabaseUser(GetDatabaseUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDatabaseUser:getDatabaseUser", TypeShape.of(GetDatabaseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2042,6 +2468,57 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a domain. This data source provides the name, TTL, and zone
+     * file as configured on your DigitalOcean account. This is useful if the domain
+     * name in question is not managed by this provider or you need to utilize TTL or zone
+     * file data.
+     * 
+     * An error is triggered if the provided domain name is not managed with your
+     * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get the zone file for a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDomain(GetDomainArgs.builder()
+     *             .name("example.com")
+     *             .build());
+     * 
+     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainResult> getDomain(GetDomainArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2373,6 +2850,62 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on domains for use in other resources, with the ability to filter and sort the results.
+     * If no filters are specified, all domains will be returned.
+     * 
+     * This data source is useful if the domains in question are not managed by this provider or you need to
+     * utilize any of the domains&#39; data.
+     * 
+     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
+     * about a single domain if you already know the `name`.
+     * 
+     * ## Example Usage
+     * 
+     * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
+     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = DigitaloceanFunctions.getDomains(GetDomainsArgs.builder()
+     *             .filters(GetDomainsFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("example\\.com$")
+     *                 .matchBy("re")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3154,8 +3687,668 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDropletResult> getDroplet(GetDropletArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDroplet:getDroplet", TypeShape.of(GetDropletResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a Droplet for use in other resources. This data source provides
+     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
+     * is useful if the Droplet in question is not managed by this provider or you need to
+     * utilize any of the Droplet&#39;s data.
+     * 
+     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+     * error is triggered if more than one Droplet is found.
+     * 
+     * ## Example Usage
+     * 
+     * Get the Droplet by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
+     *             .name("web")
+     *             .build());
+     * 
+     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet by tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
+     *             .tag("web")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
+     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDropletResult> getDropletPlain(GetDropletPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDroplet:getDroplet", TypeShape.of(GetDropletResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDropletAutoscaleResult> getDropletAutoscale() {
+        return getDropletAutoscale(GetDropletAutoscaleArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDropletAutoscaleResult> getDropletAutoscalePlain() {
+        return getDropletAutoscalePlain(GetDropletAutoscalePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDropletAutoscaleResult> getDropletAutoscale(GetDropletAutoscaleArgs args) {
+        return getDropletAutoscale(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDropletAutoscaleResult> getDropletAutoscalePlain(GetDropletAutoscalePlainArgs args) {
+        return getDropletAutoscalePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDropletAutoscaleResult> getDropletAutoscale(GetDropletAutoscaleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDropletAutoscale:getDropletAutoscale", TypeShape.of(GetDropletAutoscaleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDropletAutoscaleResult> getDropletAutoscale(GetDropletAutoscaleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDropletAutoscale:getDropletAutoscale", TypeShape.of(GetDropletAutoscaleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the Droplet Autoscale pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .name(my_existing_autoscale_pool.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the Droplet Autoscale pool by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
+     *             .id(my_existing_autoscale_pool.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDropletAutoscaleResult> getDropletAutoscalePlain(GetDropletAutoscalePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDropletAutoscale:getDropletAutoscale", TypeShape.of(GetDropletAutoscaleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Droplet snapshots are saved instances of a Droplet. Use this data
@@ -3625,6 +4818,100 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetDropletSnapshotResult> getDropletSnapshot(GetDropletSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", TypeShape.of(GetDropletSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Droplet snapshots are saved instances of a Droplet. Use this data
+     * source to retrieve the ID of a DigitalOcean Droplet snapshot for use in other
+     * resources.
+     * 
+     * ## Example Usage
+     * 
+     * Get the Droplet snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
+     *             .nameRegex("^web")
+     *             .region("nyc3")
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Create image from snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web-snapshot = DigitaloceanFunctions.getDropletSnapshot(GetDropletSnapshotArgs.builder()
+     *             .nameRegex("^web")
+     *             .region("nyc3")
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *         var from_snapshot = new Droplet("from-snapshot", DropletArgs.builder()
+     *             .image(web_snapshot.id())
+     *             .name("web-02")
+     *             .region("nyc3")
+     *             .size("s-2vcpu-4gb")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDropletSnapshotResult> getDropletSnapshot(GetDropletSnapshotArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getDropletSnapshot:getDropletSnapshot", TypeShape.of(GetDropletSnapshotResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4354,6 +5641,112 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDropletsResult> getDroplets(GetDropletsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDroplets:getDroplets", TypeShape.of(GetDropletsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+     * If no filters are specified, all Droplets will be returned.
+     * 
+     * This data source is useful if the Droplets in question are not managed by the provider or you need to
+     * utilize any of the Droplets&#39; data.
+     * 
+     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+     * the `gpus` attribute to `true`.
+     * 
+     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
+     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+     * 
+     * ## Example Usage
+     * 
+     * Use the `filter` block with a `key` string and `values` list to filter images.
+     * 
+     * For example to find all Droplets with size `s-1vcpu-1gb`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var small = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
+     *             .filters(GetDropletsFilterArgs.builder()
+     *                 .key("size")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var small-with-backups = DigitaloceanFunctions.getDroplets(GetDropletsArgs.builder()
+     *             .filters(            
+     *                 GetDropletsFilterArgs.builder()
+     *                     .key("size")
+     *                     .values("s-1vcpu-1gb")
+     *                     .build(),
+     *                 GetDropletsFilterArgs.builder()
+     *                     .key("backups")
+     *                     .values("true")
+     *                     .build())
+     *             .sorts(GetDropletsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDropletsResult> getDropletsPlain(GetDropletsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDroplets:getDroplets", TypeShape.of(GetDropletsResult.class), args, Utilities.withVersion(options));
     }
@@ -4490,6 +5883,51 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a DigitalOcean Firewall.
+     * 
+     * ## Example Usage
+     * 
+     * Get the firewall:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetFirewallArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getFirewall(GetFirewallArgs.builder()
+     *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
+     *             .build());
+     * 
+     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFirewallResult> getFirewall(GetFirewallArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4697,6 +6135,60 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+     * 
+     * Get information on a floating ip. This data source provides the region and Droplet id
+     * as configured on your DigitalOcean account. This is useful if the floating IP
+     * in question is not managed by the provider or you need to find the Droplet the IP is
+     * attached to.
+     * 
+     * An error is triggered if the provided floating IP does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * Get the floating IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var publicIp = config.get("publicIp");
+     *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
+     *             .ipAddress(publicIp)
+     *             .build());
+     * 
+     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5518,6 +7010,134 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on an image for use in other resources (e.g. creating a Droplet
+     * based on snapshot). This data source provides all of the image properties as
+     * configured on your DigitalOcean account. This is useful if the image in question
+     * is not managed by the provider or you need to utilize any of the image&#39;s data.
+     * 
+     * An error is triggered if zero or more than one result is returned by the query.
+     * 
+     * ## Example Usage
+     * 
+     * Get the data about a snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example1 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *             .name("example-1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a snapshot to create a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetImageArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *             .name("example-1.0.0")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .name("example-1")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the data about an official image:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example2 = DigitaloceanFunctions.getImage(GetImageArgs.builder()
+     *             .slug("ubuntu-18-04-x64")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
@@ -6142,6 +7762,110 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on images for use in other resources (e.g. creating a Droplet
+     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+     * all images will be returned.
+     * 
+     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
+     * of the image&#39;s data.
+     * 
+     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
+     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+     * 
+     * ## Example Usage
+     * 
+     * Use the `filter` block with a `key` string and `values` list to filter images.
+     * 
+     * For example to find all Ubuntu images:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntu = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
+     *             .filters(GetImagesFilterArgs.builder()
+     *                 .key("distribution")
+     *                 .values("Ubuntu")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getImages(GetImagesArgs.builder()
+     *             .filters(            
+     *                 GetImagesFilterArgs.builder()
+     *                     .key("distribution")
+     *                     .values("Ubuntu")
+     *                     .build(),
+     *                 GetImagesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("nyc3")
+     *                     .build())
+     *             .sorts(GetImagesSortArgs.builder()
+     *                 .key("created")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
@@ -6269,6 +7993,48 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetKubernetesClusterResult> getKubernetesCluster(GetKubernetesClusterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", TypeShape.of(GetKubernetesClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+     *             .name("prod-cluster-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKubernetesClusterResult> getKubernetesCluster(GetKubernetesClusterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", TypeShape.of(GetKubernetesClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7144,6 +8910,145 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKubernetesVersionsResult> getKubernetesVersions(GetKubernetesVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getKubernetesVersions:getKubernetesVersions", TypeShape.of(GetKubernetesVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to the available DigitalOcean Kubernetes Service versions.
+     * 
+     * ## Example Usage
+     * 
+     * ### Output a list of all available versions
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     * 
+     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Create a Kubernetes cluster using the most recent version available
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
+     * import com.pulumi.digitalocean.KubernetesCluster;
+     * import com.pulumi.digitalocean.KubernetesClusterArgs;
+     * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     * 
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
+     *             .name("example-cluster")
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .nodePool(KubernetesClusterNodePoolArgs.builder()
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
+     *                 .nodeCount(3)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Pin a Kubernetes cluster to a specific minor version
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
+     * import com.pulumi.digitalocean.KubernetesCluster;
+     * import com.pulumi.digitalocean.KubernetesClusterArgs;
+     * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .versionPrefix("1.22.")
+     *             .build());
+     * 
+     *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
+     *             .name("example-cluster")
+     *             .region("lon1")
+     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .nodePool(KubernetesClusterNodePoolArgs.builder()
+     *                 .name("default")
+     *                 .size("s-1vcpu-2gb")
+     *                 .nodeCount(3)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKubernetesVersionsResult> getKubernetesVersionsPlain(GetKubernetesVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getKubernetesVersions:getKubernetesVersions", TypeShape.of(GetKubernetesVersionsResult.class), args, Utilities.withVersion(options));
     }
@@ -7654,6 +9559,91 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a load balancer for use in other resources. This data source
+     * provides all of the load balancers properties as configured on your DigitalOcean
+     * account. This is useful if the load balancer in question is not managed by
+     * the provider or you need to utilize any of the load balancers data.
+     * 
+     * An error is triggered if the provided load balancer name does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * Get the load balancer by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .name("app")
+     *             .build());
+     * 
+     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the load balancer by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .id("loadbalancer_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
     }
@@ -7880,6 +9870,51 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+     * then this data source returns the default project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DigitaloceanFunctions.getProject();
+     * 
+     *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .name("My Staging Project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8536,6 +10571,108 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about all DigitalOcean projects associated with an account, with
+     * the ability to filter and sort the results. If no filters are specified, all projects
+     * will be returned.
+     * 
+     * Note: You can use the `digitalocean.Project` data source to
+     * obtain metadata about a single project if you already know the `id` to retrieve or the unique
+     * `name` of the project.
+     * 
+     * ## Example Usage
+     * 
+     * Use the `filter` block with a `key` string and `values` list to filter projects.
+     * 
+     * For example to find all staging environment projects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var staging = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
+     *             .filters(GetProjectsFilterArgs.builder()
+     *                 .key("environment")
+     *                 .values("Staging")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var non-default-production = DigitaloceanFunctions.getProjects(GetProjectsArgs.builder()
+     *             .filters(            
+     *                 GetProjectsFilterArgs.builder()
+     *                     .key("environment")
+     *                     .values("Production")
+     *                     .build(),
+     *                 GetProjectsFilterArgs.builder()
+     *                     .key("is_default")
+     *                     .values("false")
+     *                     .build())
+     *             .sorts(GetProjectsSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
     }
@@ -8693,6 +10830,58 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetRecordResult> getRecord(GetRecordArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a DNS record. This data source provides the name, TTL, and zone
+     * file as configured on your DigitalOcean account. This is useful if the record
+     * in question is not managed by the provider.
+     * 
+     * An error is triggered if the provided domain name or record are not managed with
+     * your DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * Get data from a DNS record:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecord(GetRecordArgs.builder()
+     *             .domain("example.com")
+     *             .name("test")
+     *             .build());
+     * 
+     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
+     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRecordResult> getRecord(GetRecordArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8956,6 +11145,59 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRecordsResult> getRecords(GetRecordsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getRecords:getRecords", TypeShape.of(GetRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
+     * If no filters are specified, all records will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * Get data for all MX records in a domain:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domain("example.com")
+     *             .filters(GetRecordsFilterArgs.builder()
+     *                 .key("type")
+     *                 .values("MX")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getRecords:getRecords", TypeShape.of(GetRecordsResult.class), args, Utilities.withVersion(options));
     }
@@ -9089,6 +11331,50 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetRegionResult> getRegion(GetRegionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getRegion:getRegion", TypeShape.of(GetRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a single DigitalOcean region. This is useful to find out
+     * what Droplet sizes and features are supported within a region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sfo2 = DigitaloceanFunctions.getRegion(GetRegionArgs.builder()
+     *             .slug("sfo2")
+     *             .build());
+     * 
+     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionResult> getRegion(GetRegionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getRegion:getRegion", TypeShape.of(GetRegionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9732,6 +12018,106 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about all supported DigitalOcean regions, with the ability to
+     * filter and sort the results. If no filters are specified, all regions will be returned.
+     * 
+     * Note: You can use the `digitalocean.getRegion` data source
+     * to obtain metadata about a single region if you already know the `slug` to retrieve.
+     * 
+     * ## Example Usage
+     * 
+     * Use the `filter` block with a `key` string and `values` list to filter regions.
+     * 
+     * For example to find all available regions:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(GetRegionsFilterArgs.builder()
+     *                 .key("available")
+     *                 .values("true")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * You can filter on multiple fields and sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getRegions(GetRegionsArgs.builder()
+     *             .filters(            
+     *                 GetRegionsFilterArgs.builder()
+     *                     .key("available")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetRegionsFilterArgs.builder()
+     *                     .key("features")
+     *                     .values("private_networking")
+     *                     .build())
+     *             .sorts(GetRegionsSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
     }
@@ -9912,8 +12298,68 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetReservedIpResult> getReservedIp(GetReservedIpArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getReservedIp:getReservedIp", TypeShape.of(GetReservedIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the reserved IP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var publicIp = config.get("publicIp");
+     *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
+     *             .ipAddress(publicIp)
+     *             .build());
+     * 
+     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetReservedIpResult> getReservedIpPlain(GetReservedIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getReservedIp:getReservedIp", TypeShape.of(GetReservedIpResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetReservedIpv6Result> getReservedIpv6(GetReservedIpv6Args args) {
+        return getReservedIpv6(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetReservedIpv6Result> getReservedIpv6Plain(GetReservedIpv6PlainArgs args) {
+        return getReservedIpv6Plain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetReservedIpv6Result> getReservedIpv6(GetReservedIpv6Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getReservedIpv6:getReservedIpv6", TypeShape.of(GetReservedIpv6Result.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetReservedIpv6Result> getReservedIpv6(GetReservedIpv6Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getReservedIpv6:getReservedIpv6", TypeShape.of(GetReservedIpv6Result.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetReservedIpv6Result> getReservedIpv6Plain(GetReservedIpv6PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getReservedIpv6:getReservedIpv6", TypeShape.of(GetReservedIpv6Result.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -9958,6 +12404,15 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetSizesResult> getSizes(GetSizesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSizes:getSizes", TypeShape.of(GetSizesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about the Droplet sizes that DigitalOcean supports, with
+     * the ability to filter and sort the results. If no filters are specified, all sizes
+     * will be returned.
+     * 
+     */
+    public static Output<GetSizesResult> getSizes(GetSizesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSizes:getSizes", TypeShape.of(GetSizesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -10108,6 +12563,53 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetSpacesBucketResult> getSpacesBucket(GetSpacesBucketArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", TypeShape.of(GetSpacesBucketResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+     * is not managed by the provider or you need to utilize any of the bucket&#39;s data.
+     * 
+     * ## Example Usage
+     * 
+     * Get the bucket by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSpacesBucket(GetSpacesBucketArgs.builder()
+     *             .name("my-spaces-bucket")
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSpacesBucketResult> getSpacesBucket(GetSpacesBucketArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", TypeShape.of(GetSpacesBucketResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -10402,6 +12904,68 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSpacesBucketObjectResult> getSpacesBucketObject(GetSpacesBucketObjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", TypeShape.of(GetSpacesBucketObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Spaces object data source allows access to the metadata and
+     * _optionally_ (see below) content of an object stored inside a Spaces bucket.
+     * 
+     * &gt; **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
+     * `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
+     * downloading large amount of data which would be thrown away in favor of metadata.
+     * 
+     * ## Example Usage
+     * 
+     * The following example retrieves a text object (which must have a `Content-Type`
+     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bootstrapScript = DigitaloceanFunctions.getSpacesBucketObject(GetSpacesBucketObjectArgs.builder()
+     *             .bucket("ourcorp-deploy-config")
+     *             .region("nyc3")
+     *             .key("droplet-bootstrap-script.sh")
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSpacesBucketObjectResult> getSpacesBucketObjectPlain(GetSpacesBucketObjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", TypeShape.of(GetSpacesBucketObjectResult.class), args, Utilities.withVersion(options));
     }
@@ -10430,6 +12994,15 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetSpacesBucketObjectsResult> getSpacesBucketObjects(GetSpacesBucketObjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * 
+     * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+     * 
+     */
+    public static Output<GetSpacesBucketObjectsResult> getSpacesBucketObjects(GetSpacesBucketObjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -11002,6 +13575,100 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSpacesBucketsResult> getSpacesBuckets(GetSpacesBucketsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSpacesBuckets:getSpacesBuckets", TypeShape.of(GetSpacesBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
+     * If no filters are specified, all Spaces buckets will be returned.
+     * 
+     * Note: You can use the `digitalocean.SpacesBucket` data source to
+     * obtain metadata about a single bucket if you already know its `name` and `region`.
+     * 
+     * ## Example Usage
+     * 
+     * Use the `filter` block with a `key` string and `values` list to filter buckets.
+     * 
+     * Get all buckets in a region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
+     *             .filters(GetSpacesBucketsFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("nyc3")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * You can sort the results as well:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nyc3 = DigitaloceanFunctions.getSpacesBuckets(GetSpacesBucketsArgs.builder()
+     *             .filters(GetSpacesBucketsFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("nyc3")
+     *                 .build())
+     *             .sorts(GetSpacesBucketsSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSpacesBucketsResult> getSpacesBucketsPlain(GetSpacesBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBuckets:getSpacesBuckets", TypeShape.of(GetSpacesBucketsResult.class), args, Utilities.withVersion(options));
     }
@@ -11180,6 +13847,65 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a ssh key. This data source provides the name, public key,
+     * and fingerprint as configured on your DigitalOcean account. This is useful if
+     * the ssh key in question is not managed by the provider or you need to utilize any
+     * of the keys data.
+     * 
+     * An error is triggered if the provided ssh key name does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * Get the ssh key:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSshKeyResult> getSshKey(GetSshKeyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -11796,6 +14522,99 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSshKeysResult> getSshKeys(GetSshKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on SSH Keys for use in other resources.
+     * 
+     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
+     * utilize any of the SSH Keys&#39; data.
+     * 
+     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+     * about a single SSH Key if you already know the unique `name` to retrieve.
+     * 
+     * ## Example Usage
+     * 
+     * For example, to find all SSH keys:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
+     *             .sorts(GetSshKeysSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Or to find ones matching specific values:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = DigitaloceanFunctions.getSshKeys(GetSshKeysArgs.builder()
+     *             .filters(GetSshKeysFilterArgs.builder()
+     *                 .key("name")
+     *                 .values(                
+     *                     "laptop",
+     *                     "desktop")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSshKeysResult> getSshKeysPlain(GetSshKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
     }
@@ -11971,6 +14790,64 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a tag. This data source provides the name as configured on
+     * your DigitalOcean account. This is useful if the tag name in question is not
+     * managed by the provider or you need validate if the tag exists in the account.
+     * 
+     * An error is triggered if the provided tag name does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * Get the tag:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetTagArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getTag(GetTagArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("example-1")
+     *             .region("nyc2")
+     *             .size("s-1vcpu-1gb")
+     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -12269,6 +15146,54 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetTagsResult> getTags(GetTagsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of tags in your DigitalOcean account, with the ability to
+     * filter and sort the results. If no filters are specified, all tags will be
+     * returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var list = DigitaloceanFunctions.getTags(GetTagsArgs.builder()
+     *             .sorts(GetTagsSortArgs.builder()
+     *                 .key("total_resource_count")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTagsResult> getTags(GetTagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -12623,6 +15548,108 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a volume for use in other resources. This data source provides
+     * all of the volumes properties as configured on your DigitalOcean account. This is
+     * useful if the volume in question is not managed by the provider or you need to utilize
+     * any of the volumes data.
+     * 
+     * An error is triggered if the provided volume name does not exist.
+     * 
+     * ## Example Usage
+     * 
+     * Get the volume:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("app-data")
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a volume to attach it to a Droplet:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import com.pulumi.digitalocean.VolumeAttachment;
+     * import com.pulumi.digitalocean.VolumeAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("app-data")
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("foo")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
+     *             .dropletId(exampleDroplet.id())
+     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -13288,6 +16315,100 @@ public final class DigitaloceanFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVolumeSnapshotResult> getVolumeSnapshot(GetVolumeSnapshotArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", TypeShape.of(GetVolumeSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Volume snapshots are saved instances of a block storage volume. Use this data
+     * source to retrieve the ID of a DigitalOcean volume snapshot for use in other
+     * resources.
+     * 
+     * ## Example Usage
+     * 
+     * Get the volume snapshot:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
+     *             .nameRegex("^web")
+     *             .region("nyc3")
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a volume snapshot to create a new volume based on it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
+     * import com.pulumi.digitalocean.Volume;
+     * import com.pulumi.digitalocean.VolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = DigitaloceanFunctions.getVolumeSnapshot(GetVolumeSnapshotArgs.builder()
+     *             .nameRegex("^web")
+     *             .region("nyc3")
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *         var foobar = new Volume("foobar", VolumeArgs.builder()
+     *             .region("nyc3")
+     *             .name("baz")
+     *             .size(100)
+     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVolumeSnapshotResult> getVolumeSnapshotPlain(GetVolumeSnapshotPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", TypeShape.of(GetVolumeSnapshotResult.class), args, Utilities.withVersion(options));
     }
@@ -13769,6 +16890,102 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about a VPC for use in other resources.
+     * 
+     * This data source provides all of the VPC&#39;s properties as configured on your
+     * DigitalOcean account. This is useful if the VPC in question is not managed by
+     * the provider or you need to utilize any of the VPC&#39;s data.
+     * 
+     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
+     * return that that region&#39;s default VPC.
+     * 
+     * ## Example Usage
+     * 
+     * ### VPC By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *             .name("example-network")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC to assign a Droplet to it:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpc(GetVpcArgs.builder()
+     *             .name("example-network")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -14700,6 +17917,173 @@ public final class DigitaloceanFunctions {
      * 
      */
     public static Output<GetVpcPeeringResult> getVpcPeering(GetVpcPeeringArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVpcPeering:getVpcPeering", TypeShape.of(GetVpcPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * ### VPC Peering By Id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .id("example-id")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### VPC Peering By Name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Reuse the data about a VPC Peering in other resources:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVpcPeering(GetVpcPeeringArgs.builder()
+     *             .name("example-peering")
+     *             .build());
+     * 
+     *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
+     *             .name("example-01")
+     *             .size("s-1vcpu-1gb")
+     *             .image("ubuntu-18-04-x64")
+     *             .region("nyc3")
+     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcPeeringResult> getVpcPeering(GetVpcPeeringArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getVpcPeering:getVpcPeering", TypeShape.of(GetVpcPeeringResult.class), args, Utilities.withVersion(options));
     }
     /**

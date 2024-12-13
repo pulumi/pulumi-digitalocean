@@ -15498,6 +15498,672 @@ func (o DatabaseUserSettingOpensearchAclArrayOutput) Index(i pulumi.IntInput) Da
 	}).(DatabaseUserSettingOpensearchAclOutput)
 }
 
+type DropletAutoscaleConfig struct {
+	// The cooldown duration between scaling events for the Droplet Autoscale pool.
+	CooldownMinutes *int `pulumi:"cooldownMinutes"`
+	// The maximum number of instances to maintain in the Droplet Autoscale pool.
+	MaxInstances *int `pulumi:"maxInstances"`
+	// The minimum number of instances to maintain in the Droplet Autoscale pool.
+	MinInstances *int `pulumi:"minInstances"`
+	// The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+	TargetCpuUtilization *float64 `pulumi:"targetCpuUtilization"`
+	// The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
+	// pool.
+	TargetMemoryUtilization *float64 `pulumi:"targetMemoryUtilization"`
+	// The static number of instances to maintain in the pool Droplet Autoscale pool. This
+	// argument cannot be used with any other config options.
+	TargetNumberInstances *int `pulumi:"targetNumberInstances"`
+}
+
+// DropletAutoscaleConfigInput is an input type that accepts DropletAutoscaleConfigArgs and DropletAutoscaleConfigOutput values.
+// You can construct a concrete instance of `DropletAutoscaleConfigInput` via:
+//
+//	DropletAutoscaleConfigArgs{...}
+type DropletAutoscaleConfigInput interface {
+	pulumi.Input
+
+	ToDropletAutoscaleConfigOutput() DropletAutoscaleConfigOutput
+	ToDropletAutoscaleConfigOutputWithContext(context.Context) DropletAutoscaleConfigOutput
+}
+
+type DropletAutoscaleConfigArgs struct {
+	// The cooldown duration between scaling events for the Droplet Autoscale pool.
+	CooldownMinutes pulumi.IntPtrInput `pulumi:"cooldownMinutes"`
+	// The maximum number of instances to maintain in the Droplet Autoscale pool.
+	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
+	// The minimum number of instances to maintain in the Droplet Autoscale pool.
+	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
+	// The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+	TargetCpuUtilization pulumi.Float64PtrInput `pulumi:"targetCpuUtilization"`
+	// The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
+	// pool.
+	TargetMemoryUtilization pulumi.Float64PtrInput `pulumi:"targetMemoryUtilization"`
+	// The static number of instances to maintain in the pool Droplet Autoscale pool. This
+	// argument cannot be used with any other config options.
+	TargetNumberInstances pulumi.IntPtrInput `pulumi:"targetNumberInstances"`
+}
+
+func (DropletAutoscaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (i DropletAutoscaleConfigArgs) ToDropletAutoscaleConfigOutput() DropletAutoscaleConfigOutput {
+	return i.ToDropletAutoscaleConfigOutputWithContext(context.Background())
+}
+
+func (i DropletAutoscaleConfigArgs) ToDropletAutoscaleConfigOutputWithContext(ctx context.Context) DropletAutoscaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleConfigOutput)
+}
+
+func (i DropletAutoscaleConfigArgs) ToDropletAutoscaleConfigPtrOutput() DropletAutoscaleConfigPtrOutput {
+	return i.ToDropletAutoscaleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DropletAutoscaleConfigArgs) ToDropletAutoscaleConfigPtrOutputWithContext(ctx context.Context) DropletAutoscaleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleConfigOutput).ToDropletAutoscaleConfigPtrOutputWithContext(ctx)
+}
+
+// DropletAutoscaleConfigPtrInput is an input type that accepts DropletAutoscaleConfigArgs, DropletAutoscaleConfigPtr and DropletAutoscaleConfigPtrOutput values.
+// You can construct a concrete instance of `DropletAutoscaleConfigPtrInput` via:
+//
+//	        DropletAutoscaleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DropletAutoscaleConfigPtrInput interface {
+	pulumi.Input
+
+	ToDropletAutoscaleConfigPtrOutput() DropletAutoscaleConfigPtrOutput
+	ToDropletAutoscaleConfigPtrOutputWithContext(context.Context) DropletAutoscaleConfigPtrOutput
+}
+
+type dropletAutoscaleConfigPtrType DropletAutoscaleConfigArgs
+
+func DropletAutoscaleConfigPtr(v *DropletAutoscaleConfigArgs) DropletAutoscaleConfigPtrInput {
+	return (*dropletAutoscaleConfigPtrType)(v)
+}
+
+func (*dropletAutoscaleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (i *dropletAutoscaleConfigPtrType) ToDropletAutoscaleConfigPtrOutput() DropletAutoscaleConfigPtrOutput {
+	return i.ToDropletAutoscaleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dropletAutoscaleConfigPtrType) ToDropletAutoscaleConfigPtrOutputWithContext(ctx context.Context) DropletAutoscaleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleConfigPtrOutput)
+}
+
+type DropletAutoscaleConfigOutput struct{ *pulumi.OutputState }
+
+func (DropletAutoscaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (o DropletAutoscaleConfigOutput) ToDropletAutoscaleConfigOutput() DropletAutoscaleConfigOutput {
+	return o
+}
+
+func (o DropletAutoscaleConfigOutput) ToDropletAutoscaleConfigOutputWithContext(ctx context.Context) DropletAutoscaleConfigOutput {
+	return o
+}
+
+func (o DropletAutoscaleConfigOutput) ToDropletAutoscaleConfigPtrOutput() DropletAutoscaleConfigPtrOutput {
+	return o.ToDropletAutoscaleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DropletAutoscaleConfigOutput) ToDropletAutoscaleConfigPtrOutputWithContext(ctx context.Context) DropletAutoscaleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DropletAutoscaleConfig) *DropletAutoscaleConfig {
+		return &v
+	}).(DropletAutoscaleConfigPtrOutput)
+}
+
+// The cooldown duration between scaling events for the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigOutput) CooldownMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleConfig) *int { return v.CooldownMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of instances to maintain in the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleConfig) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances to maintain in the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleConfig) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
+}
+
+// The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigOutput) TargetCpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleConfig) *float64 { return v.TargetCpuUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
+// pool.
+func (o DropletAutoscaleConfigOutput) TargetMemoryUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleConfig) *float64 { return v.TargetMemoryUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// The static number of instances to maintain in the pool Droplet Autoscale pool. This
+// argument cannot be used with any other config options.
+func (o DropletAutoscaleConfigOutput) TargetNumberInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleConfig) *int { return v.TargetNumberInstances }).(pulumi.IntPtrOutput)
+}
+
+type DropletAutoscaleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DropletAutoscaleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (o DropletAutoscaleConfigPtrOutput) ToDropletAutoscaleConfigPtrOutput() DropletAutoscaleConfigPtrOutput {
+	return o
+}
+
+func (o DropletAutoscaleConfigPtrOutput) ToDropletAutoscaleConfigPtrOutputWithContext(ctx context.Context) DropletAutoscaleConfigPtrOutput {
+	return o
+}
+
+func (o DropletAutoscaleConfigPtrOutput) Elem() DropletAutoscaleConfigOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) DropletAutoscaleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DropletAutoscaleConfig
+		return ret
+	}).(DropletAutoscaleConfigOutput)
+}
+
+// The cooldown duration between scaling events for the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigPtrOutput) CooldownMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CooldownMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of instances to maintain in the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigPtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances to maintain in the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigPtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+func (o DropletAutoscaleConfigPtrOutput) TargetCpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TargetCpuUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
+// pool.
+func (o DropletAutoscaleConfigPtrOutput) TargetMemoryUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TargetMemoryUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The static number of instances to maintain in the pool Droplet Autoscale pool. This
+// argument cannot be used with any other config options.
+func (o DropletAutoscaleConfigPtrOutput) TargetNumberInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetNumberInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+type DropletAutoscaleCurrentUtilization struct {
+	// Average CPU utilization
+	Cpu *float64 `pulumi:"cpu"`
+	// Average Memory utilization
+	Memory *float64 `pulumi:"memory"`
+}
+
+// DropletAutoscaleCurrentUtilizationInput is an input type that accepts DropletAutoscaleCurrentUtilizationArgs and DropletAutoscaleCurrentUtilizationOutput values.
+// You can construct a concrete instance of `DropletAutoscaleCurrentUtilizationInput` via:
+//
+//	DropletAutoscaleCurrentUtilizationArgs{...}
+type DropletAutoscaleCurrentUtilizationInput interface {
+	pulumi.Input
+
+	ToDropletAutoscaleCurrentUtilizationOutput() DropletAutoscaleCurrentUtilizationOutput
+	ToDropletAutoscaleCurrentUtilizationOutputWithContext(context.Context) DropletAutoscaleCurrentUtilizationOutput
+}
+
+type DropletAutoscaleCurrentUtilizationArgs struct {
+	// Average CPU utilization
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Average Memory utilization
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
+}
+
+func (DropletAutoscaleCurrentUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (i DropletAutoscaleCurrentUtilizationArgs) ToDropletAutoscaleCurrentUtilizationOutput() DropletAutoscaleCurrentUtilizationOutput {
+	return i.ToDropletAutoscaleCurrentUtilizationOutputWithContext(context.Background())
+}
+
+func (i DropletAutoscaleCurrentUtilizationArgs) ToDropletAutoscaleCurrentUtilizationOutputWithContext(ctx context.Context) DropletAutoscaleCurrentUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleCurrentUtilizationOutput)
+}
+
+// DropletAutoscaleCurrentUtilizationArrayInput is an input type that accepts DropletAutoscaleCurrentUtilizationArray and DropletAutoscaleCurrentUtilizationArrayOutput values.
+// You can construct a concrete instance of `DropletAutoscaleCurrentUtilizationArrayInput` via:
+//
+//	DropletAutoscaleCurrentUtilizationArray{ DropletAutoscaleCurrentUtilizationArgs{...} }
+type DropletAutoscaleCurrentUtilizationArrayInput interface {
+	pulumi.Input
+
+	ToDropletAutoscaleCurrentUtilizationArrayOutput() DropletAutoscaleCurrentUtilizationArrayOutput
+	ToDropletAutoscaleCurrentUtilizationArrayOutputWithContext(context.Context) DropletAutoscaleCurrentUtilizationArrayOutput
+}
+
+type DropletAutoscaleCurrentUtilizationArray []DropletAutoscaleCurrentUtilizationInput
+
+func (DropletAutoscaleCurrentUtilizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (i DropletAutoscaleCurrentUtilizationArray) ToDropletAutoscaleCurrentUtilizationArrayOutput() DropletAutoscaleCurrentUtilizationArrayOutput {
+	return i.ToDropletAutoscaleCurrentUtilizationArrayOutputWithContext(context.Background())
+}
+
+func (i DropletAutoscaleCurrentUtilizationArray) ToDropletAutoscaleCurrentUtilizationArrayOutputWithContext(ctx context.Context) DropletAutoscaleCurrentUtilizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleCurrentUtilizationArrayOutput)
+}
+
+type DropletAutoscaleCurrentUtilizationOutput struct{ *pulumi.OutputState }
+
+func (DropletAutoscaleCurrentUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (o DropletAutoscaleCurrentUtilizationOutput) ToDropletAutoscaleCurrentUtilizationOutput() DropletAutoscaleCurrentUtilizationOutput {
+	return o
+}
+
+func (o DropletAutoscaleCurrentUtilizationOutput) ToDropletAutoscaleCurrentUtilizationOutputWithContext(ctx context.Context) DropletAutoscaleCurrentUtilizationOutput {
+	return o
+}
+
+// Average CPU utilization
+func (o DropletAutoscaleCurrentUtilizationOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleCurrentUtilization) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// Average Memory utilization
+func (o DropletAutoscaleCurrentUtilizationOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleCurrentUtilization) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+type DropletAutoscaleCurrentUtilizationArrayOutput struct{ *pulumi.OutputState }
+
+func (DropletAutoscaleCurrentUtilizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (o DropletAutoscaleCurrentUtilizationArrayOutput) ToDropletAutoscaleCurrentUtilizationArrayOutput() DropletAutoscaleCurrentUtilizationArrayOutput {
+	return o
+}
+
+func (o DropletAutoscaleCurrentUtilizationArrayOutput) ToDropletAutoscaleCurrentUtilizationArrayOutputWithContext(ctx context.Context) DropletAutoscaleCurrentUtilizationArrayOutput {
+	return o
+}
+
+func (o DropletAutoscaleCurrentUtilizationArrayOutput) Index(i pulumi.IntInput) DropletAutoscaleCurrentUtilizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DropletAutoscaleCurrentUtilization {
+		return vs[0].([]DropletAutoscaleCurrentUtilization)[vs[1].(int)]
+	}).(DropletAutoscaleCurrentUtilizationOutput)
+}
+
+type DropletAutoscaleDropletTemplate struct {
+	// Image slug of the Droplet Autoscale pool underlying resource(s).
+	Image string `pulumi:"image"`
+	// Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+	Ipv6 *bool `pulumi:"ipv6"`
+	// Project UUID to create the Droplet Autoscale pool underlying resource(s).
+	ProjectId *string `pulumi:"projectId"`
+	// Region slug of the Droplet Autoscale pool underlying resource(s).
+	Region string `pulumi:"region"`
+	// Size slug of the Droplet Autoscale pool underlying resource(s).
+	Size string `pulumi:"size"`
+	// SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+	SshKeys []string `pulumi:"sshKeys"`
+	// List of tags to add to the Droplet Autoscale pool underlying resource(s).
+	Tags []string `pulumi:"tags"`
+	// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
+	// cloud init script that user may configure to setup their application workload.
+	UserData *string `pulumi:"userData"`
+	// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+	// from the specified `region` (default VPC).
+	VpcUuid *string `pulumi:"vpcUuid"`
+	// Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+	// metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+	WithDropletAgent *bool `pulumi:"withDropletAgent"`
+}
+
+// DropletAutoscaleDropletTemplateInput is an input type that accepts DropletAutoscaleDropletTemplateArgs and DropletAutoscaleDropletTemplateOutput values.
+// You can construct a concrete instance of `DropletAutoscaleDropletTemplateInput` via:
+//
+//	DropletAutoscaleDropletTemplateArgs{...}
+type DropletAutoscaleDropletTemplateInput interface {
+	pulumi.Input
+
+	ToDropletAutoscaleDropletTemplateOutput() DropletAutoscaleDropletTemplateOutput
+	ToDropletAutoscaleDropletTemplateOutputWithContext(context.Context) DropletAutoscaleDropletTemplateOutput
+}
+
+type DropletAutoscaleDropletTemplateArgs struct {
+	// Image slug of the Droplet Autoscale pool underlying resource(s).
+	Image pulumi.StringInput `pulumi:"image"`
+	// Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+	// Project UUID to create the Droplet Autoscale pool underlying resource(s).
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Region slug of the Droplet Autoscale pool underlying resource(s).
+	Region pulumi.StringInput `pulumi:"region"`
+	// Size slug of the Droplet Autoscale pool underlying resource(s).
+	Size pulumi.StringInput `pulumi:"size"`
+	// SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+	SshKeys pulumi.StringArrayInput `pulumi:"sshKeys"`
+	// List of tags to add to the Droplet Autoscale pool underlying resource(s).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
+	// cloud init script that user may configure to setup their application workload.
+	UserData pulumi.StringPtrInput `pulumi:"userData"`
+	// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+	// from the specified `region` (default VPC).
+	VpcUuid pulumi.StringPtrInput `pulumi:"vpcUuid"`
+	// Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+	// metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+	WithDropletAgent pulumi.BoolPtrInput `pulumi:"withDropletAgent"`
+}
+
+func (DropletAutoscaleDropletTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (i DropletAutoscaleDropletTemplateArgs) ToDropletAutoscaleDropletTemplateOutput() DropletAutoscaleDropletTemplateOutput {
+	return i.ToDropletAutoscaleDropletTemplateOutputWithContext(context.Background())
+}
+
+func (i DropletAutoscaleDropletTemplateArgs) ToDropletAutoscaleDropletTemplateOutputWithContext(ctx context.Context) DropletAutoscaleDropletTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleDropletTemplateOutput)
+}
+
+func (i DropletAutoscaleDropletTemplateArgs) ToDropletAutoscaleDropletTemplatePtrOutput() DropletAutoscaleDropletTemplatePtrOutput {
+	return i.ToDropletAutoscaleDropletTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i DropletAutoscaleDropletTemplateArgs) ToDropletAutoscaleDropletTemplatePtrOutputWithContext(ctx context.Context) DropletAutoscaleDropletTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleDropletTemplateOutput).ToDropletAutoscaleDropletTemplatePtrOutputWithContext(ctx)
+}
+
+// DropletAutoscaleDropletTemplatePtrInput is an input type that accepts DropletAutoscaleDropletTemplateArgs, DropletAutoscaleDropletTemplatePtr and DropletAutoscaleDropletTemplatePtrOutput values.
+// You can construct a concrete instance of `DropletAutoscaleDropletTemplatePtrInput` via:
+//
+//	        DropletAutoscaleDropletTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type DropletAutoscaleDropletTemplatePtrInput interface {
+	pulumi.Input
+
+	ToDropletAutoscaleDropletTemplatePtrOutput() DropletAutoscaleDropletTemplatePtrOutput
+	ToDropletAutoscaleDropletTemplatePtrOutputWithContext(context.Context) DropletAutoscaleDropletTemplatePtrOutput
+}
+
+type dropletAutoscaleDropletTemplatePtrType DropletAutoscaleDropletTemplateArgs
+
+func DropletAutoscaleDropletTemplatePtr(v *DropletAutoscaleDropletTemplateArgs) DropletAutoscaleDropletTemplatePtrInput {
+	return (*dropletAutoscaleDropletTemplatePtrType)(v)
+}
+
+func (*dropletAutoscaleDropletTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (i *dropletAutoscaleDropletTemplatePtrType) ToDropletAutoscaleDropletTemplatePtrOutput() DropletAutoscaleDropletTemplatePtrOutput {
+	return i.ToDropletAutoscaleDropletTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *dropletAutoscaleDropletTemplatePtrType) ToDropletAutoscaleDropletTemplatePtrOutputWithContext(ctx context.Context) DropletAutoscaleDropletTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DropletAutoscaleDropletTemplatePtrOutput)
+}
+
+type DropletAutoscaleDropletTemplateOutput struct{ *pulumi.OutputState }
+
+func (DropletAutoscaleDropletTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (o DropletAutoscaleDropletTemplateOutput) ToDropletAutoscaleDropletTemplateOutput() DropletAutoscaleDropletTemplateOutput {
+	return o
+}
+
+func (o DropletAutoscaleDropletTemplateOutput) ToDropletAutoscaleDropletTemplateOutputWithContext(ctx context.Context) DropletAutoscaleDropletTemplateOutput {
+	return o
+}
+
+func (o DropletAutoscaleDropletTemplateOutput) ToDropletAutoscaleDropletTemplatePtrOutput() DropletAutoscaleDropletTemplatePtrOutput {
+	return o.ToDropletAutoscaleDropletTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o DropletAutoscaleDropletTemplateOutput) ToDropletAutoscaleDropletTemplatePtrOutputWithContext(ctx context.Context) DropletAutoscaleDropletTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DropletAutoscaleDropletTemplate) *DropletAutoscaleDropletTemplate {
+		return &v
+	}).(DropletAutoscaleDropletTemplatePtrOutput)
+}
+
+// Image slug of the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Project UUID to create the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Region slug of the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Size slug of the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) SshKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) []string { return v.SshKeys }).(pulumi.StringArrayOutput)
+}
+
+// List of tags to add to the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplateOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
+// cloud init script that user may configure to setup their application workload.
+func (o DropletAutoscaleDropletTemplateOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+// from the specified `region` (default VPC).
+func (o DropletAutoscaleDropletTemplateOutput) VpcUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) *string { return v.VpcUuid }).(pulumi.StringPtrOutput)
+}
+
+// Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+// metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+func (o DropletAutoscaleDropletTemplateOutput) WithDropletAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DropletAutoscaleDropletTemplate) *bool { return v.WithDropletAgent }).(pulumi.BoolPtrOutput)
+}
+
+type DropletAutoscaleDropletTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (DropletAutoscaleDropletTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (o DropletAutoscaleDropletTemplatePtrOutput) ToDropletAutoscaleDropletTemplatePtrOutput() DropletAutoscaleDropletTemplatePtrOutput {
+	return o
+}
+
+func (o DropletAutoscaleDropletTemplatePtrOutput) ToDropletAutoscaleDropletTemplatePtrOutputWithContext(ctx context.Context) DropletAutoscaleDropletTemplatePtrOutput {
+	return o
+}
+
+func (o DropletAutoscaleDropletTemplatePtrOutput) Elem() DropletAutoscaleDropletTemplateOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) DropletAutoscaleDropletTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret DropletAutoscaleDropletTemplate
+		return ret
+	}).(DropletAutoscaleDropletTemplateOutput)
+}
+
+// Image slug of the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Project UUID to create the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region slug of the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size slug of the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) SshKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SshKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of tags to add to the Droplet Autoscale pool underlying resource(s).
+func (o DropletAutoscaleDropletTemplatePtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
+// cloud init script that user may configure to setup their application workload.
+func (o DropletAutoscaleDropletTemplatePtrOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserData
+	}).(pulumi.StringPtrOutput)
+}
+
+// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+// from the specified `region` (default VPC).
+func (o DropletAutoscaleDropletTemplatePtrOutput) VpcUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+// metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+func (o DropletAutoscaleDropletTemplatePtrOutput) WithDropletAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DropletAutoscaleDropletTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WithDropletAgent
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DropletBackupPolicy struct {
 	// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
 	Hour *int `pulumi:"hour"`
@@ -34065,6 +34731,432 @@ func (o GetDomainsSortArrayOutput) Index(i pulumi.IntInput) GetDomainsSortOutput
 	}).(GetDomainsSortOutput)
 }
 
+type GetDropletAutoscaleConfig struct {
+	// Cooldown duration
+	CooldownMinutes int `pulumi:"cooldownMinutes"`
+	// Max number of members
+	MaxInstances int `pulumi:"maxInstances"`
+	// Min number of members
+	MinInstances int `pulumi:"minInstances"`
+	// CPU target threshold
+	TargetCpuUtilization float64 `pulumi:"targetCpuUtilization"`
+	// Memory target threshold
+	TargetMemoryUtilization float64 `pulumi:"targetMemoryUtilization"`
+	// Target number of members
+	TargetNumberInstances int `pulumi:"targetNumberInstances"`
+}
+
+// GetDropletAutoscaleConfigInput is an input type that accepts GetDropletAutoscaleConfigArgs and GetDropletAutoscaleConfigOutput values.
+// You can construct a concrete instance of `GetDropletAutoscaleConfigInput` via:
+//
+//	GetDropletAutoscaleConfigArgs{...}
+type GetDropletAutoscaleConfigInput interface {
+	pulumi.Input
+
+	ToGetDropletAutoscaleConfigOutput() GetDropletAutoscaleConfigOutput
+	ToGetDropletAutoscaleConfigOutputWithContext(context.Context) GetDropletAutoscaleConfigOutput
+}
+
+type GetDropletAutoscaleConfigArgs struct {
+	// Cooldown duration
+	CooldownMinutes pulumi.IntInput `pulumi:"cooldownMinutes"`
+	// Max number of members
+	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
+	// Min number of members
+	MinInstances pulumi.IntInput `pulumi:"minInstances"`
+	// CPU target threshold
+	TargetCpuUtilization pulumi.Float64Input `pulumi:"targetCpuUtilization"`
+	// Memory target threshold
+	TargetMemoryUtilization pulumi.Float64Input `pulumi:"targetMemoryUtilization"`
+	// Target number of members
+	TargetNumberInstances pulumi.IntInput `pulumi:"targetNumberInstances"`
+}
+
+func (GetDropletAutoscaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (i GetDropletAutoscaleConfigArgs) ToGetDropletAutoscaleConfigOutput() GetDropletAutoscaleConfigOutput {
+	return i.ToGetDropletAutoscaleConfigOutputWithContext(context.Background())
+}
+
+func (i GetDropletAutoscaleConfigArgs) ToGetDropletAutoscaleConfigOutputWithContext(ctx context.Context) GetDropletAutoscaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletAutoscaleConfigOutput)
+}
+
+// GetDropletAutoscaleConfigArrayInput is an input type that accepts GetDropletAutoscaleConfigArray and GetDropletAutoscaleConfigArrayOutput values.
+// You can construct a concrete instance of `GetDropletAutoscaleConfigArrayInput` via:
+//
+//	GetDropletAutoscaleConfigArray{ GetDropletAutoscaleConfigArgs{...} }
+type GetDropletAutoscaleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDropletAutoscaleConfigArrayOutput() GetDropletAutoscaleConfigArrayOutput
+	ToGetDropletAutoscaleConfigArrayOutputWithContext(context.Context) GetDropletAutoscaleConfigArrayOutput
+}
+
+type GetDropletAutoscaleConfigArray []GetDropletAutoscaleConfigInput
+
+func (GetDropletAutoscaleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (i GetDropletAutoscaleConfigArray) ToGetDropletAutoscaleConfigArrayOutput() GetDropletAutoscaleConfigArrayOutput {
+	return i.ToGetDropletAutoscaleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDropletAutoscaleConfigArray) ToGetDropletAutoscaleConfigArrayOutputWithContext(ctx context.Context) GetDropletAutoscaleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletAutoscaleConfigArrayOutput)
+}
+
+type GetDropletAutoscaleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDropletAutoscaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (o GetDropletAutoscaleConfigOutput) ToGetDropletAutoscaleConfigOutput() GetDropletAutoscaleConfigOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleConfigOutput) ToGetDropletAutoscaleConfigOutputWithContext(ctx context.Context) GetDropletAutoscaleConfigOutput {
+	return o
+}
+
+// Cooldown duration
+func (o GetDropletAutoscaleConfigOutput) CooldownMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleConfig) int { return v.CooldownMinutes }).(pulumi.IntOutput)
+}
+
+// Max number of members
+func (o GetDropletAutoscaleConfigOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleConfig) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+// Min number of members
+func (o GetDropletAutoscaleConfigOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleConfig) int { return v.MinInstances }).(pulumi.IntOutput)
+}
+
+// CPU target threshold
+func (o GetDropletAutoscaleConfigOutput) TargetCpuUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDropletAutoscaleConfig) float64 { return v.TargetCpuUtilization }).(pulumi.Float64Output)
+}
+
+// Memory target threshold
+func (o GetDropletAutoscaleConfigOutput) TargetMemoryUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDropletAutoscaleConfig) float64 { return v.TargetMemoryUtilization }).(pulumi.Float64Output)
+}
+
+// Target number of members
+func (o GetDropletAutoscaleConfigOutput) TargetNumberInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleConfig) int { return v.TargetNumberInstances }).(pulumi.IntOutput)
+}
+
+type GetDropletAutoscaleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDropletAutoscaleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletAutoscaleConfig)(nil)).Elem()
+}
+
+func (o GetDropletAutoscaleConfigArrayOutput) ToGetDropletAutoscaleConfigArrayOutput() GetDropletAutoscaleConfigArrayOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleConfigArrayOutput) ToGetDropletAutoscaleConfigArrayOutputWithContext(ctx context.Context) GetDropletAutoscaleConfigArrayOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleConfigArrayOutput) Index(i pulumi.IntInput) GetDropletAutoscaleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDropletAutoscaleConfig {
+		return vs[0].([]GetDropletAutoscaleConfig)[vs[1].(int)]
+	}).(GetDropletAutoscaleConfigOutput)
+}
+
+type GetDropletAutoscaleCurrentUtilization struct {
+	// Average CPU utilization
+	Cpu float64 `pulumi:"cpu"`
+	// Average Memory utilization
+	Memory float64 `pulumi:"memory"`
+}
+
+// GetDropletAutoscaleCurrentUtilizationInput is an input type that accepts GetDropletAutoscaleCurrentUtilizationArgs and GetDropletAutoscaleCurrentUtilizationOutput values.
+// You can construct a concrete instance of `GetDropletAutoscaleCurrentUtilizationInput` via:
+//
+//	GetDropletAutoscaleCurrentUtilizationArgs{...}
+type GetDropletAutoscaleCurrentUtilizationInput interface {
+	pulumi.Input
+
+	ToGetDropletAutoscaleCurrentUtilizationOutput() GetDropletAutoscaleCurrentUtilizationOutput
+	ToGetDropletAutoscaleCurrentUtilizationOutputWithContext(context.Context) GetDropletAutoscaleCurrentUtilizationOutput
+}
+
+type GetDropletAutoscaleCurrentUtilizationArgs struct {
+	// Average CPU utilization
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Average Memory utilization
+	Memory pulumi.Float64Input `pulumi:"memory"`
+}
+
+func (GetDropletAutoscaleCurrentUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (i GetDropletAutoscaleCurrentUtilizationArgs) ToGetDropletAutoscaleCurrentUtilizationOutput() GetDropletAutoscaleCurrentUtilizationOutput {
+	return i.ToGetDropletAutoscaleCurrentUtilizationOutputWithContext(context.Background())
+}
+
+func (i GetDropletAutoscaleCurrentUtilizationArgs) ToGetDropletAutoscaleCurrentUtilizationOutputWithContext(ctx context.Context) GetDropletAutoscaleCurrentUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletAutoscaleCurrentUtilizationOutput)
+}
+
+// GetDropletAutoscaleCurrentUtilizationArrayInput is an input type that accepts GetDropletAutoscaleCurrentUtilizationArray and GetDropletAutoscaleCurrentUtilizationArrayOutput values.
+// You can construct a concrete instance of `GetDropletAutoscaleCurrentUtilizationArrayInput` via:
+//
+//	GetDropletAutoscaleCurrentUtilizationArray{ GetDropletAutoscaleCurrentUtilizationArgs{...} }
+type GetDropletAutoscaleCurrentUtilizationArrayInput interface {
+	pulumi.Input
+
+	ToGetDropletAutoscaleCurrentUtilizationArrayOutput() GetDropletAutoscaleCurrentUtilizationArrayOutput
+	ToGetDropletAutoscaleCurrentUtilizationArrayOutputWithContext(context.Context) GetDropletAutoscaleCurrentUtilizationArrayOutput
+}
+
+type GetDropletAutoscaleCurrentUtilizationArray []GetDropletAutoscaleCurrentUtilizationInput
+
+func (GetDropletAutoscaleCurrentUtilizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (i GetDropletAutoscaleCurrentUtilizationArray) ToGetDropletAutoscaleCurrentUtilizationArrayOutput() GetDropletAutoscaleCurrentUtilizationArrayOutput {
+	return i.ToGetDropletAutoscaleCurrentUtilizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDropletAutoscaleCurrentUtilizationArray) ToGetDropletAutoscaleCurrentUtilizationArrayOutputWithContext(ctx context.Context) GetDropletAutoscaleCurrentUtilizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletAutoscaleCurrentUtilizationArrayOutput)
+}
+
+type GetDropletAutoscaleCurrentUtilizationOutput struct{ *pulumi.OutputState }
+
+func (GetDropletAutoscaleCurrentUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (o GetDropletAutoscaleCurrentUtilizationOutput) ToGetDropletAutoscaleCurrentUtilizationOutput() GetDropletAutoscaleCurrentUtilizationOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleCurrentUtilizationOutput) ToGetDropletAutoscaleCurrentUtilizationOutputWithContext(ctx context.Context) GetDropletAutoscaleCurrentUtilizationOutput {
+	return o
+}
+
+// Average CPU utilization
+func (o GetDropletAutoscaleCurrentUtilizationOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDropletAutoscaleCurrentUtilization) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+// Average Memory utilization
+func (o GetDropletAutoscaleCurrentUtilizationOutput) Memory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDropletAutoscaleCurrentUtilization) float64 { return v.Memory }).(pulumi.Float64Output)
+}
+
+type GetDropletAutoscaleCurrentUtilizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDropletAutoscaleCurrentUtilizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletAutoscaleCurrentUtilization)(nil)).Elem()
+}
+
+func (o GetDropletAutoscaleCurrentUtilizationArrayOutput) ToGetDropletAutoscaleCurrentUtilizationArrayOutput() GetDropletAutoscaleCurrentUtilizationArrayOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleCurrentUtilizationArrayOutput) ToGetDropletAutoscaleCurrentUtilizationArrayOutputWithContext(ctx context.Context) GetDropletAutoscaleCurrentUtilizationArrayOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleCurrentUtilizationArrayOutput) Index(i pulumi.IntInput) GetDropletAutoscaleCurrentUtilizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDropletAutoscaleCurrentUtilization {
+		return vs[0].([]GetDropletAutoscaleCurrentUtilization)[vs[1].(int)]
+	}).(GetDropletAutoscaleCurrentUtilizationOutput)
+}
+
+type GetDropletAutoscaleDropletTemplate struct {
+	// Droplet image
+	Image string `pulumi:"image"`
+	// Enable droplet IPv6
+	Ipv6 bool `pulumi:"ipv6"`
+	// Droplet project ID
+	ProjectId string `pulumi:"projectId"`
+	// Droplet region
+	Region string `pulumi:"region"`
+	// Droplet size
+	Size string `pulumi:"size"`
+	// Droplet SSH keys
+	SshKeys []string `pulumi:"sshKeys"`
+	// Droplet tags
+	Tags []string `pulumi:"tags"`
+	// Droplet user data
+	UserData string `pulumi:"userData"`
+	// Droplet VPC UUID
+	VpcUuid string `pulumi:"vpcUuid"`
+	// Enable droplet agent
+	WithDropletAgent bool `pulumi:"withDropletAgent"`
+}
+
+// GetDropletAutoscaleDropletTemplateInput is an input type that accepts GetDropletAutoscaleDropletTemplateArgs and GetDropletAutoscaleDropletTemplateOutput values.
+// You can construct a concrete instance of `GetDropletAutoscaleDropletTemplateInput` via:
+//
+//	GetDropletAutoscaleDropletTemplateArgs{...}
+type GetDropletAutoscaleDropletTemplateInput interface {
+	pulumi.Input
+
+	ToGetDropletAutoscaleDropletTemplateOutput() GetDropletAutoscaleDropletTemplateOutput
+	ToGetDropletAutoscaleDropletTemplateOutputWithContext(context.Context) GetDropletAutoscaleDropletTemplateOutput
+}
+
+type GetDropletAutoscaleDropletTemplateArgs struct {
+	// Droplet image
+	Image pulumi.StringInput `pulumi:"image"`
+	// Enable droplet IPv6
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+	// Droplet project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Droplet region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Droplet size
+	Size pulumi.StringInput `pulumi:"size"`
+	// Droplet SSH keys
+	SshKeys pulumi.StringArrayInput `pulumi:"sshKeys"`
+	// Droplet tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Droplet user data
+	UserData pulumi.StringInput `pulumi:"userData"`
+	// Droplet VPC UUID
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+	// Enable droplet agent
+	WithDropletAgent pulumi.BoolInput `pulumi:"withDropletAgent"`
+}
+
+func (GetDropletAutoscaleDropletTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (i GetDropletAutoscaleDropletTemplateArgs) ToGetDropletAutoscaleDropletTemplateOutput() GetDropletAutoscaleDropletTemplateOutput {
+	return i.ToGetDropletAutoscaleDropletTemplateOutputWithContext(context.Background())
+}
+
+func (i GetDropletAutoscaleDropletTemplateArgs) ToGetDropletAutoscaleDropletTemplateOutputWithContext(ctx context.Context) GetDropletAutoscaleDropletTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletAutoscaleDropletTemplateOutput)
+}
+
+// GetDropletAutoscaleDropletTemplateArrayInput is an input type that accepts GetDropletAutoscaleDropletTemplateArray and GetDropletAutoscaleDropletTemplateArrayOutput values.
+// You can construct a concrete instance of `GetDropletAutoscaleDropletTemplateArrayInput` via:
+//
+//	GetDropletAutoscaleDropletTemplateArray{ GetDropletAutoscaleDropletTemplateArgs{...} }
+type GetDropletAutoscaleDropletTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetDropletAutoscaleDropletTemplateArrayOutput() GetDropletAutoscaleDropletTemplateArrayOutput
+	ToGetDropletAutoscaleDropletTemplateArrayOutputWithContext(context.Context) GetDropletAutoscaleDropletTemplateArrayOutput
+}
+
+type GetDropletAutoscaleDropletTemplateArray []GetDropletAutoscaleDropletTemplateInput
+
+func (GetDropletAutoscaleDropletTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (i GetDropletAutoscaleDropletTemplateArray) ToGetDropletAutoscaleDropletTemplateArrayOutput() GetDropletAutoscaleDropletTemplateArrayOutput {
+	return i.ToGetDropletAutoscaleDropletTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDropletAutoscaleDropletTemplateArray) ToGetDropletAutoscaleDropletTemplateArrayOutputWithContext(ctx context.Context) GetDropletAutoscaleDropletTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDropletAutoscaleDropletTemplateArrayOutput)
+}
+
+type GetDropletAutoscaleDropletTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetDropletAutoscaleDropletTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (o GetDropletAutoscaleDropletTemplateOutput) ToGetDropletAutoscaleDropletTemplateOutput() GetDropletAutoscaleDropletTemplateOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleDropletTemplateOutput) ToGetDropletAutoscaleDropletTemplateOutputWithContext(ctx context.Context) GetDropletAutoscaleDropletTemplateOutput {
+	return o
+}
+
+// Droplet image
+func (o GetDropletAutoscaleDropletTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Enable droplet IPv6
+func (o GetDropletAutoscaleDropletTemplateOutput) Ipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) bool { return v.Ipv6 }).(pulumi.BoolOutput)
+}
+
+// Droplet project ID
+func (o GetDropletAutoscaleDropletTemplateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Droplet region
+func (o GetDropletAutoscaleDropletTemplateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Droplet size
+func (o GetDropletAutoscaleDropletTemplateOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// Droplet SSH keys
+func (o GetDropletAutoscaleDropletTemplateOutput) SshKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) []string { return v.SshKeys }).(pulumi.StringArrayOutput)
+}
+
+// Droplet tags
+func (o GetDropletAutoscaleDropletTemplateOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Droplet user data
+func (o GetDropletAutoscaleDropletTemplateOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) string { return v.UserData }).(pulumi.StringOutput)
+}
+
+// Droplet VPC UUID
+func (o GetDropletAutoscaleDropletTemplateOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+// Enable droplet agent
+func (o GetDropletAutoscaleDropletTemplateOutput) WithDropletAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDropletAutoscaleDropletTemplate) bool { return v.WithDropletAgent }).(pulumi.BoolOutput)
+}
+
+type GetDropletAutoscaleDropletTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDropletAutoscaleDropletTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDropletAutoscaleDropletTemplate)(nil)).Elem()
+}
+
+func (o GetDropletAutoscaleDropletTemplateArrayOutput) ToGetDropletAutoscaleDropletTemplateArrayOutput() GetDropletAutoscaleDropletTemplateArrayOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleDropletTemplateArrayOutput) ToGetDropletAutoscaleDropletTemplateArrayOutputWithContext(ctx context.Context) GetDropletAutoscaleDropletTemplateArrayOutput {
+	return o
+}
+
+func (o GetDropletAutoscaleDropletTemplateArrayOutput) Index(i pulumi.IntInput) GetDropletAutoscaleDropletTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDropletAutoscaleDropletTemplate {
+		return vs[0].([]GetDropletAutoscaleDropletTemplate)[vs[1].(int)]
+	}).(GetDropletAutoscaleDropletTemplateOutput)
+}
+
 type GetDropletsDroplet struct {
 	// Whether backups are enabled.
 	Backups bool `pulumi:"backups"`
@@ -40198,6 +41290,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingAclArrayInput)(nil)).Elem(), DatabaseUserSettingAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingOpensearchAclInput)(nil)).Elem(), DatabaseUserSettingOpensearchAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseUserSettingOpensearchAclArrayInput)(nil)).Elem(), DatabaseUserSettingOpensearchAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletAutoscaleConfigInput)(nil)).Elem(), DropletAutoscaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletAutoscaleConfigPtrInput)(nil)).Elem(), DropletAutoscaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletAutoscaleCurrentUtilizationInput)(nil)).Elem(), DropletAutoscaleCurrentUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletAutoscaleCurrentUtilizationArrayInput)(nil)).Elem(), DropletAutoscaleCurrentUtilizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletAutoscaleDropletTemplateInput)(nil)).Elem(), DropletAutoscaleDropletTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DropletAutoscaleDropletTemplatePtrInput)(nil)).Elem(), DropletAutoscaleDropletTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DropletBackupPolicyInput)(nil)).Elem(), DropletBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DropletBackupPolicyPtrInput)(nil)).Elem(), DropletBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundRuleInput)(nil)).Elem(), FirewallInboundRuleArgs{})
@@ -40435,6 +41533,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterArrayInput)(nil)).Elem(), GetDomainsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsSortInput)(nil)).Elem(), GetDomainsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsSortArrayInput)(nil)).Elem(), GetDomainsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletAutoscaleConfigInput)(nil)).Elem(), GetDropletAutoscaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletAutoscaleConfigArrayInput)(nil)).Elem(), GetDropletAutoscaleConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletAutoscaleCurrentUtilizationInput)(nil)).Elem(), GetDropletAutoscaleCurrentUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletAutoscaleCurrentUtilizationArrayInput)(nil)).Elem(), GetDropletAutoscaleCurrentUtilizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletAutoscaleDropletTemplateInput)(nil)).Elem(), GetDropletAutoscaleDropletTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletAutoscaleDropletTemplateArrayInput)(nil)).Elem(), GetDropletAutoscaleDropletTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsDropletInput)(nil)).Elem(), GetDropletsDropletArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsDropletArrayInput)(nil)).Elem(), GetDropletsDropletArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDropletsFilterInput)(nil)).Elem(), GetDropletsFilterArgs{})
@@ -40711,6 +41815,12 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseUserSettingAclArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingOpensearchAclOutput{})
 	pulumi.RegisterOutputType(DatabaseUserSettingOpensearchAclArrayOutput{})
+	pulumi.RegisterOutputType(DropletAutoscaleConfigOutput{})
+	pulumi.RegisterOutputType(DropletAutoscaleConfigPtrOutput{})
+	pulumi.RegisterOutputType(DropletAutoscaleCurrentUtilizationOutput{})
+	pulumi.RegisterOutputType(DropletAutoscaleCurrentUtilizationArrayOutput{})
+	pulumi.RegisterOutputType(DropletAutoscaleDropletTemplateOutput{})
+	pulumi.RegisterOutputType(DropletAutoscaleDropletTemplatePtrOutput{})
 	pulumi.RegisterOutputType(DropletBackupPolicyOutput{})
 	pulumi.RegisterOutputType(DropletBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(FirewallInboundRuleOutput{})
@@ -40948,6 +42058,12 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsSortOutput{})
 	pulumi.RegisterOutputType(GetDomainsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetDropletAutoscaleConfigOutput{})
+	pulumi.RegisterOutputType(GetDropletAutoscaleConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDropletAutoscaleCurrentUtilizationOutput{})
+	pulumi.RegisterOutputType(GetDropletAutoscaleCurrentUtilizationArrayOutput{})
+	pulumi.RegisterOutputType(GetDropletAutoscaleDropletTemplateOutput{})
+	pulumi.RegisterOutputType(GetDropletAutoscaleDropletTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetDropletsDropletOutput{})
 	pulumi.RegisterOutputType(GetDropletsDropletArrayOutput{})
 	pulumi.RegisterOutputType(GetDropletsFilterOutput{})
