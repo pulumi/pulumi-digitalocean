@@ -1,5 +1,6 @@
 {
     "name": "digitalocean",
+    "displayName": "DigitalOcean",
     "description": "A Pulumi package for creating and managing DigitalOcean cloud resources.",
     "keywords": [
         "pulumi",
