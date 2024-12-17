@@ -76,6 +76,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "digitalocean",
+		DisplayName:      "DigitalOcean",
 		Description:      "A Pulumi package for creating and managing DigitalOcean cloud resources.",
 		Keywords:         []string{"pulumi", "digitalocean"},
 		License:          "Apache-2.0",
