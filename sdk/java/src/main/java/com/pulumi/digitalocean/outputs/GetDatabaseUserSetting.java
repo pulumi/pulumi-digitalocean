@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetDatabaseUserSettingAcl;
+import com.pulumi.digitalocean.outputs.GetDatabaseUserSettingOpensearchAcl;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseUserSetting {
     private @Nullable List<GetDatabaseUserSettingAcl> acls;
+    private @Nullable List<GetDatabaseUserSettingOpensearchAcl> opensearchAcls;
 
     private GetDatabaseUserSetting() {}
     public List<GetDatabaseUserSettingAcl> acls() {
         return this.acls == null ? List.of() : this.acls;
+    }
+    public List<GetDatabaseUserSettingOpensearchAcl> opensearchAcls() {
+        return this.opensearchAcls == null ? List.of() : this.opensearchAcls;
     }
 
     public static Builder builder() {
@@ -28,10 +33,12 @@ public final class GetDatabaseUserSetting {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetDatabaseUserSettingAcl> acls;
+        private @Nullable List<GetDatabaseUserSettingOpensearchAcl> opensearchAcls;
         public Builder() {}
         public Builder(GetDatabaseUserSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acls = defaults.acls;
+    	      this.opensearchAcls = defaults.opensearchAcls;
         }
 
         @CustomType.Setter
@@ -43,9 +50,19 @@ public final class GetDatabaseUserSetting {
         public Builder acls(GetDatabaseUserSettingAcl... acls) {
             return acls(List.of(acls));
         }
+        @CustomType.Setter
+        public Builder opensearchAcls(@Nullable List<GetDatabaseUserSettingOpensearchAcl> opensearchAcls) {
+
+            this.opensearchAcls = opensearchAcls;
+            return this;
+        }
+        public Builder opensearchAcls(GetDatabaseUserSettingOpensearchAcl... opensearchAcls) {
+            return opensearchAcls(List.of(opensearchAcls));
+        }
         public GetDatabaseUserSetting build() {
             final var _resultValue = new GetDatabaseUserSetting();
             _resultValue.acls = acls;
+            _resultValue.opensearchAcls = opensearchAcls;
             return _resultValue;
         }
     }

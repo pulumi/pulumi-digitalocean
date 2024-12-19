@@ -3643,12 +3643,18 @@ export interface GetDatabaseClusterMaintenanceWindow {
 
 export interface GetDatabaseUserSetting {
     acls?: outputs.GetDatabaseUserSettingAcl[];
+    opensearchAcls?: outputs.GetDatabaseUserSettingOpensearchAcl[];
 }
 
 export interface GetDatabaseUserSettingAcl {
     id: string;
     permission: string;
     topic: string;
+}
+
+export interface GetDatabaseUserSettingOpensearchAcl {
+    index: string;
+    permission: string;
 }
 
 export interface GetDomainsDomain {
