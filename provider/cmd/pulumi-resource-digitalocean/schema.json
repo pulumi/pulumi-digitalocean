@@ -6016,6 +6016,12 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/getDatabaseUserSettingAcl:getDatabaseUserSettingAcl"
                     }
+                },
+                "opensearchAcls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getDatabaseUserSettingOpensearchAcl:getDatabaseUserSettingOpensearchAcl"
+                    }
                 }
             },
             "type": "object"
@@ -6037,6 +6043,26 @@
                 "id",
                 "permission",
                 "topic"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDatabaseUserSettingOpensearchAcl:getDatabaseUserSettingOpensearchAcl": {
+            "properties": {
+                "index": {
+                    "type": "string"
+                },
+                "permission": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "index",
+                "permission"
             ],
             "language": {
                 "nodejs": {

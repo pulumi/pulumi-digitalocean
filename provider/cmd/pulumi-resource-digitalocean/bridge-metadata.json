@@ -1474,6 +1474,9 @@
                             "fields": {
                                 "acl": {
                                     "maxItemsOne": false
+                                },
+                                "opensearch_acl": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

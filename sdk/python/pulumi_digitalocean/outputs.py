@@ -234,6 +234,7 @@ __all__ = [
     'GetDatabaseClusterMaintenanceWindowResult',
     'GetDatabaseUserSettingResult',
     'GetDatabaseUserSettingAclResult',
+    'GetDatabaseUserSettingOpensearchAclResult',
     'GetDomainsDomainResult',
     'GetDomainsFilterResult',
     'GetDomainsSortResult',
@@ -13608,14 +13609,22 @@ class GetDatabaseClusterMaintenanceWindowResult(dict):
 @pulumi.output_type
 class GetDatabaseUserSettingResult(dict):
     def __init__(__self__, *,
-                 acls: Optional[Sequence['outputs.GetDatabaseUserSettingAclResult']] = None):
+                 acls: Optional[Sequence['outputs.GetDatabaseUserSettingAclResult']] = None,
+                 opensearch_acls: Optional[Sequence['outputs.GetDatabaseUserSettingOpensearchAclResult']] = None):
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
+        if opensearch_acls is not None:
+            pulumi.set(__self__, "opensearch_acls", opensearch_acls)
 
     @property
     @pulumi.getter
     def acls(self) -> Optional[Sequence['outputs.GetDatabaseUserSettingAclResult']]:
         return pulumi.get(self, "acls")
+
+    @property
+    @pulumi.getter(name="opensearchAcls")
+    def opensearch_acls(self) -> Optional[Sequence['outputs.GetDatabaseUserSettingOpensearchAclResult']]:
+        return pulumi.get(self, "opensearch_acls")
 
 
 @pulumi.output_type
@@ -13642,6 +13651,25 @@ class GetDatabaseUserSettingAclResult(dict):
     @pulumi.getter
     def topic(self) -> str:
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class GetDatabaseUserSettingOpensearchAclResult(dict):
+    def __init__(__self__, *,
+                 index: str,
+                 permission: str):
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def index(self) -> str:
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type

@@ -14,11 +14,16 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetDatabaseUserSettingResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseUserSettingAclResult> Acls;
+        public readonly ImmutableArray<Outputs.GetDatabaseUserSettingOpensearchAclResult> OpensearchAcls;
 
         [OutputConstructor]
-        private GetDatabaseUserSettingResult(ImmutableArray<Outputs.GetDatabaseUserSettingAclResult> acls)
+        private GetDatabaseUserSettingResult(
+            ImmutableArray<Outputs.GetDatabaseUserSettingAclResult> acls,
+
+            ImmutableArray<Outputs.GetDatabaseUserSettingOpensearchAclResult> opensearchAcls)
         {
             Acls = acls;
+            OpensearchAcls = opensearchAcls;
         }
     }
 }

@@ -34172,7 +34172,8 @@ func (o GetDatabaseClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetDatabaseUserSetting struct {
-	Acls []GetDatabaseUserSettingAcl `pulumi:"acls"`
+	Acls           []GetDatabaseUserSettingAcl           `pulumi:"acls"`
+	OpensearchAcls []GetDatabaseUserSettingOpensearchAcl `pulumi:"opensearchAcls"`
 }
 
 // GetDatabaseUserSettingInput is an input type that accepts GetDatabaseUserSettingArgs and GetDatabaseUserSettingOutput values.
@@ -34187,7 +34188,8 @@ type GetDatabaseUserSettingInput interface {
 }
 
 type GetDatabaseUserSettingArgs struct {
-	Acls GetDatabaseUserSettingAclArrayInput `pulumi:"acls"`
+	Acls           GetDatabaseUserSettingAclArrayInput           `pulumi:"acls"`
+	OpensearchAcls GetDatabaseUserSettingOpensearchAclArrayInput `pulumi:"opensearchAcls"`
 }
 
 func (GetDatabaseUserSettingArgs) ElementType() reflect.Type {
@@ -34243,6 +34245,10 @@ func (o GetDatabaseUserSettingOutput) ToGetDatabaseUserSettingOutputWithContext(
 
 func (o GetDatabaseUserSettingOutput) Acls() GetDatabaseUserSettingAclArrayOutput {
 	return o.ApplyT(func(v GetDatabaseUserSetting) []GetDatabaseUserSettingAcl { return v.Acls }).(GetDatabaseUserSettingAclArrayOutput)
+}
+
+func (o GetDatabaseUserSettingOutput) OpensearchAcls() GetDatabaseUserSettingOpensearchAclArrayOutput {
+	return o.ApplyT(func(v GetDatabaseUserSetting) []GetDatabaseUserSettingOpensearchAcl { return v.OpensearchAcls }).(GetDatabaseUserSettingOpensearchAclArrayOutput)
 }
 
 type GetDatabaseUserSettingArrayOutput struct{ *pulumi.OutputState }
@@ -34369,6 +34375,106 @@ func (o GetDatabaseUserSettingAclArrayOutput) Index(i pulumi.IntInput) GetDataba
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseUserSettingAcl {
 		return vs[0].([]GetDatabaseUserSettingAcl)[vs[1].(int)]
 	}).(GetDatabaseUserSettingAclOutput)
+}
+
+type GetDatabaseUserSettingOpensearchAcl struct {
+	Index      string `pulumi:"index"`
+	Permission string `pulumi:"permission"`
+}
+
+// GetDatabaseUserSettingOpensearchAclInput is an input type that accepts GetDatabaseUserSettingOpensearchAclArgs and GetDatabaseUserSettingOpensearchAclOutput values.
+// You can construct a concrete instance of `GetDatabaseUserSettingOpensearchAclInput` via:
+//
+//	GetDatabaseUserSettingOpensearchAclArgs{...}
+type GetDatabaseUserSettingOpensearchAclInput interface {
+	pulumi.Input
+
+	ToGetDatabaseUserSettingOpensearchAclOutput() GetDatabaseUserSettingOpensearchAclOutput
+	ToGetDatabaseUserSettingOpensearchAclOutputWithContext(context.Context) GetDatabaseUserSettingOpensearchAclOutput
+}
+
+type GetDatabaseUserSettingOpensearchAclArgs struct {
+	Index      pulumi.StringInput `pulumi:"index"`
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (GetDatabaseUserSettingOpensearchAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (i GetDatabaseUserSettingOpensearchAclArgs) ToGetDatabaseUserSettingOpensearchAclOutput() GetDatabaseUserSettingOpensearchAclOutput {
+	return i.ToGetDatabaseUserSettingOpensearchAclOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseUserSettingOpensearchAclArgs) ToGetDatabaseUserSettingOpensearchAclOutputWithContext(ctx context.Context) GetDatabaseUserSettingOpensearchAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUserSettingOpensearchAclOutput)
+}
+
+// GetDatabaseUserSettingOpensearchAclArrayInput is an input type that accepts GetDatabaseUserSettingOpensearchAclArray and GetDatabaseUserSettingOpensearchAclArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseUserSettingOpensearchAclArrayInput` via:
+//
+//	GetDatabaseUserSettingOpensearchAclArray{ GetDatabaseUserSettingOpensearchAclArgs{...} }
+type GetDatabaseUserSettingOpensearchAclArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseUserSettingOpensearchAclArrayOutput() GetDatabaseUserSettingOpensearchAclArrayOutput
+	ToGetDatabaseUserSettingOpensearchAclArrayOutputWithContext(context.Context) GetDatabaseUserSettingOpensearchAclArrayOutput
+}
+
+type GetDatabaseUserSettingOpensearchAclArray []GetDatabaseUserSettingOpensearchAclInput
+
+func (GetDatabaseUserSettingOpensearchAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (i GetDatabaseUserSettingOpensearchAclArray) ToGetDatabaseUserSettingOpensearchAclArrayOutput() GetDatabaseUserSettingOpensearchAclArrayOutput {
+	return i.ToGetDatabaseUserSettingOpensearchAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseUserSettingOpensearchAclArray) ToGetDatabaseUserSettingOpensearchAclArrayOutputWithContext(ctx context.Context) GetDatabaseUserSettingOpensearchAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUserSettingOpensearchAclArrayOutput)
+}
+
+type GetDatabaseUserSettingOpensearchAclOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseUserSettingOpensearchAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (o GetDatabaseUserSettingOpensearchAclOutput) ToGetDatabaseUserSettingOpensearchAclOutput() GetDatabaseUserSettingOpensearchAclOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingOpensearchAclOutput) ToGetDatabaseUserSettingOpensearchAclOutputWithContext(ctx context.Context) GetDatabaseUserSettingOpensearchAclOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingOpensearchAclOutput) Index() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseUserSettingOpensearchAcl) string { return v.Index }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseUserSettingOpensearchAclOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseUserSettingOpensearchAcl) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type GetDatabaseUserSettingOpensearchAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseUserSettingOpensearchAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseUserSettingOpensearchAcl)(nil)).Elem()
+}
+
+func (o GetDatabaseUserSettingOpensearchAclArrayOutput) ToGetDatabaseUserSettingOpensearchAclArrayOutput() GetDatabaseUserSettingOpensearchAclArrayOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingOpensearchAclArrayOutput) ToGetDatabaseUserSettingOpensearchAclArrayOutputWithContext(ctx context.Context) GetDatabaseUserSettingOpensearchAclArrayOutput {
+	return o
+}
+
+func (o GetDatabaseUserSettingOpensearchAclArrayOutput) Index(i pulumi.IntInput) GetDatabaseUserSettingOpensearchAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseUserSettingOpensearchAcl {
+		return vs[0].([]GetDatabaseUserSettingOpensearchAcl)[vs[1].(int)]
+	}).(GetDatabaseUserSettingOpensearchAclOutput)
 }
 
 type GetDomainsDomain struct {
@@ -41527,6 +41633,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingArrayInput)(nil)).Elem(), GetDatabaseUserSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingAclInput)(nil)).Elem(), GetDatabaseUserSettingAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingAclArrayInput)(nil)).Elem(), GetDatabaseUserSettingAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingOpensearchAclInput)(nil)).Elem(), GetDatabaseUserSettingOpensearchAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingOpensearchAclArrayInput)(nil)).Elem(), GetDatabaseUserSettingOpensearchAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsFilterInput)(nil)).Elem(), GetDomainsFilterArgs{})
@@ -42052,6 +42160,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseUserSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseUserSettingAclOutput{})
 	pulumi.RegisterOutputType(GetDatabaseUserSettingAclArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUserSettingOpensearchAclOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUserSettingOpensearchAclArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsFilterOutput{})
