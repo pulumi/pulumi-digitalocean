@@ -631,11 +631,6 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_reserved_ipv6":         {Docs: &info.Doc{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			Dependencies: map[string]string{
-				"builtin-modules":   "3.0.0",
-				"read-package-tree": "^5.2.1",
-				"resolve":           "^1.7.1",
-			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 			},
