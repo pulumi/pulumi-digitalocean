@@ -29,13 +29,14 @@ class FirewallArgs:
         """
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
-               to the Firewall.
+               to the Firewall (max. 10). If you want to assign more droplets to the
+               Firewall, add Tags to them and use the `tags` argument below.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall (max. 5).
         """
         if droplet_ids is not None:
             pulumi.set(__self__, "droplet_ids", droplet_ids)
@@ -53,7 +54,8 @@ class FirewallArgs:
     def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The list of the IDs of the Droplets assigned
-        to the Firewall.
+        to the Firewall (max. 10). If you want to assign more droplets to the
+        Firewall, add Tags to them and use the `tags` argument below.
         """
         return pulumi.get(self, "droplet_ids")
 
@@ -103,7 +105,7 @@ class FirewallArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The names of the Tags assigned to the Firewall.
+        The names of the Tags assigned to the Firewall (max. 5).
         """
         return pulumi.get(self, "tags")
 
@@ -128,7 +130,8 @@ class _FirewallState:
         :param pulumi.Input[str] created_at: A time value given in ISO8601 combined date and time format
                that represents when the Firewall was created.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
-               to the Firewall.
+               to the Firewall (max. 10). If you want to assign more droplets to the
+               Firewall, add Tags to them and use the `tags` argument below.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
@@ -140,7 +143,7 @@ class _FirewallState:
                have been successfully applied.
         :param pulumi.Input[str] status: A status string indicating the current state of the Firewall.
                This can be "waiting", "succeeded", or "failed".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall (max. 5).
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -177,7 +180,8 @@ class _FirewallState:
     def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The list of the IDs of the Droplets assigned
-        to the Firewall.
+        to the Firewall (max. 10). If you want to assign more droplets to the
+        Firewall, add Tags to them and use the `tags` argument below.
         """
         return pulumi.get(self, "droplet_ids")
 
@@ -255,7 +259,7 @@ class _FirewallState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The names of the Tags assigned to the Firewall.
+        The names of the Tags assigned to the Firewall (max. 5).
         """
         return pulumi.get(self, "tags")
 
@@ -364,13 +368,14 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
-               to the Firewall.
+               to the Firewall (max. 10). If you want to assign more droplets to the
+               Firewall, add Tags to them and use the `tags` argument below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall (max. 5).
         """
         ...
     @overload
@@ -529,7 +534,8 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: A time value given in ISO8601 combined date and time format
                that represents when the Firewall was created.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] droplet_ids: The list of the IDs of the Droplets assigned
-               to the Firewall.
+               to the Firewall (max. 10). If you want to assign more droplets to the
+               Firewall, add Tags to them and use the `tags` argument below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[str] name: The Firewall name
@@ -541,7 +547,7 @@ class Firewall(pulumi.CustomResource):
                have been successfully applied.
         :param pulumi.Input[str] status: A status string indicating the current state of the Firewall.
                This can be "waiting", "succeeded", or "failed".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The names of the Tags assigned to the Firewall (max. 5).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -571,7 +577,8 @@ class Firewall(pulumi.CustomResource):
     def droplet_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
         """
         The list of the IDs of the Droplets assigned
-        to the Firewall.
+        to the Firewall (max. 10). If you want to assign more droplets to the
+        Firewall, add Tags to them and use the `tags` argument below.
         """
         return pulumi.get(self, "droplet_ids")
 
@@ -625,7 +632,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The names of the Tags assigned to the Firewall.
+        The names of the Tags assigned to the Firewall (max. 5).
         """
         return pulumi.get(self, "tags")
 

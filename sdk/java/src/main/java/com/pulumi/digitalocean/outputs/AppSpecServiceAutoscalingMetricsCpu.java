@@ -13,16 +13,12 @@ public final class AppSpecServiceAutoscalingMetricsCpu {
     /**
      * @return The average target CPU utilization for the component.
      * 
-     * A `static_site` can contain:
-     * 
      */
     private Integer percent;
 
     private AppSpecServiceAutoscalingMetricsCpu() {}
     /**
      * @return The average target CPU utilization for the component.
-     * 
-     * A `static_site` can contain:
      * 
      */
     public Integer percent() {

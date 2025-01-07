@@ -5,12 +5,14 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerAlert;
+import com.pulumi.digitalocean.outputs.AppSpecWorkerAutoscaling;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerEnv;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerGit;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerGithub;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerGitlab;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerImage;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestination;
+import com.pulumi.digitalocean.outputs.AppSpecWorkerTermination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -26,6 +28,11 @@ public final class AppSpecWorker {
      * 
      */
     private @Nullable List<AppSpecWorkerAlert> alerts;
+    /**
+     * @return Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    private @Nullable AppSpecWorkerAutoscaling autoscaling;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -96,6 +103,11 @@ public final class AppSpecWorker {
      * 
      */
     private @Nullable String sourceDir;
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    private @Nullable AppSpecWorkerTermination termination;
 
     private AppSpecWorker() {}
     /**
@@ -104,6 +116,13 @@ public final class AppSpecWorker {
      */
     public List<AppSpecWorkerAlert> alerts() {
         return this.alerts == null ? List.of() : this.alerts;
+    }
+    /**
+     * @return Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    public Optional<AppSpecWorkerAutoscaling> autoscaling() {
+        return Optional.ofNullable(this.autoscaling);
     }
     /**
      * @return An optional build command to run while building this component from source.
@@ -203,6 +222,13 @@ public final class AppSpecWorker {
     public Optional<String> sourceDir() {
         return Optional.ofNullable(this.sourceDir);
     }
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<AppSpecWorkerTermination> termination() {
+        return Optional.ofNullable(this.termination);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -214,6 +240,7 @@ public final class AppSpecWorker {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppSpecWorkerAlert> alerts;
+        private @Nullable AppSpecWorkerAutoscaling autoscaling;
         private @Nullable String buildCommand;
         private @Nullable String dockerfilePath;
         private @Nullable String environmentSlug;
@@ -228,10 +255,12 @@ public final class AppSpecWorker {
         private String name;
         private @Nullable String runCommand;
         private @Nullable String sourceDir;
+        private @Nullable AppSpecWorkerTermination termination;
         public Builder() {}
         public Builder(AppSpecWorker defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
+    	      this.autoscaling = defaults.autoscaling;
     	      this.buildCommand = defaults.buildCommand;
     	      this.dockerfilePath = defaults.dockerfilePath;
     	      this.environmentSlug = defaults.environmentSlug;
@@ -246,6 +275,7 @@ public final class AppSpecWorker {
     	      this.name = defaults.name;
     	      this.runCommand = defaults.runCommand;
     	      this.sourceDir = defaults.sourceDir;
+    	      this.termination = defaults.termination;
         }
 
         @CustomType.Setter
@@ -256,6 +286,12 @@ public final class AppSpecWorker {
         }
         public Builder alerts(AppSpecWorkerAlert... alerts) {
             return alerts(List.of(alerts));
+        }
+        @CustomType.Setter
+        public Builder autoscaling(@Nullable AppSpecWorkerAutoscaling autoscaling) {
+
+            this.autoscaling = autoscaling;
+            return this;
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
@@ -349,9 +385,16 @@ public final class AppSpecWorker {
             this.sourceDir = sourceDir;
             return this;
         }
+        @CustomType.Setter
+        public Builder termination(@Nullable AppSpecWorkerTermination termination) {
+
+            this.termination = termination;
+            return this;
+        }
         public AppSpecWorker build() {
             final var _resultValue = new AppSpecWorker();
             _resultValue.alerts = alerts;
+            _resultValue.autoscaling = autoscaling;
             _resultValue.buildCommand = buildCommand;
             _resultValue.dockerfilePath = dockerfilePath;
             _resultValue.environmentSlug = environmentSlug;
@@ -366,6 +409,7 @@ public final class AppSpecWorker {
             _resultValue.name = name;
             _resultValue.runCommand = runCommand;
             _resultValue.sourceDir = sourceDir;
+            _resultValue.termination = termination;
             return _resultValue;
         }
     }

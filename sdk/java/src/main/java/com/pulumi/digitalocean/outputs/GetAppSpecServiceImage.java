@@ -20,6 +20,11 @@ public final class GetAppSpecServiceImage {
      */
     private List<GetAppSpecServiceImageDeployOnPush> deployOnPushes;
     /**
+     * @return The image digest. Cannot be specified if `tag` is provided.
+     * 
+     */
+    private @Nullable String digest;
+    /**
      * @return The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      * 
      */
@@ -52,6 +57,13 @@ public final class GetAppSpecServiceImage {
      */
     public List<GetAppSpecServiceImageDeployOnPush> deployOnPushes() {
         return this.deployOnPushes;
+    }
+    /**
+     * @return The image digest. Cannot be specified if `tag` is provided.
+     * 
+     */
+    public Optional<String> digest() {
+        return Optional.ofNullable(this.digest);
     }
     /**
      * @return The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -99,6 +111,7 @@ public final class GetAppSpecServiceImage {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAppSpecServiceImageDeployOnPush> deployOnPushes;
+        private @Nullable String digest;
         private @Nullable String registry;
         private @Nullable String registryCredentials;
         private String registryType;
@@ -108,6 +121,7 @@ public final class GetAppSpecServiceImage {
         public Builder(GetAppSpecServiceImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployOnPushes = defaults.deployOnPushes;
+    	      this.digest = defaults.digest;
     	      this.registry = defaults.registry;
     	      this.registryCredentials = defaults.registryCredentials;
     	      this.registryType = defaults.registryType;
@@ -125,6 +139,12 @@ public final class GetAppSpecServiceImage {
         }
         public Builder deployOnPushes(GetAppSpecServiceImageDeployOnPush... deployOnPushes) {
             return deployOnPushes(List.of(deployOnPushes));
+        }
+        @CustomType.Setter
+        public Builder digest(@Nullable String digest) {
+
+            this.digest = digest;
+            return this;
         }
         @CustomType.Setter
         public Builder registry(@Nullable String registry) {
@@ -163,6 +183,7 @@ public final class GetAppSpecServiceImage {
         public GetAppSpecServiceImage build() {
             final var _resultValue = new GetAppSpecServiceImage();
             _resultValue.deployOnPushes = deployOnPushes;
+            _resultValue.digest = digest;
             _resultValue.registry = registry;
             _resultValue.registryCredentials = registryCredentials;
             _resultValue.registryType = registryType;

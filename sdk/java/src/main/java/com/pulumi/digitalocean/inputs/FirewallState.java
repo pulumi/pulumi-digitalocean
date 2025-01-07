@@ -39,7 +39,8 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      * 
      */
     @Import(name="dropletIds")
@@ -47,7 +48,8 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      * 
      */
     public Optional<Output<List<Integer>>> dropletIds() {
@@ -142,14 +144,14 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The names of the Tags assigned to the Firewall.
+     * The names of the Tags assigned to the Firewall (max. 5).
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The names of the Tags assigned to the Firewall.
+     * @return The names of the Tags assigned to the Firewall (max. 5).
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -212,7 +214,8 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletIds The list of the IDs of the Droplets assigned
-         * to the Firewall.
+         * to the Firewall (max. 10). If you want to assign more droplets to the
+         * Firewall, add Tags to them and use the `tags` argument below.
          * 
          * @return builder
          * 
@@ -224,7 +227,8 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletIds The list of the IDs of the Droplets assigned
-         * to the Firewall.
+         * to the Firewall (max. 10). If you want to assign more droplets to the
+         * Firewall, add Tags to them and use the `tags` argument below.
          * 
          * @return builder
          * 
@@ -235,7 +239,8 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dropletIds The list of the IDs of the Droplets assigned
-         * to the Firewall.
+         * to the Firewall (max. 10). If you want to assign more droplets to the
+         * Firewall, add Tags to them and use the `tags` argument below.
          * 
          * @return builder
          * 
@@ -397,7 +402,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The names of the Tags assigned to the Firewall.
+         * @param tags The names of the Tags assigned to the Firewall (max. 5).
          * 
          * @return builder
          * 
@@ -408,7 +413,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The names of the Tags assigned to the Firewall.
+         * @param tags The names of the Tags assigned to the Firewall (max. 5).
          * 
          * @return builder
          * 
@@ -418,7 +423,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The names of the Tags assigned to the Firewall.
+         * @param tags The names of the Tags assigned to the Firewall (max. 5).
          * 
          * @return builder
          * 

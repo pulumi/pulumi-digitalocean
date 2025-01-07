@@ -612,6 +612,10 @@ export interface AppSpecJob {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: outputs.AppSpecJobTermination;
 }
 
 export interface AppSpecJobAlert {
@@ -702,6 +706,10 @@ export interface AppSpecJobImage {
      * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes: outputs.AppSpecJobImageDeployOnPush[];
+    /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: string;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
@@ -809,6 +817,15 @@ export interface AppSpecJobLogDestinationPapertrail {
     endpoint: string;
 }
 
+export interface AppSpecJobTermination {
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     *
+     * A `function` component can contain:
+     */
+    gracePeriodSeconds?: number;
+}
+
 export interface AppSpecService {
     /**
      * Describes an alert policy for the component.
@@ -898,6 +915,10 @@ export interface AppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: outputs.AppSpecServiceTermination;
 }
 
 export interface AppSpecServiceAlert {
@@ -948,8 +969,6 @@ export interface AppSpecServiceAutoscalingMetrics {
 export interface AppSpecServiceAutoscalingMetricsCpu {
     /**
      * The average target CPU utilization for the component.
-     *
-     * A `staticSite` can contain:
      */
     percent: number;
 }
@@ -1095,6 +1114,10 @@ export interface AppSpecServiceImage {
      */
     deployOnPushes: outputs.AppSpecServiceImageDeployOnPush[];
     /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: string;
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -1210,6 +1233,21 @@ export interface AppSpecServiceRoute {
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
     preservePathPrefix?: boolean;
+}
+
+export interface AppSpecServiceTermination {
+    /**
+     * The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+     *
+     * A `staticSite` can contain:
+     */
+    drainSeconds?: number;
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     *
+     * A `function` component can contain:
+     */
+    gracePeriodSeconds?: number;
 }
 
 export interface AppSpecStaticSite {
@@ -1400,6 +1438,10 @@ export interface AppSpecWorker {
      */
     alerts?: outputs.AppSpecWorkerAlert[];
     /**
+     * Configuration for automatically scaling this component based on metrics.
+     */
+    autoscaling?: outputs.AppSpecWorkerAutoscaling;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -1455,6 +1497,10 @@ export interface AppSpecWorker {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: outputs.AppSpecWorkerTermination;
 }
 
 export interface AppSpecWorkerAlert {
@@ -1478,6 +1524,35 @@ export interface AppSpecWorkerAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: string;
+}
+
+export interface AppSpecWorkerAutoscaling {
+    /**
+     * The maximum amount of instances for this component. Must be more than min_instance_count.
+     */
+    maxInstanceCount: number;
+    /**
+     * The metrics that the component is scaled on.
+     */
+    metrics: outputs.AppSpecWorkerAutoscalingMetrics;
+    /**
+     * The minimum amount of instances for this component. Must be less than max_instance_count.
+     */
+    minInstanceCount: number;
+}
+
+export interface AppSpecWorkerAutoscalingMetrics {
+    /**
+     * Settings for scaling the component based on CPU utilization.
+     */
+    cpu?: outputs.AppSpecWorkerAutoscalingMetricsCpu;
+}
+
+export interface AppSpecWorkerAutoscalingMetricsCpu {
+    /**
+     * The average target CPU utilization for the component.
+     */
+    percent: number;
 }
 
 export interface AppSpecWorkerEnv {
@@ -1545,6 +1620,10 @@ export interface AppSpecWorkerImage {
      * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes: outputs.AppSpecWorkerImageDeployOnPush[];
+    /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: string;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
@@ -1650,6 +1729,15 @@ export interface AppSpecWorkerLogDestinationPapertrail {
      * Papertrail syslog endpoint.
      */
     endpoint: string;
+}
+
+export interface AppSpecWorkerTermination {
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     *
+     * A `function` component can contain:
+     */
+    gracePeriodSeconds?: number;
 }
 
 export interface DatabaseClusterBackupRestore {
@@ -2596,6 +2684,10 @@ export interface GetAppSpecJob {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: outputs.GetAppSpecJobTermination;
 }
 
 export interface GetAppSpecJobAlert {
@@ -2686,6 +2778,10 @@ export interface GetAppSpecJobImage {
      * Whether to automatically deploy new commits made to the repo.
      */
     deployOnPushes: outputs.GetAppSpecJobImageDeployOnPush[];
+    /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: string;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
@@ -2793,6 +2889,13 @@ export interface GetAppSpecJobLogDestinationPapertrail {
     endpoint: string;
 }
 
+export interface GetAppSpecJobTermination {
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     */
+    gracePeriodSeconds?: number;
+}
+
 export interface GetAppSpecService {
     /**
      * Describes an alert policy for the component.
@@ -2880,6 +2983,10 @@ export interface GetAppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: outputs.GetAppSpecServiceTermination;
 }
 
 export interface GetAppSpecServiceAlert {
@@ -3075,6 +3182,10 @@ export interface GetAppSpecServiceImage {
      */
     deployOnPushes: outputs.GetAppSpecServiceImageDeployOnPush[];
     /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: string;
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: string;
@@ -3190,6 +3301,17 @@ export interface GetAppSpecServiceRoute {
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
     preservePathPrefix?: boolean;
+}
+
+export interface GetAppSpecServiceTermination {
+    /**
+     * The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+     */
+    drainSeconds?: number;
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     */
+    gracePeriodSeconds?: number;
 }
 
 export interface GetAppSpecStaticSite {
@@ -3378,6 +3500,10 @@ export interface GetAppSpecWorker {
      */
     alerts?: outputs.GetAppSpecWorkerAlert[];
     /**
+     * Configuration for automatically scaling this component based on metrics.
+     */
+    autoscaling?: outputs.GetAppSpecWorkerAutoscaling;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -3433,6 +3559,10 @@ export interface GetAppSpecWorker {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: outputs.GetAppSpecWorkerTermination;
 }
 
 export interface GetAppSpecWorkerAlert {
@@ -3456,6 +3586,35 @@ export interface GetAppSpecWorkerAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: string;
+}
+
+export interface GetAppSpecWorkerAutoscaling {
+    /**
+     * The maximum amount of instances for this component. Must be more than min_instance_count.
+     */
+    maxInstanceCount: number;
+    /**
+     * The metrics that the component is scaled on.
+     */
+    metrics: outputs.GetAppSpecWorkerAutoscalingMetrics;
+    /**
+     * The minimum amount of instances for this component. Must be less than max_instance_count.
+     */
+    minInstanceCount: number;
+}
+
+export interface GetAppSpecWorkerAutoscalingMetrics {
+    /**
+     * Settings for scaling the component based on CPU utilization.
+     */
+    cpu?: outputs.GetAppSpecWorkerAutoscalingMetricsCpu;
+}
+
+export interface GetAppSpecWorkerAutoscalingMetricsCpu {
+    /**
+     * The average target CPU utilization for the component.
+     */
+    percent: number;
 }
 
 export interface GetAppSpecWorkerEnv {
@@ -3523,6 +3682,10 @@ export interface GetAppSpecWorkerImage {
      * Whether to automatically deploy new commits made to the repo.
      */
     deployOnPushes: outputs.GetAppSpecWorkerImageDeployOnPush[];
+    /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: string;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
@@ -3628,6 +3791,13 @@ export interface GetAppSpecWorkerLogDestinationPapertrail {
      * OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
      */
     endpoint: string;
+}
+
+export interface GetAppSpecWorkerTermination {
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     */
+    gracePeriodSeconds?: number;
 }
 
 export interface GetDatabaseClusterMaintenanceWindow {

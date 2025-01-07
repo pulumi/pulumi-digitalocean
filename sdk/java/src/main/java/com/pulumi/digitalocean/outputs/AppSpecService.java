@@ -15,6 +15,7 @@ import com.pulumi.digitalocean.outputs.AppSpecServiceHealthCheck;
 import com.pulumi.digitalocean.outputs.AppSpecServiceImage;
 import com.pulumi.digitalocean.outputs.AppSpecServiceLogDestination;
 import com.pulumi.digitalocean.outputs.AppSpecServiceRoute;
+import com.pulumi.digitalocean.outputs.AppSpecServiceTermination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -138,6 +139,11 @@ public final class AppSpecService {
      * 
      */
     private @Nullable String sourceDir;
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    private @Nullable AppSpecServiceTermination termination;
 
     private AppSpecService() {}
     /**
@@ -295,6 +301,13 @@ public final class AppSpecService {
     public Optional<String> sourceDir() {
         return Optional.ofNullable(this.sourceDir);
     }
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<AppSpecServiceTermination> termination() {
+        return Optional.ofNullable(this.termination);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -326,6 +339,7 @@ public final class AppSpecService {
         private @Nullable List<AppSpecServiceRoute> routes;
         private @Nullable String runCommand;
         private @Nullable String sourceDir;
+        private @Nullable AppSpecServiceTermination termination;
         public Builder() {}
         public Builder(AppSpecService defaults) {
     	      Objects.requireNonNull(defaults);
@@ -350,6 +364,7 @@ public final class AppSpecService {
     	      this.routes = defaults.routes;
     	      this.runCommand = defaults.runCommand;
     	      this.sourceDir = defaults.sourceDir;
+    	      this.termination = defaults.termination;
         }
 
         @CustomType.Setter
@@ -495,6 +510,12 @@ public final class AppSpecService {
             this.sourceDir = sourceDir;
             return this;
         }
+        @CustomType.Setter
+        public Builder termination(@Nullable AppSpecServiceTermination termination) {
+
+            this.termination = termination;
+            return this;
+        }
         public AppSpecService build() {
             final var _resultValue = new AppSpecService();
             _resultValue.alerts = alerts;
@@ -518,6 +539,7 @@ public final class AppSpecService {
             _resultValue.routes = routes;
             _resultValue.runCommand = runCommand;
             _resultValue.sourceDir = sourceDir;
+            _resultValue.termination = termination;
             return _resultValue;
         }
     }

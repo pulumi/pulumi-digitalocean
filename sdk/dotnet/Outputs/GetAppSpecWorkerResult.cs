@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecWorkerAlertResult> Alerts;
         /// <summary>
+        /// Configuration for automatically scaling this component based on metrics.
+        /// </summary>
+        public readonly Outputs.GetAppSpecWorkerAutoscalingResult? Autoscaling;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -73,10 +77,16 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An optional path to the working directory to use for the build.
         /// </summary>
         public readonly string? SourceDir;
+        /// <summary>
+        /// Contains a component's termination parameters.
+        /// </summary>
+        public readonly Outputs.GetAppSpecWorkerTerminationResult? Termination;
 
         [OutputConstructor]
         private GetAppSpecWorkerResult(
             ImmutableArray<Outputs.GetAppSpecWorkerAlertResult> alerts,
+
+            Outputs.GetAppSpecWorkerAutoscalingResult? autoscaling,
 
             string? buildCommand,
 
@@ -104,9 +114,12 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? runCommand,
 
-            string? sourceDir)
+            string? sourceDir,
+
+            Outputs.GetAppSpecWorkerTerminationResult? termination)
         {
             Alerts = alerts;
+            Autoscaling = autoscaling;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;
@@ -121,6 +134,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Name = name;
             RunCommand = runCommand;
             SourceDir = sourceDir;
+            Termination = termination;
         }
     }
 }

@@ -148,7 +148,8 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     }
     /**
      * The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      * 
      */
     @Export(name="dropletIds", refs={List.class,Integer.class}, tree="[0,1]")
@@ -156,7 +157,8 @@ public class Firewall extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      * 
      */
     public Output<Optional<List<Integer>>> dropletIds() {
@@ -245,14 +247,14 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The names of the Tags assigned to the Firewall.
+     * The names of the Tags assigned to the Firewall (max. 5).
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The names of the Tags assigned to the Firewall.
+     * @return The names of the Tags assigned to the Firewall (max. 5).
      * 
      */
     public Output<Optional<List<String>>> tags() {

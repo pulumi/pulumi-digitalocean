@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecServiceImageDeployOnPushResult> DeployOnPushes;
         /// <summary>
+        /// The image digest. Cannot be specified if `tag` is provided.
+        /// </summary>
+        public readonly string? Digest;
+        /// <summary>
         /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         /// </summary>
         public readonly string? Registry;
@@ -42,6 +46,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetAppSpecServiceImageResult(
             ImmutableArray<Outputs.GetAppSpecServiceImageDeployOnPushResult> deployOnPushes,
 
+            string? digest,
+
             string? registry,
 
             string? registryCredentials,
@@ -53,6 +59,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string? tag)
         {
             DeployOnPushes = deployOnPushes;
+            Digest = digest;
             Registry = registry;
             RegistryCredentials = registryCredentials;
             RegistryType = registryType;

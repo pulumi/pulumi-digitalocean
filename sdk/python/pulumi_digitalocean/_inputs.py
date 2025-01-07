@@ -104,6 +104,8 @@ __all__ = [
     'AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict',
     'AppSpecJobLogDestinationPapertrailArgs',
     'AppSpecJobLogDestinationPapertrailArgsDict',
+    'AppSpecJobTerminationArgs',
+    'AppSpecJobTerminationArgsDict',
     'AppSpecServiceArgs',
     'AppSpecServiceArgsDict',
     'AppSpecServiceAlertArgs',
@@ -146,6 +148,8 @@ __all__ = [
     'AppSpecServiceLogDestinationPapertrailArgsDict',
     'AppSpecServiceRouteArgs',
     'AppSpecServiceRouteArgsDict',
+    'AppSpecServiceTerminationArgs',
+    'AppSpecServiceTerminationArgsDict',
     'AppSpecStaticSiteArgs',
     'AppSpecStaticSiteArgsDict',
     'AppSpecStaticSiteCorsArgs',
@@ -166,6 +170,12 @@ __all__ = [
     'AppSpecWorkerArgsDict',
     'AppSpecWorkerAlertArgs',
     'AppSpecWorkerAlertArgsDict',
+    'AppSpecWorkerAutoscalingArgs',
+    'AppSpecWorkerAutoscalingArgsDict',
+    'AppSpecWorkerAutoscalingMetricsArgs',
+    'AppSpecWorkerAutoscalingMetricsArgsDict',
+    'AppSpecWorkerAutoscalingMetricsCpuArgs',
+    'AppSpecWorkerAutoscalingMetricsCpuArgsDict',
     'AppSpecWorkerEnvArgs',
     'AppSpecWorkerEnvArgsDict',
     'AppSpecWorkerGitArgs',
@@ -190,6 +200,8 @@ __all__ = [
     'AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict',
     'AppSpecWorkerLogDestinationPapertrailArgs',
     'AppSpecWorkerLogDestinationPapertrailArgsDict',
+    'AppSpecWorkerTerminationArgs',
+    'AppSpecWorkerTerminationArgsDict',
     'DatabaseClusterBackupRestoreArgs',
     'DatabaseClusterBackupRestoreArgsDict',
     'DatabaseClusterMaintenanceWindowArgs',
@@ -2983,6 +2995,10 @@ if not MYPY:
         """
         An optional path to the working directory to use for the build.
         """
+        termination: NotRequired[pulumi.Input['AppSpecJobTerminationArgsDict']]
+        """
+        Contains a component's termination parameters.
+        """
 elif False:
     AppSpecJobArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3004,7 +3020,8 @@ class AppSpecJobArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
-                 source_dir: Optional[pulumi.Input[str]] = None):
+                 source_dir: Optional[pulumi.Input[str]] = None,
+                 termination: Optional[pulumi.Input['AppSpecJobTerminationArgs']] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgs']]] alerts: Describes an alert policy for the component.
@@ -3026,6 +3043,7 @@ class AppSpecJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        :param pulumi.Input['AppSpecJobTerminationArgs'] termination: Contains a component's termination parameters.
         """
         pulumi.set(__self__, "name", name)
         if alerts is not None:
@@ -3058,6 +3076,8 @@ class AppSpecJobArgs:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
             pulumi.set(__self__, "source_dir", source_dir)
+        if termination is not None:
+            pulumi.set(__self__, "termination", termination)
 
     @property
     @pulumi.getter
@@ -3254,6 +3274,18 @@ class AppSpecJobArgs:
     @source_dir.setter
     def source_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_dir", value)
+
+    @property
+    @pulumi.getter
+    def termination(self) -> Optional[pulumi.Input['AppSpecJobTerminationArgs']]:
+        """
+        Contains a component's termination parameters.
+        """
+        return pulumi.get(self, "termination")
+
+    @termination.setter
+    def termination(self, value: Optional[pulumi.Input['AppSpecJobTerminationArgs']]):
+        pulumi.set(self, "termination", value)
 
 
 if not MYPY:
@@ -3666,6 +3698,10 @@ if not MYPY:
         """
         Configures automatically deploying images pushed to DOCR.
         """
+        digest: NotRequired[pulumi.Input[str]]
+        """
+        The image digest. Cannot be specified if `tag` is provided.
+        """
         registry: NotRequired[pulumi.Input[str]]
         """
         The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -3687,6 +3723,7 @@ class AppSpecJobImageArgs:
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
                  registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
@@ -3694,6 +3731,7 @@ class AppSpecJobImageArgs:
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
+        :param pulumi.Input[str] digest: The image digest. Cannot be specified if `tag` is provided.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
@@ -3702,6 +3740,8 @@ class AppSpecJobImageArgs:
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if registry_credentials is not None:
@@ -3744,6 +3784,18 @@ class AppSpecJobImageArgs:
     @deploy_on_pushes.setter
     def deploy_on_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]]):
         pulumi.set(self, "deploy_on_pushes", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image digest. Cannot be specified if `tag` is provided.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
 
     @property
     @pulumi.getter
@@ -4182,6 +4234,44 @@ class AppSpecJobLogDestinationPapertrailArgs:
 
 
 if not MYPY:
+    class AppSpecJobTerminationArgsDict(TypedDict):
+        grace_period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+
+        A `function` component can contain:
+        """
+elif False:
+    AppSpecJobTerminationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecJobTerminationArgs:
+    def __init__(__self__, *,
+                 grace_period_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] grace_period_seconds: The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+               
+               A `function` component can contain:
+        """
+        if grace_period_seconds is not None:
+            pulumi.set(__self__, "grace_period_seconds", grace_period_seconds)
+
+    @property
+    @pulumi.getter(name="gracePeriodSeconds")
+    def grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+
+        A `function` component can contain:
+        """
+        return pulumi.get(self, "grace_period_seconds")
+
+    @grace_period_seconds.setter
+    def grace_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period_seconds", value)
+
+
+if not MYPY:
     class AppSpecServiceArgsDict(TypedDict):
         name: pulumi.Input[str]
         """
@@ -4267,6 +4357,10 @@ if not MYPY:
         """
         An optional path to the working directory to use for the build.
         """
+        termination: NotRequired[pulumi.Input['AppSpecServiceTerminationArgsDict']]
+        """
+        Contains a component's termination parameters.
+        """
 elif False:
     AppSpecServiceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4293,7 +4387,8 @@ class AppSpecServiceArgs:
                  log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]]] = None,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
-                 source_dir: Optional[pulumi.Input[str]] = None):
+                 source_dir: Optional[pulumi.Input[str]] = None,
+                 termination: Optional[pulumi.Input['AppSpecServiceTerminationArgs']] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]] alerts: Describes an alert policy for the component.
@@ -4316,6 +4411,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]] routes: An HTTP paths that should be routed to this component.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        :param pulumi.Input['AppSpecServiceTerminationArgs'] termination: Contains a component's termination parameters.
         """
         pulumi.set(__self__, "name", name)
         if alerts is not None:
@@ -4364,6 +4460,8 @@ class AppSpecServiceArgs:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
             pulumi.set(__self__, "source_dir", source_dir)
+        if termination is not None:
+            pulumi.set(__self__, "termination", termination)
 
     @property
     @pulumi.getter
@@ -4619,6 +4717,18 @@ class AppSpecServiceArgs:
     def source_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_dir", value)
 
+    @property
+    @pulumi.getter
+    def termination(self) -> Optional[pulumi.Input['AppSpecServiceTerminationArgs']]:
+        """
+        Contains a component's termination parameters.
+        """
+        return pulumi.get(self, "termination")
+
+    @termination.setter
+    def termination(self, value: Optional[pulumi.Input['AppSpecServiceTerminationArgs']]):
+        pulumi.set(self, "termination", value)
+
 
 if not MYPY:
     class AppSpecServiceAlertArgsDict(TypedDict):
@@ -4834,8 +4944,6 @@ if not MYPY:
         percent: pulumi.Input[int]
         """
         The average target CPU utilization for the component.
-
-        A `static_site` can contain:
         """
 elif False:
     AppSpecServiceAutoscalingMetricsCpuArgsDict: TypeAlias = Mapping[str, Any]
@@ -4846,8 +4954,6 @@ class AppSpecServiceAutoscalingMetricsCpuArgs:
                  percent: pulumi.Input[int]):
         """
         :param pulumi.Input[int] percent: The average target CPU utilization for the component.
-               
-               A `static_site` can contain:
         """
         pulumi.set(__self__, "percent", percent)
 
@@ -4856,8 +4962,6 @@ class AppSpecServiceAutoscalingMetricsCpuArgs:
     def percent(self) -> pulumi.Input[int]:
         """
         The average target CPU utilization for the component.
-
-        A `static_site` can contain:
         """
         return pulumi.get(self, "percent")
 
@@ -5528,6 +5632,10 @@ if not MYPY:
         """
         Configures automatically deploying images pushed to DOCR.
         """
+        digest: NotRequired[pulumi.Input[str]]
+        """
+        The image digest. Cannot be specified if `tag` is provided.
+        """
         registry: NotRequired[pulumi.Input[str]]
         """
         The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -5549,6 +5657,7 @@ class AppSpecServiceImageArgs:
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
                  registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
@@ -5556,6 +5665,7 @@ class AppSpecServiceImageArgs:
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
+        :param pulumi.Input[str] digest: The image digest. Cannot be specified if `tag` is provided.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
@@ -5564,6 +5674,8 @@ class AppSpecServiceImageArgs:
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if registry_credentials is not None:
@@ -5606,6 +5718,18 @@ class AppSpecServiceImageArgs:
     @deploy_on_pushes.setter
     def deploy_on_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]]):
         pulumi.set(self, "deploy_on_pushes", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image digest. Cannot be specified if `tag` is provided.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
 
     @property
     @pulumi.getter
@@ -6093,6 +6217,70 @@ class AppSpecServiceRouteArgs:
     @preserve_path_prefix.setter
     def preserve_path_prefix(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preserve_path_prefix", value)
+
+
+if not MYPY:
+    class AppSpecServiceTerminationArgsDict(TypedDict):
+        drain_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+
+        A `static_site` can contain:
+        """
+        grace_period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+
+        A `function` component can contain:
+        """
+elif False:
+    AppSpecServiceTerminationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecServiceTerminationArgs:
+    def __init__(__self__, *,
+                 drain_seconds: Optional[pulumi.Input[int]] = None,
+                 grace_period_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] drain_seconds: The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+               
+               A `static_site` can contain:
+        :param pulumi.Input[int] grace_period_seconds: The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+               
+               A `function` component can contain:
+        """
+        if drain_seconds is not None:
+            pulumi.set(__self__, "drain_seconds", drain_seconds)
+        if grace_period_seconds is not None:
+            pulumi.set(__self__, "grace_period_seconds", grace_period_seconds)
+
+    @property
+    @pulumi.getter(name="drainSeconds")
+    def drain_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+
+        A `static_site` can contain:
+        """
+        return pulumi.get(self, "drain_seconds")
+
+    @drain_seconds.setter
+    def drain_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "drain_seconds", value)
+
+    @property
+    @pulumi.getter(name="gracePeriodSeconds")
+    def grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+
+        A `function` component can contain:
+        """
+        return pulumi.get(self, "grace_period_seconds")
+
+    @grace_period_seconds.setter
+    def grace_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period_seconds", value)
 
 
 if not MYPY:
@@ -6972,6 +7160,10 @@ if not MYPY:
         """
         Describes an alert policy for the component.
         """
+        autoscaling: NotRequired[pulumi.Input['AppSpecWorkerAutoscalingArgsDict']]
+        """
+        Configuration for automatically scaling this component based on metrics.
+        """
         build_command: NotRequired[pulumi.Input[str]]
         """
         An optional build command to run while building this component from source.
@@ -7024,6 +7216,10 @@ if not MYPY:
         """
         An optional path to the working directory to use for the build.
         """
+        termination: NotRequired[pulumi.Input['AppSpecWorkerTerminationArgsDict']]
+        """
+        Contains a component's termination parameters.
+        """
 elif False:
     AppSpecWorkerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7032,6 +7228,7 @@ class AppSpecWorkerArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]]] = None,
+                 autoscaling: Optional[pulumi.Input['AppSpecWorkerAutoscalingArgs']] = None,
                  build_command: Optional[pulumi.Input[str]] = None,
                  dockerfile_path: Optional[pulumi.Input[str]] = None,
                  environment_slug: Optional[pulumi.Input[str]] = None,
@@ -7044,10 +7241,12 @@ class AppSpecWorkerArgs:
                  instance_size_slug: Optional[pulumi.Input[str]] = None,
                  log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]]] = None,
                  run_command: Optional[pulumi.Input[str]] = None,
-                 source_dir: Optional[pulumi.Input[str]] = None):
+                 source_dir: Optional[pulumi.Input[str]] = None,
+                 termination: Optional[pulumi.Input['AppSpecWorkerTerminationArgs']] = None):
         """
         :param pulumi.Input[str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]] alerts: Describes an alert policy for the component.
+        :param pulumi.Input['AppSpecWorkerAutoscalingArgs'] autoscaling: Configuration for automatically scaling this component based on metrics.
         :param pulumi.Input[str] build_command: An optional build command to run while building this component from source.
         :param pulumi.Input[str] dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param pulumi.Input[str] environment_slug: An environment slug describing the type of this app.
@@ -7061,10 +7260,13 @@ class AppSpecWorkerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[str] source_dir: An optional path to the working directory to use for the build.
+        :param pulumi.Input['AppSpecWorkerTerminationArgs'] termination: Contains a component's termination parameters.
         """
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -7091,6 +7293,8 @@ class AppSpecWorkerArgs:
             pulumi.set(__self__, "run_command", run_command)
         if source_dir is not None:
             pulumi.set(__self__, "source_dir", source_dir)
+        if termination is not None:
+            pulumi.set(__self__, "termination", termination)
 
     @property
     @pulumi.getter
@@ -7115,6 +7319,18 @@ class AppSpecWorkerArgs:
     @alerts.setter
     def alerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]]]):
         pulumi.set(self, "alerts", value)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional[pulumi.Input['AppSpecWorkerAutoscalingArgs']]:
+        """
+        Configuration for automatically scaling this component based on metrics.
+        """
+        return pulumi.get(self, "autoscaling")
+
+    @autoscaling.setter
+    def autoscaling(self, value: Optional[pulumi.Input['AppSpecWorkerAutoscalingArgs']]):
+        pulumi.set(self, "autoscaling", value)
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -7272,6 +7488,18 @@ class AppSpecWorkerArgs:
     def source_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_dir", value)
 
+    @property
+    @pulumi.getter
+    def termination(self) -> Optional[pulumi.Input['AppSpecWorkerTerminationArgs']]:
+        """
+        Contains a component's termination parameters.
+        """
+        return pulumi.get(self, "termination")
+
+    @termination.setter
+    def termination(self, value: Optional[pulumi.Input['AppSpecWorkerTerminationArgs']]):
+        pulumi.set(self, "termination", value)
+
 
 if not MYPY:
     class AppSpecWorkerAlertArgsDict(TypedDict):
@@ -7379,6 +7607,138 @@ class AppSpecWorkerAlertArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class AppSpecWorkerAutoscalingArgsDict(TypedDict):
+        max_instance_count: pulumi.Input[int]
+        """
+        The maximum amount of instances for this component. Must be more than min_instance_count.
+        """
+        metrics: pulumi.Input['AppSpecWorkerAutoscalingMetricsArgsDict']
+        """
+        The metrics that the component is scaled on.
+        """
+        min_instance_count: pulumi.Input[int]
+        """
+        The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+elif False:
+    AppSpecWorkerAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecWorkerAutoscalingArgs:
+    def __init__(__self__, *,
+                 max_instance_count: pulumi.Input[int],
+                 metrics: pulumi.Input['AppSpecWorkerAutoscalingMetricsArgs'],
+                 min_instance_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_instance_count: The maximum amount of instances for this component. Must be more than min_instance_count.
+        :param pulumi.Input['AppSpecWorkerAutoscalingMetricsArgs'] metrics: The metrics that the component is scaled on.
+        :param pulumi.Input[int] min_instance_count: The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> pulumi.Input[int]:
+        """
+        The maximum amount of instances for this component. Must be more than min_instance_count.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @max_instance_count.setter
+    def max_instance_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_instance_count", value)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> pulumi.Input['AppSpecWorkerAutoscalingMetricsArgs']:
+        """
+        The metrics that the component is scaled on.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: pulumi.Input['AppSpecWorkerAutoscalingMetricsArgs']):
+        pulumi.set(self, "metrics", value)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> pulumi.Input[int]:
+        """
+        The minimum amount of instances for this component. Must be less than max_instance_count.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+    @min_instance_count.setter
+    def min_instance_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_instance_count", value)
+
+
+if not MYPY:
+    class AppSpecWorkerAutoscalingMetricsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgsDict']]
+        """
+        Settings for scaling the component based on CPU utilization.
+        """
+elif False:
+    AppSpecWorkerAutoscalingMetricsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecWorkerAutoscalingMetricsArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgs']] = None):
+        """
+        :param pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgs'] cpu: Settings for scaling the component based on CPU utilization.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgs']]:
+        """
+        Settings for scaling the component based on CPU utilization.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgs']]):
+        pulumi.set(self, "cpu", value)
+
+
+if not MYPY:
+    class AppSpecWorkerAutoscalingMetricsCpuArgsDict(TypedDict):
+        percent: pulumi.Input[int]
+        """
+        The average target CPU utilization for the component.
+        """
+elif False:
+    AppSpecWorkerAutoscalingMetricsCpuArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecWorkerAutoscalingMetricsCpuArgs:
+    def __init__(__self__, *,
+                 percent: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] percent: The average target CPU utilization for the component.
+        """
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> pulumi.Input[int]:
+        """
+        The average target CPU utilization for the component.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: pulumi.Input[int]):
+        pulumi.set(self, "percent", value)
 
 
 if not MYPY:
@@ -7683,6 +8043,10 @@ if not MYPY:
         """
         Configures automatically deploying images pushed to DOCR.
         """
+        digest: NotRequired[pulumi.Input[str]]
+        """
+        The image digest. Cannot be specified if `tag` is provided.
+        """
         registry: NotRequired[pulumi.Input[str]]
         """
         The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -7704,6 +8068,7 @@ class AppSpecWorkerImageArgs:
                  registry_type: pulumi.Input[str],
                  repository: pulumi.Input[str],
                  deploy_on_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
                  registry: Optional[pulumi.Input[str]] = None,
                  registry_credentials: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
@@ -7711,6 +8076,7 @@ class AppSpecWorkerImageArgs:
         :param pulumi.Input[str] registry_type: The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
         :param pulumi.Input[str] repository: The repository name.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]] deploy_on_pushes: Configures automatically deploying images pushed to DOCR.
+        :param pulumi.Input[str] digest: The image digest. Cannot be specified if `tag` is provided.
         :param pulumi.Input[str] registry: The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         :param pulumi.Input[str] registry_credentials: The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
         :param pulumi.Input[str] tag: The repository tag. Defaults to `latest` if not provided.
@@ -7719,6 +8085,8 @@ class AppSpecWorkerImageArgs:
         pulumi.set(__self__, "repository", repository)
         if deploy_on_pushes is not None:
             pulumi.set(__self__, "deploy_on_pushes", deploy_on_pushes)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
         if registry is not None:
             pulumi.set(__self__, "registry", registry)
         if registry_credentials is not None:
@@ -7761,6 +8129,18 @@ class AppSpecWorkerImageArgs:
     @deploy_on_pushes.setter
     def deploy_on_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]]):
         pulumi.set(self, "deploy_on_pushes", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image digest. Cannot be specified if `tag` is provided.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
 
     @property
     @pulumi.getter
@@ -8196,6 +8576,44 @@ class AppSpecWorkerLogDestinationPapertrailArgs:
     @endpoint.setter
     def endpoint(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint", value)
+
+
+if not MYPY:
+    class AppSpecWorkerTerminationArgsDict(TypedDict):
+        grace_period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+
+        A `function` component can contain:
+        """
+elif False:
+    AppSpecWorkerTerminationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecWorkerTerminationArgs:
+    def __init__(__self__, *,
+                 grace_period_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] grace_period_seconds: The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+               
+               A `function` component can contain:
+        """
+        if grace_period_seconds is not None:
+            pulumi.set(__self__, "grace_period_seconds", grace_period_seconds)
+
+    @property
+    @pulumi.getter(name="gracePeriodSeconds")
+    def grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+
+        A `function` component can contain:
+        """
+        return pulumi.get(self, "grace_period_seconds")
+
+    @grace_period_seconds.setter
+    def grace_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period_seconds", value)
 
 
 if not MYPY:

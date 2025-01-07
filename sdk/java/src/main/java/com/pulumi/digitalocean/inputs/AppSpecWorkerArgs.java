@@ -6,12 +6,14 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerAlertArgs;
+import com.pulumi.digitalocean.inputs.AppSpecWorkerAutoscalingArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGitArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGithubArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGitlabArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerImageArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerLogDestinationArgs;
+import com.pulumi.digitalocean.inputs.AppSpecWorkerTerminationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -38,6 +40,21 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AppSpecWorkerAlertArgs>>> alerts() {
         return Optional.ofNullable(this.alerts);
+    }
+
+    /**
+     * Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    @Import(name="autoscaling")
+    private @Nullable Output<AppSpecWorkerAutoscalingArgs> autoscaling;
+
+    /**
+     * @return Configuration for automatically scaling this component based on metrics.
+     * 
+     */
+    public Optional<Output<AppSpecWorkerAutoscalingArgs>> autoscaling() {
+        return Optional.ofNullable(this.autoscaling);
     }
 
     /**
@@ -250,10 +267,26 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sourceDir);
     }
 
+    /**
+     * Contains a component&#39;s termination parameters.
+     * 
+     */
+    @Import(name="termination")
+    private @Nullable Output<AppSpecWorkerTerminationArgs> termination;
+
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<Output<AppSpecWorkerTerminationArgs>> termination() {
+        return Optional.ofNullable(this.termination);
+    }
+
     private AppSpecWorkerArgs() {}
 
     private AppSpecWorkerArgs(AppSpecWorkerArgs $) {
         this.alerts = $.alerts;
+        this.autoscaling = $.autoscaling;
         this.buildCommand = $.buildCommand;
         this.dockerfilePath = $.dockerfilePath;
         this.environmentSlug = $.environmentSlug;
@@ -268,6 +301,7 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.runCommand = $.runCommand;
         this.sourceDir = $.sourceDir;
+        this.termination = $.termination;
     }
 
     public static Builder builder() {
@@ -317,6 +351,27 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder alerts(AppSpecWorkerAlertArgs... alerts) {
             return alerts(List.of(alerts));
+        }
+
+        /**
+         * @param autoscaling Configuration for automatically scaling this component based on metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaling(@Nullable Output<AppSpecWorkerAutoscalingArgs> autoscaling) {
+            $.autoscaling = autoscaling;
+            return this;
+        }
+
+        /**
+         * @param autoscaling Configuration for automatically scaling this component based on metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaling(AppSpecWorkerAutoscalingArgs autoscaling) {
+            return autoscaling(Output.of(autoscaling));
         }
 
         /**
@@ -631,6 +686,27 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceDir(String sourceDir) {
             return sourceDir(Output.of(sourceDir));
+        }
+
+        /**
+         * @param termination Contains a component&#39;s termination parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termination(@Nullable Output<AppSpecWorkerTerminationArgs> termination) {
+            $.termination = termination;
+            return this;
+        }
+
+        /**
+         * @param termination Contains a component&#39;s termination parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termination(AppSpecWorkerTerminationArgs termination) {
+            return termination(Output.of(termination));
         }
 
         public AppSpecWorkerArgs build() {

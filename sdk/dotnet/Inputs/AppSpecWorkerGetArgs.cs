@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
+        /// Configuration for automatically scaling this component based on metrics.
+        /// </summary>
+        [Input("autoscaling")]
+        public Input<Inputs.AppSpecWorkerAutoscalingGetArgs>? Autoscaling { get; set; }
+
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         [Input("buildCommand")]
@@ -119,6 +125,12 @@ namespace Pulumi.DigitalOcean.Inputs
         /// </summary>
         [Input("sourceDir")]
         public Input<string>? SourceDir { get; set; }
+
+        /// <summary>
+        /// Contains a component's termination parameters.
+        /// </summary>
+        [Input("termination")]
+        public Input<Inputs.AppSpecWorkerTerminationGetArgs>? Termination { get; set; }
 
         public AppSpecWorkerGetArgs()
         {

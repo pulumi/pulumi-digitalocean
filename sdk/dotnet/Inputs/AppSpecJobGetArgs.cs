@@ -130,6 +130,12 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("sourceDir")]
         public Input<string>? SourceDir { get; set; }
 
+        /// <summary>
+        /// Contains a component's termination parameters.
+        /// </summary>
+        [Input("termination")]
+        public Input<Inputs.AppSpecJobTerminationGetArgs>? Termination { get; set; }
+
         public AppSpecJobGetArgs()
         {
         }

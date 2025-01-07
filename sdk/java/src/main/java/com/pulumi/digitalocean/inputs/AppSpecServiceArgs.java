@@ -16,6 +16,7 @@ import com.pulumi.digitalocean.inputs.AppSpecServiceHealthCheckArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceImageArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceRouteArgs;
+import com.pulumi.digitalocean.inputs.AppSpecServiceTerminationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -360,6 +361,21 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.sourceDir);
     }
 
+    /**
+     * Contains a component&#39;s termination parameters.
+     * 
+     */
+    @Import(name="termination")
+    private @Nullable Output<AppSpecServiceTerminationArgs> termination;
+
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<Output<AppSpecServiceTerminationArgs>> termination() {
+        return Optional.ofNullable(this.termination);
+    }
+
     private AppSpecServiceArgs() {}
 
     private AppSpecServiceArgs(AppSpecServiceArgs $) {
@@ -384,6 +400,7 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.routes = $.routes;
         this.runCommand = $.runCommand;
         this.sourceDir = $.sourceDir;
+        this.termination = $.termination;
     }
 
     public static Builder builder() {
@@ -913,6 +930,27 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder sourceDir(String sourceDir) {
             return sourceDir(Output.of(sourceDir));
+        }
+
+        /**
+         * @param termination Contains a component&#39;s termination parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termination(@Nullable Output<AppSpecServiceTerminationArgs> termination) {
+            $.termination = termination;
+            return this;
+        }
+
+        /**
+         * @param termination Contains a component&#39;s termination parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termination(AppSpecServiceTerminationArgs termination) {
+            return termination(Output.of(termination));
         }
 
         public AppSpecServiceArgs build() {

@@ -4888,6 +4888,8 @@ type AppSpecJob struct {
 	RunCommand *string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *AppSpecJobTermination `pulumi:"termination"`
 }
 
 // AppSpecJobInput is an input type that accepts AppSpecJobArgs and AppSpecJobOutput values.
@@ -4938,6 +4940,8 @@ type AppSpecJobArgs struct {
 	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination AppSpecJobTerminationPtrInput `pulumi:"termination"`
 }
 
 func (AppSpecJobArgs) ElementType() reflect.Type {
@@ -5073,6 +5077,11 @@ func (o AppSpecJobOutput) RunCommand() pulumi.StringPtrOutput {
 // An optional path to the working directory to use for the build.
 func (o AppSpecJobOutput) SourceDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJob) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o AppSpecJobOutput) Termination() AppSpecJobTerminationPtrOutput {
+	return o.ApplyT(func(v AppSpecJob) *AppSpecJobTermination { return v.Termination }).(AppSpecJobTerminationPtrOutput)
 }
 
 type AppSpecJobArrayOutput struct{ *pulumi.OutputState }
@@ -5861,6 +5870,8 @@ func (o AppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 type AppSpecJobImage struct {
 	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
@@ -5887,6 +5898,8 @@ type AppSpecJobImageInput interface {
 type AppSpecJobImageArgs struct {
 	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
@@ -5981,6 +5994,11 @@ func (o AppSpecJobImageOutput) DeployOnPushes() AppSpecJobImageDeployOnPushArray
 	return o.ApplyT(func(v AppSpecJobImage) []AppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(AppSpecJobImageDeployOnPushArrayOutput)
 }
 
+// The image digest. Cannot be specified if `tag` is provided.
+func (o AppSpecJobImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -6038,6 +6056,16 @@ func (o AppSpecJobImagePtrOutput) DeployOnPushes() AppSpecJobImageDeployOnPushAr
 		}
 		return v.DeployOnPushes
 	}).(AppSpecJobImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o AppSpecJobImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -7102,6 +7130,151 @@ func (o AppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppSpecJobTermination struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	//
+	// A `function` component can contain:
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// AppSpecJobTerminationInput is an input type that accepts AppSpecJobTerminationArgs and AppSpecJobTerminationOutput values.
+// You can construct a concrete instance of `AppSpecJobTerminationInput` via:
+//
+//	AppSpecJobTerminationArgs{...}
+type AppSpecJobTerminationInput interface {
+	pulumi.Input
+
+	ToAppSpecJobTerminationOutput() AppSpecJobTerminationOutput
+	ToAppSpecJobTerminationOutputWithContext(context.Context) AppSpecJobTerminationOutput
+}
+
+type AppSpecJobTerminationArgs struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	//
+	// A `function` component can contain:
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (AppSpecJobTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobTermination)(nil)).Elem()
+}
+
+func (i AppSpecJobTerminationArgs) ToAppSpecJobTerminationOutput() AppSpecJobTerminationOutput {
+	return i.ToAppSpecJobTerminationOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobTerminationArgs) ToAppSpecJobTerminationOutputWithContext(ctx context.Context) AppSpecJobTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobTerminationOutput)
+}
+
+func (i AppSpecJobTerminationArgs) ToAppSpecJobTerminationPtrOutput() AppSpecJobTerminationPtrOutput {
+	return i.ToAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobTerminationArgs) ToAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) AppSpecJobTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobTerminationOutput).ToAppSpecJobTerminationPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobTerminationPtrInput is an input type that accepts AppSpecJobTerminationArgs, AppSpecJobTerminationPtr and AppSpecJobTerminationPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobTerminationPtrInput` via:
+//
+//	        AppSpecJobTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecJobTerminationPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobTerminationPtrOutput() AppSpecJobTerminationPtrOutput
+	ToAppSpecJobTerminationPtrOutputWithContext(context.Context) AppSpecJobTerminationPtrOutput
+}
+
+type appSpecJobTerminationPtrType AppSpecJobTerminationArgs
+
+func AppSpecJobTerminationPtr(v *AppSpecJobTerminationArgs) AppSpecJobTerminationPtrInput {
+	return (*appSpecJobTerminationPtrType)(v)
+}
+
+func (*appSpecJobTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobTermination)(nil)).Elem()
+}
+
+func (i *appSpecJobTerminationPtrType) ToAppSpecJobTerminationPtrOutput() AppSpecJobTerminationPtrOutput {
+	return i.ToAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobTerminationPtrType) ToAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) AppSpecJobTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobTerminationPtrOutput)
+}
+
+type AppSpecJobTerminationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobTermination)(nil)).Elem()
+}
+
+func (o AppSpecJobTerminationOutput) ToAppSpecJobTerminationOutput() AppSpecJobTerminationOutput {
+	return o
+}
+
+func (o AppSpecJobTerminationOutput) ToAppSpecJobTerminationOutputWithContext(ctx context.Context) AppSpecJobTerminationOutput {
+	return o
+}
+
+func (o AppSpecJobTerminationOutput) ToAppSpecJobTerminationPtrOutput() AppSpecJobTerminationPtrOutput {
+	return o.ToAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobTerminationOutput) ToAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) AppSpecJobTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobTermination) *AppSpecJobTermination {
+		return &v
+	}).(AppSpecJobTerminationPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+//
+// A `function` component can contain:
+func (o AppSpecJobTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecJobTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AppSpecJobTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobTermination)(nil)).Elem()
+}
+
+func (o AppSpecJobTerminationPtrOutput) ToAppSpecJobTerminationPtrOutput() AppSpecJobTerminationPtrOutput {
+	return o
+}
+
+func (o AppSpecJobTerminationPtrOutput) ToAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) AppSpecJobTerminationPtrOutput {
+	return o
+}
+
+func (o AppSpecJobTerminationPtrOutput) Elem() AppSpecJobTerminationOutput {
+	return o.ApplyT(func(v *AppSpecJobTermination) AppSpecJobTermination {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobTermination
+		return ret
+	}).(AppSpecJobTerminationOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+//
+// A `function` component can contain:
+func (o AppSpecJobTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type AppSpecService struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecServiceAlert `pulumi:"alerts"`
@@ -7149,6 +7322,8 @@ type AppSpecService struct {
 	RunCommand *string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *AppSpecServiceTermination `pulumi:"termination"`
 }
 
 // AppSpecServiceInput is an input type that accepts AppSpecServiceArgs and AppSpecServiceOutput values.
@@ -7209,6 +7384,8 @@ type AppSpecServiceArgs struct {
 	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination AppSpecServiceTerminationPtrInput `pulumi:"termination"`
 }
 
 func (AppSpecServiceArgs) ElementType() reflect.Type {
@@ -7369,6 +7546,11 @@ func (o AppSpecServiceOutput) RunCommand() pulumi.StringPtrOutput {
 // An optional path to the working directory to use for the build.
 func (o AppSpecServiceOutput) SourceDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o AppSpecServiceOutput) Termination() AppSpecServiceTerminationPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceTermination { return v.Termination }).(AppSpecServiceTerminationPtrOutput)
 }
 
 type AppSpecServiceArrayOutput struct{ *pulumi.OutputState }
@@ -7838,8 +8020,6 @@ func (o AppSpecServiceAutoscalingMetricsPtrOutput) Cpu() AppSpecServiceAutoscali
 
 type AppSpecServiceAutoscalingMetricsCpu struct {
 	// The average target CPU utilization for the component.
-	//
-	// A `staticSite` can contain:
 	Percent int `pulumi:"percent"`
 }
 
@@ -7856,8 +8036,6 @@ type AppSpecServiceAutoscalingMetricsCpuInput interface {
 
 type AppSpecServiceAutoscalingMetricsCpuArgs struct {
 	// The average target CPU utilization for the component.
-	//
-	// A `staticSite` can contain:
 	Percent pulumi.IntInput `pulumi:"percent"`
 }
 
@@ -7939,8 +8117,6 @@ func (o AppSpecServiceAutoscalingMetricsCpuOutput) ToAppSpecServiceAutoscalingMe
 }
 
 // The average target CPU utilization for the component.
-//
-// A `staticSite` can contain:
 func (o AppSpecServiceAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v AppSpecServiceAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
 }
@@ -7970,8 +8146,6 @@ func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) Elem() AppSpecServiceAutos
 }
 
 // The average target CPU utilization for the component.
-//
-// A `staticSite` can contain:
 func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppSpecServiceAutoscalingMetricsCpu) *int {
 		if v == nil {
@@ -9280,6 +9454,8 @@ func (o AppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput
 type AppSpecServiceImage struct {
 	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
@@ -9306,6 +9482,8 @@ type AppSpecServiceImageInput interface {
 type AppSpecServiceImageArgs struct {
 	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
@@ -9400,6 +9578,11 @@ func (o AppSpecServiceImageOutput) DeployOnPushes() AppSpecServiceImageDeployOnP
 	return o.ApplyT(func(v AppSpecServiceImage) []AppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(AppSpecServiceImageDeployOnPushArrayOutput)
 }
 
+// The image digest. Cannot be specified if `tag` is provided.
+func (o AppSpecServiceImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -9457,6 +9640,16 @@ func (o AppSpecServiceImagePtrOutput) DeployOnPushes() AppSpecServiceImageDeploy
 		}
 		return v.DeployOnPushes
 	}).(AppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o AppSpecServiceImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -10625,6 +10818,178 @@ func (o AppSpecServiceRouteArrayOutput) Index(i pulumi.IntInput) AppSpecServiceR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceRoute {
 		return vs[0].([]AppSpecServiceRoute)[vs[1].(int)]
 	}).(AppSpecServiceRouteOutput)
+}
+
+type AppSpecServiceTermination struct {
+	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+	//
+	// A `staticSite` can contain:
+	DrainSeconds *int `pulumi:"drainSeconds"`
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	//
+	// A `function` component can contain:
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// AppSpecServiceTerminationInput is an input type that accepts AppSpecServiceTerminationArgs and AppSpecServiceTerminationOutput values.
+// You can construct a concrete instance of `AppSpecServiceTerminationInput` via:
+//
+//	AppSpecServiceTerminationArgs{...}
+type AppSpecServiceTerminationInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceTerminationOutput() AppSpecServiceTerminationOutput
+	ToAppSpecServiceTerminationOutputWithContext(context.Context) AppSpecServiceTerminationOutput
+}
+
+type AppSpecServiceTerminationArgs struct {
+	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+	//
+	// A `staticSite` can contain:
+	DrainSeconds pulumi.IntPtrInput `pulumi:"drainSeconds"`
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	//
+	// A `function` component can contain:
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (AppSpecServiceTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceTermination)(nil)).Elem()
+}
+
+func (i AppSpecServiceTerminationArgs) ToAppSpecServiceTerminationOutput() AppSpecServiceTerminationOutput {
+	return i.ToAppSpecServiceTerminationOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceTerminationArgs) ToAppSpecServiceTerminationOutputWithContext(ctx context.Context) AppSpecServiceTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceTerminationOutput)
+}
+
+func (i AppSpecServiceTerminationArgs) ToAppSpecServiceTerminationPtrOutput() AppSpecServiceTerminationPtrOutput {
+	return i.ToAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceTerminationArgs) ToAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) AppSpecServiceTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceTerminationOutput).ToAppSpecServiceTerminationPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceTerminationPtrInput is an input type that accepts AppSpecServiceTerminationArgs, AppSpecServiceTerminationPtr and AppSpecServiceTerminationPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceTerminationPtrInput` via:
+//
+//	        AppSpecServiceTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceTerminationPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceTerminationPtrOutput() AppSpecServiceTerminationPtrOutput
+	ToAppSpecServiceTerminationPtrOutputWithContext(context.Context) AppSpecServiceTerminationPtrOutput
+}
+
+type appSpecServiceTerminationPtrType AppSpecServiceTerminationArgs
+
+func AppSpecServiceTerminationPtr(v *AppSpecServiceTerminationArgs) AppSpecServiceTerminationPtrInput {
+	return (*appSpecServiceTerminationPtrType)(v)
+}
+
+func (*appSpecServiceTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceTermination)(nil)).Elem()
+}
+
+func (i *appSpecServiceTerminationPtrType) ToAppSpecServiceTerminationPtrOutput() AppSpecServiceTerminationPtrOutput {
+	return i.ToAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceTerminationPtrType) ToAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) AppSpecServiceTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceTerminationPtrOutput)
+}
+
+type AppSpecServiceTerminationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceTermination)(nil)).Elem()
+}
+
+func (o AppSpecServiceTerminationOutput) ToAppSpecServiceTerminationOutput() AppSpecServiceTerminationOutput {
+	return o
+}
+
+func (o AppSpecServiceTerminationOutput) ToAppSpecServiceTerminationOutputWithContext(ctx context.Context) AppSpecServiceTerminationOutput {
+	return o
+}
+
+func (o AppSpecServiceTerminationOutput) ToAppSpecServiceTerminationPtrOutput() AppSpecServiceTerminationPtrOutput {
+	return o.ToAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceTerminationOutput) ToAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) AppSpecServiceTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceTermination) *AppSpecServiceTermination {
+		return &v
+	}).(AppSpecServiceTerminationPtrOutput)
+}
+
+// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+//
+// A `staticSite` can contain:
+func (o AppSpecServiceTerminationOutput) DrainSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceTermination) *int { return v.DrainSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+//
+// A `function` component can contain:
+func (o AppSpecServiceTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AppSpecServiceTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceTermination)(nil)).Elem()
+}
+
+func (o AppSpecServiceTerminationPtrOutput) ToAppSpecServiceTerminationPtrOutput() AppSpecServiceTerminationPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceTerminationPtrOutput) ToAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) AppSpecServiceTerminationPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceTerminationPtrOutput) Elem() AppSpecServiceTerminationOutput {
+	return o.ApplyT(func(v *AppSpecServiceTermination) AppSpecServiceTermination {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceTermination
+		return ret
+	}).(AppSpecServiceTerminationOutput)
+}
+
+// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+//
+// A `staticSite` can contain:
+func (o AppSpecServiceTerminationPtrOutput) DrainSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+//
+// A `function` component can contain:
+func (o AppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type AppSpecStaticSite struct {
@@ -12016,6 +12381,8 @@ func (o AppSpecStaticSiteRouteArrayOutput) Index(i pulumi.IntInput) AppSpecStati
 type AppSpecWorker struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecWorkerAlert `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling *AppSpecWorkerAutoscaling `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -12044,6 +12411,8 @@ type AppSpecWorker struct {
 	RunCommand *string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *AppSpecWorkerTermination `pulumi:"termination"`
 }
 
 // AppSpecWorkerInput is an input type that accepts AppSpecWorkerArgs and AppSpecWorkerOutput values.
@@ -12060,6 +12429,8 @@ type AppSpecWorkerInput interface {
 type AppSpecWorkerArgs struct {
 	// Describes an alert policy for the component.
 	Alerts AppSpecWorkerAlertArrayInput `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling AppSpecWorkerAutoscalingPtrInput `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -12088,6 +12459,8 @@ type AppSpecWorkerArgs struct {
 	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination AppSpecWorkerTerminationPtrInput `pulumi:"termination"`
 }
 
 func (AppSpecWorkerArgs) ElementType() reflect.Type {
@@ -12144,6 +12517,11 @@ func (o AppSpecWorkerOutput) ToAppSpecWorkerOutputWithContext(ctx context.Contex
 // Describes an alert policy for the component.
 func (o AppSpecWorkerOutput) Alerts() AppSpecWorkerAlertArrayOutput {
 	return o.ApplyT(func(v AppSpecWorker) []AppSpecWorkerAlert { return v.Alerts }).(AppSpecWorkerAlertArrayOutput)
+}
+
+// Configuration for automatically scaling this component based on metrics.
+func (o AppSpecWorkerOutput) Autoscaling() AppSpecWorkerAutoscalingPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerAutoscaling { return v.Autoscaling }).(AppSpecWorkerAutoscalingPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -12214,6 +12592,11 @@ func (o AppSpecWorkerOutput) RunCommand() pulumi.StringPtrOutput {
 // An optional path to the working directory to use for the build.
 func (o AppSpecWorkerOutput) SourceDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o AppSpecWorkerOutput) Termination() AppSpecWorkerTerminationPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerTermination { return v.Termination }).(AppSpecWorkerTerminationPtrOutput)
 }
 
 type AppSpecWorkerArrayOutput struct{ *pulumi.OutputState }
@@ -12367,6 +12750,455 @@ func (o AppSpecWorkerAlertArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerAle
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerAlert {
 		return vs[0].([]AppSpecWorkerAlert)[vs[1].(int)]
 	}).(AppSpecWorkerAlertOutput)
+}
+
+type AppSpecWorkerAutoscaling struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics AppSpecWorkerAutoscalingMetrics `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// AppSpecWorkerAutoscalingInput is an input type that accepts AppSpecWorkerAutoscalingArgs and AppSpecWorkerAutoscalingOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAutoscalingInput` via:
+//
+//	AppSpecWorkerAutoscalingArgs{...}
+type AppSpecWorkerAutoscalingInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAutoscalingOutput() AppSpecWorkerAutoscalingOutput
+	ToAppSpecWorkerAutoscalingOutputWithContext(context.Context) AppSpecWorkerAutoscalingOutput
+}
+
+type AppSpecWorkerAutoscalingArgs struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics AppSpecWorkerAutoscalingMetricsInput `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (AppSpecWorkerAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAutoscalingArgs) ToAppSpecWorkerAutoscalingOutput() AppSpecWorkerAutoscalingOutput {
+	return i.ToAppSpecWorkerAutoscalingOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAutoscalingArgs) ToAppSpecWorkerAutoscalingOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingOutput)
+}
+
+func (i AppSpecWorkerAutoscalingArgs) ToAppSpecWorkerAutoscalingPtrOutput() AppSpecWorkerAutoscalingPtrOutput {
+	return i.ToAppSpecWorkerAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAutoscalingArgs) ToAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingOutput).ToAppSpecWorkerAutoscalingPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerAutoscalingPtrInput is an input type that accepts AppSpecWorkerAutoscalingArgs, AppSpecWorkerAutoscalingPtr and AppSpecWorkerAutoscalingPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAutoscalingPtrInput` via:
+//
+//	        AppSpecWorkerAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAutoscalingPtrOutput() AppSpecWorkerAutoscalingPtrOutput
+	ToAppSpecWorkerAutoscalingPtrOutputWithContext(context.Context) AppSpecWorkerAutoscalingPtrOutput
+}
+
+type appSpecWorkerAutoscalingPtrType AppSpecWorkerAutoscalingArgs
+
+func AppSpecWorkerAutoscalingPtr(v *AppSpecWorkerAutoscalingArgs) AppSpecWorkerAutoscalingPtrInput {
+	return (*appSpecWorkerAutoscalingPtrType)(v)
+}
+
+func (*appSpecWorkerAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (i *appSpecWorkerAutoscalingPtrType) ToAppSpecWorkerAutoscalingPtrOutput() AppSpecWorkerAutoscalingPtrOutput {
+	return i.ToAppSpecWorkerAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerAutoscalingPtrType) ToAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingPtrOutput)
+}
+
+type AppSpecWorkerAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAutoscalingOutput) ToAppSpecWorkerAutoscalingOutput() AppSpecWorkerAutoscalingOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingOutput) ToAppSpecWorkerAutoscalingOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingOutput) ToAppSpecWorkerAutoscalingPtrOutput() AppSpecWorkerAutoscalingPtrOutput {
+	return o.ToAppSpecWorkerAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerAutoscalingOutput) ToAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerAutoscaling) *AppSpecWorkerAutoscaling {
+		return &v
+	}).(AppSpecWorkerAutoscalingPtrOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o AppSpecWorkerAutoscalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AppSpecWorkerAutoscaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o AppSpecWorkerAutoscalingOutput) Metrics() AppSpecWorkerAutoscalingMetricsOutput {
+	return o.ApplyT(func(v AppSpecWorkerAutoscaling) AppSpecWorkerAutoscalingMetrics { return v.Metrics }).(AppSpecWorkerAutoscalingMetricsOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o AppSpecWorkerAutoscalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AppSpecWorkerAutoscaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type AppSpecWorkerAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAutoscalingPtrOutput) ToAppSpecWorkerAutoscalingPtrOutput() AppSpecWorkerAutoscalingPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingPtrOutput) ToAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingPtrOutput) Elem() AppSpecWorkerAutoscalingOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscaling) AppSpecWorkerAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerAutoscaling
+		return ret
+	}).(AppSpecWorkerAutoscalingOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o AppSpecWorkerAutoscalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o AppSpecWorkerAutoscalingPtrOutput) Metrics() AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscaling) *AppSpecWorkerAutoscalingMetrics {
+		if v == nil {
+			return nil
+		}
+		return &v.Metrics
+	}).(AppSpecWorkerAutoscalingMetricsPtrOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o AppSpecWorkerAutoscalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AppSpecWorkerAutoscalingMetrics struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu *AppSpecWorkerAutoscalingMetricsCpu `pulumi:"cpu"`
+}
+
+// AppSpecWorkerAutoscalingMetricsInput is an input type that accepts AppSpecWorkerAutoscalingMetricsArgs and AppSpecWorkerAutoscalingMetricsOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAutoscalingMetricsInput` via:
+//
+//	AppSpecWorkerAutoscalingMetricsArgs{...}
+type AppSpecWorkerAutoscalingMetricsInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAutoscalingMetricsOutput() AppSpecWorkerAutoscalingMetricsOutput
+	ToAppSpecWorkerAutoscalingMetricsOutputWithContext(context.Context) AppSpecWorkerAutoscalingMetricsOutput
+}
+
+type AppSpecWorkerAutoscalingMetricsArgs struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu AppSpecWorkerAutoscalingMetricsCpuPtrInput `pulumi:"cpu"`
+}
+
+func (AppSpecWorkerAutoscalingMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAutoscalingMetricsArgs) ToAppSpecWorkerAutoscalingMetricsOutput() AppSpecWorkerAutoscalingMetricsOutput {
+	return i.ToAppSpecWorkerAutoscalingMetricsOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAutoscalingMetricsArgs) ToAppSpecWorkerAutoscalingMetricsOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingMetricsOutput)
+}
+
+func (i AppSpecWorkerAutoscalingMetricsArgs) ToAppSpecWorkerAutoscalingMetricsPtrOutput() AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return i.ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAutoscalingMetricsArgs) ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingMetricsOutput).ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerAutoscalingMetricsPtrInput is an input type that accepts AppSpecWorkerAutoscalingMetricsArgs, AppSpecWorkerAutoscalingMetricsPtr and AppSpecWorkerAutoscalingMetricsPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAutoscalingMetricsPtrInput` via:
+//
+//	        AppSpecWorkerAutoscalingMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerAutoscalingMetricsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAutoscalingMetricsPtrOutput() AppSpecWorkerAutoscalingMetricsPtrOutput
+	ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Context) AppSpecWorkerAutoscalingMetricsPtrOutput
+}
+
+type appSpecWorkerAutoscalingMetricsPtrType AppSpecWorkerAutoscalingMetricsArgs
+
+func AppSpecWorkerAutoscalingMetricsPtr(v *AppSpecWorkerAutoscalingMetricsArgs) AppSpecWorkerAutoscalingMetricsPtrInput {
+	return (*appSpecWorkerAutoscalingMetricsPtrType)(v)
+}
+
+func (*appSpecWorkerAutoscalingMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i *appSpecWorkerAutoscalingMetricsPtrType) ToAppSpecWorkerAutoscalingMetricsPtrOutput() AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return i.ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerAutoscalingMetricsPtrType) ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingMetricsPtrOutput)
+}
+
+type AppSpecWorkerAutoscalingMetricsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAutoscalingMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAutoscalingMetricsOutput) ToAppSpecWorkerAutoscalingMetricsOutput() AppSpecWorkerAutoscalingMetricsOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsOutput) ToAppSpecWorkerAutoscalingMetricsOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsOutput) ToAppSpecWorkerAutoscalingMetricsPtrOutput() AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o.ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerAutoscalingMetricsOutput) ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerAutoscalingMetrics) *AppSpecWorkerAutoscalingMetrics {
+		return &v
+	}).(AppSpecWorkerAutoscalingMetricsPtrOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o AppSpecWorkerAutoscalingMetricsOutput) Cpu() AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerAutoscalingMetrics) *AppSpecWorkerAutoscalingMetricsCpu { return v.Cpu }).(AppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+type AppSpecWorkerAutoscalingMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAutoscalingMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAutoscalingMetricsPtrOutput) ToAppSpecWorkerAutoscalingMetricsPtrOutput() AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsPtrOutput) ToAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsPtrOutput) Elem() AppSpecWorkerAutoscalingMetricsOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscalingMetrics) AppSpecWorkerAutoscalingMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerAutoscalingMetrics
+		return ret
+	}).(AppSpecWorkerAutoscalingMetricsOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o AppSpecWorkerAutoscalingMetricsPtrOutput) Cpu() AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscalingMetrics) *AppSpecWorkerAutoscalingMetricsCpu {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(AppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+type AppSpecWorkerAutoscalingMetricsCpu struct {
+	// The average target CPU utilization for the component.
+	Percent int `pulumi:"percent"`
+}
+
+// AppSpecWorkerAutoscalingMetricsCpuInput is an input type that accepts AppSpecWorkerAutoscalingMetricsCpuArgs and AppSpecWorkerAutoscalingMetricsCpuOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAutoscalingMetricsCpuInput` via:
+//
+//	AppSpecWorkerAutoscalingMetricsCpuArgs{...}
+type AppSpecWorkerAutoscalingMetricsCpuInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAutoscalingMetricsCpuOutput() AppSpecWorkerAutoscalingMetricsCpuOutput
+	ToAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(context.Context) AppSpecWorkerAutoscalingMetricsCpuOutput
+}
+
+type AppSpecWorkerAutoscalingMetricsCpuArgs struct {
+	// The average target CPU utilization for the component.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (AppSpecWorkerAutoscalingMetricsCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAutoscalingMetricsCpuArgs) ToAppSpecWorkerAutoscalingMetricsCpuOutput() AppSpecWorkerAutoscalingMetricsCpuOutput {
+	return i.ToAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAutoscalingMetricsCpuArgs) ToAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingMetricsCpuOutput)
+}
+
+func (i AppSpecWorkerAutoscalingMetricsCpuArgs) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutput() AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return i.ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAutoscalingMetricsCpuArgs) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingMetricsCpuOutput).ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerAutoscalingMetricsCpuPtrInput is an input type that accepts AppSpecWorkerAutoscalingMetricsCpuArgs, AppSpecWorkerAutoscalingMetricsCpuPtr and AppSpecWorkerAutoscalingMetricsCpuPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAutoscalingMetricsCpuPtrInput` via:
+//
+//	        AppSpecWorkerAutoscalingMetricsCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerAutoscalingMetricsCpuPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAutoscalingMetricsCpuPtrOutput() AppSpecWorkerAutoscalingMetricsCpuPtrOutput
+	ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Context) AppSpecWorkerAutoscalingMetricsCpuPtrOutput
+}
+
+type appSpecWorkerAutoscalingMetricsCpuPtrType AppSpecWorkerAutoscalingMetricsCpuArgs
+
+func AppSpecWorkerAutoscalingMetricsCpuPtr(v *AppSpecWorkerAutoscalingMetricsCpuArgs) AppSpecWorkerAutoscalingMetricsCpuPtrInput {
+	return (*appSpecWorkerAutoscalingMetricsCpuPtrType)(v)
+}
+
+func (*appSpecWorkerAutoscalingMetricsCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i *appSpecWorkerAutoscalingMetricsCpuPtrType) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutput() AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return i.ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerAutoscalingMetricsCpuPtrType) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+type AppSpecWorkerAutoscalingMetricsCpuOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAutoscalingMetricsCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuOutput) ToAppSpecWorkerAutoscalingMetricsCpuOutput() AppSpecWorkerAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuOutput) ToAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuOutput) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutput() AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuOutput) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerAutoscalingMetricsCpu) *AppSpecWorkerAutoscalingMetricsCpu {
+		return &v
+	}).(AppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o AppSpecWorkerAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v AppSpecWorkerAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type AppSpecWorkerAutoscalingMetricsCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAutoscalingMetricsCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuPtrOutput) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutput() AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuPtrOutput) ToAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) AppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAutoscalingMetricsCpuPtrOutput) Elem() AppSpecWorkerAutoscalingMetricsCpuOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscalingMetricsCpu) AppSpecWorkerAutoscalingMetricsCpu {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerAutoscalingMetricsCpu
+		return ret
+	}).(AppSpecWorkerAutoscalingMetricsCpuOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o AppSpecWorkerAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAutoscalingMetricsCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percent
+	}).(pulumi.IntPtrOutput)
 }
 
 type AppSpecWorkerEnv struct {
@@ -13002,6 +13834,8 @@ func (o AppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 type AppSpecWorkerImage struct {
 	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes []AppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
@@ -13028,6 +13862,8 @@ type AppSpecWorkerImageInput interface {
 type AppSpecWorkerImageArgs struct {
 	// Configures automatically deploying images pushed to DOCR.
 	DeployOnPushes AppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
@@ -13122,6 +13958,11 @@ func (o AppSpecWorkerImageOutput) DeployOnPushes() AppSpecWorkerImageDeployOnPus
 	return o.ApplyT(func(v AppSpecWorkerImage) []AppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(AppSpecWorkerImageDeployOnPushArrayOutput)
 }
 
+// The image digest. Cannot be specified if `tag` is provided.
+func (o AppSpecWorkerImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o AppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -13179,6 +14020,16 @@ func (o AppSpecWorkerImagePtrOutput) DeployOnPushes() AppSpecWorkerImageDeployOn
 		}
 		return v.DeployOnPushes
 	}).(AppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o AppSpecWorkerImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -14241,6 +15092,151 @@ func (o AppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.String
 		}
 		return &v.Endpoint
 	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerTermination struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	//
+	// A `function` component can contain:
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// AppSpecWorkerTerminationInput is an input type that accepts AppSpecWorkerTerminationArgs and AppSpecWorkerTerminationOutput values.
+// You can construct a concrete instance of `AppSpecWorkerTerminationInput` via:
+//
+//	AppSpecWorkerTerminationArgs{...}
+type AppSpecWorkerTerminationInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerTerminationOutput() AppSpecWorkerTerminationOutput
+	ToAppSpecWorkerTerminationOutputWithContext(context.Context) AppSpecWorkerTerminationOutput
+}
+
+type AppSpecWorkerTerminationArgs struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	//
+	// A `function` component can contain:
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (AppSpecWorkerTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (i AppSpecWorkerTerminationArgs) ToAppSpecWorkerTerminationOutput() AppSpecWorkerTerminationOutput {
+	return i.ToAppSpecWorkerTerminationOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerTerminationArgs) ToAppSpecWorkerTerminationOutputWithContext(ctx context.Context) AppSpecWorkerTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerTerminationOutput)
+}
+
+func (i AppSpecWorkerTerminationArgs) ToAppSpecWorkerTerminationPtrOutput() AppSpecWorkerTerminationPtrOutput {
+	return i.ToAppSpecWorkerTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerTerminationArgs) ToAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) AppSpecWorkerTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerTerminationOutput).ToAppSpecWorkerTerminationPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerTerminationPtrInput is an input type that accepts AppSpecWorkerTerminationArgs, AppSpecWorkerTerminationPtr and AppSpecWorkerTerminationPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerTerminationPtrInput` via:
+//
+//	        AppSpecWorkerTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerTerminationPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerTerminationPtrOutput() AppSpecWorkerTerminationPtrOutput
+	ToAppSpecWorkerTerminationPtrOutputWithContext(context.Context) AppSpecWorkerTerminationPtrOutput
+}
+
+type appSpecWorkerTerminationPtrType AppSpecWorkerTerminationArgs
+
+func AppSpecWorkerTerminationPtr(v *AppSpecWorkerTerminationArgs) AppSpecWorkerTerminationPtrInput {
+	return (*appSpecWorkerTerminationPtrType)(v)
+}
+
+func (*appSpecWorkerTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (i *appSpecWorkerTerminationPtrType) ToAppSpecWorkerTerminationPtrOutput() AppSpecWorkerTerminationPtrOutput {
+	return i.ToAppSpecWorkerTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerTerminationPtrType) ToAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) AppSpecWorkerTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerTerminationPtrOutput)
+}
+
+type AppSpecWorkerTerminationOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (o AppSpecWorkerTerminationOutput) ToAppSpecWorkerTerminationOutput() AppSpecWorkerTerminationOutput {
+	return o
+}
+
+func (o AppSpecWorkerTerminationOutput) ToAppSpecWorkerTerminationOutputWithContext(ctx context.Context) AppSpecWorkerTerminationOutput {
+	return o
+}
+
+func (o AppSpecWorkerTerminationOutput) ToAppSpecWorkerTerminationPtrOutput() AppSpecWorkerTerminationPtrOutput {
+	return o.ToAppSpecWorkerTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerTerminationOutput) ToAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) AppSpecWorkerTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerTermination) *AppSpecWorkerTermination {
+		return &v
+	}).(AppSpecWorkerTerminationPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+//
+// A `function` component can contain:
+func (o AppSpecWorkerTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AppSpecWorkerTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (o AppSpecWorkerTerminationPtrOutput) ToAppSpecWorkerTerminationPtrOutput() AppSpecWorkerTerminationPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerTerminationPtrOutput) ToAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) AppSpecWorkerTerminationPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerTerminationPtrOutput) Elem() AppSpecWorkerTerminationOutput {
+	return o.ApplyT(func(v *AppSpecWorkerTermination) AppSpecWorkerTermination {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerTermination
+		return ret
+	}).(AppSpecWorkerTerminationOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+//
+// A `function` component can contain:
+func (o AppSpecWorkerTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type DatabaseClusterBackupRestore struct {
@@ -24726,6 +25722,8 @@ type GetAppSpecJob struct {
 	RunCommand *string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *GetAppSpecJobTermination `pulumi:"termination"`
 }
 
 // GetAppSpecJobInput is an input type that accepts GetAppSpecJobArgs and GetAppSpecJobOutput values.
@@ -24776,6 +25774,8 @@ type GetAppSpecJobArgs struct {
 	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination GetAppSpecJobTerminationPtrInput `pulumi:"termination"`
 }
 
 func (GetAppSpecJobArgs) ElementType() reflect.Type {
@@ -24911,6 +25911,11 @@ func (o GetAppSpecJobOutput) RunCommand() pulumi.StringPtrOutput {
 // An optional path to the working directory to use for the build.
 func (o GetAppSpecJobOutput) SourceDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o GetAppSpecJobOutput) Termination() GetAppSpecJobTerminationPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobTermination { return v.Termination }).(GetAppSpecJobTerminationPtrOutput)
 }
 
 type GetAppSpecJobArrayOutput struct{ *pulumi.OutputState }
@@ -25699,6 +26704,8 @@ func (o GetAppSpecJobGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 type GetAppSpecJobImage struct {
 	// Whether to automatically deploy new commits made to the repo.
 	DeployOnPushes []GetAppSpecJobImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
@@ -25725,6 +26732,8 @@ type GetAppSpecJobImageInput interface {
 type GetAppSpecJobImageArgs struct {
 	// Whether to automatically deploy new commits made to the repo.
 	DeployOnPushes GetAppSpecJobImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
@@ -25819,6 +26828,11 @@ func (o GetAppSpecJobImageOutput) DeployOnPushes() GetAppSpecJobImageDeployOnPus
 	return o.ApplyT(func(v GetAppSpecJobImage) []GetAppSpecJobImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecJobImageDeployOnPushArrayOutput)
 }
 
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecJobImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecJobImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -25876,6 +26890,16 @@ func (o GetAppSpecJobImagePtrOutput) DeployOnPushes() GetAppSpecJobImageDeployOn
 		}
 		return v.DeployOnPushes
 	}).(GetAppSpecJobImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecJobImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -26940,6 +27964,143 @@ func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAppSpecJobTermination struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// GetAppSpecJobTerminationInput is an input type that accepts GetAppSpecJobTerminationArgs and GetAppSpecJobTerminationOutput values.
+// You can construct a concrete instance of `GetAppSpecJobTerminationInput` via:
+//
+//	GetAppSpecJobTerminationArgs{...}
+type GetAppSpecJobTerminationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput
+	ToGetAppSpecJobTerminationOutputWithContext(context.Context) GetAppSpecJobTerminationOutput
+}
+
+type GetAppSpecJobTerminationArgs struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (GetAppSpecJobTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput {
+	return i.ToGetAppSpecJobTerminationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationOutputWithContext(ctx context.Context) GetAppSpecJobTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationOutput)
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return i.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationOutput).ToGetAppSpecJobTerminationPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobTerminationPtrInput is an input type that accepts GetAppSpecJobTerminationArgs, GetAppSpecJobTerminationPtr and GetAppSpecJobTerminationPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobTerminationPtrInput` via:
+//
+//	        GetAppSpecJobTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecJobTerminationPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput
+	ToGetAppSpecJobTerminationPtrOutputWithContext(context.Context) GetAppSpecJobTerminationPtrOutput
+}
+
+type getAppSpecJobTerminationPtrType GetAppSpecJobTerminationArgs
+
+func GetAppSpecJobTerminationPtr(v *GetAppSpecJobTerminationArgs) GetAppSpecJobTerminationPtrInput {
+	return (*getAppSpecJobTerminationPtrType)(v)
+}
+
+func (*getAppSpecJobTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (i *getAppSpecJobTerminationPtrType) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return i.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobTerminationPtrType) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationPtrOutput)
+}
+
+type GetAppSpecJobTerminationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationOutputWithContext(ctx context.Context) GetAppSpecJobTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return o.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobTermination) *GetAppSpecJobTermination {
+		return &v
+	}).(GetAppSpecJobTerminationPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecJobTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecJobTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecJobTerminationPtrOutput) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationPtrOutput) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationPtrOutput) Elem() GetAppSpecJobTerminationOutput {
+	return o.ApplyT(func(v *GetAppSpecJobTermination) GetAppSpecJobTermination {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobTermination
+		return ret
+	}).(GetAppSpecJobTerminationOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecJobTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetAppSpecService struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
@@ -26985,6 +28146,8 @@ type GetAppSpecService struct {
 	RunCommand string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *GetAppSpecServiceTermination `pulumi:"termination"`
 }
 
 // GetAppSpecServiceInput is an input type that accepts GetAppSpecServiceArgs and GetAppSpecServiceOutput values.
@@ -27043,6 +28206,8 @@ type GetAppSpecServiceArgs struct {
 	RunCommand pulumi.StringInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination GetAppSpecServiceTerminationPtrInput `pulumi:"termination"`
 }
 
 func (GetAppSpecServiceArgs) ElementType() reflect.Type {
@@ -27201,6 +28366,11 @@ func (o GetAppSpecServiceOutput) RunCommand() pulumi.StringOutput {
 // An optional path to the working directory to use for the build.
 func (o GetAppSpecServiceOutput) SourceDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o GetAppSpecServiceOutput) Termination() GetAppSpecServiceTerminationPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceTermination { return v.Termination }).(GetAppSpecServiceTerminationPtrOutput)
 }
 
 type GetAppSpecServiceArrayOutput struct{ *pulumi.OutputState }
@@ -29104,6 +30274,8 @@ func (o GetAppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOut
 type GetAppSpecServiceImage struct {
 	// Whether to automatically deploy new commits made to the repo.
 	DeployOnPushes []GetAppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
@@ -29130,6 +30302,8 @@ type GetAppSpecServiceImageInput interface {
 type GetAppSpecServiceImageArgs struct {
 	// Whether to automatically deploy new commits made to the repo.
 	DeployOnPushes GetAppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
@@ -29224,6 +30398,11 @@ func (o GetAppSpecServiceImageOutput) DeployOnPushes() GetAppSpecServiceImageDep
 	return o.ApplyT(func(v GetAppSpecServiceImage) []GetAppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecServiceImageDeployOnPushArrayOutput)
 }
 
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecServiceImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -29281,6 +30460,16 @@ func (o GetAppSpecServiceImagePtrOutput) DeployOnPushes() GetAppSpecServiceImage
 		}
 		return v.DeployOnPushes
 	}).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecServiceImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -30453,6 +31642,162 @@ func (o GetAppSpecServiceRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpecSe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceRoute {
 		return vs[0].([]GetAppSpecServiceRoute)[vs[1].(int)]
 	}).(GetAppSpecServiceRouteOutput)
+}
+
+type GetAppSpecServiceTermination struct {
+	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+	DrainSeconds *int `pulumi:"drainSeconds"`
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// GetAppSpecServiceTerminationInput is an input type that accepts GetAppSpecServiceTerminationArgs and GetAppSpecServiceTerminationOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceTerminationInput` via:
+//
+//	GetAppSpecServiceTerminationArgs{...}
+type GetAppSpecServiceTerminationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput
+	ToGetAppSpecServiceTerminationOutputWithContext(context.Context) GetAppSpecServiceTerminationOutput
+}
+
+type GetAppSpecServiceTerminationArgs struct {
+	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+	DrainSeconds pulumi.IntPtrInput `pulumi:"drainSeconds"`
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (GetAppSpecServiceTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput {
+	return i.ToGetAppSpecServiceTerminationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationOutput)
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return i.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationOutput).ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceTerminationPtrInput is an input type that accepts GetAppSpecServiceTerminationArgs, GetAppSpecServiceTerminationPtr and GetAppSpecServiceTerminationPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceTerminationPtrInput` via:
+//
+//	        GetAppSpecServiceTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceTerminationPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput
+	ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Context) GetAppSpecServiceTerminationPtrOutput
+}
+
+type getAppSpecServiceTerminationPtrType GetAppSpecServiceTerminationArgs
+
+func GetAppSpecServiceTerminationPtr(v *GetAppSpecServiceTerminationArgs) GetAppSpecServiceTerminationPtrInput {
+	return (*getAppSpecServiceTerminationPtrType)(v)
+}
+
+func (*getAppSpecServiceTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceTerminationPtrType) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return i.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceTerminationPtrType) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationPtrOutput)
+}
+
+type GetAppSpecServiceTerminationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return o.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceTermination) *GetAppSpecServiceTermination {
+		return &v
+	}).(GetAppSpecServiceTerminationPtrOutput)
+}
+
+// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+func (o GetAppSpecServiceTerminationOutput) DrainSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceTermination) *int { return v.DrainSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecServiceTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceTerminationPtrOutput) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationPtrOutput) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationPtrOutput) Elem() GetAppSpecServiceTerminationOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceTermination) GetAppSpecServiceTermination {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceTermination
+		return ret
+	}).(GetAppSpecServiceTerminationOutput)
+}
+
+// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+func (o GetAppSpecServiceTerminationPtrOutput) DrainSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetAppSpecStaticSite struct {
@@ -31838,6 +33183,8 @@ func (o GetAppSpecStaticSiteRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpe
 type GetAppSpecWorker struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecWorkerAlert `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling *GetAppSpecWorkerAutoscaling `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -31866,6 +33213,8 @@ type GetAppSpecWorker struct {
 	RunCommand *string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *GetAppSpecWorkerTermination `pulumi:"termination"`
 }
 
 // GetAppSpecWorkerInput is an input type that accepts GetAppSpecWorkerArgs and GetAppSpecWorkerOutput values.
@@ -31882,6 +33231,8 @@ type GetAppSpecWorkerInput interface {
 type GetAppSpecWorkerArgs struct {
 	// Describes an alert policy for the component.
 	Alerts GetAppSpecWorkerAlertArrayInput `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling GetAppSpecWorkerAutoscalingPtrInput `pulumi:"autoscaling"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -31910,6 +33261,8 @@ type GetAppSpecWorkerArgs struct {
 	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination GetAppSpecWorkerTerminationPtrInput `pulumi:"termination"`
 }
 
 func (GetAppSpecWorkerArgs) ElementType() reflect.Type {
@@ -31966,6 +33319,11 @@ func (o GetAppSpecWorkerOutput) ToGetAppSpecWorkerOutputWithContext(ctx context.
 // Describes an alert policy for the component.
 func (o GetAppSpecWorkerOutput) Alerts() GetAppSpecWorkerAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) []GetAppSpecWorkerAlert { return v.Alerts }).(GetAppSpecWorkerAlertArrayOutput)
+}
+
+// Configuration for automatically scaling this component based on metrics.
+func (o GetAppSpecWorkerOutput) Autoscaling() GetAppSpecWorkerAutoscalingPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerAutoscaling { return v.Autoscaling }).(GetAppSpecWorkerAutoscalingPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -32036,6 +33394,11 @@ func (o GetAppSpecWorkerOutput) RunCommand() pulumi.StringPtrOutput {
 // An optional path to the working directory to use for the build.
 func (o GetAppSpecWorkerOutput) SourceDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o GetAppSpecWorkerOutput) Termination() GetAppSpecWorkerTerminationPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerTermination { return v.Termination }).(GetAppSpecWorkerTerminationPtrOutput)
 }
 
 type GetAppSpecWorkerArrayOutput struct{ *pulumi.OutputState }
@@ -32189,6 +33552,455 @@ func (o GetAppSpecWorkerAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecWor
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerAlert {
 		return vs[0].([]GetAppSpecWorkerAlert)[vs[1].(int)]
 	}).(GetAppSpecWorkerAlertOutput)
+}
+
+type GetAppSpecWorkerAutoscaling struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics GetAppSpecWorkerAutoscalingMetrics `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// GetAppSpecWorkerAutoscalingInput is an input type that accepts GetAppSpecWorkerAutoscalingArgs and GetAppSpecWorkerAutoscalingOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAutoscalingInput` via:
+//
+//	GetAppSpecWorkerAutoscalingArgs{...}
+type GetAppSpecWorkerAutoscalingInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAutoscalingOutput() GetAppSpecWorkerAutoscalingOutput
+	ToGetAppSpecWorkerAutoscalingOutputWithContext(context.Context) GetAppSpecWorkerAutoscalingOutput
+}
+
+type GetAppSpecWorkerAutoscalingArgs struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics GetAppSpecWorkerAutoscalingMetricsInput `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (GetAppSpecWorkerAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAutoscalingArgs) ToGetAppSpecWorkerAutoscalingOutput() GetAppSpecWorkerAutoscalingOutput {
+	return i.ToGetAppSpecWorkerAutoscalingOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAutoscalingArgs) ToGetAppSpecWorkerAutoscalingOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingOutput)
+}
+
+func (i GetAppSpecWorkerAutoscalingArgs) ToGetAppSpecWorkerAutoscalingPtrOutput() GetAppSpecWorkerAutoscalingPtrOutput {
+	return i.ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAutoscalingArgs) ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingOutput).ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerAutoscalingPtrInput is an input type that accepts GetAppSpecWorkerAutoscalingArgs, GetAppSpecWorkerAutoscalingPtr and GetAppSpecWorkerAutoscalingPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAutoscalingPtrInput` via:
+//
+//	        GetAppSpecWorkerAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAutoscalingPtrOutput() GetAppSpecWorkerAutoscalingPtrOutput
+	ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(context.Context) GetAppSpecWorkerAutoscalingPtrOutput
+}
+
+type getAppSpecWorkerAutoscalingPtrType GetAppSpecWorkerAutoscalingArgs
+
+func GetAppSpecWorkerAutoscalingPtr(v *GetAppSpecWorkerAutoscalingArgs) GetAppSpecWorkerAutoscalingPtrInput {
+	return (*getAppSpecWorkerAutoscalingPtrType)(v)
+}
+
+func (*getAppSpecWorkerAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerAutoscalingPtrType) ToGetAppSpecWorkerAutoscalingPtrOutput() GetAppSpecWorkerAutoscalingPtrOutput {
+	return i.ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerAutoscalingPtrType) ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingPtrOutput)
+}
+
+type GetAppSpecWorkerAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAutoscalingOutput) ToGetAppSpecWorkerAutoscalingOutput() GetAppSpecWorkerAutoscalingOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingOutput) ToGetAppSpecWorkerAutoscalingOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingOutput) ToGetAppSpecWorkerAutoscalingPtrOutput() GetAppSpecWorkerAutoscalingPtrOutput {
+	return o.ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerAutoscalingOutput) ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerAutoscaling) *GetAppSpecWorkerAutoscaling {
+		return &v
+	}).(GetAppSpecWorkerAutoscalingPtrOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o GetAppSpecWorkerAutoscalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAutoscaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o GetAppSpecWorkerAutoscalingOutput) Metrics() GetAppSpecWorkerAutoscalingMetricsOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAutoscaling) GetAppSpecWorkerAutoscalingMetrics { return v.Metrics }).(GetAppSpecWorkerAutoscalingMetricsOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o GetAppSpecWorkerAutoscalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAutoscaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type GetAppSpecWorkerAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAutoscaling)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAutoscalingPtrOutput) ToGetAppSpecWorkerAutoscalingPtrOutput() GetAppSpecWorkerAutoscalingPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingPtrOutput) ToGetAppSpecWorkerAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingPtrOutput) Elem() GetAppSpecWorkerAutoscalingOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscaling) GetAppSpecWorkerAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerAutoscaling
+		return ret
+	}).(GetAppSpecWorkerAutoscalingOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o GetAppSpecWorkerAutoscalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o GetAppSpecWorkerAutoscalingPtrOutput) Metrics() GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscaling) *GetAppSpecWorkerAutoscalingMetrics {
+		if v == nil {
+			return nil
+		}
+		return &v.Metrics
+	}).(GetAppSpecWorkerAutoscalingMetricsPtrOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o GetAppSpecWorkerAutoscalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecWorkerAutoscalingMetrics struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu *GetAppSpecWorkerAutoscalingMetricsCpu `pulumi:"cpu"`
+}
+
+// GetAppSpecWorkerAutoscalingMetricsInput is an input type that accepts GetAppSpecWorkerAutoscalingMetricsArgs and GetAppSpecWorkerAutoscalingMetricsOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAutoscalingMetricsInput` via:
+//
+//	GetAppSpecWorkerAutoscalingMetricsArgs{...}
+type GetAppSpecWorkerAutoscalingMetricsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAutoscalingMetricsOutput() GetAppSpecWorkerAutoscalingMetricsOutput
+	ToGetAppSpecWorkerAutoscalingMetricsOutputWithContext(context.Context) GetAppSpecWorkerAutoscalingMetricsOutput
+}
+
+type GetAppSpecWorkerAutoscalingMetricsArgs struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu GetAppSpecWorkerAutoscalingMetricsCpuPtrInput `pulumi:"cpu"`
+}
+
+func (GetAppSpecWorkerAutoscalingMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsArgs) ToGetAppSpecWorkerAutoscalingMetricsOutput() GetAppSpecWorkerAutoscalingMetricsOutput {
+	return i.ToGetAppSpecWorkerAutoscalingMetricsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsArgs) ToGetAppSpecWorkerAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingMetricsOutput)
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsArgs) ToGetAppSpecWorkerAutoscalingMetricsPtrOutput() GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return i.ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsArgs) ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingMetricsOutput).ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerAutoscalingMetricsPtrInput is an input type that accepts GetAppSpecWorkerAutoscalingMetricsArgs, GetAppSpecWorkerAutoscalingMetricsPtr and GetAppSpecWorkerAutoscalingMetricsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAutoscalingMetricsPtrInput` via:
+//
+//	        GetAppSpecWorkerAutoscalingMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerAutoscalingMetricsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAutoscalingMetricsPtrOutput() GetAppSpecWorkerAutoscalingMetricsPtrOutput
+	ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Context) GetAppSpecWorkerAutoscalingMetricsPtrOutput
+}
+
+type getAppSpecWorkerAutoscalingMetricsPtrType GetAppSpecWorkerAutoscalingMetricsArgs
+
+func GetAppSpecWorkerAutoscalingMetricsPtr(v *GetAppSpecWorkerAutoscalingMetricsArgs) GetAppSpecWorkerAutoscalingMetricsPtrInput {
+	return (*getAppSpecWorkerAutoscalingMetricsPtrType)(v)
+}
+
+func (*getAppSpecWorkerAutoscalingMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerAutoscalingMetricsPtrType) ToGetAppSpecWorkerAutoscalingMetricsPtrOutput() GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return i.ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerAutoscalingMetricsPtrType) ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingMetricsPtrOutput)
+}
+
+type GetAppSpecWorkerAutoscalingMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAutoscalingMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsOutput) ToGetAppSpecWorkerAutoscalingMetricsOutput() GetAppSpecWorkerAutoscalingMetricsOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsOutput) ToGetAppSpecWorkerAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsOutput) ToGetAppSpecWorkerAutoscalingMetricsPtrOutput() GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o.ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsOutput) ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerAutoscalingMetrics) *GetAppSpecWorkerAutoscalingMetrics {
+		return &v
+	}).(GetAppSpecWorkerAutoscalingMetricsPtrOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o GetAppSpecWorkerAutoscalingMetricsOutput) Cpu() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAutoscalingMetrics) *GetAppSpecWorkerAutoscalingMetricsCpu { return v.Cpu }).(GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecWorkerAutoscalingMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAutoscalingMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsPtrOutput) ToGetAppSpecWorkerAutoscalingMetricsPtrOutput() GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsPtrOutput) ToGetAppSpecWorkerAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsPtrOutput) Elem() GetAppSpecWorkerAutoscalingMetricsOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscalingMetrics) GetAppSpecWorkerAutoscalingMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerAutoscalingMetrics
+		return ret
+	}).(GetAppSpecWorkerAutoscalingMetricsOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o GetAppSpecWorkerAutoscalingMetricsPtrOutput) Cpu() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscalingMetrics) *GetAppSpecWorkerAutoscalingMetricsCpu {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecWorkerAutoscalingMetricsCpu struct {
+	// The average target CPU utilization for the component.
+	Percent int `pulumi:"percent"`
+}
+
+// GetAppSpecWorkerAutoscalingMetricsCpuInput is an input type that accepts GetAppSpecWorkerAutoscalingMetricsCpuArgs and GetAppSpecWorkerAutoscalingMetricsCpuOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAutoscalingMetricsCpuInput` via:
+//
+//	GetAppSpecWorkerAutoscalingMetricsCpuArgs{...}
+type GetAppSpecWorkerAutoscalingMetricsCpuInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAutoscalingMetricsCpuOutput() GetAppSpecWorkerAutoscalingMetricsCpuOutput
+	ToGetAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(context.Context) GetAppSpecWorkerAutoscalingMetricsCpuOutput
+}
+
+type GetAppSpecWorkerAutoscalingMetricsCpuArgs struct {
+	// The average target CPU utilization for the component.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (GetAppSpecWorkerAutoscalingMetricsCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsCpuArgs) ToGetAppSpecWorkerAutoscalingMetricsCpuOutput() GetAppSpecWorkerAutoscalingMetricsCpuOutput {
+	return i.ToGetAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsCpuArgs) ToGetAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingMetricsCpuOutput)
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsCpuArgs) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutput() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return i.ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAutoscalingMetricsCpuArgs) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingMetricsCpuOutput).ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerAutoscalingMetricsCpuPtrInput is an input type that accepts GetAppSpecWorkerAutoscalingMetricsCpuArgs, GetAppSpecWorkerAutoscalingMetricsCpuPtr and GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAutoscalingMetricsCpuPtrInput` via:
+//
+//	        GetAppSpecWorkerAutoscalingMetricsCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerAutoscalingMetricsCpuPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutput() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput
+	ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Context) GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput
+}
+
+type getAppSpecWorkerAutoscalingMetricsCpuPtrType GetAppSpecWorkerAutoscalingMetricsCpuArgs
+
+func GetAppSpecWorkerAutoscalingMetricsCpuPtr(v *GetAppSpecWorkerAutoscalingMetricsCpuArgs) GetAppSpecWorkerAutoscalingMetricsCpuPtrInput {
+	return (*getAppSpecWorkerAutoscalingMetricsCpuPtrType)(v)
+}
+
+func (*getAppSpecWorkerAutoscalingMetricsCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerAutoscalingMetricsCpuPtrType) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutput() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return i.ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerAutoscalingMetricsCpuPtrType) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecWorkerAutoscalingMetricsCpuOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAutoscalingMetricsCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuOutput) ToGetAppSpecWorkerAutoscalingMetricsCpuOutput() GetAppSpecWorkerAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuOutput) ToGetAppSpecWorkerAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuOutput) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutput() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuOutput) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerAutoscalingMetricsCpu) *GetAppSpecWorkerAutoscalingMetricsCpu {
+		return &v
+	}).(GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o GetAppSpecWorkerAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutput() GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput) ToGetAppSpecWorkerAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput) Elem() GetAppSpecWorkerAutoscalingMetricsCpuOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscalingMetricsCpu) GetAppSpecWorkerAutoscalingMetricsCpu {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerAutoscalingMetricsCpu
+		return ret
+	}).(GetAppSpecWorkerAutoscalingMetricsCpuOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAutoscalingMetricsCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percent
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetAppSpecWorkerEnv struct {
@@ -32824,6 +34636,8 @@ func (o GetAppSpecWorkerGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
 type GetAppSpecWorkerImage struct {
 	// Whether to automatically deploy new commits made to the repo.
 	DeployOnPushes []GetAppSpecWorkerImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry *string `pulumi:"registry"`
 	// Access credentials for third-party registries
@@ -32850,6 +34664,8 @@ type GetAppSpecWorkerImageInput interface {
 type GetAppSpecWorkerImageArgs struct {
 	// Whether to automatically deploy new commits made to the repo.
 	DeployOnPushes GetAppSpecWorkerImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 	Registry pulumi.StringPtrInput `pulumi:"registry"`
 	// Access credentials for third-party registries
@@ -32944,6 +34760,11 @@ func (o GetAppSpecWorkerImageOutput) DeployOnPushes() GetAppSpecWorkerImageDeplo
 	return o.ApplyT(func(v GetAppSpecWorkerImage) []GetAppSpecWorkerImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecWorkerImageDeployOnPushArrayOutput)
 }
 
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecWorkerImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
 func (o GetAppSpecWorkerImageOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
@@ -33001,6 +34822,16 @@ func (o GetAppSpecWorkerImagePtrOutput) DeployOnPushes() GetAppSpecWorkerImageDe
 		}
 		return v.DeployOnPushes
 	}).(GetAppSpecWorkerImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecWorkerImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 // The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
@@ -34063,6 +35894,143 @@ func (o GetAppSpecWorkerLogDestinationPapertrailPtrOutput) Endpoint() pulumi.Str
 		}
 		return &v.Endpoint
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerTermination struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// GetAppSpecWorkerTerminationInput is an input type that accepts GetAppSpecWorkerTerminationArgs and GetAppSpecWorkerTerminationOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerTerminationInput` via:
+//
+//	GetAppSpecWorkerTerminationArgs{...}
+type GetAppSpecWorkerTerminationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerTerminationOutput() GetAppSpecWorkerTerminationOutput
+	ToGetAppSpecWorkerTerminationOutputWithContext(context.Context) GetAppSpecWorkerTerminationOutput
+}
+
+type GetAppSpecWorkerTerminationArgs struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (GetAppSpecWorkerTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerTerminationArgs) ToGetAppSpecWorkerTerminationOutput() GetAppSpecWorkerTerminationOutput {
+	return i.ToGetAppSpecWorkerTerminationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerTerminationArgs) ToGetAppSpecWorkerTerminationOutputWithContext(ctx context.Context) GetAppSpecWorkerTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerTerminationOutput)
+}
+
+func (i GetAppSpecWorkerTerminationArgs) ToGetAppSpecWorkerTerminationPtrOutput() GetAppSpecWorkerTerminationPtrOutput {
+	return i.ToGetAppSpecWorkerTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerTerminationArgs) ToGetAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerTerminationOutput).ToGetAppSpecWorkerTerminationPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerTerminationPtrInput is an input type that accepts GetAppSpecWorkerTerminationArgs, GetAppSpecWorkerTerminationPtr and GetAppSpecWorkerTerminationPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerTerminationPtrInput` via:
+//
+//	        GetAppSpecWorkerTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerTerminationPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerTerminationPtrOutput() GetAppSpecWorkerTerminationPtrOutput
+	ToGetAppSpecWorkerTerminationPtrOutputWithContext(context.Context) GetAppSpecWorkerTerminationPtrOutput
+}
+
+type getAppSpecWorkerTerminationPtrType GetAppSpecWorkerTerminationArgs
+
+func GetAppSpecWorkerTerminationPtr(v *GetAppSpecWorkerTerminationArgs) GetAppSpecWorkerTerminationPtrInput {
+	return (*getAppSpecWorkerTerminationPtrType)(v)
+}
+
+func (*getAppSpecWorkerTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerTerminationPtrType) ToGetAppSpecWorkerTerminationPtrOutput() GetAppSpecWorkerTerminationPtrOutput {
+	return i.ToGetAppSpecWorkerTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerTerminationPtrType) ToGetAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerTerminationPtrOutput)
+}
+
+type GetAppSpecWorkerTerminationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerTerminationOutput) ToGetAppSpecWorkerTerminationOutput() GetAppSpecWorkerTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerTerminationOutput) ToGetAppSpecWorkerTerminationOutputWithContext(ctx context.Context) GetAppSpecWorkerTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerTerminationOutput) ToGetAppSpecWorkerTerminationPtrOutput() GetAppSpecWorkerTerminationPtrOutput {
+	return o.ToGetAppSpecWorkerTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerTerminationOutput) ToGetAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerTermination) *GetAppSpecWorkerTermination {
+		return &v
+	}).(GetAppSpecWorkerTerminationPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecWorkerTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecWorkerTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerTerminationPtrOutput) ToGetAppSpecWorkerTerminationPtrOutput() GetAppSpecWorkerTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerTerminationPtrOutput) ToGetAppSpecWorkerTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerTerminationPtrOutput) Elem() GetAppSpecWorkerTerminationOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerTermination) GetAppSpecWorkerTermination {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerTermination
+		return ret
+	}).(GetAppSpecWorkerTerminationOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecWorkerTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetDatabaseClusterMaintenanceWindow struct {
@@ -41292,6 +43260,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), AppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), AppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecJobLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobTerminationInput)(nil)).Elem(), AppSpecJobTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobTerminationPtrInput)(nil)).Elem(), AppSpecJobTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceInput)(nil)).Elem(), AppSpecServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceArrayInput)(nil)).Elem(), AppSpecServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertInput)(nil)).Elem(), AppSpecServiceAlertArgs{})
@@ -41334,6 +43304,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteInput)(nil)).Elem(), AppSpecServiceRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceRouteArrayInput)(nil)).Elem(), AppSpecServiceRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceTerminationInput)(nil)).Elem(), AppSpecServiceTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceTerminationPtrInput)(nil)).Elem(), AppSpecServiceTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteInput)(nil)).Elem(), AppSpecStaticSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteArrayInput)(nil)).Elem(), AppSpecStaticSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsInput)(nil)).Elem(), AppSpecStaticSiteCorsArgs{})
@@ -41354,6 +43326,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerArrayInput)(nil)).Elem(), AppSpecWorkerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertInput)(nil)).Elem(), AppSpecWorkerAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertArrayInput)(nil)).Elem(), AppSpecWorkerAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingInput)(nil)).Elem(), AppSpecWorkerAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingPtrInput)(nil)).Elem(), AppSpecWorkerAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsPtrInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsCpuInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsCpuPtrInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvInput)(nil)).Elem(), AppSpecWorkerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvArrayInput)(nil)).Elem(), AppSpecWorkerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitInput)(nil)).Elem(), AppSpecWorkerGitArgs{})
@@ -41378,6 +43356,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), AppSpecWorkerLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerTerminationInput)(nil)).Elem(), AppSpecWorkerTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerTerminationPtrInput)(nil)).Elem(), AppSpecWorkerTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterBackupRestoreInput)(nil)).Elem(), DatabaseClusterBackupRestoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterBackupRestorePtrInput)(nil)).Elem(), DatabaseClusterBackupRestoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseClusterMaintenanceWindowInput)(nil)).Elem(), DatabaseClusterMaintenanceWindowArgs{})
@@ -41541,6 +43521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationPtrInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertInput)(nil)).Elem(), GetAppSpecServiceAlertArgs{})
@@ -41583,6 +43565,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteInput)(nil)).Elem(), GetAppSpecServiceRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteArrayInput)(nil)).Elem(), GetAppSpecServiceRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationPtrInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteInput)(nil)).Elem(), GetAppSpecStaticSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsInput)(nil)).Elem(), GetAppSpecStaticSiteCorsArgs{})
@@ -41603,6 +43587,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerArrayInput)(nil)).Elem(), GetAppSpecWorkerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertInput)(nil)).Elem(), GetAppSpecWorkerAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertArrayInput)(nil)).Elem(), GetAppSpecWorkerAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingPtrInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsPtrInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsCpuInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsCpuPtrInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvInput)(nil)).Elem(), GetAppSpecWorkerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvArrayInput)(nil)).Elem(), GetAppSpecWorkerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitInput)(nil)).Elem(), GetAppSpecWorkerGitArgs{})
@@ -41627,6 +43617,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerTerminationInput)(nil)).Elem(), GetAppSpecWorkerTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerTerminationPtrInput)(nil)).Elem(), GetAppSpecWorkerTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingInput)(nil)).Elem(), GetDatabaseUserSettingArgs{})
@@ -41819,6 +43811,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecJobLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobTerminationOutput{})
+	pulumi.RegisterOutputType(AppSpecJobTerminationPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAlertOutput{})
@@ -41861,6 +43855,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceRouteOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceRouteArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceTerminationOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceTerminationPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteCorsOutput{})
@@ -41881,6 +43877,12 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsCpuOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsCpuPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerGitOutput{})
@@ -41905,6 +43907,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerTerminationOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerTerminationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterBackupRestoreOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterBackupRestorePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseClusterMaintenanceWindowOutput{})
@@ -42068,6 +44072,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobTerminationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobTerminationPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAlertOutput{})
@@ -42110,6 +44116,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceRouteOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceTerminationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceTerminationPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsOutput{})
@@ -42130,6 +44138,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsCpuOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerGitOutput{})
@@ -42154,6 +44168,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerTerminationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerTerminationPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseUserSettingOutput{})
