@@ -14,8 +14,6 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         /// <summary>
         /// The average target CPU utilization for the component.
-        /// 
-        /// A `static_site` can contain:
         /// </summary>
         [Input("percent", required: true)]
         public Input<int> Percent { get; set; } = null!;

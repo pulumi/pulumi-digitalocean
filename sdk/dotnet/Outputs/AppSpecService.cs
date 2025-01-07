@@ -97,6 +97,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// An optional path to the working directory to use for the build.
         /// </summary>
         public readonly string? SourceDir;
+        /// <summary>
+        /// Contains a component's termination parameters.
+        /// </summary>
+        public readonly Outputs.AppSpecServiceTermination? Termination;
 
         [OutputConstructor]
         private AppSpecService(
@@ -140,7 +144,9 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? runCommand,
 
-            string? sourceDir)
+            string? sourceDir,
+
+            Outputs.AppSpecServiceTermination? termination)
         {
             Alerts = alerts;
             Autoscaling = autoscaling;
@@ -163,6 +169,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Routes = routes;
             RunCommand = runCommand;
             SourceDir = sourceDir;
+            Termination = termination;
         }
     }
 }

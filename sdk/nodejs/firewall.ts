@@ -130,7 +130,8 @@ export class Firewall extends pulumi.CustomResource {
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      */
     public readonly dropletIds!: pulumi.Output<number[] | undefined>;
     /**
@@ -160,7 +161,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The names of the Tags assigned to the Firewall.
+     * The names of the Tags assigned to the Firewall (max. 5).
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -212,7 +213,8 @@ export interface FirewallState {
     createdAt?: pulumi.Input<string>;
     /**
      * The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      */
     dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -242,7 +244,7 @@ export interface FirewallState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The names of the Tags assigned to the Firewall.
+     * The names of the Tags assigned to the Firewall (max. 5).
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -253,7 +255,8 @@ export interface FirewallState {
 export interface FirewallArgs {
     /**
      * The list of the IDs of the Droplets assigned
-     * to the Firewall.
+     * to the Firewall (max. 10). If you want to assign more droplets to the
+     * Firewall, add Tags to them and use the `tags` argument below.
      */
     dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -271,7 +274,7 @@ export interface FirewallArgs {
      */
     outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
     /**
-     * The names of the Tags assigned to the Firewall.
+     * The names of the Tags assigned to the Firewall (max. 5).
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

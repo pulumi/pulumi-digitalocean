@@ -11,6 +11,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecJobGithub;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobGitlab;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobImage;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobLogDestination;
+import com.pulumi.digitalocean.outputs.GetAppSpecJobTermination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -105,6 +106,11 @@ public final class GetAppSpecJob {
      * 
      */
     private @Nullable String sourceDir;
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    private @Nullable GetAppSpecJobTermination termination;
 
     private GetAppSpecJob() {}
     /**
@@ -223,6 +229,13 @@ public final class GetAppSpecJob {
     public Optional<String> sourceDir() {
         return Optional.ofNullable(this.sourceDir);
     }
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<GetAppSpecJobTermination> termination() {
+        return Optional.ofNullable(this.termination);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -249,6 +262,7 @@ public final class GetAppSpecJob {
         private String name;
         private @Nullable String runCommand;
         private @Nullable String sourceDir;
+        private @Nullable GetAppSpecJobTermination termination;
         public Builder() {}
         public Builder(GetAppSpecJob defaults) {
     	      Objects.requireNonNull(defaults);
@@ -268,6 +282,7 @@ public final class GetAppSpecJob {
     	      this.name = defaults.name;
     	      this.runCommand = defaults.runCommand;
     	      this.sourceDir = defaults.sourceDir;
+    	      this.termination = defaults.termination;
         }
 
         @CustomType.Setter
@@ -377,6 +392,12 @@ public final class GetAppSpecJob {
             this.sourceDir = sourceDir;
             return this;
         }
+        @CustomType.Setter
+        public Builder termination(@Nullable GetAppSpecJobTermination termination) {
+
+            this.termination = termination;
+            return this;
+        }
         public GetAppSpecJob build() {
             final var _resultValue = new GetAppSpecJob();
             _resultValue.alerts = alerts;
@@ -395,6 +416,7 @@ public final class GetAppSpecJob {
             _resultValue.name = name;
             _resultValue.runCommand = runCommand;
             _resultValue.sourceDir = sourceDir;
+            _resultValue.termination = termination;
             return _resultValue;
         }
     }

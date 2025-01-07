@@ -17,16 +17,12 @@ public final class AppSpecServiceAutoscalingMetricsCpuArgs extends com.pulumi.re
     /**
      * The average target CPU utilization for the component.
      * 
-     * A `static_site` can contain:
-     * 
      */
     @Import(name="percent", required=true)
     private Output<Integer> percent;
 
     /**
      * @return The average target CPU utilization for the component.
-     * 
-     * A `static_site` can contain:
      * 
      */
     public Output<Integer> percent() {
@@ -60,8 +56,6 @@ public final class AppSpecServiceAutoscalingMetricsCpuArgs extends com.pulumi.re
         /**
          * @param percent The average target CPU utilization for the component.
          * 
-         * A `static_site` can contain:
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class AppSpecServiceAutoscalingMetricsCpuArgs extends com.pulumi.re
 
         /**
          * @param percent The average target CPU utilization for the component.
-         * 
-         * A `static_site` can contain:
          * 
          * @return builder
          * 

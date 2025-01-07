@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.inputs.AppSpecJobGithubArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobGitlabArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobImageArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobLogDestinationArgs;
+import com.pulumi.digitalocean.inputs.AppSpecJobTerminationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -273,6 +274,21 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sourceDir);
     }
 
+    /**
+     * Contains a component&#39;s termination parameters.
+     * 
+     */
+    @Import(name="termination")
+    private @Nullable Output<AppSpecJobTerminationArgs> termination;
+
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<Output<AppSpecJobTerminationArgs>> termination() {
+        return Optional.ofNullable(this.termination);
+    }
+
     private AppSpecJobArgs() {}
 
     private AppSpecJobArgs(AppSpecJobArgs $) {
@@ -292,6 +308,7 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.runCommand = $.runCommand;
         this.sourceDir = $.sourceDir;
+        this.termination = $.termination;
     }
 
     public static Builder builder() {
@@ -684,6 +701,27 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceDir(String sourceDir) {
             return sourceDir(Output.of(sourceDir));
+        }
+
+        /**
+         * @param termination Contains a component&#39;s termination parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termination(@Nullable Output<AppSpecJobTerminationArgs> termination) {
+            $.termination = termination;
+            return this;
+        }
+
+        /**
+         * @param termination Contains a component&#39;s termination parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder termination(AppSpecJobTerminationArgs termination) {
+            return termination(Output.of(termination));
         }
 
         public AppSpecJobArgs build() {

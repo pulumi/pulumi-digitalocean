@@ -15,8 +15,6 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         /// <summary>
         /// The average target CPU utilization for the component.
-        /// 
-        /// A `static_site` can contain:
         /// </summary>
         public readonly int Percent;
 

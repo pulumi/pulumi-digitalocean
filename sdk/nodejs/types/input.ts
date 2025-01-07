@@ -612,6 +612,10 @@ export interface AppSpecJob {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: pulumi.Input<inputs.AppSpecJobTermination>;
 }
 
 export interface AppSpecJobAlert {
@@ -702,6 +706,10 @@ export interface AppSpecJobImage {
      * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecJobImageDeployOnPush>[]>;
+    /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: pulumi.Input<string>;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
@@ -809,6 +817,15 @@ export interface AppSpecJobLogDestinationPapertrail {
     endpoint: pulumi.Input<string>;
 }
 
+export interface AppSpecJobTermination {
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     *
+     * A `function` component can contain:
+     */
+    gracePeriodSeconds?: pulumi.Input<number>;
+}
+
 export interface AppSpecService {
     /**
      * Describes an alert policy for the component.
@@ -898,6 +915,10 @@ export interface AppSpecService {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: pulumi.Input<inputs.AppSpecServiceTermination>;
 }
 
 export interface AppSpecServiceAlert {
@@ -948,8 +969,6 @@ export interface AppSpecServiceAutoscalingMetrics {
 export interface AppSpecServiceAutoscalingMetricsCpu {
     /**
      * The average target CPU utilization for the component.
-     *
-     * A `staticSite` can contain:
      */
     percent: pulumi.Input<number>;
 }
@@ -1095,6 +1114,10 @@ export interface AppSpecServiceImage {
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceImageDeployOnPush>[]>;
     /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: pulumi.Input<string>;
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
     registry?: pulumi.Input<string>;
@@ -1210,6 +1233,21 @@ export interface AppSpecServiceRoute {
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
     preservePathPrefix?: pulumi.Input<boolean>;
+}
+
+export interface AppSpecServiceTermination {
+    /**
+     * The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+     *
+     * A `staticSite` can contain:
+     */
+    drainSeconds?: pulumi.Input<number>;
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     *
+     * A `function` component can contain:
+     */
+    gracePeriodSeconds?: pulumi.Input<number>;
 }
 
 export interface AppSpecStaticSite {
@@ -1400,6 +1438,10 @@ export interface AppSpecWorker {
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlert>[]>;
     /**
+     * Configuration for automatically scaling this component based on metrics.
+     */
+    autoscaling?: pulumi.Input<inputs.AppSpecWorkerAutoscaling>;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: pulumi.Input<string>;
@@ -1455,6 +1497,10 @@ export interface AppSpecWorker {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+    /**
+     * Contains a component's termination parameters.
+     */
+    termination?: pulumi.Input<inputs.AppSpecWorkerTermination>;
 }
 
 export interface AppSpecWorkerAlert {
@@ -1478,6 +1524,35 @@ export interface AppSpecWorkerAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerAutoscaling {
+    /**
+     * The maximum amount of instances for this component. Must be more than min_instance_count.
+     */
+    maxInstanceCount: pulumi.Input<number>;
+    /**
+     * The metrics that the component is scaled on.
+     */
+    metrics: pulumi.Input<inputs.AppSpecWorkerAutoscalingMetrics>;
+    /**
+     * The minimum amount of instances for this component. Must be less than max_instance_count.
+     */
+    minInstanceCount: pulumi.Input<number>;
+}
+
+export interface AppSpecWorkerAutoscalingMetrics {
+    /**
+     * Settings for scaling the component based on CPU utilization.
+     */
+    cpu?: pulumi.Input<inputs.AppSpecWorkerAutoscalingMetricsCpu>;
+}
+
+export interface AppSpecWorkerAutoscalingMetricsCpu {
+    /**
+     * The average target CPU utilization for the component.
+     */
+    percent: pulumi.Input<number>;
 }
 
 export interface AppSpecWorkerEnv {
@@ -1545,6 +1620,10 @@ export interface AppSpecWorkerImage {
      * Configures automatically deploying images pushed to DOCR.
      */
     deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerImageDeployOnPush>[]>;
+    /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     */
+    digest?: pulumi.Input<string>;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
@@ -1650,6 +1729,15 @@ export interface AppSpecWorkerLogDestinationPapertrail {
      * Papertrail syslog endpoint.
      */
     endpoint: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerTermination {
+    /**
+     * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+     *
+     * A `function` component can contain:
+     */
+    gracePeriodSeconds?: pulumi.Input<number>;
 }
 
 export interface DatabaseClusterBackupRestore {

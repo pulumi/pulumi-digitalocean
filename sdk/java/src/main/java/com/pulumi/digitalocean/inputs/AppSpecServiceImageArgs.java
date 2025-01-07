@@ -34,6 +34,21 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The image digest. Cannot be specified if `tag` is provided.
+     * 
+     */
+    @Import(name="digest")
+    private @Nullable Output<String> digest;
+
+    /**
+     * @return The image digest. Cannot be specified if `tag` is provided.
+     * 
+     */
+    public Optional<Output<String>> digest() {
+        return Optional.ofNullable(this.digest);
+    }
+
+    /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      * 
      */
@@ -112,6 +127,7 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
 
     private AppSpecServiceImageArgs(AppSpecServiceImageArgs $) {
         this.deployOnPushes = $.deployOnPushes;
+        this.digest = $.digest;
         this.registry = $.registry;
         this.registryCredentials = $.registryCredentials;
         this.registryType = $.registryType;
@@ -166,6 +182,27 @@ public final class AppSpecServiceImageArgs extends com.pulumi.resources.Resource
          */
         public Builder deployOnPushes(AppSpecServiceImageDeployOnPushArgs... deployOnPushes) {
             return deployOnPushes(List.of(deployOnPushes));
+        }
+
+        /**
+         * @param digest The image digest. Cannot be specified if `tag` is provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder digest(@Nullable Output<String> digest) {
+            $.digest = digest;
+            return this;
+        }
+
+        /**
+         * @param digest The image digest. Cannot be specified if `tag` is provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder digest(String digest) {
+            return digest(Output.of(digest));
         }
 
         /**

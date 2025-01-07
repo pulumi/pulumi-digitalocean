@@ -11,6 +11,7 @@ import com.pulumi.digitalocean.outputs.AppSpecJobGithub;
 import com.pulumi.digitalocean.outputs.AppSpecJobGitlab;
 import com.pulumi.digitalocean.outputs.AppSpecJobImage;
 import com.pulumi.digitalocean.outputs.AppSpecJobLogDestination;
+import com.pulumi.digitalocean.outputs.AppSpecJobTermination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -105,6 +106,11 @@ public final class AppSpecJob {
      * 
      */
     private @Nullable String sourceDir;
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    private @Nullable AppSpecJobTermination termination;
 
     private AppSpecJob() {}
     /**
@@ -223,6 +229,13 @@ public final class AppSpecJob {
     public Optional<String> sourceDir() {
         return Optional.ofNullable(this.sourceDir);
     }
+    /**
+     * @return Contains a component&#39;s termination parameters.
+     * 
+     */
+    public Optional<AppSpecJobTermination> termination() {
+        return Optional.ofNullable(this.termination);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -249,6 +262,7 @@ public final class AppSpecJob {
         private String name;
         private @Nullable String runCommand;
         private @Nullable String sourceDir;
+        private @Nullable AppSpecJobTermination termination;
         public Builder() {}
         public Builder(AppSpecJob defaults) {
     	      Objects.requireNonNull(defaults);
@@ -268,6 +282,7 @@ public final class AppSpecJob {
     	      this.name = defaults.name;
     	      this.runCommand = defaults.runCommand;
     	      this.sourceDir = defaults.sourceDir;
+    	      this.termination = defaults.termination;
         }
 
         @CustomType.Setter
@@ -377,6 +392,12 @@ public final class AppSpecJob {
             this.sourceDir = sourceDir;
             return this;
         }
+        @CustomType.Setter
+        public Builder termination(@Nullable AppSpecJobTermination termination) {
+
+            this.termination = termination;
+            return this;
+        }
         public AppSpecJob build() {
             final var _resultValue = new AppSpecJob();
             _resultValue.alerts = alerts;
@@ -395,6 +416,7 @@ public final class AppSpecJob {
             _resultValue.name = name;
             _resultValue.runCommand = runCommand;
             _resultValue.sourceDir = sourceDir;
+            _resultValue.termination = termination;
             return _resultValue;
         }
     }

@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
+        /// The image digest. Cannot be specified if `tag` is provided.
+        /// </summary>
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        /// <summary>
         /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
         /// </summary>
         [Input("registry")]

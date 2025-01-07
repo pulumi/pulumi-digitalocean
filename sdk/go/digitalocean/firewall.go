@@ -124,7 +124,8 @@ type Firewall struct {
 	// that represents when the Firewall was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The list of the IDs of the Droplets assigned
-	// to the Firewall.
+	// to the Firewall (max. 10). If you want to assign more droplets to the
+	// Firewall, add Tags to them and use the `tags` argument below.
 	DropletIds pulumi.IntArrayOutput `pulumi:"dropletIds"`
 	// The inbound access rule block for the Firewall.
 	// The `inboundRule` block is documented below.
@@ -142,7 +143,7 @@ type Firewall struct {
 	// A status string indicating the current state of the Firewall.
 	// This can be "waiting", "succeeded", or "failed".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The names of the Tags assigned to the Firewall.
+	// The names of the Tags assigned to the Firewall (max. 5).
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -180,7 +181,8 @@ type firewallState struct {
 	// that represents when the Firewall was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The list of the IDs of the Droplets assigned
-	// to the Firewall.
+	// to the Firewall (max. 10). If you want to assign more droplets to the
+	// Firewall, add Tags to them and use the `tags` argument below.
 	DropletIds []int `pulumi:"dropletIds"`
 	// The inbound access rule block for the Firewall.
 	// The `inboundRule` block is documented below.
@@ -198,7 +200,7 @@ type firewallState struct {
 	// A status string indicating the current state of the Firewall.
 	// This can be "waiting", "succeeded", or "failed".
 	Status *string `pulumi:"status"`
-	// The names of the Tags assigned to the Firewall.
+	// The names of the Tags assigned to the Firewall (max. 5).
 	Tags []string `pulumi:"tags"`
 }
 
@@ -207,7 +209,8 @@ type FirewallState struct {
 	// that represents when the Firewall was created.
 	CreatedAt pulumi.StringPtrInput
 	// The list of the IDs of the Droplets assigned
-	// to the Firewall.
+	// to the Firewall (max. 10). If you want to assign more droplets to the
+	// Firewall, add Tags to them and use the `tags` argument below.
 	DropletIds pulumi.IntArrayInput
 	// The inbound access rule block for the Firewall.
 	// The `inboundRule` block is documented below.
@@ -225,7 +228,7 @@ type FirewallState struct {
 	// A status string indicating the current state of the Firewall.
 	// This can be "waiting", "succeeded", or "failed".
 	Status pulumi.StringPtrInput
-	// The names of the Tags assigned to the Firewall.
+	// The names of the Tags assigned to the Firewall (max. 5).
 	Tags pulumi.StringArrayInput
 }
 
@@ -235,7 +238,8 @@ func (FirewallState) ElementType() reflect.Type {
 
 type firewallArgs struct {
 	// The list of the IDs of the Droplets assigned
-	// to the Firewall.
+	// to the Firewall (max. 10). If you want to assign more droplets to the
+	// Firewall, add Tags to them and use the `tags` argument below.
 	DropletIds []int `pulumi:"dropletIds"`
 	// The inbound access rule block for the Firewall.
 	// The `inboundRule` block is documented below.
@@ -245,14 +249,15 @@ type firewallArgs struct {
 	// The outbound access rule block for the Firewall.
 	// The `outboundRule` block is documented below.
 	OutboundRules []FirewallOutboundRule `pulumi:"outboundRules"`
-	// The names of the Tags assigned to the Firewall.
+	// The names of the Tags assigned to the Firewall (max. 5).
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
 	// The list of the IDs of the Droplets assigned
-	// to the Firewall.
+	// to the Firewall (max. 10). If you want to assign more droplets to the
+	// Firewall, add Tags to them and use the `tags` argument below.
 	DropletIds pulumi.IntArrayInput
 	// The inbound access rule block for the Firewall.
 	// The `inboundRule` block is documented below.
@@ -262,7 +267,7 @@ type FirewallArgs struct {
 	// The outbound access rule block for the Firewall.
 	// The `outboundRule` block is documented below.
 	OutboundRules FirewallOutboundRuleArrayInput
-	// The names of the Tags assigned to the Firewall.
+	// The names of the Tags assigned to the Firewall (max. 5).
 	Tags pulumi.StringArrayInput
 }
 
@@ -360,7 +365,8 @@ func (o FirewallOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The list of the IDs of the Droplets assigned
-// to the Firewall.
+// to the Firewall (max. 10). If you want to assign more droplets to the
+// Firewall, add Tags to them and use the `tags` argument below.
 func (o FirewallOutput) DropletIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.IntArrayOutput { return v.DropletIds }).(pulumi.IntArrayOutput)
 }
@@ -396,7 +402,7 @@ func (o FirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The names of the Tags assigned to the Firewall.
+// The names of the Tags assigned to the Firewall (max. 5).
 func (o FirewallOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
