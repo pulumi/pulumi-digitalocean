@@ -966,6 +966,10 @@
                 "sourceDir": {
                     "type": "string",
                     "description": "An optional path to the working directory to use for the build.\n"
+                },
+                "termination": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobTermination:AppSpecJobTermination",
+                    "description": "Contains a component's termination parameters.\n"
                 }
             },
             "type": "object",
@@ -1088,6 +1092,10 @@
                         "$ref": "#/types/digitalocean:index/AppSpecJobImageDeployOnPush:AppSpecJobImageDeployOnPush"
                     },
                     "description": "Configures automatically deploying images pushed to DOCR.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "The image digest. Cannot be specified if `tag` is provided.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -1241,6 +1249,15 @@
                 "endpoint"
             ]
         },
+        "digitalocean:index/AppSpecJobTermination:AppSpecJobTermination": {
+            "properties": {
+                "gracePeriodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.\n\nA `function` component can contain:\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/AppSpecService:AppSpecService": {
             "properties": {
                 "alerts": {
@@ -1343,6 +1360,10 @@
                 "sourceDir": {
                     "type": "string",
                     "description": "An optional path to the working directory to use for the build.\n"
+                },
+                "termination": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceTermination:AppSpecServiceTermination",
+                    "description": "Contains a component's termination parameters.\n"
                 }
             },
             "type": "object",
@@ -1427,7 +1448,7 @@
             "properties": {
                 "percent": {
                     "type": "integer",
-                    "description": "The average target CPU utilization for the component.\n\nA `static_site` can contain:\n"
+                    "description": "The average target CPU utilization for the component.\n"
                 }
             },
             "type": "object",
@@ -1609,6 +1630,10 @@
                     },
                     "description": "Configures automatically deploying images pushed to DOCR.\n"
                 },
+                "digest": {
+                    "type": "string",
+                    "description": "The image digest. Cannot be specified if `tag` is provided.\n"
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n"
@@ -1770,6 +1795,19 @@
                 "preservePathPrefix": {
                     "type": "boolean",
                     "description": "An optional flag to preserve the path that is forwarded to the backend service.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecServiceTermination:AppSpecServiceTermination": {
+            "properties": {
+                "drainSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.\n\nA `static_site` can contain:\n"
+                },
+                "gracePeriodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.\n\nA `function` component can contain:\n"
                 }
             },
             "type": "object"
@@ -2012,6 +2050,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "autoscaling": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerAutoscaling:AppSpecWorkerAutoscaling",
+                    "description": "Configuration for automatically scaling this component based on metrics.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -2073,6 +2115,10 @@
                 "sourceDir": {
                     "type": "string",
                     "description": "An optional path to the working directory to use for the build.\n"
+                },
+                "termination": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerTermination:AppSpecWorkerTermination",
+                    "description": "Contains a component's termination parameters.\n"
                 }
             },
             "type": "object",
@@ -2109,6 +2155,49 @@
                 "rule",
                 "value",
                 "window"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerAutoscaling:AppSpecWorkerAutoscaling": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "The maximum amount of instances for this component. Must be more than min_instance_count.\n"
+                },
+                "metrics": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerAutoscalingMetrics:AppSpecWorkerAutoscalingMetrics",
+                    "description": "The metrics that the component is scaled on.\n"
+                },
+                "minInstanceCount": {
+                    "type": "integer",
+                    "description": "The minimum amount of instances for this component. Must be less than max_instance_count.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxInstanceCount",
+                "metrics",
+                "minInstanceCount"
+            ]
+        },
+        "digitalocean:index/AppSpecWorkerAutoscalingMetrics:AppSpecWorkerAutoscalingMetrics": {
+            "properties": {
+                "cpu": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerAutoscalingMetricsCpu:AppSpecWorkerAutoscalingMetricsCpu",
+                    "description": "Settings for scaling the component based on CPU utilization.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecWorkerAutoscalingMetricsCpu:AppSpecWorkerAutoscalingMetricsCpu": {
+            "properties": {
+                "percent": {
+                    "type": "integer",
+                    "description": "The average target CPU utilization for the component.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "percent"
             ]
         },
         "digitalocean:index/AppSpecWorkerEnv:AppSpecWorkerEnv": {
@@ -2195,6 +2284,10 @@
                         "$ref": "#/types/digitalocean:index/AppSpecWorkerImageDeployOnPush:AppSpecWorkerImageDeployOnPush"
                     },
                     "description": "Configures automatically deploying images pushed to DOCR.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "The image digest. Cannot be specified if `tag` is provided.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -2347,6 +2440,15 @@
             "required": [
                 "endpoint"
             ]
+        },
+        "digitalocean:index/AppSpecWorkerTermination:AppSpecWorkerTermination": {
+            "properties": {
+                "gracePeriodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.\n\nA `function` component can contain:\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/DatabaseClusterBackupRestore:DatabaseClusterBackupRestore": {
             "properties": {
@@ -4501,6 +4603,10 @@
                 "sourceDir": {
                     "type": "string",
                     "description": "An optional path to the working directory to use for the build.\n"
+                },
+                "termination": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobTermination:getAppSpecJobTermination",
+                    "description": "Contains a component's termination parameters.\n"
                 }
             },
             "type": "object",
@@ -4634,6 +4740,10 @@
                         "$ref": "#/types/digitalocean:index/getAppSpecJobImageDeployOnPush:getAppSpecJobImageDeployOnPush"
                     },
                     "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "The image digest. Cannot be specified if `tag` is provided.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -4809,6 +4919,15 @@
                 }
             }
         },
+        "digitalocean:index/getAppSpecJobTermination:getAppSpecJobTermination": {
+            "properties": {
+                "gracePeriodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/getAppSpecService:getAppSpecService": {
             "properties": {
                 "alerts": {
@@ -4910,6 +5029,10 @@
                 "sourceDir": {
                     "type": "string",
                     "description": "An optional path to the working directory to use for the build.\n"
+                },
+                "termination": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceTermination:getAppSpecServiceTermination",
+                    "description": "Contains a component's termination parameters.\n"
                 }
             },
             "type": "object",
@@ -5190,6 +5313,10 @@
                     },
                     "description": "Whether to automatically deploy new commits made to the repo.\n"
                 },
+                "digest": {
+                    "type": "string",
+                    "description": "The image digest. Cannot be specified if `tag` is provided.\n"
+                },
                 "registry": {
                     "type": "string",
                     "description": "The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.\n"
@@ -5373,6 +5500,19 @@
                 "preservePathPrefix": {
                     "type": "boolean",
                     "description": "An optional flag to preserve the path that is forwarded to the backend service.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecServiceTermination:getAppSpecServiceTermination": {
+            "properties": {
+                "drainSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.\n"
+                },
+                "gracePeriodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.\n"
                 }
             },
             "type": "object"
@@ -5613,6 +5753,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "autoscaling": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerAutoscaling:getAppSpecWorkerAutoscaling",
+                    "description": "Configuration for automatically scaling this component based on metrics.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -5674,6 +5818,10 @@
                 "sourceDir": {
                     "type": "string",
                     "description": "An optional path to the working directory to use for the build.\n"
+                },
+                "termination": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerTermination:getAppSpecWorkerTermination",
+                    "description": "Contains a component's termination parameters.\n"
                 }
             },
             "type": "object",
@@ -5715,6 +5863,59 @@
                 "rule",
                 "value",
                 "window"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerAutoscaling:getAppSpecWorkerAutoscaling": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "The maximum amount of instances for this component. Must be more than min_instance_count.\n"
+                },
+                "metrics": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerAutoscalingMetrics:getAppSpecWorkerAutoscalingMetrics",
+                    "description": "The metrics that the component is scaled on.\n"
+                },
+                "minInstanceCount": {
+                    "type": "integer",
+                    "description": "The minimum amount of instances for this component. Must be less than max_instance_count.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxInstanceCount",
+                "metrics",
+                "minInstanceCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecWorkerAutoscalingMetrics:getAppSpecWorkerAutoscalingMetrics": {
+            "properties": {
+                "cpu": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerAutoscalingMetricsCpu:getAppSpecWorkerAutoscalingMetricsCpu",
+                    "description": "Settings for scaling the component based on CPU utilization.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecWorkerAutoscalingMetricsCpu:getAppSpecWorkerAutoscalingMetricsCpu": {
+            "properties": {
+                "percent": {
+                    "type": "integer",
+                    "description": "The average target CPU utilization for the component.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "percent"
             ],
             "language": {
                 "nodejs": {
@@ -5807,6 +6008,10 @@
                         "$ref": "#/types/digitalocean:index/getAppSpecWorkerImageDeployOnPush:getAppSpecWorkerImageDeployOnPush"
                     },
                     "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "The image digest. Cannot be specified if `tag` is provided.\n"
                 },
                 "registry": {
                     "type": "string",
@@ -5981,6 +6186,15 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecWorkerTermination:getAppSpecWorkerTermination": {
+            "properties": {
+                "gracePeriodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow": {
             "properties": {
@@ -13736,7 +13950,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "The list of the IDs of the Droplets assigned\nto the Firewall.\n"
+                    "description": "The list of the IDs of the Droplets assigned\nto the Firewall (max. 10). If you want to assign more droplets to the\nFirewall, add Tags to them and use the `tags` argument below.\n"
                 },
                 "inboundRules": {
                     "type": "array",
@@ -13772,7 +13986,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The names of the Tags assigned to the Firewall.\n"
+                    "description": "The names of the Tags assigned to the Firewall (max. 5).\n"
                 }
             },
             "required": [
@@ -13787,7 +14001,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "The list of the IDs of the Droplets assigned\nto the Firewall.\n"
+                    "description": "The list of the IDs of the Droplets assigned\nto the Firewall (max. 10). If you want to assign more droplets to the\nFirewall, add Tags to them and use the `tags` argument below.\n"
                 },
                 "inboundRules": {
                     "type": "array",
@@ -13812,7 +14026,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The names of the Tags assigned to the Firewall.\n"
+                    "description": "The names of the Tags assigned to the Firewall (max. 5).\n"
                 }
             },
             "stateInputs": {
@@ -13827,7 +14041,7 @@
                         "items": {
                             "type": "integer"
                         },
-                        "description": "The list of the IDs of the Droplets assigned\nto the Firewall.\n"
+                        "description": "The list of the IDs of the Droplets assigned\nto the Firewall (max. 10). If you want to assign more droplets to the\nFirewall, add Tags to them and use the `tags` argument below.\n"
                     },
                     "inboundRules": {
                         "type": "array",
@@ -13863,7 +14077,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The names of the Tags assigned to the Firewall.\n"
+                        "description": "The names of the Tags assigned to the Firewall (max. 5).\n"
                     }
                 },
                 "type": "object"

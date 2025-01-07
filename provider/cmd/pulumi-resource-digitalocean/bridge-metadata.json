@@ -206,6 +206,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "termination": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -309,6 +312,9 @@
                                             },
                                             "routes": {
                                                 "maxItemsOne": false
+                                            },
+                                            "termination": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -361,6 +367,23 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "autoscaling": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "metrics": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "cpu": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "env": {
                                                 "maxItemsOne": false
                                             },
@@ -408,6 +431,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "termination": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -1211,6 +1237,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "termination": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -1314,6 +1343,9 @@
                                             },
                                             "routes": {
                                                 "maxItemsOne": false
+                                            },
+                                            "termination": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -1366,6 +1398,23 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "autoscaling": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "metrics": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "cpu": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "env": {
                                                 "maxItemsOne": false
                                             },
@@ -1413,6 +1462,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "termination": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
