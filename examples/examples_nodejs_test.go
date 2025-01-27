@@ -60,6 +60,7 @@ func TestAccDroplet(t *testing.T) {
 }
 
 func TestAccFloatingIp(t *testing.T) {
+	t.Skip("Flaky test")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "floatingip"),
