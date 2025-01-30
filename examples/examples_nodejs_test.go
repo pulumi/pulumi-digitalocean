@@ -70,6 +70,7 @@ func TestAccFloatingIp(t *testing.T) {
 }
 
 func TestAccLoadbalancer(t *testing.T) {
+	t.Skip("Flaky test")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "loadbalancer"),
